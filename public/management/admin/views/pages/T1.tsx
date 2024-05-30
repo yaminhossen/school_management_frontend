@@ -39,6 +39,14 @@ const T1: React.FC<Props> = (props: Props) => {
                         Teachers Management
                     </Link>
                 </li>
+                <li>
+                    <Link to="/user-parents">
+                        <span className="material-symbols-outlined fill">
+                            groups
+                        </span>
+                        Parents Management
+                    </Link>
+                </li>
             </ul>
         </div>
     );

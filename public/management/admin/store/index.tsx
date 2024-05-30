@@ -6,6 +6,7 @@ import user_branch_staff_slice from '../views/pages/user_branch_staff/config/sto
 import user_admins_slice from '../views/pages/user_admins/config/store';
 import user_staffs_slice from '../views/pages/user_staffs/config/store';
 import user_teachers_slice from '../views/pages/user_teachers/config/store';
+import user_parents_slice from '../views/pages/user_parents/config/store';
 
 const store = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
         user_admins: user_admins_slice.reducer,
         user_staffs: user_staffs_slice.reducer,
         user_teachers: user_teachers_slice.reducer,
+        user_parents: user_parents_slice.reducer,
     },
     devTools: true,
 });
