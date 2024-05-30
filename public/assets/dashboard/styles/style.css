@@ -1627,6 +1627,11 @@ input.form_checkbox:checked::after {
   font-size: 24px;
   margin-bottom: 40px;
 }
+.form_section_heading h2, .form_section_heading h4 {
+  border-bottom: 1px solid rgb(174, 174, 211);
+  padding-bottom: 5px;
+  display: inline;
+}
 
 .hide {
   display: none;

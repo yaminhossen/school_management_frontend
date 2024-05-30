@@ -5,6 +5,7 @@ import commonStore from './slices/common_slice';
 import user_branch_staff_slice from '../views/pages/user_branch_staff/config/store';
 import user_admins_slice from '../views/pages/user_admins/config/store';
 import user_staffs_slice from '../views/pages/user_staffs/config/store';
+import user_teachers_slice from '../views/pages/user_teachers/config/store';
 
 const store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
         common_store: commonStore.reducer,
         user_admins: user_admins_slice.reducer,
         user_staffs: user_staffs_slice.reducer,
+        user_teachers: user_teachers_slice.reducer,
     },
     devTools: true,
 });
