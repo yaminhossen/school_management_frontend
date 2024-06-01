@@ -49,12 +49,32 @@ const Create: React.FC<Props> = (props: Props) => {
                                 </div>
                             </div>
                             <div className="form-group form-horizontal">
+                                <label>Phone number</label>
+                                <div className="form_elements">
+                                    <input
+                                        type="text"
+                                        placeholder="phone number"
+                                        name="phone_number"
+                                    />
+                                </div>
+                            </div>
+                            <div className="form-group form-horizontal">
                                 <label>Password</label>
                                 <div className="form_elements">
                                     <input
                                         type="text"
                                         placeholder="password"
                                         name="password"
+                                    />
+                                </div>
+                            </div>
+                            <div className="form-group form-horizontal">
+                                <label>Confirm Password</label>
+                                <div className="form_elements">
+                                    <input
+                                        type="text"
+                                        placeholder="confirm password"
+                                        name="confirm_password"
                                     />
                                 </div>
                             </div>

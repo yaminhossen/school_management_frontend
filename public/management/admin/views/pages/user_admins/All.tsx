@@ -70,6 +70,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`email`}
                                             sort={true}
                                         />
+                                        <TableHeading
+                                            label={`Phone number`}
+                                            col_name={`email`}
+                                            sort={true}
+                                        />
                                         <th>Image</th>
                                     </tr>
                                 </thead>
@@ -101,6 +106,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                         </span>
                                                     </td>
                                                     <td>{i.email}</td>
+                                                    <td>{i.phone_number}</td>
                                                     <td>
                                                         <img
                                                             src="/assets/dashboard/images/avatar.png"
