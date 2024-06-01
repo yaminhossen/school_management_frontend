@@ -164,3 +164,7 @@
 {"level":60,"time":1717225811140,"pid":13672,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
 {"level":60,"time":1717232763019,"pid":10424,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
 {"level":60,"time":1717232801135,"pid":10424,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1717237585888,"pid":10424,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-students?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
+{"level":60,"time":1717237918159,"pid":10424,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-students?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
+{"level":60,"time":1717238458810,"pid":10424,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1717238502247,"pid":10424,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-students?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
