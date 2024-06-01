@@ -47,20 +47,18 @@ const All: React.FC<Props> = (props: Props) => {
         {
             id: 1,
             branch: 'kustia',
-            name: 'Parent1',
-            designation: 'Doctor',
+            name: 'Student1',
             phone_number: '01786867672',
-            email: 'parent1@gamil.com',
+            email: 'student1@gamil.com',
             address: 'Mirpur',
             image: '/assets/dashboard/images/avatar.png',
         },
         {
             id: 2,
             branch: 'Barishal',
-            name: 'Parent2',
-            designation: 'Engineer',
+            name: 'Student2',
             phone_number: '01786867673',
-            email: 'parent2@gamil.com',
+            email: 'student2@gamil.com',
             address: 'Uttora',
             image: '/assets/dashboard/images/avatar.png',
         },
@@ -95,11 +93,6 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Designation`}
-                                            col_name={`designation`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -154,7 +147,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                 </td>
                                                 <td>{i.branch}</td>
                                                 <td>{i.name}</td>
-                                                <td>{i.designation}</td>
                                                 <td>{i.phone_number}</td>
                                                 <td>{i.email}</td>
                                                 <td>{i.address}</td>
