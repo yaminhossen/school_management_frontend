@@ -1644,7 +1644,10 @@ input.form_checkbox:checked::after {
 .student_submit {
   display: grid;
   justify-content: center;
-  border: 3px solid red;
+}
+.student_submit .btn {
+  padding: 10px 20px;
+  border-radius: 8px;
 }
 
 .form_section_heading {
