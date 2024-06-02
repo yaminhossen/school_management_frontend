@@ -44,9 +44,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch Code</label>
+                                    <label>Building id</label>
                                     <div className="form_elements">
-                                        <select name="branch_code" id="">
+                                        <select name="building_id" id="">
                                             <option value="demo">demo</option>
                                             <option value="demo">demo</option>
                                             <option value="demo">demo</option>
@@ -55,12 +55,43 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Building Name</label>
+                                    <label>Room Code</label>
+                                    <div className="form_elements">
+                                        <select name="room" id="">
+                                            <option value="demo">demo</option>
+                                            <option value="demo">demo</option>
+                                            <option value="demo">demo</option>
+                                            <option value="demo">demo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Room Name</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="building name"
-                                            name="building_name"
+                                            placeholder="room name"
+                                            name="room_name"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Total seat</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="total seat"
+                                            name="total_seat"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Total student</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="total student"
+                                            name="total_student"
                                         />
                                     </div>
                                 </div>

@@ -11,6 +11,8 @@ import user_students_slice from '../views/pages/user_management/user_students/co
 import user_branch_admins_slice from '../views/pages/user_management/user_branch_admins/config/store';
 import branches_slice from '../views/pages/branch_management/branches/config/store';
 import branch_buildings_slice from '../views/pages/branch_management/branch_buildings/config/store';
+import branch_building_rooms_slice from '../views/pages/branch_management/branch_building_rooms/config/store';
+import branch_building_room_beds_slice from '../views/pages/branch_management/branch_building_room_beds/config/store';
 
 const store = configureStore({
     reducer: {
@@ -24,6 +26,8 @@ const store = configureStore({
         user_branch_admins: user_branch_admins_slice.reducer,
         branches: branches_slice.reducer,
         branch_buildings: branch_buildings_slice.reducer,
+        branch_building_rooms: branch_building_rooms_slice.reducer,
+        branch_building_room_beds: branch_building_room_beds_slice.reducer,
     },
     devTools: true,
 });

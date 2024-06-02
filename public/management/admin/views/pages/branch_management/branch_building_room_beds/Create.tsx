@@ -44,9 +44,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch Code</label>
+                                    <label>Branch Building id</label>
                                     <div className="form_elements">
-                                        <select name="branch_code" id="">
+                                        <select name="branch_building_id" id="">
                                             <option value="demo">demo</option>
                                             <option value="demo">demo</option>
                                             <option value="demo">demo</option>
@@ -55,41 +55,45 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Building Name</label>
+                                    <label>Branch Building Room id</label>
+                                    <div className="form_elements">
+                                        <select
+                                            name="branch_building_room_id"
+                                            id=""
+                                        >
+                                            <option value="demo">demo</option>
+                                            <option value="demo">demo</option>
+                                            <option value="demo">demo</option>
+                                            <option value="demo">demo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Seat no</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="building name"
-                                            name="building_name"
+                                            placeholder="seat no"
+                                            name="seat_no"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Attachment</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="attachment"
-                                            name="attachment"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Photo</label>
+                                    <label>Image</label>
                                     <div className="form_elements">
                                         <input
                                             type="file"
-                                            placeholder="photo"
-                                            name="photo"
+                                            placeholder="image"
+                                            name="image"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>Details</label>
                                     <div className="form_elements">
                                         <textarea
-                                            placeholder="description"
-                                            name="description"
+                                            placeholder="details"
+                                            name="details"
                                             id=""
                                         ></textarea>
                                     </div>
