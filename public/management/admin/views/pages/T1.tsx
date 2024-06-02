@@ -119,6 +119,14 @@ const T1: React.FC<Props> = (props: Props) => {
                         Branch Transports Management
                     </Link>
                 </li>
+                <li>
+                    <Link to="/branch-transport-drivers">
+                        <span className="material-symbols-outlined fill">
+                            groups
+                        </span>
+                        Branch Transport Drivers Management
+                    </Link>
+                </li>
             </ul>
         </div>
     );
