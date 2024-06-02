@@ -103,6 +103,22 @@ const T1: React.FC<Props> = (props: Props) => {
                         Branch Contacts Management
                     </Link>
                 </li>
+                <li>
+                    <Link to="/branch-informations">
+                        <span className="material-symbols-outlined fill">
+                            groups
+                        </span>
+                        Branch Informations Management
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/branch-transports">
+                        <span className="material-symbols-outlined fill">
+                            groups
+                        </span>
+                        Branch Transports Management
+                    </Link>
+                </li>
             </ul>
         </div>
     );

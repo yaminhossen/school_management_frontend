@@ -14,6 +14,8 @@ import branch_buildings_slice from '../views/pages/branch_management/branch_buil
 import branch_building_rooms_slice from '../views/pages/branch_management/branch_building_rooms/config/store';
 import branch_building_room_beds_slice from '../views/pages/branch_management/branch_building_room_beds/config/store';
 import branch_contacts_slice from '../views/pages/branch_management/branch_contacts/config/store';
+import branch_informations_slice from '../views/pages/branch_management/branch_informations/config/store';
+import branch_transports_slice from '../views/pages/branch_management/branch_transports/config/store';
 
 const store = configureStore({
     reducer: {
@@ -30,6 +32,8 @@ const store = configureStore({
         branch_building_rooms: branch_building_rooms_slice.reducer,
         branch_building_room_beds: branch_building_room_beds_slice.reducer,
         branch_contacts: branch_contacts_slice.reducer,
+        branch_informations: branch_informations_slice.reducer,
+        branch_transports: branch_transports_slice.reducer,
     },
     devTools: true,
 });
