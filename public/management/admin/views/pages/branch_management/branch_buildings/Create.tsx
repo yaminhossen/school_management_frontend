@@ -28,98 +28,70 @@ const Create: React.FC<Props> = (props: Props) => {
                             onSubmit={(e) => handle_submit(e)}
                             className="form_600 mx-auto pt-3"
                         >
-                            <div className="form_section_heading">
+                            {/* <div className="form_section_heading">
                                 <h2 className=""> Major Information</h2>
-                            </div>
+                            </div> */}
                             <div>
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>Branch id</label>
+                                    <div className="form_elements">
+                                        <select name="branch_id" id="">
+                                            <option value="demo">demo</option>
+                                            <option value="demo">demo</option>
+                                            <option value="demo">demo</option>
+                                            <option value="demo">demo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Branch Code</label>
+                                    <div className="form_elements">
+                                        <select name="branch_code" id="">
+                                            <option value="demo">demo</option>
+                                            <option value="demo">demo</option>
+                                            <option value="demo">demo</option>
+                                            <option value="demo">demo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Building Name</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="name"
-                                            name="name"
+                                            placeholder="building name"
+                                            name="building_name"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Email</label>
+                                    <label>Attachment</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="email"
-                                            name="email"
+                                            placeholder="attachment"
+                                            name="attachment"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Primary contact number</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="phone number"
-                                            name="primary_contact"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Logo</label>
+                                    <label>Photo</label>
                                     <div className="form_elements">
                                         <input
                                             type="file"
-                                            placeholder="logo"
-                                            name="logo"
+                                            placeholder="photo"
+                                            name="photo"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Address</label>
+                                    <label>Description</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="address"
-                                            name="address"
+                                            placeholder="description"
+                                            name="description"
                                         />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Map</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="map"
-                                            name="map"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Lat</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="lat"
-                                            name="lat"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Lng</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="lng"
-                                            name="lng"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Branch code</label>
-                                    <div className="form_elements">
-                                        <select name="branch_code" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                        </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
