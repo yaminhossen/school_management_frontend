@@ -9,6 +9,7 @@ import user_teachers_slice from '../views/pages/user_management/user_teachers/co
 import user_parents_slice from '../views/pages/user_management/user_parents/config/store';
 import user_students_slice from '../views/pages/user_management/user_students/config/store';
 import user_branch_admins_slice from '../views/pages/user_management/user_branch_admins/config/store';
+import branches_slice from '../views/pages/branch_management/branches/config/store';
 
 const store = configureStore({
     reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
         user_parents: user_parents_slice.reducer,
         user_students: user_students_slice.reducer,
         user_branch_admins: user_branch_admins_slice.reducer,
+        branches: branches_slice.reducer,
     },
     devTools: true,
 });

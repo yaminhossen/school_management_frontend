@@ -63,6 +63,14 @@ const T1: React.FC<Props> = (props: Props) => {
                         user branch admins Management
                     </Link>
                 </li>
+                <li>
+                    <Link to="/branches">
+                        <span className="material-symbols-outlined fill">
+                            groups
+                        </span>
+                        branches Management
+                    </Link>
+                </li>
             </ul>
         </div>
     );

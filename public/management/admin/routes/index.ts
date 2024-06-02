@@ -8,6 +8,7 @@ import user_teachers_routes from "../views/pages/user_management/user_teachers/c
 import user_parents_routes from "../views/pages/user_management/user_parents/config/routes";
 import user_students_routes from "../views/pages/user_management/user_students/config/routes";
 import user_branch_admins_routes from "../views/pages/user_management/user_branch_admins/config/routes";
+import branches_routes from "../views/pages/branch_management/branches/config/routes";
 
 interface RouteTypes extends NonIndexRouteObject {
     
@@ -28,6 +29,7 @@ const router: RouteTypes[] = [
             user_parents_routes,
             user_students_routes,
             user_branch_admins_routes,
+            branches_routes,
         ],
     },
 ];
