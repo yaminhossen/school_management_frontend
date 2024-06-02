@@ -12,6 +12,7 @@ import branches_routes from "../views/pages/branch_management/branches/config/ro
 import branch_buildings_routes from "../views/pages/branch_management/branch_buildings/config/routes";
 import branch_building_rooms_routes from "../views/pages/branch_management/branch_building_rooms/config/routes";
 import branch_building_room_beds_routes from "../views/pages/branch_management/branch_building_room_beds/config/routes";
+import branch_contacts_routes from "../views/pages/branch_management/branch_contacts/config/routes";
 
 interface RouteTypes extends NonIndexRouteObject {
     
@@ -36,6 +37,7 @@ const router: RouteTypes[] = [
             branch_buildings_routes,
             branch_building_rooms_routes,
             branch_building_room_beds_routes,
+            branch_contacts_routes,
         ],
     },
 ];

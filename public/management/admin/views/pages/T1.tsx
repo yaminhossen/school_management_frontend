@@ -84,7 +84,7 @@ const T1: React.FC<Props> = (props: Props) => {
                         <span className="material-symbols-outlined fill">
                             groups
                         </span>
-                        branch Building Rooms Management
+                        Branch Building Rooms Management
                     </Link>
                 </li>
                 <li>
@@ -92,7 +92,15 @@ const T1: React.FC<Props> = (props: Props) => {
                         <span className="material-symbols-outlined fill">
                             groups
                         </span>
-                        branch Building Room Beds Management
+                        Branch Building Room Beds Management
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/branch-contacts">
+                        <span className="material-symbols-outlined fill">
+                            groups
+                        </span>
+                        Branch Contacts Management
                     </Link>
                 </li>
             </ul>

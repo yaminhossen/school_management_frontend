@@ -13,6 +13,7 @@ import branches_slice from '../views/pages/branch_management/branches/config/sto
 import branch_buildings_slice from '../views/pages/branch_management/branch_buildings/config/store';
 import branch_building_rooms_slice from '../views/pages/branch_management/branch_building_rooms/config/store';
 import branch_building_room_beds_slice from '../views/pages/branch_management/branch_building_room_beds/config/store';
+import branch_contacts_slice from '../views/pages/branch_management/branch_contacts/config/store';
 
 const store = configureStore({
     reducer: {
@@ -28,6 +29,7 @@ const store = configureStore({
         branch_buildings: branch_buildings_slice.reducer,
         branch_building_rooms: branch_building_rooms_slice.reducer,
         branch_building_room_beds: branch_building_room_beds_slice.reducer,
+        branch_contacts: branch_contacts_slice.reducer,
     },
     devTools: true,
 });
