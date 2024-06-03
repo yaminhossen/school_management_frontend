@@ -36,10 +36,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     <label>Branch id</label>
                                     <div className="form_elements">
                                         <select name="branch_id" id="">
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
+                                            <option value="demo1">demo1</option>
+                                            <option value="demo2">demo2</option>
+                                            <option value="demo3">demo3</option>
+                                            <option value="demo4">demo4</option>
                                         </select>
                                     </div>
                                 </div>
