@@ -59,17 +59,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                 </div>
                             </div>
                             <div className="form-group form-horizontal">
-                                <label>Select user</label>
-                                <div className="form_elements">
-                                    <DropDown
-                                        get_selected_data={(result) =>
-                                            console.log(result)
-                                        }
-                                        name={`selected_users`}
-                                    />
-                                </div>
-                            </div>
-                            <div className="form-group form-horizontal">
                                 <label></label>
                                 <div className="form_elements">
                                     <button className="btn btn_1">

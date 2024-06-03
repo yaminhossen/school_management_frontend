@@ -1,6 +1,7 @@
 import React from 'react';
 import AppNavRight from './AppNavRight';
 import NavigationList from './NavigationList';
+import { Link } from 'react-router-dom';
 
 export interface Props {}
 
@@ -17,15 +18,15 @@ const AppNav: React.FC<Props> = (props: Props) => {
                 </a> 
             </li> -->*/}
                         <li className="icon_link_li">
-                            <a
+                            <Link
                                 aria-current="page"
-                                href="#dashboard#/"
+                                to="/"
                                 className="router-link-active router-link-exact-active navigation_link"
                             >
                                 <span className="material-symbols-outlined fill">
                                     home
                                 </span>
-                            </a>
+                            </Link>
                         </li>
                         <li className="icon_link_li">
                             <a href="#dashboard#" className="navigation_link">

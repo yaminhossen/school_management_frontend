@@ -30,6 +30,15 @@
             display: block;
         }
 
+        >input,
+        >select {
+            min-width: 214px;
+        }
+
+        >input[type="file"] {
+            max-width: 214px;
+        }
+
         button {
             width: unset;
         }
@@ -48,8 +57,28 @@
             display: block;
         }
 
+        >input,
+        >select {
+            min-width: 236px;
+        }
+
+        // >input[type="file"] {
+        //     max-width: 236px;
+        // }
+
         button {
             width: unset;
+        }
+    }
+}
+
+.multi_inputs {
+    .multi_input_group {
+        max-width: max-content;
+        &:nth-child(n+3) {
+            border-top: 1px solid gray;
+            padding-top: 40px;
+            margin-top: 30px;
         }
     }
 }

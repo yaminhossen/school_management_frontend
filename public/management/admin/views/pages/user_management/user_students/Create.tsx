@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
@@ -9,6 +9,13 @@ export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
+    const [totalDocument, setTotalDocument] = useState([1]);
+    const [totalParent, setTotalParent] = useState([1]);
+    const [totalContactNumber, setTotalContactNumber] = useState([1]);
+    const [totalLanguage, setTotalLanguage] = useState([1]);
+    const [totalSkill, setTotalSkill] = useState([1]);
+    const [totalEducationalBackground, setTotalEducationalBackground] =
+        useState([1]);
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -16,6 +23,12 @@ const Create: React.FC<Props> = (props: Props) => {
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
             e.target.reset();
         }
+    }
+
+    function remove_from_state(index, state, setState) {
+        let t = [...state];
+        t.splice(index, 1);
+        setState(t);
     }
 
     return (
@@ -29,12 +42,12 @@ const Create: React.FC<Props> = (props: Props) => {
                             className="form_6002 mx-auto pt-3"
                         >
                             <div className="student_form">
-                                <div>
+                                <div className="full_width">
                                     <div className="form_section_heading">
-                                        <h2 className=""> Major Information</h2>
+                                        <h2 className="">Basic Information</h2>
                                     </div>
-                                    <div>
-                                        <div className="form-group form-horizontal">
+                                    <div className="d-flex">
+                                        <div className="form-group form-vertical">
                                             <label>Name</label>
                                             <div className="form_elements">
                                                 <input
@@ -44,7 +57,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Email</label>
                                             <div className="form_elements">
                                                 <input
@@ -54,7 +67,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Phone number</label>
                                             <div className="form_elements">
                                                 <input
@@ -64,7 +77,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Image</label>
                                             <div className="form_elements">
                                                 <input
@@ -74,7 +87,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Password</label>
                                             <div className="form_elements">
                                                 <input
@@ -84,7 +97,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Confirm Password</label>
                                             <div className="form_elements">
                                                 <input
@@ -95,269 +108,13 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="form_section_heading">
-                                        <h4>Student Document</h4>
-                                    </div>
-                                    <div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Document file</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="file"
-                                                    placeholder="document file"
-                                                    name="file"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Issue Date</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="date"
-                                                    name="issue_date"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Expire Date</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="date"
-                                                    name="expire_date"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Document title</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="document title"
-                                                    name="document_title"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="form_section_heading">
-                                        <h4>Student Parents</h4>
-                                    </div>
-                                    <div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Relation</label>
-                                            <div className="form_elements">
-                                                <select name="relation" id="">
-                                                    <option value="father">
-                                                        father
-                                                    </option>
-                                                    <option value="mother">
-                                                        mother
-                                                    </option>
-                                                    <option value="husband">
-                                                        husband
-                                                    </option>
-                                                    <option value="brother">
-                                                        brother
-                                                    </option>
-                                                    <option value="sister">
-                                                        sister
-                                                    </option>
-                                                    <option value="uncle">
-                                                        uncle
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Is parent</label>
-                                            <div className="form_elements">
-                                                <select name="is_parent" id="">
-                                                    <option value="0">0</option>
-                                                    <option value="1">1</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-horizontal">
-                                            <label>User parent id</label>
-                                            <div className="form_elements">
-                                                <select
-                                                    name="user_parent_id"
-                                                    id=""
-                                                >
-                                                    <option value="demo1">
-                                                        demo1
-                                                    </option>
-                                                    <option value="demo2">
-                                                        demo2
-                                                    </option>
-                                                    <option value="demo3">
-                                                        demo3
-                                                    </option>
-                                                    <option value="demo4">
-                                                        demo4
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="form_section_heading">
-                                        <h4>Student Contact Number</h4>
-                                    </div>
-                                    <div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Contact number</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="contact number"
-                                                    name="contact_number"
-                                                    id=""
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Owner</label>
-                                            <div className="form_elements">
-                                                <select name="owner" id="">
-                                                    <option value="personal">
-                                                        personal
-                                                    </option>
-                                                    <option value="home">
-                                                        home
-                                                    </option>
-                                                    <option value="friend">
-                                                        friend
-                                                    </option>
-                                                    <option value="relative">
-                                                        relative
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="form_section_heading">
-                                        <h4>Student Language</h4>
-                                    </div>
-                                    <div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Language title</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="language title"
-                                                    name="language_title"
-                                                    id=""
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Profeciency</label>
-                                            <div className="form_elements">
-                                                <select
-                                                    name="profeciency"
-                                                    id=""
-                                                >
-                                                    <option value="fluent">
-                                                        fluent
-                                                    </option>
-                                                    <option value="native">
-                                                        native
-                                                    </option>
-                                                    <option value="mid">
-                                                        mid
-                                                    </option>
-                                                    <option value="low">
-                                                        low
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="form_section_heading">
-                                        <h4>Student Skills</h4>
-                                    </div>
-                                    <div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Skills title</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="skills title"
-                                                    name="skills_title"
-                                                    id=""
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Level</label>
-                                            <div className="form_elements">
-                                                <select name="level" id="">
-                                                    <option value="native">
-                                                        native
-                                                    </option>
-                                                    <option value="mid">
-                                                        mid
-                                                    </option>
-                                                    <option value="low">
-                                                        low
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
-
-                                <div>
-                                    <div className="form_section_heading">
-                                        <h4>Educational Background</h4>
-                                    </div>
-                                    <div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Previous institute</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="previous institute"
-                                                    name="previous_institute"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Year of living</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="date"
-                                                    name="year_of_living"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Result</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="result"
-                                                    name="result"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-horizontal">
-                                            <label>
-                                                Transcript certificate
-                                            </label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="transfer certificate"
-                                                    name="transfer_certificate"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div className="full_width">
                                     <div className="form_section_heading">
                                         <h4>Student Information</h4>
                                     </div>
-                                    <div>
-                                        <div className="form-group form-horizontal">
+                                    <div className="d-flex">
+                                        <div className="form-group form-vertical">
                                             <label>Present Address</label>
                                             <div className="form_elements">
                                                 <input
@@ -367,7 +124,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Permanent Address</label>
                                             <div className="form_elements">
                                                 <input
@@ -377,7 +134,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Date of birth</label>
                                             <div className="form_elements">
                                                 <input
@@ -386,7 +143,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>gender</label>
                                             <div className="form_elements">
                                                 {/* <input
@@ -407,7 +164,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </select>
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Nationality</label>
                                             <div className="form_elements">
                                                 <input
@@ -417,7 +174,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>City</label>
                                             <div className="form_elements">
                                                 <input
@@ -427,7 +184,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>State</label>
                                             <div className="form_elements">
                                                 <input
@@ -437,7 +194,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Zip code</label>
                                             <div className="form_elements">
                                                 <input
@@ -447,7 +204,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Post code</label>
                                             <div className="form_elements">
                                                 <input
@@ -457,7 +214,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Country</label>
                                             <div className="form_elements">
                                                 <input
@@ -467,7 +224,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Medical condition</label>
                                             <div className="form_elements">
                                                 <input
@@ -477,7 +234,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Current medcation</label>
                                             <div className="form_elements">
                                                 <input
@@ -487,7 +244,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Telegram name</label>
                                             <div className="form_elements">
                                                 <input
@@ -497,7 +254,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Telegram id</label>
                                             <div className="form_elements">
                                                 <input
@@ -507,7 +264,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Qr code</label>
                                             <div className="form_elements">
                                                 <input
@@ -516,7 +273,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Blood group</label>
                                             <div className="form_elements">
                                                 <input
@@ -526,7 +283,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Student expire date</label>
                                             <div className="form_elements">
                                                 <input
@@ -535,7 +292,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Addmission date</label>
                                             <div className="form_elements">
                                                 <input
@@ -544,7 +301,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        <div className="form-group form-vertical">
                                             <label>Branch id</label>
                                             <div className="form_elements">
                                                 <select name="branch_id" id="">
@@ -576,6 +333,569 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </select>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div className="full_width">
+                                    <div className="form_section_heading">
+                                        <h4>Student Document</h4>
+                                    </div>
+                                    <div className="multi_inputs">
+                                        <div className="pb-4 px-0">
+                                            <button
+                                                className="btn"
+                                                onClick={() =>
+                                                    setTotalDocument([
+                                                        ...totalDocument,
+                                                        1,
+                                                    ])
+                                                }
+                                            >
+                                                Add new
+                                            </button>
+                                        </div>
+                                        {totalDocument.map((i, index) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    className="multi_input_group"
+                                                >
+                                                    <div className="d-flex">
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Document file
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="file"
+                                                                    placeholder="document file"
+                                                                    name="file"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Issue Date
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="date"
+                                                                    name="issue_date"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Expire Date
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="date"
+                                                                    name="expire_date"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Document title
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="text"
+                                                                    placeholder="document title"
+                                                                    name="document_title"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {totalDocument.length >
+                                                        1 && (
+                                                        <div>
+                                                            <button
+                                                                onClick={() =>
+                                                                    remove_from_state(
+                                                                        index,
+                                                                        totalDocument,
+                                                                        setTotalDocument,
+                                                                    )
+                                                                }
+                                                                className="btn btn-danger"
+                                                            >
+                                                                remove
+                                                            </button>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                                <div className="full_width">
+                                    <div className="form_section_heading">
+                                        <h4>Student Parents</h4>
+                                    </div>
+                                    <div className="multi_inputs">
+                                        <div className="pb-4 px-0">
+                                            <button
+                                                className="btn"
+                                                onClick={() =>
+                                                    setTotalParent([
+                                                        ...totalParent,
+                                                        1,
+                                                    ])
+                                                }
+                                            >
+                                                Add new
+                                            </button>
+                                        </div>
+                                        {totalParent.map((i, index) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    className="multi_input_group"
+                                                >
+                                                    <div className="d-flex">
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Relation
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <select
+                                                                    name="relation"
+                                                                    id=""
+                                                                >
+                                                                    <option value="father">
+                                                                        father
+                                                                    </option>
+                                                                    <option value="mother">
+                                                                        mother
+                                                                    </option>
+                                                                    <option value="husband">
+                                                                        husband
+                                                                    </option>
+                                                                    <option value="brother">
+                                                                        brother
+                                                                    </option>
+                                                                    <option value="sister">
+                                                                        sister
+                                                                    </option>
+                                                                    <option value="uncle">
+                                                                        uncle
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Is parent
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <select
+                                                                    name="is_parent"
+                                                                    defaultValue="no"
+                                                                    id=""
+                                                                >
+                                                                    <option value="0">
+                                                                        no
+                                                                    </option>
+                                                                    <option value="1">
+                                                                        yes
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                User parent id
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <select
+                                                                    name="user_parent_id"
+                                                                    id=""
+                                                                >
+                                                                    <option value="demo1">
+                                                                        demo1
+                                                                    </option>
+                                                                    <option value="demo2">
+                                                                        demo2
+                                                                    </option>
+                                                                    <option value="demo3">
+                                                                        demo3
+                                                                    </option>
+                                                                    <option value="demo4">
+                                                                        demo4
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {totalParent.length > 1 && (
+                                                        <div>
+                                                            <button
+                                                                onClick={() =>
+                                                                    remove_from_state(
+                                                                        index,
+                                                                        totalParent,
+                                                                        setTotalParent,
+                                                                    )
+                                                                }
+                                                                className="btn btn-danger"
+                                                            >
+                                                                remove
+                                                            </button>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                                <div className="full_width">
+                                    <div className="form_section_heading">
+                                        <h4>Student Contact Number</h4>
+                                    </div>
+                                    <div className="multi_inputs">
+                                        <div className="pb-4 px-0">
+                                            <button
+                                                className="btn"
+                                                onClick={() =>
+                                                    setTotalContactNumber([
+                                                        ...totalContactNumber,
+                                                        1,
+                                                    ])
+                                                }
+                                            >
+                                                Add new
+                                            </button>
+                                        </div>
+                                        {totalContactNumber.map((i, index) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    className="multi_input_group"
+                                                >
+                                                    <div className="d-flex">
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Contact number
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="text"
+                                                                    placeholder="contact number"
+                                                                    name="contact_number"
+                                                                    id=""
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-vertical">
+                                                            <label>Owner</label>
+                                                            <div className="form_elements">
+                                                                <select
+                                                                    name="owner"
+                                                                    id=""
+                                                                >
+                                                                    <option value="personal">
+                                                                        personal
+                                                                    </option>
+                                                                    <option value="home">
+                                                                        home
+                                                                    </option>
+                                                                    <option value="friend">
+                                                                        friend
+                                                                    </option>
+                                                                    <option value="relative">
+                                                                        relative
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {totalContactNumber.length >
+                                                        1 && (
+                                                        <div>
+                                                            <button
+                                                                onClick={() =>
+                                                                    remove_from_state(
+                                                                        index,
+                                                                        totalContactNumber,
+                                                                        setTotalContactNumber,
+                                                                    )
+                                                                }
+                                                                className="btn btn-danger"
+                                                            >
+                                                                remove
+                                                            </button>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                                <div className="full_width">
+                                    <div className="form_section_heading">
+                                        <h4>Student Language</h4>
+                                    </div>
+                                    <div className="multi_inputs">
+                                        <div className="pb-4 px-0">
+                                            <button
+                                                className="btn"
+                                                onClick={() =>
+                                                    setTotalLanguage([
+                                                        ...totalLanguage,
+                                                        1,
+                                                    ])
+                                                }
+                                            >
+                                                Add new
+                                            </button>
+                                        </div>
+                                        {totalLanguage.map((i, index) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    className="multi_input_group"
+                                                >
+                                                    <div className="d-flex">
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Language title
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="text"
+                                                                    placeholder="language title"
+                                                                    name="language_title"
+                                                                    id=""
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Profeciency
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <select
+                                                                    name="profeciency"
+                                                                    id=""
+                                                                >
+                                                                    <option value="fluent">
+                                                                        fluent
+                                                                    </option>
+                                                                    <option value="native">
+                                                                        native
+                                                                    </option>
+                                                                    <option value="mid">
+                                                                        mid
+                                                                    </option>
+                                                                    <option value="low">
+                                                                        low
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {totalLanguage.length >
+                                                        1 && (
+                                                        <div>
+                                                            <button
+                                                                onClick={() =>
+                                                                    remove_from_state(
+                                                                        index,
+                                                                        totalLanguage,
+                                                                        setTotalLanguage,
+                                                                    )
+                                                                }
+                                                                className="btn btn-danger"
+                                                            >
+                                                                remove
+                                                            </button>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                                <div className="full_width">
+                                    <div className="form_section_heading">
+                                        <h4>Student Skill</h4>
+                                    </div>
+                                    <div className="multi_inputs">
+                                        <div className="pb-4 px-0">
+                                            <button
+                                                className="btn"
+                                                onClick={() =>
+                                                    setTotalSkill([
+                                                        ...totalSkill,
+                                                        1,
+                                                    ])
+                                                }
+                                            >
+                                                Add new
+                                            </button>
+                                        </div>
+                                        {totalSkill.map((i, index) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    className="multi_input_group"
+                                                >
+                                                    <div className="d-flex">
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Skills title
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="text"
+                                                                    placeholder="skills title"
+                                                                    name="skills_title"
+                                                                    id=""
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-vertical">
+                                                            <label>Level</label>
+                                                            <div className="form_elements">
+                                                                <select
+                                                                    name="level"
+                                                                    id=""
+                                                                >
+                                                                    <option value="native">
+                                                                        native
+                                                                    </option>
+                                                                    <option value="mid">
+                                                                        mid
+                                                                    </option>
+                                                                    <option value="low">
+                                                                        low
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {totalSkill.length > 1 && (
+                                                        <div>
+                                                            <button
+                                                                onClick={() =>
+                                                                    remove_from_state(
+                                                                        index,
+                                                                        totalSkill,
+                                                                        setTotalSkill,
+                                                                    )
+                                                                }
+                                                                className="btn btn-danger"
+                                                            >
+                                                                remove
+                                                            </button>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                                <div className="full_width">
+                                    <div className="form_section_heading">
+                                        <h4>Student EducationalBackground</h4>
+                                    </div>
+                                    <div className="multi_inputs">
+                                        <div className="pb-4 px-0">
+                                            <button
+                                                className="btn"
+                                                onClick={() =>
+                                                    setTotalEducationalBackground(
+                                                        [
+                                                            ...totalEducationalBackground,
+                                                            1,
+                                                        ],
+                                                    )
+                                                }
+                                            >
+                                                Add new
+                                            </button>
+                                        </div>
+                                        {totalEducationalBackground.map(
+                                            (i, index) => {
+                                                return (
+                                                    <div
+                                                        key={i}
+                                                        className="multi_input_group"
+                                                    >
+                                                        <div className="d-flex">
+                                                            <div className="form-group form-vertical">
+                                                                <label>
+                                                                    Previous
+                                                                    institute
+                                                                </label>
+                                                                <div className="form_elements">
+                                                                    <input
+                                                                        type="text"
+                                                                        placeholder="previous institute"
+                                                                        name="previous_institute"
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                            <div className="form-group form-vertical">
+                                                                <label>
+                                                                    Year of
+                                                                    living
+                                                                </label>
+                                                                <div className="form_elements">
+                                                                    <input
+                                                                        type="date"
+                                                                        name="year_of_living"
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                            <div className="form-group form-vertical">
+                                                                <label>
+                                                                    Result
+                                                                </label>
+                                                                <div className="form_elements">
+                                                                    <input
+                                                                        type="text"
+                                                                        placeholder="result"
+                                                                        name="result"
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                            <div className="form-group form-vertical">
+                                                                <label>
+                                                                    Transcript
+                                                                    certificate
+                                                                </label>
+                                                                <div className="form_elements">
+                                                                    <input
+                                                                        type="text"
+                                                                        placeholder="transfer certificate"
+                                                                        name="transfer_certificate"
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {totalEducationalBackground.length >
+                                                            1 && (
+                                                            <div>
+                                                                <button
+                                                                    onClick={() =>
+                                                                        remove_from_state(
+                                                                            index,
+                                                                            totalEducationalBackground,
+                                                                            setTotalEducationalBackground,
+                                                                        )
+                                                                    }
+                                                                    className="btn btn-danger"
+                                                                >
+                                                                    remove
+                                                                </button>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                );
+                                            },
+                                        )}
                                     </div>
                                 </div>
                             </div>

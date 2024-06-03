@@ -28,10 +28,10 @@ const Create: React.FC<Props> = (props: Props) => {
                             onSubmit={(e) => handle_submit(e)}
                             className="form_600 mx-auto pt-3"
                         >
-                            <div className="form_section_heading">
+                            {/* <div className="form_section_heading">
                                 <h2 className=""> Major Information</h2>
-                            </div>
-                            <div>
+                            </div> */}
+                            <div className="">
                                 <div className="form-group form-horizontal">
                                     <label>Name</label>
                                     <div className="form_elements">
@@ -122,74 +122,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Select user</label>
-                                    <div className="form_elements">
-                                        <DropDown
-                                            get_selected_data={(result) =>
-                                                console.log(result)
-                                            }
-                                            name={`selected_users`}
-                                        />
-                                    </div>
-                                </div>
                             </div>
-
-                            {/* <div className="form_section_heading">
-                                <h4>Additional Information</h4>
-                            </div>
-                            <div>
-                                <div className="form-group form-horizontal">
-                                    <label>Permenent Address</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="parmenent address"
-                                            name="parmenent_address"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Present Address</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="present address"
-                                            name="present_address"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Gruardian Contact Number</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="guardian number"
-                                            name="gruardian_contact_number"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Graduation</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="graduation"
-                                            name="graduation"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>IsMarried</label>
-                                    <div className="form_elements">
-                                        
-                                        <select name="ismarried" id="">
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div> */}
                             <div className="form-group form-horizontal">
                                 <label></label>
                                 <div className="form_elements">
