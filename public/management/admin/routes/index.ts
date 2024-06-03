@@ -11,9 +11,6 @@ import user_branch_admins_routes from "../views/pages/user_management/user_branc
 import branches_routes from "../views/pages/branch_management/branches/config/routes";
 import branch_buildings_routes from "../views/pages/branch_management/branch_buildings/config/routes";
 import branch_building_rooms_routes from "../views/pages/branch_management/branch_building_rooms/config/routes";
-import branch_building_room_beds_routes from "../views/pages/branch_management/branch_building_room_beds/config/routes";
-import branch_contacts_routes from "../views/pages/branch_management/branch_contacts/config/routes";
-import branch_informations_routes from "../views/pages/branch_management/branch_informations/config/routes";
 import branch_transports_routes from "../views/pages/branch_management/branch_transports/config/routes";
 import branch_transport_drivers_routes from "../views/pages/branch_management/branch_transport_drivers/config/routes";
 
@@ -39,9 +36,6 @@ const router: RouteTypes[] = [
             branches_routes,
             branch_buildings_routes,
             branch_building_rooms_routes,
-            branch_building_room_beds_routes,
-            branch_contacts_routes,
-            branch_informations_routes,
             branch_transports_routes,
             branch_transport_drivers_routes,
         ],

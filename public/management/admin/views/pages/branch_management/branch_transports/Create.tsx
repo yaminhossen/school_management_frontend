@@ -58,12 +58,22 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Title</label>
+                                    <label>Transport Title</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="title"
-                                            name="title"
+                                            placeholder="transport title"
+                                            name="transport_title"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Vehicle Number</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="vehicle number"
+                                            name="vehicle_number"
                                         />
                                     </div>
                                 </div>

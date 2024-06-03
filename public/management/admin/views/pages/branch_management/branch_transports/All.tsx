@@ -47,12 +47,18 @@ const All: React.FC<Props> = (props: Props) => {
         {
             id: 1,
             title: 'information1',
+            driver_name: 'Donalt trump',
+            driver_number: '01786722734',
+            vehicle_number: 'Dhaka-9119',
             type: 'bus',
         },
         {
             id: 2,
             title: 'information2',
-            type: 'private',
+            driver_name: 'Vladimir putin',
+            driver_number: '01978538334',
+            vehicle_number: 'Kustia-1928',
+            type: 'bus',
         },
     ];
 
@@ -77,13 +83,28 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Title`}
-                                            col_name={`title`}
+                                            label={`Type`}
+                                            col_name={`type`}
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Type`}
-                                            col_name={`type`}
+                                            label={`Driver`}
+                                            col_name={`driver`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Driver Number`}
+                                            col_name={`driver_number`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Vehicle Number`}
+                                            col_name={`vehicle_number`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Title`}
+                                            col_name={`title`}
                                             sort={true}
                                         />
                                     </tr>
@@ -112,8 +133,11 @@ const All: React.FC<Props> = (props: Props) => {
                                                         {i.id}
                                                     </span>
                                                 </td>
-                                                <td>{i.title}</td>
                                                 <td>{i.type}</td>
+                                                <td>{i.driver_name}</td>
+                                                <td>{i.driver_number}</td>
+                                                <td>{i.vehicle_number}</td>
+                                                <td>{i.title}</td>
                                             </tr>
                                         );
                                     })}

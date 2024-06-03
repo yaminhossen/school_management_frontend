@@ -48,6 +48,7 @@ const All: React.FC<Props> = (props: Props) => {
             id: 1,
             branch_id: 1,
             name: 'Putin',
+            transports: 'dhaka-1012, kustia-1232, magura-91',
             phone_number_1: '01897675645',
             phone_number_2: '01897675646',
             phone_number_3: '01897675647',
@@ -59,6 +60,7 @@ const All: React.FC<Props> = (props: Props) => {
             id: 2,
             branch_id: 2,
             name: 'Kim jon',
+            transports: 'dhaka-1034, kustia-1265, magura-098',
             phone_number_1: '01897675635',
             phone_number_2: '01897675636',
             phone_number_3: '01897675637',
@@ -101,6 +103,11 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Permanent Address`}
                                             col_name={`permanent_address`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Transports`}
+                                            col_name={`transports`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -152,6 +159,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                 <td>{i.name}</td>
                                                 <td>{i.present_address}</td>
                                                 <td>{i.permanent_address}</td>
+                                                <td>{i.transports}</td>
                                                 <td>{i.phone_number_1}</td>
                                                 <td>{i.phone_number_2}</td>
                                                 <td>{i.phone_number_3}</td>

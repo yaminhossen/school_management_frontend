@@ -12,9 +12,6 @@ import user_branch_admins_slice from '../views/pages/user_management/user_branch
 import branches_slice from '../views/pages/branch_management/branches/config/store';
 import branch_buildings_slice from '../views/pages/branch_management/branch_buildings/config/store';
 import branch_building_rooms_slice from '../views/pages/branch_management/branch_building_rooms/config/store';
-import branch_building_room_beds_slice from '../views/pages/branch_management/branch_building_room_beds/config/store';
-import branch_contacts_slice from '../views/pages/branch_management/branch_contacts/config/store';
-import branch_informations_slice from '../views/pages/branch_management/branch_informations/config/store';
 import branch_transports_slice from '../views/pages/branch_management/branch_transports/config/store';
 import branch_transport_drivers_slice from '../views/pages/branch_management/branch_transport_drivers/config/store';
 
@@ -31,9 +28,6 @@ const store = configureStore({
         branches: branches_slice.reducer,
         branch_buildings: branch_buildings_slice.reducer,
         branch_building_rooms: branch_building_rooms_slice.reducer,
-        branch_building_room_beds: branch_building_room_beds_slice.reducer,
-        branch_contacts: branch_contacts_slice.reducer,
-        branch_informations: branch_informations_slice.reducer,
         branch_transports: branch_transports_slice.reducer,
         branch_transport_drivers: branch_transport_drivers_slice.reducer,
     },
