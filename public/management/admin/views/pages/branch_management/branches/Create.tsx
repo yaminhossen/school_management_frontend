@@ -97,7 +97,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="lat"
+                                            placeholder="latitude"
                                             name="lat"
                                         />
                                     </div>
@@ -107,7 +107,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="lng"
+                                            placeholder="longitude"
                                             name="lng"
                                         />
                                     </div>
