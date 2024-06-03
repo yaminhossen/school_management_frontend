@@ -50,6 +50,7 @@ const All: React.FC<Props> = (props: Props) => {
             building_id: 1,
             room_code: 1,
             room_name: 'A101',
+            room_type: 'class',
             attachment: 'file.pdf',
             photo: '/assets/dashboard/images/avatar.png',
             description: 'This is located north side of the mosque',
@@ -62,6 +63,7 @@ const All: React.FC<Props> = (props: Props) => {
             building_id: 2,
             room_code: 2,
             room_name: 'A102',
+            room_type: 'leaving',
             attachment: 'file.pdf',
             photo: '/assets/dashboard/images/avatar.png',
             description: 'This is located at right side main road',
@@ -97,6 +99,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
+                                            label={`Room Type`}
+                                            col_name={`room_type`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
                                             label={`Attachment`}
                                             col_name={`attachment`}
                                             sort={true}
@@ -112,7 +119,7 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Total student`}
+                                            label={`Booked`}
                                             col_name={`total_student`}
                                             sort={true}
                                         />
@@ -152,6 +159,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                     />
                                                 </td>
                                                 <td>{i.room_name}</td>
+                                                <td>{i.room_type}</td>
                                                 <td>{i.attachment}</td>
                                                 <td>{i.description}</td>
                                                 <td>{i.total_seat}</td>

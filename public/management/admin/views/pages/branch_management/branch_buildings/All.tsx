@@ -48,6 +48,10 @@ const All: React.FC<Props> = (props: Props) => {
             id: 1,
             branch_id: 1,
             building_code: 1,
+            total_room: 30,
+            total_class: 20,
+            total_office: 6,
+            total_leaving: 4,
             building_name: 'Padma',
             photo: '/assets/dashboard/images/avatar.png',
             attachment: 'file.pdf',
@@ -57,6 +61,10 @@ const All: React.FC<Props> = (props: Props) => {
             id: 2,
             branch_id: 2,
             building_code: 2,
+            total_room: 40,
+            total_class: 26,
+            total_office: 8,
+            total_leaving: 6,
             building_name: 'Meghna',
             photo: '/assets/dashboard/images/avatar.png',
             attachment: 'file.pdf',
@@ -88,6 +96,26 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Building Name`}
                                             col_name={`building_name`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Total Room`}
+                                            col_name={`total_room`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Total Office`}
+                                            col_name={`total_office`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Total Class`}
+                                            col_name={`total_class`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Total Leaving`}
+                                            col_name={`total_leaving`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -136,6 +164,10 @@ const All: React.FC<Props> = (props: Props) => {
                                                     />
                                                 </td>
                                                 <td>{i.building_name}</td>
+                                                <td>{i.total_room}</td>
+                                                <td>{i.total_office}</td>
+                                                <td>{i.total_class}</td>
+                                                <td>{i.total_leaving}</td>
                                                 <td>{i.attachment}</td>
                                                 <td>{i.description}</td>
                                             </tr>

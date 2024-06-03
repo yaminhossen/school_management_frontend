@@ -48,6 +48,9 @@ const All: React.FC<Props> = (props: Props) => {
             id: 1,
             branch_code: 1,
             name: 'Kustia',
+            branch_admin: 'Kashem',
+            total_student: 300,
+            total_teacher: 50,
             logo: '/assets/dashboard/images/avatar.png',
             address: 'Khulna',
             primary_contact: '01789678567',
@@ -60,6 +63,9 @@ const All: React.FC<Props> = (props: Props) => {
             id: 2,
             branch_code: 2,
             name: 'Demra',
+            total_student: 250,
+            total_teacher: 40,
+            branch_admin: 'Abdullah',
             logo: '/assets/dashboard/images/avatar.png',
             address: 'Dhaka',
             primary_contact: '01789678568',
@@ -94,6 +100,21 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Branch Admin`}
+                                            col_name={`branch_admin`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Total Student`}
+                                            col_name={`total_student`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Total teacher`}
+                                            col_name={`total_teacher`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -147,6 +168,9 @@ const All: React.FC<Props> = (props: Props) => {
                                                     />
                                                 </td>
                                                 <td>{i.name}</td>
+                                                <td>{i.branch_admin}</td>
+                                                <td>{i.total_student}</td>
+                                                <td>{i.total_teacher}</td>
                                                 <td>{i.email}</td>
                                                 <td>{i.address}</td>
                                                 <td>{i.primary_contact}</td>
