@@ -33,6 +33,16 @@ const Create: React.FC<Props> = (props: Props) => {
                             </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
+                                    <label>Branch id</label>
+                                    <div className="form_elements">
+                                        <select name="branch_id" id="">
+                                            <option value="demo1">demo1</option>
+                                            <option value="demo1">demo1</option>
+                                            <option value="demo1">demo1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
                                     <label>Name</label>
                                     <div className="form_elements">
                                         <input
@@ -43,83 +53,100 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Email</label>
+                                    <label>Code</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="email"
-                                            name="email"
+                                            placeholder="code"
+                                            name="code"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Primary contact number</label>
+                                    <label>Capacity</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="phone number"
-                                            name="primary_contact"
+                                            placeholder="capacity"
+                                            name="capacity"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Logo</label>
+                                    <label>Fee</label>
                                     <div className="form_elements">
                                         <input
-                                            type="file"
-                                            placeholder="logo"
-                                            name="logo"
+                                            type="number"
+                                            placeholder="fee"
+                                            name="fee"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Address</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="address"
-                                            name="address"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Map</label>
+                                    <label>Prerequisities</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="map"
-                                            name="map"
+                                            placeholder="prerequisities"
+                                            name="prerequisities"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Lat</label>
+                                    <label>Student instructions</label>
+                                    <div className="form_elements">
+                                        <textarea
+                                            name="student_instructions"
+                                            id=""
+                                            placeholder="student instructions"
+                                        ></textarea>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Parent instructions</label>
+                                    <div className="form_elements">
+                                        <textarea
+                                            name="parent_instructions"
+                                            id=""
+                                            placeholder="parent instructions"
+                                        ></textarea>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Policies</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="latitude"
-                                            name="lat"
+                                            placeholder="policies"
+                                            name="policies"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Lng</label>
+                                    <label>Rules</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="longitude"
-                                            name="lng"
+                                        <textarea
+                                            placeholder="rules"
+                                            name="rules"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch code</label>
+                                    <label>Waiver rules</label>
                                     <div className="form_elements">
-                                        <select name="branch_code" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                        </select>
+                                        <textarea
+                                            placeholder="waiver rules"
+                                            name="waiver_rules"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Discount rules</label>
+                                    <div className="form_elements">
+                                        <textarea
+                                            placeholder="discount rules"
+                                            name="discount_rules"
+                                        />
                                     </div>
                                 </div>
                             </div>

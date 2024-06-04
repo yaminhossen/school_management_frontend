@@ -33,6 +33,39 @@ const Create: React.FC<Props> = (props: Props) => {
                             </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
+                                    <label>Branch id</label>
+                                    <div className="form_elements">
+                                        <select name="branch_id" id="">
+                                            <option value="demo1">demo1</option>
+                                            <option value="demo1">demo1</option>
+                                            <option value="demo1">demo1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Branch class id</label>
+                                    <div className="form_elements">
+                                        <select name="branch_class" id="">
+                                            <option value="demo1">demo1</option>
+                                            <option value="demo1">demo1</option>
+                                            <option value="demo1">demo1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Branch class section id</label>
+                                    <div className="form_elements">
+                                        <select
+                                            name="branch_class_section_id"
+                                            id=""
+                                        >
+                                            <option value="demo1">demo1</option>
+                                            <option value="demo1">demo1</option>
+                                            <option value="demo1">demo1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
                                     <label>Name</label>
                                     <div className="form_elements">
                                         <input
@@ -43,37 +76,37 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Email</label>
+                                    <label>Code</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="email"
-                                            name="email"
+                                            placeholder="code"
+                                            name="code"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Primary contact number</label>
+                                    <label>Level</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="phone number"
-                                            name="primary_contact"
+                                            placeholder="level"
+                                            name="level"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Logo</label>
+                                    <label>Description</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="file"
-                                            placeholder="logo"
-                                            name="logo"
-                                        />
+                                        <textarea
+                                            name="description"
+                                            id=""
+                                            placeholder="description"
+                                        ></textarea>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Address</label>
+                                    <label>Credit</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -83,43 +116,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Map</label>
+                                    <label>Additional Info</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="map"
-                                            name="map"
+                                        <textarea
+                                            placeholder="additional info"
+                                            name="additional_info"
                                         />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Lat</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="latitude"
-                                            name="lat"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Lng</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="longitude"
-                                            name="lng"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Branch code</label>
-                                    <div className="form_elements">
-                                        <select name="branch_code" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                        </select>
                                     </div>
                                 </div>
                             </div>
