@@ -18,6 +18,9 @@ import branch_class_fee_types_routes from "../views/pages/class_management/branc
 import branch_class_fee_discounts_routes from "../views/pages/class_management/branch_class_fee_discounts/config/routes";
 import branch_class_fee_waivers_routes from "../views/pages/class_management/branch_class_fee_waivers/config/routes";
 import branch_class_fees_routes from "../views/pages/class_management/branch_class_fees/config/routes";
+import branch_class_routine_day_times_routes from "../views/pages/class_management/branch_class_routine_day_times/config/routes";
+import branch_class_resources_routes from "../views/pages/class_management/branch_class_resources/config/routes";
+import branch_class_subjects_routes from "../views/pages/class_management/branch_class_subjects/config/routes";
 
 interface RouteTypes extends NonIndexRouteObject {
     
@@ -48,6 +51,9 @@ const router: RouteTypes[] = [
             branch_class_fee_discounts_routes,
             branch_class_fee_waivers_routes,
             branch_class_fees_routes,
+            branch_class_routine_day_times_routes,
+            branch_class_subjects_routes,
+            branch_class_resources_routes,
         ],
     },
 ];

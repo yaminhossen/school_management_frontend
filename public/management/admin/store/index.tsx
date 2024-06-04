@@ -19,6 +19,9 @@ import branch_class_fee_types_slice from '../views/pages/class_management/branch
 import branch_class_fee_discounts_slice from '../views/pages/class_management/branch_class_fee_discounts/config/store';
 import branch_class_fee_waivers_slice from '../views/pages/class_management/branch_class_fee_waivers/config/store';
 import branch_class_fees_slice from '../views/pages/class_management/branch_class_fees/config/store';
+import branch_class_routine_day_times_slice from '../views/pages/class_management/branch_class_routine_day_times/config/store';
+import branch_class_resources_slice from '../views/pages/class_management/branch_class_resources/config/store';
+import branch_class_subjects_slice from '../views/pages/class_management/branch_class_subjects/config/store';
 
 const store = configureStore({
     reducer: {
@@ -40,6 +43,10 @@ const store = configureStore({
         branch_class_fee_discounts: branch_class_fee_discounts_slice.reducer,
         branch_class_fee_waivers: branch_class_fee_waivers_slice.reducer,
         branch_class_fees: branch_class_fees_slice.reducer,
+        branch_class_routine_day_times:
+            branch_class_routine_day_times_slice.reducer,
+        branch_class_resources: branch_class_resources_slice.reducer,
+        branch_class_subjects: branch_class_subjects_slice.reducer,
     },
     devTools: true,
 });

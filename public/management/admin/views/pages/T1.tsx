@@ -144,6 +144,30 @@ const T1: React.FC<Props> = (props: Props) => {
                             Branch Class Fees Management
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/branch-class-routine-day-times">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Branch Class Routine Day Time Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/branch-class-resources">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Branch Class Resources Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/branch-class-subjects">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Branch Class Subjects Management
+                        </Link>
+                    </li>
                 </ul>
             </div>
         </div>
