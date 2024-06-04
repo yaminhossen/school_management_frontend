@@ -46,33 +46,13 @@ const All: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            branch_code: 1,
-            name: 'Kustia',
-            branch_admin: 'Kashem',
-            total_student: 300,
-            total_teacher: 50,
-            logo: '/assets/dashboard/images/avatar.png',
-            address: 'Khulna',
-            primary_contact: '01789678567',
-            email: 'branch1@gamil.com',
-            map: 'branch1',
-            lat: 'Latitude',
-            lng: 'Longitude',
+            day: '2024-10-10',
+            time: '10:12:20',
         },
         {
             id: 2,
-            branch_code: 2,
-            name: 'Demra',
-            total_student: 250,
-            total_teacher: 40,
-            branch_admin: 'Abdullah',
-            logo: '/assets/dashboard/images/avatar.png',
-            address: 'Dhaka',
-            primary_contact: '01789678568',
-            email: 'branch2@gamil.com',
-            map: 'branch2',
-            lat: 'Latitude',
-            lng: 'Longitude',
+            day: '2024-12-11',
+            time: '12:12:20',
         },
     ];
 
@@ -96,40 +76,15 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`id`}
                                             sort={true}
                                         />
-                                        <th>Logo</th>
+                                        {/* <th>Logo</th> */}
                                         <TableHeading
-                                            label={`Name`}
-                                            col_name={`name`}
+                                            label={`Day`}
+                                            col_name={`day`}
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Branch Admin`}
-                                            col_name={`branch_admin`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Total Student`}
-                                            col_name={`total_student`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Total teacher`}
-                                            col_name={`total_teacher`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Email`}
-                                            col_name={`email`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Address`}
-                                            col_name={`address`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Primary contact`}
-                                            col_name={`primary_contact`}
+                                            label={`Time`}
+                                            col_name={`time`}
                                             sort={true}
                                         />
                                     </tr>
@@ -158,7 +113,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                         {i.id}
                                                     </span>
                                                 </td>
-                                                <td>
+                                                {/* <td>
                                                     <img
                                                         src="/assets/dashboard/images/avatar.png"
                                                         alt=""
@@ -166,14 +121,9 @@ const All: React.FC<Props> = (props: Props) => {
                                                             height: 30,
                                                         }}
                                                     />
-                                                </td>
-                                                <td>{i.name}</td>
-                                                <td>{i.branch_admin}</td>
-                                                <td>{i.total_student}</td>
-                                                <td>{i.total_teacher}</td>
-                                                <td>{i.email}</td>
-                                                <td>{i.address}</td>
-                                                <td>{i.primary_contact}</td>
+                                                </td> */}
+                                                <td>{i.day}</td>
+                                                <td>{i.time}</td>
                                             </tr>
                                         );
                                     })}
