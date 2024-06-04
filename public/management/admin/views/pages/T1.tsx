@@ -120,6 +120,30 @@ const T1: React.FC<Props> = (props: Props) => {
                             Branch Class Fee types Management
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/branch-class-fee-discounts">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Branch Class Fee Discounts Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/branch-class-fee-waivers">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Branch Class Fee Waivers Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/branch-class-fees">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Branch Class Fees Management
+                        </Link>
+                    </li>
                 </ul>
             </div>
         </div>

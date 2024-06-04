@@ -16,6 +16,9 @@ import branch_transports_slice from '../views/pages/branch_management/branch_tra
 import branch_transport_drivers_slice from '../views/pages/branch_management/branch_transport_drivers/config/store';
 import branch_classes_slice from '../views/pages/class_management/branch_classes/config/store';
 import branch_class_fee_types_slice from '../views/pages/class_management/branch_class_fee_types/config/store';
+import branch_class_fee_discounts_slice from '../views/pages/class_management/branch_class_fee_discounts/config/store';
+import branch_class_fee_waivers_slice from '../views/pages/class_management/branch_class_fee_waivers/config/store';
+import branch_class_fees_slice from '../views/pages/class_management/branch_class_fees/config/store';
 
 const store = configureStore({
     reducer: {
@@ -32,8 +35,11 @@ const store = configureStore({
         branch_building_rooms: branch_building_rooms_slice.reducer,
         branch_transports: branch_transports_slice.reducer,
         branch_transport_drivers: branch_transport_drivers_slice.reducer,
-        branch_class_fee_types: branch_class_fee_types_slice.reducer,
         branch_classes: branch_classes_slice.reducer,
+        branch_class_fee_types: branch_class_fee_types_slice.reducer,
+        branch_class_fee_discounts: branch_class_fee_discounts_slice.reducer,
+        branch_class_fee_waivers: branch_class_fee_waivers_slice.reducer,
+        branch_class_fees: branch_class_fees_slice.reducer,
     },
     devTools: true,
 });
