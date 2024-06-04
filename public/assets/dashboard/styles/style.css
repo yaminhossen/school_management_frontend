@@ -2186,6 +2186,10 @@ input.form_checkbox:checked::after {
   grid-column-end: 3;
 }
 
+.admin_sidebar {
+  max-height: 450px;
+}
+
 .student_form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

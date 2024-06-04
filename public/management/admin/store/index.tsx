@@ -14,6 +14,8 @@ import branch_buildings_slice from '../views/pages/branch_management/branch_buil
 import branch_building_rooms_slice from '../views/pages/branch_management/branch_building_rooms/config/store';
 import branch_transports_slice from '../views/pages/branch_management/branch_transports/config/store';
 import branch_transport_drivers_slice from '../views/pages/branch_management/branch_transport_drivers/config/store';
+import branch_classes_slice from '../views/pages/class_management/branch_classes/config/store';
+import branch_class_fee_types_slice from '../views/pages/class_management/branch_class_fee_types/config/store';
 
 const store = configureStore({
     reducer: {
@@ -30,6 +32,8 @@ const store = configureStore({
         branch_building_rooms: branch_building_rooms_slice.reducer,
         branch_transports: branch_transports_slice.reducer,
         branch_transport_drivers: branch_transport_drivers_slice.reducer,
+        branch_class_fee_types: branch_class_fee_types_slice.reducer,
+        branch_classes: branch_classes_slice.reducer,
     },
     devTools: true,
 });

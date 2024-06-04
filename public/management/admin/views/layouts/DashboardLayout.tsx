@@ -9,7 +9,7 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
     return (
         <div>
             <div className="app_body">
-                <div className="app_window">
+                <div className="app_window custom_scroll">
                     {/* <CommonAppWindow></CommonAppWindow> */}
                     <Outlet></Outlet>
                 </div>
