@@ -49,6 +49,7 @@ const All: React.FC<Props> = (props: Props) => {
             name: 'Chemistry',
             code: 'CH101',
             level: 'O',
+            teacher: 'Masud rana',
             description: 'This is science groupe subject',
             credit: 8,
             additional_info: 'This is the compulsary subject for this section',
@@ -58,6 +59,7 @@ const All: React.FC<Props> = (props: Props) => {
             name: 'Biology',
             code: 'BI101',
             level: 'O',
+            teacher: 'Nazmul haque',
             description: 'This is science groupe subject',
             credit: 4,
             additional_info: 'This is the optional subject for this section',
@@ -88,6 +90,11 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Teacher`}
+                                            col_name={`teacher`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -151,6 +158,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                     />
                                                 </td> */}
                                                 <td>{i.name}</td>
+                                                <td>{i.teacher}</td>
                                                 <td>{i.code}</td>
                                                 <td>{i.level}</td>
                                                 <td>{i.description}</td>

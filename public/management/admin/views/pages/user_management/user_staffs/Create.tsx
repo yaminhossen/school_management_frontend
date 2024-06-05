@@ -139,13 +139,61 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
+                                    <label>Joining Date</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="date"
+                                            name="joining_date"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Department</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="department"
+                                            name="department"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Status</label>
+                                    <div className="form_elements">
+                                        <select name="status" id="">
+                                            <option value="active">
+                                                active
+                                            </option>
+                                            <option value="block">block</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Branch Id</label>
+                                    <div className="form_elements">
+                                        <select name="branch_id" id="">
+                                            <option value="demo">demo</option>
+                                            <option value="demo">demo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Position</label>
+                                    <div className="form_elements">
+                                        <select name="position" id="">
+                                            <option value="teacher">
+                                                teacher
+                                            </option>
+                                            <option value="pion">pion</option>
+                                            <option value="librarian">
+                                                librarian
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
                                     <label>IsMarried</label>
                                     <div className="form_elements">
-                                        {/* <input
-                                            type="text"
-                                            placeholder="graduation"
-                                            name="graduation"
-                                        /> */}
                                         <select name="ismarried" id="">
                                             <option value="0">0</option>
                                             <option value="1">1</option>

@@ -107,6 +107,19 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Status</label>
+                                            <div className="form_elements">
+                                                <select name="status" id="">
+                                                    <option value="active">
+                                                        active
+                                                    </option>
+                                                    <option value="block">
+                                                        block
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="full_width">

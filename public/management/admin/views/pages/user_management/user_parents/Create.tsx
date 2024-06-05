@@ -92,6 +92,26 @@ const Create: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Status</label>
+                                    <div className="form_elements">
+                                        <select name="status" id="">
+                                            <option value="active">
+                                                {/* active */}
+                                            </option>
+                                            <option value="block">block</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Branch Id</label>
+                                    <div className="form_elements">
+                                        <select name="branch_id" id="">
+                                            <option value="demo">demo</option>
+                                            <option value="demo">demo</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
 
                             <div className="form_section_heading">

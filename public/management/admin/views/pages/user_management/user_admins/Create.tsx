@@ -23,7 +23,7 @@ const Create: React.FC<Props> = (props: Props) => {
             <div className="page_content">
                 <div className="explore_window fixed_size">
                     <Header page_title={setup.create_page_title}></Header>
-                    <div className="content_body">
+                    <div className="content_body custom_scroll">
                         <form
                             onSubmit={(e) => handle_submit(e)}
                             className="form_600 mx-auto pt-3"
@@ -79,6 +79,24 @@ const Create: React.FC<Props> = (props: Props) => {
                                 </div>
                             </div>
                             <div className="form-group form-horizontal">
+                                <label>Status</label>
+                                <div className="form_elements">
+                                    <select name="status" id="">
+                                        <option value="active">active</option>
+                                        <option value="block">block</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="form-group form-horizontal">
+                                <label>Branch Id</label>
+                                <div className="form_elements">
+                                    <select name="branch_id" id="">
+                                        <option value="demo">demo</option>
+                                        <option value="demo">demo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            {/* <div className="form-group form-horizontal">
                                 <label>Select user</label>
                                 <div className="form_elements">
                                     <DropDown
@@ -88,7 +106,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                         name={`selected_users`}
                                     />
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="form-group form-horizontal">
                                 <label></label>
                                 <div className="form_elements">

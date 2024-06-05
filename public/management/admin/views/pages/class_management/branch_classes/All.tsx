@@ -46,7 +46,7 @@ const All: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            name: 'Bangla',
+            name: 'SIX',
             code: 'A101',
             capacity: 100,
             fee: 10000,
@@ -60,7 +60,7 @@ const All: React.FC<Props> = (props: Props) => {
         },
         {
             id: 2,
-            name: 'English',
+            name: 'SEVEN',
             code: 'A102',
             capacity: 100,
             fee: 10000,
