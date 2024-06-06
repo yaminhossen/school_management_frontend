@@ -4,18 +4,18 @@ export interface Props {}
 
 const T1: React.FC<Props> = (props: Props) => {
     return (
-        <div className=" ">
-            admin Dashboard
-            <div className="admin_sidebar custom_scroll">
+        <div className="admin_dashboard">
+            <h2>admin Dashboard</h2>
+            <div className="admin_sideba custom_scroll">
                 <ul className="dashboard_links ">
-                    <li>
+                    {/* <li>
                         <Link to="/branch-staffs">
                             <span className="material-symbols-outlined fill">
                                 clinical_notes
                             </span>
                             Brach Staff Management
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/user-admins">
                             <span className="material-symbols-outlined fill">

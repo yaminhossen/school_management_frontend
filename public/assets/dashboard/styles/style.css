@@ -1340,19 +1340,29 @@ input.form_checkbox:checked::after {
   margin-top: 30px;
 }
 
-.dashboard_links {
-  margin-top: 40px;
+.admin_dashboard h2 {
+  margin-top: 20px;
+  font-size: larger;
 }
-.dashboard_links li {
+.admin_dashboard .dashboard_links {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.admin_dashboard .dashboard_links li {
   margin-bottom: 10px;
 }
-.dashboard_links li a {
+.admin_dashboard .dashboard_links li a {
   display: flex;
   align-items: center;
   gap: 10px;
+  border: 1px solid gray;
+  padding: 15px 25px;
+  border-radius: 10px;
 }
-.dashboard_links li a:hover {
-  color: orangered;
+.admin_dashboard .dashboard_links li a:hover {
+  color: rgb(70, 236, 153);
 }
 
 .mx-auto {

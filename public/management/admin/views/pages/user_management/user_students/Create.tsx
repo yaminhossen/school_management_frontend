@@ -157,13 +157,8 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-vertical">
-                                            <label>gender</label>
+                                            <label>Gender</label>
                                             <div className="form_elements">
-                                                {/* <input
-                                                    type="text"
-                                                    placeholder="gender"
-                                                    name="gender"
-                                                /> */}
                                                 <select name="gender" id="">
                                                     <option value="male">
                                                         male
@@ -171,8 +166,27 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     <option value="female">
                                                         female
                                                     </option>
-                                                    <option value="other">
-                                                        other
+                                                    <option value="others">
+                                                        others
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Religion</label>
+                                            <div className="form_elements">
+                                                <select name="religion" id="">
+                                                    <option value="islam">
+                                                        islam
+                                                    </option>
+                                                    <option value="hindu">
+                                                        hindu
+                                                    </option>
+                                                    <option value="kristian">
+                                                        kristian
+                                                    </option>
+                                                    <option value="budda">
+                                                        budda
                                                     </option>
                                                 </select>
                                             </div>
@@ -188,32 +202,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-vertical">
-                                            <label>City</label>
+                                            <label>Division</label>
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
-                                                    placeholder="city"
-                                                    name="city"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-vertical">
-                                            <label>State</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="state"
-                                                    name="state"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-vertical">
-                                            <label>Zip code</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="zip code"
-                                                    name="zip_code"
+                                                    placeholder="division"
+                                                    name="division"
                                                 />
                                             </div>
                                         </div>
@@ -306,12 +300,141 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-vertical">
+                                            <label>Addmission no</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="addmission no"
+                                                    name="addmission_no"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Roll no</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="roll no"
+                                                    name="roll_no"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Height</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="height"
+                                                    name="height"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Weight</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="weight"
+                                                    name="weight"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Familly information</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="familly information"
+                                                    name="familly_information"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Shibling information</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="shibling information"
+                                                    name="shibling_information"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Living house type</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="living house type"
+                                                    name="living_house_type"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>As on date</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="date"
+                                                    name="ass_on_date"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Birth certificate</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="file"
+                                                    name="birth_certificate"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
                                             <label>Addmission date</label>
                                             <div className="form_elements">
                                                 <input
                                                     type="date"
                                                     name="addmission_date"
                                                 />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Class id</label>
+                                            <div className="form_elements">
+                                                <select name="class_id" id="">
+                                                    <option value="demo1">
+                                                        demo1
+                                                    </option>
+                                                    <option value="demo2">
+                                                        demo2
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Section</label>
+                                            <div className="form_elements">
+                                                <select name="section" id="">
+                                                    <option value="A">A</option>
+                                                    <option value="B">B</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Cast</label>
+                                            <div className="form_elements">
+                                                <select name="cast" id="">
+                                                    <option value="Khan">
+                                                        Khan
+                                                    </option>
+                                                    <option value="Chowdhuri">
+                                                        Chowdhuri
+                                                    </option>
+                                                    <option value="Patowari">
+                                                        Patowari
+                                                    </option>
+                                                    <option value="Shikdar">
+                                                        Shikdar
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div className="form-group form-vertical">
@@ -811,7 +934,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                 </div>
                                 <div className="full_width">
                                     <div className="form_section_heading">
-                                        <h4>Student EducationalBackground</h4>
+                                        <h4>Student Educational Background</h4>
                                     </div>
                                     <div className="multi_inputs">
                                         <div className="pb-4 px-0">

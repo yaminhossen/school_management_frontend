@@ -60,6 +60,7 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`id`}
                                             sort={true}
                                         />
+                                        <th>Image</th>
                                         <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
@@ -75,7 +76,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`email`}
                                             sort={true}
                                         />
-                                        <th>Image</th>
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
@@ -96,6 +96,15 @@ const All: React.FC<Props> = (props: Props) => {
                                                     </td>
                                                     <td>{i.id}</td>
                                                     <td>
+                                                        <img
+                                                            src="/assets/dashboard/images/avatar.png"
+                                                            alt=""
+                                                            style={{
+                                                                height: 30,
+                                                            }}
+                                                        />
+                                                    </td>
+                                                    <td>
                                                         <span
                                                             className="quick_view_trigger"
                                                             onClick={() =>
@@ -107,15 +116,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                     </td>
                                                     <td>{i.email}</td>
                                                     <td>{i.phone_number}</td>
-                                                    <td>
-                                                        <img
-                                                            src="/assets/dashboard/images/avatar.png"
-                                                            alt=""
-                                                            style={{
-                                                                height: 30,
-                                                            }}
-                                                        />
-                                                    </td>
                                                 </tr>
                                             );
                                         },
