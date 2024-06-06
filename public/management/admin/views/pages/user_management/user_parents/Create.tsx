@@ -26,154 +26,247 @@ const Create: React.FC<Props> = (props: Props) => {
                     <div className="content_body custom_scroll">
                         <form
                             onSubmit={(e) => handle_submit(e)}
-                            className="form_600 mx-auto pt-3"
+                            className="form_6002 mx-auto pt-3"
                         >
-                            <div className="form_section_heading">
-                                <h2 className=""> Major Information</h2>
-                            </div>
-                            <div>
-                                <div className="form-group form-horizontal">
-                                    <label>Name</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="name"
-                                            name="name"
-                                        />
+                            <div className="student_form">
+                                <div className="full_width">
+                                    <div className="form_section_heading">
+                                        <h2 className=""> Major Information</h2>
+                                    </div>
+                                    <div className="d-flex">
+                                        <div className="form-group form-vertical">
+                                            <label>Name</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="name"
+                                                    name="name"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Email</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="email"
+                                                    name="email"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Phone number</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="phone number"
+                                                    name="phone_number"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Image</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="file"
+                                                    placeholder="image"
+                                                    name="image"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Password</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="password"
+                                                    name="password"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Confirm Password</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="confirm password"
+                                                    name="confirm_password"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Status</label>
+                                            <div className="form_elements">
+                                                <select name="status" id="">
+                                                    <option value="active">
+                                                        {/* active */}
+                                                    </option>
+                                                    <option value="block">
+                                                        block
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Branch Id</label>
+                                            <div className="form_elements">
+                                                <select name="branch_id" id="">
+                                                    <option value="demo">
+                                                        demo
+                                                    </option>
+                                                    <option value="demo">
+                                                        demo
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Email</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="email"
-                                            name="email"
-                                        />
+                                <div className="full_width">
+                                    <div className="form_section_heading">
+                                        <h2 className="">Permanent Address</h2>
+                                    </div>
+                                    <div className="d-flex">
+                                        <div className="form-group form-vertical">
+                                            <label>Permanent Address</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="Permanent address"
+                                                    name="permanent_address"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Country</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="country"
+                                                    name="country"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>District</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="district"
+                                                    name="district"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Thana</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="thana"
+                                                    name="thana"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Post Code</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="post_code"
+                                                    name="post_code"
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Phone number</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="phone number"
-                                            name="phone_number"
-                                        />
+                                <div className="full_width">
+                                    <div className="form_section_heading">
+                                        <h2 className="">Present Address</h2>
+                                    </div>
+                                    <div className="d-flex">
+                                        <div className="form-group form-vertical">
+                                            <label>Present Address</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="present address"
+                                                    name="present address"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Post Code</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="post_code"
+                                                    name="post_code"
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Image</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="file"
-                                            placeholder="image"
-                                            name="image"
-                                        />
+                                <div className="full_width">
+                                    <div className="form_section_heading">
+                                        <h4>Additional Information</h4>
                                     </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Password</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="password"
-                                            name="password"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Confirm Password</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="confirm password"
-                                            name="confirm_password"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Status</label>
-                                    <div className="form_elements">
-                                        <select name="status" id="">
-                                            <option value="active">
-                                                {/* active */}
-                                            </option>
-                                            <option value="block">block</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Branch Id</label>
-                                    <div className="form_elements">
-                                        <select name="branch_id" id="">
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="form_section_heading">
-                                <h4>Additional Information</h4>
-                            </div>
-                            <div>
-                                <div className="form-group form-horizontal">
-                                    <label>Permenent Address</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="parmenent address"
-                                            name="parmenent_address"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Present Address</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="present address"
-                                            name="present_address"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Gruardian Contact Number</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="guardian number"
-                                            name="gruardian_contact_number"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Graduation</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="graduation"
-                                            name="graduation"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>IsMarried</label>
-                                    <div className="form_elements">
-                                        {/* <input
+                                    <div className="d-flex">
+                                        <div className="form-group form-vertical">
+                                            <label>
+                                                Gruardian Contact Number
+                                            </label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="guardian number"
+                                                    name="gruardian_contact_number"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Gender</label>
+                                            <div className="form_elements">
+                                                <select name="gender" id="">
+                                                    <option value="male">
+                                                        male
+                                                    </option>
+                                                    <option value="female">
+                                                        female
+                                                    </option>
+                                                    <option value="others">
+                                                        others
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Graduation</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="graduation"
+                                                    name="graduation"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>IsMarried</label>
+                                            <div className="form_elements">
+                                                {/* <input
                                             type="text"
                                             placeholder="graduation"
                                             name="graduation"
                                         /> */}
-                                        <select name="ismarried" id="">
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                        </select>
+                                                <select name="ismarried" id="">
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group form-horizontal">
+                            <div className="form-group student_submit form-horizontal">
                                 <label></label>
                                 <div className="form_elements">
                                     <button className="btn btn_1">
