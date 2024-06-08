@@ -207,10 +207,50 @@ const Attendance: React.FC<Props> = (props: Props) => {
                                                     </span>
                                                 )}
                                             </td>
-                                            <td>{i['2-sun']}</td>
-                                            <td>{i['3-mon']}</td>
-                                            <td>{i['4-tue']}</td>
-                                            <td>{i['5-wed']}</td>
+                                            <td>
+                                                {i['2-sun'] == 0 ? (
+                                                    <span className="material-symbols-outlined fill">
+                                                        close
+                                                    </span>
+                                                ) : (
+                                                    <span className="material-symbols-outlined fill">
+                                                        check
+                                                    </span>
+                                                )}
+                                            </td>
+                                            <td>
+                                                {i['3-mon'] == 0 ? (
+                                                    <span className="material-symbols-outlined fill">
+                                                        close
+                                                    </span>
+                                                ) : (
+                                                    <span className="material-symbols-outlined fill">
+                                                        check
+                                                    </span>
+                                                )}
+                                            </td>
+                                            <td>
+                                                {i['4-tue'] == 0 ? (
+                                                    <span className="material-symbols-outlined fill">
+                                                        close
+                                                    </span>
+                                                ) : (
+                                                    <span className="material-symbols-outlined fill">
+                                                        check
+                                                    </span>
+                                                )}
+                                            </td>
+                                            <td>
+                                                {i['5-wed'] == 0 ? (
+                                                    <span className="material-symbols-outlined fill">
+                                                        close
+                                                    </span>
+                                                ) : (
+                                                    <span className="material-symbols-outlined fill">
+                                                        check
+                                                    </span>
+                                                )}
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>
