@@ -1,16 +1,16 @@
 import setup_type from './setup_type';
 
-const prefix: string = 'Meeting';
+const prefix: string = 'Meeting Agenda';
 const setup: setup_type = {
     prefix,
-    module_name: 'meetings',
+    module_name: 'meeting_agendas',
 
-    route_prefix: 'meetings',
+    route_prefix: 'meeting-agendas',
 
     api_host: location.origin,
-    api_prefix: 'meetings',
+    api_prefix: 'meeting-agendas',
 
-    store_prefix: 'meeting',
+    store_prefix: 'meetingAgenda',
     layout_title: prefix + ' Management',
 
     all_page_title: 'All ' + prefix,

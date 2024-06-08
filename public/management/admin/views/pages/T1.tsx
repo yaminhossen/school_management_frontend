@@ -168,6 +168,22 @@ const T1: React.FC<Props> = (props: Props) => {
                             Branch Class Subjects Management
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/meetings">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Meetings Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/meeting-agendas">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Meeting Agendas Management
+                        </Link>
+                    </li>
                 </ul>
             </div>
         </div>

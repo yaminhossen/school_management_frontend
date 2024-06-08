@@ -885,3 +885,6 @@
 {"level":60,"time":1717672447915,"pid":15416,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-teachers?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
 {"level":60,"time":1717672485184,"pid":15416,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
 {"level":60,"time":1717672495813,"pid":15416,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-teachers/store"}
+{"level":60,"time":1717675688454,"pid":15416,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-staffs?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
+{"level":60,"time":1717675704135,"pid":15416,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-teachers?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
+{"level":60,"time":1717675711027,"pid":15416,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-staffs?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
