@@ -122,35 +122,11 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/branch-class-fee-types">
+                        <Link to="/branch-class-subjects">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Class Fee types
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/branch-class-fee-discounts">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Class Fee Discounts
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/branch-class-fee-waivers">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Class Fee Waivers
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/branch-class-fees">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Class Fees
+                            Class Subjects
                         </Link>
                     </li>
                     <li>
@@ -174,23 +150,59 @@ const T1: React.FC<Props> = (props: Props) => {
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Class Subjects
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/branch-class-subjects">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
                             Attendances report
                         </Link>
                     </li>
                     <li>
-                        <Link to="/branch-class-subjects">
+                        <Link to="/user-students/kpi">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Kpi report
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/user-students/attendance">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             Student attendances
+                        </Link>
+                    </li>
+                </ul>
+
+                <h3 className="mt-4 ms-0">Fees management</h3>
+                <ul className="dashboard_links ">
+                    <li>
+                        <Link to="/branch-class-fee-types">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Class Fee types
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/branch-class-fees">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Class Fees
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/branch-class-fee-discounts">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Class Fee Discounts
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/branch-class-fee-waivers">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Class Fee Waivers
                         </Link>
                     </li>
                 </ul>

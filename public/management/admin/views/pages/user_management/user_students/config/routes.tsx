@@ -1,10 +1,12 @@
 import React from 'react';
 import setup from './setup.ts';
 import Layout from '../Layout.tsx';
-import All from '../All.jsx';
-import Create from '../Create.jsx';
-import Details from '../Details.jsx';
-import Edit from '../Edit.jsx';
+import All from '../All.tsx';
+import Create from '../Create.tsx';
+import Details from '../Details.tsx';
+import Edit from '../Edit.tsx';
+import Kpi from '../Kpi.tsx';
+import Attendance from '../Attendances.tsx';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -15,6 +17,14 @@ export default {
         {
             path: '',
             element: <All />,
+        },
+        {
+            path: 'attendance',
+            element: <Attendance />,
+        },
+        {
+            path: 'kpi',
+            element: <Kpi />,
         },
         {
             path: 'create',

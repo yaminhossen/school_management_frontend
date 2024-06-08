@@ -14,7 +14,7 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
                     <Outlet></Outlet>
                 </div>
                 <div>
-                    <div className="home_time_and_date">
+                    <div className="home_time_and_date d-none">
                         <div className="home_time_and_date_body">
                             <div className="date">
                                 <div className="day">Monday</div>

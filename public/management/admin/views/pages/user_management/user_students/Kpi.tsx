@@ -19,7 +19,7 @@ import TableHeading from './components/all_data_page/TableHeading';
 
 export interface Props {}
 
-const All: React.FC<Props> = (props: Props) => {
+const Kpi: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -46,33 +46,31 @@ const All: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            name: 'Chemistry',
+            branch: 'kustia',
+            name: 'Student1',
             class: 'Six',
-            section: 'A',
-            code: 'CH101',
-            level: 'O',
-            class_time: '11:30 am',
-            room_no: '301',
-            days: 'sat, mon, tue',
-            teacher: 'Masud rana',
-            description: 'This is science groupe subject',
-            credit: 8,
-            additional_info: 'This is the compulsary subject for this section',
+            roll: '202',
+            attendance: '75%',
+            exam_marks: '75%',
+            ct_marks: '75%',
+            phone_number: '01786867672',
+            email: 'student1@gamil.com',
+            address: 'Mirpur',
+            image: '/assets/dashboard/images/avatar.png',
         },
         {
-            id: 1,
-            name: 'Biology',
+            id: 2,
+            branch: 'Barishal',
+            name: 'Student2',
             class: 'Six',
-            section: 'B',
-            code: 'BI101',
-            level: 'O',
-            class_time: '12:30 am',
-            room_no: '301',
-            days: 'sun, wed, thu',
-            teacher: 'Nazmul haque',
-            description: 'This is science groupe subject',
-            credit: 4,
-            additional_info: 'This is the optional subject for this section',
+            roll: '203',
+            attendance: '65%',
+            exam_marks: '65%',
+            ct_marks: '65%',
+            phone_number: '01786867673',
+            email: 'student2@gamil.com',
+            address: 'Uttora',
+            image: '/assets/dashboard/images/avatar.png',
         },
     ];
 
@@ -96,7 +94,12 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`id`}
                                             sort={true}
                                         />
-                                        {/* <th>Logo</th> */}
+                                        <th>Image</th>
+                                        <TableHeading
+                                            label={`Branch`}
+                                            col_name={`branch`}
+                                            sort={true}
+                                        />
                                         <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
@@ -108,53 +111,28 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Section`}
-                                            col_name={`section`}
+                                            label={`Roll`}
+                                            col_name={`roll`}
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Teacher`}
-                                            col_name={`teacher`}
+                                            label={`Phone number`}
+                                            col_name={`phone_number`}
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Code`}
-                                            col_name={`code`}
+                                            label={`Attendance`}
+                                            col_name={`attendance`}
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Level`}
-                                            col_name={`level`}
+                                            label={`Exam Marks`}
+                                            col_name={`exam_marks`}
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Class_time`}
-                                            col_name={`class_time`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Room_no`}
-                                            col_name={`room_no`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Days`}
-                                            col_name={`days`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Description`}
-                                            col_name={`description`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Credit`}
-                                            col_name={`credit`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Additional Info`}
-                                            col_name={`additional_info`}
+                                            label={`Ct Marks`}
+                                            col_name={`ct_marks`}
                                             sort={true}
                                         />
                                     </tr>
@@ -183,7 +161,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                         {i.id}
                                                     </span>
                                                 </td>
-                                                {/* <td>
+                                                <td>
                                                     <img
                                                         src="/assets/dashboard/images/avatar.png"
                                                         alt=""
@@ -191,19 +169,15 @@ const All: React.FC<Props> = (props: Props) => {
                                                             height: 30,
                                                         }}
                                                     />
-                                                </td> */}
+                                                </td>
+                                                <td>{i.branch}</td>
                                                 <td>{i.name}</td>
                                                 <td>{i.class}</td>
-                                                <td>{i.section}</td>
-                                                <td>{i.teacher}</td>
-                                                <td>{i.code}</td>
-                                                <td>{i.level}</td>
-                                                <td>{i.class_time}</td>
-                                                <td>{i.room_no}</td>
-                                                <td>{i.days}</td>
-                                                <td>{i.description}</td>
-                                                <td>{i.credit}</td>
-                                                <td>{i.additional_info}</td>
+                                                <td>{i.roll}</td>
+                                                <td>{i.phone_number}</td>
+                                                <td>{i.attendance}</td>
+                                                <td>{i.exam_marks}</td>
+                                                <td>{i.ct_marks}</td>
                                             </tr>
                                         );
                                     })}
@@ -230,4 +204,4 @@ const All: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default All;
+export default Kpi;
