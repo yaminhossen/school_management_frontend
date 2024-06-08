@@ -21,8 +21,8 @@ import branch_class_fees_routes from "../views/pages/class_management/branch_cla
 import branch_class_routine_day_times_routes from "../views/pages/class_management/branch_class_routine_day_times/config/routes";
 import branch_class_resources_routes from "../views/pages/class_management/branch_class_resources/config/routes";
 import branch_class_subjects_routes from "../views/pages/class_management/branch_class_subjects/config/routes";
-import meetings_routes from "../views/pages/meeting_management/meetings/config/routes";
 import meeting_agendas_routes from "../views/pages/meeting_management/meeting_agendas/config/routes";
+import meetings_routes from "../views/pages/meeting_management/meetings/config/routes";
 
 interface RouteTypes extends NonIndexRouteObject {
     
@@ -56,8 +56,8 @@ const router: RouteTypes[] = [
             branch_class_routine_day_times_routes,
             branch_class_subjects_routes,
             branch_class_resources_routes,
-            meetings_routes,
             meeting_agendas_routes,
+            meetings_routes,
         ],
     },
 ];

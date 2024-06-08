@@ -7,6 +7,7 @@ const T1: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <h2>admin Dashboard</h2>
             <div className="admin_sideba custom_scroll">
+                <h3 className="mt-4 ms-0">User management</h3>
                 <ul className="dashboard_links ">
                     {/* <li>
                         <Link to="/branch-staffs">
@@ -56,20 +57,24 @@ const T1: React.FC<Props> = (props: Props) => {
                             Students Management
                         </Link>
                     </li>
-                    <li>
-                        <Link to="/user-branch-admins">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            user branch admins Management
-                        </Link>
-                    </li>
+                </ul>
+
+                <h3 className="mt-4 ms-0">Branch management</h3>
+                <ul className="dashboard_links ">
                     <li>
                         <Link to="/branches">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             branches Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/user-branch-admins">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            user branch admins Management
                         </Link>
                     </li>
                     <li>
@@ -104,12 +109,16 @@ const T1: React.FC<Props> = (props: Props) => {
                             Branch Transport Drivers Management
                         </Link>
                     </li>
+                </ul>
+
+                <h3 className="mt-4 ms-0">Academic management</h3>
+                <ul className="dashboard_links ">
                     <li>
                         <Link to="/branch-classes">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Branch Classes Management
+                            Classes
                         </Link>
                     </li>
                     <li>
@@ -117,7 +126,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Branch Class Fee types Management
+                            Class Fee types
                         </Link>
                     </li>
                     <li>
@@ -125,7 +134,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Branch Class Fee Discounts Management
+                            Class Fee Discounts
                         </Link>
                     </li>
                     <li>
@@ -133,7 +142,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Branch Class Fee Waivers Management
+                            Class Fee Waivers
                         </Link>
                     </li>
                     <li>
@@ -141,7 +150,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Branch Class Fees Management
+                            Class Fees
                         </Link>
                     </li>
                     <li>
@@ -149,7 +158,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Branch Class Routine Day Time Management
+                            Class Routines
                         </Link>
                     </li>
                     <li>
@@ -157,7 +166,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Branch Class Resources Management
+                            Class Resources
                         </Link>
                     </li>
                     <li>
@@ -165,11 +174,31 @@ const T1: React.FC<Props> = (props: Props) => {
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Branch Class Subjects Management
+                            Class Subjects
                         </Link>
                     </li>
                     <li>
-                        <Link to="/meetings">
+                        <Link to="/branch-class-subjects">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Attendances report
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/branch-class-subjects">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Student attendances
+                        </Link>
+                    </li>
+                </ul>
+
+                <h3 className="mt-4 ms-0">Meeting management</h3>
+                <ul className="dashboard_links ">
+                    <li>
+                        <Link to="/meeting">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>

@@ -22,8 +22,8 @@ import branch_class_fees_slice from '../views/pages/class_management/branch_clas
 import branch_class_routine_day_times_slice from '../views/pages/class_management/branch_class_routine_day_times/config/store';
 import branch_class_resources_slice from '../views/pages/class_management/branch_class_resources/config/store';
 import branch_class_subjects_slice from '../views/pages/class_management/branch_class_subjects/config/store';
-import meetings_slice from '../views/pages/meeting_management/meetings/config/store';
 import meeting_agendas_slice from '../views/pages/meeting_management/meeting_agendas/config/store';
+import meetings_slice from '../views/pages/meeting_management/meetings/config/store';
 
 const store = configureStore({
     reducer: {
@@ -49,8 +49,8 @@ const store = configureStore({
             branch_class_routine_day_times_slice.reducer,
         branch_class_resources: branch_class_resources_slice.reducer,
         branch_class_subjects: branch_class_subjects_slice.reducer,
-        meetings: meetings_slice.reducer,
         meeting_agendas: meeting_agendas_slice.reducer,
+        meetings: meetings_slice.reducer,
     },
     devTools: true,
 });

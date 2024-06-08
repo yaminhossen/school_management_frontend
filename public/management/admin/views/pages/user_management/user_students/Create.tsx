@@ -58,6 +58,22 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-vertical">
+                                            <label>Gender</label>
+                                            <div className="form_elements">
+                                                <select name="gender" id="">
+                                                    <option value="male">
+                                                        male
+                                                    </option>
+                                                    <option value="female">
+                                                        female
+                                                    </option>
+                                                    <option value="others">
+                                                        others
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
                                             <label>Email</label>
                                             <div className="form_elements">
                                                 <input
@@ -88,6 +104,19 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-vertical">
+                                            <label>Status</label>
+                                            <div className="form_elements">
+                                                <select name="status" id="">
+                                                    <option value="active">
+                                                        active
+                                                    </option>
+                                                    <option value="block">
+                                                        block
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
                                             <label>Password</label>
                                             <div className="form_elements">
                                                 <input
@@ -107,16 +136,102 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div className="full_width">
+                                    <div className="form_section_heading">
+                                        <h2 className="">
+                                            Admission Information
+                                        </h2>
+                                    </div>
+                                    <div className="d-flex">
                                         <div className="form-group form-vertical">
-                                            <label>Status</label>
+                                            <label>Branch</label>
                                             <div className="form_elements">
-                                                <select name="status" id="">
-                                                    <option value="active">
-                                                        active
+                                                <select name="branch_id" id="">
+                                                    <option value="Uttora">
+                                                        Uttora
                                                     </option>
-                                                    <option value="block">
-                                                        block
+                                                    <option value="Banani">
+                                                        Banani
                                                     </option>
+                                                    <option value="Gulshan">
+                                                        Gulshan
+                                                    </option>
+
+                                                    <option value="Demra">
+                                                        Demra
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Addmission no</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="addmission no"
+                                                    name="addmission_no"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Roll no</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="roll no"
+                                                    name="roll_no"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Addmission date</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="date"
+                                                    name="addmission_date"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Class</label>
+                                            <div className="form_elements">
+                                                <select name="class_id" id="">
+                                                    <option value="six">
+                                                        six
+                                                    </option>
+                                                    <option value="seven">
+                                                        seven
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Shift</label>
+                                            <div className="form_elements">
+                                                <select name="shift" id="">
+                                                    <option value=" boy morning">
+                                                        boy morning
+                                                    </option>
+                                                    <option value="boy evening">
+                                                        boy evening
+                                                    </option>
+                                                    <option value="girls evening">
+                                                        girls evening
+                                                    </option>
+                                                    <option value="girl morning">
+                                                        girl morning
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Section</label>
+                                            <div className="form_elements">
+                                                <select name="section" id="">
+                                                    <option value="A">A</option>
+                                                    <option value="B">B</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -154,22 +269,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     type="date"
                                                     name="date_of_birth"
                                                 />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-vertical">
-                                            <label>Gender</label>
-                                            <div className="form_elements">
-                                                <select name="gender" id="">
-                                                    <option value="male">
-                                                        male
-                                                    </option>
-                                                    <option value="female">
-                                                        female
-                                                    </option>
-                                                    <option value="others">
-                                                        others
-                                                    </option>
-                                                </select>
                                             </div>
                                         </div>
                                         <div className="form-group form-vertical">
@@ -300,26 +399,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-vertical">
-                                            <label>Addmission no</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="addmission no"
-                                                    name="addmission_no"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-vertical">
-                                            <label>Roll no</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="roll no"
-                                                    name="roll_no"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-vertical">
                                             <label>Height</label>
                                             <div className="form_elements">
                                                 <input
@@ -388,37 +467,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-vertical">
-                                            <label>Addmission date</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="date"
-                                                    name="addmission_date"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-vertical">
-                                            <label>Class id</label>
-                                            <div className="form_elements">
-                                                <select name="class_id" id="">
-                                                    <option value="demo1">
-                                                        demo1
-                                                    </option>
-                                                    <option value="demo2">
-                                                        demo2
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-vertical">
-                                            <label>Section</label>
-                                            <div className="form_elements">
-                                                <select name="section" id="">
-                                                    <option value="A">A</option>
-                                                    <option value="B">B</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-vertical">
                                             <label>Cast</label>
                                             <div className="form_elements">
                                                 <select name="cast" id="">
@@ -433,38 +481,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     </option>
                                                     <option value="Shikdar">
                                                         Shikdar
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-vertical">
-                                            <label>Branch id</label>
-                                            <div className="form_elements">
-                                                <select name="branch_id" id="">
-                                                    <option value="demo1">
-                                                        demo1
-                                                    </option>
-                                                    <option value="demo2">
-                                                        demo2
-                                                    </option>
-                                                    <option value="demo3">
-                                                        demo3
-                                                    </option>
-
-                                                    <option value="demo4">
-                                                        demo4
-                                                    </option>
-
-                                                    <option value="demo5">
-                                                        demo5
-                                                    </option>
-
-                                                    <option value="demo6">
-                                                        demo6
-                                                    </option>
-
-                                                    <option value="demo7">
-                                                        demo7
                                                     </option>
                                                 </select>
                                             </div>

@@ -1,16 +1,16 @@
 import setup_type from './setup_type';
 
-const prefix: string = 'ClassFee';
+const prefix: string = 'Meeting';
 const setup: setup_type = {
     prefix,
-    module_name: 'branch_class_fees',
+    module_name: 'meetings',
 
-    route_prefix: 'branch-class-fees',
+    route_prefix: 'meeting',
 
     api_host: location.origin,
-    api_prefix: 'branch-class-fees',
+    api_prefix: 'meetings',
 
-    store_prefix: 'branchClassFee',
+    store_prefix: 'meeting',
     layout_title: prefix + ' Management',
 
     all_page_title: 'All ' + prefix,

@@ -252,14 +252,47 @@ const Create: React.FC<Props> = (props: Props) => {
                                         <div className="form-group form-vertical">
                                             <label>IsMarried</label>
                                             <div className="form_elements">
-                                                {/* <input
-                                            type="text"
-                                            placeholder="graduation"
-                                            name="graduation"
-                                        /> */}
                                                 <select name="ismarried" id="">
-                                                    <option value="0">0</option>
-                                                    <option value="1">1</option>
+                                                    <option value="0">
+                                                        no
+                                                    </option>
+                                                    <option value="1">
+                                                        yes
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
+                                            <label>Blood Group</label>
+                                            <div className="form_elements">
+                                                <select
+                                                    name="blood_group"
+                                                    id=""
+                                                >
+                                                    <option value="A+">
+                                                        A +
+                                                    </option>
+                                                    <option value="A-">
+                                                        A -
+                                                    </option>
+                                                    <option value="B+">
+                                                        B +
+                                                    </option>
+                                                    <option value="B-">
+                                                        B -
+                                                    </option>
+                                                    <option value="O+">
+                                                        O +
+                                                    </option>
+                                                    <option value="O-">
+                                                        O -
+                                                    </option>
+                                                    <option value="AB+">
+                                                        AB +
+                                                    </option>
+                                                    <option value="AB+">
+                                                        AB -
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>

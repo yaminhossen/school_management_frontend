@@ -43,26 +43,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch class id</label>
-                                    <div className="form_elements">
-                                        <select name="branch_class_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>fee type id</label>
-                                    <div className="form_elements">
-                                        <select name="fee_type_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
                                     <label>Name</label>
                                     <div className="form_elements">
                                         <input
@@ -70,26 +50,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                             placeholder="name"
                                             name="name"
                                         />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Amount</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="number"
-                                            placeholder="amount"
-                                            name="amount"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Description</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            name="description"
-                                            id=""
-                                            placeholder="description"
-                                        ></textarea>
                                     </div>
                                 </div>
                             </div>
