@@ -10,6 +10,11 @@ import Attendance from '../Attendances.tsx';
 import BasicInformation from '../pages/BasicInformation.tsx';
 import AcademicInformation from '../pages/AcademicInformation.tsx';
 import Document from '../pages/Document.tsx';
+import Skills from '../pages/Skills.tsx';
+import Parents from '../../../user_management/user_parents/All.tsx';
+import Language from '../pages/Language.tsx';
+import ContactNumber from '../pages/ContactNumer.tsx';
+import EducationalBackground from '../pages/EducationalBackground.tsx';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -56,6 +61,26 @@ export default {
                 {
                     path: 'document',
                     element: <Document />,
+                },
+                {
+                    path: 'skill',
+                    element: <Skills />,
+                },
+                {
+                    path: 'parent',
+                    element: <Parents />,
+                },
+                {
+                    path: 'language',
+                    element: <Language />,
+                },
+                {
+                    path: 'contact-number',
+                    element: <ContactNumber />,
+                },
+                {
+                    path: 'educational-background',
+                    element: <EducationalBackground />,
                 },
             ],
         },

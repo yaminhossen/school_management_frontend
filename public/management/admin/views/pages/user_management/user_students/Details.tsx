@@ -91,33 +91,43 @@ const Details: React.FC<Props> = (props: Props) => {
                                 <ul className="section_naviagation">
                                     <li>
                                         <Link to="/user-students/details/3/basic-information">
-                                            Basic information
+                                            Basic informations
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to="/user-students/details/3/academic-information">
-                                            Academic information
+                                            Academic informations
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to="/user-students/details/3/document">
-                                            Document
+                                            Documents
                                         </Link>
                                     </li>
                                     <li>
-                                        <a href="">Parents</a>
+                                        <Link to="/user-students/details/3/parent">
+                                            Parents
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a href="">Skills</a>
+                                        <Link to="/user-students/details/3/skill">
+                                            Skills
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a href="">Language</a>
+                                        <Link to="/user-students/details/3/language">
+                                            Languages
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a href="">contact number</a>
+                                        <Link to="/user-students/details/3/contact-number">
+                                            Contact Numbers
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a href="">educational background</a>
+                                        <Link to="/user-students/details/3/educational-background">
+                                            Educational Backgrounds
+                                        </Link>
                                     </li>
                                 </ul>
                                 <div></div>
