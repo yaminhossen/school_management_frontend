@@ -52,9 +52,12 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                                             <td>{i.expire_date}</td>
                                             <td>{i.file}</td>
                                             <td>
-                                                <span className="material-symbols-outlined pointer">
-                                                    download
-                                                </span>
+                                                <button className="btn btn_1">
+                                                    <span className="material-symbols-outlined pointer">
+                                                        download
+                                                    </span>
+                                                    <span>download</span>
+                                                </button>
                                             </td>
                                         </tr>
                                     );

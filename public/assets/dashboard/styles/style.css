@@ -1386,27 +1386,37 @@ input.form_checkbox:checked::after {
 }
 
 .mx-1 {
-  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .my-1 {
-  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .mt-1 {
-  margin: 10px;
+  margin-top: 10px;
 }
 
 .mr-1 {
-  margin: 10px;
+  margin-right: 10px;
+}
+
+.me-1 {
+  margin-right: 10px;
 }
 
 .mb-1 {
-  margin: 10px;
+  margin-bottom: 10px;
 }
 
 .ml-1 {
-  margin: 10px;
+  margin-left: 10px;
+}
+
+.ms-1 {
+  margin-left: 10px;
 }
 
 .m-2 {
@@ -1414,27 +1424,37 @@ input.form_checkbox:checked::after {
 }
 
 .mx-2 {
-  margin: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .my-2 {
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .mt-2 {
-  margin: 20px;
+  margin-top: 20px;
 }
 
 .mr-2 {
-  margin: 20px;
+  margin-right: 20px;
+}
+
+.me-2 {
+  margin-right: 20px;
 }
 
 .mb-2 {
-  margin: 20px;
+  margin-bottom: 20px;
 }
 
 .ml-2 {
-  margin: 20px;
+  margin-left: 20px;
+}
+
+.ms-2 {
+  margin-left: 20px;
 }
 
 .m-3 {
@@ -1442,27 +1462,37 @@ input.form_checkbox:checked::after {
 }
 
 .mx-3 {
-  margin: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .my-3 {
-  margin: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .mt-3 {
-  margin: 30px;
+  margin-top: 30px;
 }
 
 .mr-3 {
-  margin: 30px;
+  margin-right: 30px;
+}
+
+.me-3 {
+  margin-right: 30px;
 }
 
 .mb-3 {
-  margin: 30px;
+  margin-bottom: 30px;
 }
 
 .ml-3 {
-  margin: 30px;
+  margin-left: 30px;
+}
+
+.ms-3 {
+  margin-left: 30px;
 }
 
 .m-4 {
@@ -1470,27 +1500,37 @@ input.form_checkbox:checked::after {
 }
 
 .mx-4 {
-  margin: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .my-4 {
-  margin: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .mt-4 {
-  margin: 40px;
+  margin-top: 40px;
 }
 
 .mr-4 {
-  margin: 40px;
+  margin-right: 40px;
+}
+
+.me-4 {
+  margin-right: 40px;
 }
 
 .mb-4 {
-  margin: 40px;
+  margin-bottom: 40px;
 }
 
 .ml-4 {
-  margin: 40px;
+  margin-left: 40px;
+}
+
+.ms-4 {
+  margin-left: 40px;
 }
 
 .m-5 {
@@ -1498,27 +1538,37 @@ input.form_checkbox:checked::after {
 }
 
 .mx-5 {
-  margin: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .my-5 {
-  margin: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .mt-5 {
-  margin: 50px;
+  margin-top: 50px;
 }
 
 .mr-5 {
-  margin: 50px;
+  margin-right: 50px;
+}
+
+.me-5 {
+  margin-right: 50px;
 }
 
 .mb-5 {
-  margin: 50px;
+  margin-bottom: 50px;
 }
 
 .ml-5 {
-  margin: 50px;
+  margin-left: 50px;
+}
+
+.ms-5 {
+  margin-left: 50px;
 }
 
 .px-auto {

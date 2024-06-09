@@ -129,6 +129,21 @@ const Details: React.FC<Props> = (props: Props) => {
                                             Educational Backgrounds
                                         </Link>
                                     </li>
+                                    <li>
+                                        <Link to="/user-students/details/3/payments">
+                                            Payments
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/user-students/details/3/dues">
+                                            Dues
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/user-students/details/3/result-part">
+                                            Result Part
+                                        </Link>
+                                    </li>
                                 </ul>
                                 <div></div>
                                 <div className="info-table table-responsive">

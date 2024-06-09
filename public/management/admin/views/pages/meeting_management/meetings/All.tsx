@@ -48,6 +48,7 @@ const All: React.FC<Props> = (props: Props) => {
             id: 1,
             name: 'Rirst-term',
             class: 'Bangla',
+            agendas: 'mc-meeting',
             description: 'Rirst-term fee',
             amount: 10000,
         },
@@ -55,6 +56,7 @@ const All: React.FC<Props> = (props: Props) => {
             id: 2,
             name: 'Mid-term',
             class: 'English',
+            agendas: 'ec-meeting',
             description: 'Mid-term fee',
             amount: 10000,
         },
@@ -89,6 +91,11 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Class`}
                                             col_name={`class`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Agendas`}
+                                            col_name={`agendas`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -138,6 +145,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                 </td> */}
                                                 <td>{i.name}</td>
                                                 <td>{i.class}</td>
+                                                <td>{i.agendas}</td>
                                                 <td>{i.description}</td>
                                                 <td>{i.amount}</td>
                                             </tr>
