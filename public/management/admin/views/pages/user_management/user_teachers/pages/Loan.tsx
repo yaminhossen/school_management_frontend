@@ -9,16 +9,18 @@ const Payments: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            perpous: 'Monthly fee',
+            perpous: 'June',
             date: '12 April 2024',
             amount: '5000',
+            last_date: '12 June 2024',
             trx_no: 'U001',
         },
         {
             id: 2,
-            perpous: 'Semister fee',
+            perpous: 'Advanced',
             date: '12 March 2024',
             amount: '5000',
+            last_date: '12 April 2024',
             trx_no: 'U002',
         },
         {
@@ -26,13 +28,14 @@ const Payments: React.FC<Props> = (props: Props) => {
             perpous: 'Hostel fee',
             date: '10 Feb, 2024',
             amount: '5000',
+            last_date: '12 March 2024',
             trx_no: 'U003',
         },
     ];
 
     return (
         <div className="admin_dashboard">
-            <h3 className="table_heading">Payments</h3>
+            <h3 className="table_heading">Loans</h3>
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
@@ -44,6 +47,7 @@ const Payments: React.FC<Props> = (props: Props) => {
                                     <th>Perpous</th>
                                     <th>Date</th>
                                     <th>Amount</th>
+                                    <th>Last Date</th>
                                     <th>TRX Id</th>
                                 </tr>
                             </thead>
@@ -56,6 +60,7 @@ const Payments: React.FC<Props> = (props: Props) => {
                                             <td>{i.perpous}</td>
                                             <td>{i.date}</td>
                                             <td>{i.amount}</td>
+                                            <td>{i.last_date}</td>
                                             <td>{i.trx_no}</td>
                                         </tr>
                                     );
