@@ -7,6 +7,9 @@ import Details from '../Details.tsx';
 import Edit from '../Edit.tsx';
 import Kpi from '../Kpi.tsx';
 import Attendance from '../Attendances.tsx';
+import BasicInformation from '../pages/BasicInformation.tsx';
+import AcademicInformation from '../pages/AcademicInformation.tsx';
+import Document from '../pages/Document.tsx';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -37,6 +40,24 @@ export default {
         {
             path: 'details/:id',
             element: <Details />,
+            children: [
+                {
+                    path: '',
+                    element: <BasicInformation />,
+                },
+                {
+                    path: 'basic-information',
+                    element: <BasicInformation />,
+                },
+                {
+                    path: 'academic-information',
+                    element: <AcademicInformation />,
+                },
+                {
+                    path: 'document',
+                    element: <Document />,
+                },
+            ],
         },
     ],
 };
