@@ -43,9 +43,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch class id</label>
+                                    <label>Meeting id</label>
                                     <div className="form_elements">
-                                        <select name="branch_class_id" id="">
+                                        <select name="meeting_id" id="">
                                             <option value="demo1">demo1</option>
                                             <option value="demo1">demo1</option>
                                             <option value="demo1">demo1</option>
@@ -53,22 +53,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>Title</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="name"
-                                            name="name"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Amount</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="number"
-                                            placeholder="amount"
-                                            name="amount"
+                                            placeholder="title"
+                                            name="title"
                                         />
                                     </div>
                                 </div>
@@ -80,6 +70,15 @@ const Create: React.FC<Props> = (props: Props) => {
                                             id=""
                                             placeholder="description"
                                         ></textarea>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Is complete</label>
+                                    <div className="form_elements">
+                                        <select name="is_complete" id="">
+                                            <option value="0">No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

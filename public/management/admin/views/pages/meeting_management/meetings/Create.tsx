@@ -43,13 +43,60 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>Meeting Agendas</label>
+                                    <div className="form_elements">
+                                        <select name="agendas" id="">
+                                            <option value="mc-meeting">
+                                                mc-meeting
+                                            </option>
+                                            <option value="ec-meeting">
+                                                ec-meeting
+                                            </option>
+                                            <option value="monthly meeting">
+                                                monthly meeting
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Title</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="name"
-                                            name="name"
+                                            placeholder="title"
+                                            name="title"
                                         />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Attachment</label>
+                                    <div className="form_elements">
+                                        <input type="file" name="attachment" />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Text</label>
+                                    <div className="form_elements">
+                                        <textarea
+                                            name="text"
+                                            placeholder="attachment text"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Description</label>
+                                    <div className="form_elements">
+                                        <textarea
+                                            name="description"
+                                            id=""
+                                            placeholder="description"
+                                        ></textarea>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Date</label>
+                                    <div className="form_elements">
+                                        <input type="date" name="date" />
                                     </div>
                                 </div>
                             </div>
