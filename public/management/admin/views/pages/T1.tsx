@@ -226,6 +226,50 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                 </ul>
+
+                <h3 className="mt-4 ms-0">Account management</h3>
+                <ul className="dashboard_links ">
+                    <li>
+                        <Link to="/fees-collections">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Fees Collections
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/journals">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Journal Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/loan-managements">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            loan Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/payrolls">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Payroll Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/salary-payments">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Salary Payment Management
+                        </Link>
+                    </li>
+                </ul>
             </div>
         </div>
     );

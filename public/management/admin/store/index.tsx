@@ -24,6 +24,11 @@ import branch_class_resources_slice from '../views/pages/class_management/branch
 import branch_class_subjects_slice from '../views/pages/class_management/branch_class_subjects/config/store';
 import meeting_agendas_slice from '../views/pages/meeting_management/meeting_agendas/config/store';
 import meetings_slice from '../views/pages/meeting_management/meetings/config/store';
+import fees_collections_slice from '../views/pages/account_management/fees_collections/config/store';
+import loan_managements_slice from '../views/pages/account_management/loan_managements/config/store';
+import journals_slice from '../views/pages/account_management/journals/config/store';
+import payrolls_slice from '../views/pages/account_management/payrolls/config/store';
+import salary_payments_slice from '../views/pages/account_management/salary_payments/config/store';
 
 const store = configureStore({
     reducer: {
@@ -51,6 +56,11 @@ const store = configureStore({
         branch_class_subjects: branch_class_subjects_slice.reducer,
         meeting_agendas: meeting_agendas_slice.reducer,
         meetings: meetings_slice.reducer,
+        fees_collections: fees_collections_slice.reducer,
+        loan_managements: loan_managements_slice.reducer,
+        journals: journals_slice.reducer,
+        salary_payments: salary_payments_slice.reducer,
+        payrolls: payrolls_slice.reducer,
     },
     devTools: true,
 });

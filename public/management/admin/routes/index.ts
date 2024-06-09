@@ -23,6 +23,11 @@ import branch_class_resources_routes from "../views/pages/class_management/branc
 import branch_class_subjects_routes from "../views/pages/class_management/branch_class_subjects/config/routes";
 import meeting_agendas_routes from "../views/pages/meeting_management/meeting_agendas/config/routes";
 import meetings_routes from "../views/pages/meeting_management/meetings/config/routes";
+import fees_collections_routes from "../views/pages/account_management/fees_collections/config/routes";
+import journals_routes from "../views/pages/account_management/journals/config/routes";
+import loan_managements_routes from "../views/pages/account_management/loan_managements/config/routes";
+import payrolls_routes from "../views/pages/account_management/payrolls/config/routes";
+import salary_payments_routes from "../views/pages/account_management/salary_payments/config/routes";
 
 interface RouteTypes extends NonIndexRouteObject {
     
@@ -58,6 +63,11 @@ const router: RouteTypes[] = [
             branch_class_resources_routes,
             meeting_agendas_routes,
             meetings_routes,
+            fees_collections_routes,
+            journals_routes,
+            loan_managements_routes,
+            payrolls_routes,
+            salary_payments_routes,
         ],
     },
 ];
