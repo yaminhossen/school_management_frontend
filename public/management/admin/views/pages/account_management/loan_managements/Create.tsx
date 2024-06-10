@@ -33,33 +33,59 @@ const Create: React.FC<Props> = (props: Props) => {
                             </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Branch id</label>
+                                    <label>Account</label>
                                     <div className="form_elements">
-                                        <select name="branch_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
+                                        <select name="account_id" id="">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch class id</label>
+                                    <label>Loan Type</label>
                                     <div className="form_elements">
-                                        <select name="branch_class_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
+                                        <select name="loan_type" id="">
+                                            <option value="home">home</option>
+                                            <option value="medical">
+                                                medical
+                                            </option>
+                                            <option value="others">
+                                                others
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>Recipient Id</label>
+                                    <div className="form_elements">
+                                        <select name="recipient_id" id="">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Amount</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
-                                            placeholder="name"
-                                            name="name"
+                                            type="number"
+                                            placeholder="amount"
+                                            name="amount"
                                         />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Loan Date</label>
+                                    <div className="form_elements">
+                                        <input type="date" name="loan_date" />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Return Date</label>
+                                    <div className="form_elements">
+                                        <input type="date" name="return_date" />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
@@ -70,6 +96,25 @@ const Create: React.FC<Props> = (props: Props) => {
                                             id=""
                                             placeholder="description"
                                         ></textarea>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Loan Status</label>
+                                    <div className="form_elements">
+                                        <select name="loan_status" id="">
+                                            <option value="active">
+                                                active
+                                            </option>
+                                            <option value="overdue">
+                                                overdue
+                                            </option>
+                                            <option value="returned">
+                                                returned
+                                            </option>
+                                            <option value="cancelled">
+                                                cancelled
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

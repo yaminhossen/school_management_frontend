@@ -46,13 +46,36 @@ const All: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            name: 'Admission fee',
-            description: 'This is intermediate admission fee',
+            amount: 5000,
+            account_id: '1',
+            loan_type: 'home',
+            loan_date: '12 June, 2023',
+            return_date: '12 July, 2024',
+            loan_status: 'active',
+            recipient_id: 'Shahed',
+            description: 'This is home loan',
         },
         {
             id: 2,
-            name: 'Exam fee',
-            description: 'This is intermediate first term exam fee',
+            amount: 4000,
+            account_id: '2',
+            loan_type: 'medical',
+            loan_date: '12 June, 2023',
+            return_date: '12 July, 2024',
+            loan_status: 'active',
+            recipient_id: 'Mahin',
+            description: 'This is medical loan',
+        },
+        {
+            id: 1,
+            amount: 3000,
+            account_id: '1',
+            loan_type: 'others',
+            loan_date: '12 June, 2023',
+            return_date: '10 June, 2024',
+            loan_status: 'overdue',
+            recipient_id: 'Tasnim',
+            description: 'This is others loan',
         },
     ];
 
@@ -78,8 +101,38 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                         {/* <th>Logo</th> */}
                                         <TableHeading
-                                            label={`Name`}
-                                            col_name={`name`}
+                                            label={`Amount`}
+                                            col_name={`amount`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Recipient`}
+                                            col_name={`recipient`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Loan Type`}
+                                            col_name={`loan_type`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Loan Date`}
+                                            col_name={`loan_date`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Return Date`}
+                                            col_name={`return_date`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Account`}
+                                            col_name={`account`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Status`}
+                                            col_name={`status`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -122,7 +175,13 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                <td>{i.name}</td>
+                                                <td>{i.amount}</td>
+                                                <td>{i.recipient_id}</td>
+                                                <td>{i.loan_type}</td>
+                                                <td>{i.loan_date}</td>
+                                                <td>{i.return_date}</td>
+                                                <td>{i.account_id}</td>
+                                                <td>{i.loan_status}</td>
                                                 <td>{i.description}</td>\
                                             </tr>
                                         );
