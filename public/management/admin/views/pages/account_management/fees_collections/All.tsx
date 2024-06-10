@@ -46,13 +46,30 @@ const All: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            name: 'Admission fee',
-            description: 'This is intermediate admission fee',
+            amount: 4000,
+            payment_date: '12 June, 2023',
+            payment_method: 'Bkash',
+            payment_status: 'complete',
+            receipt_number: 'RCPT20240001',
+            description: 'Tuition fee for June 2023',
         },
         {
             id: 2,
-            name: 'Exam fee',
-            description: 'This is intermediate first term exam fee',
+            amount: 3000,
+            payment_date: '12 July, 2023',
+            payment_method: 'Nagad',
+            payment_status: 'complete',
+            receipt_number: 'RCPT20240001',
+            description: 'Transport fee for July 2023',
+        },
+        {
+            id: 3,
+            amount: 4500,
+            payment_date: '12 May, 2023',
+            payment_method: 'Cash',
+            payment_status: 'complete',
+            receipt_number: 'RCPT20240002',
+            description: 'Hostel fee for May 2023',
         },
     ];
 
@@ -78,8 +95,28 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                         {/* <th>Logo</th> */}
                                         <TableHeading
-                                            label={`Name`}
-                                            col_name={`name`}
+                                            label={`Amount`}
+                                            col_name={`amount`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Payment Date`}
+                                            col_name={`payment_date`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Payment Method`}
+                                            col_name={`payment_method`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Payment Status`}
+                                            col_name={`payment_status`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Receipt Number`}
+                                            col_name={`receipt_number`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -122,7 +159,11 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                <td>{i.name}</td>
+                                                <td>{i.amount}</td>
+                                                <td>{i.payment_date}</td>
+                                                <td>{i.payment_method}</td>
+                                                <td>{i.payment_status}</td>
+                                                <td>{i.receipt_number}</td>
                                                 <td>{i.description}</td>\
                                             </tr>
                                         );

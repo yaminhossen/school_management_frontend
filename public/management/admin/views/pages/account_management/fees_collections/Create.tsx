@@ -43,7 +43,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch class id</label>
+                                    <label>Student Id</label>
                                     <div className="form_elements">
                                         <select name="branch_class_id" id="">
                                             <option value="demo1">demo1</option>
@@ -53,12 +53,62 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>Amount</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="number"
+                                            placeholder="amount"
+                                            name="amount"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Payment Date</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="date"
+                                            name="payment_date"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Payment Method</label>
+                                    <div className="form_elements">
+                                        <select name="payment_method" id="">
+                                            <option value="cash">cash</option>
+                                            <option value="bkash">bkash</option>
+                                            <option value="nagad">nagad</option>
+                                            <option value="bank transfer">
+                                                bank transfer
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Payment Status</label>
+                                    <div className="form_elements">
+                                        <select
+                                            name="payment_status"
+                                            defaultValue="pending"
+                                            id=""
+                                        >
+                                            <option value="complete">
+                                                complete
+                                            </option>
+                                            <option value="pending">
+                                                pending
+                                            </option>
+                                            <option value="faild">faild</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Receipt Number</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="name"
-                                            name="name"
+                                            placeholder="receipt number"
+                                            name="receipt_number"
                                         />
                                     </div>
                                 </div>
