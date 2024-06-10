@@ -36,14 +36,20 @@ const Create: React.FC<Props> = (props: Props) => {
                                     <label>Branch id</label>
                                     <div className="form_elements">
                                         <select name="branch_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
+                                            <option value="uttara">
+                                                uttara
+                                            </option>
+                                            <option value="gulshan">
+                                                gulshan
+                                            </option>
+                                            <option value="mirpur">
+                                                mirpur
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Meeting Agendas</label>
+                                    <label>Meeting Agenda</label>
                                     <div className="form_elements">
                                         <select name="agendas" id="">
                                             <option value="mc-meeting">

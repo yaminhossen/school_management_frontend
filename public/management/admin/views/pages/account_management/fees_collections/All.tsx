@@ -164,7 +164,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                 <td>{i.payment_method}</td>
                                                 <td>{i.payment_status}</td>
                                                 <td>{i.receipt_number}</td>
-                                                <td>{i.description}</td>\
+                                                <td>{i.description}</td>
                                             </tr>
                                         );
                                     })}

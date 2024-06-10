@@ -33,42 +33,97 @@ const Create: React.FC<Props> = (props: Props) => {
                             </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Branch id</label>
+                                    <label>Employee</label>
                                     <div className="form_elements">
-                                        <select name="branch_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
+                                        <select name="employee_id" id="">
+                                            <option value="employee1">
+                                                employee1
+                                            </option>
+                                            <option value="employee2">
+                                                employee2
+                                            </option>
+                                            <option value="employee3">
+                                                employee3
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch class id</label>
-                                    <div className="form_elements">
-                                        <select name="branch_class_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>Payment Date</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
-                                            placeholder="name"
-                                            name="name"
+                                            type="date"
+                                            name="payment_date"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>Gross Salary</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="number"
+                                            name="gross_salary"
+                                            placeholder="gross salary"
+                                            id=""
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Other deduction</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="number"
+                                            name="gross_salary"
+                                            placeholder="gross salary"
+                                            id=""
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Net Salary</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="number"
+                                            name="net_salary"
+                                            placeholder="net salary after deduction"
+                                            id=""
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Payment Method</label>
+                                    <div className="form_elements">
+                                        <select name="payment_method" id="">
+                                            <option value="bkash">bkash</option>
+                                            <option value="cash">cash</option>
+                                            <option value="check">check</option>
+                                            <option value="bank transfer">
+                                                bank transfer
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Salary Status</label>
+                                    <div className="form_elements">
+                                        <select name="salary_status" id="">
+                                            <option value="processed">
+                                                processed
+                                            </option>
+                                            <option value="pending">
+                                                pending
+                                            </option>
+                                            <option value="faild">faild</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Notes</label>
                                     <div className="form_elements">
                                         <textarea
-                                            name="description"
+                                            name="notes"
                                             id=""
-                                            placeholder="description"
+                                            placeholder="Take a notes"
                                         ></textarea>
                                     </div>
                                 </div>

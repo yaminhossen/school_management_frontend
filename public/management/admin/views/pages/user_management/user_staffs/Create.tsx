@@ -286,11 +286,11 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         name="branch_id"
                                                         id=""
                                                     >
-                                                        <option value="demo">
-                                                            demo
+                                                        <option value="mirpur">
+                                                            mirpur
                                                         </option>
-                                                        <option value="demo">
-                                                            demo
+                                                        <option value="gulshan">
+                                                            gulshan
                                                         </option>
                                                     </select>
                                                 </div>

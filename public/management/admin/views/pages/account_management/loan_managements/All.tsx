@@ -182,7 +182,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                 <td>{i.return_date}</td>
                                                 <td>{i.account_id}</td>
                                                 <td>{i.loan_status}</td>
-                                                <td>{i.description}</td>\
+                                                <td>{i.description}</td>
                                             </tr>
                                         );
                                     })}

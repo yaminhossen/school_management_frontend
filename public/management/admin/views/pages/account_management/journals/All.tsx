@@ -52,6 +52,8 @@ const All: React.FC<Props> = (props: Props) => {
             entry_type: 'credit',
             category: 'fee_payment',
             account_id: '1',
+            debit: '',
+            credit: 3000,
         },
         {
             id: 2,
@@ -61,6 +63,8 @@ const All: React.FC<Props> = (props: Props) => {
             entry_type: 'debit',
             category: 'salary',
             account_id: '2',
+            debit: 2000,
+            credit: '',
         },
         {
             id: 3,
@@ -70,6 +74,8 @@ const All: React.FC<Props> = (props: Props) => {
             entry_type: 'debit',
             category: 'purchase',
             account_id: '2',
+            debit: 2000,
+            credit: '',
         },
     ];
 
@@ -94,11 +100,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         {/* <th>Logo</th> */}
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Amount`}
                                             col_name={`amount`}
                                             sort={true}
-                                        />
+                                        /> */}
                                         <TableHeading
                                             label={`Category`}
                                             col_name={`category`}
@@ -122,6 +128,16 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Debit`}
+                                            col_name={`debit`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Credit`}
+                                            col_name={`credit`}
                                             sort={true}
                                         />
                                     </tr>
@@ -159,15 +175,26 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                <td>{i.amount}</td>
                                                 <td>{i.category}</td>
                                                 <td>{i.entry_type}</td>
                                                 <td>{i.entry_date}</td>
+                                                {/* <td>{i.amount}</td> */}
                                                 <td>{i.account_id}</td>
-                                                <td>{i.description}</td>\
+                                                <td>{i.description}</td>
+                                                <td>{i.debit}</td>
+                                                <td>{i.credit}</td>
                                             </tr>
                                         );
                                     })}
+                                    <tr>
+                                        <td colSpan={8}>
+                                            <div className="text-end">
+                                                Total
+                                            </div>
+                                        </td>
+                                        <td>4000</td>
+                                        <td>3000</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

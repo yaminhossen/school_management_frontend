@@ -239,7 +239,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                 </div>
                                 <div className="full_width">
                                     <div className="form_section_heading">
-                                        <h4>Student Information</h4>
+                                        <h4>Information</h4>
                                     </div>
                                     <div className="d-flex">
                                         <div className="form-group form-vertical">
@@ -489,7 +489,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                 </div>
                                 <div className="full_width">
                                     <div className="form_section_heading">
-                                        <h4>Student Document</h4>
+                                        <h4>Document</h4>
                                     </div>
                                     <div className="multi_inputs">
                                         <div className="pb-4 px-0">
@@ -664,17 +664,17 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                     name="user_parent_id"
                                                                     id=""
                                                                 >
-                                                                    <option value="demo1">
-                                                                        demo1
+                                                                    <option value="parent1">
+                                                                        parent1
                                                                     </option>
-                                                                    <option value="demo2">
-                                                                        demo2
+                                                                    <option value="parent2">
+                                                                        parent2
                                                                     </option>
-                                                                    <option value="demo3">
-                                                                        demo3
+                                                                    <option value="parent3">
+                                                                        parent3
                                                                     </option>
-                                                                    <option value="demo4">
-                                                                        demo4
+                                                                    <option value="parent4">
+                                                                        parent4
                                                                     </option>
                                                                 </select>
                                                             </div>
@@ -703,7 +703,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                 </div>
                                 <div className="full_width">
                                     <div className="form_section_heading">
-                                        <h4>Student Contact Number</h4>
+                                        <h4>Contact Number</h4>
                                     </div>
                                     <div className="multi_inputs">
                                         <div className="pb-4 px-0">
@@ -786,7 +786,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                 </div>
                                 <div className="full_width">
                                     <div className="form_section_heading">
-                                        <h4>Student Language</h4>
+                                        <h4>Language</h4>
                                     </div>
                                     <div className="multi_inputs">
                                         <div className="pb-4 px-0">
@@ -871,7 +871,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                 </div>
                                 <div className="full_width">
                                     <div className="form_section_heading">
-                                        <h4>Student Skill</h4>
+                                        <h4>Skill</h4>
                                     </div>
                                     <div className="multi_inputs">
                                         <div className="pb-4 px-0">
@@ -950,7 +950,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                 </div>
                                 <div className="full_width">
                                     <div className="form_section_heading">
-                                        <h4>Student Educational Background</h4>
+                                        <h4>Educational Background</h4>
                                     </div>
                                     <div className="multi_inputs">
                                         <div className="pb-4 px-0">

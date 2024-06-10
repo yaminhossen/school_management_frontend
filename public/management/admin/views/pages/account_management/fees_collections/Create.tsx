@@ -36,20 +36,59 @@ const Create: React.FC<Props> = (props: Props) => {
                                     <label>Branch id</label>
                                     <div className="form_elements">
                                         <select name="branch_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
+                                            <option value="uttora">
+                                                uttora
+                                            </option>
+                                            <option value="mirpur">
+                                                mirpur
+                                            </option>
+                                            <option value="gulshan">
+                                                gulshan
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
                                     <label>Student Id</label>
                                     <div className="form_elements">
-                                        <select name="branch_class_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                        </select>
+                                        {/* <select name="branch_class_id" id="">
+                                            <option value="student1">
+                                                student1
+                                            </option>
+                                            <option value="student2">
+                                                student2
+                                            </option>
+                                            <option value="student3">
+                                                student3
+                                            </option>
+                                        </select> */}
+                                        <input
+                                            type="text"
+                                            name="student_id"
+                                            id=""
+                                            placeholder="type student id"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Student Name</label>
+                                    <div className="form_elements">
+                                        {/* <select name="branch_class_id" id="">
+                                            <option value="student1">
+                                                student1
+                                            </option>
+                                            <option value="student2">
+                                                student2
+                                            </option>
+                                            <option value="student3">
+                                                student3
+                                            </option>
+                                        </select> */}
+                                        <input
+                                            type="text"
+                                            placeholder="student name"
+                                            readOnly
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">

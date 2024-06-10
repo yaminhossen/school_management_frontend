@@ -46,13 +46,33 @@ const All: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            name: 'Admission fee',
-            description: 'This is intermediate admission fee',
+            employee_id: 'employee1',
+            gross_salary: 20000,
+            intensive: 2000,
+            lunch_bill: 2000,
+            let_fine: 1000,
+            other_deduction: 1000,
+            total: 22000,
         },
         {
             id: 2,
-            name: 'Exam fee',
-            description: 'This is intermediate first term exam fee',
+            employee_id: 'employee2',
+            gross_salary: 10000,
+            intensive: 1000,
+            lunch_bill: 1000,
+            let_fine: 500,
+            other_deduction: 1000,
+            total: 10500,
+        },
+        {
+            id: 3,
+            employee_id: 'employee3',
+            gross_salary: 25000,
+            intensive: 2000,
+            lunch_bill: 2000,
+            let_fine: 1000,
+            other_deduction: 1000,
+            total: 27000,
         },
     ];
 
@@ -78,13 +98,38 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                         {/* <th>Logo</th> */}
                                         <TableHeading
-                                            label={`Name`}
-                                            col_name={`name`}
+                                            label={`Employee`}
+                                            col_name={`employee`}
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Description`}
-                                            col_name={`description`}
+                                            label={`Gross Salary`}
+                                            col_name={`gross_salary`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Intensive`}
+                                            col_name={`intensive`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Lunch Bill`}
+                                            col_name={`lunch_bill`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Let Fine`}
+                                            col_name={`let_fine`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Deduction`}
+                                            col_name={`deduction`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Total`}
+                                            col_name={`total`}
                                             sort={true}
                                         />
                                     </tr>
@@ -122,8 +167,13 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                <td>{i.name}</td>
-                                                <td>{i.description}</td>\
+                                                <td>{i.employee_id}</td>
+                                                <td>{i.gross_salary}</td>
+                                                <td>{i.intensive}</td>
+                                                <td>{i.lunch_bill}</td>
+                                                <td>{i.let_fine}</td>
+                                                <td>{i.other_deduction}</td>
+                                                <td>{i.total}</td>
                                             </tr>
                                         );
                                     })}

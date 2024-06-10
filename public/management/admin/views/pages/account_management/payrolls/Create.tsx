@@ -33,43 +33,90 @@ const Create: React.FC<Props> = (props: Props) => {
                             </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Branch id</label>
+                                    <label>Employee</label>
                                     <div className="form_elements">
-                                        <select name="branch_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
+                                        <select name="employee_id" id="">
+                                            <option value="employee1">
+                                                employee1
+                                            </option>
+                                            <option value="employee2">
+                                                employee2
+                                            </option>
+                                            <option value="employee3">
+                                                employee3
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch class id</label>
-                                    <div className="form_elements">
-                                        <select name="branch_class_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>Gross Salary</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
-                                            placeholder="name"
-                                            name="name"
+                                            type="number"
+                                            placeholder="gross salary"
+                                            name="gross_salary"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>Intensive</label>
                                     <div className="form_elements">
-                                        <textarea
-                                            name="description"
+                                        <input
+                                            type="number"
+                                            placeholder="intensive"
+                                            name="intensive"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Lunch Bill</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="number"
+                                            placeholder="lunch bill"
+                                            name="lunch_bill"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Let Fine</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="number"
+                                            placeholder="let fine"
+                                            name="let_fine"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Other Deduction</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="number"
+                                            placeholder="other deduction"
+                                            name="other_deduction"
+                                        />
+                                    </div>
+                                </div>
+                                {/* <div className="form-group form-horizontal">
+                                    <label>Net Salary</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="number"
+                                            placeholder="net salary"
+                                            name="nat_salary"
+                                        />
+                                    </div>
+                                </div> */}
+                                <div className="form-group form-horizontal">
+                                    <label>Total</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="number"
+                                            name="total"
                                             id=""
-                                            placeholder="description"
-                                        ></textarea>
+                                            placeholder="Total after all deductions"
+                                        />
                                     </div>
                                 </div>
                             </div>

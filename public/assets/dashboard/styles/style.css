@@ -1342,6 +1342,11 @@ input.form_checkbox:checked::after {
   margin-top: 30px;
 }
 
+.admin_dashboard h1 {
+  margin: 20px 0;
+  text-align: center;
+  font-size: 24px;
+}
 .admin_dashboard h2 {
   margin-top: 20px;
   font-size: larger;

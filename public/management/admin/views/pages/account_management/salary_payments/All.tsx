@@ -46,13 +46,36 @@ const All: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            name: 'Admission fee',
-            description: 'This is intermediate admission fee',
+            employee_id: 'employee1',
+            payment_date: '12 June, 2023',
+            gross_salary: '20000',
+            other_deductions: '2000',
+            net_salary: '18000',
+            payment_method: 'cash',
+            salary_status: 'processed',
+            notes: 'June month employee salary',
         },
         {
             id: 2,
-            name: 'Exam fee',
-            description: 'This is intermediate first term exam fee',
+            employee_id: 'employee2',
+            payment_date: '12 July, 2023',
+            gross_salary: '15000',
+            other_deductions: '500',
+            net_salary: '14500',
+            payment_method: 'bkash',
+            salary_status: 'pending',
+            notes: 'July month employee salary',
+        },
+        {
+            id: 3,
+            employee_id: 'employee3',
+            payment_date: '12 Aug, 2023',
+            gross_salary: '25000',
+            other_deductions: '1000',
+            net_salary: '24000',
+            payment_method: 'bank transfer',
+            salary_status: 'processed',
+            notes: 'Aughust month employee salary',
         },
     ];
 
@@ -78,13 +101,43 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                         {/* <th>Logo</th> */}
                                         <TableHeading
-                                            label={`Name`}
-                                            col_name={`name`}
+                                            label={`Employee`}
+                                            col_name={`employee`}
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Description`}
-                                            col_name={`description`}
+                                            label={`Gross Salary`}
+                                            col_name={`gross_salary`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Deductions`}
+                                            col_name={`deductions`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Net Salary`}
+                                            col_name={`net_salary`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Payment Date`}
+                                            col_name={`payment_date`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Payment Method`}
+                                            col_name={`payment_method`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Status`}
+                                            col_name={`Status`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Notes`}
+                                            col_name={`notes`}
                                             sort={true}
                                         />
                                     </tr>
@@ -122,8 +175,14 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                <td>{i.name}</td>
-                                                <td>{i.description}</td>\
+                                                <td>{i.employee_id}</td>
+                                                <td>{i.gross_salary}</td>
+                                                <td>{i.other_deductions}</td>
+                                                <td>{i.net_salary}</td>
+                                                <td>{i.payment_date}</td>
+                                                <td>{i.payment_method}</td>
+                                                <td>{i.salary_status}</td>
+                                                <td>{i.notes}</td>
                                             </tr>
                                         );
                                     })}
