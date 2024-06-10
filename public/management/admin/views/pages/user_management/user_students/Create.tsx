@@ -419,6 +419,15 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-vertical">
+                                            <label>As on date</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="date"
+                                                    name="ass_on_date"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
                                             <label>Familly information</label>
                                             <div className="form_elements">
                                                 <input
@@ -445,15 +454,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     type="text"
                                                     placeholder="living house type"
                                                     name="living_house_type"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-vertical">
-                                            <label>As on date</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="date"
-                                                    name="ass_on_date"
                                                 />
                                             </div>
                                         </div>
@@ -514,6 +514,18 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     <div className="d-flex">
                                                         <div className="form-group form-vertical">
                                                             <label>
+                                                                Document title
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="text"
+                                                                    placeholder="document title"
+                                                                    name="document_title"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-vertical">
+                                                            <label>
                                                                 Document file
                                                             </label>
                                                             <div className="form_elements">
@@ -546,18 +558,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                 />
                                                             </div>
                                                         </div>
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Document title
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <input
-                                                                    type="text"
-                                                                    placeholder="document title"
-                                                                    name="document_title"
-                                                                />
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                     {totalDocument.length >
                                                         1 && (
@@ -583,7 +583,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                 </div>
                                 <div className="full_width">
                                     <div className="form_section_heading">
-                                        <h4>Student Parents</h4>
+                                        <h4>Guardians</h4>
                                     </div>
                                     <div className="multi_inputs">
                                         <div className="pb-4 px-0">
