@@ -267,6 +267,43 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
+                                                <label>Responsibilies</label>
+                                                <div className="form_elements">
+                                                    <label htmlFor="">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="responsibilies"
+                                                            id=""
+                                                        />
+                                                        <span>pion</span>
+                                                    </label>
+                                                    <label htmlFor="">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="responsibilies"
+                                                            id=""
+                                                        />
+                                                        <span>pion</span>
+                                                    </label>
+                                                    <label htmlFor="">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="responsibilies"
+                                                            id=""
+                                                        />
+                                                        <span>pion</span>
+                                                    </label>
+                                                    <label htmlFor="">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="responsibilies"
+                                                            id=""
+                                                        />
+                                                        <span>pion</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div className="form-group form-horizontal">
                                                 <label>Status</label>
                                                 <div className="form_elements">
                                                     <select name="status" id="">

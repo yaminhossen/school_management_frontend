@@ -49,41 +49,107 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch class room id</label>
+                                    <label>Branch class</label>
+                                    <div className="form_elements">
+                                        <select name="branch_class_id" id="">
+                                            <option value="Six">Six</option>
+                                            <option value="Seven">Seven</option>
+                                            <option value="Eight">Eight</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Branch Subject</label>
+                                    <div className="form_elements">
+                                        <select name="branch_subject_id" id="">
+                                            <option value="Bangla">
+                                                Bangla
+                                            </option>
+                                            <option value="English">
+                                                English
+                                            </option>
+                                            <option value="Arabic">
+                                                Arabic
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Branch Class Room</label>
                                     <div className="form_elements">
                                         <select
                                             name="branch_class_room_id"
                                             id=""
                                         >
-                                            <option value="a101">a101</option>
-                                            <option value="b101">b101</option>
-                                            <option value="c101">c101</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Branch class routine id</label>
-                                    <div className="form_elements">
-                                        <select
-                                            name="branch_class_routine_id"
-                                            id=""
-                                        >
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
+                                            <option value="A101">A101</option>
+                                            <option value="B101">demo1</option>
+                                            <option value="C101">demo1</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
                                     <label>Day</label>
                                     <div className="form_elements">
-                                        <input type="date" name="name" />
+                                        <label htmlFor="">
+                                            <input
+                                                type="checkbox"
+                                                name="day"
+                                                id=""
+                                            />
+                                            <span>Saturday</span>
+                                        </label>
+                                        <label htmlFor="">
+                                            <input
+                                                type="checkbox"
+                                                name="day"
+                                                id=""
+                                            />
+                                            <span>Sunday</span>
+                                        </label>
+                                        <label htmlFor="">
+                                            <input
+                                                type="checkbox"
+                                                name="day"
+                                                id=""
+                                            />
+                                            <span>Monday</span>
+                                        </label>
+                                        <label htmlFor="">
+                                            <input
+                                                type="checkbox"
+                                                name="day"
+                                                id=""
+                                            />
+                                            <span>Tuesday</span>
+                                        </label>
+                                        <label htmlFor="">
+                                            <input
+                                                type="checkbox"
+                                                name="day"
+                                                id=""
+                                            />
+                                            <span>Wednesday</span>
+                                        </label>
+                                        <label htmlFor="">
+                                            <input
+                                                type="checkbox"
+                                                name=""
+                                                id=""
+                                            />
+                                            <span>thursday</span>
+                                        </label>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Time</label>
+                                    <label>Start Time</label>
                                     <div className="form_elements">
-                                        <input type="time" name="email" />
+                                        <input type="time" name="start_time" />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>End Time</label>
+                                    <div className="form_elements">
+                                        <input type="time" name="end_time" />
                                     </div>
                                 </div>
                             </div>

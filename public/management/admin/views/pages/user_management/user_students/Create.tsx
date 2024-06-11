@@ -467,6 +467,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-vertical">
+                                            <label>NID</label>
+                                            <div className="form_elements">
+                                                <input type="file" name="nid" />
+                                            </div>
+                                        </div>
+                                        <div className="form-group form-vertical">
                                             <label>Cast</label>
                                             <div className="form_elements">
                                                 <select name="cast" id="">

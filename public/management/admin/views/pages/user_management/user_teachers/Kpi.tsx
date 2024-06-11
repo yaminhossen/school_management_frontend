@@ -48,7 +48,10 @@ const Kpi: React.FC<Props> = (props: Props) => {
             id: 1,
             branch: 'kustia',
             name: 'Teacher1',
-            attendance: '75%',
+            attendance: '45/50',
+            behaviour: '25/30',
+            parent_review: '20/20',
+            total: '90/100',
             phone_number: '01786867672',
             email: 'student1@gamil.com',
             address: 'Mirpur',
@@ -58,7 +61,10 @@ const Kpi: React.FC<Props> = (props: Props) => {
             id: 2,
             branch: 'Barishal',
             name: 'Teacher2',
-            attendance: '65%',
+            attendance: '42/50',
+            behaviour: '26/30',
+            parent_review: '19/20',
+            total: '87/100',
             phone_number: '01786867673',
             email: 'student2@gamil.com',
             address: 'Uttora',
@@ -107,6 +113,21 @@ const Kpi: React.FC<Props> = (props: Props) => {
                                             col_name={`attendance`}
                                             sort={true}
                                         />
+                                        <TableHeading
+                                            label={`Behavior`}
+                                            col_name={`behavior`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Parents Review`}
+                                            col_name={`parent_review`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Total`}
+                                            col_name={`total`}
+                                            sort={true}
+                                        />
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
@@ -146,6 +167,9 @@ const Kpi: React.FC<Props> = (props: Props) => {
                                                 <td>{i.name}</td>
                                                 <td>{i.phone_number}</td>
                                                 <td>{i.attendance}</td>
+                                                <td>{i.behaviour}</td>
+                                                <td>{i.parent_review}</td>
+                                                <td>{i.total}</td>
                                             </tr>
                                         );
                                     })}

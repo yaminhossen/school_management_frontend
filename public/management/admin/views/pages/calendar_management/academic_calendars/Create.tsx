@@ -33,12 +33,6 @@ const Create: React.FC<Props> = (props: Props) => {
                             </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Year</label>
-                                    <div className="form_elements">
-                                        <input type="date" name="year" />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
                                     <label>Start Date</label>
                                     <div className="form_elements">
                                         <input type="date" name="start_date" />

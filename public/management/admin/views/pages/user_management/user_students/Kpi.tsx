@@ -50,9 +50,10 @@ const Kpi: React.FC<Props> = (props: Props) => {
             name: 'Student1',
             class: 'Six',
             roll: '202',
-            attendance: '75%',
-            exam_marks: '75%',
-            ct_marks: '75%',
+            attendance: '20/30',
+            exam_marks: '40/50',
+            ct_marks: '14/20',
+            total: '74/100',
             phone_number: '01786867672',
             email: 'student1@gamil.com',
             address: 'Mirpur',
@@ -64,9 +65,10 @@ const Kpi: React.FC<Props> = (props: Props) => {
             name: 'Student2',
             class: 'Six',
             roll: '203',
-            attendance: '65%',
-            exam_marks: '65%',
-            ct_marks: '65%',
+            attendance: '22/30',
+            exam_marks: '38/50',
+            ct_marks: '18/20',
+            total: '78/100',
             phone_number: '01786867673',
             email: 'student2@gamil.com',
             address: 'Uttora',
@@ -135,6 +137,11 @@ const Kpi: React.FC<Props> = (props: Props) => {
                                             col_name={`ct_marks`}
                                             sort={true}
                                         />
+                                        <TableHeading
+                                            label={`Total`}
+                                            col_name={`total`}
+                                            sort={true}
+                                        />
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
@@ -178,6 +185,7 @@ const Kpi: React.FC<Props> = (props: Props) => {
                                                 <td>{i.attendance}</td>
                                                 <td>{i.exam_marks}</td>
                                                 <td>{i.ct_marks}</td>
+                                                <td>{i.total}</td>
                                             </tr>
                                         );
                                     })}

@@ -47,28 +47,28 @@ const All: React.FC<Props> = (props: Props) => {
         {
             id: 1,
             event: 'Eid-ul-fitr',
-            year: '2024',
+            year: '4',
             start_date: '13 April, 2024',
             end_date: '21 April, 2024',
         },
         {
             id: 1,
             event: 'Eid-ul-adha',
-            year: '2024',
+            year: '5',
             start_date: '13 June, 2024',
             end_date: '21 June, 2024',
         },
         {
             id: 1,
             event: 'Shad-e-Qadr',
-            year: '2024',
+            year: '1',
             start_date: '6 April, 2024',
             end_date: '6 April, 2024',
         },
         {
             id: 1,
             event: 'May day',
-            year: '2024',
+            year: '1',
             start_date: '01 May, 2024',
             end_date: '01 May, 2024',
         },
@@ -101,8 +101,8 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Year`}
-                                            col_name={`year`}
+                                            label={`Days`}
+                                            col_name={`days`}
                                             sort={true}
                                         />
                                         <TableHeading

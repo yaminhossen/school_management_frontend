@@ -5,7 +5,7 @@ export interface Props {}
 const T1: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
-            <h1>Al Hiqamah Model Madrasa</h1>
+            <h1>Nurul Hiqamah Model Madrasa</h1>
             <h2>admin Dashboard</h2>
             <div className="admin_sideba custom_scroll">
                 <h3 className="mt-4 ms-0">User management</h3>
