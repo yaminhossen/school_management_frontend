@@ -46,19 +46,27 @@ const All: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            name: 'Rirst-term',
-            class: 'Bangla',
+            title: 'Weekly',
+            attachment: '/assets/dashboard/attachment/file.pdf',
             agendas: 'mc-meeting',
-            description: 'Rirst-term fee',
-            amount: 10000,
+            text: 'On 12th june first mc meeting',
+            date: '12 June, 2023',
         },
         {
             id: 2,
-            name: 'Mid-term',
-            class: 'English',
+            title: 'Yearly',
+            attachment: '/assets/dashboard/attachment/file.pdf',
             agendas: 'ec-meeting',
-            description: 'Mid-term fee',
-            amount: 10000,
+            text: 'On 12th march first ec meeting',
+            date: '12 March, 2023',
+        },
+        {
+            id: 3,
+            title: 'Monthly',
+            attachment: '/assets/dashboard/attachment/file.pdf',
+            agendas: 'monthly-meeting',
+            text: 'On 12th july first monthly meeting',
+            date: '12 July, 2023',
         },
     ];
 
@@ -84,13 +92,13 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                         {/* <th>Logo</th> */}
                                         <TableHeading
-                                            label={`Name`}
-                                            col_name={`name`}
+                                            label={`Title`}
+                                            col_name={`title`}
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Class`}
-                                            col_name={`class`}
+                                            label={`Date`}
+                                            col_name={`date`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -99,13 +107,13 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Description`}
-                                            col_name={`description`}
+                                            label={`Attachment`}
+                                            col_name={`attachment`}
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Amount`}
-                                            col_name={`amount`}
+                                            label={`Text`}
+                                            col_name={`text`}
                                             sort={true}
                                         />
                                     </tr>
@@ -143,11 +151,11 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                <td>{i.name}</td>
-                                                <td>{i.class}</td>
+                                                <td>{i.title}</td>
+                                                <td>{i.date}</td>
                                                 <td>{i.agendas}</td>
-                                                <td>{i.description}</td>
-                                                <td>{i.amount}</td>
+                                                <td>{i.attachment}</td>
+                                                <td>{i.text}</td>
                                             </tr>
                                         );
                                     })}

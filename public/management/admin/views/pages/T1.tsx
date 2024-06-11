@@ -139,6 +139,14 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                     <li>
+                        <Link to="/branch-class-routine-day-times/class-routine">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Class Routine At A Glanc
+                        </Link>
+                    </li>
+                    <li>
                         <Link to="/branch-class-resources">
                             <span className="material-symbols-outlined fill">
                                 groups
@@ -147,7 +155,7 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/branch-class-subjects">
+                        <Link to="/user-students/attendance-report">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>

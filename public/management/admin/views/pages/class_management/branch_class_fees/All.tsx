@@ -46,17 +46,30 @@ const All: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            name: 'Rirst-term',
-            class: 'Bangla',
-            description: 'Rirst-term fee',
+            branch: 'Mirpur',
+            class: 'Six',
+            fee_type: 'Monthly',
+            name: 'Student1',
+            description: 'Student monthly fee',
             amount: 10000,
         },
         {
             id: 2,
-            name: 'Mid-term',
-            class: 'English',
-            description: 'Mid-term fee',
+            branch: 'Uttara',
+            class: 'Seven',
+            fee_type: 'Yearly',
+            name: 'Student2',
+            description: 'Student yearly fee',
             amount: 10000,
+        },
+        {
+            id: 3,
+            branch: 'Uttara',
+            class: 'Seven',
+            fee_type: 'Hostel bill',
+            name: 'Student2',
+            description: 'Student hostel bill collection',
+            amount: 5000,
         },
     ];
 
@@ -89,6 +102,16 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Class`}
                                             col_name={`class`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Branch`}
+                                            col_name={`branch`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Fee Type`}
+                                            col_name={`fee_type`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -138,6 +161,8 @@ const All: React.FC<Props> = (props: Props) => {
                                                 </td> */}
                                                 <td>{i.name}</td>
                                                 <td>{i.class}</td>
+                                                <td>{i.branch}</td>
+                                                <td>{i.fee_type}</td>
                                                 <td>{i.description}</td>
                                                 <td>{i.amount}</td>
                                             </tr>

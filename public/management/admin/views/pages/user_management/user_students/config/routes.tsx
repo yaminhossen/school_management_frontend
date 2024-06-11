@@ -7,6 +7,7 @@ import Details from '../Details.tsx';
 import Edit from '../Edit.tsx';
 import Kpi from '../Kpi.tsx';
 import Attendance from '../Attendances.tsx';
+import AttendanceReport from '../AttendanceReports.tsx';
 import BasicInformation from '../pages/BasicInformation.tsx';
 import AcademicInformation from '../pages/AcademicInformation.tsx';
 import Document from '../pages/Document.tsx';
@@ -33,6 +34,10 @@ export default {
         {
             path: 'attendance',
             element: <Attendance />,
+        },
+        {
+            path: 'attendance-report',
+            element: <AttendanceReport />,
         },
         {
             path: 'kpi',

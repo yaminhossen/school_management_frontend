@@ -33,12 +33,18 @@ const Create: React.FC<Props> = (props: Props) => {
                             </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Branch id</label>
+                                    <label>Branch</label>
                                     <div className="form_elements">
                                         <select name="branch_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
+                                            <option value="gulshan">
+                                                gulshan
+                                            </option>
+                                            <option value="mirpur">
+                                                mirpur
+                                            </option>
+                                            <option value="uttara">
+                                                uttara
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -49,9 +55,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                             name="branch_class_room_id"
                                             id=""
                                         >
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
+                                            <option value="a101">a101</option>
+                                            <option value="b101">b101</option>
+                                            <option value="c101">c101</option>
                                         </select>
                                     </div>
                                 </div>

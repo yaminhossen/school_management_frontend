@@ -46,17 +46,19 @@ const All: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            name: 'Rirst-term',
-            class: 'Bangla',
-            description: 'Rirst-term fee',
-            amount: 10000,
+            branch: 'gulshan',
+            meeting: 'Monthly',
+            title: 'mc-meeting',
+            description: 'First monthe mc meeting',
+            is_complete: 'YES',
         },
         {
             id: 2,
-            name: 'Mid-term',
-            class: 'English',
-            description: 'Mid-term fee',
-            amount: 10000,
+            branch: 'Mirpur',
+            meeting: 'Yearly',
+            title: 'ec-meeting',
+            description: 'First monthe ec meeting',
+            is_complete: 'NO',
         },
     ];
 
@@ -82,13 +84,18 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                         {/* <th>Logo</th> */}
                                         <TableHeading
-                                            label={`Name`}
-                                            col_name={`name`}
+                                            label={`Title`}
+                                            col_name={`title`}
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Class`}
-                                            col_name={`class`}
+                                            label={`Branch`}
+                                            col_name={`branch`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Meeting`}
+                                            col_name={`meeting`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -97,8 +104,8 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Amount`}
-                                            col_name={`amount`}
+                                            label={`Is Complete`}
+                                            col_name={`is_complete`}
                                             sort={true}
                                         />
                                     </tr>
@@ -136,10 +143,11 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                <td>{i.name}</td>
-                                                <td>{i.class}</td>
+                                                <td>{i.title}</td>
+                                                <td>{i.branch}</td>
+                                                <td>{i.meeting}</td>
                                                 <td>{i.description}</td>
-                                                <td>{i.amount}</td>
+                                                <td>{i.is_complete}</td>
                                             </tr>
                                         );
                                     })}

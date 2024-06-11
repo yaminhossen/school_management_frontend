@@ -102,6 +102,44 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
+                                    <label>Perpous</label>
+                                    <div className="form_elements">
+                                        <select name="perpous" id="">
+                                            <option value="admission fee">
+                                                admission fee
+                                            </option>
+                                            <option value="hostel bill">
+                                                hostel bill
+                                            </option>
+                                            <option value="transport fee">
+                                                transport fee
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Fee type</label>
+                                    <div className="form_elements">
+                                        <select name="perpous" id="">
+                                            <option value="monthly ">
+                                                monthly
+                                            </option>
+                                            <option value="yearly ">
+                                                yearly
+                                            </option>
+                                            <option value="one time ">
+                                                one time
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Total Due</label>
+                                    <div className="form_elements">
+                                        <input type="number" name="total_due" />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
                                     <label>Payment Date</label>
                                     <div className="form_elements">
                                         <input
