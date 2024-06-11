@@ -7,6 +7,7 @@ import Details from '../Details.jsx';
 import Edit from '../Edit.jsx';
 import Class from '../../../class_management/branch_classes/All.tsx';
 import BranchInformation from '../pages/BranchInformation.tsx';
+import AccountInformation from '../pages/AccountInformation.tsx';
 import Teacher from '../../../user_management/user_teachers/All.tsx';
 import Student from '../../../user_management/user_students/All.tsx';
 import Staff from '../../../user_management/user_staffs/All.tsx';
@@ -40,6 +41,10 @@ export default {
                 {
                     path: 'branch-informatin',
                     element: <BranchInformation />,
+                },
+                {
+                    path: 'account-information',
+                    element: <AccountInformation />,
                 },
                 {
                     path: 'class',

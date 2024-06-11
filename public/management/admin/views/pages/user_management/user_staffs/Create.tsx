@@ -283,23 +283,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                             name="responsibilies"
                                                             id=""
                                                         />
-                                                        <span>pion</span>
-                                                    </label>
-                                                    <label htmlFor="">
-                                                        <input
-                                                            type="checkbox"
-                                                            name="responsibilies"
-                                                            id=""
-                                                        />
-                                                        <span>pion</span>
-                                                    </label>
-                                                    <label htmlFor="">
-                                                        <input
-                                                            type="checkbox"
-                                                            name="responsibilies"
-                                                            id=""
-                                                        />
-                                                        <span>pion</span>
+                                                        <span>teacher</span>
                                                     </label>
                                                 </div>
                                             </div>

@@ -134,6 +134,11 @@ const Details: React.FC<Props> = (props: Props) => {
                                             Buildings
                                         </Link>
                                     </li>
+                                    <li>
+                                        <Link to="/branches/details/3/account-information">
+                                            Accounts
+                                        </Link>
+                                    </li>
                                 </ul>
                                 <div></div>
                                 <div className="info-table table-responsive">
