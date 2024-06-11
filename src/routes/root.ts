@@ -26,40 +26,11 @@ module.exports = async function (fastify: FastifyInstance) {
                 return reply.view('auth/admin_login.ejs');
             },
         )
-
-        .get(
-            '/branch',
-            { preHandler: check_auth_and_redirect },
-            async (_req: FastifyRequest, reply: FastifyReply) => {
-                return reply.view('dashboard/branch.ejs');
-            },
-        )
-        .get(
-            '/staff',
-            { preHandler: check_auth_and_redirect },
-            async (_req: FastifyRequest, reply: FastifyReply) => {
-                return reply.view('dashboard/staff.ejs');
-            },
-        )
-        .get(
-            '/teacher',
-            { preHandler: check_auth_and_redirect },
-            async (_req: FastifyRequest, reply: FastifyReply) => {
-                return reply.view('dashboard/teacher.ejs');
-            },
-        )
-        .get(
-            '/parent',
-            { preHandler: check_auth_and_redirect },
-            async (_req: FastifyRequest, reply: FastifyReply) => {
-                return reply.view('dashboard/parent.ejs');
-            },
-        )
         .get(
             '/student',
-            { preHandler: check_auth_and_redirect },
+            // { preHandler: check_auth_and_redirect },
             async (_req: FastifyRequest, reply: FastifyReply) => {
-                return reply.view('dashboard/student.ejs');
+                return reply.view('dashboard/student_uni.ejs');
             },
         )
         .get(
