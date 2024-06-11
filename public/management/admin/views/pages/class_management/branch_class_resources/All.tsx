@@ -46,14 +46,14 @@ const All: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            title: 'Teaching',
+            title: 'Vocabulary book',
             description:
                 'Tool and materials to aid educators in delivering effective instruction',
             attachment: 'file.pdf',
         },
         {
             id: 2,
-            title: 'Study',
+            title: 'Model shit',
             description:
                 'Resources designed to assist students in reviewing and understanding course content',
             attachment: 'file.pdf',
@@ -133,7 +133,9 @@ const All: React.FC<Props> = (props: Props) => {
                                                 </td> */}
                                                 <td>{i.title}</td>
                                                 <td>{i.description}</td>
-                                                <td>{i.attachment}</td>
+                                                <td>
+                                                    <a href="">download pdf</a>
+                                                </td>
                                             </tr>
                                         );
                                     })}

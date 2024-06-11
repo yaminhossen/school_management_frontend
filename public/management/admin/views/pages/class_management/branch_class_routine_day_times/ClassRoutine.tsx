@@ -28,8 +28,8 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                 onSubmit={(e) => handle_submit(e)}
                                 className="form_600 mx-auto pt-3"
                             >
-                                <div className="mt-4">
-                                    <div className="form-group form-horizontal">
+                                <div className="mt-4 d-flex text-left">
+                                    <div className="form-group form-vertical">
                                         <label>Branch</label>
                                         <div className="form_elements">
                                             <select name="branch_id" id="">
@@ -45,7 +45,7 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="form-group form-horizontal">
+                                    <div className="form-group form-vertical">
                                         <label>Class</label>
                                         <div className="form_elements">
                                             <select name="class" id="">

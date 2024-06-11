@@ -109,11 +109,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Description`}
-                                            col_name={`deacription`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
                                             label={`Total seat`}
                                             col_name={`total_seat`}
                                             sort={true}
@@ -121,6 +116,11 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Booked`}
                                             col_name={`total_student`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Description`}
+                                            col_name={`deacription`}
                                             sort={true}
                                         />
                                     </tr>
@@ -161,9 +161,9 @@ const All: React.FC<Props> = (props: Props) => {
                                                 <td>{i.room_name}</td>
                                                 <td>{i.room_type}</td>
                                                 <td>{i.attachment}</td>
-                                                <td>{i.description}</td>
                                                 <td>{i.total_seat}</td>
                                                 <td>{i.total_student}</td>
+                                                <td>{i.description}</td>
                                             </tr>
                                         );
                                     })}

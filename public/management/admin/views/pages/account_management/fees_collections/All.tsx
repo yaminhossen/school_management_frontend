@@ -94,14 +94,15 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         {/* <th>Logo</th> */}
-                                        <TableHeading
-                                            label={`Amount`}
-                                            col_name={`amount`}
-                                            sort={true}
-                                        />
+
                                         <TableHeading
                                             label={`Payment Date`}
                                             col_name={`payment_date`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Amount`}
+                                            col_name={`amount`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -159,8 +160,8 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                <td>{i.amount}</td>
                                                 <td>{i.payment_date}</td>
+                                                <td>{i.amount}</td>
                                                 <td>{i.payment_method}</td>
                                                 <td>{i.payment_status}</td>
                                                 <td>{i.receipt_number}</td>

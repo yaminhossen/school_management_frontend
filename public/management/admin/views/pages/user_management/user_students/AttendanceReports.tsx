@@ -49,24 +49,26 @@ const Attendance: React.FC<Props> = (props: Props) => {
             name: 'Student1',
             class: 'Six',
             roll: '201',
-            attendance: 22,
+            attendance: 21,
             axpected_attendance: 24,
-            sick_leave: 4,
+            sick_leave: 1,
             sick_reason: 'for some problem',
-            casual_leave: 4,
+            casual_leave: 2,
             casual_reason: 'for some problem',
+            attendace_avg: 90,
         },
         {
             id: 2,
             name: 'Student2',
             class: 'Six',
             roll: '202',
-            attendance: 25,
+            attendance: 22,
             axpected_attendance: 24,
-            sick_leave: 2,
+            sick_leave: 1,
             sick_reason: 'for some problem',
-            casual_leave: 3,
+            casual_leave: 1,
             casual_reason: 'for some problem',
+            attendace_avg: 92,
         },
         {
             id: 3,
@@ -75,10 +77,11 @@ const Attendance: React.FC<Props> = (props: Props) => {
             roll: '203',
             attendance: 22,
             axpected_attendance: 24,
-            sick_leave: 4,
+            sick_leave: 2,
             sick_reason: 'for some problem',
-            casual_leave: 4,
+            casual_leave: 0,
             casual_reason: 'for some problem',
+            attendace_avg: 92,
         },
     ];
 
@@ -148,6 +151,11 @@ const Attendance: React.FC<Props> = (props: Props) => {
                                             col_name={`reason`}
                                             sort={true}
                                         />
+                                        <TableHeading
+                                            label={`Attendance_avg`}
+                                            col_name={`attendance_avg`}
+                                            sort={true}
+                                        />
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
@@ -191,6 +199,7 @@ const Attendance: React.FC<Props> = (props: Props) => {
                                             <td>{i.sick_reason}</td>
                                             <td>{i.casual_leave}</td>
                                             <td>{i.casual_reason}</td>
+                                            <td>{i.attendace_avg}%</td>
                                         </tr>
                                     ))}
                                 </tbody>

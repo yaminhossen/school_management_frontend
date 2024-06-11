@@ -47,12 +47,8 @@ const Kpi: React.FC<Props> = (props: Props) => {
         {
             id: 1,
             branch: 'kustia',
-            name: 'Student1',
-            class: 'Six',
-            roll: '202',
+            name: 'Teacher1',
             attendance: '75%',
-            exam_marks: '75%',
-            ct_marks: '75%',
             phone_number: '01786867672',
             email: 'student1@gamil.com',
             address: 'Mirpur',
@@ -61,12 +57,8 @@ const Kpi: React.FC<Props> = (props: Props) => {
         {
             id: 2,
             branch: 'Barishal',
-            name: 'Student2',
-            class: 'Six',
-            roll: '203',
+            name: 'Teacher2',
             attendance: '65%',
-            exam_marks: '65%',
-            ct_marks: '65%',
             phone_number: '01786867673',
             email: 'student2@gamil.com',
             address: 'Uttora',
@@ -106,16 +98,6 @@ const Kpi: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Class`}
-                                            col_name={`class`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Roll`}
-                                            col_name={`roll`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
                                             label={`Phone number`}
                                             col_name={`phone_number`}
                                             sort={true}
@@ -123,16 +105,6 @@ const Kpi: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Attendance`}
                                             col_name={`attendance`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Exam Marks`}
-                                            col_name={`exam_marks`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Ct Marks`}
-                                            col_name={`ct_marks`}
                                             sort={true}
                                         />
                                     </tr>
@@ -172,12 +144,8 @@ const Kpi: React.FC<Props> = (props: Props) => {
                                                 </td>
                                                 <td>{i.branch}</td>
                                                 <td>{i.name}</td>
-                                                <td>{i.class}</td>
-                                                <td>{i.roll}</td>
                                                 <td>{i.phone_number}</td>
                                                 <td>{i.attendance}</td>
-                                                <td>{i.exam_marks}</td>
-                                                <td>{i.ct_marks}</td>
                                             </tr>
                                         );
                                     })}

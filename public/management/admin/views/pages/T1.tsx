@@ -110,6 +110,14 @@ const T1: React.FC<Props> = (props: Props) => {
                             Branch Transport Drivers Management
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/academic-calendars">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Academic Calendars Management
+                        </Link>
+                    </li>
                 </ul>
 
                 <h3 className="mt-4 ms-0">Academic management</h3>
