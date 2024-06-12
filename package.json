@@ -70,13 +70,13 @@
     "server": "nodemon",
 
     "central-branch": "vite build --config vite-config-central-branch.js --watch",
-    "admin": "vite build --config vite-config-admin.js --watch",
+    "super-admin": "vite build --config vite-config-super-admin.js --watch",
     "student": "vite build --config vite-config-student.js --watch",
     "parent": "vite build --config vite-config-parent.js --watch",
     "teacher": "vite build --config vite-config-teacher.js --watch",
     "account": "vite build --config vite-config-account.js --watch",
-    "admission_officer": "vite build --config vite-config-admission-officer.js --watch",
-    "hostel_super": "vite build --config vite-config-hostel-super.js --watch",
+    "admission-officer": "vite build --config vite-config-admission-officer.js --watch",
+    "hostel-super": "vite build --config vite-config-hostel-super.js --watch",
 
     "server:lint": "npx esw --ext .ts src --fix",
     "server:lint:watch": "npx esw  --watch --ext .ts src --fix",

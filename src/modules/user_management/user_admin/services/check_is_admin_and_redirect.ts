@@ -29,10 +29,10 @@ const check_is_admin_and_redirect = async (
             (request as anyObject).user = decoded;
             return;
         } else {
-            return reply.redirect('/admin/login');
+            return reply.redirect('/super-admin/login');
         }
     } catch (error) {
-        return reply.redirect('/admin/login');
+        return reply.redirect('/super-admin/login');
     }
 };
 
