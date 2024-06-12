@@ -21,6 +21,29 @@ const SideBar: React.FC<Props> = (props: Props) => {
                 <MenuSingle to="/" icon="icon-book" label="Mark Sheet" />
                 <MenuSingle to="/" icon="icon-receipt" label="Attendance" />
 
+                {/* sdfds */}
+
+                <MenuSingle to="/" icon="icon-receipt" label="Home" />
+                <MenuSingle to="/" icon="icon-receipt" label="Classes" />
+                <MenuSingle to="/" icon="icon-receipt" label="Students" />
+                <MenuSingle to="/" icon="icon-receipt" label="Assignments" />
+                <MenuSingle
+                    to="/"
+                    icon="icon-receipt"
+                    label="Course Materials"
+                />
+                <MenuSingle to="/" icon="icon-receipt" label="Assesments" />
+                <MenuSingle to="/" icon="icon-receipt" label="Reports" />
+                <MenuSingle to="/" icon="icon-receipt" label="Settings" />
+                <MenuSingle to="/" icon="icon-receipt" label="Analytics" />
+                <MenuSingle
+                    to="/"
+                    icon="icon-receipt"
+                    label="Resourse Management"
+                />
+
+                {/* sdfds */}
+
                 <MenuDropDown
                     section_title=""
                     group_title="Fee"
@@ -47,7 +70,7 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-ruler-pencil"
                     label="My Activities"
                 />
-                <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" />
+                {/* <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" /> */}
 
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
 
