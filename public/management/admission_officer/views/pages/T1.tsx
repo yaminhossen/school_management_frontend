@@ -5,7 +5,7 @@ const T1: React.FC<Props> = (props: Props) => {
     return (
         <div className="custom_scroll">
             <div className="name my-3">
-                <h2>Muhammad Shafiq S</h2>
+                <h2>Muhammad Shafiq AO</h2>
             </div>
             {/* analytics */}
             <div
