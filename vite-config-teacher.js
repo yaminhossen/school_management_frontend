@@ -9,7 +9,7 @@ let resolve = path.resolve;
 npm i vite @vitejs/plugin-react @reduxjs/toolkit @types/react @types/react-dom react react-dom react-redux react-router-dom
 
 */
-var management_path = `student`;
+var management_path = `teacher`;
 export default defineConfig({
     plugins: [react()],
     resolve: {
@@ -36,7 +36,7 @@ export default defineConfig({
     },
     esbuild: {
         loader: 'tsx',
-        include: /public\/management\/student\/.*\.tsx?$/,
+        include: /public\/management\/teacher\/.*\.tsx?$/,
         exclude: [],
     },
     optimizeDeps: {
@@ -47,7 +47,7 @@ export default defineConfig({
                     setup(build) {
                         build.onLoad(
                             {
-                                filter: /public\/management\/student\/.*\.js$/,
+                                filter: /public\/management\/teacher\/.*\.js$/,
                             },
                             async (args) => ({
                                 loader: 'tsx',

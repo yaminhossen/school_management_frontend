@@ -41,6 +41,20 @@ module.exports = async function (fastify: FastifyInstance) {
             },
         )
         .get(
+            '/teacher',
+            // { preHandler: check_auth_and_redirect },
+            async (_req: FastifyRequest, reply: FastifyReply) => {
+                return reply.view('dashboard/teacher_uni.ejs');
+            },
+        )
+        .get(
+            '/account',
+            // { preHandler: check_auth_and_redirect },
+            async (_req: FastifyRequest, reply: FastifyReply) => {
+                return reply.view('dashboard/account_uni.ejs');
+            },
+        )
+        .get(
             '/dashboard/login',
             async (_req: FastifyRequest, reply: FastifyReply) => {
                 let html = await minified_view(fastify, 'auth/login.ejs');
