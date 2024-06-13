@@ -15,31 +15,62 @@ const SideBar: React.FC<Props> = (props: Props) => {
         <>
             <ul className="sidebar-menu">
                 <MenuSingle to="/" icon="icon-home" label="Dashboard" />
-                <MenuSingle to="/" icon="icon-user" label="Profile" />
-                <MenuSingle to="/" icon="icon-calendar" label="Class Routine" />
-                <MenuSingle to="/" icon="icon-clipboard" label="Exam Routine" />
-                <MenuSingle to="/" icon="icon-book" label="Mark Sheet" />
-                <MenuSingle to="/" icon="icon-receipt" label="Attendance" />
+                <MenuSingle to="/profile" icon="icon-user" label="Profile" />
+                <MenuSingle
+                    to="/class-routine"
+                    icon="icon-calendar"
+                    label="Class Routine"
+                />
+                <MenuSingle
+                    to="/exam-routines"
+                    icon="icon-clipboard"
+                    label="Exam Routine"
+                />
+                <MenuSingle
+                    to="/mark-sheet"
+                    icon="icon-book"
+                    label="Mark Sheet"
+                />
+                <MenuSingle
+                    to="/attendance"
+                    icon="icon-receipt"
+                    label="Attendance"
+                />
 
                 {/* sdfds */}
 
                 <MenuSingle to="/" icon="icon-receipt" label="Home" />
                 <MenuSingle to="/classes" icon="icon-receipt" label="Classes" />
-                <MenuSingle to="/" icon="icon-receipt" label="Students" />
-                <MenuSingle to="/" icon="icon-receipt" label="Assignments" />
                 <MenuSingle
-                    to="/"
+                    to="/students"
+                    icon="icon-receipt"
+                    label="Students"
+                />
+                <MenuSingle
+                    to="/assignments"
+                    icon="icon-receipt"
+                    label="Assignments"
+                />
+                <MenuSingle
+                    to="/course-materials"
                     icon="icon-receipt"
                     label="Course Materials"
                 />
-                <MenuSingle to="/" icon="icon-receipt" label="Assesments" />
-                <MenuSingle to="/" icon="icon-receipt" label="Reports" />
-                <MenuSingle to="/" icon="icon-receipt" label="Settings" />
-                <MenuSingle to="/" icon="icon-receipt" label="Analytics" />
                 <MenuSingle
-                    to="/"
+                    to="/assesments"
                     icon="icon-receipt"
-                    label="Resourse Management"
+                    label="Assesments"
+                />
+                <MenuSingle to="/reports" icon="icon-receipt" label="Reports" />
+                <MenuSingle
+                    to="/settings"
+                    icon="icon-receipt"
+                    label="Settings"
+                />
+                <MenuSingle
+                    to="/analytics"
+                    icon="icon-receipt"
+                    label="Analytics"
                 />
 
                 {/* sdfds */}
@@ -55,18 +86,18 @@ const SideBar: React.FC<Props> = (props: Props) => {
                 </MenuDropDown>
 
                 <MenuSingle
-                    to="/"
+                    to="/leave-applications"
                     icon="icon-notepad"
                     label="Leave Application"
                 />
                 <MenuSingle
-                    to="/"
+                    to="/academic-resources"
                     icon="icon-server"
                     label="Academic Resources"
                 />
-                <MenuSingle to="/" icon="icon-bell" label="Notices" />
+                <MenuSingle to="/notices" icon="icon-bell" label="Notices" />
                 <MenuSingle
-                    to="/"
+                    to="/my-activities"
                     icon="icon-ruler-pencil"
                     label="My Activities"
                 />
