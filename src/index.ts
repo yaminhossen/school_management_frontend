@@ -9,7 +9,6 @@ import { sequelize } from './bootstrap/db.sql';
 import custom_error from './modules/user_management/user_admin/helpers/custom_error';
 import type { FastifyCookieOptions } from '@fastify/cookie';
 import { app_config } from './configs/app.config';
-import { Sequelize } from 'sequelize';
 
 const AutoLoad = require('@fastify/autoload');
 const underPressure = require('@fastify/under-pressure');
@@ -80,6 +79,7 @@ async function boot() {
     /** find all module routes */
     async function findAllRoutesFiles(dir: any) {
         let results: any = [];
+        console.log('\n');
         async function recursiveSearch(currentPath: any) {
             const entries = await fsp.readdir(currentPath, {
                 withFileTypes: true,
@@ -89,6 +89,7 @@ async function boot() {
                 if (entry.isDirectory()) {
                     await recursiveSearch(fullPath);
                 } else if (entry.name === 'routes.ts') {
+                    console.log('connecting : ' + fullPath);
                     results.push(fullPath);
                 }
             }
@@ -111,6 +112,7 @@ async function boot() {
         });
 
     /** register all dependencies */
+    console.log('\nsetup plugins \n');
     fastify
         .register(AutoLoad, {
             dir: path.join(__dirname, 'plugins'),
