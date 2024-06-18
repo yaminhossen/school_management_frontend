@@ -15,39 +15,59 @@ const SideBar: React.FC<Props> = (props: Props) => {
         <>
             <ul className="sidebar-menu">
                 <MenuSingle to="/" icon="icon-home" label="Dashboard" />
-                <MenuSingle to="/" icon="icon-user" label="Profile" />
-                <MenuSingle to="/" icon="icon-calendar" label="Class Routine" />
-                <MenuSingle to="/" icon="icon-clipboard" label="Exam Routine" />
-                <MenuSingle to="/" icon="icon-book" label="Mark Sheet" />
-                <MenuSingle to="/" icon="icon-receipt" label="Attendance" />
+                <MenuSingle
+                    to="/profile/basic-information"
+                    icon="icon-user"
+                    label="Profile"
+                />
+                <MenuSingle
+                    to="/class-routine"
+                    icon="icon-calendar"
+                    label="Class Routine"
+                />
+                <MenuSingle
+                    to="/exam-routine"
+                    icon="icon-clipboard"
+                    label="Exam Routine"
+                />
+                <MenuSingle
+                    to="/mark-sheet"
+                    icon="icon-book"
+                    label="Mark Sheet"
+                />
+                <MenuSingle
+                    to="/attendance"
+                    icon="icon-receipt"
+                    label="Attendance"
+                />
 
                 <MenuDropDown
                     section_title=""
                     group_title="Fee"
                     icon="icon-money"
                 >
-                    <MenuDropDownItem label="Due List" to="/users" />
-                    <MenuDropDownItem label="Payment History" to="/users" />
-                    <MenuDropDownItem label="Pay Fees" to="/users" />
+                    <MenuDropDownItem label="Due List" to="/fees" />
+                    <MenuDropDownItem label="Payment History" to="/fees/dues" />
+                    <MenuDropDownItem label="Pay Fees" to="/fees/pay" />
                 </MenuDropDown>
 
                 <MenuSingle
-                    to="/"
+                    to="/leave-application"
                     icon="icon-notepad"
                     label="Leave Application"
                 />
                 <MenuSingle
-                    to="/"
+                    to="/academic-resources"
                     icon="icon-server"
                     label="Academic Resources"
                 />
-                <MenuSingle to="/" icon="icon-bell" label="Notices" />
-                <MenuSingle
-                    to="/"
+                <MenuSingle to="/notices" icon="icon-bell" label="Notices" />
+                {/* <MenuSingle
+                    to="/activities"
                     icon="icon-ruler-pencil"
                     label="My Activities"
-                />
-                <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" />
+                /> */}
+                {/* <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" /> */}
 
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
 

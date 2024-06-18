@@ -14,16 +14,16 @@ module.exports = async function (fastify: FastifyInstance) {
         })
 
         .get(
-            '/admin',
+            '/super-admin',
             { preHandler: check_is_admin_and_redirect },
             async (_req: FastifyRequest, reply: FastifyReply) => {
-                return reply.view('dashboard/admin.ejs');
+                return reply.view('dashboard/super_admin_uni.ejs');
             },
         )
         .get(
-            '/admin/login',
+            '/super-admin/login',
             async (_req: FastifyRequest, reply: FastifyReply) => {
-                return reply.view('auth/admin_login.ejs');
+                return reply.view('auth/super_admin_login.ejs');
             },
         )
         .get(
@@ -31,6 +31,41 @@ module.exports = async function (fastify: FastifyInstance) {
             // { preHandler: check_auth_and_redirect },
             async (_req: FastifyRequest, reply: FastifyReply) => {
                 return reply.view('dashboard/student_uni.ejs');
+            },
+        )
+        .get(
+            '/parent',
+            // { preHandler: check_auth_and_redirect },
+            async (_req: FastifyRequest, reply: FastifyReply) => {
+                return reply.view('dashboard/parent_uni.ejs');
+            },
+        )
+        .get(
+            '/teacher',
+            // { preHandler: check_auth_and_redirect },
+            async (_req: FastifyRequest, reply: FastifyReply) => {
+                return reply.view('dashboard/teacher_uni.ejs');
+            },
+        )
+        .get(
+            '/account',
+            // { preHandler: check_auth_and_redirect },
+            async (_req: FastifyRequest, reply: FastifyReply) => {
+                return reply.view('dashboard/account_uni.ejs');
+            },
+        )
+        .get(
+            '/admission-officer',
+            // { preHandler: check_auth_and_redirect },
+            async (_req: FastifyRequest, reply: FastifyReply) => {
+                return reply.view('dashboard/admission_officer_uni.ejs');
+            },
+        )
+        .get(
+            '/hostel-super',
+            // { preHandler: check_auth_and_redirect },
+            async (_req: FastifyRequest, reply: FastifyReply) => {
+                return reply.view('dashboard/hostel_super_uni.ejs');
             },
         )
         .get(

@@ -5,7 +5,7 @@ const T1: React.FC<Props> = (props: Props) => {
     return (
         <div className="custom_scroll">
             <div className="name my-3">
-                <h2>Muhammad Shafiq</h2>
+                <h2>Shafiqur Rahman</h2>
             </div>
             {/* analytics */}
             <div
@@ -17,21 +17,42 @@ const T1: React.FC<Props> = (props: Props) => {
                 }}
             >
                 {[
-                    'নোটিশ',
-                    'বাড়ির কাজ',
-                    'এই মাসের উপস্থিতি',
-                    'উপস্থিতি %',
-                    'লাইব্রেরী বই ইস্যু',
-                    'ফিস বকেয়া',
+                    {
+                        title: 'নোটিশ',
+                        value: 7,
+                    },
+                    {
+                        title: 'বাড়ির কাজ',
+                        value: 2,
+                    },
+                    {
+                        title: 'এই মাসের উপস্থিতি',
+                        value: '78 / 88',
+                    },
+                    {
+                        title: 'উপস্থিতি %',
+                        value: 89,
+                    },
+                    {
+                        title: 'লাইব্রেরী বই ইস্যু',
+                        value: 3,
+                    },
+                    {
+                        title: 'ফিস বকেয়া',
+                        value: 1780,
+                    },
                 ].map((i) => {
                     return (
-                        <div className="card w-100" data-intro="This is card">
+                        <div
+                            className="card w-100 mb-0"
+                            data-intro="This is card"
+                        >
                             <div className="business-top-widget card-body">
-                                <h5 className="mb-2">{i}</h5>
+                                <h5 className="mb-2">{i.title}</h5>
                                 <div className="media d-inline-flex">
                                     <div className="media-body">
                                         <h2 className="total-value m-0 counter">
-                                            {Math.round(Math.random() * 1000)}
+                                            {i.value}
                                         </h2>
                                     </div>
                                     <i
@@ -44,8 +65,9 @@ const T1: React.FC<Props> = (props: Props) => {
                     );
                 })}
             </div>
+
             {/* attendance calendar */}
-            <div className="calendar_dashboard">
+            <div className="calendar_dashboard mt-4">
                 <div className="card mx-auto">
                     <div className="card-header d-flex justify-content-between flex-wrap">
                         <h5>
