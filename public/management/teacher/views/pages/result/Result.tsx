@@ -9,19 +9,19 @@ const Result: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            subject: 'Bangla',
+            name: 'Shahin',
             marks: '75',
             grade: 'A',
         },
         {
             id: 2,
-            subject: 'English',
+            name: 'Tamim',
             marks: '85',
             grade: 'A+',
         },
         {
             id: 3,
-            subject: 'Math',
+            name: 'Ramim',
             marks: '90',
             grade: 'A+',
         },
@@ -29,38 +29,45 @@ const Result: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
-            <h3 className="table_heading mt-4">First Semester</h3>
-            <div className="content_body">
-                <div className="data_list">
-                    <div className="table_responsive custom_scroll">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>id</th>
-                                    <th>Subject</th>
-                                    <th>Marks</th>
-                                    <th>Grade</th>
-                                </tr>
-                            </thead>
-                            <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.subject}</td>
-                                            <td>{i.marks}</td>
-                                            <td>{i.grade}</td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
+            <div className="result_details">
+                <h3 className="table_heading mt-4">First Semester</h3>
+                <form action="" onSubmit={(e) => e.preventDefault()}>
+                    <div className="teacher_result">
+                        <div>
+                            <div>Class</div>
+                            <div>
+                                <select name="class" id="">
+                                    <option value="six">Six</option>
+                                    <option value="seven">Seven</option>
+                                    <option value="eight">Eight</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <div>Semister</div>
+                            <div>
+                                <select name="semister" id="">
+                                    <option value="first">First</option>
+                                    <option value="second">Second</option>
+                                    <option value="third">Third</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <div>Roll</div>
+                            <div>
+                                <input type="number" name="roll" id="" />
+                            </div>
+                        </div>
+                        <button
+                            className="btn btn-sm btn-outline-info "
+                            type="submit"
+                        >
+                            Submit
+                        </button>
                     </div>
-                </div>
+                </form>
             </div>
-            <h3 className="table_heading mt-4">Second Semester</h3>
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
@@ -68,8 +75,8 @@ const Result: React.FC<Props> = (props: Props) => {
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>id</th>
-                                    <th>Subject</th>
+                                    <th>Serial</th>
+                                    <th>Name</th>
                                     <th>Marks</th>
                                     <th>Grade</th>
                                 </tr>
@@ -80,7 +87,7 @@ const Result: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.subject}</td>
+                                            <td>{i.name}</td>
                                             <td>{i.marks}</td>
                                             <td>{i.grade}</td>
                                         </tr>
