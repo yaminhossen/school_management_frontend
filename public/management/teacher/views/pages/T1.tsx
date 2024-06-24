@@ -16,33 +16,33 @@ const T1: React.FC<Props> = (props: Props) => {
                     gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr)',
                 }}
             >
-                {[
-                    'নোটিশ',
-                    'বাড়ির কাজ',
-                    'এই মাসের উপস্থিতি',
-                    'উপস্থিতি %',
-                    'লাইব্রেরী বই ইস্যু',
-                    'ফিস বকেয়া',
-                ].map((i) => {
-                    return (
-                        <div className="card w-100" data-intro="This is card">
-                            <div className="business-top-widget card-body">
-                                <h5 className="mb-2">{i}</h5>
-                                <div className="media d-inline-flex">
-                                    <div className="media-body">
-                                        <h2 className="total-value m-0 counter">
-                                            {Math.round(Math.random() * 1000)}
-                                        </h2>
+                {['নোটিশ', 'বাড়ির কাজ', 'এই মাসের উপস্থিতি', 'উপস্থিতি %'].map(
+                    (i) => {
+                        return (
+                            <div
+                                className="card w-100"
+                                data-intro="This is card"
+                            >
+                                <div className="business-top-widget card-body">
+                                    <h5 className="mb-2">{i}</h5>
+                                    <div className="media d-inline-flex">
+                                        <div className="media-body">
+                                            <h2 className="total-value m-0 counter">
+                                                {Math.round(
+                                                    Math.random() * 1000,
+                                                )}
+                                            </h2>
+                                        </div>
+                                        <i
+                                            style={{ opacity: '.4' }}
+                                            className="icon-bar-chart font-info align-self-center"
+                                        ></i>
                                     </div>
-                                    <i
-                                        style={{ opacity: '.4' }}
-                                        className="icon-bar-chart font-info align-self-center"
-                                    ></i>
                                 </div>
                             </div>
-                        </div>
-                    );
-                })}
+                        );
+                    },
+                )}
             </div>
             {/* attendance calendar */}
             <div className="calendar_dashboard">
