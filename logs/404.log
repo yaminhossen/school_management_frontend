@@ -1,0 +1,3 @@
+{"level":60,"time":1719212380198,"pid":14904,"hostname":"DESKTOP-9421701","error":"404","url":"/admin/login"}
+{"level":60,"time":1719212380670,"pid":14904,"hostname":"DESKTOP-9421701","error":"404","url":"/admin/login"}
+{"level":60,"time":1719212412803,"pid":14904,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-teachers?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}

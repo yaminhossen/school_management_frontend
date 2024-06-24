@@ -22,15 +22,16 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="Class Routine"
                 />
                 <MenuSingle
-                    to="/exam-routines"
+                    to="/exam-routine"
                     icon="icon-clipboard"
                     label="Exam Routine"
                 />
                 <MenuSingle
-                    to="/mark-sheet"
-                    icon="icon-book"
-                    label="Mark Sheet"
+                    to="/hall-guard-routine"
+                    icon="icon-clipboard"
+                    label="Hall Guard Routine"
                 />
+                <MenuSingle to="/result" icon="icon-book" label="Result" />
                 <MenuSingle
                     to="/attendance"
                     icon="icon-receipt"
@@ -40,7 +41,6 @@ const SideBar: React.FC<Props> = (props: Props) => {
                 {/* sdfds */}
 
                 <MenuSingle to="/" icon="icon-receipt" label="Home" />
-                <MenuSingle to="/classes" icon="icon-receipt" label="Classes" />
                 <MenuSingle
                     to="/students"
                     icon="icon-receipt"
@@ -55,11 +55,6 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     to="/course-materials"
                     icon="icon-receipt"
                     label="Course Materials"
-                />
-                <MenuSingle
-                    to="/assesments"
-                    icon="icon-receipt"
-                    label="Assesments"
                 />
                 <MenuSingle to="/reports" icon="icon-receipt" label="Reports" />
                 <MenuSingle
@@ -86,7 +81,7 @@ const SideBar: React.FC<Props> = (props: Props) => {
                 </MenuDropDown>
 
                 <MenuSingle
-                    to="/leave-applications"
+                    to="/leave-application"
                     icon="icon-notepad"
                     label="Leave Application"
                 />
