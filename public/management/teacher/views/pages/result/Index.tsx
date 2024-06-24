@@ -10,6 +10,7 @@ const Index: React.FC<Props> = (props: Props) => {
         {
             id: 1,
             class: 'Six',
+            subject: 'Bangla',
             total_student: '400',
             semister: 'Third',
             total_pass: '390',
@@ -19,7 +20,19 @@ const Index: React.FC<Props> = (props: Props) => {
         },
         {
             id: 2,
+            class: 'Six',
+            subject: 'Agriculture',
+            total_student: '400',
+            semister: 'Third',
+            total_pass: '390',
+            total_failed: '10',
+            total_result_assign: '300',
+            session: '2020',
+        },
+        {
+            id: 3,
             class: 'Seven',
+            subject: 'Social Science',
             total_student: '500',
             semister: 'Second',
             total_pass: '450',
@@ -28,8 +41,9 @@ const Index: React.FC<Props> = (props: Props) => {
             session: '2020',
         },
         {
-            id: 3,
+            id: 4,
             class: 'Eight',
+            subject: 'Bangla',
             total_student: '220',
             semister: 'Third',
             total_pass: '200',
@@ -41,7 +55,36 @@ const Index: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
-            {/* <h3 className="table_heading">Results</h3> */}
+            <form action="">
+                <div className="teacher_result">
+                    <div>
+                        <div>Class</div>
+                        <div>
+                            <select name="class" id="">
+                                <option value="six">Six</option>
+                                <option value="seven">Seven</option>
+                                <option value="eight">Eight</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <div>Semister</div>
+                        <div>
+                            <select name="semister" id="">
+                                <option value="first">First</option>
+                                <option value="second">Second</option>
+                                <option value="third">Third</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button
+                        className="btn btn-sm btn-outline-info "
+                        type="submit"
+                    >
+                        Submit
+                    </button>
+                </div>
+            </form>
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
@@ -50,6 +93,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Class</th>
+                                    <th>Subject</th>
                                     <th>Total Student</th>
                                     <th>Semister</th>
                                     <th>Session</th>
@@ -65,6 +109,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.class}</td>
+                                            <td>{i.subject}</td>
                                             <td>{i.total_student}</td>
                                             <td>{i.semister}</td>
                                             <td>{i.session}</td>
@@ -73,7 +118,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td>{i.total_result_assign}</td>
                                             <td>
                                                 <Link
-                                                    className="btn btn-sm btn-outline-info"
+                                                    className="btn btn-sm btn-outline-info mr-1"
                                                     to="/result/details"
                                                 >
                                                     details
