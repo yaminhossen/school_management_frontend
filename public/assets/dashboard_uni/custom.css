@@ -243,3 +243,11 @@ th {
 .assignment_image{
     width: 200px;
 }
+.download_btn{
+    display: flex;
+    align-items: center;
+}
+.download_title{
+    margin-right: 10px;
+    font-weight: 700;
+}
