@@ -45,6 +45,7 @@ const Students: React.FC<Props> = (props: Props) => {
                                     <th>Class</th>
                                     <th>Roll</th>
                                     <th>Action</th>
+                                    <th>Report</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -57,6 +58,20 @@ const Students: React.FC<Props> = (props: Props) => {
                                             <td>{i.subject}</td>
                                             <td>{i.class}</td>
                                             <td>{i.roll}</td>
+                                            <td>
+                                                <Link
+                                                    className="btn btn-sm btn-outline-info mr-1"
+                                                    to="/student/review"
+                                                >
+                                                    Review
+                                                </Link>
+                                                <Link
+                                                    className="btn btn-sm btn-outline-info mr-1"
+                                                    to="/student/complain"
+                                                >
+                                                    Complain
+                                                </Link>
+                                            </td>
                                             <td>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
