@@ -32,6 +32,7 @@ import academic_resources_routes from '../views/pages/academic_resources/config/
 import hall_guard_routine_routes from '../views/pages/hall_guard_routine/config/routes';
 import class_attendance_routes from '../views/pages/class_attendance/config/routes';
 import assignment_routes from '../views/pages/assignment/config/routes';
+import student_routes from '../views/pages/student/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
@@ -50,6 +51,7 @@ const router: RouteTypes[] = [
             hall_guard_routine_routes,
             class_attendance_routes,
             assignment_routes,
+            student_routes,
             {
                 path: '',
                 element: <T1 />,
@@ -57,10 +59,6 @@ const router: RouteTypes[] = [
             {
                 path: 'classes',
                 element: <Class />,
-            },
-            {
-                path: 'students',
-                element: <Students />,
             },
             {
                 path: 'assignments',
