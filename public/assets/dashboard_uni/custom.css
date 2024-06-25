@@ -240,3 +240,6 @@ th {
     display: flex;
     justify-content: space-between;
 }
+.assignment_image{
+    width: 200px;
+}

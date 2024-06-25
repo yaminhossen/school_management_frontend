@@ -31,6 +31,7 @@ import notices_routes from '../views/pages/notices/config/routes';
 import academic_resources_routes from '../views/pages/academic_resources/config/routes';
 import hall_guard_routine_routes from '../views/pages/hall_guard_routine/config/routes';
 import class_attendance_routes from '../views/pages/class_attendance/config/routes';
+import assignment_routes from '../views/pages/assignment/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
@@ -48,6 +49,7 @@ const router: RouteTypes[] = [
             academic_resources_routes,
             hall_guard_routine_routes,
             class_attendance_routes,
+            assignment_routes,
             {
                 path: '',
                 element: <T1 />,
