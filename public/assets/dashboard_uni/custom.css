@@ -254,3 +254,7 @@ th {
     margin-right: 10px;
     font-weight: 700;
 }
+.payment_total{
+    text-align: right !important;
+    
+}
