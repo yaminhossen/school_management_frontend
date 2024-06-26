@@ -33,11 +33,11 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                     <div className="nav-right col">
                         <ul className="nav-menus">
                             {/* <li>
-                      <form class="form-inline search-form">
-                          <div class="form-group">
-                              <label class="sr-only">Email</label>
-                              <input type="search" class="form-control-plaintext" placeholder="Search..">
-                              <span class="d-sm-none mobile-search">
+                      <form className="form-inline search-form">
+                          <div className="form-group">
+                              <label className="sr-only">Email</label>
+                              <input type="search" className="form-control-plaintext" placeholder="Search..">
+                              <span className="d-sm-none mobile-search">
                               </span>
                           </div>
                       </form>

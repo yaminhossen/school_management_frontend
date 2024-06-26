@@ -37,7 +37,7 @@ window.render_form_errors = function (object, selector = "name") {
              *  if html element found then take action
              */
             if (el) {
-                el.parentNode.insertAdjacentHTML("afterend",`<div class="error text-warning">${element[0]}</div>`);
+                el.parentNode.insertAdjacentHTML("afterend",`<div className="error text-warning">${element[0]}</div>`);
                 el.parentNode.parentNode.classList.add('form_group_error');
             }
         }

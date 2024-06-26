@@ -14,7 +14,7 @@ const CommonAppWindow: React.FC<Props> = (props: Props) => {
                     <div className="navigation">
                         <ul>
                             <li className="search_li">
-                                {/* <a href="#" @click="show_search = !show_search"><span class="material-symbols-outlined fill">search</span></a> */}
+                                {/* <a href="#" @click="show_search = !show_search"><span className="material-symbols-outlined fill">search</span></a> */}
                                 <input
                                     className="search"
                                     placeholder="search.."

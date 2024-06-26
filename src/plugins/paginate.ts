@@ -95,7 +95,7 @@ function generatePaginationLinks(
     url.searchParams.set('page', (currentPage - 1).toString());
     links.push({
         url: currentPage > 1 ? url.href : null,
-        label: `<span class="material-symbols-outlined fill">chevron_left</span>`,
+        label: `<span className="material-symbols-outlined fill">chevron_left</span>`,
         active: false,
     });
 
@@ -117,7 +117,7 @@ function generatePaginationLinks(
     url.searchParams.set('page', (currentPage + 1).toString());
     links.push({
         url: currentPage < totalPages ? url.href : null,
-        label: `<span class="material-symbols-outlined fill">chevron_right</span>`,
+        label: `<span className="material-symbols-outlined fill">chevron_right</span>`,
         active: false,
     });
 

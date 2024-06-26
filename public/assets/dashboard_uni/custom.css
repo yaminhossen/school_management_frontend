@@ -262,3 +262,9 @@ th {
     text-align: center;
     margin-top: 40px;
 }
+.accordion{
+    margin: 0 50px;
+}
+.accordion-button{
+    color:rgb(90, 164, 207) !important;
+}
