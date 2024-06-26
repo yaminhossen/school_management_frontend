@@ -114,6 +114,16 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                     Result Part
                                 </Link>
                             </li>
+                            <li>
+                                <Link to="/childrens/details/complain">
+                                    Complain
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/childrens/details/review">
+                                    Review
+                                </Link>
+                            </li>
                         </ul>
                         <div></div>
                         <div className="info-table table-responsive">
