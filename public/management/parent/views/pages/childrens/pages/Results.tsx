@@ -45,7 +45,7 @@ const Results: React.FC<Props> = (props: Props) => {
                                     <th>Marks</th>
                                     <th>Session</th>
                                     <th>Grade</th>
-                                    <th>Action</th>
+                                    {/* <th>Action</th> */}
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -58,14 +58,14 @@ const Results: React.FC<Props> = (props: Props) => {
                                             <td>{i.marks}</td>
                                             <td>{i.session}</td>
                                             <td>{i.grade}</td>
-                                            <td>
+                                            {/* <td>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info"
                                                     to="/profile/mark-sheet"
                                                 >
                                                     details
                                                 </Link>
-                                            </td>
+                                            </td> */}
                                         </tr>
                                     );
                                 })}
