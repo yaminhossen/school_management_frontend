@@ -34,6 +34,7 @@ import class_attendance_routes from '../views/pages/class_attendance/config/rout
 import assignment_routes from '../views/pages/assignment/config/routes';
 import student_routes from '../views/pages/student/config/routes';
 import course_materials_routes from '../views/pages/course_materials/config/routes';
+import reports_routes from '../views/pages/teacher_reports/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
@@ -54,6 +55,7 @@ const router: RouteTypes[] = [
             assignment_routes,
             student_routes,
             course_materials_routes,
+            reports_routes,
             {
                 path: '',
                 element: <T1 />,
