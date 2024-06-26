@@ -258,3 +258,7 @@ th {
     text-align: right !important;
     
 }
+.payment_btn{
+    text-align: center;
+    margin-top: 40px;
+}
