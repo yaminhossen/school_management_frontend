@@ -6,6 +6,10 @@ import React from 'react';
 import profile_routes from '../views/pages/profile/config/routes';
 import childrens_routes from '../views/pages/childrens/config/routes';
 import payment_history_routes from '../views/pages/payment_history/config/routes';
+import fees_routes from '../views/pages/fees/config/routes';
+import fees_payment_routes from '../views/pages/fees_payment/config/routes';
+import notices_routes from '../views/pages/notices/config/routes';
+import policies_routes from '../views/pages/policies/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
@@ -16,6 +20,10 @@ const router: RouteTypes[] = [
             profile_routes,
             childrens_routes,
             payment_history_routes,
+            fees_routes,
+            fees_payment_routes,
+            notices_routes,
+            policies_routes,
             {
                 path: '',
                 element: <T1 />,
