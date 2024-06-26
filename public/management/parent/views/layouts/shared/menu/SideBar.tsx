@@ -15,7 +15,7 @@ const SideBar: React.FC<Props> = (props: Props) => {
         <>
             <ul className="sidebar-menu">
                 <MenuSingle to="/" icon="icon-home" label="Dashboard" />
-                <MenuSingle to="/" icon="icon-user" label="Profile" />
+                <MenuSingle to="/profile" icon="icon-user" label="Profile" />
                 <MenuSingle to="/" icon="icon-calendar" label="Class Routine" />
                 <MenuSingle to="/" icon="icon-clipboard" label="Exam Routine" />
                 <MenuSingle to="/" icon="icon-book" label="Mark Sheet" />
