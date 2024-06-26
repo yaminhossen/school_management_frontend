@@ -16,14 +16,27 @@ const SideBar: React.FC<Props> = (props: Props) => {
             <ul className="sidebar-menu">
                 <MenuSingle to="/" icon="icon-home" label="Dashboard" />
                 <MenuSingle to="/profile" icon="icon-user" label="Profile" />
-                <MenuSingle to="/" icon="icon-calendar" label="Children" />
                 <MenuSingle
-                    to="/"
+                    to="/childrens"
+                    icon="icon-user"
+                    label="Childrens"
+                />
+                <MenuSingle
+                    to="/payment-history"
                     icon="icon-clipboard"
                     label="Payment History"
                 />
-                <MenuSingle to="/" icon="icon-book" label="Fees" />
-                <MenuSingle to="/" icon="icon-receipt" label="Fees Payment" />
+                <MenuSingle to="/fees" icon="icon-book" label="Fees" />
+                <MenuSingle
+                    to="/fees-payment"
+                    icon="icon-receipt"
+                    label="Fees Payment"
+                />
+                <MenuSingle
+                    to="/policies"
+                    icon="icon-pencil-alt"
+                    label="Policies"
+                />
 
                 {/* <MenuDropDown section_title="" group_title="Fee" icon="fee">
                     <MenuDropDownItem label="Due List" to="/users" />
@@ -31,14 +44,13 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     <MenuDropDownItem label="Pay Fees" to="/users" />
                 </MenuDropDown> */}
 
-                <MenuSingle to="/" icon="icon-bell" label="Notices" />
-                <MenuSingle to="/" icon="icon-help" label="FAQ" />
+                <MenuSingle to="/notices" icon="icon-bell" label="Notices" />
                 <MenuSingle
-                    to="/"
+                    to="/contact-support"
                     icon="icon-headphone"
                     label="Contact Support"
                 />
-                <MenuSingle to="/" icon="icon-pencil-alt" label="Policies" />
+                <MenuSingle to="/faq" icon="icon-help" label="FAQ" />
 
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
 

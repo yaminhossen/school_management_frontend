@@ -243,6 +243,9 @@ th {
 .assignment_image{
     width: 200px;
 }
+.children_img{
+    width: 40px;
+}
 .download_btn{
     display: flex;
     align-items: center;
