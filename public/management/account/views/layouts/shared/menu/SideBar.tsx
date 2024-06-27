@@ -18,7 +18,7 @@ const SideBar: React.FC<Props> = (props: Props) => {
                 <MenuSingle to="/accounts" icon="icon-user" label="Accounts" />
                 <MenuSingle
                     to="/income-entry"
-                    icon="icon-user"
+                    icon="icon-money"
                     label="Income entry"
                 />
                 <MenuSingle
@@ -32,7 +32,7 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="Account Category"
                 />
                 <MenuSingle to="/credit" icon="icon-user" label="Credit" />
-                <MenuSingle to="/debit" icon="icon-user" label="Debit" />
+                <MenuSingle to="/debit" icon="icon-money" label="Debit" />
                 <MenuSingle
                     to="/income-statement"
                     icon="icon-user"
