@@ -15,16 +15,37 @@ const SideBar: React.FC<Props> = (props: Props) => {
         <>
             <ul className="sidebar-menu">
                 <MenuSingle to="/" icon="icon-home" label="Dashboard" />
-                <MenuSingle to="/" icon="icon-user" label="Profile" />
-                <MenuSingle to="/" icon="icon-user" label="Accounts" />
-                <MenuSingle to="/" icon="icon-user" label="Account Category" />
-                <MenuSingle to="/" icon="icon-user" label="Credit" />
-                <MenuSingle to="/" icon="icon-user" label="Debit" />
-                <MenuSingle to="/" icon="icon-user" label="Income statement" />
-                <MenuSingle to="/" icon="icon-user" label="Journal" />
-                <MenuSingle to="/" icon="icon-user" label="Ledger" />
-                <MenuSingle to="/" icon="icon-user" label="Due list" />
-                <MenuSingle to="/" icon="icon-receipt" label="Settings" />
+                <MenuSingle to="/accounts" icon="icon-user" label="Accounts" />
+                <MenuSingle
+                    to="/income-entry"
+                    icon="icon-user"
+                    label="Income entry"
+                />
+                <MenuSingle
+                    to="/expense-entry"
+                    icon="icon-user"
+                    label="Expense entry"
+                />
+                <MenuSingle
+                    to="/account-category"
+                    icon="icon-user"
+                    label="Account Category"
+                />
+                <MenuSingle to="/credit" icon="icon-user" label="Credit" />
+                <MenuSingle to="/debit" icon="icon-user" label="Debit" />
+                <MenuSingle
+                    to="/income-statement"
+                    icon="icon-user"
+                    label="Income statement"
+                />
+                <MenuSingle to="/journal" icon="icon-user" label="Journal" />
+                <MenuSingle to="/ledger" icon="icon-user" label="Ledger" />
+                <MenuSingle to="/due-list" icon="icon-user" label="Due list" />
+                <MenuSingle
+                    to="/settings"
+                    icon="icon-receipt"
+                    label="Settings"
+                />
 
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
 
