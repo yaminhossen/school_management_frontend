@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { app_config } from '../../../../../../src/configs/app.config';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -9,21 +10,25 @@ const Index: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            date: '10 Feb, 2024',
-            amount: '18000',
+            title: 'Principle',
+            number: '01897878761',
         },
         {
             id: 2,
-            date: '14 March, 2024',
-            amount: '10000',
+            title: 'Vice principle',
+            number: '01897878762',
         },
         {
             id: 3,
-            date: '15 Feb, 2024',
-            amount: '15000',
+            title: 'Office assistant',
+            number: '01897878763',
+        },
+        {
+            id: 3,
+            title: 'Teacher',
+            number: '01897878764',
         },
     ];
-
     return (
         <div className="admin_dashboard">
             <div className="content_body">
@@ -34,9 +39,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
-                                    <th>Date</th>
-                                    <th>Amount</th>
-                                    <th>Action</th>
+                                    <th>Title</th>
+                                    <th>Number</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -45,22 +49,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.date}</td>
-                                            <td>{i.amount}</td>
-                                            <td>
-                                                <Link
-                                                    className="btn btn-sm btn-outline-info mr-1"
-                                                    to="/payment-history/details"
-                                                >
-                                                    details
-                                                </Link>
-                                                {/* <Link
-                                                    className="btn btn-sm btn-outline-info"
-                                                    to="/class-attendance/take-attendance"
-                                                >
-                                                    Take attendance
-                                                </Link> */}
-                                            </td>
+                                            <td>{i.title}</td>
+                                            <td>{i.number}</td>
                                         </tr>
                                     );
                                 })}
