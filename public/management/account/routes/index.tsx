@@ -3,6 +3,9 @@ import DashboardLayout from '../views/layouts/DashboardLayout';
 import T1 from '../views/pages/T1';
 import user_branch_staff_routes from '../views/pages/users/config/routes';
 import React from 'react';
+import profile_routes from '../views/pages/profile/config/routes';
+import income_entry_routes from '../views/pages/income_entry/config/routes';
+import expense_entry_routes from '../views/pages/expense_entry/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
@@ -10,6 +13,9 @@ const router: RouteTypes[] = [
         path: '/',
         element: <DashboardLayout />,
         children: [
+            profile_routes,
+            income_entry_routes,
+            expense_entry_routes,
             {
                 path: '',
                 element: <T1 />,
