@@ -33,6 +33,13 @@ const Index: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
             <div className="content_body">
+                <Link
+                    to="/income-entry"
+                    className="btn btn-sm btn-outline-info mb-2"
+                    type="submit"
+                >
+                    Create
+                </Link>
                 <form action="">
                     <div className="teacher_result">
                         <div>
