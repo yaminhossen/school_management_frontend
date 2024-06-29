@@ -11,19 +11,19 @@ const Index: React.FC<Props> = (props: Props) => {
             id: 1,
             last_date: '10 Feb, 2024',
             amount: '3000',
-            purpose: 'hostel bill',
+            name: 'Shahin',
         },
         {
             id: 2,
             last_date: '14 March, 2024',
             amount: '10000',
-            purpose: 'admission bill',
+            name: 'Tamim',
         },
         {
             id: 3,
             last_date: '15 Feb, 2024',
             amount: '5000',
-            purpose: 'transport bill',
+            name: 'Ramim',
         },
     ];
 
@@ -37,9 +37,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
-                                    <th>Purpose</th>
+                                    <th>Name</th>
                                     <th>Amount</th>
-                                    <th>Last Date</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -48,9 +48,16 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.purpose}</td>
+                                            <td>{i.name}</td>
                                             <td>{i.amount}</td>
-                                            <td>{i.last_date}</td>
+                                            <td>
+                                                <Link
+                                                    to="/due-list/details"
+                                                    className="btn btn-sm btn-outline-info"
+                                                >
+                                                    Details
+                                                </Link>
+                                            </td>
                                         </tr>
                                     );
                                 })}
