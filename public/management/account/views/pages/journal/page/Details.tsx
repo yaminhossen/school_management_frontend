@@ -2,73 +2,45 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 export interface Props {}
 
-const Index: React.FC<Props> = (props: Props) => {
+const Details: React.FC<Props> = (props: Props) => {
     interface data {
         [key: string]: any;
     }
     const datas: data[] = [
         {
             id: 1,
-            amount: '50000',
-            purpose: 'Tution fee',
-            credit: '50000',
-            debit: '',
+            last_date: '10 Feb, 2024',
+            amount: '3000',
+            amount_in_text: 'Three thousand taka only',
+            purpose: 'hostel bill',
         },
         {
             id: 2,
-            amount: '-2000',
-            purpose: 'Donation',
-            credit: '',
-            debit: '2000',
+            last_date: '14 March, 2024',
+            amount: '10000',
+            amount_in_text: 'Ten thousand taka only',
+            purpose: 'admission bill',
         },
         {
             id: 3,
-            amount: '-20000',
-            purpose: 'Sallary',
-            credit: '',
-            debit: '20000',
-        },
-        {
-            id: 4,
-            amount: '-2000',
-            purpose: 'Utility bill',
-            credit: '',
-            debit: '2000',
-        },
-        {
-            id: 5,
-            amount: '-3000',
-            purpose: 'Maintenance costs',
-            credit: '',
-            debit: '3000',
-        },
-        {
-            id: 6,
-            amount: '-5000',
-            purpose: 'Equipment',
-            credit: '',
-            debit: '5000',
-        },
-        {
-            id: 7,
-            amount: '-5000',
-            purpose: 'Loans',
-            credit: '',
-            debit: '5000',
-        },
-        {
-            id: 8,
-            amount: '50000',
-            purpose: 'Hostel bill',
-            credit: '50000',
-            debit: '',
+            last_date: '15 Feb, 2024',
+            amount: '5000',
+            amount_in_text: 'Five thousand taka only',
+            purpose: 'transport bill',
         },
     ];
 
     return (
         <div className="admin_dashboard">
             <div className="content_body">
-                <form action="">
+                <Link
+                    to="/income-entry"
+                    className="btn btn-sm btn-outline-info mb-2"
+                    type="submit"
+                >
+                    Create
+                </Link>
+                {/* <form action="">
                     <div className="teacher_result">
                         <div>
                             <div>Month</div>
@@ -89,7 +61,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             Submit
                         </button>
                     </div>
-                </form>
+                </form> */}
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
                         <table>
@@ -98,10 +70,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Purpose</th>
-                                    <th>Credit</th>
-                                    <th>Debit</th>
+                                    <th>Date</th>
+                                    <th>Amount in Text</th>
                                     <th>Amount</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -111,28 +82,19 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td></td>
                                             <td>{i.id}</td>
                                             <td>{i.purpose}</td>
-                                            <td>{i.credit}</td>
-                                            <td>{i.debit}</td>
-                                            <td>{i.amount}</td>
-                                            <td>
-                                                <Link
-                                                    to="/journal/details"
-                                                    className="btn btn-sm  btn-outline-info"
-                                                    type="submit"
-                                                >
-                                                    Details
-                                                </Link>
-                                            </td>
+                                            <td>{i.last_date}</td>
+                                            <td>{i.amount_in_text}</td>
+                                            <td>{i.amount} tk</td>
                                         </tr>
                                     );
                                 })}
                                 <tr>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>Total:</td>
-                                    <td>Cr : 100000 tk</td>
-                                    <td>Db : 37000 tk</td>
-                                    <td>Bal : 63000 tk</td>
+                                    <td>18000 tk</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -143,4 +105,4 @@ const Index: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Index;
+export default Details;
