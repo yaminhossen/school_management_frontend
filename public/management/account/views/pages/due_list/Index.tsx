@@ -30,6 +30,22 @@ const Index: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
             <div className="content_body">
+                <form action="">
+                    <div className="teacher_result">
+                        <div>
+                            <div>Student (id/roll/mobile)</div>
+                            <div>
+                                <input type="text" name="student_id" id="" />
+                            </div>
+                        </div>
+                        <button
+                            className="btn btn-sm btn-outline-info "
+                            type="submit"
+                        >
+                            Search
+                        </button>
+                    </div>
+                </form>
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
                         <table>
