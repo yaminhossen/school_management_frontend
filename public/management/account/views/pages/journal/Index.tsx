@@ -9,65 +9,88 @@ const Index: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            amount: '50000',
-            purpose: 'Tution fee',
-            credit: '50000',
-            debit: '',
+            date: '10 Feb, 2024',
+            amount_in_text: 'Three thousand taka only',
+            purpose: 'hostel rent',
+            credit: '',
+            debit: '3000',
+            name: 'Shahin',
         },
         {
             id: 2,
-            amount: '-2000',
-            purpose: 'Donation',
-            credit: '',
-            debit: '2000',
+            date: '14 Feb, 2024',
+            amount_in_text: 'Ten thousand taka only',
+            purpose: 'admission bill',
+            credit: '3000',
+            debit: '',
+            name: 'Tamim',
         },
         {
             id: 3,
-            amount: '-20000',
-            purpose: 'Sallary',
-            credit: '',
-            debit: '20000',
+            date: '15 Feb, 2024',
+            amount_in_text: 'Five thousand taka only',
+            purpose: 'transport bill',
+            credit: '3000',
+            debit: '',
+            name: 'Ramim',
         },
         {
             id: 4,
-            amount: '-2000',
-            purpose: 'Utility bill',
-            credit: '',
-            debit: '2000',
+            date: '23 Feb, 2024',
+            amount_in_text: 'Threee thousand taka only',
+            purpose: 'Tution fee',
+            credit: '3000',
+            debit: '',
+            name: 'Ramim',
         },
         {
             id: 5,
-            amount: '-3000',
-            purpose: 'Maintenance costs',
-            credit: '',
-            debit: '3000',
+            date: '23 Feb, 2024',
+            amount_in_text: 'Fifteen thousand taka only',
+            purpose: 'Tution fee',
+            credit: '15000',
+            debit: '',
+            name: 'Riaz',
         },
         {
             id: 6,
-            amount: '-5000',
-            purpose: 'Equipment',
-            credit: '',
-            debit: '5000',
+            date: '23 Feb, 2024',
+            amount_in_text: 'Twenty thousand taka only',
+            purpose: 'Tution fee',
+            credit: '20000',
+            debit: '',
+            name: 'Areeba',
         },
         {
             id: 7,
-            amount: '-5000',
-            purpose: 'Loans',
+            date: '23 Feb, 2024',
+            amount_in_text: 'Twenty thousand taka only',
+            purpose: 'Sallary',
             credit: '',
-            debit: '5000',
+            debit: '20000',
+            name: 'Employee1',
         },
         {
             id: 8,
-            amount: '50000',
-            purpose: 'Hostel bill',
-            credit: '50000',
-            debit: '',
+            date: '23 Feb, 2024',
+            amount_in_text: 'Ten thousand taka only',
+            purpose: 'Sallary',
+            credit: '',
+            debit: '10000',
+            name: 'Employee2',
         },
     ];
 
     return (
         <div className="admin_dashboard">
             <div className="content_body">
+                {/* <Link
+                    to="/income-entry"
+                    className="btn btn-sm btn-outline-info mb-2"
+                    type="submit"
+                >
+                    Create
+                </Link> */}
                 <form action="">
                     <div className="teacher_result">
                         <div>
@@ -98,10 +121,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Purpose</th>
-                                    <th>Credit</th>
+                                    <th>Name</th>
+                                    <th>Date</th>
+                                    <th>Amount in Text</th>
                                     <th>Debit</th>
-                                    <th>Amount</th>
-                                    <th>Action</th>
+                                    <th>Credit</th>
+                                    <th>Balance</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -111,28 +136,24 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td></td>
                                             <td>{i.id}</td>
                                             <td>{i.purpose}</td>
-                                            <td>{i.credit}</td>
-                                            <td>{i.debit}</td>
-                                            <td>{i.amount}</td>
-                                            <td>
-                                                <Link
-                                                    to="/journal/details"
-                                                    className="btn btn-sm  btn-outline-info"
-                                                    type="submit"
-                                                >
-                                                    Details
-                                                </Link>
-                                            </td>
+                                            <td>{i.name}</td>
+                                            <td>{i.date}</td>
+                                            <td>{i.amount_in_text}</td>
+                                            <td>{i.debit} tk</td>
+                                            <td>{i.credit} tk</td>
                                         </tr>
                                     );
                                 })}
                                 <tr>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>Total:</td>
-                                    <td>Cr : 100000 tk</td>
-                                    <td>Db : 37000 tk</td>
-                                    <td>Bal : 63000 tk</td>
+                                    <td>dbt : 33000 tk</td>
+                                    <td>Cr : 44000 tk</td>
+                                    <td>Bal : 11000 tk</td>
                                 </tr>
                             </tbody>
                         </table>

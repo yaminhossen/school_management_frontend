@@ -9,27 +9,87 @@ const Index: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            last_date: '10 Feb, 2024',
-            amount: '3000',
-            purpose: 'hostel bill',
+            amount: '50000',
+            purpose: 'Tution fee',
+            credit: '50000',
+            debit: '',
         },
         {
             id: 2,
-            last_date: '14 March, 2024',
-            amount: '10000',
-            purpose: 'admission bill',
+            amount: '-2000',
+            purpose: 'Donation',
+            credit: '',
+            debit: '2000',
         },
         {
             id: 3,
-            last_date: '15 Feb, 2024',
-            amount: '5000',
-            purpose: 'transport bill',
+            amount: '-20000',
+            purpose: 'Sallary',
+            credit: '',
+            debit: '20000',
+        },
+        {
+            id: 4,
+            amount: '-2000',
+            purpose: 'Utility bill',
+            credit: '',
+            debit: '2000',
+        },
+        {
+            id: 5,
+            amount: '-3000',
+            purpose: 'Maintenance costs',
+            credit: '',
+            debit: '3000',
+        },
+        {
+            id: 6,
+            amount: '-5000',
+            purpose: 'Equipment',
+            credit: '',
+            debit: '5000',
+        },
+        {
+            id: 7,
+            amount: '-5000',
+            purpose: 'Loans',
+            credit: '',
+            debit: '5000',
+        },
+        {
+            id: 8,
+            amount: '50000',
+            purpose: 'Hostel bill',
+            credit: '50000',
+            debit: '',
         },
     ];
 
     return (
         <div className="admin_dashboard">
             <div className="content_body">
+                <form action="">
+                    <div className="teacher_result">
+                        <div>
+                            <div>Month</div>
+                            <div>
+                                <input type="date" name="month1" id="" />
+                            </div>
+                        </div>
+                        <div>
+                            <div>Month</div>
+                            <div>
+                                <input type="date" name="month2" id="" />
+                            </div>
+                        </div>
+                        <button
+                            className="btn btn-sm btn-outline-info "
+                            type="submit"
+                        >
+                            Submit
+                        </button>
+                    </div>
+                </form>
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
                         <table>
@@ -38,8 +98,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Purpose</th>
-                                    <th>Amount</th>
-                                    <th>Last Date</th>
+                                    <th>Credit</th>
+                                    <th>Debit</th>
+                                    <th>Balance</th>
+                                    <th>Journal Ref</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -49,11 +111,29 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td></td>
                                             <td>{i.id}</td>
                                             <td>{i.purpose}</td>
+                                            <td>{i.credit}</td>
+                                            <td>{i.debit}</td>
                                             <td>{i.amount}</td>
-                                            <td>{i.last_date}</td>
+                                            <td>
+                                                <Link
+                                                    to="/journal/details"
+                                                    className="btn btn-sm  btn-outline-info"
+                                                    type="submit"
+                                                >
+                                                    Ref.
+                                                </Link>
+                                            </td>
                                         </tr>
                                     );
                                 })}
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Total:</td>
+                                    <td>Cr : 100000 tk</td>
+                                    <td>Db : 37000 tk</td>
+                                    <td>Bal : 63000 tk</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
