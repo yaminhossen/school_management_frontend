@@ -2,31 +2,34 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 export interface Props {}
 
-const Index: React.FC<Props> = (props: Props) => {
+const Details: React.FC<Props> = (props: Props) => {
     interface data {
         [key: string]: any;
     }
     const datas: data[] = [
         {
             id: 1,
-            account: 'Cash',
-            total_income: '50000',
-            total_expense: '20000',
+            account: 'Sonali bank',
+            account_num: '928494343',
+            income: '30000',
+            expense: '',
             balance: '30000',
         },
         {
             id: 2,
-            account: 'Bank',
-            total_income: '40000',
-            total_expense: '10000',
-            balance: '30000',
+            account: 'Rupali bank',
+            account_num: '57443435345',
+            income: '10000',
+            expense: '',
+            balance: '40000',
         },
         {
             id: 3,
-            account: 'Bkash',
-            total_income: '60000',
-            total_expense: '20000',
-            balance: '40000',
+            account: 'Islami bank',
+            account_num: '7543437546',
+            income: '',
+            expense: '10000',
+            balance: '30000',
         },
     ];
 
@@ -34,7 +37,7 @@ const Index: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <div className="content_body">
                 <Link
-                    to="/accounts/create"
+                    to="/accounts/details/account-number"
                     className="btn btn-sm btn-outline-info mb-2"
                     type="submit"
                 >
@@ -48,10 +51,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Account</th>
-                                    <th>Total Income</th>
-                                    <th>Total Expense</th>
+                                    <th>Account Number</th>
+                                    <th>Income</th>
+                                    <th>Expense</th>
                                     <th>Balance</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -61,21 +64,22 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td></td>
                                             <td>{i.id}</td>
                                             <td>{i.account}</td>
-                                            <td>{i.total_income}</td>
-                                            <td>{i.total_expense}</td>
+                                            <td>{i.account_num}</td>
+                                            <td>{i.income}</td>
+                                            <td>{i.expense}</td>
                                             <td>{i.balance}</td>
-                                            <td>
-                                                <Link
-                                                    to="/accounts/details"
-                                                    className="btn btn-sm  btn-outline-info"
-                                                    type="submit"
-                                                >
-                                                    Details
-                                                </Link>
-                                            </td>
                                         </tr>
                                     );
                                 })}
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Total:</td>
+                                    <td>In : 40000 tk</td>
+                                    <td>Ex : 10000 tk</td>
+                                    <td>Bal : 30000 tk</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -85,4 +89,4 @@ const Index: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Index;
+export default Details;

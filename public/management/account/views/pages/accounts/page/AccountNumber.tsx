@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 export interface Props {}
 
-const CategoryCreate: React.FC<Props> = (props: Props) => {
+const AccountNumber: React.FC<Props> = (props: Props) => {
     interface data {
         [key: string]: any;
     }
@@ -32,19 +32,33 @@ const CategoryCreate: React.FC<Props> = (props: Props) => {
             <div className="content_body">
                 <form className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
-                        <label>Category Title</label>
+                        <label>Account Name</label>
                         <div className="form_elements">
                             <input
                                 type="text"
-                                placeholder="Enter New Category"
-                                name="category_title"
+                                placeholder="Enter Account Name"
+                                name="category_name"
                             />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Date</label>
+                        <label>Account Number</label>
                         <div className="form_elements">
-                            <input type="date" name="date" />
+                            <input
+                                type="text"
+                                placeholder="Enter Account Number"
+                                name="account_number"
+                            />
+                        </div>
+                    </div>
+                    <div className="form-group form-horizontal">
+                        <label>Opening Balance</label>
+                        <div className="form_elements">
+                            <input
+                                type="number"
+                                placeholder="Your Opening Balance"
+                                name="opening_balance"
+                            />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
@@ -61,4 +75,4 @@ const CategoryCreate: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default CategoryCreate;
+export default AccountNumber;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 export interface Props {}
 
-const CategoryCreate: React.FC<Props> = (props: Props) => {
+const Account: React.FC<Props> = (props: Props) => {
     interface data {
         [key: string]: any;
     }
@@ -32,19 +32,13 @@ const CategoryCreate: React.FC<Props> = (props: Props) => {
             <div className="content_body">
                 <form className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
-                        <label>Category Title</label>
+                        <label>Account Name</label>
                         <div className="form_elements">
                             <input
                                 type="text"
-                                placeholder="Enter New Category"
-                                name="category_title"
+                                placeholder="Enter Account Name"
+                                name="account_name"
                             />
-                        </div>
-                    </div>
-                    <div className="form-group form-horizontal">
-                        <label>Date</label>
-                        <div className="form_elements">
-                            <input type="date" name="date" />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
@@ -61,4 +55,4 @@ const CategoryCreate: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default CategoryCreate;
+export default Account;

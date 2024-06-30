@@ -14,6 +14,7 @@ const Index: React.FC<Props> = (props: Props) => {
             purpose: 'hostel rent',
             credit: '',
             debit: '3000',
+            balance: '-3000',
             name: 'Shahin',
         },
         {
@@ -23,6 +24,7 @@ const Index: React.FC<Props> = (props: Props) => {
             purpose: 'admission bill',
             credit: '3000',
             debit: '',
+            balance: '',
             name: 'Tamim',
         },
         {
@@ -32,6 +34,7 @@ const Index: React.FC<Props> = (props: Props) => {
             purpose: 'transport bill',
             credit: '3000',
             debit: '',
+            balance: '3000',
             name: 'Ramim',
         },
         {
@@ -41,6 +44,7 @@ const Index: React.FC<Props> = (props: Props) => {
             purpose: 'Tution fee',
             credit: '3000',
             debit: '',
+            balance: '6000',
             name: 'Ramim',
         },
         {
@@ -50,6 +54,7 @@ const Index: React.FC<Props> = (props: Props) => {
             purpose: 'Tution fee',
             credit: '15000',
             debit: '',
+            balance: '21000',
             name: 'Riaz',
         },
         {
@@ -59,6 +64,7 @@ const Index: React.FC<Props> = (props: Props) => {
             purpose: 'Tution fee',
             credit: '20000',
             debit: '',
+            balance: '41000',
             name: 'Areeba',
         },
         {
@@ -68,6 +74,7 @@ const Index: React.FC<Props> = (props: Props) => {
             purpose: 'Sallary',
             credit: '',
             debit: '20000',
+            balance: '21000',
             name: 'Employee1',
         },
         {
@@ -77,6 +84,7 @@ const Index: React.FC<Props> = (props: Props) => {
             purpose: 'Sallary',
             credit: '',
             debit: '10000',
+            balance: '11000',
             name: 'Employee2',
         },
     ];
@@ -141,6 +149,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td>{i.amount_in_text}</td>
                                             <td>{i.debit} tk</td>
                                             <td>{i.credit} tk</td>
+                                            <td>{i.balance} tk</td>
                                         </tr>
                                     );
                                 })}

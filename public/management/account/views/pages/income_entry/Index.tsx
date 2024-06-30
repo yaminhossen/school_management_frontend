@@ -52,6 +52,30 @@ const Index: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
+                        <label>Account</label>
+                        <div className="form_elements">
+                            <select name="account" id="">
+                                <option value="hostel bill">Cash</option>
+                                <option value="hostel bill">Bank</option>
+                                <option value="hostel bill">Roket</option>
+                                <option value="hostel bill">Bkash</option>
+                                <option value="hostel bill">Nagad</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="form-group form-horizontal">
+                        <label>Account Number</label>
+                        <div className="form_elements">
+                            <select name="account_number" id="">
+                                <option value="hostel bill">01847834</option>
+                                <option value="hostel bill">01294083</option>
+                                <option value="hostel bill">09234328</option>
+                                <option value="hostel bill">29038432</option>
+                                <option value="hostel bill">29384902</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="form-group form-horizontal">
                         <label>Customer Name</label>
                         <div className="form_elements">
                             <input

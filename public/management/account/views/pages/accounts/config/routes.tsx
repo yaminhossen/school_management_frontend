@@ -1,6 +1,9 @@
 import React from 'react';
 import Layout from './Layout';
 import Index from '../Index';
+import Details from '../page/Details';
+import Account from '../page/Account';
+import AccountNumber from '../page/AccountNumber';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -12,6 +15,18 @@ export default {
             path: '',
             index: true,
             element: <Index />,
+        },
+        {
+            path: 'details',
+            element: <Details />,
+        },
+        {
+            path: 'create',
+            element: <Account />,
+        },
+        {
+            path: 'details/account-number',
+            element: <AccountNumber />,
         },
     ],
 };
