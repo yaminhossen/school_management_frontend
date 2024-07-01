@@ -15,39 +15,39 @@ const SideBar: React.FC<Props> = (props: Props) => {
         <>
             <ul className="sidebar-menu">
                 <MenuSingle to="/" icon="icon-home" label="Dashboard" />
-                <MenuSingle to="/" icon="icon-user" label="Profile" />
-                <MenuSingle to="/" icon="icon-calendar" label="Class Routine" />
-                <MenuSingle to="/" icon="icon-clipboard" label="Exam Routine" />
-                <MenuSingle to="/" icon="icon-book" label="Mark Sheet" />
-                <MenuSingle to="/" icon="icon-receipt" label="Attendance" />
-
-                <MenuDropDown
-                    section_title=""
-                    group_title="Fee"
-                    icon="icon-money"
-                >
-                    <MenuDropDownItem label="Due List" to="/users" />
-                    <MenuDropDownItem label="Payment History" to="/users" />
-                    <MenuDropDownItem label="Pay Fees" to="/users" />
-                </MenuDropDown>
-
+                <MenuSingle to="/profile" icon="icon-user" label="Profile" />
                 <MenuSingle
-                    to="/"
-                    icon="icon-notepad"
-                    label="Leave Application"
+                    to="/student-management"
+                    icon="icon-calendar"
+                    label="Student Management"
                 />
                 <MenuSingle
-                    to="/"
-                    icon="icon-server"
-                    label="Academic Resources"
+                    to="/meal-management"
+                    icon="icon-clipboard"
+                    label="Meal Management"
                 />
-                <MenuSingle to="/" icon="icon-bell" label="Notices" />
                 <MenuSingle
-                    to="/"
-                    icon="icon-ruler-pencil"
-                    label="My Activities"
+                    to="/facility-management"
+                    icon="icon-book"
+                    label="Facility Management"
                 />
-                <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" />
+                <MenuSingle
+                    to="/staff-management"
+                    icon="icon-receipt"
+                    label="Staff Management"
+                />
+                <MenuSingle to="/finance" icon="icon-receipt" label="Finance" />
+                <MenuSingle
+                    to="/health-&-safety"
+                    icon="icon-receipt"
+                    label="Health & Safety"
+                />
+                <MenuSingle
+                    to="/communication"
+                    icon="icon-receipt"
+                    label="Communication"
+                />
+                <MenuSingle to="/reports" icon="icon-receipt" label="Reports" />
 
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
 
