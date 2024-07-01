@@ -42,7 +42,7 @@ const Index: React.FC<Props> = (props: Props) => {
                     className="btn btn-sm btn-outline-info mb-2"
                     type="submit"
                 >
-                    Create
+                    Add New
                 </Link>
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
