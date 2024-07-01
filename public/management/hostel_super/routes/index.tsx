@@ -6,7 +6,7 @@ import React from 'react';
 import student_management_routes from '../views/pages/student_management/config/routes';
 import staff_management_routes from '../views/pages/staff_management/config/routes';
 import meal_management_routes from '../views/pages/meal_management/config/routes';
-import faculty_management_routes from '../views/pages/faculty_management/config/routes';
+import faculty_management_routes from '../views/pages/facility_management/config/routes';
 import finance_routes from '../views/pages/finance/config/routes';
 import communication_routes from '../views/pages/communication/config/routes';
 import reports_routes from '../views/pages/reports/config/routes';

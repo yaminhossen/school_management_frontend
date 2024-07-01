@@ -5,7 +5,7 @@ import Index from '../Index';
 // export { default as DashboardCounterAll} from "./All.jsx";
 
 export default {
-    path: 'faculty-management',
+    path: 'facility-management',
     element: <Layout />,
     children: [
         {
