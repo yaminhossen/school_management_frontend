@@ -27,9 +27,9 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="Meal Management"
                 />
                 <MenuSingle
-                    to="/faculty-management"
+                    to="/facility-management"
                     icon="icon-book"
-                    label="Faculty Management"
+                    label="Facility Management"
                 />
                 <MenuSingle
                     to="/staff-management"
