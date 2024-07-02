@@ -13,6 +13,7 @@ import debit_routes from '../views/pages/debit/config/routes';
 import income_statement_routes from '../views/pages/income_statement/config/routes';
 import journal_routes from '../views/pages/journal/config/routes';
 import ledger_routes from '../views/pages/ledger/config/routes';
+import profit_loss_routes from '../views/pages/profit_loss/config/routes';
 import due_list_routes from '../views/pages/due_list/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
@@ -31,6 +32,7 @@ const router: RouteTypes[] = [
             income_statement_routes,
             journal_routes,
             ledger_routes,
+            profit_loss_routes,
             due_list_routes,
             {
                 path: '',
