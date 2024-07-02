@@ -9,68 +9,76 @@ const Index: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            amount: '50000',
-            date: '10 Feb, 2024',
-            purpose: 'Tution fee',
-            credit: '50000',
-            debit: '',
+            date: '',
+            category: 'Tution fee',
+            year1: '50000',
+            year2: '60000',
+            year3: '100000',
         },
         {
             id: 2,
-            amount: '48000',
-            purpose: 'Donation',
-            credit: '',
-            debit: '2000',
+            category: 'Hostel bill',
+            year1: '60000',
+            year2: '70000',
+            year3: '120000',
         },
         {
             id: 3,
-            amount: '28000',
-            purpose: 'Sallary',
-            credit: '',
-            debit: '20000',
+            category: 'Admission Fee',
+            year1: '120000',
+            year2: '150000',
+            year3: '200000',
         },
         {
             id: 4,
-            amount: '26000',
-            purpose: 'Utility bill',
-            credit: '',
-            debit: '2000',
+            category: 'Transport Fee',
+            year1: '30000',
+            year2: '40000',
+            year3: '50000',
+        },
+        {
+            id: '',
+            category: 'Total:',
+            year1: ': 260000 tk',
+            year2: ': 320000 tk',
+            year3: ': 470000 tk',
+        },
+        {
+            id: '',
+            date: 'EXPENSE',
+            category: '',
+            year1: '',
+            year2: '',
+            year3: '',
+        },
+        {
+            id: 1,
+            date: '',
+            category: 'Maintenance costs',
+            year1: '20000',
+            year2: '30000',
+            year3: '20000',
+        },
+        {
+            id: 2,
+            category: 'Employee Sallary',
+            year1: '60000',
+            year2: '80000',
+            year3: '100000',
+        },
+        {
+            id: 3,
+            category: 'Driver billl',
+            year1: '40000',
+            year2: '40000',
+            year3: '45000',
         },
         {
             id: 4,
-            amount: 'Bal : 26000 tk',
-            purpose: 'Total:',
-            credit: 'Cr : 50000 tk',
-            debit: 'Dt : 24000 tk',
-        },
-        {
-            id: 5,
-            amount: '23000',
-            date: '12 Feb, 2024',
-            purpose: 'Maintenance costs',
-            credit: '',
-            debit: '3000',
-        },
-        {
-            id: 6,
-            amount: '18000',
-            purpose: 'Equipment',
-            credit: '',
-            debit: '5000',
-        },
-        {
-            id: 7,
-            amount: '13000',
-            purpose: 'Loans',
-            credit: '',
-            debit: '5000',
-        },
-        {
-            id: 8,
-            amount: '63000',
-            purpose: 'Hostel bill',
-            credit: '50000',
-            debit: '',
+            category: 'House Rent',
+            year1: '70000',
+            year2: '80000',
+            year3: '80000',
         },
     ];
 
@@ -105,13 +113,12 @@ const Index: React.FC<Props> = (props: Props) => {
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Serial</th>
-                                    <th>Date</th>
-                                    <th>Purpose</th>
-                                    <th>Credit</th>
-                                    <th>Debit</th>
-                                    <th>Balance</th>
-                                    <th>Journal Ref</th>
+                                    <th>SERIAL</th>
+                                    <th>INCOME</th>
+                                    <th>CATEGORY</th>
+                                    <th>Year - 2021</th>
+                                    <th>Year - 2022</th>
+                                    <th>Year - 2023</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -121,11 +128,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td></td>
                                             <td>{i.id}</td>
                                             <td>{i.date}</td>
-                                            <td>{i.purpose}</td>
-                                            <td>{i.credit}</td>
-                                            <td>{i.debit}</td>
-                                            <td>{i.amount}</td>
-                                            <td>
+                                            <td>{i.category}</td>
+                                            <td>{i.year1}</td>
+                                            <td>{i.year2}</td>
+                                            <td>{i.year3}</td>
+                                            {/* <td>
                                                 {i.purpose == 'Total:' ? (
                                                     ''
                                                 ) : (
@@ -137,7 +144,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         Ref.
                                                     </Link>
                                                 )}
-                                            </td>
+                                            </td> */}
                                         </tr>
                                     );
                                 })}
@@ -146,9 +153,18 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td></td>
                                     <td></td>
                                     <td>Total:</td>
-                                    <td>Cr : 100000 tk</td>
-                                    <td>Dt : 37000 tk</td>
-                                    <td>Bal : 63000 tk</td>
+                                    <td>: 190000 tk</td>
+                                    <td>: 270000 tk</td>
+                                    <td>: 245000 tk</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Net Balance:</td>
+                                    <td>Total:</td>
+                                    <td>Cr : 70000 tk</td>
+                                    <td>Cr : 50000 tk</td>
+                                    <td>Cr : 185000 tk</td>
                                 </tr>
                             </tbody>
                         </table>
