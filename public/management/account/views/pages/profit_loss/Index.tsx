@@ -132,19 +132,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td>{i.year1}</td>
                                             <td>{i.year2}</td>
                                             <td>{i.year3}</td>
-                                            {/* <td>
-                                                {i.purpose == 'Total:' ? (
-                                                    ''
-                                                ) : (
-                                                    <Link
-                                                        to="/journal/details"
-                                                        className="btn btn-sm  btn-outline-info"
-                                                        type="submit"
-                                                    >
-                                                        Ref.
-                                                    </Link>
-                                                )}
-                                            </td> */}
                                         </tr>
                                     );
                                 })}
@@ -156,6 +143,15 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td>: 190000 tk</td>
                                     <td>: 270000 tk</td>
                                     <td>: 245000 tk</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td></td>
