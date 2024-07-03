@@ -9,59 +9,95 @@ const Index: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            last_date: '10 Feb, 2024',
-            amount: '3000',
-            amount_in_text: 'Three thousand taka only',
-            purpose: 'hostel bill',
+            name: 'Shahin',
+            breakfast: 'yes',
+            lunch: 'yes',
+            dinner: 'no',
         },
         {
             id: 2,
-            last_date: '14 March, 2024',
-            amount: '10000',
-            amount_in_text: 'Ten thousand taka only',
-            purpose: 'admission bill',
+            name: 'Ramim',
+            breakfast: 'no',
+            lunch: 'yes',
+            dinner: 'yes',
         },
         {
             id: 3,
-            last_date: '15 Feb, 2024',
-            amount: '5000',
-            amount_in_text: 'Five thousand taka only',
-            purpose: 'transport bill',
+            name: 'Tamim',
+            breakfast: 'no',
+            lunch: 'yes',
+            dinner: 'no',
+        },
+        {
+            id: 4,
+            name: 'Mahin',
+            breakfast: 'yes',
+            lunch: 'no',
+            dinner: 'yes',
+        },
+        {
+            id: 5,
+            name: 'Areeba',
+            breakfast: 'yes',
+            lunch: 'yes',
+            dinner: 'no',
+        },
+        {
+            id: 6,
+            name: 'Nayeem',
+            breakfast: 'no',
+            lunch: 'no',
+            dinner: 'yes',
         },
     ];
 
     return (
         <div className="admin_dashboard">
             <div className="content_body">
-                <Link
-                    to="/expense-entry"
-                    className="btn btn-sm btn-outline-info mb-2"
-                    type="submit"
-                >
-                    Create
-                </Link>
-                <form action="">
-                    <div className="teacher_result">
-                        <div>
-                            <div>Month</div>
+                <div className="hostel_super_meal_submit_form">
+                    <form action="">
+                        <div className="teacher_result">
                             <div>
-                                <input type="date" name="month1" id="" />
+                                <div>Meal </div>
+                                <div>
+                                    <select name="meal_select" id="">
+                                        <option value="jdsl">Breakfast</option>
+                                        <option value="jdsl">Lunch</option>
+                                        <option value="jdsl">Dinner</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <div>Month</div>
                             <div>
-                                <input type="date" name="month2" id="" />
+                                <div>Date</div>
+                                <div>
+                                    <input type="date" name="date" id="" />
+                                </div>
                             </div>
+                            <button
+                                className="btn btn-sm btn-outline-info "
+                                type="submit"
+                            >
+                                Search
+                            </button>
                         </div>
-                        <button
-                            className="btn btn-sm btn-outline-info "
-                            type="submit"
-                        >
-                            Submit
-                        </button>
-                    </div>
-                </form>
+                    </form>
+                    <form action="">
+                        <div className="meal_report">
+                            <div>
+                                <div>Select All</div>
+                                <div className="checkbox_field">
+                                    <input type="checkbox" name="" id="" />
+                                </div>
+                            </div>
+                            <button
+                                className="btn btn-sm btn-outline-info"
+                                type="submit"
+                            >
+                                Submit Meal Reports
+                            </button>
+                        </div>
+                    </form>
+                </div>
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
                         <table>
@@ -69,10 +105,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
-                                    <th>Purpose</th>
-                                    <th>Date</th>
-                                    <th>Amount in Text</th>
-                                    <th>Amount</th>
+                                    <th>Name</th>
+                                    <th>Breakfast</th>
+                                    <th>Lunch</th>
+                                    <th>Dinner</th>
+                                    <th>Check All</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -81,21 +118,66 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.purpose}</td>
-                                            <td>{i.last_date}</td>
-                                            <td>{i.amount_in_text}</td>
-                                            <td>{i.amount} tk</td>
+                                            <td>{i.name}</td>
+                                            <td>
+                                                {i.breakfast == 'yes' ? (
+                                                    <input
+                                                        type="checkbox"
+                                                        name=""
+                                                        id=""
+                                                        defaultChecked
+                                                    />
+                                                ) : (
+                                                    <input
+                                                        type="checkbox"
+                                                        name=""
+                                                        id=""
+                                                    />
+                                                )}
+                                            </td>
+                                            <td>
+                                                {i.lunch == 'yes' ? (
+                                                    <input
+                                                        type="checkbox"
+                                                        name=""
+                                                        id=""
+                                                        defaultChecked
+                                                    />
+                                                ) : (
+                                                    <input
+                                                        type="checkbox"
+                                                        name=""
+                                                        id=""
+                                                    />
+                                                )}
+                                            </td>
+                                            <td>
+                                                {i.dinner == 'yes' ? (
+                                                    <input
+                                                        type="checkbox"
+                                                        name=""
+                                                        id=""
+                                                        defaultChecked
+                                                    />
+                                                ) : (
+                                                    <input
+                                                        type="checkbox"
+                                                        name=""
+                                                        id=""
+                                                    />
+                                                )}
+                                            </td>
+                                            <td>
+                                                <button
+                                                    className="btn btn-sm btn-outline-info"
+                                                    type="submit"
+                                                >
+                                                    Check All
+                                                </button>
+                                            </td>
                                         </tr>
                                     );
                                 })}
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Total:</td>
-                                    <td>18000 tk</td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>

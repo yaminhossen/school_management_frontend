@@ -25,44 +25,44 @@ const Details: React.FC<Props> = (props: Props) => {
     ];
     const datas2: data[] = [
         {
-            id: 9,
+            id: 1,
             purpose: 'Breakfast',
             is_ok: 'no',
         },
         {
-            id: 10,
+            id: 2,
             purpose: 'Lunch',
             is_ok: 'yes',
         },
         {
-            id: 11,
+            id: 3,
             purpose: 'Dinner',
             is_ok: 'no',
         },
     ];
     const datas3: data[] = [
         {
-            id: 4,
+            id: 1,
             purpose: 'Fajr',
             is_ok: 'yes',
         },
         {
-            id: 5,
+            id: 2,
             purpose: 'Dhuhr',
             is_ok: 'yes',
         },
         {
-            id: 6,
+            id: 3,
             purpose: 'Asr',
             is_ok: 'yes',
         },
         {
-            id: 7,
+            id: 4,
             purpose: 'Magrib',
             is_ok: 'yes',
         },
         {
-            id: 8,
+            id: 5,
             purpose: 'Isha',
             is_ok: 'yes',
         },
@@ -149,7 +149,7 @@ const Details: React.FC<Props> = (props: Props) => {
                 </table>
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
-                        <h3>Daily Work</h3>
+                        <h3>Daily Activities</h3>
                         <table>
                             <thead>
                                 <tr>

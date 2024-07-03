@@ -277,3 +277,30 @@ th {
 .empty_div{
     margin-bottom: 30px;
 }
+.hostel_super_meal_submit_form{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+    select{
+        height: 38px;
+    }
+    input{
+        height: 38px;
+    }
+    button{
+        height: 38px;
+    }
+    .checkbox_field{
+        margin-bottom: 1px;
+    }
+    .meal_report{
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
+        gap: 20px;
+        button{
+            margin-bottom: 7px;
+        }
+    }
+}
