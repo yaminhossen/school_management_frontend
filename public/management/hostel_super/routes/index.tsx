@@ -13,6 +13,7 @@ import finance_routes from '../views/pages/finance/config/routes';
 import communication_routes from '../views/pages/communication/config/routes';
 import reports_routes from '../views/pages/reports/config/routes';
 import health_and_safety_routes from '../views/pages/health_&_safety/config/routes';
+import complain_routes from '../views/pages/complain/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
@@ -30,6 +31,7 @@ const router: RouteTypes[] = [
             health_and_safety_routes,
             communication_routes,
             reports_routes,
+            complain_routes,
             {
                 path: '',
                 element: <T1 />,
