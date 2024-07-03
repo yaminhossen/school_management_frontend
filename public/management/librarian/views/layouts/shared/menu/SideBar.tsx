@@ -15,27 +15,26 @@ const SideBar: React.FC<Props> = (props: Props) => {
         <>
             <ul className="sidebar-menu">
                 <MenuSingle to="/" icon="icon-home" label="Dashboard" />
-                <MenuSingle to="/profile" icon="icon-user" label="Profile" />
+                <MenuSingle
+                    to="/book-management"
+                    icon="icon-user"
+                    label="Book Management"
+                />
+                <MenuSingle to="/products" icon="icon-user" label="Products" />
 
                 {/* sdfds */}
 
                 {/* <MenuSingle to="/" icon="icon-receipt" label="Home" /> */}
                 <MenuSingle to="/student" icon="icon-receipt" label="Student" />
+                <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" />
 
-                <MenuSingle to="/notices" icon="icon-bell" label="Notices" />
-                {/* <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" /> */}
+                <MenuSingle
+                    to="/help-support"
+                    icon="icon-bell"
+                    label="Help and Support"
+                />
 
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
-
-                {/* <li>
-                    <a
-                        href="http://admin.pixelstrap.com/universal/default/maintenance.html"
-                        className="sidebar-header"
-                    >
-                        <i className="icon-settings" />
-                        <span>Maintenance</span>
-                    </a>
-                </li> */}
             </ul>
         </>
     );
