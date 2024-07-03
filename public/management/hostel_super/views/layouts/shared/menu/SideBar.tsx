@@ -32,6 +32,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="Salah Management"
                 />
                 <MenuSingle
+                    to="/daily-activities-management"
+                    icon="icon-clipboard"
+                    label="Daily Activities"
+                />
+                {/* <MenuSingle
                     to="/facility-management"
                     icon="icon-book"
                     label="Facility Management"
@@ -40,19 +45,19 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     to="/staff-management"
                     icon="icon-receipt"
                     label="Staff Management"
-                />
-                <MenuSingle to="/finance" icon="icon-receipt" label="Finance" />
-                <MenuSingle
+                /> */}
+                {/* <MenuSingle to="/finance" icon="icon-receipt" label="Finance" /> */}
+                {/* <MenuSingle
                     to="/health-&-safety"
                     icon="icon-receipt"
                     label="Health & Safety"
-                />
-                <MenuSingle
+                /> */}
+                {/* <MenuSingle
                     to="/communication"
                     icon="icon-receipt"
                     label="Communication"
-                />
-                <MenuSingle to="/reports" icon="icon-receipt" label="Reports" />
+                /> */}
+                {/* <MenuSingle to="/reports" icon="icon-receipt" label="Reports" /> */}
 
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
 
