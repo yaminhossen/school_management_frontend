@@ -10,36 +10,42 @@ const Index: React.FC<Props> = (props: Props) => {
         {
             id: 1,
             name: 'Book',
+            photo: '/assets/dashboard_uni/1.jgp',
             price: '300',
             details: 'Feature lined pages for writing.',
         },
         {
             id: 2,
             name: 'Note book',
+            photo: 'Note book',
             price: '280',
             details: 'Feature a metal coil binding allowing pages to lay flat.',
         },
         {
             id: 3,
             name: 'Pen',
+            photo: 'Pen',
             price: '10',
             details: 'This is very good ball point',
         },
         {
             id: 1,
             name: 'Folder',
+            photo: 'Folder',
             price: '100',
             details: 'Durable folders made of polypropylene or PVC.',
         },
         {
             id: 2,
             name: 'Clipboards',
+            photo: 'Clipboards',
             price: '120',
             details: 'Hardboard or plastic with a metal clip at the top.',
         },
         {
             id: 3,
             name: 'Planner',
+            photo: 'Planner',
             price: '80',
             details: 'Designed for day-to-day scheduling and task management.',
         },
@@ -88,6 +94,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
+                                    <th>Photo</th>
                                     <th>Name</th>
                                     <th>Details</th>
                                     <th>Price</th>
@@ -99,6 +106,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
+                                            <td>
+                                                <img
+                                                    src="/assets/dashboard_uni/1.jpg"
+                                                    alt=""
+                                                    className="librarian_product"
+                                                />
+                                            </td>
                                             <td>{i.name}</td>
                                             <td>{i.details}</td>
                                             <td>{i.price}.00 taka</td>

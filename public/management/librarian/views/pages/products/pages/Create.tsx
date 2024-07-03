@@ -35,6 +35,12 @@ const Complain: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
+                        <label>Photo</label>
+                        <div className="form_elements">
+                            <input type="file" name="product_image" id="" />
+                        </div>
+                    </div>
+                    <div className="form-group form-horizontal">
                         <label></label>
                         <div className="form_elements">
                             <button className="btn btn-sm btn-outline-info">
