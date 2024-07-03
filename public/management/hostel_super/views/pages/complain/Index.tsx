@@ -54,9 +54,9 @@ const Index: React.FC<Props> = (props: Props) => {
                 <form action="">
                     <div className="teacher_result">
                         <div>
-                            <div>Month</div>
+                            <div>Search by (name/roll/id)</div>
                             <div>
-                                <input type="date" name="month" id="" />
+                                <input type="text" name="search" id="" />
                             </div>
                         </div>
                         <button
