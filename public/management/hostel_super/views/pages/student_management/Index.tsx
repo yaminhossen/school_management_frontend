@@ -10,6 +10,8 @@ const Index: React.FC<Props> = (props: Props) => {
         {
             id: 1,
             name: 'Shahin',
+            class: 'Six',
+            roll: '001',
             building_no: '101',
             room_no: '101',
             student_id: '2024A101',
@@ -18,6 +20,8 @@ const Index: React.FC<Props> = (props: Props) => {
         {
             id: 2,
             name: 'Ramim',
+            class: 'Seven',
+            roll: '002',
             building_no: '101',
             room_no: '101',
             student_id: '2024A102',
@@ -26,6 +30,8 @@ const Index: React.FC<Props> = (props: Props) => {
         {
             id: 3,
             name: 'Tamim',
+            class: 'Eight',
+            roll: '003',
             building_no: '101',
             room_no: '101',
             student_id: '2024A103',
@@ -34,6 +40,8 @@ const Index: React.FC<Props> = (props: Props) => {
         {
             id: 4,
             name: 'Areeba',
+            class: 'Six',
+            roll: '004',
             building_no: '101',
             room_no: '101',
             student_id: '2024A104',
@@ -42,6 +50,8 @@ const Index: React.FC<Props> = (props: Props) => {
         {
             id: 5,
             name: 'Jerin',
+            class: 'Seven',
+            roll: '005',
             building_no: '101',
             room_no: '101',
             student_id: '2024A105',
@@ -58,29 +68,23 @@ const Index: React.FC<Props> = (props: Props) => {
                     type="submit"
                 >
                     Create
-                </Link>
+                </Link> */}
                 <form action="">
                     <div className="teacher_result">
                         <div>
-                            <div>Month</div>
+                            <div>Search by (name/roll/phone)</div>
                             <div>
-                                <input type="date" name="month1" id="" />
-                            </div>
-                        </div>
-                        <div>
-                            <div>Month</div>
-                            <div>
-                                <input type="date" name="month2" id="" />
+                                <input type="text" name="search" id="" />
                             </div>
                         </div>
                         <button
                             className="btn btn-sm btn-outline-info "
                             type="submit"
                         >
-                            Submit
+                            Search
                         </button>
                     </div>
-                </form> */}
+                </form>
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
                         <table>
@@ -89,6 +93,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Name</th>
+                                    <th>Class</th>
+                                    <th>Roll</th>
                                     <th>Room No.</th>
                                     <th>Building No.</th>
                                     <th>Id</th>
@@ -103,6 +109,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td></td>
                                             <td>{i.id}</td>
                                             <td>{i.name}</td>
+                                            <td>{i.class}</td>
+                                            <td>{i.roll}</td>
                                             <td>{i.room_no}</td>
                                             <td>{i.building_no}</td>
                                             <td>{i.student_id} </td>
