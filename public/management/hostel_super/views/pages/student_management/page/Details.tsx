@@ -9,28 +9,62 @@ const Details: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            purpose: 'Salah',
-            is_ok: 'yes',
-        },
-        {
-            id: 2,
-            purpose: 'Meal',
-            is_ok: 'yes',
-        },
-        {
-            id: 3,
             purpose: 'Couching',
             is_ok: 'no',
         },
         {
-            id: 4,
+            id: 2,
             purpose: 'Class',
             is_ok: 'yes',
         },
         {
-            id: 5,
+            id: 3,
             purpose: 'Library',
             is_ok: 'no',
+        },
+    ];
+    const datas2: data[] = [
+        {
+            id: 9,
+            purpose: 'Breakfast',
+            is_ok: 'no',
+        },
+        {
+            id: 10,
+            purpose: 'Lunch',
+            is_ok: 'yes',
+        },
+        {
+            id: 11,
+            purpose: 'Dinner',
+            is_ok: 'no',
+        },
+    ];
+    const datas3: data[] = [
+        {
+            id: 4,
+            purpose: 'Fajr',
+            is_ok: 'yes',
+        },
+        {
+            id: 5,
+            purpose: 'Dhuhr',
+            is_ok: 'yes',
+        },
+        {
+            id: 6,
+            purpose: 'Asr',
+            is_ok: 'yes',
+        },
+        {
+            id: 7,
+            purpose: 'Magrib',
+            is_ok: 'yes',
+        },
+        {
+            id: 8,
+            purpose: 'Isha',
+            is_ok: 'yes',
         },
     ];
 
@@ -115,13 +149,14 @@ const Details: React.FC<Props> = (props: Props) => {
                 </table>
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
+                        <h3>Daily Work</h3>
                         <table>
                             <thead>
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Purpose</th>
-                                    <th>sdfs</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -139,28 +174,105 @@ const Details: React.FC<Props> = (props: Props) => {
                                                         name=""
                                                         id=""
                                                     />
-                                                ) : (
+                                                ) : i.is_ok == 'no' ? (
                                                     <input
                                                         type="checkbox"
                                                         name=""
                                                         id=""
                                                     />
+                                                ) : (
+                                                    ''
                                                 )}
                                             </td>
                                         </tr>
                                     );
                                 })}
-                                {/* <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Total:</td>
-                                    <td>18000 tk</td>
-                                </tr> */}
+                            </tbody>
+                        </table>
+                        <div className="empty_div"></div>
+                        <h3>Meal</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Serial</th>
+                                    <th>Time</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="all_list">
+                                {datas2?.map((i: { [key: string]: any }) => {
+                                    return (
+                                        <tr>
+                                            <td></td>
+                                            <td>{i.id}</td>
+                                            <td>{i.purpose}</td>
+                                            <td>
+                                                {i.is_ok == 'yes' ? (
+                                                    <input
+                                                        type="checkbox"
+                                                        defaultChecked
+                                                        name=""
+                                                        id=""
+                                                    />
+                                                ) : i.is_ok == 'no' ? (
+                                                    <input
+                                                        type="checkbox"
+                                                        name=""
+                                                        id=""
+                                                    />
+                                                ) : (
+                                                    ''
+                                                )}
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </table>
+                        <div className="empty_div"></div>
+                        <h3>Salah</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Serial</th>
+                                    <th>Waqt</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="all_list">
+                                {datas3?.map((i: { [key: string]: any }) => {
+                                    return (
+                                        <tr>
+                                            <td></td>
+                                            <td>{i.id}</td>
+                                            <td>{i.purpose}</td>
+                                            <td>
+                                                {i.is_ok == 'yes' ? (
+                                                    <input
+                                                        type="checkbox"
+                                                        defaultChecked
+                                                        name=""
+                                                        id=""
+                                                    />
+                                                ) : i.is_ok == 'no' ? (
+                                                    <input
+                                                        type="checkbox"
+                                                        name=""
+                                                        id=""
+                                                    />
+                                                ) : (
+                                                    ''
+                                                )}
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
                             </tbody>
                         </table>
                     </div>
+                    <div className="empty_div"></div>
                 </div>
             </div>
         </div>
