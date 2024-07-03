@@ -9,31 +9,50 @@ const Index: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            last_date: '10 Feb, 2024',
-            amount: '3000',
-            amount_in_text: 'Three thousand taka only',
-            purpose: 'hostel bill',
+            name: 'Shahin',
+            building_no: '101',
+            room_no: '101',
+            student_id: '2024A101',
+            phone_number: '0183297423',
         },
         {
             id: 2,
-            last_date: '14 March, 2024',
-            amount: '10000',
-            amount_in_text: 'Ten thousand taka only',
-            purpose: 'admission bill',
+            name: 'Ramim',
+            building_no: '101',
+            room_no: '101',
+            student_id: '2024A102',
+            phone_number: '0183297424',
         },
         {
             id: 3,
-            last_date: '15 Feb, 2024',
-            amount: '5000',
-            amount_in_text: 'Five thousand taka only',
-            purpose: 'transport bill',
+            name: 'Tamim',
+            building_no: '101',
+            room_no: '101',
+            student_id: '2024A103',
+            phone_number: '0183297421',
+        },
+        {
+            id: 4,
+            name: 'Areeba',
+            building_no: '101',
+            room_no: '101',
+            student_id: '2024A104',
+            phone_number: '0183297422',
+        },
+        {
+            id: 5,
+            name: 'Jerin',
+            building_no: '101',
+            room_no: '101',
+            student_id: '2024A105',
+            phone_number: '0183297425',
         },
     ];
 
     return (
         <div className="admin_dashboard">
             <div className="content_body">
-                <Link
+                {/* <Link
                     to="/expense-entry"
                     className="btn btn-sm btn-outline-info mb-2"
                     type="submit"
@@ -61,7 +80,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             Submit
                         </button>
                     </div>
-                </form>
+                </form> */}
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
                         <table>
@@ -69,10 +88,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
-                                    <th>Purpose</th>
-                                    <th>Date</th>
-                                    <th>Amount in Text</th>
-                                    <th>Amount</th>
+                                    <th>Name</th>
+                                    <th>Room No.</th>
+                                    <th>Building No.</th>
+                                    <th>Id</th>
+                                    <th>Phone</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -81,21 +102,31 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.purpose}</td>
-                                            <td>{i.last_date}</td>
-                                            <td>{i.amount_in_text}</td>
-                                            <td>{i.amount} tk</td>
+                                            <td>{i.name}</td>
+                                            <td>{i.room_no}</td>
+                                            <td>{i.building_no}</td>
+                                            <td>{i.student_id} </td>
+                                            <td>{i.phone_number} </td>
+                                            <td>
+                                                <Link
+                                                    to="/student/details"
+                                                    className="btn btn-sm  btn-outline-info"
+                                                    type="submit"
+                                                >
+                                                    Details
+                                                </Link>
+                                            </td>
                                         </tr>
                                     );
                                 })}
-                                <tr>
+                                {/* <tr>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td>Total:</td>
                                     <td>18000 tk</td>
-                                </tr>
+                                </tr> */}
                             </tbody>
                         </table>
                     </div>

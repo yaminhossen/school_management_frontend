@@ -5,7 +5,7 @@ export interface Props {}
 const BasicInformation: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
-            <h3 className="table_heading">Basic information</h3>
+            <h3 className="table_heading">Major information</h3>
             <table className="table text-nowrap">
                 <tbody>
                     <tr>
