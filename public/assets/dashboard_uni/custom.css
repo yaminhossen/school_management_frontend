@@ -268,3 +268,9 @@ th {
 .accordion-button{
     color:rgb(90, 164, 207) !important;
 }
+.hostel_super_student{
+    width: 50%;
+    color: white;
+    border: 2px solid rgb(110, 108, 108);
+    margin-bottom: 20px;
+}
