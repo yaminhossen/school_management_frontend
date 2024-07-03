@@ -6,6 +6,7 @@ import React from 'react';
 import student_management_routes from '../views/pages/student_management/config/routes';
 import staff_management_routes from '../views/pages/staff_management/config/routes';
 import meal_management_routes from '../views/pages/meal_management/config/routes';
+import salah_management_routes from '../views/pages/salah_management/config/routes';
 import faculty_management_routes from '../views/pages/facility_management/config/routes';
 import finance_routes from '../views/pages/finance/config/routes';
 import communication_routes from '../views/pages/communication/config/routes';
@@ -20,6 +21,7 @@ const router: RouteTypes[] = [
         children: [
             student_management_routes,
             meal_management_routes,
+            salah_management_routes,
             staff_management_routes,
             faculty_management_routes,
             finance_routes,
