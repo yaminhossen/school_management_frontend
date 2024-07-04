@@ -13,7 +13,7 @@ const Index: React.FC<Props> = (props: Props) => {
             subject: 'Bangla',
             name: 'Shahin',
             total_issues_book: '5',
-            total_due: '95',
+            total_due: '295',
             miss_assignment: '5',
         },
         {
@@ -22,7 +22,7 @@ const Index: React.FC<Props> = (props: Props) => {
             subject: 'Agriculture',
             name: 'Ramim',
             total_issues_book: '4',
-            total_due: '110',
+            total_due: '310',
             miss_assignment: '10',
         },
         {
@@ -31,39 +31,22 @@ const Index: React.FC<Props> = (props: Props) => {
             subject: 'Social Science',
             name: 'Tamim',
             total_issues_book: '3',
-            total_due: '85',
+            total_due: '285',
+            miss_assignment: '5',
+        },
+        {
+            id: 4,
+            class: 'Seven',
+            subject: 'Social Science',
+            name: 'Areeba',
+            total_issues_book: '5',
+            total_due: '485',
             miss_assignment: '5',
         },
     ];
 
     return (
         <div className="admin_dashboard">
-            {/* <form action="">
-                <div className="teacher_result">
-                    <div>
-                        <div>Class</div>
-                        <div>
-                            <select name="class" id="">
-                                <option value="six">Six</option>
-                                <option value="seven">Seven</option>
-                                <option value="eight">Eight</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div>
-                        <div>Month</div>
-                        <div>
-                            <input type="month" name="month" id="" />
-                        </div>
-                    </div>
-                    <button
-                        className="btn btn-sm btn-outline-info "
-                        type="submit"
-                    >
-                        Submit
-                    </button>
-                </div>
-            </form> */}
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
@@ -86,7 +69,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td>{i.id}</td>
                                             <td>{i.name}</td>
                                             <td>{i.total_issues_book}</td>
-                                            <td>{i.total_due}</td>
+                                            <td>{i.total_due} tk</td>
                                             <td>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
@@ -94,12 +77,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 >
                                                     details
                                                 </Link>
-                                                {/* <Link
-                                                    className="btn btn-sm btn-outline-info"
-                                                    to="/class-attendance/take-attendance"
-                                                >
-                                                    Take attendance
-                                                </Link> */}
                                             </td>
                                         </tr>
                                     );
