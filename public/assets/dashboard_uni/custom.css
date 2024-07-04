@@ -326,11 +326,12 @@ th {
     }
     .data_list{
         .order_delete_btn{
-            border: 2px solid rgb(255, 0, 0);
+            border: none;
             color: rgb(255, 0, 0);
             /* background-color: rgb(128, 126, 126); */
             &:hover{
                 background-color: red;
+                border: none;
                 color: white;
             }
         }
@@ -436,5 +437,56 @@ th {
     .save_btn{
         text-align: center;
         margin-top: 30px;
+    }
+}
+.order_invoice{
+    margin: 0 15%;
+    .invoice_top{
+        display: flex;
+        justify-content: space-between;
+        .invoice_top_left{
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            .invoice_photo{
+                img{
+                    width: 50px;
+                    border-radius: 8px;
+                }
+            }
+        }
+        .invoice_num_date{
+            /* border: 2px solid red; */
+            p{
+                padding: 0;
+                margin: 0;
+                margin-bottom: 10px;
+            }
+        }
+        .invoice_top_right{
+            h3{
+                margin-top: 30px;
+                display: flex;
+                justify-content: space-between;
+                width: 280px;
+                font-size: 34px;
+                font-weight: 600;
+                background-color: rgba(148, 148, 148, 0.432);
+                padding: 0 10px 0 4px;
+                color: rgba(40, 40, 99, 0.521);
+            }
+            .horizon_line1{
+                border-left: 2px solid rgba(230, 230, 230, 0.979);
+            }
+            .horizon_line2{
+                border-right: 3px solid rgba(214, 214, 214, 0.979);
+                margin-right: 5px;
+            }
+        }
+    }
+    .invoice_horizontal_border{
+        border-bottom: 3px solid gray;
+        margin: 15px 0 20px 0;
     }
 }
