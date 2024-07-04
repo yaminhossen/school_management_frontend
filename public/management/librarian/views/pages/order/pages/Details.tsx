@@ -9,39 +9,31 @@ const Index: React.FC<Props> = (props: Props) => {
     const datas: data[] = [
         {
             id: 1,
-            order_no: '01ADC010',
-            order_amount: '300',
-            date: '12 Jan, 2024',
+            item: 'Note book',
+            quantity: '2',
+            price: '280',
+            amount: '280',
         },
         {
             id: 2,
-            order_no: '01ADC011',
-            order_amount: '280',
-            date: '10 Jan, 2024',
+            item: 'Clipboard',
+            quantity: '1',
+            price: '120',
+            amount: '120',
         },
         {
             id: 3,
-            order_no: '01ADC012',
-            order_amount: '10',
-            date: '15 Feb, 2024',
+            item: 'Folder',
+            quantity: '3',
+            price: '200',
+            amount: '200',
         },
         {
             id: 4,
-            order_no: '01ADC013',
-            order_amount: '100',
-            date: '10 March, 2024',
-        },
-        {
-            id: 5,
-            order_no: '01ADC014',
-            order_amount: '120',
-            date: '14 March, 2024',
-        },
-        {
-            id: 6,
-            order_no: '01ADC015',
-            order_amount: '80',
-            date: '15 March, 2024',
+            item: 'Pen',
+            quantity: '10',
+            price: '60',
+            amount: '60',
         },
     ];
 
@@ -59,7 +51,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     />
                                 </div>
                                 <div>
-                                    <h3>Ecommerce Surface</h3>
+                                    <h3>Nurul Hiqmah Model Madrasa</h3>
                                 </div>
                             </div>
                             <div className="invoice_num_date">
@@ -82,6 +74,20 @@ const Index: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="invoice_horizontal_border"></div>
+                    <div className="invoice_bill">
+                        <div>
+                            <h5>Bill from:</h5>
+                            <p>Company Name</p>
+                            <p>Street Address, Zip Code</p>
+                            <p>Phone Number</p>
+                        </div>
+                        <div>
+                            <h5>Bill to:</h5>
+                            <p>Company Name</p>
+                            <p>Street Address, Zip Code</p>
+                            <p>Phone Number</p>
+                        </div>
+                    </div>
                     <div className="data_list">
                         <div className="table_responsive custom_scroll">
                             <table>
@@ -89,10 +95,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <th></th>
                                         <th>Serial</th>
-                                        <th>Order No.</th>
-                                        <th>Date</th>
-                                        <th>Order Amount</th>
-                                        <th>Action</th>
+                                        <th>Item</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
@@ -101,26 +107,59 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <tr>
                                                 <td></td>
                                                 <td>{i.id}</td>
-                                                <td>{i.order_no}</td>
-                                                <td>{i.date}</td>
-                                                <td>{i.order_amount}</td>
-                                                <td>
-                                                    <Link
-                                                        className="btn btn-sm btn-outline-info mr-1"
-                                                        to="/order/details"
-                                                    >
-                                                        details
-                                                    </Link>
-                                                    {/* <Link
-                                                    className="btn btn-sm btn-outline-info"
-                                                    to="/class-attendance/take-attendance"
-                                                >
-                                                    Take attendance
-                                                </Link> */}
-                                                </td>
+                                                <td>{i.item}</td>
+                                                <td>{i.quantity}</td>
+                                                <td>{i.price} tk</td>
+                                                <td>{i.amount} tk</td>
                                             </tr>
                                         );
                                     })}
+
+                                    <td colSpan={6}>
+                                        <div className="invoice_total">
+                                            <div className="total_price">
+                                                <div className="sub_total">
+                                                    <p className="total_text">
+                                                        Sub Total :
+                                                    </p>
+                                                    <p className="">
+                                                        660.00 tk
+                                                    </p>
+                                                </div>
+                                                <div className="sub_total">
+                                                    <p className="total_text">
+                                                        Discount :
+                                                    </p>
+                                                    <p className="">0.00 tk</p>
+                                                </div>
+                                                <div className="sub_total">
+                                                    <p className="total_text">
+                                                        Paid:
+                                                    </p>
+                                                    <p className="">
+                                                        100.00 tk
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <tr>
+                                        <td colSpan={6}></td>
+                                    </tr>
+                                    <td colSpan={6}>
+                                        <div className="invoice_total">
+                                            <div className="total_price">
+                                                <div className="sub_total">
+                                                    <p className="total_text">
+                                                        Grand Total :
+                                                    </p>
+                                                    <p className="">
+                                                        560.00 tk
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tbody>
                             </table>
                         </div>
