@@ -18,7 +18,12 @@ export interface Props {
     default_value?: anyObject[] | [];
 }
 
-const DropDown: React.FC<Props> = ({ name, get_selected_data, multiple, default_value }) => {
+const DropDown: React.FC<Props> = ({
+    name,
+    get_selected_data,
+    multiple,
+    default_value,
+}) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -26,7 +31,7 @@ const DropDown: React.FC<Props> = ({ name, get_selected_data, multiple, default_
     useEffect(() => {
         dispatch(storeSlice.actions.set_only_latest_data(true));
         dispatch(all({}));
-        if(default_value){
+        if (default_value) {
             setSelectedList(default_value);
         }
     }, []);
@@ -52,7 +57,12 @@ const DropDown: React.FC<Props> = ({ name, get_selected_data, multiple, default_
     return (
         <>
             <div className="custom_drop_down">
-                <input type="hidden" ref={selected_items_input} id={name} name={name} />
+                <input
+                    type="hidden"
+                    ref={selected_items_input}
+                    id={name}
+                    name={name}
+                />
                 <div
                     className="selected_list"
                     onClick={() => setShowDropDownList(true)}

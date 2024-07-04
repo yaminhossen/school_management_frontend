@@ -144,9 +144,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 <td>
                                                     <Link
                                                         className="btn btn-sm order_delete_btn mr-1"
-                                                        to="/student/details"
+                                                        to="/order/create"
                                                     >
-                                                        X
+                                                        <i
+                                                            className="fa fa-trash"
+                                                            aria-hidden="true"
+                                                        ></i>
                                                     </Link>
                                                 </td>
                                             </tr>
