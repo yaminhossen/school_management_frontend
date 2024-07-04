@@ -328,10 +328,113 @@ th {
         .order_delete_btn{
             border: 2px solid rgb(255, 0, 0);
             color: rgb(255, 0, 0);
+            /* background-color: rgb(128, 126, 126); */
             &:hover{
                 background-color: red;
                 color: white;
             }
         }
+        .create_order_quantity_td{
+            width: 200px;
+            .create_order_quantity{
+                display: flex;
+                justify-content: center;
+                .minus{
+                    border: 1px solid gray;
+                    padding: 0 10px;
+                    cursor: pointer;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .plus{
+                    border: 1px solid gray;
+                    padding: 0 10px;
+                    cursor: pointer;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .product_quantity{
+                    /* width: 100px; */
+                    border: 1px solid gray;
+                    .product_quantity_input{
+                        width: 100px;
+                        height: 30px;
+                        border: none;
+                        text-align: center;
+                    }
+    
+                }
+            }
+        }
+    }
+    .total_price{
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        margin: 0 10%;
+        margin-top: 20px;
+        .sub_total{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            h3{
+                font-size: 18px;
+            }
+            p{
+                font-size: 18px;
+                margin-top: 10px;
+            }
+        }
+        .grand_total{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            h3{
+                font-size: 18px;
+            }
+            p{
+                font-size: 18px;
+                margin-top: 10px;
+            }
+        }
+    }
+    .payment_part{
+        .payment{
+            /* border: 2px solid red; */
+            background-color: rgba(170, 170, 170, 0.233);
+            padding: 10px;
+            border-radius: 8px;
+            .payment_first{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 20px;
+                .payment_first_input{
+                    /* width: 100%; */
+                    .input_field{
+                        width: 350px;
+                        border-color: rgb(202, 202, 202);
+                        color: white;
+                        height: 35px;
+                    }
+                }
+            }
+            .payment_second{
+                textarea{
+                    border-color:rgb(202, 202, 202);
+                    color: white;
+                }
+            }
+        }
+    }
+    .save_btn{
+        text-align: center;
+        margin-top: 30px;
     }
 }

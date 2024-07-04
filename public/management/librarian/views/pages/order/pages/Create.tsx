@@ -11,18 +11,21 @@ const Create: React.FC<Props> = (props: Props) => {
             id: 1,
             order_no: '01ADC010',
             order_amount: '300',
+            price: '300',
             date: '12 Jan, 2024',
         },
         {
             id: 2,
             order_no: '01ADC011',
             order_amount: '280',
+            price: '280',
             date: '10 Jan, 2024',
         },
         {
             id: 3,
             order_no: '01ADC012',
             order_amount: '10',
+            price: '10',
             date: '15 Feb, 2024',
         },
         // {
@@ -111,14 +114,32 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
-                                    {/* {datas?.map((i: { [key: string]: any }) => {
+                                    {datas?.map((i: { [key: string]: any }) => {
                                         return (
                                             <tr>
                                                 <td></td>
                                                 <td>{i.id}</td>
                                                 <td>{i.order_no}</td>
-                                                <td>{i.date}</td>
-                                                <td>{i.order_amount}</td>
+                                                <td className="create_order_quantity_td">
+                                                    <div className="create_order_quantity">
+                                                        <div className="minus">
+                                                            -
+                                                        </div>
+                                                        <div className="product_quantity">
+                                                            <input
+                                                                type="text"
+                                                                name=""
+                                                                id=""
+                                                                value={1}
+                                                                className="product_quantity_input"
+                                                            />
+                                                        </div>
+                                                        <div className="plus">
+                                                            +
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>{i.price}</td>
                                                 <td>{i.order_amount}</td>
                                                 <td>
                                                     <Link
@@ -130,39 +151,84 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </td>
                                             </tr>
                                         );
-                                    })} */}
-                                    <tr>
-                                        <td></td>
-                                        <td>rew</td>
-                                        <td>sg</td>
-                                        <td>
-                                            <div className="create_order_quantity">
-                                                <div>-</div>
-                                                <div>
-                                                    <input
-                                                        type="text"
-                                                        name=""
-                                                        id=""
-                                                    />
-                                                </div>
-                                                <div>+</div>
-                                            </div>
-                                        </td>
-                                        <td>sdf</td>
-                                        <td>sgf</td>
-                                        <td>sdf</td>
-                                    </tr>
+                                    })}
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <div className="form-group form-horizontal">
-                        <label></label>
-                        <div className="form_elements mt-4">
-                            <button className="btn btn-sm btn-outline-info">
-                                submit
-                            </button>
+                    <div className="total_price">
+                        <div className="sub_total">
+                            <h3>Sub Total :</h3>
+                            <p className="">590 tk</p>
                         </div>
+                        <div className="grand_total">
+                            <h3>Grand Total :</h3>
+                            <p className="">590 tk</p>
+                        </div>
+                    </div>
+                    <div className="payment_part">
+                        <h3>Payment</h3>
+                        <div className="payment">
+                            <div className="payment_first">
+                                <div className="form-group form-vertical">
+                                    <label>Amount</label>
+                                    <div className="payment_first_input">
+                                        <input
+                                            type="number"
+                                            placeholder="Amount"
+                                            name="amount"
+                                            className="input_field"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Payment Type</label>
+                                    <div className="payment_first_input">
+                                        <select
+                                            name="payment_type"
+                                            className="input_field"
+                                            id=""
+                                        >
+                                            <option value="">Cash</option>
+                                            <option value="">
+                                                Mobile Banking
+                                            </option>
+                                            <option value="">Bank</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Account</label>
+                                    <div className="payment_first_input">
+                                        <select
+                                            name="account"
+                                            className="input_field"
+                                            id=""
+                                        >
+                                            <option value="">Cash</option>
+                                            <option value="">Bkash</option>
+                                            <option value="">Nagad</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="payment_second">
+                                <div className="form-group form-vertical">
+                                    <label>Payment Note</label>
+                                    <div className="form_elements">
+                                        <textarea
+                                            placeholder="Take some note"
+                                            name="payment_note"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="save_btn">
+                        <button className="btn btn-sm btn-outline-info">
+                            Save
+                        </button>
                     </div>
                 </form>
             </div>
