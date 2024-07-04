@@ -11,27 +11,27 @@ const Index: React.FC<Props> = (props: Props) => {
             id: 1,
             class: 'Six',
             subject: 'Bangla',
-            total_student: '100',
-            total_assignment: '5',
-            take_assignment: '95',
+            name: 'Shahin',
+            total_issues_book: '5',
+            total_due: '95',
             miss_assignment: '5',
         },
         {
             id: 2,
             class: 'Six',
             subject: 'Agriculture',
-            total_student: '120',
-            total_assignment: '4',
-            take_assignment: '110',
+            name: 'Ramim',
+            total_issues_book: '4',
+            total_due: '110',
             miss_assignment: '10',
         },
         {
             id: 3,
             class: 'Seven',
             subject: 'Social Science',
-            total_student: '90',
-            total_assignment: '3',
-            take_assignment: '85',
+            name: 'Tamim',
+            total_issues_book: '3',
+            total_due: '85',
             miss_assignment: '5',
         },
     ];
@@ -71,9 +71,10 @@ const Index: React.FC<Props> = (props: Props) => {
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Class</th>
-                                    <th>Subject</th>
-                                    <th>Total Student</th>
+                                    <th>Serial</th>
+                                    <th>Name</th>
+                                    <th>Total Issues Book</th>
+                                    <th>Total Due</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -82,9 +83,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                     return (
                                         <tr>
                                             <td></td>
-                                            <td>{i.class}</td>
-                                            <td>{i.subject}</td>
-                                            <td>{i.total_student}</td>
+                                            <td>{i.id}</td>
+                                            <td>{i.name}</td>
+                                            <td>{i.total_issues_book}</td>
+                                            <td>{i.total_due}</td>
                                             <td>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
