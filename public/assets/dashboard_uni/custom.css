@@ -307,3 +307,31 @@ th {
 .librarian_product{
     width: 40px;
 }
+.create_order{
+    /* border: 2px solid red; */
+    .create_order_customer{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+    
+    }
+    .divider{
+        border-bottom: 3px solid rgb(88, 88, 88);
+        margin: 0 40px;
+    }
+    .create_order_search{
+        margin: 20px 10%;
+    }
+    .data_list{
+        .order_delete_btn{
+            border: 2px solid rgb(255, 0, 0);
+            color: rgb(255, 0, 0);
+            &:hover{
+                background-color: red;
+                color: white;
+            }
+        }
+    }
+}

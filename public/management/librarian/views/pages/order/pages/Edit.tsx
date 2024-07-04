@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 export interface Props {}
 
-const Review: React.FC<Props> = (props: Props) => {
+const Edit: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
-            {/* <h3>Create New Review</h3> */}
+            {/* <h3>Create New Edit</h3> */}
             <div className="content_body">
                 <form className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
@@ -15,29 +15,29 @@ const Review: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Class</label>
+                        <label>Price</label>
                         <div className="form_elements">
                             <input
-                                type="text"
-                                placeholder="class"
-                                name="class"
+                                type="number"
+                                placeholder="Enter Price"
+                                name="price"
                             />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Roll</label>
+                        <label>Details</label>
                         <div className="form_elements">
-                            <input type="text" placeholder="roll" name="roll" />
+                            <textarea
+                                name="details"
+                                id=""
+                                placeholder="Write product details"
+                            ></textarea>
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Review</label>
+                        <label>Photo</label>
                         <div className="form_elements">
-                            <textarea
-                                name="review"
-                                id=""
-                                placeholder="Write your review"
-                            ></textarea>
+                            <input type="file" name="product_image" id="" />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
@@ -54,4 +54,4 @@ const Review: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Review;
+export default Edit;

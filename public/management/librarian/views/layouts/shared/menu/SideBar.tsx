@@ -21,6 +21,7 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="Book Management"
                 />
                 <MenuSingle to="/products" icon="icon-user" label="Products" />
+                <MenuSingle to="/order" icon="icon-user" label="order" />
 
                 {/* sdfds */}
 
