@@ -5,6 +5,7 @@ import user_branch_staff_routes from '../views/pages/users/config/routes';
 import React from 'react';
 import student_routes from '../views/pages/student/config/routes';
 import products_routes from '../views/pages/products/config/routes';
+import order_routes from '../views/pages/order/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
@@ -14,6 +15,7 @@ const router: RouteTypes[] = [
         children: [
             student_routes,
             products_routes,
+            order_routes,
             {
                 path: '',
                 element: <T1 />,
