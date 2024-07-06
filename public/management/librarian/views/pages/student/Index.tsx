@@ -10,38 +10,30 @@ const Index: React.FC<Props> = (props: Props) => {
         {
             id: 1,
             class: 'Six',
-            subject: 'Bangla',
+            phone_number: '0928340223',
             name: 'Shahin',
             total_issues_book: '5',
-            total_due: '295',
-            miss_assignment: '5',
         },
         {
             id: 2,
             class: 'Six',
-            subject: 'Agriculture',
+            phone_number: '25323645643',
             name: 'Ramim',
             total_issues_book: '4',
-            total_due: '310',
-            miss_assignment: '10',
         },
         {
             id: 3,
             class: 'Seven',
-            subject: 'Social Science',
+            phone_number: '67345437445',
             name: 'Tamim',
             total_issues_book: '3',
-            total_due: '285',
-            miss_assignment: '5',
         },
         {
             id: 4,
             class: 'Seven',
-            subject: 'Social Science',
+            phone_number: '73454353633',
             name: 'Areeba',
             total_issues_book: '5',
-            total_due: '485',
-            miss_assignment: '5',
         },
     ];
 
@@ -56,8 +48,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Name</th>
+                                    <th>Class</th>
+                                    <th>Phone</th>
                                     <th>Total Issues Book</th>
-                                    <th>Total Due</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -68,12 +61,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td></td>
                                             <td>{i.id}</td>
                                             <td>{i.name}</td>
+                                            <td>{i.class}</td>
+                                            <td>{i.phone_number}</td>
                                             <td>{i.total_issues_book}</td>
-                                            <td>{i.total_due} tk</td>
                                             <td>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
-                                                    to="/student/details"
+                                                    to="/student/issue-books"
                                                 >
                                                     details
                                                 </Link>

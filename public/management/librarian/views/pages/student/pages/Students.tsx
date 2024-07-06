@@ -10,22 +10,28 @@ const Students: React.FC<Props> = (props: Props) => {
         {
             id: 1,
             name: 'Shahin',
-            subject: 'Bangla',
+            book: 'Bangla',
             class: 'Six',
+            issue_date: '12 Jan, 2024',
+            return_date: '20 Jan, 2024',
             roll: '101',
         },
         {
             id: 2,
-            name: 'Tamim',
-            subject: 'Bangla',
+            name: 'Shahin',
+            book: 'English',
             class: 'Six',
+            issue_date: '13 Jan, 2024',
+            return_date: '21 Jan, 2024',
             roll: '102',
         },
         {
             id: 3,
-            name: 'Ramim',
-            subject: 'Bangla',
+            name: 'Shahin',
+            book: 'Mathemetics',
             class: 'Six',
+            issue_date: '15 Jan, 2024',
+            return_date: '23 Jan, 2024',
             roll: '103',
         },
     ];
@@ -33,6 +39,46 @@ const Students: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
             <div className="content_body">
+                <h3 className="table_heading">Information</h3>
+                <table className="table hostel_super_student text-nowra">
+                    <tbody>
+                        <tr>
+                            <td>Name</td>
+                            <td>:</td>
+                            <td className="font-medium text-dark-medium">
+                                Shahin Alam
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Class</td>
+                            <td>:</td>
+                            <td className="font-medium text-dark-medium">
+                                Six
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>:</td>
+                            <td className="font-medium text-dark-medium">
+                                masud1@gmail.com
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Phone number</td>
+                            <td>:</td>
+                            <td className="font-medium text-dark-medium">
+                                01897867563
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Stutas</td>
+                            <td>:</td>
+                            <td className="font-medium text-dark-medium">
+                                Active
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
                         <table>
@@ -40,12 +86,9 @@ const Students: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
-                                    <th>Name</th>
-                                    <th>Subject</th>
-                                    <th>Class</th>
-                                    <th>Roll</th>
-                                    <th>Action</th>
-                                    <th>Report</th>
+                                    <th>Book</th>
+                                    <th>Issue Date</th>
+                                    <th>Return Date</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -54,11 +97,10 @@ const Students: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.name}</td>
-                                            <td>{i.subject}</td>
-                                            <td>{i.class}</td>
-                                            <td>{i.roll}</td>
-                                            <td>
+                                            <td>{i.book}</td>
+                                            <td>{i.issue_date}</td>
+                                            <td>{i.return_date}</td>
+                                            {/* <td>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
                                                     to="/student/review"
@@ -79,7 +121,7 @@ const Students: React.FC<Props> = (props: Props) => {
                                                 >
                                                     Details
                                                 </Link>
-                                            </td>
+                                            </td> */}
                                         </tr>
                                     );
                                 })}
