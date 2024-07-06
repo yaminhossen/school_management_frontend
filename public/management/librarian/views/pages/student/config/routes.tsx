@@ -18,7 +18,7 @@ export default {
             element: <Index />,
         },
         {
-            path: 'details',
+            path: 'issue-books',
             element: <Details />,
         },
         {
