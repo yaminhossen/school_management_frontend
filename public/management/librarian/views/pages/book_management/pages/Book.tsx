@@ -10,7 +10,7 @@ const Students: React.FC<Props> = (props: Props) => {
         {
             id: 1,
             name: 'Shahin',
-            book: 'Bangla',
+            phone_number: '02934038359',
             class: 'Six',
             issue_date: '12 Jan, 2024',
             return_date: '20 Jan, 2024',
@@ -18,18 +18,18 @@ const Students: React.FC<Props> = (props: Props) => {
         },
         {
             id: 2,
-            name: 'Shahin',
-            book: 'English',
-            class: 'Six',
+            name: 'Ramim',
+            phone_number: '93849733593',
+            class: 'Eight',
             issue_date: '13 Jan, 2024',
             return_date: '21 Jan, 2024',
             roll: '102',
         },
         {
             id: 3,
-            name: 'Shahin',
-            book: 'Mathemetics',
-            class: 'Six',
+            name: 'Areeba',
+            phone_number: '03858263858',
+            class: 'Seven',
             issue_date: '15 Jan, 2024',
             return_date: '23 Jan, 2024',
             roll: '103',
@@ -43,31 +43,31 @@ const Students: React.FC<Props> = (props: Props) => {
                 <table className="table hostel_super_student">
                     <tbody>
                         <tr>
-                            <td>Name</td>
+                            <td>Book Name</td>
                             <td>:</td>
                             <td className="font-medium text-dark-medium">
-                                Shahin Alam
+                                Bangla
                             </td>
                         </tr>
                         <tr>
-                            <td>Class</td>
+                            <td>Book ID</td>
                             <td>:</td>
                             <td className="font-medium text-dark-medium">
-                                Six
+                                B101
                             </td>
                         </tr>
                         <tr>
-                            <td>Email</td>
+                            <td>Quantity</td>
                             <td>:</td>
                             <td className="font-medium text-dark-medium">
-                                shahin@gmail.com
+                                100 pc
                             </td>
                         </tr>
                         <tr>
-                            <td>Phone number</td>
+                            <td>Available</td>
                             <td>:</td>
                             <td className="font-medium text-dark-medium">
-                                01897867563
+                                40 pc
                             </td>
                         </tr>
                     </tbody>
@@ -79,7 +79,10 @@ const Students: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
-                                    <th>Book</th>
+                                    <th>Name</th>
+                                    <th>Class</th>
+                                    <th>Roll</th>
+                                    <th>Phone Number</th>
                                     <th>Issue Date</th>
                                     <th>Return Date</th>
                                 </tr>
@@ -90,7 +93,10 @@ const Students: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.book}</td>
+                                            <td>{i.name}</td>
+                                            <td>{i.class}</td>
+                                            <td>{i.roll}</td>
+                                            <td>{i.phone_number}</td>
                                             <td>{i.issue_date}</td>
                                             <td>{i.return_date}</td>
                                             {/* <td>
