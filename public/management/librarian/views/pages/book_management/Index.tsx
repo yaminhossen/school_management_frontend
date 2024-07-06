@@ -44,6 +44,13 @@ const Index: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
             <div className="content_body">
+                <Link
+                    to="/book-management/create-issue"
+                    className="btn btn-sm btn-outline-info mb-2"
+                    type="submit"
+                >
+                    New book issue
+                </Link>
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
                         <table>
@@ -73,7 +80,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
-                                                    to="/book-issues/student"
+                                                    to="/book-management/books"
                                                 >
                                                     details
                                                 </Link>
