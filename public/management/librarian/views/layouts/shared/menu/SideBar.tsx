@@ -26,7 +26,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                 {/* sdfds */}
 
                 {/* <MenuSingle to="/" icon="icon-receipt" label="Home" /> */}
-                <MenuSingle to="/student" icon="icon-receipt" label="Student" />
+                <MenuSingle
+                    to="/book-issues"
+                    icon="icon-receipt"
+                    label="Book Issues"
+                />
                 <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" />
 
                 <MenuSingle

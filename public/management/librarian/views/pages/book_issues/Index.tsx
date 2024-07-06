@@ -10,28 +10,28 @@ const Index: React.FC<Props> = (props: Props) => {
         {
             id: 1,
             class: 'Six',
-            phone_number: '0928340223',
+            phone_number: '01897867563',
             name: 'Shahin',
             total_issues_book: '5',
         },
         {
             id: 2,
             class: 'Six',
-            phone_number: '25323645643',
+            phone_number: '01897867564',
             name: 'Ramim',
             total_issues_book: '4',
         },
         {
             id: 3,
             class: 'Seven',
-            phone_number: '67345437445',
+            phone_number: '01897867565',
             name: 'Tamim',
             total_issues_book: '3',
         },
         {
             id: 4,
             class: 'Seven',
-            phone_number: '73454353633',
+            phone_number: '01897867566',
             name: 'Areeba',
             total_issues_book: '5',
         },
@@ -67,7 +67,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
-                                                    to="/student/issue-books"
+                                                    to="/book-issues/student"
                                                 >
                                                     details
                                                 </Link>

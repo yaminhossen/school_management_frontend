@@ -40,7 +40,7 @@ const Students: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <div className="content_body">
                 <h3 className="table_heading">Information</h3>
-                <table className="table hostel_super_student text-nowra">
+                <table className="table hostel_super_student">
                     <tbody>
                         <tr>
                             <td>Name</td>
@@ -60,7 +60,7 @@ const Students: React.FC<Props> = (props: Props) => {
                             <td>Email</td>
                             <td>:</td>
                             <td className="font-medium text-dark-medium">
-                                masud1@gmail.com
+                                shahin@gmail.com
                             </td>
                         </tr>
                         <tr>
@@ -68,13 +68,6 @@ const Students: React.FC<Props> = (props: Props) => {
                             <td>:</td>
                             <td className="font-medium text-dark-medium">
                                 01897867563
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Stutas</td>
-                            <td>:</td>
-                            <td className="font-medium text-dark-medium">
-                                Active
                             </td>
                         </tr>
                     </tbody>
