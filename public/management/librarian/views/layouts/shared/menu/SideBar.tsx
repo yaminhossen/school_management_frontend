@@ -31,13 +31,7 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-receipt"
                     label="Book Issues"
                 />
-                <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" />
-
-                <MenuSingle
-                    to="/help-support"
-                    icon="icon-bell"
-                    label="Help and Support"
-                />
+                {/* <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" /> */}
 
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
             </ul>
