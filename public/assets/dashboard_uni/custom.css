@@ -542,3 +542,21 @@ th {
         }
     }
 }
+.check_yes{
+    color: green;
+    /* border: 2px solid rgb(32, 153, 2); */
+    border-radius: 50%;
+    font-size: 14px;
+}
+.check_cross{
+    color: rgba(238, 5, 5, 0.527);
+    border: 2px solid rgba(248, 3, 3, 0.596);
+    border-radius: 50%;
+    font-size: 14px;
+}
+.check_fri{
+    color: rgb(28, 158, 245);
+    /* border: 2px solid rgb(32, 153, 2); */
+    border-radius: 50%;
+    font-size: 14px;
+}
