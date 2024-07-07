@@ -430,7 +430,7 @@ const Index: React.FC<Props> = (props: Props) => {
     ];
     const generateTableHeaders = (times) => {
         return Array.from({ length: times }).map((_, index) => (
-            <th key={index}>{index === 0 ? '' : index}</th>
+            <th key={index}>{index === 0 ? 'Month' : index}</th>
         ));
     };
 
@@ -447,7 +447,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             <tbody id="all_list">
                                 {datas?.map((i) => {
                                     return (
-                                        <tr>
+                                        <tr className="attendance_tr">
                                             <td>{i.month}</td>
                                             <td>
                                                 {i.day_1 == 'yes' ? (
