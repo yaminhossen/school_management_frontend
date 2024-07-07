@@ -15,54 +15,22 @@ const SideBar: React.FC<Props> = (props: Props) => {
         <>
             <ul className="sidebar-menu">
                 <MenuSingle to="/" icon="icon-home" label="Dashboard" />
-                {/* <MenuSingle to="/profile" icon="icon-user" label="Profile" /> */}
+                <MenuSingle to="/profile" icon="icon-user" label="Profile" />
                 <MenuSingle
-                    to="/student"
-                    icon="icon-calendar"
-                    label="Student"
-                />
-                <MenuSingle
-                    to="/meal-management"
-                    icon="icon-clipboard"
-                    label="Meal Management"
-                />
-                <MenuSingle
-                    to="/salah-management"
-                    icon="icon-clipboard"
-                    label="Salah Management"
-                />
-                <MenuSingle
-                    to="/daily-activities-management"
-                    icon="icon-clipboard"
-                    label="Daily Activities"
-                />
-                {/* <MenuSingle
-                    to="/facility-management"
-                    icon="icon-book"
-                    label="Facility Management"
-                />
-                <MenuSingle
-                    to="/staff-management"
+                    to="/attendance"
                     icon="icon-receipt"
-                    label="Staff Management"
-                /> */}
-                {/* <MenuSingle to="/finance" icon="icon-receipt" label="Finance" /> */}
-                {/* <MenuSingle
-                    to="/health-&-safety"
-                    icon="icon-receipt"
-                    label="Health & Safety"
-                /> */}
-                {/* <MenuSingle
-                    to="/communication"
-                    icon="icon-receipt"
-                    label="Communication"
-                /> */}
+                    label="Attendance"
+                />
                 {/* <MenuSingle to="/reports" icon="icon-receipt" label="Reports" /> */}
+
+                {/* sdfds */}
                 <MenuSingle
-                    to="/complain"
-                    icon="icon-receipt"
-                    label="Complain"
+                    to="/leave-application"
+                    icon="icon-notepad"
+                    label="Leave Application"
                 />
+                <MenuSingle to="/notices" icon="icon-bell" label="Notices" />
+                <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" />
 
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
 
