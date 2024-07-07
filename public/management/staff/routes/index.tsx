@@ -6,6 +6,7 @@ import React from 'react';
 import profile_routes from '../views/pages/profile/config/routes';
 import attendance_routes from '../views/pages/attendance/config/routes';
 import leave_application_routes from '../views/pages/leave_application/config/routes';
+import salary_report_routes from '../views/pages/salary_report/config/routes';
 import notices_routes from '../views/pages/notices/config/routes';
 import reports_routes from '../views/pages/teacher_reports/config/routes';
 
@@ -20,6 +21,7 @@ const router: RouteTypes[] = [
             leave_application_routes,
             notices_routes,
             reports_routes,
+            salary_report_routes,
             {
                 path: '',
                 element: <T1 />,
