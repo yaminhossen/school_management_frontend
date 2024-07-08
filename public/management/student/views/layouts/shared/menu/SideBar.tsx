@@ -27,7 +27,7 @@ const SideBar: React.FC<Props> = (props: Props) => {
                 />
                 <MenuSingle
                     to="/exam-routine"
-                    icon="icon-clipboard"
+                    icon="icon-book"
                     label="Exam Routine"
                 />
                 <MenuSingle
