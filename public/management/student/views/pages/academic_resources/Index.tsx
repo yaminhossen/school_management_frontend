@@ -10,14 +10,20 @@ const Index: React.FC<Props> = (props: Props) => {
         {
             id: 1,
             title: 'Bangla Essay books',
+            teacher: 'Eng. Nayeem Hossain',
+            date: '12 Jan, 2024',
         },
         {
             id: 2,
             title: 'English Word books',
+            teacher: 'Dr. Abdul Bari',
+            date: '12 Feb, 2024',
         },
         {
             id: 3,
             title: 'Math 4th chapter solve',
+            teacher: 'dr. Obaidullah',
+            date: '15 Jan, 2024',
         },
     ];
 
@@ -33,6 +39,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Title</th>
+                                    <th>Teacher</th>
+                                    <th>Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -43,6 +51,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td></td>
                                             <td>{i.id}</td>
                                             <td>{i.title}</td>
+                                            <td>{i.teacher}</td>
+                                            <td>{i.date}</td>
                                             <td>
                                                 <a href="#">download</a>
                                             </td>
