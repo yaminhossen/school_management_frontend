@@ -543,26 +543,31 @@ th {
     }
 }
 .check_yes{
-    color: green;
+    color: #09d6ffa8;
     /* border: 2px solid rgb(32, 153, 2); */
     border-radius: 50%;
     font-size: 14px;
 }
 .check_cross{
-    color: rgba(238, 5, 5, 0.527);
-    /* border: 2px solid rgba(248, 3, 3, 0.596); */
-    /* border-radius: 50%; */
+    color: rgb(229 106 46);
+    border: 2px solid rgb(229 106 46);;
+    border-radius: 50%;
+    height: 18px;
+    width: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 14px;
 }
 .check_fri{
-    color: rgb(28, 158, 245);
+    color: rgb(255, 255, 255);
     /* border: 2px solid rgb(32, 153, 2); */
     border-radius: 50%;
     font-size: 14px;
 }
 .table_responsive{
     thead{
-        tr{
+        .atttendance_thead_tr{
             th{
                 border: 1px solid rgba(24, 22, 22, 0.966);
 
@@ -575,5 +580,16 @@ th {
             padding: 10px ;
             border: 1px solid rgba(24, 22, 22, 0.438);
         }
+        .friday_td{
+            background-color: rgba(255, 0, 0, 0.384);
+        }
     }
+    .staff_salary_report{
+        td{
+            white-space: no-wrap;
+        }
+    }
+}
+.table_responsive table tbody tr td:nth-child(1), .table_responsive table tbody tr td:nth-child(2), .staff_salary_report{
+    width: 100px;
 }

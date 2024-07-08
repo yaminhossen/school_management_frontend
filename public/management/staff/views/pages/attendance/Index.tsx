@@ -442,7 +442,9 @@ const Index: React.FC<Props> = (props: Props) => {
                     <div className="table_responsive custom_scroll">
                         <table>
                             <thead>
-                                <tr>{generateTableHeaders(32)}</tr>
+                                <tr className="atttendance_thead_tr">
+                                    {generateTableHeaders(32)}
+                                </tr>
                             </thead>
                             <tbody id="all_list">
                                 {datas?.map((i) => {
@@ -515,7 +517,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <i className="fa fa-times check_cross"></i>
                                                 )}
                                             </td>
-                                            <td>
+                                            <td className="friday_td">
                                                 {i.day_7 == 'yes' ? (
                                                     <i className="fa fa-check check_yes"></i>
                                                 ) : i.day_7 == 'fri' ? (
@@ -592,7 +594,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <i className="fa fa-times check_cross"></i>
                                                 )}
                                             </td>
-                                            <td>
+                                            <td className="friday_td">
                                                 {i.day_14 == 'yes' ? (
                                                     <i className="fa fa-check check_yes"></i>
                                                 ) : i.day_14 == 'fri' ? (
@@ -669,7 +671,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <i className="fa fa-times check_cross"></i>
                                                 )}
                                             </td>
-                                            <td>
+                                            <td className="friday_td">
                                                 {i.day_21 == 'yes' ? (
                                                     <i className="fa fa-check check_yes"></i>
                                                 ) : i.day_21 == 'fri' ? (
@@ -746,7 +748,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <i className="fa fa-times check_cross"></i>
                                                 )}
                                             </td>
-                                            <td>
+                                            <td className="friday_td">
                                                 {i.day_28 == 'yes' ? (
                                                     <i className="fa fa-check check_yes"></i>
                                                 ) : i.day_28 == 'fri' ? (

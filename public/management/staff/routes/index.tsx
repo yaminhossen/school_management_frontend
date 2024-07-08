@@ -8,7 +8,7 @@ import attendance_routes from '../views/pages/attendance/config/routes';
 import leave_application_routes from '../views/pages/leave_application/config/routes';
 import salary_report_routes from '../views/pages/salary_report/config/routes';
 import notices_routes from '../views/pages/notices/config/routes';
-import reports_routes from '../views/pages/teacher_reports/config/routes';
+import reports_routes from '../views/pages/reports/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
