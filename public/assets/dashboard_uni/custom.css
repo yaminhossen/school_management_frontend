@@ -1,3 +1,6 @@
+a:hover {
+    color: #ededed;
+}
 .page-wrapper .page-body-wrapper .page-body {
     overflow: hidden;
 }
@@ -592,4 +595,11 @@ th {
 }
 .table_responsive table tbody tr td:nth-child(1), .table_responsive table tbody tr td:nth-child(2), .staff_salary_report{
     width: 100px;
+}
+.student_semister{
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+.semister_grade{
+    margin-top: 50px;
 }

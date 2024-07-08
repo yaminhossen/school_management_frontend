@@ -104,7 +104,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </span>
                             </td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -113,10 +113,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
+                                </span> */}
                             </td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -125,10 +125,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
+                                </span> */}
                             </td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -137,10 +137,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
+                                </span> */}
                             </td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -149,10 +149,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
+                                </span> */}
                             </td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -161,10 +161,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
+                                </span> */}
                             </td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -173,13 +173,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
+                                </span> */}
                             </td>
                         </tr>
                         <tr className="table_body">
                             <td className="subject">english</td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -188,7 +188,19 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
+                                </span> */}
+                            </td>
+                            <td className="class_time_and_room_content">
+                                {/* <span className="class_time_and_room">
+                                    <span className="time_rooom class_time">
+                                        7:00 am - 8:00 am
+                                    </span>
+                                    <span className="time_rooom class_room">
+                                        <span className="room_title">room</span>
+                                        <span className="dash_title">-</span>
+                                        <span className="room_number">101</span>
+                                    </span>
+                                </span> */}
                             </td>
                             <td className="class_time_and_room_content">
                                 <span className="class_time_and_room">
@@ -203,7 +215,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </span>
                             </td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -212,10 +224,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
+                                </span> */}
                             </td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -224,10 +236,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
+                                </span> */}
                             </td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -236,10 +248,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
+                                </span> */}
                             </td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -248,25 +260,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
-                            </td>
-                            <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span>
+                                </span> */}
                             </td>
                         </tr>
                         <tr className="table_body">
                             <td className="subject">math</td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -275,7 +275,55 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
+                                </span> */}
+                            </td>
+                            <td className="class_time_and_room_content">
+                                {/* <span className="class_time_and_room">
+                                    <span className="time_rooom class_time">
+                                        7:00 am - 8:00 am
+                                    </span>
+                                    <span className="time_rooom class_room">
+                                        <span className="room_title">room</span>
+                                        <span className="dash_title">-</span>
+                                        <span className="room_number">101</span>
+                                    </span>
+                                </span> */}
+                            </td>
+                            <td className="class_time_and_room_content">
+                                {/* <span className="class_time_and_room">
+                                    <span className="time_rooom class_time">
+                                        7:00 am - 8:00 am
+                                    </span>
+                                    <span className="time_rooom class_room">
+                                        <span className="room_title">room</span>
+                                        <span className="dash_title">-</span>
+                                        <span className="room_number">101</span>
+                                    </span>
+                                </span> */}
+                            </td>
+                            <td className="class_time_and_room_content">
+                                {/* <span className="class_time_and_room">
+                                    <span className="time_rooom class_time">
+                                        7:00 am - 8:00 am
+                                    </span>
+                                    <span className="time_rooom class_room">
+                                        <span className="room_title">room</span>
+                                        <span className="dash_title">-</span>
+                                        <span className="room_number">101</span>
+                                    </span>
+                                </span> */}
+                            </td>
+                            <td className="class_time_and_room_content">
+                                {/* <span className="class_time_and_room">
+                                    <span className="time_rooom class_time">
+                                        7:00 am - 8:00 am
+                                    </span>
+                                    <span className="time_rooom class_room">
+                                        <span className="room_title">room</span>
+                                        <span className="dash_title">-</span>
+                                        <span className="room_number">101</span>
+                                    </span>
+                                </span> */}
                             </td>
                             <td className="class_time_and_room_content">
                                 <span className="class_time_and_room">
@@ -290,7 +338,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </span>
                             </td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -299,61 +347,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
-                            </td>
-                            <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span>
-                            </td>
-                            <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span>
-                            </td>
-                            <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span>
-                            </td>
-                            <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span>
+                                </span> */}
                             </td>
                         </tr>
                         <tr className="table_body">
                             <td className="subject">physics</td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -362,7 +362,43 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
+                                </span> */}
+                            </td>
+                            <td className="class_time_and_room_content">
+                                {/* <span className="class_time_and_room">
+                                    <span className="time_rooom class_time">
+                                        7:00 am - 8:00 am
+                                    </span>
+                                    <span className="time_rooom class_room">
+                                        <span className="room_title">room</span>
+                                        <span className="dash_title">-</span>
+                                        <span className="room_number">101</span>
+                                    </span>
+                                </span> */}
+                            </td>
+                            <td className="class_time_and_room_content">
+                                {/* <span className="class_time_and_room">
+                                    <span className="time_rooom class_time">
+                                        7:00 am - 8:00 am
+                                    </span>
+                                    <span className="time_rooom class_room">
+                                        <span className="room_title">room</span>
+                                        <span className="dash_title">-</span>
+                                        <span className="room_number">101</span>
+                                    </span>
+                                </span> */}
+                            </td>
+                            <td className="class_time_and_room_content">
+                                {/* <span className="class_time_and_room">
+                                    <span className="time_rooom class_time">
+                                        7:00 am - 8:00 am
+                                    </span>
+                                    <span className="time_rooom class_room">
+                                        <span className="room_title">room</span>
+                                        <span className="dash_title">-</span>
+                                        <span className="room_number">101</span>
+                                    </span>
+                                </span> */}
                             </td>
                             <td className="class_time_and_room_content">
                                 <span className="class_time_and_room">
@@ -377,7 +413,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </span>
                             </td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -386,10 +422,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
+                                </span> */}
                             </td>
                             <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
+                                {/* <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
                                         7:00 am - 8:00 am
                                     </span>
@@ -398,43 +434,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <span className="dash_title">-</span>
                                         <span className="room_number">101</span>
                                     </span>
-                                </span>
-                            </td>
-                            <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span>
-                            </td>
-                            <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span>
-                            </td>
-                            <td className="class_time_and_room_content">
-                                <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span>
+                                </span> */}
                             </td>
                         </tr>
                     </tbody>
