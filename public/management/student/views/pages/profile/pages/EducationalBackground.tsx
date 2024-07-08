@@ -48,7 +48,14 @@ const EducationalBackground: React.FC<Props> = (props: Props) => {
                                             <td>{i.id}</td>
                                             <td>{i.previous_institute}</td>
                                             <td>{i.year_of_leaving}</td>
-                                            <td>{i.transcript}</td>
+                                            <td>
+                                                <a
+                                                    target="blank"
+                                                    href={i.transcript}
+                                                >
+                                                    Show
+                                                </a>
+                                            </td>
                                             <td>{i.result}</td>
                                         </tr>
                                     );

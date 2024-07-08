@@ -74,7 +74,12 @@ const T1: React.FC<Props> = (props: Props) => {
                             <i className="icon-calendar me-2"></i>
                             Academic Calendar
                         </h5>
-                        <h5>June, 2024 Events</h5>
+                        <h5>
+                            June, 2024 Events{' '}
+                            <span className="ml-2">
+                                <input type="date" name="" id="" />
+                            </span>
+                        </h5>
                     </div>
                     <div className="card-body">
                         <ul>
