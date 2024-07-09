@@ -552,8 +552,8 @@ th {
     font-size: 14px;
 }
 .check_cross{
-    color: rgb(229 106 46);
-    border: 2px solid rgb(229 106 46);;
+    color: rgb(199, 82, 23);
+    border: 2px solid rgb(173, 64, 10);;
     border-radius: 50%;
     height: 18px;
     width: 18px;
@@ -563,7 +563,7 @@ th {
     font-size: 14px;
 }
 .check_fri{
-    color: rgb(255, 255, 255);
+    color: rgba(255, 255, 255, 0.637);
     /* border: 2px solid rgb(32, 153, 2); */
     border-radius: 50%;
     font-size: 14px;
@@ -584,7 +584,7 @@ th {
             border: 1px solid rgba(24, 22, 22, 0.438);
         }
         .friday_td{
-            background-color: rgba(255, 0, 0, 0.384);
+            background-color: rgba(255, 0, 0, 0.089);
         }
     }
     .staff_salary_report{

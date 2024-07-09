@@ -14,7 +14,7 @@ const check_is_admin_and_redirect = async (
     const user_agent = request.headers['user-agent'];
 
     if (!token || !token.startsWith('Bearer ')) {
-        return reply.redirect('/admin/login');
+        return reply.redirect('/super-admin/login');
     }
 
     try {
