@@ -63,6 +63,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </tbody>
                         </table>
+                        <div className="payment_btn">
+                            <Link
+                                className="btn btn-sm btn-outline-info "
+                                to="/fees-payment"
+                            >
+                                Proceed to Payment
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
