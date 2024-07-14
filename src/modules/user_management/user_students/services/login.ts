@@ -1,4 +1,3 @@
-import { FindAndCountOptions, Model } from 'sequelize';
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import response from '../helpers/response';

@@ -32,7 +32,7 @@ type InferCreation = InferCreationAttributes<DataModel>;
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
     declare name: string;
-    declare email: string | null;
+    declare preferred_name: string | null;
 
     declare status?: number;
 
@@ -52,7 +52,7 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.STRING(128),
                 allowNull: false,
             },
-            email: {
+            preferred_name: {
                 type: new DataTypes.STRING(128),
                 allowNull: true,
             },

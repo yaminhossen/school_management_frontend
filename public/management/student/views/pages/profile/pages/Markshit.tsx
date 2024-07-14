@@ -29,6 +29,9 @@ const Markshit: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
+            <div>
+
+            </div>
             <h3 className="table_heading mt-4">First Semester</h3>
             <div className="content_body">
                 <div className="data_list">
@@ -60,7 +63,7 @@ const Markshit: React.FC<Props> = (props: Props) => {
                     </div>
                 </div>
             </div>
-            <h3 className="table_heading mt-4">Second Semester</h3>
+            <h3 className="table_heading mt-0 mb-4">Second Semester</h3>
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">

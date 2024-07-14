@@ -1,4 +1,4 @@
-@hostname = http://127.0.0.1:5000/api/v1/user-staffs
+@hostname = http://127.0.0.1:5003/api/v1/user-staffs
 @token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidG9rZW4iOiJ2c2tkNzd0eCIsInVzZXJfYWdlbnQiOiJ2c2NvZGUtcmVzdGNsaWVudCIsImlhdCI6MTcxNTU4MDk0M30.OVIrHvw1RJzPv7M5C88B7PbspaPKWh49wOZIqC86so4
 
 # all
@@ -40,7 +40,32 @@ Authorization: {{token}}
     "image": "/assets/dashboard/images/avatar.png"
 }
 
-# delete
+# login
+###
+POST {{hostname}}/login HTTP/1.1 
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "email": "user1@gmail.com",
+    "password": "12345678"
+}
+
+# logout
+###
+POST {{hostname}}/logout HTTP/1.1
+content-type: application/json
+
+{}
+
+# forget mail
+###
+POST {{hostname}}/forget HTTP/1.1
+content-type: application/json
+
+{}
+
+# soft delete
 ###
 POST  {{hostname}}/soft-delete HTTP/1.1
 content-type: application/json

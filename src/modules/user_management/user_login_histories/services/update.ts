@@ -17,11 +17,13 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the id field is required')
         .run(req);
+
     await body('user_id')
         .not()
         .isEmpty()
         .withMessage('the user_id field is required')
         .run(req);
+
     await body('user_table_name')
         .not()
         .isEmpty()
@@ -33,6 +35,7 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the date field is required')
         .run(req);
+
     await body('device')
         .not()
         .isEmpty()
@@ -57,13 +60,6 @@ async function update(
     let models = await db();
     let body = req.body as anyObject;
     let model = new models.UserLoginHistoriesModel();
-
-    // let password = null;
-    // if (body.password) {
-    //     const bcrypt = require('bcrypt');
-    //     const saltRounds = 10;
-    //     password = await bcrypt.hash(body.password, saltRounds);
-    // }
 
     let inputs: InferCreationAttributes<typeof model> = {
         id: body.id,

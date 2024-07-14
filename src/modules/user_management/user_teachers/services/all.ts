@@ -1,8 +1,8 @@
-import { FindAndCountOptions, Model, literal } from 'sequelize';
+import { FindAndCountOptions } from 'sequelize';
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import response from '../helpers/response';
-import { body, validationResult, query, param } from 'express-validator';
+import { validationResult, query } from 'express-validator';
 import {
     anyObject,
     responseObject,
@@ -90,7 +90,7 @@ async function all(
             ...query.where,
             [Op.or]: [
                 { name: { [Op.like]: `%${search_key}%` } },
-                { email: { [Op.like]: `%${search_key}%` } },
+                { preferred_name: { [Op.like]: `%${search_key}%` } },
                 { status: { [Op.like]: `%${search_key}%` } },
                 { id: { [Op.like]: `%${search_key}%` } },
             ],
@@ -107,7 +107,12 @@ async function all(
         return response(200, 'data fetched', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.query);
-        throw new custom_error('server error', 500, error.message, uid);
+        throw new custom_error(
+            'internal server error',
+            500,
+            error.message,
+            uid,
+        );
     }
 }
 

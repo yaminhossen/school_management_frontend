@@ -1,12 +1,7 @@
-import { Model } from 'sequelize';
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import { body, validationResult } from 'express-validator';
-import {
-    anyObject,
-    responseObject,
-    Request,
-} from '../../../common_types/object';
+import { responseObject, Request } from '../../../common_types/object';
 import response from '../helpers/response';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
@@ -50,7 +45,7 @@ async function restore(
             // });
             data.status = 'active';
             await data.save();
-            return response(200, 'data restored', data);
+            return response(205, 'data restored', data);
         } else {
             throw new custom_error('Forbidden', 404, 'operation not possible');
         }

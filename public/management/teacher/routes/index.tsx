@@ -21,12 +21,41 @@ import AcademicResources from '../views/menu_pages/AcademicResources';
 import MyActivities from '../views/menu_pages/MyActivities';
 import Notice from '../views/menu_pages/Notices';
 
+import profile_routes from '../views/pages/profile/config/routes';
+import class_routine_routes from '../views/pages/class_routine/config/routes';
+import exam_routine_routes from '../views/pages/exam_routine/config/routes';
+import result_routes from '../views/pages/result/config/routes';
+import attendance_routes from '../views/pages/attendance/config/routes';
+import leave_application_routes from '../views/pages/leave_application/config/routes';
+import notices_routes from '../views/pages/notices/config/routes';
+import academic_resources_routes from '../views/pages/academic_resources/config/routes';
+import hall_guard_routine_routes from '../views/pages/hall_guard_routine/config/routes';
+import class_attendance_routes from '../views/pages/class_attendance/config/routes';
+import assignment_routes from '../views/pages/assignment/config/routes';
+import student_routes from '../views/pages/student/config/routes';
+import course_materials_routes from '../views/pages/course_materials/config/routes';
+import reports_routes from '../views/pages/teacher_reports/config/routes';
+
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
     {
         path: '/',
         element: <DashboardLayout />,
         children: [
+            profile_routes,
+            class_routine_routes,
+            exam_routine_routes,
+            result_routes,
+            attendance_routes,
+            leave_application_routes,
+            notices_routes,
+            academic_resources_routes,
+            hall_guard_routine_routes,
+            class_attendance_routes,
+            assignment_routes,
+            student_routes,
+            course_materials_routes,
+            reports_routes,
             {
                 path: '',
                 element: <T1 />,
@@ -34,34 +63,6 @@ const router: RouteTypes[] = [
             {
                 path: 'classes',
                 element: <Class />,
-            },
-            {
-                path: 'class-routine',
-                element: <ClassRoutine />,
-            },
-            {
-                path: 'exam-routines',
-                element: <ExamRoutine />,
-            },
-            {
-                path: 'profile',
-                element: <Profile />,
-            },
-            {
-                path: 'profile',
-                element: <Profile />,
-            },
-            {
-                path: 'mark-sheet',
-                element: <MarkSheet />,
-            },
-            {
-                path: 'attendance',
-                element: <Attendance />,
-            },
-            {
-                path: 'students',
-                element: <Students />,
             },
             {
                 path: 'assignments',
@@ -88,20 +89,8 @@ const router: RouteTypes[] = [
                 element: <Analytics />,
             },
             {
-                path: 'leave-applications',
-                element: <LeaveApplications />,
-            },
-            {
-                path: 'academic-resources',
-                element: <AcademicResources />,
-            },
-            {
                 path: 'my-activities',
                 element: <MyActivities />,
-            },
-            {
-                path: 'notices',
-                element: <Notice />,
             },
             user_branch_staff_routes,
         ],

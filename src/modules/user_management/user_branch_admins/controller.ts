@@ -13,6 +13,9 @@ import update from './services/update';
 import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
+import login from './services/login';
+import logout from './services/logout';
+import forget from './services/forget';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -53,6 +56,21 @@ export default function (fastify: FastifyInstance) {
 
         import: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await data_import(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        login: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await login(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        logout: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await logout(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        forget: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await forget(fastify, req);
             res.code(data.status).send(data);
         },
 

@@ -74,9 +74,11 @@
     "student": "vite build --config vite-config-student.js --watch",
     "parent": "vite build --config vite-config-parent.js --watch",
     "teacher": "vite build --config vite-config-teacher.js --watch",
+    "staff": "vite build --config vite-config-staff.js --watch",
     "account": "vite build --config vite-config-account.js --watch",
     "admission-officer": "vite build --config vite-config-admission-officer.js --watch",
     "hostel-super": "vite build --config vite-config-hostel-super.js --watch",
+    "librarian": "vite build --config vite-config-librarian.js --watch",
 
     "server:lint": "npx esw --ext .ts src --fix",
     "server:lint:watch": "npx esw  --watch --ext .ts src --fix",

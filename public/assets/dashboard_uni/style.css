@@ -34018,7 +34018,7 @@ body .page-wrapper .page-body-wrapper .page-sidebar.native-image-bg .sidebar-use
 }
 
 .fixed-nav-layout i,
-.fixed-nav-layout [class="bottom-line-*"] {
+.fixed-nav-layout [className="bottom-line-*"] {
   -webkit-filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.3));
   filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.3));
 }

@@ -1,4 +1,3 @@
-import { Model } from 'sequelize';
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import { body, validationResult } from 'express-validator';
@@ -49,7 +48,11 @@ async function destroy(
             await data.destroy();
             return response(200, 'data permanently deleted', {});
         } else {
-            throw new custom_error('Forbidden', 403, 'operation not possible');
+            throw new custom_error(
+                'data not found',
+                404,
+                'operation not possible',
+            );
         }
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);

@@ -15,39 +15,12 @@ const SideBar: React.FC<Props> = (props: Props) => {
         <>
             <ul className="sidebar-menu">
                 <MenuSingle to="/" icon="icon-home" label="Dashboard" />
-                <MenuSingle to="/" icon="icon-user" label="Profile" />
-                <MenuSingle to="/" icon="icon-calendar" label="Class Routine" />
-                <MenuSingle to="/" icon="icon-clipboard" label="Exam Routine" />
-                <MenuSingle to="/" icon="icon-book" label="Mark Sheet" />
-                <MenuSingle to="/" icon="icon-receipt" label="Attendance" />
-
-                <MenuDropDown
-                    section_title=""
-                    group_title="Fee"
-                    icon="icon-money"
-                >
-                    <MenuDropDownItem label="Due List" to="/users" />
-                    <MenuDropDownItem label="Payment History" to="/users" />
-                    <MenuDropDownItem label="Pay Fees" to="/users" />
-                </MenuDropDown>
-
+                <MenuSingle to="/students" icon="icon-user" label="Students" />
                 <MenuSingle
-                    to="/"
-                    icon="icon-notepad"
-                    label="Leave Application"
+                    to="/add-new"
+                    icon="icon-calendar"
+                    label="Add New"
                 />
-                <MenuSingle
-                    to="/"
-                    icon="icon-server"
-                    label="Academic Resources"
-                />
-                <MenuSingle to="/" icon="icon-bell" label="Notices" />
-                <MenuSingle
-                    to="/"
-                    icon="icon-ruler-pencil"
-                    label="My Activities"
-                />
-                <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" />
 
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
 

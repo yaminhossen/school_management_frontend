@@ -1,4 +1,3 @@
-import { Model } from 'sequelize';
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import { anyObject, responseObject } from '../../../common_types/object';

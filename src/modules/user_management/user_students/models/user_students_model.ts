@@ -33,11 +33,11 @@ type status = 'active' | 'deactive';
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
-    declare parent_id: number;
-    declare name: string;
-    declare email: string | null;
-    declare phone_number: string | null;
-    declare image: string | null;
+    declare parent_id?: number;
+    declare name?: string;
+    declare email?: string | null;
+    declare phone_number?: string | null;
+    declare image?: string | null;
     declare password?: string;
     declare status?: status;
     declare token?: string | null;
@@ -59,7 +59,7 @@ function init(sequelize: Sequelize) {
                 primaryKey: true,
             },
             parent_id: {
-                type: new DataTypes.BIGINT(),
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
             name: {

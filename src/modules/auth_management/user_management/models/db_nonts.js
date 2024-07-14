@@ -21,6 +21,6 @@ user_admin.init({}, {
 });
 
 (async function () {
-    let data = await user_admin.findOne({where:{id:1}, attributes: ['id','name','email']});
+    let data = await user_admin.findOne({where:{id:1}, attributes: ['id','name','preferred_name']});
     console.log(data);
 })();

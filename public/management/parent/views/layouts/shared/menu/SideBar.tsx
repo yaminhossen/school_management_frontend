@@ -15,39 +15,42 @@ const SideBar: React.FC<Props> = (props: Props) => {
         <>
             <ul className="sidebar-menu">
                 <MenuSingle to="/" icon="icon-home" label="Dashboard" />
-                <MenuSingle to="/" icon="icon-user" label="Profile" />
-                <MenuSingle to="/" icon="icon-calendar" label="Class Routine" />
-                <MenuSingle to="/" icon="icon-clipboard" label="Exam Routine" />
-                <MenuSingle to="/" icon="icon-book" label="Mark Sheet" />
-                <MenuSingle to="/" icon="icon-receipt" label="Attendance" />
+                <MenuSingle to="/profile" icon="icon-user" label="Profile" />
+                <MenuSingle
+                    to="/childrens"
+                    icon="icon-user"
+                    label="Childrens"
+                />
+                <MenuSingle
+                    to="/payment-history"
+                    icon="icon-clipboard"
+                    label="Payment History"
+                />
+                <MenuSingle to="/fees" icon="icon-book" label="Fees" />
+                <MenuSingle
+                    to="/fees-payment"
+                    icon="icon-receipt"
+                    label="Fees Payment"
+                />
+                <MenuSingle
+                    to="/policies"
+                    icon="icon-pencil-alt"
+                    label="Policies"
+                />
 
-                <MenuDropDown
-                    section_title=""
-                    group_title="Fee"
-                    icon="icon-money"
-                >
+                {/* <MenuDropDown section_title="" group_title="Fee" icon="fee">
                     <MenuDropDownItem label="Due List" to="/users" />
                     <MenuDropDownItem label="Payment History" to="/users" />
                     <MenuDropDownItem label="Pay Fees" to="/users" />
-                </MenuDropDown>
+                </MenuDropDown> */}
 
+                <MenuSingle to="/notices" icon="icon-bell" label="Notices" />
                 <MenuSingle
-                    to="/"
-                    icon="icon-notepad"
-                    label="Leave Application"
+                    to="/contact-support"
+                    icon="icon-headphone"
+                    label="Contact Support"
                 />
-                <MenuSingle
-                    to="/"
-                    icon="icon-server"
-                    label="Academic Resources"
-                />
-                <MenuSingle to="/" icon="icon-bell" label="Notices" />
-                <MenuSingle
-                    to="/"
-                    icon="icon-ruler-pencil"
-                    label="My Activities"
-                />
-                <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" />
+                <MenuSingle to="/faq" icon="icon-help" label="FAQ" />
 
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
 

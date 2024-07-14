@@ -58,6 +58,22 @@ module.exports = {
             '0289783436',
             '/assets/dashboard/images/avatar.png',
         );
+        set_data(
+            4,
+            4,
+            'student4',
+            'student4@gmail.com',
+            '0289783436',
+            '/assets/dashboard/images/avatar.png',
+        );
+        set_data(
+            5,
+            5,
+            'student5',
+            'student5@gmail.com',
+            '0289783436',
+            '/assets/dashboard/images/avatar.png',
+        );
 
         await queryInterface.bulkDelete('user_students', null, {});
         await queryInterface.bulkInsert('user_students', data, {});

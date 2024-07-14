@@ -17,7 +17,7 @@ module.exports = {
         ['selim', 'karim', 'sahed', 'tarek', 'shafiq'].forEach(async (i) => {
             users.push({
                 name: i,
-                email: i,
+                preferred_name: i,
                 status: 1,
                 created_at: '2024-02-01 11:45:01',
                 updated_at: '2024-02-01 11:45:01',

@@ -16,13 +16,13 @@ const Dues: React.FC<Props> = (props: Props) => {
         {
             id: 2,
             perpous: 'Semister fee',
-            amount: 'top',
+            amount: '4500',
             last_date: '10 April 2024',
         },
         {
             id: 3,
             perpous: 'Transport fee',
-            amount: 'top',
+            amount: '4500',
             last_date: '12 March 2024',
         },
     ];

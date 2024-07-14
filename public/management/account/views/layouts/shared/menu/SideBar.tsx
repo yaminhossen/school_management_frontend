@@ -15,39 +15,37 @@ const SideBar: React.FC<Props> = (props: Props) => {
         <>
             <ul className="sidebar-menu">
                 <MenuSingle to="/" icon="icon-home" label="Dashboard" />
-                <MenuSingle to="/" icon="icon-user" label="Profile" />
-                <MenuSingle to="/" icon="icon-calendar" label="Class Routine" />
-                <MenuSingle to="/" icon="icon-clipboard" label="Exam Routine" />
-                <MenuSingle to="/" icon="icon-book" label="Mark Sheet" />
-                <MenuSingle to="/" icon="icon-receipt" label="Attendance" />
-
-                <MenuDropDown
-                    section_title=""
-                    group_title="Fee"
+                <MenuSingle to="/accounts" icon="icon-user" label="Accounts" />
+                <MenuSingle
+                    to="/income-entry"
                     icon="icon-money"
-                >
-                    <MenuDropDownItem label="Due List" to="/users" />
-                    <MenuDropDownItem label="Payment History" to="/users" />
-                    <MenuDropDownItem label="Pay Fees" to="/users" />
-                </MenuDropDown>
-
-                <MenuSingle
-                    to="/"
-                    icon="icon-notepad"
-                    label="Leave Application"
+                    label="Income entry"
                 />
                 <MenuSingle
-                    to="/"
-                    icon="icon-server"
-                    label="Academic Resources"
+                    to="/expense-entry"
+                    icon="icon-user"
+                    label="Expense entry"
                 />
-                <MenuSingle to="/" icon="icon-bell" label="Notices" />
                 <MenuSingle
-                    to="/"
-                    icon="icon-ruler-pencil"
-                    label="My Activities"
+                    to="/account-category"
+                    icon="icon-user"
+                    label="Account Category"
                 />
-                <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" />
+                <MenuSingle to="/credit" icon="icon-user" label="Credit" />
+                <MenuSingle to="/debit" icon="icon-money" label="Debit" />
+                <MenuSingle
+                    to="/income-statement"
+                    icon="icon-user"
+                    label="Income statement"
+                />
+                <MenuSingle to="/journal" icon="icon-user" label="Journal" />
+                <MenuSingle to="/ledger" icon="icon-user" label="Ledger" />
+                <MenuSingle
+                    to="/profit-loss"
+                    icon="icon-user"
+                    label="Profit And Loss"
+                />
+                <MenuSingle to="/due-list" icon="icon-user" label="Due list" />
 
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
 

@@ -57,7 +57,7 @@ function init(sequelize: Sequelize) {
                 primaryKey: true,
             },
             user_student_id: {
-                type: new DataTypes.BIGINT(),
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
             previous_institute: {

@@ -39,6 +39,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare guardian_contact_number?: string;
     declare ismarried?: boolean;
     declare graduation?: string;
+    declare occupation?: string;
     declare status?: status;
     declare token?: string | null;
     declare forget_code?: string | null;
@@ -59,7 +60,7 @@ function init(sequelize: Sequelize) {
                 primaryKey: true,
             },
             user_parent_id: {
-                type: new DataTypes.BIGINT(),
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
             parmenent_address: {
@@ -80,6 +81,10 @@ function init(sequelize: Sequelize) {
             },
             graduation: {
                 type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            occupation: {
+                type: new DataTypes.STRING(40),
                 allowNull: true,
             },
             status: {

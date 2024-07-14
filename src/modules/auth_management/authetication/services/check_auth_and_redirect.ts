@@ -12,7 +12,7 @@ const check_auth_and_redirect = async (
     const token = request.headers.authorization;
 
     if (!token || !token.startsWith('Bearer ')) {
-        return reply.redirect('/admin/login');
+        return reply.redirect('/login');
     }
 
     const decoded = jwt.verify(token.slice(7), secretKey);
@@ -22,7 +22,7 @@ const check_auth_and_redirect = async (
         (request as anyObject).user = decoded;
         return;
     } else {
-        return reply.redirect('/admin/login');
+        return reply.redirect('/login');
     }
 };
 

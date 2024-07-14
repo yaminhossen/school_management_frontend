@@ -77,10 +77,6 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.TEXT(),
                 allowNull: true,
             },
-            status: {
-                type: new DataTypes.ENUM('active', 'deactive'),
-                defaultValue: 'active',
-            },
             token: {
                 type: new DataTypes.STRING(100),
                 allowNull: true,
@@ -94,6 +90,10 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
 
+            status: {
+                type: new DataTypes.ENUM('active', 'deactive'),
+                defaultValue: 'active',
+            },
             creator: {
                 type: new DataTypes.TINYINT(),
                 allowNull: true,

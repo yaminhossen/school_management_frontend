@@ -22,6 +22,7 @@ module.exports = {
             guardian_contact_number,
             ismarried,
             graduation,
+            occupation,
             status,
         ) {
             data.push({
@@ -32,6 +33,7 @@ module.exports = {
                 guardian_contact_number,
                 ismarried,
                 graduation,
+                occupation,
                 status,
                 created_at: '2024-02-14',
                 updated_at: '2024-02-14',
@@ -45,6 +47,7 @@ module.exports = {
             '01982738437',
             false,
             'SSC',
+            'Doctor',
             'active',
         );
         set_data(
@@ -55,6 +58,7 @@ module.exports = {
             '01982738438',
             false,
             'SSC',
+            'social worker',
             'active',
         );
         set_data(
@@ -65,6 +69,7 @@ module.exports = {
             '01982738439',
             true,
             'HSC',
+            'engineer',
             'active',
         );
 

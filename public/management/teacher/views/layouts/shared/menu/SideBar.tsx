@@ -22,44 +22,40 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="Class Routine"
                 />
                 <MenuSingle
-                    to="/exam-routines"
+                    to="/exam-routine"
                     icon="icon-clipboard"
                     label="Exam Routine"
                 />
                 <MenuSingle
-                    to="/mark-sheet"
-                    icon="icon-book"
-                    label="Mark Sheet"
+                    to="/hall-guard-routine"
+                    icon="icon-clipboard"
+                    label="Hall Guard Routine"
                 />
+                <MenuSingle to="/result" icon="icon-book" label="Result" />
                 <MenuSingle
                     to="/attendance"
                     icon="icon-receipt"
                     label="Attendance"
                 />
+                <MenuSingle
+                    to="/class-attendance"
+                    icon="icon-receipt"
+                    label="Class Attendance"
+                />
 
                 {/* sdfds */}
 
-                <MenuSingle to="/" icon="icon-receipt" label="Home" />
-                <MenuSingle to="/classes" icon="icon-receipt" label="Classes" />
+                {/* <MenuSingle to="/" icon="icon-receipt" label="Home" /> */}
+                <MenuSingle to="/student" icon="icon-receipt" label="Student" />
                 <MenuSingle
-                    to="/students"
+                    to="/assignment"
                     icon="icon-receipt"
-                    label="Students"
-                />
-                <MenuSingle
-                    to="/assignments"
-                    icon="icon-receipt"
-                    label="Assignments"
+                    label="Assignment"
                 />
                 <MenuSingle
                     to="/course-materials"
                     icon="icon-receipt"
                     label="Course Materials"
-                />
-                <MenuSingle
-                    to="/assesments"
-                    icon="icon-receipt"
-                    label="Assesments"
                 />
                 <MenuSingle to="/reports" icon="icon-receipt" label="Reports" />
                 <MenuSingle
@@ -67,26 +63,10 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-receipt"
                     label="Settings"
                 />
-                <MenuSingle
-                    to="/analytics"
-                    icon="icon-receipt"
-                    label="Analytics"
-                />
 
                 {/* sdfds */}
-
-                <MenuDropDown
-                    section_title=""
-                    group_title="Fee"
-                    icon="icon-money"
-                >
-                    <MenuDropDownItem label="Due List" to="/users" />
-                    <MenuDropDownItem label="Payment History" to="/users" />
-                    <MenuDropDownItem label="Pay Fees" to="/users" />
-                </MenuDropDown>
-
                 <MenuSingle
-                    to="/leave-applications"
+                    to="/leave-application"
                     icon="icon-notepad"
                     label="Leave Application"
                 />
@@ -96,11 +76,6 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="Academic Resources"
                 />
                 <MenuSingle to="/notices" icon="icon-bell" label="Notices" />
-                <MenuSingle
-                    to="/my-activities"
-                    icon="icon-ruler-pencil"
-                    label="My Activities"
-                />
                 {/* <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" /> */}
 
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
