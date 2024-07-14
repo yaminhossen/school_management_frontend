@@ -36,23 +36,65 @@ module.exports = {
         }
         set_data(
             1,
-            'parent1',
+            'father_st135',
             'parent1@gmail.com',
             '0189783434',
             '/assets/dashboard/images/avatar.png',
         );
         set_data(
             2,
-            'parent2',
+            'brother_st135',
             'parent2@gmail.com',
             '0289783435',
             '/assets/dashboard/images/avatar.png',
         );
         set_data(
             3,
-            'parent3',
+            'uncle_st135',
             'parent3@gmail.com',
-            '0289783436',
+            '0289783437',
+            '/assets/dashboard/images/avatar.png',
+        );
+        set_data(
+            4,
+            'father_st2',
+            'parent1@gmail.com',
+            '0189783438',
+            '/assets/dashboard/images/avatar.png',
+        );
+        set_data(
+            5,
+            'brother_st2',
+            'parent2@gmail.com',
+            '0289783439',
+            '/assets/dashboard/images/avatar.png',
+        );
+        set_data(
+            6,
+            'uncle_st2',
+            'parent3@gmail.com',
+            '0289783435',
+            '/assets/dashboard/images/avatar.png',
+        );
+        set_data(
+            7,
+            'father_st4',
+            'parent1@gmail.com',
+            '0189783412',
+            '/assets/dashboard/images/avatar.png',
+        );
+        set_data(
+            8,
+            'brother_st4',
+            'parent2@gmail.com',
+            '0289783413',
+            '/assets/dashboard/images/avatar.png',
+        );
+        set_data(
+            9,
+            'uncle_st4',
+            'parent3@gmail.com',
+            '0289783415',
             '/assets/dashboard/images/avatar.png',
         );
 

@@ -38,11 +38,11 @@ class DataModel extends Model<Infer, InferCreation> {
     declare phone_number?: string | null;
     declare image?: string | null;
     declare password?: string;
-    declare status?: status;
     declare token?: string | null;
     declare forget_code?: string | null;
     declare user_agent?: string | null;
 
+    declare status?: status;
     declare creator?: number;
 
     declare created_at?: CreationOptional<Date>;
@@ -77,10 +77,6 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.STRING(100),
                 allowNull: true,
             },
-            status: {
-                type: new DataTypes.ENUM('active', 'deactive', 'block'),
-                defaultValue: 'active',
-            },
             token: {
                 type: new DataTypes.STRING(100),
                 allowNull: true,
@@ -92,6 +88,16 @@ function init(sequelize: Sequelize) {
             user_agent: {
                 type: new DataTypes.STRING(150),
                 allowNull: true,
+            },
+
+            status: {
+                type: new DataTypes.ENUM('active', 'deactive', 'block'),
+                defaultValue: 'active',
+            },
+            creator: {
+                type: new DataTypes.TINYINT(),
+                allowNull: true,
+                defaultValue: null,
             },
 
             created_at: DataTypes.DATE,

@@ -21,8 +21,7 @@ interface models {
 }
 const db = async function (): Promise<models> {
     const User = user_model.init(sequelize);
-    let force = process.env.DB_FORCE_SYNC;
-    await sequelize.sync({ force: force == 'true' ? true : false });
+    await sequelize.sync();
     let models: models = {
         User,
         sequelize,

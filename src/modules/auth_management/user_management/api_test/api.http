@@ -1,4 +1,4 @@
-@hostname = http://127.0.0.1:5000/api/v1/admin-users
+@hostname = http://127.0.0.1:5003/api/v1/admin-users
 
 # all
 ###
@@ -15,7 +15,7 @@ content-type: application/json
 
 {
     "name": "lll",
-    "email": "lll",
+    "preferred_name": "lll",
     "status": 1
 }
 

@@ -17,6 +17,7 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the user_id field is required')
         .run(req);
+
     await body('user_table_name')
         .not()
         .isEmpty()
@@ -28,6 +29,7 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the date field is required')
         .run(req);
+
     await body('device')
         .not()
         .isEmpty()

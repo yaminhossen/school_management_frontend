@@ -2,11 +2,7 @@ import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import response from '../helpers/response';
 
-import {
-    anyObject,
-    responseObject,
-    Request,
-} from '../../../common_types/object';
+import { anyObject, responseObject } from '../../../common_types/object';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 

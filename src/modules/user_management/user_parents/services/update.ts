@@ -35,6 +35,7 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the phone_number field is required')
         .run(req);
+
     await body('image')
         .not()
         .isEmpty()

@@ -67,3 +67,43 @@
 {"level":60,"time":1720499601930,"pid":12212,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 10:33:21 AM","message":"target not found."}
 {"level":60,"time":1720499749528,"pid":12212,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 10:35:49 AM","message":"target not found."}
 {"level":60,"time":1720499749558,"pid":12212,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 10:35:49 AM","message":"target not found."}
+{"level":60,"time":1720502146227,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 11:15:46 AM","message":"target not found."}
+{"level":60,"time":1720503439880,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 11:37:19 AM","message":"target not found."}
+{"level":60,"time":1720503439936,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 11:37:19 AM","message":"target not found."}
+{"level":60,"time":1720503624050,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 11:40:24 AM","message":"target not found."}
+{"level":60,"time":1720503624069,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 11:40:24 AM","message":"target not found."}
+{"level":60,"time":1720503632824,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 11:40:32 AM","message":"target not found."}
+{"level":60,"time":1720503632828,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 11:40:32 AM","message":"target not found."}
+{"level":60,"time":1720503756482,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 11:42:36 AM","message":"target not found."}
+{"level":60,"time":1720503756491,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 11:42:36 AM","message":"target not found."}
+{"level":60,"time":1720503784933,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 11:43:04 AM","message":"target not found."}
+{"level":60,"time":1720503784941,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 11:43:04 AM","message":"target not found."}
+{"level":60,"time":1720505527687,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 12:12:07 PM","message":"target not found."}
+{"level":60,"time":1720505535757,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 12:12:15 PM","message":"target not found."}
+{"level":60,"time":1720505535793,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 12:12:15 PM","message":"target not found."}
+{"level":60,"time":1720505571008,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 12:12:51 PM","message":"target not found."}
+{"level":60,"time":1720505571047,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 12:12:51 PM","message":"target not found."}
+{"level":60,"time":1720505582376,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 12:13:02 PM","message":"target not found."}
+{"level":60,"time":1720505582390,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 12:13:02 PM","message":"target not found."}
+{"level":60,"time":1720505697997,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 12:14:57 PM","message":"target not found."}
+{"level":60,"time":1720505698002,"pid":6328,"hostname":"DESKTOP-9421701","file":"","time":"7/9/2024 12:14:58 PM","message":"target not found."}
+{"level":60,"time":1720960160509,"pid":1296,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:29:20 PM","message":"Access denied for user 'root'@'localhost' (using password: NO)"}
+{"level":60,"time":1720960185188,"pid":1296,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:29:45 PM","message":"Access denied for user 'root'@'localhost' (using password: NO)"}
+{"level":60,"time":1720960240781,"pid":1296,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:30:40 PM","message":"Access denied for user 'root'@'localhost' (using password: NO)"}
+{"level":60,"time":1720960681504,"pid":1296,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:38:01 PM","message":"Access denied for user 'root'@'localhost' (using password: NO)"}
+{"level":60,"time":1720961011373,"pid":13612,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:43:31 PM","message":"Access denied for user 'root'@'localhost' (using password: NO)"}
+{"level":60,"time":1720961647511,"pid":7328,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:54:07 PM","message":"target not found."}
+{"level":60,"time":1720961677218,"pid":7328,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:54:37 PM","message":"target not found."}
+{"level":60,"time":1720961677233,"pid":7328,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:54:37 PM","message":"target not found."}
+{"level":60,"time":1720961677237,"pid":7328,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:54:37 PM","message":"target not found."}
+{"level":60,"time":1720961770232,"pid":7328,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:56:10 PM","message":"target not found."}
+{"level":60,"time":1720961770236,"pid":7328,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:56:10 PM","message":"target not found."}
+{"level":60,"time":1720961770240,"pid":7328,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:56:10 PM","message":"target not found."}
+{"level":60,"time":1720961782272,"pid":7328,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:56:22 PM","message":"target not found."}
+{"level":60,"time":1720961782287,"pid":7328,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:56:22 PM","message":"target not found."}
+{"level":60,"time":1720961782316,"pid":7328,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:56:22 PM","message":"target not found."}
+{"level":60,"time":1720961782321,"pid":7328,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:56:22 PM","message":"target not found."}
+{"level":60,"time":1720961804454,"pid":7328,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:56:44 PM","message":"target not found."}
+{"level":60,"time":1720961804477,"pid":7328,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:56:44 PM","message":"target not found."}
+{"level":60,"time":1720961804481,"pid":7328,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:56:44 PM","message":"target not found."}
+{"level":60,"time":1720961804488,"pid":7328,"hostname":"DESKTOP-9421701","file":"","time":"7/14/2024 6:56:44 PM","message":"target not found."}

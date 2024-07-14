@@ -16,7 +16,7 @@ async function validate(req: Request) {
         .withMessage('the name field is required')
         .run(req);
 
-    await body('email')
+    await body('preferred_name')
         .not()
         .isEmpty()
         .withMessage('the preferred name field is required')
@@ -44,7 +44,7 @@ async function store(
 
     let inputs: InferCreationAttributes<typeof data> = {
         name: body.name,
-        email: body.email,
+        preferred_name: body.preferred_name,
     };
 
     /** print request data into console */

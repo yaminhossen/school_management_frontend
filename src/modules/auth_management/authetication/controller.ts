@@ -32,13 +32,13 @@ export default function (fastify: FastifyInstance) {
             res.code(200).send(data);
         },
 
-        forget: async function (req: FastifyRequest, res: FastifyReply) {
-            let data: responseObject = await forget(fastify, req);
+        register: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await register(fastify, req);
             res.code(data.status).send(data);
         },
 
-        register: async function (req: FastifyRequest, res: FastifyReply) {
-            let data = await register(fastify, req);
+        forget: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await forget(fastify, req);
             res.code(data.status).send(data);
         },
     };

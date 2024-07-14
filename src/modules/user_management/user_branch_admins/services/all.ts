@@ -1,8 +1,8 @@
-import { FindAndCountOptions, Model, literal } from 'sequelize';
+import { FindAndCountOptions } from 'sequelize';
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import response from '../helpers/response';
-import { body, validationResult, query, param } from 'express-validator';
+import { validationResult, query } from 'express-validator';
 import {
     anyObject,
     responseObject,
@@ -90,7 +90,7 @@ async function all(
             ...query.where,
             [Op.or]: [
                 { name: { [Op.like]: `%${search_key}%` } },
-                { email: { [Op.like]: `%${search_key}%` } },
+                { preferred_name: { [Op.like]: `%${search_key}%` } },
                 { status: { [Op.like]: `%${search_key}%` } },
                 { id: { [Op.like]: `%${search_key}%` } },
             ],

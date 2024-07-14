@@ -23,16 +23,19 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the email field is required')
         .run(req);
+
     await body('phone_number')
         .not()
         .isEmpty()
         .withMessage('the phone_number field is required')
         .run(req);
+
     await body('image')
         .not()
         .isEmpty()
         .withMessage('the image field is required')
         .run(req);
+
     await body('password')
         .not()
         .isEmpty()

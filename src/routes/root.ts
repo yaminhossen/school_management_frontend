@@ -2,12 +2,13 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import check_auth_and_redirect from '../modules/auth_management/authetication/services/check_auth_and_redirect';
 import minified_view from '../helpers/minified_view';
-import check_is_admin_and_redirect from '../modules/user_management/user_admin/services/check_is_admin_and_redirect';
+// import check_is_admin_and_redirect from '../modules/user_management/user_admin/services/check_is_admin_and_redirect';
 // const fs = require('node:fs');
 module.exports = async function (fastify: FastifyInstance) {
     fastify
         .get('/', async (_req: FastifyRequest, reply: FastifyReply) => {
-            return reply.view('website/index.ejs');
+            // return reply.view('website/index.ejs');
+            return reply.redirect('/super-admin');
         })
         .get('/login', async (_req: FastifyRequest, reply: FastifyReply) => {
             return reply.view('website/pages/login.ejs');
@@ -15,7 +16,7 @@ module.exports = async function (fastify: FastifyInstance) {
 
         .get(
             '/super-admin',
-            { preHandler: check_is_admin_and_redirect },
+            // { preHandler: check_is_admin_and_redirect },
             async (_req: FastifyRequest, reply: FastifyReply) => {
                 return reply.view('dashboard/super_admin_uni.ejs');
             },
