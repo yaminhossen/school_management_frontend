@@ -58,7 +58,7 @@ function init(sequelize: Sequelize) {
                 primaryKey: true,
             },
             user_id: {
-                type: new DataTypes.BIGINT(),
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
             user_table_name: {

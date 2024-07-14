@@ -25,8 +25,7 @@ const db = async function (): Promise<models> {
     const User = user_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
-    let force = process.env.DB_FORCE_SYNC;
-    await sequelize.sync({ force: force == 'true' ? true : false });
+    await sequelize.sync();
 
     // Project.hasOne(User, {
     //     sourceKey: 'user_id',

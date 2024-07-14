@@ -1,12 +1,7 @@
-import { Model } from 'sequelize';
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import { body, validationResult } from 'express-validator';
-import {
-    anyObject,
-    responseObject,
-    Request,
-} from '../../../common_types/object';
+import { responseObject, Request } from '../../../common_types/object';
 import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
