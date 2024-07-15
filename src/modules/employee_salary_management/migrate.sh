@@ -19,12 +19,20 @@
 # echo "branch employee job positions seed end"
 # echo ""
 
+# echo ""
+# echo "branch employee salaries seed start"
+# API_URL="http://127.0.0.1:5003/api/v1/branch-employee-salaries?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
+# response=$(curl -s "$API_URL")
+# npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/employee_salary_management/branch_employee_salaries/models/seeders
+# echo "branch employee salaries seed end"
+# echo ""
+
 echo ""
-echo "branch employee salaries seed start"
-API_URL="http://127.0.0.1:5003/api/v1/branch-employee-salaries?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
+echo "branch employee salarie types seed start"
+API_URL="http://127.0.0.1:5003/api/v1/branch-employee-salary-types?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
 response=$(curl -s "$API_URL")
-npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/employee_salary_management/branch_employee_salaries/models/seeders
-echo "branch employee salaries seed end"
+npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/employee_salary_management/branch_employee_salary_types/models/seeders
+echo "branch employee salary types seed end"
 echo ""
 
 
