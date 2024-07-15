@@ -66,12 +66,28 @@
 # echo "exam seat plans seed end"
 # echo ""
 
+# echo ""
+# echo "exam attendent students seed start"
+# API_URL="http://127.0.0.1:5003/api/v1/exam-attendent-students?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
+# response=$(curl -s "$API_URL")
+# npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/exam_management/exam_attendent_students/models/seeders
+# echo "exam attendent students seed end"
+# echo ""
+
+# echo ""
+# echo "exam equipment selecteds seed start"
+# API_URL="http://127.0.0.1:5003/api/v1/exam-equipment-selecteds?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
+# response=$(curl -s "$API_URL")
+# npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/exam_management/exam_equipment_selecteds/models/seeders
+# echo "exam equipment selecteds seed end"
+# echo ""
+
 echo ""
-echo "exam attendent students seed start"
-API_URL="http://127.0.0.1:5003/api/v1/exam-attendent-students?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
+echo "exam equipment sent to branches seed start"
+API_URL="http://127.0.0.1:5003/api/v1/exam-equipment-sent-to-branches?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
 response=$(curl -s "$API_URL")
-npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/exam_management/exam_attendent_students/models/seeders
-echo "exam attendent students seed end"
+npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/exam_management/exam_equipment_sent_to_branches/models/seeders
+echo "exam equipment sent to branches seed end"
 echo ""
 
 
