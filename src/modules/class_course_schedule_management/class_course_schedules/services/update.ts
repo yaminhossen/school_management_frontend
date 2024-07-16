@@ -17,15 +17,45 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the branch_id field is required')
         .run(req);
-    await body('title')
+    await body('class_id')
         .not()
         .isEmpty()
-        .withMessage('the title field is required')
+        .withMessage('the class_id field is required')
         .run(req);
-    await body('month')
+    await body('subject_id')
         .not()
         .isEmpty()
-        .withMessage('the month field is required')
+        .withMessage('the subject_id field is required')
+        .run(req);
+    await body('teacher_id')
+        .not()
+        .isEmpty()
+        .withMessage('the teacher_id field is required')
+        .run(req);
+    await body('date')
+        .not()
+        .isEmpty()
+        .withMessage('the date field is required')
+        .run(req);
+    await body('topic')
+        .not()
+        .isEmpty()
+        .withMessage('the topic field is required')
+        .run(req);
+    await body('completion_date')
+        .not()
+        .isEmpty()
+        .withMessage('the completion_date field is required')
+        .run(req);
+    await body('is_complete')
+        .not()
+        .isEmpty()
+        .withMessage('the is_complete field is required')
+        .run(req);
+    await body('class_type')
+        .not()
+        .isEmpty()
+        .withMessage('the class_type field is required')
         .run(req);
     await body('description')
         .not()
@@ -51,12 +81,18 @@ async function update(
     /** initializations */
     let models = await db();
     let body = req.body as anyObject;
-    let model = new models.ExamsModel();
+    let model = new models.ClassCourseSchedulesModel();
 
     let inputs: InferCreationAttributes<typeof model> = {
         branch_id: body.branch_id,
-        title: body.title,
-        month: body.month,
+        class_id: body.class_id,
+        subject_id: body.subject_id,
+        teacher_id: body.teacher_id,
+        date: body.date,
+        topic: body.topic,
+        completion_date: body.completion_date,
+        is_complete: body.is_complete,
+        class_type: body.class_type,
         description: body.description,
     };
 
@@ -66,7 +102,7 @@ async function update(
 
     /** store data into database */
     try {
-        let data = await models.ExamsModel.findByPk(body.id);
+        let data = await models.ClassCourseSchedulesModel.findByPk(body.id);
         if (data) {
             data.update(inputs);
             await data.save();

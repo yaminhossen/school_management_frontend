@@ -3,8 +3,8 @@ import { FastifyInstance, FastifyRequest } from 'fastify';
 import { body, validationResult } from 'express-validator';
 import { responseObject, Request } from '../../../common_types/object';
 import response from '../helpers/response';
-import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
+import error_trace from '../helpers/error_trace';
 
 /** validation rules */
 async function validate(req: Request) {
@@ -18,7 +18,7 @@ async function validate(req: Request) {
 
     return result;
 }
-async function destroy(
+async function soft_delete(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -33,15 +33,19 @@ async function destroy(
     let body = req.body as { [key: string]: any };
 
     try {
-        let data = await models.ClassCourseSchedulesModel.findOne({
+        let data = await models.ClassCourseScheduleAttachmentsModel.findOne({
             where: {
                 id: body.id,
             },
         });
 
         if (data) {
-            await data.destroy();
-            return response(200, 'data permanently deleted', data);
+            // await data.update({
+            //     status: 0,
+            // });
+            data.status = 'deactive';
+            await data.save();
+            return response(200, 'data deactivated', data);
         } else {
             throw new custom_error('Forbidden', 403, 'operation not possible');
         }
@@ -56,4 +60,4 @@ async function destroy(
     }
 }
 
-export default destroy;
+export default soft_delete;

@@ -33,7 +33,7 @@ async function destroy(
     let body = req.body as { [key: string]: any };
 
     try {
-        let data = await models.ClassCourseSchedulesModel.findOne({
+        let data = await models.ClassCourseScheduleAttachmentsModel.findOne({
             where: {
                 id: body.id,
             },

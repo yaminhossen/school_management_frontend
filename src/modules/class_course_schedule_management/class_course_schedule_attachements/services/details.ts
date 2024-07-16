@@ -13,7 +13,7 @@ async function details(
     let params = req.params as any;
 
     try {
-        let data = await models.ClassCourseSchedulesModel.findOne({
+        let data = await models.ClassCourseScheduleAttachmentsModel.findOne({
             where: {
                 id: params.id,
             },

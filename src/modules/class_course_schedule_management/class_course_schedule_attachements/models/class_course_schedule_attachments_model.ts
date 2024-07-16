@@ -23,8 +23,8 @@ import {
     // ForeignKey,
 } from 'sequelize';
 
-const tableName = 'class_course_schedules';
-const modelName = 'ClassCourseSchedulesModel';
+const tableName = 'class_course_schedule_attachments';
+const modelName = 'ClassCourseScheduleAttachmentsModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
@@ -39,12 +39,8 @@ class DataModel extends Model<Infer, InferCreation> {
     declare class_id: number;
     declare subject_id: number;
     declare teacher_id: number;
-    declare date: string;
-    declare topic: string;
-    declare completion_date: string;
-    declare is_complete: is_complete;
-    declare class_type: class_type;
-    declare description: string;
+    declare class_course_schedule_id: number;
+    declare attachment: string;
 
     declare status?: status;
     declare creator?: number;
@@ -77,28 +73,12 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },
-            date: {
-                type: DataTypes.STRING(40),
+            class_course_schedule_id: {
+                type: new DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },
-            topic: {
-                type: DataTypes.STRING(40),
-                allowNull: true,
-            },
-            completion_date: {
-                type: DataTypes.STRING(40),
-                allowNull: true,
-            },
-            is_complete: {
-                type: DataTypes.ENUM('yes', 'no'),
-                allowNull: true,
-            },
-            class_type: {
-                type: DataTypes.ENUM('lecture', 'exam', 'quiz'),
-                allowNull: true,
-            },
-            description: {
-                type: DataTypes.TEXT,
+            attachment: {
+                type: DataTypes.STRING(50),
                 allowNull: true,
             },
 

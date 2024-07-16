@@ -14,12 +14,30 @@ module.exports = {
          */
 
         let data = [];
-        function set_data(id, branch_id, title, month, description) {
+        function set_data(
+            id,
+            branch_id,
+            class_id,
+            subject_id,
+            teacher_id,
+            date,
+            topic,
+            completion_date,
+            is_complete,
+            class_type,
+            description,
+        ) {
             data.push({
                 id,
                 branch_id,
-                title,
-                month,
+                class_id,
+                subject_id,
+                teacher_id,
+                date,
+                topic,
+                completion_date,
+                is_complete,
+                class_type,
                 description,
                 created_at: '2024-02-14',
                 updated_at: '2024-02-14',
@@ -29,15 +47,45 @@ module.exports = {
         set_data(
             1,
             1,
-            'First term',
+            1,
+            1,
+            1,
             '2024-02-02',
-            'On 14 March first term exam',
+            'Bnagla',
+            '2024-02-02',
+            'no',
+            'lecture',
+            'On 14 March first Bangla lecture',
         );
-        set_data(2, 2, 'Mid term', '2024-03-03', 'On 14 april first term exam');
-        set_data(3, 3, 'Final', '2023-02-02', 'On 14 december final exam');
+        set_data(
+            2,
+            2,
+            2,
+            2,
+            2,
+            '2024-03-02',
+            'Bnagla',
+            '2024-03-02',
+            'no',
+            'exam',
+            'On 14 March first Bangla Exam',
+        );
+        set_data(
+            3,
+            3,
+            3,
+            3,
+            3,
+            '2024-02-02',
+            'English',
+            '2024-02-02',
+            'no',
+            'exam',
+            'On 14 March first Bangla Exam',
+        );
 
-        await queryInterface.bulkDelete('exams', null, {});
-        await queryInterface.bulkInsert('exams', data, {});
+        await queryInterface.bulkDelete('class_course_schedules', null, {});
+        await queryInterface.bulkInsert('class_course_schedules', data, {});
     },
 
     async down(queryInterface, Sequelize) {
@@ -48,6 +96,6 @@ module.exports = {
          * Example:
          * await queryInterface.bulkDelete('People', null, {});
          */
-        await queryInterface.bulkDelete('exams', null, {});
+        await queryInterface.bulkDelete('class_course_schedules', null, {});
     },
 };

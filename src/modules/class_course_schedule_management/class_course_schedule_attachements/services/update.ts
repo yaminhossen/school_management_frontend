@@ -32,35 +32,17 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the teacher_id field is required')
         .run(req);
-    await body('date')
+    await body('class_course_schedule_attachment_id')
         .not()
         .isEmpty()
-        .withMessage('the date field is required')
+        .withMessage(
+            'the class_course_schedule_attachment_id field is required',
+        )
         .run(req);
-    await body('topic')
+    await body('attachment')
         .not()
         .isEmpty()
-        .withMessage('the topic field is required')
-        .run(req);
-    await body('completion_date')
-        .not()
-        .isEmpty()
-        .withMessage('the completion_date field is required')
-        .run(req);
-    await body('is_complete')
-        .not()
-        .isEmpty()
-        .withMessage('the is_complete field is required')
-        .run(req);
-    await body('class_type')
-        .not()
-        .isEmpty()
-        .withMessage('the class_type field is required')
-        .run(req);
-    await body('description')
-        .not()
-        .isEmpty()
-        .withMessage('the description field is required')
+        .withMessage('the attachment field is required')
         .run(req);
 
     let result = await validationResult(req);
@@ -68,7 +50,7 @@ async function validate(req: Request) {
     return result;
 }
 
-async function store(
+async function update(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -81,19 +63,15 @@ async function store(
     /** initializations */
     let models = await db();
     let body = req.body as anyObject;
-    let data = new models.ClassCourseSchedulesModel();
+    let model = new models.ClassCourseScheduleAttachmentsModel();
 
-    let inputs: InferCreationAttributes<typeof data> = {
+    let inputs: InferCreationAttributes<typeof model> = {
         branch_id: body.branch_id,
         class_id: body.class_id,
         subject_id: body.subject_id,
         teacher_id: body.teacher_id,
-        date: body.date,
-        topic: body.topic,
-        completion_date: body.completion_date,
-        is_complete: body.is_complete,
-        class_type: body.class_type,
-        description: body.description,
+        class_course_schedule_id: body.class_course_schedule_id,
+        attachment: body.attachment,
     };
 
     /** print request data into console */
@@ -102,12 +80,25 @@ async function store(
 
     /** store data into database */
     try {
-        (await data.update(inputs)).save();
-        return response(200, 'data created', data);
+        let data = await models.ClassCourseScheduleAttachmentsModel.findByPk(
+            body.id,
+        );
+        if (data) {
+            data.update(inputs);
+            await data.save();
+            return response(200, 'data updated', data);
+        } else {
+            throw new custom_error('Forbidden', 403, 'operation not possible');
+        }
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
-        throw new custom_error('server error', 500, error.message, uid);
+        if (error instanceof custom_error) {
+            error.uid = uid;
+        } else {
+            throw new custom_error('server error', 500, error.message, uid);
+        }
+        throw error;
     }
 }
 
-export default store;
+export default update;
