@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import setup from './config/setup';
+import { useAppDispatch } from '../../../store';
+import { store } from './config/store/async_actions/store';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
+    const dispatch = useAppDispatch();
     const [totalDocument, setTotalDocument] = useState([1]);
     const [totalParent, setTotalParent] = useState([1]);
     const [totalContactNumber, setTotalContactNumber] = useState([1]);
@@ -11,13 +15,15 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalEducationalBackground, setTotalEducationalBackground] =
         useState([1]);
 
-    // async function handle_submit(e) {
-    //     e.preventDefault();
-    //     let response = await dispatch(store(new FormData(e.target)) as any);
-    //     if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
-    //         e.target.reset();
-    //     }
-    // }
+    async function handle_submit(e) {
+        e.preventDefault();
+        console.log('this is clikck');
+
+        let response = await dispatch(store(new FormData(e.target)) as any);
+        if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
+            e.target.reset();
+        }
+    }
 
     function remove_from_state(index, state, setState) {
         let t = [...state];
@@ -29,7 +35,7 @@ const Index: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <div className="content_body">
                 <form
-                    onSubmit={(e) => e.preventDefault()}
+                    onSubmit={(e) => handle_submit(e)}
                     className="form_6002 mx-auto pt-3"
                 >
                     <div className="student_form">

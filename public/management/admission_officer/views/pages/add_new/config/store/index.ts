@@ -28,7 +28,7 @@ const storeSlice = createSlice({
                 // console.log(type, payload, meta);
             })
             .addCase(update.fulfilled, (state, { type, payload, meta }) => {
-                // console.log(type, payload, meta);
+                console.log(type, payload, meta);
             })
             .addCase(restore.fulfilled, (state, { type, payload, meta }) => {
                 // console.log(type, payload, meta);

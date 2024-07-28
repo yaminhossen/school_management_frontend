@@ -12,35 +12,35 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
 async function validate(req: Request) {
-    await body('parent_id')
-        .not()
-        .isEmpty()
-        .withMessage('the parent id field is required')
-        .run(req);
+    // await body('parent_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the parent id field is required')
+    //     .run(req);
 
-    await body('name')
-        .not()
-        .isEmpty()
-        .withMessage('the name field is required')
-        .run(req);
+    // await body('name')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the name field is required')
+    //     .run(req);
 
-    await body('email')
-        .not()
-        .isEmpty()
-        .withMessage('the email field is required')
-        .run(req);
+    // await body('email')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the email field is required')
+    //     .run(req);
 
-    await body('phone_number')
-        .not()
-        .isEmpty()
-        .withMessage('the phone_number field is required')
-        .run(req);
+    // await body('phone_number')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the phone_number field is required')
+    //     .run(req);
 
-    await body('password')
-        .not()
-        .isEmpty()
-        .withMessage('the password field is required')
-        .run(req);
+    // await body('password')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the password field is required')
+    //     .run(req);
 
     let result = await validationResult(req);
 
@@ -66,11 +66,11 @@ async function store(
     let password = await bcrypt.hash(body.password, saltRounds);
 
     let inputs: InferCreationAttributes<typeof data> = {
-        parent_id: body.parent_id,
+        // parent_id: body.parent_id,
         name: body.name,
         email: body.email,
         phone_number: body.phone_number,
-        image: body.image,
+        // image: body.image,
         password: password,
     };
 
