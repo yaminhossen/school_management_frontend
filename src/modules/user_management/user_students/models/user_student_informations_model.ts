@@ -28,6 +28,7 @@ const modelName = 'UserStudentInformationsModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
+type blood_group = 'A+' | 'B+' | 'AB+' | 'A-' | 'B-' | 'AB-' | 'O-' | 'O+';
 type status = 'active' | 'deactive';
 
 class DataModel extends Model<Infer, InferCreation> {
@@ -42,7 +43,6 @@ class DataModel extends Model<Infer, InferCreation> {
     declare nationality: string | null;
     declare city: string | null;
     declare state: string | null;
-    declare zip_code: string | null;
     declare post_code: string | null;
     declare country: string | null;
     declare medical_condition: string | null;
@@ -51,12 +51,19 @@ class DataModel extends Model<Infer, InferCreation> {
     declare telegram_id: string | null;
     declare student_id: string | null;
     declare qr_code: string | null;
-    declare blood_group: string | null;
+    declare blood_group: blood_group;
     declare student_expire_date: string | null;
     declare admission_date: string | null;
     declare addmission_no: string | null;
     declare role_no: string | null;
-    declare class_section: string | null;
+    declare section: string | null;
+    declare s_class: string | null;
+    declare shift: string | null;
+    declare division: string | null;
+    declare family_information: string | null;
+    declare shibling_information: string | null;
+    declare birth_certificate: string | null;
+    declare national_id: string | null;
     declare student_category: string | null;
     declare religion: string | null;
     declare cast: string | null;
@@ -121,10 +128,6 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.STRING(50),
                 allowNull: true,
             },
-            zip_code: {
-                type: new DataTypes.STRING(20),
-                allowNull: true,
-            },
             post_code: {
                 type: new DataTypes.STRING(20),
                 allowNull: true,
@@ -158,8 +161,17 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             blood_group: {
-                type: new DataTypes.STRING(30),
-                allowNull: true,
+                type: new DataTypes.ENUM(
+                    'A+',
+                    'B+',
+                    'AB+',
+                    'A-',
+                    'B-',
+                    'AB-',
+                    'O-',
+                    'O+',
+                ),
+                defaultValue: 'B+',
             },
             student_expire_date: {
                 type: new DataTypes.DATE(),
@@ -170,14 +182,42 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             addmission_no: {
-                type: new DataTypes.STRING(30),
+                type: new DataTypes.STRING(50),
                 allowNull: true,
             },
             role_no: {
                 type: new DataTypes.STRING(30),
                 allowNull: true,
             },
-            class_section: {
+            section: {
+                type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            division: {
+                type: new DataTypes.STRING(30),
+                allowNull: true,
+            },
+            family_information: {
+                type: new DataTypes.TEXT(),
+                allowNull: true,
+            },
+            shibling_information: {
+                type: new DataTypes.TEXT(),
+                allowNull: true,
+            },
+            birth_certificate: {
+                type: new DataTypes.STRING(100),
+                allowNull: true,
+            },
+            national_id: {
+                type: new DataTypes.STRING(100),
+                allowNull: true,
+            },
+            shift: {
+                type: new DataTypes.STRING(30),
+                allowNull: true,
+            },
+            s_class: {
                 type: new DataTypes.STRING(30),
                 allowNull: true,
             },

@@ -6,3 +6,4 @@
 {"level":60,"time":1721125179236,"pid":7636,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notice-seen-by-users?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"}
 {"level":60,"time":1721125340148,"pid":7636,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/task-users?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"}
 {"level":60,"time":1721125844101,"pid":7636,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/task-users?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"}
+{"level":60,"time":1722163439744,"pid":16400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/destroys"}

@@ -18,29 +18,29 @@ async function validate(req: Request) {
     //     .withMessage('the parent id field is required')
     //     .run(req);
 
-    // await body('name')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the name field is required')
-    //     .run(req);
+    await body('name')
+        .not()
+        .isEmpty()
+        .withMessage('the name field is required')
+        .run(req);
 
-    // await body('email')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the email field is required')
-    //     .run(req);
+    await body('email')
+        .not()
+        .isEmpty()
+        .withMessage('the email field is required')
+        .run(req);
 
-    // await body('phone_number')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the phone_number field is required')
-    //     .run(req);
+    await body('phone_number')
+        .not()
+        .isEmpty()
+        .withMessage('the phone_number field is required')
+        .run(req);
 
-    // await body('password')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the password field is required')
-    //     .run(req);
+    await body('password')
+        .not()
+        .isEmpty()
+        .withMessage('the password field is required')
+        .run(req);
 
     let result = await validationResult(req);
 
