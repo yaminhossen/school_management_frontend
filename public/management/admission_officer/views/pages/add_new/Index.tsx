@@ -54,7 +54,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-vertical">
+                                {/* <div className="form-group form-vertical">
                                     <label>Gender</label>
                                     <div className="form_elements">
                                         <select name="gender" id="">
@@ -87,7 +87,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             name="phone_number"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Image</label>
                                     <div className="form_elements">
@@ -109,7 +109,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="form-group form-vertical">
+                                {/* <div className="form-group form-vertical">
                                     <label>Password</label>
                                     <div className="form_elements">
                                         <input
@@ -128,10 +128,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                             name="confirm_password"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
-                        <div className="full_width">
+                        {/*  <div className="full_width">
                             <div className="form_section_heading">
                                 <h2 className="">Admission Information</h2>
                             </div>
@@ -982,7 +982,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     );
                                 })}
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="form-group student_submit form-horizontal">
                         <label></label>
