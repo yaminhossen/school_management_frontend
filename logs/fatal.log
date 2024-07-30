@@ -263,3 +263,22 @@
 {"level":60,"time":1722251043291,"pid":1244,"hostname":"DESKTOP-9421701","file":"","time":"7/29/2024 5:04:03 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
 {"level":60,"time":1722251088724,"pid":1244,"hostname":"DESKTOP-9421701","file":"","time":"7/29/2024 5:04:48 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
 {"level":60,"time":1722251378248,"pid":1244,"hostname":"DESKTOP-9421701","file":"","time":"7/29/2024 5:09:38 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1722251443309,"pid":7652,"hostname":"DESKTOP-9421701","file":"","time":"7/29/2024 5:10:43 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1722315411752,"pid":16984,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 10:56:51 AM","message":"target not found."}
+{"level":60,"time":1722315411792,"pid":16984,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 10:56:51 AM","message":"target not found."}
+{"level":60,"time":1722324725192,"pid":13084,"hostname":"DESKTOP-9421701","file":"services\\admit_student.ts:193:15)","time":"7/30/2024 1:32:05 PM","message":"string violation: image cannot be an array or an object"}
+{"level":60,"time":1722324748767,"pid":13084,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 1:32:28 PM","message":"target not found."}
+{"level":60,"time":1722324748829,"pid":13084,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 1:32:28 PM","message":"target not found."}
+{"level":60,"time":1722325392193,"pid":8256,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 1:43:12 PM","message":"Incorrect integer value: 'parent1' for column 'parent_id' at row 1"}
+{"level":60,"time":1722325844720,"pid":8256,"hostname":"DESKTOP-9421701","file":"services\\admit_student.ts:193:15)","time":"7/30/2024 1:50:44 PM","message":"string violation: qr_code cannot be an array or an object,\nstring violation: birth_certificate cannot be an array or an object"}
+{"level":60,"time":1722326061091,"pid":14672,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 1:54:21 PM","message":"target not found."}
+{"level":60,"time":1722326061126,"pid":14672,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 1:54:21 PM","message":"target not found."}
+{"level":60,"time":1722326270981,"pid":14672,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 1:57:50 PM","message":"target not found."}
+{"level":60,"time":1722326271020,"pid":14672,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 1:57:51 PM","message":"target not found."}
+{"level":60,"time":1722326271925,"pid":14672,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 1:57:51 PM","message":"target not found."}
+{"level":60,"time":1722326272022,"pid":14672,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 1:57:52 PM","message":"target not found."}
+{"level":60,"time":1722326272674,"pid":14672,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 1:57:52 PM","message":"target not found."}
+{"level":60,"time":1722326272740,"pid":14672,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 1:57:52 PM","message":"target not found."}
+{"level":60,"time":1722326693492,"pid":10288,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 2:04:53 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1722326757213,"pid":10288,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 2:05:57 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1722326878780,"pid":10288,"hostname":"DESKTOP-9421701","file":"services\\admit_student.ts:194:15)","time":"7/30/2024 2:07:58 PM","message":"string violation: birth_certificate cannot be an array or an object,\nstring violation: national_id cannot be an array or an object"}

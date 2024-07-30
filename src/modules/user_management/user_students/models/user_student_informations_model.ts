@@ -50,7 +50,6 @@ class DataModel extends Model<Infer, InferCreation> {
     declare telegram_name: string | null;
     declare telegram_id: string | null;
     declare student_id: string | null;
-    declare qr_code: string | null;
     declare blood_group: blood_group;
     declare student_expire_date: string | null;
     declare admission_date: string | null;
@@ -62,7 +61,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare division: string | null;
     declare family_information: string | null;
     declare shibling_information: string | null;
-    declare birth_certificate: string | null;
+    declare birth_certificate?: string | null;
     declare national_id: string | null;
     declare student_category: string | null;
     declare religion: string | null;
@@ -153,10 +152,6 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             student_id: {
-                type: new DataTypes.STRING(100),
-                allowNull: true,
-            },
-            qr_code: {
                 type: new DataTypes.STRING(100),
                 allowNull: true,
             },

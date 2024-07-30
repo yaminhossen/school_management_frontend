@@ -140,15 +140,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Branch</label>
                                     <div className="form_elements">
                                         <select name="branch_id" id="">
-                                            <option value="Uttora">
-                                                Uttora
-                                            </option>
-                                            <option value="Banani">
-                                                Banani
-                                            </option>
-                                            <option value="Gulshan">
-                                                Gulshan
-                                            </option>
+                                            <option value="1">Uttora</option>
+                                            <option value="2">Banani</option>
+                                            <option value="3">Gulshan</option>
 
                                             <option value="Demra">Demra</option>
                                         </select>
@@ -170,7 +164,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <input
                                             type="text"
                                             placeholder="roll no"
-                                            name="roll_no"
+                                            name="role_no"
                                         />
                                     </div>
                                 </div>
@@ -196,7 +190,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Shift</label>
                                     <div className="form_elements">
                                         <select name="shift" id="">
-                                            <option value=" boy morning">
+                                            <option value="boy morning">
                                                 boy morning
                                             </option>
                                             <option value="boy evening">
@@ -350,12 +344,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Qr code</label>
-                                    <div className="form_elements">
-                                        <input type="file" name="qr_code" />
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
                                     <label>Blood group</label>
                                     <div className="form_elements">
                                         <input
@@ -442,7 +430,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>NID</label>
                                     <div className="form_elements">
-                                        <input type="file" name="nid" />
+                                        <input type="file" name="national_id" />
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
@@ -507,7 +495,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <input
                                                             type="file"
                                                             placeholder="document file"
-                                                            name="file"
+                                                            name="document_file"
                                                         />
                                                     </div>
                                                 </div>
@@ -606,7 +594,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <select
                                                             name="is_parent"
-                                                            defaultValue="no"
+                                                            defaultValue="0"
                                                             id=""
                                                         >
                                                             <option value="0">
@@ -624,19 +612,19 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     </label>
                                                     <div className="form_elements">
                                                         <select
-                                                            name="user_parent_id"
+                                                            name="parent_id"
                                                             id=""
                                                         >
-                                                            <option value="parent1">
+                                                            <option value="1">
                                                                 parent1
                                                             </option>
-                                                            <option value="parent2">
+                                                            <option value="2">
                                                                 parent2
                                                             </option>
-                                                            <option value="parent3">
+                                                            <option value="3">
                                                                 parent3
                                                             </option>
-                                                            <option value="parent4">
+                                                            <option value="4">
                                                                 parent4
                                                             </option>
                                                         </select>
