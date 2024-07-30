@@ -282,3 +282,11 @@
 {"level":60,"time":1722326693492,"pid":10288,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 2:04:53 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
 {"level":60,"time":1722326757213,"pid":10288,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 2:05:57 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
 {"level":60,"time":1722326878780,"pid":10288,"hostname":"DESKTOP-9421701","file":"services\\admit_student.ts:194:15)","time":"7/30/2024 2:07:58 PM","message":"string violation: birth_certificate cannot be an array or an object,\nstring violation: national_id cannot be an array or an object"}
+{"level":60,"time":1722329566674,"pid":14372,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 2:52:46 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1722329735264,"pid":14372,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 2:55:35 PM","message":"Incorrect datetime value: 'Invalid date' for column 'date_of_birth' at row 1"}
+{"level":60,"time":1722329902292,"pid":14372,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 2:58:22 PM","message":"Data truncated for column 'blood_group' at row 1"}
+{"level":60,"time":1722330006234,"pid":14372,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 3:00:06 PM","message":"Incorrect datetime value: 'Invalid date' for column 'student_expire_date' at row 1"}
+{"level":60,"time":1722330095574,"pid":14372,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 3:01:35 PM","message":"Data truncated for column 'height' at row 1"}
+{"level":60,"time":1722330188673,"pid":5928,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 3:03:08 PM","message":"Data truncated for column 'height' at row 1"}
+{"level":60,"time":1722330394652,"pid":5928,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 3:06:34 PM","message":"target not found."}
+{"level":60,"time":1722330394729,"pid":5928,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 3:06:34 PM","message":"target not found."}

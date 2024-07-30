@@ -119,7 +119,7 @@ async function store(
         family_information: body.family_information,
         shibling_information: body.shibling_information,
         // birth_certificate: body.birth_certificate,
-        national_id: body.national_id,
+        // national_id: body.national_id,
         student_category: body.student_category,
         religion: body.religion,
         cast: body.cast,
@@ -135,49 +135,49 @@ async function store(
         previous_institute: body.previous_institute,
         year_of_leaving: body.year_of_leaving,
         result: body.result,
-        transcript_cirtificate: body.transcript_cirtificate,
+        // transcript_cirtificate: body.transcript_cirtificate,
     };
 
-    // let usdt_inputs: InferCreationAttributes<typeof usdt_model> = {
-    //     user_student_id: body.user_student_id,
-    //     title: body.document_title,
-    // };
+    let usdt_inputs: InferCreationAttributes<typeof usdt_model> = {
+        user_student_id: body.user_student_id,
+        title: body.document_title,
+    };
 
-    // let usdv_inputs: InferCreationAttributes<typeof usdv_model> = {
-    //     user_student_id: body.user_student_id,
-    //     user_student_document_title_id: body.user_student_document_title_id,
-    //     file: body.document_file,
-    //     issue_date: body.issue_date,
-    //     expire_date: body.expire_date,
-    // };
+    let usdv_inputs: InferCreationAttributes<typeof usdv_model> = {
+        user_student_id: body.user_student_id,
+        user_student_document_title_id: body.user_student_document_title_id,
+        file: body.document_file,
+        issue_date: body.issue_date,
+        expire_date: body.expire_date,
+    };
 
-    // let usp_inputs: InferCreationAttributes<typeof usp_model> = {
-    //     user_student_id: body.user_student_id,
-    //     relation: body.relation,
-    //     is_parent: body.is_parent,
-    //     user_student_parent_id: body.user_student_parent_id,
-    // };
+    let usp_inputs: InferCreationAttributes<typeof usp_model> = {
+        user_student_id: body.user_student_id,
+        relation: body.relation,
+        is_parent: body.is_parent,
+        user_student_parent_id: body.user_student_parent_id,
+    };
 
-    // let uscn_inputs: InferCreationAttributes<typeof uscn_model> = {
-    //     user_student_id: body.user_student_id,
-    //     contact_number: body.contact_number,
-    //     owner: body.owner,
-    //     branch_id: body.branch_id,
-    // };
+    let uscn_inputs: InferCreationAttributes<typeof uscn_model> = {
+        user_student_id: body.user_student_id,
+        contact_number: body.contact_number,
+        owner: body.owner,
+        branch_id: body.branch_id,
+    };
 
-    // let usl_inputs: InferCreationAttributes<typeof usl_model> = {
-    //     user_student_id: body.user_student_id,
-    //     language_title: body.language_title,
-    //     profeciency: body.profeciency,
-    //     branch_id: body.branch_id,
-    // };
+    let usl_inputs: InferCreationAttributes<typeof usl_model> = {
+        user_student_id: body.user_student_id,
+        language_title: body.language_title,
+        profeciency: body.profeciency,
+        branch_id: body.branch_id,
+    };
 
-    // let uss_inputs: InferCreationAttributes<typeof uss_model> = {
-    //     user_student_id: body.user_student_id,
-    //     title: body.skills_title,
-    //     level: body.level,
-    //     branch_id: body.branch_id,
-    // };
+    let uss_inputs: InferCreationAttributes<typeof uss_model> = {
+        user_student_id: body.user_student_id,
+        title: body.skills_title,
+        level: body.level,
+        branch_id: body.branch_id,
+    };
 
     /** print request data into console */
     // console.clear();

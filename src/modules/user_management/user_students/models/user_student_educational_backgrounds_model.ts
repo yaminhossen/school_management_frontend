@@ -34,10 +34,10 @@ class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
     declare user_student_id: number;
-    declare previous_institute: string | null;
-    declare year_of_leaving: Date;
+    declare previous_institute?: string | null;
+    declare year_of_leaving?: Date;
     declare result: string | null;
-    declare transcript_cirtificate: string | null;
+    declare transcript_cirtificate?: string | null;
     declare status?: status;
     declare token?: string | null;
     declare forget_code?: string | null;
