@@ -20,6 +20,7 @@ module.exports = {
             previous_institute,
             year_of_leaving,
             result,
+            transfer_cirtificate,
         ) {
             data.push({
                 id,
@@ -27,6 +28,7 @@ module.exports = {
                 previous_institute,
                 year_of_leaving,
                 result,
+                transfer_cirtificate,
                 created_at: '2024-02-14',
                 updated_at: '2024-02-14',
             });
@@ -38,6 +40,7 @@ module.exports = {
             'viqarunnisa',
             '2024-02-14',
             'A+',
+            'transcript.pdf',
         );
         set_data(
             2,
@@ -46,6 +49,7 @@ module.exports = {
             'Notre dame',
             '2024-12-10',
             'A+',
+            'transcript.pdf',
         );
         set_data(
             3,
@@ -54,6 +58,7 @@ module.exports = {
             'Pilot',
             '2024-10-09',
             'A-',
+            'tljaldslf.pdf',
         );
 
         await queryInterface.bulkDelete(

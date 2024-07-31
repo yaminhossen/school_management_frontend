@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import setup from './config/setup';
 import { useAppDispatch } from '../../../store';
 import { store } from './config/store/async_actions/store';
+import moment from 'moment';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -14,6 +15,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalSkill, setTotalSkill] = useState([1]);
     const [totalEducationalBackground, setTotalEducationalBackground] =
         useState([1]);
+    // let date22 = moment().format('YYYY-DD-MM');
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -30,6 +32,7 @@ const Index: React.FC<Props> = (props: Props) => {
         t.splice(index, 1);
         setState(t);
     }
+    // console.log('moment', moment().format('YYYY-DD-MM'));
 
     return (
         <div className="admin_dashboard">
@@ -54,7 +57,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-vertical">
+                                <div className="form-group form-vertical">
                                     <label>Gender</label>
                                     <div className="form_elements">
                                         <select name="gender" id="">
@@ -87,7 +90,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             name="phone_number"
                                         />
                                     </div>
-                                </div> */}
+                                </div>
                                 <div className="form-group form-vertical">
                                     <label>Image</label>
                                     <div className="form_elements">
@@ -109,7 +112,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-vertical">
+                                <div className="form-group form-vertical">
                                     <label>Password</label>
                                     <div className="form_elements">
                                         <input
@@ -128,10 +131,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                             name="confirm_password"
                                         />
                                     </div>
-                                </div> */}
+                                </div>
                             </div>
                         </div>
-                        {/*  <div className="full_width">
+                        <div className="full_width">
                             <div className="form_section_heading">
                                 <h2 className="">Admission Information</h2>
                             </div>
@@ -143,8 +146,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <option value="1">Uttora</option>
                                             <option value="2">Banani</option>
                                             <option value="3">Gulshan</option>
-
-                                            <option value="Demra">Demra</option>
+                                            <option value="4">Demra</option>
                                         </select>
                                     </div>
                                 </div>
@@ -173,6 +175,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="date"
+                                            defaultValue={'2024-10-10'}
                                             name="addmission_date"
                                         />
                                     </div>
@@ -246,6 +249,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="date"
+                                            defaultValue={'2024-10-10'}
                                             name="date_of_birth"
                                         />
                                     </div>
@@ -346,11 +350,16 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Blood group</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="blood group"
-                                            name="blood_group"
-                                        />
+                                        <select name="blood_group" id="">
+                                            <option value="A+">A+</option>
+                                            <option value="B+">B+</option>
+                                            <option value="A-">A-</option>
+                                            <option value="AB-">AB-</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="B-">B-</option>
+                                            <option value="O-">O-</option>
+                                            <option value="O-">O-</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
@@ -358,6 +367,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="date"
+                                            defaultValue={'2024-10-10'}
                                             name="student_expire_date"
                                         />
                                     </div>
@@ -366,9 +376,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Height</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="number"
                                             placeholder="height"
                                             name="height"
+                                            step={'any'}
                                         />
                                     </div>
                                 </div>
@@ -376,16 +387,21 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Weight</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="number"
                                             placeholder="weight"
                                             name="weight"
+                                            step={'any'}
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
                                     <label>As on date</label>
                                     <div className="form_elements">
-                                        <input type="date" name="ass_on_date" />
+                                        <input
+                                            type="date"
+                                            defaultValue={'2024-10-10'}
+                                            name="ass_on_date"
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
@@ -504,6 +520,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <input
                                                             type="date"
+                                                            defaultValue={
+                                                                '2024-10-10'
+                                                            }
                                                             name="issue_date"
                                                         />
                                                     </div>
@@ -513,6 +532,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <input
                                                             type="date"
+                                                            defaultValue={
+                                                                '2024-10-10'
+                                                            }
                                                             name="expire_date"
                                                         />
                                                     </div>
@@ -934,6 +956,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <input
                                                             type="date"
+                                                            defaultValue={
+                                                                '2024-10-10'
+                                                            }
                                                             name="year_of_living"
                                                         />
                                                     </div>
@@ -950,13 +975,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 </div>
                                                 <div className="form-group form-vertical">
                                                     <label>
-                                                        Transcript certificate
+                                                        Transfer certificate
                                                     </label>
                                                     <div className="form_elements">
                                                         <input
-                                                            type="text"
-                                                            placeholder="transfer certificate"
-                                                            name="transfer_certificate"
+                                                            type="file"
+                                                            placeholder="transfer cirtificate"
+                                                            name="transfer_cirtificate"
                                                         />
                                                     </div>
                                                 </div>
@@ -982,7 +1007,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     );
                                 })}
                             </div>
-                        </div> */}
+                        </div>
                     </div>
                     <div className="form-group student_submit form-horizontal">
                         <label></label>

@@ -63,6 +63,10 @@ async function store(
     let password = await bcrypt.hash(body.password, saltRounds);
 
     let image_path = 'avatar.png';
+    let birth_certi_image = 'avatar.png';
+    let national_id_image = 'avatar.png';
+    let transfer_cirti_image = 'avatar.png';
+    let document_file_image = 'avatar.png';
 
     if (body['image'].ext) {
         image_path =
@@ -72,76 +76,124 @@ async function store(
         await (fastify_instance as any).upload(body['image'], image_path);
     }
 
+    if (body['national_id'].ext) {
+        national_id_image =
+            'uploads/students/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['national_id'].ext;
+        await (fastify_instance as any).upload(
+            body['national_id'],
+            national_id_image,
+        );
+    }
+
+    if (body['birth_certificate'].ext) {
+        birth_certi_image =
+            'uploads/students/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['birth_certificate'].ext;
+        await (fastify_instance as any).upload(
+            body['birth_certificate'],
+            birth_certi_image,
+        );
+    }
+
+    if (body['transfer_cirtificate'].ext) {
+        transfer_cirti_image =
+            'uploads/students/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['transfer_cirtificate'].ext;
+        await (fastify_instance as any).upload(
+            body['transfer_cirtificate'],
+            transfer_cirti_image,
+        );
+    }
+
+    if (body['document_file'].ext) {
+        document_file_image =
+            'uploads/students/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['document_file'].ext;
+        await (fastify_instance as any).upload(
+            body['document_file'],
+            document_file_image,
+        );
+    }
+
     let inputs: InferCreationAttributes<typeof data> = {
         parent_id: body.parent_id,
         name: body.name,
         email: body.email,
         phone_number: body.phone_number,
-        // image: body.image,
+        image: image_path,
         password: password,
     };
 
     console.log('body data', body);
-    console.log('body data1', body['image']);
-    console.log('body data2', body['image'].ext);
+    // console.log('body data1', moment().format('YY-DD-MM'));
+    // console.log('body data1', moment().format('YYY-DD-MM'));
+    // console.log('body data1', moment().format('YYYY-DD-MM'));
 
-    // let usi_inputs: InferCreationAttributes<typeof usi_model> = {
-    //     user_student_id: body.user_student_id,
-    //     branch_id: body.branch_id,
-    //     present_address: body.present_address,
-    //     permanent_address: body.permanent_address,
-    //     date_of_birth: body.date_of_birth,
-    //     gender: body.gender,
-    //     nationality: body.nationality,
-    //     city: body.city,
-    //     state: body.state,
-    //     post_code: body.post_code,
-    //     country: body.country,
-    //     medical_condition: body.medical_condition,
-    //     current_medications: body.current_medications,
-    //     telegram_name: body.telegram_name,
-    //     telegram_id: body.telegram_id,
-    //     student_id: body.student_id,
-    //     blood_group: body.blood_group,
-    //     student_expire_date: body.student_expire_date,
-    //     admission_date: body.admission_date,
-    //     addmission_no: body.addmission_no,
-    //     role_no: body.role_no,
-    //     section: body.section,
-    //     s_class: body.s_class,
-    //     shift: body.shift,
-    //     division: body.division,
-    //     family_information: body.family_information,
-    //     shibling_information: body.shibling_information,
-    //     student_category: body.student_category,
-    //     religion: body.religion,
-    //     cast: body.cast,
-    //     student_house: body.student_house,
-    //     living_house_type: body.living_house_type,
-    //     height: body.height,
-    //     weight: body.weight,
-    //     as_on_date: body.as_on_date,
-    // };
+    let usi_inputs: InferCreationAttributes<typeof usi_model> = {
+        user_student_id: 1,
+        branch_id: body.branch_id,
+        present_address: body.present_address,
+        permanent_address: body.permanent_address,
+        date_of_birth: body.date_of_birth,
+        gender: body.gender,
+        nationality: body.nationality,
+        city: body.city,
+        state: body.state,
+        post_code: body.post_code,
+        country: body.country,
+        medical_condition: body.medical_condition,
+        current_medications: body.current_medications,
+        telegram_name: body.telegram_name,
+        telegram_id: body.telegram_id,
+        student_id: body.student_id,
+        blood_group: body.blood_group,
+        student_expire_date: body.student_expire_date,
+        admission_date: body.admission_date,
+        addmission_no: body.addmission_no,
+        role_no: body.role_no,
+        section: body.section,
+        s_class: body.s_class,
+        shift: body.shift,
+        division: body.division,
+        family_information: body.family_information,
+        shibling_information: body.shibling_information,
+        birth_certificate: birth_certi_image,
+        national_id: national_id_image,
+        student_category: body.student_category,
+        religion: body.religion,
+        cast: body.cast,
+        student_house: body.student_house,
+        living_house_type: body.living_house_type,
+        height: body.height,
+        weight: body.weight,
+        as_on_date: body.as_on_date,
+    };
 
-    // let useb_inputs: InferCreationAttributes<typeof useb_model> = {
-    //     user_student_id: body.user_student_id,
-    //     previous_institute: body.previous_institute,
-    //     year_of_leaving: body.year_of_leaving,
-    //     result: body.result,
-    // };
+    let useb_inputs: InferCreationAttributes<typeof useb_model> = {
+        user_student_id: 1,
+        previous_institute: body.previous_institute,
+        year_of_leaving: body.year_of_leaving,
+        result: body.result,
+        transfer_cirtificate: transfer_cirti_image,
+    };
 
-    // let usdt_inputs: InferCreationAttributes<typeof usdt_model> = {
-    //     user_student_id: body.user_student_id,
-    //     title: body.document_title,
-    // };
+    let usdt_inputs: InferCreationAttributes<typeof usdt_model> = {
+        user_student_id: 1,
+        title: body.document_title,
+    };
 
-    // let usdv_inputs: InferCreationAttributes<typeof usdv_model> = {
-    //     user_student_id: body.user_student_id,
-    //     user_student_document_title_id: body.user_student_document_title_id,
-    //     file: body.document_file,
-    //     issue_date: body.issue_date,
-    //     expire_date: body.expire_date,
-    // };
+    let usdv_inputs: InferCreationAttributes<typeof usdv_model> = {
+        user_student_id: 1,
+        user_student_document_title_id: 1,
+        file: document_file_image,
+        issue_date: body.issue_date,
+        expire_date: body.expire_date,
+    };
 
     // let usp_inputs: InferCreationAttributes<typeof usp_model> = {
     //     user_student_id: body.user_student_id,
@@ -177,9 +229,20 @@ async function store(
 
     /** store data into database */
     try {
-        // (await data.update(inputs)).save();
-        // (await usi_model.update(usi_inputs)).save();
-        // (await useb_model.update(useb_inputs)).save();
+        (await data.update(inputs)).save();
+        if (data) {
+            usi_inputs.user_student_id = data.id || 1;
+            (await usi_model.update(usi_inputs)).save();
+            useb_inputs.user_student_id = data.id || 1;
+            (await useb_model.update(useb_inputs)).save();
+            usdt_inputs.user_student_id = data.id || 1;
+            (await usdt_model.update(usdt_inputs)).save();
+            if (usdt_model) {
+                usdv_inputs.user_student_id = data.id || 1;
+                usdv_inputs.user_student_document_title_id = usdt_model.id || 1;
+                (await usdv_model.update(usdv_inputs)).save();
+            }
+        }
         return response(200, 'data created', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);

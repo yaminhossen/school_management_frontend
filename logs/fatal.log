@@ -291,3 +291,44 @@
 {"level":60,"time":1722330394652,"pid":5928,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 3:06:34 PM","message":"target not found."}
 {"level":60,"time":1722330394729,"pid":5928,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 3:06:34 PM","message":"target not found."}
 {"level":60,"time":1722336921561,"pid":2852,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 4:55:21 PM","message":"data and salt arguments required"}
+{"level":60,"time":1722337098437,"pid":14408,"hostname":"DESKTOP-9421701","file":"","time":"7/30/2024 4:58:18 PM","message":"data and salt arguments required"}
+{"level":60,"time":1722404851422,"pid":12572,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 11:47:31 AM","message":"data and salt arguments required"}
+{"level":60,"time":1722404875505,"pid":12572,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 11:47:55 AM","message":"data and salt arguments required"}
+{"level":60,"time":1722404897317,"pid":12572,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 11:48:17 AM","message":"data and salt arguments required"}
+{"level":60,"time":1722404958860,"pid":14504,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 11:49:18 AM","message":"data and salt arguments required"}
+{"level":60,"time":1722405019036,"pid":13072,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 11:50:19 AM","message":"data and salt arguments required"}
+{"level":60,"time":1722405087968,"pid":17128,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 11:51:27 AM","message":"data and salt arguments required"}
+{"level":60,"time":1722408782413,"pid":14044,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 12:53:02 PM","message":"target not found."}
+{"level":60,"time":1722409360778,"pid":14164,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:02:40 PM","message":"target not found."}
+{"level":60,"time":1722409420491,"pid":3244,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:03:40 PM","message":"target not found."}
+{"level":60,"time":1722409488434,"pid":3244,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:04:48 PM","message":"target not found."}
+{"level":60,"time":1722409517940,"pid":3244,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:05:17 PM","message":"target not found."}
+{"level":60,"time":1722409518841,"pid":3244,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:05:18 PM","message":"target not found."}
+{"level":60,"time":1722409519259,"pid":3244,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:05:19 PM","message":"target not found."}
+{"level":60,"time":1722409519519,"pid":3244,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:05:19 PM","message":"target not found."}
+{"level":60,"time":1722409519717,"pid":3244,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:05:19 PM","message":"target not found."}
+{"level":60,"time":1722409519904,"pid":3244,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:05:19 PM","message":"target not found."}
+{"level":60,"time":1722409538067,"pid":3244,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:05:38 PM","message":"target not found."}
+{"level":60,"time":1722409538186,"pid":3244,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:05:38 PM","message":"target not found."}
+{"level":60,"time":1722409757355,"pid":4448,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:09:17 PM","message":"target not found."}
+{"level":60,"time":1722409757433,"pid":4448,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:09:17 PM","message":"target not found."}
+{"level":60,"time":1722409768741,"pid":4448,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:09:28 PM","message":"target not found."}
+{"level":60,"time":1722409768817,"pid":4448,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:09:28 PM","message":"target not found."}
+{"level":60,"time":1722410086565,"pid":14112,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:14:46 PM","message":"target not found."}
+{"level":60,"time":1722410086603,"pid":14112,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:14:46 PM","message":"target not found."}
+{"level":60,"time":1722410164083,"pid":84,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:16:04 PM","message":"target not found."}
+{"level":60,"time":1722410164104,"pid":84,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:16:04 PM","message":"target not found."}
+{"level":60,"time":1722410202981,"pid":84,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:16:42 PM","message":"target not found."}
+{"level":60,"time":1722410203072,"pid":84,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:16:43 PM","message":"target not found."}
+{"level":60,"time":1722410204176,"pid":84,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:16:44 PM","message":"target not found."}
+{"level":60,"time":1722410204205,"pid":84,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:16:44 PM","message":"target not found."}
+{"level":60,"time":1722410276110,"pid":84,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:17:56 PM","message":"target not found."}
+{"level":60,"time":1722410285737,"pid":84,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:18:05 PM","message":"target not found."}
+{"level":60,"time":1722410290371,"pid":84,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:18:10 PM","message":"target not found."}
+{"level":60,"time":1722411012954,"pid":17224,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:30:12 PM","message":"Data truncated for column 'blood_group' at row 1"}
+{"level":60,"time":1722411622763,"pid":17224,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:40:22 PM","message":"Data truncated for column 'height' at row 1"}
+{"level":60,"time":1722411962439,"pid":17224,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 1:46:02 PM","message":"Data truncated for column 'height' at row 1"}
+{"level":60,"time":1722417246984,"pid":14448,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 3:14:06 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1722417541931,"pid":14448,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 3:19:01 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1722418383697,"pid":10492,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 3:33:03 PM","message":"target not found."}
+{"level":60,"time":1722418383733,"pid":10492,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 3:33:03 PM","message":"target not found."}
