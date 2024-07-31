@@ -156,7 +156,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <input
                                             type="text"
                                             placeholder="addmission no"
-                                            name="addmission_no"
+                                            name="admission_no"
                                         />
                                     </div>
                                 </div>
@@ -176,14 +176,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <input
                                             type="date"
                                             defaultValue={'2024-10-10'}
-                                            name="addmission_date"
+                                            name="admission_date"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
                                     <label>Class</label>
                                     <div className="form_elements">
-                                        <select name="class_id" id="">
+                                        <select name="class" id="">
                                             <option value="six">six</option>
                                             <option value="seven">seven</option>
                                         </select>
@@ -288,6 +288,16 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
+                                    <label>City</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="City"
+                                            name="city"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
                                     <label>Post code</label>
                                     <div className="form_elements">
                                         <input
@@ -323,7 +333,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <input
                                             type="text"
                                             placeholder="current medcation"
-                                            name="current_medcation"
+                                            name="current_medications"
                                         />
                                     </div>
                                 </div>
@@ -400,17 +410,17 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <input
                                             type="date"
                                             defaultValue={'2024-10-10'}
-                                            name="ass_on_date"
+                                            name="as_on_date"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Familly information</label>
+                                    <label>Family information</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="familly information"
-                                            name="familly_information"
+                                            placeholder="family information"
+                                            name="family_information"
                                         />
                                     </div>
                                 </div>
@@ -431,6 +441,16 @@ const Index: React.FC<Props> = (props: Props) => {
                                             type="text"
                                             placeholder="living house type"
                                             name="living_house_type"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Student house type</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="Student house type"
+                                            name="student_house_type"
                                         />
                                     </div>
                                 </div>
@@ -634,7 +654,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     </label>
                                                     <div className="form_elements">
                                                         <select
-                                                            name="parent_id"
+                                                            name="user_student_parent_id"
                                                             id=""
                                                         >
                                                             <option value="1">
@@ -951,7 +971,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 </div>
                                                 <div className="form-group form-vertical">
                                                     <label>
-                                                        Year of living
+                                                        Year of leaving
                                                     </label>
                                                     <div className="form_elements">
                                                         <input
@@ -959,7 +979,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             defaultValue={
                                                                 '2024-10-10'
                                                             }
-                                                            name="year_of_living"
+                                                            name="year_of_leaving"
                                                         />
                                                     </div>
                                                 </div>

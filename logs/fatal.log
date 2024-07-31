@@ -332,3 +332,10 @@
 {"level":60,"time":1722417541931,"pid":14448,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 3:19:01 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
 {"level":60,"time":1722418383697,"pid":10492,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 3:33:03 PM","message":"target not found."}
 {"level":60,"time":1722418383733,"pid":10492,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 3:33:03 PM","message":"target not found."}
+{"level":60,"time":1722422682392,"pid":13084,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 4:44:42 PM","message":"target not found."}
+{"level":60,"time":1722422682413,"pid":13084,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 4:44:42 PM","message":"target not found."}
+{"level":60,"time":1722422829913,"pid":18356,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 4:47:09 PM","message":"target not found."}
+{"level":60,"time":1722422829922,"pid":18356,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 4:47:09 PM","message":"target not found."}
+{"level":60,"time":1722423007149,"pid":18356,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 4:50:07 PM","message":"target not found."}
+{"level":60,"time":1722423007158,"pid":18356,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 4:50:07 PM","message":"target not found."}
+{"level":60,"time":1722424445389,"pid":13344,"hostname":"DESKTOP-9421701","file":"","time":"7/31/2024 5:14:05 PM","message":"target not found."}

@@ -121,7 +121,7 @@ async function store(
     }
 
     let inputs: InferCreationAttributes<typeof data> = {
-        parent_id: body.parent_id,
+        parent_id: body.user_student_parent_id,
         name: body.name,
         email: body.email,
         phone_number: body.phone_number,
@@ -154,10 +154,10 @@ async function store(
         blood_group: body.blood_group,
         student_expire_date: body.student_expire_date,
         admission_date: body.admission_date,
-        addmission_no: body.addmission_no,
+        addmission_no: body.admission_no,
         role_no: body.role_no,
         section: body.section,
-        s_class: body.s_class,
+        s_class: body.class,
         shift: body.shift,
         division: body.division,
         family_information: body.family_information,
@@ -167,7 +167,7 @@ async function store(
         student_category: body.student_category,
         religion: body.religion,
         cast: body.cast,
-        student_house: body.student_house,
+        student_house: body.student_house_type,
         living_house_type: body.living_house_type,
         height: body.height,
         weight: body.weight,
@@ -195,33 +195,33 @@ async function store(
         expire_date: body.expire_date,
     };
 
-    // let usp_inputs: InferCreationAttributes<typeof usp_model> = {
-    //     user_student_id: body.user_student_id,
-    //     relation: body.relation,
-    //     is_parent: body.is_parent,
-    //     user_student_parent_id: body.user_student_parent_id,
-    // };
+    let usp_inputs: InferCreationAttributes<typeof usp_model> = {
+        user_student_id: 1,
+        relation: body.relation,
+        is_parent: body.is_parent,
+        user_student_parent_id: body.user_student_parent_id,
+    };
 
-    // let uscn_inputs: InferCreationAttributes<typeof uscn_model> = {
-    //     user_student_id: body.user_student_id,
-    //     contact_number: body.contact_number,
-    //     owner: body.owner,
-    //     branch_id: body.branch_id,
-    // };
+    let uscn_inputs: InferCreationAttributes<typeof uscn_model> = {
+        user_student_id: 1,
+        contact_number: body.contact_number,
+        owner: body.owner,
+        branch_id: body.branch_id,
+    };
 
-    // let usl_inputs: InferCreationAttributes<typeof usl_model> = {
-    //     user_student_id: body.user_student_id,
-    //     language_title: body.language_title,
-    //     profeciency: body.profeciency,
-    //     branch_id: body.branch_id,
-    // };
+    let usl_inputs: InferCreationAttributes<typeof usl_model> = {
+        user_student_id: 1,
+        language_title: body.language_title,
+        profeciency: body.profeciency,
+        branch_id: body.branch_id,
+    };
 
-    // let uss_inputs: InferCreationAttributes<typeof uss_model> = {
-    //     user_student_id: body.user_student_id,
-    //     title: body.skills_title,
-    //     level: body.level,
-    //     branch_id: body.branch_id,
-    // };
+    let uss_inputs: InferCreationAttributes<typeof uss_model> = {
+        user_student_id: 1,
+        title: body.skills_title,
+        level: body.level,
+        branch_id: body.branch_id,
+    };
 
     /** print request data into console */
     // console.clear();
@@ -242,6 +242,14 @@ async function store(
                 usdv_inputs.user_student_document_title_id = usdt_model.id || 1;
                 (await usdv_model.update(usdv_inputs)).save();
             }
+            usp_inputs.user_student_id = data.id || 1;
+            (await usp_model.update(usp_inputs)).save();
+            uscn_inputs.user_student_id = data.id || 1;
+            (await uscn_model.update(uscn_inputs)).save();
+            usl_inputs.user_student_id = data.id || 1;
+            (await usl_model.update(usl_inputs)).save();
+            uss_inputs.user_student_id = data.id || 1;
+            (await uss_model.update(uss_inputs)).save();
         }
         return response(200, 'data created', data);
     } catch (error: any) {
