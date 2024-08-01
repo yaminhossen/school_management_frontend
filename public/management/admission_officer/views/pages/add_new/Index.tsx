@@ -494,7 +494,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             </div>
                             <div className="multi_inputs">
                                 <div className="pb-4 px-0">
-                                    <button
+                                    <span
                                         className="btn btn-sm  btn-outline-info"
                                         onClick={() =>
                                             setTotalDocument([
@@ -504,7 +504,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         }
                                     >
                                         Add new
-                                    </button>
+                                    </span>
                                 </div>
                                 {totalDocument.map((i, index) => {
                                     return (
@@ -562,7 +562,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             </div>
                                             {totalDocument.length > 1 && (
                                                 <div>
-                                                    <button
+                                                    <span
                                                         onClick={() =>
                                                             remove_from_state(
                                                                 index,
@@ -573,7 +573,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         className="btn btn-danger"
                                                     >
                                                         remove
-                                                    </button>
+                                                    </span>
                                                 </div>
                                             )}
                                         </div>
@@ -587,14 +587,14 @@ const Index: React.FC<Props> = (props: Props) => {
                             </div>
                             <div className="multi_inputs">
                                 <div className="pb-4 px-0">
-                                    <button
+                                    <span
                                         className="btn btn-sm  btn-outline-info"
                                         onClick={() =>
                                             setTotalParent([...totalParent, 1])
                                         }
                                     >
                                         Add new
-                                    </button>
+                                    </span>
                                 </div>
                                 {totalParent.map((i, index) => {
                                     return (
@@ -675,7 +675,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             </div>
                                             {totalParent.length > 1 && (
                                                 <div>
-                                                    <button
+                                                    <span
                                                         onClick={() =>
                                                             remove_from_state(
                                                                 index,
@@ -686,7 +686,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         className="btn btn-danger"
                                                     >
                                                         remove
-                                                    </button>
+                                                    </span>
                                                 </div>
                                             )}
                                         </div>
@@ -700,7 +700,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             </div>
                             <div className="multi_inputs">
                                 <div className="pb-4 px-0">
-                                    <button
+                                    <span
                                         className="btn btn-sm  btn-outline-info"
                                         onClick={() =>
                                             setTotalContactNumber([
@@ -710,7 +710,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         }
                                     >
                                         Add new
-                                    </button>
+                                    </span>
                                 </div>
                                 {totalContactNumber.map((i, index) => {
                                     return (
@@ -757,7 +757,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             </div>
                                             {totalContactNumber.length > 1 && (
                                                 <div>
-                                                    <button
+                                                    <span
                                                         onClick={() =>
                                                             remove_from_state(
                                                                 index,
@@ -768,7 +768,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         className="btn btn-danger"
                                                     >
                                                         remove
-                                                    </button>
+                                                    </span>
                                                 </div>
                                             )}
                                         </div>
@@ -782,7 +782,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             </div>
                             <div className="multi_inputs">
                                 <div className="pb-4 px-0">
-                                    <button
+                                    <span
                                         className="btn btn-sm  btn-outline-info"
                                         onClick={() =>
                                             setTotalLanguage([
@@ -792,7 +792,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         }
                                     >
                                         Add new
-                                    </button>
+                                    </span>
                                 </div>
                                 {totalLanguage.map((i, index) => {
                                     return (
@@ -839,7 +839,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             </div>
                                             {totalLanguage.length > 1 && (
                                                 <div>
-                                                    <button
+                                                    <span
                                                         onClick={() =>
                                                             remove_from_state(
                                                                 index,
@@ -850,7 +850,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         className="btn btn-danger"
                                                     >
                                                         remove
-                                                    </button>
+                                                    </span>
                                                 </div>
                                             )}
                                         </div>
@@ -864,14 +864,14 @@ const Index: React.FC<Props> = (props: Props) => {
                             </div>
                             <div className="multi_inputs">
                                 <div className="pb-4 px-0">
-                                    <button
+                                    <span
                                         className="btn btn-sm  btn-outline-info"
                                         onClick={() =>
                                             setTotalSkill([...totalSkill, 1])
                                         }
                                     >
                                         Add new
-                                    </button>
+                                    </span>
                                 </div>
                                 {totalSkill.map((i, index) => {
                                     return (
@@ -913,7 +913,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             </div>
                                             {totalSkill.length > 1 && (
                                                 <div>
-                                                    <button
+                                                    <span
                                                         onClick={() =>
                                                             remove_from_state(
                                                                 index,
@@ -924,7 +924,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         className="btn btn-danger"
                                                     >
                                                         remove
-                                                    </button>
+                                                    </span>
                                                 </div>
                                             )}
                                         </div>
@@ -938,7 +938,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             </div>
                             <div className="multi_inputs">
                                 <div className="pb-4 px-0">
-                                    <button
+                                    <span
                                         className="btn btn-sm  btn-outline-info"
                                         onClick={() =>
                                             setTotalEducationalBackground([
@@ -948,8 +948,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                         }
                                     >
                                         Add new
-                                    </button>
+                                    </span>
                                 </div>
+
+                                <input
+                                    type="hidden"
+                                    name="educational_background_count"
+                                    value={totalEducationalBackground.length}
+                                />
                                 {totalEducationalBackground.map((i, index) => {
                                     return (
                                         <div
@@ -965,7 +971,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <input
                                                             type="text"
                                                             placeholder="previous institute"
-                                                            name="previous_institute"
+                                                            name={`educational_background_previous_institute_${index}`}
                                                         />
                                                     </div>
                                                 </div>
@@ -979,7 +985,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             defaultValue={
                                                                 '2024-10-10'
                                                             }
-                                                            name="year_of_leaving"
+                                                            name={`educational_background_year_of_leaving_${index}`}
                                                         />
                                                     </div>
                                                 </div>
@@ -989,7 +995,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <input
                                                             type="text"
                                                             placeholder="result"
-                                                            name="result"
+                                                            name={`educational_background_result_${index}`}
                                                         />
                                                     </div>
                                                 </div>
@@ -1001,7 +1007,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <input
                                                             type="file"
                                                             placeholder="transfer cirtificate"
-                                                            name="transfer_cirtificate"
+                                                            name={`educational_background_transfer_cirtificate_${index}`}
                                                         />
                                                     </div>
                                                 </div>
@@ -1009,7 +1015,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             {totalEducationalBackground.length >
                                                 1 && (
                                                 <div>
-                                                    <button
+                                                    <span
                                                         onClick={() =>
                                                             remove_from_state(
                                                                 index,
@@ -1020,7 +1026,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         className="btn btn-danger"
                                                     >
                                                         remove
-                                                    </button>
+                                                    </span>
                                                 </div>
                                             )}
                                         </div>
