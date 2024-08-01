@@ -50,7 +50,6 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.UserStudentsModel();
-    let useb_model = new models.UserStudentEducationalBackgroundsModel();
     let usdt_model = new models.UserStudentDocumentTitlesModel();
     let usdv_model = new models.UserStudentDocumentValuesModel();
     let usi_model = new models.UserStudentInformationsModel();
@@ -142,6 +141,8 @@ async function store(
     }
 
     console.log(eductional_bc);
+    console.log(eductional_bc[0].previous_institute);
+    console.log(eductional_bc.length);
 
     // console.log('body data', body);
 
@@ -183,14 +184,6 @@ async function store(
         height: body.height,
         weight: body.weight,
         as_on_date: body.as_on_date,
-    };
-
-    let useb_inputs: InferCreationAttributes<typeof useb_model> = {
-        user_student_id: 1,
-        previous_institute: body.previous_institute,
-        year_of_leaving: body.year_of_leaving,
-        result: body.result,
-        transfer_cirtificate: transfer_cirti_image,
     };
 
     let usdt_inputs: InferCreationAttributes<typeof usdt_model> = {
@@ -248,6 +241,31 @@ async function store(
             // (await useb_model.update(useb_inputs)).save();
             // usdt_inputs.user_student_id = data.id || 1;
             // (await usdt_model.update(usdt_inputs)).save();
+            if (eductional_bc) {
+                eductional_bc.forEach(async (edbc) => {
+                    let useb_model =
+                        new models.UserStudentEducationalBackgroundsModel();
+                    let useb_inputs: InferCreationAttributes<
+                        typeof useb_model
+                    > = {
+                        user_student_id: 1,
+                        previous_institute: body.previous_institute,
+                        year_of_leaving: body.year_of_leaving,
+                        result: body.result,
+                        transfer_cirtificate: transfer_cirti_image,
+                    };
+                    // console.log('skill', skill);
+                    useb_inputs.user_student_id = data.id || 1;
+                    useb_inputs.previous_institute = edbc.previous_institute;
+                    useb_inputs.year_of_leaving = edbc.year_of_leaving;
+                    useb_inputs.result = edbc.result;
+                    useb_inputs.transfer_cirtificate = edbc.file;
+
+                    // Update the model
+                    // (await uss_model.update(uss_inputs)).save();
+                    (await useb_model.update(useb_inputs)).save();
+                });
+            }
             // if (usdt_model) {
             //     usdv_inputs.user_student_id = data.id || 1;
             //     usdv_inputs.user_student_document_title_id = usdt_model.id || 1;

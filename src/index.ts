@@ -88,7 +88,6 @@ async function boot() {
                 if (entry.isDirectory()) {
                     await recursiveSearch(fullPath);
                 } else if (entry.name === 'routes.ts') {
-                    console.log('connecting : ' + fullPath);
                     results.push(fullPath);
                 }
             }
@@ -101,6 +100,7 @@ async function boot() {
     await findAllRoutesFiles('./src/modules')
         .then((files: string[]) => {
             files.forEach((routes: string) => {
+                console.log('connecting : ' + JSON.stringify(routes));
                 fastify.register(require(path.resolve(appDir, routes)), {
                     prefix: 'api/v1',
                 });
