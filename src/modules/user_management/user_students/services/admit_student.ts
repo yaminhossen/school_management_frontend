@@ -50,13 +50,8 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.UserStudentsModel();
-    let usdt_model = new models.UserStudentDocumentTitlesModel();
-    let usdv_model = new models.UserStudentDocumentValuesModel();
     let usi_model = new models.UserStudentInformationsModel();
-    let usp_model = new models.UserStudentParentsModel();
-    let uscn_model = new models.UserStudentContactNumbersModel();
-    let usl_model = new models.UserStudentLanguagesModel();
-    let uss_model = new models.UserStudentSkillsModel();
+
     const bcrypt = require('bcrypt');
     const saltRounds = 10;
     let password = await bcrypt.hash(body.password, saltRounds);
@@ -140,11 +135,57 @@ async function store(
         });
     }
 
-    console.log(eductional_bc);
-    console.log(eductional_bc[0].previous_institute);
-    console.log(eductional_bc.length);
+    let student_skills: anyObject[] = [];
+    for (let i = 0; i < parseInt(body.student_skills_count); i++) {
+        student_skills.push({
+            title: body[`skills_title${i}`],
+            level: body[`skills_level${i}`],
+        });
+    }
 
-    // console.log('body data', body);
+    let student_language: anyObject[] = [];
+    for (let i = 0; i < parseInt(body.student_language_count); i++) {
+        student_language.push({
+            language_title: body[`language_title${i}`],
+            profeciency: body[`language_profeciency${i}`],
+        });
+    }
+
+    let student_number: anyObject[] = [];
+    for (let i = 0; i < parseInt(body.contact_number_count); i++) {
+        student_number.push({
+            contact_number: body[`contact_number${i}`],
+            owner: body[`number_owner${i}`],
+        });
+    }
+
+    let student_guardians: anyObject[] = [];
+    for (let i = 0; i < parseInt(body.totalParent_count); i++) {
+        student_guardians.push({
+            relation: body[`relation${i}`],
+            is_parent: body[`is_parent${i}`],
+            user_student_parent_id: body[`user_student_parent_id${i}`],
+        });
+    }
+
+    let student_document: anyObject[] = [];
+    for (let i = 0; i < parseInt(body.total_docement_count); i++) {
+        student_document.push({
+            title: body[`document_title${i}`],
+            file: body[`document_file${i}`],
+            issue_date: body[`issue_date${i}`],
+            expire_date: body[`expire_date${i}`],
+        });
+    }
+
+    console.log(eductional_bc);
+    console.log(student_skills);
+    console.log(student_language);
+    console.log(student_number);
+    console.log(student_guardians);
+    console.log(student_document);
+
+    console.log('body data', body);
 
     let usi_inputs: InferCreationAttributes<typeof usi_model> = {
         user_student_id: 1,
@@ -186,47 +227,6 @@ async function store(
         as_on_date: body.as_on_date,
     };
 
-    let usdt_inputs: InferCreationAttributes<typeof usdt_model> = {
-        user_student_id: 1,
-        title: body.document_title,
-    };
-
-    let usdv_inputs: InferCreationAttributes<typeof usdv_model> = {
-        user_student_id: 1,
-        user_student_document_title_id: 1,
-        file: document_file_image,
-        issue_date: body.issue_date,
-        expire_date: body.expire_date,
-    };
-
-    let usp_inputs: InferCreationAttributes<typeof usp_model> = {
-        user_student_id: 1,
-        relation: body.relation,
-        is_parent: body.is_parent,
-        user_student_parent_id: body.user_student_parent_id,
-    };
-
-    let uscn_inputs: InferCreationAttributes<typeof uscn_model> = {
-        user_student_id: 1,
-        contact_number: body.contact_number,
-        owner: body.owner,
-        branch_id: body.branch_id,
-    };
-
-    let usl_inputs: InferCreationAttributes<typeof usl_model> = {
-        user_student_id: 1,
-        language_title: body.language_title,
-        profeciency: body.profeciency,
-        branch_id: body.branch_id,
-    };
-
-    let uss_inputs: InferCreationAttributes<typeof uss_model> = {
-        user_student_id: 1,
-        title: body.skills_title,
-        level: body.level,
-        branch_id: body.branch_id,
-    };
-
     /** print request data into console */
     // console.clear();
     // (fastify_instance as any).print(inputs);
@@ -235,12 +235,9 @@ async function store(
     try {
         (await data.update(inputs)).save();
         if (data) {
-            // usi_inputs.user_student_id = data.id || 1;
-            // (await usi_model.update(usi_inputs)).save();
-            // useb_inputs.user_student_id = data.id || 1;
-            // (await useb_model.update(useb_inputs)).save();
-            // usdt_inputs.user_student_id = data.id || 1;
-            // (await usdt_model.update(usdt_inputs)).save();
+            usi_inputs.user_student_id = data.id || 1;
+            (await usi_model.update(usi_inputs)).save();
+
             if (eductional_bc) {
                 eductional_bc.forEach(async (edbc) => {
                     let useb_model =
@@ -254,41 +251,121 @@ async function store(
                         result: body.result,
                         transfer_cirtificate: transfer_cirti_image,
                     };
-                    // console.log('skill', skill);
                     useb_inputs.user_student_id = data.id || 1;
                     useb_inputs.previous_institute = edbc.previous_institute;
                     useb_inputs.year_of_leaving = edbc.year_of_leaving;
                     useb_inputs.result = edbc.result;
                     useb_inputs.transfer_cirtificate = edbc.file;
-
-                    // Update the model
-                    // (await uss_model.update(uss_inputs)).save();
                     (await useb_model.update(useb_inputs)).save();
                 });
             }
-            // if (usdt_model) {
-            //     usdv_inputs.user_student_id = data.id || 1;
-            //     usdv_inputs.user_student_document_title_id = usdt_model.id || 1;
-            //     (await usdv_model.update(usdv_inputs)).save();
-            // }
-            // usp_inputs.user_student_id = data.id || 1;
-            // (await usp_model.update(usp_inputs)).save();
-            // uscn_inputs.user_student_id = data.id || 1;
-            // (await uscn_model.update(uscn_inputs)).save();
-            // usl_inputs.user_student_id = data.id || 1;
-            // (await usl_model.update(usl_inputs)).save();
-            if (body.skills_title.length >= 2) {
-                body.skills_title.map(async (skill: any, index: any) => {
-                    console.log('skill', skill);
-                    console.log('level', body.level[index]);
+            if (student_skills) {
+                student_skills.forEach(async (ss) => {
+                    let uss_model = new models.UserStudentSkillsModel();
+                    let uss_inputs: InferCreationAttributes<typeof uss_model> =
+                        {
+                            user_student_id: 1,
+                            title: body.skills_title,
+                            level: body.level,
+                            branch_id: body.branch_id,
+                        };
                     uss_inputs.user_student_id = data.id || 1;
-                    uss_inputs.title = skill;
-                    uss_inputs.level = body.level[index];
-
-                    // Update the model
-                    // (await uss_model.update(uss_inputs)).save();
+                    uss_inputs.title = ss.title;
+                    uss_inputs.level = ss.level;
+                    uss_inputs.branch_id = body.branch_id;
+                    (await uss_model.update(uss_inputs)).save();
                 });
             }
+            // if (student_language) {
+            //     student_language.forEach(async (ss) => {
+            //         let usl_model = new models.UserStudentLanguagesModel();
+            //         let usl_inputs: InferCreationAttributes<typeof usl_model> =
+            //             {
+            //                 user_student_id: 1,
+            //                 language_title: body.language_title,
+            //                 profeciency: body.profeciency,
+            //                 branch_id: body.branch_id,
+            //             };
+            //         usl_inputs.user_student_id = data.id || 1;
+            //         usl_inputs.language_title = ss.title;
+            //         usl_inputs.profeciency = ss.level;
+            //         usl_inputs.branch_id = body.branch_id;
+            //         (await usl_model.update(usl_inputs)).save();
+            //     });
+            // }
+            // if (student_number) {
+            //     student_number.forEach(async (ss) => {
+            //         let uscn_model =
+            //             new models.UserStudentContactNumbersModel();
+            //         let uscn_inputs: InferCreationAttributes<
+            //             typeof uscn_model
+            //         > = {
+            //             user_student_id: 1,
+            //             contact_number: body.contact_number,
+            //             owner: body.owner,
+            //             branch_id: body.branch_id,
+            //         };
+            //         uscn_inputs.user_student_id = data.id || 1;
+            //         uscn_inputs.contact_number = ss.contact_number;
+            //         uscn_inputs.owner = ss.owner;
+            //         uscn_inputs.branch_id = body.branch_id;
+            //         (await uscn_model.update(uscn_inputs)).save();
+            //     });
+            // }
+            // if (student_guardians) {
+            //     student_guardians.forEach(async (ss) => {
+            //         let usp_model = new models.UserStudentParentsModel();
+            //         let usp_inputs: InferCreationAttributes<typeof usp_model> =
+            //             {
+            //                 user_student_id: 1,
+            //                 relation: body.relation,
+            //                 is_parent: body.is_parent,
+            //                 user_student_parent_id: body.user_student_parent_id,
+            //             };
+            //         usp_inputs.user_student_id = data.id || 1;
+            //         usp_inputs.relation = ss.relation;
+            //         usp_inputs.is_parent = ss.is_parent;
+            //         usp_inputs.user_student_parent_id =
+            //             body.user_student_parent_id;
+            //         (await usp_model.update(usp_inputs)).save();
+            //     });
+            // }
+            // if (student_document) {
+            //     student_document.forEach(async (ss) => {
+            //         let usdt_model =
+            //             new models.UserStudentDocumentTitlesModel();
+            //         let usdv_model =
+            //             new models.UserStudentDocumentValuesModel();
+            //         let usdt_inputs: InferCreationAttributes<
+            //             typeof usdt_model
+            //         > = {
+            //             user_student_id: 1,
+            //             title: body.document_title,
+            //         };
+
+            //         let usdv_inputs: InferCreationAttributes<
+            //             typeof usdv_model
+            //         > = {
+            //             user_student_id: 1,
+            //             user_student_document_title_id: 1,
+            //             file: document_file_image,
+            //             issue_date: body.issue_date,
+            //             expire_date: body.expire_date,
+            //         };
+            //         usdt_inputs.user_student_id = data.id || 1;
+            //         usdt_inputs.title = ss.title;
+            //         (await usdt_model.update(usdt_inputs)).save();
+            //         if (usdt_model) {
+            //             usdv_inputs.user_student_id = data.id || 1;
+            //             usdv_inputs.file = ss.file;
+            //             usdv_inputs.issue_date = ss.issue_date;
+            //             usdv_inputs.expire_date = ss.expire_date;
+            //             usdv_inputs.user_student_document_title_id =
+            //                 usdt_model.id || 1;
+            //             (await usdv_model.update(usdv_inputs)).save();
+            //         }
+            //     });
+            // }
         }
         return response(200, 'data created', data);
     } catch (error: any) {

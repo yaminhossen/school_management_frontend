@@ -920,7 +920,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <label>Level</label>
                                                     <div className="form_elements">
                                                         <select
-                                                            name={`skill_level${index}`}
+                                                            name={`skills_level${index}`}
                                                             id=""
                                                         >
                                                             <option value="native">

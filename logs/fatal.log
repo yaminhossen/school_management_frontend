@@ -1,0 +1,4 @@
+{"level":60,"time":1722664491383,"pid":3256,"hostname":"DESKTOP-9421701","file":"services\\admit_student.ts:296:15)","time":"8/3/2024 11:54:51 AM","message":"Cannot read properties of undefined (reading 'length')"}
+{"level":60,"time":1722672514320,"pid":14936,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 2:08:34 PM","message":"Data truncated for column 'height' at row 1"}
+{"level":60,"time":1722672698641,"pid":7968,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 2:11:38 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1722672891250,"pid":7968,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 2:14:51 PM","message":"Data truncated for column 'height' at row 1"}
