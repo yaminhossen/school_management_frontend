@@ -506,6 +506,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                         Add new
                                     </span>
                                 </div>
+                                <input
+                                    type="hidden"
+                                    name="total_docement_count"
+                                    value={totalDocument.length}
+                                />
                                 {totalDocument.map((i, index) => {
                                     return (
                                         <div
@@ -521,7 +526,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <input
                                                             type="text"
                                                             placeholder="document title"
-                                                            name="document_title"
+                                                            name={`document_title${index}`}
                                                         />
                                                     </div>
                                                 </div>
@@ -531,7 +536,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <input
                                                             type="file"
                                                             placeholder="document file"
-                                                            name="document_file"
+                                                            name={`document_file${index}`}
                                                         />
                                                     </div>
                                                 </div>
@@ -543,7 +548,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             defaultValue={
                                                                 '2024-10-10'
                                                             }
-                                                            name="issue_date"
+                                                            name={`issue_date${index}`}
                                                         />
                                                     </div>
                                                 </div>
@@ -555,7 +560,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             defaultValue={
                                                                 '2024-10-10'
                                                             }
-                                                            name="expire_date"
+                                                            name={`expire_date${index}`}
                                                         />
                                                     </div>
                                                 </div>
@@ -596,6 +601,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                         Add new
                                     </span>
                                 </div>
+                                <input
+                                    type="hidden"
+                                    name="totalParent_count"
+                                    value={totalParent.length}
+                                />
                                 {totalParent.map((i, index) => {
                                     return (
                                         <div
@@ -607,7 +617,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <label>Relation</label>
                                                     <div className="form_elements">
                                                         <select
-                                                            name="relation"
+                                                            name={`relation${index}`}
                                                             id=""
                                                         >
                                                             <option value="father">
@@ -635,7 +645,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <label>Is parent</label>
                                                     <div className="form_elements">
                                                         <select
-                                                            name="is_parent"
+                                                            name={`is_parent${index}`}
                                                             defaultValue="0"
                                                             id=""
                                                         >
@@ -654,7 +664,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     </label>
                                                     <div className="form_elements">
                                                         <select
-                                                            name="user_student_parent_id"
+                                                            name={`user_student_parent_id${index}`}
                                                             id=""
                                                         >
                                                             <option value="1">
@@ -712,6 +722,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                         Add new
                                     </span>
                                 </div>
+                                <input
+                                    type="hidden"
+                                    name="contact_number_count"
+                                    value={totalContactNumber.length}
+                                />
                                 {totalContactNumber.map((i, index) => {
                                     return (
                                         <div
@@ -727,7 +742,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <input
                                                             type="text"
                                                             placeholder="contact number"
-                                                            name="contact_number"
+                                                            name={`contact_number${index}`}
                                                             id=""
                                                         />
                                                     </div>
@@ -736,7 +751,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <label>Owner</label>
                                                     <div className="form_elements">
                                                         <select
-                                                            name="owner"
+                                                            name={`number_owner${index}`}
                                                             id=""
                                                         >
                                                             <option value="personal">
@@ -794,6 +809,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                         Add new
                                     </span>
                                 </div>
+                                <input
+                                    type="hidden"
+                                    name="student_language_count"
+                                    value={totalLanguage.length}
+                                />
                                 {totalLanguage.map((i, index) => {
                                     return (
                                         <div
@@ -809,7 +829,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <input
                                                             type="text"
                                                             placeholder="language title"
-                                                            name="language_title"
+                                                            name={`language_title${index}`}
                                                             id=""
                                                         />
                                                     </div>
@@ -818,7 +838,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <label>Profeciency</label>
                                                     <div className="form_elements">
                                                         <select
-                                                            name="profeciency"
+                                                            name={`language_profeciency${index}`}
                                                             id=""
                                                         >
                                                             <option value="fluent">
@@ -873,6 +893,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                         Add new
                                     </span>
                                 </div>
+                                <input
+                                    type="hidden"
+                                    name="student_skills_count"
+                                    value={totalSkill.length}
+                                />
                                 {totalSkill.map((i, index) => {
                                     return (
                                         <div
@@ -886,7 +911,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <input
                                                             type="text"
                                                             placeholder="skills title"
-                                                            name="skills_title"
+                                                            name={`skills_title${index}`}
                                                             id=""
                                                         />
                                                     </div>
@@ -895,7 +920,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <label>Level</label>
                                                     <div className="form_elements">
                                                         <select
-                                                            name="level"
+                                                            name={`skill_level${index}`}
                                                             id=""
                                                         >
                                                             <option value="native">
