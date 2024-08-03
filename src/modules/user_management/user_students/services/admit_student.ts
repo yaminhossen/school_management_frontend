@@ -178,12 +178,12 @@ async function store(
         });
     }
 
-    console.log(eductional_bc);
-    console.log(student_skills);
-    console.log(student_language);
-    console.log(student_number);
+    // console.log(eductional_bc);
+    // console.log(student_skills);
+    // console.log(student_language);
+    // console.log(student_number);
     console.log(student_guardians);
-    console.log(student_document);
+    // console.log(student_document);
 
     console.log('body data', body);
 
@@ -238,44 +238,44 @@ async function store(
             usi_inputs.user_student_id = data.id || 1;
             (await usi_model.update(usi_inputs)).save();
 
-            if (eductional_bc) {
-                eductional_bc.forEach(async (edbc) => {
-                    let useb_model =
-                        new models.UserStudentEducationalBackgroundsModel();
-                    let useb_inputs: InferCreationAttributes<
-                        typeof useb_model
-                    > = {
-                        user_student_id: 1,
-                        previous_institute: body.previous_institute,
-                        year_of_leaving: body.year_of_leaving,
-                        result: body.result,
-                        transfer_cirtificate: transfer_cirti_image,
-                    };
-                    useb_inputs.user_student_id = data.id || 1;
-                    useb_inputs.previous_institute = edbc.previous_institute;
-                    useb_inputs.year_of_leaving = edbc.year_of_leaving;
-                    useb_inputs.result = edbc.result;
-                    useb_inputs.transfer_cirtificate = edbc.file;
-                    (await useb_model.update(useb_inputs)).save();
-                });
-            }
-            if (student_skills) {
-                student_skills.forEach(async (ss) => {
-                    let uss_model = new models.UserStudentSkillsModel();
-                    let uss_inputs: InferCreationAttributes<typeof uss_model> =
-                        {
-                            user_student_id: 1,
-                            title: body.skills_title,
-                            level: body.level,
-                            branch_id: body.branch_id,
-                        };
-                    uss_inputs.user_student_id = data.id || 1;
-                    uss_inputs.title = ss.title;
-                    uss_inputs.level = ss.level;
-                    uss_inputs.branch_id = body.branch_id;
-                    (await uss_model.update(uss_inputs)).save();
-                });
-            }
+            // if (eductional_bc) {
+            //     eductional_bc.forEach(async (edbc) => {
+            //         let useb_model =
+            //             new models.UserStudentEducationalBackgroundsModel();
+            //         let useb_inputs: InferCreationAttributes<
+            //             typeof useb_model
+            //         > = {
+            //             user_student_id: 1,
+            //             previous_institute: body.previous_institute,
+            //             year_of_leaving: body.year_of_leaving,
+            //             result: body.result,
+            //             transfer_cirtificate: transfer_cirti_image,
+            //         };
+            //         useb_inputs.user_student_id = data.id || 1;
+            //         useb_inputs.previous_institute = edbc.previous_institute;
+            //         useb_inputs.year_of_leaving = edbc.year_of_leaving;
+            //         useb_inputs.result = edbc.result;
+            //         useb_inputs.transfer_cirtificate = edbc.file;
+            //         (await useb_model.update(useb_inputs)).save();
+            //     });
+            // }
+            // if (student_skills) {
+            //     student_skills.forEach(async (ss) => {
+            //         let uss_model = new models.UserStudentSkillsModel();
+            //         let uss_inputs: InferCreationAttributes<typeof uss_model> =
+            //             {
+            //                 user_student_id: 1,
+            //                 title: body.skills_title,
+            //                 level: body.level,
+            //                 branch_id: body.branch_id,
+            //             };
+            //         uss_inputs.user_student_id = data.id || 1;
+            //         uss_inputs.title = ss.title;
+            //         uss_inputs.level = ss.level;
+            //         uss_inputs.branch_id = body.branch_id;
+            //         (await uss_model.update(uss_inputs)).save();
+            //     });
+            // }
             // if (student_language) {
             //     student_language.forEach(async (ss) => {
             //         let usl_model = new models.UserStudentLanguagesModel();
@@ -287,8 +287,8 @@ async function store(
             //                 branch_id: body.branch_id,
             //             };
             //         usl_inputs.user_student_id = data.id || 1;
-            //         usl_inputs.language_title = ss.title;
-            //         usl_inputs.profeciency = ss.level;
+            //         usl_inputs.language_title = ss.language_title;
+            //         usl_inputs.profeciency = ss.profeciency;
             //         usl_inputs.branch_id = body.branch_id;
             //         (await usl_model.update(usl_inputs)).save();
             //     });
@@ -312,24 +312,24 @@ async function store(
             //         (await uscn_model.update(uscn_inputs)).save();
             //     });
             // }
-            // if (student_guardians) {
-            //     student_guardians.forEach(async (ss) => {
-            //         let usp_model = new models.UserStudentParentsModel();
-            //         let usp_inputs: InferCreationAttributes<typeof usp_model> =
-            //             {
-            //                 user_student_id: 1,
-            //                 relation: body.relation,
-            //                 is_parent: body.is_parent,
-            //                 user_student_parent_id: body.user_student_parent_id,
-            //             };
-            //         usp_inputs.user_student_id = data.id || 1;
-            //         usp_inputs.relation = ss.relation;
-            //         usp_inputs.is_parent = ss.is_parent;
-            //         usp_inputs.user_student_parent_id =
-            //             body.user_student_parent_id;
-            //         (await usp_model.update(usp_inputs)).save();
-            //     });
-            // }
+            if (student_guardians) {
+                student_guardians.forEach(async (ss) => {
+                    let usp_model = new models.UserStudentParentsModel();
+                    let usp_inputs: InferCreationAttributes<typeof usp_model> =
+                        {
+                            user_student_id: 1,
+                            relation: body.relation,
+                            is_parent: body.is_parent,
+                            user_student_parent_id: body.user_student_parent_id,
+                        };
+                    usp_inputs.user_student_id = data.id || 1;
+                    usp_inputs.relation = ss.relation;
+                    usp_inputs.is_parent = ss.is_parent;
+                    usp_inputs.user_student_parent_id =
+                        ss.user_student_parent_id;
+                    (await usp_model.update(usp_inputs)).save();
+                });
+            }
             // if (student_document) {
             //     student_document.forEach(async (ss) => {
             //         let usdt_model =

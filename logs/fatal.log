@@ -2,3 +2,9 @@
 {"level":60,"time":1722672514320,"pid":14936,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 2:08:34 PM","message":"Data truncated for column 'height' at row 1"}
 {"level":60,"time":1722672698641,"pid":7968,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 2:11:38 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
 {"level":60,"time":1722672891250,"pid":7968,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 2:14:51 PM","message":"Data truncated for column 'height' at row 1"}
+{"level":60,"time":1722676385507,"pid":9616,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 3:13:05 PM","message":"Data truncated for column 'height' at row 1"}
+{"level":60,"time":1722679993202,"pid":2004,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 4:13:13 PM","message":"Data truncated for column 'height' at row 1"}
+{"level":60,"time":1722682554948,"pid":6656,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 4:55:54 PM","message":"Data truncated for column 'height' at row 1"}
+{"level":60,"time":1722682630960,"pid":10084,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 4:57:10 PM","message":"Data truncated for column 'height' at row 1"}
+{"level":60,"time":1722682701802,"pid":10084,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 4:58:21 PM","message":"target not found."}
+{"level":60,"time":1722682701853,"pid":10084,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 4:58:21 PM","message":"target not found."}

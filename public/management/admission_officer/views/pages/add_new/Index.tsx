@@ -923,8 +923,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             name={`skills_level${index}`}
                                                             id=""
                                                         >
-                                                            <option value="native">
-                                                                native
+                                                            <option value="high">
+                                                                high
                                                             </option>
                                                             <option value="mid">
                                                                 mid
