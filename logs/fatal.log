@@ -8,3 +8,14 @@
 {"level":60,"time":1722682630960,"pid":10084,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 4:57:10 PM","message":"Data truncated for column 'height' at row 1"}
 {"level":60,"time":1722682701802,"pid":10084,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 4:58:21 PM","message":"target not found."}
 {"level":60,"time":1722682701853,"pid":10084,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 4:58:21 PM","message":"target not found."}
+{"level":60,"time":1722683136608,"pid":6964,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 5:05:36 PM","message":"Data truncated for column 'height' at row 1"}
+{"level":60,"time":1722683290672,"pid":6964,"hostname":"DESKTOP-9421701","file":"","time":"8/3/2024 5:08:10 PM","message":"Data truncated for column 'height' at row 1"}
+{"level":60,"time":1722749635597,"pid":13632,"hostname":"DESKTOP-9421701","file":"","time":"8/4/2024 11:33:55 AM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1722750092417,"pid":13632,"hostname":"DESKTOP-9421701","file":"","time":"8/4/2024 11:41:32 AM","message":"target not found."}
+{"level":60,"time":1722750092422,"pid":13632,"hostname":"DESKTOP-9421701","file":"","time":"8/4/2024 11:41:32 AM","message":"target not found."}
+{"level":60,"time":1722750382120,"pid":5252,"hostname":"DESKTOP-9421701","file":"","time":"8/4/2024 11:46:22 AM","message":"target not found."}
+{"level":60,"time":1722750382146,"pid":5252,"hostname":"DESKTOP-9421701","file":"","time":"8/4/2024 11:46:22 AM","message":"target not found."}
+{"level":60,"time":1722751021488,"pid":144,"hostname":"DESKTOP-9421701","file":"","time":"8/4/2024 11:57:01 AM","message":"target not found."}
+{"level":60,"time":1722751021524,"pid":144,"hostname":"DESKTOP-9421701","file":"","time":"8/4/2024 11:57:01 AM","message":"target not found."}
+{"level":60,"time":1722751029892,"pid":144,"hostname":"DESKTOP-9421701","file":"","time":"8/4/2024 11:57:09 AM","message":"target not found."}
+{"level":60,"time":1722751029933,"pid":144,"hostname":"DESKTOP-9421701","file":"","time":"8/4/2024 11:57:09 AM","message":"target not found."}
