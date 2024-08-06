@@ -61,6 +61,20 @@ async function store(
     let national_id_image = 'avatar.png';
     let transfer_cirti_image = 'avatar.png';
     let document_file_image = 'avatar.png';
+    let aheight;
+    let aweight;
+
+    if (body.height) {
+        aheight = body.height;
+    } else {
+        aheight = 0;
+    }
+
+    if (body.weight) {
+        aweight = body.weight;
+    } else {
+        aweight = 0;
+    }
 
     if (body['image']?.ext) {
         image_path =
@@ -222,8 +236,8 @@ async function store(
         cast: body.cast,
         student_house: body.student_house_type,
         living_house_type: body.living_house_type,
-        height: body.height,
-        weight: body.weight,
+        height: aheight,
+        weight: aweight,
         as_on_date: body.as_on_date,
     };
 

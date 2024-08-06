@@ -399,7 +399,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             type="number"
                                             placeholder="height"
                                             name="height"
-                                            step={'any'}
+                                            step={0.2}
                                         />
                                     </div>
                                 </div>
@@ -410,7 +410,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             type="number"
                                             placeholder="weight"
                                             name="weight"
-                                            step={'any'}
+                                            step={0.2}
                                         />
                                     </div>
                                 </div>
