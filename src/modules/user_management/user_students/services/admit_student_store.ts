@@ -139,15 +139,26 @@ async function store(
 
     let eductional_bc: anyObject[] = [];
     for (let i = 0; i < parseInt(body.educational_background_count); i++) {
+        let image_path = ``;
+        let image_file = body[`educational_background_transfer_cirtificate_${i}`];
+        if (image_file?.ext) {
+            image_path =
+                '/uploads/users/cirtificates/' +
+                moment().format('YYYYMMDDHHmmss') +
+                image_file.ext;
+            await (fastify_instance as any).upload(image_file, image_path);
+        }
         eductional_bc.push({
             previous_institute:
                 body[`educational_background_previous_institute_${i}`],
             year_of_leaving:
                 body[`educational_background_year_of_leaving_${i}`],
             result: body[`educational_background_result_${i}`],
-            file: body[`educational_background_transfer_cirtificate_${i}`],
+            file: image_path,
         });
     }
+
+    console.log(eductional_bc);
 
     let student_skills: anyObject[] = [];
     for (let i = 0; i < parseInt(body.student_skills_count); i++) {
@@ -199,7 +210,7 @@ async function store(
     // console.log(student_guardians);
     // console.log(student_document);
 
-    console.log('body data', body);
+    // console.log('body data', body);
 
     let usi_inputs: InferCreationAttributes<typeof usi_model> = {
         user_student_id: 1,

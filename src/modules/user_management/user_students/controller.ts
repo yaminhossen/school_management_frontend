@@ -18,7 +18,7 @@ import logout from './services/logout';
 import forget from './services/forget';
 import change_password from './services/change_password';
 import profile from './services/student_profile';
-import admit_student from './services/admit_student';
+import admit_student_store from './services/admit_student_store';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -83,7 +83,7 @@ export default function (fastify: FastifyInstance) {
         },
 
         admit_student: async function (req: FastifyRequest, res: FastifyReply) {
-            let data = await admit_student(fastify, req);
+            let data = await admit_student_store(fastify, req);
             res.code(data.status).send(data);
         },
 

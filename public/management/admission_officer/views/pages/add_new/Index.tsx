@@ -23,7 +23,7 @@ const Index: React.FC<Props> = (props: Props) => {
 
         let response = await dispatch(store(new FormData(e.target)) as any);
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
-            e.target.reset();
+            // e.target.reset();
         }
     }
 
@@ -469,6 +469,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="file"
+                                            accept="image/*"
                                             name="birth_certificate"
                                         />
                                     </div>
@@ -476,7 +477,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>NID</label>
                                     <div className="form_elements">
-                                        <input type="file" name="national_id" />
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            name="national_id"
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
@@ -1041,6 +1046,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <input
                                                             type="file"
+                                                            accept="image/*"
                                                             placeholder="transfer cirtificate"
                                                             name={`educational_background_transfer_cirtificate_${index}`}
                                                         />

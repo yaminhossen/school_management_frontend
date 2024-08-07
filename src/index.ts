@@ -9,6 +9,7 @@ import { sequelize } from './bootstrap/db.sql';
 import custom_error from './modules/user_management/user_admin/helpers/custom_error';
 import type { FastifyCookieOptions } from '@fastify/cookie';
 import { app_config } from './configs/app.config';
+import register_all_routes from './register_all_routes';
 
 const AutoLoad = require('@fastify/autoload');
 const underPressure = require('@fastify/under-pressure');
@@ -55,17 +56,15 @@ async function boot() {
 
     /** conver input files into buffer string */
     async function onFile(part: any) {
-        if (part.type == 'file' && part.value && part.filename) {
+        if (part.type == 'file' && part.filename) {
             const buff = await part.toBuffer();
-            part.value = {};
-            if (part.filename) {
-                part.value = {
-                    data: await Buffer.from(buff, 'base64'),
-                    name: part.filename,
-                    ext: '.' + part.filename.split('.')[1],
-                };
-            }
+            part.value = {
+                data: await Buffer.from(buff, 'base64'),
+                name: part.filename,
+                ext: '.' + part.filename.split('.')[1],
+            };
         }
+        return part;
     }
 
     fastify.register(require('@fastify/multipart'), {
@@ -97,19 +96,20 @@ async function boot() {
     }
 
     /** register routes */
-    await findAllRoutesFiles('./src/modules')
-        .then((files: string[]) => {
-            files.forEach((routes: string) => {
-                console.log('connecting : ' + JSON.stringify(routes));
-                fastify.register(require(path.resolve(appDir, routes)), {
-                    prefix: 'api/v1',
-                });
-            });
-        })
-        .catch((err) => {
-            console.error('Error searching for route files:', err);
-        });
-
+    // await findAllRoutesFiles('./src/modules')
+    //     .then((files: string[]) => {
+    //         files.forEach((routes: string) => {
+    //             // console.log('connecting : ' + JSON.stringify(routes));
+    //             console.log(JSON.stringify(routes));
+    //             fastify.register(require(path.resolve(appDir, routes)), {
+    //                 prefix: 'api/v1',
+    //             });
+    //         });
+    //     })
+    //     .catch((err) => {
+    //         console.error('Error searching for route files:', err);
+    //     });
+    register_all_routes(fastify);
     /** register all dependencies */
     console.log('\nsetup plugins \n');
     fastify

@@ -41,9 +41,9 @@ module.exports = fp(async function (
                 } else {
                     let paths = path
                         .dirname(path.resolve(appDir, path_name))
-                        .split(appDir)[1]
-                        .split('\\');
-                    paths.shift();
+                        ?.split(appDir)[1]
+                        ?.split('\\');
+                    paths?.shift();
                     ensureDirectoryExistence(paths);
                 }
                 path_name = path_name.replace(/^\/|\/$/g, '') + '/';

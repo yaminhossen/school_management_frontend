@@ -23,3 +23,39 @@
 {"level":60,"time":1722941096479,"pid":3140,"hostname":"DESKTOP-9421701","file":"","time":"8/6/2024 4:44:56 PM","message":"target not found."}
 {"level":60,"time":1722941684274,"pid":3140,"hostname":"DESKTOP-9421701","file":"","time":"8/6/2024 4:54:44 PM","message":"target not found."}
 {"level":60,"time":1722941684318,"pid":3140,"hostname":"DESKTOP-9421701","file":"","time":"8/6/2024 4:54:44 PM","message":"target not found."}
+{"level":60,"time":1723015988911,"pid":6588,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 1:33:08 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1723025650663,"pid":16684,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:14:10 PM","message":"target not found."}
+{"level":60,"time":1723025650707,"pid":16684,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:14:10 PM","message":"target not found."}
+{"level":60,"time":1723025733555,"pid":7604,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:15:33 PM","message":"target not found."}
+{"level":60,"time":1723025733585,"pid":7604,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:15:33 PM","message":"target not found."}
+{"level":60,"time":1723026112989,"pid":1860,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:21:52 PM","message":"target not found."}
+{"level":60,"time":1723026113039,"pid":1860,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:21:53 PM","message":"target not found."}
+{"level":60,"time":1723026455752,"pid":8868,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:27:35 PM","message":"target not found."}
+{"level":60,"time":1723026455838,"pid":8868,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:27:35 PM","message":"target not found."}
+{"level":60,"time":1723026456974,"pid":8868,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:27:36 PM","message":"target not found."}
+{"level":60,"time":1723026456985,"pid":8868,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:27:36 PM","message":"target not found."}
+{"level":60,"time":1723026583972,"pid":16704,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:29:43 PM","message":"target not found."}
+{"level":60,"time":1723026584043,"pid":16704,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:29:44 PM","message":"target not found."}
+{"level":60,"time":1723026708346,"pid":1156,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:31:48 PM","message":"target not found."}
+{"level":60,"time":1723026708416,"pid":1156,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:31:48 PM","message":"target not found."}
+{"level":60,"time":1723026743481,"pid":1156,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:32:23 PM","message":"aborted"}
+{"level":60,"time":1723026743496,"pid":1156,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:32:23 PM","message":"aborted"}
+{"level":60,"time":1723026743537,"pid":1156,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:32:23 PM","message":"target not found."}
+{"level":60,"time":1723026743596,"pid":1156,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 4:32:23 PM","message":"target not found."}
+{"level":60,"time":1723028845451,"pid":5292,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 5:07:25 PM","message":"aborted"}
+{"level":60,"time":1723028845559,"pid":5292,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 5:07:25 PM","message":"target not found."}
+{"level":60,"time":1723028845579,"pid":5292,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 5:07:25 PM","message":"target not found."}
+{"level":60,"time":1723029144166,"pid":6184,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 5:12:24 PM","message":"aborted"}
+{"level":60,"time":1723029144285,"pid":6184,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 5:12:24 PM","message":"target not found."}
+{"level":60,"time":1723029144290,"pid":6184,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 5:12:24 PM","message":"target not found."}
+{"level":60,"time":1723029483917,"pid":16896,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 5:18:03 PM","message":"target not found."}
+{"level":60,"time":1723029483951,"pid":16896,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 5:18:03 PM","message":"target not found."}
+{"level":60,"time":1723029522371,"pid":16896,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 5:18:42 PM","message":"aborted"}
+{"level":60,"time":1723029522418,"pid":16896,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 5:18:42 PM","message":"target not found."}
+{"level":60,"time":1723029522479,"pid":16896,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 5:18:42 PM","message":"target not found."}
+{"level":60,"time":1723029988239,"pid":11760,"hostname":"DESKTOP-9421701","file":"services\\admit_student_store.ts:80:66)","time":"8/7/2024 5:26:28 PM","message":"body.educational_background_transfer_cirtificate_0.toBuffer is not a function"}
+{"level":60,"time":1723030055568,"pid":1440,"hostname":"DESKTOP-9421701","file":"services\\admit_student_store.ts:80:67)","time":"8/7/2024 5:27:35 PM","message":"_a.toBuffer is not a function"}
+{"level":60,"time":1723032802079,"pid":6840,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 6:13:22 PM","message":"The \"cb\" argument must be of type function. Received undefined"}
+{"level":60,"time":1723033245333,"pid":1604,"hostname":"DESKTOP-9421701","file":"","time":"8/7/2024 6:20:45 PM","message":"The argument 'path' must be a string or Uint8Array without null bytes. Received <Buffer 52 49 46 46 8c d1 01 00 57 45 42 50 56 50 38 20 80 d1 01 00 d0 0d 05 9d 01 2a 84 03 3e 02 3e 69 2a 8f 45 a4 22 a1 22 b3 ..."}
+{"level":60,"time":1723034484304,"pid":12980,"hostname":"DESKTOP-9421701","file":"services\\admit_student_store.ts:147:31)","time":"8/7/2024 6:41:24 PM","message":"Cannot read properties of undefined (reading 'ext')"}
+{"level":60,"time":1723034505433,"pid":14868,"hostname":"DESKTOP-9421701","file":"services\\admit_student_store.ts:147:31)","time":"8/7/2024 6:41:45 PM","message":"Cannot read properties of undefined (reading 'ext')"}
