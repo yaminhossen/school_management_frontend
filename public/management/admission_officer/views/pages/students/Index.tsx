@@ -37,6 +37,7 @@ const Index: React.FC<Props> = (props: Props) => {
         );
         dispatch(all({}));
     }, []);
+    console.log('state', state);
 
     function quick_view(data: anyObject = {}) {
         dispatch(storeSlice.actions.set_item(data));
