@@ -1,10 +1,46 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+// import setup from './config/setup';
+import { RootState, useAppDispatch } from '../../../store';
+import { all } from './config/store/async_actions/all';
+import setup from './config/setup.ts';
+import { initialState } from './config/store/inital_state';
+// import Header from './components/all_data_page/Header';
+// import TableFooter from './components/all_data_page/TableFooter';
+// import Paginate from '../../components/Paginate';
+// import Filter from './components/canvas/Filter';
+// import QuickView from './components/canvas/QuickView';
+import storeSlice from './config/store';
+import { anyObject } from '../../../common_types/object';
+// import TableRowAction from './components/all_data_page/TableRowAction';
+// import SelectItem from './components/all_data_page/SelectItem';
+// import SelectAll from './components/all_data_page/SelectIAll';
+// import TableHeading from './components/all_data_page/TableHeading';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     interface data {
         [key: string]: any;
+    }
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(
+            storeSlice.actions.set_select_fields(
+                'id, name, email, image, status',
+            ),
+        );
+        dispatch(all({}));
+    }, []);
+
+    function quick_view(data: anyObject = {}) {
+        dispatch(storeSlice.actions.set_item(data));
+        dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
     const datas: data[] = [
         {
