@@ -23,10 +23,10 @@ const Details: React.FC<Props> = (props: Props) => {
     const params = useParams();
     console.log('id', params.id);
 
-    useEffect(() => {
-        dispatch(storeSlice.actions.set_item({}));
-        dispatch(details({ id: params.id }) as any);
-    }, []);
+    // useEffect(() => {
+    //     dispatch(storeSlice.actions.set_item({}));
+    //     dispatch(details({ id: params.id }) as any);
+    // }, []);
     console.log('state');
 
     const datas: data[] = [
@@ -117,11 +117,20 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td>{i.class}</td>
                                             <td>
                                                 <Link
-                                                    to="/students/single/student"
+                                                    // to="/students/single/student/"
+                                                    to={`/students/single/student/${i.id}`}
                                                     className="btn btn-sm  btn-outline-info"
                                                     type="submit"
                                                 >
                                                     Details
+                                                </Link>
+                                                <Link
+                                                    // to="/students/update"
+                                                    to={`/students/edit/${i.id}`}
+                                                    className="btn btn-sm ml-2  btn-outline-info"
+                                                    type="submit"
+                                                >
+                                                    Edit
                                                 </Link>
                                             </td>
                                         </tr>

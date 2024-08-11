@@ -23,10 +23,10 @@ const Details: React.FC<Props> = (props: Props) => {
     const params = useParams();
     console.log('id', params.id);
 
-    // useEffect(() => {
-    //     dispatch(storeSlice.actions.set_item({}));
-    //     dispatch(details({ id: params.id }) as any);
-    // }, []);
+    useEffect(() => {
+        dispatch(storeSlice.actions.set_item({}));
+        dispatch(details({ id: params.id }) as any);
+    }, []);
     console.log('state');
 
     const datas: data[] = [

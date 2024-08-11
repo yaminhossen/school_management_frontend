@@ -19,6 +19,7 @@ module.exports = {
             name,
             email,
             phone_number,
+            whatsapp_number,
             image = '/assets/dashboard/images/avatar.png',
         ) {
             data.push({
@@ -27,6 +28,7 @@ module.exports = {
                 name,
                 email,
                 phone_number,
+                whatsapp_number,
                 image,
                 password:
                     '$2a$12$.aO5lxRR2qnICFEhMGaK8.aoAut89QnkhMn4hASjuvXfDA9StWAp6',
@@ -40,6 +42,7 @@ module.exports = {
             'student1',
             'student1@gmail.com',
             '0189783434',
+            '0189783434',
             '/assets/dashboard/images/avatar.png',
         );
         set_data(
@@ -47,6 +50,7 @@ module.exports = {
             2,
             'student2',
             'student2@gmail.com',
+            '0289783435',
             '0289783435',
             '/assets/dashboard/images/avatar.png',
         );
@@ -56,6 +60,7 @@ module.exports = {
             'student3',
             'student3@gmail.com',
             '0289783436',
+            '0289783436',
             '/assets/dashboard/images/avatar.png',
         );
         set_data(
@@ -64,6 +69,7 @@ module.exports = {
             'student4',
             'student4@gmail.com',
             '0289783436',
+            '0289783436',
             '/assets/dashboard/images/avatar.png',
         );
         set_data(
@@ -71,6 +77,7 @@ module.exports = {
             5,
             'student5',
             'student5@gmail.com',
+            '0289783436',
             '0289783436',
             '/assets/dashboard/images/avatar.png',
         );

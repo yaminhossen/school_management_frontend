@@ -109,6 +109,7 @@ async function store(
         name: body.name,
         email: body.email,
         phone_number: body.phone_number,
+        whatsapp_number: body.whatsapp_number,
         image: image_path,
         password: password,
     };

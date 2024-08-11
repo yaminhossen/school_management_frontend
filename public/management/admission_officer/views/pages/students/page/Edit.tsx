@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import setup from './config/setup';
-import { useAppDispatch } from '../../../store';
-import { store } from './config/store/async_actions/store';
+import setup from '../config/setup';
+import { useAppDispatch } from '../../../../store';
+import { store } from '../config/store/async_actions/store';
 import moment from 'moment';
 export interface Props {}
 
