@@ -58,6 +58,8 @@ function bytesToKB(bytes) {
 }
 
 async function fetchDataAndUpdateCache(url, fetch_only_latest) {
+    console.log('this is clicked');
+
     let responseData: anyObject = {
         data: {},
         status: 200,

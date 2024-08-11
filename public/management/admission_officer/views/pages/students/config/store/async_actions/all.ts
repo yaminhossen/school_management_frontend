@@ -28,6 +28,7 @@ const api_prefix = setup.api_prefix;
 const fetch_api = async (param, thunkAPI) => {
     const state: typeof initialState = thunkAPI.getState()[setup.module_name];
     const dispatch = thunkAPI.dispatch;
+    console.log('somthings');
 
     dispatch(storeSlice.actions.set_is_loading(true));
     dispatch(storeSlice.actions.set_loading_text('loading..'));

@@ -3,3 +3,6 @@
 {"level":60,"time":1723028853229,"pid":5292,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/admit"}
 {"level":60,"time":1723028853822,"pid":5292,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/admit"}
 {"level":60,"time":1723028854268,"pid":5292,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/admit"}
+{"level":60,"time":1723277403108,"pid":10760,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
+{"level":60,"time":1723285223034,"pid":10760,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/users?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+image%2C+status"}
+{"level":60,"time":1723285228021,"pid":10760,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/users?page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+image%2C+status"}

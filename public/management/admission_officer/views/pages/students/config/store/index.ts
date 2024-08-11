@@ -22,7 +22,7 @@ const storeSlice = createSlice({
                 // console.log(type, payload, meta);
             })
             .addCase(details.fulfilled, (state, { type, payload, meta }) => {
-                // console.log(type, payload, meta);
+                console.log(type, payload, meta);
             })
             .addCase(store.fulfilled, (state, { type, payload, meta }) => {
                 // console.log(type, payload, meta);

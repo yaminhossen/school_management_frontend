@@ -1,25 +1,17 @@
-import { Link } from 'react-router-dom';
 import React, { useEffect } from 'react';
+// import Header from './components/management_data_page/Header';
+// import Footer from './components/management_data_page/Footer';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
-import { RootState, useAppDispatch } from '../../../store';
-import { all } from './config/store/async_actions/all.ts';
-import setup from './config/setup.ts';
-import { initialState } from './config/store/inital_state';
-import Header from './components/all_data_page/Header';
-import TableFooter from './components/all_data_page/TableFooter';
-import Paginate from '../../components/Paginate';
-import Filter from './components/canvas/Filter';
-import QuickView from './components/canvas/QuickView';
-import storeSlice from './config/store';
-import { anyObject } from '../../../common_types/object';
-import TableRowAction from './components/all_data_page/TableRowAction';
-import SelectItem from './components/all_data_page/SelectItem';
-import SelectAll from './components/all_data_page/SelectIAll';
-import TableHeading from './components/all_data_page/TableHeading';
+import setup from '../config/setup.ts';
+import { RootState, useAppDispatch } from '../../../../store';
+import { details } from '../config/store/async_actions/details';
+import { initialState } from '../config/store/inital_state';
+import { Link, useParams } from 'react-router-dom';
+import storeSlice from '../config/store';
 export interface Props {}
 
-const Index: React.FC<Props> = (props: Props) => {
+const Details: React.FC<Props> = (props: Props) => {
     interface data {
         [key: string]: any;
     }
@@ -28,43 +20,22 @@ const Index: React.FC<Props> = (props: Props) => {
     );
 
     const dispatch = useAppDispatch();
+    const params = useParams();
+    console.log('id', params.id);
 
-    useEffect(() => {
-        dispatch(
-            storeSlice.actions.set_select_fields(
-                'id, name, email, image, status',
-            ),
-        );
-        dispatch(all({}));
-    }, []);
-    console.log('state', state);
-    console.log('storeSlice', storeSlice);
+    // useEffect(() => {
+    //     dispatch(storeSlice.actions.set_item({}));
+    //     dispatch(details({ id: params.id }) as any);
+    // }, []);
+    console.log('state');
 
     const datas: data[] = [
         {
             id: 1,
             class: 'Six',
-            total_student: '280',
-        },
-        {
-            id: 2,
-            class: 'Seven',
-            total_student: '300',
-        },
-        {
-            id: 3,
-            class: 'Eight',
-            total_student: '320',
-        },
-        {
-            id: 4,
-            class: 'Nine',
-            total_student: '260',
-        },
-        {
-            id: 5,
-            class: 'Ten',
-            total_student: '250',
+            student_id: '2024SIX101',
+            name: 'Shahin',
+            roll: '001',
         },
     ];
 
@@ -85,9 +56,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
+                                    <th>Name</th>
+                                    <th>Student Id</th>
+                                    <th>Roll</th>
                                     <th>Class</th>
-                                    <th>Total Student</th>
-                                    <th>Action</th>
+                                    {/* <th>Action</th> */}
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -96,9 +69,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
+                                            <td>{i.name}</td>
+                                            <td>{i.student_id}</td>
+                                            <td>{i.roll}</td>
                                             <td>{i.class}</td>
-                                            <td>{i.total_student}</td>
-                                            <td>
+                                            {/* <td>
                                                 <Link
                                                     to={`/students/details/${i.class}`}
                                                     className="btn btn-sm  btn-outline-info"
@@ -106,7 +81,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 >
                                                     Details
                                                 </Link>
-                                            </td>
+                                            </td> */}
                                         </tr>
                                     );
                                 })}
@@ -119,4 +94,4 @@ const Index: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Index;
+export default Details;

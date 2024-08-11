@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from './Layout';
 import Index from '../Index';
 import Details from '../page/Details';
+import Student from '../page/studentDetails';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -15,8 +16,12 @@ export default {
             element: <Index />,
         },
         {
-            path: 'details',
+            path: 'details/:id',
             element: <Details />,
+        },
+        {
+            path: 'single/student',
+            element: <Student />,
         },
     ],
 };
