@@ -349,3 +349,21 @@
 {"level":60,"time":1723364832793,"pid":10632,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 2:27:12 PM","message":"target not found."}
 {"level":60,"time":1723364833258,"pid":10632,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 2:27:13 PM","message":"target not found."}
 {"level":60,"time":1723364833356,"pid":10632,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 2:27:13 PM","message":"target not found."}
+{"level":60,"time":1723367336523,"pid":1224,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 3:08:56 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1723367385567,"pid":1224,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 3:09:45 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1723367408372,"pid":1224,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 3:10:08 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1723369456535,"pid":1224,"hostname":"DESKTOP-9421701","file":"services\\details.ts:46:19)","time":"8/11/2024 3:44:16 PM","message":"data not found"}
+{"level":60,"time":1723370353739,"pid":1224,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 3:59:13 PM","message":"target not found."}
+{"level":60,"time":1723370353790,"pid":1224,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 3:59:13 PM","message":"target not found."}
+{"level":60,"time":1723370356590,"pid":1224,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 3:59:16 PM","message":"target not found."}
+{"level":60,"time":1723370356644,"pid":1224,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 3:59:16 PM","message":"target not found."}
+{"level":60,"time":1723370851504,"pid":10740,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 4:07:31 PM","message":"target not found."}
+{"level":60,"time":1723370851606,"pid":10740,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 4:07:31 PM","message":"target not found."}
+{"level":60,"time":1723370853892,"pid":10740,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 4:07:33 PM","message":"target not found."}
+{"level":60,"time":1723370854006,"pid":10740,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 4:07:34 PM","message":"target not found."}
+{"level":60,"time":1723371523680,"pid":15700,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 4:18:43 PM","message":"target not found."}
+{"level":60,"time":1723371523758,"pid":15700,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 4:18:43 PM","message":"target not found."}
+{"level":60,"time":1723372795441,"pid":13904,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 4:39:55 PM","message":"target not found."}
+{"level":60,"time":1723372795523,"pid":13904,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 4:39:55 PM","message":"target not found."}
+{"level":60,"time":1723372947559,"pid":13904,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 4:42:27 PM","message":"target not found."}
+{"level":60,"time":1723372947627,"pid":13904,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2024 4:42:27 PM","message":"target not found."}

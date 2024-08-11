@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import setup from '../config/setup';
-import { useAppDispatch } from '../../../../store';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../../../../store';
+import { initialState } from '../config/store/inital_state';
 import { store } from '../config/store/async_actions/store';
+import { Link, useParams } from 'react-router-dom';
+// import { details } from '../config/store/async_actions/details';
+import storeSlice from '../config/store';
 import moment from 'moment';
+import { full_details } from '../config/store/async_actions/full_details';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -26,6 +31,17 @@ const Index: React.FC<Props> = (props: Props) => {
             // e.target.reset();
         }
     }
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
+
+    const params = useParams();
+    console.log('id', params.id);
+
+    useEffect(() => {
+        dispatch(storeSlice.actions.set_item({}));
+        dispatch(full_details({ id: params.id }) as any);
+    }, []);
 
     function remove_from_state(index, state, setState) {
         let t = [...state];

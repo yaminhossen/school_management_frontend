@@ -88,6 +88,48 @@ const db = async function (): Promise<models> {
         as: 'student_infos',
     });
 
+    UserStudentsModel.hasMany(UserStudentContactNumbersModel, {
+        sourceKey: 'id',
+        foreignKey: 'user_student_id',
+        as: 'student_numbers',
+    });
+
+    UserStudentsModel.hasMany(UserStudentDocumentTitlesModel, {
+        sourceKey: 'id',
+        foreignKey: 'user_student_id',
+        as: 'document_titles',
+    });
+
+    UserStudentsModel.hasMany(UserStudentDocumentValuesModel, {
+        sourceKey: 'id',
+        foreignKey: 'user_student_id',
+        as: 'document_values',
+    });
+
+    UserStudentsModel.hasMany(UserStudentEducationalBackgroundsModel, {
+        sourceKey: 'id',
+        foreignKey: 'user_student_id',
+        as: 'educational_backgrounds',
+    });
+
+    UserStudentsModel.hasMany(UserStudentLanguagesModel, {
+        sourceKey: 'id',
+        foreignKey: 'user_student_id',
+        as: 'languages',
+    });
+
+    UserStudentsModel.hasMany(UserStudentParentsModel, {
+        sourceKey: 'id',
+        foreignKey: 'user_student_id',
+        as: 'parents',
+    });
+
+    UserStudentsModel.hasMany(UserStudentSkillsModel, {
+        sourceKey: 'id',
+        foreignKey: 'user_student_id',
+        as: 'skills',
+    });
+
     UserStudentInformationsModel.belongsTo(UserStudentsModel, {
         foreignKey: 'user_student_id',
         as: 'student',

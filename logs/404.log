@@ -15,3 +15,7 @@
 {"level":60,"time":1723365938493,"pid":10632,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-students?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
 {"level":60,"time":1723365941141,"pid":10632,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-students/2"}
 {"level":60,"time":1723365945451,"pid":10632,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-parents?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
+{"level":60,"time":1723370348048,"pid":1224,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/full-details/5"}
+{"level":60,"time":1723370348813,"pid":1224,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/full-details/5"}
+{"level":60,"time":1723370350442,"pid":1224,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/full-details/5"}
+{"level":60,"time":1723370356676,"pid":1224,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/full-details/5"}
