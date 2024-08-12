@@ -878,24 +878,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h4>Guardians</h4>
                                 </div>
                                 <div className="multi_inputs">
-                                    {/* <div className="pb-4 px-0">
-                                        <span
-                                            className="btn btn-sm  btn-outline-info"
-                                            onClick={() =>
-                                                setTotalParent([
-                                                    ...totalParent,
-                                                    1,
-                                                ])
-                                            }
-                                        >
-                                            Add new
-                                        </span>
-                                    </div>
-                                    <input
-                                        type="hidden"
-                                        name="totalParent_count"
-                                        value={totalParent.length}
-                                    /> */}
                                     {state.item.parents.map((i, index) => {
                                         return (
                                             <div
@@ -1013,24 +995,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h4>Contact Number</h4>
                                 </div>
                                 <div className="multi_inputs">
-                                    {/* <div className="pb-4 px-0">
-                                        <span
-                                            className="btn btn-sm  btn-outline-info"
-                                            onClick={() =>
-                                                setTotalContactNumber([
-                                                    ...totalContactNumber,
-                                                    1,
-                                                ])
-                                            }
-                                        >
-                                            Add new
-                                        </span>
-                                    </div>
-                                    <input
-                                        type="hidden"
-                                        name="contact_number_count"
-                                        value={totalContactNumber.length}
-                                    /> */}
                                     {state.item.student_numbers.map(
                                         (i, index) => {
                                             return (
@@ -1109,24 +1073,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h4>Language</h4>
                                 </div>
                                 <div className="multi_inputs">
-                                    {/* <div className="pb-4 px-0">
-                                        <span
-                                            className="btn btn-sm  btn-outline-info"
-                                            onClick={() =>
-                                                setTotalLanguage([
-                                                    ...totalLanguage,
-                                                    1,
-                                                ])
-                                            }
-                                        >
-                                            Add new
-                                        </span>
-                                    </div>
-                                    <input
-                                        type="hidden"
-                                        name="student_language_count"
-                                        value={totalLanguage.length}
-                                    /> */}
                                     {state.item.languages.map((i, index) => {
                                         return (
                                             <div
@@ -1204,24 +1150,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h4>Skill</h4>
                                 </div>
                                 <div className="multi_inputs">
-                                    {/* <div className="pb-4 px-0">
-                                        <span
-                                            className="btn btn-sm  btn-outline-info"
-                                            onClick={() =>
-                                                setTotalSkill([
-                                                    ...totalSkill,
-                                                    1,
-                                                ])
-                                            }
-                                        >
-                                            Add new
-                                        </span>
-                                    </div>
-                                    <input
-                                        type="hidden"
-                                        name="student_skills_count"
-                                        value={totalSkill.length}
-                                    /> */}
                                     {state.item.skills.map((i, index) => {
                                         return (
                                             <div
@@ -1294,27 +1222,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h4>Educational Background</h4>
                                 </div>
                                 <div className="multi_inputs">
-                                    {/* <div className="pb-4 px-0">
-                                        <span
-                                            className="btn btn-sm  btn-outline-info"
-                                            onClick={() =>
-                                                setTotalEducationalBackground([
-                                                    ...totalEducationalBackground,
-                                                    1,
-                                                ])
-                                            }
-                                        >
-                                            Add new
-                                        </span>
-                                    </div>
-
-                                    <input
-                                        type="hidden"
-                                        name="educational_background_count"
-                                        value={
-                                            totalEducationalBackground.length
-                                        }
-                                    /> */}
                                     {state.item.educational_backgrounds.map(
                                         (i, index) => {
                                             return (
