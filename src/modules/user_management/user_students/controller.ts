@@ -21,6 +21,7 @@ import profile from './services/student_profile';
 import admit_student_store from './services/admit_student_store';
 import students_details from './services/student_details';
 import full_details from './services/full_details';
+import full_details_update from './services/admit_student_update';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -41,6 +42,14 @@ export default function (fastify: FastifyInstance) {
 
         full_details: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await full_details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        full_details_update: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await full_details_update(fastify, req);
             res.code(data.status).send(data);
         },
 
