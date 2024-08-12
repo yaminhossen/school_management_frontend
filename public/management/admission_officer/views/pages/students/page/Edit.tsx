@@ -86,11 +86,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <select
                                                 name="gender"
                                                 defaultValue={
-                                                    state.item?.student_info
-                                                        ?.gender
+                                                    state.item.student_info
+                                                        .gender
                                                 }
                                                 id=""
                                             >
+                                                <option value=""></option>
                                                 <option value="male">
                                                     male
                                                 </option>
@@ -733,27 +734,9 @@ const Index: React.FC<Props> = (props: Props) => {
                             </div>
                             <div className="full_width">
                                 <div className="form_section_heading">
-                                    <h4>Document</h4>
+                                    <h4>Document Title</h4>
                                 </div>
                                 <div className="multi_inputs">
-                                    {/* <div className="pb-4 px-0">
-                                        <span
-                                            className="btn btn-sm  btn-outline-info"
-                                            onClick={() =>
-                                                setTotalDocument([
-                                                    ...totalDocument,
-                                                    1,
-                                                ])
-                                            }
-                                        >
-                                            Add new
-                                        </span>
-                                    </div> */}
-                                    <input
-                                        type="hidden"
-                                        name="total_docement_count"
-                                        value={totalDocument.length}
-                                    />
                                     {state.item.document_titles.map(
                                         (i, index) => {
                                             return (
@@ -775,8 +758,37 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                         i.title
                                                                     }
                                                                 />
+                                                                <input
+                                                                    type="hidden"
+                                                                    placeholder="document title"
+                                                                    name={`document_title_id${index}`}
+                                                                    defaultValue={
+                                                                        i.id
+                                                                    }
+                                                                />
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                            );
+                                        },
+                                    )}
+                                </div>
+                            </div>
+                            {/* <div className="full_width">
+                                <div className="form_section_heading">
+                                    <h4>Document File</h4>
+                                </div>
+                                <div className="multi_inputs">
+                                    
+                                    {state.item.document_values.map(
+                                        (i, index) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    className="multi_input_group"
+                                                >
+                                                    <div className="d-flex">
                                                         <div className="form-group form-vertical">
                                                             <label>
                                                                 Document file
@@ -786,6 +798,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                     type="file"
                                                                     placeholder="document file"
                                                                     name={`document_file${index}`}
+                                                                    defaultValue={
+                                                                        i.file
+                                                                    }
                                                                 />
                                                             </div>
                                                         </div>
@@ -797,7 +812,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 <input
                                                                     type="date"
                                                                     defaultValue={
-                                                                        '2024-10-10'
+                                                                        i.issue_date
                                                                     }
                                                                     name={`issue_date${index}`}
                                                                 />
@@ -811,42 +826,25 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 <input
                                                                     type="date"
                                                                     defaultValue={
-                                                                        '2024-10-10'
+                                                                        i.expire_date
                                                                     }
                                                                     name={`expire_date${index}`}
                                                                 />
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    {totalDocument.length >
-                                                        1 && (
-                                                        <div>
-                                                            <span
-                                                                onClick={() =>
-                                                                    remove_from_state(
-                                                                        index,
-                                                                        totalDocument,
-                                                                        setTotalDocument,
-                                                                    )
-                                                                }
-                                                                className="btn btn-danger"
-                                                            >
-                                                                remove
-                                                            </span>
-                                                        </div>
-                                                    )}
                                                 </div>
                                             );
                                         },
                                     )}
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="full_width">
                                 <div className="form_section_heading">
                                     <h4>Guardians</h4>
                                 </div>
                                 <div className="multi_inputs">
-                                    <div className="pb-4 px-0">
+                                    {/* <div className="pb-4 px-0">
                                         <span
                                             className="btn btn-sm  btn-outline-info"
                                             onClick={() =>
@@ -863,8 +861,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                         type="hidden"
                                         name="totalParent_count"
                                         value={totalParent.length}
-                                    />
-                                    {totalParent.map((i, index) => {
+                                    /> */}
+                                    {state.item.parents.map((i, index) => {
                                         return (
                                             <div
                                                 key={i}
