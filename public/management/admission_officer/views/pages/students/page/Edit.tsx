@@ -736,7 +736,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h4>Document</h4>
                                 </div>
                                 <div className="multi_inputs">
-                                    <div className="pb-4 px-0">
+                                    {/* <div className="pb-4 px-0">
                                         <span
                                             className="btn btn-sm  btn-outline-info"
                                             onClick={() =>
@@ -748,91 +748,97 @@ const Index: React.FC<Props> = (props: Props) => {
                                         >
                                             Add new
                                         </span>
-                                    </div>
+                                    </div> */}
                                     <input
                                         type="hidden"
                                         name="total_docement_count"
                                         value={totalDocument.length}
                                     />
-                                    {totalDocument.map((i, index) => {
-                                        return (
-                                            <div
-                                                key={i}
-                                                className="multi_input_group"
-                                            >
-                                                <div className="d-flex">
-                                                    <div className="form-group form-vertical">
-                                                        <label>
-                                                            Document title
-                                                        </label>
-                                                        <div className="form_elements">
-                                                            <input
-                                                                type="text"
-                                                                placeholder="document title"
-                                                                name={`document_title${index}`}
-                                                            />
+                                    {state.item.document_titles.map(
+                                        (i, index) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    className="multi_input_group"
+                                                >
+                                                    <div className="d-flex">
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Document title
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="text"
+                                                                    placeholder="document title"
+                                                                    name={`document_title${index}`}
+                                                                    defaultValue={
+                                                                        i.title
+                                                                    }
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Document file
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="file"
+                                                                    placeholder="document file"
+                                                                    name={`document_file${index}`}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Issue Date
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="date"
+                                                                    defaultValue={
+                                                                        '2024-10-10'
+                                                                    }
+                                                                    name={`issue_date${index}`}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Expire Date
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="date"
+                                                                    defaultValue={
+                                                                        '2024-10-10'
+                                                                    }
+                                                                    name={`expire_date${index}`}
+                                                                />
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div className="form-group form-vertical">
-                                                        <label>
-                                                            Document file
-                                                        </label>
-                                                        <div className="form_elements">
-                                                            <input
-                                                                type="file"
-                                                                placeholder="document file"
-                                                                name={`document_file${index}`}
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                    <div className="form-group form-vertical">
-                                                        <label>
-                                                            Issue Date
-                                                        </label>
-                                                        <div className="form_elements">
-                                                            <input
-                                                                type="date"
-                                                                defaultValue={
-                                                                    '2024-10-10'
+                                                    {totalDocument.length >
+                                                        1 && (
+                                                        <div>
+                                                            <span
+                                                                onClick={() =>
+                                                                    remove_from_state(
+                                                                        index,
+                                                                        totalDocument,
+                                                                        setTotalDocument,
+                                                                    )
                                                                 }
-                                                                name={`issue_date${index}`}
-                                                            />
+                                                                className="btn btn-danger"
+                                                            >
+                                                                remove
+                                                            </span>
                                                         </div>
-                                                    </div>
-                                                    <div className="form-group form-vertical">
-                                                        <label>
-                                                            Expire Date
-                                                        </label>
-                                                        <div className="form_elements">
-                                                            <input
-                                                                type="date"
-                                                                defaultValue={
-                                                                    '2024-10-10'
-                                                                }
-                                                                name={`expire_date${index}`}
-                                                            />
-                                                        </div>
-                                                    </div>
+                                                    )}
                                                 </div>
-                                                {totalDocument.length > 1 && (
-                                                    <div>
-                                                        <span
-                                                            onClick={() =>
-                                                                remove_from_state(
-                                                                    index,
-                                                                    totalDocument,
-                                                                    setTotalDocument,
-                                                                )
-                                                            }
-                                                            className="btn btn-danger"
-                                                        >
-                                                            remove
-                                                        </span>
-                                                    </div>
-                                                )}
-                                            </div>
-                                        );
-                                    })}
+                                            );
+                                        },
+                                    )}
                                 </div>
                             </div>
                             <div className="full_width">
