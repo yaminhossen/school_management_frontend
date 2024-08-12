@@ -7,7 +7,7 @@ import { update } from '../config/store/async_actions/update';
 import { Link, useParams } from 'react-router-dom';
 // import { details } from '../config/store/async_actions/details';
 import storeSlice from '../config/store';
-import moment from 'moment';
+import moment from 'moment/moment';
 import { full_details } from '../config/store/async_actions/full_details';
 export interface Props {}
 
@@ -20,7 +20,8 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalSkill, setTotalSkill] = useState([1]);
     const [totalEducationalBackground, setTotalEducationalBackground] =
         useState([1]);
-    // let date22 = moment().format('YYYY-DD-MM');
+    let date22 = moment().format('YYYY-DD-MM');
+    console.log('moment date', date22);
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -149,6 +150,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 placeholder="image"
                                                 name="image"
                                             />
+                                            <img
+                                                src={state.item.image}
+                                                style={{ width: '100px' }}
+                                                alt=""
+                                            />
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
@@ -159,6 +165,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 defaultValue={state.item.status}
                                                 id=""
                                             >
+                                                <option value=""></option>
                                                 <option value="active">
                                                     active
                                                 </option>
@@ -198,6 +205,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                                 id=""
                                             >
+                                                <option value=""></option>
                                                 <option value="1">
                                                     parent1
                                                 </option>
@@ -274,10 +282,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <div className="form_elements">
                                             <input
                                                 type="date"
-                                                defaultValue={
+                                                defaultValue={moment(
                                                     state.item.student_info
-                                                        .admission_date
-                                                }
+                                                        .admission_date,
+                                                ).format('YYYY-DD-MM')}
                                                 name="admission_date"
                                             />
                                         </div>
@@ -293,6 +301,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                                 id=""
                                             >
+                                                <option value=""></option>
                                                 <option value="Six">Six</option>
                                                 <option value="Seven">
                                                     Seven
@@ -344,8 +353,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                                 id=""
                                             >
-                                                <option value="A">A</option>
-                                                <option value="B">B</option>
+                                                <option value="c">c</option>
+                                                <option value="A section">
+                                                    A
+                                                </option>
+                                                <option value="B section">
+                                                    B
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -389,12 +403,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <div className="form_elements">
                                             <input
                                                 type="date"
-                                                // defaultValue={'2024-10-10'}
                                                 name="date_of_birth"
-                                                defaultValue={
+                                                defaultValue={moment(
                                                     state.item.student_info
-                                                        .date_of_birth
-                                                }
+                                                        .date_of_birth,
+                                                ).format('YYYY-DD-MM')}
                                             />
                                         </div>
                                     </div>
@@ -409,6 +422,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                                 id=""
                                             >
+                                                {/* <option value="vv">vv</option> */}
                                                 <option value="islam">
                                                     islam
                                                 </option>
@@ -560,6 +574,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                                 id=""
                                             >
+                                                {/* <option value="c">c</option> */}
                                                 <option value="A+">A+</option>
                                                 <option value="B+">B+</option>
                                                 <option value="A-">A-</option>
@@ -567,7 +582,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 <option value="AB+">AB+</option>
                                                 <option value="B-">B-</option>
                                                 <option value="O-">O-</option>
-                                                <option value="O-">O-</option>
+                                                <option value="O+">O+</option>
                                             </select>
                                         </div>
                                     </div>
@@ -578,10 +593,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 type="date"
                                                 // defaultValue={'2024-10-10'}
                                                 name="student_expire_date"
-                                                defaultValue={
+                                                defaultValue={moment(
                                                     state.item.student_info
-                                                        .student_expire_date
-                                                }
+                                                        .student_expire_date,
+                                                ).format('YYYY-DD-MM')}
                                             />
                                         </div>
                                     </div>
@@ -622,10 +637,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 type="date"
                                                 // defaultValue={'2024-10-10'}
                                                 name="as_on_date"
-                                                defaultValue={
+                                                defaultValue={moment(
                                                     state.item.student_info
-                                                        .as_on_date
-                                                }
+                                                        .as_on_date,
+                                                ).format('YYYY-DD-MM')}
                                             />
                                         </div>
                                     </div>
@@ -693,6 +708,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 accept="image/*"
                                                 name="birth_certificate"
                                             />
+                                            <img
+                                                src={
+                                                    state.item.student_info
+                                                        .birth_certificate
+                                                }
+                                                style={{ width: '100px' }}
+                                                alt=""
+                                            />
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
@@ -702,6 +725,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 type="file"
                                                 accept="image/*"
                                                 name="national_id"
+                                            />
+                                            <img
+                                                src={
+                                                    state.item.student_info
+                                                        .national_id
+                                                }
+                                                style={{ width: '100px' }}
+                                                alt=""
                                             />
                                         </div>
                                     </div>
@@ -715,10 +746,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                                 id=""
                                             >
+                                                {/* <option value="ccgvv">
+                                                    ccgvv
+                                                </option> */}
                                                 <option value="Khan">
                                                     Khan
                                                 </option>
-                                                <option value="Chowdhuri">
+                                                <option value="chowdhuri">
                                                     Chowdhuri
                                                 </option>
                                                 <option value="Patowari">
@@ -875,7 +909,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             <select
                                                                 name={`relation${index}`}
                                                                 id=""
+                                                                defaultValue={
+                                                                    i.relation
+                                                                }
                                                             >
+                                                                <option value="gdfg">
+                                                                    gdfg
+                                                                </option>
                                                                 <option value="father">
                                                                     father
                                                                 </option>
@@ -902,7 +942,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <div className="form_elements">
                                                             <select
                                                                 name={`is_parent${index}`}
-                                                                defaultValue="0"
+                                                                defaultValue={
+                                                                    i.is_parent
+                                                                }
                                                                 id=""
                                                             >
                                                                 <option value="0">
@@ -922,6 +964,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             <select
                                                                 name={`user_student_parent_id${index}`}
                                                                 id=""
+                                                                defaultValue={
+                                                                    i.user_student_parent_id
+                                                                }
                                                             >
                                                                 <option value="1">
                                                                     parent1
@@ -934,6 +979,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 </option>
                                                                 <option value="4">
                                                                     parent4
+                                                                </option>
+                                                                <option value="6">
+                                                                    parent6
                                                                 </option>
                                                             </select>
                                                         </div>
@@ -965,7 +1013,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h4>Contact Number</h4>
                                 </div>
                                 <div className="multi_inputs">
-                                    <div className="pb-4 px-0">
+                                    {/* <div className="pb-4 px-0">
                                         <span
                                             className="btn btn-sm  btn-outline-info"
                                             onClick={() =>
@@ -982,70 +1030,78 @@ const Index: React.FC<Props> = (props: Props) => {
                                         type="hidden"
                                         name="contact_number_count"
                                         value={totalContactNumber.length}
-                                    />
-                                    {totalContactNumber.map((i, index) => {
-                                        return (
-                                            <div
-                                                key={i}
-                                                className="multi_input_group"
-                                            >
-                                                <div className="d-flex">
-                                                    <div className="form-group form-vertical">
-                                                        <label>
-                                                            Contact number
-                                                        </label>
-                                                        <div className="form_elements">
-                                                            <input
-                                                                type="text"
-                                                                placeholder="contact number"
-                                                                name={`contact_number${index}`}
-                                                                id=""
-                                                            />
+                                    /> */}
+                                    {state.item.student_numbers.map(
+                                        (i, index) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    className="multi_input_group"
+                                                >
+                                                    <div className="d-flex">
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Contact number
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="text"
+                                                                    placeholder="contact number"
+                                                                    name={`contact_number${index}`}
+                                                                    id=""
+                                                                    defaultValue={
+                                                                        i.contact_number
+                                                                    }
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-vertical">
+                                                            <label>Owner</label>
+                                                            <div className="form_elements">
+                                                                <select
+                                                                    name={`number_owner${index}`}
+                                                                    id=""
+                                                                    defaultValue={
+                                                                        i.owner
+                                                                    }
+                                                                >
+                                                                    <option value="personal">
+                                                                        personal
+                                                                    </option>
+                                                                    <option value="home">
+                                                                        home
+                                                                    </option>
+                                                                    <option value="friend">
+                                                                        friend
+                                                                    </option>
+                                                                    <option value="relative">
+                                                                        relative
+                                                                    </option>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div className="form-group form-vertical">
-                                                        <label>Owner</label>
-                                                        <div className="form_elements">
-                                                            <select
-                                                                name={`number_owner${index}`}
-                                                                id=""
+                                                    {totalContactNumber.length >
+                                                        1 && (
+                                                        <div>
+                                                            <span
+                                                                onClick={() =>
+                                                                    remove_from_state(
+                                                                        index,
+                                                                        totalContactNumber,
+                                                                        setTotalContactNumber,
+                                                                    )
+                                                                }
+                                                                className="btn btn-danger"
                                                             >
-                                                                <option value="personal">
-                                                                    personal
-                                                                </option>
-                                                                <option value="home">
-                                                                    home
-                                                                </option>
-                                                                <option value="friend">
-                                                                    friend
-                                                                </option>
-                                                                <option value="relative">
-                                                                    relative
-                                                                </option>
-                                                            </select>
+                                                                remove
+                                                            </span>
                                                         </div>
-                                                    </div>
+                                                    )}
                                                 </div>
-                                                {totalContactNumber.length >
-                                                    1 && (
-                                                    <div>
-                                                        <span
-                                                            onClick={() =>
-                                                                remove_from_state(
-                                                                    index,
-                                                                    totalContactNumber,
-                                                                    setTotalContactNumber,
-                                                                )
-                                                            }
-                                                            className="btn btn-danger"
-                                                        >
-                                                            remove
-                                                        </span>
-                                                    </div>
-                                                )}
-                                            </div>
-                                        );
-                                    })}
+                                            );
+                                        },
+                                    )}
                                 </div>
                             </div>
                             <div className="full_width">
@@ -1053,7 +1109,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h4>Language</h4>
                                 </div>
                                 <div className="multi_inputs">
-                                    <div className="pb-4 px-0">
+                                    {/* <div className="pb-4 px-0">
                                         <span
                                             className="btn btn-sm  btn-outline-info"
                                             onClick={() =>
@@ -1070,8 +1126,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                         type="hidden"
                                         name="student_language_count"
                                         value={totalLanguage.length}
-                                    />
-                                    {totalLanguage.map((i, index) => {
+                                    /> */}
+                                    {state.item.languages.map((i, index) => {
                                         return (
                                             <div
                                                 key={i}
@@ -1088,6 +1144,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 placeholder="language title"
                                                                 name={`language_title${index}`}
                                                                 id=""
+                                                                defaultValue={
+                                                                    i.language_title
+                                                                }
                                                             />
                                                         </div>
                                                     </div>
@@ -1099,6 +1158,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             <select
                                                                 name={`language_profeciency${index}`}
                                                                 id=""
+                                                                defaultValue={
+                                                                    i.profeciency
+                                                                }
                                                             >
                                                                 <option value="fluent">
                                                                     fluent
@@ -1142,7 +1204,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h4>Skill</h4>
                                 </div>
                                 <div className="multi_inputs">
-                                    <div className="pb-4 px-0">
+                                    {/* <div className="pb-4 px-0">
                                         <span
                                             className="btn btn-sm  btn-outline-info"
                                             onClick={() =>
@@ -1159,8 +1221,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                         type="hidden"
                                         name="student_skills_count"
                                         value={totalSkill.length}
-                                    />
-                                    {totalSkill.map((i, index) => {
+                                    /> */}
+                                    {state.item.skills.map((i, index) => {
                                         return (
                                             <div
                                                 key={i}
@@ -1177,6 +1239,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 placeholder="skills title"
                                                                 name={`skills_title${index}`}
                                                                 id=""
+                                                                defaultValue={
+                                                                    i.title
+                                                                }
                                                             />
                                                         </div>
                                                     </div>
@@ -1186,6 +1251,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             <select
                                                                 name={`skills_level${index}`}
                                                                 id=""
+                                                                defaultValue={
+                                                                    i.level
+                                                                }
                                                             >
                                                                 <option value="high">
                                                                     high
@@ -1226,7 +1294,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h4>Educational Background</h4>
                                 </div>
                                 <div className="multi_inputs">
-                                    <div className="pb-4 px-0">
+                                    {/* <div className="pb-4 px-0">
                                         <span
                                             className="btn btn-sm  btn-outline-info"
                                             onClick={() =>
@@ -1246,14 +1314,15 @@ const Index: React.FC<Props> = (props: Props) => {
                                         value={
                                             totalEducationalBackground.length
                                         }
-                                    />
-                                    {totalEducationalBackground.map(
+                                    /> */}
+                                    {state.item.educational_backgrounds.map(
                                         (i, index) => {
                                             return (
                                                 <div
                                                     key={i}
                                                     className="multi_input_group"
                                                 >
+                                                    <div>{index + 1}</div>
                                                     <div className="d-flex">
                                                         <div className="form-group form-vertical">
                                                             <label>
@@ -1265,6 +1334,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                     type="text"
                                                                     placeholder="previous institute"
                                                                     name={`educational_background_previous_institute_${index}`}
+                                                                    defaultValue={
+                                                                        i.previous_institute
+                                                                    }
                                                                 />
                                                             </div>
                                                         </div>
@@ -1275,9 +1347,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             <div className="form_elements">
                                                                 <input
                                                                     type="date"
-                                                                    defaultValue={
-                                                                        '2024-10-10'
-                                                                    }
+                                                                    defaultValue={moment(
+                                                                        i.year_of_leaving,
+                                                                    ).format(
+                                                                        'YYYY-DD-MM',
+                                                                    )}
                                                                     name={`educational_background_year_of_leaving_${index}`}
                                                                 />
                                                             </div>
@@ -1291,6 +1365,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                     type="text"
                                                                     placeholder="result"
                                                                     name={`educational_background_result_${index}`}
+                                                                    defaultValue={
+                                                                        i.result
+                                                                    }
                                                                 />
                                                             </div>
                                                         </div>
@@ -1305,6 +1382,16 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                     accept="image/*"
                                                                     placeholder="transfer cirtificate"
                                                                     name={`educational_background_transfer_cirtificate_${index}`}
+                                                                />
+                                                                <img
+                                                                    src={
+                                                                        i.transfer_cirtificate
+                                                                    }
+                                                                    style={{
+                                                                        width: '100px',
+                                                                        height: '50px',
+                                                                    }}
+                                                                    alt=""
                                                                 />
                                                             </div>
                                                         </div>
