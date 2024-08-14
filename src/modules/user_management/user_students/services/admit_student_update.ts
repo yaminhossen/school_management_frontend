@@ -155,10 +155,6 @@ async function store(
         });
     }
 
-    console.log(body);
-    // console.log(body.file);
-    console.log(eductional_bc);
-
     let student_skills: anyObject[] = [];
     for (let i = 0; i < parseInt(body.student_skills_count); i++) {
         student_skills.push({
@@ -174,6 +170,10 @@ async function store(
             profeciency: body[`language_profeciency${i}`],
         });
     }
+    console.log(body);
+    // console.log(body.file);
+    console.log(eductional_bc);
+    console.log(student_language);
 
     let student_number: anyObject[] = [];
     for (let i = 0; i < parseInt(body.contact_number_count); i++) {

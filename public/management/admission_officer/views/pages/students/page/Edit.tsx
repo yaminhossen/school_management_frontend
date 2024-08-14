@@ -771,6 +771,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h4>Document Title</h4>
                                 </div>
                                 <div className="multi_inputs">
+                                    <input
+                                        type="hidden"
+                                        name="total_docement_count"
+                                        value={
+                                            state.item.document_titles.length
+                                        }
+                                    />
                                     {state.item.document_titles.map(
                                         (i, index) => {
                                             return (
@@ -792,13 +799,92 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                         i.title
                                                                     }
                                                                 />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            );
+                                        },
+                                    )}
+                                </div>
+                            </div>
+                            <div className="full_width">
+                                <div className="form_section_heading">
+                                    <h4>Document file</h4>
+                                </div>
+                                <div className="multi_inputs">
+                                    <input
+                                        type="hidden"
+                                        name="total_docement_value_count"
+                                        value={
+                                            state.item.document_values.length
+                                        }
+                                    />
+                                    {state.item.document_values.map(
+                                        (i, index) => {
+                                            return (
+                                                <div
+                                                    key={i}
+                                                    className="multi_input_group"
+                                                >
+                                                    {/* <div className="d-flex">
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Document title
+                                                            </label>
+                                                            <div className="form_elements">
                                                                 <input
-                                                                    type="hidden"
+                                                                    type="text"
                                                                     placeholder="document title"
-                                                                    name={`document_title_id${index}`}
+                                                                    name={`document_title${index}`}
                                                                     defaultValue={
-                                                                        i.id
+                                                                        i.title
                                                                     }
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div> */}
+                                                    <div className="d-flex">
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Document file
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="file"
+                                                                    placeholder="document file"
+                                                                    name={`document_file${index}`}
+                                                                    // defaultValue={
+                                                                    //     i.file
+                                                                    // }
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Issue Date
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="date"
+                                                                    defaultValue={
+                                                                        i.issue_date
+                                                                    }
+                                                                    name={`issue_date${index}`}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                Expire Date
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                <input
+                                                                    type="date"
+                                                                    defaultValue={
+                                                                        i.expire_date
+                                                                    }
+                                                                    name={`expire_date${index}`}
                                                                 />
                                                             </div>
                                                         </div>
@@ -814,7 +900,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h4>Document File</h4>
                                 </div>
                                 <div className="multi_inputs">
-                                    
+                                    <input
+                                        type="hidden"
+                                        name="total_docement_value_count"
+                                        value={
+                                            state.item.document_values.length
+                                        }
+                                    />
                                     {state.item.document_values.map(
                                         (i, index) => {
                                             return (
@@ -878,24 +970,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h4>Guardians</h4>
                                 </div>
                                 <div className="multi_inputs">
-                                    {/* <div className="pb-4 px-0">
-                                        <span
-                                            className="btn btn-sm  btn-outline-info"
-                                            onClick={() =>
-                                                setTotalParent([
-                                                    ...totalParent,
-                                                    1,
-                                                ])
-                                            }
-                                        >
-                                            Add new
-                                        </span>
-                                    </div>
                                     <input
                                         type="hidden"
                                         name="totalParent_count"
-                                        value={totalParent.length}
-                                    /> */}
+                                        value={state.item.parents.length}
+                                    />
                                     {state.item.parents.map((i, index) => {
                                         return (
                                             <div
@@ -987,22 +1066,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {totalParent.length > 1 && (
-                                                    <div>
-                                                        <span
-                                                            onClick={() =>
-                                                                remove_from_state(
-                                                                    index,
-                                                                    totalParent,
-                                                                    setTotalParent,
-                                                                )
-                                                            }
-                                                            className="btn btn-danger"
-                                                        >
-                                                            remove
-                                                        </span>
-                                                    </div>
-                                                )}
                                             </div>
                                         );
                                     })}
@@ -1025,12 +1088,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                         >
                                             Add new
                                         </span>
-                                    </div>
+                                    </div> */}
                                     <input
                                         type="hidden"
                                         name="contact_number_count"
-                                        value={totalContactNumber.length}
-                                    /> */}
+                                        value={
+                                            state.item.student_numbers.length
+                                        }
+                                    />
                                     {state.item.student_numbers.map(
                                         (i, index) => {
                                             return (
@@ -1109,8 +1174,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h4>Language</h4>
                                 </div>
                                 <div className="multi_inputs">
-                                    {/* <div className="pb-4 px-0">
-                                        <span
+                                    <div className="pb-4 px-0">
+                                        {/* <span
                                             className="btn btn-sm  btn-outline-info"
                                             onClick={() =>
                                                 setTotalLanguage([
@@ -1120,13 +1185,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                             }
                                         >
                                             Add new
-                                        </span>
+                                        </span> */}
                                     </div>
                                     <input
                                         type="hidden"
                                         name="student_language_count"
-                                        value={totalLanguage.length}
-                                    /> */}
+                                        value={state.item.languages.length}
+                                    />
                                     {state.item.languages.map((i, index) => {
                                         return (
                                             <div
@@ -1178,13 +1243,15 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {totalLanguage.length > 1 && (
+                                                {/* {state.item.languages.length >
+                                                    1 && (
                                                     <div>
                                                         <span
                                                             onClick={() =>
                                                                 remove_from_state(
                                                                     index,
-                                                                    totalLanguage,
+                                                                    state.item
+                                                                        .languages,
                                                                     setTotalLanguage,
                                                                 )
                                                             }
@@ -1193,7 +1260,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             remove
                                                         </span>
                                                     </div>
-                                                )}
+                                                )} */}
                                             </div>
                                         );
                                     })}
@@ -1216,12 +1283,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                         >
                                             Add new
                                         </span>
-                                    </div>
+                                    </div> */}
                                     <input
                                         type="hidden"
                                         name="student_skills_count"
-                                        value={totalSkill.length}
-                                    /> */}
+                                        value={state.item.skills.length}
+                                    />
                                     {state.item.skills.map((i, index) => {
                                         return (
                                             <div
@@ -1397,7 +1464,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    {totalEducationalBackground.length >
+                                                    {/* {totalEducationalBackground.length >
                                                         1 && (
                                                         <div>
                                                             <span
@@ -1413,7 +1480,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 remove
                                                             </span>
                                                         </div>
-                                                    )}
+                                                    )} */}
                                                 </div>
                                             );
                                         },
