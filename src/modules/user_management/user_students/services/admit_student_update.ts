@@ -115,8 +115,9 @@ async function store(
     };
 
     let eductional_bc: anyObject[] = [];
+    let updated_background_data = JSON.parse(body.updated_background_data);
     for (let i = 0; i < parseInt(body.educational_background_count); i++) {
-        let image_path = ``;
+        let image_path = updated_background_data[i]?.transfer_cirtificate;
         let image_file =
             body[`educational_background_transfer_cirtificate_${i}`];
         if (image_file?.ext) {
@@ -135,6 +136,9 @@ async function store(
             file: image_path,
         });
     }
+
+    console.log(updated_background_data);
+    console.log(eductional_bc);
 
     let student_document: anyObject[] = [];
     for (let i = 0; i < parseInt(body.total_docement_count); i++) {
@@ -177,11 +181,9 @@ async function store(
             profeciency: body[`language_profeciency${i}`],
         });
     }
-    console.log(body);
+    
     // console.log(body.file);
-    console.log(body.id);
-    console.log(eductional_bc);
-    console.log(student_skills);
+    // console.log(updated_background_data);
 
     let student_number: anyObject[] = [];
     for (let i = 0; i < parseInt(body.contact_number_count); i++) {
@@ -248,10 +250,15 @@ async function store(
     try {
         let dataModel = await models.UserStudentsModel.findByPk(body.id);
         if (dataModel) {
-            (await dataModel.update(inputs)).save();
+            // (await dataModel.update(inputs)).save();
             usi_inputs.user_student_id = body.id || 1;
             // (await usi_model.update(usi_inputs)).save();
             if (eductional_bc) {
+                await models.UserStudentEducationalBackgroundsModel.destroy({
+                    where: {
+                        user_student_id: body.id,
+                    },
+                });
                 eductional_bc.forEach(async (edbc) => {
                     let useb_model =
                         new models.UserStudentEducationalBackgroundsModel();
@@ -269,44 +276,33 @@ async function store(
                     useb_inputs.year_of_leaving = edbc.year_of_leaving;
                     useb_inputs.result = edbc.result;
                     useb_inputs.transfer_cirtificate = edbc.file;
-                    let ebcModel =
-                        await models.UserStudentEducationalBackgroundsModel.findOne(
-                            {
-                                where: {
-                                    user_student_id: body.id,
-                                },
-                            },
-                        );
-                    if (ebcModel) {
-                        // (await ebcModel.update(useb_inputs)).save();
-                    }
+                    (await useb_model.update(useb_inputs)).save();
                 });
             }
-            if (student_skills) {
-                student_skills.forEach(async (ss) => {
-                    let uss_model = new models.UserStudentSkillsModel();
-                    let uss_inputs: InferCreationAttributes<typeof uss_model> =
-                        {
-                            user_student_id: 1,
-                            title: body.skills_title,
-                            level: body.level,
-                            branch_id: body.branch_id,
-                        };
-                    uss_inputs.user_student_id = body.id || 1;
-                    uss_inputs.title = ss.title;
-                    uss_inputs.level = ss.level;
-                    uss_inputs.branch_id = body.branch_id;
-                    let sskModel = await models.UserStudentSkillsModel.findOne({
-                        where: {
-                            user_student_id: body.id,
-                        },
-                    });
-                    if (sskModel) {
-                        // (await useb_model.update(useb_inputs)).save();
-                        (await sskModel.update(uss_inputs)).save();
-                    }
-                });
-            }
+            // if (student_skills) {
+            //     student_skills.forEach(async (ss) => {
+            //         let uss_model = new models.UserStudentSkillsModel();
+            //         let uss_inputs: InferCreationAttributes<typeof uss_model> =
+            //             {
+            //                 user_student_id: 1,
+            //                 title: body.skills_title,
+            //                 level: body.level,
+            //                 branch_id: body.branch_id,
+            //             };
+            //         uss_inputs.user_student_id = body.id || 1;
+            //         uss_inputs.title = ss.title;
+            //         uss_inputs.level = ss.level;
+            //         uss_inputs.branch_id = body.branch_id;
+            //         let sskModel = await models.UserStudentSkillsModel.findOne({
+            //             where: {
+            //                 user_student_id: body.id,
+            //             },
+            //         });
+            //         if (sskModel) {
+            //             // (await sskModel.update(uss_inputs)).save();
+            //         }
+            //     });
+            // }
             // if (student_language) {
             //     student_language.forEach(async (ss) => {
             //         let usl_model = new models.UserStudentLanguagesModel();
