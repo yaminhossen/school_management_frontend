@@ -147,6 +147,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <div className="form_elements">
                                             <input
                                                 type="file"
+                                                accept="image/*"
                                                 placeholder="image"
                                                 name="image"
                                             />
@@ -746,9 +747,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                                 id=""
                                             >
-                                                {/* <option value="ccgvv">
-                                                    ccgvv
-                                                </option> */}
                                                 <option value="Khan">
                                                     Khan
                                                 </option>
@@ -773,7 +771,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="multi_inputs">
                                     <input
                                         type="hidden"
-                                        name="total_docement_count"
+                                        name="total_docement_count_file"
                                         value={
                                             state.item.document_titles.length
                                         }
@@ -815,7 +813,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="multi_inputs">
                                     <input
                                         type="hidden"
-                                        name="total_docement_value_count"
+                                        name="total_docement_count"
                                         value={
                                             state.item.document_values.length
                                         }
@@ -827,23 +825,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     key={i}
                                                     className="multi_input_group"
                                                 >
-                                                    {/* <div className="d-flex">
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Document title
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <input
-                                                                    type="text"
-                                                                    placeholder="document title"
-                                                                    name={`document_title${index}`}
-                                                                    defaultValue={
-                                                                        i.title
-                                                                    }
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div> */}
                                                     <div className="d-flex">
                                                         <div className="form-group form-vertical">
                                                             <label>
@@ -852,11 +833,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             <div className="form_elements">
                                                                 <input
                                                                     type="file"
+                                                                    accept="image/*"
                                                                     placeholder="document file"
                                                                     name={`document_file${index}`}
                                                                     // defaultValue={
                                                                     //     i.file
                                                                     // }
+                                                                />
+                                                                <img
+                                                                    src={i.file}
+                                                                    style={{
+                                                                        width: '100px',
+                                                                        height: '50px',
+                                                                    }}
+                                                                    alt=""
                                                                 />
                                                             </div>
                                                         </div>
@@ -895,76 +885,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     )}
                                 </div>
                             </div>
-                            {/* <div className="full_width">
-                                <div className="form_section_heading">
-                                    <h4>Document File</h4>
-                                </div>
-                                <div className="multi_inputs">
-                                    <input
-                                        type="hidden"
-                                        name="total_docement_value_count"
-                                        value={
-                                            state.item.document_values.length
-                                        }
-                                    />
-                                    {state.item.document_values.map(
-                                        (i, index) => {
-                                            return (
-                                                <div
-                                                    key={i}
-                                                    className="multi_input_group"
-                                                >
-                                                    <div className="d-flex">
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Document file
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <input
-                                                                    type="file"
-                                                                    placeholder="document file"
-                                                                    name={`document_file${index}`}
-                                                                    defaultValue={
-                                                                        i.file
-                                                                    }
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Issue Date
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <input
-                                                                    type="date"
-                                                                    defaultValue={
-                                                                        i.issue_date
-                                                                    }
-                                                                    name={`issue_date${index}`}
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Expire Date
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <input
-                                                                    type="date"
-                                                                    defaultValue={
-                                                                        i.expire_date
-                                                                    }
-                                                                    name={`expire_date${index}`}
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            );
-                                        },
-                                    )}
-                                </div>
-                            </div> */}
                             <div className="full_width">
                                 <div className="form_section_heading">
                                     <h4>Guardians</h4>
