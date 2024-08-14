@@ -20,7 +20,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalSkill, setTotalSkill] = useState([1]);
     const [totalEducationalBackground, setTotalEducationalBackground] =
         useState([1]);
-    let date22 = moment().format('YYYY-DD-MM');
+    let date22 = moment().format('YYYY-MM-DD');
     console.log('moment date', date22);
 
     async function handle_submit(e) {
@@ -54,7 +54,31 @@ const Index: React.FC<Props> = (props: Props) => {
         t.splice(index, 1);
         setState(t);
     }
-    // console.log('moment', moment().format('YYYY-DD-MM'));
+    // console.log('moment', moment().format('YYYY-MM-DD'));
+
+    // for admission date
+    const admissionDate = state.item?.student_info?.admission_date;
+    const formattedAdmissionDate = admissionDate
+        ? moment(admissionDate).format('YYYY-MM-DD')
+        : moment().format('YYYY-MM-DD');
+
+    // for date of birth
+    const student_date = state.item?.student_info?.date_of_birth;
+    const formattedStudentDate = student_date
+        ? moment(student_date).format('YYYY-MM-DD')
+        : moment().format('YYYY-MM-DD');
+
+    // // for date of birth
+    // const studentExpire_date = state.item?.student_info?.student_expire_date;
+    // const formattedStudentExpireDate = studentExpire_date
+    //     ? moment(studentExpire_date).format('YYYY-MM-DD')
+    //     : moment().format('YYYY-MM-DD');
+
+    // // for date of birth
+    const studentAson_date = state.item?.student_info?.as_on_date;
+    const formattedStudentAsOnDate = studentAson_date
+        ? moment(studentAson_date).format('YYYY-MM-DD')
+        : moment().format('YYYY-MM-DD');
 
     return (
         <div className="admin_dashboard">
@@ -283,10 +307,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <div className="form_elements">
                                             <input
                                                 type="date"
-                                                defaultValue={moment(
-                                                    state.item.student_info
-                                                        .admission_date,
-                                                ).format('YYYY-DD-MM')}
+                                                // defaultValue={moment(
+                                                //     state.item.student_info
+                                                //         .admission_date,
+                                                // ).format('YYYY-MM-DD')}
+                                                defaultValue={
+                                                    formattedAdmissionDate
+                                                }
                                                 name="admission_date"
                                             />
                                         </div>
@@ -405,10 +432,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <input
                                                 type="date"
                                                 name="date_of_birth"
-                                                defaultValue={moment(
-                                                    state.item.student_info
-                                                        .date_of_birth,
-                                                ).format('YYYY-DD-MM')}
+                                                // defaultValue={moment(
+                                                //     state.item.student_info
+                                                //         .date_of_birth,
+                                                // ).format('YYYY-MM-DD')}
+                                                defaultValue={
+                                                    formattedStudentDate
+                                                }
                                             />
                                         </div>
                                     </div>
@@ -597,7 +627,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 defaultValue={moment(
                                                     state.item.student_info
                                                         .student_expire_date,
-                                                ).format('YYYY-DD-MM')}
+                                                ).format('YYYY-MM-DD')}
+                                                // defaultValue={
+                                                //     formattedStudentExpireDate
+                                                // }
                                             />
                                         </div>
                                     </div>
@@ -638,10 +671,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 type="date"
                                                 // defaultValue={'2024-10-10'}
                                                 name="as_on_date"
-                                                defaultValue={moment(
-                                                    state.item.student_info
-                                                        .as_on_date,
-                                                ).format('YYYY-DD-MM')}
+                                                // defaultValue={moment(
+                                                //     state.item.student_info
+                                                //         .as_on_date,
+                                                // ).format('YYYY-MM-DD')}
+                                                defaultValue={
+                                                    formattedStudentAsOnDate
+                                                }
                                             />
                                         </div>
                                     </div>
@@ -820,6 +856,22 @@ const Index: React.FC<Props> = (props: Props) => {
                                     />
                                     {state.item.document_values.map(
                                         (i, index) => {
+                                            const defaultIssueDate =
+                                                i.issue_date
+                                                    ? moment(
+                                                        i.issue_date,
+                                                    ).format('YYYY-MM-DD')
+                                                    : moment().format(
+                                                        'YYYY-MM-DD',
+                                                    );
+                                            const defaultExpireDate =
+                                                i.expire_date
+                                                    ? moment(
+                                                          i.expire_date,
+                                                      ).format('YYYY-MM-DD')
+                                                    : moment().format(
+                                                          'YYYY-MM-DD',
+                                                      );
                                             return (
                                                 <div
                                                     key={i}
@@ -858,8 +910,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 <input
                                                                     type="date"
                                                                     defaultValue={
-                                                                        i.issue_date
+                                                                        defaultIssueDate
                                                                     }
+                                                                    // defaultValue={moment(
+                                                                    //     i.issue_date,
+                                                                    // ).format(
+                                                                    //     'YYYY-MM-DD',
+                                                                    // )}
                                                                     name={`issue_date${index}`}
                                                                 />
                                                             </div>
@@ -872,8 +929,19 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 <input
                                                                     type="date"
                                                                     defaultValue={
-                                                                        i.expire_date
+                                                                        defaultExpireDate
                                                                     }
+                                                                    // defaultValue={
+                                                                    //     i.expire_date ?
+                                                                    //     (moment(
+                                                                    //         i.expire_date,
+                                                                    //     ).format(
+                                                                    //         'YYYY-MM-DD',
+                                                                    //     ) |
+                                                                    //         moment().format(
+                                                                    //             'YYYY-MM-DD',
+                                                                    //         ))
+                                                                    // }
                                                                     name={`expire_date${index}`}
                                                                 />
                                                             </div>
@@ -1305,6 +1373,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                     />
                                     {state.item.educational_backgrounds.map(
                                         (i, index) => {
+                                            const defaultYearOfLeaving =
+                                                i.year_of_leaving
+                                                    ? moment(
+                                                        i.year_of_leaving,
+                                                    ).format('YYYY-MM-DD')
+                                                    : moment().format(
+                                                        'YYYY-MM-DD',
+                                                    );
                                             return (
                                                 <div
                                                     key={i}
@@ -1335,11 +1411,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             <div className="form_elements">
                                                                 <input
                                                                     type="date"
-                                                                    defaultValue={moment(
-                                                                        i.year_of_leaving,
-                                                                    ).format(
-                                                                        'YYYY-DD-MM',
-                                                                    )}
+                                                                    defaultValue={
+                                                                        defaultYearOfLeaving
+                                                                    }
                                                                     name={`educational_background_year_of_leaving_${index}`}
                                                                 />
                                                             </div>

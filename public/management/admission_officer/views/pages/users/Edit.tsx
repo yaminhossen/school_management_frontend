@@ -23,6 +23,7 @@ const Edit: React.FC<Props> = (props: Props) => {
 
     const dispatch = useAppDispatch();
     const params = useParams();
+    console.log('id', params.id);
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
