@@ -732,3 +732,16 @@
 {"level":60,"time":1723621752774,"pid":6400,"hostname":"DESKTOP-9421701","file":"","time":"8/14/2024 1:49:12 PM","message":"target not found."}
 {"level":60,"time":1723623047389,"pid":10320,"hostname":"DESKTOP-9421701","file":"","time":"8/14/2024 2:10:47 PM","message":"target not found."}
 {"level":60,"time":1723623047404,"pid":10320,"hostname":"DESKTOP-9421701","file":"","time":"8/14/2024 2:10:47 PM","message":"target not found."}
+{"level":60,"time":1723624811389,"pid":7432,"hostname":"DESKTOP-9421701","file":"","time":"8/14/2024 2:40:11 PM","message":"target not found."}
+{"level":60,"time":1723624811396,"pid":7432,"hostname":"DESKTOP-9421701","file":"","time":"8/14/2024 2:40:11 PM","message":"target not found."}
+{"level":60,"time":1723626821456,"pid":7392,"hostname":"DESKTOP-9421701","file":"","time":"8/14/2024 3:13:41 PM","message":"target not found."}
+{"level":60,"time":1723626821467,"pid":7392,"hostname":"DESKTOP-9421701","file":"","time":"8/14/2024 3:13:41 PM","message":"target not found."}
+{"level":60,"time":1723627049159,"pid":7392,"hostname":"DESKTOP-9421701","file":"","time":"8/14/2024 3:17:29 PM","message":"target not found."}
+{"level":60,"time":1723627049194,"pid":7392,"hostname":"DESKTOP-9421701","file":"","time":"8/14/2024 3:17:29 PM","message":"target not found."}
+{"level":60,"time":1723629309838,"pid":16660,"hostname":"DESKTOP-9421701","file":"","time":"8/14/2024 3:55:09 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1723629335321,"pid":16660,"hostname":"DESKTOP-9421701","file":"","time":"8/14/2024 3:55:35 PM","message":"target not found."}
+{"level":60,"time":1723629335351,"pid":16660,"hostname":"DESKTOP-9421701","file":"","time":"8/14/2024 3:55:35 PM","message":"target not found."}
+{"level":60,"time":1723629882112,"pid":16660,"hostname":"DESKTOP-9421701","file":"","time":"8/14/2024 4:04:42 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1723629936699,"pid":16660,"hostname":"DESKTOP-9421701","file":"services\\full_details.ts:76:19)","time":"8/14/2024 4:05:36 PM","message":"data not found"}
+{"level":60,"time":1723629948874,"pid":16660,"hostname":"DESKTOP-9421701","file":"","time":"8/14/2024 4:05:48 PM","message":"target not found."}
+{"level":60,"time":1723629948915,"pid":16660,"hostname":"DESKTOP-9421701","file":"","time":"8/14/2024 4:05:48 PM","message":"target not found."}

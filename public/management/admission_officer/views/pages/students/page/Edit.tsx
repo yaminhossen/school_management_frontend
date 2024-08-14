@@ -89,6 +89,11 @@ const Index: React.FC<Props> = (props: Props) => {
                         className="form_6002 mx-auto pt-3"
                     >
                         <div className="student_form">
+                            <input
+                                type="hidden"
+                                name="id"
+                                defaultValue={params.id}
+                            />
                             <div className="full_width">
                                 <div className="form_section_heading">
                                     <h2 className="">Basic Information</h2>
