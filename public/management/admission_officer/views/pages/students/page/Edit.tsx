@@ -11,6 +11,7 @@ import { full_details } from '../config/store/async_actions/full_details';
 import { anyObject } from '../../../../common_types/object';
 import EducationalBackgound from './components/EducationalBackgound';
 import Guardians from './components/Guardians';
+import ContactNumber from './components/ContactNumber';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -23,6 +24,7 @@ const Index: React.FC<Props> = (props: Props) => {
         anyObject[]
     >([]);
     const [totalGuardians, setTotalGuardians] = useState<anyObject[]>([]);
+    const [totalNumbers, setTotalNumber] = useState<anyObject[]>([]);
     // const [totalParent, setTotalParent] = useState<anyObject[]>([]);
     // let date22 = moment().format('YYYY-DD-MM');
 
@@ -38,6 +40,10 @@ const Index: React.FC<Props> = (props: Props) => {
         formData.append(
             'updated_guardian_data',
             JSON.stringify(totalGuardians),
+        );
+        formData.append(
+            'updated_contact_number_data',
+            JSON.stringify(totalNumbers),
         );
         let response = await dispatch(update(formData) as any);
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
@@ -523,6 +529,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                     setEducationalBackground
                                 }
                             ></EducationalBackgound>
+                            <ContactNumber
+                                setTotalNumber={setTotalNumber}
+                            ></ContactNumber>
                         </div>
                         <div className="form-group student_submit form-horizontal">
                             <label></label>
