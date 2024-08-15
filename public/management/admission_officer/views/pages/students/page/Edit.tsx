@@ -10,18 +10,20 @@ import moment from 'moment/moment';
 import { full_details } from '../config/store/async_actions/full_details';
 import { anyObject } from '../../../../common_types/object';
 import EducationalBackgound from './components/EducationalBackgound';
+import Guardians from './components/Guardians';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
     const [totalDocument, setTotalDocument] = useState([1]);
-    const [totalParent, setTotalParent] = useState([1]);
     const [totalContactNumber, setTotalContactNumber] = useState([1]);
     const [totalLanguage, setTotalLanguage] = useState([1]);
     const [totalSkill, setTotalSkill] = useState([1]);
     const [educationalBackground, setEducationalBackground] = useState<
         anyObject[]
     >([]);
+    const [totalGuardians, setTotalGuardians] = useState<anyObject[]>([]);
+    // const [totalParent, setTotalParent] = useState<anyObject[]>([]);
     // let date22 = moment().format('YYYY-DD-MM');
 
     async function handle_submit(e) {
@@ -32,6 +34,10 @@ const Index: React.FC<Props> = (props: Props) => {
         formData.append(
             'updated_background_data',
             JSON.stringify(educationalBackground),
+        );
+        formData.append(
+            'updated_guardian_data',
+            JSON.stringify(totalGuardians),
         );
         let response = await dispatch(update(formData) as any);
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
@@ -509,6 +515,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                     )}
                                 </div>
                             </div> */}
+                            <Guardians
+                                setTotalGuardians={setTotalGuardians}
+                            ></Guardians>
                             <EducationalBackgound
                                 setEducationalBackground={
                                     setEducationalBackground
