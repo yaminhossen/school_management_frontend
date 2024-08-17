@@ -69,16 +69,15 @@ const Index: React.FC<Props> = (props: Props) => {
         : moment().format('YYYY-MM-DD');
 
     // // for date of birth
-    // const studentExpire_date = state.item?.student_info?.student_expire_date;
-    // const formattedStudentExpireDate = studentExpire_date
-    //     ? moment(studentExpire_date).format('YYYY-MM-DD')
-    //     : moment().format('YYYY-MM-DD');
-
-    // // for date of birth
     const studentAson_date = state.item?.student_info?.as_on_date;
     const formattedStudentAsOnDate = studentAson_date
         ? moment(studentAson_date).format('YYYY-MM-DD')
         : moment().format('YYYY-MM-DD');
+    // // for date of birth
+    // const studentExpire_date = state.item?.student_info?.student_expire_date;
+    // const formattedStudentExpireDate = studentExpire_date
+    //     ? moment(studentExpire_date).format('YYYY-MM-DD')
+    //     : moment().format('YYYY-MM-DD');
 
     return (
         <div className="admin_dashboard">

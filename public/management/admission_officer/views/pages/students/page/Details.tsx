@@ -114,7 +114,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 <tr>
                                                     <td></td>
                                                     <td>{i.id}</td>
-                                                    <td>{i.student.name}</td>
+                                                    <td>{i.student?.name}</td>
                                                     <td>{i.student_id}</td>
                                                     <td>{i.role_no}</td>
                                                     <td>{i.s_class}</td>

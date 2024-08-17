@@ -12,14 +12,16 @@ import { anyObject } from '../../../../common_types/object';
 import EducationalBackgound from './components/EducationalBackgound';
 import Guardians from './components/Guardians';
 import ContactNumber from './components/ContactNumber';
+import Languages from './components/Languages';
+import Skill from './components/Skill';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
     const [totalDocument, setTotalDocument] = useState([1]);
     const [totalContactNumber, setTotalContactNumber] = useState([1]);
-    const [totalLanguage, setTotalLanguage] = useState([1]);
-    const [totalSkill, setTotalSkill] = useState([1]);
+    const [totalLanguage, setTotalLanguage] = useState<anyObject[]>([]);
+    const [totalSkill, setTotalSkill] = useState<anyObject[]>([]);
     const [educationalBackground, setEducationalBackground] = useState<
         anyObject[]
     >([]);
@@ -45,6 +47,7 @@ const Index: React.FC<Props> = (props: Props) => {
             'updated_contact_number_data',
             JSON.stringify(totalNumbers),
         );
+        formData.append('updated_language_data', JSON.stringify(totalLanguage));
         let response = await dispatch(update(formData) as any);
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
             // e.target.reset();
@@ -69,6 +72,24 @@ const Index: React.FC<Props> = (props: Props) => {
     const admissionDate = state.item?.student_info?.admission_date;
     const formattedAdmissionDate = admissionDate
         ? moment(admissionDate).format('YYYY-MM-DD')
+        : moment().format('YYYY-MM-DD');
+
+    // for date of birth
+    const student_date = state.item?.student_info?.date_of_birth;
+    const formattedStudentDate = student_date
+        ? moment(student_date).format('YYYY-MM-DD')
+        : moment().format('YYYY-MM-DD');
+
+    // // for date of birth
+    const studentAson_date = state.item?.student_info?.as_on_date;
+    const formattedStudentAsOnDate = studentAson_date
+        ? moment(studentAson_date).format('YYYY-MM-DD')
+        : moment().format('YYYY-MM-DD');
+
+    // for date of birth
+    const studentExpire_date = state.item?.student_info?.student_expire_date;
+    const formattedStudentExpireDate = studentExpire_date
+        ? moment(studentExpire_date).format('YYYY-MM-DD')
         : moment().format('YYYY-MM-DD');
 
     return (
@@ -108,7 +129,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 name="gender"
                                                 defaultValue={
                                                     state.item.student_info
-                                                        .gender
+                                                        ?.gender
                                                 }
                                                 id=""
                                             >
@@ -253,7 +274,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 name="branch_id"
                                                 defaultValue={
                                                     state.item.student_info
-                                                        .branch_id
+                                                        ?.branch_id
                                                 }
                                                 id=""
                                             >
@@ -279,7 +300,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 name="admission_no"
                                                 defaultValue={
                                                     state.item.student_info
-                                                        .addmission_no
+                                                        ?.addmission_no
                                                 }
                                             />
                                         </div>
@@ -293,7 +314,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 name="role_no"
                                                 defaultValue={
                                                     state.item.student_info
-                                                        .role_no
+                                                        ?.role_no
                                                 }
                                             />
                                         </div>
@@ -321,7 +342,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 name="class"
                                                 defaultValue={
                                                     state.item.student_info
-                                                        .s_class
+                                                        ?.s_class
                                                 }
                                                 id=""
                                             >
@@ -347,7 +368,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 name="shift"
                                                 defaultValue={
                                                     state.item.student_info
-                                                        .shift
+                                                        ?.shift
                                                 }
                                                 id=""
                                             >
@@ -373,7 +394,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 name="section"
                                                 defaultValue={
                                                     state.item.student_info
-                                                        .section
+                                                        ?.section
                                                 }
                                                 id=""
                                             >
@@ -389,138 +410,414 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                             </div>
-
-                            {/* <div className="full_width">
+                            <div className="full_width">
                                 <div className="form_section_heading">
-                                    <h4>Educational Background</h4>
+                                    <h4>Information</h4>
                                 </div>
-                                <div className="multi_inputs">
-                                    <div className="pb-4 px-0">
-                                        <span
-                                            className="btn btn-sm  btn-outline-info"
-                                            onClick={addNewBackground}
-                                        >
-                                            Add new
-                                        </span>
+                                <div className="d-flex">
+                                    <div className="form-group form-vertical">
+                                        <label>Present Address</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="present address"
+                                                name="present_address"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.present_address
+                                                }
+                                            />
+                                        </div>
                                     </div>
-
-                                    <input
-                                        type="hidden"
-                                        name="educational_background_count"
-                                        value={
-                                            updateEducationalBackground?.length
-                                        }
-                                    />
-                                    {updateEducationalBackground?.map(
-                                        (i, index) => {
-                                            const defaultYearOfLeaving =
-                                                i.year_of_leaving
-                                                    ? moment(
-                                                        i.year_of_leaving,
-                                                    ).format('YYYY-MM-DD')
-                                                    : moment().format(
-                                                        'YYYY-MM-DD',
-                                                    );
-                                            return (
-                                                <div
-                                                    key={i}
-                                                    className="multi_input_group"
-                                                >
-                                                    <div>{index + 1}</div>
-                                                    <div className="d-flex">
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Previous
-                                                                institute
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <input
-                                                                    type="text"
-                                                                    placeholder="previous institute"
-                                                                    name={`educational_background_previous_institute_${index}`}
-                                                                    defaultValue={
-                                                                        i.previous_institute
-                                                                    }
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Year of leaving
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <input
-                                                                    type="date"
-                                                                    defaultValue={
-                                                                        defaultYearOfLeaving
-                                                                    }
-                                                                    name={`educational_background_year_of_leaving_${index}`}
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Result
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <input
-                                                                    type="text"
-                                                                    placeholder="result"
-                                                                    name={`educational_background_result_${index}`}
-                                                                    defaultValue={
-                                                                        i.result
-                                                                    }
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Transfer
-                                                                certificate
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <input
-                                                                    type="file"
-                                                                    accept="image/*"
-                                                                    placeholder="transfer cirtificate"
-                                                                    name={`educational_background_transfer_cirtificate_${index}`}
-                                                                />
-                                                                <img
-                                                                    src={
-                                                                        i.transfer_cirtificate
-                                                                    }
-                                                                    style={{
-                                                                        width: '100px',
-                                                                        height: '50px',
-                                                                    }}
-                                                                    alt=""
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    {updateEducationalBackground.length >
-                                                        1 && (
-                                                        <div>
-                                                            <span
-                                                                onClick={() =>
-                                                                    remove_from_state(
-                                                                        index,
-                                                                        updateEducationalBackground,
-                                                                        setUpdateEducationalBackground,
-                                                                    )
-                                                                }
-                                                                className="btn btn-danger"
-                                                            >
-                                                                remove
-                                                            </span>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            );
-                                        },
-                                    )}
+                                    <div className="form-group form-vertical">
+                                        <label>Permanent Address</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="permanent address"
+                                                name="permanent_address"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.permanent_address
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Date of birth</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="date"
+                                                name="date_of_birth"
+                                                // defaultValue={moment(
+                                                //     state.item.student_info
+                                                //         .date_of_birth,
+                                                // ).format('YYYY-MM-DD')}
+                                                defaultValue={
+                                                    formattedStudentDate
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Religion</label>
+                                        <div className="form_elements">
+                                            <select
+                                                name="religion"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.religion
+                                                }
+                                                id=""
+                                            >
+                                                {/* <option value="vv">vv</option> */}
+                                                <option value="islam">
+                                                    islam
+                                                </option>
+                                                <option value="hindu">
+                                                    hindu
+                                                </option>
+                                                <option value="kristian">
+                                                    kristian
+                                                </option>
+                                                <option value="budda">
+                                                    budda
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Nationality</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="nationality"
+                                                name="nationality"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.nationality
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Division</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="division"
+                                                name="division"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.division
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>City</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="City"
+                                                name="city"
+                                                defaultValue={
+                                                    state.item.student_info.city
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Post code</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="post code"
+                                                name="post_code"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.post_code
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Country</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="country"
+                                                name="country"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.country
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Medical condition</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="medical condition"
+                                                name="medical_condition"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.medical_condition
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Current medcation</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="current medcation"
+                                                name="current_medications"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.current_medications
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Telegram name</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="telegram name"
+                                                name="telegram_name"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.telegram_name
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Telegram id</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="telegram id"
+                                                name="telegram_id"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.telegram_id
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Blood group</label>
+                                        <div className="form_elements">
+                                            <select
+                                                name="blood_group"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.blood_group
+                                                }
+                                                id=""
+                                            >
+                                                {/* <option value="c">c</option> */}
+                                                <option value="A+">A+</option>
+                                                <option value="B+">B+</option>
+                                                <option value="A-">A-</option>
+                                                <option value="AB-">AB-</option>
+                                                <option value="AB+">AB+</option>
+                                                <option value="B-">B-</option>
+                                                <option value="O-">O-</option>
+                                                <option value="O+">O+</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Student expire date</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="date"
+                                                // defaultValue={'2024-10-10'}
+                                                name="student_expire_date"
+                                                // defaultValue={moment(
+                                                //     state.item.student_info
+                                                //         ?.student_expire_date,
+                                                // ).format('YYYY-MM-DD')}
+                                                defaultValue={
+                                                    formattedStudentExpireDate
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Height</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="number"
+                                                placeholder="height"
+                                                name="height"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.height
+                                                }
+                                                step={'any'}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Weight</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="number"
+                                                placeholder="weight"
+                                                name="weight"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.weight
+                                                }
+                                                step={'any'}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>As on date</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="date"
+                                                // defaultValue={'2024-10-10'}
+                                                name="as_on_date"
+                                                // defaultValue={moment(
+                                                //     state.item.student_info
+                                                //         .as_on_date,
+                                                // ).format('YYYY-MM-DD')}
+                                                defaultValue={
+                                                    formattedStudentAsOnDate
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Family information</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="family information"
+                                                name="family_information"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.family_information
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Shibling information</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="shibling information"
+                                                name="shibling_information"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.shibling_information
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Living house type</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="living house type"
+                                                name="living_house_type"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.living_house_type
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Student house type</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="Student house type"
+                                                name="student_house_type"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.student_house
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Birth certificate</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="file"
+                                                accept="image/*"
+                                                name="birth_certificate"
+                                            />
+                                            <img
+                                                src={
+                                                    state.item.student_info
+                                                        ?.birth_certificate
+                                                }
+                                                style={{ width: '100px' }}
+                                                alt=""
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>NID</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="file"
+                                                accept="image/*"
+                                                name="national_id"
+                                            />
+                                            <img
+                                                src={
+                                                    state.item.student_info
+                                                        ?.national_id
+                                                }
+                                                style={{ width: '100px' }}
+                                                alt=""
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Cast</label>
+                                        <div className="form_elements">
+                                            <select
+                                                name="cast"
+                                                defaultValue={
+                                                    state.item.student_info.cast
+                                                }
+                                                id=""
+                                            >
+                                                <option value="Khan">
+                                                    Khan
+                                                </option>
+                                                <option value="chowdhuri">
+                                                    Chowdhuri
+                                                </option>
+                                                <option value="Patowari">
+                                                    Patowari
+                                                </option>
+                                                <option value="Shikdar">
+                                                    Shikdar
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div> */}
+                            </div>
+
                             <Guardians
                                 setTotalGuardians={setTotalGuardians}
                             ></Guardians>
@@ -532,6 +829,10 @@ const Index: React.FC<Props> = (props: Props) => {
                             <ContactNumber
                                 setTotalNumber={setTotalNumber}
                             ></ContactNumber>
+                            <Languages
+                                setTotalLanguage={setTotalLanguage}
+                            ></Languages>
+                            <Skill setTotalSkill={setTotalSkill}></Skill>
                         </div>
                         <div className="form-group student_submit form-horizontal">
                             <label></label>

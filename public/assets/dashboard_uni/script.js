@@ -1,5 +1,5 @@
 'use strict';
-let $ = window.jQuery;
+var $ = window.jQuery;
 $(function () {
     $('.mobile-toggle').click(function () {
         $('.nav-menus').toggleClass('open');

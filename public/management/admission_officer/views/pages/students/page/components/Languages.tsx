@@ -6,52 +6,51 @@ import { initialState } from '../../config/store/inital_state';
 import setup from '../../config/setup';
 export interface Props {
     // state: anyObject;
-    setTotalNumber: Function;
+    setTotalLanguage: Function;
 }
 
-const ContactNumber: React.FC<Props> = (props: Props) => {
+const Languages: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
-    const [updateNumber, setUpdateNumber] = useState<anyObject[]>([]);
+    const [updateLanguage, setUpdateLanguage] = useState<anyObject[]>([]);
 
     function addNewBackground() {
-        let temp = [...updateNumber];
+        let temp = [...updateLanguage];
         temp.push({
             id: null,
             user_student_id: state.item.id,
-            owner: '',
-            contact_number: '',
+            language_title: '',
+            profeciency: '',
             branch_id: '',
         });
-        setUpdateNumber(temp);
+        setUpdateLanguage(temp);
     }
 
     useEffect(() => {
-        setUpdateNumber(state.item?.student_numbers);
-        props.setTotalNumber(state.item?.student_numbers);
-        // console.log('updatenumber', updateNumber);
+        setUpdateLanguage(state.item?.languages);
+        props.setTotalLanguage(state.item?.languages);
     }, [state]);
 
     function remove_from_state(index, state, setState) {
         let t = [...state];
         t.splice(index, 1);
         setState(t);
-        props.setTotalNumber(t);
+        props.setTotalLanguage(t);
     }
 
     function setData(index: number, name: string, value: string) {
-        let t = JSON.parse(JSON.stringify(updateNumber));
+        let t = JSON.parse(JSON.stringify(updateLanguage));
         t[index][name] = value;
         console.log({ t, index, name, value, data: t[index] });
-        setUpdateNumber(t);
-        props.setTotalNumber(t);
+        setUpdateLanguage(t);
+        props.setTotalLanguage(t);
     }
     return (
         <>
             <div className="full_width">
                 <div className="form_section_heading">
-                    <h4>Contact ContactNumber</h4>
+                    <h4>Languages</h4>
                 </div>
                 <div className="multi_inputs">
                     <div className="pb-4 px-0">
@@ -65,27 +64,27 @@ const ContactNumber: React.FC<Props> = (props: Props) => {
 
                     <input
                         type="hidden"
-                        name="contact_number_count"
-                        value={updateNumber?.length}
+                        name="student_language_count"
+                        value={updateLanguage?.length}
                     />
-                    {updateNumber?.map((i, index) => {
+                    {updateLanguage?.map((i, index) => {
                         return (
                             <div key={index} className="multi_input_group">
                                 <div>{index + 1}</div>
                                 <div className="d-flex">
                                     <div className="form-group form-vertical">
-                                        <label>Contact number</label>
+                                        <label>Language title</label>
                                         <div className="form_elements">
                                             <input
                                                 type="text"
-                                                placeholder="contact number"
-                                                name={`contact_number${index}`}
-                                                // id=""
-                                                defaultValue={i.contact_number}
+                                                placeholder="language title"
+                                                name={`language_title${index}`}
+                                                id=""
+                                                defaultValue={i.language_title}
                                                 onChange={(e) =>
                                                     setData(
                                                         index,
-                                                        'contact_number',
+                                                        'language_title',
                                                         `${e.target.value}`,
                                                     )
                                                 }
@@ -93,44 +92,40 @@ const ContactNumber: React.FC<Props> = (props: Props) => {
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
-                                        <label>Owner</label>
+                                        <label>Profeciency</label>
                                         <div className="form_elements">
                                             <select
-                                                name={`number_owner${index}`}
+                                                name={`language_profeciency${index}`}
                                                 id=""
-                                                defaultValue={i.owner}
+                                                defaultValue={i.profeciency}
                                                 onChange={(e) =>
                                                     setData(
                                                         index,
-                                                        'owner',
+                                                        'profeciency',
                                                         `${e.target.value}`,
                                                     )
                                                 }
                                             >
-                                                <option value="personal">
-                                                    personal
+                                                <option value="fluent">
+                                                    fluent
                                                 </option>
-                                                <option value="home">
-                                                    home
+                                                <option value="native">
+                                                    native
                                                 </option>
-                                                <option value="friend">
-                                                    friend
-                                                </option>
-                                                <option value="relative">
-                                                    relative
-                                                </option>
+                                                <option value="mid">mid</option>
+                                                <option value="low">low</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-                                {updateNumber.length > 1 && (
+                                {updateLanguage.length > 1 && (
                                     <div>
                                         <span
                                             onClick={() =>
                                                 remove_from_state(
                                                     index,
-                                                    updateNumber,
-                                                    setUpdateNumber,
+                                                    updateLanguage,
+                                                    setUpdateLanguage,
                                                 )
                                             }
                                             className="btn btn-danger"
@@ -148,4 +143,4 @@ const ContactNumber: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default ContactNumber;
+export default Languages;

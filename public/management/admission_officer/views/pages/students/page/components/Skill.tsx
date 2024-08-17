@@ -6,52 +6,52 @@ import { initialState } from '../../config/store/inital_state';
 import setup from '../../config/setup';
 export interface Props {
     // state: anyObject;
-    setTotalNumber: Function;
+    setTotalSkill: Function;
 }
 
-const ContactNumber: React.FC<Props> = (props: Props) => {
+const Skill: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
-    const [updateNumber, setUpdateNumber] = useState<anyObject[]>([]);
+    const [updateSkill, setUpdateSkill] = useState<anyObject[]>([]);
 
     function addNewBackground() {
-        let temp = [...updateNumber];
+        let temp = [...updateSkill];
         temp.push({
             id: null,
             user_student_id: state.item.id,
-            owner: '',
-            contact_number: '',
+            title: '',
+            level: '',
             branch_id: '',
         });
-        setUpdateNumber(temp);
+        setUpdateSkill(temp);
     }
 
     useEffect(() => {
-        setUpdateNumber(state.item?.student_numbers);
-        props.setTotalNumber(state.item?.student_numbers);
-        // console.log('updatenumber', updateNumber);
+        setUpdateSkill(state.item?.skills);
+        props.setTotalSkill(state.item?.skills);
+        // console.log('updatenumber', updateSkill);
     }, [state]);
 
     function remove_from_state(index, state, setState) {
         let t = [...state];
         t.splice(index, 1);
         setState(t);
-        props.setTotalNumber(t);
+        props.setTotalSkill(t);
     }
 
     function setData(index: number, name: string, value: string) {
-        let t = JSON.parse(JSON.stringify(updateNumber));
+        let t = JSON.parse(JSON.stringify(updateSkill));
         t[index][name] = value;
         console.log({ t, index, name, value, data: t[index] });
-        setUpdateNumber(t);
-        props.setTotalNumber(t);
+        setUpdateSkill(t);
+        props.setTotalSkill(t);
     }
     return (
         <>
             <div className="full_width">
                 <div className="form_section_heading">
-                    <h4>Contact ContactNumber</h4>
+                    <h4>Skill</h4>
                 </div>
                 <div className="multi_inputs">
                     <div className="pb-4 px-0">
@@ -65,27 +65,27 @@ const ContactNumber: React.FC<Props> = (props: Props) => {
 
                     <input
                         type="hidden"
-                        name="contact_number_count"
-                        value={updateNumber?.length}
+                        name="student_skills_count"
+                        value={updateSkill?.length}
                     />
-                    {updateNumber?.map((i, index) => {
+                    {updateSkill?.map((i, index) => {
                         return (
                             <div key={index} className="multi_input_group">
                                 <div>{index + 1}</div>
                                 <div className="d-flex">
                                     <div className="form-group form-vertical">
-                                        <label>Contact number</label>
+                                        <label>Skills title</label>
                                         <div className="form_elements">
                                             <input
                                                 type="text"
-                                                placeholder="contact number"
-                                                name={`contact_number${index}`}
-                                                // id=""
-                                                defaultValue={i.contact_number}
+                                                placeholder="skills title"
+                                                name={`skills_title${index}`}
+                                                id=""
+                                                defaultValue={i.title}
                                                 onChange={(e) =>
                                                     setData(
                                                         index,
-                                                        'contact_number',
+                                                        'title',
                                                         `${e.target.value}`,
                                                     )
                                                 }
@@ -93,44 +93,37 @@ const ContactNumber: React.FC<Props> = (props: Props) => {
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
-                                        <label>Owner</label>
+                                        <label>Level</label>
                                         <div className="form_elements">
                                             <select
-                                                name={`number_owner${index}`}
+                                                name={`skills_level${index}`}
                                                 id=""
-                                                defaultValue={i.owner}
+                                                defaultValue={i.level}
                                                 onChange={(e) =>
                                                     setData(
                                                         index,
-                                                        'owner',
+                                                        'level',
                                                         `${e.target.value}`,
                                                     )
                                                 }
                                             >
-                                                <option value="personal">
-                                                    personal
+                                                <option value="high">
+                                                    high
                                                 </option>
-                                                <option value="home">
-                                                    home
-                                                </option>
-                                                <option value="friend">
-                                                    friend
-                                                </option>
-                                                <option value="relative">
-                                                    relative
-                                                </option>
+                                                <option value="mid">mid</option>
+                                                <option value="low">low</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-                                {updateNumber.length > 1 && (
+                                {updateSkill.length > 1 && (
                                     <div>
                                         <span
                                             onClick={() =>
                                                 remove_from_state(
                                                     index,
-                                                    updateNumber,
-                                                    setUpdateNumber,
+                                                    updateSkill,
+                                                    setUpdateSkill,
                                                 )
                                             }
                                             className="btn btn-danger"
@@ -148,4 +141,4 @@ const ContactNumber: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default ContactNumber;
+export default Skill;
