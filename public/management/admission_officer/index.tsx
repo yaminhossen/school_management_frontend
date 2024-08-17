@@ -30,7 +30,9 @@ axios.interceptors.request.use(
         [...has_errors].forEach((e) => e.classList.remove('has_error'));
 
         // eslint-disable-next-line no-undef
-        (window as any).$('.loader-wrapper').fadeIn('slow', function () {});
+        (window as any)
+            .jQuery('.loader-wrapper')
+            .fadeIn('slow', function () {});
         return config;
     },
     function (error) {
@@ -40,13 +42,18 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
     function (response) {
-        (window as any).$('.loader-wrapper').fadeOut('slow', function () {});
+        (window as any)
+            .jQuery('.loader-wrapper')
+            .fadeOut('slow', function () {});
         return response;
     },
     function (error) {
-        (window as any).$('.loader-wrapper').fadeOut('slow', function () {});
+        (window as any)
+            .jQuery('.loader-wrapper')
+            .fadeOut('slow', function () {});
+
         if (error.response.data.status === 422) {
-            let errors = error.response.data.data;
+            let errors = error.response?.data?.data;
             errors.forEach((error) => {
                 let el = document.querySelector(`[name="${error.path}"]`);
                 if (el) {
@@ -61,11 +68,9 @@ axios.interceptors.response.use(
                     );
                 }
             });
-
             (window as anyObject).toaster(
                 `${error.response.status} - ${error.response.statusText}`,
             );
-
             let error_el = document.querySelector('.has_error');
             if (error_el) {
                 setTimeout(() => {

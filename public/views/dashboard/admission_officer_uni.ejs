@@ -34,7 +34,11 @@
     <script src="/assets/dashboard_uni/jquery-3.2.1.min.js"></script>
     <script src="/assets/dashboard_uni/bootstrap.bundle.min.js"></script>
 
-    <script src="/management_build/admission_officer/admission_officer.js" defer></script>
+    
+    <script>
+        window.$ = $ ;
+        window.jQuery = jQuery ;
+    </script>
 </head>
 
 <body main-theme-layout="main-theme-layout-4">
@@ -85,7 +89,8 @@
             })
             return result.isConfirmed ? true : false;
         }
-    </script>
+        </script>
+    <script src="/management_build/admission_officer/admission_officer.js" defer></script>
     <script defer src="/assets/dashboard_uni/sidebar-menu.js"></script>
     <script defer src="/assets/dashboard_uni/script.js"></script>
 

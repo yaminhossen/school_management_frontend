@@ -5,6 +5,7 @@ import { initialState } from './inital_state';
 import { all } from './async_actions/all';
 import { details } from './async_actions/details';
 import { full_details } from './async_actions/full_details.ts';
+import { class_details } from './async_actions/class_details.ts';
 import { store } from './async_actions/store';
 import { update } from './async_actions/update';
 import { soft_delete } from './async_actions/soft_delete';
@@ -27,6 +28,12 @@ const storeSlice = createSlice({
             })
             .addCase(
                 full_details.fulfilled,
+                (state, { type, payload, meta }) => {
+                    // console.log(type, payload, meta);
+                },
+            )
+            .addCase(
+                class_details.fulfilled,
                 (state, { type, payload, meta }) => {
                     // console.log(type, payload, meta);
                 },

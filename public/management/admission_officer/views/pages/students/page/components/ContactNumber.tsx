@@ -98,7 +98,7 @@ const ContactNumber: React.FC<Props> = (props: Props) => {
                                             <input
                                                 type="text"
                                                 placeholder="contact number"
-                                                name={`contact_number${index}`}
+                                                // name={`contact_number${index}`}
                                                 // id=""
                                                 defaultValue={i.contact_number}
                                                 // onChange={(e) =>

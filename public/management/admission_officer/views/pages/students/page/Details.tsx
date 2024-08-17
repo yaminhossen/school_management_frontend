@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import setup from '../config/setup.ts';
 import { RootState, useAppDispatch } from '../../../../store';
-import { details } from '../config/store/async_actions/details';
+import { class_details } from '../config/store/async_actions/class_details.ts';
 import { initialState } from '../config/store/inital_state';
 import { Link, useParams } from 'react-router-dom';
 import storeSlice from '../config/store';
@@ -23,10 +23,10 @@ const Details: React.FC<Props> = (props: Props) => {
     const params = useParams();
     console.log('id', params.id);
 
-    // useEffect(() => {
-    //     dispatch(storeSlice.actions.set_item({}));
-    //     dispatch(details({ id: params.id }) as any);
-    // }, []);
+    useEffect(() => {
+        dispatch(storeSlice.actions.set_item({}));
+        dispatch(class_details({ id: params.id }) as any);
+    }, []);
     console.log('state');
 
     const datas: data[] = [

@@ -27,7 +27,6 @@ const Details: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(details({ id: params.id }) as any);
     }, []);
-    console.log('state');
 
     const datas: data[] = [
         {
