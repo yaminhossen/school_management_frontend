@@ -56,9 +56,9 @@ async function store(
     const saltRounds = 10;
     let password = await bcrypt.hash(body.password, saltRounds);
 
-    let image_path = 'avatar.png';
-    let birth_certi_image = 'avatar.png';
-    let national_id_image = 'avatar.png';
+    let image_path = '';
+    let birth_certi_image = '';
+    let national_id_image = '';
     let aheight;
     let aweight;
 
@@ -92,9 +92,13 @@ async function store(
             national_id_image,
         );
     }
-    console.log('id image1', body);
+    // console.log('id image1', body);
     console.log('id image2', body['national_id']);
     console.log('id image3', body['national_id']?.ext);
+    console.log('id image22', body['birth_certificate']);
+    console.log('id image33', body['birth_certificate']?.ext);
+    console.log('id image222', national_id_image);
+    console.log('id image333', birth_certi_image);
 
     if (body['birth_certificate']?.ext) {
         birth_certi_image =
@@ -107,6 +111,11 @@ async function store(
         );
     }
 
+    if (birth_certi_image) {
+        console.log('got thid image');
+    } else {
+        console.log('nothing');
+    }
     let inputs: InferCreationAttributes<typeof data> = {
         parent_id: body.parent_id,
         name: body.name,
@@ -254,6 +263,11 @@ async function store(
     try {
         let dataModel = await models.UserStudentsModel.findByPk(body.id);
         if (dataModel) {
+            if (image_path) {
+                inputs.image = image_path;
+            } else {
+                inputs.image = dataModel.image;
+            }
             (await dataModel.update(inputs)).save();
             let dataInfoModel =
                 await models.UserStudentInformationsModel.findOne({
@@ -263,6 +277,17 @@ async function store(
                 });
             if (dataInfoModel) {
                 usi_inputs.user_student_id = body.id || 1;
+                if (national_id_image) {
+                    usi_inputs.national_id = national_id_image;
+                } else {
+                    usi_inputs.national_id = dataInfoModel.national_id;
+                }
+                if (birth_certi_image) {
+                    usi_inputs.birth_certificate = birth_certi_image;
+                } else {
+                    usi_inputs.birth_certificate =
+                        dataInfoModel.birth_certificate;
+                }
                 (await dataInfoModel.update(usi_inputs)).save();
             }
 
