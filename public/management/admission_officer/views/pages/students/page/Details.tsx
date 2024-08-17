@@ -27,7 +27,7 @@ const Details: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(class_details({ id: params.id }) as any);
     }, []);
-    console.log('state');
+    console.log('state', state.item);
 
     const datas: data[] = [
         {
@@ -83,6 +83,7 @@ const Details: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
+            {/* {Object.keys(state.item)?.length && ( */}
             <div className="content_body">
                 <Link
                     to="/add-new"
@@ -106,41 +107,45 @@ const Details: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.name}</td>
-                                            <td>{i.student_id}</td>
-                                            <td>{i.roll}</td>
-                                            <td>{i.class}</td>
-                                            <td>
-                                                <Link
-                                                    // to="/students/single/student/"
-                                                    to={`/students/single/student/${i.id}`}
-                                                    className="btn btn-sm  btn-outline-info"
-                                                    type="submit"
-                                                >
-                                                    Details
-                                                </Link>
-                                                <Link
-                                                    // to="/students/update"
-                                                    to={`/students/edit/${i.id}`}
-                                                    className="btn btn-sm ml-2  btn-outline-info"
-                                                    type="submit"
-                                                >
-                                                    Edit
-                                                </Link>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
+                                {Object.keys(state.item)?.length &&
+                                    state.item?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <tr>
+                                                    <td></td>
+                                                    <td>{i.id}</td>
+                                                    <td>{i.student.name}</td>
+                                                    <td>{i.student_id}</td>
+                                                    <td>{i.role_no}</td>
+                                                    <td>{i.s_class}</td>
+                                                    <td>
+                                                        <Link
+                                                            // to="/students/single/student/"
+                                                            to={`/students/single/student/${i.id}`}
+                                                            className="btn btn-sm  btn-outline-info"
+                                                            type="submit"
+                                                        >
+                                                            Details
+                                                        </Link>
+                                                        <Link
+                                                            // to="/students/update"
+                                                            to={`/students/edit/${i.id}`}
+                                                            className="btn btn-sm ml-2  btn-outline-info"
+                                                            type="submit"
+                                                        >
+                                                            Edit
+                                                        </Link>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+            {/* )} */}
         </div>
     );
 };

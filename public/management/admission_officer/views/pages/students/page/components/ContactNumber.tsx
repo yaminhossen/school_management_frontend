@@ -98,16 +98,16 @@ const ContactNumber: React.FC<Props> = (props: Props) => {
                                             <input
                                                 type="text"
                                                 placeholder="contact number"
-                                                // name={`contact_number${index}`}
+                                                name={`contact_number${index}`}
                                                 // id=""
                                                 defaultValue={i.contact_number}
-                                                // onChange={(e) =>
-                                                //     setData(
-                                                //         index,
-                                                //         'contact_number',
-                                                //         `${e.target.value}`,
-                                                //     )
-                                                // }
+                                                onChange={(e) =>
+                                                    setData(
+                                                        index,
+                                                        'contact_number',
+                                                        `${e.target.value}`,
+                                                    )
+                                                }
                                             />
                                         </div>
                                     </div>
@@ -118,13 +118,13 @@ const ContactNumber: React.FC<Props> = (props: Props) => {
                                                 name={`number_owner${index}`}
                                                 id=""
                                                 defaultValue={i.owner}
-                                                // onChange={(e) =>
-                                                //     setData(
-                                                //         index,
-                                                //         'owner',
-                                                //         `${e.target.value}`,
-                                                //     )
-                                                // }
+                                                onChange={(e) =>
+                                                    setData(
+                                                        index,
+                                                        'owner',
+                                                        `${e.target.value}`,
+                                                    )
+                                                }
                                             >
                                                 <option value="personal">
                                                     personal
