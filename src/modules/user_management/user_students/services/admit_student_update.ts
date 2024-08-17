@@ -92,6 +92,9 @@ async function store(
             national_id_image,
         );
     }
+    console.log('id image1', body);
+    console.log('id image2', body['national_id']);
+    console.log('id image3', body['national_id']?.ext);
 
     if (body['birth_certificate']?.ext) {
         birth_certi_image =
@@ -161,10 +164,10 @@ async function store(
         });
     }
 
-    console.log(updated_background_data);
+    // console.log(updated_background_data);
     // console.log('updated date g', updated_guardian_data);
-    console.log('student date g', student_guardians);
-    console.log(eductional_bc);
+    // console.log('student date g', student_guardians);
+    // console.log(eductional_bc);
 
     let student_document: anyObject[] = [];
     for (let i = 0; i < parseInt(body.total_docement_count); i++) {
@@ -252,8 +255,17 @@ async function store(
         let dataModel = await models.UserStudentsModel.findByPk(body.id);
         if (dataModel) {
             (await dataModel.update(inputs)).save();
-            usi_inputs.user_student_id = body.id || 1;
-            (await usi_model.update(usi_inputs)).save();
+            let dataInfoModel =
+                await models.UserStudentInformationsModel.findOne({
+                    where: {
+                        user_student_id: body.id,
+                    },
+                });
+            if (dataInfoModel) {
+                usi_inputs.user_student_id = body.id || 1;
+                (await dataInfoModel.update(usi_inputs)).save();
+            }
+
             if (eductional_bc) {
                 await models.UserStudentEducationalBackgroundsModel.destroy({
                     where: {
