@@ -1,3 +1,4 @@
+import { FindAndCountOptions, Model } from 'sequelize';
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import response from '../helpers/response';
@@ -48,12 +49,11 @@ async function login(
         let data: anyObject | null = {};
         let token: anyObject = {};
         if (body) {
-            data = await models.UserAdminsModel.findOne({
+            data = await models.UserStaffsModel.findOne({
                 where: {
                     email: body.email,
                 },
             });
-            console.log('body', data);
 
             if (data) {
                 let check_pass = await bcrypt.compare(
@@ -96,7 +96,7 @@ async function login(
                 ]);
             }
         }
-        return response(201, 'authentication success and okkk', { token });
+        return response(201, 'authentication success', { token });
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.params);
         if (error instanceof custom_error) {

@@ -11,8 +11,17 @@ module.exports = async function (fastify: FastifyInstance) {
             return reply.redirect('/super-admin');
         })
         .get('/login', async (_req: FastifyRequest, reply: FastifyReply) => {
-            return reply.view('website/pages/login.ejs');
+            // return reply.view('website/pages/login.ejs');
+            return reply.view('auth/super_admin_login.ejs');
         })
+
+        .get(
+            '/admission-officer/login',
+            async (_req: FastifyRequest, reply: FastifyReply) => {
+                // return reply.view('website/pages/login.ejs');
+                return reply.view('auth/admission_officer_login.ejs');
+            },
+        )
 
         .get(
             '/super-admin',

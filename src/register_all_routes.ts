@@ -3,7 +3,7 @@ const AutoLoad = require('@fastify/autoload');
 import path from 'path';
 let appDir: string = path.resolve(path.dirname(__dirname));
 
-let routes: string[] = [
+export let active_routes: string[] = [
     'src/modules/academic_calendar_management/academic_calendars/routes.ts',
     'src/modules/academic_calendar_management/academic_calendar_event_types/routes.ts',
 

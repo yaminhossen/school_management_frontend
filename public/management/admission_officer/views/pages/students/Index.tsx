@@ -17,6 +17,7 @@ import TableRowAction from './components/all_data_page/TableRowAction';
 import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
+import { all_class } from './config/store/async_actions/all_class.ts';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -29,13 +30,18 @@ const Index: React.FC<Props> = (props: Props) => {
 
     const dispatch = useAppDispatch();
 
+    // useEffect(() => {
+    //     dispatch(
+    //         storeSlice.actions.set_select_fields(
+    //             'id, name, email, image, status',
+    //         ),
+    //     );
+    //     dispatch(all({}));
+    // }, []);
+
     useEffect(() => {
-        dispatch(
-            storeSlice.actions.set_select_fields(
-                'id, name, email, image, status',
-            ),
-        );
-        dispatch(all({}));
+        dispatch(storeSlice.actions.set_item({}));
+        dispatch(all_class({}) as any);
     }, []);
     console.log('state', state);
     console.log('storeSlice', storeSlice);

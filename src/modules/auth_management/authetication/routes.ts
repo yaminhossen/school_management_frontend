@@ -11,6 +11,10 @@ module.exports = async function (fastify: FastifyInstance) {
     fastify.register(
         async (route, opts) => {
             route
+                .post(
+                    `/admission-officer/login`,
+                    controllerInstance.admission_login,
+                )
                 .post(`/login`, controllerInstance.login)
                 .post(`/register`, controllerInstance.register)
                 .post(`/forget`, controllerInstance.forget);

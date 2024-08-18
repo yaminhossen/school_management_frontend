@@ -9,7 +9,6 @@ import { sequelize } from './bootstrap/db.sql';
 import custom_error from './modules/user_management/user_admin/helpers/custom_error';
 import type { FastifyCookieOptions } from '@fastify/cookie';
 import { app_config } from './configs/app.config';
-import register_all_routes from './register_all_routes';
 
 const AutoLoad = require('@fastify/autoload');
 const underPressure = require('@fastify/under-pressure');
@@ -17,6 +16,7 @@ let sequelize_instance: any;
 let appDir: string = path.resolve(path.dirname(__dirname));
 let public_dir: string = path.resolve(appDir, 'public');
 const fsp = require('fs').promises;
+import { active_routes } from './register_all_routes';
 
 async function boot() {
     const fastify = Fastify({
@@ -75,6 +75,7 @@ async function boot() {
         },
     });
     /** find all module routes */
+
     async function findAllRoutesFiles(dir: any) {
         let results: any = [];
         console.log('\n');
@@ -84,10 +85,15 @@ async function boot() {
             });
             for (let entry of entries) {
                 const fullPath = path.join(currentPath, entry.name);
-                if (entry.isDirectory()) {
-                    await recursiveSearch(fullPath);
-                } else if (entry.name === 'routes.ts') {
-                    results.push(fullPath);
+                let check_active = active_routes.find((i) =>
+                    i.includes(entry.name),
+                );
+                if (check_active) {
+                    if (entry.isDirectory()) {
+                        await recursiveSearch(fullPath);
+                    } else if (entry.name === 'routes.ts') {
+                        results.push(fullPath);
+                    }
                 }
             }
         }
@@ -96,20 +102,20 @@ async function boot() {
     }
 
     /** register routes */
-    // await findAllRoutesFiles('./src/modules')
-    //     .then((files: string[]) => {
-    //         files.forEach((routes: string) => {
-    //             // console.log('connecting : ' + JSON.stringify(routes));
-    //             console.log(JSON.stringify(routes));
-    //             fastify.register(require(path.resolve(appDir, routes)), {
-    //                 prefix: 'api/v1',
-    //             });
-    //         });
-    //     })
-    //     .catch((err) => {
-    //         console.error('Error searching for route files:', err);
-    //     });
-    register_all_routes(fastify);
+    await findAllRoutesFiles('./src/modules')
+        .then((files: string[]) => {
+            files.forEach((routes: string) => {
+                // console.log('connecting : ' + JSON.stringify(routes));
+                console.log(JSON.stringify(routes));
+                fastify.register(require(path.resolve(appDir, routes)), {
+                    prefix: 'api/v1',
+                });
+            });
+        })
+        .catch((err) => {
+            console.error('Error searching for route files:', err);
+        });
+    // register_all_routes(fastify);
     /** register all dependencies */
     console.log('\nsetup plugins \n');
     fastify
