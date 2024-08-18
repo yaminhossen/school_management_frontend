@@ -3,7 +3,7 @@ import {
     Sequelize,
 } from 'sequelize';
 import * as user_model from './user_model';
-import * as user_staff_model from '../../../user_management/user_staffs/models/user_staffs_model';
+import * as user_staff_model from './user_staff_model';
 require('dotenv').config();
 
 let host = process?.env.DB_HOST || '';

@@ -34,6 +34,7 @@ async function details(
             ],
         });
 
+        console.log('user', (req as any).user);
         if (data) {
             return response(200, 'data created', data);
         } else {

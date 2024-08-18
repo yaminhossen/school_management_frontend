@@ -1,6 +1,7 @@
 'use strict';
 import { FastifyInstance } from 'fastify';
 import controller from './controller';
+import check_staff_auth from '../../auth_management/authetication/services/chech_staff_auth';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/user-students';
@@ -8,7 +9,11 @@ module.exports = async function (fastify: FastifyInstance) {
 
     fastify
         .get(`${prefix}`, controllerInstance.all)
-        .get(`${prefix}/all-class`, controllerInstance.all_class)
+        .get(
+            `${prefix}/all-class`,
+            { preHandler: [check_staff_auth] },
+            controllerInstance.all_class,
+        )
         .get(`${prefix}/:id`, controllerInstance.find)
         .get(`${prefix}/class-details/:id`, controllerInstance.class_details)
         .get(`${prefix}/full-details/:id`, controllerInstance.full_details)

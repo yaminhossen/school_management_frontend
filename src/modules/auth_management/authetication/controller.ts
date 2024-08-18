@@ -27,9 +27,9 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data: responseObject = await admission_login(fastify, req);
-
             const cookie = serialize('token', 'Bearer ' + data.data.token, {
                 maxAge: 60_000,
+                path: '/',
             });
 
             res.header('Set-Cookie', cookie);

@@ -363,3 +363,16 @@
 {"level":60,"time":1723979823105,"pid":4428,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/auth/admissison-officer/login"}
 {"level":60,"time":1723979830938,"pid":4428,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/auth//login"}
 {"level":60,"time":1723979831811,"pid":4428,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/auth//login"}
+{"level":60,"time":1723979906780,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/auth/login"}
+{"level":60,"time":1723979909037,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/auth/login"}
+{"level":60,"time":1723979909844,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/auth/login"}
+{"level":60,"time":1723979910748,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/auth/login"}
+{"level":60,"time":1723979911694,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/auth/login"}
+{"level":60,"time":1723979935232,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/auth/login"}
+{"level":60,"time":1723979937107,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/auth/login"}
+{"level":60,"time":1723979937819,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/auth/login"}
+{"level":60,"time":1723979938562,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/auth/login"}
+{"level":60,"time":1723979944074,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/auth/login"}
+{"level":60,"time":1723979967598,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/auth/login"}
+{"level":60,"time":1723979968187,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/auth/login"}
+{"level":60,"time":1723979998921,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admission-officer/login"}
