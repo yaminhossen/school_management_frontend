@@ -33,10 +33,10 @@ async function details(
                     model: informationsModel,
                     as: 'student_info',
                 },
-                {
-                    model: informationsModel,
-                    as: 'student_infos',
-                },
+                // {
+                //     model: informationsModel,
+                //     as: 'student_infos',
+                // },
             ],
         });
 

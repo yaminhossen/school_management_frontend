@@ -83,7 +83,6 @@ const Details: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
-            {/* {Object.keys(state.item)?.length && ( */}
             <div className="content_body">
                 <Link
                     to="/add-new"
@@ -108,7 +107,7 @@ const Details: React.FC<Props> = (props: Props) => {
                             </thead>
                             <tbody id="all_list">
                                 {Object.keys(state.item)?.length &&
-                                    state.item?.map(
+                                    state?.item?.map(
                                         (i: { [key: string]: any }) => {
                                             return (
                                                 <tr>
@@ -145,7 +144,6 @@ const Details: React.FC<Props> = (props: Props) => {
                     </div>
                 </div>
             </div>
-            {/* )} */}
         </div>
     );
 };

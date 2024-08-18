@@ -603,3 +603,7 @@ th {
 .semister_grade{
     margin-top: 50px;
 }
+.student_table{
+    color: white;
+    font-size: 18px;
+}
