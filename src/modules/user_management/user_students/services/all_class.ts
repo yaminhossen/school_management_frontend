@@ -14,11 +14,12 @@ async function details(
         models.UserStudentEducationalBackgroundsModel;
     let informationsModel = models.UserStudentInformationsModel;
     let studentsModel = models.UserStudentsModel;
-    let branchStudentsModel = models.BranchStudentsModel;
     let params = req.params as any;
+    let user_id = (req as any).user?.id;
+    console.log('user', user_id);
 
     try {
-        let data = await branchStudentsModel.findOne({
+        let data = await studentsModel.findOne({
             where: {
                 id: 1,
             },
@@ -34,7 +35,6 @@ async function details(
             ],
         });
 
-        console.log('user', (req as any).user);
         if (data) {
             return response(200, 'data created', data);
         } else {

@@ -8,13 +8,13 @@ export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
-    const [totalDocument, setTotalDocument] = useState([1]);
-    const [totalParent, setTotalParent] = useState([1]);
-    const [totalContactNumber, setTotalContactNumber] = useState([1]);
-    const [totalLanguage, setTotalLanguage] = useState([1]);
-    const [totalSkill, setTotalSkill] = useState([1]);
+    const [totalDocument, setTotalDocument] = useState([1, 1, 1]);
+    const [totalParent, setTotalParent] = useState([1, 1, 1]);
+    const [totalContactNumber, setTotalContactNumber] = useState([1, 1, 1]);
+    const [totalLanguage, setTotalLanguage] = useState([1, 1]);
+    const [totalSkill, setTotalSkill] = useState([1, 1]);
     const [totalEducationalBackground, setTotalEducationalBackground] =
-        useState([1]);
+        useState([1, 1]);
     // let date22 = moment().format('YYYY-DD-MM');
 
     async function handle_submit(e) {
@@ -142,7 +142,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-vertical">
+                                {/* <div className="form-group form-vertical">
                                     <label>Parent</label>
                                     <div className="form_elements">
                                         <select name="parent_id" id="">
@@ -151,7 +151,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <option value="3">parent3</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="full_width">
@@ -518,7 +518,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <h4>Document</h4>
                             </div>
                             <div className="multi_inputs">
-                                <div className="pb-4 px-0">
+                                {/* <div className="pb-4 px-0">
                                     <span
                                         className="btn btn-sm  btn-outline-info"
                                         onClick={() =>
@@ -530,7 +530,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     >
                                         Add new
                                     </span>
-                                </div>
+                                </div> */}
                                 <input
                                     type="hidden"
                                     name="total_docement_count"
@@ -542,6 +542,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             key={i}
                                             className="multi_input_group"
                                         >
+                                            <div>{index + 1}</div>
                                             <div className="d-flex">
                                                 <div className="form-group form-vertical">
                                                     <label>
@@ -590,7 +591,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {totalDocument.length > 1 && (
+                                            {/* {totalDocument.length > 1 && (
                                                 <div>
                                                     <span
                                                         onClick={() =>
@@ -605,7 +606,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         remove
                                                     </span>
                                                 </div>
-                                            )}
+                                            )} */}
                                         </div>
                                     );
                                 })}
@@ -616,7 +617,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <h4>Guardians</h4>
                             </div>
                             <div className="multi_inputs">
-                                <div className="pb-4 px-0">
+                                {/* <div className="pb-4 px-0">
                                     <span
                                         className="btn btn-sm  btn-outline-info"
                                         onClick={() =>
@@ -625,7 +626,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     >
                                         Add new
                                     </span>
-                                </div>
+                                </div> */}
                                 <input
                                     type="hidden"
                                     name="totalParent_count"
@@ -637,6 +638,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             key={i}
                                             className="multi_input_group"
                                         >
+                                            <div>{index + 1}</div>
                                             <div className="d-flex">
                                                 <div className="form-group form-vertical">
                                                     <label>Relation</label>
@@ -683,7 +685,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div className="form-group form-vertical">
+                                                {/* <div className="form-group form-vertical">
                                                     <label>
                                                         User parent id
                                                     </label>
@@ -706,9 +708,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             </option>
                                                         </select>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                             </div>
-                                            {totalParent.length > 1 && (
+                                            {/* {totalParent.length > 1 && (
                                                 <div>
                                                     <span
                                                         onClick={() =>
@@ -723,7 +725,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         remove
                                                     </span>
                                                 </div>
-                                            )}
+                                            )} */}
                                         </div>
                                     );
                                 })}
@@ -734,7 +736,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <h4>Contact Number</h4>
                             </div>
                             <div className="multi_inputs">
-                                <div className="pb-4 px-0">
+                                {/* <div className="pb-4 px-0">
                                     <span
                                         className="btn btn-sm  btn-outline-info"
                                         onClick={() =>
@@ -746,7 +748,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     >
                                         Add new
                                     </span>
-                                </div>
+                                </div> */}
                                 <input
                                     type="hidden"
                                     name="contact_number_count"
@@ -758,6 +760,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             key={i}
                                             className="multi_input_group"
                                         >
+                                            <div>{index + 1}</div>
                                             <div className="d-flex">
                                                 <div className="form-group form-vertical">
                                                     <label>
@@ -795,7 +798,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {totalContactNumber.length > 1 && (
+                                            {/* {totalContactNumber.length > 1 && (
                                                 <div>
                                                     <span
                                                         onClick={() =>
@@ -810,7 +813,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         remove
                                                     </span>
                                                 </div>
-                                            )}
+                                            )} */}
                                         </div>
                                     );
                                 })}
@@ -821,7 +824,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <h4>Language</h4>
                             </div>
                             <div className="multi_inputs">
-                                <div className="pb-4 px-0">
+                                {/* <div className="pb-4 px-0">
                                     <span
                                         className="btn btn-sm  btn-outline-info"
                                         onClick={() =>
@@ -833,7 +836,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     >
                                         Add new
                                     </span>
-                                </div>
+                                </div> */}
                                 <input
                                     type="hidden"
                                     name="student_language_count"
@@ -845,6 +848,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             key={i}
                                             className="multi_input_group"
                                         >
+                                            <div>{index + 1}</div>
                                             <div className="d-flex">
                                                 <div className="form-group form-vertical">
                                                     <label>
@@ -882,7 +886,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {totalLanguage.length > 1 && (
+                                            {/* {totalLanguage.length > 1 && (
                                                 <div>
                                                     <span
                                                         onClick={() =>
@@ -897,7 +901,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         remove
                                                     </span>
                                                 </div>
-                                            )}
+                                            )} */}
                                         </div>
                                     );
                                 })}
@@ -908,7 +912,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <h4>Skill</h4>
                             </div>
                             <div className="multi_inputs">
-                                <div className="pb-4 px-0">
+                                {/* <div className="pb-4 px-0">
                                     <span
                                         className="btn btn-sm  btn-outline-info"
                                         onClick={() =>
@@ -917,7 +921,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     >
                                         Add new
                                     </span>
-                                </div>
+                                </div> */}
                                 <input
                                     type="hidden"
                                     name="student_skills_count"
@@ -929,6 +933,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             key={i}
                                             className="multi_input_group"
                                         >
+                                            <div>{index + 1}</div>
                                             <div className="d-flex">
                                                 <div className="form-group form-vertical">
                                                     <label>Skills title</label>
@@ -961,7 +966,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {totalSkill.length > 1 && (
+                                            {/* {totalSkill.length > 1 && (
                                                 <div>
                                                     <span
                                                         onClick={() =>
@@ -976,7 +981,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         remove
                                                     </span>
                                                 </div>
-                                            )}
+                                            )} */}
                                         </div>
                                     );
                                 })}
@@ -987,7 +992,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <h4>Educational Background</h4>
                             </div>
                             <div className="multi_inputs">
-                                <div className="pb-4 px-0">
+                                {/* <div className="pb-4 px-0">
                                     <span
                                         className="btn btn-sm  btn-outline-info"
                                         onClick={() =>
@@ -999,7 +1004,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     >
                                         Add new
                                     </span>
-                                </div>
+                                </div> */}
 
                                 <input
                                     type="hidden"
@@ -1012,6 +1017,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             key={i}
                                             className="multi_input_group"
                                         >
+                                            <div>{index + 1}</div>
                                             <div className="d-flex">
                                                 <div className="form-group form-vertical">
                                                     <label>
@@ -1063,7 +1069,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {totalEducationalBackground.length >
+                                            {/* {totalEducationalBackground.length >
                                                 1 && (
                                                 <div>
                                                     <span
@@ -1079,7 +1085,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         remove
                                                     </span>
                                                 </div>
-                                            )}
+                                            )} */}
                                         </div>
                                     );
                                 })}

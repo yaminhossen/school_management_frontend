@@ -390,3 +390,6 @@
 {"level":60,"time":1724045380294,"pid":8380,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
 {"level":60,"time":1724045383361,"pid":8380,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/class-details/Seven"}
 {"level":60,"time":1724045390810,"pid":8380,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1724049940479,"pid":17332,"hostname":"DESKTOP-9421701","error":"404","url":"/students/"}
+{"level":60,"time":1724049944426,"pid":17332,"hostname":"DESKTOP-9421701","error":"404","url":"/student/"}
+{"level":60,"time":1724049992194,"pid":17332,"hostname":"DESKTOP-9421701","error":"404","url":"/addmission-officer/"}
