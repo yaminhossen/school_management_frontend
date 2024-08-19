@@ -204,8 +204,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Class</label>
                                     <div className="form_elements">
                                         <select name="class" id="">
-                                            <option value="six">six</option>
-                                            <option value="seven">seven</option>
+                                            <option value="Six">Six</option>
+                                            <option value="Seven">Seven</option>
+                                            <option value="Eight">Eight</option>
+                                            <option value="Nine">Nine</option>
+                                            <option value="Ten">Ten</option>
                                         </select>
                                     </div>
                                 </div>

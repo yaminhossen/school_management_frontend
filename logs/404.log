@@ -405,3 +405,6 @@
 {"level":60,"time":1724059057892,"pid":16564,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
 {"level":60,"time":1724059058475,"pid":16564,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
 {"level":60,"time":1724059058971,"pid":16564,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1724062095078,"pid":10424,"hostname":"DESKTOP-9421701","error":"404","url":"/birth_certificate.pdf"}
+{"level":60,"time":1724062095086,"pid":10424,"hostname":"DESKTOP-9421701","error":"404","url":"/national_id.pdf"}
+{"level":60,"time":1724062166768,"pid":10424,"hostname":"DESKTOP-9421701","error":"404","url":"/tljaldslf.pdf"}

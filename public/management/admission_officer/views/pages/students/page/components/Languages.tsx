@@ -53,14 +53,14 @@ const Languages: React.FC<Props> = (props: Props) => {
                     <h4>Languages</h4>
                 </div>
                 <div className="multi_inputs">
-                    <div className="pb-4 px-0">
+                    {/* <div className="pb-4 px-0">
                         <span
                             className="btn btn-sm  btn-outline-info"
                             onClick={addNewBackground}
                         >
                             Add new
                         </span>
-                    </div>
+                    </div> */}
 
                     <input
                         type="hidden"
@@ -118,7 +118,7 @@ const Languages: React.FC<Props> = (props: Props) => {
                                         </div>
                                     </div>
                                 </div>
-                                {updateLanguage.length > 1 && (
+                                {/* {updateLanguage.length > 1 && (
                                     <div>
                                         <span
                                             onClick={() =>
@@ -133,7 +133,7 @@ const Languages: React.FC<Props> = (props: Props) => {
                                             remove
                                         </span>
                                     </div>
-                                )}
+                                )} */}
                             </div>
                         );
                     })}

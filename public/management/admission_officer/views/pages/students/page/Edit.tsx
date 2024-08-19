@@ -237,7 +237,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             />
                                         </div>
                                     </div>
-                                    <div className="form-group form-vertical">
+                                    {/* <div className="form-group form-vertical">
                                         <label>Parent</label>
                                         <div className="form_elements">
                                             <select
@@ -259,7 +259,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 </option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                             <div className="full_width">
@@ -346,7 +346,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                                 id=""
                                             >
-                                                <option value=""></option>
                                                 <option value="Six">Six</option>
                                                 <option value="Seven">
                                                     Seven

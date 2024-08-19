@@ -2147,3 +2147,41 @@
 {"level":60,"time":1724058229958,"pid":2596,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:72:19)","time":"8/19/2024 3:03:49 PM","message":"db_sql_1.sequelize.col is not a function"}
 {"level":60,"time":1724059489132,"pid":660,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 3:24:49 PM","message":"Unexpected token o in JSON at position 1"}
 {"level":60,"time":1724059513304,"pid":2004,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 3:25:13 PM","message":"Unexpected token o in JSON at position 1"}
+{"level":60,"time":1724060439637,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 3:40:39 PM","message":"target not found."}
+{"level":60,"time":1724060439672,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 3:40:39 PM","message":"target not found."}
+{"level":60,"time":1724060497476,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 3:41:37 PM","message":"target not found."}
+{"level":60,"time":1724060497588,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 3:41:37 PM","message":"target not found."}
+{"level":60,"time":1724061382347,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 3:56:22 PM","message":"target not found."}
+{"level":60,"time":1724061382385,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 3:56:22 PM","message":"target not found."}
+{"level":60,"time":1724061811798,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:03:31 PM","message":"target not found."}
+{"level":60,"time":1724061811843,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:03:31 PM","message":"target not found."}
+{"level":60,"time":1724062050009,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:07:30 PM","message":"target not found."}
+{"level":60,"time":1724062050025,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:07:30 PM","message":"target not found."}
+{"level":60,"time":1724062058795,"pid":10424,"hostname":"DESKTOP-9421701","file":"services\\details.ts:46:19)","time":"8/19/2024 4:07:38 PM","message":"data not found"}
+{"level":60,"time":1724062071554,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:07:51 PM","message":"target not found."}
+{"level":60,"time":1724062071562,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:07:51 PM","message":"target not found."}
+{"level":60,"time":1724062077369,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:07:57 PM","message":"target not found."}
+{"level":60,"time":1724062077395,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:07:57 PM","message":"target not found."}
+{"level":60,"time":1724062077504,"pid":10424,"hostname":"DESKTOP-9421701","file":"services\\full_details.ts:76:19)","time":"8/19/2024 4:07:57 PM","message":"data not found"}
+{"level":60,"time":1724062079659,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:07:59 PM","message":"target not found."}
+{"level":60,"time":1724062079666,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:07:59 PM","message":"target not found."}
+{"level":60,"time":1724062079819,"pid":10424,"hostname":"DESKTOP-9421701","file":"services\\full_details.ts:76:19)","time":"8/19/2024 4:07:59 PM","message":"data not found"}
+{"level":60,"time":1724062094885,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:08:14 PM","message":"target not found."}
+{"level":60,"time":1724062094900,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:08:14 PM","message":"target not found."}
+{"level":60,"time":1724062128643,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:08:48 PM","message":"target not found."}
+{"level":60,"time":1724062128660,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:08:48 PM","message":"target not found."}
+{"level":60,"time":1724062130022,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:08:50 PM","message":"target not found."}
+{"level":60,"time":1724062130030,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:08:50 PM","message":"target not found."}
+{"level":60,"time":1724062164043,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:09:24 PM","message":"target not found."}
+{"level":60,"time":1724062164052,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:09:24 PM","message":"target not found."}
+{"level":60,"time":1724062166619,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:09:26 PM","message":"target not found."}
+{"level":60,"time":1724062166628,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:09:26 PM","message":"target not found."}
+{"level":60,"time":1724062174482,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:09:34 PM","message":"target not found."}
+{"level":60,"time":1724062174494,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:09:34 PM","message":"target not found."}
+{"level":60,"time":1724062379551,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:12:59 PM","message":"target not found."}
+{"level":60,"time":1724062379560,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:12:59 PM","message":"target not found."}
+{"level":60,"time":1724063484866,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:31:24 PM","message":"target not found."}
+{"level":60,"time":1724063484911,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:31:24 PM","message":"target not found."}
+{"level":60,"time":1724063850037,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:37:30 PM","message":"target not found."}
+{"level":60,"time":1724063850084,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:37:30 PM","message":"target not found."}
+{"level":60,"time":1724063856737,"pid":10424,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2024 4:37:36 PM","message":"Incorrect integer value: '' for column 'parent_id' at row 1"}
