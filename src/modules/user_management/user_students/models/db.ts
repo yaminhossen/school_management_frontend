@@ -80,6 +80,12 @@ const db = async function (): Promise<models> {
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync({ force: false });
+    BranchClassesModel.hasMany(BranchClassStudentsModel, {
+        sourceKey: 'id',
+        foreignKey: 'branch_class_id',
+        as: 'branch_classes',
+    });
+
     UserStudentsModel.hasOne(UserStudentEducationalBackgroundsModel, {
         sourceKey: 'id',
         foreignKey: 'user_student_id',

@@ -43,7 +43,9 @@ const Index: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(all_class({}) as any);
     }, []);
-    console.log('state', state);
+    if (state.item) {
+        console.log('state', state.item.length);
+    }
     console.log('storeSlice', storeSlice);
 
     const datas: data[] = [
@@ -97,25 +99,28 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.class}</td>
-                                            <td>{i.total_student}</td>
-                                            <td>
-                                                <Link
-                                                    to={`/students/details/${i.class}`}
-                                                    className="btn btn-sm  btn-outline-info"
-                                                    type="submit"
-                                                >
-                                                    Details
-                                                </Link>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
+                                {state.item?.length &&
+                                    state.item?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <tr>
+                                                    <td></td>
+                                                    <td>{i.id}</td>
+                                                    <td>{i?.name}</td>
+                                                    <td>{i?.count}</td>
+                                                    <td>
+                                                        <Link
+                                                            to={`/students/details/${i.name}`}
+                                                            className="btn btn-sm  btn-outline-info"
+                                                            type="submit"
+                                                        >
+                                                            Details
+                                                        </Link>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
                             </tbody>
                         </table>
                     </div>

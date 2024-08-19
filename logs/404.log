@@ -393,3 +393,15 @@
 {"level":60,"time":1724049940479,"pid":17332,"hostname":"DESKTOP-9421701","error":"404","url":"/students/"}
 {"level":60,"time":1724049944426,"pid":17332,"hostname":"DESKTOP-9421701","error":"404","url":"/student/"}
 {"level":60,"time":1724049992194,"pid":17332,"hostname":"DESKTOP-9421701","error":"404","url":"/addmission-officer/"}
+{"level":60,"time":1724055286435,"pid":1752,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1724055288637,"pid":1752,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1724055306106,"pid":1752,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/class-details/Eight"}
+{"level":60,"time":1724055307635,"pid":1752,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/class-details/Eight"}
+{"level":60,"time":1724055308234,"pid":1752,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/class-details/Eight"}
+{"level":60,"time":1724055310291,"pid":1752,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1724055311162,"pid":1752,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1724058964451,"pid":8380,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1724059047204,"pid":16564,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1724059057892,"pid":16564,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1724059058475,"pid":16564,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1724059058971,"pid":16564,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}

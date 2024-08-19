@@ -1,9 +1,10 @@
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
-import { responseObject } from '../../../common_types/object';
+import { anyObject, responseObject } from '../../../common_types/object';
 import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
+import { sequelize } from '../../../../bootstrap/db.sql';
 
 async function details(
     fastify_instance: FastifyInstance,
@@ -14,26 +15,42 @@ async function details(
         models.UserStudentEducationalBackgroundsModel;
     let informationsModel = models.UserStudentInformationsModel;
     let studentsModel = models.UserStudentsModel;
+    let staffsModel = models.BranchStaffsModel;
+    let classesModel = models.BranchClassesModel;
+    let classStudentsModel = models.BranchClassStudentsModel;
     let params = req.params as any;
     let user_id = (req as any).user?.id;
     console.log('user', user_id);
 
     try {
-        let data = await studentsModel.findOne({
+        let staff = await staffsModel.findOne({
             where: {
-                id: 1,
+                user_staff_id: user_id,
             },
-            include: [
-                // {
-                //     model: educationalBackgroundsModel,
-                //     as: 'educational_background',
-                // },
-                // {
-                //     model: informationsModel,
-                //     as: 'student_info',
-                // },
-            ],
         });
+
+        let Dbresponse = await classesModel.findAndCountAll({
+            where: {
+                branch_id: staff?.branch_id,
+            },
+            // include: [
+            //     {
+            //         model: classStudentsModel,
+            //         as: 'branch_classes',
+            //     },
+            // ],
+        });
+
+        let data = Dbresponse.rows.map((i) => i.toJSON());
+        console.log(data);
+
+        // let data: anyObject[] = [];
+        for (let index = 0; index < data.length; index++) {
+            const element: anyObject = data[index];
+            element.count = await classStudentsModel.count({
+                where: { branch_class_id: element.id },
+            });
+        }
 
         if (data) {
             return response(200, 'data created', data);
