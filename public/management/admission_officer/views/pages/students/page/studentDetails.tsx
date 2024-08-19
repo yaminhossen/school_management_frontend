@@ -44,11 +44,6 @@ const Details: React.FC<Props> = (props: Props) => {
             roll: '001',
         },
     ];
-    // for admission date
-    // const admissionDate = state.item?.student_info?.admission_date;
-    // const formattedAdmissionDate = admissionDate
-    //     ? moment(admissionDate).format('YYYY-MM-DD')
-    //     : moment().format('YYYY-MM-DD');
 
     return (
         <div className="admin_dashboard">
