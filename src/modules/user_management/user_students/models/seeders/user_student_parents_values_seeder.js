@@ -19,14 +19,14 @@ module.exports = {
             user_student_id,
             relation,
             is_parent,
-            user_student_parent_id,
+            user_parent_id,
         ) {
             data.push({
                 id,
                 user_student_id,
                 relation,
                 is_parent,
-                user_student_parent_id,
+                user_parent_id,
                 created_at: '2024-02-14',
                 updated_at: '2024-02-14',
             });

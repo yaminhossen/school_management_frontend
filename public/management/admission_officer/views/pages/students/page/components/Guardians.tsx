@@ -23,7 +23,7 @@ const Guardians: React.FC<Props> = (props: Props) => {
             user_student_id: state.item.id,
             is_parent: '',
             relation: '',
-            user_student_parent_id: '',
+            user_parent_id: '',
         });
         setUpdateGuardians(temp);
     }
@@ -139,15 +139,13 @@ const Guardians: React.FC<Props> = (props: Props) => {
                                         <label>User parent id</label>
                                         <div className="form_elements">
                                             <select
-                                                name={`user_student_parent_id${index}`}
+                                                name={`user_parent_id${index}`}
                                                 id=""
-                                                defaultValue={
-                                                    i.user_student_parent_id
-                                                }
+                                                defaultValue={i.user_parent_id}
                                                 onChange={(e) =>
                                                     setData(
                                                         index,
-                                                        'user_student_parent_id',
+                                                        'user_parent_id',
                                                         `${e.target.value}`,
                                                     )
                                                 }

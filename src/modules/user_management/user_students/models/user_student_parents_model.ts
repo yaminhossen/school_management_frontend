@@ -44,7 +44,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare user_student_id: number;
     declare relation: relation;
     declare is_parent: is_parent;
-    declare user_student_parent_id: number;
+    declare user_parent_id: number;
 
     declare status?: status;
     declare creator?: number;
@@ -80,7 +80,7 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.ENUM('1', '0'),
                 allowNull: true,
             },
-            user_student_parent_id: {
+            user_parent_id: {
                 type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },

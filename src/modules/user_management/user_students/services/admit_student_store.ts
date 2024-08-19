@@ -188,7 +188,7 @@ async function store(
         student_guardians.push({
             relation: body[`relation${i}`],
             is_parent: body[`is_parent${i}`],
-            user_student_parent_id: body[`user_student_parent_id${i}`],
+            user_parent_id: body[`user_parent_id${i}`],
         });
     }
 
@@ -324,13 +324,12 @@ async function store(
                             user_student_id: 1,
                             relation: body.relation,
                             is_parent: body.is_parent,
-                            user_student_parent_id: body.user_student_parent_id,
+                            user_parent_id: body.user_parent_id,
                         };
                     usp_inputs.user_student_id = data.id || 1;
                     usp_inputs.relation = ss.relation;
                     usp_inputs.is_parent = ss.is_parent;
-                    usp_inputs.user_student_parent_id =
-                        ss.user_student_parent_id;
+                    usp_inputs.user_parent_id = ss.user_parent_id;
                     (await usp_model.update(usp_inputs)).save();
                 });
             }

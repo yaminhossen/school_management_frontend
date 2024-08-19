@@ -376,3 +376,17 @@
 {"level":60,"time":1723979967598,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/auth/login"}
 {"level":60,"time":1723979968187,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/auth/login"}
 {"level":60,"time":1723979998921,"pid":14852,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admission-officer/login"}
+{"level":60,"time":1724041990288,"pid":17392,"hostname":"DESKTOP-9421701","error":"404","url":"/national_id.pdf"}
+{"level":60,"time":1724041990295,"pid":17392,"hostname":"DESKTOP-9421701","error":"404","url":"/birth_certificate.pdf"}
+{"level":60,"time":1724041990301,"pid":17392,"hostname":"DESKTOP-9421701","error":"404","url":"/tljaldslf.pdf"}
+{"level":60,"time":1724042010524,"pid":17392,"hostname":"DESKTOP-9421701","error":"404","url":"/national_id.pdf"}
+{"level":60,"time":1724042010538,"pid":17392,"hostname":"DESKTOP-9421701","error":"404","url":"/tljaldslf.pdf"}
+{"level":60,"time":1724042031231,"pid":17392,"hostname":"DESKTOP-9421701","error":"404","url":"/tljaldslf.pdf"}
+{"level":60,"time":1724043241954,"pid":17392,"hostname":"DESKTOP-9421701","error":"404","url":"/tljaldslf.pdf"}
+{"level":60,"time":1724045316732,"pid":8380,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1724045318910,"pid":8380,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/class-details/Eight"}
+{"level":60,"time":1724045321062,"pid":8380,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/class-details/Eight"}
+{"level":60,"time":1724045335207,"pid":8380,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/class-details/Eight"}
+{"level":60,"time":1724045380294,"pid":8380,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1724045383361,"pid":8380,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/class-details/Seven"}
+{"level":60,"time":1724045390810,"pid":8380,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}

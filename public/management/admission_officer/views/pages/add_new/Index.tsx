@@ -689,7 +689,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     </label>
                                                     <div className="form_elements">
                                                         <select
-                                                            name={`user_student_parent_id${index}`}
+                                                            name={`user_parent_id${index}`}
                                                             id=""
                                                         >
                                                             <option value="1">
