@@ -4,6 +4,8 @@ import { initialState } from './inital_state';
 
 import { all } from './async_actions/all';
 import { classes } from './async_actions/classes';
+import { sections } from './async_actions/sections';
+import { branches } from './async_actions/branches';
 import { shifts } from './async_actions/shifts';
 import { details } from './async_actions/details';
 import { store } from './async_actions/store';
@@ -24,6 +26,12 @@ const storeSlice = createSlice({
                 // console.log(type, payload, meta);
             })
             .addCase(classes.fulfilled, (state, { type, payload, meta }) => {
+                // console.log(type, payload, meta);
+            })
+            .addCase(sections.fulfilled, (state, { type, payload, meta }) => {
+                // console.log(type, payload, meta);
+            })
+            .addCase(branches.fulfilled, (state, { type, payload, meta }) => {
                 // console.log(type, payload, meta);
             })
             .addCase(shifts.fulfilled, (state, { type, payload, meta }) => {

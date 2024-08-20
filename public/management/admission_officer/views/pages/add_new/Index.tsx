@@ -9,6 +9,9 @@ import { classes } from '../add_new/config/store/async_actions/classes';
 import storeSlice from './config/store';
 import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
+import { branches } from './config/store/async_actions/branches';
+import { sections } from './config/store/async_actions/sections';
+import { shifts } from './config/store/async_actions/shifts';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -34,9 +37,17 @@ const Index: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
+
+    async function initdependancy() {
+        await dispatch(storeSlice.actions.set_item({}));
+        await dispatch(classes({}) as any);
+        await dispatch(branches({}) as any);
+        await dispatch(sections({}) as any);
+        await dispatch(shifts({}) as any);
+    }
+
     useEffect(() => {
-        dispatch(storeSlice.actions.set_item({}));
-        dispatch(classes({}) as any);
+        initdependancy();
     }, []);
 
     function remove_from_state(index, state, setState) {
@@ -44,6 +55,7 @@ const Index: React.FC<Props> = (props: Props) => {
         t.splice(index, 1);
         setState(t);
     }
+
     // console.log('moment', moment().format('YYYY-DD-MM'));
 
     return (

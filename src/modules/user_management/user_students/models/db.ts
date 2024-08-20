@@ -17,6 +17,9 @@ import * as user_student_siblings_model from './user_student_siblings_model';
 import * as branch_class_students_model from './branch_class_students_model';
 import * as branch_classes_model from './branch_classes_model';
 import * as branch_staffs_model from './branch_staffs_model';
+import * as branch_class_sections_model from './branch_class_sections_model';
+import * as branch_class_shifts_model from './branch_class_shifts_model';
+import * as branches_model from './branches_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -49,6 +52,9 @@ interface models {
     BranchClassStudentsModel: typeof branch_class_students_model.DataModel;
     BranchClassesModel: typeof branch_classes_model.DataModel;
     BranchStaffsModel: typeof branch_staffs_model.DataModel;
+    BranchClassSectionsModel: typeof branch_class_sections_model.DataModel;
+    BranchClassShiftsModel: typeof branch_class_shifts_model.DataModel;
+    BranchesModel: typeof branches_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -77,6 +83,10 @@ const db = async function (): Promise<models> {
         branch_class_students_model.init(sequelize);
     const BranchClassesModel = branch_classes_model.init(sequelize);
     const BranchStaffsModel = branch_staffs_model.init(sequelize);
+    const BranchClassSectionsModel =
+        branch_class_sections_model.init(sequelize);
+    const BranchClassShiftsModel = branch_class_shifts_model.init(sequelize);
+    const BranchesModel = branches_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync({ force: false });
@@ -174,6 +184,9 @@ const db = async function (): Promise<models> {
         BranchClassStudentsModel,
         BranchClassesModel,
         BranchStaffsModel,
+        BranchClassSectionsModel,
+        BranchClassShiftsModel,
+        BranchesModel,
         // Project,
 
         sequelize,

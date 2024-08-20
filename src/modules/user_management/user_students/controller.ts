@@ -24,6 +24,9 @@ import full_details from './services/full_details';
 import class_details from './services/class_details';
 import all_class from './services/all_class';
 import classes from './services/classes';
+import shifts from './services/shifts';
+import branches from './services/branches';
+import sections from './services/sections';
 import full_details_update from './services/admit_student_update';
 
 export default function (fastify: FastifyInstance) {
@@ -55,6 +58,21 @@ export default function (fastify: FastifyInstance) {
 
         classes: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await classes(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        shifts: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await shifts(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        branches: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await branches(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        sections: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await sections(fastify, req);
             res.code(data.status).send(data);
         },
         class_details: async function (req: FastifyRequest, res: FastifyReply) {

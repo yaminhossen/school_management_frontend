@@ -27,7 +27,7 @@ const fetch_api = async (param: anyObject, thunkAPI) => {
     // const response = await axios.get(
     //     `${end_point}/${api_prefix}/students/${param.id}`,
     // );
-    const response = await axios.get(`${end_point}/${api_prefix}/classes`);
+    const response = await axios.get(`${end_point}/${api_prefix}/branches`);
 
     dispatch(storeSlice.actions.set_is_loading(false));
     dispatch(storeSlice.actions.set_item(response.data.data));
@@ -36,7 +36,8 @@ const fetch_api = async (param: anyObject, thunkAPI) => {
     // thunkAPI.dispatch(storeSlice.actions.my_action())
 };
 
-export const classes = createAsyncThunk<ReturnType, PayloadType, ThunkArgument>(
-    `${store_prefix}/classes`,
-    fetch_api,
-);
+export const branches = createAsyncThunk<
+    ReturnType,
+    PayloadType,
+    ThunkArgument
+>(`${store_prefix}/branches`, fetch_api);
