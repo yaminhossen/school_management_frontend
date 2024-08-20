@@ -3,6 +3,8 @@ import setup from '../setup';
 import { initialState } from './inital_state';
 
 import { all } from './async_actions/all';
+import { classes } from './async_actions/classes';
+import { shifts } from './async_actions/shifts';
 import { details } from './async_actions/details';
 import { store } from './async_actions/store';
 import { update } from './async_actions/update';
@@ -19,6 +21,12 @@ const storeSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(all.fulfilled, (state, { type, payload, meta }) => {
+                // console.log(type, payload, meta);
+            })
+            .addCase(classes.fulfilled, (state, { type, payload, meta }) => {
+                // console.log(type, payload, meta);
+            })
+            .addCase(shifts.fulfilled, (state, { type, payload, meta }) => {
                 // console.log(type, payload, meta);
             })
             .addCase(details.fulfilled, (state, { type, payload, meta }) => {

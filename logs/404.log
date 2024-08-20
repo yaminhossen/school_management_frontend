@@ -409,3 +409,12 @@
 {"level":60,"time":1724062095086,"pid":10424,"hostname":"DESKTOP-9421701","error":"404","url":"/national_id.pdf"}
 {"level":60,"time":1724062166768,"pid":10424,"hostname":"DESKTOP-9421701","error":"404","url":"/tljaldslf.pdf"}
 {"level":60,"time":1724070811844,"pid":16892,"hostname":"DESKTOP-9421701","error":"404","url":"/tljaldslf.pdf"}
+{"level":60,"time":1724130908431,"pid":10736,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
+{"level":60,"time":1724131029635,"pid":10736,"hostname":"DESKTOP-9421701","error":"404","url":"/national_id.pdf"}
+{"level":60,"time":1724131029647,"pid":10736,"hostname":"DESKTOP-9421701","error":"404","url":"/birth_certificate.pdf"}
+{"level":60,"time":1724142133651,"pid":10736,"hostname":"DESKTOP-9421701","error":"404","url":"/national_id.pdf"}
+{"level":60,"time":1724142133656,"pid":10736,"hostname":"DESKTOP-9421701","error":"404","url":"/birth_certificate.pdf"}
+{"level":60,"time":1724143972193,"pid":2708,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-shifts?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"}
+{"level":60,"time":1724143980184,"pid":2708,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-shifts?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"}
+{"level":60,"time":1724143983237,"pid":2708,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-shifts?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"}
+{"level":60,"time":1724143994736,"pid":2708,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-shifts?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10"}

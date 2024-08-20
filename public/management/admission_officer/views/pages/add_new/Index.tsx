@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import setup from './config/setup';
-import { useAppDispatch } from '../../../store';
+import { RootState, useAppDispatch } from '../../../store';
 import { store } from './config/store/async_actions/store';
 import moment from 'moment';
+// import storeSlice from '../config/store';
+import { classes } from '../add_new/config/store/async_actions/classes';
+import storeSlice from './config/store';
+import { initialState } from './config/store/inital_state';
+import { useSelector } from 'react-redux';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -26,6 +31,13 @@ const Index: React.FC<Props> = (props: Props) => {
             // e.target.reset();
         }
     }
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
+    useEffect(() => {
+        dispatch(storeSlice.actions.set_item({}));
+        dispatch(classes({}) as any);
+    }, []);
 
     function remove_from_state(index, state, setState) {
         let t = [...state];
@@ -204,11 +216,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Class</label>
                                     <div className="form_elements">
                                         <select name="class" id="">
-                                            <option value="Six">Six</option>
-                                            <option value="Seven">Seven</option>
-                                            <option value="Eight">Eight</option>
-                                            <option value="Nine">Nine</option>
-                                            <option value="Ten">Ten</option>
+                                            {state.item?.length &&
+                                                state.item?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.name}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
                                         </select>
                                     </div>
                                 </div>

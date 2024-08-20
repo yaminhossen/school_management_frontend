@@ -10,6 +10,11 @@ module.exports = async function (fastify: FastifyInstance) {
     fastify
         .get(`${prefix}`, controllerInstance.all)
         .get(
+            `${prefix}/classes`,
+            { preHandler: [check_staff_auth] },
+            controllerInstance.classes,
+        )
+        .get(
             `${prefix}/all-class`,
             { preHandler: [check_staff_auth] },
             controllerInstance.all_class,

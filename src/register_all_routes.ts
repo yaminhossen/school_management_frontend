@@ -60,6 +60,7 @@ export let active_routes: string[] = [
     // 'src/modules/class_management/branch_class_resources/routes.ts',
     // 'src/modules/class_management/branch_class_routin_day_times/routes.ts',
     // 'src/modules/class_management/branch_class_sections/routes.ts',
+    'src/modules/class_management/branch_class_shifts/routes.ts',
     // 'src/modules/class_management/branch_class_subjects/routes.ts',
 
     // 'src/modules/employee_salary_management/branch_employee_job_pay_grades/routes.ts',
