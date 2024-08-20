@@ -47,6 +47,8 @@ const Index: React.FC<Props> = (props: Props) => {
     }
 
     useEffect(() => {
+        console.log('frontend state', state);
+
         initdependancy();
     }, []);
 
@@ -55,7 +57,9 @@ const Index: React.FC<Props> = (props: Props) => {
         t.splice(index, 1);
         setState(t);
     }
-
+    if (state.classes) {
+        console.log('form frontend', state.classes);
+    }
     // console.log('moment', moment().format('YYYY-DD-MM'));
 
     return (
@@ -228,8 +232,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Class</label>
                                     <div className="form_elements">
                                         <select name="class" id="">
-                                            {state.item?.length &&
-                                                state.item?.map(
+                                            {state.shifts?.length &&
+                                                state.shifts?.map(
                                                     (i: {
                                                         [key: string]: any;
                                                     }) => {
@@ -237,7 +241,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             <option
                                                                 value={i.id}
                                                             >
-                                                                {i.name}
+                                                                {i.title}
                                                             </option>
                                                         );
                                                     },

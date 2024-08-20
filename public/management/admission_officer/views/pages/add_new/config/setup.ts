@@ -3,7 +3,7 @@ import setup_type from './setup_type';
 const prefix: string = 'User Students';
 const setup: setup_type = {
     prefix,
-    module_name: 'user_students',
+    module_name: 'student_add_new',
 
     route_prefix: 'user-students',
 

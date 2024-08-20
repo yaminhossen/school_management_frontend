@@ -30,7 +30,7 @@ const fetch_api = async (param: anyObject, thunkAPI) => {
     const response = await axios.get(`${end_point}/${api_prefix}/branches`);
 
     dispatch(storeSlice.actions.set_is_loading(false));
-    dispatch(storeSlice.actions.set_item(response.data.data));
+    dispatch(storeSlice.actions.set_branch(response.data.data));
 
     return response.data;
     // thunkAPI.dispatch(storeSlice.actions.my_action())

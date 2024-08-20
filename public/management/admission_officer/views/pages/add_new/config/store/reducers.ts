@@ -78,6 +78,35 @@ export const store_reducers = {
     set_item: (state: typeof initialState, action: PayloadAction<object>) => {
         state.item = action.payload;
     },
+
+    set_class: (
+        state: typeof initialState,
+        action: PayloadAction<anyObject[]>,
+    ) => {
+        state.classes = action.payload;
+        // console.log('classes payload', action.payload);
+    },
+
+    set_branch: (
+        state: typeof initialState,
+        action: PayloadAction<anyObject[]>,
+    ) => {
+        state.branches = action.payload;
+    },
+
+    set_section: (
+        state: typeof initialState,
+        action: PayloadAction<anyObject[]>,
+    ) => {
+        state.sections = action.payload;
+    },
+
+    set_shift: (
+        state: typeof initialState,
+        action: PayloadAction<anyObject[]>,
+    ) => {
+        state.shifts = action.payload;
+    },
     set_show_quick_view_canvas: (
         state: typeof initialState,
         action: PayloadAction<boolean>,
