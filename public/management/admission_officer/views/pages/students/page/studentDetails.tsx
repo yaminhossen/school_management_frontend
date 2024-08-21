@@ -49,13 +49,24 @@ const Details: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <h3 className="table_heading">Basic information</h3>
             <div className="content_body ">
-                <Link
-                    to="/add-new"
-                    className="btn btn-sm btn-outline-info mb-2"
-                    type="submit"
-                >
-                    Add New
-                </Link>
+                <div className="student_details">
+                    <div>
+                        <Link
+                            to="/add-new"
+                            className="btn btn-sm btn-outline-info mb-2"
+                            type="submit"
+                        >
+                            Add New
+                        </Link>
+                    </div>
+                    <div>
+                        <img
+                            src={state.item?.image}
+                            style={{ width: '100px' }}
+                            alt=""
+                        />
+                    </div>
+                </div>
                 {Object.keys(state.item) && (
                     <table className="table text-nowrap student_table">
                         <tbody>

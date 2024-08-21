@@ -607,3 +607,8 @@ th {
     color: white;
     font-size: 18px;
 }
+.student_details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
