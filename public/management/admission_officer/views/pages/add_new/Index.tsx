@@ -41,7 +41,7 @@ const Index: React.FC<Props> = (props: Props) => {
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(classes({}) as any);
-        await dispatch(branches({}) as any);
+        // await dispatch(branches({}) as any);
         await dispatch(sections({}) as any);
         await dispatch(shifts({}) as any);
     }
@@ -232,6 +232,27 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Class</label>
                                     <div className="form_elements">
                                         <select name="class" id="">
+                                            {state.classes?.length &&
+                                                state.classes?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.name}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Shift</label>
+                                    <div className="form_elements">
+                                        <select name="shift" id="">
                                             {state.shifts?.length &&
                                                 state.shifts?.map(
                                                     (i: {
@@ -250,30 +271,23 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Shift</label>
-                                    <div className="form_elements">
-                                        <select name="shift" id="">
-                                            <option value="boy morning">
-                                                boy morning
-                                            </option>
-                                            <option value="boy evening">
-                                                boy evening
-                                            </option>
-                                            <option value="girls evening">
-                                                girls evening
-                                            </option>
-                                            <option value="girl morning">
-                                                girl morning
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
                                     <label>Section</label>
                                     <div className="form_elements">
                                         <select name="section" id="">
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
+                                            {state.sections?.length &&
+                                                state.sections?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.title}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
                                         </select>
                                     </div>
                                 </div>

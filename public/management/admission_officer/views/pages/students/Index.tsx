@@ -110,7 +110,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <td>{i?.count}</td>
                                                     <td>
                                                         <Link
-                                                            to={`/students/details/${i.name}`}
+                                                            to={`/students/details/${i.id}`}
                                                             className="btn btn-sm  btn-outline-info"
                                                             type="submit"
                                                         >

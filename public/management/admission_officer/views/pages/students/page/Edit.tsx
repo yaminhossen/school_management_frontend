@@ -521,7 +521,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 placeholder="City"
                                                 name="city"
                                                 defaultValue={
-                                                    state.item.student_info.city
+                                                    state.item.student_info
+                                                        ?.city
                                                 }
                                             />
                                         </div>
@@ -795,7 +796,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <select
                                                 name="cast"
                                                 defaultValue={
-                                                    state.item.student_info.cast
+                                                    state.item.student_info
+                                                        ?.cast
                                                 }
                                                 id=""
                                             >

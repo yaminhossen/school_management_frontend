@@ -12,13 +12,15 @@ async function class_details(
     let models = await db();
     let informationsModel = models.UserStudentInformationsModel;
     let studentsModel = models.UserStudentsModel;
+    let classesModel = models.BranchClassesModel;
+    let classStudentsModel = models.BranchClassStudentsModel;
     let params = req.params as any;
     console.log('class', params.id);
 
     try {
-        let data = await informationsModel.findAll({
+        let data = await classStudentsModel.findAll({
             where: {
-                s_class: params.id,
+                branch_class_id: params.id,
             },
             attributes: {
                 exclude: ['password'],
@@ -26,7 +28,11 @@ async function class_details(
             include: [
                 {
                     model: studentsModel,
-                    as: 'student',
+                    as: 'branchstudent',
+                },
+                {
+                    model: informationsModel,
+                    as: 'infostudent',
                 },
             ],
         });
