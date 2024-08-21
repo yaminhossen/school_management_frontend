@@ -51,6 +51,7 @@ async function store(
     let body = req.body as anyObject;
     let data = new models.UserStudentsModel();
     let usi_model = new models.UserStudentInformationsModel();
+    let bcs_model = new models.BranchClassStudentsModel();
 
     const bcrypt = require('bcrypt');
     const saltRounds = 10;
@@ -112,6 +113,14 @@ async function store(
         whatsapp_number: body.whatsapp_number,
         image: image_path,
         password: password,
+    };
+
+    let bcs_inputs: InferCreationAttributes<typeof bcs_model> = {
+        // parent_id: body.parent_id,
+        branch_id: body.branch_id,
+        branch_class_id: body.class,
+        branch_student_id: 1,
+        branch_class_section_id: body.section,
     };
 
     let eductional_bc: anyObject[] = [];
@@ -256,6 +265,8 @@ async function store(
         if (data) {
             usi_inputs.user_student_id = data.id || 1;
             (await usi_model.update(usi_inputs)).save();
+            bcs_inputs.branch_student_id = data.id || 1;
+            (await bcs_model.update(bcs_inputs)).save();
             if (eductional_bc) {
                 eductional_bc.forEach(async (edbc) => {
                     let useb_model =

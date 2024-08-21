@@ -46,3 +46,15 @@
 {"level":60,"time":1724234292591,"pid":1588,"hostname":"DESKTOP-9421701","file":"","time":"8/21/2024 3:58:12 PM","message":"target not found."}
 {"level":60,"time":1724234669597,"pid":1588,"hostname":"DESKTOP-9421701","file":"","time":"8/21/2024 4:04:29 PM","message":"target not found."}
 {"level":60,"time":1724234669612,"pid":1588,"hostname":"DESKTOP-9421701","file":"","time":"8/21/2024 4:04:29 PM","message":"target not found."}
+{"level":60,"time":1724237634012,"pid":1964,"hostname":"DESKTOP-9421701","file":"","time":"8/21/2024 4:53:54 PM","message":"target not found."}
+{"level":60,"time":1724237634045,"pid":1964,"hostname":"DESKTOP-9421701","file":"","time":"8/21/2024 4:53:54 PM","message":"target not found."}
+{"level":60,"time":1724237654577,"pid":1964,"hostname":"DESKTOP-9421701","file":"","time":"8/21/2024 4:54:14 PM","message":"target not found."}
+{"level":60,"time":1724237654629,"pid":1964,"hostname":"DESKTOP-9421701","file":"","time":"8/21/2024 4:54:14 PM","message":"target not found."}
+{"level":60,"time":1724237709110,"pid":1964,"hostname":"DESKTOP-9421701","file":"services\\admit_student_store.ts:422:15)","time":"8/21/2024 4:55:09 PM","message":"Field 'updated_at' doesn't have a default value"}
+{"level":60,"time":1724237796923,"pid":1964,"hostname":"DESKTOP-9421701","file":"","time":"8/21/2024 4:56:36 PM","message":"target not found."}
+{"level":60,"time":1724237796937,"pid":1964,"hostname":"DESKTOP-9421701","file":"","time":"8/21/2024 4:56:36 PM","message":"target not found."}
+{"level":60,"time":1724237797339,"pid":1964,"hostname":"DESKTOP-9421701","file":"","time":"8/21/2024 4:56:37 PM","message":"target not found."}
+{"level":60,"time":1724237797352,"pid":1964,"hostname":"DESKTOP-9421701","file":"","time":"8/21/2024 4:56:37 PM","message":"target not found."}
+{"level":60,"time":1724237797782,"pid":1964,"hostname":"DESKTOP-9421701","file":"","time":"8/21/2024 4:56:37 PM","message":"target not found."}
+{"level":60,"time":1724237797844,"pid":1964,"hostname":"DESKTOP-9421701","file":"","time":"8/21/2024 4:56:37 PM","message":"target not found."}
+{"level":60,"time":1724237805898,"pid":1964,"hostname":"DESKTOP-9421701","file":"services\\admit_student_store.ts:422:15)","time":"8/21/2024 4:56:45 PM","message":"Field 'updated_at' doesn't have a default value"}
