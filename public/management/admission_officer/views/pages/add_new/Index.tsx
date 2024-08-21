@@ -41,7 +41,7 @@ const Index: React.FC<Props> = (props: Props) => {
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(classes({}) as any);
-        // await dispatch(branches({}) as any);
+        await dispatch(branches({}) as any);
         await dispatch(sections({}) as any);
         await dispatch(shifts({}) as any);
     }
@@ -134,6 +134,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="file"
+                                            accept="image/*"
                                             placeholder="image"
                                             name="image"
                                         />
@@ -191,10 +192,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Branch</label>
                                     <div className="form_elements">
                                         <select name="branch_id" id="">
-                                            <option value="1">Uttora</option>
-                                            <option value="2">Banani</option>
-                                            <option value="3">Gulshan</option>
-                                            <option value="4">Demra</option>
+                                            {state.branches?.length &&
+                                                state.branches?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.name}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
                                         </select>
                                     </div>
                                 </div>
@@ -737,6 +748,57 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 yes
                                                             </option>
                                                         </select>
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
+                                                    <label>Name</label>
+                                                    <div className="form_elements">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="parents name"
+                                                            name={`parent_name${index}`}
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
+                                                    <label>Email</label>
+                                                    <div className="form_elements">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="parent email"
+                                                            name={`parent_email${index}`}
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
+                                                    <label>Phone number</label>
+                                                    <div className="form_elements">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="parent phone number"
+                                                            name={`parent_phone_number${index}`}
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
+                                                    <label>Image</label>
+                                                    <div className="form_elements">
+                                                        <input
+                                                            type="file"
+                                                            placeholder="image"
+                                                            accept="image/*"
+                                                            name={`parent_image${index}`}
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
+                                                    <label>Password</label>
+                                                    <div className="form_elements">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="parent password"
+                                                            name={`parent_password${index}`}
+                                                        />
                                                     </div>
                                                 </div>
                                                 {/* <div className="form-group form-vertical">

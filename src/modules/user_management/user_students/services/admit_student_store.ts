@@ -155,6 +155,29 @@ async function store(
         });
     }
 
+    let student_guardians: anyObject[] = [];
+    for (let i = 0; i < parseInt(body.totalParent_count); i++) {
+        let image_path = ``;
+        let image_file = body[`parent_image${i}`];
+        if (image_file?.ext) {
+            image_path =
+                '/uploads/users/parents/' +
+                moment().format('YYYYMMDDHHmmss') +
+                image_file.name;
+            await (fastify_instance as any).upload(image_file, image_path);
+        }
+        student_guardians.push({
+            relation: body[`relation${i}`],
+            is_parent: body[`is_parent${i}`],
+            name: body[`parent_name${i}`],
+            email: body[`parent_email${i}`],
+            phone_number: body[`parent_phone_number${i}`],
+            image: image_path,
+            password: body[`parent_password${i}`],
+            user_parent_id: body[`user_parent_id${i}`],
+        });
+    }
+
     console.log(body);
     console.log(body.file);
     console.log(eductional_bc);
@@ -180,15 +203,6 @@ async function store(
         student_number.push({
             contact_number: body[`contact_number${i}`],
             owner: body[`number_owner${i}`],
-        });
-    }
-
-    let student_guardians: anyObject[] = [];
-    for (let i = 0; i < parseInt(body.totalParent_count); i++) {
-        student_guardians.push({
-            relation: body[`relation${i}`],
-            is_parent: body[`is_parent${i}`],
-            user_parent_id: body[`user_parent_id${i}`],
         });
     }
 
@@ -319,18 +333,40 @@ async function store(
             if (student_guardians) {
                 student_guardians.forEach(async (ss) => {
                     let usp_model = new models.UserStudentParentsModel();
-                    let usp_inputs: InferCreationAttributes<typeof usp_model> =
-                        {
+                    let up_model = new models.UserParentsModel();
+                    let up_inputs: InferCreationAttributes<typeof up_model> = {
+                        name: body.parent_name,
+                        email: body.parent_email,
+                        phone_number: body.parent_phone_number,
+                        image: '',
+                        password: body.parent_password,
+                    };
+                    up_inputs.name = ss.name;
+                    up_inputs.email = ss.email;
+                    up_inputs.phone_number = ss.phone_number;
+                    up_inputs.image = ss.image;
+                    up_inputs.password = await bcrypt.hash(
+                        ss.password,
+                        saltRounds,
+                    );
+                    (await up_model.update(up_inputs)).save();
+                    if (up_model) {
+                        let usp_inputs: InferCreationAttributes<
+                            typeof usp_model
+                        > = {
                             user_student_id: 1,
                             relation: body.relation,
                             is_parent: body.is_parent,
                             user_parent_id: body.user_parent_id,
                         };
-                    usp_inputs.user_student_id = data.id || 1;
-                    usp_inputs.relation = ss.relation;
-                    usp_inputs.is_parent = ss.is_parent;
-                    usp_inputs.user_parent_id = ss.user_parent_id;
-                    (await usp_model.update(usp_inputs)).save();
+                        // eslint-disable-next-line no-redeclare
+                        // let id = up_model.id;
+                        usp_inputs.user_student_id = data.id || 1;
+                        usp_inputs.relation = ss.relation;
+                        usp_inputs.is_parent = ss.is_parent;
+                        usp_inputs.user_parent_id = up_model.id || 1;
+                        (await usp_model.update(usp_inputs)).save();
+                    }
                 });
             }
             if (student_document) {
