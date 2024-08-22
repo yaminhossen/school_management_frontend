@@ -749,6 +749,82 @@ const Details: React.FC<Props> = (props: Props) => {
                                     },
                                 )}
                         </div>
+                        <div>
+                            <h4>Guardians</h4>
+                            {Object.keys(state.item)?.length &&
+                                state.item?.parents.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
+                                            <div className="basic_info mb-4 ">
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {
+                                                                    i
+                                                                        .parent_details
+                                                                        ?.name
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Relation</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.relation}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Year Of Leaving
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {moment(
+                                                                    i.year_of_leaving,
+                                                                ).format(
+                                                                    'YYYY-MM-DD',
+                                                                )}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table className="table text-nowrap student_table ml-2">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Result</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.result}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Transfer
+                                                                Cirtificate
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                <a
+                                                                    href={
+                                                                        i.transfer_cirtificate
+                                                                    }
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                >
+                                                                    Show File
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        );
+                                    },
+                                )}
+                        </div>
                     </div>
                 )}
             </div>
