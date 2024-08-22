@@ -129,6 +129,12 @@ const db = async function (): Promise<models> {
         as: 'document_titles',
     });
 
+    UserStudentDocumentTitlesModel.hasOne(UserStudentDocumentValuesModel, {
+        sourceKey: 'id',
+        foreignKey: 'user_student_document_title_id',
+        as: 'values_title',
+    });
+
     UserStudentsModel.hasMany(UserStudentDocumentValuesModel, {
         sourceKey: 'id',
         foreignKey: 'user_student_id',

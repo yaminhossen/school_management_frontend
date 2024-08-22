@@ -499,54 +499,115 @@ const Details: React.FC<Props> = (props: Props) => {
                         </div>
                         <div>
                             <h4>Document</h4>
-                            <div className="basic_info mb-4 ">
-                                <table className="table text-nowrap student_table">
-                                    <tbody>
-                                        <tr>
-                                            <td>Document Title</td>
-                                            <td>:</td>
-                                            <td className="font-medium text-dark-medium">
-                                                Uttora
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Issue Date</td>
-                                            <td>:</td>
-                                            <td className="font-medium text-dark-medium">
-                                                {
-                                                    state.item?.student_info
-                                                        ?.addmission_no
-                                                }
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <table className="table text-nowrap student_table ml-2">
-                                    <tbody>
-                                        <tr>
-                                            <td>Document File</td>
-                                            <td>:</td>
-                                            <td className="font-medium text-dark-medium">
-                                                {
-                                                    state.item?.student_info
-                                                        ?.s_class
-                                                }
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Expire date</td>
-                                            <td>:</td>
-                                            <td className="font-medium text-dark-medium">
-                                                {
-                                                    state.item?.student_info
-                                                        ?.shift
-                                                }
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            {Object.keys(state.item)?.length &&
+                                state.item?.document_titles.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
+                                            <div className="basic_info mb-4 ">
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                Document Title
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.title}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Issue Date</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {moment(
+                                                                    i
+                                                                        .values_title
+                                                                        ?.issue_date,
+                                                                ).format(
+                                                                    'YYYY-MM-DD',
+                                                                )}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table className="table text-nowrap student_table ml-2">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                Document File
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                <a
+                                                                    href={
+                                                                        i
+                                                                            .values_title
+                                                                            ?.file
+                                                                    }
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                >
+                                                                    Show File
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Expire date</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {moment(
+                                                                    i
+                                                                        .values_title
+                                                                        ?.expire_date,
+                                                                ).format(
+                                                                    'YYYY-MM-DD',
+                                                                )}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        );
+                                    },
+                                )}
+                        </div>
+                        <div>
+                            <h4>Contact Numbers</h4>
+                            {Object.keys(state.item)?.length &&
+                                state.item?.student_numbers.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
+                                            <div className="basic_info mb-4 ">
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                Contact Number
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {
+                                                                    i.contact_number
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table className="table text-nowrap student_table ml-2">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Owner</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.owner}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        );
+                                    },
+                                )}
                         </div>
                     </div>
                 )}
