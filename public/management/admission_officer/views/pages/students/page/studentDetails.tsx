@@ -305,10 +305,10 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td>As on Date</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
-                                                {
+                                                {moment(
                                                     state.item?.student_info
-                                                        ?.as_on_date
-                                                }
+                                                        ?.as_on_date,
+                                                ).format('YYYY-MM-DD')}
                                             </td>
                                         </tr>
                                         <tr>
@@ -317,7 +317,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td className="font-medium text-dark-medium">
                                                 {
                                                     state.item?.student_info
-                                                        ?.familly_information
+                                                        ?.family_information
                                                 }
                                             </td>
                                         </tr>
@@ -422,7 +422,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td className="font-medium text-dark-medium">
                                                 {
                                                     state.item?.student_info
-                                                        ?.current_medcation
+                                                        ?.current_medications
                                                 }
                                             </td>
                                         </tr>
@@ -442,7 +442,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td className="font-medium text-dark-medium">
                                                 {
                                                     state.item?.student_info
-                                                        ?.student_house_type
+                                                        ?.student_house
                                                 }
                                             </td>
                                         </tr>
@@ -491,6 +491,57 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
                                                 {state.item?.student_info?.cast}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Document</h4>
+                            <div className="basic_info mb-4 ">
+                                <table className="table text-nowrap student_table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Document Title</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                Uttora
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Issue Date</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.addmission_no
+                                                }
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table className="table text-nowrap student_table ml-2">
+                                    <tbody>
+                                        <tr>
+                                            <td>Document File</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.s_class
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Expire date</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.shift
+                                                }
                                             </td>
                                         </tr>
                                     </tbody>

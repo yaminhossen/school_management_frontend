@@ -14,6 +14,7 @@ async function details(
         models.UserStudentEducationalBackgroundsModel;
     let informationsModel = models.UserStudentInformationsModel;
     let studentsModel = models.UserStudentsModel;
+    let docmentTitlesModel = models.UserStudentDocumentTitlesModel;
     let params = req.params as any;
 
     try {
@@ -33,10 +34,16 @@ async function details(
                     model: informationsModel,
                     as: 'student_info',
                 },
-                // {
-                //     model: informationsModel,
-                //     as: 'student_infos',
-                // },
+                {
+                    model: docmentTitlesModel,
+                    as: 'document_titles',
+                    // include: [
+                    //     {
+                    //         model: informationsModel,
+                    //         as: 'student_info',
+                    //     },
+                    // ],
+                },
             ],
         });
 
