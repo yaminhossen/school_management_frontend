@@ -770,23 +770,21 @@ const Details: React.FC<Props> = (props: Props) => {
                                                             </td>
                                                         </tr>
                                                         <tr>
+                                                            <td>Email</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {
+                                                                    i
+                                                                        .parent_details
+                                                                        ?.email
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
                                                             <td>Relation</td>
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
                                                                 {i.relation}
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                Year Of Leaving
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td className="font-medium text-dark-medium">
-                                                                {moment(
-                                                                    i.year_of_leaving,
-                                                                ).format(
-                                                                    'YYYY-MM-DD',
-                                                                )}
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -794,27 +792,43 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 <table className="table text-nowrap student_table ml-2">
                                                     <tbody>
                                                         <tr>
-                                                            <td>Result</td>
+                                                            <td>
+                                                                Phone Number
+                                                            </td>
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
-                                                                {i.result}
+                                                                {
+                                                                    i
+                                                                        .parent_details
+                                                                        ?.phone_number
+                                                                }
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                Transfer
-                                                                Cirtificate
+                                                            <td>Status</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {
+                                                                    i
+                                                                        .parent_details
+                                                                        ?.status
+                                                                }
                                                             </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Picture</td>
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
                                                                 <a
                                                                     href={
-                                                                        i.transfer_cirtificate
+                                                                        i
+                                                                            .parent_details
+                                                                            ?.image
                                                                     }
                                                                     target="_blank"
                                                                     rel="noopener noreferrer"
                                                                 >
-                                                                    Show File
+                                                                    Show Image
                                                                 </a>
                                                             </td>
                                                         </tr>
