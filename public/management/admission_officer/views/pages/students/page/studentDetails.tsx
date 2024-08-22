@@ -35,16 +35,6 @@ const Details: React.FC<Props> = (props: Props) => {
         console.log('state item result', state.item);
     }
 
-    const datas: data[] = [
-        {
-            id: 1,
-            class: 'Six',
-            student_id: '2024SIX101',
-            name: 'Shahin',
-            roll: '001',
-        },
-    ];
-
     return (
         <div className="admin_dashboard">
             <h3 className="table_heading">Basic information</h3>
@@ -68,162 +58,446 @@ const Details: React.FC<Props> = (props: Props) => {
                     </div>
                 </div>
                 {Object.keys(state.item) && (
-                    <table className="table text-nowrap student_table">
-                        <tbody>
-                            <tr>
-                                <td>Name:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.name}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Gender:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.student_info?.gender}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Father Name:</td>
-                                <td className="font-medium text-dark-medium">
-                                    Abdur rahman
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Email:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.email}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Phone number:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.phone_number}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Stutas:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.status}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Branch:</td>
-                                <td className="font-medium text-dark-medium">
-                                    Uttora
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Admission no:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.student_info?.addmission_no}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Roll no:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.student_info?.role_no}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Addmission date:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {moment(
-                                        state.item?.student_info
-                                            ?.admission_date,
-                                    ).format('YYYY-MM-DD')}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Class:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.student_info?.s_class}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Shift:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.student_info?.shift}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Student Category:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.student_info?.student_category}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Section:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.student_info?.section}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Present Address:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.student_info?.present_address}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Permanent Address:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {
-                                        state.item?.student_info
-                                            ?.permanent_address
-                                    }
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Date of birth:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {moment(
-                                        state.item?.student_info?.date_of_birth,
-                                    ).format('YYYY-MM-DD')}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Religion:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.student_info?.religion}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Nationality:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.student_info?.nationality}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Division:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.student_info?.division}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Class:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.student_info?.s_class}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Section:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.student_info?.section}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ID No:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.student_info?.student_id}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Address:</td>
-                                <td className="font-medium text-dark-medium">
-                                    {state.item?.student_info?.present_address}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div className="single_student_details">
+                        <div className="">
+                            <h4>Basic information</h4>
+                            <div className="basic_info mb-4">
+                                <table className="table text-nowrap student_table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {state.item?.name}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {state.item?.email}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone number</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {state.item?.phone_number}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table className="table text-nowrap student_table ml-2">
+                                    <tbody>
+                                        <tr>
+                                            <td>Whatsapp number</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {state.item?.whatsapp_number}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gender</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.gender
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Stutas</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {state.item?.status}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Admission information</h4>
+                            <div className="basic_info mb-4 ">
+                                <table className="table text-nowrap student_table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Branch</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                Uttora
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Admission no</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.addmission_no
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Roll no</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.role_no
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Addmission date</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {moment(
+                                                    state.item?.student_info
+                                                        ?.admission_date,
+                                                ).format('YYYY-MM-DD')}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table className="table text-nowrap student_table ml-2">
+                                    <tbody>
+                                        <tr>
+                                            <td>Class</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.s_class
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Shift</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.shift
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Student Category</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.student_category
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Section</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.section
+                                                }
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Information</h4>
+                            <div className="basic_info mb-4 ">
+                                <table className="table text-nowrap student_table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Present Address</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.present_address
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Permanent Address</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.permanent_address
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Religion</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.religion
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>City</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {state.item?.student_info?.city}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Telegram Id</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.telegram_id
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Blood Group</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.blood_group
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Student Expire Date</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {moment(
+                                                    state.item?.student_info
+                                                        ?.student_expire_date,
+                                                ).format('YYYY-MM-DD')}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Height</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.height
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Weight</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.weight
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>As on Date</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.as_on_date
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Familly Information</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.familly_information
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Shibling Information</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.shibling_information
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Living House type</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.living_house_type
+                                                }
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table className="table text-nowrap student_table ml-2">
+                                    <tbody>
+                                        <tr>
+                                            <td>Nationality</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.nationality
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Division</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.division
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>ID No</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.student_id
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.present_address
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Post code</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.post_code
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Country</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.country
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Medical Condition</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.medical_condition
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Current Medication</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.current_medcation
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Telegram Name</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.telegram_name
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Student House type</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.student_house_type
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Birth Cirtificate</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {/* {
+                                                    state.item?.student_info
+                                                        ?.birth_certificate
+                                                } */}
+                                                <a
+                                                    href={
+                                                        state.item?.student_info
+                                                            ?.birth_certificate
+                                                    }
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    Show cirtificate
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>National ID</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {/* {
+                                                    state.item?.student_info
+                                                        ?.birth_certificate
+                                                } */}
+                                                <a
+                                                    href={
+                                                        state.item?.student_info
+                                                            ?.national_id
+                                                    }
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    Show NID
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cast</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {state.item?.student_info?.cast}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 )}
             </div>
         </div>

@@ -603,12 +603,36 @@ th {
 .semister_grade{
     margin-top: 50px;
 }
-.student_table{
-    color: white;
-    font-size: 18px;
-}
+
 .student_details{
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.single_student_details{
+    h4{
+        /* text-decoration: underline; */
+        border-bottom: 2px solid rgb(126, 125, 125);
+        width: fit-content;
+        gap: 10px;
+    }
+    .student_table{
+        color: white;
+        font-size: 18px;
+    }
+    .basic_info{
+        display: flex;
+        justify-content: space-between;
+        /* border: 1px solid red; */
+        width: 100%;
+    }
+    table{
+        tbody{
+            tr{
+                td:first-child{
+                    width: 250px;
+                }
+            }
+        }
+    }
 }
