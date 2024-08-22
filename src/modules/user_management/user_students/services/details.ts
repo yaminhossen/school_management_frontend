@@ -17,6 +17,10 @@ async function details(
     let docmentTitlesModel = models.UserStudentDocumentTitlesModel;
     let docmentValuesModel = models.UserStudentDocumentValuesModel;
     let contactNumbersModel = models.UserStudentContactNumbersModel;
+    let skillsModel = models.UserStudentSkillsModel;
+    let languagesModel = models.UserStudentLanguagesModel;
+    let studentParentsModel = models.UserStudentParentsModel;
+    let parentsModel = models.UserParentsModel;
     let params = req.params as any;
 
     try {
@@ -41,12 +45,34 @@ async function details(
                     as: 'student_numbers',
                 },
                 {
+                    model: skillsModel,
+                    as: 'skills',
+                },
+                {
+                    model: languagesModel,
+                    as: 'languages',
+                },
+                {
+                    model: educationalBackgroundsModel,
+                    as: 'educational_backgrounds',
+                },
+                {
                     model: docmentTitlesModel,
                     as: 'document_titles',
                     include: [
                         {
                             model: docmentValuesModel,
                             as: 'values_title',
+                        },
+                    ],
+                },
+                {
+                    model: studentParentsModel,
+                    as: 'parents',
+                    include: [
+                        {
+                            model: parentsModel,
+                            as: 'parent_details',
                         },
                     ],
                 },

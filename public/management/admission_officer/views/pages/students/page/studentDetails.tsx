@@ -609,6 +609,146 @@ const Details: React.FC<Props> = (props: Props) => {
                                     },
                                 )}
                         </div>
+                        <div>
+                            <h4>Skills</h4>
+                            {Object.keys(state.item)?.length &&
+                                state.item?.skills.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
+                                            <div className="basic_info mb-4 ">
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Skill Title</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.title}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Level</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.level}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        );
+                                    },
+                                )}
+                        </div>
+                        <div>
+                            <h4>Languages</h4>
+                            {Object.keys(state.item)?.length &&
+                                state.item?.languages.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
+                                            <div className="basic_info mb-4 ">
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Language</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {
+                                                                    i.language_title
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Profeciency</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.profeciency}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        );
+                                    },
+                                )}
+                        </div>
+                        <div>
+                            <h4>Educational Background</h4>
+                            {Object.keys(state.item)?.length &&
+                                state.item?.educational_backgrounds.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
+                                            <div className="basic_info mb-4 ">
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                Previous
+                                                                Institute
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {
+                                                                    i.previous_institute
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Year Of Leaving
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {moment(
+                                                                    i.year_of_leaving,
+                                                                ).format(
+                                                                    'YYYY-MM-DD',
+                                                                )}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table className="table text-nowrap student_table ml-2">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Result</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.result}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Transfer
+                                                                Cirtificate
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                <a
+                                                                    href={
+                                                                        i.transfer_cirtificate
+                                                                    }
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                >
+                                                                    Show File
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        );
+                                    },
+                                )}
+                        </div>
                     </div>
                 )}
             </div>
