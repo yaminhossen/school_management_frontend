@@ -30,15 +30,6 @@ const Index: React.FC<Props> = (props: Props) => {
 
     const dispatch = useAppDispatch();
 
-    // useEffect(() => {
-    //     dispatch(
-    //         storeSlice.actions.set_select_fields(
-    //             'id, name, email, image, status',
-    //         ),
-    //     );
-    //     dispatch(all({}));
-    // }, []);
-
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(all_class({}) as any);
@@ -47,34 +38,6 @@ const Index: React.FC<Props> = (props: Props) => {
         console.log('state', state.item.length);
     }
     console.log('storeSlice', storeSlice);
-
-    const datas: data[] = [
-        {
-            id: 1,
-            class: 'Six',
-            total_student: '280',
-        },
-        {
-            id: 2,
-            class: 'Seven',
-            total_student: '300',
-        },
-        {
-            id: 3,
-            class: 'Eight',
-            total_student: '320',
-        },
-        {
-            id: 4,
-            class: 'Nine',
-            total_student: '260',
-        },
-        {
-            id: 5,
-            class: 'Ten',
-            total_student: '250',
-        },
-    ];
 
     return (
         <div className="admin_dashboard">
