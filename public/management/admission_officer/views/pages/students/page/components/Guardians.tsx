@@ -23,7 +23,10 @@ const Guardians: React.FC<Props> = (props: Props) => {
             user_student_id: state.item.id,
             is_parent: '',
             relation: '',
-            user_parent_id: '',
+            parent_name: '',
+            parent_email: '',
+            parent_phone_number: '',
+            parent_image: '',
         });
         setUpdateGuardians(temp);
     }
@@ -91,9 +94,6 @@ const Guardians: React.FC<Props> = (props: Props) => {
                                                     )
                                                 }
                                             >
-                                                <option value="gdfg">
-                                                    gdfg
-                                                </option>
                                                 <option value="father">
                                                     father
                                                 </option>
@@ -135,7 +135,7 @@ const Guardians: React.FC<Props> = (props: Props) => {
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="form-group form-vertical">
+                                    {/* <div className="form-group form-vertical">
                                         <label>User parent id</label>
                                         <div className="form_elements">
                                             <select
@@ -166,6 +166,94 @@ const Guardians: React.FC<Props> = (props: Props) => {
                                                     parent6
                                                 </option>
                                             </select>
+                                        </div>
+                                    </div> */}
+                                    <div className="form-group form-vertical">
+                                        <label>Name</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="parents name"
+                                                name={`parent_name${index}`}
+                                                defaultValue={
+                                                    i.parent_details?.name
+                                                }
+                                                onChange={(e) =>
+                                                    setData(
+                                                        index,
+                                                        'name',
+                                                        `${e.target.value}`,
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Email</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="parent email"
+                                                name={`parent_email${index}`}
+                                                defaultValue={
+                                                    i.parent_details?.email
+                                                }
+                                                onChange={(e) =>
+                                                    setData(
+                                                        index,
+                                                        'email',
+                                                        `${e.target.value}`,
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Phone number</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="parent phone number"
+                                                name={`parent_phone_number${index}`}
+                                                defaultValue={
+                                                    i.parent_details
+                                                        ?.phone_number
+                                                }
+                                                onChange={(e) =>
+                                                    setData(
+                                                        index,
+                                                        'phone_number',
+                                                        `${e.target.value}`,
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Image</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="file"
+                                                placeholder="image"
+                                                accept="image/*"
+                                                name={`parent_image${index}`}
+                                                // defaultValue={i.owner}
+                                                onChange={(e) =>
+                                                    setData(
+                                                        index,
+                                                        'image',
+                                                        `${e.target.value}`,
+                                                    )
+                                                }
+                                            />
+                                            <img
+                                                src={i.parent_details?.image}
+                                                style={{
+                                                    width: '100px',
+                                                    height: '50px',
+                                                }}
+                                                alt=""
+                                            />
                                         </div>
                                     </div>
                                 </div>
