@@ -51,7 +51,7 @@ const ContactNumber: React.FC<Props> = (props: Props) => {
         <>
             <div className="full_width">
                 <div className="form_section_heading">
-                    <h4>Contact ContactNumber</h4>
+                    <h4>Contact Number</h4>
                 </div>
                 <div className="multi_inputs">
                     {/* <div className="pb-4 px-0">

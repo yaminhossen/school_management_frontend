@@ -376,6 +376,8 @@ async function store(
                         usp_inputs.relation = ss.relation;
                         usp_inputs.is_parent = ss.is_parent;
                         usp_inputs.user_parent_id = up_model.id || 1;
+                        // console.log('parent id', up_model.id);
+
                         (await usp_model.update(usp_inputs)).save();
                     }
                 });
