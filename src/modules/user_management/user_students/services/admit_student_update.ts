@@ -244,6 +244,7 @@ async function store(
         });
     }
     console.log('student documents', student_document);
+    // console.log('student updated_document_data', updated_document_data);
     console.log('document file', document_file);
     // let student_document_file: anyObject[] = [];
     // for (let i = 0; i < parseInt(body.total_docement_count_file); i++) {
@@ -378,17 +379,17 @@ async function store(
                 //         },
                 //     });
                 // });
-                // await models.UserStudentDocumentTitlesModel.destroy({
-                //     where: {
-                //         user_student_id: body.id,
-                //     },
-                // });
-                // await models.UserStudentDocumentValuesModel.destroy({
-                //     where: {
-                //         user_student_id: body.id,
-                //     },
-                // });
-                student_guardians.forEach(async (ss, index) => {
+                await models.UserStudentDocumentTitlesModel.destroy({
+                    where: {
+                        user_student_id: body.id,
+                    },
+                });
+                await models.UserStudentDocumentValuesModel.destroy({
+                    where: {
+                        user_student_id: body.id,
+                    },
+                });
+                student_document.forEach(async (ss, index) => {
                     let usdv_model =
                         new models.UserStudentDocumentValuesModel();
                     let usdt_model =
@@ -414,7 +415,7 @@ async function store(
                         };
                         usdv_inputs.user_student_id = body.id || 1;
                         usdv_inputs.file =
-                            ss.file || document_file[index]?.image;
+                            ss.file || document_file[index]?.file;
                         usdv_inputs.issue_date = ss.issue_date;
                         usdv_inputs.expire_date = ss.expire_date;
                         usdv_inputs.user_student_document_title_id =
@@ -424,55 +425,55 @@ async function store(
                 });
             }
             if (student_guardians) {
-                // let all_parents = await models.UserStudentParentsModel.findAll({
-                //     where: {
-                //         user_student_id: body.id,
-                //     },
-                // });
-                // all_parents.forEach(async (ss) => {
-                //     await models.UserParentsModel.destroy({
-                //         where: {
-                //             id: ss.dataValues.user_parent_id,
-                //         },
-                //     });
-                // });
-                // await models.UserStudentParentsModel.destroy({
-                //     where: {
-                //         user_student_id: body.id,
-                //     },
-                // });
-                // student_guardians.forEach(async (ss, index) => {
-                //     let usp_model = new models.UserStudentParentsModel();
-                //     let up_model = new models.UserParentsModel();
-                //     let up_inputs: InferCreationAttributes<typeof up_model> = {
-                //         name: body.parent_name,
-                //         email: body.parent_email,
-                //         phone_number: body.parent_phone_number,
-                //         image: '',
-                //         password: body.parent_password,
-                //     };
-                //     up_inputs.name = ss.name;
-                //     up_inputs.email = ss.email;
-                //     up_inputs.phone_number = ss.phone_number;
-                //     up_inputs.image = ss.image || parent_pass[index]?.image;
-                //     up_inputs.password = parent_pass[index]?.password;
-                //     (await up_model.update(up_inputs)).save();
-                //     if (up_model) {
-                //         let usp_inputs: InferCreationAttributes<
-                //             typeof usp_model
-                //         > = {
-                //             user_student_id: 1,
-                //             relation: body.relation,
-                //             is_parent: body.is_parent,
-                //             user_parent_id: body.user_parent_id,
-                //         };
-                //         usp_inputs.user_student_id = body.id;
-                //         usp_inputs.relation = ss.relation;
-                //         usp_inputs.is_parent = ss.is_parent;
-                //         usp_inputs.user_parent_id = up_model.id || 1;
-                //         (await usp_model.update(usp_inputs)).save();
-                //     }
-                // });
+                let all_parents = await models.UserStudentParentsModel.findAll({
+                    where: {
+                        user_student_id: body.id,
+                    },
+                });
+                all_parents.forEach(async (ss) => {
+                    await models.UserParentsModel.destroy({
+                        where: {
+                            id: ss.dataValues.user_parent_id,
+                        },
+                    });
+                });
+                await models.UserStudentParentsModel.destroy({
+                    where: {
+                        user_student_id: body.id,
+                    },
+                });
+                student_guardians.forEach(async (ss, index) => {
+                    let usp_model = new models.UserStudentParentsModel();
+                    let up_model = new models.UserParentsModel();
+                    let up_inputs: InferCreationAttributes<typeof up_model> = {
+                        name: body.parent_name,
+                        email: body.parent_email,
+                        phone_number: body.parent_phone_number,
+                        image: '',
+                        password: body.parent_password,
+                    };
+                    up_inputs.name = ss.name;
+                    up_inputs.email = ss.email;
+                    up_inputs.phone_number = ss.phone_number;
+                    up_inputs.image = ss.image || parent_pass[index]?.image;
+                    up_inputs.password = parent_pass[index]?.password;
+                    (await up_model.update(up_inputs)).save();
+                    if (up_model) {
+                        let usp_inputs: InferCreationAttributes<
+                            typeof usp_model
+                        > = {
+                            user_student_id: 1,
+                            relation: body.relation,
+                            is_parent: body.is_parent,
+                            user_parent_id: body.user_parent_id,
+                        };
+                        usp_inputs.user_student_id = body.id;
+                        usp_inputs.relation = ss.relation;
+                        usp_inputs.is_parent = ss.is_parent;
+                        usp_inputs.user_parent_id = up_model.id || 1;
+                        (await usp_model.update(usp_inputs)).save();
+                    }
+                });
             }
             // if (student_number) {
             //     await models.UserStudentContactNumbersModel.destroy({
