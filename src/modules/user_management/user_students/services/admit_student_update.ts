@@ -163,6 +163,26 @@ async function store(
             file: image_path,
         });
     }
+    let parent_pass: anyObject[] = [];
+    let all_parents = await models.UserStudentParentsModel.findAll({
+        where: {
+            user_student_id: body.id,
+        },
+    });
+    all_parents.forEach(async (ss) => {
+        let pp_model = await models.UserParentsModel.findOne({
+            where: {
+                id: ss.dataValues.user_parent_id,
+            },
+        });
+        parent_pass.push({
+            // title: body[`document_title${i}`],
+            password: pp_model?.password,
+            image: pp_model?.image,
+        });
+        // console.log('all_parents_id', ss.dataValues.user_parent_id);
+        // console.log('all parent pass1', parent_pass);
+    });
 
     let student_guardians: anyObject[] = [];
     let updated_guardian_data = JSON.parse(body.updated_guardian_data);
@@ -179,16 +199,16 @@ async function store(
         student_guardians.push({
             relation: body[`relation${i}`],
             is_parent: body[`is_parent${i}`],
-            parent_name: body[`parent_name${i}`],
-            parent_email: body[`parent_email${i}`],
-            parent_phone_number: body[`parent_phone_number${i}`],
-            file: body[`parent_image${i}`],
+            name: body[`parent_name${i}`],
+            email: body[`parent_email${i}`],
+            phone_number: body[`parent_phone_number${i}`],
+            image: image_path,
         });
     }
     // console.log(updated_background_data);
     // console.log('updated date g', updated_guardian_data);
-    // console.log('student date g', student_guardians);
-    // console.log(eductional_bc);
+    console.log('student guardinas', student_guardians);
+    console.log('educational bd', eductional_bc);
 
     let student_document: anyObject[] = [];
     for (let i = 0; i < parseInt(body.total_docement_count); i++) {
@@ -328,6 +348,7 @@ async function store(
             //         (await useb_model.update(useb_inputs)).save();
             //     });
             // }
+
             if (student_guardians) {
                 let all_parents = await models.UserStudentParentsModel.findAll({
                     where: {
@@ -340,9 +361,13 @@ async function store(
                             id: ss.dataValues.user_parent_id,
                         },
                     });
-                    console.log('all_parents_id', ss.dataValues.user_parent_id);
                 });
-                // console.log('all_parents', all_parents);
+                await models.UserStudentParentsModel.destroy({
+                    where: {
+                        user_student_id: body.id,
+                    },
+                });
+                // console.log('all_parents', parent_pass);
                 // console.log('all_parents', all_parents?.length);
 
                 // await models.UserStudentParentsModel.destroy({
@@ -350,21 +375,48 @@ async function store(
                 //         user_student_id: body.id,
                 //     },
                 // });
-                // student_guardians.forEach(async (ss) => {
-                //     let usp_model = new models.UserStudentParentsModel();
-                //     let usp_inputs: InferCreationAttributes<typeof usp_model> =
-                //         {
-                //             user_student_id: 1,
-                //             relation: body.relation,
-                //             is_parent: body.is_parent,
-                //             user_parent_id: body.user_parent_id,
-                //         };
-                //     usp_inputs.user_student_id = body.id || 1;
-                //     usp_inputs.relation = ss.relation;
-                //     usp_inputs.is_parent = ss.is_parent;
-                //     usp_inputs.user_parent_id = ss.user_parent_id;
-                //     (await usp_model.update(usp_inputs)).save();
-                // });
+                // its okkk
+                student_guardians.forEach(async (ss, index) => {
+                    let usp_model = new models.UserStudentParentsModel();
+                    let up_model = new models.UserParentsModel();
+                    let up_inputs: InferCreationAttributes<typeof up_model> = {
+                        name: body.parent_name,
+                        email: body.parent_email,
+                        phone_number: body.parent_phone_number,
+                        image: '',
+                        password: body.parent_password,
+                    };
+                    up_inputs.name = ss.name;
+                    up_inputs.email = ss.email;
+                    up_inputs.phone_number = ss.phone_number;
+                    up_inputs.image = ss.image || parent_pass[index]?.image;
+                    up_inputs.password = parent_pass[index]?.password;
+                    (await up_model.update(up_inputs)).save();
+                    // console.log(
+                    //     'just index number',
+                    //     parent_pass[index]?.password,
+                    // );
+
+                    if (up_model) {
+                        let usp_inputs: InferCreationAttributes<
+                            typeof usp_model
+                        > = {
+                            user_student_id: 1,
+                            relation: body.relation,
+                            is_parent: body.is_parent,
+                            user_parent_id: body.user_parent_id,
+                        };
+                        // eslint-disable-next-line no-redeclare
+                        // let id = up_model.id;
+                        usp_inputs.user_student_id = body.id;
+                        usp_inputs.relation = ss.relation;
+                        usp_inputs.is_parent = ss.is_parent;
+                        usp_inputs.user_parent_id = up_model.id || 1;
+                        // console.log('parent id', up_model.id);
+
+                        (await usp_model.update(usp_inputs)).save();
+                    }
+                });
             }
             // if (student_number) {
             //     await models.UserStudentContactNumbersModel.destroy({
