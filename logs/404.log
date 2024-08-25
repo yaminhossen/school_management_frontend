@@ -45,3 +45,6 @@
 {"level":60,"time":1724502382763,"pid":3312,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
 {"level":60,"time":1724561833045,"pid":17080,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
 {"level":60,"time":1724565554836,"pid":17080,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1724577546750,"pid":2708,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1724577548298,"pid":2708,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1724577549488,"pid":2708,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}

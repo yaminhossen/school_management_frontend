@@ -14,11 +14,12 @@ import Guardians from './components/Guardians';
 import ContactNumber from './components/ContactNumber';
 import Languages from './components/Languages';
 import Skill from './components/Skill';
+import Documents from './components/Document';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
-    const [totalDocument, setTotalDocument] = useState([1]);
+    // const [totalDocument, setTotalDocument] = useState([1]);
     const [totalContactNumber, setTotalContactNumber] = useState([1]);
     const [totalLanguage, setTotalLanguage] = useState<anyObject[]>([]);
     const [totalSkill, setTotalSkill] = useState<anyObject[]>([]);
@@ -27,6 +28,7 @@ const Index: React.FC<Props> = (props: Props) => {
     >([]);
     const [totalGuardians, setTotalGuardians] = useState<anyObject[]>([]);
     const [totalNumbers, setTotalNumber] = useState<anyObject[]>([]);
+    const [totalDocuments, setTotalDocument] = useState<anyObject[]>([]);
     // const [totalParent, setTotalParent] = useState<anyObject[]>([]);
     // let date22 = moment().format('YYYY-DD-MM');
 
@@ -46,6 +48,10 @@ const Index: React.FC<Props> = (props: Props) => {
         formData.append(
             'updated_contact_number_data',
             JSON.stringify(totalNumbers),
+        );
+        formData.append(
+            'updated_document_data',
+            JSON.stringify(totalDocuments),
         );
         formData.append('updated_language_data', JSON.stringify(totalLanguage));
         let response = await dispatch(update(formData) as any);
@@ -818,6 +824,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                             </div>
+
+                            <Documents
+                                setTotalDocument={setTotalDocument}
+                            ></Documents>
 
                             <Guardians
                                 setTotalGuardians={setTotalGuardians}

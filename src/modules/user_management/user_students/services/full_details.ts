@@ -51,6 +51,12 @@ async function details(
                 {
                     model: documentTitlesModel,
                     as: 'document_titles',
+                    include: [
+                        {
+                            model: documentValuesModel,
+                            as: 'values_title',
+                        },
+                    ],
                 },
                 {
                     model: documentValuesModel,

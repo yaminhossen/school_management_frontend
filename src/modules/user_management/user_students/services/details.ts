@@ -14,8 +14,8 @@ async function details(
         models.UserStudentEducationalBackgroundsModel;
     let informationsModel = models.UserStudentInformationsModel;
     let studentsModel = models.UserStudentsModel;
-    let docmentTitlesModel = models.UserStudentDocumentTitlesModel;
-    let docmentValuesModel = models.UserStudentDocumentValuesModel;
+    let documentTitlesModel = models.UserStudentDocumentTitlesModel;
+    let documentValuesModel = models.UserStudentDocumentValuesModel;
     let contactNumbersModel = models.UserStudentContactNumbersModel;
     let skillsModel = models.UserStudentSkillsModel;
     let languagesModel = models.UserStudentLanguagesModel;
@@ -57,11 +57,11 @@ async function details(
                     as: 'educational_backgrounds',
                 },
                 {
-                    model: docmentTitlesModel,
+                    model: documentTitlesModel,
                     as: 'document_titles',
                     include: [
                         {
-                            model: docmentValuesModel,
+                            model: documentValuesModel,
                             as: 'values_title',
                         },
                     ],
