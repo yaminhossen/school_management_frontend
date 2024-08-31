@@ -553,3 +553,4 @@
 {"level":60,"time":1725084002660,"pid":12364,"hostname":"DESKTOP-9421701","file":"","time":"8/31/2024 12:00:02 PM","message":"target not found."}
 {"level":60,"time":1725084015360,"pid":12364,"hostname":"DESKTOP-9421701","file":"","time":"8/31/2024 12:00:15 PM","message":"target not found."}
 {"level":60,"time":1725084015366,"pid":12364,"hostname":"DESKTOP-9421701","file":"","time":"8/31/2024 12:00:15 PM","message":"target not found."}
+{"level":60,"time":1725098394135,"pid":16420,"hostname":"DESKTOP-9421701","file":"","time":"8/31/2024 3:59:54 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}

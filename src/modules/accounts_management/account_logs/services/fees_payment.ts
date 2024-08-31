@@ -73,6 +73,11 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.AccountLogsModel();
+    let ac_model = new models.AccountCategoriesModel();
+    let ap_model = new models.AccountPeriodsModel();
+    let a_model = new models.AccountsModel();
+    let mrb_model = new models.MoneyReceiptBooksModel();
+    let afc_model = new models.AccountFeeCollectionsModel();
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: body.branch_id,
@@ -83,6 +88,31 @@ async function store(
         receipt_no: body.receipt_no,
         amount: body.amount,
         type: body.type,
+    };
+
+    let ac_inputs: InferCreationAttributes<typeof ac_model> = {
+        branch_id: body.branch_id,
+        title: body.ac_title,
+        description: body.ac_description,
+    };
+
+    let ap_inputs: InferCreationAttributes<typeof ap_model> = {
+        branch_id: body.branch_id,
+        year_month: body.ap_year_month,
+        description: body.ap_description,
+    };
+
+    let a_inputs: InferCreationAttributes<typeof a_model> = {
+        branch_id: body.branch_id,
+        title: body.accounts_title,
+        description: body.accounts_description,
+    };
+
+    let mrb_inputs: InferCreationAttributes<typeof mrb_model> = {
+        branch_id: body.branch_id,
+        book_no: body.mrb_book_no,
+        start_serial: body.mrb_start_serial,
+        end_serial: body.mrb_end_serial,
     };
 
     /** print request data into console */

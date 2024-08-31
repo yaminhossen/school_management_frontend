@@ -27,6 +27,8 @@ content-type: application/json
 
 {
     "branch_id": 1,
+    "student_id": 1,
+    "class_id": 1,
     "account_category_id": 1,
     "account_id": 1,
     "account_period_id": 1,
@@ -39,9 +41,9 @@ content-type: application/json
     "ac_description": "This is admission bill",
     "amount": "2000",
     "type": "income",
-    "mrb_book_no": "2000",
-    "mrb_start_serial": "2000",
-    "mrb_end_serial": "2000"
+    "mrb_book_no": "A101",
+    "mrb_start_serial": "101",
+    "mrb_end_serial": "200"
 }
 
 
