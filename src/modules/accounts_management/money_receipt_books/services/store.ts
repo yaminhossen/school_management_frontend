@@ -18,40 +18,16 @@ async function validate(req: Request) {
         .withMessage('the branch_id field is required')
         .run(req);
 
-    await body('account_category_id')
+    await body('title')
         .not()
         .isEmpty()
-        .withMessage('the account_category_id field is required')
+        .withMessage('the title field is required')
         .run(req);
 
-    await body('account_id')
+    await body('description')
         .not()
         .isEmpty()
-        .withMessage('the account_id field is required')
-        .run(req);
-
-    await body('account_period_id')
-        .not()
-        .isEmpty()
-        .withMessage('the account_period_id field is required')
-        .run(req);
-
-    await body('money_receipt_book_id')
-        .not()
-        .isEmpty()
-        .withMessage('the money_receipt_book_id field is required')
-        .run(req);
-
-    await body('amount')
-        .not()
-        .isEmpty()
-        .withMessage('the amount field is required')
-        .run(req);
-
-    await body('type')
-        .not()
-        .isEmpty()
-        .withMessage('the type field is required')
+        .withMessage('the description field is required')
         .run(req);
 
     let result = await validationResult(req);
@@ -72,17 +48,13 @@ async function store(
     /** initializations */
     let models = await db();
     let body = req.body as anyObject;
-    let data = new models.AccountLogsModel();
+    let data = new models.MoneyReceiptBooksModel();
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: body.branch_id,
-        account_category_id: body.account_category_id,
-        account_id: body.account_log_id,
-        account_period_id: body.account_period_id,
-        money_receipt_book_id: body.money_receipt_book_id,
-        receipt_no: body.receipt_no,
-        amount: body.amount,
-        type: body.type,
+        book_no: body.book_no,
+        start_serial: body.start_serial,
+        end_serial: body.end_serial,
     };
 
     /** print request data into console */

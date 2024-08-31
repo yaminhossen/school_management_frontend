@@ -1,4 +1,4 @@
-@hostname = http://127.0.0.1:5003/api/v1/account-logs
+@hostname = http://127.0.0.1:5003/api/v1/money-receipt-books
 @token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidG9rZW4iOiJxNm85anE4ZiIsInVzZXJfYWdlbnQiOiJ2c2NvZGUtcmVzdGNsaWVudCIsImlhdCI6MTcxNTQ5MzE0NH0.XAq9b9sahDzxrjSeuF1OS5WPFTjbhg_28ozJpx6odC4
 
 # all
@@ -18,30 +18,6 @@ content-type: application/json
     "branch_id": 4,
     "title": "cellphin",
     "description": "This is sellfin accoutn"
-}
-
-# store
-###
-POST  {{hostname}}/fees-collection HTTP/1.1
-content-type: application/json
-
-{
-    "branch_id": 1,
-    "account_category_id": 1,
-    "account_id": 1,
-    "account_period_id": 1,
-    "money_receipt_book_id": 1,
-    "accounts_title": "Bank",
-    "accounts_description": "Islami bank account",
-    "ap_year_month": "2024-02-14",
-    "ap_description": "Islami bank account",
-    "ac_title": "Admission bill",
-    "ac_description": "This is admission bill",
-    "amount": "2000",
-    "type": "income",
-    "mrb_book_no": "2000",
-    "mrb_start_serial": "2000",
-    "mrb_end_serial": "2000"
 }
 
 

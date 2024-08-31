@@ -23,25 +23,21 @@ import {
     // ForeignKey,
 } from 'sequelize';
 
-const tableName = 'account_logs';
-const modelName = 'AccountLogsModel';
+const tableName = 'money_receipt_books';
+const modelName = 'MoneyReceiptBooksModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
-type type = 'income' | 'expense';
+// type attendance_status = 'present' | 'absent' | 'late' | 'leave';
 type status = 'active' | 'deactive';
 
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
     declare branch_id: number;
-    declare account_category_id: number;
-    declare account_id: number;
-    declare account_period_id: number;
-    declare money_receipt_book_id: number;
-    declare receipt_no: string;
-    declare amount: number;
-    declare type: type;
+    declare book_no: string;
+    declare start_serial: string;
+    declare end_serial: string;
 
     declare status?: status;
     declare creator?: number;
@@ -62,32 +58,16 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },
-            account_category_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+            book_no: {
+                type: DataTypes.STRING(25),
                 allowNull: true,
             },
-            account_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+            start_serial: {
+                type: DataTypes.STRING(25),
                 allowNull: true,
             },
-            account_period_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            money_receipt_book_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            receipt_no: {
-                type: DataTypes.STRING(20),
-                allowNull: true,
-            },
-            amount: {
-                type: DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            type: {
-                type: DataTypes.ENUM('income', 'expense'),
+            end_serial: {
+                type: DataTypes.STRING(25),
                 allowNull: true,
             },
 

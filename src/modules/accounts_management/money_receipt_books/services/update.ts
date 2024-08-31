@@ -12,46 +12,28 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
 async function validate(req: Request) {
+    await body('id')
+        .not()
+        .isEmpty()
+        .withMessage('the id field is required')
+        .run(req);
+
     await body('branch_id')
         .not()
         .isEmpty()
         .withMessage('the branch_id field is required')
         .run(req);
 
-    await body('account_category_id')
+    await body('title')
         .not()
         .isEmpty()
-        .withMessage('the account_category_id field is required')
+        .withMessage('the title field is required')
         .run(req);
 
-    await body('account_id')
+    await body('description')
         .not()
         .isEmpty()
-        .withMessage('the account_id field is required')
-        .run(req);
-
-    await body('account_period_id')
-        .not()
-        .isEmpty()
-        .withMessage('the account_period_id field is required')
-        .run(req);
-
-    await body('money_receipt_book_id')
-        .not()
-        .isEmpty()
-        .withMessage('the money_receipt_book_id field is required')
-        .run(req);
-
-    await body('amount')
-        .not()
-        .isEmpty()
-        .withMessage('the amount field is required')
-        .run(req);
-
-    await body('type')
-        .not()
-        .isEmpty()
-        .withMessage('the type field is required')
+        .withMessage('the description field is required')
         .run(req);
 
     let result = await validationResult(req);
@@ -59,7 +41,7 @@ async function validate(req: Request) {
     return result;
 }
 
-async function store(
+async function update(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -72,17 +54,13 @@ async function store(
     /** initializations */
     let models = await db();
     let body = req.body as anyObject;
-    let data = new models.AccountLogsModel();
+    let model = new models.MoneyReceiptBooksModel();
 
-    let inputs: InferCreationAttributes<typeof data> = {
+    let inputs: InferCreationAttributes<typeof model> = {
         branch_id: body.branch_id,
-        account_category_id: body.account_category_id,
-        account_id: body.account_log_id,
-        account_period_id: body.account_period_id,
-        money_receipt_book_id: body.money_receipt_book_id,
-        receipt_no: body.receipt_no,
-        amount: body.amount,
-        type: body.type,
+        book_no: body.book_no,
+        start_serial: body.start_serial,
+        end_serial: body.end_serial,
     };
 
     /** print request data into console */
@@ -91,12 +69,23 @@ async function store(
 
     /** store data into database */
     try {
-        (await data.update(inputs)).save();
-        return response(200, 'data created', data);
+        let data = await models.MoneyReceiptBooksModel.findByPk(body.id);
+        if (data) {
+            data.update(inputs);
+            await data.save();
+            return response(200, 'data updated', data);
+        } else {
+            throw new custom_error('Forbidden', 403, 'operation not possible');
+        }
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
-        throw new custom_error('server error', 500, error.message, uid);
+        if (error instanceof custom_error) {
+            error.uid = uid;
+        } else {
+            throw new custom_error('server error', 500, error.message, uid);
+        }
+        throw error;
     }
 }
 
-export default store;
+export default update;

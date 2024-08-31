@@ -80,6 +80,7 @@ async function store(
         account_id: body.account_log_id,
         account_period_id: body.account_period_id,
         money_receipt_book_id: body.money_receipt_book_id,
+        receipt_no: body.receipt_no,
         amount: body.amount,
         type: body.type,
     };

@@ -17,6 +17,7 @@ export let active_routes: string[] = [
     'src/modules/accounts_management/account_vouchers/routes.ts',
     'src/modules/accounts_management/budgets/routes.ts',
     'src/modules/accounts_management/investors/routes.ts',
+    'src/modules/accounts_management/money_receipt_books/routes.ts',
 
     // 'src/modules/asset_management/assets/routes.ts',
     // 'src/modules/asset_management/asset_audits/routes.ts',
