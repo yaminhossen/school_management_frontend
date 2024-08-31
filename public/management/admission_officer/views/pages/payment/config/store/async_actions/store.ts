@@ -26,7 +26,7 @@ const fetch_api = async (param, thunkAPI) => {
     dispatch(storeSlice.actions.set_loading_text('storing..'));
 
     const response = await axios.post(
-        `${end_point}/${api_prefix}/admit`,
+        `${end_point}/${api_prefix}/payment`,
         param,
     );
 

@@ -48,3 +48,4 @@
 {"level":60,"time":1724577546750,"pid":2708,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
 {"level":60,"time":1724577548298,"pid":2708,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
 {"level":60,"time":1724577549488,"pid":2708,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1725089540804,"pid":15184,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10"}

@@ -8,6 +8,7 @@ import all from './services/all';
 import details from './services/details';
 import soft_delete from './services/soft_delete';
 import store from './services/store';
+import fees_payment from './services/fees_payment';
 import { responseObject } from '../../common_types/object';
 import update from './services/update';
 import restore from './services/restore';
@@ -28,6 +29,11 @@ export default function (fastify: FastifyInstance) {
 
         store: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await store(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        fees_payment: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await fees_payment(fastify, req);
             res.code(data.status).send(data);
         },
 

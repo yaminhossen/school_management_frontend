@@ -20,6 +20,17 @@ content-type: application/json
     "description": "This is sellfin accoutn"
 }
 
+# store
+###
+POST  {{hostname}}/fees-collection HTTP/1.1
+content-type: application/json
+
+{
+    "branch_id": 4,
+    "amount": "2000",
+    "type": "income"
+}
+
 
 # update
 ###
