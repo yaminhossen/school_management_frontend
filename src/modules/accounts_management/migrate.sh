@@ -50,13 +50,13 @@
 # echo "account money transfer to user seed end"
 # echo ""
 
-# echo ""
-# echo "account fees collections seed start"
-# API_URL="http://127.0.0.1:5003/api/v1/account-fees-collections?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
-# response=$(curl -s "$API_URL")
-# npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/accounts_management/account_fees_collections/models/seeders
-# echo "account fees collections seed end"
-# echo ""
+echo ""
+echo "account fees collections seed start"
+API_URL="http://127.0.0.1:5003/api/v1/account-fees-collections?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
+response=$(curl -s "$API_URL")
+npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/accounts_management/account_fees_collections/models/seeders
+echo "account fees collections seed end"
+echo ""
 
 # echo ""
 # echo "investors seed start"
@@ -82,13 +82,13 @@
 # echo "account logs seed end"
 # echo ""
 
-echo ""
-echo "money-receipt-books seed start"
-API_URL="http://127.0.0.1:5003/api/v1/money-receipt-books?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
-response=$(curl -s "$API_URL")
-npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/accounts_management/money_receipt_books/models/seeders
-echo "money-receipt-books seed end"
-echo ""
+# echo ""
+# echo "money-receipt-books seed start"
+# API_URL="http://127.0.0.1:5003/api/v1/money-receipt-books?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
+# response=$(curl -s "$API_URL")
+# npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/accounts_management/money_receipt_books/models/seeders
+# echo "money-receipt-books seed end"
+# echo ""
 
 
 

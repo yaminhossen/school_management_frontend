@@ -21,8 +21,6 @@ module.exports = {
             branch_student_class_id,
             account_category_id,
             account_log_id,
-            teacher_id,
-            staff_id,
             amount,
             date,
         ) {
@@ -33,8 +31,6 @@ module.exports = {
                 branch_student_class_id,
                 account_category_id,
                 account_log_id,
-                teacher_id,
-                staff_id,
                 amount,
                 date,
                 created_at: '2024-02-14',
@@ -42,9 +38,9 @@ module.exports = {
             });
         }
 
-        set_data(1, 1, 1, 1, 1, 1, 1, 1, 20000, '2024-02-10');
-        set_data(2, 2, 2, 2, 2, 2, 2, 2, 30000, '2024-02-10');
-        set_data(3, 3, 3, 3, 3, 3, 3, 3, 40000, '2024-02-10');
+        set_data(1, 1, 1, 1, 1, 1, 20000, '2024-02-10');
+        set_data(2, 2, 2, 2, 2, 2, 30000, '2024-02-10');
+        set_data(3, 3, 3, 3, 3, 3, 40000, '2024-02-10');
 
         await queryInterface.bulkDelete('account_fees_collections', null, {});
         await queryInterface.bulkInsert('account_fees_collections', data, {});

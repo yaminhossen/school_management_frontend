@@ -40,7 +40,8 @@ const db = async function (): Promise<models> {
     const AccountPeriodsModel = account_periods_model.init(sequelize);
     const AccountsModel = accounts_model.init(sequelize);
     const MoneyReceiptBooksModel = money_receipt_books_model.init(sequelize);
-    const AccountFeeCollectionsModel = account_fees_collections_model.init(sequelize);
+    const AccountFeeCollectionsModel =
+        account_fees_collections_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();

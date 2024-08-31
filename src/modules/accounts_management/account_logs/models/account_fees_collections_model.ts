@@ -39,8 +39,6 @@ class DataModel extends Model<Infer, InferCreation> {
     declare branch_student_class_id: number;
     declare account_category_id: number;
     declare account_log_id: number;
-    declare teacher_id: number;
-    declare staff_id: number;
     declare amount: number;
     declare date: string;
 
@@ -76,14 +74,6 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             account_log_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            teacher_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            staff_id: {
                 type: new DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },

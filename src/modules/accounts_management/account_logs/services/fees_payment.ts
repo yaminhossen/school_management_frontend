@@ -42,17 +42,17 @@ async function validate(req: Request) {
     //     .withMessage('the money_receipt_book_id field is required')
     //     .run(req);
 
-    await body('amount')
-        .not()
-        .isEmpty()
-        .withMessage('the amount field is required')
-        .run(req);
+    // await body('amount')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the amount field is required')
+    //     .run(req);
 
-    await body('type')
-        .not()
-        .isEmpty()
-        .withMessage('the type field is required')
-        .run(req);
+    // await body('type')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the type field is required')
+    //     .run(req);
 
     let result = await validationResult(req);
 
@@ -78,17 +78,6 @@ async function store(
     let a_model = new models.AccountsModel();
     let mrb_model = new models.MoneyReceiptBooksModel();
     let afc_model = new models.AccountFeeCollectionsModel();
-
-    let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: body.branch_id,
-        account_category_id: body.account_category_id,
-        account_id: body.account_log_id,
-        account_period_id: body.account_period_id,
-        money_receipt_book_id: body.money_receipt_book_id,
-        receipt_no: body.receipt_no,
-        amount: body.amount,
-        type: body.type,
-    };
 
     let ac_inputs: InferCreationAttributes<typeof ac_model> = {
         branch_id: body.branch_id,
@@ -121,7 +110,35 @@ async function store(
 
     /** store data into database */
     try {
-        (await data.update(inputs)).save();
+        (await ac_model.update(ac_inputs)).save();
+        (await ap_model.update(ap_inputs)).save();
+        (await a_model.update(a_inputs)).save();
+        (await mrb_model.update(mrb_inputs)).save();
+        if (ac_model && ap_model && a_model && mrb_model) {
+            let inputs: InferCreationAttributes<typeof data> = {
+                branch_id: body.branch_id,
+                account_category_id: ac_model.id || 1,
+                account_id: a_model.id || 1,
+                account_period_id: ap_model.id || 1,
+                money_receipt_book_id: mrb_model.id || 1,
+                receipt_no: body.receipt_no,
+                amount: body.al_amount,
+                type: body.al_type,
+            };
+            (await data.update(inputs)).save();
+            if (data) {
+                let afc_inputs: InferCreationAttributes<typeof afc_model> = {
+                    branch_id: body.branch_id,
+                    branch_student_id: 1,
+                    branch_student_class_id: 1,
+                    date: body.afc_date,
+                    amount: body.afc_amount,
+                    account_category_id: ac_model.id || 1,
+                    account_log_id: data.id || 1,
+                };
+                (await afc_model.update(afc_inputs)).save();
+            }
+        }
         return response(200, 'data created', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);

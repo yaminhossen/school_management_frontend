@@ -30,18 +30,6 @@ async function validate(req: Request) {
         .withMessage('the account_log_id field is required')
         .run(req);
 
-    await body('teacher_id')
-        .not()
-        .isEmpty()
-        .withMessage('the teacher_id field is required')
-        .run(req);
-
-    await body('staff_id')
-        .not()
-        .isEmpty()
-        .withMessage('the staff_id field is required')
-        .run(req);
-
     await body('amount')
         .not()
         .isEmpty()
@@ -80,8 +68,6 @@ async function store(
         branch_student_class_id: body.branch_student_class_id,
         account_category_id: body.account_category_id,
         account_log_id: body.account_log_id,
-        teacher_id: body.teacher_id,
-        staff_id: body.staff_id,
         amount: body.amount,
         date: body.date,
     };
