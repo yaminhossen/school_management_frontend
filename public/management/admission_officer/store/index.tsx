@@ -5,12 +5,14 @@ import commonStore from './slices/common_slice';
 import users from '../views/pages/users/config/store';
 import user_students from '../views/pages/students/config/store';
 import student_add_new from '../views/pages/add_new/config/store';
+import student_payment from '../views/pages/payment/config/store';
 
 const store = configureStore({
     reducer: {
         users: users.reducer,
         user_students: user_students.reducer,
         student_add_new: student_add_new.reducer,
+        student_payment: student_payment.reducer,
         common_store: commonStore.reducer,
     },
     devTools: true,

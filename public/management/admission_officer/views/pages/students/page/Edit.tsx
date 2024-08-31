@@ -243,32 +243,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                             />
                                         </div>
                                     </div>
-                                    {/* <div className="form-group form-vertical">
-                                        <label>Parent</label>
-                                        <div className="form_elements">
-                                            <select
-                                                name="parent_id"
-                                                defaultValue={
-                                                    state.item.parent_id
-                                                }
-                                                id=""
-                                            >
-                                                <option value=""></option>
-                                                <option value="1">
-                                                    parent1
-                                                </option>
-                                                <option value="2">
-                                                    parent2
-                                                </option>
-                                                <option value="3">
-                                                    parent3
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div> */}
                                 </div>
                             </div>
-                            <div className="full_width">
+                            {/* <div className="full_width">
                                 <div className="form_section_heading">
                                     <h2 className="">Admission Information</h2>
                                 </div>
@@ -330,10 +307,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <div className="form_elements">
                                             <input
                                                 type="date"
-                                                // defaultValue={moment(
-                                                //     state.item.student_info
-                                                //         .admission_date,
-                                                // ).format('YYYY-MM-DD')}
                                                 defaultValue={
                                                     formattedAdmissionDate
                                                 }
@@ -414,8 +387,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="full_width">
+                            </div> */}
+                            {/* <div className="full_width">
                                 <div className="form_section_heading">
                                     <h4>Information</h4>
                                 </div>
@@ -454,10 +427,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <input
                                                 type="date"
                                                 name="date_of_birth"
-                                                // defaultValue={moment(
-                                                //     state.item.student_info
-                                                //         .date_of_birth,
-                                                // ).format('YYYY-MM-DD')}
                                                 defaultValue={
                                                     formattedStudentDate
                                                 }
@@ -475,7 +444,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                                 id=""
                                             >
-                                                {/* <option value="vv">vv</option> */}
                                                 <option value="islam">
                                                     islam
                                                 </option>
@@ -628,7 +596,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                                 id=""
                                             >
-                                                {/* <option value="c">c</option> */}
                                                 <option value="A+">A+</option>
                                                 <option value="B+">B+</option>
                                                 <option value="A-">A-</option>
@@ -645,12 +612,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <div className="form_elements">
                                             <input
                                                 type="date"
-                                                // defaultValue={'2024-10-10'}
                                                 name="student_expire_date"
-                                                // defaultValue={moment(
-                                                //     state.item.student_info
-                                                //         ?.student_expire_date,
-                                                // ).format('YYYY-MM-DD')}
                                                 defaultValue={
                                                     formattedStudentExpireDate
                                                 }
@@ -692,12 +654,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <div className="form_elements">
                                             <input
                                                 type="date"
-                                                // defaultValue={'2024-10-10'}
                                                 name="as_on_date"
-                                                // defaultValue={moment(
-                                                //     state.item.student_info
-                                                //         .as_on_date,
-                                                // ).format('YYYY-MM-DD')}
                                                 defaultValue={
                                                     formattedStudentAsOnDate
                                                 }
@@ -823,13 +780,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
 
                             <Documents
                                 setTotalDocument={setTotalDocument}
                             ></Documents>
 
-                            <Guardians
+                            {/* <Guardians
                                 setTotalGuardians={setTotalGuardians}
                             ></Guardians>
                             <EducationalBackgound
@@ -843,7 +800,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             <Languages
                                 setTotalLanguage={setTotalLanguage}
                             ></Languages>
-                            <Skill setTotalSkill={setTotalSkill}></Skill>
+                            <Skill setTotalSkill={setTotalSkill}></Skill> */}
                         </div>
                         <div className="form-group student_submit form-horizontal">
                             <label></label>

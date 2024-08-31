@@ -77,6 +77,11 @@ const Documents: React.FC<Props> = (props: Props) => {
                             <div key={index} className="multi_input_group">
                                 <div>{index + 1}</div>
                                 <div className="d-flex">
+                                    <input
+                                        value={i.id}
+                                        type="hidden"
+                                        name={`document_id${index}`}
+                                    />
                                     <div className="form-group form-vertical">
                                         <label>Document title</label>
                                         <div className="form_elements">

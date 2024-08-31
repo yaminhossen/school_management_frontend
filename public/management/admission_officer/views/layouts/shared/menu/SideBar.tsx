@@ -21,6 +21,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-calendar"
                     label="Add New"
                 />
+                <MenuSingle
+                    to="/payment"
+                    icon="icon-calendar"
+                    label="Payment"
+                />
 
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
 
