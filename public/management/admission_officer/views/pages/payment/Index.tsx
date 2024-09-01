@@ -47,7 +47,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Student Id</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="number"
                                             placeholder="student id"
                                             name="student_id"
                                         />

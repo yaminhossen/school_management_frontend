@@ -559,3 +559,10 @@
 {"level":60,"time":1725183086490,"pid":15676,"hostname":"DESKTOP-9421701","file":"","time":"9/1/2024 3:31:26 PM","message":"target not found."}
 {"level":60,"time":1725183101811,"pid":15676,"hostname":"DESKTOP-9421701","file":"","time":"9/1/2024 3:31:41 PM","message":"target not found."}
 {"level":60,"time":1725183101913,"pid":15676,"hostname":"DESKTOP-9421701","file":"","time":"9/1/2024 3:31:41 PM","message":"target not found."}
+{"level":60,"time":1725184979624,"pid":15952,"hostname":"DESKTOP-9421701","file":"","time":"9/1/2024 4:02:59 PM","message":"target not found."}
+{"level":60,"time":1725184979683,"pid":15952,"hostname":"DESKTOP-9421701","file":"","time":"9/1/2024 4:02:59 PM","message":"target not found."}
+{"level":60,"time":1725184981833,"pid":15952,"hostname":"DESKTOP-9421701","file":"","time":"9/1/2024 4:03:01 PM","message":"Incorrect integer value: '' for column 'branch_student_id' at row 1"}
+{"level":60,"time":1725185068061,"pid":15952,"hostname":"DESKTOP-9421701","file":"","time":"9/1/2024 4:04:28 PM","message":"target not found."}
+{"level":60,"time":1725185068095,"pid":15952,"hostname":"DESKTOP-9421701","file":"","time":"9/1/2024 4:04:28 PM","message":"target not found."}
+{"level":60,"time":1725185069450,"pid":15952,"hostname":"DESKTOP-9421701","file":"","time":"9/1/2024 4:04:29 PM","message":"Incorrect integer value: '' for column 'branch_student_id' at row 1"}
+{"level":60,"time":1725185147787,"pid":15952,"hostname":"DESKTOP-9421701","file":"","time":"9/1/2024 4:05:47 PM","message":"Incorrect integer value: '' for column 'amount' at row 1"}

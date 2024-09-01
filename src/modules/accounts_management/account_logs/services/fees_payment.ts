@@ -89,6 +89,7 @@ async function store(
         amount: body.amount,
         type: body.type,
     };
+    console.log('body for fees', body);
 
     /** print request data into console */
     // console.clear();
