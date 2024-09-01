@@ -245,7 +245,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                             </div>
-                            {/* <div className="full_width">
+                            <div className="full_width">
                                 <div className="form_section_heading">
                                     <h2 className="">Admission Information</h2>
                                 </div>
@@ -262,15 +262,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 id=""
                                             >
                                                 <option value="1">
-                                                    Uttora
+                                                    Kustia
                                                 </option>
                                                 <option value="2">
-                                                    Banani
+                                                    Demra, Dhaka
                                                 </option>
                                                 <option value="3">
-                                                    Gulshan
+                                                    Uttora, Dhaka
                                                 </option>
-                                                <option value="4">Demra</option>
                                             </select>
                                         </div>
                                     </div>
@@ -387,8 +386,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </div>
                                     </div>
                                 </div>
-                            </div> */}
-                            {/* <div className="full_width">
+                            </div>
+                            <div className="full_width">
                                 <div className="form_section_heading">
                                     <h4>Information</h4>
                                 </div>
@@ -780,13 +779,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </div>
                                     </div>
                                 </div>
-                            </div> */}
+                            </div>
 
                             <Documents
                                 setTotalDocument={setTotalDocument}
                             ></Documents>
 
-                            {/* <Guardians
+                            <Guardians
                                 setTotalGuardians={setTotalGuardians}
                             ></Guardians>
                             <EducationalBackgound
@@ -800,7 +799,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             <Languages
                                 setTotalLanguage={setTotalLanguage}
                             ></Languages>
-                            <Skill setTotalSkill={setTotalSkill}></Skill> */}
+                            <Skill setTotalSkill={setTotalSkill}></Skill>
                         </div>
                         <div className="form-group student_submit form-horizontal">
                             <label></label>

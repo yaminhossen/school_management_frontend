@@ -44,12 +44,12 @@ const Index: React.FC<Props> = (props: Props) => {
                             </div>
                             <div className="d-flex">
                                 <div className="form-group form-vertical">
-                                    <label>Name</label>
+                                    <label>Student Id</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="name"
-                                            name="name"
+                                            placeholder="student id"
+                                            name="student_id"
                                         />
                                     </div>
                                 </div>
@@ -65,6 +65,78 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 others
                                             </option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Email</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="email"
+                                            name="email"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Phone number</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="phone number"
+                                            name="phone_number"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Whatsapp</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="Whatsapp number"
+                                            name="whatsapp_number"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Image</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            placeholder="image"
+                                            name="image"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Status</label>
+                                    <div className="form_elements">
+                                        <select name="status" id="">
+                                            <option value="active">
+                                                active
+                                            </option>
+                                            <option value="block">block</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Password</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="password"
+                                            name="password"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Confirm Password</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="confirm password"
+                                            name="confirm_password"
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
