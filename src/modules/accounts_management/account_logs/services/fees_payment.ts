@@ -79,29 +79,15 @@ async function store(
     let mrb_model = new models.MoneyReceiptBooksModel();
     let afc_model = new models.AccountFeeCollectionsModel();
 
-    let ac_inputs: InferCreationAttributes<typeof ac_model> = {
+    let inputs: InferCreationAttributes<typeof data> = {
         branch_id: body.branch_id,
-        title: body.ac_title,
-        description: body.ac_description,
-    };
-
-    let ap_inputs: InferCreationAttributes<typeof ap_model> = {
-        branch_id: body.branch_id,
-        year_month: body.ap_year_month,
-        description: body.ap_description,
-    };
-
-    let a_inputs: InferCreationAttributes<typeof a_model> = {
-        branch_id: body.branch_id,
-        title: body.accounts_title,
-        description: body.accounts_description,
-    };
-
-    let mrb_inputs: InferCreationAttributes<typeof mrb_model> = {
-        branch_id: body.branch_id,
-        book_no: body.mrb_book_no,
-        start_serial: body.mrb_start_serial,
-        end_serial: body.mrb_end_serial,
+        account_category_id: body.category_id || 1,
+        account_id: body.account_id || 1,
+        account_period_id: body.period_id || 1,
+        money_receipt_book_id: body.mrb_id || 1,
+        receipt_no: body.receipt_no,
+        amount: body.amount,
+        type: body.type,
     };
 
     /** print request data into console */
@@ -110,40 +96,24 @@ async function store(
 
     /** store data into database */
     try {
-        (await ac_model.update(ac_inputs)).save();
-        (await ap_model.update(ap_inputs)).save();
-        (await a_model.update(a_inputs)).save();
-        (await mrb_model.update(mrb_inputs)).save();
-        if (ac_model && ap_model && a_model && mrb_model) {
-            let inputs: InferCreationAttributes<typeof data> = {
+        (await data.update(inputs)).save();
+        if (data) {
+            let afc_inputs: InferCreationAttributes<typeof afc_model> = {
                 branch_id: body.branch_id,
-                account_category_id: ac_model.id || 1,
-                account_id: a_model.id || 1,
-                account_period_id: ap_model.id || 1,
-                money_receipt_book_id: mrb_model.id || 1,
-                receipt_no: body.receipt_no,
-                amount: body.al_amount,
-                type: body.al_type,
+                branch_student_id: body.student_id,
+                branch_student_class_id: body.class,
+                date: body.date,
+                amount: body.amount,
+                account_category_id: body.category_id || 1,
+                account_log_id: data.id || 1,
             };
-            (await data.update(inputs)).save();
-            if (data) {
-                let afc_inputs: InferCreationAttributes<typeof afc_model> = {
-                    branch_id: body.branch_id,
-                    branch_student_id: 1,
-                    branch_student_class_id: 1,
-                    date: body.afc_date,
-                    amount: body.afc_amount,
-                    account_category_id: ac_model.id || 1,
-                    account_log_id: data.id || 1,
-                };
-                (await afc_model.update(afc_inputs)).save();
-            }
+            (await afc_model.update(afc_inputs)).save();
         }
+
         return response(200, 'data created', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
         throw new custom_error('server error', 500, error.message, uid);
     }
 }
-
 export default store;

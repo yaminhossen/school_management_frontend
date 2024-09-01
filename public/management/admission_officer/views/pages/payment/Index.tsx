@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../store';
 import { store } from './config/store/async_actions/store';
-import moment from 'moment';
+import moment from 'moment/moment';
 // import storeSlice from '../config/store';
 import storeSlice from './config/store';
 import { initialState } from './config/store/inital_state';
@@ -40,7 +40,7 @@ const Index: React.FC<Props> = (props: Props) => {
                     <div className="student_form">
                         <div className="full_width">
                             <div className="form_section_heading">
-                                <h2 className="">Basic Information</h2>
+                                <h2 className="">Fees Collection</h2>
                             </div>
                             <div className="d-flex">
                                 <div className="form-group form-vertical">
@@ -54,161 +54,118 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Gender</label>
+                                    <label>Class</label>
                                     <div className="form_elements">
-                                        <select name="gender" id="">
-                                            <option value="male">male</option>
-                                            <option value="female">
-                                                female
+                                        <select name="class" id="">
+                                            <option value="5">Ten</option>
+                                            <option value="2">Six</option>
+                                            <option value="3">Seven</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Branch</label>
+                                    <div className="form_elements">
+                                        <select name="branch_id" id="">
+                                            <option value="1">Kustia</option>
+                                            <option value="2">
+                                                Demra, Dhaka
                                             </option>
-                                            <option value="others">
-                                                others
+                                            <option value="3">
+                                                Uttora, Dhaka
                                             </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Email</label>
+                                    <label>Date</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
-                                            placeholder="email"
-                                            name="email"
+                                            type="date"
+                                            defaultValue={moment().format(
+                                                'YYYY-MM-DD',
+                                            )}
+                                            name="date"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Phone number</label>
+                                    <label>Amount</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
-                                            placeholder="phone number"
-                                            name="phone_number"
+                                            type="number"
+                                            placeholder="enter your amount"
+                                            name="amount"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Whatsapp</label>
+                                    <label>Receipt No</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
-                                            placeholder="Whatsapp number"
-                                            name="whatsapp_number"
+                                            type="number"
+                                            placeholder="enter receipt page no"
+                                            name="receipt_no"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Image</label>
+                                    <label>Type</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            placeholder="image"
-                                            name="image"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
-                                    <label>Status</label>
-                                    <div className="form_elements">
-                                        <select name="status" id="">
-                                            <option value="active">
-                                                active
+                                        <select name="type" id="">
+                                            <option value="income">
+                                                Income
                                             </option>
-                                            <option value="block">block</option>
+                                            <option value="expense">
+                                                Expense
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Password</label>
+                                    <label>Account Category</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="password"
-                                            name="password"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
-                                    <label>Confirm Password</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="confirm password"
-                                            name="confirm_password"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
-                                    <label>Email</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="email"
-                                            name="email"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
-                                    <label>Phone number</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="phone number"
-                                            name="phone_number"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
-                                    <label>Whatsapp</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="Whatsapp number"
-                                            name="whatsapp_number"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
-                                    <label>Image</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            placeholder="image"
-                                            name="image"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
-                                    <label>Status</label>
-                                    <div className="form_elements">
-                                        <select name="status" id="">
-                                            <option value="active">
-                                                active
+                                        <select name="category_id" id="">
+                                            <option value="1">
+                                                Hostel bill
                                             </option>
-                                            <option value="block">block</option>
+                                            <option value="2">
+                                                Admission bill
+                                            </option>
+                                            <option value="3">
+                                                Couching bill
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Password</label>
+                                    <label>Account</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="password"
-                                            name="password"
-                                        />
+                                        <select name="account_id" id="">
+                                            <option value="1">Bank</option>
+                                            <option value="2">Bkash</option>
+                                            <option value="3">Nagad</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Confirm Password</label>
+                                    <label>Account Period</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="confirm password"
-                                            name="confirm_password"
-                                        />
+                                        <select name="period_id" id="">
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Money Receipt Book</label>
+                                    <div className="form_elements">
+                                        <select name="mrb_id" id="">
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

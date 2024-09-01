@@ -556,3 +556,6 @@
 {"level":60,"time":1725098394135,"pid":16420,"hostname":"DESKTOP-9421701","file":"","time":"8/31/2024 3:59:54 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
 {"level":60,"time":1725106411982,"pid":7068,"hostname":"DESKTOP-9421701","file":"","time":"8/31/2024 6:13:31 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
 {"level":60,"time":1725106457725,"pid":7068,"hostname":"DESKTOP-9421701","file":"","time":"8/31/2024 6:14:17 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1725183086490,"pid":15676,"hostname":"DESKTOP-9421701","file":"","time":"9/1/2024 3:31:26 PM","message":"target not found."}
+{"level":60,"time":1725183101811,"pid":15676,"hostname":"DESKTOP-9421701","file":"","time":"9/1/2024 3:31:41 PM","message":"target not found."}
+{"level":60,"time":1725183101913,"pid":15676,"hostname":"DESKTOP-9421701","file":"","time":"9/1/2024 3:31:41 PM","message":"target not found."}
