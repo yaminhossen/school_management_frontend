@@ -78,6 +78,7 @@ async function store(
     let a_model = new models.AccountsModel();
     let mrb_model = new models.MoneyReceiptBooksModel();
     let afc_model = new models.AccountFeeCollectionsModel();
+    let usi_model = new models.UserStudentInformationsModel();
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: body.branch_id,
@@ -89,7 +90,7 @@ async function store(
         amount: body.amount,
         type: body.type,
     };
-    console.log('body for fees', body);
+    // console.log('body for fees', body);
 
     /** print request data into console */
     // console.clear();
@@ -97,12 +98,21 @@ async function store(
 
     /** store data into database */
     try {
+        let data2 = await models.UserStudentInformationsModel.findOne({
+            where: {
+                user_student_id: body.student_id,
+            },
+        });
+        console.log('data sclass', data2?.s_class);
+
+        let s_class = data2?.s_class;
+
         (await data.update(inputs)).save();
         if (data) {
             let afc_inputs: InferCreationAttributes<typeof afc_model> = {
                 branch_id: body.branch_id,
                 branch_student_id: body.student_id,
-                branch_student_class_id: body.class,
+                branch_student_class_id: s_class || 1,
                 date: body.date,
                 amount: body.amount,
                 account_category_id: body.category_id || 1,

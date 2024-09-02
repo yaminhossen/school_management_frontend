@@ -12,6 +12,7 @@ import { categories } from './config/store/async_actions/category';
 import { accounts } from './config/store/async_actions/account';
 import { receipt_books } from './config/store/async_actions/receipt_book';
 import { periods } from './config/store/async_actions/account_period';
+import { branches } from './config/store/async_actions/branches';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -44,6 +45,7 @@ const Index: React.FC<Props> = (props: Props) => {
         await dispatch(accounts({}) as any);
         await dispatch(receipt_books({}) as any);
         await dispatch(periods({}) as any);
+        await dispatch(branches({}) as any);
     }
 
     useEffect(() => {
@@ -53,6 +55,9 @@ const Index: React.FC<Props> = (props: Props) => {
     }, []);
     if (state.accounts) {
         console.log('form frontend', state.accounts);
+    }
+    if (state.branches) {
+        console.log('form brnches', state.branches);
     }
     // console.log('moment', moment().format('YYYY-DD-MM'));
 
@@ -79,7 +84,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-vertical">
+                                {/* <div className="form-group form-vertical">
                                     <label>Class</label>
                                     <div className="form_elements">
                                         <select name="class" id="">
@@ -88,18 +93,25 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <option value="3">Seven</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Branch</label>
                                     <div className="form_elements">
                                         <select name="branch_id" id="">
-                                            <option value="1">Kustia</option>
-                                            <option value="2">
-                                                Demra, Dhaka
-                                            </option>
-                                            <option value="3">
-                                                Uttora, Dhaka
-                                            </option>
+                                            {state.branches?.length &&
+                                                state.branches?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.name}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
                                         </select>
                                     </div>
                                 </div>
