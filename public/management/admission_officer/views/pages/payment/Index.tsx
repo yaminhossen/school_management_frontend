@@ -10,6 +10,8 @@ import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
 import { categories } from './config/store/async_actions/category';
 import { accounts } from './config/store/async_actions/account';
+import { receipt_books } from './config/store/async_actions/receipt_book';
+import { periods } from './config/store/async_actions/account_period';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -40,6 +42,8 @@ const Index: React.FC<Props> = (props: Props) => {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(categories({}) as any);
         await dispatch(accounts({}) as any);
+        await dispatch(receipt_books({}) as any);
+        await dispatch(periods({}) as any);
     }
 
     useEffect(() => {
@@ -190,9 +194,24 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Account Period</label>
                                     <div className="form_elements">
                                         <select name="period_id" id="">
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                            {state.periods?.length &&
+                                                state.periods?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {moment(
+                                                                    i.year_month,
+                                                                ).format(
+                                                                    'YYYY-MM-DD',
+                                                                )}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
                                         </select>
                                     </div>
                                 </div>
@@ -200,9 +219,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Money Receipt Book</label>
                                     <div className="form_elements">
                                         <select name="mrb_id" id="">
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                            {state.receipt?.length &&
+                                                state.receipt?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.book_no}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
                                         </select>
                                     </div>
                                 </div>

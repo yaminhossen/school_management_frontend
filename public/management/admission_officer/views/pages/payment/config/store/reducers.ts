@@ -101,11 +101,18 @@ export const store_reducers = {
         state.accounts = action.payload;
     },
 
-    set_shift: (
+    set_period: (
         state: typeof initialState,
         action: PayloadAction<anyObject[]>,
     ) => {
-        state.shifts = action.payload;
+        state.periods = action.payload;
+    },
+
+    set_receipt: (
+        state: typeof initialState,
+        action: PayloadAction<anyObject[]>,
+    ) => {
+        state.receipt = action.payload;
     },
     set_show_quick_view_canvas: (
         state: typeof initialState,

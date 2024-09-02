@@ -5,6 +5,8 @@ import { initialState } from './inital_state';
 import { all } from './async_actions/all';
 import { categories } from './async_actions/category';
 import { accounts } from './async_actions/account';
+import { periods } from './async_actions/account_period';
+import { receipt_books } from './async_actions/receipt_book';
 import { sections } from './async_actions/sections';
 import { branches } from './async_actions/branches';
 import { shifts } from './async_actions/shifts';
@@ -30,6 +32,15 @@ const storeSlice = createSlice({
                 // console.log(type, payload, meta);
             })
             .addCase(accounts.fulfilled, (state, { type, payload, meta }) => {
+                // console.log(type, payload, meta);
+            })
+            .addCase(
+                receipt_books.fulfilled,
+                (state, { type, payload, meta }) => {
+                    // console.log(type, payload, meta);
+                },
+            )
+            .addCase(periods.fulfilled, (state, { type, payload, meta }) => {
                 // console.log(type, payload, meta);
             })
             .addCase(sections.fulfilled, (state, { type, payload, meta }) => {

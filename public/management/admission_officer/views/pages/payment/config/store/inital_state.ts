@@ -15,7 +15,8 @@ export const initialState = {
     categories: [] as Array<anyObject>,
     branches: [] as anyObject[],
     accounts: [] as anyObject[],
-    shifts: [] as anyObject[],
+    periods: [] as anyObject[],
+    receipt: [] as anyObject[],
     url: '',
 
     /* data filters */

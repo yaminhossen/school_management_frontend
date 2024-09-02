@@ -10,6 +10,8 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(`${prefix}`, controllerInstance.all)
         .post(`${prefix}/store`, controllerInstance.store)
         .get(`${prefix}/categories`, controllerInstance.categories)
+        .get(`${prefix}/periods`, controllerInstance.account_periods)
+        .get(`${prefix}/receipt-book`, controllerInstance.receipt_books)
         .get(`${prefix}/accounts`, controllerInstance.accounts)
         .get(`${prefix}/:id`, controllerInstance.find)
         .post(`${prefix}/fees-payment`, controllerInstance.fees_payment)

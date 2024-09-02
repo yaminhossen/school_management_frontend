@@ -6,18 +6,18 @@ import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 import { sequelize } from '../../../../bootstrap/db.sql';
 
-async function accounts(
+async function receipt_books(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
-    let accountsModel = models.AccountsModel;
+    let receiptBookModels = models.MoneyReceiptBooksModel;
     let params = req.params as any;
     let user_id = (req as any).user?.id;
     console.log('user', user_id);
 
     try {
-        let data = await accountsModel.findAll({
+        let data = await receiptBookModels.findAll({
             // where: {
             //     user_staff_id: user_id,
             // },
@@ -39,4 +39,4 @@ async function accounts(
     }
 }
 
-export default accounts;
+export default receipt_books;

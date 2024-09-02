@@ -8,6 +8,8 @@ import all from './services/all';
 import details from './services/details';
 import categories from './services/categories';
 import accounts from './services/accounts';
+import receipt_books from './services/receipt_books';
+import account_periods from './services/account_periods';
 import soft_delete from './services/soft_delete';
 import store from './services/store';
 import fees_payment from './services/fees_payment';
@@ -31,6 +33,19 @@ export default function (fastify: FastifyInstance) {
 
         categories: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await categories(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        receipt_books: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await receipt_books(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        account_periods: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await account_periods(fastify, req);
             res.code(data.status).send(data);
         },
 

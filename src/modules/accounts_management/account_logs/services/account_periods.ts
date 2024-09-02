@@ -6,22 +6,18 @@ import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 import { sequelize } from '../../../../bootstrap/db.sql';
 
-async function accounts(
+async function account_periods(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
-    let accountsModel = models.AccountsModel;
+    let accountPeriodsModel = models.AccountPeriodsModel;
     let params = req.params as any;
     let user_id = (req as any).user?.id;
     console.log('user', user_id);
 
     try {
-        let data = await accountsModel.findAll({
-            // where: {
-            //     user_staff_id: user_id,
-            // },
-        });
+        let data = await accountPeriodsModel.findAll({});
 
         if (data) {
             return response(200, 'data created', data);
@@ -39,4 +35,4 @@ async function accounts(
     }
 }
 
-export default accounts;
+export default account_periods;
