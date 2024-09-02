@@ -47,7 +47,7 @@ const Index: React.FC<Props> = (props: Props) => {
     }
 
     useEffect(() => {
-        console.log('frontend state', state);
+        console.log('frontend state', state.classes);
 
         initdependancy();
     }, []);

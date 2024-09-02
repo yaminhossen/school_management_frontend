@@ -6,6 +6,8 @@ import fastify, {
 } from 'fastify';
 import all from './services/all';
 import details from './services/details';
+import categories from './services/categories';
+import accounts from './services/accounts';
 import soft_delete from './services/soft_delete';
 import store from './services/store';
 import fees_payment from './services/fees_payment';
@@ -24,6 +26,16 @@ export default function (fastify: FastifyInstance) {
 
         find: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        categories: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await categories(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        accounts: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await accounts(fastify, req);
             res.code(data.status).send(data);
         },
 

@@ -83,8 +83,8 @@ export const store_reducers = {
         state: typeof initialState,
         action: PayloadAction<anyObject[]>,
     ) => {
-        state.classes = action.payload;
-        // console.log('classes payload', action.payload);
+        state.categories = action.payload;
+        console.log('categories payload', action.payload);
     },
 
     set_branch: (
@@ -98,7 +98,7 @@ export const store_reducers = {
         state: typeof initialState,
         action: PayloadAction<anyObject[]>,
     ) => {
-        state.sections = action.payload;
+        state.accounts = action.payload;
     },
 
     set_shift: (

@@ -8,6 +8,8 @@ import moment from 'moment/moment';
 import storeSlice from './config/store';
 import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
+import { categories } from './config/store/async_actions/category';
+import { accounts } from './config/store/async_actions/account';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -28,6 +30,26 @@ const Index: React.FC<Props> = (props: Props) => {
         (state: RootState) => state[setup.module_name],
     );
 
+    // useEffect(() => {
+    //     dispatch(storeSlice.actions.set_item({}));
+    //     dispatch(categories({}) as any);
+    //     console.log('state', state);
+    // }, []);
+
+    async function initdependancy() {
+        await dispatch(storeSlice.actions.set_item({}));
+        await dispatch(categories({}) as any);
+        await dispatch(accounts({}) as any);
+    }
+
+    useEffect(() => {
+        console.log('frontend state', state.categories);
+
+        initdependancy();
+    }, []);
+    if (state.accounts) {
+        console.log('form frontend', state.accounts);
+    }
     // console.log('moment', moment().format('YYYY-DD-MM'));
 
     return (
@@ -126,15 +148,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Account Category</label>
                                     <div className="form_elements">
                                         <select name="category_id" id="">
-                                            <option value="1">
-                                                Hostel bill
-                                            </option>
-                                            <option value="2">
-                                                Admission bill
-                                            </option>
-                                            <option value="3">
-                                                Couching bill
-                                            </option>
+                                            {state.categories?.length &&
+                                                state.categories?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.title}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
                                         </select>
                                     </div>
                                 </div>
@@ -142,9 +169,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Account</label>
                                     <div className="form_elements">
                                         <select name="account_id" id="">
-                                            <option value="1">Bank</option>
-                                            <option value="2">Bkash</option>
-                                            <option value="3">Nagad</option>
+                                            {state.accounts?.length &&
+                                                state.accounts?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.title}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
                                         </select>
                                     </div>
                                 </div>
