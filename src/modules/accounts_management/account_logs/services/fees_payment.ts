@@ -73,12 +73,7 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.AccountLogsModel();
-    let ac_model = new models.AccountCategoriesModel();
-    let ap_model = new models.AccountPeriodsModel();
-    let a_model = new models.AccountsModel();
-    let mrb_model = new models.MoneyReceiptBooksModel();
     let afc_model = new models.AccountFeeCollectionsModel();
-    let usi_model = new models.UserStudentInformationsModel();
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: body.branch_id,
