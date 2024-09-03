@@ -55,9 +55,9 @@ module.exports = {
         );
         set_data(
             2,
-            2,
-            2,
-            2,
+            1,
+            1,
+            1,
             'English',
             '202',
             'A',
@@ -67,10 +67,22 @@ module.exports = {
         );
         set_data(
             3,
-            3,
-            3,
-            3,
-            'Biology',
+            1,
+            1,
+            1,
+            'Math',
+            '303',
+            'A',
+            'this is not compulsary',
+            2,
+            'this is not compulsary ',
+        );
+        set_data(
+            4,
+            1,
+            1,
+            1,
+            'Social Science',
             '303',
             'A',
             'this is not compulsary',

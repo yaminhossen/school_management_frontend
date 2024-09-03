@@ -1,8 +1,230 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/user-students/class-routine/1',
+            );
+            // setData(response.data.data);
+            setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
+
+    interface classes {
+        [key: string]: any;
+    }
+    const datas: classes[] = [
+        {
+            id: 1,
+            subject: 'Bangla',
+            days: [
+                {
+                    day: 'saturday',
+                    room: 'A201',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Fahim',
+                },
+                {
+                    day: 'sunday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'monday',
+                    room: 'A203',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'tuesday',
+                    room: 'A204',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'wednesday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'thursday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'friday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+            ],
+        },
+        {
+            id: 1,
+            subject: 'English',
+            days: [
+                {
+                    day: 'saturday',
+                    room: 'A201',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Fahim',
+                },
+                {
+                    day: 'sunday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'monday',
+                    room: 'A203',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'tuesday',
+                    room: 'A204',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'wednesday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'thursday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'friday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+            ],
+        },
+        {
+            id: 1,
+            subject: 'Math',
+            days: [
+                {
+                    day: 'saturday',
+                    room: 'A201',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Fahim',
+                },
+                {
+                    day: 'sunday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'monday',
+                    room: 'A203',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'tuesday',
+                    room: 'A204',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'wednesday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'thursday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'friday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+            ],
+        },
+        {
+            id: 1,
+            subject: 'Social Science',
+            days: [
+                {
+                    day: 'saturday',
+                    room: 'A201',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Fahim',
+                },
+                {
+                    day: 'sunday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'monday',
+                    room: 'A203',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'tuesday',
+                    room: 'A204',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'wednesday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'thursday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+                {
+                    day: 'friday',
+                    room: 'A202',
+                    time: '8:00 Am - 9:00 Am',
+                    teacher: 'Shahin',
+                },
+            ],
+        },
+    ];
     return (
         <div className="admin_dashboard">
             <div className="class_schedule_content">

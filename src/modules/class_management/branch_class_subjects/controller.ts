@@ -12,6 +12,7 @@ import { responseObject } from '../../common_types/object';
 import update from './services/update';
 import restore from './services/restore';
 import destroy from './services/destroy';
+import class_routine_details from './services/class_routine_details';
 import data_import from './services/import';
 
 export default function (fastify: FastifyInstance) {
@@ -23,6 +24,14 @@ export default function (fastify: FastifyInstance) {
 
         find: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        class_routine_details: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await class_routine_details(fastify, req);
             res.code(data.status).send(data);
         },
 

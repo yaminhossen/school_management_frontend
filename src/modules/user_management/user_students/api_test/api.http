@@ -11,6 +11,10 @@ GET {{hostname}}/1 HTTP/1.1
 
 # get
 ###
+GET {{hostname}}/class-routine/1 HTTP/1.1
+
+# get
+###
 GET {{hostname}}/1/profile HTTP/1.1
 
 # get

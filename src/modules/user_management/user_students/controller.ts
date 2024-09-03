@@ -22,6 +22,7 @@ import admit_student_store from './services/admit_student_store';
 import students_details from './services/student_details';
 import full_details from './services/full_details';
 import class_details from './services/class_details';
+import class_routine_details from './services/class_routine_details';
 import all_class from './services/all_class';
 import classes from './services/classes';
 import shifts from './services/shifts';
@@ -77,6 +78,13 @@ export default function (fastify: FastifyInstance) {
         },
         class_details: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await class_details(fastify, req);
+            res.code(data.status).send(data);
+        },
+        class_routine_details: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await class_routine_details(fastify, req);
             res.code(data.status).send(data);
         },
 
