@@ -11,6 +11,9 @@ async function class_routine_details(
 ): Promise<responseObject> {
     let models = await db();
     let branchClassSubjectsModel = models.BranchClassSubjectsModel;
+    let branchClassRoutinesModel = models.BranchClassRoutinesModel;
+    let branchClassRoutineDayTimesModel =
+        models.BranchClassRoutineDayTimesModel;
     let params = req.params as any;
     console.log('class', params.id);
 
@@ -19,10 +22,22 @@ async function class_routine_details(
             where: {
                 branch_class_id: params.id,
             },
+            include: [
+                {
+                    model: branchClassRoutinesModel,
+                    as: 'subject_routine',
+                    include: [
+                        {
+                            model: branchClassRoutineDayTimesModel,
+                            as: 'day_time',
+                        },
+                    ],
+                },
+            ],
         });
 
         if (data) {
-            return response(200, 'data founded', data);
+            return response(200, 'data foundeds', data);
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }

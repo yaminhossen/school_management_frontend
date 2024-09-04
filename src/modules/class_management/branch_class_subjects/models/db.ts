@@ -47,13 +47,25 @@ const db = async function (): Promise<models> {
         branch_class_routine_day_times_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
-    await sequelize.sync();
+    await sequelize.sync({ force: false });
 
     // UserStudentsModel.hasOne(UserStudentInformationsModel, {
     //     sourceKey: 'id',
     //     foreignKey: 'user_student_id',
     //     as: 'student_info',
     // });
+
+    BranchClassSubjectsModel.hasOne(BranchClassRoutinesModel, {
+        sourceKey: 'id',
+        foreignKey: 'branch_class_subject_id',
+        as: 'subject_routine',
+    });
+
+    BranchClassRoutinesModel.hasMany(BranchClassRoutineDayTimesModel, {
+        sourceKey: 'id',
+        foreignKey: 'branch_class_routine_id',
+        as: 'day_time',
+    });
 
     // UserStudentsModel.hasMany(UserStudentInformationsModel, {
     //     sourceKey: 'id',

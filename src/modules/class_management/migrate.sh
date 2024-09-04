@@ -50,13 +50,13 @@
 # echo "branch class resources seed end"
 # echo ""
 
-echo ""
-echo "branch class subjects seed start"
-API_URL="http://127.0.0.1:5003/api/v1/branch-class-subjects?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
-response=$(curl -s "$API_URL")
-npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/class_management/branch_class_subjects/models/seeders
-echo "branch class subjects seed end"
-echo ""
+# echo ""
+# echo "branch class subjects seed start"
+# API_URL="http://127.0.0.1:5003/api/v1/branch-class-subjects?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
+# response=$(curl -s "$API_URL")
+# npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/class_management/branch_class_subjects/models/seeders
+# echo "branch class subjects seed end"
+# echo ""
 
 # echo ""
 # echo "branch class shifts seed start"
@@ -66,13 +66,13 @@ echo ""
 # echo "branch class shifts seed end"
 # echo ""
 
-# echo ""
-# echo "branch class routine day times seed start"
-# API_URL="http://127.0.0.1:5003/api/v1/branch-class-routine-day-times?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
-# response=$(curl -s "$API_URL")
-# npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/class_management/branch_class_routin_day_times/models/seeders
-# echo "branch class routine day times seed end"
-# echo ""
+echo ""
+echo "branch class routine day times seed start"
+API_URL="http://127.0.0.1:5003/api/v1/branch-class-routine-day-times?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
+response=$(curl -s "$API_URL")
+npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/class_management/branch_class_routin_day_times/models/seeders
+echo "branch class routine day times seed end"
+echo ""
 
 # echo ""
 # echo "branch class sections seed start"
