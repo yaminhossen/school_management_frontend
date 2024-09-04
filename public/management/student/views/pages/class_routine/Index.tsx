@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    const [data, setData] = useState(null);
+    const [data, setData] = useState<anyObject[]>([]);
 
     useEffect(() => {
         // Function to fetch data
@@ -16,8 +17,8 @@ const Index: React.FC<Props> = (props: Props) => {
             const response = await axios.get(
                 '/api/v1/branch-class-subjects/class-routine/1',
             );
-            // setData(response.data.data);
-            setData(response.data);
+            setData(response.data.data);
+            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -311,7 +312,149 @@ const Index: React.FC<Props> = (props: Props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="table_body">
+                        {data?.length &&
+                            data?.map((i: { [key: string]: any }) => {
+                                return (
+                                    <tr className="table_body">
+                                        <td className="subject">{i?.name}</td>
+                                        {i.subject_routine?.day_time?.length &&
+                                            i.subject_routine?.day_time?.map(
+                                                (i: { [key: string]: any }) => {
+                                                    return (
+                                                        <td className="class_time_and_room_content">
+                                                            <span className="class_time_and_room">
+                                                                <span className="time_rooom class_time">
+                                                                    7:00 am -
+                                                                    8:00 am
+                                                                </span>
+                                                                <span className="time_rooom class_room">
+                                                                    <span className="room_title">
+                                                                        room
+                                                                    </span>
+                                                                    <span className="dash_title">
+                                                                        -
+                                                                    </span>
+                                                                    <span className="room_number">
+                                                                        {i.id}
+                                                                    </span>
+                                                                </span>
+                                                            </span>
+                                                        </td>
+                                                    );
+                                                },
+                                            )}
+                                        {/* <td className="class_time_and_room_content">
+                                            <span className="class_time_and_room">
+                                                <span className="time_rooom class_time">
+                                                    7:00 am - 8:00 am
+                                                </span>
+                                                <span className="time_rooom class_room">
+                                                    <span className="room_title">
+                                                        room
+                                                    </span>
+                                                    <span className="dash_title">
+                                                        -
+                                                    </span>
+                                                    <span className="room_number">
+                                                        101
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td className="class_time_and_room_content">
+                                            <span className="class_time_and_room">
+                                                <span className="time_rooom class_time">
+                                                    7:00 am - 8:00 am
+                                                </span>
+                                                <span className="time_rooom class_room">
+                                                    <span className="room_title">
+                                                        room
+                                                    </span>
+                                                    <span className="dash_title">
+                                                        -
+                                                    </span>
+                                                    <span className="room_number">
+                                                        101
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td className="class_time_and_room_content">
+                                            <span className="class_time_and_room">
+                                                <span className="time_rooom class_time">
+                                                    7:00 am - 8:00 am
+                                                </span>
+                                                <span className="time_rooom class_room">
+                                                    <span className="room_title">
+                                                        room
+                                                    </span>
+                                                    <span className="dash_title">
+                                                        -
+                                                    </span>
+                                                    <span className="room_number">
+                                                        101
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td className="class_time_and_room_content">
+                                            <span className="class_time_and_room">
+                                                <span className="time_rooom class_time">
+                                                    7:00 am - 8:00 am
+                                                </span>
+                                                <span className="time_rooom class_room">
+                                                    <span className="room_title">
+                                                        room
+                                                    </span>
+                                                    <span className="dash_title">
+                                                        -
+                                                    </span>
+                                                    <span className="room_number">
+                                                        101
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td className="class_time_and_room_content">
+                                            <span className="class_time_and_room">
+                                                <span className="time_rooom class_time">
+                                                    7:00 am - 8:00 am
+                                                </span>
+                                                <span className="time_rooom class_room">
+                                                    <span className="room_title">
+                                                        room
+                                                    </span>
+                                                    <span className="dash_title">
+                                                        -
+                                                    </span>
+                                                    <span className="room_number">
+                                                        101
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td className="class_time_and_room_content">
+                                            <span className="class_time_and_room">
+                                                <span className="time_rooom class_time">
+                                                    7:00 am - 8:00 am
+                                                </span>
+                                                <span className="time_rooom class_room">
+                                                    <span className="room_title">
+                                                        room
+                                                    </span>
+                                                    <span className="dash_title">
+                                                        -
+                                                    </span>
+                                                    <span className="room_number">
+                                                        101
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </td> */}
+                                    </tr>
+                                );
+                            })}
+                        {/* <tr className="table_body">
                             <td className="subject">bangla</td>
                             <td className="class_time_and_room_content">
                                 <span className="class_time_and_room">
@@ -658,7 +801,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </span>
                                 </span>
                             </td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
             </div>
