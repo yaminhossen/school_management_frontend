@@ -30,6 +30,17 @@ const Index: React.FC<Props> = (props: Props) => {
     }, []);
     console.log(data);
 
+    // sorting array
+    interface Item {
+        id: number; // or string, depending on your data type
+        [key: string]: any;
+    }
+
+    function sortById<T extends Item>(array: T[]): T[] {
+        return array.slice().sort((a, b) => a.id - b.id);
+    }
+    // let ssddss = data.subject_routine?.day_time;
+
     interface classes {
         [key: string]: any;
     }
@@ -322,7 +333,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <tr className="table_body">
                                         <td className="subject">{i?.name}</td>
                                         {i.subject_routine?.day_time?.length &&
-                                            i.subject_routine?.day_time?.map(
+                                            sortById(
+                                                i.subject_routine?.day_time,
+                                            )?.map(
                                                 (i: { [key: string]: any }) => {
                                                     return (
                                                         <td className="class_time_and_room_content">
@@ -344,8 +357,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                         -
                                                                     </span>
                                                                     <span className="room_number">
-                                                                        {i.id}
+                                                                        {
+                                                                            i
+                                                                                .class_room
+                                                                                ?.building_room
+                                                                                ?.room_code
+                                                                        }
                                                                     </span>
+                                                                    <br />
                                                                     <span>
                                                                         {
                                                                             i

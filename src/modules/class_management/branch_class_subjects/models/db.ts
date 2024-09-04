@@ -8,6 +8,8 @@ import * as user_teacher_model from './user_teacher_model';
 import * as branch_teachers_model from './branch_teachers_model';
 import * as branch_class_routines_model from './branch_class_routines_model';
 import * as branch_class_routine_day_times_model from './branch_class_routine_day_times_model';
+import * as branch_building_rooms_model from './branche_building_rooms_model';
+import * as branch_class_rooms_model from './branch_class_rooms_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -31,6 +33,8 @@ interface models {
     BranchTeachersModel: typeof branch_teachers_model.DataModel;
     BranchClassRoutinesModel: typeof branch_class_routines_model.DataModel;
     BranchClassRoutineDayTimesModel: typeof branch_class_routine_day_times_model.DataModel;
+    BranchBuildingRoomsModel: typeof branch_building_rooms_model.DataModel;
+    BranchClassRoomsModel: typeof branch_class_rooms_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -45,6 +49,9 @@ const db = async function (): Promise<models> {
         branch_class_routines_model.init(sequelize);
     const BranchClassRoutineDayTimesModel =
         branch_class_routine_day_times_model.init(sequelize);
+    const BranchBuildingRoomsModel =
+        branch_building_rooms_model.init(sequelize);
+    const BranchClassRoomsModel = branch_class_rooms_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync({ force: false });
@@ -54,6 +61,18 @@ const db = async function (): Promise<models> {
     //     foreignKey: 'user_student_id',
     //     as: 'student_info',
     // });
+
+    BranchClassRoutineDayTimesModel.hasOne(BranchClassRoomsModel, {
+        sourceKey: 'branch_class_room_id',
+        foreignKey: 'id',
+        as: 'class_room',
+    });
+
+    BranchClassRoomsModel.hasOne(BranchBuildingRoomsModel, {
+        sourceKey: 'branch_building_room_id',
+        foreignKey: 'id',
+        as: 'building_room',
+    });
 
     BranchClassRoutineDayTimesModel.hasOne(BranchTeachersModel, {
         sourceKey: 'branch_teacher_id',
@@ -92,6 +111,8 @@ const db = async function (): Promise<models> {
         BranchTeachersModel,
         BranchClassRoutinesModel,
         BranchClassRoutineDayTimesModel,
+        BranchBuildingRoomsModel,
+        BranchClassRoomsModel,
         // Project,
 
         sequelize,

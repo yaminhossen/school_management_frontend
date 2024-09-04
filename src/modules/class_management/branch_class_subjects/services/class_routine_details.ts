@@ -16,6 +16,8 @@ async function class_routine_details(
         models.BranchClassRoutineDayTimesModel;
     let branchTeachersModel = models.BranchTeachersModel;
     let userTeachersModel = models.UserTeacherModel;
+    let branchClassRoomsModel = models.BranchClassRoomsModel;
+    let branchBuildingRoomsModel = models.BranchBuildingRoomsModel;
     let params = req.params as any;
     console.log('class', params.id);
 
@@ -44,6 +46,16 @@ async function class_routine_details(
                                         },
                                     ],
                                 },
+                                {
+                                    model: branchClassRoomsModel,
+                                    as: 'class_room',
+                                    include: [
+                                        {
+                                            model: branchBuildingRoomsModel,
+                                            as: 'building_room',
+                                        },
+                                    ],
+                                },
                             ],
                             // order: [['id', 'ASC']],
                         },
@@ -53,6 +65,7 @@ async function class_routine_details(
             ],
             // order: [['id', 'ASC']],
         });
+        // console.log('data', data);
 
         if (data) {
             return response(200, 'data foundeds', data);
