@@ -14,6 +14,8 @@ async function class_routine_details(
     let branchClassRoutinesModel = models.BranchClassRoutinesModel;
     let branchClassRoutineDayTimesModel =
         models.BranchClassRoutineDayTimesModel;
+    let branchTeachersModel = models.BranchTeachersModel;
+    let userTeachersModel = models.UserTeacherModel;
     let params = req.params as any;
     console.log('class', params.id);
 
@@ -26,14 +28,30 @@ async function class_routine_details(
                 {
                     model: branchClassRoutinesModel,
                     as: 'subject_routine',
+                    // order: [['id', 'ASC']],
                     include: [
                         {
                             model: branchClassRoutineDayTimesModel,
                             as: 'day_time',
+                            include: [
+                                {
+                                    model: branchTeachersModel,
+                                    as: 'branch_teacher',
+                                    include: [
+                                        {
+                                            model: userTeachersModel,
+                                            as: 'user_teacher',
+                                        },
+                                    ],
+                                },
+                            ],
+                            // order: [['id', 'ASC']],
                         },
                     ],
+                    // order: [['id', 'ASC']],
                 },
             ],
+            // order: [['id', 'ASC']],
         });
 
         if (data) {

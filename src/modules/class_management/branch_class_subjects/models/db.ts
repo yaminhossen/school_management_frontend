@@ -55,6 +55,18 @@ const db = async function (): Promise<models> {
     //     as: 'student_info',
     // });
 
+    BranchClassRoutineDayTimesModel.hasOne(BranchTeachersModel, {
+        sourceKey: 'branch_teacher_id',
+        foreignKey: 'id',
+        as: 'branch_teacher',
+    });
+
+    BranchTeachersModel.hasOne(UserTeacherModel, {
+        sourceKey: 'user_teacher_id',
+        foreignKey: 'id',
+        as: 'user_teacher',
+    });
+
     BranchClassSubjectsModel.hasOne(BranchClassRoutinesModel, {
         sourceKey: 'id',
         foreignKey: 'branch_class_subject_id',

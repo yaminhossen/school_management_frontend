@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -226,6 +227,9 @@ const Index: React.FC<Props> = (props: Props) => {
             ],
         },
     ];
+    function timeFormate(time: string) {
+        return moment(time, 'HH:mm:ss').format('hh:mm A');
+    }
     return (
         <div className="admin_dashboard">
             <div className="class_schedule_content">
@@ -324,8 +328,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <td className="class_time_and_room_content">
                                                             <span className="class_time_and_room">
                                                                 <span className="time_rooom class_time">
-                                                                    7:00 am -
-                                                                    8:00 am
+                                                                    {timeFormate(
+                                                                        i.start_time,
+                                                                    )}{' '}
+                                                                    -{' '}
+                                                                    {timeFormate(
+                                                                        i.end_time,
+                                                                    )}{' '}
                                                                 </span>
                                                                 <span className="time_rooom class_room">
                                                                     <span className="room_title">
@@ -336,6 +345,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                     </span>
                                                                     <span className="room_number">
                                                                         {i.id}
+                                                                    </span>
+                                                                    <span>
+                                                                        {
+                                                                            i
+                                                                                .branch_teacher
+                                                                                ?.user_teacher
+                                                                                ?.name
+                                                                        }
                                                                     </span>
                                                                 </span>
                                                             </span>
