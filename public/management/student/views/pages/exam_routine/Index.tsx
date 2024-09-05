@@ -65,7 +65,7 @@ const Index: React.FC<Props> = (props: Props) => {
                 </td>
             );
         } else {
-            return <td className="class_time_and_room_content">X</td>;
+            return <td className="class_time_and_room_content">-</td>;
         }
     }
 
