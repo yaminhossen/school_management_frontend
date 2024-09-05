@@ -7,6 +7,10 @@ GET {{hostname}}?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10
 
 # get
 ###
+GET {{hostname}}/plan/1 HTTP/1.1
+
+# get
+###
 GET {{hostname}}/1 HTTP/1.1
 
 # store
