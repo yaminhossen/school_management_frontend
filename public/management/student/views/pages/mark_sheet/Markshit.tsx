@@ -30,6 +30,26 @@ const Markshit: React.FC<Props> = (props: Props) => {
     }, []);
     console.log(data);
 
+    function getGrade(score) {
+        if (score >= 30 && score <= 39) {
+            return 'D';
+        } else if (score >= 40 && score <= 49) {
+            return 'C';
+        } else if (score >= 50 && score <= 59) {
+            return 'B';
+        } else if (score >= 60 && score <= 69) {
+            return 'A-';
+        } else if (score >= 70 && score <= 79) {
+            return 'A';
+        } else if (score >= 80 && score <= 100) {
+            return 'A+';
+        } else if (score < 30 ) {
+            return 'F';
+        } else {
+            return 'Invalid score';  // Handle scores outside the valid range
+        }
+    }
+
     return (
         <div className="admin_dashboard">
             <div>
@@ -57,9 +77,9 @@ const Markshit: React.FC<Props> = (props: Props) => {
                                             <td></td>
                                             <td>{i.id}</td>
                                             <td>{i.exams?.title}</td>
-                                            <td>{i?.subject}</td>
+                                            <td>{i?.subject?.name}</td>
                                             <td>{i?.obtained_mark}</td>
-                                            <td>{i?.grade}</td>
+                                            <td>{getGrade(i.obtained_mark)}</td>
                                         </tr>
                                     );
                                 })}
