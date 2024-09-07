@@ -33,7 +33,7 @@ export let active_routes: string[] = [
     // 'src/modules/attendance_management/leave_application_paids/routes.ts',
     // 'src/modules/attendance_management/leave_types/routes.ts',
     // 'src/modules/attendance_management/staff_attendances/routes.ts',
-    // 'src/modules/attendance_management/student_attendances/routes.ts',
+    'src/modules/attendance_management/student_attendances/routes.ts',
     // 'src/modules/attendance_management/teacher_attendances/routes.ts',
 
     'src/modules/auth_management/authetication/routes.ts',
@@ -53,7 +53,7 @@ export let active_routes: string[] = [
     // 'src/modules/class_course_schedule_management/class_course_schedule_attachements/routes.ts',
     // 'src/modules/class_course_schedule_management/class_course_schedule_images/routes.ts',
 
-    'src/modules/class_management/branch_classes/routes.ts',
+    // 'src/modules/class_management/branch_classes/routes.ts',
     // 'src/modules/class_management/branch_class_fees/routes.ts',
     // 'src/modules/class_management/branch_class_fee_discounts/routes.ts',
     // 'src/modules/class_management/branch_class_fee_types/routes.ts',
@@ -61,7 +61,7 @@ export let active_routes: string[] = [
     // 'src/modules/class_management/branch_class_resources/routes.ts',
     'src/modules/class_management/branch_class_routin_day_times/routes.ts',
     // 'src/modules/class_management/branch_class_sections/routes.ts',
-    'src/modules/class_management/branch_class_shifts/routes.ts',
+    // 'src/modules/class_management/branch_class_shifts/routes.ts',
     'src/modules/class_management/branch_class_subjects/routes.ts',
 
     // 'src/modules/employee_salary_management/branch_employee_job_pay_grades/routes.ts',
@@ -80,7 +80,7 @@ export let active_routes: string[] = [
     'src/modules/exam_management/exam_routines/routes.ts',
     // 'src/modules/exam_management/exam_seat_plans/routes.ts',
     // 'src/modules/exam_management/exam_students/routes.ts',
-    // 'src/modules/exam_management/exam_student_marks/routes.ts',
+    'src/modules/exam_management/exam_student_marks/routes.ts',
 
     // 'src/modules/exam_paper_management/exam_paper_designs/routes.ts',
     // 'src/modules/exam_paper_management/exam_paper_design_orders/routes.ts',

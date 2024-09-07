@@ -73,9 +73,6 @@ const Index: React.FC<Props> = (props: Props) => {
             day_26: 'yes',
             day_27: 'yes',
             day_28: 'fri',
-            day_29: 'yes',
-            day_30: 'yes',
-            day_31: 'no',
         },
         {
             id: 3,

@@ -1,38 +1,74 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Markshit: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            subject: 'Bangla',
-            marks: '75',
-            grade: 'A',
-        },
-        {
-            id: 2,
-            subject: 'English',
-            marks: '85',
-            grade: 'A+',
-        },
-        {
-            id: 3,
-            subject: 'Math',
-            marks: '90',
-            grade: 'A+',
-        },
-    ];
+    const [error, setError] = useState(null);
+    const [data, setData] = useState<anyObject[]>([]);
+
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/exam-student-marks/mark-details/1',
+            );
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
 
     return (
         <div className="admin_dashboard">
             <div>
                 <h3>Current CGPA : 4.50</h3>
             </div>
-            <h3 className="table_heading student_semister">First Semester</h3>
+            <h3 className="table_heading student_semister">Result History</h3>
+            <div className="content_body ">
+                <div className="data_list mb-4">
+                    <div className="table_responsive custom_scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>id</th>
+                                    <th>Exam</th>
+                                    <th>Subject</th>
+                                    <th>Marks</th>
+                                    <th>Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody id="all_list">
+                                {data?.map((i: { [key: string]: any }) => {
+                                    return (
+                                        <tr>
+                                            <td></td>
+                                            <td>{i.id}</td>
+                                            <td>{i.exams?.title}</td>
+                                            <td>{i?.subject}</td>
+                                            <td>{i?.obtained_mark}</td>
+                                            <td>{i?.grade}</td>
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {/* <h3 className="table_heading student_semister">Second Semester</h3>
             <div className="content_body ">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
@@ -62,38 +98,7 @@ const Markshit: React.FC<Props> = (props: Props) => {
                         </table>
                     </div>
                 </div>
-            </div>
-            <h3 className="table_heading student_semister">Second Semester</h3>
-            <div className="content_body ">
-                <div className="data_list">
-                    <div className="table_responsive custom_scroll">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>id</th>
-                                    <th>Subject</th>
-                                    <th>Marks</th>
-                                    <th>Grade</th>
-                                </tr>
-                            </thead>
-                            <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.subject}</td>
-                                            <td>{i.marks}</td>
-                                            <td>{i.grade}</td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+            </div> */}
         </div>
     );
 };

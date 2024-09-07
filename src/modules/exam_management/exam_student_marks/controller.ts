@@ -13,6 +13,7 @@ import update from './services/update';
 import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
+import mark_details from './services/exam_marks_details';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -23,6 +24,11 @@ export default function (fastify: FastifyInstance) {
 
         find: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        mark_details: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await mark_details(fastify, req);
             res.code(data.status).send(data);
         },
 
