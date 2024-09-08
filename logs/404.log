@@ -33,3 +33,7 @@
 {"level":60,"time":1725705176582,"pid":7576,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/class-routine/1"}
 {"level":60,"time":1725705177457,"pid":7576,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/class-routine/1"}
 {"level":60,"time":1725776097484,"pid":9568,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collection-details/payment-history/1"}
+{"level":60,"time":1725793981828,"pid":12016,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collection-details/payment-history/1"}
+{"level":60,"time":1725793987715,"pid":12016,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collection-details/payment-history/1"}
+{"level":60,"time":1725796836137,"pid":4164,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/1"}
+{"level":60,"time":1725797339099,"pid":10048,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collections/payment-history/1"}

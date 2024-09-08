@@ -57,7 +57,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td>{i.id}</td>
                                             <td>{i.title}</td>
                                             <td>{i.subject?.name}</td>
-                                            <td>{i.teacher}</td>
+                                            <td>
+                                                {
+                                                    i.subject_teacher
+                                                        ?.branch_teacher
+                                                        ?.teacher?.name
+                                                }
+                                            </td>
                                             <td>{dateFormate(i.updatedAt)}</td>
                                             <td>
                                                 <a href="#">download</a>

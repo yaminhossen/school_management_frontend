@@ -16,7 +16,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/account-fees-collection-details/payment-history/1',
+                '/api/v1/account-fees-collections/payment-history/1',
             );
             setData(response.data.data);
             // setData(response.data);
@@ -35,7 +35,7 @@ const Index: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
-            <h3 className="table_heading">Payments</h3>
+            <h3 className="table_heading">Payments History</h3>
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
@@ -44,7 +44,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>id</th>
-                                    <th>Perpous</th>
+                                    {/* <th>Perpous</th> */}
                                     <th>Date</th>
                                     <th>Amount</th>
                                     <th>TRX Id</th>
@@ -56,10 +56,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.class_fees?.name}</td>
+                                            {/* <td>{i.class_fees?.name}</td> */}
                                             <td>{dateFormate(i.date)}</td>
-                                            <td>{i.class_fees?.amount}</td>
-                                            <td>{i.trx_no}</td>
+                                            <td>{i.payment?.amount}</td>
+                                            <td>{i.payment?.receipt_no}</td>
                                         </tr>
                                     );
                                 })}
