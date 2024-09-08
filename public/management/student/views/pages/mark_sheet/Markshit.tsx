@@ -43,10 +43,10 @@ const Markshit: React.FC<Props> = (props: Props) => {
             return 'A';
         } else if (score >= 80 && score <= 100) {
             return 'A+';
-        } else if (score < 30 ) {
+        } else if (score < 30) {
             return 'F';
         } else {
-            return 'Invalid score';  // Handle scores outside the valid range
+            return 'Invalid score'; // Handle scores outside the valid range
         }
     }
 

@@ -3,6 +3,7 @@ import {
     Sequelize,
 } from 'sequelize';
 import * as account_fees_collection_details_model from './account_fees_collection_details_model';
+import * as branch_class_fees_model from './branch_class_fees_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -21,12 +22,14 @@ const sequelize = new Sequelize(
 
 interface models {
     AccountFeesCollectionDetailsModel: typeof account_fees_collection_details_model.DataModel;
+    BranchClassFeesModel: typeof branch_class_fees_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
 const db = async function (): Promise<models> {
     const AccountFeesCollectionDetailsModel =
         account_fees_collection_details_model.init(sequelize);
+    const BranchClassFeesModel = branch_class_fees_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -58,6 +61,7 @@ const db = async function (): Promise<models> {
 
     let models: models = {
         AccountFeesCollectionDetailsModel,
+        BranchClassFeesModel,
         // Project,
 
         sequelize,
