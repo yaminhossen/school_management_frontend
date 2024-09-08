@@ -24,13 +24,13 @@ async function payment_history(
     try {
         let data = await feeCollectionDetailsModel.findAll({
             where: {
-                id: params.id,
+                branch_student_id: params.id,
             },
             include: [
-                // {
-                //     model: branchClassFeesModel,
-                //     as: 'subject_routine',
-                // },
+                {
+                    model: branchClassFeesModel,
+                    as: 'class_fees',
+                },
             ],
             // order: [['id', 'ASC']],
         });

@@ -40,7 +40,7 @@ const Index: React.FC<Props> = (props: Props) => {
     function dateFormate(date: string) {
         return moment(date).format('dddd').toLowerCase();
     }
-    console.log('date', dateFormate('2024-09-07T00:00:00.000Z'));
+    // console.log('date', dateFormate('2024-09-07T00:00:00.000Z'));
 
     function get_day_data(i, day) {
         if (dateFormate(i.date) === day) {

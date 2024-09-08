@@ -1,34 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
+    const [error, setError] = useState(null);
+    const [data, setData] = useState<anyObject[]>([]);
+
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/account-fees-collection-details/payment-history/1',
+            );
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
+    function dateFormate(date: string) {
+        return moment(date).format('MM-D-YYYY').toLowerCase();
     }
-    const datas: data[] = [
-        {
-            id: 1,
-            perpous: 'Monthly fee',
-            date: '12 April 2024',
-            amount: '5000',
-            trx_no: 'U001',
-        },
-        {
-            id: 2,
-            perpous: 'Semister fee',
-            date: '12 March 2024',
-            amount: '5000',
-            trx_no: 'U002',
-        },
-        {
-            id: 3,
-            perpous: 'Hostel fee',
-            date: '10 Feb, 2024',
-            amount: '5000',
-            trx_no: 'U003',
-        },
-    ];
 
     return (
         <div className="admin_dashboard">
@@ -48,14 +51,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
+                                {data?.map((i: { [key: string]: any }) => {
                                     return (
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.perpous}</td>
-                                            <td>{i.date}</td>
-                                            <td>{i.amount}</td>
+                                            <td>{i.class_fees?.name}</td>
+                                            <td>{dateFormate(i.date)}</td>
+                                            <td>{i.class_fees?.amount}</td>
                                             <td>{i.trx_no}</td>
                                         </tr>
                                     );
