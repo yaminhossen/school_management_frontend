@@ -3,6 +3,10 @@ import {
     Sequelize,
 } from 'sequelize';
 import * as branch_class_resources_model from './branch_class_resources_model';
+import * as user_teacher_model from './user_teacher_model';
+import * as branch_class_subject_teachers_model from './branch_class_subject_teachers_model';
+import * as branch_class_subjects_model from './branch_class_subjects_model';
+import * as branch_teachers_model from './branch_teachers_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -21,43 +25,56 @@ const sequelize = new Sequelize(
 
 interface models {
     BranchClassResourcessModel: typeof branch_class_resources_model.DataModel;
+    UserTeachersModel: typeof user_teacher_model.DataModel;
+    BranchClassSubjectTeachersModel: typeof branch_class_subject_teachers_model.DataModel;
+    BranchClassSubjectsModel: typeof branch_class_subjects_model.DataModel;
+    BranchTeachersModel: typeof branch_teachers_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
 const db = async function (): Promise<models> {
     const BranchClassResourcessModel =
         branch_class_resources_model.init(sequelize);
+    const UserTeachersModel = user_teacher_model.init(sequelize);
+    const BranchClassSubjectTeachersModel =
+        branch_class_subject_teachers_model.init(sequelize);
+    const BranchClassSubjectsModel =
+        branch_class_subjects_model.init(sequelize);
+    const BranchTeachersModel = branch_teachers_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
 
-    // Project.hasOne(User, {
-    //     sourceKey: 'user_id',
-    //     foreignKey: 'id',
-    //     as: 'user',
-    // });
+    BranchClassResourcessModel.hasOne(BranchClassSubjectsModel, {
+        sourceKey: 'branch_class_subject_id',
+        foreignKey: 'id',
+        as: 'subject',
+    });
 
-    // User.hasMany(Project, {
-    //     sourceKey: 'id',
-    //     foreignKey: 'user_id',
-    //     as: 'projects',
-    // });
+    BranchClassResourcessModel.hasOne(BranchClassSubjectTeachersModel, {
+        sourceKey: 'branch_class_subject_id',
+        foreignKey: 'branch_class_subject_id',
+        as: 'subject_teacher',
+    });
 
-    // User.hasOne(Project, {
-    //     sourceKey: 'id',
-    //     foreignKey: 'user_id',
-    //     as: 'project',
-    // });
+    BranchClassSubjectTeachersModel.hasOne(BranchTeachersModel, {
+        sourceKey: 'branch_teacher_id',
+        foreignKey: 'id',
+        as: 'branch_teacher',
+    });
 
-    // Project.belongsToMany(User, {
-    //     through: 'project_user',
-    // });
-    // User.belongsToMany(Project, {
-    //     through: 'project_user',
-    // });
+    BranchTeachersModel.hasOne(UserTeachersModel, {
+        sourceKey: 'user_teacher_id',
+        foreignKey: 'id',
+        as: 'teacher',
+    });
 
     let models: models = {
         BranchClassResourcessModel,
+        BranchClassSubjectsModel,
+        BranchClassSubjectTeachersModel,
+        BranchTeachersModel,
+        UserTeachersModel,
         // Project,
 
         sequelize,
