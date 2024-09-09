@@ -1,147 +1,808 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../../common_types/object';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
-const AcademicInformation: React.FC<Props> = (props: Props) => {
+const Details: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+    const [data, setData] = useState();
+
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/user-students/full-details/11',
+            );
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
+
     return (
         <div className="admin_dashboard">
-            <h3 className="table_heading">Academic information</h3>
-            <table className="table text-nowrap">
-                <tbody>
-                    <tr>
-                        <td>Name:</td>
-                        <td className="font-medium text-dark-medium">
-                            Masud Rana
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Gender:</td>
-                        <td className="font-medium text-dark-medium">Male</td>
-                    </tr>
-                    <tr>
-                        <td>Father Name:</td>
-                        <td className="font-medium text-dark-medium">
-                            Abdur rahman
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Email:</td>
-                        <td className="font-medium text-dark-medium">
-                            masud1@gmail.com
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Phone number:</td>
-                        <td className="font-medium text-dark-medium">
-                            01897867563
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Stutas:</td>
-                        <td className="font-medium text-dark-medium">Active</td>
-                    </tr>
-                    <tr>
-                        <td>Branch:</td>
-                        <td className="font-medium text-dark-medium">Uttora</td>
-                    </tr>
-                    <tr>
-                        <td>Admission no:</td>
-                        <td className="font-medium text-dark-medium">
-                            A202411303
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Roll no:</td>
-                        <td className="font-medium text-dark-medium">323</td>
-                    </tr>
-                    <tr>
-                        <td>Addmission date:</td>
-                        <td className="font-medium text-dark-medium">
-                            06-09-2024
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Class:</td>
-                        <td className="font-medium text-dark-medium">Seven</td>
-                    </tr>
-                    <tr>
-                        <td>Shift:</td>
-                        <td className="font-medium text-dark-medium">
-                            Boy morning
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Section:</td>
-                        <td className="font-medium text-dark-medium">A</td>
-                    </tr>
-                    <tr>
-                        <td>Present Address:</td>
-                        <td className="font-medium text-dark-medium">
-                            Mirpur, dhaka
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Permanent Address:</td>
-                        <td className="font-medium text-dark-medium">
-                            Barishal
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Date of birth:</td>
-                        <td className="font-medium text-dark-medium">
-                            15, Jamuary 2012
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Religion:</td>
-                        <td className="font-medium text-dark-medium">Islam</td>
-                    </tr>
-                    <tr>
-                        <td>Nationality:</td>
-                        <td className="font-medium text-dark-medium">
-                            Bangladeshi
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Division:</td>
-                        <td className="font-medium text-dark-medium">
-                            Noakhali
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Subject:</td>
-                        <td className="font-medium text-dark-medium">
-                            English
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Class:</td>
-                        <td className="font-medium text-dark-medium">2</td>
-                    </tr>
-                    <tr>
-                        <td>Section:</td>
-                        <td className="font-medium text-dark-medium">Pink</td>
-                    </tr>
-                    <tr>
-                        <td>ID No:</td>
-                        <td className="font-medium text-dark-medium">10005</td>
-                    </tr>
-                    <tr>
-                        <td>Address:</td>
-                        <td className="font-medium text-dark-medium">
-                            House #10, Road #6, Australia
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Phone:</td>
-                        <td className="font-medium text-dark-medium">
-                            + 88 98568888418
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            {/* <h3 className="table_heading">Basic information</h3> */}
+            <div className="content_body ">
+                <div className="student_details">
+                    <div>
+                        {/* <Link
+                            to="/add-new"
+                            className="btn btn-sm btn-outline-info mb-2"
+                            type="submit"
+                        >
+                            Add New
+                        </Link> */}
+                    </div>
+                    <div>
+                        <img
+                            src={data?.image}
+                            style={{ width: '100px' }}
+                            alt=""
+                        />
+                    </div>
+                </div>
+                {data && (
+                    <div className="single_student_details">
+                        <div className="">
+                            <h4>Basic information</h4>
+                            <div className="basic_info mb-4">
+                                <table className="table text-nowrap student_table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data.name}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.email}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone number</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.phone_number}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table className="table text-nowrap student_table ml-2">
+                                    <tbody>
+                                        <tr>
+                                            <td>Whatsapp number</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.whatsapp_number}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gender</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.student_info?.gender}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Stutas</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.status}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Admission information</h4>
+                            <div className="basic_info mb-4 ">
+                                <table className="table text-nowrap student_table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Branch</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                Uttora
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Admission no</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    data?.student_info
+                                                        ?.addmission_no
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Roll no</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.student_info?.role_no}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Addmission date</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {moment(
+                                                    data?.student_info
+                                                        ?.admission_date,
+                                                ).format('YYYY-MM-DD')}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table className="table text-nowrap student_table ml-2">
+                                    <tbody>
+                                        <tr>
+                                            <td>Class</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.student_info?.s_class}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Shift</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.student_info?.shift}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Student Category</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    data?.student_info
+                                                        ?.student_category
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Section</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.student_info?.section}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Information</h4>
+                            <div className="basic_info mb-4 ">
+                                <table className="table text-nowrap student_table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Present Address</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    data?.student_info
+                                                        ?.present_address
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Permanent Address</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    data?.student_info
+                                                        ?.permanent_address
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Religion</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.student_info?.religion}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>City</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.student_info?.city}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Telegram Id</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    data?.student_info
+                                                        ?.telegram_id
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Blood Group</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    data?.student_info
+                                                        ?.blood_group
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Student Expire Date</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {moment(
+                                                    data?.student_info
+                                                        ?.student_expire_date,
+                                                ).format('YYYY-MM-DD')}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Height</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.student_info?.height}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Weight</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.student_info?.weight}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>As on Date</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {moment(
+                                                    data?.student_info
+                                                        ?.as_on_date,
+                                                ).format('YYYY-MM-DD')}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Familly Information</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    data?.student_info
+                                                        ?.family_information
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Shibling Information</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    data?.student_info
+                                                        ?.shibling_information
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Living House type</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    data?.student_info
+                                                        ?.living_house_type
+                                                }
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table className="table text-nowrap student_table ml-2">
+                                    <tbody>
+                                        <tr>
+                                            <td>Nationality</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    data?.student_info
+                                                        ?.nationality
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Division</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.student_info?.division}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>ID No</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.student_info?.student_id}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    data?.student_info
+                                                        ?.present_address
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Post code</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.student_info?.post_code}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Country</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.student_info?.country}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Medical Condition</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    data?.student_info
+                                                        ?.medical_condition
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Current Medication</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    data?.student_info
+                                                        ?.current_medications
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Telegram Name</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    data?.student_info
+                                                        ?.telegram_name
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Student House type</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    data?.student_info
+                                                        ?.student_house
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Birth Cirtificate</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {/* {
+                                                    data?.student_info
+                                                        ?.birth_certificate
+                                                } */}
+                                                <a
+                                                    href={
+                                                        data?.student_info
+                                                            ?.birth_certificate
+                                                    }
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    Show cirtificate
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>National ID</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {/* {
+                                                    data?.student_info
+                                                        ?.birth_certificate
+                                                } */}
+                                                <a
+                                                    href={
+                                                        data?.student_info
+                                                            ?.national_id
+                                                    }
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    Show NID
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cast</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.student_info?.cast}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Document</h4>
+                            {data.document_titles?.length &&
+                                data?.document_titles.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
+                                            <div className="basic_info mb-4 ">
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                Document Title
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.title}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Issue Date</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {moment(
+                                                                    i
+                                                                        .values_title
+                                                                        ?.issue_date,
+                                                                ).format(
+                                                                    'YYYY-MM-DD',
+                                                                )}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table className="table text-nowrap student_table ml-2">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                Document File
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                <a
+                                                                    href={
+                                                                        i
+                                                                            .values_title
+                                                                            ?.file
+                                                                    }
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                >
+                                                                    Show File
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Expire date</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {moment(
+                                                                    i
+                                                                        .values_title
+                                                                        ?.expire_date,
+                                                                ).format(
+                                                                    'YYYY-MM-DD',
+                                                                )}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        );
+                                    },
+                                )}
+                        </div>
+                        <div>
+                            <h4>Contact Numbers</h4>
+                            {data.student_numbers?.length &&
+                                data?.student_numbers.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
+                                            <div className="basic_info mb-4 ">
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                Contact Number
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {
+                                                                    i.contact_number
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table className="table text-nowrap student_table ml-2">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Owner</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.owner}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        );
+                                    },
+                                )}
+                        </div>
+                        <div>
+                            <h4>Skills</h4>
+                            {data.skills?.length &&
+                                data?.skills.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
+                                            <div className="basic_info mb-4 ">
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Skill Title</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.title}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Level</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.level}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        );
+                                    },
+                                )}
+                        </div>
+                        <div>
+                            <h4>Languages</h4>
+                            {data.languages?.length &&
+                                data?.languages.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
+                                            <div className="basic_info mb-4 ">
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Language</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {
+                                                                    i.language_title
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Profeciency</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.profeciency}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        );
+                                    },
+                                )}
+                        </div>
+                        <div>
+                            <h4>Educational Background</h4>
+                            {data.educational_backgrounds?.length &&
+                                data?.educational_backgrounds.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
+                                            <div className="basic_info mb-4 ">
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                Previous
+                                                                Institute
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {
+                                                                    i.previous_institute
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Year Of Leaving
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {moment(
+                                                                    i.year_of_leaving,
+                                                                ).format(
+                                                                    'YYYY-MM-DD',
+                                                                )}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table className="table text-nowrap student_table ml-2">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Result</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.result}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Transfer
+                                                                Cirtificate
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                <a
+                                                                    href={
+                                                                        i.transfer_cirtificate
+                                                                    }
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                >
+                                                                    Show File
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        );
+                                    },
+                                )}
+                        </div>
+                        <div>
+                            <h4>Guardians</h4>
+                            {data.parents?.length &&
+                                data?.parents.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
+                                            <div className="basic_info mb-4 ">
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {
+                                                                    i
+                                                                        .parent_details
+                                                                        ?.name
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Email</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {
+                                                                    i
+                                                                        .parent_details
+                                                                        ?.email
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Relation</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.relation}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table className="table text-nowrap student_table ml-2">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                Phone Number
+                                                            </td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {
+                                                                    i
+                                                                        .parent_details
+                                                                        ?.phone_number
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Status</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {
+                                                                    i
+                                                                        .parent_details
+                                                                        ?.status
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Picture</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                <a
+                                                                    href={
+                                                                        i
+                                                                            .parent_details
+                                                                            ?.image
+                                                                    }
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                >
+                                                                    Show Image
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        );
+                                    },
+                                )}
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
 
-export default AcademicInformation;
+export default Details;
