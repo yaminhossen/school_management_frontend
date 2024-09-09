@@ -80,7 +80,7 @@ export let active_routes: string[] = [
     // 'src/modules/exam_management/exam_routines/routes.ts',
     // 'src/modules/exam_management/exam_seat_plans/routes.ts',
     // 'src/modules/exam_management/exam_students/routes.ts',
-    // 'src/modules/exam_management/exam_student_marks/routes.ts',
+    'src/modules/exam_management/exam_student_marks/routes.ts',
 
     // 'src/modules/exam_paper_management/exam_paper_designs/routes.ts',
     // 'src/modules/exam_paper_management/exam_paper_design_orders/routes.ts',
