@@ -29,6 +29,14 @@ import shifts from './services/shifts';
 import branches from './services/branches';
 import sections from './services/sections';
 import full_details_update from './services/admit_student_update';
+import academic_informations from './services/academic_informations';
+import basic_informations from './services/basic_informations';
+import documents from './services/documents';
+import skills from './services/skills';
+import languages from './services/languages';
+import parents from './services/parents';
+import contact_numbers from './services/contact_numbers';
+import educational_backgrounds from './services/educational_backgrounds';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -39,6 +47,58 @@ export default function (fastify: FastifyInstance) {
 
         find: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        academic_informations: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await academic_informations(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        basic_informations: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await basic_informations(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        documents: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await documents(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        parents: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await parents(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        skills: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await skills(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        languages: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await languages(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        contact_numbers: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await contact_numbers(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        educational_backgrounds: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await educational_backgrounds(fastify, req);
             res.code(data.status).send(data);
         },
 
