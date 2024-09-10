@@ -28,6 +28,7 @@ const Details: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
+
     console.log(data);
 
     return (

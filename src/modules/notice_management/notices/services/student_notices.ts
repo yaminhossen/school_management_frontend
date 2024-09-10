@@ -5,20 +5,20 @@ import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 
-async function all_students(
+async function student_notices(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
-    let NoticeSeenByUsersModel = models.NoticeSeenByUsersModel;
     let params = req.params as any;
-    const Sequelize = require('sequelize');
+
     try {
-        let data = await models.NoticesModel.findAll({
+        let data = await models.NoticesModel.findOne({
             where: {
-                notice_for: {
-                    [Sequelize.Op.in]: [params.user, 'all'],
-                },
+                id: params.id,
+            },
+            attributes: {
+                exclude: ['password'],
             },
         });
 
@@ -38,4 +38,4 @@ async function all_students(
     }
 }
 
-export default all_students;
+export default student_notices;

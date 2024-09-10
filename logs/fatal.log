@@ -1,0 +1,5 @@
+{"level":60,"time":1725958955057,"pid":14816,"hostname":"DESKTOP-9421701","file":"","time":"9/10/2024 3:02:35 PM","message":"target not found."}
+{"level":60,"time":1725959626115,"pid":17284,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"9/10/2024 3:13:46 PM","message":"data not found"}
+{"level":60,"time":1725960075603,"pid":1588,"hostname":"DESKTOP-9421701","file":"services\\notice_for_users.ts:39:19)","time":"9/10/2024 3:21:15 PM","message":"WHERE parameter \"notice_for\" has invalid \"undefined\" value"}
+{"level":60,"time":1725960089785,"pid":1588,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"9/10/2024 3:21:29 PM","message":"data not found"}
+{"level":60,"time":1725960094427,"pid":1588,"hostname":"DESKTOP-9421701","file":"services\\notice_for_users.ts:39:19)","time":"9/10/2024 3:21:34 PM","message":"WHERE parameter \"notice_for\" has invalid \"undefined\" value"}

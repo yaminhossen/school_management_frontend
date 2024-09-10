@@ -8,15 +8,16 @@ module.exports = async function (fastify: FastifyInstance) {
 
     fastify
         .get(`${prefix}`, controllerInstance.all)
-        .get(`${prefix}/:id`, controllerInstance.find)
+        .get(`${prefix}/user/:user`, controllerInstance.user_notices)
         .post(`${prefix}/store`, controllerInstance.store)
         .post(`${prefix}/update`, controllerInstance.update)
         .post(`${prefix}/soft-delete`, controllerInstance.soft_delete)
         .post(`${prefix}/restore`, controllerInstance.restore)
         .post(`${prefix}/destroy`, controllerInstance.destroy)
         .post(`${prefix}/import`, controllerInstance.import)
+        .get(`${prefix}/:id`, controllerInstance.find)
 
-        .get(`${prefix}/students`, controllerInstance.all_users); // show notice
+        .get(`${prefix}/students`, controllerInstance.user_notices); // show notice
     // .get(`${prefix}/student/:student_id`, controllerInstance.find) //notice for a single presone
     // .post(`${prefix}/:notice_id/student/:student_id/seen`, controllerInstance.store) // show in seen table
     // .post(`${prefix}/:notice_id/student/:student_id/unseen`, controllerInstance.update) // dont show in seen table

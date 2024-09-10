@@ -93,7 +93,7 @@ export let active_routes: string[] = [
     // 'src/modules/meeting_management/meeting_agendas/routes.ts',
     // 'src/modules/meeting_management/meeting_attachments/routes.ts',
 
-    // 'src/modules/notice_management/notices/routes.ts',
+    'src/modules/notice_management/notices/routes.ts',
     // 'src/modules/notice_management/notice_categorys/routes.ts',
 
     // 'src/modules/personal_calendar_schedule_management/personal_calendar_schedule/routes.ts',

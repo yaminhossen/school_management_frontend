@@ -13,7 +13,8 @@ import update from './services/update';
 import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
-import all_users from './services/notice_for_users';
+import user_notices from './services/notice_for_users';
+// import student_notices from './services/student_notices';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -26,6 +27,14 @@ export default function (fastify: FastifyInstance) {
             let data = await details(fastify, req);
             res.code(data.status).send(data);
         },
+
+        // student_notices: async function (
+        //     req: FastifyRequest,
+        //     res: FastifyReply,
+        // ) {
+        //     let data = await student_notices(fastify, req);
+        //     res.code(data.status).send(data);
+        // },
 
         store: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await store(fastify, req);
@@ -56,8 +65,8 @@ export default function (fastify: FastifyInstance) {
             let data = await data_import(fastify, req);
             res.code(data.status).send(data);
         },
-        all_users: async function (req: FastifyRequest, res: FastifyReply) {
-            let data = await all_users(fastify, req);
+        user_notices: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await user_notices(fastify, req);
             res.code(data.status).send(data);
         },
 
