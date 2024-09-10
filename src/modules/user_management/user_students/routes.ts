@@ -40,7 +40,6 @@ module.exports = async function (fastify: FastifyInstance) {
         )
         .get(`${prefix}/:id`, controllerInstance.find)
         .get(`${prefix}/class-details/:id`, controllerInstance.class_details)
-        .get(`${prefix}/full-details/:id`, controllerInstance.full_details)
         .get(`${prefix}/students/:id`, controllerInstance.find_student)
         .get(
             `${prefix}/academic-information/:id`,
@@ -59,6 +58,7 @@ module.exports = async function (fastify: FastifyInstance) {
             `${prefix}/educational-background/:id`,
             controllerInstance.educational_backgrounds,
         )
+        .get(`${prefix}/full-details/:id`, controllerInstance.full_details)
         .post(`${prefix}/store`, controllerInstance.store)
         // .post(`${prefix}/update`, controllerInstance.update)
         .post(`${prefix}/update`, controllerInstance.full_details_update)

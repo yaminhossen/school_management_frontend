@@ -4,3 +4,6 @@
 {"level":60,"time":1725883419426,"pid":3288,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-details/1"}
 {"level":60,"time":1725883428687,"pid":3288,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-details/1"}
 {"level":60,"time":1725883430237,"pid":3288,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-details/1"}
+{"level":60,"time":1725945138793,"pid":14780,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
+{"level":60,"time":1725945249396,"pid":17908,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/document/11"}
+{"level":60,"time":1725945289789,"pid":17908,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/contact-numbers/11"}
