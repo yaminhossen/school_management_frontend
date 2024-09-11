@@ -13,6 +13,7 @@ import update from './services/update';
 import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
+import student_store from './services/student_store';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -28,6 +29,11 @@ export default function (fastify: FastifyInstance) {
 
         store: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await store(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        student_store: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await student_store(fastify, req);
             res.code(data.status).send(data);
         },
 

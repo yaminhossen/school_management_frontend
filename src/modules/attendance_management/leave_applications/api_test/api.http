@@ -23,6 +23,17 @@ content-type: application/json
     "description": "somelsdjf"
 }
 
+# store
+###
+POST  {{hostname}}/student-store HTTP/1.1
+content-type: application/json
+
+{
+    "start_date": "2024-03-03",
+    "end_date": "2024-03-05",
+    "attachments": "file.pdf"
+}
+
 
 # update
 ###

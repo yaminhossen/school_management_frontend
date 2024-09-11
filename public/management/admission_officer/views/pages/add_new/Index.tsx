@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../store';
 import { store } from './config/store/async_actions/store';
-import moment from 'moment';
+import moment from 'moment/moment';
 // import storeSlice from '../config/store';
 import { classes } from '../add_new/config/store/async_actions/classes';
 import storeSlice from './config/store';
@@ -61,7 +61,7 @@ const Index: React.FC<Props> = (props: Props) => {
         console.log('form frontend', state.classes);
     }
     // console.log('moment', moment().format('YYYY-DD-MM'));
-
+    let date = moment().format('YYYY-DD-MM');
     return (
         <div className="admin_dashboard">
             <div className="content_body">
@@ -234,7 +234,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="date"
-                                            defaultValue={'2024-10-10'}
+                                            defaultValue={date}
                                             name="admission_date"
                                         />
                                     </div>
@@ -334,7 +334,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="date"
-                                            defaultValue={'2024-10-10'}
+                                            defaultValue={date}
                                             name="date_of_birth"
                                         />
                                     </div>
@@ -462,7 +462,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="date"
-                                            defaultValue={'2024-10-10'}
+                                            defaultValue={date}
                                             name="student_expire_date"
                                         />
                                     </div>
@@ -494,7 +494,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="date"
-                                            defaultValue={'2024-10-10'}
+                                            defaultValue={date}
                                             name="as_on_date"
                                         />
                                     </div>
@@ -636,9 +636,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <input
                                                             type="date"
-                                                            defaultValue={
-                                                                '2024-10-10'
-                                                            }
+                                                            defaultValue={date}
                                                             name={`issue_date${index}`}
                                                         />
                                                     </div>
@@ -648,9 +646,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <input
                                                             type="date"
-                                                            defaultValue={
-                                                                '2024-10-10'
-                                                            }
+                                                            defaultValue={date}
                                                             name={`expire_date${index}`}
                                                         />
                                                     </div>
@@ -1154,9 +1150,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <input
                                                             type="date"
-                                                            defaultValue={
-                                                                '2024-10-10'
-                                                            }
+                                                            defaultValue={date}
                                                             name={`educational_background_year_of_leaving_${index}`}
                                                         />
                                                     </div>

@@ -34,19 +34,19 @@ type status = 'active' | 'deactive';
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
-    declare branch_id: number;
-    declare branch_teacher_id: number;
-    declare branch_staff_id: number;
-    declare branch_student_id: number;
-    declare leave_type_id: number;
+    declare branch_id?: number;
+    declare branch_teacher_id?: number;
+    declare branch_staff_id?: number;
+    declare branch_student_id?: number;
+    declare leave_type_id?: number;
     declare start_date: string;
     declare end_date: string;
-    declare reason: string;
-    declare leave_status: leave_status;
+    declare reason?: string;
+    declare leave_status?: leave_status;
     declare attachments: string;
-    declare total_days: number;
-    declare approved_start_date: string;
-    declare approved_end_date: string;
+    declare total_days?: number;
+    declare approved_start_date?: string;
+    declare approved_end_date?: string;
 
     declare status?: status;
     declare creator?: number;

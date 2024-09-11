@@ -1,16 +1,1 @@
-{"level":60,"time":1725868795500,"pid":1112,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
-{"level":60,"time":1725868796310,"pid":1112,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
-{"level":60,"time":1725883372958,"pid":3288,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-details/1"}
-{"level":60,"time":1725883419426,"pid":3288,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-details/1"}
-{"level":60,"time":1725883428687,"pid":3288,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-details/1"}
-{"level":60,"time":1725883430237,"pid":3288,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-details/1"}
-{"level":60,"time":1725945138793,"pid":14780,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
-{"level":60,"time":1725945249396,"pid":17908,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/document/11"}
-{"level":60,"time":1725945289789,"pid":17908,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/contact-numbers/11"}
-{"level":60,"time":1725955048622,"pid":14816,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/basic-informations/11"}
-{"level":60,"time":1725955049338,"pid":14816,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/basic-informations/11"}
-{"level":60,"time":1725955050124,"pid":14816,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/basic-informations/11"}
-{"level":60,"time":1725955051019,"pid":14816,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/basic-informations/11"}
-{"level":60,"time":1725955056775,"pid":14816,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/basic-informations/1"}
-{"level":60,"time":1725955057953,"pid":14816,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/basic-informations/1"}
-{"level":60,"time":1725955103598,"pid":14816,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
+{"level":60,"time":1726031477710,"pid":6312,"hostname":"DESKTOP-9421701","error":"404","url":"/studnet"}
