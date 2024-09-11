@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 export interface Props {}
 
-const Index: React.FC<Props> = (props: Props) => {
+const Reject: React.FC<Props> = (props: Props) => {
     interface data {
         [key: string]: any;
     }
@@ -21,35 +21,7 @@ const Index: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <h3 className="table_heading"></h3>
             <div className="content_body">
-                <Link
-                    to="/leave-application/create"
-                    className="btn btn-sm btn-outline-info mb-2 mr-2"
-                    type="submit"
-                >
-                    Create
-                </Link>
-                <Link
-                    to="/leave-application/approved"
-                    className="btn btn-sm btn-outline-info mb-2 mr-2"
-                    type="submit"
-                >
-                    Approved
-                </Link>
-                <Link
-                    to="/leave-application/rejected"
-                    className="btn btn-sm btn-outline-info mb-2 mr-2"
-                    type="submit"
-                >
-                    Rejected
-                </Link>
-                <Link
-                    to="/leave-application/pending"
-                    className="btn btn-sm btn-outline-info mb-2 mr-2"
-                    type="submit"
-                >
-                    Pending
-                </Link>
-                {/* <div className="data_list">
+                <div className="data_list">
                     <div className="table_responsive custom_scroll">
                         <table>
                             <thead>
@@ -80,7 +52,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             </tbody>
                         </table>
                     </div>
-                </div> */}
+                </div>
                 <div className="info-table table-responsive">
                     <Outlet></Outlet>
                 </div>
@@ -89,4 +61,4 @@ const Index: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Index;
+export default Reject;

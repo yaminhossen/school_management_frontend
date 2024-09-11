@@ -52,7 +52,7 @@ const SideBar: React.FC<Props> = (props: Props) => {
                 </MenuDropDown>
 
                 <MenuSingle
-                    to="/leave-application"
+                    to="/leave-application/approved"
                     icon="icon-notepad"
                     label="Leave Application"
                 />
