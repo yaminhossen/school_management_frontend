@@ -15,6 +15,26 @@ const Reject: React.FC<Props> = (props: Props) => {
             id: 2,
             title: 'Application for casual leave',
         },
+        {
+            id: 2,
+            title: 'Application for casual leave',
+        },
+        {
+            id: 2,
+            title: 'Application for casual leave',
+        },
+        {
+            id: 2,
+            title: 'Application for casual leave',
+        },
+        {
+            id: 2,
+            title: 'Application for casual leave',
+        },
+        {
+            id: 2,
+            title: 'Application for casual leave',
+        },
     ];
 
     return (
@@ -42,7 +62,7 @@ const Reject: React.FC<Props> = (props: Props) => {
                                             <td>{i.id}</td>
                                             <td>{i.title}</td>
                                             <td>07 march, 2024</td>
-                                            <td>approved</td>
+                                            <td>Rejected</td>
                                             <td>
                                                 <a href="#">download</a>
                                             </td>

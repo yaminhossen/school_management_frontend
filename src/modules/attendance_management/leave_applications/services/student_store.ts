@@ -62,6 +62,7 @@ async function store(
     // console.log('leave body', body);
 
     let inputs: InferCreationAttributes<typeof data> = {
+        branch_student_id: 1,
         start_date: body.start_date,
         end_date: body.end_date,
         attachments: image_path,
