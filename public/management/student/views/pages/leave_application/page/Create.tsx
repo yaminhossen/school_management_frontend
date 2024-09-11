@@ -58,7 +58,11 @@ const Index: React.FC<Props> = (props: Props) => {
                     <div className="form-group form-horizontal">
                         <label>Attchment</label>
                         <div className="form_elements">
-                            <input accept="image/*" name="attachment" />
+                            <input
+                                type="file"
+                                accept="image/*"
+                                name="attachments"
+                            />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
