@@ -11,6 +11,14 @@ GET {{hostname}}/1 HTTP/1.1
 
 # get
 ###
+GET {{hostname}}/pending/1 HTTP/1.1
+
+# get
+###
+GET {{hostname}}/rejected/1 HTTP/1.1
+
+# get
+###
 GET {{hostname}}/approved/1 HTTP/1.1
 
 # store

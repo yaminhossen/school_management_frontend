@@ -15,6 +15,8 @@ import destroy from './services/destroy';
 import data_import from './services/import';
 import student_store from './services/student_store';
 import approved from './services/approved';
+import pending from './services/pending';
+import rejected from './services/rejected';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -25,6 +27,16 @@ export default function (fastify: FastifyInstance) {
 
         find: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        rejected: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await rejected(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        pending: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await pending(fastify, req);
             res.code(data.status).send(data);
         },
 
