@@ -93,9 +93,6 @@ const Reject: React.FC<Props> = (props: Props) => {
                         </table>
                     </div>
                 </div>
-                <div className="info-table table-responsive">
-                    <Outlet></Outlet>
-                </div>
             </div>
         </div>
     );

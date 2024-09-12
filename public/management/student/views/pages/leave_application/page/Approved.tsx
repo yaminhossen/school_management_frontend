@@ -1,22 +1,37 @@
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../../common_types/object';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Paid: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            title: 'Application for sick leave',
-        },
-        {
-            id: 2,
-            title: 'Application for casual leave',
-        },
-    ];
+    const [error, setError] = useState(null);
+    const [data, setData] = useState();
 
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/leave-applications/approved/1',
+            );
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
+    function dateFormate(date: string) {
+        return moment(date).format('YYYY-DD-MM');
+    }
     return (
         <div className="admin_dashboard">
             <h3 className="table_heading"></h3>
@@ -28,23 +43,25 @@ const Paid: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
-                                    <th>Title</th>
-                                    <th>Date</th>
+                                    {/* <th>Title</th> */}
+                                    <th>Start date</th>
+                                    <th>End date</th>
                                     <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Application</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i) => {
+                                {data?.map((i) => {
                                     return (
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.title}</td>
-                                            <td>07 march, 2024</td>
+                                            {/* <td>{i.title}</td> */}
+                                            <td>{dateFormate(i.start_date)}</td>
+                                            <td>{dateFormate(i.end_date)}</td>
                                             <td>approved</td>
                                             <td>
-                                                <a href="#">download</a>
+                                                <a href={i.attachments}>show</a>
                                             </td>
                                         </tr>
                                     );
@@ -52,9 +69,6 @@ const Paid: React.FC<Props> = (props: Props) => {
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div className="info-table table-responsive">
-                    <Outlet></Outlet>
                 </div>
             </div>
         </div>
