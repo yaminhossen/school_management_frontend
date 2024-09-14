@@ -13,6 +13,7 @@ import update from './services/update';
 import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
+import student_attendance from './services/student_attendance';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -23,6 +24,14 @@ export default function (fastify: FastifyInstance) {
 
         find: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        student_attendance: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await student_attendance(fastify, req);
             res.code(data.status).send(data);
         },
 

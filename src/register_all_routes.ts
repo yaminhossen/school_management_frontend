@@ -33,7 +33,7 @@ export let active_routes: string[] = [
     // 'src/modules/attendance_management/leave_application_paids/routes.ts',
     // 'src/modules/attendance_management/leave_types/routes.ts',
     // 'src/modules/attendance_management/staff_attendances/routes.ts',
-    // 'src/modules/attendance_management/student_attendances/routes.ts',
+    'src/modules/attendance_management/student_attendances/routes.ts',
     // 'src/modules/attendance_management/teacher_attendances/routes.ts',
 
     'src/modules/auth_management/authetication/routes.ts',
