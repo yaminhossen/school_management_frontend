@@ -2,3 +2,4 @@
 {"level":60,"time":1726142298801,"pid":2016,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/class-routine/1"}
 {"level":60,"time":1726294458244,"pid":9848,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-attendances?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10"}
 {"level":60,"time":1726294459497,"pid":9848,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-attendances?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10"}
+{"level":60,"time":1726307800426,"pid":3260,"hostname":"DESKTOP-9421701","error":"404","url":"/resource3.pdf"}

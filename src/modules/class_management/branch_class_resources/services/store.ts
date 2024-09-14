@@ -10,6 +10,7 @@ import response from '../helpers/response';
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
+import moment from 'moment/moment';
 
 /** validation rules */
 async function validate(req: Request) {
@@ -43,10 +44,10 @@ async function validate(req: Request) {
         .withMessage('the description field is required')
         .run(req);
 
-    await body('attachment')
+    await body('attachments')
         .not()
         .isEmpty()
-        .withMessage('the attachment field is required')
+        .withMessage('the attachments field is required')
         .run(req);
 
     let result = await validationResult(req);
@@ -73,13 +74,24 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.BranchClassResourcessModel();
+    let image_path = '';
+
+    if (body['attachments']?.ext) {
+        image_path =
+            'uploads/students/leave' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['attachments'].name;
+        await (fastify_instance as any).upload(body['attachments'], image_path);
+    }
+    console.log('leave body', body);
+    console.log('image Path', image_path);
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: body.branch_id,
         branch_class_id: body.branch_class_id,
         title: body.title,
         description: body.description,
-        attachment: body.attachment,
+        attachment: image_path,
         branch_class_subject_id: body.branch_class_subject_id,
     };
 

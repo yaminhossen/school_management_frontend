@@ -73,7 +73,7 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             attachment: {
-                type: new DataTypes.STRING(50),
+                type: new DataTypes.STRING(250),
                 allowNull: true,
             },
             branch_class_subject_id: {

@@ -18,11 +18,12 @@ POST  {{hostname}}/store HTTP/1.1
 content-type: application/json
 
 {
-    "name": "user4",
-    "email": "user4@gmail.com",
-    "phone_number": "35897593784",
-    "image": "avatar.png",
-    "password": "12345678"
+    "branch_id": 1,
+    "branch_class_id": 1,
+    "title": "কারক ও বিভক্তিঅ",
+    "description": "Tools and materials to aid educators in delivering effective instruction",
+    "attachments": "stu_resource.pdf",
+    "branch_class_subject_id": 1
 }
 
 
