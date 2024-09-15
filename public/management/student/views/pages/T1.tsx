@@ -27,6 +27,40 @@ const T1: React.FC<Props> = (props: Props) => {
         fetchData();
     }, []);
     console.log(data);
+    let days = [
+        'saturday',
+        'sunday',
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+    ];
+
+    function dateFormate(date: string) {
+        return moment(date).format('dddd').toLowerCase();
+    }
+    // console.log('date', dateFormate('2024-09-07T00:00:00.000Z'));
+
+    function get_day_data(i, day) {
+        if (dateFormate(i.date) === day) {
+            return (
+                <li className="absent">
+                    <time dateTime="2022-02-02">{i.id}</time>
+                    <div className="text-warning">
+                        <i className="icon-close"></i>
+                        <span className="event_title">Class Present</span>
+                    </div>
+                </li>
+            );
+        } else {
+            return (
+                <li className="absent">
+                    <time dateTime="2022-02-02">{i.id}</time>
+                </li>
+            );
+        }
+    }
     return (
         <div className="custom_scroll">
             <div className="name my-3">
@@ -178,12 +212,17 @@ const T1: React.FC<Props> = (props: Props) => {
                         <h5>
                             June, 2024 Events{' '}
                             <span className="ml-2">
-                                <input type="date" name="" id="" />
+                                <input
+                                    type="date"
+                                    defaultValue={moment().format('YYYY-MM-DD')}
+                                    name=""
+                                    id=""
+                                />
                             </span>
                         </h5>
                     </div>
                     <div className="card-body">
-                        <ul>
+                        {/* <ul>
                             <li>
                                 <time dateTime="2022-02-01">1</time>
                                 <div className="text-info">
@@ -310,6 +349,12 @@ const T1: React.FC<Props> = (props: Props) => {
                             <li>
                                 <time dateTime="2022-02-28">28</time>
                             </li>
+                            <li>
+                                <time dateTime="2022-02-28">29</time>
+                            </li>
+                        </ul> */}
+                        <ul>
+                            {days.map((index, day) => get_day_data(index, day))}
                         </ul>
                     </div>
                 </div>
