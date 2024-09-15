@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../common_types/object';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const T1: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+    const [data, setData] = useState();
+
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('/api/v1/notices/user/students');
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
     return (
         <div className="custom_scroll">
             <div className="name my-3">
@@ -16,7 +41,7 @@ const T1: React.FC<Props> = (props: Props) => {
                     gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr)',
                 }}
             >
-                {[
+                {/* {[
                     {
                         title: 'নোটিশ',
                         value: 7,
@@ -63,7 +88,83 @@ const T1: React.FC<Props> = (props: Props) => {
                             </div>
                         </div>
                     );
-                })}
+                })} */}
+                <div className="card w-100 mb-0" data-intro="This is card">
+                    <div className="business-top-widget card-body">
+                        <h5 className="mb-2">নোটিশ</h5>
+                        <div className="media d-inline-flex">
+                            <div className="media-body">
+                                <h2 className="total-value m-0 counter">
+                                    {data?.length}
+                                </h2>
+                            </div>
+                            <i
+                                style={{ opacity: '.4' }}
+                                className="icon-bar-chart font-info align-self-center"
+                            ></i>
+                        </div>
+                    </div>
+                </div>
+                <div className="card w-100 mb-0" data-intro="This is card">
+                    <div className="business-top-widget card-body">
+                        <h5 className="mb-2">বাড়ির কাজ</h5>
+                        <div className="media d-inline-flex">
+                            <div className="media-body">
+                                <h2 className="total-value m-0 counter">2</h2>
+                            </div>
+                            <i
+                                style={{ opacity: '.4' }}
+                                className="icon-bar-chart font-info align-self-center"
+                            ></i>
+                        </div>
+                    </div>
+                </div>
+                <div className="card w-100 mb-0" data-intro="This is card">
+                    <div className="business-top-widget card-body">
+                        <h5 className="mb-2">এই মাসের উপস্থিতি</h5>
+                        <div className="media d-inline-flex">
+                            <div className="media-body">
+                                <h2 className="total-value m-0 counter">
+                                    78/80
+                                </h2>
+                            </div>
+                            <i
+                                style={{ opacity: '.4' }}
+                                className="icon-bar-chart font-info align-self-center"
+                            ></i>
+                        </div>
+                    </div>
+                </div>
+                <div className="card w-100 mb-0" data-intro="This is card">
+                    <div className="business-top-widget card-body">
+                        <h5 className="mb-2">লাইব্রেরী বই ইস্যু</h5>
+                        <div className="media d-inline-flex">
+                            <div className="media-body">
+                                <h2 className="total-value m-0 counter">5</h2>
+                            </div>
+                            <i
+                                style={{ opacity: '.4' }}
+                                className="icon-bar-chart font-info align-self-center"
+                            ></i>
+                        </div>
+                    </div>
+                </div>
+                <div className="card w-100 mb-0" data-intro="This is card">
+                    <div className="business-top-widget card-body">
+                        <h5 className="mb-2">ফিস বকেয়া</h5>
+                        <div className="media d-inline-flex">
+                            <div className="media-body">
+                                <h2 className="total-value m-0 counter">
+                                    5000
+                                </h2>
+                            </div>
+                            <i
+                                style={{ opacity: '.4' }}
+                                className="icon-bar-chart font-info align-self-center"
+                            ></i>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             {/* attendance calendar */}

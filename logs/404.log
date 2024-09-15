@@ -3,3 +3,6 @@
 {"level":60,"time":1726294458244,"pid":9848,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-attendances?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10"}
 {"level":60,"time":1726294459497,"pid":9848,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-attendances?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10"}
 {"level":60,"time":1726307800426,"pid":3260,"hostname":"DESKTOP-9421701","error":"404","url":"/resource3.pdf"}
+{"level":60,"time":1726309245896,"pid":1440,"hostname":"DESKTOP-9421701","error":"404","url":"/uploads/students/leave/20240914161946Yamin_typing_cirtificate.pdf"}
+{"level":60,"time":1726315970744,"pid":1440,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-routines/plan/1"}
+{"level":60,"time":1726315972017,"pid":1440,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/class-routine/1"}
