@@ -24,6 +24,12 @@ async function validate(req: Request) {
         .withMessage('the account_name field is required')
         .run(req);
 
+    await body('opening_balance')
+        .not()
+        .isEmpty()
+        .withMessage('the opening_balance field is required')
+        .run(req);
+
     await body('description')
         .not()
         .isEmpty()
