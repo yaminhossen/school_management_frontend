@@ -12,16 +12,16 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
 async function validate(req: Request) {
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
+    // await body('branch_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_id field is required')
+    //     .run(req);
 
-    await body('title')
+    await body('account_name')
         .not()
         .isEmpty()
-        .withMessage('the title field is required')
+        .withMessage('the account_name field is required')
         .run(req);
 
     await body('description')
@@ -51,9 +51,9 @@ async function store(
     let data = new models.AccontsModel();
 
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: body.branch_id,
+        branch_id: 1,
         opening_balance: body.opening_balance,
-        title: body.title,
+        title: body.account_name,
         description: body.description,
     };
 

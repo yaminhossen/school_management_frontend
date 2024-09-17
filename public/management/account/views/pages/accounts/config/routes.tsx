@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from './Layout';
 import Index from '../Index';
 import Details from '../page/Details';
-import Account from '../page/Account';
+import Account from '../page/AccountCreate';
 import AccountNumber from '../page/AccountNumber';
 
 // export { default as DashboardCounterAll} from "./All.jsx";

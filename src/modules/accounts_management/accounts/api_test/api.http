@@ -15,9 +15,10 @@ POST  {{hostname}}/store HTTP/1.1
 content-type: application/json
 
 {
-    "branch_id": 4,
-    "title": "cellphin",
-    "description": "This is sellfin accoutn"
+    "branch_id": 1,
+    "opening_balance": 3000,
+    "title": "Bkash",
+    "description": "This is bkash account"
 }
 
 

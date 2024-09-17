@@ -61,7 +61,7 @@ const Index: React.FC<Props> = (props: Props) => {
         console.log('form frontend', state.classes);
     }
     // console.log('moment', moment().format('YYYY-DD-MM'));
-    let date = moment().format('YYYY-DD-MM');
+    let date = moment().format('YYYY-MM-DD');
     return (
         <div className="admin_dashboard">
             <div className="content_body">
