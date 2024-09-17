@@ -2,3 +2,4 @@
 {"level":60,"time":1726306813500,"pid":15628,"hostname":"DESKTOP-9421701","file":"","time":"9/14/2024 3:40:13 PM","message":"Data too long for column 'attachment' at row 1"}
 {"level":60,"time":1726307133316,"pid":6796,"hostname":"DESKTOP-9421701","file":"","time":"9/14/2024 3:45:33 PM","message":"Data too long for column 'attachment' at row 1"}
 {"level":60,"time":1726307183492,"pid":3892,"hostname":"DESKTOP-9421701","file":"","time":"9/14/2024 3:46:23 PM","message":"Data too long for column 'attachment' at row 1"}
+{"level":60,"time":1726563557430,"pid":2264,"hostname":"DESKTOP-9421701","file":"services\\calendar.ts:25:19)","time":"9/17/2024 2:59:17 PM","message":"data not found"}

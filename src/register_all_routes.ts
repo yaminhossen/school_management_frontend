@@ -4,12 +4,12 @@ import path from 'path';
 let appDir: string = path.resolve(path.dirname(__dirname));
 
 export let active_routes: string[] = [
-    // 'src/modules/academic_calendar_management/academic_calendars/routes.ts',
+    'src/modules/academic_calendar_management/academic_calendars/routes.ts',
     // 'src/modules/academic_calendar_management/academic_calendar_event_types/routes.ts',
 
-    // 'src/modules/accounts_management/accounts/routes.ts',
+    'src/modules/accounts_management/accounts/routes.ts',
     // 'src/modules/accounts_management/account_categories/routes.ts',
-    'src/modules/accounts_management/account_fees_collections/routes.ts',
+    // 'src/modules/accounts_management/account_fees_collections/routes.ts',
     // 'src/modules/accounts_management/account_fees_collection_details/routes.ts',
     // 'src/modules/accounts_management/account_logs/routes.ts',
     // 'src/modules/accounts_management/account_money_transfer_to_user/routes.ts',
@@ -29,11 +29,11 @@ export let active_routes: string[] = [
     // 'src/modules/assignment_management/assignments/routes.ts',
     // 'src/modules/assignment_management/assignment_categorys/routes.ts',
     // 'src/modules/assignment_management/assignment_submission/routes.ts',
-    'src/modules/attendance_management/leave_applications/routes.ts',
+    // 'src/modules/attendance_management/leave_applications/routes.ts',
     // 'src/modules/attendance_management/leave_application_paids/routes.ts',
     // 'src/modules/attendance_management/leave_types/routes.ts',
     // 'src/modules/attendance_management/staff_attendances/routes.ts',
-    'src/modules/attendance_management/student_attendances/routes.ts',
+    // 'src/modules/attendance_management/student_attendances/routes.ts',
     // 'src/modules/attendance_management/teacher_attendances/routes.ts',
 
     'src/modules/auth_management/authetication/routes.ts',
@@ -58,7 +58,7 @@ export let active_routes: string[] = [
     // 'src/modules/class_management/branch_class_fee_discounts/routes.ts',
     // 'src/modules/class_management/branch_class_fee_types/routes.ts',
     // 'src/modules/class_management/branch_class_fee_waivers/routes.ts',
-    'src/modules/class_management/branch_class_resources/routes.ts',
+    // 'src/modules/class_management/branch_class_resources/routes.ts',
     // 'src/modules/class_management/branch_class_routin_day_times/routes.ts',
     // 'src/modules/class_management/branch_class_sections/routes.ts',
     // 'src/modules/class_management/branch_class_shifts/routes.ts',
@@ -80,7 +80,7 @@ export let active_routes: string[] = [
     // 'src/modules/exam_management/exam_routines/routes.ts',
     // 'src/modules/exam_management/exam_seat_plans/routes.ts',
     // 'src/modules/exam_management/exam_students/routes.ts',
-    'src/modules/exam_management/exam_student_marks/routes.ts',
+    // 'src/modules/exam_management/exam_student_marks/routes.ts',
 
     // 'src/modules/exam_paper_management/exam_paper_designs/routes.ts',
     // 'src/modules/exam_paper_management/exam_paper_design_orders/routes.ts',
@@ -93,7 +93,7 @@ export let active_routes: string[] = [
     // 'src/modules/meeting_management/meeting_agendas/routes.ts',
     // 'src/modules/meeting_management/meeting_attachments/routes.ts',
 
-    'src/modules/notice_management/notices/routes.ts',
+    // 'src/modules/notice_management/notices/routes.ts',
     // 'src/modules/notice_management/notice_categorys/routes.ts',
 
     // 'src/modules/personal_calendar_schedule_management/personal_calendar_schedule/routes.ts',
@@ -114,9 +114,9 @@ export let active_routes: string[] = [
     'src/modules/user_management/user_admin/routes.ts',
     'src/modules/user_management/user_branch_admins/routes.ts',
     'src/modules/user_management/user_login_histories/routes.ts',
-    'src/modules/user_management/user_parents/routes.ts',
+    // 'src/modules/user_management/user_parents/routes.ts',
     // 'src/modules/user_management/user_staffs/routes.ts',
-    'src/modules/user_management/user_students/routes.ts',
+    // 'src/modules/user_management/user_students/routes.ts',
     // 'src/modules/user_management/user_teachers/routes.ts',
 ];
 

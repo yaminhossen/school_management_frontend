@@ -14,10 +14,11 @@ module.exports = {
          */
 
         let data = [];
-        function set_data(id, branch_id, title, description) {
+        function set_data(id, branch_id, opening_balance, title, description) {
             data.push({
                 id,
                 branch_id,
+                opening_balance,
                 title,
                 description,
                 created_at: '2024-02-14',
@@ -25,9 +26,9 @@ module.exports = {
             });
         }
 
-        set_data(1, 1, 'Bank', 'This is islamin bank account');
-        set_data(2, 2, 'Bkash', 'This is mobile banking account');
-        set_data(3, 3, 'Nagad', 'This is mobile banking account');
+        set_data(1, 1, 4000, 'Bank', 'This is islamin bank account');
+        set_data(2, 2, 5000, 'Bkash', 'This is mobile banking account');
+        set_data(3, 3, 3000, 'Nagad', 'This is mobile banking account');
 
         await queryInterface.bulkDelete('accounts', null, {});
         await queryInterface.bulkInsert('accounts', data, {});

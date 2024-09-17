@@ -52,6 +52,7 @@ async function store(
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: body.branch_id,
+        opening_balance: body.opening_balance,
         title: body.title,
         description: body.description,
     };

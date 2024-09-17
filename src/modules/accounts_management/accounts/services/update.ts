@@ -58,6 +58,7 @@ async function update(
 
     let inputs: InferCreationAttributes<typeof model> = {
         branch_id: body.branch_id,
+        opening_balance: body.opening_balance,
         title: body.title,
         description: body.description,
     };

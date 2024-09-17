@@ -35,6 +35,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
     declare branch_id: number;
+    declare opening_balance: number;
     declare title: string;
     declare description: string;
 
@@ -54,6 +55,10 @@ function init(sequelize: Sequelize) {
                 primaryKey: true,
             },
             branch_id: {
+                type: new DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
+            opening_balance: {
                 type: new DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },
