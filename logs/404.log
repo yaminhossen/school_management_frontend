@@ -88,3 +88,11 @@
 {"level":60,"time":1726643068997,"pid":12968,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/account/account.js"}
 {"level":60,"time":1726650866444,"pid":16432,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/accounts/all"}
 {"level":60,"time":1726650889607,"pid":16896,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/accounts/all"}
+{"level":60,"time":1726653018177,"pid":17108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/account/1"}
+{"level":60,"time":1726653021297,"pid":17108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/account/1"}
+{"level":60,"time":1726653021788,"pid":17108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/account/1"}
+{"level":60,"time":1726653022021,"pid":17108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/account/1"}
+{"level":60,"time":1726653022191,"pid":17108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/account/1"}
+{"level":60,"time":1726653022440,"pid":17108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/account/1"}
+{"level":60,"time":1726653838925,"pid":16964,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1account-logs/account/1"}
+{"level":60,"time":1726654091333,"pid":16964,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/account/account.js"}

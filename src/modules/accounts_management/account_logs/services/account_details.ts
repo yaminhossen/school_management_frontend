@@ -10,15 +10,18 @@ async function details(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
-    let accountLogsModel = models.AccountLogsModel;
+    let accountsModel = models.AccountsModel;
     let params = req.params as any;
 
     try {
-        let data = await models.AccontsModel.findAll({
+        let data = await models.AccountLogsModel.findAll({
+            where: {
+                account_id: params.id,
+            },
             include: [
                 {
-                    model: accountLogsModel,
-                    as: 'account_log',
+                    model: accountsModel,
+                    as: 'account',
                 },
             ],
         });

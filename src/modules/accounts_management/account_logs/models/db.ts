@@ -50,30 +50,11 @@ const db = async function (): Promise<models> {
 
     await sequelize.sync();
 
-    // Project.hasOne(User, {
-    //     sourceKey: 'user_id',
-    //     foreignKey: 'id',
-    //     as: 'user',
-    // });
-
-    // User.hasMany(Project, {
-    //     sourceKey: 'id',
-    //     foreignKey: 'user_id',
-    //     as: 'projects',
-    // });
-
-    // User.hasOne(Project, {
-    //     sourceKey: 'id',
-    //     foreignKey: 'user_id',
-    //     as: 'project',
-    // });
-
-    // Project.belongsToMany(User, {
-    //     through: 'project_user',
-    // });
-    // User.belongsToMany(Project, {
-    //     through: 'project_user',
-    // });
+    AccountLogsModel.hasOne(AccountsModel, {
+        sourceKey: 'account_id',
+        foreignKey: 'id',
+        as: 'account',
+    });
 
     let models: models = {
         AccountLogsModel,

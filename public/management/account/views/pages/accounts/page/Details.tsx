@@ -1,45 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
+export interface AccountLog {
+    account: { title: string };
+    type: 'income' | 'expense';
+    amount: number;
+}
+
 export interface Props {}
 
-const Details: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            account: 'Sonali bank',
-            account_num: '928494343',
-            income: '30000',
-            expense: '',
-            balance: '30000',
-        },
-        {
-            id: 2,
-            account: 'Rupali bank',
-            account_num: '57443435345',
-            income: '10000',
-            expense: '',
-            balance: '40000',
-        },
-        {
-            id: 3,
-            account: 'Islami bank',
-            account_num: '7543437546',
-            income: '',
-            expense: '10000',
-            balance: '30000',
-        },
-    ];
+const Index: React.FC<Props> = () => {
+    const [error, setError] = useState<Error | null>(null);
+    const [data, setData] = useState<AccountLog[]>([]);
+    const [income, setIncome] = useState<number>(0);
+    const [expense, setExpense] = useState<number>(0);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('/api/v1/account-logs/account/1');
+            setData(response.data.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        // Calculate totals whenever data changes
+        const totalIncome = data.reduce(
+            (sum, log) => (log.type === 'income' ? sum + log.amount : sum),
+            0,
+        );
+        const totalExpense = data.reduce(
+            (sum, log) => (log.type === 'expense' ? sum + log.amount : sum),
+            0,
+        );
+
+        setIncome(totalIncome);
+        setExpense(totalExpense);
+    }, [data]);
 
     return (
         <div className="admin_dashboard">
             <div className="content_body">
                 <Link
-                    to="/accounts/details/account-number"
+                    to="/accounts/create"
                     className="btn btn-sm btn-outline-info mb-2"
-                    type="submit"
                 >
                     Create
                 </Link>
@@ -51,42 +61,49 @@ const Details: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Account</th>
-                                    <th>Account Number</th>
                                     <th>Income</th>
                                     <th>Expense</th>
                                     <th>Balance</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.account}</td>
-                                            <td>{i.account_num}</td>
-                                            <td>{i.income}</td>
-                                            <td>{i.expense}</td>
-                                            <td>{i.balance}</td>
-                                        </tr>
-                                    );
-                                })}
+                                {data.map((log: AccountLog, index) => (
+                                    <tr key={index}>
+                                        <td></td>
+                                        <td>{index + 1}</td>
+                                        <td>{log.account?.title}</td>
+                                        <td>
+                                            {log.type === 'income'
+                                                ? log.amount
+                                                : ''}
+                                        </td>
+                                        <td>
+                                            {log.type === 'expense'
+                                                ? log.amount
+                                                : ''}
+                                        </td>
+                                        <td>{income - expense}</td>{' '}
+                                        {/* Calculate balance */}
+                                    </tr>
+                                ))}
                                 <tr>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
                                     <td>Total:</td>
-                                    <td>In : 40000 tk</td>
-                                    <td>Ex : 10000 tk</td>
-                                    <td>Bal : 30000 tk</td>
+                                    <td>{income} tk</td>
+                                    <td>{expense} tk</td>
+                                    <td>{income - expense} tk</td>{' '}
+                                    {/* Total balance */}
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
+                {error && <div className="error">{error.message}</div>}{' '}
+                {/* Display error message if exists */}
             </div>
         </div>
     );
 };
 
-export default Details;
+export default Index;
