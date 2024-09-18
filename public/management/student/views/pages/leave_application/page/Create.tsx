@@ -28,7 +28,8 @@ const Index: React.FC<Props> = (props: Props) => {
         }
         // console.log('data', error);
     };
-    let date = moment().format('YYYY-DD-MM');
+    // let date = moment().format('YYYY-DD-MM');
+    let date = moment().format('YYYY-MM-DD');
     console.log('date', date);
 
     return (

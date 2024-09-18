@@ -4,14 +4,14 @@ import path from 'path';
 let appDir: string = path.resolve(path.dirname(__dirname));
 
 export let active_routes: string[] = [
-    'src/modules/academic_calendar_management/academic_calendars/routes.ts',
+    // 'src/modules/academic_calendar_management/academic_calendars/routes.ts',
     // 'src/modules/academic_calendar_management/academic_calendar_event_types/routes.ts',
 
     'src/modules/accounts_management/accounts/routes.ts',
-    // 'src/modules/accounts_management/account_categories/routes.ts',
+    'src/modules/accounts_management/account_categories/routes.ts',
     // 'src/modules/accounts_management/account_fees_collections/routes.ts',
     // 'src/modules/accounts_management/account_fees_collection_details/routes.ts',
-    // 'src/modules/accounts_management/account_logs/routes.ts',
+    'src/modules/accounts_management/account_logs/routes.ts',
     // 'src/modules/accounts_management/account_money_transfer_to_user/routes.ts',
     // 'src/modules/accounts_management/account_periods/routes.ts',
     // 'src/modules/accounts_management/account_vouchers/routes.ts',
@@ -111,9 +111,9 @@ export let active_routes: string[] = [
     // 'src/modules/todo_management/task_groups/routes.ts',
     // 'src/modules/todo_management/task_variants/routes.ts',
 
-    'src/modules/user_management/user_admin/routes.ts',
-    'src/modules/user_management/user_branch_admins/routes.ts',
-    'src/modules/user_management/user_login_histories/routes.ts',
+    // 'src/modules/user_management/user_admin/routes.ts',
+    // 'src/modules/user_management/user_branch_admins/routes.ts',
+    // 'src/modules/user_management/user_login_histories/routes.ts',
     // 'src/modules/user_management/user_parents/routes.ts',
     // 'src/modules/user_management/user_staffs/routes.ts',
     // 'src/modules/user_management/user_students/routes.ts',

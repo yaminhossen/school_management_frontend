@@ -1,34 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            account: 'Cash',
-            total_income: '50000',
-            total_expense: '20000',
-            balance: '30000',
-        },
-        {
-            id: 2,
-            account: 'Bank',
-            total_income: '40000',
-            total_expense: '10000',
-            balance: '30000',
-        },
-        {
-            id: 3,
-            account: 'Bkash',
-            total_income: '60000',
-            total_expense: '20000',
-            balance: '40000',
-        },
-    ];
+    const [error, setError] = useState(null);
+    const [data, setData] = useState();
+
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('/api/v1/accounts/all');
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
 
     return (
         <div className="admin_dashboard">
@@ -48,6 +46,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Account</th>
+                                    <th>Opening Balance</th>
                                     <th>Total Income</th>
                                     <th>Total Expense</th>
                                     <th>Balance</th>
@@ -55,27 +54,29 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.account}</td>
-                                            <td>{i.total_income}</td>
-                                            <td>{i.total_expense}</td>
-                                            <td>{i.balance}</td>
-                                            <td>
-                                                <Link
-                                                    to="/accounts/details"
-                                                    className="btn btn-sm  btn-outline-info"
-                                                    type="submit"
-                                                >
-                                                    Details
-                                                </Link>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
+                                {data?.length &&
+                                    data?.map((i: { [key: string]: any }) => {
+                                        return (
+                                            <tr>
+                                                <td></td>
+                                                <td>{i.id}</td>
+                                                <td>{i.title}</td>
+                                                <td>{i.opening_balance}</td>
+                                                <td>{i.total_income}</td>
+                                                <td>{i.total_expense}</td>
+                                                <td>{i.balance}</td>
+                                                <td>
+                                                    <Link
+                                                        to="/accounts/details"
+                                                        className="btn btn-sm  btn-outline-info"
+                                                        type="submit"
+                                                    >
+                                                        Details
+                                                    </Link>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
                             </tbody>
                         </table>
                     </div>
