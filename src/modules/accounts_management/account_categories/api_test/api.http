@@ -3,7 +3,7 @@
 
 # all
 ###
-GET {{hostname}}?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10 HTTP/1.1
+GET {{hostname}}?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&select_fields=id,title,status HTTP/1.1
 
 # get
 ###

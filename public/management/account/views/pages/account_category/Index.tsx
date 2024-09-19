@@ -22,7 +22,9 @@ const Index: React.FC<Props> = (props: Props) => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('/api/v1/account-categories');
+            const response = await axios.get(
+                '/api/v1/account-categories?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&select_fields=id,title,status',
+            );
             setData(response.data.data.data);
             setTotalIncome(response.data.data);
             // setData(response.data);
@@ -55,7 +57,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Category</th>
-                                    <th>Income</th>
+                                    <th className="text-right">Income</th>
                                     <th>Expense</th>
                                 </tr>
                             </thead>
@@ -66,9 +68,17 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <tr>
                                                 <td></td>
                                                 <td>{index + 1}</td>
-                                                <td>{i.category}</td>
-                                                <td>{i.income} tk</td>
-                                                <td>{i.expense} tk</td>
+                                                <td>{i.title}</td>
+                                                <td>
+                                                    {i.total_income
+                                                        ? i.total_income
+                                                        : '-'}{' '}
+                                                </td>
+                                                <td>
+                                                    {i.total_expense
+                                                        ? i.total_expense
+                                                        : '-'}{' '}
+                                                </td>
                                             </tr>
                                         );
                                     },
