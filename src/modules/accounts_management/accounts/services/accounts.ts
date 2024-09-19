@@ -5,7 +5,7 @@ import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 
-async function details(
+async function accounts(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -14,14 +14,7 @@ async function details(
     let params = req.params as any;
 
     try {
-        let data = await models.AccontsModel.findAll({
-            include: [
-                {
-                    model: accountLogsModel,
-                    as: 'account_log',
-                },
-            ],
-        });
+        let data = await models.AccontsModel.findAll({});
 
         if (data) {
             return response(200, 'data created', data);
@@ -39,4 +32,4 @@ async function details(
     }
 }
 
-export default details;
+export default accounts;

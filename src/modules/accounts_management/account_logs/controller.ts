@@ -19,6 +19,7 @@ import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
 import account_details from './services/account_details';
+import income_store from './services/income_store';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -65,6 +66,11 @@ export default function (fastify: FastifyInstance) {
 
         store: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await store(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        income_store: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await income_store(fastify, req);
             res.code(data.status).send(data);
         },
 

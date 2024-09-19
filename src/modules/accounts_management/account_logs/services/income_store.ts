@@ -13,23 +13,23 @@ import error_trace from '../helpers/error_trace';
 import moment from 'moment';
 
 async function validate(req: Request) {
-    await body('start_date')
-        .not()
-        .isEmpty()
-        .withMessage('the start_date field is required')
-        .run(req);
+    // await body('start_date')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the start_date field is required')
+    //     .run(req);
 
-    await body('end_date')
-        .not()
-        .isEmpty()
-        .withMessage('the end_date field is required')
-        .run(req);
+    // await body('end_date')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the end_date field is required')
+    //     .run(req);
 
-    await body('attachments')
-        .not()
-        .isEmpty()
-        .withMessage('the attachments field is required')
-        .run(req);
+    // await body('attachments')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the attachments field is required')
+    //     .run(req);
 
     let result = await validationResult(req);
 
@@ -50,21 +50,21 @@ async function income_store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.AccountLogsModel();
-    let image_path = '';
+    // let image_path = '';
 
-    if (body['attachments']?.ext) {
-        image_path =
-            'uploads/students/leave' +
-            moment().format('YYYYMMDDHHmmss') +
-            body['attachments'].name;
-        await (fastify_instance as any).upload(body['attachments'], image_path);
-    }
+    // if (body['attachments']?.ext) {
+    //     image_path =
+    //         'uploads/students/leave' +
+    //         moment().format('YYYYMMDDHHmmss') +
+    //         body['attachments'].name;
+    //     await (fastify_instance as any).upload(body['attachments'], image_path);
+    // }
     // console.log('leave body', body);
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: 1,
-        account_category_id: body.account_category_id,
-        account_id: body.account_log_id,
+        account_category_id: body.category,
+        account_id: body.account,
         amount: body.amount,
         type: 'income',
     };

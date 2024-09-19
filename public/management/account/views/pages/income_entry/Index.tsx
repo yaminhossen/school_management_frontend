@@ -3,11 +3,23 @@ import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+export interface Accountinfo {
+    account: { title: string };
+    type: 'income' | 'expense';
+    amount: number;
+}
+export interface Categoryinfo {
+    account: { title: string };
+    type: 'income' | 'expense';
+    amount: number;
+}
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState('');
+    const [accounts, setAccounts] = useState<Accountinfo[]>([]);
+    const [categories, setCategories] = useState<Categoryinfo[]>([]);
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         let formData = new FormData(e.target);
@@ -15,7 +27,7 @@ const Index: React.FC<Props> = (props: Props) => {
         try {
             // Make POST request with form data
             const response = await axios.post(
-                '/api/v1/accounts/stor',
+                '/api/v1/account-logs/income-store',
                 formData,
             );
             // setResponseMessage('Form submitted successfully!');
@@ -28,8 +40,32 @@ const Index: React.FC<Props> = (props: Props) => {
         }
         // console.log('data', error);
     };
+    const fetchAccounts = async () => {
+        try {
+            const response = await axios.get('/api/v1/accounts/accounts');
+            setAccounts(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+    const fetchAccountCategorys = async () => {
+        try {
+            const response = await axios.get('/api/v1/account-categories/all');
+            setCategories(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchAccounts();
+        fetchAccountCategorys();
+    }, []);
+    console.log('account', accounts);
+    console.log('category', categories);
     let date = moment().format('YYYY-MM-DD');
-    console.log('date', date);
 
     return (
         <div className="admin_dashboard">
@@ -39,11 +75,16 @@ const Index: React.FC<Props> = (props: Props) => {
                         <label>Category</label>
                         <div className="form_elements">
                             <select name="category" id="">
-                                <option value="1">Hostel bill</option>
-                                <option value="1">Admission bill</option>
-                                <option value="1">Transport bill</option>
-                                <option value="1">Couching bill</option>
-                                <option value="1">Tournament fee</option>
+                                {categories?.length &&
+                                    categories?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <option value={i.id}>
+                                                    {i.title}
+                                                </option>
+                                            );
+                                        },
+                                    )}
                             </select>
                         </div>
                     </div>
@@ -51,11 +92,16 @@ const Index: React.FC<Props> = (props: Props) => {
                         <label>Account</label>
                         <div className="form_elements">
                             <select name="account" id="">
-                                <option value="1">Cash</option>
-                                <option value="1">Bank</option>
-                                <option value="1">Roket</option>
-                                <option value="1">Bkash</option>
-                                <option value="1">Nagad</option>
+                                {accounts?.length &&
+                                    accounts?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <option value={i.id}>
+                                                    {i.title}
+                                                </option>
+                                            );
+                                        },
+                                    )}
                             </select>
                         </div>
                     </div>
@@ -91,7 +137,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             />
                         </div>
                     </div>
-                    <div className="form-group form-horizontal">
+                    {/* <div className="form-group form-horizontal">
                         <label>Amount in text</label>
                         <div className="form_elements">
                             <input
@@ -100,7 +146,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 placeholder="Amount in text"
                             />
                         </div>
-                    </div>
+                    </div> */}
                     {/* <div className="form-group form-horizontal">
                         <label>Date</label>
                         <div className="form_elements">

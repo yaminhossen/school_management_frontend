@@ -14,6 +14,7 @@ import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
 import all_accounts from './services/all_accounts';
+import accounts from './services/accounts';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -23,6 +24,10 @@ export default function (fastify: FastifyInstance) {
         },
         all_accounts: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all_accounts(fastify, req);
+            res.code(data.status).send(data);
+        },
+        accounts: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await accounts(fastify, req);
             res.code(data.status).send(data);
         },
 
