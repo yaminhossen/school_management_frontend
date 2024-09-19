@@ -35,13 +35,13 @@ class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
     declare branch_id: number;
-    declare account_category_id: number;
-    declare account_id: number;
-    declare account_period_id: number;
-    declare money_receipt_book_id: number;
-    declare receipt_no: string;
-    declare amount: number;
-    declare type: type;
+    declare account_category_id?: number;
+    declare account_id?: number;
+    declare account_period_id?: number;
+    declare money_receipt_book_id?: number;
+    declare receipt_no?: string;
+    declare amount?: number;
+    declare type?: type;
 
     declare status?: status;
     declare creator?: number;

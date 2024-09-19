@@ -1,53 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            last_date: '10 Feb, 2024',
-            amount: '3000',
-            purpose: 'hostel bill',
-        },
-        {
-            id: 2,
-            last_date: '14 March, 2024',
-            amount: '10000',
-            purpose: 'admission bill',
-        },
-        {
-            id: 3,
-            last_date: '15 Feb, 2024',
-            amount: '5000',
-            purpose: 'transport bill',
-        },
-    ];
+    const [error, setError] = useState(null);
+    const [data, setData] = useState('');
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+        let formData = new FormData(e.target);
+
+        try {
+            // Make POST request with form data
+            const response = await axios.post(
+                '/api/v1/accounts/stor',
+                formData,
+            );
+            // setResponseMessage('Form submitted successfully!');
+            setData('Form submitted successfully!'); // Clear any previous error
+            console.log('response', response);
+        } catch (error) {
+            // setError(error); // Set error state
+            // setResponseMessage('Failed to submit form.');
+            console.log('data', error.msg);
+        }
+        // console.log('data', error);
+    };
+    let date = moment().format('YYYY-MM-DD');
+    console.log('date', date);
 
     return (
         <div className="admin_dashboard">
             <div className="content_body">
-                <form className="form_600 mx-auto pt-3">
+                <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
                         <label>Category</label>
                         <div className="form_elements">
                             <select name="category" id="">
-                                <option value="hostel bill">Hostel bill</option>
-                                <option value="hostel bill">
-                                    Admission bill
-                                </option>
-                                <option value="hostel bill">
-                                    Transport bill
-                                </option>
-                                <option value="hostel bill">
-                                    Couching bill
-                                </option>
-                                <option value="hostel bill">
-                                    Tournament fee
-                                </option>
+                                <option value="1">Hostel bill</option>
+                                <option value="1">Admission bill</option>
+                                <option value="1">Transport bill</option>
+                                <option value="1">Couching bill</option>
+                                <option value="1">Tournament fee</option>
                             </select>
                         </div>
                     </div>
@@ -55,11 +51,11 @@ const Index: React.FC<Props> = (props: Props) => {
                         <label>Account</label>
                         <div className="form_elements">
                             <select name="account" id="">
-                                <option value="hostel bill">Cash</option>
-                                <option value="hostel bill">Bank</option>
-                                <option value="hostel bill">Roket</option>
-                                <option value="hostel bill">Bkash</option>
-                                <option value="hostel bill">Nagad</option>
+                                <option value="1">Cash</option>
+                                <option value="1">Bank</option>
+                                <option value="1">Roket</option>
+                                <option value="1">Bkash</option>
+                                <option value="1">Nagad</option>
                             </select>
                         </div>
                     </div>
@@ -67,11 +63,11 @@ const Index: React.FC<Props> = (props: Props) => {
                         <label>Account Number</label>
                         <div className="form_elements">
                             <select name="account_number" id="">
-                                <option value="hostel bill">01847834</option>
-                                <option value="hostel bill">01294083</option>
-                                <option value="hostel bill">09234328</option>
-                                <option value="hostel bill">29038432</option>
-                                <option value="hostel bill">29384902</option>
+                                <option value="1">01847834</option>
+                                <option value="1">01294083</option>
+                                <option value="1">09234328</option>
+                                <option value="1">29038432</option>
+                                <option value="1">29384902</option>
                             </select>
                         </div>
                     </div>
@@ -105,10 +101,14 @@ const Index: React.FC<Props> = (props: Props) => {
                             />
                         </div>
                     </div>
-                    <div className="form-group form-horizontal">
+                    {/* <div className="form-group form-horizontal">
                         <label>Date</label>
                         <div className="form_elements">
-                            <input type="date" name="date" />
+                            <input
+                                type="date"
+                                defaultValue={date}
+                                name="date"
+                            />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
@@ -116,7 +116,7 @@ const Index: React.FC<Props> = (props: Props) => {
                         <div className="form_elements">
                             <input type="file" name="attachment" />
                         </div>
-                    </div>
+                    </div> */}
                     <div className="form-group form-horizontal">
                         <label></label>
                         <div className="form_elements">

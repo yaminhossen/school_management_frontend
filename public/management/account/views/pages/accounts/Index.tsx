@@ -3,11 +3,18 @@ import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+export interface AccountLog {
+    account: { title: string };
+    type: 'income' | 'expense';
+    amount: number;
+    account_log: [];
+}
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    const [data, setData] = useState();
+    // const [data, setData] = useState();
+    const [data, setData] = useState<AccountLog[]>([]);
 
     useEffect(() => {
         // Function to fetch data
@@ -26,6 +33,7 @@ const Index: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
+
     console.log(data);
 
     return (
@@ -67,7 +75,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 <td>{i.balance}</td>
                                                 <td>
                                                     <Link
-                                                        to="/accounts/details"
+                                                        to={`/accounts/details/${i.id}`}
                                                         className="btn btn-sm  btn-outline-info"
                                                         type="submit"
                                                     >

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 export interface AccountLog {
@@ -17,10 +17,13 @@ const Index: React.FC<Props> = () => {
     const [expense, setExpense] = useState<number>(0);
     // const [a, setA] = useState<number>(0);
     // const [b, setB] = useState<number>(0);
+    const { id } = useParams();
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('/api/v1/account-logs/account/1');
+            const response = await axios.get(
+                `/api/v1/account-logs/account/${id}`,
+            );
             setData(response.data.data);
         } catch (error) {
             setError(error);
@@ -50,6 +53,7 @@ const Index: React.FC<Props> = () => {
         // console.log('income', income);
         // console.log('expens', expense);
     }, [data]);
+    console.log('expens', data);
     // let totalIncomea = 0;
     // let totalExpenseb = 0;
     // function dateFormate(amount: number) {
