@@ -1,34 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
+export interface AccountLog {
+    account: { title: string };
+    type: 'income' | 'expense';
+    amount: number;
+    account_log: [];
+}
+export interface TotalLog {
+    total_expense?: number;
+    total_income?: number;
+}
 export interface Props {}
-
 const Index: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            last_date: '10 Feb, 2024',
-            income: '3000',
-            expense: '2000',
-            category: 'hostel bill',
-        },
-        {
-            id: 2,
-            last_date: '14 March, 2024',
-            income: '10000',
-            expense: '5000',
-            category: 'admission bill',
-        },
-        {
-            id: 3,
-            last_date: '15 Feb, 2024',
-            income: '5000',
-            expense: '1000',
-            category: 'transport bill',
-        },
-    ];
+    const [error, setError] = useState(null);
+    const [totalIncome, setTotalIncome] = useState<TotalLog>({});
+    // const [totalExpense, setTotalExpense] = useState();
+    const [data, setData] = useState<AccountLog[]>([]);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('/api/v1/account-categories');
+            setData(response.data.data.data);
+            setTotalIncome(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    console.log(data);
 
     return (
         <div className="admin_dashboard">
@@ -53,24 +60,26 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.category}</td>
-                                            <td>{i.income} tk</td>
-                                            <td>{i.expense} tk</td>
-                                        </tr>
-                                    );
-                                })}
+                                {data?.map(
+                                    (i: { [key: string]: any }, index) => {
+                                        return (
+                                            <tr>
+                                                <td></td>
+                                                <td>{index + 1}</td>
+                                                <td>{i.category}</td>
+                                                <td>{i.income} tk</td>
+                                                <td>{i.expense} tk</td>
+                                            </tr>
+                                        );
+                                    },
+                                )}
                             </tbody>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td>Total:</td>
-                                <td>18000 tk</td>
-                                <td>8000 tk</td>
+                                <td>{totalIncome.total_income} tk</td>
+                                <td>{totalIncome.total_expense} tk</td>
                             </tr>
                         </table>
                     </div>

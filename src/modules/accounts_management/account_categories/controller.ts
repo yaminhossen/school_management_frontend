@@ -14,6 +14,7 @@ import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
 import all_category from './services/all_category';
+import categories_details from './services/categories_details';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -23,6 +24,13 @@ export default function (fastify: FastifyInstance) {
         },
         all_category: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all_category(fastify, req);
+            res.code(data.status).send(data);
+        },
+        categories_details: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await categories_details(fastify, req);
             res.code(data.status).send(data);
         },
 

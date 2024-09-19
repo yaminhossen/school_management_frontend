@@ -5,7 +5,7 @@ import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 
-async function details(
+async function all_category(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -13,7 +13,7 @@ async function details(
     let params = req.params as any;
 
     try {
-        let data = await models.AccontCategoriesModel.findAll({});
+        let data = await models.AccountCategoriesModel.findAll({});
 
         if (data) {
             return response(200, 'data created', data);
@@ -31,4 +31,4 @@ async function details(
     }
 }
 
-export default details;
+export default all_category;

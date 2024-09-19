@@ -33,7 +33,7 @@ async function restore(
     let body = req.body as { [key: string]: any };
 
     try {
-        let data = await models.AccontCategoriesModel.findOne({
+        let data = await models.AccountCategoriesModel.findOne({
             where: {
                 id: body.id,
             },

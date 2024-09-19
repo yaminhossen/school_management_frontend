@@ -16,10 +16,6 @@ const Index: React.FC<Props> = (props: Props) => {
     // const [data, setData] = useState();
     const [data, setData] = useState<AccountLog[]>([]);
 
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
-
     const fetchData = async () => {
         try {
             const response = await axios.get('/api/v1/accounts/all');

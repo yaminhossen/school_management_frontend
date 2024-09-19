@@ -10,32 +10,33 @@ import response from '../helpers/response';
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
+import moment from 'moment';
 
 async function validate(req: Request) {
-    // await body('branch_id')
+    // await body('start_date')
     //     .not()
     //     .isEmpty()
-    //     .withMessage('the branch_id field is required')
+    //     .withMessage('the start_date field is required')
     //     .run(req);
 
-    await body('title')
-        .not()
-        .isEmpty()
-        .withMessage('the title field is required')
-        .run(req);
+    // await body('end_date')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the end_date field is required')
+    //     .run(req);
 
-    await body('description')
-        .not()
-        .isEmpty()
-        .withMessage('the description field is required')
-        .run(req);
+    // await body('attachments')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the attachments field is required')
+    //     .run(req);
 
     let result = await validationResult(req);
 
     return result;
 }
 
-async function store(
+async function expense_store(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -48,19 +49,31 @@ async function store(
     /** initializations */
     let models = await db();
     let body = req.body as anyObject;
-    let data = new models.AccountCategoriesModel();
+    let data = new models.AccountLogsModel();
+    // let image_path = '';
+
+    // if (body['attachments']?.ext) {
+    //     image_path =
+    //         'uploads/students/leave' +
+    //         moment().format('YYYYMMDDHHmmss') +
+    //         body['attachments'].name;
+    //     await (fastify_instance as any).upload(body['attachments'], image_path);
+    // }
+    // console.log('leave body', body);
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: 1,
-        title: body.title,
-        description: body.description,
+        account_category_id: body.category,
+        account_id: body.account,
+        amount: body.amount,
+        type: 'expense',
     };
 
     /** print request data into console */
     // console.clear();
     // (fastify_instance as any).print(inputs);
 
-    /** store data into database */
+    /** expense_store data into database */
     try {
         (await data.update(inputs)).save();
         return response(200, 'data created', data);
@@ -70,4 +83,4 @@ async function store(
     }
 }
 
-export default store;
+export default expense_store;

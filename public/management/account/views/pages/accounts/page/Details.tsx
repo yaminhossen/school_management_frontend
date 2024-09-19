@@ -50,8 +50,6 @@ const Index: React.FC<Props> = () => {
 
         setIncome(totalIncome);
         setExpense(totalExpense);
-        // console.log('income', income);
-        // console.log('expens', expense);
     }, [data]);
     console.log('expens', data);
     // let totalIncomea = 0;

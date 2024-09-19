@@ -5,18 +5,22 @@ import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 
-async function details(
+async function categories_details(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
+    let accountsLogsModel = models.AccountLogsModel;
     let params = req.params as any;
 
     try {
-        let data = await models.AccountCategoriesModel.findOne({
-            where: {
-                id: params.id,
-            },
+        let data = await models.AccountCategoriesModel.findAll({
+            include: [
+                {
+                    model: accountsLogsModel,
+                    as: 'categories',
+                },
+            ],
         });
 
         if (data) {
@@ -35,4 +39,4 @@ async function details(
     }
 }
 
-export default details;
+export default categories_details;

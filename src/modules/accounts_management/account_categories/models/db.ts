@@ -3,6 +3,7 @@ import {
     Sequelize,
 } from 'sequelize';
 import * as account_categories_model from './account_categories_model';
+import * as account_logs_model from './account_logs_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -20,43 +21,27 @@ const sequelize = new Sequelize(
 );
 
 interface models {
-    AccontCategoriesModel: typeof account_categories_model.DataModel;
+    AccountCategoriesModel: typeof account_categories_model.DataModel;
+    AccountLogsModel: typeof account_logs_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
 const db = async function (): Promise<models> {
-    const AccontCategoriesModel = account_categories_model.init(sequelize);
+    const AccountCategoriesModel = account_categories_model.init(sequelize);
+    const AccountLogsModel = account_logs_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
 
-    // Project.hasOne(User, {
-    //     sourceKey: 'user_id',
+    // AccountCategoriesModel.hasOne(AccountLogsModel, {
+    //     sourceKey: 'account_category_id',
     //     foreignKey: 'id',
-    //     as: 'user',
-    // });
-
-    // User.hasMany(Project, {
-    //     sourceKey: 'id',
-    //     foreignKey: 'user_id',
-    //     as: 'projects',
-    // });
-
-    // User.hasOne(Project, {
-    //     sourceKey: 'id',
-    //     foreignKey: 'user_id',
-    //     as: 'project',
-    // });
-
-    // Project.belongsToMany(User, {
-    //     through: 'project_user',
-    // });
-    // User.belongsToMany(Project, {
-    //     through: 'project_user',
+    //     as: 'categories',
     // });
 
     let models: models = {
-        AccontCategoriesModel,
+        AccountCategoriesModel,
+        AccountLogsModel,
         // Project,
 
         sequelize,

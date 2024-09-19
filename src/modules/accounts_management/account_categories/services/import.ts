@@ -11,7 +11,7 @@ async function data_import(
     let params = req.params as any;
 
     try {
-        let data = await models.AccontCategoriesModel.findOne({
+        let data = await models.AccountCategoriesModel.findOne({
             where: {
                 id: params.id,
             },
