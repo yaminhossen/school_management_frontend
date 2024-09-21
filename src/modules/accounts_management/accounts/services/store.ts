@@ -54,7 +54,7 @@ async function store(
     /** initializations */
     let models = await db();
     let body = req.body as anyObject;
-    let data = new models.AccontsModel();
+    let data = new models.AccountsModel();
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: 1,

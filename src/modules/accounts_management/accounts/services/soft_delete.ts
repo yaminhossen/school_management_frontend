@@ -33,7 +33,7 @@ async function soft_delete(
     let body = req.body as { [key: string]: any };
 
     try {
-        let data = await models.AccontsModel.findOne({
+        let data = await models.AccountsModel.findOne({
             where: {
                 id: body.id,
             },

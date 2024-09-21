@@ -54,7 +54,7 @@ async function update(
     /** initializations */
     let models = await db();
     let body = req.body as anyObject;
-    let model = new models.AccontsModel();
+    let model = new models.AccountsModel();
 
     let inputs: InferCreationAttributes<typeof model> = {
         branch_id: body.branch_id,
@@ -69,7 +69,7 @@ async function update(
 
     /** store data into database */
     try {
-        let data = await models.AccontsModel.findByPk(body.id);
+        let data = await models.AccountsModel.findByPk(body.id);
         if (data) {
             data.update(inputs);
             await data.save();

@@ -99,14 +99,14 @@ const Index: React.FC<Props> = () => {
                                         <td>
                                             {log.type === 'income'
                                                 ? log.amount
-                                                : ''}
+                                                : '-'}
                                         </td>
                                         <td>
                                             {log.type === 'expense'
                                                 ? log.amount
-                                                : ''}
+                                                : '-'}
                                         </td>
-                                        {/* <td>{income - expense}</td>{' '} */}
+                                        <td>-</td>
                                         {/* Calculate balance */}
                                     </tr>
                                 ))}

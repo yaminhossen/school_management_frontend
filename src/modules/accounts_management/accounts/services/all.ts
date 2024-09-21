@@ -1,4 +1,4 @@
-import { FindAndCountOptions } from 'sequelize';
+import { FindAndCountOptions, Sequelize } from 'sequelize';
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import response from '../helpers/response';
@@ -34,9 +34,34 @@ async function all(
         // include: [models.Project],
     };
 
-    if (select_fields.length) {
-        query.attributes = select_fields;
-    }
+    // if (select_fields.length) {
+    //     query.attributes = select_fields;
+    // }
+    query.attributes = [
+        ...select_fields,
+        [
+            Sequelize.literal(`(
+                        SELECT SUM(logs.amount)
+                        FROM account_logs AS logs
+                        WHERE
+                            logs.account_id = AccountsModel.id
+                            AND
+                            logs.type = "income"
+                    )`),
+            'total_income',
+        ],
+        [
+            Sequelize.literal(`(
+                        SELECT SUM(logs.amount)
+                        FROM account_logs AS logs
+                        WHERE
+                            logs.account_id = AccountsModel.id
+                            AND
+                            logs.type = "expense"
+                    )`),
+            'total_expense',
+        ],
+    ];
 
     if (search_key) {
         query.where = {
@@ -53,10 +78,21 @@ async function all(
     try {
         let data = await (fastify_instance as anyObject).paginate(
             req,
-            models.AccontsModel,
+            models.AccountsModel,
             paginate,
             query,
         );
+        data.total_income = await models.AccountLogsModel.sum('amount', {
+            where: {
+                type: 'income',
+            },
+        });
+
+        data.total_expense = await models.AccountLogsModel.sum('amount', {
+            where: {
+                type: 'expense',
+            },
+        });
         return response(200, 'data fetched', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.query);

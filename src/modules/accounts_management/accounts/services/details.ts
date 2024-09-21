@@ -13,7 +13,7 @@ async function details(
     let params = req.params as any;
 
     try {
-        let data = await models.AccontsModel.findOne({
+        let data = await models.AccountsModel.findOne({
             where: {
                 id: params.id,
             },

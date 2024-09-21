@@ -14,7 +14,7 @@ async function details(
     let params = req.params as any;
 
     try {
-        let data = await models.AccontsModel.findAll({
+        let data = await models.AccountsModel.findAll({
             include: [
                 {
                     model: accountLogsModel,

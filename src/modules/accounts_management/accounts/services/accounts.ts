@@ -14,7 +14,7 @@ async function accounts(
     let params = req.params as any;
 
     try {
-        let data = await models.AccontsModel.findAll({});
+        let data = await models.AccountsModel.findAll({});
 
         if (data) {
             return response(200, 'data created', data);
