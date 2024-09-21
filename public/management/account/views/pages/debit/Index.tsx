@@ -1,40 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
+export interface AccountLog {
+    account: { title: string };
+    type: 'income' | 'expense';
+    amount: number;
+    account_log: [];
+}
+export interface TotalLog {
+    total_expense?: number;
+    total_income?: number;
+}
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            last_date: '10 Feb, 2024',
-            amount: '3000',
-            amount_in_text: 'Three thousand taka only',
-            purpose: 'hostel bill',
-        },
-        {
-            id: 2,
-            last_date: '14 March, 2024',
-            amount: '10000',
-            amount_in_text: 'Ten thousand taka only',
-            purpose: 'admission bill',
-        },
-        {
-            id: 3,
-            last_date: '15 Feb, 2024',
-            amount: '5000',
-            amount_in_text: 'Five thousand taka only',
-            purpose: 'transport bill',
-        },
-    ];
+    const [error, setError] = useState(null);
+    // const [data, setData] = useState();
+    const [totalIncome, setTotalIncome] = useState<TotalLog>({});
+    const [data, setData] = useState<AccountLog[]>([]);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('/api/v1/account-logs/debit');
+            setData(response.data.data);
+            setTotalIncome(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    console.log(data);
 
     return (
         <div className="admin_dashboard">
             <div className="content_body">
                 <Link
-                    to="/expense-entry"
+                    to="/income-entry"
                     className="btn btn-sm btn-outline-info mb-2"
                     type="submit"
                 >
@@ -71,25 +79,28 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th>Serial</th>
                                     <th>Purpose</th>
                                     <th>Date</th>
-                                    <th>Amount in Text</th>
+                                    {/* <th>Amount in Text</th> */}
                                     <th>Amount</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
+                                {data?.map((i: { [key: string]: any }) => {
                                     return (
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.purpose}</td>
-                                            <td>{i.last_date}</td>
-                                            <td>{i.amount_in_text}</td>
+                                            <td>{i.category?.title}</td>
+                                            <td>
+                                                {moment(i.createdAt).format(
+                                                    'YYYY-MM-DD',
+                                                )}
+                                            </td>
+                                            {/* <td>{i.amount_in_text}</td> */}
                                             <td>{i.amount} tk</td>
                                         </tr>
                                     );
                                 })}
                                 <tr>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
