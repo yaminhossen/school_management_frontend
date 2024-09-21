@@ -1,4 +1,4 @@
-import { FindAndCountOptions } from 'sequelize';
+import { FindAndCountOptions, Sequelize } from 'sequelize';
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import response from '../helpers/response';
@@ -37,6 +37,27 @@ async function all(
     if (select_fields.length) {
         query.attributes = select_fields;
     }
+    // query.attributes = [
+    //     ...select_fields,
+    //     [
+    //         Sequelize.literal(`(
+    //                     SELECT SUM(logs.amount)
+    //                     FROM account_logs AS logs
+    //                     WHERE
+    //                         logs.type = "income"
+    //                 )`),
+    //         'total_income',
+    //     ],
+    //     [
+    //         Sequelize.literal(`(
+    //                     SELECT SUM(logs.amount)
+    //                     FROM account_logs AS logs
+    //                     WHERE
+    //                         logs.type = "expense"
+    //                 )`),
+    //         'total_expense',
+    //     ],
+    // ];
 
     if (search_key) {
         query.where = {

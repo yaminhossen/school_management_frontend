@@ -55,6 +55,11 @@ const db = async function (): Promise<models> {
         foreignKey: 'id',
         as: 'account',
     });
+    AccountLogsModel.hasOne(AccountCategoriesModel, {
+        sourceKey: 'account_category_id',
+        foreignKey: 'id',
+        as: 'category',
+    });
 
     let models: models = {
         AccountLogsModel,
