@@ -24,7 +24,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get('/api/v1/account-logs/debit');
-            setData(response.data.data);
+            setData(response.data.data.data);
             setTotalIncome(response.data.data);
             // setData(response.data);
         } catch (error) {
@@ -105,7 +105,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td></td>
                                     <td></td>
                                     <td>Total:</td>
-                                    <td>18000 tk</td>
+                                    <td>{totalIncome.total_expense} tk</td>
                                 </tr>
                             </tbody>
                         </table>
