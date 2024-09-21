@@ -9,17 +9,25 @@ export interface AccountLog {
     amount: number;
     account_log: [];
 }
+export interface TotalLog {
+    total_expense?: number;
+    total_income?: number;
+}
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     // const [data, setData] = useState();
+    const [totalIncome, setTotalIncome] = useState<TotalLog>({});
     const [data, setData] = useState<AccountLog[]>([]);
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('/api/v1/accounts/all');
-            setData(response.data.data);
+            const response = await axios.get(
+                '/api/v1/accounts?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&select_fields=title,status,opening_balance',
+            );
+            setData(response.data.data.data);
+            setTotalIncome(response.data.data);
             // setData(response.data);
         } catch (error) {
             setError(error);
@@ -65,10 +73,23 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 <td></td>
                                                 <td>{i.id}</td>
                                                 <td>{i.title}</td>
-                                                <td>{i.opening_balance}</td>
-                                                <td>{i.total_income}</td>
-                                                <td>{i.total_expense}</td>
-                                                <td>{i.balance}</td>
+                                                <td>{i.opening_balance} tk</td>
+                                                <td>
+                                                    {i.total_income
+                                                        ? i.total_income
+                                                        : '-'}{' '}
+                                                </td>
+                                                <td>
+                                                    {' '}
+                                                    {i.total_expense
+                                                        ? i.total_expense
+                                                        : '-'}{' '}
+                                                </td>
+                                                <td>
+                                                    {i.total_income -
+                                                        i.total_expense}{' '}
+                                                    tk
+                                                </td>
                                                 <td>
                                                     <Link
                                                         to={`/accounts/details/${i.id}`}
@@ -82,6 +103,15 @@ const Index: React.FC<Props> = (props: Props) => {
                                         );
                                     })}
                             </tbody>
+                            {/* <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Total:</td>
+                                <td>{totalIncome.total_income} tk</td>
+                                <td>{totalIncome.total_expense} tk</td>
+                            </tr> */}
                         </table>
                     </div>
                 </div>
