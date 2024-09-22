@@ -17,6 +17,8 @@ export interface TotalLog {
     total_income?: number;
     total_income_query_days?: number;
     total_expense_query_days?: number;
+    total_income_query_previous_days?: number;
+    total_expense_query_previous_days?: number;
 }
 
 export interface Props {}
@@ -32,6 +34,10 @@ const Index: React.FC<Props> = (props: Props) => {
     const totalIncomeValue = totalIncome.total_income || 0;
     const totalIncomeQueryValue = totalIncome.total_income_query_days || 0; // Defaults to 0 if undefined
     const totalExpenseQueryValue = totalIncome.total_expense_query_days || 0;
+    const totalIncomeQueryPreviousValue =
+        totalIncome.total_income_query_previous_days || 0; // Defaults to 0 if undefined
+    const totalExpenseQueryPreviousValue =
+        totalIncome.total_expense_query_previous_days || 0;
 
     const fetchData = async () => {
         try {
@@ -149,10 +155,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td>Previous Data</td>
                                     <td></td>
                                     <td>Total:</td>
-                                    <td>{totalExpenseValue} tk</td>
-                                    <td>{totalIncomeValue} tk</td>
+                                    <td>{totalExpenseQueryPreviousValue} tk</td>
+                                    <td>{totalIncomeQueryPreviousValue} tk</td>
                                     <td>
-                                        {totalIncomeValue - totalExpenseValue}{' '}
+                                        {totalIncomeQueryPreviousValue -
+                                            totalExpenseQueryPreviousValue}{' '}
                                         tk
                                     </td>
                                 </tr>

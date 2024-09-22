@@ -4,7 +4,7 @@ import { responseObject, anyObject } from '../../../common_types/object';
 import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
-import { Sequelize } from 'sequelize';
+import { Sequelize, Op } from 'sequelize';
 
 async function journal(
     fastify_instance: FastifyInstance,
@@ -14,65 +14,67 @@ async function journal(
     let body = req.body as anyObject;
     let accountCategoriesModel = models.AccountCategoriesModel;
     let params = req.params as any;
-    console.log('starsdate end date body', body);
-    console.log('starsdate end date body2', body.month2);
+
+    // Use the values from the request body or set default values
+    let month1 = body.month1 || '2024-09-12'; // Start date
+    let month2 = body.month2 || '2024-09-22'; // End date
+
+    // Add one day to month2
+    const endDate = new Date(month2);
+    endDate.setDate(endDate.getDate() + 1); // Increment by one day
+    const formattedEndDate = endDate.toISOString().split('T')[0]; // Format to YYYY-MM-DD
 
     try {
         let data = await models.AccountLogsModel.findAll({
-            // where: {
-            //     id: params.id,
-            // },
-
+            where: {
+                created_at: {
+                    [Op.between]: [month1, formattedEndDate],
+                    // [Op.gte]: month1, // Greater than or equal to month1
+                    // [Op.lte]: formattedEndDate, // Less than or equal to month2
+                },
+            },
             include: [
                 {
                     model: accountCategoriesModel,
                     as: 'category',
                 },
             ],
-            order: [['createdAt', 'DESC']], // Assuming 'createdAt' is the timestamp field
-            limit: 5,
-            // attributes: {
-            //     include: [
-            //         [
-            //             Sequelize.literal(`(
-            //                 SELECT SUM(logs.amount)
-            //                 FROM account_logs AS logs
-            //                 WHERE logs.type = 'income'
-            //             )`),
-            //             'total_income',
-            //         ],
-            //         [
-            //             Sequelize.literal(`(
-            //                 SELECT SUM(logs.amount)
-            //                 FROM account_logs AS logs
-            //                 WHERE logs.type = 'expense'
-            //             )`),
-            //             'total_expense',
-            //         ],
-            //     ],
-            // },
+            order: [['created_at', 'ASC']],
+            // limit: 5,
         });
+
         // Initialize data2 object
         let data2 = {
             total_expense: 0,
             total_income: 0,
-            total_income_query_days: 0, // Sum of income from the last 7 entries
+            total_income_query_days: 0, // Sum of income from the last entries
             total_expense_query_days: 0,
+            total_income_query_previous_days: 0,
+            total_expense_query_previous_days: 0,
         };
 
-        // Calculate total income and total expense
+        // Calculate total income and total expense for the filtered dates
         data2.total_income = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'income',
+                // created_at: {
+                //     [Op.gte]: month1,
+                //     [Op.lte]: month2,
+                // },
             },
         });
 
         data2.total_expense = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'expense',
+                // created_at: {
+                //     [Op.gte]: month1,
+                //     [Op.lte]: month2,
+                // },
             },
         });
-        // Sum the amounts from the last 7 entries based on type
+
+        // Sum the amounts from the filtered data based on type
         data.forEach((log) => {
             const amount = log.amount ?? 0; // Default to 0 if undefined
             if (log.type === 'income') {
@@ -81,6 +83,27 @@ async function journal(
                 data2.total_expense_query_days += amount;
             }
         });
+
+        // Calculate previous totals before month1
+        data2.total_income_query_previous_days =
+            await models.AccountLogsModel.sum('amount', {
+                where: {
+                    type: 'income',
+                    created_at: {
+                        [Op.lt]: month1, // Less than month1
+                    },
+                },
+            });
+
+        data2.total_expense_query_previous_days =
+            await models.AccountLogsModel.sum('amount', {
+                where: {
+                    type: 'expense',
+                    created_at: {
+                        [Op.lt]: month1, // Less than month1
+                    },
+                },
+            });
 
         if (data) {
             return response(200, 'data created', { data, data2 });

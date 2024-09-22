@@ -19,3 +19,6 @@
 {"level":60,"time":1726919967056,"pid":11364,"hostname":"DESKTOP-9421701","file":"services\\credit.ts:32:19)","time":"9/21/2024 5:59:27 PM","message":"WHERE parameter \"id\" has invalid \"undefined\" value"}
 {"level":60,"time":1726989747586,"pid":372,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:55:19)","time":"9/22/2024 1:22:27 PM","message":"WHERE parameter \"id\" has invalid \"undefined\" value"}
 {"level":60,"time":1726989749404,"pid":372,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:55:19)","time":"9/22/2024 1:22:29 PM","message":"WHERE parameter \"id\" has invalid \"undefined\" value"}
+{"level":60,"time":1727005991534,"pid":17108,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:88:19)","time":"9/22/2024 5:53:11 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
+{"level":60,"time":1727005999313,"pid":17108,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:88:19)","time":"9/22/2024 5:53:19 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
+{"level":60,"time":1727006017289,"pid":17108,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:88:19)","time":"9/22/2024 5:53:37 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
