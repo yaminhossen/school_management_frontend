@@ -23,6 +23,7 @@ import income_store from './services/income_store';
 import expense_store from './services/expense_store';
 import credit from './services/credit';
 import debit from './services/debit';
+import income_statement from './services/income_statement';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -33,6 +34,14 @@ export default function (fastify: FastifyInstance) {
 
         find: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        income_statement: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await income_statement(fastify, req);
             res.code(data.status).send(data);
         },
 
