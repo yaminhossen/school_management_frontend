@@ -6,7 +6,7 @@ import { anyObject, responseObject } from '../../../common_types/object';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 
-async function income_statement(
+async function journal(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -33,12 +33,12 @@ async function income_statement(
             // type: 'income',
             status: show_active_data == 'true' ? 'active' : 'deactive',
         },
-        // include: [
-        //     {
-        //         model: accountCategoriesModel,
-        //         as: 'category',
-        //     },
-        // ],
+        include: [
+            {
+                model: accountCategoriesModel,
+                as: 'category',
+            },
+        ],
     };
 
     if (select_fields.length) {
@@ -46,15 +46,15 @@ async function income_statement(
     }
     // query.attributes = [
     //     ...select_fields,
-    //     [
-    //         Sequelize.literal(`(
-    //                     SELECT SUM(logs.amount)
-    //                     FROM account_logs AS logs
-    //                     WHERE
-    //                         logs.type = "income"
-    //                 )`),
-    //         'total_income',
-    //     ],
+    // [
+    //     Sequelize.literal(`(
+    //                 SELECT SUM(logs.amount)
+    //                 FROM account_logs AS logs
+    //                 WHERE
+    //                     logs.type = "income"
+    //             )`),
+    //     'total_income',
+    // ],
     //     [
     //         Sequelize.literal(`(
     //                     SELECT SUM(logs.amount)
@@ -102,4 +102,4 @@ async function income_statement(
     }
 }
 
-export default income_statement;
+export default journal;

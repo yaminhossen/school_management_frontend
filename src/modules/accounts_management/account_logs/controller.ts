@@ -24,6 +24,7 @@ import expense_store from './services/expense_store';
 import credit from './services/credit';
 import debit from './services/debit';
 import income_statement from './services/income_statement';
+import journal from './services/journal';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -42,6 +43,11 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data = await income_statement(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        journal: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await journal(fastify, req);
             res.code(data.status).send(data);
         },
 
