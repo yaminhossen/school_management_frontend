@@ -11,7 +11,7 @@ module.exports = async function (fastify: FastifyInstance) {
         .post(`${prefix}/credit`, controllerInstance.credit)
         .get(`${prefix}/income-statement`, controllerInstance.income_statement)
         .post(`${prefix}/journal`, controllerInstance.journal)
-        .get(`${prefix}/debit`, controllerInstance.debit)
+        .post(`${prefix}/debit`, controllerInstance.debit)
         .post(`${prefix}/store`, controllerInstance.store)
         .post(`${prefix}/income-store`, controllerInstance.income_store)
         .post(`${prefix}/expense-store`, controllerInstance.expense_store)
