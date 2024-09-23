@@ -2,13 +2,13 @@
 
 # bash src/modules/accounts_management/migrate.sh
 
-echo ""
-echo "accounts seed start"
-API_URL="http://127.0.0.1:5003/api/v1/accounts?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
-response=$(curl -s "$API_URL")
-npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/accounts_management/accounts/models/seeders
-echo "accounts seed end"
-echo ""
+# echo ""
+# echo "accounts seed start"
+# API_URL="http://127.0.0.1:5003/api/v1/accounts?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
+# response=$(curl -s "$API_URL")
+# npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/accounts_management/accounts/models/seeders
+# echo "accounts seed end"
+# echo ""
 
 # echo ""
 # echo "account categories seed start"
@@ -81,6 +81,22 @@ echo ""
 # npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/accounts_management/account_logs/models/seeders
 # echo "account logs seed end"
 # echo ""
+
+# echo ""
+# echo "account customers seed start"
+# API_URL="http://127.0.0.1:5003/api/v1/account-customers?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
+# response=$(curl -s "$API_URL")
+# npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/accounts_management/account_customers/models/seeders
+# echo "account customers seed end"
+# echo ""
+
+echo ""
+echo "account customer transactions seed start"
+API_URL="http://127.0.0.1:5003/api/v1/account-customer-transactions?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
+response=$(curl -s "$API_URL")
+npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/accounts_management/account_customer_transactions/models/seeders
+echo "account customer transactions seed end"
+echo ""
 
 # echo ""
 # echo "money-receipt-books seed start"

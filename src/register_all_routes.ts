@@ -9,6 +9,8 @@ export let active_routes: string[] = [
 
     'src/modules/accounts_management/accounts/routes.ts',
     'src/modules/accounts_management/account_categories/routes.ts',
+    'src/modules/accounts_management/account_customers/routes.ts',
+    'src/modules/accounts_management/account_customer_transactions/routes.ts',
     // 'src/modules/accounts_management/account_fees_collections/routes.ts',
     // 'src/modules/accounts_management/account_fees_collection_details/routes.ts',
     'src/modules/accounts_management/account_logs/routes.ts',
