@@ -4,3 +4,4 @@
 {"level":60,"time":1727076533879,"pid":8732,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/credit"}
 {"level":60,"time":1727076534828,"pid":8732,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/credit"}
 {"level":60,"time":1727076535555,"pid":8732,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/credit"}
+{"level":60,"time":1727077864510,"pid":1376,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/account/account.js"}
