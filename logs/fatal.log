@@ -22,3 +22,10 @@
 {"level":60,"time":1727005991534,"pid":17108,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:88:19)","time":"9/22/2024 5:53:11 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
 {"level":60,"time":1727005999313,"pid":17108,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:88:19)","time":"9/22/2024 5:53:19 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
 {"level":60,"time":1727006017289,"pid":17108,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:88:19)","time":"9/22/2024 5:53:37 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
+{"level":60,"time":1727067383913,"pid":14208,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:118:19)","time":"9/23/2024 10:56:23 AM","message":"Incorrect DATETIME value: 'Invalid date'"}
+{"level":60,"time":1727067418495,"pid":9344,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:119:19)","time":"9/23/2024 10:56:58 AM","message":"Incorrect DATETIME value: 'Invalid date'"}
+{"level":60,"time":1727067450783,"pid":5816,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:119:19)","time":"9/23/2024 10:57:30 AM","message":"Incorrect DATETIME value: 'Invalid date'"}
+{"level":60,"time":1727067834962,"pid":12880,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:24:56)","time":"9/23/2024 11:03:54 AM","message":"Cannot read properties of undefined (reading 'month1')"}
+{"level":60,"time":1727067861190,"pid":12880,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:24:56)","time":"9/23/2024 11:04:21 AM","message":"Cannot read properties of undefined (reading 'month1')"}
+{"level":60,"time":1727067977350,"pid":2164,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:19:32)","time":"9/23/2024 11:06:17 AM","message":"Cannot read properties of undefined (reading 'month1')"}
+{"level":60,"time":1727067996461,"pid":8368,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:19:32)","time":"9/23/2024 11:06:36 AM","message":"Cannot read properties of undefined (reading 'month1')"}

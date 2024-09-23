@@ -18,6 +18,10 @@ async function journal(
     // Use the values from the request body or set default values
     let month1 = body.month1 || '2024-09-12'; // Start date
     let month2 = body.month2 || '2024-09-22'; // End date
+    console.log('month1gfjhgfhjgf', month1);
+    console.log('month1gfjhgfhjgf2', month2);
+    console.log('month1gfjhgfhjgf2body', body);
+    // console.log('month1gfjhgfhjgf2body', body.formData?.month1);
 
     // Add one day to month2
     const endDate = new Date(month2);

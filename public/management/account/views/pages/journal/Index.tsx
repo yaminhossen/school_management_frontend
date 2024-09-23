@@ -47,9 +47,10 @@ const Index: React.FC<Props> = (props: Props) => {
             formData.month1 = m1;
             formData.month2 = m2;
 
-            const response = await axios.post('/api/v1/account-logs/journal', {
+            const response = await axios.post(
+                '/api/v1/account-logs/journal',
                 formData,
-            });
+            );
             setData(response.data.data.data);
             setTotalIncome(response.data.data.data2);
         } catch (error) {
@@ -198,6 +199,41 @@ const Index: React.FC<Props> = (props: Props) => {
                                             totalExpenseQueryValue}{' '}
                                         tk
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>All Data</td>
+                                    <td></td>
+                                    <td>Grand Total:</td>
+                                    {/* <td>
+                                        {totalExpenseQueryPreviousValue +
+                                            totalExpenseQueryValue}{' '}
+                                        tk
+                                    </td> */}
+                                    {/* <td>
+                                        {totalIncomeQueryPreviousValue +
+                                            totalIncomeQueryValue}{' '}
+                                        tk
+                                    </td> */}
+                                    <td>
+                                        {totalExpenseValue}
+                                        tk
+                                    </td>
+                                    <td>
+                                        {totalIncomeValue}
+                                        tk
+                                    </td>
+                                    <td>
+                                        {totalIncomeValue - totalExpenseValue}
+                                        tk
+                                    </td>
+                                    {/* <td>
+                                        {totalIncomeQueryPreviousValue -
+                                            totalExpenseQueryPreviousValue +
+                                            totalIncomeQueryValue -
+                                            totalExpenseQueryValue}{' '}
+                                        tk
+                                    </td> */}
                                 </tr>
                             </tbody>
                         </table>
