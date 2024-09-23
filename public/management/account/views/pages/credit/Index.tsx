@@ -1,32 +1,58 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+
 export interface AccountLog {
     account: { title: string };
     type: 'income' | 'expense';
     amount: number;
     account_log: [];
+    category: { title: string };
+    created_at: string;
 }
+
 export interface TotalLog {
     total_expense?: number;
     total_income?: number;
+    total_income_query_days?: number;
+    total_expense_query_days?: number;
+    total_income_query_previous_days?: number;
+    total_expense_query_previous_days?: number;
 }
+
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    // const [data, setData] = useState();
     const [totalIncome, setTotalIncome] = useState<TotalLog>({});
     const [data, setData] = useState<AccountLog[]>([]);
+    const [startDate, setStartDate] = useState<string>(''); // For first date input
+    const [endDate, setEndDate] = useState<string>(''); // For second date input
+
+    const totalExpenseValue = totalIncome.total_expense || 0; // Defaults to 0 if undefined
+    const totalIncomeValue = totalIncome.total_income || 0;
+    const totalIncomeQueryValue = totalIncome.total_income_query_days || 0; // Defaults to 0 if undefined
+    const totalExpenseQueryValue = totalIncome.total_expense_query_days || 0;
+    const totalIncomeQueryPreviousValue =
+        totalIncome.total_income_query_previous_days || 0; // Defaults to 0 if undefined
+    const totalExpenseQueryPreviousValue =
+        totalIncome.total_expense_query_previous_days || 0;
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('/api/v1/account-logs/credit');
+            let m1 = moment().subtract(30, 'days').format('YYYY-MM-DD');
+            let m2 = moment().format('YYYY-MM-DD');
+            const formData: { month1?: string; month2?: string } = {};
+            formData.month1 = m1;
+            formData.month2 = m2;
+
+            const response = await axios.post(
+                '/api/v1/account-logs/credit',
+                formData,
+            );
             setData(response.data.data.data);
-            setTotalIncome(response.data.data);
-            // setData(response.data);
+            setTotalIncome(response.data.data.data2);
         } catch (error) {
             setError(error);
         }
@@ -34,36 +60,76 @@ const Index: React.FC<Props> = (props: Props) => {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, []); // Trigger fetch when dates change
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+        let formData = new FormData(e.target);
+        try {
+            // const params: { startDate?: string; endDate?: string } = {};
+            // if (startDate) params.startDate = startDate;
+            // if (endDate) params.endDate = endDate;
+            const response = await axios.post(
+                '/api/v1/account-logs/credit',
+                formData,
+            );
+            setData(response.data.data.data);
+            setTotalIncome(response.data.data.data2);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    // const handleStartDateChange = (
+    //     event: React.ChangeEvent<HTMLInputElement>,
+    // ) => {
+    //     setStartDate(event.target.value);
+    // };
+
+    // const handleEndDateChange = (
+    //     event: React.ChangeEvent<HTMLInputElement>,
+    // ) => {
+    //     setEndDate(event.target.value);
+    // };
+    const tenDaysBefore = moment().subtract(30, 'days').format('YYYY-MM-DD');
 
     console.log(data);
+    console.log(totalIncome);
+    console.log('tenDaysBefore', tenDaysBefore);
 
     return (
         <div className="admin_dashboard">
             <div className="content_body">
-                <Link
-                    to="/income-entry"
-                    className="btn btn-sm btn-outline-info mb-2"
-                    type="submit"
-                >
-                    Create
-                </Link>
-                <form action="">
+                <form onSubmit={handleSubmit}>
                     <div className="teacher_result">
                         <div>
-                            <div>Month</div>
+                            <div>Start Date</div>
                             <div>
-                                <input type="date" name="month1" id="" />
+                                <input
+                                    type="date"
+                                    name="month1"
+                                    defaultValue={moment()
+                                        .subtract(30, 'days')
+                                        .format('YYYY-MM-DD')}
+                                    // value={startDate}
+                                    // onChange={handleStartDateChange}
+                                />
                             </div>
                         </div>
                         <div>
-                            <div>Month</div>
+                            <div>End Date</div>
                             <div>
-                                <input type="date" name="month2" id="" />
+                                <input
+                                    type="date"
+                                    name="month2"
+                                    defaultValue={moment().format('YYYY-MM-DD')}
+                                    // value={endDate}
+                                    // onChange={handleEndDateChange}
+                                />
                             </div>
                         </div>
                         <button
-                            className="btn btn-sm btn-outline-info "
+                            className="btn btn-sm btn-outline-info"
                             type="submit"
                         >
                             Submit
@@ -79,33 +145,88 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th>Serial</th>
                                     <th>Purpose</th>
                                     <th>Date</th>
-                                    {/* <th>Amount in Text</th> */}
+                                    {/* <th>Debit</th>
+                                    <th>Credit</th> */}
                                     <th>Amount</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {data?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.category?.title}</td>
-                                            <td>
-                                                {moment(i.createdAt).format(
-                                                    'YYYY-MM-DD',
-                                                )}
-                                            </td>
-                                            {/* <td>{i.amount_in_text}</td> */}
-                                            <td>{i.amount} tk</td>
-                                        </tr>
-                                    );
-                                })}
                                 <tr>
                                     <td></td>
-                                    <td></td>
+                                    <td>Previous Data</td>
                                     <td></td>
                                     <td>Total:</td>
-                                    <td>{totalIncome.total_income} tk</td>
+                                    {/* <td>{totalExpenseQueryPreviousValue} tk</td> */}
+                                    <td>{totalIncomeQueryPreviousValue} tk</td>
+                                    {/* <td>
+                                        {totalIncomeQueryPreviousValue -
+                                            totalExpenseQueryPreviousValue}{' '}
+                                        tk
+                                    </td> */}
+                                </tr>
+                                {data.map((i, index) => (
+                                    <tr key={index}>
+                                        <td></td>
+                                        <td>{index + 1}</td>
+                                        <td>{i.category?.title}</td>
+                                        <td>
+                                            {moment(i.created_at).format(
+                                                'YYYY-MM-DD',
+                                            )}
+                                        </td>
+                                        {/* <td>
+                                            {i.type === 'expense'
+                                                ? i.amount
+                                                : '-'}
+                                        </td> */}
+                                        <td>
+                                            {i.type === 'income'
+                                                ? i.amount
+                                                : '-'}
+                                        </td>
+                                        {/* <td>-</td> */}
+                                    </tr>
+                                ))}
+                                <tr>
+                                    <td></td>
+                                    <td>Present Data</td>
+                                    <td></td>
+                                    <td>Total:</td>
+                                    {/* <td>{totalExpenseQueryValue} tk</td> */}
+                                    <td>{totalIncomeQueryValue} tk</td>
+                                    {/* <td>
+                                        {totalIncomeQueryValue -
+                                            totalExpenseQueryValue}{' '}
+                                        tk
+                                    </td> */}
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>All Data</td>
+                                    <td></td>
+                                    <td>Grand Total:</td>
+                                    {/* <td>
+                                        {totalExpenseQueryPreviousValue +
+                                            totalExpenseQueryValue}{' '}
+                                        tk
+                                    </td> */}
+                                    {/* <td>
+                                        {totalIncomeQueryPreviousValue +
+                                            totalIncomeQueryValue}{' '}
+                                        tk
+                                    </td> */}
+                                    {/* <td>
+                                        {totalExpenseValue}
+                                        tk
+                                    </td> */}
+                                    <td>
+                                        {totalIncomeValue}
+                                        tk
+                                    </td>
+                                    {/* <td>
+                                        {totalIncomeValue - totalExpenseValue}
+                                        tk
+                                    </td> */}
                                 </tr>
                             </tbody>
                         </table>

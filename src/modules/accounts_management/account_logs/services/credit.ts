@@ -1,99 +1,128 @@
-import { FindAndCountOptions, Sequelize } from 'sequelize';
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
+import { responseObject, anyObject } from '../../../common_types/object';
 import response from '../helpers/response';
-import { anyObject, responseObject } from '../../../common_types/object';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
+import { Sequelize, Op } from 'sequelize';
 
 async function credit(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
+    let body = req.body as anyObject;
     let accountCategoriesModel = models.AccountCategoriesModel;
-    let query_param = req.query as any;
+    let params = req.params as any;
 
-    const { Op } = require('sequelize');
-    let search_key = query_param.search_key;
-    let orderByCol = query_param.orderByCol || 'id';
-    let orderByAsc = query_param.orderByAsc || 'true';
-    let show_active_data = query_param.show_active_data || 'true';
-    let paginate = parseInt((req.query as any).paginate) || 10;
-    let select_fields: string[] = [];
+    // Use the values from the request body or set default values
+    let month1 = body.month1 || '2024-09-12'; // Start date
+    let month2 = body.month2 || '2024-09-22'; // End date
+    console.log('month1gfjhgfhjgf', month1);
+    console.log('month1gfjhgfhjgf2', month2);
+    console.log('month1gfjhgfhjgf2body', body);
+    // console.log('month1gfjhgfhjgf2body', body.formData?.month1);
 
-    if (query_param.select_fields) {
-        select_fields = query_param.select_fields.replace(/\s/g, '').split(',');
-        select_fields = [...select_fields, 'id', 'status'];
-    }
-
-    let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
-        where: {
-            type: 'income',
-            status: show_active_data == 'true' ? 'active' : 'deactive',
-        },
-        include: [
-            {
-                model: accountCategoriesModel,
-                as: 'category',
-            },
-        ],
-    };
-
-    if (select_fields.length) {
-        query.attributes = select_fields;
-    }
-    // query.attributes = [
-    //     ...select_fields,
-    //     [
-    //         Sequelize.literal(`(
-    //                     SELECT SUM(logs.amount)
-    //                     FROM account_logs AS logs
-    //                     WHERE
-    //                         logs.type = "income"
-    //                 )`),
-    //         'total_income',
-    //     ],
-    //     [
-    //         Sequelize.literal(`(
-    //                     SELECT SUM(logs.amount)
-    //                     FROM account_logs AS logs
-    //                     WHERE
-    //                         logs.type = "expense"
-    //                 )`),
-    //         'total_expense',
-    //     ],
-    // ];
-
-    if (search_key) {
-        query.where = {
-            ...query.where,
-            [Op.or]: [
-                { name: { [Op.like]: `%${search_key}%` } },
-                { preferred_name: { [Op.like]: `%${search_key}%` } },
-                { status: { [Op.like]: `%${search_key}%` } },
-                { id: { [Op.like]: `%${search_key}%` } },
-            ],
-        };
-    }
+    // Add one day to month2
+    const endDate = new Date(month2);
+    endDate.setDate(endDate.getDate() + 1); // Increment by one day
+    const formattedEndDate = endDate.toISOString().split('T')[0]; // Format to YYYY-MM-DD
 
     try {
-        let data = await (fastify_instance as anyObject).paginate(
-            req,
-            models.AccountLogsModel,
-            paginate,
-            query,
-        );
-        data.total_income = await models.AccountLogsModel.sum('amount', {
+        let data = await models.AccountLogsModel.findAll({
             where: {
+                created_at: {
+                    [Op.between]: [month1, formattedEndDate],
+                    // [Op.gte]: month1, // Greater than or equal to month1
+                    // [Op.lte]: formattedEndDate, // Less than or equal to month2
+                },
                 type: 'income',
             },
+            include: [
+                {
+                    model: accountCategoriesModel,
+                    as: 'category',
+                },
+            ],
+            order: [['created_at', 'ASC']],
+            // limit: 5,
         });
-        return response(200, 'data fetched', data);
+
+        // Initialize data2 object
+        let data2 = {
+            total_expense: 0,
+            total_income: 0,
+            total_income_query_days: 0, // Sum of income from the last entries
+            total_expense_query_days: 0,
+            total_income_query_previous_days: 0,
+            total_expense_query_previous_days: 0,
+        };
+
+        // Calculate total income and total expense for the filtered dates
+        data2.total_income = await models.AccountLogsModel.sum('amount', {
+            where: {
+                type: 'income',
+                // created_at: {
+                //     [Op.gte]: month1,
+                //     [Op.lte]: month2,
+                // },
+            },
+        });
+
+        data2.total_expense = await models.AccountLogsModel.sum('amount', {
+            where: {
+                type: 'expense',
+                // created_at: {
+                //     [Op.gte]: month1,
+                //     [Op.lte]: month2,
+                // },
+            },
+        });
+
+        // Sum the amounts from the filtered data based on type
+        data.forEach((log) => {
+            const amount = log.amount ?? 0; // Default to 0 if undefined
+            if (log.type === 'income') {
+                data2.total_income_query_days += amount;
+            } else if (log.type === 'expense') {
+                data2.total_expense_query_days += amount;
+            }
+        });
+
+        // Calculate previous totals before month1
+        data2.total_income_query_previous_days =
+            await models.AccountLogsModel.sum('amount', {
+                where: {
+                    type: 'income',
+                    created_at: {
+                        [Op.lt]: month1, // Less than month1
+                    },
+                },
+            });
+
+        data2.total_expense_query_previous_days =
+            await models.AccountLogsModel.sum('amount', {
+                where: {
+                    type: 'expense',
+                    created_at: {
+                        [Op.lt]: month1, // Less than month1
+                    },
+                },
+            });
+
+        if (data) {
+            return response(200, 'data created', { data, data2 });
+        } else {
+            throw new custom_error('not found', 404, 'data not found');
+        }
     } catch (error: any) {
-        let uid = await error_trace(models, error, req.url, req.query);
-        throw new custom_error('server error', 500, error.message, uid);
+        let uid = await error_trace(models, error, req.url, req.params);
+        if (error instanceof custom_error) {
+            error.uid = uid;
+        } else {
+            throw new custom_error('server error', 500, error.message, uid);
+        }
+        throw error;
     }
 }
 

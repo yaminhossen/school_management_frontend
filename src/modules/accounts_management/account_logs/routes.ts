@@ -8,7 +8,7 @@ module.exports = async function (fastify: FastifyInstance) {
 
     fastify
         .get(`${prefix}`, controllerInstance.all)
-        .get(`${prefix}/credit`, controllerInstance.credit)
+        .post(`${prefix}/credit`, controllerInstance.credit)
         .get(`${prefix}/income-statement`, controllerInstance.income_statement)
         .post(`${prefix}/journal`, controllerInstance.journal)
         .get(`${prefix}/debit`, controllerInstance.debit)
