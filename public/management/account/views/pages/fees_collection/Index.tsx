@@ -33,7 +33,7 @@ const Index: React.FC<Props> = (props: Props) => {
         try {
             // Make POST request with form data
             const response = await axios.post(
-                '/api/v1/account-logs/income-storeeeee',
+                '/api/v1/account-logs/fees-store',
                 formData,
             );
             // setResponseMessage('Form submitted successfully!');
@@ -256,6 +256,28 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div className="data_list">
+                        <div className="table_responsive  custom_scroll">
+                            <table className="">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Fees</th>
+                                        <th>Given Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="all_list">
+                                    <tr>
+                                        <td>Addmission bill</td>
+                                        <td>5000</td>
+                                        <td>
+                                            <input type="number" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div className="form-group student_submit form-horizontal">
