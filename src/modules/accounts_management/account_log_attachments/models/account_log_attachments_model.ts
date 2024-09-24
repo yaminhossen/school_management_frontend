@@ -23,27 +23,20 @@ import {
     // ForeignKey,
 } from 'sequelize';
 
-const tableName = 'account_logs';
-const modelName = 'AccountLogsModel';
+const tableName = 'account_log_attachments';
+const modelName = 'AccountLogAttachmentsModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
-type type = 'income' | 'expense';
+type is_approved = 'pending' | 'accepted' | 'rejected';
 type status = 'active' | 'deactive';
 
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
     declare branch_id: number;
-    declare account_category_id?: number;
-    declare account_id?: number;
-    declare account_period_id?: number;
-    declare money_receipt_book_id?: number;
-    declare receipt_no?: string;
-    declare date?: string;
-    declare amount?: number;
-    declare amount_in_text?: string;
-    declare type?: type;
+    declare account_log_id: number;
+    declare attachment_url: string;
 
     declare status?: status;
     declare creator?: number;
@@ -64,40 +57,12 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },
-            account_category_id: {
+            account_log_id: {
                 type: new DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },
-            account_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            account_period_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            money_receipt_book_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            receipt_no: {
-                type: DataTypes.STRING(20),
-                allowNull: true,
-            },
-            date: {
-                type: DataTypes.DATE,
-                allowNull: true,
-            },
-            amount: {
-                type: DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            amount_in_text: {
-                type: DataTypes.STRING(300),
-                allowNull: true,
-            },
-            type: {
-                type: DataTypes.ENUM('income', 'expense'),
+            attachment_url: {
+                type: DataTypes.STRING(50),
                 allowNull: true,
             },
 

@@ -31,7 +31,7 @@ async function debit(
     try {
         let data = await models.AccountLogsModel.findAll({
             where: {
-                created_at: {
+                date: {
                     [Op.between]: [month1, formattedEndDate],
                     // [Op.gte]: month1, // Greater than or equal to month1
                     // [Op.lte]: formattedEndDate, // Less than or equal to month2
@@ -44,7 +44,7 @@ async function debit(
                     as: 'category',
                 },
             ],
-            order: [['created_at', 'ASC']],
+            order: [['date', 'ASC']],
             // limit: 5,
         });
 
@@ -62,7 +62,7 @@ async function debit(
         data2.total_income = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'income',
-                // created_at: {
+                // date: {
                 //     [Op.gte]: month1,
                 //     [Op.lte]: month2,
                 // },
@@ -72,7 +72,7 @@ async function debit(
         data2.total_expense = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'expense',
-                // created_at: {
+                // date: {
                 //     [Op.gte]: month1,
                 //     [Op.lte]: month2,
                 // },
@@ -94,7 +94,7 @@ async function debit(
             await models.AccountLogsModel.sum('amount', {
                 where: {
                     type: 'income',
-                    created_at: {
+                    date: {
                         [Op.lt]: month1, // Less than month1
                     },
                 },
@@ -104,7 +104,7 @@ async function debit(
             await models.AccountLogsModel.sum('amount', {
                 where: {
                     type: 'expense',
-                    created_at: {
+                    date: {
                         [Op.lt]: month1, // Less than month1
                     },
                 },

@@ -74,13 +74,13 @@
 # echo "account fees collections details seed end"
 # echo ""
 
-# echo ""
-# echo "account logs seed start"
-# API_URL="http://127.0.0.1:5003/api/v1/account-logs?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
-# response=$(curl -s "$API_URL")
-# npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/accounts_management/account_logs/models/seeders
-# echo "account logs seed end"
-# echo ""
+echo ""
+echo "account logs seed start"
+API_URL="http://127.0.0.1:5003/api/v1/account-logs?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
+response=$(curl -s "$API_URL")
+npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/accounts_management/account_logs/models/seeders
+echo "account logs seed end"
+echo ""
 
 # echo ""
 # echo "account customers seed start"
@@ -90,13 +90,21 @@
 # echo "account customers seed end"
 # echo ""
 
-echo ""
-echo "account customer transactions seed start"
-API_URL="http://127.0.0.1:5003/api/v1/account-customer-transactions?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
-response=$(curl -s "$API_URL")
-npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/accounts_management/account_customer_transactions/models/seeders
-echo "account customer transactions seed end"
-echo ""
+# echo ""
+# echo "account customer transactions seed start"
+# API_URL="http://127.0.0.1:5003/api/v1/account-customer-transactions?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
+# response=$(curl -s "$API_URL")
+# npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/accounts_management/account_customer_transactions/models/seeders
+# echo "account customer transactions seed end"
+# echo ""
+
+# echo ""
+# echo "account log attachments seed start"
+# API_URL="http://127.0.0.1:5003/api/v1/account-log-attachments?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&page=0"
+# response=$(curl -s "$API_URL")
+# npx sequelize-cli db:seed:all --config src/configs/db.json --seeders-path src/modules/accounts_management/account_log_attachments/models/seeders
+# echo "account log attachments seed end"
+# echo ""
 
 # echo ""
 # echo "money-receipt-books seed start"
