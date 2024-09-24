@@ -24,3 +24,4 @@
 {"level":60,"time":1727091641618,"pid":12680,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-customers?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10"}
 {"level":60,"time":1727166369623,"pid":17572,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/branches"}
 {"level":60,"time":1727167287797,"pid":17572,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/account/account.js"}
+{"level":60,"time":1727169129074,"pid":15856,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/account/account.js"}

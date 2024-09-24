@@ -76,7 +76,7 @@ async function store(
     let afc_model = new models.AccountFeeCollectionsModel();
 
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: body.branch_id,
+        branch_id: 1,
         account_category_id: body.category_id || 1,
         account_id: body.account_id || 1,
         account_period_id: body.period_id || 1,

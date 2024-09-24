@@ -13,6 +13,11 @@ export interface Categoryinfo {
     type: 'income' | 'expense';
     amount: number;
 }
+export interface Periodinfo {
+    account: { title: string };
+    type: 'income' | 'expense';
+    amount: number;
+}
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -20,6 +25,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState('');
     const [accounts, setAccounts] = useState<Accountinfo[]>([]);
     const [categories, setCategories] = useState<Categoryinfo[]>([]);
+    const [periods, setPeriods] = useState<Periodinfo[]>([]);
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         let formData = new FormData(e.target);
@@ -58,13 +64,24 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
+    const fetchPeriods = async () => {
+        try {
+            const response = await axios.get('/api/v1/account-logs/periods');
+            setPeriods(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
 
     useEffect(() => {
         fetchAccounts();
         fetchAccountCategorys();
+        fetchPeriods();
     }, []);
     console.log('account', accounts);
     console.log('category', categories);
+    console.log('periods', periods);
     let date = moment().format('YYYY-MM-DD');
 
     return (
@@ -90,14 +107,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-vertical">
+                                {/* <div className="form-group form-vertical">
                                     <label>Branch</label>
                                     <div className="form_elements">
                                         <select name="branch_id" id="">
                                             <option value={1}>gjfjhj</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Date</label>
                                     <div className="form_elements">
@@ -113,10 +130,38 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Amount</label>
                                     <div className="form_elements">
-                                        <input
+                                        {/* <input
                                             type="number"
                                             placeholder="enter your amount"
                                             name="amount"
+                                        /> */}
+                                        <input
+                                            name={'amount'}
+                                            onChange={(e) => {
+                                                let el = document.querySelector(
+                                                    'input[name="amount_in_text"]',
+                                                );
+                                                if (el) {
+                                                    (
+                                                        el as HTMLInputElement
+                                                    ).value =
+                                                        (
+                                                            window as any
+                                                        ).convertAmount(
+                                                            e.target.value,
+                                                        ).en + ' tk only';
+                                                }
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Amount In Text</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            // placeholder="enter your amount"
+                                            name="amount_in_text"
                                         />
                                     </div>
                                 </div>
@@ -147,7 +192,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Account Category</label>
                                     <div className="form_elements">
                                         <select name="category_id" id="">
-                                            <option value={1}>gjfjhj</option>
+                                            {categories?.length &&
+                                                categories?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.title}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
                                         </select>
                                     </div>
                                 </div>
@@ -155,7 +213,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Account</label>
                                     <div className="form_elements">
                                         <select name="account_id" id="">
-                                            <option value={1}>gjfjhj</option>
+                                            {accounts?.length &&
+                                                accounts?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.title}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
                                         </select>
                                     </div>
                                 </div>
@@ -163,15 +234,24 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Account Period</label>
                                     <div className="form_elements">
                                         <select name="period_id" id="">
-                                            <option value={1}>gjfjhj</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
-                                    <label>Money Receipt Book</label>
-                                    <div className="form_elements">
-                                        <select name="mrb_id" id="">
-                                            <option value={1}>gjfjhj</option>
+                                            {periods?.length &&
+                                                periods?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {moment(
+                                                                    i.year_month,
+                                                                ).format(
+                                                                    'YYYY-MM-DD',
+                                                                )}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
                                         </select>
                                     </div>
                                 </div>

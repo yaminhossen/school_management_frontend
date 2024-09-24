@@ -27,6 +27,10 @@ GET {{hostname}}/debit HTTP/1.1
 
 # get
 ###
+GET {{hostname}}/receipt-book HTTP/1.1
+
+# get
+###
 GET {{hostname}}/account/1 HTTP/1.1
 
 # get
