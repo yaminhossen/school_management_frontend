@@ -37,7 +37,9 @@ class DataModel extends Model<Infer, InferCreation> {
     declare branch_id: number;
     declare opening_balance: number;
     declare title: string;
+    declare number: string;
     declare description: string;
+    declare date: string;
 
     declare status?: status;
     declare creator?: number;
@@ -66,8 +68,16 @@ function init(sequelize: Sequelize) {
                 type: DataTypes.STRING(25),
                 allowNull: true,
             },
+            number: {
+                type: DataTypes.STRING(20),
+                allowNull: true,
+            },
             description: {
                 type: DataTypes.TEXT,
+                allowNull: true,
+            },
+            date: {
+                type: DataTypes.DATE,
                 allowNull: true,
             },
 

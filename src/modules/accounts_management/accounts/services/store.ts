@@ -30,10 +30,22 @@ async function validate(req: Request) {
         .withMessage('the opening_balance field is required')
         .run(req);
 
+    await body('account_number')
+        .not()
+        .isEmpty()
+        .withMessage('the account_number field is required')
+        .run(req);
+
     await body('description')
         .not()
         .isEmpty()
         .withMessage('the description field is required')
+        .run(req);
+
+    await body('date')
+        .not()
+        .isEmpty()
+        .withMessage('the date field is required')
         .run(req);
 
     let result = await validationResult(req);
@@ -60,7 +72,9 @@ async function store(
         branch_id: 1,
         opening_balance: body.opening_balance,
         title: body.account_name,
+        number: body.account_number,
         description: body.description,
+        date: body.date,
     };
 
     /** print request data into console */

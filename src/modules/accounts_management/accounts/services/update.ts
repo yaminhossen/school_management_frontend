@@ -36,6 +36,12 @@ async function validate(req: Request) {
         .withMessage('the description field is required')
         .run(req);
 
+    await body('date')
+        .not()
+        .isEmpty()
+        .withMessage('the date field is required')
+        .run(req);
+
     let result = await validationResult(req);
 
     return result;
@@ -57,10 +63,12 @@ async function update(
     let model = new models.AccountsModel();
 
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: body.branch_id,
+        branch_id: 1,
         opening_balance: body.opening_balance,
-        title: body.title,
+        title: body.account_name,
+        number: body.number,
         description: body.description,
+        date: body.date,
     };
 
     /** print request data into console */

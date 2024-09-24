@@ -22,6 +22,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="Income entry"
                 />
                 <MenuSingle
+                    to="/fees-collection"
+                    icon="icon-money"
+                    label="Fees collection"
+                />
+                <MenuSingle
                     to="/expense-entry"
                     icon="icon-user"
                     label="Expense entry"

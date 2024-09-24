@@ -40,7 +40,9 @@ class DataModel extends Model<Infer, InferCreation> {
     declare account_period_id?: number;
     declare money_receipt_book_id?: number;
     declare receipt_no?: string;
+    declare date?: string;
     declare amount?: number;
+    declare amount_in_text?: string;
     declare type?: type;
 
     declare status?: status;
@@ -82,8 +84,16 @@ function init(sequelize: Sequelize) {
                 type: DataTypes.STRING(20),
                 allowNull: true,
             },
+            date: {
+                type: DataTypes.DATE,
+                allowNull: true,
+            },
             amount: {
                 type: DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
+            amount_in_text: {
+                type: DataTypes.STRING(300),
                 allowNull: true,
             },
             type: {

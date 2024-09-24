@@ -45,6 +45,16 @@ const Account: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
+                        <label>Account Number</label>
+                        <div className="form_elements">
+                            <input
+                                type="text"
+                                placeholder="Enter Account Number"
+                                name="account_number"
+                            />
+                        </div>
+                    </div>
+                    <div className="form-group form-horizontal">
                         <label>Opening Balance</label>
                         <div className="form_elements">
                             <input

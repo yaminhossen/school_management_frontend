@@ -35,13 +35,15 @@ class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
     declare branch_id: number;
-    declare account_category_id: number;
-    declare account_id: number;
-    declare account_period_id: number;
-    declare money_receipt_book_id: number;
-    declare receipt_no: string;
-    declare amount: number;
-    declare type: type;
+    declare account_category_id?: number;
+    declare account_id?: number;
+    declare account_period_id?: number;
+    declare money_receipt_book_id?: number;
+    declare receipt_no?: string;
+    declare date?: string;
+    declare amount?: number;
+    declare amount_in_text?: string;
+    declare type?: type;
 
     declare status?: status;
     declare creator?: number;
@@ -82,8 +84,16 @@ function init(sequelize: Sequelize) {
                 type: DataTypes.STRING(20),
                 allowNull: true,
             },
+            date: {
+                type: DataTypes.DATE,
+                allowNull: true,
+            },
             amount: {
                 type: DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
+            amount_in_text: {
+                type: DataTypes.STRING(300),
                 allowNull: true,
             },
             type: {
