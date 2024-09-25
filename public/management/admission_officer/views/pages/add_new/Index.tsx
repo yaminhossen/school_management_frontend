@@ -12,6 +12,7 @@ import { classes } from '../add_new/config/store/async_actions/classes';
 import { branches } from './config/store/async_actions/branches';
 import { sections } from './config/store/async_actions/sections';
 import { shifts } from './config/store/async_actions/shifts';
+import { preInfo } from './config/store/async_actions/pre_info';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -44,6 +45,7 @@ const Index: React.FC<Props> = (props: Props) => {
         await dispatch(branches({}) as any);
         await dispatch(sections({}) as any);
         await dispatch(shifts({}) as any);
+        await dispatch(preInfo({}) as any);
     }
 
     useEffect(() => {
@@ -210,7 +212,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Addmission no</label>
+                                    <label>Addmission No</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -220,12 +222,22 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Roll no</label>
+                                    <label>Roll No</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
                                             placeholder="roll no"
                                             name="role_no"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Student Id</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="student id"
+                                            name="student_id"
                                         />
                                     </div>
                                 </div>

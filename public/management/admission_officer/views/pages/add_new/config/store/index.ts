@@ -13,6 +13,7 @@ import { update } from './async_actions/update';
 import { soft_delete } from './async_actions/soft_delete';
 import { restore } from './async_actions/restore';
 import { destroy } from './async_actions/destroy';
+import { preInfo } from './async_actions/pre_info';
 import { import_data } from './async_actions/import_data';
 import { store_reducers } from './reducers';
 
@@ -38,6 +39,9 @@ const storeSlice = createSlice({
                 // console.log(type, payload, meta);
             })
             .addCase(details.fulfilled, (state, { type, payload, meta }) => {
+                // console.log(type, payload, meta);
+            })
+            .addCase(preInfo.fulfilled, (state, { type, payload, meta }) => {
                 // console.log(type, payload, meta);
             })
             .addCase(store.fulfilled, (state, { type, payload, meta }) => {

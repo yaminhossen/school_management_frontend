@@ -107,6 +107,13 @@ export const store_reducers = {
     ) => {
         state.shifts = action.payload;
     },
+
+    set_preInfo: (
+        state: typeof initialState,
+        action: PayloadAction<anyObject[]>,
+    ) => {
+        state.preInfo = action.payload;
+    },
     set_show_quick_view_canvas: (
         state: typeof initialState,
         action: PayloadAction<boolean>,
