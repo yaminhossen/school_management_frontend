@@ -1,0 +1,4 @@
+{"level":60,"time":1727244664680,"pid":8048,"hostname":"DESKTOP-9421701","file":"","time":"9/25/2024 12:11:04 PM","message":"Incorrect integer value: 'Six' for column 's_class' at row 1"}
+{"level":60,"time":1727245222082,"pid":3328,"hostname":"DESKTOP-9421701","file":"services\\details.ts:99:19)","time":"9/25/2024 12:20:22 PM","message":"Unknown column 'student_info->class.s_class' in 'field list'"}
+{"level":60,"time":1727245272882,"pid":3328,"hostname":"DESKTOP-9421701","file":"services\\details.ts:99:19)","time":"9/25/2024 12:21:12 PM","message":"Unknown column 'student_info->class.s_class' in 'field list'"}
+{"level":60,"time":1727245676016,"pid":9048,"hostname":"DESKTOP-9421701","file":"","time":"9/25/2024 12:27:56 PM","message":"Naming collision between attribute 'shift' and association 'shift' on model UserStudentInformationsModel. To remedy this, change either foreignKey or as in your association definition"}

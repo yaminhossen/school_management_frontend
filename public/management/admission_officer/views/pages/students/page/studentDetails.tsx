@@ -171,7 +171,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td className="font-medium text-dark-medium">
                                                 {
                                                     state.item?.student_info
-                                                        ?.s_class
+                                                        ?.class?.name
                                                 }
                                             </td>
                                         </tr>
@@ -181,7 +181,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td className="font-medium text-dark-medium">
                                                 {
                                                     state.item?.student_info
-                                                        ?.shift
+                                                        ?.student_shift?.title
                                                 }
                                             </td>
                                         </tr>
@@ -201,7 +201,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td className="font-medium text-dark-medium">
                                                 {
                                                     state.item?.student_info
-                                                        ?.section
+                                                        ?.student_section?.title
                                                 }
                                             </td>
                                         </tr>

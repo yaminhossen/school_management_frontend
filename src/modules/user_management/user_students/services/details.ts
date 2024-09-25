@@ -21,6 +21,9 @@ async function details(
     let languagesModel = models.UserStudentLanguagesModel;
     let studentParentsModel = models.UserStudentParentsModel;
     let parentsModel = models.UserParentsModel;
+    let branchClassesModel = models.BranchClassesModel;
+    let branchClasseSectionsModel = models.BranchClassSectionsModel;
+    let branchClasseShiftsModel = models.BranchClassShiftsModel;
     let params = req.params as any;
 
     try {
@@ -39,6 +42,20 @@ async function details(
                 {
                     model: informationsModel,
                     as: 'student_info',
+                    include: [
+                        {
+                            model: branchClassesModel,
+                            as: 'class',
+                        },
+                        {
+                            model: branchClasseSectionsModel,
+                            as: 'student_section',
+                        },
+                        {
+                            model: branchClasseShiftsModel,
+                            as: 'student_shift',
+                        },
+                    ],
                 },
                 {
                     model: contactNumbersModel,

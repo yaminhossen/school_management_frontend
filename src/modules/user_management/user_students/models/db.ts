@@ -115,6 +115,24 @@ const db = async function (): Promise<models> {
         as: 'student_info',
     });
 
+    UserStudentInformationsModel.hasOne(BranchClassesModel, {
+        sourceKey: 's_class',
+        foreignKey: 'id',
+        as: 'class',
+    });
+
+    UserStudentInformationsModel.hasOne(BranchClassShiftsModel, {
+        sourceKey: 'shift',
+        foreignKey: 'id',
+        as: 'student_shift',
+    });
+
+    UserStudentInformationsModel.hasOne(BranchClassSectionsModel, {
+        sourceKey: 'section',
+        foreignKey: 'id',
+        as: 'student_section',
+    });
+
     UserStudentsModel.hasMany(UserStudentInformationsModel, {
         sourceKey: 'id',
         foreignKey: 'user_student_id',
