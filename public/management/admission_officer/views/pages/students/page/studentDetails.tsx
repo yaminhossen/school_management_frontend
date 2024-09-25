@@ -500,6 +500,7 @@ const Details: React.FC<Props> = (props: Props) => {
                         <div>
                             <h4>Document</h4>
                             {Object.keys(state.item)?.length &&
+                                state.item?.document_titles &&
                                 state.item?.document_titles.map(
                                     (i: { [key: string]: any }) => {
                                         return (
@@ -574,6 +575,7 @@ const Details: React.FC<Props> = (props: Props) => {
                         <div>
                             <h4>Contact Numbers</h4>
                             {Object.keys(state.item)?.length &&
+                                state.item?.student_numbers &&
                                 state.item?.student_numbers.map(
                                     (i: { [key: string]: any }) => {
                                         return (
@@ -612,6 +614,7 @@ const Details: React.FC<Props> = (props: Props) => {
                         <div>
                             <h4>Skills</h4>
                             {Object.keys(state.item)?.length &&
+                                state.item?.skills &&
                                 state.item?.skills.map(
                                     (i: { [key: string]: any }) => {
                                         return (
@@ -646,6 +649,7 @@ const Details: React.FC<Props> = (props: Props) => {
                         <div>
                             <h4>Languages</h4>
                             {Object.keys(state.item)?.length &&
+                                state.item?.languages &&
                                 state.item?.languages.map(
                                     (i: { [key: string]: any }) => {
                                         return (
@@ -682,6 +686,7 @@ const Details: React.FC<Props> = (props: Props) => {
                         <div>
                             <h4>Educational Background</h4>
                             {Object.keys(state.item)?.length &&
+                                state.item?.educational_backgrounds &&
                                 state.item?.educational_backgrounds.map(
                                     (i: { [key: string]: any }) => {
                                         return (
@@ -752,6 +757,7 @@ const Details: React.FC<Props> = (props: Props) => {
                         <div>
                             <h4>Guardians</h4>
                             {Object.keys(state.item)?.length &&
+                                state.item?.parents &&
                                 state.item?.parents.map(
                                     (i: { [key: string]: any }) => {
                                         return (

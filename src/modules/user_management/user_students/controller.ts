@@ -113,6 +113,7 @@ export default function (fastify: FastifyInstance) {
         },
 
         all_class: async function (req: FastifyRequest, res: FastifyReply) {
+            // res.code(200).send('ldsfjdls');
             let data = await all_class(fastify, req);
             res.code(data.status).send(data);
         },

@@ -53,6 +53,7 @@ const Details: React.FC<Props> = (props: Props) => {
                             </thead>
                             <tbody id="all_list">
                                 {Object.keys(state.item)?.length &&
+                                    state.item.length &&
                                     state?.item?.map(
                                         (i: { [key: string]: any }) => {
                                             return (
