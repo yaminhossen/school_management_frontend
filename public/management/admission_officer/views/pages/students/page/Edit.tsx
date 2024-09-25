@@ -3,6 +3,7 @@ import setup from '../config/setup';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../../../store';
 import { initialState } from '../config/store/inital_state';
+import { initialState as addNewState } from '../../add_new/config/store/inital_state';
 import { update } from '../config/store/async_actions/update';
 import { Link, useParams } from 'react-router-dom';
 import storeSlice from '../config/store';
@@ -15,6 +16,11 @@ import ContactNumber from './components/ContactNumber';
 import Languages from './components/Languages';
 import Skill from './components/Skill';
 import Documents from './components/Document';
+
+import { classes } from '../../add_new/config/store/async_actions/classes';
+import { branches } from '../../add_new/config/store/async_actions/branches';
+import { sections } from '../../add_new/config/store/async_actions/sections';
+import { shifts } from '../../add_new/config/store/async_actions/shifts';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -31,6 +37,15 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalDocuments, setTotalDocument] = useState<anyObject[]>([]);
     // const [totalParent, setTotalParent] = useState<anyObject[]>([]);
     // let date22 = moment().format('YYYY-DD-MM');
+
+    async function initdependancy() {
+        // await dispatch(storeSlice.actions.set_item({}));
+        await dispatch(shifts({}) as any);
+        await dispatch(shifts({}) as any);
+        await dispatch(branches({}) as any);
+        await dispatch(classes({}) as any);
+        await dispatch(sections({}) as any);
+    }
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -62,6 +77,16 @@ const Index: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
+    const add_new_state: typeof addNewState = useSelector(
+        (state: RootState) => state['student_add_new'],
+    );
+
+    useEffect(() => {
+        initdependancy();
+    }, []);
+    useEffect(() => {
+        console.log('frontend state', add_new_state);
+    }, [add_new_state]);
 
     const params = useParams();
     console.log('id', params.id);
@@ -255,21 +280,27 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <div className="form_elements">
                                             <select
                                                 name="branch_id"
-                                                defaultValue={
-                                                    state.item.student_info
-                                                        ?.branch_id
-                                                }
+                                                // defaultValue={
+                                                //     state.item.student_info
+                                                //         ?.branch_id
+                                                // }
                                                 id=""
                                             >
-                                                <option value="1">
-                                                    Kustia
-                                                </option>
-                                                <option value="2">
-                                                    Demra, Dhaka
-                                                </option>
-                                                <option value="3">
-                                                    Uttora, Dhaka
-                                                </option>
+                                                {add_new_state?.branches
+                                                    ?.length &&
+                                                    add_new_state.branches?.map(
+                                                        (i: {
+                                                            [key: string]: any;
+                                                        }) => {
+                                                            return (
+                                                                <option
+                                                                    value={i.id}
+                                                                >
+                                                                    {i.name}
+                                                                </option>
+                                                            );
+                                                        },
+                                                    )}
                                             </select>
                                         </div>
                                     </div>
@@ -324,17 +355,21 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                                 id=""
                                             >
-                                                <option value="Six">Six</option>
-                                                <option value="Seven">
-                                                    Seven
-                                                </option>
-                                                <option value="Eight">
-                                                    Eight
-                                                </option>
-                                                <option value="Nine">
-                                                    Nine
-                                                </option>
-                                                <option value="Ten">Ten</option>
+                                                {add_new_state?.classes
+                                                    ?.length &&
+                                                    add_new_state.classes?.map(
+                                                        (i: {
+                                                            [key: string]: any;
+                                                        }) => {
+                                                            return (
+                                                                <option
+                                                                    value={i.id}
+                                                                >
+                                                                    {i.name}
+                                                                </option>
+                                                            );
+                                                        },
+                                                    )}
                                             </select>
                                         </div>
                                     </div>
@@ -343,24 +378,26 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <div className="form_elements">
                                             <select
                                                 name="shift"
-                                                defaultValue={
-                                                    state.item.student_info
-                                                        ?.shift
-                                                }
+                                                // defaultValue={
+                                                //     state.item.student_info
+                                                //         ?.shift
+                                                // }
                                                 id=""
                                             >
-                                                <option value="boy morning">
-                                                    boy morning
-                                                </option>
-                                                <option value="boy evening">
-                                                    boy evening
-                                                </option>
-                                                <option value="girls evening">
-                                                    girls evening
-                                                </option>
-                                                <option value="girl morning">
-                                                    girl morning
-                                                </option>
+                                                {add_new_state.shifts?.length &&
+                                                    add_new_state.shifts?.map(
+                                                        (i: {
+                                                            [key: string]: any;
+                                                        }) => {
+                                                            return (
+                                                                <option
+                                                                    value={i.id}
+                                                                >
+                                                                    {i.title}
+                                                                </option>
+                                                            );
+                                                        },
+                                                    )}
                                             </select>
                                         </div>
                                     </div>
@@ -369,19 +406,27 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <div className="form_elements">
                                             <select
                                                 name="section"
-                                                defaultValue={
-                                                    state.item.student_info
-                                                        ?.section
-                                                }
+                                                // defaultValue={
+                                                //     state.item.student_info
+                                                //         ?.section
+                                                // }
                                                 id=""
                                             >
-                                                <option value="c">c</option>
-                                                <option value="A section">
-                                                    A
-                                                </option>
-                                                <option value="B section">
-                                                    B
-                                                </option>
+                                                {add_new_state.sections
+                                                    ?.length &&
+                                                    add_new_state.sections?.map(
+                                                        (i: {
+                                                            [key: string]: any;
+                                                        }) => {
+                                                            return (
+                                                                <option
+                                                                    value={i.id}
+                                                                >
+                                                                    {i.title}
+                                                                </option>
+                                                            );
+                                                        },
+                                                    )}
                                             </select>
                                         </div>
                                     </div>
