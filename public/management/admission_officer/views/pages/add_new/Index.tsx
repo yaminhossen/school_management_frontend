@@ -49,7 +49,7 @@ const Index: React.FC<Props> = (props: Props) => {
     }
 
     useEffect(() => {
-        console.log('frontend state', state.classes);
+        // console.log('frontend state', state);
 
         initdependancy();
     }, []);
@@ -60,7 +60,7 @@ const Index: React.FC<Props> = (props: Props) => {
         setState(t);
     }
     if (state.classes) {
-        console.log('form frontend', state.classes);
+        console.log('form frontend', state);
     }
     // console.log('moment', moment().format('YYYY-DD-MM'));
     let date = moment().format('YYYY-MM-DD');
@@ -218,6 +218,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             type="text"
                                             placeholder="addmission no"
                                             name="admission_no"
+                                            value={state.preInfo?.admission_no}
                                         />
                                     </div>
                                 </div>
@@ -228,6 +229,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             type="text"
                                             placeholder="roll no"
                                             name="role_no"
+                                            value={state.preInfo?.role_no}
                                         />
                                     </div>
                                 </div>
@@ -238,6 +240,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             type="text"
                                             placeholder="student id"
                                             name="student_id"
+                                            value={state.preInfo?.student_id}
                                         />
                                     </div>
                                 </div>
