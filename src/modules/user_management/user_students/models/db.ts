@@ -22,6 +22,8 @@ import * as branch_class_shifts_model from './branch_class_shifts_model';
 import * as branches_model from './branches_model';
 import * as user_parents_model from './user_parents_model';
 import * as branch_class_subjects_model from './branch_class_subjects_model';
+import * as branch_class_fees_model from './branch_class_fees_model';
+import * as branch_class_fee_types_model from './branch_class_fee_types_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -59,6 +61,8 @@ interface models {
     BranchesModel: typeof branches_model.DataModel;
     UserParentsModel: typeof user_parents_model.DataModel;
     BranchClassSubjectsModel: typeof branch_class_subjects_model.DataModel;
+    BranchClassFeesModel: typeof branch_class_fees_model.DataModel;
+    BranchClassFeeTypesModel: typeof branch_class_fee_types_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -94,6 +98,9 @@ const db = async function (): Promise<models> {
     const UserParentsModel = user_parents_model.init(sequelize);
     const BranchClassSubjectsModel =
         branch_class_subjects_model.init(sequelize);
+    const BranchClassFeesModel = branch_class_fees_model.init(sequelize);
+    const BranchClassFeeTypesModel =
+        branch_class_fee_types_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync({ force: false });
@@ -119,6 +126,11 @@ const db = async function (): Promise<models> {
         sourceKey: 's_class',
         foreignKey: 'id',
         as: 'class',
+    });
+
+    BranchClassFeesModel.belongsTo(BranchClassFeeTypesModel, {
+        foreignKey: 'fee_type_id',
+        as: 'fees_types',
     });
 
     UserStudentInformationsModel.hasOne(BranchClassShiftsModel, {
@@ -244,6 +256,8 @@ const db = async function (): Promise<models> {
         BranchesModel,
         UserParentsModel,
         BranchClassSubjectsModel,
+        BranchClassFeesModel,
+        BranchClassFeeTypesModel,
         // Project,
 
         sequelize,

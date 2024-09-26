@@ -11,6 +11,14 @@ GET {{hostname}}/branches HTTP/1.1
 
 # get
 ###
+GET {{hostname}}/fees-categories/1 HTTP/1.1
+
+# get
+###
+GET {{hostname}}/student-class/CSE102 HTTP/1.1
+
+# get
+###
 GET {{hostname}}/class-routine/1 HTTP/1.1
 
 # get

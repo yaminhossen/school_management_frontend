@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -18,6 +18,18 @@ export interface Periodinfo {
     type: 'income' | 'expense';
     amount: number;
 }
+export interface ClassInfo {
+    account: { title: string };
+    class: object;
+    type: 'income' | 'expense';
+    amount: number;
+}
+export interface FeesInfo {
+    account: { title: string };
+    class: object;
+    type: 'income' | 'expense';
+    amount: number;
+}
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -26,6 +38,8 @@ const Index: React.FC<Props> = (props: Props) => {
     const [accounts, setAccounts] = useState<Accountinfo[]>([]);
     const [categories, setCategories] = useState<Categoryinfo[]>([]);
     const [periods, setPeriods] = useState<Periodinfo[]>([]);
+    const [classes, setClass] = useState<ClassInfo[]>([]);
+    const [feesTypes, setFeesTypes] = useState<FeesInfo[]>([]);
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         let formData = new FormData(e.target);
@@ -73,15 +87,44 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
+    const studentIdRef = useRef<HTMLInputElement>(null);
+    const fetchClass = async (id: string) => {
+        try {
+            const response = await axios.get(
+                `/api/v1/user-students/student-class/${id}`,
+            );
+            setClass(response.data.data);
+
+            const response2 = await axios.get(
+                '/api/v1/user-students/fees-categories/1',
+            );
+            setFeesTypes(response2.data.data);
+
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
 
     useEffect(() => {
         fetchAccounts();
         fetchAccountCategorys();
         fetchPeriods();
+        // fetchClass();
     }, []);
+    const handleStudentIdBlur = () => {
+        const id = studentIdRef.current?.value; // Get the value from the ref
+        console.log('studnet_id', id);
+
+        if (id) {
+            fetchClass(id); // Pass the id to fetchClass
+        }
+    };
     console.log('account', accounts);
     console.log('category', categories);
     console.log('periods', periods);
+    console.log('classes', classes);
+    console.log('feestypes', feesTypes);
     let date = moment().format('YYYY-MM-DD');
 
     return (
@@ -101,9 +144,22 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Student Id</label>
                                     <div className="form_elements">
                                         <input
-                                            type="number"
+                                            type="text"
                                             placeholder="student id"
                                             name="student_id"
+                                            ref={studentIdRef} // Assign ref here
+                                            onBlur={handleStudentIdBlur}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Class</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="student Class"
+                                            // name="student_id"
+                                            value={classes.class?.name}
                                         />
                                     </div>
                                 </div>
@@ -266,14 +322,71 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <th>Title</th>
                                         <th>Fees</th>
                                         <th>Given Amount</th>
+                                        <th>select</th>
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
+                                    {/* {categories?.length &&
+                                        categories?.map(
+                                            (i: { [key: string]: any }) => {
+                                                return (
+                                                    <tr>
+                                                        <td>{i.title}</td>
+                                                        <td>5000</td>
+                                                        <td>
+                                                            <input type="number" />
+                                                        </td>
+                                                        <td>
+                                                            <input
+                                                                type="checkbox"
+                                                                name=""
+                                                                id=""
+                                                            />
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            },
+                                        )} */}
                                     <tr>
                                         <td>Addmission bill</td>
                                         <td>5000</td>
                                         <td>
                                             <input type="number" />
+                                        </td>
+                                        <td>
+                                            <input
+                                                type="checkbox"
+                                                name=""
+                                                id=""
+                                            />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Coaching bill</td>
+                                        <td>4000</td>
+                                        <td>
+                                            <input type="number" />
+                                        </td>
+                                        <td>
+                                            <input
+                                                type="checkbox"
+                                                name=""
+                                                id=""
+                                            />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tution bill</td>
+                                        <td>3000</td>
+                                        <td>
+                                            <input type="number" />
+                                        </td>
+                                        <td>
+                                            <input
+                                                type="checkbox"
+                                                name=""
+                                                id=""
+                                            />
                                         </td>
                                     </tr>
                                 </tbody>

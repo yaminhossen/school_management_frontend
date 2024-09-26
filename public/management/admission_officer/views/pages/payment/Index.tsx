@@ -130,10 +130,38 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Amount</label>
                                     <div className="form_elements">
-                                        <input
+                                        {/* <input
                                             type="number"
                                             placeholder="enter your amount"
                                             name="amount"
+                                        /> */}
+                                        <input
+                                            name={'amount'}
+                                            onChange={(e) => {
+                                                let el = document.querySelector(
+                                                    'input[name="amount_in_text"]',
+                                                );
+                                                if (el) {
+                                                    (
+                                                        el as HTMLInputElement
+                                                    ).value =
+                                                        (
+                                                            window as any
+                                                        ).convertAmount(
+                                                            e.target.value,
+                                                        ).en + ' tk only';
+                                                }
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Amount In Text</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            // placeholder="enter your amount"
+                                            name="amount_in_text"
                                         />
                                     </div>
                                 </div>

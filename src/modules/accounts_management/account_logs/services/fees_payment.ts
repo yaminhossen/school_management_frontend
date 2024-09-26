@@ -83,6 +83,7 @@ async function store(
         money_receipt_book_id: body.mrb_id || 1,
         receipt_no: body.receipt_no,
         amount: body.amount,
+        date: body.date,
         type: body.type,
     };
     // console.log('body for fees', body);
