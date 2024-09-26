@@ -57,3 +57,17 @@
 {"level":60,"time":1727257379630,"pid":7420,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/sections"}
 {"level":60,"time":1727257379641,"pid":7420,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/shifts"}
 {"level":60,"time":1727257379648,"pid":7420,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/pre-info"}
+{"level":60,"time":1727265593784,"pid":16264,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
+{"level":60,"time":1727265672930,"pid":16264,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
+{"level":60,"time":1727265716459,"pid":16264,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
+{"level":60,"time":1727265717154,"pid":16264,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
+{"level":60,"time":1727265764844,"pid":16264,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
+{"level":60,"time":1727324487190,"pid":1696,"hostname":"DESKTOP-9421701","error":"404","url":"/transcript.pdf"}
+{"level":60,"time":1727325383805,"pid":1696,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/categories"}
+{"level":60,"time":1727325383811,"pid":1696,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/accounts"}
+{"level":60,"time":1727325383817,"pid":1696,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/receipt-book"}
+{"level":60,"time":1727325383821,"pid":1696,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/periods"}
+{"level":60,"time":1727326838626,"pid":13704,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/categories"}
+{"level":60,"time":1727326838641,"pid":13704,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/accounts"}
+{"level":60,"time":1727326838648,"pid":13704,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/receipt-book"}
+{"level":60,"time":1727326838654,"pid":13704,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/periods"}

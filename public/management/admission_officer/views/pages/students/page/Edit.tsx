@@ -333,6 +333,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
+                                        <label>Student Id</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                placeholder="student id"
+                                                name="student_id"
+                                                defaultValue={
+                                                    state.item.student_info
+                                                        ?.student_id
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
                                         <label>Addmission date</label>
                                         <div className="form_elements">
                                             <input

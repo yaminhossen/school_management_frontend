@@ -73,7 +73,10 @@ const Details: React.FC<Props> = (props: Props) => {
                                                         {i.infostudent?.role_no}
                                                     </td>
                                                     <td>
-                                                        {i.infostudent?.s_class}
+                                                        {
+                                                            i.infostudent?.class
+                                                                ?.name
+                                                        }
                                                     </td>
                                                     <td>
                                                         <Link

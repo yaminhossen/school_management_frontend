@@ -33,6 +33,12 @@ async function class_details(
                 {
                     model: informationsModel,
                     as: 'infostudent',
+                    include: [
+                        {
+                            model: classesModel,
+                            as: 'class',
+                        },
+                    ],
                 },
             ],
         });

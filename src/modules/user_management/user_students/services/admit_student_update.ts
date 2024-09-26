@@ -532,40 +532,40 @@ async function store(
                     (await uss_model.update(uss_inputs)).save();
                 });
             }
-            if (student_document) {
-                student_document.forEach(async (ss) => {
-                    let usdv_model =
-                        new models.UserStudentDocumentValuesModel();
-                    let usdv_inputs: InferCreationAttributes<
-                        typeof usdv_model
-                    > = {
-                        user_student_id: 1,
-                        user_student_document_title_id: 1,
-                        file: '',
-                        issue_date: body.issue_date,
-                        expire_date: body.expire_date,
-                    };
-                    if (usdv_model) {
-                        usdv_inputs.user_student_id = body.id || 1;
-                        usdv_inputs.file = ss.file;
-                        usdv_inputs.issue_date = ss.issue_date;
-                        usdv_inputs.expire_date = ss.expire_date;
-                        usdv_inputs.user_student_document_title_id =
-                            usdv_model.id || 1;
-                        let sdvModel =
-                            await models.UserStudentDocumentValuesModel.findOne(
-                                {
-                                    where: {
-                                        user_student_id: body.id,
-                                    },
-                                },
-                            );
-                        if (sdvModel) {
-                            (await sdvModel.update(usdv_inputs)).save();
-                        }
-                    }
-                });
-            }
+            // if (student_document) {
+            //     student_document.forEach(async (ss) => {
+            //         let usdv_model =
+            //             new models.UserStudentDocumentValuesModel();
+            //         let usdv_inputs: InferCreationAttributes<
+            //             typeof usdv_model
+            //         > = {
+            //             user_student_id: 1,
+            //             user_student_document_title_id: 1,
+            //             file: '',
+            //             issue_date: body.issue_date,
+            //             expire_date: body.expire_date,
+            //         };
+            //         if (usdv_model) {
+            //             usdv_inputs.user_student_id = body.id || 1;
+            //             usdv_inputs.file = ss.file;
+            //             usdv_inputs.issue_date = ss.issue_date;
+            //             usdv_inputs.expire_date = ss.expire_date;
+            //             usdv_inputs.user_student_document_title_id =
+            //                 usdv_model.id || 1;
+            //             let sdvModel =
+            //                 await models.UserStudentDocumentValuesModel.findOne(
+            //                     {
+            //                         where: {
+            //                             user_student_id: body.id,
+            //                         },
+            //                     },
+            //                 );
+            //             if (sdvModel) {
+            //                 (await sdvModel.update(usdv_inputs)).save();
+            //             }
+            //         }
+            //     });
+            // }
             // if (student_document_file) {
             //     student_document_file.forEach(async (ss) => {
             //         let usdt_model =
