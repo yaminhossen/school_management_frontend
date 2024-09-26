@@ -23,6 +23,7 @@ export interface ClassInfo {
     class: object;
     type: 'income' | 'expense';
     amount: number;
+    s_class: number;
 }
 export interface FeesInfo {
     account: { title: string };
@@ -38,8 +39,9 @@ const Index: React.FC<Props> = (props: Props) => {
     const [accounts, setAccounts] = useState<Accountinfo[]>([]);
     const [categories, setCategories] = useState<Categoryinfo[]>([]);
     const [periods, setPeriods] = useState<Periodinfo[]>([]);
-    const [classes, setClass] = useState<ClassInfo[]>([]);
+    const [classes, setClass] = useState<any>([]);
     const [feesTypes, setFeesTypes] = useState<FeesInfo[]>([]);
+    const [totalAmount, setTotalAmount] = useState(0);
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         let formData = new FormData(e.target);
@@ -95,8 +97,20 @@ const Index: React.FC<Props> = (props: Props) => {
             );
             setClass(response.data.data);
 
+            // const response2 = await axios.get(
+            //     '/api/v1/user-students/fees-categories/1',
+            // );
+            // setFeesTypes(response2.data.data);
+
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+    const fetchTypes = async (id: string) => {
+        try {
             const response2 = await axios.get(
-                '/api/v1/user-students/fees-categories/1',
+                `/api/v1/user-students/fees-categories/${id}`,
             );
             setFeesTypes(response2.data.data);
 
@@ -120,10 +134,22 @@ const Index: React.FC<Props> = (props: Props) => {
             fetchClass(id); // Pass the id to fetchClass
         }
     };
-    console.log('account', accounts);
-    console.log('category', categories);
-    console.log('periods', periods);
-    console.log('classes', classes);
+    useEffect(() => {
+        if (classes) {
+            console.log('newlsdfjdslkfjdlsj', classes);
+            let id = classes.s_class;
+            console.log('newlsdfjdslkfjdlsj', id);
+            fetchTypes(id);
+        }
+    }, [classes]);
+    useEffect(() => {
+        let sum = feesTypes.reduce(
+            (t, i: anyObject) => (t += +(i.input_amount || 0)),
+            0,
+        );
+        setTotalAmount(sum);
+    }, [feesTypes]);
+
     console.log('feestypes', feesTypes);
     let date = moment().format('YYYY-MM-DD');
 
@@ -163,14 +189,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-vertical">
-                                    <label>Branch</label>
-                                    <div className="form_elements">
-                                        <select name="branch_id" id="">
-                                            <option value={1}>gjfjhj</option>
-                                        </select>
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Date</label>
                                     <div className="form_elements">
@@ -186,11 +204,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Amount</label>
                                     <div className="form_elements">
-                                        {/* <input
-                                            type="number"
-                                            placeholder="enter your amount"
-                                            name="amount"
-                                        /> */}
                                         <input
                                             name={'amount'}
                                             onChange={(e) => {
@@ -322,32 +335,49 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <th>Title</th>
                                         <th>Fees</th>
                                         <th>Given Amount</th>
-                                        <th>select</th>
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
-                                    {/* {categories?.length &&
-                                        categories?.map(
-                                            (i: { [key: string]: any }) => {
+                                    <input
+                                        type="hidden"
+                                        name="total_fees_count"
+                                        value={feesTypes.length}
+                                    />
+                                    {feesTypes?.length &&
+                                        feesTypes?.map(
+                                            (
+                                                i: { [key: string]: any },
+                                                index,
+                                            ) => {
                                                 return (
                                                     <tr>
-                                                        <td>{i.title}</td>
-                                                        <td>5000</td>
-                                                        <td>
-                                                            <input type="number" />
-                                                        </td>
+                                                        <td>{i.name}</td>
+                                                        <td>{i.amount}</td>
                                                         <td>
                                                             <input
-                                                                type="checkbox"
-                                                                name=""
-                                                                id=""
+                                                                name={`fess_${i.id}`}
+                                                                type="number"
+                                                                onChange={(
+                                                                    event,
+                                                                ) => {
+                                                                    let temp = [
+                                                                        ...feesTypes,
+                                                                    ];
+                                                                    temp[index][
+                                                                        'input_amount'
+                                                                    ] =
+                                                                        event?.target.value;
+                                                                    setFeesTypes(
+                                                                        temp,
+                                                                    );
+                                                                }}
                                                             />
                                                         </td>
                                                     </tr>
                                                 );
                                             },
-                                        )} */}
-                                    <tr>
+                                        )}
+                                    {/* <tr>
                                         <td>Addmission bill</td>
                                         <td>5000</td>
                                         <td>
@@ -388,8 +418,33 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 id=""
                                             />
                                         </td>
-                                    </tr>
+                                    </tr> */}
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td>Total</td>
+                                        <td>
+                                            {totalAmount}
+                                            <input
+                                                type="text"
+                                                name="total_amount"
+                                            />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Total</td>
+                                        <td>
+                                            {
+                                                (window as any).convertAmount(
+                                                    totalAmount,
+                                                ).bn
+                                            }{' '}
+                                            টাকা মাত্র
+                                        </td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

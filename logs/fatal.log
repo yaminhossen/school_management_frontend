@@ -509,3 +509,5 @@
 {"level":60,"time":1727340429000,"pid":4624,"hostname":"DESKTOP-9421701","file":"","time":"9/26/2024 2:47:09 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1727344094692,"pid":18244,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:71:19)","time":"9/26/2024 3:48:14 PM","message":"WHERE parameter \"student_id\" has invalid \"undefined\" value"}
 {"level":60,"time":1727344136064,"pid":11540,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:64:19)","time":"9/26/2024 3:48:56 PM","message":"data not found"}
+{"level":60,"time":1727344246313,"pid":13256,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:64:19)","time":"9/26/2024 3:50:46 PM","message":"data not found"}
+{"level":60,"time":1727344305497,"pid":13256,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:64:19)","time":"9/26/2024 3:51:45 PM","message":"data not found"}
