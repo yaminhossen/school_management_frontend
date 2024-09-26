@@ -105,3 +105,5 @@
 {"level":60,"time":1727336159518,"pid":11848,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
 {"level":60,"time":1727336160243,"pid":11848,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
 {"level":60,"time":1727336161115,"pid":11848,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
+{"level":60,"time":1727345495037,"pid":13256,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/account/account.js"}
+{"level":60,"time":1727349259349,"pid":13256,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
