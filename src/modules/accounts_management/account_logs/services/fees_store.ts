@@ -71,21 +71,38 @@ async function store(
 
     /** initializations */
     let models = await db();
-    let body = req.body as anyObject;
     let data = new models.AccountLogsModel();
     let afc_model = new models.AccountFeeCollectionsModel();
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: 1,
-        account_category_id: body.category_id || 1,
-        account_id: body.account_id || 1,
-        account_period_id: body.period_id || 1,
-        money_receipt_book_id: body.mrb_id || 1,
-        receipt_no: body.receipt_no,
-        amount: body.amount,
-        type: body.type,
+        account_category_id: (req.body as anyObject).category_id || 1,
+        account_id: (req.body as anyObject).account_id || 1,
+        account_period_id: (req.body as anyObject).period_id || 1,
+        money_receipt_book_id: (req.body as anyObject).mrb_id || 1,
+        receipt_no: (req.body as anyObject).receipt_no,
+        amount: (req.body as anyObject).amount,
+        type: (req.body as anyObject).type,
     };
-    console.log('body for fees store', body);
+    let student_fees: anyObject[] = [];
+    for (
+        let i = 0;
+        i <= parseInt((req.body as anyObject).total_fees_count);
+        i++
+    ) {
+        // console.log('dklfs', i);
+        let fees = (req.body as anyObject)[`fees_${i}`];
+        if (fees) {
+            let temp = {
+                receipt_no: (req.body as anyObject).receipt_no,
+                amount: (req.body as anyObject)[`fees_${i}`],
+                type: (req.body as anyObject)[`fees_type_${i}`],
+            };
+            student_fees.push(temp);
+        }
+    }
+    console.log('body for fees store', student_fees);
+    // console.log('body for fees store', req.body as anyObject);
 
     /** print request data into console */
     // console.clear();
@@ -95,7 +112,7 @@ async function store(
     try {
         let data2 = await models.UserStudentInformationsModel.findOne({
             where: {
-                user_student_id: body.student_id,
+                user_student_id: (req.body as anyObject).student_id,
             },
         });
         console.log('data sclass', data2?.s_class);
@@ -105,12 +122,12 @@ async function store(
         // (await data.update(inputs)).save();
         if (data) {
             let afc_inputs: InferCreationAttributes<typeof afc_model> = {
-                branch_id: body.branch_id,
-                branch_student_id: body.student_id,
+                branch_id: (req.body as anyObject).branch_id,
+                branch_student_id: (req.body as anyObject).student_id,
                 branch_student_class_id: s_class || 1,
-                date: body.date,
-                amount: body.amount,
-                account_category_id: body.category_id || 1,
+                date: (req.body as anyObject).date,
+                amount: (req.body as anyObject).amount,
+                account_category_id: (req.body as anyObject).category_id || 1,
                 account_log_id: data.id || 1,
             };
             // (await afc_model.update(afc_inputs)).save();

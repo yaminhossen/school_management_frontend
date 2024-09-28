@@ -393,7 +393,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <td>{i.amount}</td>
                                                         <td>
                                                             <input
-                                                                name={`aaaa`}
+                                                                type="text"
+                                                                name={`fees_type_${index}`}
+                                                                value={i.id}
+                                                            />
+                                                            <input
+                                                                name={`fees_${index}`}
                                                                 type="number"
                                                                 onChange={(
                                                                     event,
