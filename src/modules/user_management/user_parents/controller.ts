@@ -16,6 +16,7 @@ import data_import from './services/import';
 import login from './services/login';
 import logout from './services/logout';
 import forget from './services/forget';
+import mojor_informaion from './services/major_information';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -26,6 +27,14 @@ export default function (fastify: FastifyInstance) {
 
         find: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        mojor_informaion: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await mojor_informaion(fastify, req);
             res.code(data.status).send(data);
         },
 
