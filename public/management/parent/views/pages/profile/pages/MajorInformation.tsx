@@ -16,7 +16,7 @@ const MajorInformation: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/user-parents/major-information/8',
+                '/api/v1/user-parents/basic-information/8',
             );
             setData(response.data.data);
             // setData(response.data);
@@ -40,28 +40,28 @@ const MajorInformation: React.FC<Props> = (props: Props) => {
                             {data.name}
                         </td>
                     </tr>
-                    <tr>
+                    {/* <tr>
                         <td>Gender:</td>
                         <td className="font-medium text-dark-medium">
                             {data.name}
                         </td>
-                    </tr>
+                    </tr> */}
                     <tr>
                         <td>Email:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.name}
+                            {data.email}
                         </td>
                     </tr>
                     <tr>
                         <td>Phone number:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.name}
+                            {data.phone_number}
                         </td>
                     </tr>
                     <tr>
                         <td>Stutas:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.name}
+                            {data.status}
                         </td>
                     </tr>
                 </tbody>

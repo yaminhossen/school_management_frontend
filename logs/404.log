@@ -131,3 +131,4 @@
 {"level":60,"time":1727510577937,"pid":18044,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/major-information/8"}
 {"level":60,"time":1727510578153,"pid":18044,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/major-information/8"}
 {"level":60,"time":1727510578159,"pid":18044,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/major-information/8"}
+{"level":60,"time":1727515702355,"pid":3116,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/account/account.js"}

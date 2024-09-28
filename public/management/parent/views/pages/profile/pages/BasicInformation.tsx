@@ -1,8 +1,34 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../../common_types/object';
+import { Link, Outlet } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const BasicInformation: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+    const [data, setData] = useState<any>([]);
+
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/user-parents/basic-information/8',
+            );
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
     return (
         <div className="admin_dashboard">
             <h3 className="table_heading">Basic information</h3>
@@ -10,7 +36,9 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                 <tbody>
                     <tr>
                         <td>Permanent Address:</td>
-                        <td className="font-medium text-dark-medium">Pabna</td>
+                        <td className="font-medium text-dark-medium">
+                            {data.parent_infos?.parmenent_address}
+                        </td>
                     </tr>
                     <tr>
                         <td>Present Address:</td>

@@ -252,7 +252,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             </option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Account Category</label>
                                     <div className="form_elements">
@@ -273,7 +273,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 )}
                                         </select>
                                     </div>
-                                </div> */}
+                                </div>
                                 <div className="form-group form-vertical">
                                     <label>Account</label>
                                     <div className="form_elements">
@@ -393,7 +393,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <td>{i.amount}</td>
                                                         <td>
                                                             <input
-                                                                type="text"
+                                                                type="hidden"
                                                                 name={`fees_type_${index}`}
                                                                 value={i.id}
                                                             />

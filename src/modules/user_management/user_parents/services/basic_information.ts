@@ -5,12 +5,13 @@ import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 
-async function full_details(
+async function basic_information(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
     let parentsModel = models.UserParentsModel;
+    let parentInformationsModel = models.UserParentInformationsModel;
     let params = req.params as any;
 
     try {
@@ -21,12 +22,12 @@ async function full_details(
             attributes: {
                 exclude: ['password'],
             },
-            // include: [
-            //     {
-            //         model: skillsModel,
-            //         as: 'skills',
-            //     },
-            // ],
+            include: [
+                {
+                    model: parentInformationsModel,
+                    as: 'parent_infos',
+                },
+            ],
         });
 
         if (data) {
@@ -45,4 +46,4 @@ async function full_details(
     }
 }
 
-export default full_details;
+export default basic_information;
