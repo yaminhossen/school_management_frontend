@@ -151,6 +151,7 @@ const Index: React.FC<Props> = (props: Props) => {
     }, [feesTypes]);
 
     console.log('feestypes', feesTypes);
+    console.log('classes', classes);
     let date = moment().format('YYYY-MM-DD');
 
     return (
@@ -178,17 +179,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-vertical">
-                                    <label>Class</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="student Class"
-                                            // name="student_id"
-                                            value={classes.class?.name}
-                                        />
-                                    </div>
-                                </div>
+                                <input
+                                    type="hidden"
+                                    placeholder="student Class"
+                                    name="class"
+                                    value={classes.s_class}
+                                />
                                 <div className="form-group form-vertical">
                                     <label>Date</label>
                                     <div className="form_elements">
@@ -201,7 +197,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-vertical">
+                                {/* <div className="form-group form-vertical">
                                     <label>Amount</label>
                                     <div className="form_elements">
                                         <input
@@ -233,7 +229,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             name="amount_in_text"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Receipt No</label>
                                     <div className="form_elements">
@@ -244,7 +240,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-vertical">
+                                {/* <div className="form-group form-vertical">
                                     <label>Type</label>
                                     <div className="form_elements">
                                         <select name="type" id="">
@@ -277,7 +273,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 )}
                                         </select>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Account</label>
                                     <div className="form_elements">
@@ -329,6 +325,48 @@ const Index: React.FC<Props> = (props: Props) => {
                     </div>
                     <div className="data_list">
                         <div className="table_responsive  custom_scroll">
+                            <table className="mb-4">
+                                <thead>
+                                    <tr>
+                                        {/* <th>Serial</th> */}
+                                        <th>Title</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="all_list">
+                                    <tr>
+                                        {/* <td>1</td> */}
+                                        <td>Name</td>
+                                        <td>{classes.student?.name}</td>
+                                    </tr>
+                                    <tr>
+                                        {/* <td>1</td> */}
+                                        <td>ID</td>
+                                        <td>{classes.student_id}</td>
+                                    </tr>
+                                    <tr>
+                                        {/* <td>1</td> */}
+                                        <td>Class</td>
+                                        <td>{classes.class?.name}</td>
+                                    </tr>
+                                    <tr>
+                                        {/* <td>1</td> */}
+                                        <td>Addmission No</td>
+                                        <td>{classes.addmission_no}</td>
+                                    </tr>
+                                    <tr>
+                                        {/* <td>1</td> */}
+                                        <td>Photo</td>
+                                        <td>
+                                            <img
+                                                height="40px"
+                                                src={classes.student?.image}
+                                                alt=""
+                                            />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             <table className="">
                                 <thead>
                                     <tr>
@@ -355,7 +393,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <td>{i.amount}</td>
                                                         <td>
                                                             <input
-                                                                name={`fess_${i.id}`}
+                                                                name={`${i.name}`}
                                                                 type="number"
                                                                 onChange={(
                                                                     event,
@@ -377,59 +415,17 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 );
                                             },
                                         )}
-                                    {/* <tr>
-                                        <td>Addmission bill</td>
-                                        <td>5000</td>
-                                        <td>
-                                            <input type="number" />
-                                        </td>
-                                        <td>
-                                            <input
-                                                type="checkbox"
-                                                name=""
-                                                id=""
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Coaching bill</td>
-                                        <td>4000</td>
-                                        <td>
-                                            <input type="number" />
-                                        </td>
-                                        <td>
-                                            <input
-                                                type="checkbox"
-                                                name=""
-                                                id=""
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tution bill</td>
-                                        <td>3000</td>
-                                        <td>
-                                            <input type="number" />
-                                        </td>
-                                        <td>
-                                            <input
-                                                type="checkbox"
-                                                name=""
-                                                id=""
-                                            />
-                                        </td>
-                                    </tr> */}
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <td></td>
                                         <td>Total</td>
                                         <td>
-                                            {totalAmount}
-                                            <input
+                                            {totalAmount} tk
+                                            {/* <input
                                                 type="text"
                                                 name="total_amount"
-                                            />
+                                            /> */}
                                         </td>
                                     </tr>
                                     <tr>

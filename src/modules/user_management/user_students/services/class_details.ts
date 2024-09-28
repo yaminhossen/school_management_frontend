@@ -15,7 +15,7 @@ async function class_details(
     let classesModel = models.BranchClassesModel;
     let classStudentsModel = models.BranchClassStudentsModel;
     let params = req.params as any;
-    console.log('class', params.id);
+    console.log('this is class ok', params.id);
 
     try {
         let data = await classStudentsModel.findAll({

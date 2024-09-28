@@ -122,6 +122,12 @@ const db = async function (): Promise<models> {
         as: 'student_info',
     });
 
+    // UserStudentInformationsModel.hasOne(UserStudentsModel, {
+    //     sourceKey: 'user_student_id',
+    //     foreignKey: 'id',
+    //     as: 'student',
+    // });
+
     UserStudentInformationsModel.hasOne(BranchClassesModel, {
         sourceKey: 's_class',
         foreignKey: 'id',

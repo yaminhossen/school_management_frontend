@@ -32,31 +32,12 @@ async function student_class(
                     model: classesModel,
                     as: 'class',
                 },
+                {
+                    model: studentsModel,
+                    as: 'student',
+                },
             ],
         });
-
-        // let Dbresponse = await classesModel.findAndCountAll({
-        //     where: {
-        //         branch_id: staff?.branch_id,
-        //     },
-        //     // include: [
-        //     //     {
-        //     //         model: classStudentsModel,
-        //     //         as: 'branch_classes',
-        //     //     },
-        //     // ],
-        // });
-
-        // // let data = Dbresponse.rows.map((i) => i.toJSON());
-        // console.log(data);
-
-        // // let data: anyObject[] = [];
-        // for (let index = 0; index < data.length; index++) {
-        //     const element: anyObject = data[index];
-        //     element.count = await classStudentsModel.count({
-        //         where: { branch_class_id: element.id },
-        //     });
-        // }
 
         if (data) {
             return response(200, 'data created', data);
