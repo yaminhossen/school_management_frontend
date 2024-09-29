@@ -42,63 +42,65 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                     </tr>
                     <tr>
                         <td>Present Address:</td>
-                        <td className="font-medium text-dark-medium">Dhaka</td>
-                    </tr>
-                    <tr>
-                        <td>Country:</td>
                         <td className="font-medium text-dark-medium">
-                            Bangladeshi
+                            {data.parent_infos?.present_address}
                         </td>
                     </tr>
                     <tr>
+                        <td>Country:</td>
+                        <td className="font-medium text-dark-medium">What</td>
+                    </tr>
+                    <tr>
                         <td>District:</td>
-                        <td className="font-medium text-dark-medium">Pabna</td>
+                        <td className="font-medium text-dark-medium">What</td>
                     </tr>
                     <tr>
                         <td>Thana:</td>
-                        <td className="font-medium text-dark-medium">Pabna</td>
+                        <td className="font-medium text-dark-medium">What</td>
                     </tr>
                     <tr>
                         <td>Graduation:</td>
-                        <td className="font-medium text-dark-medium">BSc</td>
+                        <td className="font-medium text-dark-medium">
+                            {data.parent_infos?.graduation}
+                        </td>
                     </tr>
                     <tr>
                         <td>Qualification:</td>
-                        <td className="font-medium text-dark-medium">BSc</td>
+                        <td className="font-medium text-dark-medium">What</td>
                     </tr>
                     <tr>
-                        <td>Experience:</td>
+                        <td>Occupation:</td>
                         <td className="font-medium text-dark-medium">
-                            6 Years teaching in notre dame school
+                            {data.parent_infos?.occupation}
                         </td>
                     </tr>
                     <tr>
                         <td>Department:</td>
-                        <td className="font-medium text-dark-medium">
-                            English
-                        </td>
+                        <td className="font-medium text-dark-medium">What</td>
                     </tr>
                     <tr>
                         <td>Blood Groupe:</td>
-                        <td className="font-medium text-dark-medium">AB +</td>
+                        <td className="font-medium text-dark-medium">What</td>
                     </tr>
                     <tr>
                         <td>IsMarried:</td>
-                        <td className="font-medium text-dark-medium">Yes</td>
-                    </tr>
-                    <tr>
-                        <td>Class:</td>
-                        <td className="font-medium text-dark-medium">Six</td>
+                        <td className="font-medium text-dark-medium">
+                            {data.parent_infos?.ismarried == true
+                                ? 'Yes'
+                                : 'No'}
+                        </td>
                     </tr>
                     <tr>
                         <td>Guardian Contact Number:</td>
                         <td className="font-medium text-dark-medium">
-                            01879838345
+                            {data.phone_number}
                         </td>
                     </tr>
                     <tr>
                         <td>Stutas:</td>
-                        <td className="font-medium text-dark-medium">Active</td>
+                        <td className="font-medium text-dark-medium">
+                            {data.status}
+                        </td>
                     </tr>
                 </tbody>
             </table>

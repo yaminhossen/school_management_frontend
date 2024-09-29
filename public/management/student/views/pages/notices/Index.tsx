@@ -7,7 +7,7 @@ export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    const [data, setData] = useState();
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         // Function to fetch data
