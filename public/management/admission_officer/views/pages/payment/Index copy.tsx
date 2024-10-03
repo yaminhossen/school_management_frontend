@@ -84,6 +84,16 @@ const Index: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
+                                {/* <div className="form-group form-vertical">
+                                    <label>Class</label>
+                                    <div className="form_elements">
+                                        <select name="class" id="">
+                                            <option value="5">Ten</option>
+                                            <option value="2">Six</option>
+                                            <option value="3">Seven</option>
+                                        </select>
+                                    </div>
+                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Branch</label>
                                     <div className="form_elements">

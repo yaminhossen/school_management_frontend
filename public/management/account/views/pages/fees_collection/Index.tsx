@@ -197,39 +197,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-vertical">
-                                    <label>Amount</label>
-                                    <div className="form_elements">
-                                        <input
-                                            name={'amount'}
-                                            onChange={(e) => {
-                                                let el = document.querySelector(
-                                                    'input[name="amount_in_text"]',
-                                                );
-                                                if (el) {
-                                                    (
-                                                        el as HTMLInputElement
-                                                    ).value =
-                                                        (
-                                                            window as any
-                                                        ).convertAmount(
-                                                            e.target.value,
-                                                        ).en + ' tk only';
-                                                }
-                                            }}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
-                                    <label>Amount In Text</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            // placeholder="enter your amount"
-                                            name="amount_in_text"
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Receipt No</label>
                                     <div className="form_elements">
@@ -240,19 +207,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-vertical">
-                                    <label>Type</label>
-                                    <div className="form_elements">
-                                        <select name="type" id="">
-                                            <option value="income">
-                                                Income
-                                            </option>
-                                            <option value="expense">
-                                                Expense
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Account Category</label>
                                     <div className="form_elements">
