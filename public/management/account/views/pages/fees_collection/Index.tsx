@@ -201,7 +201,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Receipt No</label>
                                     <div className="form_elements">
                                         <input
-                                            type="number"
+                                            type="text"
                                             placeholder="enter receipt page no"
                                             name="receipt_no"
                                         />
@@ -210,7 +210,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Account Category</label>
                                     <div className="form_elements">
-                                        <select name="category_id" id="">
+                                        <select
+                                            name="account_category_id"
+                                            id=""
+                                        >
                                             {categories?.length &&
                                                 categories?.map(
                                                     (i: {
@@ -252,7 +255,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Account Period</label>
                                     <div className="form_elements">
-                                        <select name="period_id" id="">
+                                        <select name="account_period_id" id="">
                                             {periods?.length &&
                                                 periods?.map(
                                                     (i: {
@@ -391,6 +394,16 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <td></td>
                                         <td>Total</td>
                                         <td>
+                                            <input
+                                                type="hidden"
+                                                name="amount_in_text"
+                                                value={
+                                                    (
+                                                        window as any
+                                                    ).convertAmount(totalAmount)
+                                                        .bn
+                                                }
+                                            />
                                             {
                                                 (window as any).convertAmount(
                                                     totalAmount,

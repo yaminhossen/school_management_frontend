@@ -1,71 +1,164 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
-import setup from './config/setup';
-import { RootState, useAppDispatch } from '../../../store';
-import { store } from './config/store/async_actions/store';
+import axios from 'axios';
 import moment from 'moment/moment';
-// import storeSlice from '../config/store';
-import storeSlice from './config/store';
-import { initialState } from './config/store/inital_state';
-import { useSelector } from 'react-redux';
-import { categories } from './config/store/async_actions/category';
-import { accounts } from './config/store/async_actions/account';
-import { receipt_books } from './config/store/async_actions/receipt_book';
-import { periods } from './config/store/async_actions/account_period';
-import { branches } from './config/store/async_actions/branches';
+export interface Accountinfo {
+    account: { title: string };
+    type: 'income' | 'expense';
+    amount: number;
+}
+export interface Categoryinfo {
+    account: { title: string };
+    type: 'income' | 'expense';
+    amount: number;
+}
+export interface Periodinfo {
+    account: { title: string };
+    type: 'income' | 'expense';
+    amount: number;
+}
+export interface ClassInfo {
+    account: { title: string };
+    class: object;
+    type: 'income' | 'expense';
+    amount: number;
+    s_class: number;
+}
+export interface FeesInfo {
+    account: { title: string };
+    class: object;
+    type: 'income' | 'expense';
+    amount: number;
+}
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
-    const dispatch = useAppDispatch();
-    const [totalDocument, setTotalDocument] = useState([1, 1, 1]);
-    // let date22 = moment().format('YYYY-DD-MM');
+    const [error, setError] = useState(null);
+    const [data, setData] = useState('');
+    const [accounts, setAccounts] = useState<Accountinfo[]>([]);
+    const [categories, setCategories] = useState<Categoryinfo[]>([]);
+    const [periods, setPeriods] = useState<Periodinfo[]>([]);
+    const [classes, setClass] = useState<any>([]);
+    const [feesTypes, setFeesTypes] = useState<FeesInfo[]>([]);
+    const [totalAmount, setTotalAmount] = useState(0);
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+        let formData = new FormData(e.target);
 
-    async function handle_submit(e) {
-        e.preventDefault();
-        console.log('this is clikck');
-
-        let response = await dispatch(store(new FormData(e.target)) as any);
-        if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
-            // e.target.reset();
+        try {
+            // Make POST request with form data
+            const response = await axios.post(
+                '/api/v1/account-logs/fees-store',
+                formData,
+            );
+            // setResponseMessage('Form submitted successfully!');
+            setData('Form submitted successfully!'); // Clear any previous error
+            console.log('response', response);
+        } catch (error) {
+            // setError(error); // Set error state
+            // setResponseMessage('Failed to submit form.');
+            console.log('data', error.msg);
         }
-    }
-    const state: typeof initialState = useSelector(
-        (state: RootState) => state[setup.module_name],
-    );
+        // console.log('data', error);
+    };
+    const fetchAccounts = async () => {
+        try {
+            const response = await axios.get('/api/v1/accounts/accounts');
+            setAccounts(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+    const fetchAccountCategorys = async () => {
+        try {
+            const response = await axios.get('/api/v1/account-categories/all');
+            setCategories(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+    const fetchPeriods = async () => {
+        try {
+            const response = await axios.get('/api/v1/account-logs/periods');
+            setPeriods(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+    const studentIdRef = useRef<HTMLInputElement>(null);
+    const fetchClass = async (id: string) => {
+        try {
+            const response = await axios.get(
+                `/api/v1/user-students/student-class/${id}`,
+            );
+            setClass(response.data.data);
 
-    // useEffect(() => {
-    //     dispatch(storeSlice.actions.set_item({}));
-    //     dispatch(categories({}) as any);
-    //     console.log('state', state);
-    // }, []);
+            // const response2 = await axios.get(
+            //     '/api/v1/user-students/fees-categories/1',
+            // );
+            // setFeesTypes(response2.data.data);
 
-    async function initdependancy() {
-        await dispatch(storeSlice.actions.set_item({}));
-        await dispatch(categories({}) as any);
-        await dispatch(accounts({}) as any);
-        await dispatch(receipt_books({}) as any);
-        await dispatch(periods({}) as any);
-        await dispatch(branches({}) as any);
-    }
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+    const fetchTypes = async (id: string) => {
+        try {
+            const response2 = await axios.get(
+                `/api/v1/user-students/fees-categories/${id}`,
+            );
+            setFeesTypes(response2.data.data);
+
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
 
     useEffect(() => {
-        console.log('frontend state', state.categories);
-
-        initdependancy();
+        fetchAccounts();
+        fetchAccountCategorys();
+        fetchPeriods();
+        // fetchClass();
     }, []);
-    if (state.accounts) {
-        console.log('form frontend', state.accounts);
-    }
-    if (state.branches) {
-        console.log('form brnches', state.branches);
-    }
-    // console.log('moment', moment().format('YYYY-DD-MM'));
+    const handleStudentIdBlur = () => {
+        const id = studentIdRef.current?.value; // Get the value from the ref
+        console.log('studnet_id', id);
+
+        if (id) {
+            fetchClass(id); // Pass the id to fetchClass
+        }
+    };
+    useEffect(() => {
+        if (classes) {
+            console.log('newlsdfjdslkfjdlsj', classes);
+            let id = classes.s_class;
+            console.log('newlsdfjdslkfjdlsj', id);
+            fetchTypes(id);
+        }
+    }, [classes]);
+    useEffect(() => {
+        let sum = feesTypes.reduce(
+            (t, i: anyObject) => (t += +(i.input_amount || 0)),
+            0,
+        );
+        setTotalAmount(sum);
+    }, [feesTypes]);
+
+    console.log('feestypes', feesTypes);
+    console.log('classes', classes);
+    let date = moment().format('YYYY-MM-DD');
 
     return (
         <div className="admin_dashboard">
             <div className="content_body">
                 <form
-                    onSubmit={(e) => handle_submit(e)}
+                    onSubmit={handleSubmit}
                     className="form_6002 mx-auto pt-3"
                 >
                     <div className="student_form">
@@ -78,33 +171,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Student Id</label>
                                     <div className="form_elements">
                                         <input
-                                            type="number"
+                                            type="text"
                                             placeholder="student id"
                                             name="student_id"
+                                            ref={studentIdRef} // Assign ref here
+                                            onBlur={handleStudentIdBlur}
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-vertical">
-                                    <label>Branch</label>
-                                    <div className="form_elements">
-                                        <select name="branch_id" id="">
-                                            {state.branches?.length &&
-                                                state.branches?.map(
-                                                    (i: {
-                                                        [key: string]: any;
-                                                    }) => {
-                                                        return (
-                                                            <option
-                                                                value={i.id}
-                                                            >
-                                                                {i.name}
-                                                            </option>
-                                                        );
-                                                    },
-                                                )}
-                                        </select>
-                                    </div>
-                                </div>
+                                <input
+                                    type="hidden"
+                                    placeholder="student Class"
+                                    name="class"
+                                    value={classes.s_class}
+                                />
                                 <div className="form-group form-vertical">
                                     <label>Date</label>
                                     <div className="form_elements">
@@ -114,44 +194,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 'YYYY-MM-DD',
                                             )}
                                             name="date"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
-                                    <label>Amount</label>
-                                    <div className="form_elements">
-                                        {/* <input
-                                            type="number"
-                                            placeholder="enter your amount"
-                                            name="amount"
-                                        /> */}
-                                        <input
-                                            name={'amount'}
-                                            onChange={(e) => {
-                                                let el = document.querySelector(
-                                                    'input[name="amount_in_text"]',
-                                                );
-                                                if (el) {
-                                                    (
-                                                        el as HTMLInputElement
-                                                    ).value =
-                                                        (
-                                                            window as any
-                                                        ).convertAmount(
-                                                            e.target.value,
-                                                        ).en + ' tk only';
-                                                }
-                                            }}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
-                                    <label>Amount In Text</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            // placeholder="enter your amount"
-                                            name="amount_in_text"
                                         />
                                     </div>
                                 </div>
@@ -166,24 +208,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Type</label>
-                                    <div className="form_elements">
-                                        <select name="type" id="">
-                                            <option value="income">
-                                                Income
-                                            </option>
-                                            <option value="expense">
-                                                Expense
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
                                     <label>Account Category</label>
                                     <div className="form_elements">
                                         <select name="category_id" id="">
-                                            {state.categories?.length &&
-                                                state.categories?.map(
+                                            {categories?.length &&
+                                                categories?.map(
                                                     (i: {
                                                         [key: string]: any;
                                                     }) => {
@@ -203,8 +232,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Account</label>
                                     <div className="form_elements">
                                         <select name="account_id" id="">
-                                            {state.accounts?.length &&
-                                                state.accounts?.map(
+                                            {accounts?.length &&
+                                                accounts?.map(
                                                     (i: {
                                                         [key: string]: any;
                                                     }) => {
@@ -224,8 +253,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Account Period</label>
                                     <div className="form_elements">
                                         <select name="period_id" id="">
-                                            {state.periods?.length &&
-                                                state.periods?.map(
+                                            {periods?.length &&
+                                                periods?.map(
                                                     (i: {
                                                         [key: string]: any;
                                                     }) => {
@@ -245,34 +274,139 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="form-group form-vertical">
-                                    <label>Money Receipt Book</label>
-                                    <div className="form_elements">
-                                        <select name="mrb_id" id="">
-                                            {state.receipt?.length &&
-                                                state.receipt?.map(
-                                                    (i: {
-                                                        [key: string]: any;
-                                                    }) => {
-                                                        return (
-                                                            <option
-                                                                value={i.id}
-                                                            >
-                                                                {i.book_no}
-                                                            </option>
-                                                        );
-                                                    },
-                                                )}
-                                        </select>
-                                    </div>
-                                </div>
                             </div>
+                        </div>
+                    </div>
+                    <div className="data_list">
+                        <div className="table_responsive  custom_scroll">
+                            <table className="mb-4">
+                                <thead>
+                                    <tr>
+                                        {/* <th>Serial</th> */}
+                                        <th>Title</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="all_list">
+                                    <tr>
+                                        {/* <td>1</td> */}
+                                        <td>Name</td>
+                                        <td>{classes.student?.name}</td>
+                                    </tr>
+                                    <tr>
+                                        {/* <td>1</td> */}
+                                        <td>ID</td>
+                                        <td>{classes.student_id}</td>
+                                    </tr>
+                                    <tr>
+                                        {/* <td>1</td> */}
+                                        <td>Class</td>
+                                        <td>{classes.class?.name}</td>
+                                    </tr>
+                                    <tr>
+                                        {/* <td>1</td> */}
+                                        <td>Addmission No</td>
+                                        <td>{classes.addmission_no}</td>
+                                    </tr>
+                                    <tr>
+                                        {/* <td>1</td> */}
+                                        <td>Photo</td>
+                                        <td>
+                                            <img
+                                                height="40px"
+                                                src={classes.student?.image}
+                                                alt=""
+                                            />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table className="">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Fees</th>
+                                        <th>Given Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="all_list">
+                                    <input
+                                        type="hidden"
+                                        name="total_fees_count"
+                                        value={feesTypes.length}
+                                    />
+                                    {feesTypes?.length &&
+                                        feesTypes?.map(
+                                            (
+                                                i: { [key: string]: any },
+                                                index,
+                                            ) => {
+                                                return (
+                                                    <tr>
+                                                        <td>{i.name}</td>
+                                                        <td>{i.amount}</td>
+                                                        <td>
+                                                            <input
+                                                                type="hidden"
+                                                                name={`fees_type_${index}`}
+                                                                value={i.id}
+                                                            />
+                                                            <input
+                                                                name={`fees_${index}`}
+                                                                type="number"
+                                                                onChange={(
+                                                                    event,
+                                                                ) => {
+                                                                    let temp = [
+                                                                        ...feesTypes,
+                                                                    ];
+                                                                    temp[index][
+                                                                        'input_amount'
+                                                                    ] =
+                                                                        event?.target.value;
+                                                                    setFeesTypes(
+                                                                        temp,
+                                                                    );
+                                                                }}
+                                                            />
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            },
+                                        )}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td>Total</td>
+                                        <td>
+                                            {totalAmount} tk
+                                            {/* <input
+                                                type="text"
+                                                name="total_amount"
+                                            /> */}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Total</td>
+                                        {/* <td>
+                                            {
+                                                (window as any).convertAmount(
+                                                    totalAmount,
+                                                ).bn
+                                            }{' '}
+                                            টাকা মাত্র
+                                        </td> */}
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
                     </div>
                     <div className="form-group student_submit form-horizontal">
                         <label></label>
                         <div className="form_elements">
-                            <button className="btn btn-sm  btn-outline-info">
+                            <button className="btn btn-sm btn-outline-info">
                                 submit
                             </button>
                         </div>

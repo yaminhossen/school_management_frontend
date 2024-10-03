@@ -95,6 +95,12 @@ async function store(
         if (fees) {
             let temp = {
                 receipt_no: (req.body as anyObject).receipt_no,
+                date: (req.body as anyObject).date,
+                account_category_id: (req.body as anyObject)
+                    .account_category_id,
+                account_period_id: (req.body as anyObject).account_period_id,
+                account_id: (req.body as anyObject).account_id,
+                amount_in_text: (req.body as anyObject).amount_in_text,
                 amount: (req.body as anyObject)[`fees_${i}`],
                 type: (req.body as anyObject)[`fees_type_${i}`],
             };
