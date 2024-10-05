@@ -90,18 +90,62 @@ async function store(
         let s_class = data2?.s_class;
 
         // (await data.update(inputs)).save();
-        if (data) {
-            let afc_inputs: InferCreationAttributes<typeof afc_model> = {
-                branch_id: (req.body as anyObject).branch_id,
-                branch_student_id: (req.body as anyObject).student_id,
-                branch_student_class_id: s_class || 1,
-                date: (req.body as anyObject).date,
-                amount: (req.body as anyObject).amount,
-                account_category_id: (req.body as anyObject).category_id || 1,
-                account_log_id: data.id || 1,
-            };
-            // (await afc_model.update(afc_inputs)).save();
+        if (student_fees) {
+            student_fees.forEach(async (ss) => {
+                let a_log_model = new models.AccountLogsModel();
+                let afc_model = new models.AccountFeeCollectionsModel();
+                let a_log_input: InferCreationAttributes<typeof a_log_model> = {
+                    branch_id: (req.body as anyObject).receipt_no || 1,
+                    receipt_no: (req.body as anyObject).receipt_no,
+                    date: (req.body as anyObject).date,
+                    account_category_id: (req.body as anyObject)
+                        .account_category_id,
+                    account_period_id: (req.body as anyObject)
+                        .account_period_id,
+                    account_id: (req.body as anyObject).account_id,
+                    amount_in_text: (req.body as anyObject).amount_in_text,
+                    type: (req.body as anyObject).type || 'income',
+                };
+                a_log_input.receipt_no = ss.receipt_no;
+                a_log_input.date = ss.date;
+                a_log_input.account_category_id = ss.account_category_id;
+                a_log_input.account_period_id = ss.account_period_id;
+                a_log_input.account_id = ss.account_id;
+                a_log_input.amount_in_text = ss.amount_in_text;
+                // a_log_input.password = await bcrypt.hash(ss.password, saltRounds);
+                (await a_log_model.update(a_log_input)).save();
+                if (a_log_model) {
+                    let usp_inputs: InferCreationAttributes<typeof usp_model> =
+                        {
+                            user_student_id: 1,
+                            relation: body.relation,
+                            is_parent: body.is_parent,
+                            user_parent_id: body.user_parent_id,
+                        };
+                    // eslint-disable-next-line no-redeclare
+                    // let id = up_model.id;
+                    usp_inputs.user_student_id = data.id || 1;
+                    usp_inputs.relation = ss.relation;
+                    usp_inputs.is_parent = ss.is_parent;
+                    usp_inputs.user_parent_id = up_model.id || 1;
+                    // console.log('parent id', up_model.id);
+
+                    (await usp_model.update(usp_inputs)).save();
+                }
+            });
         }
+        // if (data) {
+        //     let afc_inputs: InferCreationAttributes<typeof afc_model> = {
+        //         branch_id: (req.body as anyObject).branch_id,
+        //         branch_student_id: (req.body as anyObject).student_id,
+        //         branch_student_class_id: s_class || 1,
+        //         date: (req.body as anyObject).date,
+        //         amount: (req.body as anyObject).amount,
+        //         account_category_id: (req.body as anyObject).category_id || 1,
+        //         account_log_id: data.id || 1,
+        //     };
+        //     // (await afc_model.update(afc_inputs)).save();
+        // }
 
         return response(200, 'data created', data);
     } catch (error: any) {
