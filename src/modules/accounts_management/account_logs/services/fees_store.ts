@@ -35,19 +35,19 @@ async function store(
 
     /** initializations */
     let models = await db();
-    let data = new models.AccountLogsModel();
-    let afc_model = new models.AccountFeeCollectionsModel();
+    // let data = new models.AccountLogsModel();
+    // let afc_model = new models.AccountFeeCollectionsModel();
 
-    let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: 1,
-        account_category_id: (req.body as anyObject).category_id || 1,
-        account_id: (req.body as anyObject).account_id || 1,
-        account_period_id: (req.body as anyObject).period_id || 1,
-        money_receipt_book_id: (req.body as anyObject).mrb_id || 1,
-        receipt_no: (req.body as anyObject).receipt_no,
-        amount: (req.body as anyObject).amount,
-        type: (req.body as anyObject).type,
-    };
+    // let inputs: InferCreationAttributes<typeof data> = {
+    //     branch_id: 1,
+    //     account_category_id: (req.body as anyObject).category_id || 1,
+    //     account_id: (req.body as anyObject).account_id || 1,
+    //     account_period_id: (req.body as anyObject).period_id || 1,
+    //     money_receipt_book_id: (req.body as anyObject).mrb_id || 1,
+    //     receipt_no: (req.body as anyObject).receipt_no,
+    //     amount: (req.body as anyObject).amount,
+    //     type: (req.body as anyObject).type,
+    // };
     let student_fees: anyObject[] = [];
     for (
         let i = 0;
@@ -87,7 +87,7 @@ async function store(
         });
         console.log('data sclass', data2?.s_class);
 
-        let s_class = data2?.s_class;
+        // let s_class = data2?.s_class;
 
         // (await data.update(inputs)).save();
         if (student_fees) {
@@ -95,7 +95,7 @@ async function store(
                 let a_log_model = new models.AccountLogsModel();
                 let afc_model = new models.AccountFeeCollectionsModel();
                 let a_log_input: InferCreationAttributes<typeof a_log_model> = {
-                    branch_id: (req.body as anyObject).receipt_no || 1,
+                    branch_id: 1,
                     receipt_no: (req.body as anyObject).receipt_no,
                     date: (req.body as anyObject).date,
                     account_category_id: (req.body as anyObject)
@@ -104,6 +104,7 @@ async function store(
                         .account_period_id,
                     account_id: (req.body as anyObject).account_id,
                     amount_in_text: (req.body as anyObject).amount_in_text,
+                    amount: (req.body as anyObject).amount,
                     type: (req.body as anyObject).type || 'income',
                 };
                 a_log_input.receipt_no = ss.receipt_no;
@@ -112,25 +113,35 @@ async function store(
                 a_log_input.account_period_id = ss.account_period_id;
                 a_log_input.account_id = ss.account_id;
                 a_log_input.amount_in_text = ss.amount_in_text;
+                a_log_input.amount = ss.amount;
                 // a_log_input.password = await bcrypt.hash(ss.password, saltRounds);
                 (await a_log_model.update(a_log_input)).save();
                 if (a_log_model) {
-                    let usp_inputs: InferCreationAttributes<typeof usp_model> =
+                    let afc_inputs: InferCreationAttributes<typeof afc_model> =
                         {
-                            user_student_id: 1,
-                            relation: body.relation,
-                            is_parent: body.is_parent,
-                            user_parent_id: body.user_parent_id,
+                            branch_id: 1,
+                            branch_student_id: (req.body as anyObject)
+                                .branch_student_id,
+                            branch_student_class_id: (req.body as anyObject)
+                                .branch_student_class_id,
+                            account_category_id: (req.body as anyObject)
+                                .account_category_id,
+                            account_log_id: (req.body as anyObject)
+                                .account_log_id,
+                            amount: (req.body as anyObject).amount || 0,
+                            date: (req.body as anyObject).date,
                         };
                     // eslint-disable-next-line no-redeclare
                     // let id = up_model.id;
-                    usp_inputs.user_student_id = data.id || 1;
-                    usp_inputs.relation = ss.relation;
-                    usp_inputs.is_parent = ss.is_parent;
-                    usp_inputs.user_parent_id = up_model.id || 1;
+                    afc_inputs.branch_student_id = 1;
+                    afc_inputs.branch_student_class_id = 1;
+                    afc_inputs.account_category_id = ss.account_category_id;
+                    afc_inputs.account_log_id = a_log_model.id || 1;
+                    afc_inputs.amount = ss.amount;
+                    afc_inputs.date = ss.date;
                     // console.log('parent id', up_model.id);
 
-                    (await usp_model.update(usp_inputs)).save();
+                    (await afc_model.update(afc_inputs)).save();
                 }
             });
         }
@@ -147,7 +158,7 @@ async function store(
         //     // (await afc_model.update(afc_inputs)).save();
         // }
 
-        return response(200, 'data created', data);
+        return response(200, 'data created', student_fees);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
         throw new custom_error('server error', 500, error.message, uid);
