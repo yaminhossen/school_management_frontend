@@ -18,42 +18,6 @@ async function validate(req: Request) {
     //     .withMessage('the branch_id field is required')
     //     .run(req);
 
-    // await body('account_category_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the account_category_id field is required')
-    //     .run(req);
-
-    // await body('account_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the account_id field is required')
-    //     .run(req);
-
-    // await body('account_period_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the account_period_id field is required')
-    //     .run(req);
-
-    // await body('money_receipt_book_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the money_receipt_book_id field is required')
-    //     .run(req);
-
-    // await body('amount')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the amount field is required')
-    //     .run(req);
-
-    // await body('type')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the type field is required')
-    //     .run(req);
-
     let result = await validationResult(req);
 
     return result;
