@@ -105,7 +105,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             </select>
                         </div>
                     </div>
-                    <div className="form-group form-horizontal">
+                    {/* <div className="form-group form-horizontal">
                         <label>Account Number</label>
                         <div className="form_elements">
                             <select name="account_number" id="">
@@ -116,7 +116,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <option value="1">29384902</option>
                             </select>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="form-group form-horizontal">
                         <label>Customer Name</label>
                         <div className="form_elements">
@@ -131,9 +131,43 @@ const Index: React.FC<Props> = (props: Props) => {
                         <label>Amount</label>
                         <div className="form_elements">
                             <input
-                                type="number"
-                                name="amount"
-                                placeholder="Amount"
+                                name={'amount'}
+                                onChange={(e) => {
+                                    let el = document.querySelector(
+                                        'input[name="amount_in_text"]',
+                                    );
+                                    if (el) {
+                                        (el as HTMLInputElement).value =
+                                            (window as any).convertAmount(
+                                                e.target.value,
+                                            ).bn + ' টাকা মাত্র';
+                                    }
+                                }}
+                            />
+                        </div>
+                    </div>
+                    <div className="form-group form-horizontal">
+                        <label>Amount in text</label>
+                        <div className="form_elements">
+                            <input
+                                type="text"
+                                name="amount_in_text"
+                                // value={
+                                //     (window as any).convertAmount(totalAmount)
+                                //         .bn
+                                // }
+                            />
+                            {/* {(window as any).convertAmount(totalAmount).bn}{' '}
+                            মাত্র */}
+                        </div>
+                    </div>
+                    <div className="form-group form-horizontal">
+                        <label>Receipt No</label>
+                        <div className="form_elements">
+                            <input
+                                type="text"
+                                placeholder="enter receipt page no"
+                                name="receipt_no"
                             />
                         </div>
                     </div>
@@ -147,7 +181,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             />
                         </div>
                     </div> */}
-                    {/* <div className="form-group form-horizontal">
+                    <div className="form-group form-horizontal">
                         <label>Date</label>
                         <div className="form_elements">
                             <input
@@ -162,7 +196,7 @@ const Index: React.FC<Props> = (props: Props) => {
                         <div className="form_elements">
                             <input type="file" name="attachment" />
                         </div>
-                    </div> */}
+                    </div>
                     <div className="form-group form-horizontal">
                         <label></label>
                         <div className="form_elements">
