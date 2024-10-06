@@ -65,6 +65,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const fetchAccounts = async () => {
         try {
             const response = await axios.get('/api/v1/accounts/accounts');
+            console.log('accontsss', accounts);
             setAccounts(response.data.data);
             // setData(response.data);
         } catch (error) {
@@ -121,14 +122,20 @@ const Index: React.FC<Props> = (props: Props) => {
     };
 
     useEffect(() => {
-        fetchAccounts();
         fetchAccountCategorys();
+        fetchAccounts();
         fetchPeriods();
+        // fetchClass();
+    }, []);
+    useEffect(() => {
+        fetchAccountCategorys();
+        // fetchAccounts();
+        // fetchPeriods();
         // fetchClass();
     }, []);
     const handleStudentIdBlur = () => {
         const id = studentIdRef.current?.value; // Get the value from the ref
-        console.log('studnet_id', id);
+        // console.log('studnet_id', id);
 
         if (id) {
             fetchClass(id); // Pass the id to fetchClass
@@ -138,7 +145,7 @@ const Index: React.FC<Props> = (props: Props) => {
         if (classes) {
             console.log('newlsdfjdslkfjdlsj', classes);
             let id = classes.s_class;
-            console.log('newlsdfjdslkfjdlsj', id);
+            // console.log('newlsdfjdslkfjdlsj', id);
             fetchTypes(id);
         }
     }, [classes]);
@@ -150,8 +157,11 @@ const Index: React.FC<Props> = (props: Props) => {
         setTotalAmount(sum);
     }, [feesTypes]);
 
-    console.log('feestypes', feesTypes);
-    console.log('classes', classes);
+    useEffect(() => {
+        console.log('feestypes', periods);
+    }, [setPeriods]);
+
+    // console.log('classes', classes);
     let date = moment().format('YYYY-MM-DD');
 
     return (
@@ -201,7 +211,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Receipt No</label>
                                     <div className="form_elements">
                                         <input
-                                            type="number"
+                                            type="text"
                                             placeholder="enter receipt page no"
                                             name="receipt_no"
                                         />
@@ -210,7 +220,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Account Category</label>
                                     <div className="form_elements">
-                                        <select name="category_id" id="">
+                                        <select
+                                            name="account_category_id"
+                                            id=""
+                                        >
                                             {categories?.length &&
                                                 categories?.map(
                                                     (i: {
@@ -252,7 +265,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Account Period</label>
                                     <div className="form_elements">
-                                        <select name="period_id" id="">
+                                        <select name="account_period_id" id="">
                                             {periods?.length &&
                                                 periods?.map(
                                                     (i: {
@@ -390,14 +403,24 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <td></td>
                                         <td>Total</td>
-                                        {/* <td>
-                                            {
+                                        <td>
+                                            <input
+                                                type="hidden"
+                                                name="amount_in_text"
+                                                // value={
+                                                // (
+                                                //     window as any
+                                                // ).convertAmount(totalAmount)
+                                                //     .bn
+                                                // }
+                                            />
+                                            {/* {
                                                 (window as any).convertAmount(
                                                     totalAmount,
                                                 ).bn
                                             }{' '}
-                                            টাকা মাত্র
-                                        </td> */}
+                                            টাকা মাত্র */}
+                                        </td>
                                     </tr>
                                 </tfoot>
                             </table>
