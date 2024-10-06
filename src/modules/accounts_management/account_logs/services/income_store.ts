@@ -65,9 +65,13 @@ async function income_store(
         branch_id: 1,
         account_category_id: body.category,
         account_id: body.account,
+        receipt_no: body.receipt_no,
+        amount_in_text: body.amount_in_text,
         amount: body.amount,
+        date: body.date,
         type: 'income',
     };
+    console.log('income entry', inputs);
 
     /** print request data into console */
     // console.clear();

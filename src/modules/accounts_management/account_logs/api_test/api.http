@@ -50,6 +50,24 @@ content-type: application/json
 
 # store
 ###
+POST  {{hostname}}/expense-store HTTP/1.1
+content-type: application/json
+
+{
+    "branch_id": 1,
+    "account_category_id": 1,
+    "account_id": 1,
+    "account_period_id": 1,
+    "money_receipt_book_id": 1,
+    "receipt_no": "A123",
+    "date": "2024-09-11T00:00:00.000Z",
+    "amount": 544,
+    "type": "dfgfgdffgdf",
+    "amount_in_text": "Twenty thousand taka only"
+}
+
+# store
+###
 POST  {{hostname}}/fees-collection HTTP/1.1
 content-type: application/json
 
