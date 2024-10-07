@@ -347,7 +347,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 return (
                                                     <tr>
                                                         <td>{i.name}</td>
-                                                        <td>{i.amount}</td>
+                                                        <td>
+                                                            <input
+                                                                type="hidden"
+                                                                name={`fees_amount_${index}`}
+                                                                value={i.amount}
+                                                            />
+                                                            {i.amount}
+                                                        </td>
                                                         <td>
                                                             <input
                                                                 type="hidden"
@@ -384,10 +391,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <td>Total</td>
                                         <td>
                                             {totalAmount} tk
-                                            {/* <input
-                                                type="text"
+                                            <input
+                                                type="hidden"
                                                 name="total_amount"
-                                            /> */}
+                                                value={totalAmount}
+                                            />
                                         </td>
                                     </tr>
                                     <tr>

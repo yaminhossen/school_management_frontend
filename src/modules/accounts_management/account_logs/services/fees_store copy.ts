@@ -35,21 +35,8 @@ async function store(
 
     /** initializations */
     let models = await db();
-    let data = new models.AccountLogsModel();
+    // let data = new models.AccountLogsModel();
     // let afc_model = new models.AccountFeeCollectionsModel();
-
-    let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: 1,
-        account_category_id: (req.body as anyObject).category_id || 1,
-        account_id: (req.body as anyObject).account_id || 1,
-        account_period_id: (req.body as anyObject).period_id || 1,
-        // money_receipt_book_id: (req.body as anyObject).mrb_id || 1,
-        receipt_no: (req.body as anyObject).receipt_no,
-        amount: (req.body as anyObject).total_amount,
-        amount_in_text: (req.body as anyObject).amount_in_text,
-        date: (req.body as anyObject).date,
-        type: (req.body as anyObject).type || 'income',
-    };
     let student_fees: anyObject[] = [];
     for (
         let i = 0;
@@ -93,40 +80,60 @@ async function store(
 
         // let s_class = data2?.s_class;
 
-        (await data.update(inputs)).save();
-        if (data) {
-            let afc_model = new models.AccountFeeCollectionsModel();
-            let afc_inputs: InferCreationAttributes<typeof afc_model> = {
-                branch_id: 1,
-                branch_student_id: (req.body as anyObject).branch_student_id,
-                branch_student_class_id: (req.body as anyObject)
-                    .branch_student_class_id,
-                account_category_id: (req.body as anyObject)
-                    .account_category_id,
-                account_log_id: data.id || 1,
-                amount: (req.body as anyObject).total_amount || 0,
-                date: (req.body as anyObject).date,
-            };
-            // eslint-disable-next-line no-redeclare
-            // let id = up_model.id;
-            afc_inputs.branch_student_id = 1;
-            afc_inputs.branch_student_class_id = 1;
-            afc_inputs.account_category_id = (
-                req.body as anyObject
-            ).account_category_id;
+        // (await data.update(inputs)).save();
+        if (student_fees) {
+            student_fees.forEach(async (ss) => {
+                let a_log_model = new models.AccountLogsModel();
+                let a_log_input: InferCreationAttributes<typeof a_log_model> = {
+                    branch_id: 1,
+                    receipt_no: (req.body as anyObject).receipt_no,
+                    date: (req.body as anyObject).date,
+                    account_category_id: (req.body as anyObject)
+                        .account_category_id,
+                    account_period_id: (req.body as anyObject)
+                        .account_period_id,
+                    account_id: (req.body as anyObject).account_id,
+                    amount_in_text: (req.body as anyObject).amount_in_text,
+                    amount: (req.body as anyObject).amount,
+                    type: (req.body as anyObject).type || 'income',
+                };
+                a_log_input.receipt_no = ss.receipt_no;
+                a_log_input.date = ss.date;
+                a_log_input.account_category_id = ss.account_category_id;
+                a_log_input.account_period_id = ss.account_period_id;
+                a_log_input.account_id = ss.account_id;
+                a_log_input.amount_in_text = ss.amount_in_text;
+                a_log_input.amount = ss.amount;
+                // a_log_input.password = await bcrypt.hash(ss.password, saltRounds);
+                (await a_log_model.update(a_log_input)).save();
+                if (a_log_model) {
+                    let afc_model = new models.AccountFeeCollectionsModel();
+                    let afc_inputs: InferCreationAttributes<typeof afc_model> =
+                        {
+                            branch_id: 1,
+                            branch_student_id: (req.body as anyObject)
+                                .branch_student_id,
+                            branch_student_class_id: (req.body as anyObject)
+                                .branch_student_class_id,
+                            account_category_id: (req.body as anyObject)
+                                .account_category_id,
+                            account_log_id: (req.body as anyObject)
+                                .account_log_id,
+                            amount: (req.body as anyObject).amount || 0,
+                            date: (req.body as anyObject).date,
+                        };
+                    // eslint-disable-next-line no-redeclare
+                    // let id = up_model.id;
+                    afc_inputs.branch_student_id = 1;
+                    afc_inputs.branch_student_class_id = 1;
+                    afc_inputs.account_category_id = ss.account_category_id;
+                    afc_inputs.account_log_id = a_log_model.id || 1;
+                    afc_inputs.amount = ss.amount;
+                    afc_inputs.date = ss.date;
+                    // console.log('parent id', up_model.id);
 
-            // sdkjf
-            afc_inputs.account_log_id = data.id || 1;
-            afc_inputs.amount = (req.body as anyObject).total_amount || 0;
-            afc_inputs.date = (req.body as anyObject).date;
-            // console.log('parent id', up_model.id);
-
-            (await afc_model.update(afc_inputs)).save();
-            // if (afc_model) {
-
-            if (afc_model) {
-                if (student_fees) {
-                    student_fees.forEach(async (ss) => {
+                    (await afc_model.update(afc_inputs)).save();
+                    if (a_log_model) {
                         let afcd_model =
                             new models.AccountFeesCollectionDetailsModel();
                         let afcd_inputs: InferCreationAttributes<
@@ -138,17 +145,27 @@ async function store(
                             branch_student_class_id:
                                 (req.body as anyObject)
                                     .branch_student_class_id || 1,
-                            account_fees_collection_id: afc_model.id || 1,
+                            account_fees_collection_id: a_log_model.id || 1,
                             branch_class_fees_id: ss.type,
                             fee_amount: ss.fee_amount,
                             total: ss.amount,
                             date: (req.body as anyObject).date,
                         };
+                        // eslint-disable-next-line no-redeclare
+                        // let id = up_model.id;
+                        // afcd_inputs.branch_student_id = 1;
+                        // afcd_inputs.branch_student_class_id = 1;
+                        // afcd_inputs.account_category_id =
+                        //     ss.account_category_id;
+                        // afcd_inputs.account_log_id = a_log_model.id || 1;
+                        // afcd_inputs.amount = ss.amount;
+                        // afcd_inputs.date = ss.date;
+                        // console.log('parent id', up_model.id);
 
                         (await afcd_model.update(afcd_inputs)).save();
-                    });
+                    }
                 }
-            }
+            });
         }
 
         return response(200, 'data created', student_fees);
