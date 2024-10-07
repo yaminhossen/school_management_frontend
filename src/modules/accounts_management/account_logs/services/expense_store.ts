@@ -50,6 +50,15 @@ async function expense_store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.AccountLogsModel();
+    let image_path1 = '';
+
+    if (body['attachment']?.ext) {
+        image_path1 =
+            'uploads/accounts' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['attachment'].name;
+        await (fastify_instance as any).upload(body['attachment'], image_path1);
+    }
     let income_attachments: anyObject[] = [];
     for (let i = 0; i < parseInt(body.attachment?.length); i++) {
         let image_path = ``;
@@ -97,6 +106,15 @@ async function expense_store(
                     };
                     (await ala_model.update(ala_input)).save();
                 });
+            }
+            if (image_path1) {
+                let ala_model = new models.AccountLogAttachmentsModel();
+                let ala_input: InferCreationAttributes<typeof ala_model> = {
+                    branch_id: 1,
+                    attachment_url: image_path1,
+                    account_log_id: data.id || 1,
+                };
+                (await ala_model.update(ala_input)).save();
             }
         }
         return response(200, 'data created', data);
