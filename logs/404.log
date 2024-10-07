@@ -156,3 +156,4 @@
 {"level":60,"time":1728218252670,"pid":1844,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/expenses-store"}
 {"level":60,"time":1728218253454,"pid":1844,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/expenses-store"}
 {"level":60,"time":1728218278506,"pid":16708,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/expenses-store"}
+{"level":60,"time":1728218350837,"pid":7060,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/expenses-store"}

@@ -52,14 +52,35 @@ async function income_store(
     let data = new models.AccountLogsModel();
     // let image_path = '';
 
-    // if (body['attachments']?.ext) {
+    // if (body['attachment']?.ext) {
     //     image_path =
-    //         'uploads/students/leave' +
+    //         'uploads/accounts' +
     //         moment().format('YYYYMMDDHHmmss') +
-    //         body['attachments'].name;
-    //     await (fastify_instance as any).upload(body['attachments'], image_path);
+    //         body['attachment'].name;
+    //     await (fastify_instance as any).upload(body['attachment'], image_path);
     // }
-    // console.log('leave body', body);
+    let income_attachments: anyObject[] = [];
+    for (let i = 0; i < parseInt(body.attachment?.length); i++) {
+        let image_path = ``;
+        // let image_file = body[`attachment${i}`];
+        let image_file = body.attachment[i];
+        if (image_file?.ext) {
+            image_path =
+                'uploads/accounts' +
+                moment().format('YYYYMMDDHHmmss') +
+                image_file.name;
+            await (fastify_instance as any).upload(image_file, image_path);
+        }
+        income_attachments.push({
+            title: body[`document_title${i}`],
+            file: image_path,
+            issue_date: body[`issue_date${i}`],
+            expire_date: body[`expire_date${i}`],
+        });
+    }
+    console.log('leave fgbody', body);
+    console.log('leavehjghjg fgbody', body.attachment?.length);
+    console.log('leavehjghjg fgbody', income_attachments);
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: 1,
@@ -80,6 +101,15 @@ async function income_store(
     /** income_store data into database */
     try {
         (await data.update(inputs)).save();
+        if (data) {
+            // let ala_model = new models.AccountLogAttachmentsModel();
+            // let ala_input: InferCreationAttributes<typeof ala_model> = {
+            //     branch_id: 1,
+            //     attachment_url: image_path,
+            //     account_log_id: data.id || 1,
+            // };
+            // (await ala_model.update(ala_input)).save();
+        }
         return response(200, 'data created', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);

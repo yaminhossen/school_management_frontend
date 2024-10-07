@@ -20,6 +20,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState('');
     const [accounts, setAccounts] = useState<Accountinfo[]>([]);
     const [categories, setCategories] = useState<Categoryinfo[]>([]);
+    const [totalAmount, setTotalAmount] = useState(0);
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         let formData = new FormData(e.target);
@@ -194,7 +195,12 @@ const Index: React.FC<Props> = (props: Props) => {
                     <div className="form-group form-horizontal">
                         <label>Attachment</label>
                         <div className="form_elements">
-                            <input type="file" name="attachment" />
+                            <input
+                                type="file"
+                                multiple
+                                accept="image/*"
+                                name="attachment"
+                            />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">

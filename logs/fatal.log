@@ -583,3 +583,4 @@
 {"level":60,"time":1727938539425,"pid":8628,"hostname":"DESKTOP-9421701","file":"","time":"10/3/2024 12:55:39 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1727938563250,"pid":8628,"hostname":"DESKTOP-9421701","file":"","time":"10/3/2024 12:56:03 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1728218014692,"pid":1844,"hostname":"DESKTOP-9421701","file":"","time":"10/6/2024 6:33:34 PM","message":"Unexpected token } in JSON at position 305"}
+{"level":60,"time":1728218371242,"pid":7060,"hostname":"DESKTOP-9421701","file":"","time":"10/6/2024 6:39:31 PM","message":"Incorrect integer value: '' for column 'amount' at row 1"}
