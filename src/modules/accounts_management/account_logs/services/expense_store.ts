@@ -50,16 +50,22 @@ async function expense_store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.AccountLogsModel();
-    // let image_path = '';
-
-    // if (body['attachments']?.ext) {
-    //     image_path =
-    //         'uploads/students/leave' +
-    //         moment().format('YYYYMMDDHHmmss') +
-    //         body['attachments'].name;
-    //     await (fastify_instance as any).upload(body['attachments'], image_path);
-    // }
-    // console.log('leave body', body);
+    let income_attachments: anyObject[] = [];
+    for (let i = 0; i < parseInt(body.attachment?.length); i++) {
+        let image_path = ``;
+        // let image_file = body[`attachment${i}`];
+        let image_file = body.attachment[i];
+        if (image_file?.ext) {
+            image_path =
+                'uploads/accounts' +
+                moment().format('YYYYMMDDHHmmss') +
+                image_file.name;
+            await (fastify_instance as any).upload(image_file, image_path);
+        }
+        income_attachments.push({
+            file: image_path,
+        });
+    }
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: 1,
@@ -80,6 +86,19 @@ async function expense_store(
     /** expense_store data into database */
     try {
         (await data.update(inputs)).save();
+        if (data) {
+            if (income_attachments) {
+                income_attachments.forEach(async (ss) => {
+                    let ala_model = new models.AccountLogAttachmentsModel();
+                    let ala_input: InferCreationAttributes<typeof ala_model> = {
+                        branch_id: 1,
+                        attachment_url: ss.file,
+                        account_log_id: data.id || 1,
+                    };
+                    (await ala_model.update(ala_input)).save();
+                });
+            }
+        }
         return response(200, 'data created', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);

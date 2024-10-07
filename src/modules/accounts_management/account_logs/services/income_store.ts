@@ -50,15 +50,15 @@ async function income_store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.AccountLogsModel();
-    // let image_path = '';
+    let image_path1 = '';
 
-    // if (body['attachment']?.ext) {
-    //     image_path =
-    //         'uploads/accounts' +
-    //         moment().format('YYYYMMDDHHmmss') +
-    //         body['attachment'].name;
-    //     await (fastify_instance as any).upload(body['attachment'], image_path);
-    // }
+    if (body['attachment']?.ext) {
+        image_path1 =
+            'uploads/accounts' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['attachment'].name;
+        await (fastify_instance as any).upload(body['attachment'], image_path1);
+    }
     let income_attachments: anyObject[] = [];
     for (let i = 0; i < parseInt(body.attachment?.length); i++) {
         let image_path = ``;
@@ -72,10 +72,7 @@ async function income_store(
             await (fastify_instance as any).upload(image_file, image_path);
         }
         income_attachments.push({
-            title: body[`document_title${i}`],
             file: image_path,
-            issue_date: body[`issue_date${i}`],
-            expire_date: body[`expire_date${i}`],
         });
     }
     console.log('leave fgbody', body);
@@ -92,7 +89,7 @@ async function income_store(
         date: body.date,
         type: 'income',
     };
-    console.log('income entry', inputs);
+    // console.log('income entry', inputs);
 
     /** print request data into console */
     // console.clear();
@@ -102,13 +99,26 @@ async function income_store(
     try {
         (await data.update(inputs)).save();
         if (data) {
-            // let ala_model = new models.AccountLogAttachmentsModel();
-            // let ala_input: InferCreationAttributes<typeof ala_model> = {
-            //     branch_id: 1,
-            //     attachment_url: image_path,
-            //     account_log_id: data.id || 1,
-            // };
-            // (await ala_model.update(ala_input)).save();
+            if (income_attachments) {
+                income_attachments.forEach(async (ss) => {
+                    let ala_model = new models.AccountLogAttachmentsModel();
+                    let ala_input: InferCreationAttributes<typeof ala_model> = {
+                        branch_id: 1,
+                        attachment_url: ss.file,
+                        account_log_id: data.id || 1,
+                    };
+                    (await ala_model.update(ala_input)).save();
+                });
+            }
+            if (image_path1) {
+                let ala_model = new models.AccountLogAttachmentsModel();
+                let ala_input: InferCreationAttributes<typeof ala_model> = {
+                    branch_id: 1,
+                    attachment_url: image_path1,
+                    account_log_id: data.id || 1,
+                };
+                (await ala_model.update(ala_input)).save();
+            }
         }
         return response(200, 'data created', data);
     } catch (error: any) {
