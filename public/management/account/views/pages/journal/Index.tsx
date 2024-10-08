@@ -27,8 +27,6 @@ const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [totalIncome, setTotalIncome] = useState<TotalLog>({});
     const [data, setData] = useState<AccountLog[]>([]);
-    const [startDate, setStartDate] = useState<string>(''); // For first date input
-    const [endDate, setEndDate] = useState<string>(''); // For second date input
 
     const totalExpenseValue = totalIncome.total_expense || 0; // Defaults to 0 if undefined
     const totalIncomeValue = totalIncome.total_income || 0;
@@ -66,9 +64,6 @@ const Index: React.FC<Props> = (props: Props) => {
         e.preventDefault(); // Prevent the default form submission behavior
         let formData = new FormData(e.target);
         try {
-            // const params: { startDate?: string; endDate?: string } = {};
-            // if (startDate) params.startDate = startDate;
-            // if (endDate) params.endDate = endDate;
             const response = await axios.post(
                 '/api/v1/account-logs/journal',
                 formData,
@@ -79,18 +74,6 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
-
-    // const handleStartDateChange = (
-    //     event: React.ChangeEvent<HTMLInputElement>,
-    // ) => {
-    //     setStartDate(event.target.value);
-    // };
-
-    // const handleEndDateChange = (
-    //     event: React.ChangeEvent<HTMLInputElement>,
-    // ) => {
-    //     setEndDate(event.target.value);
-    // };
     const tenDaysBefore = moment().subtract(10, 'days').format('YYYY-MM-DD');
 
     console.log(data);
@@ -111,8 +94,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     defaultValue={moment()
                                         .subtract(10, 'days')
                                         .format('YYYY-MM-DD')}
-                                    // value={startDate}
-                                    // onChange={handleStartDateChange}
                                 />
                             </div>
                         </div>
@@ -123,8 +104,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     type="date"
                                     name="month2"
                                     defaultValue={moment().format('YYYY-MM-DD')}
-                                    // value={endDate}
-                                    // onChange={handleEndDateChange}
                                 />
                             </div>
                         </div>
@@ -205,16 +184,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td>All Data</td>
                                     <td></td>
                                     <td>Grand Total:</td>
-                                    {/* <td>
-                                        {totalExpenseQueryPreviousValue +
-                                            totalExpenseQueryValue}{' '}
-                                        tk
-                                    </td> */}
-                                    {/* <td>
-                                        {totalIncomeQueryPreviousValue +
-                                            totalIncomeQueryValue}{' '}
-                                        tk
-                                    </td> */}
                                     <td>
                                         {totalExpenseValue}
                                         tk
@@ -227,13 +196,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                         {totalIncomeValue - totalExpenseValue}
                                         tk
                                     </td>
-                                    {/* <td>
-                                        {totalIncomeQueryPreviousValue -
-                                            totalExpenseQueryPreviousValue +
-                                            totalIncomeQueryValue -
-                                            totalExpenseQueryValue}{' '}
-                                        tk
-                                    </td> */}
                                 </tr>
                             </tbody>
                         </table>

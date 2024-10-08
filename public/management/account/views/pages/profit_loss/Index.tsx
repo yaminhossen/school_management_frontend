@@ -37,48 +37,11 @@ const Index: React.FC<Props> = (props: Props) => {
             year3: '50000',
         },
         {
-            id: '',
-            category: 'Total:',
-            year1: ': 260000 tk',
-            year2: ': 320000 tk',
-            year3: ': 470000 tk',
-        },
-        {
-            id: '',
-            date: 'EXPENSE',
-            category: '',
-            year1: '',
-            year2: '',
-            year3: '',
-        },
-        {
-            id: 1,
-            date: '',
-            category: 'Maintenance costs',
-            year1: '20000',
-            year2: '30000',
-            year3: '20000',
-        },
-        {
-            id: 2,
-            category: 'Employee Sallary',
-            year1: '60000',
-            year2: '80000',
-            year3: '100000',
-        },
-        {
-            id: 3,
-            category: 'Driver billl',
-            year1: '40000',
+            id: 5,
+            category: 'Transport Fee',
+            year1: '30000',
             year2: '40000',
-            year3: '45000',
-        },
-        {
-            id: 4,
-            category: 'House Rent',
-            year1: '70000',
-            year2: '80000',
-            year3: '80000',
+            year3: '50000',
         },
     ];
 
@@ -117,8 +80,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th>INCOME</th>
                                     <th>CATEGORY</th>
                                     <th>Year - 2021</th>
-                                    <th>Year - 2022</th>
-                                    <th>Year - 2023</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -127,22 +88,38 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.date}</td>
+                                            <td></td>
+                                            {/* <td>{i.date}</td> */}
                                             <td>{i.category}</td>
                                             <td>{i.year1}</td>
-                                            <td>{i.year2}</td>
-                                            <td>{i.year3}</td>
                                         </tr>
                                     );
                                 })}
                                 <tr>
                                     <td></td>
                                     <td></td>
+                                    <td>Income Total:</td>
                                     <td></td>
-                                    <td>Total:</td>
                                     <td>: 190000 tk</td>
-                                    <td>: 270000 tk</td>
-                                    <td>: 245000 tk</td>
+                                </tr>
+                                {datas?.map((i: { [key: string]: any }) => {
+                                    return (
+                                        <tr>
+                                            <td></td>
+                                            <td>{i.id}</td>
+                                            <td></td>
+                                            {/* <td>{i.date}</td> */}
+                                            <td>{i.category}</td>
+                                            <td>{i.year1}</td>
+                                        </tr>
+                                    );
+                                })}
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Expense Total:</td>
+                                    <td></td>
+                                    <td>: 190000 tk</td>
                                 </tr>
                                 <tr>
                                     <td></td>
@@ -150,17 +127,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td></td>
-                                    <td>Net Balance:</td>
+                                    <td>Profit Balance:</td>
                                     <td>Total:</td>
                                     <td>Cr : 70000 tk</td>
-                                    <td>Cr : 50000 tk</td>
-                                    <td>Cr : 185000 tk</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Loss Balance:</td>
+                                    <td>Total:</td>
+                                    <td>Cr : 00 tk</td>
                                 </tr>
                             </tbody>
                         </table>
