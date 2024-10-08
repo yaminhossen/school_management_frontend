@@ -25,6 +25,7 @@ import credit from './services/credit';
 import debit from './services/debit';
 import income_statement from './services/income_statement';
 import journal from './services/journal';
+import profit_loss from './services/profit_and_loss';
 import fees_store from './services/fees_store';
 
 export default function (fastify: FastifyInstance) {
@@ -44,6 +45,11 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data = await income_statement(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        profit_loss: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await profit_loss(fastify, req);
             res.code(data.status).send(data);
         },
 

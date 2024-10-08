@@ -584,3 +584,14 @@
 {"level":60,"time":1727938563250,"pid":8628,"hostname":"DESKTOP-9421701","file":"","time":"10/3/2024 12:56:03 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1728218014692,"pid":1844,"hostname":"DESKTOP-9421701","file":"","time":"10/6/2024 6:33:34 PM","message":"Unexpected token } in JSON at position 305"}
 {"level":60,"time":1728218371242,"pid":7060,"hostname":"DESKTOP-9421701","file":"","time":"10/6/2024 6:39:31 PM","message":"Incorrect integer value: '' for column 'amount' at row 1"}
+{"level":60,"time":1728366729905,"pid":9676,"hostname":"DESKTOP-9421701","file":"","time":"10/8/2024 11:52:09 AM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1728380354195,"pid":7228,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"10/8/2024 3:39:14 PM","message":"data not found"}
+{"level":60,"time":1728380362346,"pid":7228,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"10/8/2024 3:39:22 PM","message":"data not found"}
+{"level":60,"time":1728380362847,"pid":7228,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"10/8/2024 3:39:22 PM","message":"data not found"}
+{"level":60,"time":1728380363134,"pid":7228,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"10/8/2024 3:39:23 PM","message":"data not found"}
+{"level":60,"time":1728380363581,"pid":7228,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"10/8/2024 3:39:23 PM","message":"data not found"}
+{"level":60,"time":1728380363856,"pid":7228,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"10/8/2024 3:39:23 PM","message":"data not found"}
+{"level":60,"time":1728380398494,"pid":7228,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"10/8/2024 3:39:58 PM","message":"data not found"}
+{"level":60,"time":1728380404957,"pid":7228,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:19:23)","time":"10/8/2024 3:40:04 PM","message":"Cannot read properties of undefined (reading 'month1')"}
+{"level":60,"time":1728380409163,"pid":7228,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:19:23)","time":"10/8/2024 3:40:09 PM","message":"Cannot read properties of undefined (reading 'month1')"}
+{"level":60,"time":1728380409491,"pid":7228,"hostname":"DESKTOP-9421701","file":"services\\journal.ts:19:23)","time":"10/8/2024 3:40:09 PM","message":"Cannot read properties of undefined (reading 'month1')"}
