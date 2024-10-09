@@ -179,3 +179,15 @@
 {"level":60,"time":1728452881954,"pid":12200,"hostname":"DESKTOP-9421701","error":"404","url":"/admission-officer/"}
 {"level":60,"time":1728454636567,"pid":12200,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
 {"level":60,"time":1728454637465,"pid":12200,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
+{"level":60,"time":1728466757176,"pid":18108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/class-routine/1"}
+{"level":60,"time":1728466761393,"pid":18108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-routines/plan/1"}
+{"level":60,"time":1728466799804,"pid":18108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/approved/1"}
+{"level":60,"time":1728466809117,"pid":18108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/academic-resource/1"}
+{"level":60,"time":1728466817215,"pid":18108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/academic-resource/1"}
+{"level":60,"time":1728466821058,"pid":18108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/approved/1"}
+{"level":60,"time":1728467405397,"pid":18108,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/account/account.js"}
+{"level":60,"time":1728467406159,"pid":18108,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/account/account.js"}
+{"level":60,"time":1728468330077,"pid":18108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/approved/1"}
+{"level":60,"time":1728468331997,"pid":18108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/academic-resource/1"}
+{"level":60,"time":1728471626161,"pid":18108,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
+{"level":60,"time":1728471641415,"pid":18108,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
