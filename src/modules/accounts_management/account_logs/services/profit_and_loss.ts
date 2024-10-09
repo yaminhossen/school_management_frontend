@@ -157,7 +157,11 @@ async function journal(
                 },
             });
 
-        return response(200, 'data created', { data, data2 });
+        return response(200, 'data created', {
+            data,
+            data2,
+            categoryWiseTotalsArray,
+        });
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.params);
         if (error instanceof custom_error) {
