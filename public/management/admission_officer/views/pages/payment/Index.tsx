@@ -33,6 +33,7 @@ export interface FeesInfo {
 }
 export interface Props {}
 
+let convertamount = (window as any).convertAmount;
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState('');
@@ -45,7 +46,9 @@ const Index: React.FC<Props> = (props: Props) => {
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         let formData = new FormData(e.target);
-
+        // let netAmount = convertamount(totalAmount);
+        // console.log('net amount', netAmount);
+        // return;
         try {
             // Make POST request with form data
             const response = await axios.post(
@@ -65,7 +68,6 @@ const Index: React.FC<Props> = (props: Props) => {
     const fetchAccounts = async () => {
         try {
             const response = await axios.get('/api/v1/accounts/accounts');
-            console.log('accontsss', accounts);
             setAccounts(response.data.data);
             // setData(response.data);
         } catch (error) {
@@ -97,6 +99,7 @@ const Index: React.FC<Props> = (props: Props) => {
                 `/api/v1/user-students/student-class/${id}`,
             );
             setClass(response.data.data);
+            // console.log('window amount', (window as any).convertAmount(12));
 
             // const response2 = await axios.get(
             //     '/api/v1/user-students/fees-categories/1',
@@ -120,22 +123,31 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
+    function fetchAmount(number: number) {
+        try {
+            console.log(number, window);
+
+            if (number > 0) {
+                console.log((window as any).convertAmount(number));
+            }
+        } catch (error) {
+            console.log(error);
+            return '';
+        }
+    }
+    // function name(params:type) {
+
+    // }
 
     useEffect(() => {
-        fetchAccountCategorys();
         fetchAccounts();
-        fetchPeriods();
-        // fetchClass();
-    }, []);
-    useEffect(() => {
         fetchAccountCategorys();
-        // fetchAccounts();
-        // fetchPeriods();
+        fetchPeriods();
         // fetchClass();
     }, []);
     const handleStudentIdBlur = () => {
         const id = studentIdRef.current?.value; // Get the value from the ref
-        // console.log('studnet_id', id);
+        console.log('studnet_id', id);
 
         if (id) {
             fetchClass(id); // Pass the id to fetchClass
@@ -143,26 +155,19 @@ const Index: React.FC<Props> = (props: Props) => {
     };
     useEffect(() => {
         if (classes) {
-            console.log('newlsdfjdslkfjdlsj', classes);
             let id = classes.s_class;
-            // console.log('newlsdfjdslkfjdlsj', id);
             fetchTypes(id);
         }
     }, [classes]);
+
     useEffect(() => {
         let sum = feesTypes.reduce(
             (t, i: anyObject) => (t += +(i.input_amount || 0)),
             0,
         );
         setTotalAmount(sum);
+        // console.log(convertamount(33));
     }, [feesTypes]);
-
-    useEffect(() => {
-        console.log('feestypes', periods);
-    }, [setPeriods]);
-
-    // console.log('classes', classes);
-    let date = moment().format('YYYY-MM-DD');
 
     return (
         <div className="admin_dashboard">
@@ -357,7 +362,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 return (
                                                     <tr>
                                                         <td>{i.name}</td>
-                                                        <td>{i.amount}</td>
+                                                        <td>
+                                                            <input
+                                                                type="hidden"
+                                                                name={`fees_amount_${index}`}
+                                                                value={i.amount}
+                                                            />
+                                                            {i.amount}
+                                                        </td>
                                                         <td>
                                                             <input
                                                                 type="hidden"
@@ -394,10 +406,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <td>Total</td>
                                         <td>
                                             {totalAmount} tk
-                                            {/* <input
-                                                type="text"
+                                            <input
+                                                type="hidden"
                                                 name="total_amount"
-                                            /> */}
+                                                value={totalAmount}
+                                            />
                                         </td>
                                     </tr>
                                     <tr>
@@ -408,12 +421,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 type="hidden"
                                                 name="amount_in_text"
                                                 // value={
-                                                // (
-                                                //     window as any
-                                                // ).convertAmount(totalAmount)
-                                                //     .bn
+                                                //     (
+                                                //         window as any
+                                                //     ).convertAmount(totalAmount)
+                                                //         .bn
                                                 // }
                                             />
+                                            টাকা মাত্র
                                             {/* {
                                                 (window as any).convertAmount(
                                                     totalAmount,

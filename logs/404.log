@@ -175,3 +175,4 @@
 {"level":60,"time":1728383979323,"pid":16172,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/journal"}
 {"level":60,"time":1728383984612,"pid":16172,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/journal"}
 {"level":60,"time":1728391364319,"pid":2680,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/account/account.js"}
+{"level":60,"time":1728448886174,"pid":5544,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/account/account.js"}
