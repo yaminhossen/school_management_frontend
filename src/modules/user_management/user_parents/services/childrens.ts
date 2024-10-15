@@ -13,10 +13,10 @@ async function details(
     let params = req.params as any;
 
     try {
-        let data = await models.UserParentsModel.findOne({
-            where: {
-                id: params.id,
-            },
+        let data = await models.UserParentsModel.findAll({
+            // where: {
+            //     id: params.id,
+            // },
             attributes: {
                 exclude: ['password'],
             },

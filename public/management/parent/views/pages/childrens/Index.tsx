@@ -1,28 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
+
+export interface AccountLog {
+    account: { title: string };
+    type: 'income' | 'expense';
+    amount: number;
+    account_log: [];
+    category: { title: string };
+    created_at: string;
+}
+
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            class: 'Six',
-            name: 'Shamim',
-        },
-        {
-            id: 2,
-            class: 'Six',
-            name: 'Ramim',
-        },
-        {
-            id: 3,
-            class: 'Seven',
-            name: 'Areeba',
-        },
-    ];
+    const [error, setError] = useState(null);
+    const [data, setData] = useState<AccountLog[]>([]);
+
+    const fetchData = async () => {
+        try {
+            let m1 = moment().subtract(30, 'days').format('YYYY-MM-DD');
+            let m2 = moment().format('YYYY-MM-DD');
+            const formData: { month1?: string; month2?: string } = {};
+            formData.month1 = m1;
+            formData.month2 = m2;
+
+            const response = await axios.get(
+                '/api/v1/user-parents/childrens/20',
+            );
+            setData(response.data.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []); // Trigger fetch when dates change
 
     return (
         <div className="admin_dashboard">
@@ -41,7 +56,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
+                                {data?.map((i: { [key: string]: any }) => {
                                     return (
                                         <tr>
                                             <td></td>

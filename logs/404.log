@@ -199,3 +199,12 @@
 {"level":60,"time":1728982503303,"pid":4064,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-routines/plan/1"}
 {"level":60,"time":1728982527121,"pid":4064,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-details/1"}
 {"level":60,"time":1728982550096,"pid":4064,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/academic-resource/1"}
+{"level":60,"time":1728994313534,"pid":7464,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/class-routine/1"}
+{"level":60,"time":1728994314379,"pid":7464,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-routines/plan/1"}
+{"level":60,"time":1728994362273,"pid":7464,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-details/1"}
+{"level":60,"time":1728995150997,"pid":7464,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/childrens/20"}
+{"level":60,"time":1728995152129,"pid":7464,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/childrens/20"}
+{"level":60,"time":1728995152925,"pid":7464,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/childrens/20"}
+{"level":60,"time":1728995159183,"pid":7464,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/childrens/20"}
+{"level":60,"time":1728995160178,"pid":7464,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/childrens/20"}
+{"level":60,"time":1728995169006,"pid":7464,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/childrens/20"}
