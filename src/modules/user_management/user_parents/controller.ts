@@ -16,6 +16,7 @@ import data_import from './services/import';
 import login from './services/login';
 import logout from './services/logout';
 import forget from './services/forget';
+import childrens from './services/childrens';
 import basic_information from './services/basic_information';
 
 export default function (fastify: FastifyInstance) {
@@ -27,6 +28,11 @@ export default function (fastify: FastifyInstance) {
 
         find: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        childrens: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await childrens(fastify, req);
             res.code(data.status).send(data);
         },
 

@@ -191,3 +191,11 @@
 {"level":60,"time":1728468331997,"pid":18108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/academic-resource/1"}
 {"level":60,"time":1728471626161,"pid":18108,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
 {"level":60,"time":1728471641415,"pid":18108,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
+{"level":60,"time":1728974302418,"pid":4064,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1728975752324,"pid":4064,"hostname":"DESKTOP-9421701","error":"404","url":"/admission-officer/lofin"}
+{"level":60,"time":1728975762594,"pid":4064,"hostname":"DESKTOP-9421701","error":"404","url":"/admission-officer/lofin"}
+{"level":60,"time":1728982500572,"pid":4064,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/class-routine/1"}
+{"level":60,"time":1728982501247,"pid":4064,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-routines/plan/1"}
+{"level":60,"time":1728982503303,"pid":4064,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-routines/plan/1"}
+{"level":60,"time":1728982527121,"pid":4064,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-details/1"}
+{"level":60,"time":1728982550096,"pid":4064,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/academic-resource/1"}

@@ -11,6 +11,10 @@ GET {{hostname}}/4 HTTP/1.1
 
 # get
 ###
+GET {{hostname}}/childrens/20 HTTP/1.1
+
+# get
+###
 GET {{hostname}}/full-details/8 HTTP/1.1
 
 # store

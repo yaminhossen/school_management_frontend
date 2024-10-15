@@ -9,6 +9,7 @@ module.exports = async function (fastify: FastifyInstance) {
     fastify
         .get(`${prefix}`, controllerInstance.all)
         .get(`${prefix}/:id`, controllerInstance.find)
+        .get(`${prefix}/childrens/:id`, controllerInstance.childrens)
         .get(
             `${prefix}/basic-information/:id`,
             controllerInstance.basic_information,

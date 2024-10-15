@@ -601,3 +601,4 @@
 {"level":60,"time":1728463124737,"pid":12200,"hostname":"DESKTOP-9421701","file":"","time":"10/9/2024 2:38:44 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1728464128242,"pid":12200,"hostname":"DESKTOP-9421701","file":"","time":"10/9/2024 2:55:28 PM","message":"Incorrect integer value: '' for column 'amount' at row 1"}
 {"level":60,"time":1728468358450,"pid":18108,"hostname":"DESKTOP-9421701","file":"","time":"10/9/2024 4:05:58 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1728975786616,"pid":4064,"hostname":"DESKTOP-9421701","file":"","time":"10/15/2024 1:03:06 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
