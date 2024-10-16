@@ -153,6 +153,14 @@ const Index: React.FC<Props> = (props: Props) => {
             fetchClass(id); // Pass the id to fetchClass
         }
     };
+    const handleStudentSubmit = (
+        event: React.KeyboardEvent<HTMLInputElement>,
+    ) => {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent default form submission
+            // handleStudentIdBlur(); // Trigger the blur event
+        }
+    };
     useEffect(() => {
         if (classes) {
             let id = classes.s_class;
@@ -173,6 +181,7 @@ const Index: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <div className="content_body">
                 <form
+                    id="main_form"
                     onSubmit={handleSubmit}
                     className="form_6002 mx-auto pt-3"
                 >
@@ -191,6 +200,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             name="student_id"
                                             ref={studentIdRef} // Assign ref here
                                             onBlur={handleStudentIdBlur}
+                                            onKeyUp={handleStudentSubmit}
                                         />
                                     </div>
                                 </div>
@@ -411,29 +421,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 name="total_amount"
                                                 value={totalAmount}
                                             />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Total</td>
-                                        <td>
-                                            <input
-                                                type="hidden"
-                                                name="amount_in_text"
-                                                // value={
-                                                //     (
-                                                //         window as any
-                                                //     ).convertAmount(totalAmount)
-                                                //         .bn
-                                                // }
-                                            />
-                                            টাকা মাত্র
-                                            {/* {
-                                                (window as any).convertAmount(
-                                                    totalAmount,
-                                                ).bn
-                                            }{' '}
-                                            টাকা মাত্র */}
                                         </td>
                                     </tr>
                                 </tfoot>

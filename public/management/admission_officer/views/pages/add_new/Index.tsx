@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../store';
@@ -22,6 +22,8 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalContactNumber, setTotalContactNumber] = useState([1, 1, 1]);
     const [totalLanguage, setTotalLanguage] = useState([1, 1]);
     const [totalSkill, setTotalSkill] = useState([1, 1]);
+
+    // const formRef = useRef<HTMLFormElement>(null);
     const [totalEducationalBackground, setTotalEducationalBackground] =
         useState([1, 1]);
     // let date22 = moment().format('YYYY-DD-MM');
@@ -32,7 +34,10 @@ const Index: React.FC<Props> = (props: Props) => {
 
         let response = await dispatch(store(new FormData(e.target)) as any);
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
-            // e.target.reset();
+            // if (formRef.current) {
+            //     formRef.current.reset(); // Reset the form fields
+            // }
+            e.target.reset();
         }
     }
     const state: typeof initialState = useSelector(
@@ -68,6 +73,7 @@ const Index: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <div className="content_body">
                 <form
+                    // ref={formRef}
                     onSubmit={(e) => handle_submit(e)}
                     className="form_6002 mx-auto pt-3"
                 >
@@ -380,11 +386,35 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Division</label>
                                     <div className="form_elements">
-                                        <input
+                                        {/* <input
                                             type="text"
                                             placeholder="division"
                                             name="division"
-                                        />
+                                        /> */}
+                                        <select name="division" id="">
+                                            <option value="Barishal">
+                                                Barishal
+                                            </option>
+                                            <option value="Chattogram">
+                                                Chattogram
+                                            </option>
+                                            <option value="Dhaka">Dhaka</option>
+                                            <option value="Khulna">
+                                                Khulna
+                                            </option>
+                                            <option value="Rajshahi">
+                                                Rajshahi
+                                            </option>
+                                            <option value="Rangpur">
+                                                Rangpur
+                                            </option>
+                                            <option value="Mymensingh">
+                                                Mymensingh
+                                            </option>
+                                            <option value="Sylhet">
+                                                Sylhet
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">

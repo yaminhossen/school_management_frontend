@@ -13,23 +13,23 @@ import error_trace from '../helpers/error_trace';
 import moment from 'moment';
 
 async function validate(req: Request) {
-    // await body('name')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the name field is required')
-    //     .run(req);
+    await body('name')
+        .not()
+        .isEmpty()
+        .withMessage('the name field is required')
+        .run(req);
 
-    // await body('email')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the email field is required')
-    //     .run(req);
+    await body('email')
+        .not()
+        .isEmpty()
+        .withMessage('the email field is required')
+        .run(req);
 
-    // await body('gender')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the gender field is required')
-    //     .run(req);
+    await body('gender')
+        .not()
+        .isEmpty()
+        .withMessage('the gender field is required')
+        .run(req);
 
     let result = await validationResult(req);
 
