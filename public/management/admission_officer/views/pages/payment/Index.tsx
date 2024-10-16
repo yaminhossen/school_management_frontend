@@ -45,7 +45,12 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalAmount, setTotalAmount] = useState(0);
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
-        let formData = new FormData(e.target);
+        let form = document.getElementById('main_form') as HTMLFormElement;
+        if (!form) {
+            return;
+        }
+
+        let formData = new FormData(form);
         // let netAmount = convertamount(totalAmount);
         // console.log('net amount', netAmount);
         // return;
@@ -57,11 +62,12 @@ const Index: React.FC<Props> = (props: Props) => {
             );
             // setResponseMessage('Form submitted successfully!');
             setData('Form submitted successfully!'); // Clear any previous error
+            form.reset();
             console.log('response', response);
         } catch (error) {
             // setError(error); // Set error state
             // setResponseMessage('Failed to submit form.');
-            console.log('data', error.msg);
+            // console.log('data', error.msg);
         }
         // console.log('data', error);
     };
@@ -158,7 +164,7 @@ const Index: React.FC<Props> = (props: Props) => {
     ) => {
         if (event.key === 'Enter') {
             event.preventDefault(); // Prevent default form submission
-            // handleStudentIdBlur(); // Trigger the blur event
+            handleStudentIdBlur(); // Trigger the blur event
         }
     };
     useEffect(() => {
@@ -182,7 +188,7 @@ const Index: React.FC<Props> = (props: Props) => {
             <div className="content_body">
                 <form
                     id="main_form"
-                    onSubmit={handleSubmit}
+                    onSubmit={(e) => e.preventDefault()}
                     className="form_6002 mx-auto pt-3"
                 >
                     <div className="student_form">
@@ -430,7 +436,11 @@ const Index: React.FC<Props> = (props: Props) => {
                     <div className="form-group student_submit form-horizontal">
                         <label></label>
                         <div className="form_elements">
-                            <button className="btn btn-sm btn-outline-info">
+                            <button
+                                onClick={handleSubmit}
+                                type="button"
+                                className="btn btn-sm btn-outline-info"
+                            >
                                 submit
                             </button>
                         </div>

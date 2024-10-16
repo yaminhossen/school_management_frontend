@@ -131,12 +131,12 @@ const Details: React.FC<Props> = (props: Props) => {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Admission no</td>
+                                            <td>Student Id</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
                                                 {
                                                     state.item?.student_info
-                                                        ?.addmission_no
+                                                        ?.student_id
                                                 }
                                             </td>
                                         </tr>
