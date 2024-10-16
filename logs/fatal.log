@@ -9,3 +9,11 @@
 {"level":60,"time":1729059206913,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 12:13:26 PM","message":"data not found"}
 {"level":60,"time":1729059210494,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 12:13:30 PM","message":"data not found"}
 {"level":60,"time":1729059210802,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 12:13:30 PM","message":"data not found"}
+{"level":60,"time":1729063008411,"pid":6216,"hostname":"DESKTOP-9421701","file":"","time":"10/16/2024 1:16:48 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1729063054599,"pid":6216,"hostname":"DESKTOP-9421701","file":"","time":"10/16/2024 1:17:34 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1729063059632,"pid":6216,"hostname":"DESKTOP-9421701","file":"","time":"10/16/2024 1:17:39 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1729063119647,"pid":6216,"hostname":"DESKTOP-9421701","file":"","time":"10/16/2024 1:18:39 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1729063155415,"pid":6216,"hostname":"DESKTOP-9421701","file":"","time":"10/16/2024 1:19:15 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1729063168985,"pid":6216,"hostname":"DESKTOP-9421701","file":"","time":"10/16/2024 1:19:28 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1729063691587,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 1:28:11 PM","message":"data not found"}
+{"level":60,"time":1729063714055,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 1:28:34 PM","message":"data not found"}

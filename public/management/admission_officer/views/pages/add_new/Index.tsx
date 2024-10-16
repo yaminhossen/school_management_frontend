@@ -31,13 +31,16 @@ const Index: React.FC<Props> = (props: Props) => {
     async function handle_submit(e) {
         e.preventDefault();
         console.log('this is clikck');
-
-        let response = await dispatch(store(new FormData(e.target)) as any);
+        let form = document.getElementById('main_form') as HTMLFormElement;
+        if (!form) {
+            return;
+        }
+        let response = await dispatch(store(new FormData(form)) as any);
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
             // if (formRef.current) {
             //     formRef.current.reset(); // Reset the form fields
             // }
-            e.target.reset();
+            form.reset();
         }
     }
     const state: typeof initialState = useSelector(
@@ -54,8 +57,6 @@ const Index: React.FC<Props> = (props: Props) => {
     }
 
     useEffect(() => {
-        // console.log('frontend state', state);
-
         initdependancy();
     }, []);
 
@@ -74,7 +75,8 @@ const Index: React.FC<Props> = (props: Props) => {
             <div className="content_body">
                 <form
                     // ref={formRef}
-                    onSubmit={(e) => handle_submit(e)}
+                    id="main_form"
+                    onSubmit={(e) => e.preventDefault()}
                     className="form_6002 mx-auto pt-3"
                 >
                     <div className="student_form">
@@ -1250,7 +1252,11 @@ const Index: React.FC<Props> = (props: Props) => {
                     <div className="form-group student_submit form-horizontal">
                         <label></label>
                         <div className="form_elements">
-                            <button className="btn btn-sm  btn-outline-info">
+                            <button
+                                onClick={handle_submit}
+                                type="button"
+                                className="btn btn-sm  btn-outline-info"
+                            >
                                 submit
                             </button>
                         </div>
