@@ -10,17 +10,8 @@ async function details(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
-    let educationalBackgroundsModel =
-        models.UserStudentEducationalBackgroundsModel;
-    let informationsModel = models.UserStudentInformationsModel;
     let contactNumbersModel = models.UserStudentContactNumbersModel;
-    let skillsModel = models.UserStudentSkillsModel;
-    let studentParentsModel = models.UserStudentParentsModel;
-    let languagesModel = models.UserStudentLanguagesModel;
-    let documentValuesModel = models.UserStudentDocumentValuesModel;
-    let documentTitlesModel = models.UserStudentDocumentTitlesModel;
     let studentsModel = models.UserStudentsModel;
-    let parentsModel = models.UserParentsModel;
     let params = req.params as any;
 
     try {

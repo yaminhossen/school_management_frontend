@@ -6,7 +6,7 @@ import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 import { Sequelize, Op } from 'sequelize';
 
-async function journal(
+async function parent_fees(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -30,13 +30,14 @@ async function journal(
 
     try {
         let data = await models.AccountLogsModel.findAll({
-            where: {
-                date: {
-                    [Op.between]: [month1, formattedEndDate],
-                    // [Op.gte]: month1, // Greater than or equal to month1
-                    // [Op.lte]: formattedEndDate, // Less than or equal to month2
-                },
-            },
+            // where: {
+            //     date: {
+            //         [Op.between]: [month1, formattedEndDate],
+            //         // [Op.gte]: month1, // Greater than or equal to month1
+            //         // [Op.lte]: formattedEndDate, // Less than or equal to month2
+            //     },
+            //     type: 'income',
+            // },
             include: [
                 {
                     model: accountCategoriesModel,
@@ -117,4 +118,4 @@ async function journal(
     }
 }
 
-export default journal;
+export default parent_fees;
