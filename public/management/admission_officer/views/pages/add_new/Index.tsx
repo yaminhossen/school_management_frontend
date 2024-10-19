@@ -579,11 +579,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Student house type</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="Student house type"
-                                            name="student_house_type"
-                                        />
+                                        <select name="student_house_type" id="">
+                                            <option value="Residential">
+                                                Residential
+                                            </option>
+                                            <option value="Non-residential">
+                                                Non-residential
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
@@ -606,7 +609,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-vertical">
+                                {/* <div className="form-group form-vertical">
                                     <label>Cast</label>
                                     <div className="form_elements">
                                         <select name="cast" id="">
@@ -622,7 +625,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             </option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="full_width">
@@ -941,11 +944,17 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             name={`number_owner${index}`}
                                                             id=""
                                                         >
+                                                            <option value="father">
+                                                                father
+                                                            </option>
+                                                            <option value="mother">
+                                                                mother
+                                                            </option>
+                                                            <option value="shibling">
+                                                                shibling
+                                                            </option>
                                                             <option value="personal">
                                                                 personal
-                                                            </option>
-                                                            <option value="home">
-                                                                home
                                                             </option>
                                                             <option value="friend">
                                                                 friend
@@ -1014,12 +1023,17 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         Language title
                                                     </label>
                                                     <div className="form_elements">
-                                                        <input
-                                                            type="text"
-                                                            placeholder="language title"
+                                                        <select
                                                             name={`language_title${index}`}
                                                             id=""
-                                                        />
+                                                        >
+                                                            <option value="arabic">
+                                                                arabic
+                                                            </option>
+                                                            <option value="english">
+                                                                english
+                                                            </option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div className="form-group form-vertical">
