@@ -3,12 +3,28 @@ import { anyObject } from '../../../common_types/object';
 import db from '../models/db';
 import { env } from 'process';
 
+function parseCookieString(cookieString: any) {
+    try {
+        const cookieObj: any = {};
+        const cookies = cookieString.split(';');
+        cookies.forEach((cookie: any) => {
+            const [key, value] = cookie.split('=');
+            cookieObj[key.trim()] = decodeURIComponent(value);
+        });
+        return cookieObj;
+    } catch (error) {
+        return {};
+    }
+}
+
 const check_auth = async (request: FastifyRequest, reply: FastifyReply) => {
     const secretKey = env.JTI;
     const jwt = require('jsonwebtoken');
     // const token = request.headers.authorization;
-    const token = request.cookies.token;
+    const token = parseCookieString(request.headers.cookie)?.token;
     const user_agent = request.headers['user-agent'];
+
+    console.log('request cookies', token);
 
     if (!token || !token.startsWith('Bearer ')) {
         reply.code(401).send({ error: 'Unauthorized' });

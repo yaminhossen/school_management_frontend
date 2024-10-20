@@ -14,7 +14,7 @@ async function account_periods(
     let accountPeriodsModel = models.AccountPeriodsModel;
     let params = req.params as any;
     let user_id = (req as any).user?.id;
-    console.log('user', user_id);
+    console.log('period user', user_id);
 
     try {
         let data = await accountPeriodsModel.findAll({});

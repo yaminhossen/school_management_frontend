@@ -2,6 +2,7 @@
 import { FastifyInstance } from 'fastify';
 import controller from './controller';
 import check_staff_auth from '../../auth_management/authetication/services/chech_staff_auth';
+import check_auth from '../../auth_management/authetication/services/check_auth';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/user-students';

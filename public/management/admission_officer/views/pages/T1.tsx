@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-export interface Props {}
 import axios from 'axios';
+export interface Props {}
 
 export interface AccountLog {
     account: { title: string };
@@ -15,20 +15,18 @@ const T1: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState<AccountLog[]>([]);
     const [error, setError] = useState(null);
 
-    const fetchData = async () => {
-        try {
-            const response = await (window as any).axios.get(
-                '/api/v1/accounts/test-auth',
-            );
-            setData(response.data.data);
-        } catch (error) {
-            setError(error);
-        }
-    };
+    // const fetchData = async () => {
+    //     try {
+    //         const response = await axios.get('/api/v1/accounts/test-auth');
+    //         setData(response.data.data);
+    //     } catch (error) {
+    //         setError(error);
+    //     }
+    // };
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
     console.log('account', data);
 
     return (

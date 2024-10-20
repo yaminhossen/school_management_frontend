@@ -17,7 +17,7 @@ async function logout(
     let models = await db();
 
     try {
-        let data = await models.User.findOne({
+        let data = await models.UserStaffsModel.findOne({
             where: {
                 id: (req as anyObject).user.id,
             },
@@ -26,7 +26,7 @@ async function logout(
             data.token = null;
             data.user_agent = null;
             await data.save();
-            return response(200, 'logout', {});
+            return response(217, 'logout', {});
         } else {
             throw new custom_error(
                 'Expectation Failed',

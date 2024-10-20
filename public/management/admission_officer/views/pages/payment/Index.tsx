@@ -147,8 +147,8 @@ const Index: React.FC<Props> = (props: Props) => {
     // }
 
     useEffect(() => {
-        fetchAccounts();
-        fetchAccountCategorys();
+        // fetchAccounts();
+        // fetchAccountCategorys();
         fetchPeriods();
         // fetchClass();
     }, []);
@@ -171,7 +171,9 @@ const Index: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         if (classes) {
             let id = classes.s_class;
-            fetchTypes(id);
+            if (id) {
+                fetchTypes(id);
+            }
         }
     }, [classes]);
 

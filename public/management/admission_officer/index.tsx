@@ -21,7 +21,6 @@ if (container) {
         </Provider>,
     );
 }
-console.log('isLogged');
 
 (window as any).axios = axios;
 axios.interceptors.request.use(
@@ -44,17 +43,26 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
     function (response) {
+        console.log('response ok', response);
+        if (response.status == 217) {
+            location.href = '/admission-officer/login';
+        }
         (window as any)
             .jQuery('.loader-wrapper')
             .fadeOut('slow', function () {});
         return response;
     },
     function (error) {
+        console.log('response not ok', error.response);
+
         (window as any)
             .jQuery('.loader-wrapper')
             .fadeOut('slow', function () {});
 
-        if (error.response.data.status === 401) {
+        if (error.response.status === 401) {
+            document.cookie =
+                'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            location.href = '/admission-officer/login';
             console.log('authentication error');
         }
         if (error.response.data.status === 422) {
@@ -85,8 +93,10 @@ axios.interceptors.response.use(
                     });
                 }, 300);
             }
-            console.log(error.response);
         }
+        console.log(error.response);
         return Promise.reject(error);
     },
 );
+
+export const custom_axios = axios;
