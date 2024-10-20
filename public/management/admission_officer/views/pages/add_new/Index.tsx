@@ -388,11 +388,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Division</label>
                                     <div className="form_elements">
-                                        {/* <input
-                                            type="text"
-                                            placeholder="division"
-                                            name="division"
-                                        /> */}
                                         <select name="division" id="">
                                             <option value="Barishal">
                                                 Barishal

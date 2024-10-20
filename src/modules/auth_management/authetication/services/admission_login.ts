@@ -67,11 +67,17 @@ async function login(
                     const user_agent = req.headers['user-agent'];
                     let secret = Math.random().toString(36).substring(2, 10);
                     token = await jwt.sign(
-                        { id: data.id, token: secret, user_agent },
+                        {
+                            id: data.id,
+                            token: secret,
+                            user_agent,
+                            user_type: 'staff',
+                        },
                         secretKey,
                     );
 
                     data.token = secret;
+                    data.user_agent = user_agent;
                     await data.save();
                 } else {
                     return response(422, 'wrong password', [

@@ -85,16 +85,96 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the date_of_birth field is required')
         .run(req);
-    // await body('gender')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the gender field is required')
-    //     .run(req);
-    // await body('gender')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the gender field is required')
-    //     .run(req);
+    await body('religion')
+        .not()
+        .isEmpty()
+        .withMessage('the religion field is required')
+        .run(req);
+    await body('nationality')
+        .not()
+        .isEmpty()
+        .withMessage('the nationality field is required')
+        .run(req);
+    await body('division')
+        .not()
+        .isEmpty()
+        .withMessage('the division field is required')
+        .run(req);
+    await body('city')
+        .not()
+        .isEmpty()
+        .withMessage('the city field is required')
+        .run(req);
+    await body('post_code')
+        .not()
+        .isEmpty()
+        .withMessage('the post_code field is required')
+        .run(req);
+    await body('country')
+        .not()
+        .isEmpty()
+        .withMessage('the country field is required')
+        .run(req);
+    await body('telegram_name')
+        .not()
+        .isEmpty()
+        .withMessage('the telegram_name field is required')
+        .run(req);
+    await body('telegram_id')
+        .not()
+        .isEmpty()
+        .withMessage('the telegram_id field is required')
+        .run(req);
+    await body('blood_group')
+        .not()
+        .isEmpty()
+        .withMessage('the blood_group field is required')
+        .run(req);
+    await body('student_expire_date')
+        .not()
+        .isEmpty()
+        .withMessage('the student_expire_date field is required')
+        .run(req);
+    await body('height')
+        .not()
+        .isEmpty()
+        .withMessage('the height field is required')
+        .run(req);
+    await body('weight')
+        .not()
+        .isEmpty()
+        .withMessage('the weight field is required')
+        .run(req);
+    await body('as_on_date')
+        .not()
+        .isEmpty()
+        .withMessage('the as_on_date field is required')
+        .run(req);
+    await body('family_information')
+        .not()
+        .isEmpty()
+        .withMessage('the family_information field is required')
+        .run(req);
+    await body('shibling_information')
+        .not()
+        .isEmpty()
+        .withMessage('the shibling_information field is required')
+        .run(req);
+    await body('living_house_type')
+        .not()
+        .isEmpty()
+        .withMessage('the living_house_type field is required')
+        .run(req);
+    await body('student_house_type')
+        .not()
+        .isEmpty()
+        .withMessage('the student_house_type field is required')
+        .run(req);
+    await body('birth_certificate')
+        .not()
+        .isEmpty()
+        .withMessage('the birth_certificate field is required')
+        .run(req);
 
     let result = await validationResult(req);
 

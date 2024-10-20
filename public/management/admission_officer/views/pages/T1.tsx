@@ -1,7 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 export interface Props {}
+import axios from 'axios';
+
+export interface AccountLog {
+    account: { title: string };
+    type: 'income' | 'expense';
+    amount: number;
+    account_log: [];
+    category: { title: string };
+    created_at: string;
+}
 
 const T1: React.FC<Props> = (props: Props) => {
+    const [data, setData] = useState<AccountLog[]>([]);
+    const [error, setError] = useState(null);
+
+    const fetchData = async () => {
+        try {
+            const response = await (window as any).axios.get(
+                '/api/v1/accounts/test-auth',
+            );
+            setData(response.data.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log('account', data);
+
     return (
         <div className="custom_scroll">
             <div className="name my-3">

@@ -21,7 +21,9 @@ if (container) {
         </Provider>,
     );
 }
+console.log('isLogged');
 
+(window as any).axios = axios;
 axios.interceptors.request.use(
     function (config) {
         let form_errors = document.querySelectorAll('.form_error');
@@ -52,6 +54,9 @@ axios.interceptors.response.use(
             .jQuery('.loader-wrapper')
             .fadeOut('slow', function () {});
 
+        if (error.response.data.status === 401) {
+            console.log('authentication error');
+        }
         if (error.response.data.status === 422) {
             let errors = error.response?.data?.data;
             errors.forEach((error) => {

@@ -1,6 +1,7 @@
 'use strict';
 import { FastifyInstance } from 'fastify';
 import controller from './controller';
+import check_auth from '../../auth_management/authetication/services/check_auth';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/accounts';
@@ -10,6 +11,15 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(`${prefix}`, controllerInstance.all)
         .get(`${prefix}/all`, controllerInstance.all_accounts)
         .get(`${prefix}/accounts`, controllerInstance.accounts)
+
+        .get(
+            `${prefix}/test-auth`,
+            {
+                preHandler: check_auth,
+            },
+            controllerInstance.test_auth,
+        )
+
         .get(`${prefix}/:id`, controllerInstance.find)
         .post(`${prefix}/store`, controllerInstance.store)
         .post(`${prefix}/update`, controllerInstance.update)

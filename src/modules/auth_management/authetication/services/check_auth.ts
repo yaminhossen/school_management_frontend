@@ -18,12 +18,14 @@ const check_auth = async (request: FastifyRequest, reply: FastifyReply) => {
     try {
         const decoded = jwt.verify(token.slice(7), secretKey);
         let models = await db();
-        let user = await models.User.findByPk(decoded.id);
-        if (
-            user &&
-            user.token == decoded.token &&
-            decoded.user_agent == user_agent
-        ) {
+        let user: any = {};
+        if (decoded.user_type == 'staff') {
+            user = await models.UserStaffsModel.findByPk(decoded.id);
+        } else {
+            user = await models.User.findByPk(decoded.id);
+        }
+
+        if (user && user.token == decoded.token) {
             (request as anyObject).user = decoded;
             return;
         } else {

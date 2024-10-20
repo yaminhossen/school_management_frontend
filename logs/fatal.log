@@ -1,20 +1,4 @@
-{"level":60,"time":1729057728860,"pid":5128,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 11:48:48 AM","message":"data not found"}
-{"level":60,"time":1729059201856,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 12:13:21 PM","message":"data not found"}
-{"level":60,"time":1729059202640,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 12:13:22 PM","message":"data not found"}
-{"level":60,"time":1729059204020,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 12:13:24 PM","message":"data not found"}
-{"level":60,"time":1729059204244,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 12:13:24 PM","message":"data not found"}
-{"level":60,"time":1729059204422,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 12:13:24 PM","message":"data not found"}
-{"level":60,"time":1729059206456,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 12:13:26 PM","message":"data not found"}
-{"level":60,"time":1729059206847,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 12:13:26 PM","message":"data not found"}
-{"level":60,"time":1729059206913,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 12:13:26 PM","message":"data not found"}
-{"level":60,"time":1729059210494,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 12:13:30 PM","message":"data not found"}
-{"level":60,"time":1729059210802,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 12:13:30 PM","message":"data not found"}
-{"level":60,"time":1729063008411,"pid":6216,"hostname":"DESKTOP-9421701","file":"","time":"10/16/2024 1:16:48 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
-{"level":60,"time":1729063054599,"pid":6216,"hostname":"DESKTOP-9421701","file":"","time":"10/16/2024 1:17:34 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
-{"level":60,"time":1729063059632,"pid":6216,"hostname":"DESKTOP-9421701","file":"","time":"10/16/2024 1:17:39 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
-{"level":60,"time":1729063119647,"pid":6216,"hostname":"DESKTOP-9421701","file":"","time":"10/16/2024 1:18:39 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
-{"level":60,"time":1729063155415,"pid":6216,"hostname":"DESKTOP-9421701","file":"","time":"10/16/2024 1:19:15 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
-{"level":60,"time":1729063168985,"pid":6216,"hostname":"DESKTOP-9421701","file":"","time":"10/16/2024 1:19:28 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
-{"level":60,"time":1729063691587,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 1:28:11 PM","message":"data not found"}
-{"level":60,"time":1729063714055,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 1:28:34 PM","message":"data not found"}
-{"level":60,"time":1729078417788,"pid":6216,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"10/16/2024 5:33:37 PM","message":"data not found"}
+{"level":60,"time":1729408983805,"pid":11808,"hostname":"DESKTOP-9421701","file":"services\\test_auth.ts:32:19)","time":"10/20/2024 1:23:03 PM","message":"WHERE parameter \"id\" has invalid \"undefined\" value"}
+{"level":60,"time":1729408987701,"pid":11808,"hostname":"DESKTOP-9421701","file":"services\\test_auth.ts:32:19)","time":"10/20/2024 1:23:07 PM","message":"WHERE parameter \"id\" has invalid \"undefined\" value"}
+{"level":60,"time":1729408988105,"pid":11808,"hostname":"DESKTOP-9421701","file":"services\\test_auth.ts:32:19)","time":"10/20/2024 1:23:08 PM","message":"WHERE parameter \"id\" has invalid \"undefined\" value"}
+{"level":60,"time":1729408988464,"pid":11808,"hostname":"DESKTOP-9421701","file":"services\\test_auth.ts:32:19)","time":"10/20/2024 1:23:08 PM","message":"WHERE parameter \"id\" has invalid \"undefined\" value"}

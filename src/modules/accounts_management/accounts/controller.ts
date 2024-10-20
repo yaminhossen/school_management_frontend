@@ -14,6 +14,7 @@ import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
 import all_accounts from './services/all_accounts';
+import test_auth from './services/test_auth';
 import accounts from './services/accounts';
 
 export default function (fastify: FastifyInstance) {
@@ -33,6 +34,11 @@ export default function (fastify: FastifyInstance) {
 
         find: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        test_auth: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await test_auth(fastify, req);
             res.code(data.status).send(data);
         },
 

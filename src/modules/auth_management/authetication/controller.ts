@@ -17,8 +17,12 @@ export default function (fastify: FastifyInstance) {
             const cookie = serialize('token', 'Bearer ' + data.data.token, {
                 maxAge: 60_000,
             });
+            // const cookie2 = serialize('token', 'kdlsfjdklsj', {
+            //     maxAge: 60_000,
+            // });
 
             res.header('Set-Cookie', cookie);
+            // res.header('Set-Cookie', cookie2);
             res.code(data.status).send(data);
         },
 
@@ -31,8 +35,14 @@ export default function (fastify: FastifyInstance) {
                 maxAge: 60_000,
                 path: '/',
             });
+            const cookie2 = serialize('token2', 'kdlsfjdklsj', {
+                maxAge: 60_000,
+                path: '/',
+            });
+            console.log('cookie', cookie2);
 
             res.header('Set-Cookie', cookie);
+            // res.header('Set-Cookie', cookie2);
             res.code(data.status).send(data);
         },
 
