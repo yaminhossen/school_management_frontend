@@ -14,9 +14,6 @@ async function details(
 
     try {
         let data = await models.UserParentsModel.findAll({
-            // where: {
-            //     id: params.id,
-            // },
             attributes: {
                 exclude: ['password'],
             },

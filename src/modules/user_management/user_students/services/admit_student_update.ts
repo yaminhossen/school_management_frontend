@@ -93,6 +93,7 @@ async function store(
         );
     }
     // console.log('id image1', body);
+
     console.log('id image2', body['national_id']);
     console.log('id image3', body['national_id']?.ext);
     console.log('id image22', body['birth_certificate']);
