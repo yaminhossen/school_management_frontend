@@ -140,41 +140,41 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the height field is required')
         .run(req);
-    await body('weight')
-        .not()
-        .isEmpty()
-        .withMessage('the weight field is required')
-        .run(req);
-    await body('as_on_date')
-        .not()
-        .isEmpty()
-        .withMessage('the as_on_date field is required')
-        .run(req);
-    await body('family_information')
-        .not()
-        .isEmpty()
-        .withMessage('the family_information field is required')
-        .run(req);
-    await body('shibling_information')
-        .not()
-        .isEmpty()
-        .withMessage('the shibling_information field is required')
-        .run(req);
-    await body('living_house_type')
-        .not()
-        .isEmpty()
-        .withMessage('the living_house_type field is required')
-        .run(req);
-    await body('student_house_type')
-        .not()
-        .isEmpty()
-        .withMessage('the student_house_type field is required')
-        .run(req);
-    await body('birth_certificate')
-        .not()
-        .isEmpty()
-        .withMessage('the birth_certificate field is required')
-        .run(req);
+    // await body('weight')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the weight field is required')
+    //     .run(req);
+    // await body('as_on_date')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the as_on_date field is required')
+    //     .run(req);
+    // await body('family_information')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the family_information field is required')
+    //     .run(req);
+    // await body('shibling_information')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the shibling_information field is required')
+    //     .run(req);
+    // await body('living_house_type')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the living_house_type field is required')
+    //     .run(req);
+    // await body('student_house_type')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the student_house_type field is required')
+    //     .run(req);
+    // await body('birth_certificate')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the birth_certificate field is required')
+    //     .run(req);
 
     let result = await validationResult(req);
 
