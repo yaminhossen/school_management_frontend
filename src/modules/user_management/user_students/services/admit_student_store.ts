@@ -333,7 +333,7 @@ async function store(
     }
 
     console.log(body);
-    console.log(body.file);
+    // console.log(body.file);
     console.log(eductional_bc);
 
     let student_skills: anyObject[] = [];

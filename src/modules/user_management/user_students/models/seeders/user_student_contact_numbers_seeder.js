@@ -31,7 +31,7 @@ module.exports = {
                 updated_at: '2024-02-14',
             });
         }
-        set_data(1, 1, '01872384285', 'home', 1);
+        set_data(1, 1, '01872384285', 'father', 1);
         set_data(2, 2, '01872384286', 'friend', 2);
         set_data(3, 3, '01872384287', 'personal', 3);
 

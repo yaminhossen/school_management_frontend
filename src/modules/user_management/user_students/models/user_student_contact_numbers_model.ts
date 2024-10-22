@@ -64,8 +64,10 @@ function init(sequelize: Sequelize) {
             },
             owner: {
                 type: new DataTypes.ENUM(
+                    'father',
+                    'mother',
+                    'shibling',
                     'personal',
-                    'home',
                     'friend',
                     'relative',
                 ),
