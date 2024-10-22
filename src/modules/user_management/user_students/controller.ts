@@ -38,6 +38,7 @@ import parents from './services/parents';
 import contact_numbers from './services/contact_numbers';
 import fees_categories from './services/fees_categoies';
 import student_class from './services/student_class';
+import childrens from './services/childrens';
 import educational_backgrounds from './services/educational_backgrounds';
 import pre_info from './services/pre_info';
 
@@ -50,6 +51,11 @@ export default function (fastify: FastifyInstance) {
 
         find: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        childrens: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await childrens(fastify, req);
             res.code(data.status).send(data);
         },
 

@@ -54,6 +54,7 @@ module.exports = async function (fastify: FastifyInstance) {
             `${prefix}/class-routine/:id`,
             controllerInstance.class_routine_details,
         )
+        .get(`${prefix}/parent/childrens/:id`, controllerInstance.childrens)
         .get(`${prefix}/:id`, controllerInstance.find)
         .get(`${prefix}/class-details/:id`, controllerInstance.class_details)
         .get(`${prefix}/students/:id`, controllerInstance.find_student)

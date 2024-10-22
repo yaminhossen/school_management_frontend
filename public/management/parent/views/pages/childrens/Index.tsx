@@ -27,7 +27,7 @@ const Index: React.FC<Props> = (props: Props) => {
             formData.month2 = m2;
 
             const response = await axios.get(
-                '/api/v1/user-parents/childrens/20',
+                '/api/v1/user-students/parent/childrens/5',
             );
             setData(response.data.data);
         } catch (error) {
@@ -64,16 +64,26 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td>
                                                 <img
                                                     className="children_img"
-                                                    src="/assets/dashboard/images/avatar.png"
-                                                    alt="teacher"
+                                                    src={
+                                                        i.children_basic?.image
+                                                    }
+                                                    alt="Children img"
                                                 />
                                             </td>
-                                            <td>{i.name}</td>
-                                            <td>{i.class}</td>
+                                            <td>{i.children_basic?.name}</td>
+                                            {/* <td>{i.user_student_id}</td> */}
+                                            <td>
+                                                {
+                                                    i.children_info
+                                                        ?.children_class?.name
+                                                }
+                                            </td>
                                             <td>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
+                                                    // to={`/childrens/details/${i.user_student_id}`}
                                                     to="/childrens/details"
+                                                    paramss={i.id}
                                                 >
                                                     details
                                                 </Link>

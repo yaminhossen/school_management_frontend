@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 export interface Props {}
 
 const SingleStudent: React.FC<Props> = (props: Props) => {
+    const { id } = useParams();
     interface data {
         [key: string]: any;
     }
@@ -62,7 +63,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                         </div>
                         <ul className="section_naviagation">
                             <li>
-                                <Link to="/childrens/details">
+                                <Link to={`/childrens/details/${id}`}>
                                     Basic informations
                                 </Link>
                             </li>

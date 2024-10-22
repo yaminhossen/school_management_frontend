@@ -248,6 +248,7 @@ th {
 }
 .children_img{
     width: 40px;
+    height: 40px;
 }
 .download_btn{
     display: flex;

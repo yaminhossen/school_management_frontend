@@ -1,62 +1,98 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../../common_types/object';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
-const Skills: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            title: 'Footballer',
-            level: 'top',
-        },
-        {
-            id: 2,
-            title: 'Photographer',
-            level: 'mid',
-        },
-        {
-            id: 3,
-            title: 'Programmer',
-            level: 'mid',
-        },
-    ];
+const Details: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+    const [data, setData] = useState<any>([]);
+
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/user-students/full-details/11',
+            );
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
 
     return (
         <div className="admin_dashboard">
-            <h3 className="table_heading">Skills</h3>
-            <div className="content_body">
-                <div className="data_list">
-                    <div className="table_responsive custom_scroll">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>id</th>
-                                    <th>Title</th>
-                                    <th>Level</th>
-                                </tr>
-                            </thead>
-                            <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.title}</td>
-                                            <td>{i.level}</td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
+            {/* <h3 className="table_heading">Basic information</h3> */}
+            <div className="content_body ">
+                <div className="student_details">
+                    <div>
+                        {/* <Link
+                            to="/add-new"
+                            className="btn btn-sm btn-outline-info mb-2"
+                            type="submit"
+                        >
+                            Add New
+                        </Link> */}
+                    </div>
+                    <div>
+                        {/* <img
+                            src={data?.image}
+                            style={{ width: '100px' }}
+                            alt=""
+                        /> */}
                     </div>
                 </div>
+                {data && (
+                    <div className="single_student_details">
+                        <div>
+                            <h4>Skills</h4>
+                            {data.skills?.length &&
+                                data?.skills.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
+                                            <div className="basic_info mb-4 ">
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Skill Title</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.title}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table className="table text-nowrap student_table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Level</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {i.level}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        );
+                                    },
+                                )}
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );
 };
 
-export default Skills;
+export default Details;

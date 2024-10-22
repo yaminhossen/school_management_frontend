@@ -139,6 +139,22 @@ const db = async function (): Promise<models> {
         as: 'fees_types',
     });
 
+    UserStudentInformationsModel.belongsTo(BranchClassesModel, {
+        foreignKey: 's_class',
+        as: 'children_class',
+    });
+
+    UserStudentParentsModel.belongsTo(UserStudentsModel, {
+        foreignKey: 'user_student_id',
+        as: 'children_basic',
+    });
+
+    UserStudentParentsModel.hasOne(UserStudentInformationsModel, {
+        foreignKey: 'user_student_id',
+        sourceKey: 'user_student_id',
+        as: 'children_info',
+    });
+
     UserStudentInformationsModel.hasOne(BranchClassShiftsModel, {
         sourceKey: 'shift',
         foreignKey: 'id',

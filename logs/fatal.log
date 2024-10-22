@@ -51,3 +51,7 @@
 {"level":60,"time":1729583138113,"pid":9284,"hostname":"DESKTOP-JS2JUG4","file":"","time":"10/22/2024 1:45:38 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1729583157209,"pid":9284,"hostname":"DESKTOP-JS2JUG4","file":"","time":"10/22/2024 1:45:57 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1729583249430,"pid":9284,"hostname":"DESKTOP-JS2JUG4","file":"","time":"10/22/2024 1:47:29 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1729587218775,"pid":9284,"hostname":"DESKTOP-JS2JUG4","file":"services\\student_class.ts:45:19)","time":"10/22/2024 2:53:38 PM","message":"data not found"}
+{"level":60,"time":1729587234629,"pid":9284,"hostname":"DESKTOP-JS2JUG4","file":"services\\student_class.ts:45:19)","time":"10/22/2024 2:53:54 PM","message":"data not found"}
+{"level":60,"time":1729587240425,"pid":9284,"hostname":"DESKTOP-JS2JUG4","file":"services\\student_class.ts:45:19)","time":"10/22/2024 2:54:00 PM","message":"data not found"}
+{"level":60,"time":1729587244901,"pid":9284,"hostname":"DESKTOP-JS2JUG4","file":"services\\student_class.ts:45:19)","time":"10/22/2024 2:54:04 PM","message":"data not found"}
