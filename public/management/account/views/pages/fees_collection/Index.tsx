@@ -33,6 +33,7 @@ export interface FeesInfo {
 }
 export interface Props {}
 
+let convertamount = (window as any).convertAmount;
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState('');
@@ -44,8 +45,15 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalAmount, setTotalAmount] = useState(0);
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
-        let formData = new FormData(e.target);
+        let form = document.getElementById('main_form') as HTMLFormElement;
+        if (!form) {
+            return;
+        }
 
+        let formData = new FormData(form);
+        // let netAmount = convertamount(totalAmount);
+        // console.log('net amount', netAmount);
+        // return;
         try {
             // Make POST request with form data
             const response = await axios.post(
@@ -53,12 +61,14 @@ const Index: React.FC<Props> = (props: Props) => {
                 formData,
             );
             // setResponseMessage('Form submitted successfully!');
-            setData('Form submitted successfully!'); // Clear any previous error
+            setData('Form submitted successfully!');
+            (window as any).toaster('submitted'); // Clear any previous error
+            form.reset();
             console.log('response', response);
         } catch (error) {
             // setError(error); // Set error state
             // setResponseMessage('Failed to submit form.');
-            console.log('data', error.msg);
+            // console.log('data', error.msg);
         }
         // console.log('data', error);
     };
@@ -96,6 +106,7 @@ const Index: React.FC<Props> = (props: Props) => {
                 `/api/v1/user-students/student-class/${id}`,
             );
             setClass(response.data.data);
+            // console.log('window amount', (window as any).convertAmount(12));
 
             // const response2 = await axios.get(
             //     '/api/v1/user-students/fees-categories/1',
@@ -119,6 +130,21 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
+    function fetchAmount(number: number) {
+        try {
+            console.log(number, window);
+
+            if (number > 0) {
+                console.log((window as any).convertAmount(number));
+            }
+        } catch (error) {
+            console.log(error);
+            return '';
+        }
+    }
+    // function name(params:type) {
+
+    // }
 
     useEffect(() => {
         fetchAccounts();
@@ -134,31 +160,38 @@ const Index: React.FC<Props> = (props: Props) => {
             fetchClass(id); // Pass the id to fetchClass
         }
     };
+    const handleStudentSubmit = (
+        event: React.KeyboardEvent<HTMLInputElement>,
+    ) => {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent default form submission
+            handleStudentIdBlur(); // Trigger the blur event
+        }
+    };
     useEffect(() => {
         if (classes) {
-            console.log('newlsdfjdslkfjdlsj', classes);
             let id = classes.s_class;
-            console.log('newlsdfjdslkfjdlsj', id);
-            fetchTypes(id);
+            if (id) {
+                fetchTypes(id);
+            }
         }
     }, [classes]);
+
     useEffect(() => {
         let sum = feesTypes.reduce(
             (t, i: anyObject) => (t += +(i.input_amount || 0)),
             0,
         );
         setTotalAmount(sum);
+        // console.log(convertamount(33));
     }, [feesTypes]);
-
-    console.log('feestypes', feesTypes);
-    console.log('classes', classes);
-    let date = moment().format('YYYY-MM-DD');
 
     return (
         <div className="admin_dashboard">
             <div className="content_body">
                 <form
-                    onSubmit={handleSubmit}
+                    id="main_form"
+                    onSubmit={(e) => e.preventDefault()}
                     className="form_6002 mx-auto pt-3"
                 >
                     <div className="student_form">
@@ -176,6 +209,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             name="student_id"
                                             ref={studentIdRef} // Assign ref here
                                             onBlur={handleStudentIdBlur}
+                                            onKeyUp={handleStudentSubmit}
                                         />
                                     </div>
                                 </div>
@@ -398,28 +432,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                             />
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Total</td>
-                                        <td>
-                                            <input
-                                                type="hidden"
-                                                name="amount_in_text"
-                                                value={
-                                                    (
-                                                        window as any
-                                                    ).convertAmount(totalAmount)
-                                                        .bn
-                                                }
-                                            />
-                                            {
-                                                (window as any).convertAmount(
-                                                    totalAmount,
-                                                ).bn
-                                            }{' '}
-                                            টাকা মাত্র
-                                        </td>
-                                    </tr>
                                 </tfoot>
                             </table>
                         </div>
@@ -427,7 +439,11 @@ const Index: React.FC<Props> = (props: Props) => {
                     <div className="form-group student_submit form-horizontal">
                         <label></label>
                         <div className="form_elements">
-                            <button className="btn btn-sm btn-outline-info">
+                            <button
+                                onClick={handleSubmit}
+                                type="button"
+                                className="btn btn-sm btn-outline-info"
+                            >
                                 submit
                             </button>
                         </div>
