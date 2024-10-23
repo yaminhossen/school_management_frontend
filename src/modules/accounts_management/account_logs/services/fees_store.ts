@@ -38,18 +38,6 @@ async function store(
     let data = new models.AccountLogsModel();
     // let afc_model = new models.AccountFeeCollectionsModel();
 
-    let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: 1,
-        account_category_id: (req.body as anyObject).category_id || 1,
-        account_id: (req.body as anyObject).account_id || 1,
-        account_period_id: (req.body as anyObject).period_id || 1,
-        // money_receipt_book_id: (req.body as anyObject).mrb_id || 1,
-        receipt_no: (req.body as anyObject).receipt_no,
-        amount: (req.body as anyObject).total_amount,
-        amount_in_text: (req.body as anyObject).amount_in_text,
-        date: (req.body as anyObject).date,
-        type: (req.body as anyObject).type || 'income',
-    };
     let student_fees: anyObject[] = [];
     for (
         let i = 0;
@@ -76,6 +64,7 @@ async function store(
     }
     console.log('body for fees store', student_fees);
     console.log('body for fees store2', req.body as anyObject);
+    console.log('authenticate user id', (req as any).user.id);
     // console.log('body for fees store', req.body as anyObject);
 
     /** print request data into console */
@@ -89,16 +78,33 @@ async function store(
                 student_id: (req.body as anyObject).student_id,
             },
         });
+        let auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: (req as any).user.id,
+            },
+        });
+        console.log('auth user', auth_user?.branch_id);
         console.log('data sclass', data2?.s_class);
         // console.log('data sclass2', data2);
 
-        // let s_class = data2?.s_class;
+        let inputs: InferCreationAttributes<typeof data> = {
+            branch_id: auth_user?.branch_id || 0,
+            account_category_id: (req.body as anyObject).category_id || 1,
+            account_id: (req.body as anyObject).account_id || 1,
+            account_period_id: (req.body as anyObject).period_id || 1,
+            // money_receipt_book_id: (req.body as anyObject).mrb_id || 1,
+            receipt_no: (req.body as anyObject).receipt_no,
+            amount: (req.body as anyObject).total_amount,
+            amount_in_text: (req.body as anyObject).amount_in_text,
+            date: (req.body as anyObject).date,
+            type: (req.body as anyObject).type || 'income',
+        };
 
         (await data.update(inputs)).save();
         if (data) {
             let afc_model = new models.AccountFeeCollectionsModel();
             let afc_inputs: InferCreationAttributes<typeof afc_model> = {
-                branch_id: 1,
+                branch_id: auth_user?.id || 0,
                 branch_student_id: (req.body as anyObject).branch_student_id,
                 branch_student_class_id: (req.body as anyObject)
                     .branch_student_class_id,
@@ -110,8 +116,8 @@ async function store(
             };
             // eslint-disable-next-line no-redeclare
             // let id = up_model.id;
-            afc_inputs.branch_student_id = 1;
-            afc_inputs.branch_student_class_id = 1;
+            afc_inputs.branch_student_id = data2?.user_student_id || 0;
+            afc_inputs.branch_student_class_id = data2?.s_class || 0;
             afc_inputs.account_category_id = (
                 req.body as anyObject
             ).account_category_id;
@@ -133,13 +139,10 @@ async function store(
                         let afcd_inputs: InferCreationAttributes<
                             typeof afcd_model
                         > = {
-                            branch_id: 1,
-                            branch_student_id:
-                                (req.body as anyObject).branch_student_id || 1,
-                            branch_student_class_id:
-                                (req.body as anyObject)
-                                    .branch_student_class_id || 1,
-                            account_fees_collection_id: afc_model.id || 1,
+                            branch_id: auth_user?.branch_id || 0,
+                            branch_student_id: data2?.user_student_id || 0,
+                            branch_student_class_id: data2?.s_class || 0,
+                            account_fees_collection_id: afc_model.id || 0,
                             branch_class_fees_id: ss.type,
                             fee_amount: ss.fee_amount,
                             total: ss.amount,

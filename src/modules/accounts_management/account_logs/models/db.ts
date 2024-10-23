@@ -11,6 +11,7 @@ import * as account_fees_collections_model from './account_fees_collections_mode
 import * as user_student_informations_model from './user_student_informations_model';
 import * as account_log_attachments_model from './account_log_attachments_model';
 import * as account_fees_collection_details_model from './account_fees_collection_details_model';
+import * as branch_staffs_model from './branch_staffs_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -37,6 +38,7 @@ interface models {
     UserStudentInformationsModel: typeof user_student_informations_model.DataModel;
     AccountLogAttachmentsModel: typeof account_log_attachments_model.DataModel;
     AccountFeesCollectionDetailsModel: typeof account_fees_collection_details_model.DataModel;
+    BranchStaffsModel: typeof branch_staffs_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -54,6 +56,7 @@ const db = async function (): Promise<models> {
         account_log_attachments_model.init(sequelize);
     const AccountFeesCollectionDetailsModel =
         account_fees_collection_details_model.init(sequelize);
+    const BranchStaffsModel = branch_staffs_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -79,6 +82,7 @@ const db = async function (): Promise<models> {
         UserStudentInformationsModel,
         AccountLogAttachmentsModel,
         AccountFeesCollectionDetailsModel,
+        BranchStaffsModel,
         // Project,
 
         sequelize,
