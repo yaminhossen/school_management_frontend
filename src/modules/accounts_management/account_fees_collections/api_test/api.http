@@ -1,4 +1,4 @@
-@hostname = http://127.0.0.1:5003/api/v1/account-fees-collections
+@hostname = http://127.0.0.1:5002/api/v1/account-fees-collections
 @token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidG9rZW4iOiJxNm85anE4ZiIsInVzZXJfYWdlbnQiOiJ2c2NvZGUtcmVzdGNsaWVudCIsImlhdCI6MTcxNTQ5MzE0NH0.XAq9b9sahDzxrjSeuF1OS5WPFTjbhg_28ozJpx6odC4
 
 # all

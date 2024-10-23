@@ -86,10 +86,11 @@ async function store(
     try {
         let data2 = await models.UserStudentInformationsModel.findOne({
             where: {
-                user_student_id: (req.body as anyObject).student_id,
+                student_id: (req.body as anyObject).student_id,
             },
         });
         console.log('data sclass', data2?.s_class);
+        // console.log('data sclass2', data2);
 
         // let s_class = data2?.s_class;
 
