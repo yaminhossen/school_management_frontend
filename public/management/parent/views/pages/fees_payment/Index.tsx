@@ -36,6 +36,7 @@ export interface Props {}
 let convertamount = (window as any).convertAmount;
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
+    const [error2, setError2] = useState(null);
     const [data, setData] = useState('');
     const [accounts, setAccounts] = useState<Accountinfo[]>([]);
     const [categories, setCategories] = useState<Categoryinfo[]>([]);
@@ -106,7 +107,6 @@ const Index: React.FC<Props> = (props: Props) => {
                 `/api/v1/user-students/student-class/${id}`,
             );
             setClass(response.data.data);
-            // console.log('window amount', (window as any).convertAmount(12));
 
             // const response2 = await axios.get(
             //     '/api/v1/user-students/fees-categories/1',
@@ -115,9 +115,13 @@ const Index: React.FC<Props> = (props: Props) => {
 
             // setData(response.data);
         } catch (error) {
-            setError(error);
+            setError2(error.response?.data?.message);
+            setClass([]);
+            setFeesTypes([]);
         }
     };
+    console.log('window amount', classes);
+    // console.log('window amount error', error2);
     const fetchTypes = async (id: string) => {
         try {
             const response2 = await axios.get(
@@ -130,21 +134,8 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
-    function fetchAmount(number: number) {
-        try {
-            console.log(number, window);
-
-            if (number > 0) {
-                console.log((window as any).convertAmount(number));
-            }
-        } catch (error) {
-            console.log(error);
-            return '';
-        }
-    }
-    // function name(params:type) {
-
-    // }
+    console.log('Fees types', feesTypes);
+    console.log('Fees errors', error);
 
     useEffect(() => {
         fetchAccounts();
@@ -171,7 +162,9 @@ const Index: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         if (classes) {
             let id = classes.s_class;
-            fetchTypes(id);
+            if (id) {
+                fetchTypes(id);
+            }
         }
     }, [classes]);
 

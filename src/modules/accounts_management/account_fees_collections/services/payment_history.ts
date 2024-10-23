@@ -19,7 +19,7 @@ async function payment_history(
     let accountLogsModel = models.AccountLogsModel;
     let accountFeeCollectionsModel = models.AccountFeesCollectionsModel;
     let params = req.params as any;
-    console.log('class', params.id);
+    console.log('student id for payment', params.id);
 
     try {
         let data = await accountFeeCollectionsModel.findAll({
