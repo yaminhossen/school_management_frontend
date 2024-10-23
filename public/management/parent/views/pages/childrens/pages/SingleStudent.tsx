@@ -1,23 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
+import axios from 'axios';
 export interface Props {}
 
 const SingleStudent: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+    const [data, setData] = useState<any>([]);
     const { id } = useParams();
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            name: 'Shahin',
-            class: 'Six',
-            roll: '101',
-            cgpa: '3.5',
-            present: '90%',
-            total_absance: '10',
-        },
-    ];
+    console.log('user student id', id);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                `/api/v1/user-students/basic-information/${id}`,
+            );
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    console.log('newdata from single', data);
 
     return (
         <div className="admin_dashboard">
@@ -33,7 +41,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                     <div className="item-content">
                         <div className="header-inline item-header details_header">
                             <h3 className="text-dark-medium profile_name font-medium">
-                                Shafiqur Rahman
+                                {data.name}
                             </h3>
                             <div className="header-elements">
                                 <ul>
@@ -68,60 +76,70 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/childrens/details/academic-information">
+                                <Link
+                                    to={`/childrens/details/${id}/academic-information`}
+                                >
                                     Academic informations
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/childrens/details/document">
+                                <Link to={`/childrens/details/${id}/document`}>
                                     Documents
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/childrens/details/parent">
+                                <Link to={`/childrens/details/${id}/parent`}>
                                     Parents
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/childrens/details/skill">
+                                <Link to={`/childrens/details/${id}/skill`}>
                                     Skills
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/childrens/details/language">
+                                <Link to={`/childrens/details/${id}/language`}>
                                     Languages
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/childrens/details/contact-number">
+                                <Link
+                                    to={`/childrens/details/${id}/contact-number`}
+                                >
                                     Contact Numbers
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/childrens/details/educational-background">
+                                <Link
+                                    to={`/childrens/details/${id}/educational-background`}
+                                >
                                     Educational Backgrounds
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/childrens/details/payments">
+                                <Link to={`/childrens/details/${id}/payments`}>
                                     Payments
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/childrens/details/dues">Dues</Link>
+                                <Link to={`/childrens/details/${id}/dues`}>
+                                    Dues
+                                </Link>
                             </li>
                             <li>
-                                <Link to="/childrens/details/result-part">
+                                <Link
+                                    to={`/childrens/details/${id}/result-part`}
+                                >
                                     Result Part
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/childrens/details/complain">
+                                <Link to={`/childrens/details/${id}/complain`}>
                                     Complain
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/childrens/details/review">
+                                <Link to={`/childrens/details/${id}/review`}>
                                     Review
                                 </Link>
                             </li>

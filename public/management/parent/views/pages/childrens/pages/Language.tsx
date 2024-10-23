@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { anyObject } from '../../../../common_types/object';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
@@ -8,6 +8,7 @@ export interface Props {}
 const Details: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<any>([]);
+    const { id } = useParams();
 
     useEffect(() => {
         // Function to fetch data
@@ -16,7 +17,7 @@ const Details: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/user-students/full-details/11',
+                `/api/v1/user-students/full-details/${id}`,
             );
             setData(response.data.data);
             // setData(response.data);
