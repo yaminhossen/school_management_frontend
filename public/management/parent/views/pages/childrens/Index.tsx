@@ -56,46 +56,52 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {data?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>
-                                                <img
-                                                    className="children_img"
-                                                    src={
-                                                        i.children_basic?.image
+                                {data?.map(
+                                    (i: { [key: string]: any }, index) => {
+                                        return (
+                                            <tr>
+                                                <td></td>
+                                                <td>{index + 1}</td>
+                                                <td>
+                                                    <img
+                                                        className="children_img"
+                                                        src={
+                                                            i.children_basic
+                                                                ?.image
+                                                        }
+                                                        alt="Children img"
+                                                    />
+                                                </td>
+                                                <td>
+                                                    {i.children_basic?.name}
+                                                </td>
+                                                {/* <td>{i.user_student_id}</td> */}
+                                                <td>
+                                                    {
+                                                        i.children_info
+                                                            ?.children_class
+                                                            ?.name
                                                     }
-                                                    alt="Children img"
-                                                />
-                                            </td>
-                                            <td>{i.children_basic?.name}</td>
-                                            {/* <td>{i.user_student_id}</td> */}
-                                            <td>
-                                                {
-                                                    i.children_info
-                                                        ?.children_class?.name
-                                                }
-                                            </td>
-                                            <td>
-                                                <Link
-                                                    className="btn btn-sm btn-outline-info mr-1"
-                                                    to={`/childrens/details/${i.user_student_id}`}
-                                                    // to="/childrens/details"
-                                                >
-                                                    details
-                                                </Link>
-                                                {/* <Link
+                                                </td>
+                                                <td>
+                                                    <Link
+                                                        className="btn btn-sm btn-outline-info mr-1"
+                                                        to={`/childrens/details/${i.user_student_id}`}
+                                                        // to="/childrens/details"
+                                                    >
+                                                        details
+                                                    </Link>
+                                                    {/* <Link
                                                     className="btn btn-sm btn-outline-info"
                                                     to="/class-attendance/take-attendance"
                                                 >
                                                     Take attendance
                                                 </Link> */}
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
+                                                </td>
+                                            </tr>
+                                        );
+                                    },
+                                )}
                             </tbody>
                         </table>
                     </div>

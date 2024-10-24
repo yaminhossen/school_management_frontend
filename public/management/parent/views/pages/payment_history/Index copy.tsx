@@ -1,35 +1,31 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 export interface Props {}
 
-const Details: React.FC<Props> = (props: Props) => {
-    const { id } = useParams();
-    console.log('params is from childere', id);
-
+const Index: React.FC<Props> = (props: Props) => {
     interface data {
         [key: string]: any;
     }
     const datas: data[] = [
         {
             id: 1,
-            purpose: 'Admission',
-            amount: '3000',
+            date: '10 Feb, 2024',
+            amount: '18000',
         },
         {
             id: 2,
-            purpose: 'Hostel bill',
+            date: '14 March, 2024',
             amount: '10000',
         },
         {
             id: 3,
-            purpose: 'Transport bill',
-            amount: '5000',
+            date: '15 Feb, 2024',
+            amount: '15000',
         },
     ];
 
     return (
         <div className="admin_dashboard">
-            <div className="result_details"></div>
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
@@ -38,8 +34,9 @@ const Details: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
-                                    <th>Purpose</th>
+                                    <th>Date</th>
                                     <th>Amount</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -48,17 +45,25 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.purpose}</td>
-                                            <td>{i.amount} tk</td>
+                                            <td>{i.date}</td>
+                                            <td>{i.amount}</td>
+                                            <td>
+                                                <Link
+                                                    className="btn btn-sm btn-outline-info mr-1"
+                                                    to="/payment-history/details/2"
+                                                >
+                                                    details
+                                                </Link>
+                                                {/* <Link
+                                                    className="btn btn-sm btn-outline-info"
+                                                    to="/class-attendance/take-attendance"
+                                                >
+                                                    Take attendance
+                                                </Link> */}
+                                            </td>
                                         </tr>
                                     );
                                 })}
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td className="payment_total">Total:</td>
-                                    <td>18000 tk</td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -68,4 +73,4 @@ const Details: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Details;
+export default Index;

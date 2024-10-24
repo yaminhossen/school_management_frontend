@@ -15,7 +15,7 @@ export default {
             element: <Index />,
         },
         {
-            path: 'details',
+            path: 'children/:id',
             element: <Details />,
         },
     ],
