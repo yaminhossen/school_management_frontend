@@ -11,6 +11,10 @@ module.exports = async function (fastify: FastifyInstance) {
         .addHook('onRequest', check_auth)
         .get(`${prefix}`, controllerInstance.all)
         .post(`${prefix}/credit`, controllerInstance.credit)
+        .post(
+            `${prefix}/payment-history/:id`,
+            controllerInstance.payment_history,
+        )
         .get(`${prefix}/income-statement`, controllerInstance.income_statement)
         .post(`${prefix}/journal`, controllerInstance.journal)
         .post(`${prefix}/profit-loss`, controllerInstance.profit_loss)

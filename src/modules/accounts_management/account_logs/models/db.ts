@@ -71,6 +71,16 @@ const db = async function (): Promise<models> {
         foreignKey: 'id',
         as: 'category',
     });
+    AccountFeeCollectionsModel.hasOne(AccountCategoriesModel, {
+        sourceKey: 'account_category_id',
+        foreignKey: 'id',
+        as: 'colection_category',
+    });
+    AccountFeeCollectionsModel.hasOne(AccountLogsModel, {
+        sourceKey: 'account_category_id',
+        foreignKey: 'id',
+        as: 'colection_logs',
+    });
 
     let models: models = {
         AccountLogsModel,
