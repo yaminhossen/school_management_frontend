@@ -20,12 +20,6 @@ const Index: React.FC<Props> = (props: Props) => {
 
     const fetchData = async () => {
         try {
-            let m1 = moment().subtract(30, 'days').format('YYYY-MM-DD');
-            let m2 = moment().format('YYYY-MM-DD');
-            const formData: { month1?: string; month2?: string } = {};
-            formData.month1 = m1;
-            formData.month2 = m2;
-
             const response = await axios.get(
                 '/api/v1/user-students/parent/childrens/5',
             );

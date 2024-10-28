@@ -20,12 +20,6 @@ const Index: React.FC<Props> = (props: Props) => {
 
     const fetchData = async () => {
         try {
-            let m1 = moment().subtract(30, 'days').format('YYYY-MM-DD');
-            let m2 = moment().format('YYYY-MM-DD');
-            const formData: { month1?: string; month2?: string } = {};
-            formData.month1 = m1;
-            formData.month2 = m2;
-
             const response = await axios.get(
                 '/api/v1/user-students/parent/childrens/5',
             );
@@ -75,7 +69,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 <td>
                                                     {i.children_basic?.name}
                                                 </td>
-                                                {/* <td>{i.user_student_id}</td> */}
                                                 <td>
                                                     {
                                                         i.children_info
@@ -86,17 +79,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 <td>
                                                     <Link
                                                         className="btn btn-sm btn-outline-info mr-1"
-                                                        to={`/fees/children/${i.user_student_id}`}
-                                                        // to="/childrens/details"
+                                                        to={`/fees/children/${i.children_info?.s_class}`}
                                                     >
-                                                        Fees History
+                                                        Fees Details
                                                     </Link>
-                                                    {/* <Link
-                                                    className="btn btn-sm btn-outline-info"
-                                                    to="/class-attendance/take-attendance"
-                                                >
-                                                    Take attendance
-                                                </Link> */}
                                                 </td>
                                             </tr>
                                         );

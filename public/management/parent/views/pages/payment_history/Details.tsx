@@ -8,7 +8,7 @@ export interface AccountLog {
     type: 'income' | 'expense';
     amount: number;
     account_log: [];
-    category: { title: string };
+    colection_category: { title: string };
     created_at: string;
 }
 
@@ -62,7 +62,7 @@ const Index: React.FC<Props> = (props: Props) => {
         let formData = new FormData(e.target);
         try {
             const response = await axios.post(
-                '/api/v1/account-logs/payment-history',
+                `/api/v1/account-logs/payment-history/${id}`,
                 formData,
             );
             setData(response.data.data.data);
@@ -137,17 +137,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <tr key={index}>
                                         <td></td>
                                         <td>{index + 1}</td>
-                                        <td>{i.category?.title}</td>
+                                        <td>{i.colection_category?.title}</td>
                                         <td>
                                             {moment(i.created_at).format(
                                                 'YYYY-MM-DD',
                                             )}
                                         </td>
-                                        <td>
-                                            {i.type === 'income'
-                                                ? i.amount
-                                                : '-'}
-                                        </td>
+                                        <td>{i.amount}</td>
                                     </tr>
                                 ))}
                                 <tr>
@@ -162,10 +158,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td>All Data</td>
                                     <td></td>
                                     <td>Grand Total:</td>
-                                    <td>
-                                        {totalIncomeValue}
-                                        tk
-                                    </td>
+                                    <td>{totalIncomeValue} tk</td>
                                 </tr>
                             </tbody>
                         </table>

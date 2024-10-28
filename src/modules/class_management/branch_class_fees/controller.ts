@@ -14,6 +14,7 @@ import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
 import fees_types from './services/fees_types';
+import children_fees_types from './services/children_fees_types';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -29,6 +30,14 @@ export default function (fastify: FastifyInstance) {
 
         fees_types: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await fees_types(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        children_fees_types: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await children_fees_types(fastify, req);
             res.code(data.status).send(data);
         },
 

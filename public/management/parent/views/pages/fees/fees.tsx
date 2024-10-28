@@ -1,31 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
+
+export interface AccountLog {
+    account: { title: string };
+    type: 'income' | 'expense';
+    amount: number;
+    account_log: [];
+    category: { title: string };
+    created_at: string;
+}
+
+export interface AccountLog2 {
+    account: { title: string };
+    type: 'income' | 'expense';
+    amount: number;
+    account_log: [];
+    category: { title: string };
+    created_at: string;
+}
+
 export interface Props {}
 
-const Details: React.FC<Props> = (props: Props) => {
+const Fees: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+    const [data, setData] = useState<AccountLog[]>([]);
+    const [totalData, setData2] = useState<any>();
+    const totalAmountValue = totalData?.total_amount || 0;
     const { id } = useParams();
-    console.log('params is from childere', id);
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-class-fees/children-fees-types/${id}`,
+            );
+            setData(response.data.data.data);
+            setData2(response.data?.data?.data2);
+            console.log('fees types data1', response.data?.data?.data2);
+        } catch (error) {
+            setError(error);
+        }
+    };
 
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            purpose: 'Admission',
-            amount: '3000',
-        },
-        {
-            id: 2,
-            purpose: 'Hostel bill',
-            amount: '10000',
-        },
-        {
-            id: 3,
-            purpose: 'Transport bill',
-            amount: '5000',
-        },
-    ];
+    useEffect(() => {
+        fetchData();
+        console.log('fees types data', totalData);
+    }, []); // Trigger fetch when dates change
 
     return (
         <div className="admin_dashboard">
@@ -43,12 +63,12 @@ const Details: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
+                                {data?.map((i: { [key: string]: any }) => {
                                     return (
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.purpose}</td>
+                                            <td>{i.name}</td>
                                             <td>{i.amount} tk</td>
                                         </tr>
                                     );
@@ -57,7 +77,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                     <td></td>
                                     <td></td>
                                     <td className="payment_total">Total:</td>
-                                    <td>18000 tk</td>
+                                    <td>{totalAmountValue} tk</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -68,4 +88,4 @@ const Details: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Details;
+export default Fees;
