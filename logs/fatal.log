@@ -1,1 +1,3 @@
 {"level":60,"time":1730109382453,"pid":11708,"hostname":"DESKTOP-JS2JUG4","file":"","time":"10/28/2024 3:56:22 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1730193701579,"pid":14368,"hostname":"DESKTOP-JS2JUG4","file":"services\\student_class.ts:45:19)","time":"10/29/2024 3:21:41 PM","message":"data not found"}
+{"level":60,"time":1730193710557,"pid":14368,"hostname":"DESKTOP-JS2JUG4","file":"services\\student_class.ts:45:19)","time":"10/29/2024 3:21:50 PM","message":"data not found"}

@@ -7,7 +7,7 @@ export interface Props {}
 
 const Paid: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    const [data, setData] = useState();
+    const [data, setData] = useState<any>();
 
     useEffect(() => {
         // Function to fetch data
@@ -51,12 +51,11 @@ const Paid: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {data?.map((i) => {
+                                {data?.map((i, index) => {
                                     return (
                                         <tr>
                                             <td></td>
-                                            <td>{i.id}</td>
-                                            {/* <td>{i.title}</td> */}
+                                            <td>{index + 1}</td>
                                             <td>{dateFormate(i.start_date)}</td>
                                             <td>{dateFormate(i.end_date)}</td>
                                             <td>{i.leave_status}</td>

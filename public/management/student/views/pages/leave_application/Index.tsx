@@ -49,38 +49,6 @@ const Index: React.FC<Props> = (props: Props) => {
                 >
                     Pending
                 </Link>
-                {/* <div className="data_list">
-                    <div className="table_responsive custom_scroll">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Serial</th>
-                                    <th>Title</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="all_list">
-                                {datas?.map((i) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.title}</td>
-                                            <td>07 march, 2024</td>
-                                            <td>approved</td>
-                                            <td>
-                                                <a href="#">download</a>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
-                    </div>
-                </div> */}
                 <div className="info-table table-responsive">
                     <Outlet></Outlet>
                 </div>
