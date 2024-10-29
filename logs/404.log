@@ -72,3 +72,6 @@
 {"level":60,"time":1730195911676,"pid":13124,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/branch-class-subjects/class-routine/1"}
 {"level":60,"time":1730195913530,"pid":13124,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/exam-routines/plan/1"}
 {"level":60,"time":1730196104069,"pid":4828,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/branch-class-subjects/class-routine/1"}
+{"level":60,"time":1730196125452,"pid":13468,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/exam-routines/plan/1"}
+{"level":60,"time":1730196128227,"pid":13468,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/exam-routines/plan/1"}
+{"level":60,"time":1730196128881,"pid":13468,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/branch-class-subjects/class-routine/1"}
