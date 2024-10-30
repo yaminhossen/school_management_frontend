@@ -1,34 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
-import { app_config } from '../../../../../../src/configs/app.config';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            title: 'Principle',
-            number: '01897878761',
-        },
-        {
-            id: 2,
-            title: 'Vice principle',
-            number: '01897878762',
-        },
-        {
-            id: 3,
-            title: 'Office assistant',
-            number: '01897878763',
-        },
-        {
-            id: 3,
-            title: 'Teacher',
-            number: '01897878764',
-        },
-    ];
+    const [error, setError] = useState(null);
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('/api/v1/contact-supports/all');
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
     return (
         <div className="admin_dashboard">
             <div className="content_body">
@@ -39,21 +37,25 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
+                                    <th>Name</th>
                                     <th>Title</th>
                                     <th>Number</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.title}</td>
-                                            <td>{i.number}</td>
-                                        </tr>
-                                    );
-                                })}
+                                {data?.map(
+                                    (i: { [key: string]: any }, index) => {
+                                        return (
+                                            <tr>
+                                                <td></td>
+                                                <td>{index + 1}</td>
+                                                <td>{i.name}</td>
+                                                <td>{i.title}</td>
+                                                <td>{i.number}</td>
+                                            </tr>
+                                        );
+                                    },
+                                )}
                             </tbody>
                         </table>
                     </div>

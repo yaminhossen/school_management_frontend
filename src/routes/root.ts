@@ -2,6 +2,7 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import check_auth_and_redirect from '../modules/auth_management/authetication/services/check_auth_and_redirect';
 import minified_view from '../helpers/minified_view';
+import check_auth from '../modules/auth_management/authetication/services/check_auth';
 // import check_is_admin_and_redirect from '../modules/user_management/user_admin/services/check_is_admin_and_redirect';
 // const fs = require('node:fs');
 module.exports = async function (fastify: FastifyInstance) {
@@ -66,7 +67,7 @@ module.exports = async function (fastify: FastifyInstance) {
         )
         .get(
             '/admission-officer',
-            // { preHandler: check_auth_and_redirect },
+            // { preHandler: check_auth },
             async (_req: FastifyRequest, reply: FastifyReply) => {
                 return reply.view('dashboard/admission_officer_uni.ejs');
             },

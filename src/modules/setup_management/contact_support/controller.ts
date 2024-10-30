@@ -12,6 +12,7 @@ import { responseObject } from '../../common_types/object';
 import update from './services/update';
 import restore from './services/restore';
 import destroy from './services/destroy';
+import cs_all from './services/cs_all';
 import data_import from './services/import';
 
 export default function (fastify: FastifyInstance) {
@@ -28,6 +29,11 @@ export default function (fastify: FastifyInstance) {
 
         store: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await store(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        cs_all: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await cs_all(fastify, req);
             res.code(data.status).send(data);
         },
 

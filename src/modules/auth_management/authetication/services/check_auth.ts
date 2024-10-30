@@ -27,6 +27,7 @@ const check_auth = async (request: FastifyRequest, reply: FastifyReply) => {
     console.log('request cookies', token);
 
     if (!token || !token.startsWith('Bearer ')) {
+        // return reply.redirect('/admission-officer/login');
         reply.code(401).send({ error: 'Unauthorized' });
         return;
     }
