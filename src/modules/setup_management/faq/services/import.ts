@@ -11,7 +11,7 @@ async function data_import(
     let params = req.params as any;
 
     try {
-        let data = await models.PersonalCalendarSchedulesModel.findOne({
+        let data = await models.FaqsModel.findOne({
             where: {
                 id: params.id,
             },

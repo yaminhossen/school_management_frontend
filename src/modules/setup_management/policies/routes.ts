@@ -3,7 +3,7 @@ import { FastifyInstance } from 'fastify';
 import controller from './controller';
 
 module.exports = async function (fastify: FastifyInstance) {
-    let prefix: string = '/personal-calendar-schedules';
+    let prefix: string = '/policies';
     const controllerInstance = controller(fastify);
 
     fastify

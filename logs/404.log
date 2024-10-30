@@ -75,3 +75,17 @@
 {"level":60,"time":1730196125452,"pid":13468,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/exam-routines/plan/1"}
 {"level":60,"time":1730196128227,"pid":13468,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/exam-routines/plan/1"}
 {"level":60,"time":1730196128881,"pid":13468,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/branch-class-subjects/class-routine/1"}
+{"level":60,"time":1730263690083,"pid":13404,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/avatar.png"}
+{"level":60,"time":1730269429691,"pid":4916,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/faqs?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10"}
+{"level":60,"time":1730269437034,"pid":4916,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/faqs?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10"}
+{"level":60,"time":1730269438234,"pid":4916,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/faqs?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10"}
+{"level":60,"time":1730278646253,"pid":3960,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/policies/1"}
+{"level":60,"time":1730278647497,"pid":3960,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/policies/1"}
+{"level":60,"time":1730278675395,"pid":7856,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/policies?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10"}
+{"level":60,"time":1730278676236,"pid":7856,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/policies?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10"}
+{"level":60,"time":1730278677026,"pid":7856,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/api/v1/policies?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10"}
+{"level":60,"time":1730279369949,"pid":13752,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/management_build/parent/parent.js"}
+{"level":60,"time":1730281313913,"pid":13752,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/management_build/parent/parent.js"}
+{"level":60,"time":1730281474533,"pid":13752,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/management_build/parent/parent.js"}
+{"level":60,"time":1730281812962,"pid":13752,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/management_build/parent/parent.js"}
+{"level":60,"time":1730281992144,"pid":13752,"hostname":"DESKTOP-JS2JUG4","error":"404","url":"/management_build/parent/parent.js"}

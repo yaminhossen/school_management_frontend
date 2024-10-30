@@ -69,23 +69,7 @@ async function all(
         select_fields = query_param.select_fields.replace(/\s/g, '').split(',');
         select_fields = [...select_fields, 'id', 'status'];
     } else {
-        select_fields = [
-            'id',
-            'branch_id',
-            'admin_id',
-            'teacher_id',
-            'student_id',
-            'staff_id',
-            'parent_id',
-            'title',
-            'description',
-            'date',
-            'reminder_date',
-            'is_complete',
-            'priority',
-            'location',
-            'map_link',
-        ];
+        select_fields = ['id', 'branch_id', 'title', 'description'];
     }
 
     let query: FindAndCountOptions = {
@@ -116,7 +100,7 @@ async function all(
     try {
         let data = await (fastify_instance as anyObject).paginate(
             req,
-            models.PersonalCalendarSchedulesModel,
+            models.PoliciesModel,
             paginate,
             query,
         );

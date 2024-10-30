@@ -18,66 +18,15 @@ async function validate(req: Request) {
         .withMessage('the branch_id field is required')
         .run(req);
 
-    await body('admin_id')
+    await body('question')
         .not()
         .isEmpty()
-        .withMessage('the admin_id field is required')
+        .withMessage('the question field is required')
         .run(req);
-    await body('teacher_id')
+    await body('answer')
         .not()
         .isEmpty()
-        .withMessage('the teacher_id field is required')
-        .run(req);
-    await body('staff_id')
-        .not()
-        .isEmpty()
-        .withMessage('the staff_id field is required')
-        .run(req);
-    await body('student_id')
-        .not()
-        .isEmpty()
-        .withMessage('the student_id field is required')
-        .run(req);
-    await body('parent_id')
-        .not()
-        .isEmpty()
-        .withMessage('the parent_id field is required')
-        .run(req);
-
-    await body('title')
-        .not()
-        .isEmpty()
-        .withMessage('the title field is required')
-        .run(req);
-    await body('description')
-        .not()
-        .isEmpty()
-        .withMessage('the description field is required')
-        .run(req);
-    await body('date')
-        .not()
-        .isEmpty()
-        .withMessage('the date field is required')
-        .run(req);
-    await body('reminder_date')
-        .not()
-        .isEmpty()
-        .withMessage('the reminder_date field is required')
-        .run(req);
-    await body('is_complete')
-        .not()
-        .isEmpty()
-        .withMessage('the is_complete field is required')
-        .run(req);
-    await body('location')
-        .not()
-        .isEmpty()
-        .withMessage('the location field is required')
-        .run(req);
-    await body('map_link')
-        .not()
-        .isEmpty()
-        .withMessage('the map_link field is required')
+        .withMessage('the answer field is required')
         .run(req);
 
     let result = await validationResult(req);
@@ -98,24 +47,12 @@ async function store(
     /** initializations */
     let models = await db();
     let body = req.body as anyObject;
-    let data = new models.PersonalCalendarSchedulesModel();
+    let data = new models.FaqsModel();
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: body.branch_id,
-        admin_id: body.admin_id,
-        teacher_id: body.teacher_id,
-        student_id: body.student_id,
-        staff_id: body.staff_id,
-        parent_id: body.parent_id,
-
-        title: body.title,
-        description: body.description,
-        date: body.date,
-        reminder_date: body.reminder_date,
-        is_complete: body.is_complete,
-        priority: body.priority,
-        location: body.location,
-        map_link: body.map_link,
+        question: body.question,
+        answer: body.answer,
     };
 
     /** print request data into console */

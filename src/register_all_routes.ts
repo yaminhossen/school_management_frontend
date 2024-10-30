@@ -21,6 +21,9 @@ export let active_routes: string[] = [
     // 'src/modules/accounts_management/budgets/routes.ts',
     // 'src/modules/accounts_management/investors/routes.ts',
     // 'src/modules/accounts_management/money_receipt_books/routes.ts',
+    'src/modules/setup_management/contact_support/routes.ts',
+    'src/modules/setup_management/faq/routes.ts',
+    'src/modules/setup_management/policies/routes.ts',
 
     // 'src/modules/asset_management/assets/routes.ts',
     // 'src/modules/asset_management/asset_audits/routes.ts',

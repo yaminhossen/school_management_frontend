@@ -2,7 +2,7 @@ import {
     // Model,
     Sequelize,
 } from 'sequelize';
-import * as personal_calendar_schedules_model from './personal_calendar_schedules_model';
+import * as policies_model from './policies_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -20,13 +20,12 @@ const sequelize = new Sequelize(
 );
 
 interface models {
-    PersonalCalendarSchedulesModel: typeof personal_calendar_schedules_model.DataModel;
+    PoliciesModel: typeof policies_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
 const db = async function (): Promise<models> {
-    const PersonalCalendarSchedulesModel =
-        personal_calendar_schedules_model.init(sequelize);
+    const PoliciesModel = policies_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -57,7 +56,7 @@ const db = async function (): Promise<models> {
     // });
 
     let models: models = {
-        PersonalCalendarSchedulesModel,
+        PoliciesModel,
         // Project,
 
         sequelize,

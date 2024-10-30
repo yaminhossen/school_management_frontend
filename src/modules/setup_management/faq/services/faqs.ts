@@ -5,7 +5,7 @@ import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 
-async function details(
+async function faqs(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -13,17 +13,17 @@ async function details(
     let params = req.params as any;
 
     try {
-        let data = await models.FaqsModel.findOne({
-            where: {
-                id: params.id,
-            },
+        let data = await models.FaqsModel.findAll({
+            // where: {
+            //     id: params.id,
+            // },
             attributes: {
                 exclude: ['password'],
             },
         });
 
         if (data) {
-            return response(200, 'data created', data);
+            return response(200, 'data founded', data);
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }
@@ -38,4 +38,4 @@ async function details(
     }
 }
 
-export default details;
+export default faqs;

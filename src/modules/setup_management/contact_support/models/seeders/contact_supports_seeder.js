@@ -24,9 +24,9 @@ module.exports = {
                 updated_at: '2024-02-14',
             });
         }
-        set_data(1, 'Md Arif', 'Admin');
-        set_data(2, 'Md Jamil', 'Teacher');
-        set_data(3, 'Md Shuvo', 'Hostel super');
+        set_data(1, 'Md Arif', 'Admin', '01789123123');
+        set_data(2, 'Md Jamil', 'Teacher', '01789123124');
+        set_data(3, 'Md Shuvo', 'Hostel super', '01789123125');
 
         await queryInterface.bulkDelete('contact_supports', null, {});
         await queryInterface.bulkInsert('contact_supports', data, {});
