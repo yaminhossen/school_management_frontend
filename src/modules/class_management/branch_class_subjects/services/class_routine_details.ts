@@ -43,6 +43,9 @@ async function class_routine_details(
                                         {
                                             model: userTeachersModel,
                                             as: 'user_teacher',
+                                            attributes: {
+                                                exclude: ['password'],
+                                            },
                                         },
                                     ],
                                 },
@@ -57,13 +60,10 @@ async function class_routine_details(
                                     ],
                                 },
                             ],
-                            // order: [['id', 'ASC']],
                         },
                     ],
-                    // order: [['id', 'ASC']],
                 },
             ],
-            // order: [['id', 'ASC']],
         });
         // console.log('data', data);
 

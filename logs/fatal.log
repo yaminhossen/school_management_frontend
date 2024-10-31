@@ -1,8 +1,0 @@
-{"level":60,"time":1730109382453,"pid":11708,"hostname":"DESKTOP-JS2JUG4","file":"","time":"10/28/2024 3:56:22 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
-{"level":60,"time":1730193701579,"pid":14368,"hostname":"DESKTOP-JS2JUG4","file":"services\\student_class.ts:45:19)","time":"10/29/2024 3:21:41 PM","message":"data not found"}
-{"level":60,"time":1730193710557,"pid":14368,"hostname":"DESKTOP-JS2JUG4","file":"services\\student_class.ts:45:19)","time":"10/29/2024 3:21:50 PM","message":"data not found"}
-{"level":60,"time":1730264870772,"pid":5644,"hostname":"DESKTOP-JS2JUG4","file":"services\\all.ts:126:15)","time":"10/30/2024 11:07:50 AM","message":"Unknown column 'admin_id' in 'field list'"}
-{"level":60,"time":1730279895427,"pid":13752,"hostname":"DESKTOP-JS2JUG4","file":"services\\details.ts:28:19)","time":"10/30/2024 3:18:15 PM","message":"data not found"}
-{"level":60,"time":1730279895665,"pid":13752,"hostname":"DESKTOP-JS2JUG4","file":"services\\details.ts:28:19)","time":"10/30/2024 3:18:15 PM","message":"data not found"}
-{"level":60,"time":1730279904271,"pid":13752,"hostname":"DESKTOP-JS2JUG4","file":"services\\details.ts:28:19)","time":"10/30/2024 3:18:24 PM","message":"data not found"}
-{"level":60,"time":1730292068743,"pid":3900,"hostname":"DESKTOP-JS2JUG4","file":"","time":"10/30/2024 6:41:08 PM","message":"target not found."}
