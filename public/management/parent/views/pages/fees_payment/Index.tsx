@@ -68,8 +68,6 @@ const Index: React.FC<Props> = (props: Props) => {
             console.log('response', response);
         } catch (error) {
             // setError(error); // Set error state
-            // setResponseMessage('Failed to submit form.');
-            // console.log('data', error.msg);
         }
         // console.log('data', error);
     };
