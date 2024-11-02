@@ -13,6 +13,10 @@ module.exports = async function (fastify: FastifyInstance) {
             `${prefix}/academic-resource/:id`,
             controllerInstance.academic_resource,
         )
+        .get(
+            `${prefix}/teacher-resource/:id`,
+            controllerInstance.teacher_resource,
+        )
         .post(`${prefix}/store`, controllerInstance.store)
         .post(`${prefix}/update`, controllerInstance.update)
         .post(`${prefix}/soft-delete`, controllerInstance.soft_delete)

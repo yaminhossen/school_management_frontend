@@ -63,6 +63,12 @@ const db = async function (): Promise<models> {
         as: 'branch_teacher',
     });
 
+    BranchClassSubjectTeachersModel.hasMany(BranchClassResourcessModel, {
+        sourceKey: 'branch_class_id',
+        foreignKey: 'branch_class_id',
+        as: 'class_resources',
+    });
+
     BranchTeachersModel.hasOne(UserTeachersModel, {
         sourceKey: 'user_teacher_id',
         foreignKey: 'id',

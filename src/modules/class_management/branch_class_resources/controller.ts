@@ -14,6 +14,7 @@ import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
 import academic_resource from './services/academic_resource';
+import teacher_resource from './services/teacher_resource';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -32,6 +33,14 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data = await academic_resource(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        teacher_resource: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await teacher_resource(fastify, req);
             res.code(data.status).send(data);
         },
 
