@@ -10,7 +10,7 @@ async function teacher_resource(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
-    // let branchClassSubjectsModel = models.BranchClassSubjectsModel;
+    let branchClassSubjectsModel = models.BranchClassSubjectsModel;
     // let branchClassRoutinesModel = models.BranchClassRoutinesModel;
     let userTeachersModel = models.UserTeachersModel;
     let branchTeachersModel = models.BranchTeachersModel;
@@ -22,31 +22,19 @@ async function teacher_resource(
     console.log('class', params.id);
 
     try {
-        let data = await branchClassSubjectTeachersModel.findAll({
+        let data = await branchClassResoucesModel.findAll({
             where: {
-                branch_teacher_id: params.id,
+                creator: params.id,
             },
             include: [
                 {
                     model: branchClassesModel,
                     as: 'class',
                 },
-                // {
-                //     model: branchClassSubjectTeachersModel,
-                //     as: 'subject_teacher',
-                //     include: [
-                //         {
-                //             model: branchTeachersModel,
-                //             as: 'branch_teacher',
-                //             include: [
-                //                 {
-                //                     model: userTeachersModel,
-                //                     as: 'teacher',
-                //                 },
-                //             ],
-                //         },
-                //     ],
-                // },
+                {
+                    model: branchClassSubjectsModel,
+                    as: 'subject',
+                },
             ],
             // order: [['id', 'ASC']],
         });

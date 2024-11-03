@@ -25,3 +25,12 @@
 {"level":60,"time":1730547319810,"pid":12312,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/approved/1"}
 {"level":60,"time":1730607117345,"pid":17276,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
 {"level":60,"time":1730622502180,"pid":17276,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1730626609427,"pid":8108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/teachers"}
+{"level":60,"time":1730626614566,"pid":8108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1730626616358,"pid":8108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/class-routine/1"}
+{"level":60,"time":1730626784171,"pid":8108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-routines/plan/1"}
+{"level":60,"time":1730626787102,"pid":8108,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1730627313603,"pid":8108,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1730631148024,"pid":16732,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1730632083007,"pid":16732,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/approved/1"}
+{"level":60,"time":1730632091530,"pid":16732,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/approved/1"}
