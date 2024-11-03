@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../common_types/object';
+import { anyObject } from '../../../../common_types/object';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
-const Index: React.FC<Props> = (props: Props) => {
+const Resources: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<anyObject[]>([]);
 
@@ -40,29 +40,22 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Class</th>
-                                    <th>Resources</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {data?.map(
-                                    (i: { [key: string]: any }, index) => {
-                                        return (
-                                            <tr>
-                                                <td></td>
-                                                <td>{index + 1}</td>
-                                                <td>{i.class?.name}</td>
-                                                <td>
-                                                    <Link
-                                                        className="title_text"
-                                                        to={`/academic-resources/details/${i.branch_class_id}`}
-                                                    >
-                                                        Details
-                                                    </Link>
-                                                </td>
-                                            </tr>
-                                        );
-                                    },
-                                )}
+                                {data?.map((i: { [key: string]: any }) => {
+                                    return (
+                                        <tr>
+                                            <td></td>
+                                            <td>{i.id}</td>
+                                            <td>{i.class?.name}</td>
+                                            <td>
+                                                <a href="#">Details</a>
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
                             </tbody>
                         </table>
                     </div>
@@ -72,4 +65,4 @@ const Index: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Index;
+export default Resources;

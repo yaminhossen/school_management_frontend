@@ -16,7 +16,7 @@ async function teacher_resource(
     let branchTeachersModel = models.BranchTeachersModel;
     let branchClassSubjectTeachersModel =
         models.BranchClassSubjectTeachersModel;
-    let branchClassSubjectsModel = models.BranchClassSubjectsModel;
+    let branchClassesModel = models.BranchClassesModel;
     let branchClassResoucesModel = models.BranchClassResourcessModel;
     let params = req.params as any;
     console.log('class', params.id);
@@ -28,25 +28,25 @@ async function teacher_resource(
             },
             include: [
                 {
-                    model: branchClassResoucesModel,
-                    as: 'class_resources',
+                    model: branchClassesModel,
+                    as: 'class',
                 },
-                /* {
-                    model: branchClassSubjectTeachersModel,
-                    as: 'subject_teacher',
-                    include: [
-                        {
-                            model: branchTeachersModel,
-                            as: 'branch_teacher',
-                            include: [
-                                {
-                                    model: userTeachersModel,
-                                    as: 'teacher',
-                                },
-                            ],
-                        },
-                    ],
-                }, */
+                // {
+                //     model: branchClassSubjectTeachersModel,
+                //     as: 'subject_teacher',
+                //     include: [
+                //         {
+                //             model: branchTeachersModel,
+                //             as: 'branch_teacher',
+                //             include: [
+                //                 {
+                //                     model: userTeachersModel,
+                //                     as: 'teacher',
+                //                 },
+                //             ],
+                //         },
+                //     ],
+                // },
             ],
             // order: [['id', 'ASC']],
         });
