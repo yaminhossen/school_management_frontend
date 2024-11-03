@@ -19,7 +19,7 @@ GET {{hostname}}/rejected/1 HTTP/1.1
 
 # get
 ###
-GET {{hostname}}/approved/1 HTTP/1.1
+GET {{hostname}}/teacher-approved/1 HTTP/1.1
 
 # store
 ###

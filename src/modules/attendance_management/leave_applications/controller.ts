@@ -17,6 +17,9 @@ import student_store from './services/student_store';
 import approved from './services/approved';
 import pending from './services/pending';
 import rejected from './services/rejected';
+import teacher_approved from './services/teacher_approved';
+import teacher_rejected from './services/teacher_rejected';
+import teacher_pending from './services/teacher_pending';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -42,6 +45,30 @@ export default function (fastify: FastifyInstance) {
 
         approved: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await approved(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        teacher_approved: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await teacher_approved(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        teacher_pending: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await teacher_pending(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        teacher_rejected: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await teacher_rejected(fastify, req);
             res.code(data.status).send(data);
         },
 

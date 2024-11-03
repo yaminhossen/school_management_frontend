@@ -16,12 +16,12 @@ async function details(
         let data = await models.LeaveApplicationsModel.findAll({
             where: {
                 branch_teacher_id: params.id,
-                leave_status: 'approved',
+                leave_status: 'pending',
             },
         });
 
         if (data) {
-            return response(200, 'data created', data);
+            return response(200, 'data founded', data);
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }

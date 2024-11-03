@@ -16,7 +16,7 @@ async function details(
         let data = await models.LeaveApplicationsModel.findAll({
             where: {
                 branch_teacher_id: params.id,
-                leave_status: 'approved',
+                leave_status: 'rejected',
             },
         });
 
