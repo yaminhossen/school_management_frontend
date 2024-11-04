@@ -5,7 +5,7 @@ import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
 
-const Paid: React.FC<Props> = (props: Props) => {
+const Rejected: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<any>();
 
@@ -16,7 +16,7 @@ const Paid: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/leave-applications/rejected/1',
+                '/api/v1/leave-applications/teacher-rejected/1',
             );
             setData(response.data.data);
             // setData(response.data);
@@ -74,4 +74,4 @@ const Paid: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Paid;
+export default Rejected;

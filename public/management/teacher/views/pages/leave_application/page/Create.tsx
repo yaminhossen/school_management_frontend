@@ -5,7 +5,7 @@ import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
 
-const Index: React.FC<Props> = (props: Props) => {
+const Create: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState('');
     const handleSubmit = async (e) => {
@@ -80,4 +80,4 @@ const Index: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Index;
+export default Create;

@@ -5,7 +5,7 @@ import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
 
-const Reject: React.FC<Props> = (props: Props) => {
+const Pending: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<any>();
 
@@ -16,7 +16,7 @@ const Reject: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/leave-applications/pending/1',
+                '/api/v1/leave-applications/teacher-pending/1',
             );
             setData(response.data.data);
             // setData(response.data);
@@ -73,4 +73,4 @@ const Reject: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Reject;
+export default Pending;

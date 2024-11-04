@@ -3,20 +3,6 @@ import { Link, Outlet } from 'react-router-dom';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            title: 'Application for sick leave',
-        },
-        {
-            id: 2,
-            title: 'Application for casual leave',
-        },
-    ];
-
     return (
         <div className="admin_dashboard">
             <h3 className="table_heading"></h3>
