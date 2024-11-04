@@ -24,6 +24,7 @@ import * as user_parents_model from './user_parents_model';
 import * as branch_class_subjects_model from './branch_class_subjects_model';
 import * as branch_class_fees_model from './branch_class_fees_model';
 import * as branch_class_fee_types_model from './branch_class_fee_types_model';
+import * as user_student_complain_review_model from './user_student_complain_review_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -63,6 +64,7 @@ interface models {
     BranchClassSubjectsModel: typeof branch_class_subjects_model.DataModel;
     BranchClassFeesModel: typeof branch_class_fees_model.DataModel;
     BranchClassFeeTypesModel: typeof branch_class_fee_types_model.DataModel;
+    UserStudentComplainReviewsModel: typeof user_student_complain_review_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -101,6 +103,8 @@ const db = async function (): Promise<models> {
     const BranchClassFeesModel = branch_class_fees_model.init(sequelize);
     const BranchClassFeeTypesModel =
         branch_class_fee_types_model.init(sequelize);
+    const UserStudentComplainReviewsModel =
+        user_student_complain_review_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync({ force: false });
@@ -280,6 +284,7 @@ const db = async function (): Promise<models> {
         BranchClassSubjectsModel,
         BranchClassFeesModel,
         BranchClassFeeTypesModel,
+        UserStudentComplainReviewsModel,
         // Project,
 
         sequelize,
