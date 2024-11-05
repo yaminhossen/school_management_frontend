@@ -13,6 +13,7 @@ import update from './services/update';
 import restore from './services/restore';
 import destroy from './services/destroy';
 import class_routine_details from './services/class_routine_details';
+import assignment_class from './services/assignment_class';
 import data_import from './services/import';
 
 export default function (fastify: FastifyInstance) {
@@ -32,6 +33,14 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data = await class_routine_details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        assignment_class: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await assignment_class(fastify, req);
             res.code(data.status).send(data);
         },
 
