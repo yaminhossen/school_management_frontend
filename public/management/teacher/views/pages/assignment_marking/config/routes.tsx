@@ -2,14 +2,12 @@ import React from 'react';
 import Layout from './Layout';
 import Index from '../Index';
 import Details from '../Details';
-import CreateAssignment from '../pages/CreateAssignment';
-import EditAssignment from '../pages/EditAssignment';
-import SingleDetails from '../pages/SingleDetails';
+import Review from '../pages/Review';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
 export default {
-    path: 'assignment',
+    path: 'assignments-marking',
     element: <Layout />,
     children: [
         {
@@ -22,16 +20,8 @@ export default {
             element: <Details />,
         },
         {
-            path: 'single-details',
-            element: <SingleDetails />,
-        },
-        {
-            path: 'create',
-            element: <CreateAssignment />,
-        },
-        {
-            path: 'edit',
-            element: <EditAssignment />,
+            path: 'review',
+            element: <Review />,
         },
     ],
 };

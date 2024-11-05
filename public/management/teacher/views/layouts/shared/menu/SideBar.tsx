@@ -17,10 +17,27 @@ const SideBar: React.FC<Props> = (props: Props) => {
                 <MenuSingle to="/" icon="icon-home" label="Dashboard" />
                 <MenuSingle to="/profile" icon="icon-user" label="Profile" />
                 <MenuSingle
+                    to="/attendance"
+                    icon="icon-receipt"
+                    label="Attendance"
+                />
+                <MenuSingle to="/student" icon="icon-receipt" label="Student" />
+                <MenuSingle
+                    to="/class-attendance"
+                    icon="icon-receipt"
+                    label="Class Attendance"
+                />
+                <MenuSingle
                     to="/class-routine"
                     icon="icon-calendar"
                     label="Class Routine"
                 />
+                <MenuSingle
+                    to="/course-materials"
+                    icon="icon-receipt"
+                    label="Course Materials"
+                />
+
                 <MenuSingle
                     to="/exam-routine"
                     icon="icon-clipboard"
@@ -31,40 +48,35 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-clipboard"
                     label="Hall Guard Routine"
                 />
-                <MenuSingle to="/result" icon="icon-book" label="Result" />
                 <MenuSingle
-                    to="/attendance"
-                    icon="icon-receipt"
-                    label="Attendance"
-                />
-                <MenuSingle
-                    to="/class-attendance"
-                    icon="icon-receipt"
-                    label="Class Attendance"
+                    to="/result"
+                    icon="icon-book"
+                    label="Student Result"
                 />
 
                 {/* sdfds */}
 
                 {/* <MenuSingle to="/" icon="icon-receipt" label="Home" /> */}
-                <MenuSingle to="/student" icon="icon-receipt" label="Student" />
                 <MenuSingle
                     to="/assignment"
                     icon="icon-receipt"
                     label="Assignment"
                 />
                 <MenuSingle
-                    to="/course-materials"
+                    to="/assignments-marking"
                     icon="icon-receipt"
-                    label="Course Materials"
-                />
-                <MenuSingle to="/reports" icon="icon-receipt" label="Reports" />
-                <MenuSingle
-                    to="/settings"
-                    icon="icon-receipt"
-                    label="Settings"
+                    label="Assignment Marking"
                 />
 
-                {/* sdfds */}
+                {/* <MenuDropDown
+                    section_title=""
+                    group_title="Fee"
+                    icon="icon-money"
+                >
+                    <MenuDropDownItem label="Payment History" to="/fees" />
+                    <MenuDropDownItem label="Due List" to="/fees/dues" />
+                    <MenuDropDownItem label="Pay Fees" to="/fees/pay" />
+                </MenuDropDown> */}
                 <MenuSingle
                     to="/leave-application/approved"
                     icon="icon-notepad"
@@ -78,8 +90,12 @@ const SideBar: React.FC<Props> = (props: Props) => {
                 <MenuSingle to="/notices" icon="icon-bell" label="Notices" />
                 {/* <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" /> */}
 
+                <MenuSingle
+                    to="/settings"
+                    icon="icon-receipt"
+                    label="Settings"
+                />
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
-
                 {/* <li>
                     <a
                         href="http://admin.pixelstrap.com/universal/default/maintenance.html"

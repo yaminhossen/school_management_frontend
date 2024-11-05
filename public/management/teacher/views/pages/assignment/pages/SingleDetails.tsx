@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 export interface Props {}
 
-const Details: React.FC<Props> = (props: Props) => {
+const SingleDetails: React.FC<Props> = (props: Props) => {
     interface data {
         [key: string]: any;
     }
@@ -36,7 +36,7 @@ const Details: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
             <div className="result_details">
-                <h3 className="table_heading mt-4">June, 2024</h3>
+                {/* <h3 className="table_heading mt-4">June, 2024</h3> */}
                 {/* <form action="" onSubmit={(e) => e.preventDefault()}>
                     <div className="teacher_result">
                         <div>
@@ -78,6 +78,52 @@ const Details: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
+                                    <th>Title</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="all_list">
+                                <tr>
+                                    <td></td>
+                                    <td>1</td>
+                                    <td>lsdfj</td>
+                                    <td>lsdfjkldjs</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>1</td>
+                                    <td>lsdfj</td>
+                                    <td>lsdfjkldjs</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>1</td>
+                                    <td>lsdfj</td>
+                                    <td>lsdfjkldjs</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>1</td>
+                                    <td>lsdfj</td>
+                                    <td>lsdfjkldjs</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>1</td>
+                                    <td>lsdfj</td>
+                                    <td>lsdfjkldjs</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {/* <div className="data_list">
+                    <div className="table_responsive custom_scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Serial</th>
                                     <th>Name</th>
                                     <th>Subject</th>
                                     <th>Total Assignment</th>
@@ -100,7 +146,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
-                                                    to="/assignment/single-details"
+                                                    to="/assignment/details"
                                                 >
                                                     details
                                                 </Link>
@@ -110,12 +156,6 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 >
                                                     Edit
                                                 </Link>
-                                                {/* <Link
-                                                    className="btn btn-sm btn-outline-info"
-                                                    to="/class-attendance/take-attendance"
-                                                >
-                                                    Take attendance
-                                                </Link> */}
                                             </td>
                                         </tr>
                                     );
@@ -123,10 +163,10 @@ const Details: React.FC<Props> = (props: Props) => {
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );
 };
 
-export default Details;
+export default SingleDetails;

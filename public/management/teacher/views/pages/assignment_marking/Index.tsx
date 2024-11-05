@@ -38,14 +38,6 @@ const Index: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
-            <div>
-                <Link
-                    className="btn btn-sm btn-outline-info mb-1"
-                    to="/assignment/create"
-                >
-                    Create
-                </Link>
-            </div>
             {/* <form action="">
                 <div className="teacher_result">
                     <div>
@@ -106,12 +98,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 >
                                                     details
                                                 </Link>
-                                                {/* <Link
-                                                    className="btn btn-sm btn-outline-info mr-1"
-                                                    to="/assignment/edit"
-                                                >
-                                                    Edit
-                                                </Link> */}
                                                 {/* <Link
                                                     className="btn btn-sm btn-outline-info"
                                                     to="/class-attendance/take-attendance"
