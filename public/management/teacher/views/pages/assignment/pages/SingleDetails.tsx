@@ -1,75 +1,37 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../../common_types/object';
+import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const SingleDetails: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            name: 'Shahin',
-            subject: 'Bangla',
-            total_assignment: '5',
-            take_assignment: '4',
-            miss_assignment: '1',
-        },
-        {
-            id: 2,
-            name: 'Tamim',
-            subject: 'Agriculture',
-            total_assignment: '4',
-            take_assignment: '3',
-            miss_assignment: '1',
-        },
-        {
-            id: 3,
-            name: 'Ramim',
-            subject: 'Social Science',
-            total_assignment: '3',
-            take_assignment: '2',
-            miss_assignment: '1',
-        },
-    ];
+    const [error, setError] = useState(null);
+    const [data, setData] = useState([]);
+    const { id } = useParams();
+
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`/api/v1/assignments/${id}`);
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
 
     return (
         <div className="admin_dashboard">
-            <div className="result_details">
-                {/* <h3 className="table_heading mt-4">June, 2024</h3> */}
-                {/* <form action="" onSubmit={(e) => e.preventDefault()}>
-                    <div className="teacher_result">
-                        <div>
-                            <div>Class</div>
-                            <div>
-                                <select name="class" id="">
-                                    <option value="six">Six</option>
-                                    <option value="seven">Seven</option>
-                                    <option value="eight">Eight</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div>
-                            <div>Month</div>
-                            <div>
-                                <input type="month" name="month" id="" />
-                            </div>
-                        </div>
-                        <div>
-                            <div>Roll</div>
-                            <div>
-                                <input type="number" name="roll" id="" />
-                            </div>
-                        </div>
-                        <button
-                            className="btn btn-sm btn-outline-info "
-                            type="submit"
-                        >
-                            Submit
-                        </button>
-                    </div>
-                </form> */}
-            </div>
+            <div className="result_details"></div>
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">

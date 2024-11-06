@@ -17,7 +17,7 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/teacher-assignment/${id}`,
+                `/api/v1/assignments/subject-assignment/${id}`,
             );
             setData(response.data.data);
             // setData(response.data);
@@ -42,7 +42,7 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
-                                    <th>Subject</th>
+                                    <th>Title</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -52,17 +52,17 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.subject_name}</td>
+                                            <td>{i.title}</td>
                                             <td>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
-                                                    to={`/assignment/subject-details/${i.branch_class_subject_id}`}
+                                                    to={`/assignment/subject-details/${i.id}`}
                                                 >
                                                     details
                                                 </Link>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
-                                                    to="/assignment/edit"
+                                                    to={`/assignment/subject-edit/${i.id}`}
                                                 >
                                                     Edit
                                                 </Link>

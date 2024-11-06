@@ -7,11 +7,11 @@ GET {{hostname}}?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10
 
 # get
 ###
-GET {{hostname}}/1 HTTP/1.1
+GET {{hostname}}/6 HTTP/1.1
 
 # get
 ###
-GET {{hostname}}/subject-assignment/3 HTTP/1.1
+GET {{hostname}}/subject-assignment/1 HTTP/1.1
 
 # store
 ###

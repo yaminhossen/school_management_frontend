@@ -6,7 +6,6 @@ import CreateAssignment from '../pages/CreateAssignment';
 import EditAssignment from '../pages/EditAssignment';
 import SingleDetails from '../pages/SingleDetails';
 import SubjectDetails from '../pages/SubjectDetails';
-import SingleAssignment from '../pages/SingleAssignment';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -29,14 +28,14 @@ export default {
         },
         {
             path: 'subject-details/:id',
-            element: <SingleAssignment />,
+            element: <SingleDetails />,
         },
         {
             path: 'create',
             element: <CreateAssignment />,
         },
         {
-            path: 'edit',
+            path: 'subject-edit/:id',
             element: <EditAssignment />,
         },
     ],
