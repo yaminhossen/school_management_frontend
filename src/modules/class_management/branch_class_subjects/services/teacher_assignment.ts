@@ -31,6 +31,10 @@ async function details(
                     model: branchClassesModel,
                     as: 'a_class',
                 },
+                {
+                    model: branchClasseSubjectsModel,
+                    as: 'a_subject',
+                },
             ],
             attributes: {
                 exclude: ['password'],

@@ -14,6 +14,7 @@ import restore from './services/restore';
 import destroy from './services/destroy';
 import class_routine_details from './services/class_routine_details';
 import assignment_class from './services/assignment_class';
+import teacher_assignment from './services/teacher_assignment';
 import data_import from './services/import';
 
 export default function (fastify: FastifyInstance) {
@@ -41,6 +42,14 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data = await assignment_class(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        teacher_assignment: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await teacher_assignment(fastify, req);
             res.code(data.status).send(data);
         },
 
