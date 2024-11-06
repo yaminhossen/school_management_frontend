@@ -89,6 +89,7 @@ async function store(
         image: body.image,
         mark: body.mark,
         class_id: body.class_id,
+        subject_id: body.subject_id,
         deadline: body.deadline,
     };
 

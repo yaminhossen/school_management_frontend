@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../common_types/object';
+import { anyObject } from '../../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
 
-const Details: React.FC<Props> = (props: Props) => {
+const SingleAssignment: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
     const { id } = useParams();
@@ -56,16 +56,16 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
-                                                    to={`/assignment/single-subject/${i.branch_class_subject_id}`}
+                                                    to={`/assignment/subject-details/${i.branch_class_subject_id}`}
                                                 >
                                                     details
                                                 </Link>
-                                                {/* <Link
+                                                <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
                                                     to="/assignment/edit"
                                                 >
                                                     Edit
-                                                </Link> */}
+                                                </Link>
                                                 {/* <Link
                                                     className="btn btn-sm btn-outline-info"
                                                     to="/class-attendance/take-attendance"
@@ -85,4 +85,4 @@ const Details: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Details;
+export default SingleAssignment;

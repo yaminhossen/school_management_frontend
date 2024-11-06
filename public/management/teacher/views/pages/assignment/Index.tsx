@@ -16,7 +16,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/branch-class-subjects/teacher-assignment/1',
+                '/api/v1/branch-class-subjects/teacher-classes/1',
             );
             setData(response.data.data);
             // setData(response.data);
@@ -48,11 +48,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Class</th>
-                                    <th>Subject</th>
-                                    {/* <th>Total Student</th>
-                                    <th>Total Assignment</th>
-                                    <th>Take Assignment</th>
-                                    <th>Miss Assignment</th> */}
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -63,16 +58,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <tr>
                                                 <td></td>
                                                 <td>{index + 1}</td>
-                                                <td>{i.a_class?.name}</td>
-                                                <td>{i.a_subject?.name}</td>
-                                                {/* <td>{i.total_student}</td>
-                                                <td>{i.total_assignment}</td>
-                                                <td>{i.take_assignment}</td>
-                                                <td>{i.miss_assignment}</td> */}
+                                                <td>{i.name}</td>
                                                 <td>
                                                     <Link
                                                         className="btn btn-sm btn-outline-info mr-1"
-                                                        to="/assignment/details"
+                                                        to={`/assignment/details/${i.id}`}
                                                     >
                                                         details
                                                     </Link>

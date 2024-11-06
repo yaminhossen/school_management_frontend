@@ -32,7 +32,7 @@ export let active_routes: string[] = [
     // 'src/modules/asset_management/asset_depreciations/routes.ts',
     // 'src/modules/asset_management/asset_types/routes.ts',
 
-    // 'src/modules/assignment_management/assignments/routes.ts',
+    'src/modules/assignment_management/assignments/routes.ts',
     // 'src/modules/assignment_management/assignment_categorys/routes.ts',
     // 'src/modules/assignment_management/assignment_submission/routes.ts',
     'src/modules/attendance_management/leave_applications/routes.ts',

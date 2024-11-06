@@ -25,3 +25,10 @@
 {"level":60,"time":1730878762481,"pid":2640,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
 {"level":60,"time":1730879596611,"pid":864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/teacher-assignments/1"}
 {"level":60,"time":1730879597761,"pid":864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/teacher-assignments/1"}
+{"level":60,"time":1730882886298,"pid":13860,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/teacher-assignment/1"}
+{"level":60,"time":1730882957190,"pid":2552,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/teacher-assignment/1"}
+{"level":60,"time":1730883004561,"pid":2552,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/assignment-class/1"}
+{"level":60,"time":1730883005467,"pid":2552,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/assignment-class/1"}
+{"level":60,"time":1730883006214,"pid":2552,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/assignment-class/1"}
+{"level":60,"time":1730883007292,"pid":2552,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/assignment-class/1"}
+{"level":60,"time":1730883051465,"pid":2552,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/assignment-class/1"}

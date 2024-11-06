@@ -79,6 +79,7 @@ async function all(
             'image',
             'mark',
             'class_id',
+            'subject_id',
             'deadline',
         ];
     }

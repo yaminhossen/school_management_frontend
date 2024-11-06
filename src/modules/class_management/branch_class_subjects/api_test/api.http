@@ -14,7 +14,15 @@ GET {{hostname}}/assignment-class/1 HTTP/1.1
 
 # get
 ###
+GET {{hostname}}/teacher-classes/1 HTTP/1.1
+
+# get
+###
 GET {{hostname}}/teacher-assignment/1 HTTP/1.1
+
+# get
+###
+GET {{hostname}}/subject-assignment/3 HTTP/1.1
 
 # store
 ###

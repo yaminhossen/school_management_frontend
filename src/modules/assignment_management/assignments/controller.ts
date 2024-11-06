@@ -12,6 +12,7 @@ import { responseObject } from '../../common_types/object';
 import update from './services/update';
 import restore from './services/restore';
 import destroy from './services/destroy';
+import subject_assignment from './services/subject_assignment';
 import data_import from './services/import';
 
 export default function (fastify: FastifyInstance) {
@@ -28,6 +29,14 @@ export default function (fastify: FastifyInstance) {
 
         store: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await store(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        subject_assignment: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await subject_assignment(fastify, req);
             res.code(data.status).send(data);
         },
 

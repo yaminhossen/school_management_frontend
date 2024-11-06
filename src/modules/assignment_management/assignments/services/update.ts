@@ -60,6 +60,11 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the class_id field is required')
         .run(req);
+    await body('subject_id')
+        .not()
+        .isEmpty()
+        .withMessage('the subject_id field is required')
+        .run(req);
     await body('deadline')
         .not()
         .isEmpty()
@@ -95,6 +100,7 @@ async function update(
         image: body.image,
         mark: body.mark,
         class_id: body.class_id,
+        subject_id: body.subject_id,
         deadline: body.deadline,
     };
     /** print request data into console */

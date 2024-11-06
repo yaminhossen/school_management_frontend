@@ -41,6 +41,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare image: string;
     declare mark: number;
     declare class_id: number;
+    declare subject_id: number;
     declare deadline: string;
 
     declare status?: status;
@@ -82,6 +83,10 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             class_id: {
+                type: new DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
+            subject_id: {
                 type: new DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },

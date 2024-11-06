@@ -15,7 +15,7 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/branch-class-resources/teacher-resource/1',
+                '/api/v1/branch-class-subjects/assignment-class/1',
             );
             setData(response.data.data);
             // setData(response.data);
@@ -38,11 +38,28 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
                     <div className="form-group form-horizontal">
                         <label>Class</label>
                         <div className="form_elements">
-                            <input
+                            {/* <input
                                 type="text"
                                 placeholder="Class"
                                 name="class"
-                            />
+                            /> */}
+                            <select
+                                name="class"
+                                // defaultValue={
+                                //     state.item.student_info
+                                //         ?.branch_id
+                                // }
+                                id=""
+                            >
+                                {data?.length &&
+                                    data?.map((i: { [key: string]: any }) => {
+                                        return (
+                                            <option value={i.classDetails?.id}>
+                                                {i.classDetails?.name}
+                                            </option>
+                                        );
+                                    })}
+                            </select>
                         </div>
                     </div>
                     <div className="form-group form-horizontal">

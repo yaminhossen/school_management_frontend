@@ -18,7 +18,7 @@ async function details(
 ): Promise<responseObject> {
     let models = await db();
     let branchClassesModel = models.BranchClassesModel;
-    let branchClasseSubjectsModel = models.BranchClassSubjectsModel;
+    let branchClassSubjectsModel = models.BranchClassSubjectsModel;
     let params = req.params as any;
 
     try {
@@ -31,6 +31,11 @@ async function details(
                     model: branchClassesModel,
                     as: 'a_class',
                 },
+                {
+                    model: branchClassSubjectsModel,
+                    as: 'subject', // Alias for the subject model
+                    attributes: ['name'], // Only include the name attribute of the subject
+                },
             ],
             attributes: {
                 exclude: ['password'],
@@ -38,7 +43,36 @@ async function details(
         });
 
         if (data) {
-            return response(200, 'data found', data);
+            // Step 1: Group by class
+            const groupedData = data.reduce((acc: any, item: any) => {
+                const classId = item.a_class.id;
+
+                if (!acc[classId]) {
+                    acc[classId] = {
+                        classDetails: item.a_class,
+                        subjects: [],
+                    };
+                }
+
+                acc[classId].subjects.push({
+                    id: item.id,
+                    branch_class_subject_id: item.branch_class_subject_id,
+                    subject_name: item.subject?.name || null, // Include subject name if available
+                    description: item.description,
+                    branch_class_section_id: item.branch_class_section_id,
+                    branch_class_room_id: item.branch_class_room_id,
+                    status: item.status,
+                    created_at: item.created_at,
+                    updated_at: item.updated_at,
+                });
+
+                return acc;
+            }, {});
+
+            // Step 2: Convert the grouped data into an array
+            const responseData = Object.values(groupedData);
+
+            return response(200, 'data found', responseData);
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }

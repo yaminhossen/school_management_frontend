@@ -5,6 +5,8 @@ import Details from '../Details';
 import CreateAssignment from '../pages/CreateAssignment';
 import EditAssignment from '../pages/EditAssignment';
 import SingleDetails from '../pages/SingleDetails';
+import SubjectDetails from '../pages/SubjectDetails';
+import SingleAssignment from '../pages/SingleAssignment';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -18,12 +20,16 @@ export default {
             element: <Index />,
         },
         {
-            path: 'details',
+            path: 'details/:id',
             element: <Details />,
         },
         {
-            path: 'single-details',
-            element: <SingleDetails />,
+            path: 'single-subject/:id',
+            element: <SubjectDetails />,
+        },
+        {
+            path: 'subject-details/:id',
+            element: <SingleAssignment />,
         },
         {
             path: 'create',

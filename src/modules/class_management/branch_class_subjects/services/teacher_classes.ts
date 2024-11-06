@@ -24,22 +24,12 @@ async function details(
     try {
         let data = await models.BranchClassSubjectTeachersModel.findAll({
             where: {
-                branch_teacher_id: 1, // Filter by teacher ID
-                // branch_teacher_id: params.teacher_id, // Use dynamic teacher ID
+                branch_teacher_id: params.id,
             },
             include: [
                 {
                     model: branchClassesModel,
                     as: 'a_class',
-                    where: {
-                        // id: 1, // Filter by class ID
-                        id: params.id, // Use dynamic class ID
-                    },
-                },
-                {
-                    model: branchClassSubjectsModel,
-                    as: 'subject', // Alias for the subject model
-                    attributes: ['name'], // Only include the name attribute of the subject
                 },
             ],
             attributes: {
@@ -48,20 +38,21 @@ async function details(
         });
 
         if (data) {
-            // Map data to only include subjects
-            const subjectsData = data.map((item: any) => ({
-                id: item.id,
-                branch_class_subject_id: item.branch_class_subject_id,
-                subject_name: item.subject?.name || null, // Include subject name if available
-                description: item.description,
-                branch_class_section_id: item.branch_class_section_id,
-                branch_class_room_id: item.branch_class_room_id,
-                status: item.status,
-                created_at: item.created_at,
-                updated_at: item.updated_at,
-            }));
+            // Group by class to extract only the unique class details
+            const groupedData = data.reduce((acc: any, item: any) => {
+                const classId = item.a_class.id;
 
-            return response(200, 'data found', subjectsData);
+                if (!acc[classId]) {
+                    acc[classId] = item.a_class;
+                }
+
+                return acc;
+            }, {});
+
+            // Convert the grouped data into an array of classDetails
+            const responseData = Object.values(groupedData);
+
+            return response(200, 'data found', responseData);
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }
