@@ -15,6 +15,8 @@ async function logout(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
+    console.log('auth account user id', (req as anyObject).user.id);
+    console.log('auth account user id', (req as anyObject).user);
 
     try {
         let data = await models.UserStaffsModel.findOne({
@@ -23,10 +25,11 @@ async function logout(
             },
         });
         if (data) {
-            data.token = null;
-            data.user_agent = null;
-            await data.save();
-            return response(217, 'logout', {});
+            // data.token = null;
+            // data.user_agent = null;
+            // await data.save();
+            // return response(217, 'logout', {});
+            return response(122, 'ghyhr', {});
         } else {
             throw new custom_error(
                 'Expectation Failed',

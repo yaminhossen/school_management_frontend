@@ -2,3 +2,8 @@
 {"level":60,"time":1730957521752,"pid":15080,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"11/7/2024 11:32:01 AM","message":"data not found"}
 {"level":60,"time":1730957538128,"pid":15080,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:45:19)","time":"11/7/2024 11:32:18 AM","message":"data not found"}
 {"level":60,"time":1730958610896,"pid":4960,"hostname":"DESKTOP-9421701","file":"","time":"11/7/2024 11:50:10 AM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1730966007422,"pid":14416,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:65:19)","time":"11/7/2024 1:53:27 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1730966008644,"pid":14416,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:65:19)","time":"11/7/2024 1:53:28 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1730966009865,"pid":14416,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:65:19)","time":"11/7/2024 1:53:29 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1730966010861,"pid":14416,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:65:19)","time":"11/7/2024 1:53:30 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1730966015095,"pid":14416,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:65:19)","time":"11/7/2024 1:53:35 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
