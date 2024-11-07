@@ -17,7 +17,10 @@ function parseCookieString(cookieString: any) {
     }
 }
 
-const check_auth = async (request: FastifyRequest, reply: FastifyReply) => {
+const check_account_auth = async (
+    request: FastifyRequest,
+    reply: FastifyReply,
+) => {
     const secretKey = env.JTI;
     const jwt = require('jsonwebtoken');
     // const token = request.headers.authorization;
@@ -27,7 +30,7 @@ const check_auth = async (request: FastifyRequest, reply: FastifyReply) => {
     console.log('request cookies', token);
 
     if (!token || !token.startsWith('Bearer ')) {
-        return reply.redirect('/admission-officer/login');
+        return reply.redirect('/account/login');
         // reply.code(401).send({ error: 'Unauthorized' });
         // return;
     }
@@ -55,4 +58,4 @@ const check_auth = async (request: FastifyRequest, reply: FastifyReply) => {
     }
 };
 
-export default check_auth;
+export default check_account_auth;

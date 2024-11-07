@@ -3,6 +3,7 @@ import { FastifyReply, FastifyRequest, FastifyInstance } from 'fastify';
 import { responseObject } from '../../common_types/object';
 import login from './services/login';
 import admission_login from './services/admission_login';
+import account_login from './services/account_login';
 import register from './services/register';
 import forget from './services/forget';
 import auth_user from './services/auth_user';
@@ -31,6 +32,20 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data: responseObject = await admission_login(fastify, req);
+            const cookie = serialize('token', 'Bearer ' + data.data.token, {
+                maxAge: 172800,
+                path: '/',
+                httpOnly: false,
+                sameSite: 'lax',
+            });
+
+            res.header('Set-Cookie', cookie);
+            // res.header('Set-Cookie', cookie2);
+            res.code(data.status).send(data);
+        },
+
+        account_login: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await account_login(fastify, req);
             const cookie = serialize('token', 'Bearer ' + data.data.token, {
                 maxAge: 172800,
                 path: '/',

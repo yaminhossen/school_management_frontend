@@ -12,6 +12,7 @@ const check_auth_and_redirect = async (
     const token = request.headers.authorization;
 
     if (!token || !token.startsWith('Bearer ')) {
+        // return reply.redirect('/admission-officer/login');
         return reply.redirect('/login');
     }
 
