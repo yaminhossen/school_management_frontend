@@ -2,6 +2,7 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import controller from './controller';
 import check_auth from './services/check_auth';
+import check_account_auth from './services/check_account_auth';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/auth';
@@ -27,8 +28,12 @@ module.exports = async function (fastify: FastifyInstance) {
     fastify.register(
         async (route, opts) => {
             route
-                .addHook('preHandler', check_auth)
-                .post(`/logout`, controllerInstance.logout)
+                // .addHook('preHandler', check_auth)
+                .post(
+                    `/logout`,
+                    { preHandler: check_account_auth },
+                    controllerInstance.logout,
+                )
                 .get(`/info`, controllerInstance.auth_user);
         },
         { prefix },

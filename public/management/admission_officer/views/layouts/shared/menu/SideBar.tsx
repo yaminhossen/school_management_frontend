@@ -17,14 +17,17 @@ const SideBar: React.FC<Props> = (props: Props) => {
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         try {
+            // fetch('/api/v1/auth/logout', {
+            //     method: 'POST',
+            // });
             const response = await axios.post('/api/v1/auth/logout');
             console.log('response123', response);
             // if(response.status)
         } catch (error) {
             setError(error);
+            console.log('someting', error);
         }
     };
-
     return (
         <>
             <ul className="sidebar-menu">

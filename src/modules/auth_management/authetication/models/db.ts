@@ -4,6 +4,7 @@ import {
 } from 'sequelize';
 import * as user_model from './user_model';
 import * as user_staff_model from './user_staff_model';
+import * as user_students_model from './user_students_model';
 require('dotenv').config();
 
 let host = process?.env.DB_HOST || '';
@@ -19,15 +20,18 @@ const sequelize = new Sequelize(
 interface models {
     User: typeof user_model.DataModel;
     UserStaffsModel: typeof user_staff_model.DataModel;
+    UserStudentsModel: typeof user_students_model.DataModel;
     sequelize: Sequelize;
 }
 const db = async function (): Promise<models> {
     const User = user_model.init(sequelize);
     const UserStaffsModel = user_staff_model.init(sequelize);
+    const UserStudentsModel = user_students_model.init(sequelize);
     await sequelize.sync();
     let models: models = {
         User,
         UserStaffsModel,
+        UserStudentsModel,
         sequelize,
     };
     return models;

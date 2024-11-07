@@ -16,20 +16,48 @@ async function logout(
 ): Promise<responseObject> {
     let models = await db();
     console.log('auth account user id', (req as anyObject).user.id);
-    console.log('auth account user id', (req as anyObject).user);
+    let authUser = (req as anyObject).user;
+    console.log('auth account user id', authUser);
 
     try {
-        let data = await models.UserStaffsModel.findOne({
-            where: {
-                id: (req as anyObject).user.id,
-            },
-        });
-        if (data) {
-            // data.token = null;
-            // data.user_agent = null;
-            // await data.save();
-            // return response(217, 'logout', {});
-            return response(122, 'ghyhr', {});
+        if (authUser.user_type === 'staff') {
+            let data = await models.UserStaffsModel.findOne({
+                where: {
+                    id: (req as anyObject).user.id,
+                },
+            });
+            if (data) {
+                data.token = null;
+                data.user_agent = null;
+                await data.save();
+                return response(217, 'logout', {});
+                // return response(122, 'ghyhr', {});
+            } else {
+                throw new custom_error(
+                    'Expectation Failed',
+                    417,
+                    'action not possible',
+                );
+            }
+        } else if (authUser.user_type === 'student') {
+            let data = await models.UserStudentsModel.findOne({
+                where: {
+                    id: (req as anyObject).user.id,
+                },
+            });
+            if (data) {
+                data.token = null;
+                data.user_agent = null;
+                await data.save();
+                return response(217, 'logout', {});
+                // return response(122, 'ghyhr', {});
+            } else {
+                throw new custom_error(
+                    'Expectation Failed',
+                    417,
+                    'action not possible',
+                );
+            }
         } else {
             throw new custom_error(
                 'Expectation Failed',
