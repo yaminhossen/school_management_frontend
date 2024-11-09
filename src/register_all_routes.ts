@@ -32,10 +32,10 @@ export let active_routes: string[] = [
     // 'src/modules/asset_management/asset_depreciations/routes.ts',
     // 'src/modules/asset_management/asset_types/routes.ts',
 
-    // 'src/modules/assignment_management/assignments/routes.ts',
-    // 'src/modules/assignment_management/assignment_categorys/routes.ts',
-    // 'src/modules/assignment_management/assignment_submission/routes.ts',
-    // 'src/modules/attendance_management/leave_applications/routes.ts',
+    'src/modules/assignment_management/assignments/routes.ts',
+    'src/modules/assignment_management/assignment_categorys/routes.ts',
+    'src/modules/assignment_management/assignment_submission/routes.ts',
+    'src/modules/attendance_management/leave_applications/routes.ts',
     // 'src/modules/attendance_management/leave_application_paids/routes.ts',
     // 'src/modules/attendance_management/leave_types/routes.ts',
     // 'src/modules/attendance_management/staff_attendances/routes.ts',
@@ -123,7 +123,7 @@ export let active_routes: string[] = [
     // 'src/modules/user_management/user_parents/routes.ts',
     // 'src/modules/user_management/user_staffs/routes.ts',
     'src/modules/user_management/user_students/routes.ts',
-    // 'src/modules/user_management/user_teachers/routes.ts',
+    'src/modules/user_management/user_teachers/routes.ts',
 ];
 
 function register_all_routes(fastify: FastifyInstance) {

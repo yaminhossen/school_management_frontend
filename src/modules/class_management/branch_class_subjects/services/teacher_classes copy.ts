@@ -4,7 +4,6 @@ import { responseObject } from '../../../common_types/object';
 import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
-import { Sequelize } from 'sequelize';
 
 // async function details(
 //     fastify_instance: FastifyInstance,
@@ -20,7 +19,6 @@ async function details(
     let models = await db();
     let branchClassesModel = models.BranchClassesModel;
     let branchClassSubjectsModel = models.BranchClassSubjectsModel;
-    let userStudentInformationsModel = models.UserStudentInformationsModel; // Assuming this is your model
     let params = req.params as any;
 
     try {
@@ -32,19 +30,6 @@ async function details(
                 {
                     model: branchClassesModel,
                     as: 'a_class',
-                    attributes: {
-                        include: [
-                            // Subquery to count students for each class
-                            [
-                                models.sequelize.literal(`(
-                                    SELECT COUNT(*)
-                                    FROM user_student_informations
-                                    WHERE user_student_informations.s_class = a_class.id
-                                )`),
-                                'student_count',
-                            ],
-                        ],
-                    },
                 },
             ],
             attributes: {
@@ -53,6 +38,7 @@ async function details(
         });
 
         if (data) {
+            // Group by class to extract only the unique class details
             const groupedData = data.reduce((acc: any, item: any) => {
                 const classId = item.a_class.id;
 
@@ -63,6 +49,7 @@ async function details(
                 return acc;
             }, {});
 
+            // Convert the grouped data into an array of classDetails
             const responseData = Object.values(groupedData);
 
             return response(200, 'data found', responseData);

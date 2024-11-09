@@ -11,6 +11,7 @@ import * as branch_class_routine_day_times_model from './branch_class_routine_da
 import * as branch_building_rooms_model from './branche_building_rooms_model';
 import * as branch_class_rooms_model from './branch_class_rooms_model';
 import * as branch_classes_model from './branch_classes_model';
+import * as user_student_informations_model from './user_student_informations_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -37,6 +38,7 @@ interface models {
     BranchBuildingRoomsModel: typeof branch_building_rooms_model.DataModel;
     BranchClassRoomsModel: typeof branch_class_rooms_model.DataModel;
     BranchClassesModel: typeof branch_classes_model.DataModel;
+    UserStudentInformationsModel: typeof user_student_informations_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -55,6 +57,8 @@ const db = async function (): Promise<models> {
         branch_building_rooms_model.init(sequelize);
     const BranchClassRoomsModel = branch_class_rooms_model.init(sequelize);
     const BranchClassesModel = branch_classes_model.init(sequelize);
+    const UserStudentInformationsModel =
+        user_student_informations_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync({ force: false });
@@ -113,11 +117,11 @@ const db = async function (): Promise<models> {
         as: 'day_time',
     });
 
-    // UserStudentsModel.hasMany(UserStudentInformationsModel, {
-    //     sourceKey: 'id',
-    //     foreignKey: 'user_student_id',
-    //     as: 'student_infos',
-    // });
+    BranchClassesModel.hasMany(UserStudentInformationsModel, {
+        sourceKey: 'id',
+        foreignKey: 's_class',
+        as: 'students',
+    });
 
     let models: models = {
         BranchClassSubjectsModel,
@@ -129,6 +133,7 @@ const db = async function (): Promise<models> {
         BranchBuildingRoomsModel,
         BranchClassRoomsModel,
         BranchClassesModel,
+        UserStudentInformationsModel,
         // Project,
 
         sequelize,

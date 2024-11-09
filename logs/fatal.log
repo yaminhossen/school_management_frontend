@@ -1,0 +1,2 @@
+{"level":60,"time":1731145961452,"pid":1704,"hostname":"DESKTOP-9421701","file":"services\\teacher_classes.ts:74:19)","time":"11/9/2024 3:52:41 PM","message":"UserStudentInformationsModel is not associated to BranchClassesModel!"}
+{"level":60,"time":1731146208370,"pid":4248,"hostname":"DESKTOP-9421701","file":"services\\teacher_classes.ts:77:19)","time":"11/9/2024 3:56:48 PM","message":"Table 'institute_management.userstudentinformations' doesn't exist"}

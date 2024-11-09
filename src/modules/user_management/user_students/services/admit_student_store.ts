@@ -35,16 +35,16 @@ async function validate(req: Request) {
     //     .isEmpty()
     //     .withMessage('the image field is required')
     //     .run(req);
-    // await body('password')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the password field is required')
-    //     .run(req);
-    // await body('admission_no')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the admission_no field is required')
-    //     .run(req);
+    await body('password')
+        .not()
+        .isEmpty()
+        .withMessage('the password field is required')
+        .run(req);
+    await body('admission_no')
+        .not()
+        .isEmpty()
+        .withMessage('the admission_no field is required')
+        .run(req);
     // await body('role_no')
     //     .not()
     //     .isEmpty()
