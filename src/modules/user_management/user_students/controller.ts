@@ -41,6 +41,7 @@ import student_class from './services/student_class';
 import childrens from './services/childrens';
 import educational_backgrounds from './services/educational_backgrounds';
 import pre_info from './services/pre_info';
+import class_wise_student from './services/class_wise_student';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -66,6 +67,14 @@ export default function (fastify: FastifyInstance) {
 
         student_class: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await student_class(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        class_wise_student: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await class_wise_student(fastify, req);
             res.code(data.status).send(data);
         },
 

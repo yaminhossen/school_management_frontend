@@ -1,34 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../../common_types/object';
+import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Students: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            name: 'Shahin',
-            subject: 'Bangla',
-            class: 'Six',
-            roll: '101',
-        },
-        {
-            id: 2,
-            name: 'Tamim',
-            subject: 'Bangla',
-            class: 'Six',
-            roll: '102',
-        },
-        {
-            id: 3,
-            name: 'Ramim',
-            subject: 'Bangla',
-            class: 'Six',
-            roll: '103',
-        },
-    ];
+    const [error, setError] = useState(null);
+    const [data, setData] = useState([]);
+    const { id } = useParams();
+
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                `/api/v1/user-students/class-wise-student/${id}`,
+            );
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
 
     return (
         <div className="admin_dashboard">
@@ -41,48 +42,46 @@ const Students: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Name</th>
-                                    <th>Subject</th>
-                                    <th>Class</th>
                                     <th>Roll</th>
                                     <th>Action</th>
                                     <th>Report</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.name}</td>
-                                            <td>{i.subject}</td>
-                                            <td>{i.class}</td>
-                                            <td>{i.roll}</td>
-                                            <td>
-                                                <Link
-                                                    className="btn btn-sm btn-outline-info mr-1"
-                                                    to="/student/review"
-                                                >
-                                                    Review
-                                                </Link>
-                                                <Link
-                                                    className="btn btn-sm btn-outline-info mr-1"
-                                                    to="/student/complain"
-                                                >
-                                                    Complain
-                                                </Link>
-                                            </td>
-                                            <td>
-                                                <Link
-                                                    className="btn btn-sm btn-outline-info mr-1"
-                                                    to="/student/single-student"
-                                                >
-                                                    Details
-                                                </Link>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
+                                {data?.map(
+                                    (i: { [key: string]: any }, index) => {
+                                        return (
+                                            <tr>
+                                                <td></td>
+                                                <td>{index + 1}</td>
+                                                <td>{i.student?.name}</td>
+                                                <td>{i.role_no}</td>
+                                                <td>
+                                                    <Link
+                                                        className="btn btn-sm btn-outline-info mr-1"
+                                                        to="/student/review"
+                                                    >
+                                                        Review
+                                                    </Link>
+                                                    <Link
+                                                        className="btn btn-sm btn-outline-info mr-1"
+                                                        to="/student/complain"
+                                                    >
+                                                        Complain
+                                                    </Link>
+                                                </td>
+                                                <td>
+                                                    <Link
+                                                        className="btn btn-sm btn-outline-info mr-1"
+                                                        to="/student/single-student"
+                                                    >
+                                                        Details
+                                                    </Link>
+                                                </td>
+                                            </tr>
+                                        );
+                                    },
+                                )}
                             </tbody>
                         </table>
                     </div>
