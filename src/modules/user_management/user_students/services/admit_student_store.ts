@@ -30,11 +30,11 @@ async function validate(req: Request) {
     //     .isEmpty()
     //     .withMessage('the gender field is required')
     //     .run(req);
-    // await body('image')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the image field is required')
-    //     .run(req);
+    await body('image')
+        .not()
+        .isEmpty()
+        .withMessage('the image field is required')
+        .run(req);
     await body('password')
         .not()
         .isEmpty()
@@ -45,111 +45,111 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the admission_no field is required')
         .run(req);
-    // await body('role_no')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the role_no field is required')
-    //     .run(req);
-    // await body('student_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the student_id field is required')
-    //     .run(req);
-    // await body('admission_date')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the admission_date field is required')
-    //     .run(req);
-    // await body('class')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the class field is required')
-    //     .run(req);
-    // await body('gender')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the gender field is required')
-    //     .run(req);
-    // await body('present_address')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the present_address field is required')
-    //     .run(req);
-    // await body('permanent_address')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the permanent_address field is required')
-    //     .run(req);
-    // await body('date_of_birth')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the date_of_birth field is required')
-    //     .run(req);
-    // await body('religion')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the religion field is required')
-    //     .run(req);
-    // await body('nationality')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the nationality field is required')
-    //     .run(req);
+    await body('role_no')
+        .not()
+        .isEmpty()
+        .withMessage('the role_no field is required')
+        .run(req);
+    await body('student_id')
+        .not()
+        .isEmpty()
+        .withMessage('the student_id field is required')
+        .run(req);
+    await body('admission_date')
+        .not()
+        .isEmpty()
+        .withMessage('the admission_date field is required')
+        .run(req);
+    await body('class')
+        .not()
+        .isEmpty()
+        .withMessage('the class field is required')
+        .run(req);
+    await body('gender')
+        .not()
+        .isEmpty()
+        .withMessage('the gender field is required')
+        .run(req);
+    await body('present_address')
+        .not()
+        .isEmpty()
+        .withMessage('the present_address field is required')
+        .run(req);
+    await body('permanent_address')
+        .not()
+        .isEmpty()
+        .withMessage('the permanent_address field is required')
+        .run(req);
+    await body('date_of_birth')
+        .not()
+        .isEmpty()
+        .withMessage('the date_of_birth field is required')
+        .run(req);
+    await body('religion')
+        .not()
+        .isEmpty()
+        .withMessage('the religion field is required')
+        .run(req);
+    await body('nationality')
+        .not()
+        .isEmpty()
+        .withMessage('the nationality field is required')
+        .run(req);
     // await body('division')
     //     .not()
     //     .isEmpty()
     //     .withMessage('the division field is required')
     //     .run(req);
-    // await body('city')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the city field is required')
-    //     .run(req);
-    // await body('post_code')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the post_code field is required')
-    //     .run(req);
-    // await body('country')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the country field is required')
-    //     .run(req);
-    // await body('telegram_name')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the telegram_name field is required')
-    //     .run(req);
-    // await body('telegram_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the telegram_id field is required')
-    //     .run(req);
-    // await body('blood_group')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the blood_group field is required')
-    //     .run(req);
-    // await body('student_expire_date')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the student_expire_date field is required')
-    //     .run(req);
-    // await body('height')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the height field is required')
-    //     .run(req);
-    // await body('weight')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the weight field is required')
-    //     .run(req);
-    // await body('as_on_date')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the as_on_date field is required')
-    //     .run(req);
+    await body('city')
+        .not()
+        .isEmpty()
+        .withMessage('the city field is required')
+        .run(req);
+    await body('post_code')
+        .not()
+        .isEmpty()
+        .withMessage('the post_code field is required')
+        .run(req);
+    await body('country')
+        .not()
+        .isEmpty()
+        .withMessage('the country field is required')
+        .run(req);
+    await body('telegram_name')
+        .not()
+        .isEmpty()
+        .withMessage('the telegram_name field is required')
+        .run(req);
+    await body('telegram_id')
+        .not()
+        .isEmpty()
+        .withMessage('the telegram_id field is required')
+        .run(req);
+    await body('blood_group')
+        .not()
+        .isEmpty()
+        .withMessage('the blood_group field is required')
+        .run(req);
+    await body('student_expire_date')
+        .not()
+        .isEmpty()
+        .withMessage('the student_expire_date field is required')
+        .run(req);
+    await body('height')
+        .not()
+        .isEmpty()
+        .withMessage('the height field is required')
+        .run(req);
+    await body('weight')
+        .not()
+        .isEmpty()
+        .withMessage('the weight field is required')
+        .run(req);
+    await body('as_on_date')
+        .not()
+        .isEmpty()
+        .withMessage('the as_on_date field is required')
+        .run(req);
     // await body('family_information')
     //     .not()
     //     .isEmpty()
@@ -170,11 +170,11 @@ async function validate(req: Request) {
     //     .isEmpty()
     //     .withMessage('the student_house_type field is required')
     //     .run(req);
-    // await body('birth_certificate')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the birth_certificate field is required')
-    //     .run(req);
+    await body('birth_certificate')
+        .not()
+        .isEmpty()
+        .withMessage('the birth_certificate field is required')
+        .run(req);
 
     let result = await validationResult(req);
 

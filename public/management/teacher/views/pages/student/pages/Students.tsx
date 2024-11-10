@@ -59,13 +59,13 @@ const Students: React.FC<Props> = (props: Props) => {
                                                 <td>
                                                     <Link
                                                         className="btn btn-sm btn-outline-info mr-1"
-                                                        to="/student/review"
+                                                        to={`/student/review/${i.id}`}
                                                     >
                                                         Review
                                                     </Link>
                                                     <Link
                                                         className="btn btn-sm btn-outline-info mr-1"
-                                                        to="/student/complain"
+                                                        to={`/student/complain/${i.id}`}
                                                     >
                                                         Complain
                                                     </Link>
@@ -73,7 +73,7 @@ const Students: React.FC<Props> = (props: Props) => {
                                                 <td>
                                                     <Link
                                                         className="btn btn-sm btn-outline-info mr-1"
-                                                        to="/student/single-student"
+                                                        to={`/student/single-student/${i.id}`}
                                                     >
                                                         Details
                                                     </Link>

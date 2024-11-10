@@ -22,15 +22,15 @@ export default {
             element: <Details />,
         },
         {
-            path: 'single-student',
+            path: 'single-student/:id',
             element: <SingleStudent />,
         },
         {
-            path: 'review',
+            path: 'review/:id',
             element: <Review />,
         },
         {
-            path: 'complain',
+            path: 'complain/:id',
             element: <Complain />,
         },
     ],
