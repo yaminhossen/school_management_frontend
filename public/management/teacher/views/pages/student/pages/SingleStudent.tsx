@@ -1,42 +1,35 @@
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../../common_types/object';
+import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
 import moment from 'moment/moment';
-import React from 'react';
-import { Link } from 'react-router-dom';
 export interface Props {}
 
 const SingleStudent: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const state: data[] = [
-        {
-            id: 1,
-            name: 'Shahin',
-            class: 'Six',
-            roll: '101',
-            cgpa: '3.5',
-            present: '90%',
-            total_absance: '10',
-        },
-        {
-            id: 2,
-            name: 'Tamim',
-            class: 'Six',
-            roll: '101',
-            cgpa: '3.5',
-            present: '90%',
-            total_absance: '10',
-        },
-        {
-            id: 3,
-            name: 'Ramim',
-            class: 'Six',
-            roll: '101',
-            cgpa: '3.5',
-            present: '90%',
-            total_absance: '10',
-        },
-    ];
+    const [error, setError] = useState(null);
+    const [data, setData] = useState<any>();
+    const { id } = useParams();
 
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                `/api/v1/user-students/basic-information/${id}`,
+            );
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
     return (
         <div className="admin_dashboard">
             <div className="content_body">
@@ -50,21 +43,21 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>Name</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {state.item?.name}
+                                            {data?.name}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {state.item?.email}
+                                            {data?.email}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Phone number</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {state.item?.phone_number}
+                                            {data?.phone_number}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -76,21 +69,21 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>Whatsapp number</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {state.item?.whatsapp_number}
+                                            {data?.whatsapp_number}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Gender</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {state.item?.student_info?.gender}
+                                            {data?.student_info?.gender}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Stutas</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {state.item?.status}
+                                            {data?.status}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -113,17 +106,14 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>Student Id</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {
-                                                state.item?.student_info
-                                                    ?.student_id
-                                            }
+                                            {data?.student_info?.student_id}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Roll no</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {state.item?.student_info?.role_no}
+                                            {data?.student_info?.role_no}
                                         </td>
                                     </tr>
                                     <tr>
@@ -131,7 +121,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {moment(
-                                                state.item?.student_info
+                                                data?.student_info
                                                     ?.admission_date,
                                             ).format('YYYY-MM-DD')}
                                         </td>
@@ -145,10 +135,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>Class</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {
-                                                state.item?.student_info?.class
-                                                    ?.name
-                                            }
+                                            {data?.student_info?.class?.name}
                                         </td>
                                     </tr>
                                     <tr>
@@ -156,7 +143,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {
-                                                state.item?.student_info
+                                                data?.student_info
                                                     ?.student_shift?.title
                                             }
                                         </td>
@@ -166,7 +153,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {
-                                                state.item?.student_info
+                                                data?.student_info
                                                     ?.student_category
                                             }
                                         </td>
@@ -176,7 +163,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {
-                                                state.item?.student_info
+                                                data?.student_info
                                                     ?.student_section?.title
                                             }
                                         </td>
@@ -195,7 +182,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {
-                                                state.item?.student_info
+                                                data?.student_info
                                                     ?.present_address
                                             }
                                         </td>
@@ -205,7 +192,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {
-                                                state.item?.student_info
+                                                data?.student_info
                                                     ?.permanent_address
                                             }
                                         </td>
@@ -214,34 +201,28 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>Religion</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {state.item?.student_info?.religion}
+                                            {data?.student_info?.religion}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>City</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {state.item?.student_info?.city}
+                                            {data?.student_info?.city}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Telegram Id</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {
-                                                state.item?.student_info
-                                                    ?.telegram_id
-                                            }
+                                            {data?.student_info?.telegram_id}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Blood Group</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {
-                                                state.item?.student_info
-                                                    ?.blood_group
-                                            }
+                                            {data?.student_info?.blood_group}
                                         </td>
                                     </tr>
                                     <tr>
@@ -249,7 +230,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {moment(
-                                                state.item?.student_info
+                                                data?.student_info
                                                     ?.student_expire_date,
                                             ).format('YYYY-MM-DD')}
                                         </td>
@@ -258,14 +239,14 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>Height</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {state.item?.student_info?.height}
+                                            {data?.student_info?.height}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Weight</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {state.item?.student_info?.weight}
+                                            {data?.student_info?.weight}
                                         </td>
                                     </tr>
                                     <tr>
@@ -273,8 +254,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {moment(
-                                                state.item?.student_info
-                                                    ?.as_on_date,
+                                                data?.student_info?.as_on_date,
                                             ).format('YYYY-MM-DD')}
                                         </td>
                                     </tr>
@@ -283,7 +263,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {
-                                                state.item?.student_info
+                                                data?.student_info
                                                     ?.family_information
                                             }
                                         </td>
@@ -293,7 +273,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {
-                                                state.item?.student_info
+                                                data?.student_info
                                                     ?.shibling_information
                                             }
                                         </td>
@@ -303,7 +283,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {
-                                                state.item?.student_info
+                                                data?.student_info
                                                     ?.living_house_type
                                             }
                                         </td>
@@ -317,27 +297,21 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>Nationality</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {
-                                                state.item?.student_info
-                                                    ?.nationality
-                                            }
+                                            {data?.student_info?.nationality}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Division</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {state.item?.student_info?.division}
+                                            {data?.student_info?.division}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>ID No</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {
-                                                state.item?.student_info
-                                                    ?.student_id
-                                            }
+                                            {data?.student_info?.student_id}
                                         </td>
                                     </tr>
                                     <tr>
@@ -345,7 +319,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {
-                                                state.item?.student_info
+                                                data?.student_info
                                                     ?.present_address
                                             }
                                         </td>
@@ -354,17 +328,14 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>Post code</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {
-                                                state.item?.student_info
-                                                    ?.post_code
-                                            }
+                                            {data?.student_info?.post_code}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Country</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {state.item?.student_info?.country}
+                                            {data?.student_info?.country}
                                         </td>
                                     </tr>
                                     <tr>
@@ -372,7 +343,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {
-                                                state.item?.student_info
+                                                data?.student_info
                                                     ?.medical_condition
                                             }
                                         </td>
@@ -382,7 +353,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {
-                                                state.item?.student_info
+                                                data?.student_info
                                                     ?.current_medications
                                             }
                                         </td>
@@ -391,20 +362,14 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>Telegram Name</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {
-                                                state.item?.student_info
-                                                    ?.telegram_name
-                                            }
+                                            {data?.student_info?.telegram_name}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Student House type</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {
-                                                state.item?.student_info
-                                                    ?.student_house
-                                            }
+                                            {data?.student_info?.student_house}
                                         </td>
                                     </tr>
                                     <tr>
@@ -412,12 +377,12 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {/* {
-                                                    state.item?.student_info
+                                                    data?.student_info
                                                         ?.birth_certificate
                                                 } */}
                                             <a
                                                 href={
-                                                    state.item?.student_info
+                                                    data?.student_info
                                                         ?.birth_certificate
                                                 }
                                                 target="_blank"
@@ -432,12 +397,12 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             {/* {
-                                                    state.item?.student_info
+                                                    data?.student_info
                                                         ?.birth_certificate
                                                 } */}
                                             <a
                                                 href={
-                                                    state.item?.student_info
+                                                    data?.student_info
                                                         ?.national_id
                                                 }
                                                 target="_blank"
@@ -451,7 +416,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                         <td>Cast</td>
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
-                                            {state.item?.student_info?.cast}
+                                            {data?.student_info?.cast}
                                         </td>
                                     </tr>
                                 </tbody>

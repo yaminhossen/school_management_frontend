@@ -10,17 +10,11 @@ async function basic_informations(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
-    let educationalBackgroundsModel =
-        models.UserStudentEducationalBackgroundsModel;
     let informationsModel = models.UserStudentInformationsModel;
-    let contactNumbersModel = models.UserStudentContactNumbersModel;
-    let skillsModel = models.UserStudentSkillsModel;
-    let studentParentsModel = models.UserStudentParentsModel;
-    let languagesModel = models.UserStudentLanguagesModel;
-    let documentValuesModel = models.UserStudentDocumentValuesModel;
-    let documentTitlesModel = models.UserStudentDocumentTitlesModel;
+    let classShiftsModel = models.BranchClassShiftsModel;
+    let classSectionsModel = models.BranchClassSectionsModel;
     let studentsModel = models.UserStudentsModel;
-    let parentsModel = models.UserParentsModel;
+    let classesModel = models.BranchClassesModel;
     let params = req.params as any;
 
     try {
@@ -35,6 +29,20 @@ async function basic_informations(
                 {
                     model: informationsModel,
                     as: 'student_info',
+                    include: [
+                        {
+                            model: classesModel,
+                            as: 'class',
+                        },
+                        {
+                            model: classShiftsModel,
+                            as: 'student_shift',
+                        },
+                        {
+                            model: classSectionsModel,
+                            as: 'student_section',
+                        },
+                    ],
                 },
             ],
         });

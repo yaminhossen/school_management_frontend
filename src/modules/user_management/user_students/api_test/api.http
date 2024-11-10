@@ -19,6 +19,10 @@ GET {{hostname}}/class-wise-student/1 HTTP/1.1
 
 # get
 ###
+GET {{hostname}}/basic-information/1 HTTP/1.1
+
+# get
+###
 GET {{hostname}}/fees-categories/1 HTTP/1.1
 
 # get

@@ -20,7 +20,7 @@ export default {
             element: <Result />,
         },
         {
-            path: 'take-attendance',
+            path: 'take-attendance/:id',
             element: <TakeAttendace />,
         },
     ],

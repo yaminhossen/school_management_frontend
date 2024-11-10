@@ -8,7 +8,54 @@ const Review: React.FC<Props> = (props: Props) => {
             {/* <h3>Create New Review</h3> */}
             <div className="content_body">
                 <form className="form_600 mx-auto pt-3">
-                    <div className="form-group form-horizontal">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Key point</th>
+                                <th>Score</th>
+                                <th>Obtain mark</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Attendance</td>
+                                <td>25</td>
+                                <td>
+                                    <input
+                                        type="number"
+                                        max={25}
+                                        name=""
+                                        id=""
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Attendance</td>
+                                <td>25</td>
+                                <td>
+                                    <input
+                                        type="number"
+                                        max={25}
+                                        name=""
+                                        id=""
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Attendance</td>
+                                <td>25</td>
+                                <td>
+                                    <input
+                                        type="number"
+                                        max={25}
+                                        name=""
+                                        id=""
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    {/* <div className="form-group form-horizontal">
                         <label>Name</label>
                         <div className="form_elements">
                             <input type="text" placeholder="Name" name="name" />
@@ -47,7 +94,7 @@ const Review: React.FC<Props> = (props: Props) => {
                                 submit
                             </button>
                         </div>
-                    </div>
+                    </div> */}
                 </form>
             </div>
         </div>
