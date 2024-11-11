@@ -10,61 +10,62 @@ import response from '../helpers/response';
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
+import moment from 'moment';
 
 async function validate(req: Request) {
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
+    // await body('branch_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_id field is required')
+    //     .run(req);
 
-    await body('branch_student_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_student_id field is required')
-        .run(req);
+    // await body('branch_student_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_student_id field is required')
+    //     .run(req);
 
-    await body('start_time')
-        .not()
-        .isEmpty()
-        .withMessage('the start_time field is required')
-        .run(req);
+    // await body('start_time')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the start_time field is required')
+    //     .run(req);
 
-    await body('end_time')
-        .not()
-        .isEmpty()
-        .withMessage('the end_time field is required')
-        .run(req);
+    // await body('end_time')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the end_time field is required')
+    //     .run(req);
 
-    await body('date')
-        .not()
-        .isEmpty()
-        .withMessage('the date field is required')
-        .run(req);
+    // await body('date')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the date field is required')
+    //     .run(req);
 
-    await body('attendance_status')
-        .not()
-        .isEmpty()
-        .withMessage('the attendance_status field is required')
-        .run(req);
+    // await body('attendance_status')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the attendance_status field is required')
+    //     .run(req);
 
-    await body('overtime_hours')
-        .not()
-        .isEmpty()
-        .withMessage('the overtime_hours field is required')
-        .run(req);
+    // await body('overtime_hours')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the overtime_hours field is required')
+    //     .run(req);
 
-    await body('fine_amount')
-        .not()
-        .isEmpty()
-        .withMessage('the fine_amount field is required')
-        .run(req);
+    // await body('fine_amount')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the fine_amount field is required')
+    //     .run(req);
 
-    await body('reward_amount')
-        .not()
-        .isEmpty()
-        .withMessage('the reward_amount field is required')
-        .run(req);
+    // await body('reward_amount')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the reward_amount field is required')
+    //     .run(req);
 
     let result = await validationResult(req);
 
@@ -85,18 +86,16 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.StudentAttendancesModel();
+    console.log('attendance body', body);
 
-    let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: body.branch_id,
-        branch_student_id: body.branch_student_id,
-        start_time: body.start_time,
-        end_time: body.end_time,
-        date: body.date,
-        attendance_status: body.attendance_status,
-        overtime_hours: body.overtime_hours,
-        fine_amount: body.fine_amount,
-        reward_amount: body.reward_amount,
-    };
+    let student_attendance: anyObject[] = [];
+    for (let i = 0; i < parseInt(body.student_count); i++) {
+        student_attendance.push({
+            branch_student_id: body[`student_id${i}`],
+            attendance_status: body[`attendance_status${i}`],
+        });
+    }
+    let todayDate = moment().format('YYYY-MM-DD');
 
     /** print request data into console */
     // console.clear();
@@ -104,7 +103,24 @@ async function store(
 
     /** store data into database */
     try {
-        (await data.update(inputs)).save();
+        if (student_attendance) {
+            student_attendance.forEach(async (ss) => {
+                let uscn_model = new models.StudentAttendancesModel();
+                let uscn_inputs: InferCreationAttributes<typeof uscn_model> = {
+                    branch_id: body.branch_id,
+                    branch_student_id: 1,
+                    date: body.contact_number,
+                    attendance_status: body.owner,
+                    creator: 1,
+                };
+                uscn_inputs.branch_id = 1;
+                uscn_inputs.branch_student_id = ss.branch_student_id;
+                uscn_inputs.date = todayDate;
+                uscn_inputs.attendance_status = ss.attendance_status;
+                uscn_inputs.creator = 1;
+                (await uscn_model.update(uscn_inputs)).save();
+            });
+        }
         return response(200, 'data created', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);

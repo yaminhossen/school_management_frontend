@@ -13,11 +13,11 @@ import error_trace from '../helpers/error_trace';
 
 /** validation rules */
 async function validate(req: Request) {
-    // await body('branch_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the branch_id field is required')
-    //     .run(req);
+    await body('complain')
+        .not()
+        .isEmpty()
+        .withMessage('the complain field is required')
+        .run(req);
 
     // await body('branch_student_id')
     //     .not()
@@ -25,10 +25,10 @@ async function validate(req: Request) {
     //     .withMessage('the branch_student_id field is required')
     //     .run(req);
 
-    // await body('student_evaluation_criteria_id')
+    // await body('evaluation_date')
     //     .not()
     //     .isEmpty()
-    //     .withMessage('the student_evaluation_criteria_id field is required')
+    //     .withMessage('the evaluation_date field is required')
     //     .run(req);
 
     // await body('score')
@@ -60,15 +60,14 @@ async function store(
     /** initializations */
     let models = await db();
     let body = req.body as anyObject;
-    let data = new models.StudentEvaluationsModel();
+    let data = new models.StudentComplainsModel();
 
-    let student_evaluation: anyObject[] = [];
-    for (let i = 0; i < parseInt(body.criteria_count); i++) {
-        student_evaluation.push({
-            student_evaluation_criteria_id: body[`criteria_id${i}`],
-            score: body[`score${i}`],
-        });
-    }
+    let inputs: InferCreationAttributes<typeof data> = {
+        branch_id: 1,
+        branch_student_id: body.student_id,
+        complain: body.complain,
+        creator: 1,
+    };
 
     /** print request data into console */
     // console.clear();
@@ -76,25 +75,7 @@ async function store(
 
     /** store data into database */
     try {
-        if (student_evaluation) {
-            student_evaluation.forEach(async (ss) => {
-                let uscn_model = new models.StudentEvaluationsModel();
-                let uscn_inputs: InferCreationAttributes<typeof uscn_model> = {
-                    branch_id: body.branch_id,
-                    branch_student_id: 1,
-                    student_evaluation_criteria_id: 1,
-                    score: body.score,
-                    creator: 1,
-                };
-                uscn_inputs.branch_id = 1;
-                uscn_inputs.branch_student_id = body.student_id;
-                uscn_inputs.student_evaluation_criteria_id =
-                    ss.student_evaluation_criteria_id;
-                uscn_inputs.score = ss.score;
-                uscn_inputs.creator = 1;
-                (await uscn_model.update(uscn_inputs)).save();
-            });
-        }
+        (await data.update(inputs)).save();
         return response(201, 'data created', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);

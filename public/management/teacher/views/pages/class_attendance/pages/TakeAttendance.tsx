@@ -37,10 +37,10 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
         let formData = new FormData(e.target);
         console.log('formData', formData);
         try {
-            // const response = await axios.post(
-            //     '/api/v1/account-logs/credit',
-            //     formData,
-            // );
+            const response = await axios.post(
+                '/api/v1/student-attendances/store',
+                formData,
+            );
             // setData(response.data.data.data);
             // setTotalIncome(response.data.data.data2);
         } catch (error) {

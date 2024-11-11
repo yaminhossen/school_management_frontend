@@ -34,10 +34,10 @@ type status = 'active' | 'deactive';
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
-    declare branch_id: number;
+    declare branch_id?: number;
     declare branch_student_id: number;
-    declare student_evaluation_criteria_id: number;
-    declare score: number;
+    declare student_evaluation_criteria_id?: number;
+    declare score?: number;
 
     declare status?: status;
     declare creator?: number;

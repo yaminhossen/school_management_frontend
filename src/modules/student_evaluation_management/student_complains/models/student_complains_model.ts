@@ -23,12 +23,12 @@ import {
     // ForeignKey,
 } from 'sequelize';
 
-const tableName = 'student_attendances';
-const modelName = 'StudentAttendancesModel';
+// import {DataModel as Project} from "./project_model"
+const tableName = 'student_complains';
+const modelName = 'StudentComplainsModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
-type attendance_status = 'present' | 'absent' | 'late' | 'leave';
 type status = 'active' | 'deactive';
 
 class DataModel extends Model<Infer, InferCreation> {
@@ -36,13 +36,7 @@ class DataModel extends Model<Infer, InferCreation> {
 
     declare branch_id: number;
     declare branch_student_id: number;
-    declare start_time?: string;
-    declare end_time?: string;
-    declare date: string;
-    declare attendance_status: attendance_status;
-    declare overtime_hours?: number;
-    declare fine_amount?: number;
-    declare reward_amount?: number;
+    declare complain: string;
 
     declare status?: status;
     declare creator?: number;
@@ -60,39 +54,15 @@ function init(sequelize: Sequelize) {
                 primaryKey: true,
             },
             branch_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
             branch_student_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
-            start_time: {
-                type: DataTypes.TIME,
-                allowNull: true,
-            },
-            end_time: {
-                type: DataTypes.TIME,
-                allowNull: true,
-            },
-            date: {
-                type: DataTypes.DATE,
-                allowNull: true,
-            },
-            attendance_status: {
-                type: new DataTypes.ENUM('present', 'absent', 'late', 'leave'),
-                allowNull: true,
-            },
-            overtime_hours: {
-                type: DataTypes.FLOAT.UNSIGNED,
-                allowNull: true,
-            },
-            fine_amount: {
-                type: DataTypes.FLOAT.UNSIGNED,
-                allowNull: true,
-            },
-            reward_amount: {
-                type: DataTypes.FLOAT.UNSIGNED,
+            complain: {
+                type: DataTypes.TEXT(),
                 allowNull: true,
             },
 

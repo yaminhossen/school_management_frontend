@@ -1,101 +1,117 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../../common_types/object';
+import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Review: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+    const [data, setData] = useState([]);
+    const { id } = useParams();
+
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                `/api/v1/student-evaluation-criterias/criterias`,
+            );
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+        let formData = new FormData(e.target);
+        console.log('formData', formData);
+        try {
+            const response = await axios.post(
+                '/api/v1/student-evaluations/store',
+                formData,
+            );
+            // setData(response.data.data.data);
+            // setTotalIncome(response.data.data.data2);
+        } catch (error) {
+            setError(error);
+        }
+    };
     return (
         <div className="admin_dashboard">
             {/* <h3>Create New Review</h3> */}
             <div className="content_body">
-                <form className="form_600 mx-auto pt-3">
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>Key point</th>
-                                <th>Score</th>
-                                <th>Obtain mark</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Attendance</td>
-                                <td>25</td>
-                                <td>
+                <div className="data_list">
+                    <form
+                        onSubmit={handleSubmit}
+                        className="form_600 mx-auto pt-3"
+                    >
+                        <div className="table_responsive custom_scroll">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Key point</th>
+                                        <th>Score</th>
+                                        <th>Obtain mark</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="all_list">
                                     <input
-                                        type="number"
-                                        max={25}
-                                        name=""
-                                        id=""
+                                        type="hidden"
+                                        name="criteria_count"
+                                        value={data.length}
                                     />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Attendance</td>
-                                <td>25</td>
-                                <td>
                                     <input
-                                        type="number"
-                                        max={25}
-                                        name=""
-                                        id=""
+                                        type="hidden"
+                                        name="student_id"
+                                        value={id}
                                     />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Attendance</td>
-                                <td>25</td>
-                                <td>
-                                    <input
-                                        type="number"
-                                        max={25}
-                                        name=""
-                                        id=""
-                                    />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    {/* <div className="form-group form-horizontal">
-                        <label>Name</label>
-                        <div className="form_elements">
-                            <input type="text" placeholder="Name" name="name" />
+                                    {data?.map(
+                                        (i: { [key: string]: any }, index) => {
+                                            return (
+                                                <tr>
+                                                    <td>{i.name}</td>
+                                                    <td>{i.max_score}</td>
+                                                    <td>
+                                                        <input
+                                                            type="number"
+                                                            max={i.max_score}
+                                                            name={`score${index}`}
+                                                            id=""
+                                                            placeholder="given marks"
+                                                        />
+                                                        <input
+                                                            type="hidden"
+                                                            name={`criteria_id${index}`}
+                                                            value={i.id}
+                                                        />
+                                                    </td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
-                    <div className="form-group form-horizontal">
-                        <label>Class</label>
-                        <div className="form_elements">
-                            <input
-                                type="text"
-                                placeholder="class"
-                                name="class"
-                            />
-                        </div>
-                    </div>
-                    <div className="form-group form-horizontal">
-                        <label>Roll</label>
-                        <div className="form_elements">
-                            <input type="text" placeholder="roll" name="roll" />
-                        </div>
-                    </div>
-                    <div className="form-group form-horizontal">
-                        <label>Review</label>
-                        <div className="form_elements">
-                            <textarea
-                                name="review"
-                                id=""
-                                placeholder="Write your review"
-                            ></textarea>
-                        </div>
-                    </div>
-                    <div className="form-group form-horizontal">
-                        <label></label>
-                        <div className="form_elements">
-                            <button className="btn btn-sm btn-outline-info">
-                                submit
+                        <div className="attendance_form_btn">
+                            <button
+                                className="btn btn-sm btn-outline-info "
+                                type="submit"
+                            >
+                                Submit
                             </button>
                         </div>
-                    </div> */}
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     );

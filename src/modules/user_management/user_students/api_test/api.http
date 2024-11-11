@@ -11,7 +11,11 @@ GET {{hostname}}/branches HTTP/1.1
 
 # get
 ###
-GET {{hostname}}/childrens/5 HTTP/1.1
+GET {{hostname}}/full-details/5 HTTP/1.1
+
+# get
+###
+GET {{hostname}}/single-student-details/1 HTTP/1.1
 
 # get
 ###
