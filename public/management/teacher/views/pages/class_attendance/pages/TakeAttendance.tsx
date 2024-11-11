@@ -32,108 +32,99 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
     console.log(data);
     let date = moment().format('YYYY-MM-DD');
 
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+        let formData = new FormData(e.target);
+        console.log('formData', formData);
+        try {
+            // const response = await axios.post(
+            //     '/api/v1/account-logs/credit',
+            //     formData,
+            // );
+            // setData(response.data.data.data);
+            // setTotalIncome(response.data.data.data2);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
     return (
         <div className="admin_dashboard">
-            <div className="result_details">
-                {/* <h3 className="table_heading mt-4">First Semester</h3> */}
-                {/* <form action="" onSubmit={(e) => e.preventDefault()}>
-                    <div className="teacher_result">
-                        <div>
-                            <div>Class</div>
-                            <div>
-                                <select name="class" id="">
-                                    <option value="six">Six</option>
-                                    <option value="seven">Seven</option>
-                                    <option value="eight">Eight</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div>
-                            <div>Date</div>
-                            <div>
-                                <input type="date" name="" id="" />
-                            </div>
-                        </div>
-                        <div>
-                            <div>Roll</div>
-                            <div>
-                                <input type="number" name="roll" id="" />
-                            </div>
-                        </div>
-                        <button
-                            className="btn btn-sm btn-outline-info "
-                            type="submit"
-                        >
-                            Submit
-                        </button>
-                    </div>
-                </form> */}
-            </div>
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Serial</th>
-                                    <th>Name</th>
-                                    <th>Role</th>
-                                    <th>Date</th>
-                                    <th></th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="all_list">
-                                <input
-                                    type="hidden"
-                                    name="student_count"
-                                    value={data.length}
-                                />
-                                {data?.map(
-                                    (i: { [key: string]: any }, index) => {
-                                        return (
-                                            <tr>
-                                                <td></td>
-                                                <td>{index}</td>
-                                                <td>{i.student?.name}</td>
-                                                <td>{i.role_no}</td>
-                                                <td>{date}</td>
+                        <form onSubmit={handleSubmit}>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Serial</th>
+                                        <th>Name</th>
+                                        <th>Role</th>
+                                        <th>Date</th>
+                                        <th></th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="all_list">
+                                    <input
+                                        type="hidden"
+                                        name="student_count"
+                                        value={data.length}
+                                    />
+                                    {data?.map(
+                                        (i: { [key: string]: any }, index) => {
+                                            return (
+                                                <tr>
+                                                    <td></td>
+                                                    <td>{index + 1}</td>
+                                                    <td>{i.student?.name}</td>
+                                                    <td>{i.role_no}</td>
+                                                    <td>{date}</td>
 
-                                                <td>
-                                                    <input
-                                                        type="hidden"
-                                                        name={`student_id${index}`}
-                                                        value={
-                                                            i.user_student_id
-                                                        }
-                                                    />
-                                                </td>
-                                                <td>
-                                                    <select
-                                                        name={`attendance_status${index}`}
-                                                        id=""
-                                                    >
-                                                        <option value="present">
-                                                            Present
-                                                        </option>
-                                                        <option value="absent">
-                                                            absent
-                                                        </option>
-                                                        <option value="late">
-                                                            Late
-                                                        </option>
-                                                        <option value="leave">
-                                                            Leave
-                                                        </option>
-                                                    </select>
-                                                </td>
-                                            </tr>
-                                        );
-                                    },
-                                )}
-                            </tbody>
-                        </table>
+                                                    <td>
+                                                        <input
+                                                            type="hidden"
+                                                            name={`student_id${index}`}
+                                                            value={
+                                                                i.user_student_id
+                                                            }
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <select
+                                                            name={`attendance_status${index}`}
+                                                            id=""
+                                                        >
+                                                            <option value="present">
+                                                                Present
+                                                            </option>
+                                                            <option value="absent">
+                                                                absent
+                                                            </option>
+                                                            <option value="late">
+                                                                Late
+                                                            </option>
+                                                            <option value="leave">
+                                                                Leave
+                                                            </option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
+                                </tbody>
+                            </table>
+                            <div className="attendance_form_btn">
+                                <button
+                                    className="btn btn-sm btn-outline-info "
+                                    type="submit"
+                                >
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

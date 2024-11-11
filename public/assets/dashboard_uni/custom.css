@@ -637,3 +637,8 @@ th {
         }
     }
 }
+.attendance_form_btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

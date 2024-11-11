@@ -18,7 +18,7 @@ GET {{hostname}}/teacher-classes/1 HTTP/1.1
 
 # get
 ###
-GET {{hostname}}/teacher-assignment/1 HTTP/1.1
+GET {{hostname}}/teacher-assignment/2 HTTP/1.1
 
 # get
 ###

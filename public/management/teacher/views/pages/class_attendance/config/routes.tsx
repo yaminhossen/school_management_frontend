@@ -3,6 +3,7 @@ import Layout from './Layout';
 import Index from '../Index';
 import Result from '../Result';
 import TakeAttendace from '../pages/TakeAttendance';
+import Details from '../pages/Details';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -16,8 +17,8 @@ export default {
             element: <Index />,
         },
         {
-            path: 'details',
-            element: <Result />,
+            path: 'details/:id',
+            element: <Details />,
         },
         {
             path: 'take-attendance/:id',

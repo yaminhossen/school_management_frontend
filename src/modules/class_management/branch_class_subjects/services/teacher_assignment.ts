@@ -17,7 +17,6 @@ async function details(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
-    let branchClassesModel = models.BranchClassesModel;
     let branchClassSubjectsModel = models.BranchClassSubjectsModel;
     let params = req.params as any;
 
@@ -25,40 +24,35 @@ async function details(
         let data = await models.BranchClassSubjectTeachersModel.findAll({
             where: {
                 branch_teacher_id: 1, // Filter by teacher ID
-                // branch_teacher_id: params.teacher_id, // Use dynamic teacher ID
+                branch_class_id: params.id, // Use dynamic teacher ID
             },
             include: [
-                {
-                    model: branchClassesModel,
-                    as: 'a_class',
-                    where: {
-                        // id: 1, // Filter by class ID
-                        id: params.id, // Use dynamic class ID
-                    },
-                },
                 {
                     model: branchClassSubjectsModel,
                     as: 'subject', // Alias for the subject model
                     attributes: ['name'], // Only include the name attribute of the subject
+                    // where: {
+                    //     branch_class_id: params.id,
+                    // },
                 },
             ],
-            attributes: {
-                exclude: ['password'],
-            },
+            attributes: [
+                [
+                    models.sequelize.fn(
+                        'COUNT',
+                        models.sequelize.col('subject.name'),
+                    ),
+                    'subject_count',
+                ],
+            ],
+            group: ['subject.name'],
+            raw: true,
         });
 
         if (data) {
-            // Map data to only include subjects
             const subjectsData = data.map((item: any) => ({
-                id: item.id,
-                branch_class_subject_id: item.branch_class_subject_id,
-                subject_name: item.subject?.name || null, // Include subject name if available
-                description: item.description,
-                branch_class_section_id: item.branch_class_section_id,
-                branch_class_room_id: item.branch_class_room_id,
-                status: item.status,
-                created_at: item.created_at,
-                updated_at: item.updated_at,
+                subject_name: item['subject.name'], // Get subject name
+                count: item.subject_count, // Get subject count
             }));
 
             return response(200, 'data found', subjectsData);
