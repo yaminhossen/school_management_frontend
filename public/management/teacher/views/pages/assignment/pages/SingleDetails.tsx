@@ -96,53 +96,6 @@ const SingleDetails: React.FC<Props> = (props: Props) => {
                         </table>
                     </div>
                 </div>
-                {/* <div className="data_list">
-                    <div className="table_responsive custom_scroll">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Serial</th>
-                                    <th>Name</th>
-                                    <th>Subject</th>
-                                    <th>Total Assignment</th>
-                                    <th>Take Assignment</th>
-                                    <th>Miss Assignment</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.name}</td>
-                                            <td>{i.subject}</td>
-                                            <td>{i.total_assignment}</td>
-                                            <td>{i.take_assignment}</td>
-                                            <td>{i.miss_assignment}</td>
-                                            <td>
-                                                <Link
-                                                    className="btn btn-sm btn-outline-info mr-1"
-                                                    to="/assignment/details"
-                                                >
-                                                    details
-                                                </Link>
-                                                <Link
-                                                    className="btn btn-sm btn-outline-info mr-1"
-                                                    to="/assignment/edit"
-                                                >
-                                                    Edit
-                                                </Link>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
-                    </div>
-                </div> */}
             </div>
         </div>
     );

@@ -1,8 +1,10 @@
+import moment from 'moment/moment';
 import React from 'react';
 import { Link } from 'react-router-dom';
 export interface Props {}
 
 const EditAssignment: React.FC<Props> = (props: Props) => {
+    let date = moment().format('YYYY-MM-DD');
     return (
         <div className="admin_dashboard">
             {/* <h3>Create New EditAssignment</h3> */}
@@ -29,29 +31,55 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Chapter</label>
+                        <label>Category</label>
                         <div className="form_elements">
                             <input
                                 type="text"
-                                placeholder="chapter"
-                                name="chapter"
+                                placeholder="assignment category"
+                                name="assignment_category"
                             />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Topic</label>
+                        <label>Title</label>
                         <div className="form_elements">
                             <input
                                 type="text"
-                                placeholder="topic"
-                                name="topic"
+                                placeholder="title"
+                                name="title"
                             />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>EditAssignment</label>
+                        <label>Description</label>
                         <div className="form_elements">
-                            <input type="file" name="materials" />
+                            <input
+                                type="text"
+                                placeholder="description"
+                                name="description"
+                            />
+                        </div>
+                    </div>
+                    <div className="form-group form-horizontal">
+                        <label>Attachment</label>
+                        <div className="form_elements">
+                            <input type="file" name="attachment" />
+                        </div>
+                    </div>
+                    <div className="form-group form-horizontal">
+                        <label>Mark</label>
+                        <div className="form_elements">
+                            <input type="number" name="mark" />
+                        </div>
+                    </div>
+                    <div className="form-group form-horizontal">
+                        <label>Deadline</label>
+                        <div className="form_elements">
+                            <input
+                                type="date"
+                                defaultValue={date}
+                                name="deadline"
+                            />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
