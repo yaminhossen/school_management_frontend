@@ -47,35 +47,37 @@ const Details: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {data?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.subject_name}</td>
-                                            <td>
-                                                <Link
-                                                    className="btn btn-sm btn-outline-info mr-1"
-                                                    to={`/assignment/single-subject/${i.branch_class_subject_id}`}
-                                                >
-                                                    details
-                                                </Link>
-                                                {/* <Link
+                                {data?.map(
+                                    (i: { [key: string]: any }, index) => {
+                                        return (
+                                            <tr>
+                                                <td></td>
+                                                <td>{index + 1}</td>
+                                                <td>{i.subject_name}</td>
+                                                <td>
+                                                    <Link
+                                                        className="btn btn-sm btn-outline-info mr-1"
+                                                        to={`/assignment/single-subject/${i.subject_id}`}
+                                                    >
+                                                        details
+                                                    </Link>
+                                                    {/* <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
                                                     to="/assignment/edit"
                                                 >
                                                     Edit
                                                 </Link> */}
-                                                {/* <Link
+                                                    {/* <Link
                                                     className="btn btn-sm btn-outline-info"
                                                     to="/class-attendance/take-attendance"
                                                 >
                                                     Take attendance
                                                 </Link> */}
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
+                                                </td>
+                                            </tr>
+                                        );
+                                    },
+                                )}
                             </tbody>
                         </table>
                     </div>

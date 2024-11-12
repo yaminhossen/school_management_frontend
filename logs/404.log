@@ -16,3 +16,12 @@
 {"level":60,"time":1731327115237,"pid":10900,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/student/5"}
 {"level":60,"time":1731327727593,"pid":1964,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-student/single-student-details/15"}
 {"level":60,"time":1731327794396,"pid":1964,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1731329138997,"pid":5072,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/undefined"}
+{"level":60,"time":1731329236972,"pid":5072,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/teacher-resource/1"}
+{"level":60,"time":1731329237507,"pid":5072,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved/1"}
+{"level":60,"time":1731384840272,"pid":14364,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1731386342594,"pid":14364,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/undefined"}
+{"level":60,"time":1731386858885,"pid":14364,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/undefined"}
+{"level":60,"time":1731387164507,"pid":8100,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/2"}
+{"level":60,"time":1731387181413,"pid":8100,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/1"}
+{"level":60,"time":1731388040423,"pid":10784,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}

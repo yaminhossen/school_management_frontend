@@ -24,9 +24,6 @@ async function subject_assignment(
             where: {
                 subject_id: params.id,
             },
-            attributes: {
-                exclude: ['password'],
-            },
         });
 
         if (data) {

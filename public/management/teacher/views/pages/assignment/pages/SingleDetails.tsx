@@ -7,7 +7,7 @@ export interface Props {}
 
 const SingleDetails: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<any>([]);
     const { id } = useParams();
 
     useEffect(() => {
@@ -28,6 +28,9 @@ const SingleDetails: React.FC<Props> = (props: Props) => {
         fetchData();
     }, []);
     console.log(data);
+    function lastDate(date: string) {
+        return moment(date).format('YYYY-MM-DD');
+    }
 
     return (
         <div className="admin_dashboard">
@@ -41,6 +44,7 @@ const SingleDetails: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Title</th>
+                                    <th></th>
                                     <th>Details</th>
                                 </tr>
                             </thead>
@@ -48,32 +52,45 @@ const SingleDetails: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <td></td>
                                     <td>1</td>
-                                    <td>lsdfj</td>
-                                    <td>lsdfjkldjs</td>
+                                    <td>Name</td>
+                                    <td>:</td>
+                                    <td>{data.title}</td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td>1</td>
-                                    <td>lsdfj</td>
-                                    <td>lsdfjkldjs</td>
+                                    <td>2</td>
+                                    <td>Desctiption</td>
+                                    <td>:</td>
+                                    <td>{data.description}</td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td>1</td>
-                                    <td>lsdfj</td>
-                                    <td>lsdfjkldjs</td>
+                                    <td>3</td>
+                                    <td>Mark</td>
+                                    <td>:</td>
+                                    <td>{data.mark}</td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td>1</td>
-                                    <td>lsdfj</td>
-                                    <td>lsdfjkldjs</td>
+                                    <td>4</td>
+                                    <td>Deadline</td>
+                                    <td>:</td>
+                                    <td>{lastDate(data.deadline)}</td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td>1</td>
-                                    <td>lsdfj</td>
-                                    <td>lsdfjkldjs</td>
+                                    <td>5</td>
+                                    <td>Attachment</td>
+                                    <td>:</td>
+                                    <td>
+                                        <a
+                                            href={data.attachment}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            Show File
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

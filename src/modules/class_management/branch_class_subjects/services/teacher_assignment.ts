@@ -30,10 +30,7 @@ async function details(
                 {
                     model: branchClassSubjectsModel,
                     as: 'subject', // Alias for the subject model
-                    attributes: ['name'], // Only include the name attribute of the subject
-                    // where: {
-                    //     branch_class_id: params.id,
-                    // },
+                    attributes: ['id', 'name'], // Include both id and name attributes of the subject
                 },
             ],
             attributes: [
@@ -45,12 +42,13 @@ async function details(
                     'subject_count',
                 ],
             ],
-            group: ['subject.name'],
+            group: ['subject.id', 'subject.name'], // Group by subject.id to get subject_id in the result
             raw: true,
         });
 
         if (data) {
             const subjectsData = data.map((item: any) => ({
+                subject_id: item['subject.id'], // Get subject ID
                 subject_name: item['subject.name'], // Get subject name
                 count: item.subject_count, // Get subject count
             }));
