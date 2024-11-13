@@ -12,18 +12,6 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
 async function validate(req: Request) {
-    await body('id')
-        .not()
-        .isEmpty()
-        .withMessage('the id field is required')
-        .run(req);
-
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
-
     await body('title')
         .not()
         .isEmpty()
@@ -40,35 +28,10 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the assignment_categories_id field is required')
         .run(req);
-    await body('attachment')
-        .not()
-        .isEmpty()
-        .withMessage('the attachment field is required')
-        .run(req);
-    await body('image')
-        .not()
-        .isEmpty()
-        .withMessage('the image field is required')
-        .run(req);
     await body('mark')
         .not()
         .isEmpty()
         .withMessage('the mark field is required')
-        .run(req);
-    await body('class_id')
-        .not()
-        .isEmpty()
-        .withMessage('the class_id field is required')
-        .run(req);
-    await body('subject_id')
-        .not()
-        .isEmpty()
-        .withMessage('the subject_id field is required')
-        .run(req);
-    await body('deadline')
-        .not()
-        .isEmpty()
-        .withMessage('the deadline field is required')
         .run(req);
 
     let result = await validationResult(req);
@@ -90,17 +53,20 @@ async function update(
     let models = await db();
     let body = req.body as anyObject;
     let model = new models.AssignmentsModel();
+    let data = await models.AssignmentsModel.findByPk(body.id);
+    let prevFile = data?.attachment;
+    console.log('update body', body);
 
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: body.branch_id,
+        branch_id: body.branch_id || 1,
         title: body.title,
         description: body.description,
         assignment_categories_id: body.assignment_categories_id,
-        attachment: body.attachment,
+        attachment: body.attachment || prevFile,
         image: body.image,
         mark: body.mark,
-        class_id: body.class_id,
-        subject_id: body.subject_id,
+        // class_id: body.class_id,
+        // subject_id: body.subject_id,
         deadline: body.deadline,
     };
     /** print request data into console */

@@ -21,7 +21,7 @@ if (container) {
         </Provider>,
     );
 }
-
+(window as any).axios = axios;
 axios.interceptors.request.use(
     function (config) {
         let form_errors = document.querySelectorAll('.form_error');

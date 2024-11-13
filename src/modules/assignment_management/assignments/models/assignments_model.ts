@@ -40,8 +40,8 @@ class DataModel extends Model<Infer, InferCreation> {
     declare attachment: string;
     declare image: string;
     declare mark: number;
-    declare class_id: number;
-    declare subject_id: number;
+    declare class_id?: number;
+    declare subject_id?: number;
     declare deadline: string;
 
     declare status?: status;

@@ -19,11 +19,35 @@ async function validate(req: Request) {
     //     .withMessage('the start_date field is required')
     //     .run(req);
 
-    // await body('end_date')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the end_date field is required')
-    //     .run(req);
+    await body('receipt_no')
+        .not()
+        .isEmpty()
+        .withMessage('the receipt_no field is required')
+        .run(req);
+
+    await body('amount')
+        .not()
+        .isEmpty()
+        .withMessage('the amount field is required')
+        .run(req);
+
+    await body('date')
+        .not()
+        .isEmpty()
+        .withMessage('the date field is required')
+        .run(req);
+
+    await body('category')
+        .not()
+        .isEmpty()
+        .withMessage('the category field is required')
+        .run(req);
+
+    await body('account')
+        .not()
+        .isEmpty()
+        .withMessage('the account field is required')
+        .run(req);
 
     // await body('attachments')
     //     .not()

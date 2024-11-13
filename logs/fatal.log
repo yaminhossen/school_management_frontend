@@ -1,4 +1,0 @@
-{"level":60,"time":1731317863794,"pid":372,"hostname":"DESKTOP-9421701","file":"services\\store.ts:112:15)","time":"11/11/2024 3:37:43 PM","message":"Field 'updated_at' doesn't have a default value"}
-{"level":60,"time":1731322152729,"pid":11060,"hostname":"DESKTOP-9421701","file":"services\\details.ts:35:19)","time":"11/11/2024 4:49:12 PM","message":"data not found"}
-{"level":60,"time":1731322178678,"pid":15460,"hostname":"DESKTOP-9421701","file":"services\\criterias.ts:42:19)","time":"11/11/2024 4:49:38 PM","message":"WHERE parameter \"id\" has invalid \"undefined\" value"}
-{"level":60,"time":1731326705600,"pid":10900,"hostname":"DESKTOP-9421701","file":"services\\details.ts:35:19)","time":"11/11/2024 6:05:05 PM","message":"data not found"}
