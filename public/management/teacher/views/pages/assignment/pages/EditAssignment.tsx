@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { anyObject } from '../../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -8,7 +8,11 @@ export interface Props {}
 const EditAssignment: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<any>([]);
+    const [classes, setClasses] = useState<any>([]);
+    const [subjects, setSubjects] = useState<any>([]);
     const [categories, setCategories] = useState<any>([]);
+    // const selectRef = useRef<HTMLSelectElement>(null);
+    // const inputRef = useRef<HTMLInputElement>(null);
     const { id } = useParams();
 
     useEffect(() => {
@@ -19,6 +23,17 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
         try {
             const response = await axios.get(`/api/v1/assignments/${id}`);
             setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+    const fetchClasses = async () => {
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-classes/all-class`,
+            );
+            setClasses(response.data.data);
             // setData(response.data);
         } catch (error) {
             setError(error);
@@ -39,6 +54,7 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
         fetchCategories();
+        fetchClasses();
     }, []);
     console.log(data);
     function lastDate(date: string) {
@@ -62,6 +78,23 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
+
+    const handleChange = async (
+        event: React.ChangeEvent<HTMLSelectElement>,
+    ) => {
+        let id = event.target.value;
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-class-subjects/class-wise-subject/${id}`,
+            );
+            setSubjects(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+        console.log('Selected value:', event.target.value);
+    };
+    console.log('Selected dataaa:', subjects);
     return (
         <div className="admin_dashboard">
             <h3>Edit</h3>
@@ -70,11 +103,25 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                     <div className="form-group form-horizontal">
                         <label>Class</label>
                         <div className="form_elements">
-                            <input
+                            {/* <input
                                 type="text"
                                 placeholder="Class"
                                 name="class"
-                            />
+                            /> */}
+                            <select
+                                name="class"
+                                defaultValue={data.class_id}
+                                id=""
+                                // ref={inputRef}
+                                onChange={handleChange}
+                            >
+                                <option value={data.class_id}></option>
+                                {classes.map((i, index) => {
+                                    return (
+                                        <option value={i.id}>{i.name}</option>
+                                    );
+                                })}
+                            </select>
                             <input
                                 type="hidden"
                                 defaultValue={data.id}
@@ -85,28 +132,38 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                     <div className="form-group form-horizontal">
                         <label>Subject</label>
                         <div className="form_elements">
-                            <input
+                            {/* <input
                                 type="text"
                                 placeholder="subject"
                                 name="subject"
-                                // defaultValue={data.deadline}
-                                // defaultValue={moment(
-                                //     '2024-02-14T00:00:00.000Z',
-                                // ).format('YYYY-MM-DD')}
-                            />
+                            /> */}
+                            <select
+                                name="subject"
+                                defaultValue={data.subject_id}
+                                id=""
+                                // ref={inputRef}
+                                // onChange={handleChange}
+                            >
+                                {/* <option value={data.class_id}></option> */}
+                                {subjects.map((i, index) => {
+                                    return (
+                                        <option value={i.id}>{i.name}</option>
+                                    );
+                                })}
+                            </select>
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
                         <label>Category</label>
                         <div className="form_elements">
                             <select
-                                name="assignment_category"
+                                name="assignment_categories_id"
                                 defaultValue={data.assignment_categories_id}
                                 id=""
                             >
-                                {/* <option
+                                <option
                                     value={data.assignment_categories_id}
-                                ></option> */}
+                                ></option>
                                 {categories.map((i, index) => {
                                     return (
                                         <option value={i.id}>{i.title}</option>

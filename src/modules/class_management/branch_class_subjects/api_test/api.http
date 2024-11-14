@@ -10,6 +10,10 @@ GET {{hostname}}/1 HTTP/1.1
 
 # get
 ###
+GET {{hostname}}/class-wise-subject/1 HTTP/1.1
+
+# get
+###
 GET {{hostname}}/assignment-class/1 HTTP/1.1
 
 # get

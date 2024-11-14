@@ -10,6 +10,7 @@ import response from '../helpers/response';
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
+import moment from 'moment/moment';
 
 async function validate(req: Request) {
     await body('title')
@@ -55,18 +56,28 @@ async function update(
     let model = new models.AssignmentsModel();
     let data = await models.AssignmentsModel.findByPk(body.id);
     let prevFile = data?.attachment;
-    console.log('update body', body);
+    let image_path = '';
 
+    if (body['attachment']?.ext) {
+        image_path =
+            'uploads/teachers/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['attachment'].name;
+        await (fastify_instance as any).upload(body['attachment'], image_path);
+    }
+
+    console.log('update body', body);
+    console.log('attachemetn', image_path);
     let inputs: InferCreationAttributes<typeof model> = {
         branch_id: body.branch_id || 1,
         title: body.title,
         description: body.description,
         assignment_categories_id: body.assignment_categories_id,
-        attachment: body.attachment || prevFile,
+        attachment: image_path || prevFile || 'avatar.png',
         image: body.image,
         mark: body.mark,
-        // class_id: body.class_id,
-        // subject_id: body.subject_id,
+        class_id: body.class_id,
+        subject_id: body.subject_id,
         deadline: body.deadline,
     };
     /** print request data into console */
