@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../common_types/object';
-import { Link } from 'react-router-dom';
+import { anyObject } from '../../../../common_types/object';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
 
-const Index: React.FC<Props> = (props: Props) => {
+const Details: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
+    const { id } = useParams();
 
     useEffect(() => {
         // Function to fetch data
@@ -16,7 +17,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/branch-class-subjects/teacher-classes/1',
+                `/api/v1/branch-class-subjects/teacher-assignment/${id}`,
             );
             setData(response.data.data);
             // setData(response.data);
@@ -29,16 +30,10 @@ const Index: React.FC<Props> = (props: Props) => {
         fetchData();
     }, []);
     console.log(data);
+
     return (
         <div className="admin_dashboard">
-            <div>
-                <Link
-                    className="btn btn-sm btn-outline-info mb-1"
-                    to="/assignment/create"
-                >
-                    Create
-                </Link>
-            </div>
+            <div className="result_details"></div>
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
@@ -47,7 +42,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
-                                    <th>Class</th>
+                                    <th>Subject</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -58,11 +53,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <tr>
                                                 <td></td>
                                                 <td>{index + 1}</td>
-                                                <td>{i.name}</td>
+                                                <td>{i.subject_name}</td>
                                                 <td>
                                                     <Link
                                                         className="btn btn-sm btn-outline-info mr-1"
-                                                        to={`/course-materials/class-details/${i.id}`}
+                                                        to={`/course-materials/details/${i.subject_id}`}
                                                     >
                                                         details
                                                     </Link>
@@ -80,4 +75,4 @@ const Index: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Index;
+export default Details;

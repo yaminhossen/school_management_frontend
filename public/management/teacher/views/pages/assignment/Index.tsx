@@ -66,18 +66,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     >
                                                         details
                                                     </Link>
-                                                    {/* <Link
-                                                        className="btn btn-sm btn-outline-info mr-1"
-                                                        to="/assignment/edit"
-                                                    >
-                                                        Edit
-                                                    </Link> */}
-                                                    {/* <Link
-                                                    className="btn btn-sm btn-outline-info"
-                                                    to="/class-attendance/take-attendance"
-                                                >
-                                                    Take attendance
-                                                </Link> */}
                                                 </td>
                                             </tr>
                                         );

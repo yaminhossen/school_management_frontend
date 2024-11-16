@@ -14,6 +14,10 @@ GET {{hostname}}/academic-resource/1 HTTP/1.1
 
 # get
 ###
+GET {{hostname}}/subject-wise/1 HTTP/1.1
+
+# get
+###
 GET {{hostname}}/teacher-resource/1 HTTP/1.1
 
 # store
