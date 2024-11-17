@@ -10,50 +10,51 @@ import response from '../helpers/response';
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
+import moment from 'moment/moment';
 
 /** validation rules */
 async function validate(req: Request) {
-    await body('id')
-        .not()
-        .isEmpty()
-        .withMessage('the id field is required')
-        .run(req);
+    // await body('id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the id field is required')
+    //     .run(req);
 
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
+    // await body('branch_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_id field is required')
+    //     .run(req);
 
-    await body('branch_class_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_class_id field is required')
-        .run(req);
+    // await body('branch_class_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_class_id field is required')
+    //     .run(req);
 
-    await body('branch_class_subject_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_class_subject_id field is required')
-        .run(req);
+    // await body('branch_class_subject_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_class_subject_id field is required')
+    //     .run(req);
 
-    await body('title')
-        .not()
-        .isEmpty()
-        .withMessage('the title field is required')
-        .run(req);
+    // await body('title')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the title field is required')
+    //     .run(req);
 
-    await body('description')
-        .not()
-        .isEmpty()
-        .withMessage('the description field is required')
-        .run(req);
+    // await body('description')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the description field is required')
+    //     .run(req);
 
-    await body('attachment')
-        .not()
-        .isEmpty()
-        .withMessage('the attachment field is required')
-        .run(req);
+    // await body('attachment')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the attachment field is required')
+    //     .run(req);
 
     let result = await validationResult(req);
 
@@ -82,15 +83,29 @@ async function update(
     let body = req.body as anyObject;
 
     let model = new models.BranchClassResourcessModel();
+    let data = await models.BranchClassResourcessModel.findByPk(body.id);
+    let prevFile = data?.attachment;
+
+    let image_path = '';
+
+    if (body['attachment']?.ext) {
+        image_path =
+            'uploads/materials/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['attachment'].name;
+        await (fastify_instance as any).upload(body['attachment'], image_path);
+    }
     let inputs: InferCreationAttributes<typeof model> = {
         branch_id: body.branch_id,
-        branch_class_id: body.branch_class_id,
+        branch_class_id: body.class,
         title: body.title,
         description: body.description,
-        attachment: body.attachment,
-        branch_class_subject_id: body.branch_class_subject_id,
+        attachment: image_path || prevFile || 'avatar.png',
+        branch_class_subject_id: body.subject,
+        creator: 1,
     };
-
+    console.log('update body', body);
+    console.log('attachemetn', prevFile);
     /** print request data into console */
     // console.clear();
     // (fastify_instance as any).print(inputs);
