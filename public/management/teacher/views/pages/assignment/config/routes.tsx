@@ -19,7 +19,7 @@ export default {
             element: <Index />,
         },
         {
-            path: 'details/:id',
+            path: 'class-details/:id',
             element: <Details />,
         },
         {

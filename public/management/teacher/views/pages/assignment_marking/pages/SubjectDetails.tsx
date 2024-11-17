@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../common_types/object';
+import { anyObject } from '../../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
 
-const Details: React.FC<Props> = (props: Props) => {
+const SubjectDetails: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
     const { id } = useParams();
@@ -17,7 +17,7 @@ const Details: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/teacher-assignment/${id}`,
+                `/api/v1/assignments/subject-assignment/${id}`,
             );
             setData(response.data.data);
             // setData(response.data);
@@ -42,7 +42,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
-                                    <th>Subject</th>
+                                    <th>Title</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -53,14 +53,26 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <tr>
                                                 <td></td>
                                                 <td>{index + 1}</td>
-                                                <td>{i.subject_name}</td>
+                                                <td>{i.title}</td>
                                                 <td>
                                                     <Link
                                                         className="btn btn-sm btn-outline-info mr-1"
-                                                        to={`/assignments-marking/single-subject/${i.subject_id}`}
+                                                        to={`/assignment/subject-details/${i.id}`}
                                                     >
                                                         details
                                                     </Link>
+                                                    <Link
+                                                        className="btn btn-sm btn-outline-info mr-1"
+                                                        to={`/assignment/subject-edit/${i.id}`}
+                                                    >
+                                                        Edit
+                                                    </Link>
+                                                    {/* <Link
+                                                    className="btn btn-sm btn-outline-info"
+                                                    to="/class-attendance/take-attendance"
+                                                >
+                                                    Take attendance
+                                                </Link> */}
                                                 </td>
                                             </tr>
                                         );
@@ -75,4 +87,4 @@ const Details: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Details;
+export default SubjectDetails;

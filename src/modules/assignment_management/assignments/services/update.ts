@@ -76,9 +76,10 @@ async function update(
         attachment: image_path || prevFile || 'avatar.png',
         image: body.image,
         mark: body.mark,
-        class_id: body.class_id,
-        subject_id: body.subject_id,
+        class_id: body.class,
+        subject_id: body.subject,
         deadline: body.deadline,
+        creator: 1,
     };
     /** print request data into console */
     // console.clear();

@@ -3,6 +3,7 @@ import Layout from './Layout';
 import Index from '../Index';
 import Details from '../Details';
 import Review from '../pages/Review';
+import SubjectDetails from '../pages/SubjectDetails';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -16,8 +17,12 @@ export default {
             element: <Index />,
         },
         {
-            path: 'details',
+            path: 'class-details/:id',
             element: <Details />,
+        },
+        {
+            path: 'single-subject/:id',
+            element: <SubjectDetails />,
         },
         {
             path: 'review',
