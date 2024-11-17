@@ -18,6 +18,7 @@ import teacher_assignment from './services/teacher_assignment';
 import teacher_classes from './services/teacher_classes';
 import class_wise_subject from './services/class_wise_subject';
 import data_import from './services/import';
+import class_wise_teacher from './services/class_wise_teacher';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -30,6 +31,13 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data: responseObject = await class_wise_subject(fastify, req);
+            res.code(data.status).send(data);
+        },
+        class_wise_teacher: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await class_wise_teacher(fastify, req);
             res.code(data.status).send(data);
         },
 

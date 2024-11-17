@@ -82,11 +82,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-notepad"
                     label="Leave Application"
                 />
-                <MenuSingle
+                {/* <MenuSingle
                     to="/academic-resources"
                     icon="icon-server"
                     label="Academic Resources"
-                />
+                /> */}
                 <MenuSingle to="/notices" icon="icon-bell" label="Notices" />
                 {/* <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" /> */}
 

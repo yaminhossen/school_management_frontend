@@ -14,41 +14,41 @@ import moment from 'moment/moment';
 
 /** validation rules */
 async function validate(req: Request) {
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
+    // await body('branch_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_id field is required')
+    //     .run(req);
 
-    await body('branch_class_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_class_id field is required')
-        .run(req);
+    // await body('branch_class_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_class_id field is required')
+    //     .run(req);
 
-    await body('branch_class_subject_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_class_subject_id field is required')
-        .run(req);
+    // await body('branch_class_subject_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_class_subject_id field is required')
+    //     .run(req);
 
-    await body('title')
-        .not()
-        .isEmpty()
-        .withMessage('the title field is required')
-        .run(req);
+    // await body('title')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the title field is required')
+    //     .run(req);
 
-    await body('description')
-        .not()
-        .isEmpty()
-        .withMessage('the description field is required')
-        .run(req);
+    // await body('description')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the description field is required')
+    //     .run(req);
 
-    await body('attachments')
-        .not()
-        .isEmpty()
-        .withMessage('the attachments field is required')
-        .run(req);
+    // await body('attachments')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the attachments field is required')
+    //     .run(req);
 
     let result = await validationResult(req);
 
@@ -74,25 +74,27 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.BranchClassResourcessModel();
+
     let image_path = '';
 
-    if (body['attachments']?.ext) {
+    if (body['attachment']?.ext) {
         image_path =
-            'uploads/students/leave' +
+            'uploads/materials/' +
             moment().format('YYYYMMDDHHmmss') +
-            body['attachments'].name;
-        await (fastify_instance as any).upload(body['attachments'], image_path);
+            body['attachment'].name;
+        await (fastify_instance as any).upload(body['attachment'], image_path);
     }
     console.log('leave body', body);
     console.log('image Path', image_path);
 
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: body.branch_id,
-        branch_class_id: body.branch_class_id,
+        branch_id: 1,
+        branch_class_id: body.class,
         title: body.title,
         description: body.description,
         attachment: image_path,
-        branch_class_subject_id: body.branch_class_subject_id,
+        branch_class_subject_id: body.subject,
+        creator: 1,
     };
 
     /** print request data into console */

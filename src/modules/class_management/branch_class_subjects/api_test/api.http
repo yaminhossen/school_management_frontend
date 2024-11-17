@@ -18,6 +18,10 @@ GET {{hostname}}/assignment-class/1 HTTP/1.1
 
 # get
 ###
+GET {{hostname}}/class-wise-teacher HTTP/1.1
+
+# get
+###
 GET {{hostname}}/teacher-classes/1 HTTP/1.1
 
 # get

@@ -4,6 +4,7 @@ import { responseObject } from '../../../common_types/object';
 import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
+import { Sequelize } from 'sequelize';
 
 // async function details(
 //     fastify_instance: FastifyInstance,
@@ -12,24 +13,38 @@ import custom_error from '../helpers/custom_error';
 //     throw new Error('500 test');
 // }
 
-async function details(
+async function class_wise_teacher(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
     let branchClassesModel = models.BranchClassesModel;
     let branchClassSubjectsModel = models.BranchClassSubjectsModel;
+    let userStudentInformationsModel = models.UserStudentInformationsModel; // Assuming this is your model
     let params = req.params as any;
 
     try {
         let data = await models.BranchClassSubjectTeachersModel.findAll({
             where: {
-                branch_teacher_id: params.id,
+                branch_teacher_id: 1,
             },
             include: [
                 {
                     model: branchClassesModel,
                     as: 'a_class',
+                    attributes: {
+                        include: [
+                            // Subquery to count students for each class
+                            [
+                                models.sequelize.literal(`(
+                                    SELECT COUNT(*)
+                                    FROM user_student_informations
+                                    WHERE user_student_informations.s_class = a_class.id
+                                )`),
+                                'student_count',
+                            ],
+                        ],
+                    },
                 },
             ],
             attributes: {
@@ -38,7 +53,6 @@ async function details(
         });
 
         if (data) {
-            // Group by class to extract only the unique class details
             const groupedData = data.reduce((acc: any, item: any) => {
                 const classId = item.a_class.id;
 
@@ -49,7 +63,6 @@ async function details(
                 return acc;
             }, {});
 
-            // Convert the grouped data into an array of classDetails
             const responseData = Object.values(groupedData);
 
             return response(200, 'data found', responseData);
@@ -67,4 +80,4 @@ async function details(
     }
 }
 
-export default details;
+export default class_wise_teacher;
