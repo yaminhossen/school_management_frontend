@@ -642,3 +642,18 @@ th {
     justify-content: center;
     margin-top: 20px;
 }
+.materials_td{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .materials_btn{
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    .download_title{
+        margin-right: 0px;
+        font-size: 18px;
+    }
+    }
+}

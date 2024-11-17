@@ -38,7 +38,7 @@ const Materials: React.FC<Props> = (props: Props) => {
                     className="btn btn-sm btn-outline-info mb-1"
                     to="/course-materials/create-materials"
                 >
-                    Add New
+                    Create New
                 </Link>
             </div>
             <div className="content_body">
@@ -56,16 +56,38 @@ const Materials: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {data?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            {/* <td>{i.class}</td> */}
-                                            <td>{i.subject?.name}</td>
-                                            <td>{i.title}</td>
-                                            <td>
-                                                <Link
+                                {data?.map(
+                                    (i: { [key: string]: any }, index) => {
+                                        return (
+                                            <tr>
+                                                <td></td>
+                                                <td>{index + 1}</td>
+                                                {/* <td>{i.class}</td> */}
+                                                <td>{i.subject?.name}</td>
+                                                <td>{i.title}</td>
+                                                <td className="materials_td">
+                                                    <a
+                                                        className="btn materials_btn btn-sm btn-outline-info mr-1"
+                                                        target="blank"
+                                                        href={i.attachment}
+                                                        // download={i.attachment
+                                                        //     .split('/')
+                                                        //     .pop()}
+                                                    >
+                                                        {/* <span className="download_title material-symbols-outlined">
+                                                            download
+                                                        </span> */}
+                                                        <span className="">
+                                                            Show
+                                                        </span>
+                                                    </a>
+                                                    <Link
+                                                        className="btn btn-sm btn-outline-info mr-1"
+                                                        to={`/course-materials/edit/${i.id}`}
+                                                    >
+                                                        Edit
+                                                    </Link>
+                                                    {/* <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
                                                     to="/course-materials/details"
                                                 >
@@ -77,11 +99,14 @@ const Materials: React.FC<Props> = (props: Props) => {
                                                             Download
                                                         </span>
                                                     </div>
-                                                </Link>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
+                                                </Link> */}
+                                                </td>
+                                                {/* <td>
+                                                </td> */}
+                                            </tr>
+                                        );
+                                    },
+                                )}
                             </tbody>
                         </table>
                     </div>

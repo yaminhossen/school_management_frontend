@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 export interface Props {}
 
-const Materials: React.FC<Props> = (props: Props) => {
+const CreateMaterials: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
-            {/* <h3>Create New Materials</h3> */}
+            {/* <h3>Create New CreateMaterials</h3> */}
             <div className="content_body">
                 <form className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
@@ -68,4 +68,4 @@ const Materials: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Materials;
+export default CreateMaterials;

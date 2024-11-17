@@ -34,9 +34,9 @@ const Index: React.FC<Props> = (props: Props) => {
             <div>
                 <Link
                     className="btn btn-sm btn-outline-info mb-1"
-                    to="/assignment/create"
+                    to="/course-materials/create-materials"
                 >
-                    Create
+                    Create New
                 </Link>
             </div>
             <div className="content_body">
