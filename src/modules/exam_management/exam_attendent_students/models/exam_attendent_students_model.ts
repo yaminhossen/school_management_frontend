@@ -37,6 +37,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare branch_id: number;
     declare exam_id: number;
     declare class_id: number;
+    declare subject_id: number;
     declare student_id: string;
 
     declare status?: status;
@@ -63,6 +64,10 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             class_id: {
+                type: new DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
+            subject_id: {
                 type: new DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },

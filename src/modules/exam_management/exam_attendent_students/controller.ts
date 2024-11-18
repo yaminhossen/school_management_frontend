@@ -13,11 +13,16 @@ import update from './services/update';
 import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
+import attend_all from './services/attend_all';
 
 export default function (fastify: FastifyInstance) {
     return {
         all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all(fastify, req);
+            res.code(data.status).send(data);
+        },
+        attend_all: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await attend_all(fastify, req);
             res.code(data.status).send(data);
         },
 

@@ -76,8 +76,8 @@ export let active_routes: string[] = [
     // 'src/modules/employee_salary_management/branch_employee_salaries/routes.ts',
     // 'src/modules/employee_salary_management/branch_employee_salary_types/routes.ts',
 
-    // 'src/modules/exam_management/exams/routes.ts',
-    // 'src/modules/exam_management/exam_attendent_students/routes.ts',
+    'src/modules/exam_management/exams/routes.ts',
+    'src/modules/exam_management/exam_attendent_students/routes.ts',
     // 'src/modules/exam_management/exam_equipments/routes.ts',
     // 'src/modules/exam_management/exam_equipment_selecteds/routes.ts',
     // 'src/modules/exam_management/exam_equipment_sent_to_branches/routes.ts',
@@ -86,7 +86,7 @@ export let active_routes: string[] = [
     // 'src/modules/exam_management/exam_routines/routes.ts',
     // 'src/modules/exam_management/exam_seat_plans/routes.ts',
     // 'src/modules/exam_management/exam_students/routes.ts',
-    // 'src/modules/exam_management/exam_student_marks/routes.ts',
+    'src/modules/exam_management/exam_student_marks/routes.ts',
 
     // 'src/modules/exam_paper_management/exam_paper_designs/routes.ts',
     // 'src/modules/exam_paper_management/exam_paper_design_orders/routes.ts',
@@ -105,7 +105,7 @@ export let active_routes: string[] = [
     // 'src/modules/personal_calendar_schedule_management/personal_calendar_schedule/routes.ts',
 
     // 'src/modules/student_evaluation_management/student_evaluation/routes.ts',
-    'src/modules/student_evaluation_management/student_evaluation_criterias/routes.ts',
+    // 'src/modules/student_evaluation_management/student_evaluation_criterias/routes.ts',
     // 'src/modules/student_evaluation_management/student_overall_evaluations/routes.ts',
     // 'src/modules/student_evaluation_management/student_complains/routes',
 

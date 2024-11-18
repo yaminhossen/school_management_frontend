@@ -30,35 +30,35 @@ const Result: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
             <div className="result_details">
-                <h3 className="table_heading mt-4">First Semester</h3>
+                <h3 className="table_heading mt-4"></h3>
                 <form action="" onSubmit={(e) => e.preventDefault()}>
                     <div className="teacher_result">
                         <div>
-                            <div>Class</div>
+                            <div>Subject</div>
                             <div>
-                                <select name="class" id="">
-                                    <option value="six">Six</option>
-                                    <option value="seven">Seven</option>
-                                    <option value="eight">Eight</option>
+                                <select name="subject" id="">
+                                    <option value="six">Bangla</option>
+                                    <option value="seven">English</option>
+                                    <option value="eight">Math</option>
                                 </select>
                             </div>
                         </div>
                         <div>
-                            <div>Semister</div>
+                            <div>Exam</div>
                             <div>
-                                <select name="semister" id="">
+                                <select name="exam" id="">
                                     <option value="first">First</option>
                                     <option value="second">Second</option>
                                     <option value="third">Third</option>
                                 </select>
                             </div>
                         </div>
-                        <div>
+                        {/* <div>
                             <div>Roll</div>
                             <div>
                                 <input type="number" name="roll" id="" />
                             </div>
-                        </div>
+                        </div> */}
                         <button
                             className="btn btn-sm btn-outline-info "
                             type="submit"
@@ -77,8 +77,10 @@ const Result: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Name</th>
-                                    <th>Marks</th>
-                                    <th>Grade</th>
+                                    <th>Result</th>
+                                    <th>Mark</th>
+                                    <th>Other Mark</th>
+                                    {/* <th>Grade</th> */}
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -89,7 +91,21 @@ const Result: React.FC<Props> = (props: Props) => {
                                             <td>{i.id}</td>
                                             <td>{i.name}</td>
                                             <td>{i.marks}</td>
-                                            <td>{i.grade}</td>
+                                            <td>
+                                                <input
+                                                    type="number"
+                                                    name="mark"
+                                                    id=""
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="number"
+                                                    name="other_mark"
+                                                    id=""
+                                                />
+                                            </td>
+                                            {/* <td>{i.grade}</td> */}
                                         </tr>
                                     );
                                 })}

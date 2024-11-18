@@ -57,6 +57,7 @@ async function store(
         branch_id: body.branch_id,
         exam_id: body.exam_id,
         class_id: body.class_id,
+        subject_id: body.subject_id,
         student_id: body.student_id,
     };
 
