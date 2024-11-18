@@ -17,3 +17,8 @@
 {"level":60,"time":1731907588358,"pid":1852,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-attendent-students/attend-all"}
 {"level":60,"time":1731907588994,"pid":1852,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-attendent-students/attend-all"}
 {"level":60,"time":1731907589255,"pid":1852,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-attendent-students/attend-all"}
+{"level":60,"time":1731912751133,"pid":9764,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1731913381767,"pid":9764,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1731920203224,"pid":8784,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam/all-exam"}
+{"level":60,"time":1731920203440,"pid":8784,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam/all-exam"}
+{"level":60,"time":1731920229396,"pid":8784,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam/all-exam"}

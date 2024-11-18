@@ -13,11 +13,16 @@ import update from './services/update';
 import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
+import all_exam from './services/all_exam';
 
 export default function (fastify: FastifyInstance) {
     return {
         all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all(fastify, req);
+            res.code(data.status).send(data);
+        },
+        all_exam: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await all_exam(fastify, req);
             res.code(data.status).send(data);
         },
 

@@ -11,16 +11,31 @@ async function attend_all(
 ): Promise<responseObject> {
     let models = await db();
     let studentMarksModel = models.ExamStudentMarksModel;
+    let studentsModel = models.UserStudentsModel;
     let params = req.params as any;
+    let query = req.query as any;
+    let sub_id = query.sub;
+    let exam_id = query.exam;
+    let class_id = query.class;
+    console.log('some id', sub_id, exam_id, class_id);
 
     try {
         let attendentStudents = await models.ExamAttendentStudentsModel.findAll(
             {
                 where: {
-                    exam_id: 2,
-                    class_id: 1,
-                    subject_id: 1,
+                    exam_id: exam_id,
+                    class_id: class_id,
+                    subject_id: sub_id,
                 },
+                include: [
+                    {
+                        model: studentsModel,
+                        as: 'student',
+                        attributes: {
+                            exclude: ['password'],
+                        },
+                    },
+                ],
             },
         );
 
@@ -30,8 +45,8 @@ async function attend_all(
 
         let marks = await models.ExamStudentMarksModel.findAll({
             where: {
-                exam_id: 2,
-                subject_id: 1,
+                exam_id: exam_id,
+                subject_id: sub_id,
                 student_id: studentIds,
             },
         });
