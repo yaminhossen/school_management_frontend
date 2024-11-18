@@ -10,23 +10,47 @@ async function attend_all(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
+    let studentMarksModel = models.ExamStudentMarksModel;
     let params = req.params as any;
 
     try {
-        let data = await models.ExamAttendentStudentsModel.findAll({
-            where: {
-                exam_id: 1,
-                class_id: 1,
-                subject_id: 1,
+        let attendentStudents = await models.ExamAttendentStudentsModel.findAll(
+            {
+                where: {
+                    exam_id: 2,
+                    class_id: 1,
+                    subject_id: 1,
+                },
             },
-            // include: [
-            //     {
-            //     }
-            // ]
+        );
+
+        let studentIds = attendentStudents.map(
+            (student: any) => student.student_id,
+        );
+
+        let marks = await models.ExamStudentMarksModel.findAll({
+            where: {
+                exam_id: 2,
+                subject_id: 1,
+                student_id: studentIds,
+            },
         });
 
-        if (data) {
-            return response(200, 'data created', data);
+        let combinedData = attendentStudents.map((student: any) => {
+            let studentMark = marks.find(
+                (mark: any) =>
+                    mark.exam_id === student.exam_id &&
+                    mark.student_id === student.student_id &&
+                    mark.subject_id === student.subject_id,
+            );
+            return {
+                ...student.toJSON(),
+                studentMarks: studentMark ? studentMark.toJSON() : null,
+            };
+        });
+
+        if (combinedData.length > 0) {
+            return response(200, 'data created', combinedData);
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }

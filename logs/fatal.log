@@ -1,1 +1,3 @@
 {"level":60,"time":1731907416657,"pid":3280,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:32:19)","time":"11/18/2024 11:23:36 AM","message":"WHERE parameter \"id\" has invalid \"undefined\" value"}
+{"level":60,"time":1731912136557,"pid":13884,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:55:19)","time":"11/18/2024 12:42:16 PM","message":"data not found"}
+{"level":60,"time":1731912144450,"pid":13884,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:55:19)","time":"11/18/2024 12:42:24 PM","message":"data not found"}

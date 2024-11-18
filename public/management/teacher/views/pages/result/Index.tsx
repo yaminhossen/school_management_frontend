@@ -8,10 +8,7 @@ export interface Props {}
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
-
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
+    const [classes, setClasses] = useState<any>([]);
 
     const fetchData = async () => {
         try {
@@ -96,7 +93,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
-                                                    to="/result/details"
+                                                    to={`/result/details/${i.id}`}
                                                 >
                                                     details
                                                 </Link>

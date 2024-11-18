@@ -1,8 +1,31 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../common_types/object';
+import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Result: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+    // const [data, setData] = useState([]);
+    const [classes, setClasses] = useState<any>([]);
+    const { id } = useParams();
+
+    const fetchClasses = async () => {
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-class-subjects/class-wise-subject/${id}`,
+            );
+            setClasses(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchClasses();
+    }, []);
     interface data {
         [key: string]: any;
     }
@@ -53,12 +76,6 @@ const Result: React.FC<Props> = (props: Props) => {
                                 </select>
                             </div>
                         </div>
-                        {/* <div>
-                            <div>Roll</div>
-                            <div>
-                                <input type="number" name="roll" id="" />
-                            </div>
-                        </div> */}
                         <button
                             className="btn btn-sm btn-outline-info "
                             type="submit"
