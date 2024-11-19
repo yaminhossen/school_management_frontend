@@ -35,3 +35,10 @@
 {"level":60,"time":1731992708171,"pid":9984,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-store"}
 {"level":60,"time":1731993612612,"pid":3120,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/accounts?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&select_fields=title,status,opening_balance"}
 {"level":60,"time":1731997664715,"pid":1620,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1731999149338,"pid":2476,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/1"}
+{"level":60,"time":1731999151004,"pid":2476,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/1"}
+{"level":60,"time":1731999159425,"pid":2476,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/1"}
+{"level":60,"time":1731999971194,"pid":2476,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/1"}
+{"level":60,"time":1731999972721,"pid":2476,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/1"}
+{"level":60,"time":1732000014846,"pid":11132,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-classes/all-class"}
+{"level":60,"time":1732000042232,"pid":11132,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-classes/all-class"}

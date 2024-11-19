@@ -101,6 +101,7 @@ async function update(
         assignment_categories_id: body.assignment_categories_id,
         class_id: body.class_id,
         student_id: body.student_id,
+        subject_id: body.subject_id,
         assignment_id: body.assignment_id,
         attachment: body.attachment,
         text: body.text,
