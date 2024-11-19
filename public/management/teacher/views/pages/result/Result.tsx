@@ -55,39 +55,39 @@ const Result: React.FC<Props> = (props: Props) => {
         fetchClasses();
         fetchExames();
     }, []);
+
     useEffect(() => {
         const id1 = subjRefId.current?.value;
         const id2 = examRefId.current?.value;
-        // console.log('log something', id, id2);
         fetchStudent(id1, id2);
     }, [subjects, exames]);
+
     const handleSubmit = () => {
         const id1 = subjRefId.current?.value;
         const id2 = examRefId.current?.value;
         fetchStudent(id1, id2); // Pass the id to fetchClass
     };
-    // const handleMarkBlur = (e) => {
-    //     // const sub = subjRefId.current?.value;
-    //     // const exam = examRefId.current?.value;
-    //     // const stu_id = studentIdRef.current?.value;
-    //     const mark = markRef.current?.value;
-    //     console.log('studnet_some_id', mark, other_mark);
-    //     // console.log('something');
-    // };
+
     const handleMarkBlur = async (e: any, i: any) => {
-        const mark = e.target.value; // Access value of 'mark' input applicable)
-        console.log('Student mark:', mark);
+        const mark = e.target.name == 'mark' ? e.target.value : '';
+        const other_mark = e.target.name == 'other_mark' ? e.target.value : '';
+        // const markname = e.target.name;
         console.log('Student mark:', i);
+        console.log('Student mark:', mark);
+        console.log('Student other_mark:', other_mark);
         try {
             const payload = {
-                mark, // Include the mark value
-                ...i, // Spread the properties of object 'i'
+                mark,
+                other_mark,
+                ...i,
             };
             const response = await axios.post(
-                '/api/v1/account-logs/fees-store',
+                '/api/v1/exam-student-marks/mark-store',
                 payload,
             );
-            console.log('response', response);
+            fetchClasses();
+            e.target.value = '';
+            console.log('response', 'response');
         } catch (error) {
             // setError(error); // Set error state
         }
@@ -176,17 +176,11 @@ const Result: React.FC<Props> = (props: Props) => {
                                                     type="number"
                                                     name="mark"
                                                     id=""
+                                                    // defaultValue={0}
                                                     // ref={markRef}
                                                     onBlur={(e) =>
                                                         handleMarkBlur(e, i)
                                                     }
-                                                />
-                                                <input
-                                                    type="hidden"
-                                                    name="student_id"
-                                                    id=""
-                                                    // ref={studentIdRef}
-                                                    defaultValue={i.id}
                                                 />
                                             </td>
                                             <td>
@@ -194,7 +188,11 @@ const Result: React.FC<Props> = (props: Props) => {
                                                     type="number"
                                                     name="other_mark"
                                                     id=""
+                                                    // defaultValue={0}
                                                     // ref={otherMarkRef}
+                                                    onBlur={(e) =>
+                                                        handleMarkBlur(e, i)
+                                                    }
                                                 />
                                             </td>
                                             {/* <td>{i.grade}</td> */}

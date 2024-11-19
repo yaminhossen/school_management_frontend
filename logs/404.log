@@ -22,3 +22,16 @@
 {"level":60,"time":1731920203224,"pid":8784,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam/all-exam"}
 {"level":60,"time":1731920203440,"pid":8784,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam/all-exam"}
 {"level":60,"time":1731920229396,"pid":8784,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam/all-exam"}
+{"level":60,"time":1731923455543,"pid":7000,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1731923456394,"pid":7000,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1731923563735,"pid":7000,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1731924062446,"pid":7000,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1731924075515,"pid":7000,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1731928456362,"pid":7000,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1731930078207,"pid":7000,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1731930188176,"pid":7000,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1731931297267,"pid":7000,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1731988346842,"pid":16684,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/teachers"}
+{"level":60,"time":1731992708171,"pid":9984,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-store"}
+{"level":60,"time":1731993612612,"pid":3120,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/accounts?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&select_fields=title,status,opening_balance"}
+{"level":60,"time":1731997664715,"pid":1620,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}

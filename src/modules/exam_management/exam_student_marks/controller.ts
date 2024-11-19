@@ -14,6 +14,7 @@ import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
 import mark_details from './services/exam_marks_details';
+import mark_store from './services/mark_store';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -34,6 +35,11 @@ export default function (fastify: FastifyInstance) {
 
         store: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await store(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        mark_store: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await mark_store(fastify, req);
             res.code(data.status).send(data);
         },
 
