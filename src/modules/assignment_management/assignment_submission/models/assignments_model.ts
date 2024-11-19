@@ -23,8 +23,8 @@ import {
     // ForeignKey,
 } from 'sequelize';
 
-const tableName = 'assignment_submission';
-const modelName = 'AssignmentSubmissionsModel';
+const tableName = 'assignments';
+const modelName = 'AssignmentsModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
@@ -33,19 +33,16 @@ type status = 'active' | 'deactive';
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
-    declare branch_id?: number;
-    declare assignment_categories_id?: number;
+    declare branch_id: number;
+    declare title: string;
+    declare description: string;
+    declare assignment_categories_id: number;
+    declare attachment: string;
+    declare image: string;
+    declare mark: number;
     declare class_id?: number;
-    declare student_id?: number;
     declare subject_id?: number;
-    declare assignment_id?: number;
-
-    declare attachment?: string;
-    declare text?: string;
-    declare image?: string;
-    declare comments?: string;
-    declare marks: number;
-    declare submission_date?: string;
+    declare deadline: string;
 
     declare status?: status;
     declare creator?: number;
@@ -65,15 +62,27 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },
+            title: {
+                type: new DataTypes.STRING(128),
+                allowNull: true,
+            },
+            description: {
+                type: new DataTypes.TEXT(),
+                allowNull: true,
+            },
             assignment_categories_id: {
                 type: new DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },
-            class_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+            attachment: {
+                type: new DataTypes.STRING(128),
                 allowNull: true,
             },
-            student_id: {
+            image: {
+                type: new DataTypes.STRING(128),
+                allowNull: true,
+            },
+            class_id: {
                 type: new DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },
@@ -81,31 +90,11 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },
-            assignment_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            text: {
-                type: new DataTypes.TEXT(),
-                allowNull: true,
-            },
-            attachment: {
-                type: new DataTypes.STRING(128),
-                allowNull: true,
-            },
-            comments: {
-                type: new DataTypes.TEXT(),
-                allowNull: true,
-            },
-            image: {
-                type: new DataTypes.STRING(100),
-                allowNull: true,
-            },
-            marks: {
+            mark: {
                 type: new DataTypes.FLOAT().UNSIGNED,
                 allowNull: true,
             },
-            submission_date: {
+            deadline: {
                 type: new DataTypes.DATE(),
                 allowNull: true,
             },

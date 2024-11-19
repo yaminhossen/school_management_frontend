@@ -13,11 +13,20 @@ import update from './services/update';
 import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
+import sub_wise_assignment from './services/sub_wise_assignment';
+import assignment_marking from './services/assignment_marking';
 
 export default function (fastify: FastifyInstance) {
     return {
         all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all(fastify, req);
+            res.code(data.status).send(data);
+        },
+        sub_wise_assignment: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await sub_wise_assignment(fastify, req);
             res.code(data.status).send(data);
         },
 
@@ -28,6 +37,14 @@ export default function (fastify: FastifyInstance) {
 
         store: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await store(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        assignment_marking: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await assignment_marking(fastify, req);
             res.code(data.status).send(data);
         },
 

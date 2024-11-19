@@ -23,8 +23,8 @@ import {
     // ForeignKey,
 } from 'sequelize';
 
-const tableName = 'assignment_submission';
-const modelName = 'AssignmentSubmissionsModel';
+const tableName = 'user_students';
+const modelName = 'UserStudentsModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
@@ -33,22 +33,20 @@ type status = 'active' | 'deactive';
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
-    declare branch_id?: number;
-    declare assignment_categories_id?: number;
-    declare class_id?: number;
-    declare student_id?: number;
-    declare subject_id?: number;
-    declare assignment_id?: number;
-
-    declare attachment?: string;
-    declare text?: string;
-    declare image?: string;
-    declare comments?: string;
-    declare marks: number;
-    declare submission_date?: string;
-
+    declare parent_id?: number;
+    declare name?: string;
+    declare email?: string | null;
+    declare phone_number?: string | null;
+    declare whatsapp_number?: string | null;
+    declare image?: string | null;
+    declare password?: string;
     declare status?: status;
+    declare token?: string | null;
+    declare forget_code?: string | null;
+    declare user_agent?: string | null;
+
     declare creator?: number;
+
     declare created_at?: CreationOptional<Date>;
     declare updated_at?: CreationOptional<Date>;
 }
@@ -61,62 +59,55 @@ function init(sequelize: Sequelize) {
                 autoIncrement: true,
                 primaryKey: true,
             },
-            branch_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+            parent_id: {
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
-            assignment_categories_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+            name: {
+                type: new DataTypes.STRING(120),
                 allowNull: true,
             },
-            class_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+            email: {
+                type: new DataTypes.STRING(120),
                 allowNull: true,
             },
-            student_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+            phone_number: {
+                type: new DataTypes.STRING(20),
                 allowNull: true,
             },
-            subject_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            assignment_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            text: {
-                type: new DataTypes.TEXT(),
-                allowNull: true,
-            },
-            attachment: {
-                type: new DataTypes.STRING(128),
-                allowNull: true,
-            },
-            comments: {
-                type: new DataTypes.TEXT(),
+            whatsapp_number: {
+                type: new DataTypes.STRING(20),
                 allowNull: true,
             },
             image: {
-                type: new DataTypes.STRING(100),
+                type: new DataTypes.STRING(120),
                 allowNull: true,
             },
-            marks: {
-                type: new DataTypes.FLOAT().UNSIGNED,
+            password: {
+                type: new DataTypes.STRING(150),
                 allowNull: true,
-            },
-            submission_date: {
-                type: new DataTypes.DATE(),
-                allowNull: true,
-            },
-            creator: {
-                type: new DataTypes.TINYINT(),
-                allowNull: true,
-                defaultValue: null,
             },
             status: {
                 type: new DataTypes.ENUM('active', 'deactive'),
                 defaultValue: 'active',
+            },
+            token: {
+                type: new DataTypes.STRING(100),
+                allowNull: true,
+            },
+            forget_code: {
+                type: new DataTypes.STRING(10),
+                allowNull: true,
+            },
+            user_agent: {
+                type: new DataTypes.STRING(150),
+                allowNull: true,
+            },
+
+            creator: {
+                type: new DataTypes.TINYINT(),
+                allowNull: true,
+                defaultValue: null,
             },
             created_at: DataTypes.DATE,
             updated_at: DataTypes.DATE,

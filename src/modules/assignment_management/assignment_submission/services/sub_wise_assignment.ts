@@ -10,6 +10,8 @@ async function sub_wise_assignment(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
+    let assignmentModel = models.AssignmentsModel;
+    let studentModel = models.UserStudentsModel;
     let params = req.params as any;
 
     try {
@@ -17,6 +19,16 @@ async function sub_wise_assignment(
             where: {
                 subject_id: params.id,
             },
+            include: [
+                {
+                    model: assignmentModel,
+                    as: 'assignment',
+                },
+                {
+                    model: studentModel,
+                    as: 'student',
+                },
+            ],
             // attributes: {
             //     exclude: ['password'],
             // },
