@@ -10,17 +10,12 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState([]);
     const { id } = useParams();
 
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
-
     const fetchData = async () => {
         try {
             const response = await axios.get(
                 `/api/v1/assignments/subject-assignment/${id}`,
             );
             setData(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -29,7 +24,6 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-    console.log(data);
 
     return (
         <div className="admin_dashboard">
@@ -67,12 +61,6 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
                                                     >
                                                         Edit
                                                     </Link>
-                                                    {/* <Link
-                                                    className="btn btn-sm btn-outline-info"
-                                                    to="/class-attendance/take-attendance"
-                                                >
-                                                    Take attendance
-                                                </Link> */}
                                                 </td>
                                             </tr>
                                         );

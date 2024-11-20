@@ -11,19 +11,12 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
     const [classes, setClasses] = useState<any>([]);
     const [subjects, setSubjects] = useState<any>([]);
     const [categories, setCategories] = useState<any>([]);
-    // const selectRef = useRef<HTMLSelectElement>(null);
-    // const inputRef = useRef<HTMLInputElement>(null);
     const { id } = useParams();
-
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
 
     const fetchData = async () => {
         try {
             const response = await axios.get(`/api/v1/assignments/${id}`);
             setData(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -34,7 +27,6 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                 `/api/v1/branch-classes/all-class`,
             );
             setClasses(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -45,7 +37,6 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                 `/api/v1/assignment-categories/all-categories`,
             );
             setCategories(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -56,16 +47,10 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
         fetchCategories();
         fetchClasses();
     }, []);
-    console.log(data);
-    function lastDate(date: string) {
-        console.log(moment(date).format('YYYY-MM-DD'));
-    }
-    // let date = moment().format('YYYY-MM-DD');
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
+        e.preventDefault();
         let formData = new FormData(e.target);
-        console.log('formData', formData);
         try {
             const response = await axios.post(
                 '/api/v1/assignments/update',
@@ -73,7 +58,6 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
             );
             // here use toastar
             // setData(response.data.data.data);
-            // setTotalIncome(response.data.data.data2);
         } catch (error) {
             setError(error);
         }
@@ -88,13 +72,10 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                 `/api/v1/branch-class-subjects/class-wise-subject/${id}`,
             );
             setSubjects(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
-        console.log('Selected value:', event.target.value);
     };
-    console.log('Selected dataaa:', subjects);
     return (
         <div className="admin_dashboard">
             <h3>Edit</h3>
@@ -103,16 +84,10 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                     <div className="form-group form-horizontal">
                         <label>Class</label>
                         <div className="form_elements">
-                            {/* <input
-                                type="text"
-                                placeholder="Class"
-                                name="class"
-                            /> */}
                             <select
                                 name="class"
                                 defaultValue={data.class_id}
                                 id=""
-                                // ref={inputRef}
                                 onChange={handleChange}
                             >
                                 <option value={data.class_id}></option>
@@ -132,17 +107,10 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                     <div className="form-group form-horizontal">
                         <label>Subject</label>
                         <div className="form_elements">
-                            {/* <input
-                                type="text"
-                                placeholder="subject"
-                                name="subject"
-                            /> */}
                             <select
                                 name="subject"
                                 defaultValue={data.subject_id}
                                 id=""
-                                // ref={inputRef}
-                                // onChange={handleChange}
                             >
                                 {/* <option value={data.class_id}></option> */}
                                 {subjects.map((i, index) => {

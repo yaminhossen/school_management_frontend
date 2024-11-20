@@ -10,17 +10,12 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState([]);
     const { id } = useParams();
 
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
-
     const fetchData = async () => {
         try {
             const response = await axios.get(
                 `/api/v1/assignment-submissions/sub-wise-assignment/${id}`,
             );
             setData(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -29,7 +24,6 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-    console.log(data);
 
     const handleMarkBlur = async (e: any, i: any) => {
         const mark = e.target.name == 'mark' ? e.target.value : null;
@@ -103,20 +97,6 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
                                                         }
                                                     />
                                                 </td>
-                                                {/* <td>
-                                                    <Link
-                                                        className="btn btn-sm btn-outline-info mr-1"
-                                                        to={`/assignment/subject-details/${i.id}`}
-                                                    >
-                                                        details
-                                                    </Link>
-                                                    <Link
-                                                        className="btn btn-sm btn-outline-info mr-1"
-                                                        to={`/assignment/subject-edit/${i.id}`}
-                                                    >
-                                                        Edit
-                                                    </Link>
-                                                </td> */}
                                             </tr>
                                         );
                                     },

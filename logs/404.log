@@ -70,3 +70,6 @@
 {"level":60,"time":1732088912752,"pid":14700,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/student-store"}
 {"level":60,"time":1732088913497,"pid":14700,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/student-store"}
 {"level":60,"time":1732088914009,"pid":14700,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/student-store"}
+{"level":60,"time":1732096509605,"pid":9676,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1732098875764,"pid":9676,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1732099710161,"pid":9676,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/teachers"}

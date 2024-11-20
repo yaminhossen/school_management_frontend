@@ -10,15 +10,10 @@ const SingleDetails: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState<any>([]);
     const { id } = useParams();
 
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
-
     const fetchData = async () => {
         try {
             const response = await axios.get(`/api/v1/assignments/${id}`);
             setData(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }

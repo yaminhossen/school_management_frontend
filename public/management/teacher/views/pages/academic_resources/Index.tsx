@@ -8,17 +8,12 @@ const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<anyObject[]>([]);
 
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
-
     const fetchData = async () => {
         try {
             const response = await axios.get(
                 '/api/v1/branch-class-resources/teacher-resource/1',
             );
             setData(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -35,13 +30,6 @@ const Index: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <h3 className="table_heading"></h3>
             <div className="content_body">
-                {/* <Link
-                    to="/academic-resources/create"
-                    className="btn btn-sm btn-outline-info mb-2 mr-2"
-                    type="submit"
-                >
-                    Create
-                </Link> */}
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
                         <table>

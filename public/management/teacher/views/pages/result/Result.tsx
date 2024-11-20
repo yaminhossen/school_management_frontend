@@ -71,7 +71,6 @@ const Result: React.FC<Props> = (props: Props) => {
     const handleMarkBlur = async (e: any, i: any) => {
         const mark = e.target.name == 'mark' ? e.target.value : '';
         const other_mark = e.target.name == 'other_mark' ? e.target.value : '';
-        // const markname = e.target.name;
         console.log('Student mark:', i);
         console.log('Student mark:', mark);
         console.log('Student other_mark:', other_mark);
@@ -150,55 +149,52 @@ const Result: React.FC<Props> = (props: Props) => {
                                     <th>Other Mark</th>
                                     <th>Mark</th>
                                     <th>Other Mark</th>
-                                    {/* <th>Grade</th> */}
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {students?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.student?.name}</td>
-                                            <td>
-                                                {i.studentMarks
-                                                    ? i.studentMarks
-                                                        ?.obtained_mark
-                                                    : 'no'}
-                                            </td>
-                                            <td>
-                                                {i.studentMarks
-                                                    ? i.studentMarks?.other_mark
-                                                    : 'no'}
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="number"
-                                                    name="mark"
-                                                    id=""
-                                                    // defaultValue={0}
-                                                    // ref={markRef}
-                                                    onBlur={(e) =>
-                                                        handleMarkBlur(e, i)
-                                                    }
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="number"
-                                                    name="other_mark"
-                                                    id=""
-                                                    // defaultValue={0}
-                                                    // ref={otherMarkRef}
-                                                    onBlur={(e) =>
-                                                        handleMarkBlur(e, i)
-                                                    }
-                                                />
-                                            </td>
-                                            {/* <td>{i.grade}</td> */}
-                                        </tr>
-                                    );
-                                })}
+                                {students?.map(
+                                    (i: { [key: string]: any }, index) => {
+                                        return (
+                                            <tr>
+                                                <td></td>
+                                                <td>{index + 1}</td>
+                                                <td>{i.student?.name}</td>
+                                                <td>
+                                                    {i.studentMarks
+                                                        ? i.studentMarks
+                                                            ?.obtained_mark
+                                                        : 'no'}
+                                                </td>
+                                                <td>
+                                                    {i.studentMarks
+                                                        ? i.studentMarks
+                                                            ?.other_mark
+                                                        : 'no'}
+                                                </td>
+                                                <td>
+                                                    <input
+                                                        type="number"
+                                                        name="mark"
+                                                        id=""
+                                                        onBlur={(e) =>
+                                                            handleMarkBlur(e, i)
+                                                        }
+                                                    />
+                                                </td>
+                                                <td>
+                                                    <input
+                                                        type="number"
+                                                        name="other_mark"
+                                                        id=""
+                                                        onBlur={(e) =>
+                                                            handleMarkBlur(e, i)
+                                                        }
+                                                    />
+                                                </td>
+                                            </tr>
+                                        );
+                                    },
+                                )}
                             </tbody>
                         </table>
                     </div>

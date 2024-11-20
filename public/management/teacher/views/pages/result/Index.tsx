@@ -16,7 +16,6 @@ const Index: React.FC<Props> = (props: Props) => {
                 '/api/v1/branch-class-subjects/teacher-classes/1',
             );
             setData(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }

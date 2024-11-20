@@ -32,51 +32,6 @@ const Review: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
-            {/* <div className="result_details">
-                <h3 className="table_heading mt-4">Assignment</h3>
-                <form action="" onSubmit={(e) => e.preventDefault()}>
-                    <div className="teacher_result">
-                        <div>
-                            <div>Class</div>
-                            <div>
-                                <select name="class" id="">
-                                    <option value="six">Six</option>
-                                    <option value="seven">Seven</option>
-                                    <option value="eight">Eight</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div>
-                            <div>Subject</div>
-                            <div>
-                                <select name="subject" id="">
-                                    <option value="bangla">Six</option>
-                                    <option value="agriculture">Seven</option>
-                                    <option value="social science">
-                                        Social Science
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                        <div>
-                            <div>Assignment</div>
-                            <div>
-                                <select name="assignment" id="">
-                                    <option value="first">First</option>
-                                    <option value="second">Second</option>
-                                    <option value="third">Third</option>
-                                </select>
-                            </div>
-                        </div>
-                        <button
-                            className="btn btn-sm btn-outline-info "
-                            type="submit"
-                        >
-                            Submit
-                        </button>
-                    </div>
-                </form>
-            </div> */}
             <form action="" onSubmit={(e) => e.preventDefault()}>
                 <div className="teacher_result">
                     <div>

@@ -73,29 +73,31 @@ const AssignResult: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.name}</td>
-                                            <td>
-                                                <input
-                                                    type="number"
-                                                    name="mark"
-                                                    id=""
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="number"
-                                                    name="other_mark"
-                                                    id=""
-                                                />
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
+                                {datas?.map(
+                                    (i: { [key: string]: any }, index) => {
+                                        return (
+                                            <tr>
+                                                <td></td>
+                                                <td>{index + 1}</td>
+                                                <td>{i.name}</td>
+                                                <td>
+                                                    <input
+                                                        type="number"
+                                                        name="mark"
+                                                        id=""
+                                                    />
+                                                </td>
+                                                <td>
+                                                    <input
+                                                        type="number"
+                                                        name="other_mark"
+                                                        id=""
+                                                    />
+                                                </td>
+                                            </tr>
+                                        );
+                                    },
+                                )}
                             </tbody>
                         </table>
                     </div>
