@@ -36,6 +36,7 @@ import assignment_marking_routes from '../views/pages/assignment_marking/config/
 import student_routes from '../views/pages/student/config/routes';
 import course_materials_routes from '../views/pages/course_materials/config/routes';
 import reports_routes from '../views/pages/teacher_reports/config/routes';
+import settings_routes from '../views/pages/settings/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
@@ -58,34 +59,35 @@ const router: RouteTypes[] = [
             student_routes,
             course_materials_routes,
             reports_routes,
+            settings_routes,
             {
                 path: '',
                 element: <T1 />,
             },
-            {
-                path: 'classes',
-                element: <Class />,
-            },
-            {
-                path: 'assignments',
-                element: <Assignment />,
-            },
-            {
-                path: 'course-materials',
-                element: <CourseMaterial />,
-            },
-            {
-                path: 'assesments',
-                element: <Assesment />,
-            },
-            {
-                path: 'reports',
-                element: <Reports />,
-            },
-            {
-                path: 'settings',
-                element: <Settings />,
-            },
+            // {
+            //     path: 'classes',
+            //     element: <Class />,
+            // },
+            // {
+            //     path: 'assignments',
+            //     element: <Assignment />,
+            // },
+            // {
+            //     path: 'course-materials',
+            //     element: <CourseMaterial />,
+            // },
+            // {
+            //     path: 'assesments',
+            //     element: <Assesment />,
+            // },
+            // {
+            //     path: 'reports',
+            //     element: <Reports />,
+            // },
+            // {
+            //     path: 'settings',
+            //     element: <Settings />,
+            // },
             {
                 path: 'analytics',
                 element: <Analytics />,

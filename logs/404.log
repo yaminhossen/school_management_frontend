@@ -48,3 +48,16 @@
 {"level":60,"time":1732012455760,"pid":15100,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignment-submissions/sub-wise-assignment/1"}
 {"level":60,"time":1732012511246,"pid":17236,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignment-submissions/sub-wise-assignment"}
 {"level":60,"time":1732012521382,"pid":17236,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignment-submissions/sub-wise-assignment"}
+{"level":60,"time":1732078481496,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/teachers"}
+{"level":60,"time":1732078482054,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved/1"}
+{"level":60,"time":1732080815592,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved/1"}
+{"level":60,"time":1732081017110,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1732081127278,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved/1"}
+{"level":60,"time":1732081128678,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved/1"}
+{"level":60,"time":1732081129413,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved/1"}
+{"level":60,"time":1732081130134,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved/1"}
+{"level":60,"time":1732081130805,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved/1"}
+{"level":60,"time":1732081138616,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved/1"}
+{"level":60,"time":1732081806345,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved/1"}
+{"level":60,"time":1732081806969,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/teachers"}
+{"level":60,"time":1732081827772,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}

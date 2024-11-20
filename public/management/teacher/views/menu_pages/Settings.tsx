@@ -60,7 +60,7 @@ const Settings: React.FC<Props> = (props: Props) => {
                             <div className="item-content">
                                 <div className="header-inline item-header details_header">
                                     <h3 className="text-dark-medium profile_name font-medium">
-                                        Settings
+                                        Settingsrtrrrtgrey
                                     </h3>
                                 </div>
                             </div>
