@@ -262,3 +262,5 @@
 {"level":60,"time":1732014519536,"pid":3764,"hostname":"DESKTOP-9421701","file":"","time":"11/19/2024 5:08:39 PM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1732073512268,"pid":12864,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"11/20/2024 9:31:52 AM","message":"data not found"}
 {"level":60,"time":1732073512324,"pid":12864,"hostname":"DESKTOP-9421701","file":"","time":"11/20/2024 9:31:52 AM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1732086077718,"pid":14700,"hostname":"DESKTOP-9421701","file":"","time":"11/20/2024 1:01:17 PM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1732086077744,"pid":14700,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"11/20/2024 1:01:17 PM","message":"data not found"}

@@ -61,3 +61,12 @@
 {"level":60,"time":1732081806345,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved/1"}
 {"level":60,"time":1732081806969,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/teachers"}
 {"level":60,"time":1732081827772,"pid":12864,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1732082564673,"pid":14700,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved/1"}
+{"level":60,"time":1732083290146,"pid":14700,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1732084100680,"pid":14700,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1732084101391,"pid":14700,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1732084102037,"pid":14700,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1732086091332,"pid":14700,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-classes/all-class"}
+{"level":60,"time":1732088912752,"pid":14700,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/student-store"}
+{"level":60,"time":1732088913497,"pid":14700,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/student-store"}
+{"level":60,"time":1732088914009,"pid":14700,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/student-store"}

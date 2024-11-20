@@ -33,10 +33,10 @@ type status = 'active' | 'deactive';
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
-    declare name: string;
-    declare email: string | null;
-    declare phone_number: string | null;
-    declare image: string | null;
+    declare name?: string;
+    declare email?: string | null;
+    declare phone_number?: string | null;
+    declare image?: string | null;
     declare password?: string;
     declare status?: status;
     declare token?: string | null;
