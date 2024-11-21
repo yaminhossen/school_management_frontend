@@ -11,7 +11,7 @@ const AcademicInformation: React.FC<Props> = (props: Props) => {
                     <tr>
                         <td>Name:</td>
                         <td className="font-medium text-dark-medium">
-                            Masud Rana
+                            Md. Tasnim Jawad
                         </td>
                     </tr>
                     <tr>

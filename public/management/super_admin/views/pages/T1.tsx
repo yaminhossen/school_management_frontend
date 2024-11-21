@@ -6,18 +6,10 @@ const T1: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
             <h1>Nurul Hiqamah Model Madrasa</h1>
-            <h2>admin Dashboard</h2>
+            <h2>Admin Dashboard</h2>
             <div className="admin_sideba custom_scroll">
                 <h3 className="mt-4 ms-0">User management</h3>
                 <ul className="dashboard_links ">
-                    {/* <li>
-                        <Link to="/branch-staffs">
-                            <span className="material-symbols-outlined fill">
-                                clinical_notes
-                            </span>
-                            Brach Staff Management
-                        </Link>
-                    </li> */}
                     <li>
                         <Link to="/user-admins">
                             <span className="material-symbols-outlined fill">
@@ -56,6 +48,50 @@ const T1: React.FC<Props> = (props: Props) => {
                                 groups
                             </span>
                             Students Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/user-students">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Todo Management
+                        </Link>
+                    </li>
+                </ul>
+
+                <h3 className="mt-4 ms-0">Todo management</h3>
+                <ul className="dashboard_links ">
+                    <li>
+                        <Link to="/tasks">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Tasks Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/user-staffs">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Task User Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/user-teachers">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Task Variants Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/user-parents">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Task Groups Management
                         </Link>
                     </li>
                 </ul>

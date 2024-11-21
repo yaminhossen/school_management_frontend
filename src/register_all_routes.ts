@@ -114,11 +114,11 @@ export let active_routes: string[] = [
     // 'src/modules/teacher_evaluations/teacher_kpi_reports/routes.ts',
     // 'src/modules/teacher_evaluations/teacher_overall_evaluations/routes.ts',
 
-    // 'src/modules/todo_management/tasks/routes.ts',
+    'src/modules/todo_management/tasks/routes.ts',
     // 'src/modules/todo_management/task_groups/routes.ts',
     // 'src/modules/todo_management/task_variants/routes.ts',
 
-    // 'src/modules/user_management/user_admin/routes.ts',
+    'src/modules/user_management/user_admin/routes.ts',
     // 'src/modules/user_management/user_branch_admins/routes.ts',
     // 'src/modules/user_management/user_login_histories/routes.ts',
     // 'src/modules/user_management/user_parents/routes.ts',

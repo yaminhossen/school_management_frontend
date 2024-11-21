@@ -29,6 +29,7 @@ import loan_managements_routes from "../views/pages/account_management/loan_mana
 import payrolls_routes from "../views/pages/account_management/payrolls/config/routes";
 import salary_payments_routes from "../views/pages/account_management/salary_payments/config/routes";
 import academic_calendars_routes from "../views/pages/calendar_management/academic_calendars/config/routes";
+import tasks_routes from "../views/pages/todo_management/task_management/config/routes";
 
 interface RouteTypes extends NonIndexRouteObject {
     
@@ -70,6 +71,7 @@ const router: RouteTypes[] = [
             payrolls_routes,
             salary_payments_routes,
             academic_calendars_routes,
+            tasks_routes,
         ],
     },
 ];
