@@ -27,11 +27,7 @@ const All: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(
-            storeSlice.actions.set_select_fields(
-                'id, name, email, phone_number, status',
-            ),
-        );
+        dispatch(storeSlice.actions.set_select_fields('id, status'));
         dispatch(all({}) as any);
     }, []);
 

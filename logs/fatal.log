@@ -274,3 +274,16 @@
 {"level":60,"time":1732098954274,"pid":9676,"hostname":"DESKTOP-9421701","file":"","time":"11/20/2024 4:35:54 PM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1732098983166,"pid":9676,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"11/20/2024 4:36:23 PM","message":"data not found"}
 {"level":60,"time":1732098983175,"pid":9676,"hostname":"DESKTOP-9421701","file":"","time":"11/20/2024 4:36:23 PM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1732186597867,"pid":9028,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"11/21/2024 4:56:37 PM","message":"data not found"}
+{"level":60,"time":1732186598670,"pid":9028,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"11/21/2024 4:56:38 PM","message":"data not found"}
+{"level":60,"time":1732187185482,"pid":9028,"hostname":"DESKTOP-9421701","file":"services\\all.ts:117:15)","time":"11/21/2024 5:06:25 PM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1732187187679,"pid":9028,"hostname":"DESKTOP-9421701","file":"services\\all.ts:117:15)","time":"11/21/2024 5:06:27 PM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1732338501230,"pid":9520,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"11/23/2024 11:08:21 AM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1732338501255,"pid":9520,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"11/23/2024 11:08:21 AM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1732338514074,"pid":9520,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"11/23/2024 11:08:34 AM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1732338542917,"pid":15108,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"11/23/2024 11:09:02 AM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1732338543555,"pid":15108,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"11/23/2024 11:09:03 AM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1732338577129,"pid":15108,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"11/23/2024 11:09:37 AM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1732338644565,"pid":15108,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"11/23/2024 11:10:44 AM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1732342279838,"pid":15108,"hostname":"DESKTOP-9421701","file":"","time":"11/23/2024 12:11:19 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1732342411248,"pid":15108,"hostname":"DESKTOP-9421701","file":"","time":"11/23/2024 12:13:31 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}

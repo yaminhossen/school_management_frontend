@@ -5,6 +5,7 @@ import setup from './config/setup';
 import { useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
 import DropDown from './components/dropdown/DropDown';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -17,6 +18,9 @@ const Create: React.FC<Props> = (props: Props) => {
             e.target.reset();
         }
     }
+
+    let formateddata = moment().format('YYYY-MM-DD');
+    // console.log('dateff', formateddata);
 
     return (
         <>
@@ -32,7 +36,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                 <h2 className=""> Major Information</h2>
                             </div> */}
                             <div className="">
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Branch id</label>
                                     <div className="form_elements">
                                         <select name="branch_id" id="">
@@ -41,17 +45,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <option value="demo1">demo1</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Meeting id</label>
-                                    <div className="form_elements">
-                                        <select name="meeting_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>Title</label>
                                     <div className="form_elements">
@@ -73,12 +67,33 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Is complete</label>
+                                    <label>Is Complete</label>
                                     <div className="form_elements">
                                         <select name="is_complete" id="">
-                                            <option value="0">No</option>
-                                            <option value="1">Yes</option>
+                                            <option value="pending">
+                                                Pending
+                                            </option>
+                                            <option value="running">
+                                                Running
+                                            </option>
+                                            <option value="completed">
+                                                Completed
+                                            </option>
+                                            <option value="nexttime">
+                                                Next Time
+                                            </option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Date</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="date"
+                                            defaultValue={formateddata}
+                                            name="date"
+                                            id=""
+                                        />
                                     </div>
                                 </div>
                             </div>

@@ -30,7 +30,7 @@ import journals_slice from '../views/pages/account_management/journals/config/st
 import payrolls_slice from '../views/pages/account_management/payrolls/config/store';
 import salary_payments_slice from '../views/pages/account_management/salary_payments/config/store';
 import academic_calendars_slice from '../views/pages/calendar_management/academic_calendars/config/store';
-import tasks_slice from '../views/pages/todo_management/task_management/config/store';
+import tasks_slice from '../views/pages/todo_management/tasks/config/store';
 
 const store = configureStore({
     reducer: {
