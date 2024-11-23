@@ -31,6 +31,7 @@ import payrolls_slice from '../views/pages/account_management/payrolls/config/st
 import salary_payments_slice from '../views/pages/account_management/salary_payments/config/store';
 import academic_calendars_slice from '../views/pages/calendar_management/academic_calendars/config/store';
 import tasks_slice from '../views/pages/todo_management/tasks/config/store';
+import tasks_variant_slice from '../views/pages/todo_management/task_variants/config/store';
 
 const store = configureStore({
     reducer: {
@@ -65,6 +66,7 @@ const store = configureStore({
         academic_calendars: academic_calendars_slice.reducer,
         salary_payments: salary_payments_slice.reducer,
         tasks: tasks_slice.reducer,
+        task_variants: tasks_variant_slice.reducer,
     },
     devTools: true,
 });

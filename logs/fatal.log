@@ -287,3 +287,6 @@
 {"level":60,"time":1732338644565,"pid":15108,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"11/23/2024 11:10:44 AM","message":"Unknown column 'name' in 'field list'"}
 {"level":60,"time":1732342279838,"pid":15108,"hostname":"DESKTOP-9421701","file":"","time":"11/23/2024 12:11:19 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
 {"level":60,"time":1732342411248,"pid":15108,"hostname":"DESKTOP-9421701","file":"","time":"11/23/2024 12:13:31 PM","message":"You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 1"}
+{"level":60,"time":1732352996873,"pid":15792,"hostname":"DESKTOP-9421701","file":"services\\all.ts:117:15)","time":"11/23/2024 3:09:56 PM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1732359352928,"pid":12464,"hostname":"DESKTOP-9421701","file":"services\\all.ts:110:15)","time":"11/23/2024 4:55:52 PM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1732359429122,"pid":12464,"hostname":"DESKTOP-9421701","file":"services\\all.ts:110:15)","time":"11/23/2024 4:57:09 PM","message":"Unknown column 'tit' in 'field list'"}

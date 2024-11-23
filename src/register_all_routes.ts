@@ -116,7 +116,7 @@ export let active_routes: string[] = [
 
     'src/modules/todo_management/tasks/routes.ts',
     // 'src/modules/todo_management/task_groups/routes.ts',
-    // 'src/modules/todo_management/task_variants/routes.ts',
+    'src/modules/todo_management/task_variants/routes.ts',
 
     'src/modules/user_management/user_admin/routes.ts',
     // 'src/modules/user_management/user_branch_admins/routes.ts',

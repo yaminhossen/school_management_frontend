@@ -70,16 +70,16 @@ const T1: React.FC<Props> = (props: Props) => {
                             Tasks Management
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/user-staffs">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             Task User Management
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
-                        <Link to="/user-teachers">
+                        <Link to="/task-variants">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>

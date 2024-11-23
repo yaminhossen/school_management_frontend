@@ -12,11 +12,11 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
 async function validate(req: Request) {
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
+    // await body('branch_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_id field is required')
+    //     .run(req);
 
     await body('title')
         .not()
@@ -79,11 +79,11 @@ async function store(
 
     /** store data into database */
     try {
-        data.update(inputs);
-        let task = await data.save();
-        let task_id = task.id;
+        (await data.update(inputs)).save();
+        // let task = await data.save();
+        let task_id = data.id;
 
-        if (task) {
+        if (data) {
             let inputs2 = {
                 branch_id: body.branch_id,
                 task_id: task_id,
@@ -101,12 +101,12 @@ async function store(
                 teacher_id: body.teacher_id || null,
                 admin_id: body.admin_id || null,
             };
-            taskVariantTasks.update(inputs2);
-            TaskGroupTasks.update(inputs3);
-            (await TaskUsers.update(inputs4)).save();
-            let task_variant_task = await taskVariantTasks.save();
-            let task_group_task = await TaskGroupTasks.save();
-            let task_users = await TaskUsers.save();
+            // taskVariantTasks.update(inputs2);
+            // TaskGroupTasks.update(inputs3);
+            // (await TaskUsers.update(inputs4)).save();
+            // let task_variant_task = await taskVariantTasks.save();
+            // let task_group_task = await TaskGroupTasks.save();
+            // let task_users = await TaskUsers.save();
         }
         return response(200, 'data created', data);
     } catch (error: any) {

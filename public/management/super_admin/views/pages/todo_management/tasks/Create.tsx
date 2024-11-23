@@ -67,6 +67,101 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
+                                    <label>Admin</label>
+                                    <div className="form_elements">
+                                        <select name="admin" id="">
+                                            <option value="admin1">
+                                                Admin1
+                                            </option>
+                                            <option value="running">
+                                                Admin2
+                                            </option>
+                                            <option value="completed">
+                                                Admin3
+                                            </option>
+                                            <option value="nexttime">
+                                                Admin4
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Teacher</label>
+                                    <div className="form_elements">
+                                        <select name="teacher" id="">
+                                            <option value="admin1">
+                                                Teacher1
+                                            </option>
+                                            <option value="running">
+                                                Teacher2
+                                            </option>
+                                            <option value="completed">
+                                                Teacher3
+                                            </option>
+                                            <option value="nexttime">
+                                                Teacher4
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Staff</label>
+                                    <div className="form_elements">
+                                        <select name="staff" id="">
+                                            <option value="admin1">
+                                                Staff1
+                                            </option>
+                                            <option value="running">
+                                                Staff2
+                                            </option>
+                                            <option value="completed">
+                                                Staff3
+                                            </option>
+                                            <option value="nexttime">
+                                                Staff4
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Task Variant</label>
+                                    <div className="form_elements">
+                                        <select name="task_variant" id="">
+                                            <option value="admin1">
+                                                Staff1
+                                            </option>
+                                            <option value="running">
+                                                Staff2
+                                            </option>
+                                            <option value="completed">
+                                                Staff3
+                                            </option>
+                                            <option value="nexttime">
+                                                Staff4
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Task Group</label>
+                                    <div className="form_elements">
+                                        <select name="task_group" id="">
+                                            <option value="admin1">
+                                                Staff1
+                                            </option>
+                                            <option value="running">
+                                                Staff2
+                                            </option>
+                                            <option value="completed">
+                                                Staff3
+                                            </option>
+                                            <option value="nexttime">
+                                                Staff4
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
                                     <label>Is Complete</label>
                                     <div className="form_elements">
                                         <select name="is_complete" id="">
