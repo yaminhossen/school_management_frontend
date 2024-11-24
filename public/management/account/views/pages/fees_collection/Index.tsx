@@ -62,10 +62,10 @@ const Index: React.FC<Props> = (props: Props) => {
                 formData,
             );
             // setResponseMessage('Form submitted successfully!');
-            setData('Form submitted successfully!');
-            (window as any).toaster('submitted'); // Clear any previous error
+            // setData('Form submitted successfully!');
+            (window as any).toaster('submitted');
             form.reset();
-            console.log('response', response);
+            // console.log('response', response);
         } catch (error) {
             // setError(error); // Set error state
             // setResponseMessage('Failed to submit form.');

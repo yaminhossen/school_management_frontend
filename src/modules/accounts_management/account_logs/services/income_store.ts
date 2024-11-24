@@ -13,12 +13,6 @@ import error_trace from '../helpers/error_trace';
 import moment from 'moment';
 
 async function validate(req: Request) {
-    // await body('start_date')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the start_date field is required')
-    //     .run(req);
-
     await body('receipt_no')
         .not()
         .isEmpty()
@@ -99,9 +93,6 @@ async function income_store(
             file: image_path,
         });
     }
-    console.log('leave fgbody', body);
-    console.log('leavehjghjg fgbody', body.attachment?.length);
-    console.log('leavehjghjg fgbody', income_attachments);
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: 1,
@@ -113,7 +104,6 @@ async function income_store(
         date: body.date,
         type: 'income',
     };
-    // console.log('income entry', inputs);
 
     /** print request data into console */
     // console.clear();

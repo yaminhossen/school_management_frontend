@@ -177,3 +177,8 @@
 {"level":60,"time":1732359301164,"pid":11636,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/task-variants/store"}
 {"level":60,"time":1732359416265,"pid":12464,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/super_admin/super_admin.js"}
 {"level":60,"time":1732359417418,"pid":12464,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/super_admin/super_admin.js.map"}
+{"level":60,"time":1732419096791,"pid":15484,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/accounts/accounts"}
+{"level":60,"time":1732419096797,"pid":15484,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/periods"}
+{"level":60,"time":1732419096802,"pid":15484,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
+{"level":60,"time":1732419262378,"pid":15484,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/accounts?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&select_fields=title,status,opening_balance"}
+{"level":60,"time":1732419272373,"pid":15484,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/accounts?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&select_fields=title,status,opening_balance"}

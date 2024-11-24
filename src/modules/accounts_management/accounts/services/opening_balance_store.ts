@@ -12,34 +12,46 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
 async function validate(req: Request) {
-    await body('account_name')
+    await body('branch_id')
         .not()
         .isEmpty()
-        .withMessage('the account_name field is required')
+        .withMessage('the branch_id field is required')
         .run(req);
 
-    await body('opening_balance')
+    await body('account_category_id')
         .not()
         .isEmpty()
-        .withMessage('the opening_balance field is required')
+        .withMessage('the account_category_id field is required')
         .run(req);
 
-    await body('account_number')
+    await body('account_id')
         .not()
         .isEmpty()
-        .withMessage('the account_number field is required')
+        .withMessage('the account_id field is required')
         .run(req);
 
-    await body('description')
+    await body('account_period_id')
         .not()
         .isEmpty()
-        .withMessage('the description field is required')
+        .withMessage('the account_period_id field is required')
         .run(req);
 
-    await body('date')
+    await body('money_receipt_book_id')
         .not()
         .isEmpty()
-        .withMessage('the date field is required')
+        .withMessage('the money_receipt_book_id field is required')
+        .run(req);
+
+    await body('amount')
+        .not()
+        .isEmpty()
+        .withMessage('the amount field is required')
+        .run(req);
+
+    await body('type')
+        .not()
+        .isEmpty()
+        .withMessage('the type field is required')
         .run(req);
 
     let result = await validationResult(req);
@@ -47,7 +59,7 @@ async function validate(req: Request) {
     return result;
 }
 
-async function store(
+async function opening_balance_store(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -60,15 +72,17 @@ async function store(
     /** initializations */
     let models = await db();
     let body = req.body as anyObject;
-    let data = new models.AccountsModel();
+    let data = new models.AccountLogsModel();
 
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: 1,
-        opening_balance: body.opening_balance,
-        title: body.account_name,
-        number: body.account_number,
-        description: body.description,
-        date: body.date,
+        branch_id: body.branch_id,
+        account_category_id: body.account_category_id,
+        account_id: body.account_log_id,
+        account_period_id: body.account_period_id,
+        money_receipt_book_id: body.money_receipt_book_id,
+        receipt_no: body.receipt_no,
+        amount: body.amount,
+        type: body.type,
     };
 
     /** print request data into console */
@@ -78,18 +92,6 @@ async function store(
     /** store data into database */
     try {
         (await data.update(inputs)).save();
-        if (data) {
-            let al_model = new models.AccountLogsModel();
-            let al_input: InferCreationAttributes<typeof al_model> = {
-                branch_id: 1,
-                account_id: data.id,
-                amount: body.opening_balance,
-                date: body.date,
-                type: 'income',
-                creator: 1,
-            };
-            (await al_model.update(al_input)).save();
-        }
         return response(200, 'data created', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
@@ -97,4 +99,4 @@ async function store(
     }
 }
 
-export default store;
+export default opening_balance_store;

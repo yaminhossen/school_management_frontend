@@ -19,17 +19,19 @@ const Account: React.FC<Props> = (props: Props) => {
                 formData,
             );
             // setResponseMessage('Form submitted successfully!');
-            setData('Form submitted successfully!'); // Clear any previous error
-            console.log('response', response);
+            setData('Form submitted successfully!');
+            (window as any).toaster('submitted');
+            e.target.reset();
+            // console.log('response', response);
         } catch (error) {
             // setError(error); // Set error state
             // setResponseMessage('Failed to submit form.');
-            console.log('data', error.msg);
+            // console.log('data', error.msg);
         }
         // console.log('data', error);
     };
     let date = moment().format('YYYY-MM-DD');
-    console.log('date', date);
+    // console.log('date', date);
     return (
         <div className="admin_dashboard">
             <div className="content_body">
