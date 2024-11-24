@@ -294,3 +294,5 @@
 {"level":60,"time":1732361955076,"pid":2880,"hostname":"DESKTOP-9421701","file":"services\\all.ts:110:15)","time":"11/23/2024 5:39:15 PM","message":"Unknown column 'name' in 'field list'"}
 {"level":60,"time":1732361957927,"pid":2880,"hostname":"DESKTOP-9421701","file":"services\\all.ts:110:15)","time":"11/23/2024 5:39:17 PM","message":"Unknown column 'name' in 'field list'"}
 {"level":60,"time":1732361958816,"pid":2880,"hostname":"DESKTOP-9421701","file":"services\\all.ts:110:15)","time":"11/23/2024 5:39:18 PM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1732438300232,"pid":13280,"hostname":"DESKTOP-9421701","file":"services\\month_wise_statement.ts:69:19)","time":"11/24/2024 2:51:40 PM","message":"No data found for the given period"}
+{"level":60,"time":1732439564171,"pid":2348,"hostname":"DESKTOP-9421701","file":"services\\month_wise_statement.ts:72:19)","time":"11/24/2024 3:12:44 PM","message":"No data found for the given period"}

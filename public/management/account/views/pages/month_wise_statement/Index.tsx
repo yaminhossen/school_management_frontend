@@ -10,33 +10,36 @@ export interface AccountLog {
     account_log: [];
     category: { title: string };
     created_at: string;
+    month: string;
+    total_income: string;
+    total_expense: string;
 }
 
 export interface TotalLog {
-    total_expense?: number;
-    total_income?: number;
-    total_income_query_days?: number;
-    total_expense_query_days?: number;
-    total_income_query_previous_days?: number;
-    total_expense_query_previous_days?: number;
+    grand_total_expense?: number;
+    grand_total_income?: number;
+    // total_income_query_days?: number;
+    // total_expense_query_days?: number;
+    // total_income_query_previous_days?: number;
+    // total_expense_query_previous_days?: number;
 }
 
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    const [totalIncome, setTotalIncome] = useState<TotalLog>({});
+    const [grandTotalIncome, setGrandTotalIncome] = useState<TotalLog>({});
     const [data, setData] = useState<AccountLog[]>([]);
 
-    const totalIncomeValue = totalIncome.total_income || 0;
-    const totalIncomeQueryValue = totalIncome.total_income_query_days || 0; // Defaults to 0 if undefined
-    const totalIncomeQueryPreviousValue =
-        totalIncome.total_income_query_previous_days || 0; // Defaults to 0 if undefined
+    // const totalIncomeValue = totalIncome.total_income || 0;
+    // const totalIncomeQueryValue = totalIncome?.total_income_query_days || 0;
+    // const totalIncomeQueryPreviousValue =
+    //     totalIncome.total_income_query_previous_days || 0;
 
     const fetchData = async () => {
         try {
-            let m1 = moment().subtract(30, 'days').format('YYYY-MM-DD');
-            let m2 = moment().format('YYYY-MM-DD');
+            let m1 = moment().subtract(12, 'months').format('YYYY-MM');
+            let m2 = moment().format('YYYY-MM');
             const formData: { month1?: string; month2?: string } = {};
             formData.month1 = m1;
             formData.month2 = m2;
@@ -46,7 +49,7 @@ const Index: React.FC<Props> = (props: Props) => {
                 formData,
             );
             setData(response.data.data.data);
-            setTotalIncome(response.data.data.data2);
+            setGrandTotalIncome(response.data.data.grand_totals);
         } catch (error) {
             setError(error);
         }
@@ -54,28 +57,22 @@ const Index: React.FC<Props> = (props: Props) => {
 
     useEffect(() => {
         fetchData();
-    }, []); // Trigger fetch when dates change
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         let formData = new FormData(e.target);
         try {
             const response = await axios.post(
-                '/api/v1/account-logs/credit',
+                '/api/v1/account-logs/month-wise-statement',
                 formData,
             );
             setData(response.data.data.data);
-            setTotalIncome(response.data.data.data2);
+            setGrandTotalIncome(response.data.data.grand_totals);
         } catch (error) {
             setError(error);
         }
     };
-
-    const tenDaysBefore = moment().subtract(30, 'days').format('YYYY-MM-DD');
-
-    // console.log(data);
-    // console.log(totalIncome);
-    // console.log('tenDaysBefore', tenDaysBefore);
 
     return (
         <div className="admin_dashboard">
@@ -86,11 +83,11 @@ const Index: React.FC<Props> = (props: Props) => {
                             <div>Start Date</div>
                             <div>
                                 <input
-                                    type="date"
+                                    type="month"
                                     name="month1"
                                     defaultValue={moment()
-                                        .subtract(30, 'days')
-                                        .format('YYYY-MM-DD')}
+                                        .subtract(12, 'months')
+                                        .format('YYYY-MM')}
                                 />
                             </div>
                         </div>
@@ -98,9 +95,9 @@ const Index: React.FC<Props> = (props: Props) => {
                             <div>End Date</div>
                             <div>
                                 <input
-                                    type="date"
+                                    type="month"
                                     name="month2"
-                                    defaultValue={moment().format('YYYY-MM-DD')}
+                                    defaultValue={moment().format('YYYY-MM')}
                                 />
                             </div>
                         </div>
@@ -119,57 +116,48 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
-                                    <th>Purpose</th>
-                                    <th>Date</th>
-                                    <th>Account</th>
-                                    <th>Amount</th>
+                                    <th>Month</th>
+                                    <th>Total Income</th>
+                                    <th>Total Expence</th>
+                                    <th>Balance</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                <tr>
-                                    <td></td>
-                                    <td>Previous Data</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Total:</td>
-                                    <td>{totalIncomeQueryPreviousValue} tk</td>
-                                </tr>
                                 {data.map((i, index) => (
                                     <tr key={index}>
                                         <td></td>
                                         <td>{index + 1}</td>
-                                        <td>{i.category?.title}</td>
                                         <td>
-                                            {moment(i.created_at).format(
-                                                'YYYY-MM-DD',
-                                            )}
+                                            {moment(i.month).format('MMM-YYYY')}
                                         </td>
-                                        <td>{i.account?.title}</td>
+                                        <td>{i.total_income}</td>
+                                        <td>{i.total_expense}</td>
                                         <td>
+                                            {i.total_income - i.total_expense}{' '}
+                                            tk
+                                        </td>
+                                        {/* <td>
                                             {i.type === 'income'
                                                 ? i.amount
                                                 : '-'}
-                                        </td>
+                                        </td> */}
                                     </tr>
                                 ))}
                                 <tr>
                                     <td></td>
-                                    <td>Present Data</td>
-                                    <td></td>
                                     <td></td>
                                     <td>Total:</td>
-                                    <td>{totalIncomeQueryValue} tk</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>All Data</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>Grand Total:</td>
                                     <td>
-                                        {totalIncomeValue}
-                                        tk
+                                        {grandTotalIncome.grand_total_income} tk
                                     </td>
+                                    <td>
+                                        {grandTotalIncome.grand_total_expense} tk
+                                    </td>
+                                    <td>
+                                        {grandTotalIncome.grand_total_income -
+                                            grandTotalIncome.grand_total_expense} tk
+                                    </td>
+                                    {/* <td>{totalIncomeQueryValue} tk</td> */}
                                 </tr>
                             </tbody>
                         </table>
