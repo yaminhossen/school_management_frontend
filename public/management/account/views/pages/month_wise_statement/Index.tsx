@@ -28,25 +28,21 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalIncome, setTotalIncome] = useState<TotalLog>({});
     const [data, setData] = useState<AccountLog[]>([]);
 
-    const totalExpenseValue = totalIncome.total_expense || 0; // Defaults to 0 if undefined
     const totalIncomeValue = totalIncome.total_income || 0;
     const totalIncomeQueryValue = totalIncome.total_income_query_days || 0; // Defaults to 0 if undefined
-    const totalExpenseQueryValue = totalIncome.total_expense_query_days || 0;
     const totalIncomeQueryPreviousValue =
         totalIncome.total_income_query_previous_days || 0; // Defaults to 0 if undefined
-    const totalExpenseQueryPreviousValue =
-        totalIncome.total_expense_query_previous_days || 0;
 
     const fetchData = async () => {
         try {
-            let m1 = moment().subtract(10, 'days').format('YYYY-MM-DD');
+            let m1 = moment().subtract(30, 'days').format('YYYY-MM-DD');
             let m2 = moment().format('YYYY-MM-DD');
             const formData: { month1?: string; month2?: string } = {};
             formData.month1 = m1;
             formData.month2 = m2;
 
             const response = await axios.post(
-                '/api/v1/account-logs/journal',
+                '/api/v1/account-logs/month-wise-statement',
                 formData,
             );
             setData(response.data.data.data);
@@ -65,7 +61,7 @@ const Index: React.FC<Props> = (props: Props) => {
         let formData = new FormData(e.target);
         try {
             const response = await axios.post(
-                '/api/v1/account-logs/journal',
+                '/api/v1/account-logs/credit',
                 formData,
             );
             setData(response.data.data.data);
@@ -74,7 +70,8 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
-    const tenDaysBefore = moment().subtract(10, 'days').format('YYYY-MM-DD');
+
+    const tenDaysBefore = moment().subtract(30, 'days').format('YYYY-MM-DD');
 
     // console.log(data);
     // console.log(totalIncome);
@@ -92,7 +89,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     type="date"
                                     name="month1"
                                     defaultValue={moment()
-                                        .subtract(10, 'days')
+                                        .subtract(30, 'days')
                                         .format('YYYY-MM-DD')}
                                 />
                             </div>
@@ -124,9 +121,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th>Serial</th>
                                     <th>Purpose</th>
                                     <th>Date</th>
-                                    <th>Debit</th>
-                                    <th>Credit</th>
-                                    <th>Balance</th>
+                                    <th>Account</th>
+                                    <th>Amount</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -134,14 +130,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td></td>
                                     <td>Previous Data</td>
                                     <td></td>
+                                    <td></td>
                                     <td>Total:</td>
-                                    <td>{totalExpenseQueryPreviousValue} tk</td>
                                     <td>{totalIncomeQueryPreviousValue} tk</td>
-                                    <td>
-                                        {totalIncomeQueryPreviousValue -
-                                            totalExpenseQueryPreviousValue}{' '}
-                                        tk
-                                    </td>
                                 </tr>
                                 {data.map((i, index) => (
                                     <tr key={index}>
@@ -153,47 +144,30 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 'YYYY-MM-DD',
                                             )}
                                         </td>
-                                        <td>
-                                            {i.type === 'expense'
-                                                ? i.amount
-                                                : '-'}
-                                        </td>
+                                        <td>{i.account?.title}</td>
                                         <td>
                                             {i.type === 'income'
                                                 ? i.amount
                                                 : '-'}
                                         </td>
-                                        <td>-</td>
                                     </tr>
                                 ))}
                                 <tr>
                                     <td></td>
                                     <td>Present Data</td>
                                     <td></td>
+                                    <td></td>
                                     <td>Total:</td>
-                                    <td>{totalExpenseQueryValue} tk</td>
                                     <td>{totalIncomeQueryValue} tk</td>
-                                    <td>
-                                        {totalIncomeQueryValue -
-                                            totalExpenseQueryValue}{' '}
-                                        tk
-                                    </td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>All Data</td>
                                     <td></td>
+                                    <td></td>
                                     <td>Grand Total:</td>
                                     <td>
-                                        {totalExpenseValue}
-                                        tk
-                                    </td>
-                                    <td>
                                         {totalIncomeValue}
-                                        tk
-                                    </td>
-                                    <td>
-                                        {totalIncomeValue - totalExpenseValue}
                                         tk
                                     </td>
                                 </tr>

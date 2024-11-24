@@ -12,6 +12,10 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(`${prefix}`, controllerInstance.all)
         .post(`${prefix}/credit`, controllerInstance.credit)
         .post(
+            `${prefix}/month-wise-statement`,
+            controllerInstance.month_wise_statement,
+        )
+        .post(
             `${prefix}/payment-history/:id`,
             controllerInstance.payment_history,
         )

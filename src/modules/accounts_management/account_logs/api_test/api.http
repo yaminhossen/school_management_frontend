@@ -1,5 +1,5 @@
-@hostname = http://127.0.0.1:5002/api/v1/account-logs
-@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidG9rZW4iOiJxNm85anE4ZiIsInVzZXJfYWdlbnQiOiJ2c2NvZGUtcmVzdGNsaWVudCIsImlhdCI6MTcxNTQ5MzE0NH0.XAq9b9sahDzxrjSeuF1OS5WPFTjbhg_28ozJpx6odC4
+@hostname = http://127.0.0.1:5003/api/v1/account-logs
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidG9rZW4iOiJlOHYwZXZrYyIsInVzZXJfYWdlbnQiOiJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvMTMxLjAuMC4wIFNhZmFyaS81MzcuMzYiLCJ1c2VyX3R5cGUiOiJzdGFmZiIsImlhdCI6MTczMjQxOTEyN30.o9VedKOMPtQRI8UyZd1fFBdLtmmG-SiM9S1OcE3LOqI
 
 # all
 ###
@@ -12,6 +12,10 @@ GET {{hostname}}/1 HTTP/1.1
 # get
 ###
 GET {{hostname}}/credit HTTP/1.1
+
+# get
+###
+GET {{hostname}}/month-wise-statement HTTP/1.1
 
 # get
 ###

@@ -28,11 +28,20 @@ import journal from './services/journal';
 import profit_loss from './services/profit_and_loss';
 import fees_store from './services/fees_store';
 import payment_history from './services/payment_history';
+import month_wise_statement from './services/month_wise_statement';
 
 export default function (fastify: FastifyInstance) {
     return {
         all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        month_wise_statement: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await month_wise_statement(fastify, req);
             res.code(data.status).send(data);
         },
 

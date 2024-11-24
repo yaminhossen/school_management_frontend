@@ -16,6 +16,7 @@ import ledger_routes from '../views/pages/ledger/config/routes';
 import profit_loss_routes from '../views/pages/profit_loss/config/routes';
 import due_list_routes from '../views/pages/due_list/config/routes';
 import fees_collection_routes from '../views/pages/fees_collection/config/routes';
+import month_wise_statement from '../views/pages/month_wise_statement/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
@@ -36,6 +37,7 @@ const router: RouteTypes[] = [
             profit_loss_routes,
             due_list_routes,
             fees_collection_routes,
+            month_wise_statement,
             {
                 path: '',
                 element: <T1 />,

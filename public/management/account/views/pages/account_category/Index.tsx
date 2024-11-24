@@ -37,7 +37,7 @@ const Index: React.FC<Props> = (props: Props) => {
         fetchData();
     }, []);
 
-    console.log(data);
+    // console.log(data);
 
     return (
         <div className="admin_dashboard">

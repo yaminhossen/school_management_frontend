@@ -40,7 +40,7 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
     function (response) {
-        console.log('response ok', response);
+        // console.log('response ok', response);
         if (response.status == 217) {
             location.href = '/account/login';
         }

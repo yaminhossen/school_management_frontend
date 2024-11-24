@@ -20,7 +20,7 @@ const CategoryCreate: React.FC<Props> = (props: Props) => {
             );
             // setResponseMessage('Form submitted successfully!');
             setData('Form submitted successfully!'); // Clear any previous error
-            console.log('response', response);
+            // console.log('response', response);
         } catch (error) {
             // setError(error); // Set error state
             // setResponseMessage('Failed to submit form.');
@@ -29,7 +29,7 @@ const CategoryCreate: React.FC<Props> = (props: Props) => {
         // console.log('data', error);
     };
     let date = moment().format('YYYY-MM-DD');
-    console.log('date', date);
+    // console.log('date', date);
 
     return (
         <div className="admin_dashboard">

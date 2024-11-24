@@ -120,7 +120,7 @@ const Index: React.FC<Props> = (props: Props) => {
             setFeesTypes([]);
         }
     };
-    console.log('window amount', classes);
+    // console.log('window amount', classes);
     // console.log('window amount error', error2);
     const fetchTypes = async (id: string) => {
         try {
@@ -134,8 +134,8 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
-    console.log('Fees types', feesTypes);
-    console.log('Fees errors', error);
+    // console.log('Fees types', feesTypes);
+    // console.log('Fees errors', error);
 
     useEffect(() => {
         fetchAccounts();
@@ -145,7 +145,7 @@ const Index: React.FC<Props> = (props: Props) => {
     }, []);
     const handleStudentIdBlur = () => {
         const id = studentIdRef.current?.value; // Get the value from the ref
-        console.log('studnet_id', id);
+        // console.log('studnet_id', id);
 
         if (id) {
             fetchClass(id); // Pass the id to fetchClass

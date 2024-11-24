@@ -85,13 +85,13 @@ const Index: React.FC<Props> = (props: Props) => {
         }
     }
     let newBalance = intlAmount(totalIncomeValue, totalExpenseValue);
-    console.log('newBalance', newBalance);
+    // console.log('newBalance', newBalance);
 
-    if (data) {
-        console.log('total didscount', data);
-    }
-    console.log(totalIncome);
-    console.log('tenDaysBefore', tenDaysBefore);
+    // if (data) {
+    //     console.log('total didscount', data);
+    // }
+    // console.log(totalIncome);
+    // console.log('tenDaysBefore', tenDaysBefore);
 
     return (
         <div className="admin_dashboard">
@@ -141,24 +141,26 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {data?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td></td>
-                                            {/* <td>{i.date}</td> */}
-                                            <td>{i.category}</td>
-                                            {/* <td>{i.total_income} tk</td> */}
-                                            <td>
-                                                {new Intl.NumberFormat().format(
-                                                    i.total_income,
-                                                )}{' '}
-                                                tk
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
+                                {data?.map(
+                                    (i: { [key: string]: any }, index) => {
+                                        return (
+                                            <tr>
+                                                <td></td>
+                                                <td>{index + 1}</td>
+                                                <td></td>
+                                                {/* <td>{i.date}</td> */}
+                                                <td>{i.category}</td>
+                                                {/* <td>{i.total_income} tk</td> */}
+                                                <td>
+                                                    {new Intl.NumberFormat().format(
+                                                        i.total_income,
+                                                    )}{' '}
+                                                    tk
+                                                </td>
+                                            </tr>
+                                        );
+                                    },
+                                )}
                                 <tr>
                                     <td></td>
                                     <td></td>
@@ -173,24 +175,26 @@ const Index: React.FC<Props> = (props: Props) => {
                                         tk
                                     </td>
                                 </tr>
-                                {data?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td></td>
-                                            {/* <td>{i.date}</td> */}
-                                            <td>{i.category}</td>
-                                            {/* <td>{i.total_expense} tk</td> */}
-                                            <td>
-                                                {new Intl.NumberFormat().format(
-                                                    i.total_expense,
-                                                )}{' '}
-                                                tk
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
+                                {data?.map(
+                                    (i: { [key: string]: any }, index) => {
+                                        return (
+                                            <tr>
+                                                <td></td>
+                                                <td>{index + 1}</td>
+                                                <td></td>
+                                                {/* <td>{i.date}</td> */}
+                                                <td>{i.category}</td>
+                                                {/* <td>{i.total_expense} tk</td> */}
+                                                <td>
+                                                    {new Intl.NumberFormat().format(
+                                                        i.total_expense,
+                                                    )}{' '}
+                                                    tk
+                                                </td>
+                                            </tr>
+                                        );
+                                    },
+                                )}
                                 <tr>
                                     <td></td>
                                     <td></td>

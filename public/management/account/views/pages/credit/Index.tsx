@@ -121,6 +121,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th>Serial</th>
                                     <th>Purpose</th>
                                     <th>Date</th>
+                                    <th>Account</th>
                                     <th>Amount</th>
                                 </tr>
                             </thead>
@@ -128,6 +129,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <td></td>
                                     <td>Previous Data</td>
+                                    <td></td>
                                     <td></td>
                                     <td>Total:</td>
                                     <td>{totalIncomeQueryPreviousValue} tk</td>
@@ -142,6 +144,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 'YYYY-MM-DD',
                                             )}
                                         </td>
+                                        <td>{i.account?.title}</td>
                                         <td>
                                             {i.type === 'income'
                                                 ? i.amount
@@ -153,12 +156,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td></td>
                                     <td>Present Data</td>
                                     <td></td>
+                                    <td></td>
                                     <td>Total:</td>
                                     <td>{totalIncomeQueryValue} tk</td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>All Data</td>
+                                    <td></td>
                                     <td></td>
                                     <td>Grand Total:</td>
                                     <td>

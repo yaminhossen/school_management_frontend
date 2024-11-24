@@ -93,9 +93,9 @@ const Index: React.FC<Props> = (props: Props) => {
     // };
     const tenDaysBefore = moment().subtract(30, 'days').format('YYYY-MM-DD');
 
-    console.log(data);
-    console.log(totalIncome);
-    console.log('tenDaysBefore', tenDaysBefore);
+    // console.log(data);
+    // console.log(totalIncome);
+    // console.log('tenDaysBefore', tenDaysBefore);
 
     return (
         <div className="admin_dashboard">

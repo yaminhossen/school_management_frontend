@@ -51,7 +51,7 @@ const Index: React.FC<Props> = () => {
         setIncome(totalIncome);
         setExpense(totalExpense);
     }, [data]);
-    console.log('expens', data);
+    // console.log('expens', data);
     // let totalIncomea = 0;
     // let totalExpenseb = 0;
     // function dateFormate(amount: number) {

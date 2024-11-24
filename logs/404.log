@@ -182,3 +182,7 @@
 {"level":60,"time":1732419096802,"pid":15484,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
 {"level":60,"time":1732419262378,"pid":15484,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/accounts?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&select_fields=title,status,opening_balance"}
 {"level":60,"time":1732419272373,"pid":15484,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/accounts?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&select_fields=title,status,opening_balance"}
+{"level":60,"time":1732426944963,"pid":9148,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/account/account.js"}
+{"level":60,"time":1732427946466,"pid":9148,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/teacher-classes/1"}
+{"level":60,"time":1732427948085,"pid":9148,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignment-categories/all-categories"}
+{"level":60,"time":1732427948089,"pid":9148,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/class-wise-teacher"}

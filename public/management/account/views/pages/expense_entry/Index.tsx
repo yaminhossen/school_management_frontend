@@ -20,6 +20,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState('');
     const [accounts, setAccounts] = useState<Accountinfo[]>([]);
     const [categories, setCategories] = useState<Categoryinfo[]>([]);
+    const [file, setFile] = useState<any>();
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         let formData = new FormData(e.target);
@@ -34,11 +35,11 @@ const Index: React.FC<Props> = (props: Props) => {
             setData('Form submitted successfully!'); // Clear any previous error
             (window as any).toaster('submitted');
             e.target.reset();
-            console.log('response', response);
+            // console.log('response', response);
         } catch (error) {
             // setError(error); // Set error state
             // setResponseMessage('Failed to submit form.');
-            console.log('data', error.msg);
+            // console.log('data', error.msg);
         }
         // console.log('data', error);
     };
@@ -60,13 +61,17 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
+    function getFile(e) {
+        setFile(URL.createObjectURL(e.target.files[0]));
+        console.log('file3', file);
+    }
 
     useEffect(() => {
         fetchAccounts();
         fetchAccountCategorys();
     }, []);
-    console.log('account', accounts);
-    console.log('category', categories);
+    // console.log('account', accounts);
+    // console.log('category', categories);
     let date = moment().format('YYYY-MM-DD');
 
     return (
@@ -201,7 +206,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                 multiple
                                 accept="image/*"
                                 name="attachment"
+                                onChange={getFile}
                             />
+                        </div>
+                    </div>
+                    <div className="form-group form-horizontal">
+                        <label></label>
+                        <div className="form_elements">
+                            <a target="blank" href={file}>
+                                <img
+                                    src={file}
+                                    className="img-80"
+                                    alt="Preview image"
+                                />
+                            </a>
                         </div>
                     </div>
                     <div className="form-group form-horizontal">

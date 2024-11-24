@@ -72,9 +72,9 @@ const Index: React.FC<Props> = (props: Props) => {
     };
     const tenDaysBefore = moment().subtract(30, 'days').format('YYYY-MM-DD');
 
-    console.log(data);
-    console.log(totalIncome);
-    console.log('tenDaysBefore', tenDaysBefore);
+    // console.log(data);
+    // console.log(totalIncome);
+    // console.log('tenDaysBefore', tenDaysBefore);
 
     return (
         <div className="admin_dashboard">
@@ -120,6 +120,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th>Serial</th>
                                     <th>Purpose</th>
                                     <th>Date</th>
+                                    <th>Account</th>
                                     <th>Amount</th>
                                 </tr>
                             </thead>
@@ -127,6 +128,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <td></td>
                                     <td>Previous Data</td>
+                                    <td></td>
                                     <td></td>
                                     <td>Total:</td>
                                     <td>{totalExpenseQueryPreviousValue} tk</td>
@@ -141,6 +143,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 'YYYY-MM-DD',
                                             )}
                                         </td>
+                                        <td>{i.account?.title}</td>
                                         <td>
                                             {i.type === 'expense'
                                                 ? i.amount
@@ -152,12 +155,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td></td>
                                     <td>Present Data</td>
                                     <td></td>
+                                    <td></td>
                                     <td>Total:</td>
                                     <td>{totalExpenseQueryValue} tk</td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>All Data</td>
+                                    <td></td>
                                     <td></td>
                                     <td>Grand Total:</td>
                                     <td>{totalExpenseValue} tk</td>
