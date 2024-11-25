@@ -23,6 +23,9 @@ const Details: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(details({ id: params.id }) as any);
     }, []);
+    if (state.item) {
+        console.log('state data', state.item);
+    }
 
     return (
         <>
@@ -35,14 +38,19 @@ const Details: React.FC<Props> = (props: Props) => {
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
                                     <tr>
-                                        <td>Name</td>
+                                        <td>Title</td>
                                         <td>:</td>
-                                        <td>{state.item.name}</td>
+                                        <td>{state.item.title}</td>
                                     </tr>
                                     <tr>
-                                        <td>Preffered Name</td>
+                                        <td>Color</td>
                                         <td>:</td>
-                                        <td>{state.item.email}</td>
+                                        <td>{state.item.color}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>:</td>
+                                        <td>{state.item.description}</td>
                                     </tr>
                                 </tbody>
                             </table>

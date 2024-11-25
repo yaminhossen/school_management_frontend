@@ -1,48 +1,17 @@
-/**
- * account dashboard e accounts category group tabel lagbe.
- * profit and loss menu lagbe.
- * https://701e-45-118-60-6.ngrok-free.app
- * const demoArray = [
- *  {
- *
- *  }
- * ]
- * ki ki subject porai
- * subject er upor ekta loop chole
- *  ei subject and ei teacher abar kon kon classe porai relation with routine_day_times
- *      ekta loop colbe
- *          loop vitore sat diner ekta loop colbe
- *             if routine_day_times.day, teacher, class same thake
- */
+function splitAndSum(data, delimiter) {
+    // Split the string by the given delimiter
+    const numbers = data.split(delimiter);
 
-// let routine = [];
-// let teacher_subjects = [];
-// for (let index = 0; index < teacher_subjects.length; index++) {
-//     const subject = teacher_subjects[index];
+    // Convert to integers and calculate the sum
+    const sum = numbers.reduce(
+        (total, num) => total + parseInt(num.trim(), 16),
+        0,
+    );
 
-//     let teacher_subjects_class = [];
+    return sum;
+}
 
-//     for (let index = 0; index < teacher_subjects_class.length; index++) {
-//         const subject_class = teacher_subjects_class[index];
-
-//         let class_routine_with_day_time = [];
-
-//         for (
-//             let index = 0;
-//             index < class_routine_with_day_time.length;
-//             index++
-//         ) {
-//             const routine = class_routine_with_day_time[index];
-
-//             let temp = {
-//                 subjame: subject.name,
-//                 class_name: subject_class.name,
-//             };
-
-//             let seven_days = [1, 2, 3, 4, 5, 6, 7];
-//             for (let index = 0; index < seven_days.length; index++) {
-//                 const element = seven_days[index];
-//             }
-//         }
-//     }
-// }
+// Example usage:
+const data = '234,342,754,34,867,982,672,23';
+const delimiter = ',';
+console.log(splitAndSum(data, delimiter));

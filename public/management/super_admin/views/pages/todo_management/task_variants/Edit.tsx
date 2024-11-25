@@ -53,6 +53,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             type="text"
                                             placeholder="title"
                                             name="title"
+                                            defaultValue={state.item.title}
                                         />
                                     </div>
                                 </div>
@@ -63,6 +64,9 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             name="description"
                                             id=""
                                             placeholder="description"
+                                            defaultValue={
+                                                state.item.description
+                                            }
                                         ></textarea>
                                     </div>
                                 </div>
@@ -73,6 +77,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             name="color"
                                             id=""
                                             placeholder="color"
+                                            defaultValue={state.item.color}
                                         ></textarea>
                                     </div>
                                 </div>

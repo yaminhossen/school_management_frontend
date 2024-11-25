@@ -61,6 +61,7 @@ async function store(
         title: body.title,
         color: body.color,
         description: body.description,
+        creator: 1,
     };
 
     /** print request data into console */

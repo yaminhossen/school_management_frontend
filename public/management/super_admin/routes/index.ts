@@ -31,6 +31,7 @@ import salary_payments_routes from "../views/pages/account_management/salary_pay
 import academic_calendars_routes from "../views/pages/calendar_management/academic_calendars/config/routes";
 import tasks_routes from "../views/pages/todo_management/tasks/config/routes";
 import task_variants_routes from "../views/pages/todo_management/task_variants/config/routes";
+import task_groups_routes from "../views/pages/todo_management/task_groups/config/routes";
 
 interface RouteTypes extends NonIndexRouteObject {
     
@@ -74,6 +75,7 @@ const router: RouteTypes[] = [
             academic_calendars_routes,
             tasks_routes,
             task_variants_routes,
+            task_groups_routes,
         ],
     },
 ];

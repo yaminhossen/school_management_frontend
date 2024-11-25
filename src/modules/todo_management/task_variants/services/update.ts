@@ -18,11 +18,11 @@ async function validate(req: Request) {
         .withMessage('the id field is required')
         .run(req);
 
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
+    // await body('branch_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_id field is required')
+    //     .run(req);
 
     await body('title')
         .not()
@@ -62,8 +62,15 @@ async function update(
     let body = req.body as anyObject;
     let model = new models.TaskVariantsModel();
 
+    let auth_user = await models.UserAdminsModel.findOne({
+        where: {
+            id: (req as any).user.id,
+        },
+    });
+
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: body.branch_id,
+        // branch_id: auth_user?.branch_id || 0,
+        branch_id: 1,
         title: body.title,
         color: body.color,
         description: body.description,
