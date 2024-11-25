@@ -11,7 +11,6 @@ async function income_statement(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
-    let accountCategoriesModel = models.AccountCategoriesModel;
     let query_param = req.query as any;
 
     const { Op } = require('sequelize');
@@ -30,41 +29,13 @@ async function income_statement(
     let query: FindAndCountOptions = {
         order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
         where: {
-            // type: 'income',
             status: show_active_data == 'true' ? 'active' : 'deactive',
         },
-        // include: [
-        //     {
-        //         model: accountCategoriesModel,
-        //         as: 'category',
-        //     },
-        // ],
     };
 
     if (select_fields.length) {
         query.attributes = select_fields;
     }
-    // query.attributes = [
-    //     ...select_fields,
-    //     [
-    //         Sequelize.literal(`(
-    //                     SELECT SUM(logs.amount)
-    //                     FROM account_logs AS logs
-    //                     WHERE
-    //                         logs.type = "income"
-    //                 )`),
-    //         'total_income',
-    //     ],
-    //     [
-    //         Sequelize.literal(`(
-    //                     SELECT SUM(logs.amount)
-    //                     FROM account_logs AS logs
-    //                     WHERE
-    //                         logs.type = "expense"
-    //                 )`),
-    //         'total_expense',
-    //     ],
-    // ];
 
     if (search_key) {
         query.where = {

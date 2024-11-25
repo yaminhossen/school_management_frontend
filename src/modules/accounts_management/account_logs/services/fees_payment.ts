@@ -12,12 +12,6 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
 async function validate(req: Request) {
-    // await body('branch_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the branch_id field is required')
-    //     .run(req);
-
     // await body('account_category_id')
     //     .not()
     //     .isEmpty()
@@ -86,7 +80,6 @@ async function store(
         date: body.date,
         type: body.type,
     };
-    // console.log('body for fees', body);
 
     /** print request data into console */
     // console.clear();

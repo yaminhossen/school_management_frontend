@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../common_types/object';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Accountinfo {
@@ -23,32 +21,25 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalAmount, setTotalAmount] = useState(0);
     const [file, setFile] = useState<any>();
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
+        e.preventDefault();
         let formData = new FormData(e.target);
 
         try {
-            // Make POST request with form data
             const response = await axios.post(
                 '/api/v1/account-logs/income-store',
                 formData,
             );
-            // setResponseMessage('Form submitted successfully!');
-            setData('Form submitted successfully!'); // Clear any previous error
+            setData('Form submitted successfully!');
             (window as any).toaster('submitted');
             e.target.reset();
-            // console.log('response', response);
         } catch (error) {
-            // setError(error); // Set error state
-            // setResponseMessage('Failed to submit form.');
-            // console.log('data', error.msg);
+            // setError(error);
         }
-        // console.log('data', error);
     };
     const fetchAccounts = async () => {
         try {
             const response = await axios.get('/api/v1/accounts/accounts');
             setAccounts(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -57,7 +48,6 @@ const Index: React.FC<Props> = (props: Props) => {
         try {
             const response = await axios.get('/api/v1/account-categories/all');
             setCategories(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -71,8 +61,6 @@ const Index: React.FC<Props> = (props: Props) => {
         fetchAccounts();
         fetchAccountCategorys();
     }, []);
-    // console.log('account', accounts);
-    // console.log('category', categories);
     let date = moment().format('YYYY-MM-DD');
 
     return (
@@ -113,18 +101,6 @@ const Index: React.FC<Props> = (props: Props) => {
                             </select>
                         </div>
                     </div>
-                    {/* <div className="form-group form-horizontal">
-                        <label>Account Number</label>
-                        <div className="form_elements">
-                            <select name="account_number" id="">
-                                <option value="1">01847834</option>
-                                <option value="1">01294083</option>
-                                <option value="1">09234328</option>
-                                <option value="1">29038432</option>
-                                <option value="1">29384902</option>
-                            </select>
-                        </div>
-                    </div> */}
                     <div className="form-group form-horizontal">
                         <label>Customer Name</label>
                         <div className="form_elements">
@@ -179,16 +155,6 @@ const Index: React.FC<Props> = (props: Props) => {
                             />
                         </div>
                     </div>
-                    {/* <div className="form-group form-horizontal">
-                        <label>Amount in text</label>
-                        <div className="form_elements">
-                            <input
-                                type="text"
-                                name="amount_in_text"
-                                placeholder="Amount in text"
-                            />
-                        </div>
-                    </div> */}
                     <div className="form-group form-horizontal">
                         <label>Date</label>
                         <div className="form_elements">

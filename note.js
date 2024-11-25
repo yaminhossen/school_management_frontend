@@ -35,7 +35,7 @@
 //             const routine = class_routine_with_day_time[index];
 
 //             let temp = {
-//                 subject_name: subject.name,
+//                 subjame: subject.name,
 //                 class_name: subject_class.name,
 //             };
 

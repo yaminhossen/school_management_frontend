@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 
@@ -27,17 +26,11 @@ const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [totalIncome, setTotalIncome] = useState<TotalLog>({});
     const [data, setData] = useState<AccountLog[]>([]);
-    const [startDate, setStartDate] = useState<string>(''); // For first date input
-    const [endDate, setEndDate] = useState<string>(''); // For second date input
 
-    const totalExpenseValue = totalIncome.total_expense || 0; // Defaults to 0 if undefined
     const totalIncomeValue = totalIncome.total_income || 0;
-    const totalIncomeQueryValue = totalIncome.total_income_query_days || 0; // Defaults to 0 if undefined
-    const totalExpenseQueryValue = totalIncome.total_expense_query_days || 0;
+    const totalIncomeQueryValue = totalIncome.total_income_query_days || 0;
     const totalIncomeQueryPreviousValue =
-        totalIncome.total_income_query_previous_days || 0; // Defaults to 0 if undefined
-    const totalExpenseQueryPreviousValue =
-        totalIncome.total_expense_query_previous_days || 0;
+        totalIncome.total_income_query_previous_days || 0;
 
     const fetchData = async () => {
         try {
@@ -60,15 +53,12 @@ const Index: React.FC<Props> = (props: Props) => {
 
     useEffect(() => {
         fetchData();
-    }, []); // Trigger fetch when dates change
+    }, []);
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
+        e.preventDefault();
         let formData = new FormData(e.target);
         try {
-            // const params: { startDate?: string; endDate?: string } = {};
-            // if (startDate) params.startDate = startDate;
-            // if (endDate) params.endDate = endDate;
             const response = await axios.post(
                 '/api/v1/account-logs/credit',
                 formData,
@@ -79,23 +69,6 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
-
-    // const handleStartDateChange = (
-    //     event: React.ChangeEvent<HTMLInputElement>,
-    // ) => {
-    //     setStartDate(event.target.value);
-    // };
-
-    // const handleEndDateChange = (
-    //     event: React.ChangeEvent<HTMLInputElement>,
-    // ) => {
-    //     setEndDate(event.target.value);
-    // };
-    const tenDaysBefore = moment().subtract(30, 'days').format('YYYY-MM-DD');
-
-    // console.log(data);
-    // console.log(totalIncome);
-    // console.log('tenDaysBefore', tenDaysBefore);
 
     return (
         <div className="admin_dashboard">
@@ -111,8 +84,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     defaultValue={moment()
                                         .subtract(30, 'days')
                                         .format('YYYY-MM-DD')}
-                                    // value={startDate}
-                                    // onChange={handleStartDateChange}
                                 />
                             </div>
                         </div>
@@ -123,8 +94,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     type="date"
                                     name="month2"
                                     defaultValue={moment().format('YYYY-MM-DD')}
-                                    // value={endDate}
-                                    // onChange={handleEndDateChange}
                                 />
                             </div>
                         </div>
@@ -145,8 +114,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th>Serial</th>
                                     <th>Purpose</th>
                                     <th>Date</th>
-                                    {/* <th>Debit</th>
-                                    <th>Credit</th> */}
                                     <th>Amount</th>
                                 </tr>
                             </thead>
@@ -156,13 +123,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td>Previous Data</td>
                                     <td></td>
                                     <td>Total:</td>
-                                    {/* <td>{totalExpenseQueryPreviousValue} tk</td> */}
                                     <td>{totalIncomeQueryPreviousValue} tk</td>
-                                    {/* <td>
-                                        {totalIncomeQueryPreviousValue -
-                                            totalExpenseQueryPreviousValue}{' '}
-                                        tk
-                                    </td> */}
                                 </tr>
                                 {data.map((i, index) => (
                                     <tr key={index}>
@@ -174,17 +135,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 'YYYY-MM-DD',
                                             )}
                                         </td>
-                                        {/* <td>
-                                            {i.type === 'expense'
-                                                ? i.amount
-                                                : '-'}
-                                        </td> */}
                                         <td>
                                             {i.type === 'income'
                                                 ? i.amount
                                                 : '-'}
                                         </td>
-                                        {/* <td>-</td> */}
                                     </tr>
                                 ))}
                                 <tr>
@@ -192,41 +147,17 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td>Present Data</td>
                                     <td></td>
                                     <td>Total:</td>
-                                    {/* <td>{totalExpenseQueryValue} tk</td> */}
                                     <td>{totalIncomeQueryValue} tk</td>
-                                    {/* <td>
-                                        {totalIncomeQueryValue -
-                                            totalExpenseQueryValue}{' '}
-                                        tk
-                                    </td> */}
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>All Data</td>
                                     <td></td>
                                     <td>Grand Total:</td>
-                                    {/* <td>
-                                        {totalExpenseQueryPreviousValue +
-                                            totalExpenseQueryValue}{' '}
-                                        tk
-                                    </td> */}
-                                    {/* <td>
-                                        {totalIncomeQueryPreviousValue +
-                                            totalIncomeQueryValue}{' '}
-                                        tk
-                                    </td> */}
-                                    {/* <td>
-                                        {totalExpenseValue}
-                                        tk
-                                    </td> */}
                                     <td>
                                         {totalIncomeValue}
                                         tk
                                     </td>
-                                    {/* <td>
-                                        {totalIncomeValue - totalExpenseValue}
-                                        tk
-                                    </td> */}
                                 </tr>
                             </tbody>
                         </table>

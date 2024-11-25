@@ -40,9 +40,6 @@ async function restore(
         });
 
         if (data) {
-            // await data.update({
-            //     status: 1,
-            // });
             data.status = 'active';
             await data.save();
             return response(205, 'data restored', data);

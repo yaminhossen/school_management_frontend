@@ -1,6 +1,6 @@
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
-import { anyObject, responseObject } from '../../../common_types/object';
+import { responseObject } from '../../../common_types/object';
 import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
@@ -17,14 +17,10 @@ async function accounts(
     console.log('user', user_id);
 
     try {
-        let data = await accountsModel.findAll({
-            // where: {
-            //     user_staff_id: user_id,
-            // },
-        });
+        let data = await accountsModel.findAll({});
 
         if (data) {
-            return response(200, 'data created', data);
+            return response(200, 'data founded', data);
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }

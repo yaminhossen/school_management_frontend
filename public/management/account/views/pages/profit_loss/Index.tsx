@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 
@@ -28,14 +27,8 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalIncome, setTotalIncome] = useState<TotalLog>({});
     const [data, setData] = useState<AccountLog[]>([]);
 
-    const totalExpenseValue = totalIncome.total_expense || 0; // Defaults to 0 if undefined
+    const totalExpenseValue = totalIncome.total_expense || 0;
     const totalIncomeValue = totalIncome.total_income || 0;
-    const totalIncomeQueryValue = totalIncome.total_income_query_days || 0; // Defaults to 0 if undefined
-    const totalExpenseQueryValue = totalIncome.total_expense_query_days || 0;
-    const totalIncomeQueryPreviousValue =
-        totalIncome.total_income_query_previous_days || 0; // Defaults to 0 if undefined
-    const totalExpenseQueryPreviousValue =
-        totalIncome.total_expense_query_previous_days || 0;
 
     const fetchData = async () => {
         try {
@@ -58,10 +51,10 @@ const Index: React.FC<Props> = (props: Props) => {
 
     useEffect(() => {
         fetchData();
-    }, []); // Trigger fetch when dates change
+    }, []);
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
+        e.preventDefault();
         let formData = new FormData(e.target);
         try {
             const response = await axios.post(
@@ -74,7 +67,6 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
-    const tenDaysBefore = moment().subtract(10, 'days').format('YYYY-MM-DD');
     function intlAmount(totalIncomeValue: number, totalExpenseValue: number) {
         try {
             let totalValue = totalIncomeValue - totalExpenseValue;
@@ -85,13 +77,6 @@ const Index: React.FC<Props> = (props: Props) => {
         }
     }
     let newBalance = intlAmount(totalIncomeValue, totalExpenseValue);
-    // console.log('newBalance', newBalance);
-
-    // if (data) {
-    //     console.log('total didscount', data);
-    // }
-    // console.log(totalIncome);
-    // console.log('tenDaysBefore', tenDaysBefore);
 
     return (
         <div className="admin_dashboard">
@@ -148,9 +133,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 <td></td>
                                                 <td>{index + 1}</td>
                                                 <td></td>
-                                                {/* <td>{i.date}</td> */}
                                                 <td>{i.category}</td>
-                                                {/* <td>{i.total_income} tk</td> */}
                                                 <td>
                                                     {new Intl.NumberFormat().format(
                                                         i.total_income,
@@ -166,8 +149,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td></td>
                                     <td>Income Total:</td>
                                     <td></td>
-                                    {/* <td>: 190000 </td> */}
-                                    {/* <td>: {totalIncomeValue} tk</td> */}
                                     <td>
                                         {new Intl.NumberFormat().format(
                                             totalIncomeValue,
@@ -182,9 +163,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 <td></td>
                                                 <td>{index + 1}</td>
                                                 <td></td>
-                                                {/* <td>{i.date}</td> */}
                                                 <td>{i.category}</td>
-                                                {/* <td>{i.total_expense} tk</td> */}
                                                 <td>
                                                     {new Intl.NumberFormat().format(
                                                         i.total_expense,
@@ -200,8 +179,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td></td>
                                     <td>Expense Total:</td>
                                     <td></td>
-                                    {/* <td>: 190000 </td> */}
-                                    {/* <td>: {totalExpenseValue} tk</td> */}
                                     <td>
                                         {new Intl.NumberFormat().format(
                                             totalExpenseValue,
@@ -225,14 +202,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                         : {newBalance > '0' ? newBalance : '00'}{' '}
                                         tk
                                     </td>
-                                    {/* <td>
-                                        :{' '}
-                                        {totalIncomeValue > totalExpenseValue
-                                            ? totalIncomeValue -
-                                              totalExpenseValue
-                                            : '00'}{' '}
-                                        tk
-                                    </td> */}
                                 </tr>
                                 <tr>
                                     <td></td>
@@ -243,14 +212,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                         : {newBalance < '0' ? newBalance : '00'}{' '}
                                         tk
                                     </td>
-                                    {/* <td>
-                                        :{' '}
-                                        {totalExpenseValue > totalIncomeValue
-                                            ? totalIncomeValue -
-                                              totalExpenseValue
-                                            : '00'}{' '}
-                                        tk
-                                    </td> */}
                                 </tr>
                             </tbody>
                         </table>

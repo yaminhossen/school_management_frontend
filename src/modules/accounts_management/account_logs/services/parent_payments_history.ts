@@ -4,7 +4,7 @@ import { responseObject, anyObject } from '../../../common_types/object';
 import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
-import { Sequelize, Op } from 'sequelize';
+import { Op } from 'sequelize';
 
 async function parent_payments_history(
     fastify_instance: FastifyInstance,
@@ -18,26 +18,13 @@ async function parent_payments_history(
     // Use the values from the request body or set default values
     let month1 = body.month1 || '2024-09-12'; // Start date
     let month2 = body.month2 || '2024-09-22'; // End date
-    console.log('month1gfjhgfhjgf', month1);
-    console.log('month1gfjhgfhjgf2', month2);
-    console.log('month1gfjhgfhjgf2body', body);
-    // console.log('month1gfjhgfhjgf2body', body.formData?.month1);
 
     // Add one day to month2
     const endDate = new Date(month2);
     endDate.setDate(endDate.getDate() + 1); // Increment by one day
-    const formattedEndDate = endDate.toISOString().split('T')[0]; // Format to YYYY-MM-DD
 
     try {
         let data = await models.AccountLogsModel.findAll({
-            // where: {
-            //     date: {
-            //         [Op.between]: [month1, formattedEndDate],
-            //         // [Op.gte]: month1, // Greater than or equal to month1
-            //         // [Op.lte]: formattedEndDate, // Less than or equal to month2
-            //     },
-            //     type: 'income',
-            // },
             include: [
                 {
                     model: accountCategoriesModel,

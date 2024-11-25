@@ -31,33 +31,11 @@ async function all(
         where: {
             status: show_active_data == 'true' ? 'active' : 'deactive',
         },
-        // include: [models.Project],
     };
 
     if (select_fields.length) {
         query.attributes = select_fields;
     }
-    // query.attributes = [
-    //     ...select_fields,
-    //     [
-    //         Sequelize.literal(`(
-    //                     SELECT SUM(logs.amount)
-    //                     FROM account_logs AS logs
-    //                     WHERE
-    //                         logs.type = "income"
-    //                 )`),
-    //         'total_income',
-    //     ],
-    //     [
-    //         Sequelize.literal(`(
-    //                     SELECT SUM(logs.amount)
-    //                     FROM account_logs AS logs
-    //                     WHERE
-    //                         logs.type = "expense"
-    //                 )`),
-    //         'total_expense',
-    //     ],
-    // ];
 
     if (search_key) {
         query.where = {

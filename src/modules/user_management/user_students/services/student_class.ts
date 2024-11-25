@@ -35,6 +35,9 @@ async function student_class(
                 {
                     model: studentsModel,
                     as: 'student',
+                    attributes: {
+                        exclude: ['password'],
+                    },
                 },
             ],
         });

@@ -53,7 +53,7 @@ const Index: React.FC<Props> = (props: Props) => {
     }, []);
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
+        e.preventDefault();
         let formData = new FormData(e.target);
         try {
             const response = await axios.post(
@@ -141,7 +141,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                         {totalIncomeValue - totalExpenseValue}{' '}
                                         tk
                                     </td>
-                                    {/* <td>{totalIncomeQueryValue} tk</td> */}
                                 </tr>
                             </tbody>
                         </table>

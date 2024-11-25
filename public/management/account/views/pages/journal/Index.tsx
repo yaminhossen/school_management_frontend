@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 
@@ -28,12 +27,12 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalIncome, setTotalIncome] = useState<TotalLog>({});
     const [data, setData] = useState<AccountLog[]>([]);
 
-    const totalExpenseValue = totalIncome.total_expense || 0; // Defaults to 0 if undefined
+    const totalExpenseValue = totalIncome.total_expense || 0;
     const totalIncomeValue = totalIncome.total_income || 0;
-    const totalIncomeQueryValue = totalIncome.total_income_query_days || 0; // Defaults to 0 if undefined
+    const totalIncomeQueryValue = totalIncome.total_income_query_days || 0;
     const totalExpenseQueryValue = totalIncome.total_expense_query_days || 0;
     const totalIncomeQueryPreviousValue =
-        totalIncome.total_income_query_previous_days || 0; // Defaults to 0 if undefined
+        totalIncome.total_income_query_previous_days || 0;
     const totalExpenseQueryPreviousValue =
         totalIncome.total_expense_query_previous_days || 0;
 
@@ -58,10 +57,10 @@ const Index: React.FC<Props> = (props: Props) => {
 
     useEffect(() => {
         fetchData();
-    }, []); // Trigger fetch when dates change
+    }, []);
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
+        e.preventDefault();
         let formData = new FormData(e.target);
         try {
             const response = await axios.post(
@@ -74,11 +73,6 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
-    const tenDaysBefore = moment().subtract(10, 'days').format('YYYY-MM-DD');
-
-    // console.log(data);
-    // console.log(totalIncome);
-    // console.log('tenDaysBefore', tenDaysBefore);
 
     return (
         <div className="admin_dashboard">

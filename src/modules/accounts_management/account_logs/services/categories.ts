@@ -17,23 +17,7 @@ async function categories(
     console.log('user', user_id);
 
     try {
-        let data = await categoriesModel.findAll({
-            // where: {
-            //     user_staff_id: user_id,
-            // },
-        });
-
-        // let Dbresponse = await categoriesModel.findAndCountAll({
-        // where: {
-        //     branch_id: staff?.branch_id,
-        // },
-        // include: [
-        //     {
-        //         model: classStudentsModel,
-        //         as: 'branch_classes',
-        //     },
-        // ],
-        // });
+        let data = await categoriesModel.findAll({});
 
         if (data) {
             return response(200, 'data created', data);

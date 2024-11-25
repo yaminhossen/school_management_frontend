@@ -4,7 +4,7 @@ import { responseObject, anyObject } from '../../../common_types/object';
 import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
-import { Sequelize, Op } from 'sequelize';
+import { Op } from 'sequelize';
 
 // Define an interface for the Category model
 interface Category {

@@ -1,10 +1,9 @@
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
-import { anyObject, responseObject } from '../../../common_types/object';
+import { responseObject } from '../../../common_types/object';
 import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
-import { sequelize } from '../../../../bootstrap/db.sql';
 
 async function receipt_books(
     fastify_instance: FastifyInstance,
@@ -17,11 +16,7 @@ async function receipt_books(
     console.log('user', user_id);
 
     try {
-        let data = await receiptBookModels.findAll({
-            // where: {
-            //     user_staff_id: user_id,
-            // },
-        });
+        let data = await receiptBookModels.findAll({});
 
         if (data) {
             return response(200, 'data created', data);

@@ -43,12 +43,6 @@ async function validate(req: Request) {
         .withMessage('the account field is required')
         .run(req);
 
-    // await body('attachments')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the attachments field is required')
-    //     .run(req);
-
     let result = await validationResult(req);
 
     return result;
@@ -80,7 +74,6 @@ async function income_store(
     let income_attachments: anyObject[] = [];
     for (let i = 0; i < parseInt(body.attachment?.length); i++) {
         let image_path = ``;
-        // let image_file = body[`attachment${i}`];
         let image_file = body.attachment[i];
         if (image_file?.ext) {
             image_path =
@@ -93,9 +86,14 @@ async function income_store(
             file: image_path,
         });
     }
+    let auth_user = await models.BranchStaffsModel.findOne({
+        where: {
+            user_staff_id: (req as any).user.id,
+        },
+    });
 
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: 1,
+        branch_id: auth_user?.branch_id || 0,
         account_category_id: body.category,
         account_id: body.account,
         receipt_no: body.receipt_no,
@@ -117,7 +115,7 @@ async function income_store(
                 income_attachments.forEach(async (ss) => {
                     let ala_model = new models.AccountLogAttachmentsModel();
                     let ala_input: InferCreationAttributes<typeof ala_model> = {
-                        branch_id: 1,
+                        branch_id: auth_user?.branch_id || 0,
                         attachment_url: ss.file,
                         account_log_id: data.id || 1,
                     };
@@ -127,7 +125,7 @@ async function income_store(
             if (image_path1) {
                 let ala_model = new models.AccountLogAttachmentsModel();
                 let ala_input: InferCreationAttributes<typeof ala_model> = {
-                    branch_id: 1,
+                    branch_id: auth_user?.branch_id || 0,
                     attachment_url: image_path1,
                     account_log_id: data.id || 1,
                 };
