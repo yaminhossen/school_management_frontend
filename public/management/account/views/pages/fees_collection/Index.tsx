@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { anyObject } from '../../../common_types/object';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Accountinfo {
@@ -45,39 +44,28 @@ const Index: React.FC<Props> = (props: Props) => {
     const [feesTypes, setFeesTypes] = useState<FeesInfo[]>([]);
     const [totalAmount, setTotalAmount] = useState(0);
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
+        e.preventDefault();
         let form = document.getElementById('main_form') as HTMLFormElement;
         if (!form) {
             return;
         }
 
         let formData = new FormData(form);
-        // let netAmount = convertamount(totalAmount);
-        // console.log('net amount', netAmount);
-        // return;
         try {
-            // Make POST request with form data
             const response = await axios.post(
                 '/api/v1/account-logs/fees-store',
                 formData,
             );
-            // setResponseMessage('Form submitted successfully!');
-            // setData('Form submitted successfully!');
             (window as any).toaster('submitted');
             form.reset();
-            // console.log('response', response);
         } catch (error) {
-            // setError(error); // Set error state
-            // setResponseMessage('Failed to submit form.');
-            // console.log('data', error.msg);
+            // setError(error);
         }
-        // console.log('data', error);
     };
     const fetchAccounts = async () => {
         try {
             const response = await axios.get('/api/v1/accounts/accounts');
             setAccounts(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -86,7 +74,6 @@ const Index: React.FC<Props> = (props: Props) => {
         try {
             const response = await axios.get('/api/v1/account-categories/all');
             setCategories(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -95,7 +82,6 @@ const Index: React.FC<Props> = (props: Props) => {
         try {
             const response = await axios.get('/api/v1/account-logs/periods');
             setPeriods(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -107,56 +93,41 @@ const Index: React.FC<Props> = (props: Props) => {
                 `/api/v1/user-students/student-class/${id}`,
             );
             setClass(response.data.data);
-
-            // const response2 = await axios.get(
-            //     '/api/v1/user-students/fees-categories/1',
-            // );
-            // setFeesTypes(response2.data.data);
-
-            // setData(response.data);
         } catch (error) {
             setError2(error.response?.data?.message);
             setClass([]);
             setFeesTypes([]);
         }
     };
-    // console.log('window amount', classes);
-    // console.log('window amount error', error2);
     const fetchTypes = async (id: string) => {
         try {
             const response2 = await axios.get(
                 `/api/v1/user-students/fees-categories/${id}`,
             );
             setFeesTypes(response2.data.data);
-
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
     };
-    // console.log('Fees types', feesTypes);
-    // console.log('Fees errors', error);
 
     useEffect(() => {
         fetchAccounts();
         fetchAccountCategorys();
         fetchPeriods();
-        // fetchClass();
     }, []);
     const handleStudentIdBlur = () => {
-        const id = studentIdRef.current?.value; // Get the value from the ref
-        // console.log('studnet_id', id);
+        const id = studentIdRef.current?.value;
 
         if (id) {
-            fetchClass(id); // Pass the id to fetchClass
+            fetchClass(id);
         }
     };
     const handleStudentSubmit = (
         event: React.KeyboardEvent<HTMLInputElement>,
     ) => {
         if (event.key === 'Enter') {
-            event.preventDefault(); // Prevent default form submission
-            handleStudentIdBlur(); // Trigger the blur event
+            event.preventDefault();
+            handleStudentIdBlur();
         }
     };
     useEffect(() => {
@@ -174,7 +145,6 @@ const Index: React.FC<Props> = (props: Props) => {
             0,
         );
         setTotalAmount(sum);
-        // console.log(convertamount(33));
     }, [feesTypes]);
 
     return (
@@ -310,34 +280,28 @@ const Index: React.FC<Props> = (props: Props) => {
                             <table className="mb-4">
                                 <thead>
                                     <tr>
-                                        {/* <th>Serial</th> */}
                                         <th>Title</th>
                                         <th>Value</th>
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
                                     <tr>
-                                        {/* <td>1</td> */}
                                         <td>Name</td>
                                         <td>{classes.student?.name}</td>
                                     </tr>
                                     <tr>
-                                        {/* <td>1</td> */}
                                         <td>ID</td>
                                         <td>{classes.student_id}</td>
                                     </tr>
                                     <tr>
-                                        {/* <td>1</td> */}
                                         <td>Class</td>
                                         <td>{classes.class?.name}</td>
                                     </tr>
                                     <tr>
-                                        {/* <td>1</td> */}
                                         <td>Addmission No</td>
                                         <td>{classes.addmission_no}</td>
                                     </tr>
                                     <tr>
-                                        {/* <td>1</td> */}
                                         <td>Photo</td>
                                         <td>
                                             <img

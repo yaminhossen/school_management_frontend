@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import moment from 'moment/moment';
 export interface AccountLog {
     account: { title: string };
     type: 'income' | 'expense';
@@ -17,7 +15,6 @@ export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    // const [data, setData] = useState();
     const [totalIncome, setTotalIncome] = useState<TotalLog>({});
     const [data, setData] = useState<AccountLog[]>([]);
 
@@ -28,7 +25,6 @@ const Index: React.FC<Props> = (props: Props) => {
             );
             setData(response.data.data.data);
             setTotalIncome(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -37,8 +33,7 @@ const Index: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-
-    // console.log(data);
+    console.log('totalIncome', totalIncome);
 
     return (
         <div className="admin_dashboard">
@@ -103,15 +98,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                         );
                                     })}
                             </tbody>
-                            {/* <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>Total:</td>
-                                <td>{totalIncome.total_income} tk</td>
-                                <td>{totalIncome.total_expense} tk</td>
-                            </tr> */}
                         </table>
                     </div>
                 </div>

@@ -3,7 +3,6 @@ import Layout from './Layout';
 import Index from '../Index';
 import Details from '../page/Details';
 import Account from '../page/AccountCreate';
-import AccountNumber from '../page/AccountNumber';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -17,16 +16,12 @@ export default {
             element: <Index />,
         },
         {
-            path: 'details/:id',
-            element: <Details />,
-        },
-        {
             path: 'create',
             element: <Account />,
         },
         {
-            path: 'details/account-number',
-            element: <AccountNumber />,
+            path: 'details/:id',
+            element: <Details />,
         },
     ],
 };

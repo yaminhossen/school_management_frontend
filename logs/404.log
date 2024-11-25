@@ -195,3 +195,4 @@
 {"level":60,"time":1732438013029,"pid":11736,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/month-wise-statement"}
 {"level":60,"time":1732441772855,"pid":1872,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/account/account.js"}
 {"level":60,"time":1732446387779,"pid":4220,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/account/account.js"}
+{"level":60,"time":1732447105336,"pid":1760,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/account/account.js"}

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../../common_types/object';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
@@ -9,29 +7,22 @@ const Account: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState('');
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
+        e.preventDefault();
         let formData = new FormData(e.target);
 
         try {
-            // Make POST request with form data
             const response = await axios.post(
                 '/api/v1/accounts/store',
                 formData,
             );
-            // setResponseMessage('Form submitted successfully!');
             setData('Form submitted successfully!');
             (window as any).toaster('submitted');
             e.target.reset();
-            // console.log('response', response);
         } catch (error) {
-            // setError(error); // Set error state
-            // setResponseMessage('Failed to submit form.');
-            // console.log('data', error.msg);
+            // setError(error);
         }
-        // console.log('data', error);
     };
     let date = moment().format('YYYY-MM-DD');
-    // console.log('date', date);
     return (
         <div className="admin_dashboard">
             <div className="content_body">

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 
@@ -70,11 +69,6 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
-    const tenDaysBefore = moment().subtract(30, 'days').format('YYYY-MM-DD');
-
-    // console.log(data);
-    // console.log(totalIncome);
-    // console.log('tenDaysBefore', tenDaysBefore);
 
     return (
         <div className="admin_dashboard">

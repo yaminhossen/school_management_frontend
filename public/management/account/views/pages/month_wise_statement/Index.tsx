@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 
@@ -11,17 +10,13 @@ export interface AccountLog {
     category: { title: string };
     created_at: string;
     month: string;
-    total_income: string;
-    total_expense: string;
+    total_income: any;
+    total_expense: any;
 }
 
 export interface TotalLog {
-    grand_total_expense?: number;
+    grand_total_expense?: number | 1;
     grand_total_income?: number;
-    // total_income_query_days?: number;
-    // total_expense_query_days?: number;
-    // total_income_query_previous_days?: number;
-    // total_expense_query_previous_days?: number;
 }
 
 export interface Props {}
@@ -31,10 +26,8 @@ const Index: React.FC<Props> = (props: Props) => {
     const [grandTotalIncome, setGrandTotalIncome] = useState<TotalLog>({});
     const [data, setData] = useState<AccountLog[]>([]);
 
-    // const totalIncomeValue = totalIncome.total_income || 0;
-    // const totalIncomeQueryValue = totalIncome?.total_income_query_days || 0;
-    // const totalIncomeQueryPreviousValue =
-    //     totalIncome.total_income_query_previous_days || 0;
+    const totalIncomeValue = grandTotalIncome.grand_total_income || 0;
+    const totalExpenseValue = grandTotalIncome.grand_total_expense || 0;
 
     const fetchData = async () => {
         try {
@@ -136,26 +129,17 @@ const Index: React.FC<Props> = (props: Props) => {
                                             {i.total_income - i.total_expense}{' '}
                                             tk
                                         </td>
-                                        {/* <td>
-                                            {i.type === 'income'
-                                                ? i.amount
-                                                : '-'}
-                                        </td> */}
                                     </tr>
                                 ))}
                                 <tr>
                                     <td></td>
                                     <td></td>
                                     <td>Total:</td>
+                                    <td>{totalIncomeValue} tk</td>
+                                    <td>{totalExpenseValue} tk</td>
                                     <td>
-                                        {grandTotalIncome.grand_total_income} tk
-                                    </td>
-                                    <td>
-                                        {grandTotalIncome.grand_total_expense} tk
-                                    </td>
-                                    <td>
-                                        {grandTotalIncome.grand_total_income -
-                                            grandTotalIncome.grand_total_expense} tk
+                                        {totalIncomeValue - totalExpenseValue}{' '}
+                                        tk
                                     </td>
                                     {/* <td>{totalIncomeQueryValue} tk</td> */}
                                 </tr>

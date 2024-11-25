@@ -15,8 +15,6 @@ const Index: React.FC<Props> = () => {
     const [data, setData] = useState<AccountLog[]>([]);
     const [income, setIncome] = useState<number>(0);
     const [expense, setExpense] = useState<number>(0);
-    // const [a, setA] = useState<number>(0);
-    // const [b, setB] = useState<number>(0);
     const { id } = useParams();
 
     const fetchData = async () => {
@@ -33,9 +31,6 @@ const Index: React.FC<Props> = () => {
     useEffect(() => {
         fetchData();
     }, []);
-    // useEffect(() => {
-    //     setIncome((prevIncome) => prevIncome + amount);
-    // }, []);
 
     useEffect(() => {
         // Calculate totals whenever data changes
@@ -51,22 +46,6 @@ const Index: React.FC<Props> = () => {
         setIncome(totalIncome);
         setExpense(totalExpense);
     }, [data]);
-    // console.log('expens', data);
-    // let totalIncomea = 0;
-    // let totalExpenseb = 0;
-    // function dateFormate(amount: number) {
-    //     totalIncomea += amount;
-    //     console.log('1112', totalIncomea);
-    //     return totalIncomea;
-    // }
-    // function dateFormate2(amount: number) {
-    //     console.log('222', amount);
-
-    //     totalExpenseb += amount;
-    //     return totalExpenseb;
-    // }
-    // console.log('totalIncomea', totalIncomea);
-    // console.log('totalExpenseb', totalExpenseb);
 
     return (
         <div className="admin_dashboard">

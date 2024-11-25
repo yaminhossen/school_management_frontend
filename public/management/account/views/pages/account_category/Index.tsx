@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import moment from 'moment/moment';
 export interface AccountLog {
     account: { title: string };
     type: 'income' | 'expense';
@@ -17,7 +15,6 @@ export interface Props {}
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [totalIncome, setTotalIncome] = useState<TotalLog>({});
-    // const [totalExpense, setTotalExpense] = useState();
     const [data, setData] = useState<AccountLog[]>([]);
 
     const fetchData = async () => {
@@ -27,7 +24,6 @@ const Index: React.FC<Props> = (props: Props) => {
             );
             setData(response.data.data.data);
             setTotalIncome(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -36,8 +32,6 @@ const Index: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-
-    // console.log(data);
 
     return (
         <div className="admin_dashboard">
