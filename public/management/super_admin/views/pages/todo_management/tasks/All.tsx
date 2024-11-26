@@ -40,28 +40,7 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
-
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            branch: 'gulshan',
-            meeting: 'Monthly',
-            title: 'mc-meeting',
-            description: 'First monthe mc meeting',
-            is_complete: 'YES',
-        },
-        {
-            id: 2,
-            branch: 'Mirpur',
-            meeting: 'Yearly',
-            title: 'ec-meeting',
-            description: 'First monthe ec meeting',
-            is_complete: 'NO',
-        },
-    ];
+    // let date = moment().format('YYYY-MM-DD');
 
     return (
         <div className="page_content">
@@ -89,53 +68,56 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`title`}
                                             sort={true}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Branch`}
                                             col_name={`branch`}
                                             sort={true}
-                                        />
-                                        <TableHeading
+                                        /> */}
+                                        {/* <TableHeading
                                             label={`Meeting`}
                                             col_name={`meeting`}
                                             sort={true}
-                                        />
+                                        /> */}
                                         <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Is Complete`}
-                                            col_name={`is_complete`}
+                                            label={`Date`}
+                                            col_name={`date`}
                                             sort={true}
                                         />
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
-                                    {datas?.map((i: { [key: string]: any }) => {
-                                        return (
-                                            <tr
-                                                key={i.id}
-                                                className={`table_rows table_row_${i.id}`}
-                                            >
-                                                <td>
-                                                    <TableRowAction item={i} />
-                                                </td>
-                                                <td>
-                                                    <SelectItem item={i} />
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        className="quick_view_trigger"
-                                                        onClick={() =>
-                                                            quick_view(i)
-                                                        }
-                                                    >
-                                                        {i.id}
-                                                    </span>
-                                                </td>
-                                                {/* <td>
+                                    {(state.all as any)?.data?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <tr
+                                                    key={i.id}
+                                                    className={`table_rows table_row_${i.id}`}
+                                                >
+                                                    <td>
+                                                        <TableRowAction
+                                                            item={i}
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <SelectItem item={i} />
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            className="quick_view_trigger"
+                                                            onClick={() =>
+                                                                quick_view(i)
+                                                            }
+                                                        >
+                                                            {i.id}
+                                                        </span>
+                                                    </td>
+                                                    {/* <td>
                                                     <img
                                                         src="/assets/dashboard/images/avatar.png"
                                                         alt=""
@@ -144,14 +126,19 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                <td>{i.title}</td>
-                                                <td>{i.branch}</td>
-                                                <td>{i.meeting}</td>
-                                                <td>{i.description}</td>
-                                                <td>{i.is_complete}</td>
-                                            </tr>
-                                        );
-                                    })}
+                                                    <td>{i.title}</td>
+                                                    {/* <td>{i.branch}</td>
+                                                    <td>{i.meeting}</td> */}
+                                                    <td>{i.description}</td>
+                                                    <td>
+                                                        {moment(i.date).format(
+                                                            'YYYY-MM-DD',
+                                                        )}
+                                                    </td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
                                 </tbody>
                             </table>
                         </div>

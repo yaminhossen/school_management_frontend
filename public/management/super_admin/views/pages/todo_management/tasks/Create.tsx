@@ -32,20 +32,7 @@ const Create: React.FC<Props> = (props: Props) => {
                             onSubmit={(e) => handle_submit(e)}
                             className="form_600 mx-auto pt-3"
                         >
-                            {/* <div className="form_section_heading">
-                                <h2 className=""> Major Information</h2>
-                            </div> */}
                             <div className="">
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Branch id</label>
-                                    <div className="form_elements">
-                                        <select name="branch_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                        </select>
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>Title</label>
                                     <div className="form_elements">
@@ -66,7 +53,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                         ></textarea>
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Admin</label>
                                     <div className="form_elements">
                                         <select name="admin" id="">
@@ -84,102 +71,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </option>
                                         </select>
                                     </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Teacher</label>
-                                    <div className="form_elements">
-                                        <select name="teacher" id="">
-                                            <option value="admin1">
-                                                Teacher1
-                                            </option>
-                                            <option value="running">
-                                                Teacher2
-                                            </option>
-                                            <option value="completed">
-                                                Teacher3
-                                            </option>
-                                            <option value="nexttime">
-                                                Teacher4
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Staff</label>
-                                    <div className="form_elements">
-                                        <select name="staff" id="">
-                                            <option value="admin1">
-                                                Staff1
-                                            </option>
-                                            <option value="running">
-                                                Staff2
-                                            </option>
-                                            <option value="completed">
-                                                Staff3
-                                            </option>
-                                            <option value="nexttime">
-                                                Staff4
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Task Variant</label>
-                                    <div className="form_elements">
-                                        <select name="task_variant" id="">
-                                            <option value="admin1">
-                                                Staff1
-                                            </option>
-                                            <option value="running">
-                                                Staff2
-                                            </option>
-                                            <option value="completed">
-                                                Staff3
-                                            </option>
-                                            <option value="nexttime">
-                                                Staff4
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Task Group</label>
-                                    <div className="form_elements">
-                                        <select name="task_group" id="">
-                                            <option value="admin1">
-                                                Staff1
-                                            </option>
-                                            <option value="running">
-                                                Staff2
-                                            </option>
-                                            <option value="completed">
-                                                Staff3
-                                            </option>
-                                            <option value="nexttime">
-                                                Staff4
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Is Complete</label>
-                                    <div className="form_elements">
-                                        <select name="is_complete" id="">
-                                            <option value="pending">
-                                                Pending
-                                            </option>
-                                            <option value="running">
-                                                Running
-                                            </option>
-                                            <option value="completed">
-                                                Completed
-                                            </option>
-                                            <option value="nexttime">
-                                                Next Time
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>Date</label>
                                     <div className="form_elements">

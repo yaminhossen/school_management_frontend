@@ -37,7 +37,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <td>Name</td>
                                         <td>:</td>
-                                        <td>{state.item.name}</td>
+                                        <td>{state.item.title}</td>
                                     </tr>
                                     <tr>
                                         <td>Preffered Name</td>

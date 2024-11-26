@@ -9,6 +9,7 @@ import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -47,24 +48,39 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>Title</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="name"
-                                            name="name"
-                                            defaultValue={state.item.name}
+                                            placeholder="title"
+                                            name="title"
+                                            defaultValue={state.item.title}
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Preferred Name</label>
+                                    <label>Description</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="email"
-                                            name="email"
-                                            defaultValue={state.item.email}
+                                            placeholder="description"
+                                            name="description"
+                                            defaultValue={
+                                                state.item.description
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Date</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="date"
+                                            placeholder="date"
+                                            name="date"
+                                            defaultValue={moment(
+                                                state.item.date,
+                                            ).format('YYYY-MM-DD')}
                                         />
                                     </div>
                                 </div>

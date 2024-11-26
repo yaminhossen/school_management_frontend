@@ -30,12 +30,6 @@ async function validate(req: Request) {
         .withMessage('the description field is required')
         .run(req);
 
-    await body('is_complete')
-        .not()
-        .isEmpty()
-        .withMessage('the is_complete field is required')
-        .run(req);
-
     await body('date')
         .not()
         .isEmpty()
@@ -64,13 +58,22 @@ async function store(
     let taskVariantTasks = new models.TaskVariantTasksModel();
     let TaskGroupTasks = new models.TaskGroupTasksModel();
     let TaskUsers = new models.TaskUsersModel();
+    let user = (req as any).user;
+    console.log('auth user', user);
+
+    let auth_user = await models.BranchStaffsModel.findOne({
+        where: {
+            user_staff_id: user.id,
+        },
+    });
 
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: body.branch_id,
+        branch_id: auth_user?.branch_id || 1,
         title: body.title,
         description: body.description,
         is_complete: body.is_complete,
         date: body.date,
+        creator: user.id || 0,
     };
 
     /** print request data into console */

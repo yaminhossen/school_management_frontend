@@ -18,12 +18,6 @@ async function validate(req: Request) {
         .withMessage('the id field is required')
         .run(req);
 
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
-
     await body('title')
         .not()
         .isEmpty()
@@ -34,12 +28,6 @@ async function validate(req: Request) {
         .not()
         .isEmpty()
         .withMessage('the description field is required')
-        .run(req);
-
-    await body('is_complete')
-        .not()
-        .isEmpty()
-        .withMessage('the is_complete field is required')
         .run(req);
 
     await body('date')

@@ -95,8 +95,8 @@ export let active_routes: string[] = [
     // 'src/modules/loan_management/loan_payments/routes.ts',
     // 'src/modules/loan_management/loan_types/routes.ts',
 
-    // 'src/modules/meeting_management/meetings/routes.ts',
-    // 'src/modules/meeting_management/meeting_agendas/routes.ts',
+    'src/modules/meeting_management/meetings/routes.ts',
+    'src/modules/meeting_management/meeting_agendas/routes.ts',
     // 'src/modules/meeting_management/meeting_attachments/routes.ts',
 
     // 'src/modules/notice_management/notices/routes.ts',

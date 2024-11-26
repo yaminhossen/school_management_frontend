@@ -92,7 +92,7 @@ async function expense_store(
         },
     });
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: auth_user?.branch_id || 0,
+        branch_id: auth_user?.branch_id || 1,
         account_category_id: body.category,
         account_id: body.account,
         receipt_no: body.receipt_no,
@@ -114,7 +114,7 @@ async function expense_store(
                 income_attachments.forEach(async (ss) => {
                     let ala_model = new models.AccountLogAttachmentsModel();
                     let ala_input: InferCreationAttributes<typeof ala_model> = {
-                        branch_id: auth_user?.branch_id || 0,
+                        branch_id: auth_user?.branch_id || 1,
                         attachment_url: ss.file,
                         account_log_id: data.id || 1,
                     };
@@ -124,7 +124,7 @@ async function expense_store(
             if (image_path1) {
                 let ala_model = new models.AccountLogAttachmentsModel();
                 let ala_input: InferCreationAttributes<typeof ala_model> = {
-                    branch_id: auth_user?.branch_id || 0,
+                    branch_id: auth_user?.branch_id || 1,
                     attachment_url: image_path1,
                     account_log_id: data.id || 1,
                 };
