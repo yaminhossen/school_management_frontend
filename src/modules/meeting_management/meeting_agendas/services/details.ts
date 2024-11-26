@@ -10,20 +10,23 @@ async function details(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
+    let meetingsModel = models.MeetingsModel;
     let params = req.params as any;
 
     try {
-        let data = await models.MeetingAgendasModel.findOne({
+        let agenda = await models.MeetingAgendasModel.findOne({
             where: {
                 id: params.id,
             },
-            attributes: {
-                exclude: ['password'],
-            },
         });
 
-        if (data) {
-            return response(200, 'data created', data);
+        if (agenda) {
+            let agendas = await models.MeetingAgendasModel.findAll({
+                where: {
+                    meeting_id: agenda.meeting_id,
+                },
+            });
+            return response(200, 'agenda created', { agenda, agendas });
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }

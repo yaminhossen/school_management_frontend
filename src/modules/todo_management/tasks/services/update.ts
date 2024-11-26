@@ -57,7 +57,6 @@ async function update(
     let model = new models.TasksModel();
 
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: body.branch_id,
         title: body.title,
         description: body.description,
         is_complete: body.is_complete,

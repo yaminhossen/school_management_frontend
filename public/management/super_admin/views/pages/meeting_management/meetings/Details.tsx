@@ -9,6 +9,7 @@ import { details } from './config/store/async_actions/details';
 import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Details: React.FC<Props> = (props: Props) => {
@@ -35,14 +36,23 @@ const Details: React.FC<Props> = (props: Props) => {
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
                                     <tr>
-                                        <td>Name</td>
+                                        <td>Title</td>
                                         <td>:</td>
                                         <td>{state.item.title}</td>
                                     </tr>
                                     <tr>
-                                        <td>Preffered Name</td>
+                                        <td>Description</td>
                                         <td>:</td>
-                                        <td>{state.item.email}</td>
+                                        <td>{state.item.description}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date</td>
+                                        <td>:</td>
+                                        <td>
+                                            {moment(state.item.date).format(
+                                                'YYYY-MM-DD',
+                                            )}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -43,16 +43,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Meeting id</label>
-                                    <div className="form_elements">
-                                        <select name="meeting_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
                                     <label>Title</label>
                                     <div className="form_elements">
                                         <input
@@ -73,12 +63,13 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Is complete</label>
+                                    <label>Date</label>
                                     <div className="form_elements">
-                                        <select name="is_complete" id="">
-                                            <option value="0">No</option>
-                                            <option value="1">Yes</option>
-                                        </select>
+                                        <input
+                                            name="date"
+                                            id=""
+                                            placeholder="date"
+                                        ></input>
                                     </div>
                                 </div>
                             </div>

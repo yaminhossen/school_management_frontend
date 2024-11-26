@@ -16,6 +16,7 @@ import TableRowAction from './components/all_data_page/TableRowAction';
 import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
+import moment from 'moment/moment';
 
 export interface Props {}
 
@@ -39,36 +40,6 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
-
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            title: 'Weekly',
-            attachment: '/assets/dashboard/attachment/file.pdf',
-            agendas: 'mc-meeting',
-            text: 'On 12th june first mc meeting',
-            date: '12 June, 2023',
-        },
-        {
-            id: 2,
-            title: 'Yearly',
-            attachment: '/assets/dashboard/attachment/file.pdf',
-            agendas: 'ec-meeting',
-            text: 'On 12th march first ec meeting',
-            date: '12 March, 2023',
-        },
-        {
-            id: 3,
-            title: 'Monthly',
-            attachment: '/assets/dashboard/attachment/file.pdf',
-            agendas: 'monthly-meeting',
-            text: 'On 12th july first monthly meeting',
-            date: '12 July, 2023',
-        },
-    ];
 
     return (
         <div className="page_content">
@@ -97,16 +68,16 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
+                                            label={`Description`}
+                                            col_name={`description`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
                                             label={`Date`}
                                             col_name={`date`}
                                             sort={true}
                                         />
-                                        <TableHeading
-                                            label={`Agendas`}
-                                            col_name={`agendas`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Attachment`}
                                             col_name={`attachment`}
                                             sort={true}
@@ -115,34 +86,37 @@ const All: React.FC<Props> = (props: Props) => {
                                             label={`Text`}
                                             col_name={`text`}
                                             sort={true}
-                                        />
+                                        /> */}
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
-                                    {datas?.map((i: { [key: string]: any }) => {
-                                        return (
-                                            <tr
-                                                key={i.id}
-                                                className={`table_rows table_row_${i.id}`}
-                                            >
-                                                <td>
-                                                    <TableRowAction item={i} />
-                                                </td>
-                                                <td>
-                                                    <SelectItem item={i} />
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        className="quick_view_trigger"
-                                                        onClick={() =>
-                                                            quick_view(i)
-                                                        }
-                                                    >
-                                                        {i.id}
-                                                    </span>
-                                                </td>
-                                                {/* <td>
+                                    {(state.all as any)?.data?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <tr
+                                                    key={i.id}
+                                                    className={`table_rows table_row_${i.id}`}
+                                                >
+                                                    <td>
+                                                        <TableRowAction
+                                                            item={i}
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <SelectItem item={i} />
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            className="quick_view_trigger"
+                                                            onClick={() =>
+                                                                quick_view(i)
+                                                            }
+                                                        >
+                                                            {i.id}
+                                                        </span>
+                                                    </td>
+                                                    {/* <td>
                                                     <img
                                                         src="/assets/dashboard/images/avatar.png"
                                                         alt=""
@@ -151,14 +125,17 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                <td>{i.title}</td>
-                                                <td>{i.date}</td>
-                                                <td>{i.agendas}</td>
-                                                <td>{i.attachment}</td>
-                                                <td>{i.text}</td>
-                                            </tr>
-                                        );
-                                    })}
+                                                    <td>{i.title}</td>
+                                                    <td>{i.description}</td>
+                                                    <td>
+                                                        {moment().format(
+                                                            'YYYY-MM-DD',
+                                                        )}
+                                                    </td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
                                 </tbody>
                             </table>
                         </div>

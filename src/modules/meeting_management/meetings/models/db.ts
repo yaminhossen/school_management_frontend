@@ -3,6 +3,7 @@ import {
     Sequelize,
 } from 'sequelize';
 import * as meetings_model from './meetings_model';
+import * as branch_staffs_model from './branch_staffs_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -21,11 +22,13 @@ const sequelize = new Sequelize(
 
 interface models {
     MeetingsModel: typeof meetings_model.DataModel;
+    BranchStaffsModel: typeof branch_staffs_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
 const db = async function (): Promise<models> {
     const MeetingsModel = meetings_model.init(sequelize);
+    const BranchStaffsModel = branch_staffs_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -57,6 +60,7 @@ const db = async function (): Promise<models> {
 
     let models: models = {
         MeetingsModel,
+        BranchStaffsModel,
         // Project,
 
         sequelize,

@@ -59,11 +59,11 @@ async function store(
     let TaskGroupTasks = new models.TaskGroupTasksModel();
     let TaskUsers = new models.TaskUsersModel();
     let user = (req as any).user;
-    console.log('auth user', user);
+    // console.log('auth user', user);
 
     let auth_user = await models.BranchStaffsModel.findOne({
         where: {
-            user_staff_id: user.id,
+            user_staff_id: user?.id || null,
         },
     });
 
@@ -73,7 +73,7 @@ async function store(
         description: body.description,
         is_complete: body.is_complete,
         date: body.date,
-        creator: user.id || 0,
+        creator: user?.id || 0,
     };
 
     /** print request data into console */
@@ -83,34 +83,33 @@ async function store(
     /** store data into database */
     try {
         (await data.update(inputs)).save();
-        // let task = await data.save();
-        let task_id = data.id;
+        // let task_id = data.id;
 
-        if (data) {
-            let inputs2 = {
-                branch_id: body.branch_id,
-                task_id: task_id,
-                variants_id: 2,
-            };
-            let inputs3 = {
-                branch_id: body.branch_id,
-                task_id: task_id,
-                task_group_id: 2,
-            };
-            let inputs4 = {
-                branch_id: body.branch_id,
-                task_id: task_id,
-                staff_id: body.staff_id || null,
-                teacher_id: body.teacher_id || null,
-                admin_id: body.admin_id || null,
-            };
-            // taskVariantTasks.update(inputs2);
-            // TaskGroupTasks.update(inputs3);
-            // (await TaskUsers.update(inputs4)).save();
-            // let task_variant_task = await taskVariantTasks.save();
-            // let task_group_task = await TaskGroupTasks.save();
-            // let task_users = await TaskUsers.save();
-        }
+        // if (data) {
+        //     let inputs2 = {
+        //         branch_id: body.branch_id,
+        //         task_id: task_id,
+        //         variants_id: 2,
+        //     };
+        //     let inputs3 = {
+        //         branch_id: body.branch_id,
+        //         task_id: task_id,
+        //         task_group_id: 2,
+        //     };
+        //     let inputs4 = {
+        //         branch_id: body.branch_id,
+        //         task_id: task_id,
+        //         staff_id: body.staff_id || null,
+        //         teacher_id: body.teacher_id || null,
+        //         admin_id: body.admin_id || null,
+        //     };
+        // taskVariantTasks.update(inputs2);
+        // TaskGroupTasks.update(inputs3);
+        // (await TaskUsers.update(inputs4)).save();
+        // let task_variant_task = await taskVariantTasks.save();
+        // let task_group_task = await TaskGroupTasks.save();
+        // let task_users = await TaskUsers.save();
+        // }
         return response(200, 'data created', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
