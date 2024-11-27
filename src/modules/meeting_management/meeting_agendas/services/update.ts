@@ -12,17 +12,17 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
 async function validate(req: Request) {
-    await body('id')
-        .not()
-        .isEmpty()
-        .withMessage('the id field is required')
-        .run(req);
+    // await body('id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the id field is required')
+    //     .run(req);
 
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
+    // await body('branch_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_id field is required')
+    //     .run(req);
 
     await body('meeting_id')
         .not()
@@ -42,11 +42,11 @@ async function validate(req: Request) {
         .withMessage('the description field is required')
         .run(req);
 
-    await body('is_complete')
-        .not()
-        .isEmpty()
-        .withMessage('the is_complete field is required')
-        .run(req);
+    // await body('is_complete')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the is_complete field is required')
+    //     .run(req);
 
     let result = await validationResult(req);
 
@@ -69,11 +69,11 @@ async function update(
     let model = new models.MeetingAgendasModel();
 
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: body.branch_id,
+        // branch_id: body.branch_id,
         meeting_id: body.meeting_id,
         title: body.title,
         description: body.description,
-        is_complete: body.is_complete,
+        // is_complete: body.is_complete,
     };
     /** print request data into console */
     // console.clear();

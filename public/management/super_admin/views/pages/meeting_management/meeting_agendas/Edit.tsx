@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import { useSelector } from 'react-redux';
@@ -13,6 +13,7 @@ import { meeting_all } from './config/store/async_actions/meeting_all';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
+    const meetingId = useRef<HTMLSelectElement>(null);
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -27,18 +28,17 @@ const Edit: React.FC<Props> = (props: Props) => {
         dispatch(meeting_all({}) as any);
     }, []);
 
-    // useEffect(() => {
-    //     dispatch(storeSlice.actions.set_meeting({}));
-    //     dispatch(meeting_all({}) as any);
-    //     dispatch(meeting_all({}) as any);
-    // }, []);
-
     async function handle_submit(e) {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
 
-    console.log('state meeting', state.meeting);
+    useEffect(() => {
+        if (meetingId.current) {
+            meetingId.current.value = state.item?.agenda?.meeting_id || ''; // Safely set the value
+        }
+        // console.log('Updated meetingId:', meetingId.current?.value);
+    }, [state.meeting]);
     return (
         <>
             <div className="page_content">
@@ -54,12 +54,17 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 <input
                                     type="hidden"
                                     name="id"
-                                    defaultValue={state.item.id}
+                                    defaultValue={state.item?.agenda?.id}
                                 />
                                 <div className="form-group form-horizontal">
                                     <label>Meeting id</label>
                                     <div className="form_elements">
-                                        <select name="meeting_id" id="">
+                                        <select
+                                            name="meeting_id"
+                                            id=""
+                                            ref={meetingId}
+                                            // defaultValue={meetingId}
+                                        >
                                             {state?.meeting?.length &&
                                                 state.meeting?.map(
                                                     (i: {

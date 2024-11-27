@@ -43,7 +43,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare meeting_id: number;
     declare title: string;
     declare description: string;
-    declare is_complete: is_complete;
+    declare is_complete?: is_complete;
 
     declare status?: status;
     declare creator?: number;
