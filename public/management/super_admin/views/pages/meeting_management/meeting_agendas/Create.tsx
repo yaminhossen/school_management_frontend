@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
-import { useAppDispatch } from '../../../../store';
+import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
 import DropDown from './components/dropdown/DropDown';
+import { json, useParams } from 'react-router-dom';
+import storeSlice from './config/store';
+import { meeting_all } from './config/store/async_actions/meeting_all';
+import { initialState } from './config/store/inital_state';
+import { useSelector } from 'react-redux';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
     const dispatch = useAppDispatch();
 
     async function handle_submit(e) {
@@ -17,7 +25,14 @@ const Create: React.FC<Props> = (props: Props) => {
             e.target.reset();
         }
     }
+    const params = useParams();
 
+    useEffect(() => {
+        dispatch(storeSlice.actions.set_item({}));
+        dispatch(meeting_all({ id: params.id }) as any);
+    }, []);
+    console.log('state item', state.item);
+    if (state.item.length < 1) return <></>;
     return (
         <>
             <div className="page_content">
@@ -28,20 +43,27 @@ const Create: React.FC<Props> = (props: Props) => {
                             onSubmit={(e) => handle_submit(e)}
                             className="form_600 mx-auto pt-3"
                         >
-                            {/* <div className="form_section_heading">
-                                <h2 className=""> Major Information</h2>
-                            </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Branch id</label>
+                                    <label>Meeting id</label>
                                     <div className="form_elements">
-                                        <select name="branch_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
+                                        <select name="meeting_id" id="">
+                                            {/* {Object.keys(state.item).length &&  ( */}
+                                            {/* {Object.keys(state.item).length && (
+                                                <option value="demo1">
+                                                    demo1
+                                                </option>
+                                                )} */}
+                                            {Object.keys(state.item).length &&
+                                                state.item.map((i) => {
+                                                    <option value="demo1">
+                                                        {i.title}
+                                                    </option>;
+                                                })}
                                         </select>
                                     </div>
                                 </div>
+                                <div> thsi si five {state.item.length}</div>
                                 <div className="form-group form-horizontal">
                                     <label>Title</label>
                                     <div className="form_elements">
@@ -60,16 +82,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                             id=""
                                             placeholder="description"
                                         ></textarea>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Date</label>
-                                    <div className="form_elements">
-                                        <input
-                                            name="date"
-                                            id=""
-                                            placeholder="date"
-                                        ></input>
                                     </div>
                                 </div>
                             </div>

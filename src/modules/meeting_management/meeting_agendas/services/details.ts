@@ -21,9 +21,9 @@ async function details(
         });
 
         if (agenda) {
-            let agendas = await models.MeetingAgendasModel.findAll({
+            let agendas = await models.MeetingsModel.findOne({
                 where: {
-                    meeting_id: agenda.meeting_id,
+                    id: agenda.meeting_id,
                 },
             });
             return response(200, 'agenda created', { agenda, agendas });

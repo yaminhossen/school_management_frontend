@@ -35,14 +35,21 @@ const Details: React.FC<Props> = (props: Props) => {
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
                                     <tr>
-                                        <td>Name</td>
+                                        <td>Title</td>
                                         <td>:</td>
-                                        <td>{state.item.name}</td>
+                                        <td>{state.item.agenda?.title}</td>
                                     </tr>
                                     <tr>
-                                        <td>Preffered Name</td>
+                                        <td>Description</td>
                                         <td>:</td>
-                                        <td>{state.item.email}</td>
+                                        <td>
+                                            {state.item.agenda?.description}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Meeting</td>
+                                        <td>:</td>
+                                        <td>{state.item.agendas?.title}</td>
                                     </tr>
                                 </tbody>
                             </table>
