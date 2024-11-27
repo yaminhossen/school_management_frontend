@@ -24,7 +24,14 @@ const Edit: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(details({ id: params.id }) as any);
         dispatch(meeting_all({}) as any);
+        dispatch(meeting_all({}) as any);
     }, []);
+
+    // useEffect(() => {
+    //     dispatch(storeSlice.actions.set_meeting({}));
+    //     dispatch(meeting_all({}) as any);
+    //     dispatch(meeting_all({}) as any);
+    // }, []);
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -50,24 +57,49 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>Meeting id</label>
+                                    <div className="form_elements">
+                                        <select name="meeting_id" id="">
+                                            {state?.meeting?.length &&
+                                                state.meeting?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.title}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Title</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="name"
-                                            name="name"
-                                            defaultValue={state.item.name}
+                                            placeholder="title"
+                                            name="title"
+                                            defaultValue={
+                                                state.item?.agenda?.title
+                                            }
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Preferred Name</label>
+                                    <label>Description</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="email"
-                                            name="email"
-                                            defaultValue={state.item.email}
+                                            placeholder="description"
+                                            name="description"
+                                            defaultValue={
+                                                state.item?.agenda?.description
+                                            }
                                         />
                                     </div>
                                 </div>

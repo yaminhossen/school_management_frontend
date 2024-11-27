@@ -12,6 +12,7 @@ async function meeting_all(
     let models = await db();
     let meetingsModel = models.MeetingsModel;
     let params = req.params as any;
+    console.log('this is hit');
 
     try {
         let agenda = await models.MeetingsModel.findAll({});
