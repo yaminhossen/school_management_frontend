@@ -12,12 +12,6 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
 async function validate(req: Request) {
-    // await body('branch_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the branch_id field is required')
-    //     .run(req);
-
     await body('meeting_id')
         .not()
         .isEmpty()
@@ -35,12 +29,6 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the description field is required')
         .run(req);
-
-    // await body('is_complete')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the is_complete field is required')
-    //     .run(req);
 
     let result = await validationResult(req);
 
@@ -61,13 +49,22 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.MeetingAgendasModel();
+    let user = (req as any).user;
+    // console.log('auth user', user);
+
+    let auth_user = await models.BranchStaffsModel.findOne({
+        where: {
+            user_staff_id: user?.id || null,
+        },
+    });
 
     let inputs: InferCreationAttributes<typeof data> = {
-        // branch_id: body.branch_id,
+        branch_id: auth_user?.branch_id || 1,
         meeting_id: body.meeting_id,
         title: body.title,
         description: body.description,
-        is_complete: body.is_complete,
+        is_complete: body.pending,
+        creator: 1,
     };
 
     /** print request data into console */
@@ -77,18 +74,6 @@ async function store(
     /** store data into database */
     try {
         (await data.update(inputs)).save();
-        // let task = await data.save();
-        // let task_id = task.id;
-
-        // if (task) {
-        //     let inputs2 = {
-        //         branch_id: body.branch_id,
-        //         task_id: task_id,
-        //         variants_id: 2,
-        //     };
-        //     taskVariantTasks.update(inputs2);
-        //     let task_variant_task = await taskVariantTasks.save();
-        // }
         return response(200, 'data created', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);

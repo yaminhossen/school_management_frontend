@@ -78,6 +78,13 @@ export const store_reducers = {
     set_item: (state: typeof initialState, action: PayloadAction<object>) => {
         state.item = action.payload;
     },
+
+    set_meeting: (
+        state: typeof initialState,
+        action: PayloadAction<object>,
+    ) => {
+        state.meeting = action.payload;
+    },
     set_show_quick_view_canvas: (
         state: typeof initialState,
         action: PayloadAction<boolean>,

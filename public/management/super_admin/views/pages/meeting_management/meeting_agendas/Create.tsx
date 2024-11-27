@@ -29,10 +29,10 @@ const Create: React.FC<Props> = (props: Props) => {
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
-        dispatch(meeting_all({ id: params.id }) as any);
+        dispatch(meeting_all({}) as any);
     }, []);
-    console.log('state item', state.item);
-    if (state.item.length < 1) return <></>;
+    console.log('state meeting', state.meeting);
+    // if (state.meeting.length < 1) return <></>;
     return (
         <>
             <div className="page_content">
@@ -48,22 +48,24 @@ const Create: React.FC<Props> = (props: Props) => {
                                     <label>Meeting id</label>
                                     <div className="form_elements">
                                         <select name="meeting_id" id="">
-                                            {/* {Object.keys(state.item).length &&  ( */}
-                                            {/* {Object.keys(state.item).length && (
-                                                <option value="demo1">
-                                                    demo1
-                                                </option>
-                                                )} */}
-                                            {Object.keys(state.item).length &&
-                                                state.item.map((i) => {
-                                                    <option value="demo1">
-                                                        {i.title}
-                                                    </option>;
-                                                })}
+                                            {state?.meeting?.length &&
+                                                state.meeting?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.title}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
                                         </select>
                                     </div>
                                 </div>
-                                <div> thsi si five {state.item.length}</div>
+                                {/* <div> thsi si five {state.meeting.length}</div> */}
                                 <div className="form-group form-horizontal">
                                     <label>Title</label>
                                     <div className="form_elements">

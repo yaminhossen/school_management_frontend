@@ -9,6 +9,7 @@ import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
+import { meeting_all } from './config/store/async_actions/meeting_all';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -22,6 +23,7 @@ const Edit: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(details({ id: params.id }) as any);
+        dispatch(meeting_all({}) as any);
     }, []);
 
     async function handle_submit(e) {
@@ -29,6 +31,7 @@ const Edit: React.FC<Props> = (props: Props) => {
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
 
+    console.log('state meeting', state.meeting);
     return (
         <>
             <div className="page_content">
