@@ -12,6 +12,7 @@ export const initialState = {
     /* data store */
     all: {},
     item: {} as anyObject,
+    staffs: {} as anyObject,
     url: '',
 
     /* data filters */

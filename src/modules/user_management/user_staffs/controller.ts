@@ -16,11 +16,16 @@ import data_import from './services/import';
 import login from './services/login';
 import logout from './services/logout';
 import forget from './services/forget';
+import staff_all from './services/staff_all';
 
 export default function (fastify: FastifyInstance) {
     return {
         all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all(fastify, req);
+            res.code(data.status).send(data);
+        },
+        staff_all: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await staff_all(fastify, req);
             res.code(data.status).send(data);
         },
 

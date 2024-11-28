@@ -2,3 +2,14 @@
 .agenda_btn{
     color: rgb(66, 172, 66);
 }
+.assign_tasks{
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 5px;
+    .assign_task_list{
+        display: flex;
+        gap: 24px;
+        /* border: 1px solid gray; */
+        padding: 10px;
+    }
+}
