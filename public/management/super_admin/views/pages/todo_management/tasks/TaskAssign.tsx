@@ -11,42 +11,75 @@ import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import moment from 'moment/moment';
 import { all_staff } from './config/store/async_actions/all_staff';
+import { all_teacher } from './config/store/async_actions/all_teacher';
+import { assign_task } from './config/store/async_actions/assign_task';
 export interface Props {}
 
 const TaskAssign: React.FC<Props> = (props: Props) => {
     const [staffs, setStaffs] = useState<number[]>([]);
+    const [teachers, setTeachers] = useState<number[]>([]);
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
 
     const dispatch = useAppDispatch();
     const params = useParams();
+    let id = params.id;
+    console.log('assing page id', id);
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(details({ id: params.id }) as any);
     }, []);
 
-    function toggleStaff(id: number) {
-        setStaffs((prevStaffs) => {
-            if (prevStaffs.includes(id)) {
-                // Remove the ID if it's already in the array
-                return prevStaffs.filter((staffId) => staffId !== id);
-            } else {
-                // Add the ID if it's not in the array
-                return [...prevStaffs, id];
-            }
-        });
+    function toggleStaff(id: number, user: string) {
+        if (user === 'staff') {
+            setStaffs((prevStaffs) => {
+                if (prevStaffs.includes(id)) {
+                    // Remove the ID if it's already in the array
+                    return prevStaffs.filter((staffId) => staffId !== id);
+                } else {
+                    // Add the ID if it's not in the array
+                    return [...prevStaffs, id];
+                }
+            });
+        } else if (user === 'teacher') {
+            setTeachers((prevStaffs) => {
+                if (prevStaffs.includes(id)) {
+                    // Remove the ID if it's already in the array
+                    return prevStaffs.filter((staffId) => staffId !== id);
+                } else {
+                    // Add the ID if it's not in the array
+                    return [...prevStaffs, id];
+                }
+            });
+        }
     }
-    useEffect(() => {
-        console.log('staffs', staffs);
-    }, [staffs]);
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(all_staff({}) as any);
+        dispatch(all_teacher({}) as any);
     }, []);
-    if (state.staffs) {
-        console.log('state staffs', state.staffs);
+
+    // useEffect(() => {
+    //     console.log('teachers', teachers);
+    // }, [teachers]);
+
+    // useEffect(() => {
+    //     console.log('staffs', staffs);
+    // }, [staffs]);
+
+    // if (state.teachers) {
+    //     console.log('state teachers', state.teachers);
+    // }
+
+    async function handle_submit(e) {
+        e.preventDefault();
+        console.log('yamjin');
+
+        let response = await dispatch(
+            assign_task({ staffs, teachers, id }) as any,
+        );
     }
 
     return (
@@ -82,6 +115,7 @@ const TaskAssign: React.FC<Props> = (props: Props) => {
                                                             onClick={() =>
                                                                 toggleStaff(
                                                                     i.id,
+                                                                    'staff',
                                                                 )
                                                             }
                                                             style={{
@@ -111,101 +145,53 @@ const TaskAssign: React.FC<Props> = (props: Props) => {
                                 <h1 className="my-4">Teachers :</h1>
                                 <div>
                                     <ul className="assign_tasks">
-                                        <li
-                                            className="assign_task_list"
-                                            onClick={() => toggleStaff(1)}
-                                            style={{ cursor: 'pointer' }}
-                                        >
-                                            <div>
-                                                <input
-                                                    type="checkbox"
-                                                    id="2"
-                                                    checked={staffs.includes(1)}
-                                                    readOnly
-                                                />
-                                            </div>
-                                            <div>:</div>
-                                            <div>Yamin</div>
-                                        </li>
-                                        <li>
-                                            <div className="assign_task_list">
-                                                <div>
-                                                    <input
-                                                        type="checkbox"
-                                                        name=""
-                                                        id=""
-                                                    />
-                                                </div>
-                                                <div>:</div>
-                                                <div>Ymain</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="assign_task_list">
-                                                <div>
-                                                    <input
-                                                        type="checkbox"
-                                                        name=""
-                                                        id=""
-                                                    />
-                                                </div>
-                                                <div>:</div>
-                                                <div>Ymain</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="assign_task_list">
-                                                <div>
-                                                    <input
-                                                        type="checkbox"
-                                                        name=""
-                                                        id=""
-                                                    />
-                                                </div>
-                                                <div>:</div>
-                                                <div>Ymain</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="assign_task_list">
-                                                <div>
-                                                    <input
-                                                        type="checkbox"
-                                                        name=""
-                                                        id=""
-                                                    />
-                                                </div>
-                                                <div>:</div>
-                                                <div>Ymain</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="assign_task_list">
-                                                <div>
-                                                    <input
-                                                        type="checkbox"
-                                                        name=""
-                                                        id=""
-                                                    />
-                                                </div>
-                                                <div>:</div>
-                                                <div>Ymain</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="assign_task_list">
-                                                <div>
-                                                    <input
-                                                        type="checkbox"
-                                                        name=""
-                                                        id=""
-                                                    />
-                                                </div>
-                                                <div>:</div>
-                                                <div>Ymain</div>
-                                            </div>
-                                        </li>
+                                        {state?.teachers?.length &&
+                                            state?.teachers?.map(
+                                                (
+                                                    i: { [key: string]: any },
+                                                    index,
+                                                ) => {
+                                                    return (
+                                                        <li
+                                                            className="assign_task_list"
+                                                            onClick={() =>
+                                                                toggleStaff(
+                                                                    i.id,
+                                                                    'teacher',
+                                                                )
+                                                            }
+                                                            style={{
+                                                                cursor: 'pointer',
+                                                            }}
+                                                        >
+                                                            <div>
+                                                                <input
+                                                                    type="checkbox"
+                                                                    id={i.id}
+                                                                    checked={teachers.includes(
+                                                                        i.id,
+                                                                    )}
+                                                                    readOnly
+                                                                />
+                                                            </div>
+                                                            <div>:</div>
+                                                            <div>{i.name}</div>
+                                                        </li>
+                                                    );
+                                                },
+                                            )}
                                     </ul>
+                                </div>
+                            </div>
+                            <div className="form-group form-horizontal">
+                                <label></label>
+                                <div className="form_elements">
+                                    <button
+                                        onClick={handle_submit}
+                                        className="btn btn_1"
+                                    >
+                                        submit
+                                    </button>
                                 </div>
                             </div>
                         </div>

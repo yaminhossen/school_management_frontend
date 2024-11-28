@@ -13,6 +13,7 @@ export const initialState = {
     all: {},
     item: {} as anyObject,
     staffs: {} as anyObject,
+    teachers: {} as anyObject,
     url: '',
 
     /* data filters */

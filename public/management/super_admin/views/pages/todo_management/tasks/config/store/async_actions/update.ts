@@ -29,6 +29,7 @@ const fetch_api = async (param, thunkAPI) => {
         `${end_point}/${api_prefix}/update`,
         param,
     );
+    console.log('params', param);
 
     dispatch(all({}));
     dispatch(storeSlice.actions.set_is_loading(true));

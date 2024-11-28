@@ -13,6 +13,7 @@ import update from './services/update';
 import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
+import task_assign from './services/task_assign';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -28,6 +29,11 @@ export default function (fastify: FastifyInstance) {
 
         store: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await store(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        task_assign: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await task_assign(fastify, req);
             res.code(data.status).send(data);
         },
 

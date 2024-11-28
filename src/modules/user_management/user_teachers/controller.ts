@@ -18,11 +18,16 @@ import logout from './services/logout';
 import forget from './services/forget';
 import basic_information from './services/basic_information';
 import profile_update from './services/profile_update';
+import teacher_all from './services/teacher_all';
 
 export default function (fastify: FastifyInstance) {
     return {
         all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all(fastify, req);
+            res.code(data.status).send(data);
+        },
+        teacher_all: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await teacher_all(fastify, req);
             res.code(data.status).send(data);
         },
 

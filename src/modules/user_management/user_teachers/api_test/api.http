@@ -11,6 +11,10 @@ GET {{hostname}}/1 HTTP/1.1
 
 # get
 ###
+GET {{hostname}}/teacher-all HTTP/1.1
+
+# get
+###
 GET {{hostname}}/basic-information/1 HTTP/1.1
 
 # store

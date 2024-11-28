@@ -12,6 +12,7 @@ import { destroy } from './async_actions/destroy';
 import { import_data } from './async_actions/import_data';
 import { store_reducers } from './reducers';
 import { all_staff } from './async_actions/all_staff';
+import { assign_task } from './async_actions/assign_task';
 
 const storeSlice = createSlice({
     name: setup.store_prefix,
@@ -22,6 +23,12 @@ const storeSlice = createSlice({
             .addCase(all.fulfilled, (state, { type, payload, meta }) => {
                 // console.log(type, payload, meta);
             })
+            .addCase(
+                assign_task.fulfilled,
+                (state, { type, payload, meta }) => {
+                    // console.log(type, payload, meta);
+                },
+            )
             .addCase(details.fulfilled, (state, { type, payload, meta }) => {
                 // console.log(type, payload, meta);
             })
