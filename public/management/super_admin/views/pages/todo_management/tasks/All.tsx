@@ -17,6 +17,7 @@ import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
 import moment from 'moment/moment';
+import { Link } from 'react-router-dom';
 
 export interface Props {}
 
@@ -62,22 +63,16 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`id`}
                                             sort={true}
                                         />
-                                        {/* <th>Logo</th> */}
+                                        <TableHeading
+                                            label={`Assign Task`}
+                                            col_name={`assign task`}
+                                            sort={false}
+                                        />
                                         <TableHeading
                                             label={`Title`}
                                             col_name={`title`}
                                             sort={true}
                                         />
-                                        {/* <TableHeading
-                                            label={`Branch`}
-                                            col_name={`branch`}
-                                            sort={true}
-                                        /> */}
-                                        {/* <TableHeading
-                                            label={`Meeting`}
-                                            col_name={`meeting`}
-                                            sort={true}
-                                        /> */}
                                         <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
@@ -117,18 +112,16 @@ const All: React.FC<Props> = (props: Props) => {
                                                             {i.id}
                                                         </span>
                                                     </td>
-                                                    {/* <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td> */}
+                                                    <td>
+                                                        <Link
+                                                            to={`/${setup.route_prefix}/assign/${i.id}`}
+                                                        >
+                                                            <span className="agenda_btn">
+                                                                assign
+                                                            </span>
+                                                        </Link>
+                                                    </td>
                                                     <td>{i.title}</td>
-                                                    {/* <td>{i.branch}</td>
-                                                    <td>{i.meeting}</td> */}
                                                     <td>{i.description}</td>
                                                     <td>
                                                         {moment(i.date).format(

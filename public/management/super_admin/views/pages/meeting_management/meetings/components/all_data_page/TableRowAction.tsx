@@ -40,11 +40,11 @@ const TableRowAction: React.FC<Props> = ({ item }: Props) => {
                     <li>
                         <RestoreButton item={item} />
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to={`/${setup.route_prefix}/agendas/${item.id}`}>
                             Agendas
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
         </>

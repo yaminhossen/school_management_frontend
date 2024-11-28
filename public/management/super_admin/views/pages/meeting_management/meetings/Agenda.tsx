@@ -37,7 +37,7 @@ const Agenda: React.FC<Props> = (props: Props) => {
         <>
             <div className="page_content">
                 <div className="explore_window fixed_size">
-                    <Header page_title={setup.details_page_title}></Header>
+                    <Header page_title={'Meeting agendas'}></Header>
 
                     {Object.keys(state.agendas).length && (
                         <div className="content_body custom_scroll">
