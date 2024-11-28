@@ -13,11 +13,20 @@ import update from './services/update';
 import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
+import meeting_agendas from './services/meeting_agendas';
 
 export default function (fastify: FastifyInstance) {
     return {
         all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        meeting_agendas: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await meeting_agendas(fastify, req);
             res.code(data.status).send(data);
         },
 

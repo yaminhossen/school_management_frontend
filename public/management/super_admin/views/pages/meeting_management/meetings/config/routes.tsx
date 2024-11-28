@@ -5,6 +5,7 @@ import All from '../All.jsx';
 import Create from '../Create.jsx';
 import Details from '../Details.jsx';
 import Edit from '../Edit.jsx';
+import Agenda from '../Agenda.tsx';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -23,6 +24,10 @@ export default {
         {
             path: 'edit/:id',
             element: <Edit />,
+        },
+        {
+            path: 'agendas/:id',
+            element: <Agenda />,
         },
         {
             path: 'details/:id',

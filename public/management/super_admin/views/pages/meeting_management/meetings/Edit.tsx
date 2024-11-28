@@ -61,8 +61,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Description</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
+                                        <textarea
                                             placeholder="description"
                                             name="description"
                                             defaultValue={

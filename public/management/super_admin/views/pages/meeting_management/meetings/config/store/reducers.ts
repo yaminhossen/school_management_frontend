@@ -1,6 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { initialState } from './inital_state';
-import { anyObject } from '../../../../../common_types/object';
+import { anyObject } from '../../../../../../common_types/object';
 
 export const store_reducers = {
     set_is_loading: (
@@ -78,6 +78,14 @@ export const store_reducers = {
     set_item: (state: typeof initialState, action: PayloadAction<object>) => {
         state.item = action.payload;
     },
+
+    set_agendas: (
+        state: typeof initialState,
+        action: PayloadAction<object>,
+    ) => {
+        state.agendas = action.payload;
+    },
+
     set_show_quick_view_canvas: (
         state: typeof initialState,
         action: PayloadAction<boolean>,
