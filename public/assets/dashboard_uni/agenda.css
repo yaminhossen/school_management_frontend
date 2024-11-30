@@ -13,3 +13,9 @@ gap: 5px;
         padding: 10px;
     }
 }
+.task_assign_submit_btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}

@@ -41,6 +41,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                             placeholder="title"
                                             name="title"
                                         />
+                                        {/* <div className="form_error">
+                                            The title field is required
+                                        </div> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">

@@ -55,11 +55,7 @@ async function task_assign(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.TasksModel();
-    let taskVariantTasks = new models.TaskVariantTasksModel();
-    let TaskGroupTasks = new models.TaskGroupTasksModel();
-    let TaskUsers = new models.TaskUsersModel();
     let user = (req as any).user;
-    // console.log('auth user', user);
 
     let auth_user = await models.BranchStaffsModel.findOne({
         where: {
@@ -67,24 +63,19 @@ async function task_assign(
         },
     });
 
-    let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: auth_user?.branch_id || 1,
-        title: body.title,
-        description: body.description,
-        is_complete: body.is_complete,
-        date: body.date,
-        creator: user?.id || 0,
-    };
-
-    console.log('task assgin param', body);
     let staffs: anyObject[] = [];
-    for (let i = 0; i <= parseInt(body.staffs.length); i++) {
+    for (let i = 0; i < parseInt(body.staffs.length); i++) {
         staffs.push({
             staff_id: body.staffs[i],
-            // owner: body[`number_owner${i}`],
         });
     }
-    console.log('staffs', staffs);
+
+    let teachers: anyObject[] = [];
+    for (let i = 0; i < parseInt(body.teachers.length); i++) {
+        teachers.push({
+            teacher_id: body.teachers[i],
+        });
+    }
 
     /** print request data into console */
     // console.clear();
@@ -114,7 +105,26 @@ async function task_assign(
                     teacher_id: ss.teacher_id || null,
                     admin_id: ss.admin_id || null,
                     task_id: body.id,
-                    creator: user?.id || 0,
+                    creator: user?.id || null,
+                };
+                usl_inputs.branch_id = auth_user?.branch_id || 1;
+                usl_inputs.staff_id = ss.staff_id || null;
+                usl_inputs.teacher_id = ss.teacher_id || null;
+                usl_inputs.admin_id = ss.admin_id || null;
+                usl_inputs.task_id = body.id || null;
+                (await usl_model.update(usl_inputs)).save();
+            });
+        }
+        if (teachers) {
+            teachers.forEach(async (ss) => {
+                let usl_model = new models.TaskUsersModel();
+                let usl_inputs: InferCreationAttributes<typeof usl_model> = {
+                    branch_id: auth_user?.branch_id || 1,
+                    staff_id: ss.staff_id || null,
+                    teacher_id: ss.teacher_id || null,
+                    admin_id: ss.admin_id || null,
+                    task_id: body.id,
+                    creator: user?.id || null,
                 };
                 usl_inputs.branch_id = auth_user?.branch_id || 1;
                 usl_inputs.staff_id = ss.staff_id || null;

@@ -183,9 +183,8 @@ const TaskAssign: React.FC<Props> = (props: Props) => {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="form-group form-horizontal">
-                                <label></label>
-                                <div className="form_elements">
+                            <div className="form-group form-horizonta">
+                                <div className="task_assign_submit_btn">
                                     <button
                                         onClick={handle_submit}
                                         className="btn btn_1"

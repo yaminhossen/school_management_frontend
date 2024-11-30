@@ -21,13 +21,21 @@ if (container) {
         </Provider>,
     );
 }
+// Reusable function to clear previous error elements and classes
+function clearErrors() {
+    // Remove all '.form_error' elements
+    let form_errors = document.querySelectorAll('.form_error');
+    // console.log('form errrors', form_errors);
+    [...form_errors].forEach((e) => e.remove());
+
+    // Remove 'has_error' class from elements
+    let has_errors = document.querySelectorAll('.has_error');
+    [...has_errors].forEach((e) => e.classList.remove('has_error'));
+}
 
 axios.interceptors.request.use(
     function (config) {
-        let form_errors = document.querySelectorAll('.form_error');
-        [...form_errors].forEach((e) => e.remove());
-        let has_errors = document.querySelectorAll('.has_error');
-        [...has_errors].forEach((e) => e.classList.remove('has_error'));
+        clearErrors();
 
         return config;
     },
@@ -40,17 +48,20 @@ axios.interceptors.response.use(
     function (response) {
         return response;
     },
+
     function (error) {
         if (error.response.data.status === 422) {
             let errors = error.response.data.data;
+
             errors.forEach((error) => {
                 let el = document.querySelector(`[name="${error.path}"]`);
+
                 if (el) {
-                    (el.parentNode as HTMLElement).classList.add('has_error');
+                    (el.parentNode as HTMLElement)?.classList.add('has_error');
                     (el.parentNode as HTMLElement)?.insertAdjacentHTML(
                         'beforeend',
                         `
-                        <div className="form_error">
+                        <div class="form_error">
                             ${error.msg}
                         </div>
                         `,

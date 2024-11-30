@@ -74,7 +74,7 @@ axios.interceptors.response.use(
                     (el.parentNode as HTMLElement)?.insertAdjacentHTML(
                         'beforeend',
                         `
-                        <div className="form_error">
+                        <div class="form_error">
                             ${error.msg}
                         </div>
                         `,
