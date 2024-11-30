@@ -69,11 +69,9 @@ async function update(
     let model = new models.MeetingAgendasModel();
 
     let inputs: InferCreationAttributes<typeof model> = {
-        // branch_id: body.branch_id,
         meeting_id: body.meeting_id,
         title: body.title,
         description: body.description,
-        // is_complete: body.is_complete,
     };
     /** print request data into console */
     // console.clear();

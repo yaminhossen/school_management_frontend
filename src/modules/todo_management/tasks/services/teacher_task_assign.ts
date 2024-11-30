@@ -12,10 +12,28 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
 async function validate(req: Request) {
+    // await body('branch_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_id field is required')
+    //     .run(req);
+
     // await body('title')
     //     .not()
     //     .isEmpty()
     //     .withMessage('the title field is required')
+    //     .run(req);
+
+    // await body('description')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the description field is required')
+    //     .run(req);
+
+    // await body('date')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the date field is required')
     //     .run(req);
 
     let result = await validationResult(req);

@@ -10,7 +10,6 @@ async function details(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
-    let meetingsModel = models.MeetingsModel;
     let params = req.params as any;
 
     try {

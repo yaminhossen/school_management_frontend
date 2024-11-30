@@ -69,7 +69,7 @@ async function store(
         title: body.title,
         description: body.description,
         date: body.date,
-        creator: user?.id || 0,
+        creator: user?.id || null,
     };
 
     /** print request data into console */
