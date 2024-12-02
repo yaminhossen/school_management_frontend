@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { anyObject } from '../../../../common_types/object';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
@@ -9,10 +9,10 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
     const { id } = useParams();
+    const [searchParams] = useSearchParams();
 
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
+    const subjectId = searchParams.get('sub');
+    console.log('subject id', subjectId);
 
     const fetchData = async () => {
         try {
@@ -29,13 +29,14 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-    console.log(data);
+    // console.log('subject_id2', subjectId);
     let date = moment().format('YYYY-MM-DD');
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         let formData = new FormData(e.target);
-        console.log('formData', formData);
+        formData.append('class_id', `${id}`);
+        formData.append('subject_id', `${subjectId}`);
         try {
             const response = await axios.post(
                 '/api/v1/student-attendances/store',

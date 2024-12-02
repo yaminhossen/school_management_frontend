@@ -23,29 +23,21 @@ import {
     // ForeignKey,
 } from 'sequelize';
 
-const tableName = 'student_attendances';
-const modelName = 'StudentAttendancesModel';
+const tableName = 'branch_teachers';
+const modelName = 'BranchTeachersModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
-type attendance_status = 'present' | 'absent' | 'late' | 'leave';
 type status = 'active' | 'deactive';
 
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
-    declare branch_id?: number;
-    declare branch_student_id: number;
-    declare teacher_id: number;
-    declare class_id: number;
-    declare subject_id: number;
-    declare start_time?: string;
-    declare end_time?: string;
-    declare date: string;
-    declare attendance_status: attendance_status;
-    declare overtime_hours?: number;
-    declare fine_amount?: number;
-    declare reward_amount?: number;
+    declare user_teacher_id: number;
+    declare branch_id: number;
+    declare class_teacher_id: number;
+    declare joining_date: string;
+    declare department: string;
 
     declare status?: status;
     declare creator?: number;
@@ -62,52 +54,24 @@ function init(sequelize: Sequelize) {
                 autoIncrement: true,
                 primaryKey: true,
             },
+            user_teacher_id: {
+                type: DataTypes.BIGINT.UNSIGNED,
+                allowNull: true,
+            },
             branch_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
-            branch_student_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+            class_teacher_id: {
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
-            teacher_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+            joining_date: {
+                type: new DataTypes.DATE(),
                 allowNull: true,
             },
-            class_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            subject_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            start_time: {
-                type: DataTypes.TIME,
-                allowNull: true,
-            },
-            end_time: {
-                type: DataTypes.TIME,
-                allowNull: true,
-            },
-            date: {
-                type: DataTypes.DATE,
-                allowNull: true,
-            },
-            attendance_status: {
-                type: new DataTypes.ENUM('present', 'absent', 'late', 'leave'),
-                allowNull: true,
-            },
-            overtime_hours: {
-                type: DataTypes.FLOAT.UNSIGNED,
-                allowNull: true,
-            },
-            fine_amount: {
-                type: DataTypes.FLOAT.UNSIGNED,
-                allowNull: true,
-            },
-            reward_amount: {
-                type: DataTypes.FLOAT.UNSIGNED,
+            department: {
+                type: new DataTypes.STRING(40),
                 allowNull: true,
             },
 

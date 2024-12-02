@@ -91,10 +91,18 @@ async function update(
     let models = await db();
     let body = req.body as anyObject;
     let model = new models.StudentAttendancesModel();
+    let user = (req as any).user;
+    let auth_user = await models.BranchTeachersModel.findOne({
+        where: {
+            user_teacher_id: user?.id || null,
+        },
+    });
 
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: body.branch_id,
         branch_student_id: body.branch_student_id,
+        teacher_id: user.id || null,
+        class_id: body.class_id,
+        subject_id: body.subject_id,
         start_time: body.start_time,
         end_time: body.end_time,
         date: body.date,

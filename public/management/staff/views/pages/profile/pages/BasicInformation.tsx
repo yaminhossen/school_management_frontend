@@ -16,7 +16,7 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/user-teachers/basic-information/1',
+                '/api/v1/user-staffs/basic-information/1',
             );
             setData(response.data.data);
             // setData(response.data);
@@ -37,13 +37,13 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                     <tr>
                         <td>Permanent Address:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.parmenent_address}
+                            {data.staff_infos?.parmenent_address}
                         </td>
                     </tr>
                     <tr>
                         <td>Present Address:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.present_address}
+                            {data.staff_infos?.present_address}
                         </td>
                     </tr>
                     <tr>
@@ -61,7 +61,7 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                     <tr>
                         <td>Graduation:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.graduation}
+                            {data.staff_infos?.graduation}
                         </td>
                     </tr>
                     <tr>
@@ -71,7 +71,7 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                     <tr>
                         <td>Occupation:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.occupation}
+                            {data.staff_infos?.occupation}
                         </td>
                     </tr>
                     <tr>
@@ -85,9 +85,7 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                     <tr>
                         <td>IsMarried:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.ismarried == true
-                                ? 'Yes'
-                                : 'No'}
+                            {data.staff_infos?.ismarried == true ? 'Yes' : 'No'}
                         </td>
                     </tr>
                     <tr>

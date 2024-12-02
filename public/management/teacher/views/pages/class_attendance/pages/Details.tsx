@@ -60,16 +60,10 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 <td>
                                                     <Link
                                                         className="btn btn-sm btn-outline-info mr-1"
-                                                        to={`/class-attendance/take-attendance/${id}`}
+                                                        to={`/class-attendance/take-attendance/${id}?sub=${i.subject_id}`}
                                                     >
                                                         Take attendance
                                                     </Link>
-                                                    {/* <Link
-                                                    className="btn btn-sm btn-outline-info"
-                                                    to="/class-attendance/take-attendance"
-                                                >
-                                                    Take attendance
-                                                </Link> */}
                                                 </td>
                                             </tr>
                                         );

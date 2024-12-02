@@ -67,7 +67,11 @@ async function details(
 
             return response(200, 'data found', responseData);
         } else {
-            throw new custom_error('not found', 404, 'data not found');
+            throw new custom_error(
+                'not founddfdsfds',
+                404,
+                'datadgfghf not found',
+            );
         }
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.params);

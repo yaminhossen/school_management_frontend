@@ -10,10 +10,6 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState<any>([]);
     const [error, setError] = useState(null);
 
-    // useEffect(() => {
-    //     // Function to fetch data
-    // }, []);
-
     const fetchData = async () => {
         try {
             const response = await axios.get(
@@ -42,11 +38,6 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
                 <div className="page-sidebar custom-scrollbar">
                     <div className="sidebar-user text-center">
                         <div>
-                            {/* <img
-                                className="img-50 rounded-circle"
-                                src="/assets/dashboard_uni/1.jpg"
-                                alt="#"
-                            /> */}
                             <img
                                 className="img-50 rounded-circle"
                                 src={data?.image}

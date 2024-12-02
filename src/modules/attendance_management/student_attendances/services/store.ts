@@ -86,7 +86,14 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.StudentAttendancesModel();
+    let user = (req as any).user;
+    let auth_user = await models.BranchTeachersModel.findOne({
+        where: {
+            user_teacher_id: user?.id || null,
+        },
+    });
     console.log('attendance body', body);
+    console.log('attendance append property', body.subject_id, body.class_id);
 
     let student_attendance: anyObject[] = [];
     for (let i = 0; i < parseInt(body.student_count); i++) {
@@ -107,18 +114,23 @@ async function store(
             student_attendance.forEach(async (ss) => {
                 let uscn_model = new models.StudentAttendancesModel();
                 let uscn_inputs: InferCreationAttributes<typeof uscn_model> = {
-                    branch_id: body.branch_id,
+                    branch_id: auth_user?.branch_id || 1,
                     branch_student_id: 1,
+                    teacher_id: user.id || null,
+                    class_id: body.class_id,
+                    subject_id: body.subject_id,
                     date: body.contact_number,
                     attendance_status: body.owner,
-                    creator: 1,
+                    creator: user.id || null,
                 };
-                uscn_inputs.branch_id = 1;
+                uscn_inputs.branch_id = auth_user?.branch_id || 1;
                 uscn_inputs.branch_student_id = ss.branch_student_id;
+                uscn_inputs.teacher_id = user.id || null;
+                uscn_inputs.class_id = body.class_id;
+                uscn_inputs.subject_id = body.subject_id;
                 uscn_inputs.date = todayDate;
                 uscn_inputs.attendance_status = ss.attendance_status;
-                uscn_inputs.creator = 1;
-                (await uscn_model.update(uscn_inputs)).save();
+                uscn_inputs.creator = user.id || null;
             });
         }
         return response(200, 'data created', data);

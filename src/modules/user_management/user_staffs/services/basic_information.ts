@@ -25,7 +25,7 @@ async function basic_information(
             include: [
                 {
                     model: staffInformationsModel,
-                    as: 'staff_information',
+                    as: 'staff_infos',
                 },
             ],
         });

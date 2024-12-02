@@ -1,5 +1,3 @@
-{"level":60,"time":1733116296644,"pid":14260,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachersdg/basic-information/155"}
-{"level":60,"time":1733116298185,"pid":14260,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachersdg/basic-information/155"}
-{"level":60,"time":1733116298974,"pid":14260,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachersdg/basic-information/155"}
-{"level":60,"time":1733116301921,"pid":14260,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachersdg/basic-information/155"}
-{"level":60,"time":1733116337194,"pid":14260,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachersdg/basic-information/155"}
+{"level":60,"time":1733138496967,"pid":5968,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/basic-information/1"}
+{"level":60,"time":1733138503043,"pid":5968,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/teacher-classes/1"}
+{"level":60,"time":1733138547203,"pid":5968,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10"}

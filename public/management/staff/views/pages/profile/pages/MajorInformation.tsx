@@ -9,14 +9,10 @@ const MajorInformation: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<any>([]);
 
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
-
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/user-teachers/basic-information/1',
+                '/api/v1/user-staffs/basic-information/1',
             );
             setData(response.data.data);
             // setData(response.data);
@@ -40,12 +36,6 @@ const MajorInformation: React.FC<Props> = (props: Props) => {
                             {data.name}
                         </td>
                     </tr>
-                    {/* <tr>
-                        <td>Gender:</td>
-                        <td className="font-medium text-dark-medium">
-                            {data.name}
-                        </td>
-                    </tr> */}
                     <tr>
                         <td>Email:</td>
                         <td className="font-medium text-dark-medium">
