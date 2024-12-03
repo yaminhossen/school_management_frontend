@@ -126,12 +126,6 @@ const db = async function (): Promise<models> {
         as: 'student_info',
     });
 
-    // UserStudentInformationsModel.hasOne(UserStudentsModel, {
-    //     sourceKey: 'user_student_id',
-    //     foreignKey: 'id',
-    //     as: 'student',
-    // });
-
     UserStudentInformationsModel.hasOne(BranchClassesModel, {
         sourceKey: 's_class',
         foreignKey: 'id',
@@ -241,12 +235,6 @@ const db = async function (): Promise<models> {
         foreignKey: 'user_student_id',
         as: 'infostudent',
     });
-
-    // UserStudentsModel.hasMany(UserStudentInformationsModel, {
-    //     sourceKey: 'id',
-    //     foreignKey: 'user_student_id',
-    //     as: 'student_infos',
-    // });
 
     BranchClassStudentsModel.hasOne(UserStudentsModel, {
         sourceKey: 'branch_student_id',

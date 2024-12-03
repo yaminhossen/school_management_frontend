@@ -20,6 +20,7 @@ import Dues from '../pages/Dues.tsx';
 import Payments from '../pages/Payments.tsx';
 import Results from '../pages/Results.tsx';
 import Markshit from '../pages/Markshit.tsx';
+import TakeAttendance from '../TakeAttendance.tsx';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -46,6 +47,10 @@ export default {
         {
             path: 'create',
             element: <Create />,
+        },
+        {
+            path: 'take-attendance',
+            element: <TakeAttendance />,
         },
         {
             path: 'edit/:id',

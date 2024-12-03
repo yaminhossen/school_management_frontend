@@ -276,7 +276,7 @@ const Attendance: React.FC<Props> = (props: Props) => {
                     <div className="action_btns">
                         <ul>
                             <li>
-                                <Link to={`/${route_prefix}/create`}>
+                                <Link to={`/${route_prefix}/take-attendance`}>
                                     <span className="material-symbols-outlined fill">
                                         add
                                     </span>
@@ -289,14 +289,6 @@ const Attendance: React.FC<Props> = (props: Props) => {
                             <li>
                                 <AllDeactivatedData />
                             </li>
-                            {/* <li>
-                        <a href="#">
-                            <span className="material-symbols-outlined fill">
-                                upload
-                            </span>
-                            <div className="text">Import All</div>
-                        </a>
-                    </li> */}
                         </ul>
                     </div>
                 </div>

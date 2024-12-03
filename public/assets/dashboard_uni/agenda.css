@@ -19,3 +19,16 @@ gap: 5px;
     margin-top: 20px;
 
 }
+.teacher_result{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+    margin: 20px 0;
+    
+    .label{
+        color: white;
+        margin-bottom: 5px;
+
+    }
+}

@@ -29,18 +29,6 @@ async function classes(
             // },
         });
 
-        // let Dbresponse = await classesModel.findAndCountAll({
-        // where: {
-        //     branch_id: staff?.branch_id,
-        // },
-        // include: [
-        //     {
-        //         model: classStudentsModel,
-        //         as: 'branch_classes',
-        //     },
-        // ],
-        // });
-
         if (data) {
             return response(200, 'data created', data);
         } else {
