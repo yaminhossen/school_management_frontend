@@ -14,6 +14,7 @@ import restore from './services/restore';
 import destroy from './services/destroy';
 import all_class from './services/all_class';
 import data_import from './services/import';
+import branch_class_wise_student from './services/branch_class_wise_student';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -21,8 +22,20 @@ export default function (fastify: FastifyInstance) {
             let data: responseObject = await all(fastify, req);
             res.code(data.status).send(data);
         },
+
         all_class: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all_class(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        branch_class_wise_student: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await branch_class_wise_student(
+                fastify,
+                req,
+            );
             res.code(data.status).send(data);
         },
 

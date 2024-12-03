@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { anyObject } from '../../../../common_types/object';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
@@ -10,21 +10,13 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState([]);
     const [branch, setBranch] = useState([]);
     const [classes, setClasses] = useState([]);
+    const branchId = useRef<HTMLSelectElement>(null);
+    const classId = useRef<HTMLSelectElement>(null);
     const { id } = useParams();
     const [searchParams] = useSearchParams();
 
     const subjectId = searchParams.get('sub');
     console.log('subject id', subjectId);
-
-    const fetchData = async () => {
-        try {
-            // const response = await axios.get(`/api/v1/user-students/branches`);
-            // setData(response.data.data);
-            // setData(response.data);
-        } catch (error) {
-            setError(error);
-        }
-    };
 
     const fetchBranches = async () => {
         try {
@@ -46,25 +38,55 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
         }
     };
     async function initFunc() {
-        await fetchBranches();
         await fetchClasses();
-        await fetchData();
+        await fetchBranches();
     }
     useEffect(() => {
-        // const timeoutClass = setTimeout(() => {
-        //     fetchClasses();
-        // }, 5000);
         initFunc();
     }, []);
-    console.log('all brnaches', branch);
-    console.log('all classes', classes);
+
+    const fetchData = async () => {
+        if (!branchId.current || !classId.current) {
+            console.error('Refs are not ready');
+            return;
+        }
+
+        const formData = {
+            branch: branchId.current.value,
+            classes: classId.current.value,
+        };
+
+        console.log('Form data:', formData);
+        // let formData = 'new FormData();';
+        try {
+            const response = await axios.post(
+                '/api/v1/branch-classes/branch-class-wise-student',
+                formData,
+            );
+            setData(response.data.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+    const handleFilter = async (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+        let formData = new FormData(e.target);
+        try {
+            const response = await axios.post(
+                '/api/v1/branch-classes/branch-class-wise-student',
+                formData,
+            );
+            setData(response.data.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
     let date = moment().format('YYYY-MM-DD');
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         let formData = new FormData(e.target);
-        formData.append('class_id', `${id}`);
-        formData.append('subject_id', `${subjectId}`);
         try {
             const response = await axios.post(
                 '/api/v1/student-attendances/store',
@@ -76,24 +98,22 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
+    useEffect(() => {
+        fetchData();
+    }, [classes, branch]);
+    if (data) {
+        console.log('founded data', data);
+    }
 
     return (
         <div className="admin_dashboard">
             <div className="content_body">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleFilter}>
                     <div className="teacher_result">
                         <div>
                             <div className="label">Branch</div>
                             <div>
-                                {/* <input
-                                    type="date"
-                                    name="month1"
-                                    defaultValue={moment()
-                                        .subtract(30, 'days')
-                                        .format('YYYY-MM-DD')}
-                                /> */}
-                                <select name="branch" id="">
-                                    {/* <option value="1">Kustia</option> */}
+                                <select name="branch" ref={branchId} id="">
                                     {branch?.length &&
                                         branch?.map(
                                             (i: { [key: string]: any }) => {
@@ -110,15 +130,17 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
                         <div>
                             <div className="label">Class</div>
                             <div>
-                                {/* <input
-                                    type="date"
-                                    name="month2"
-                                    defaultValue={moment().format('YYYY-MM-DD')}
-                                /> */}
-                                <select name="class" id="">
-                                    <option value="1">Six</option>
-                                    <option value="2">Seven</option>
-                                    <option value="3">Eight</option>
+                                <select name="classes" ref={classId} id="">
+                                    {classes?.length &&
+                                        classes?.map(
+                                            (i: { [key: string]: any }) => {
+                                                return (
+                                                    <option value={i.id}>
+                                                        {i.name}
+                                                    </option>
+                                                );
+                                            },
+                                        )}
                                 </select>
                             </div>
                         </div>
@@ -151,14 +173,16 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
                                         name="student_count"
                                         value={data.length}
                                     />
-                                    {classes?.map(
+                                    {data?.map(
                                         (i: { [key: string]: any }, index) => {
                                             return (
                                                 <tr>
                                                     <td></td>
                                                     <td>{index + 1}</td>
-                                                    <td>{i.student?.name}</td>
-                                                    <td>{i.role_no}</td>
+                                                    <td>{i.info?.name}</td>
+                                                    <td>
+                                                        {i.info_details.role_no}
+                                                    </td>
                                                     <td>{date}</td>
 
                                                     <td>
