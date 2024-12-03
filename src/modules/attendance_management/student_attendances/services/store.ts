@@ -92,8 +92,6 @@ async function store(
             user_teacher_id: user?.id || null,
         },
     });
-    console.log('attendance body', body);
-    console.log('attendance append property', body.subject_id, body.class_id);
 
     let student_attendance: anyObject[] = [];
     for (let i = 0; i < parseInt(body.student_count); i++) {

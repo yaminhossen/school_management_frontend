@@ -29,25 +29,6 @@ const Details: React.FC<Props> = (props: Props) => {
             <div className="page_content">
                 <div className="explore_window fixed_size">
                     <Header page_title={setup.details_page_title}></Header>
-
-                    {/* {Object.keys(state.item).length && (
-                        <div className="content_body">
-                            <table className="table quick_modal_table table-hover">
-                                <tbody>
-                                    <tr>
-                                        <td>Name</td>
-                                        <td>:</td>
-                                        <td>{state.item.name}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Preffered Name</td>
-                                        <td>:</td>
-                                        <td>{state.item.email}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    )} */}
                     <div className="content_body custom_scroll">
                         <div className="single-info-details">
                             <div className="item-img">

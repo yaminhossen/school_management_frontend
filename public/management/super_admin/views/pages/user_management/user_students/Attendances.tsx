@@ -16,6 +16,10 @@ import TableRowAction from './components/all_data_page/TableRowAction';
 import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
+import { Link } from 'react-router-dom';
+import ExportSelected from './components/all_data_page/ExportSelected';
+import AllDeactivatedData from './components/all_data_page/AllDeactivatedData';
+let route_prefix = setup.route_prefix;
 
 export interface Props {}
 
@@ -267,7 +271,35 @@ const Attendance: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                <TableFooter></TableFooter>
+                {/* <TableFooter></TableFooter> */}
+                <div className="footer">
+                    <div className="action_btns">
+                        <ul>
+                            <li>
+                                <Link to={`/${route_prefix}/create`}>
+                                    <span className="material-symbols-outlined fill">
+                                        add
+                                    </span>
+                                    <div className="text">Take Attendances</div>
+                                </Link>
+                            </li>
+                            <li>
+                                <ExportSelected />
+                            </li>
+                            <li>
+                                <AllDeactivatedData />
+                            </li>
+                            {/* <li>
+                        <a href="#">
+                            <span className="material-symbols-outlined fill">
+                                upload
+                            </span>
+                            <div className="text">Import All</div>
+                        </a>
+                    </li> */}
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <Filter></Filter>
