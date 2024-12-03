@@ -101,6 +101,7 @@ async function store(
         });
     }
     let todayDate = moment().format('YYYY-MM-DD');
+    console.log('body class id', body.class_id);
     console.log('body', body);
 
     /** print request data into console */
@@ -132,7 +133,7 @@ async function store(
                 uscn_inputs.date = todayDate;
                 uscn_inputs.attendance_status = ss.attendance_status;
                 uscn_inputs.creator = user?.id || null;
-                // (await uscn_model.update(uscn_inputs)).save();
+                (await uscn_model.update(uscn_inputs)).save();
             });
         }
         return response(200, 'data created', data);

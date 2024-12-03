@@ -86,7 +86,15 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
+        let newdata;
+        if (classId.current) {
+            console.error('Refs are not ready');
+            newdata = classId.current.value;
+        }
+        console.log('jsdlfj', newdata);
+
         let formData = new FormData(e.target);
+        formData.append('class_id', newdata);
         try {
             const response = await axios.post(
                 '/api/v1/student-attendances/store',
@@ -104,6 +112,7 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
     if (data) {
         console.log('founded data', data);
     }
+    // console.log('sdlfjlds', classId?.current.value,);
 
     return (
         <div className="admin_dashboard">
@@ -190,7 +199,7 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
                                                             type="hidden"
                                                             name={`student_id${index}`}
                                                             value={
-                                                                i.user_student_id
+                                                                i.branch_student_id
                                                             }
                                                         />
                                                     </td>
