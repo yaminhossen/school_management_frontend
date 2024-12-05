@@ -43,6 +43,10 @@ GET {{hostname}}/1/profile HTTP/1.1
 
 # get
 ###
+GET {{hostname}}/just-check/3 HTTP/1.1
+
+# get
+###
 GET {{hostname}}/class-details/Six HTTP/1.1
 
 # store
