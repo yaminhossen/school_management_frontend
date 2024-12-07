@@ -13,6 +13,7 @@ async function basic_information(
     let staffsModel = models.UserStaffsModel;
     let staffInformationsModel = models.UserStaffInformationsModel;
     let params = req.params as any;
+    // console.log('req params', params);
 
     try {
         let data = await staffsModel.findOne({

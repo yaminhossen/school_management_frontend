@@ -15,11 +15,10 @@ const UpdatePhoto: React.FC<Props> = (props: Props) => {
 
         try {
             const response = await axios.post(
-                '/api/v1/user-teachers/profile-update',
+                '/api/v1/user-staffs/profile-update',
                 formData,
             );
             // setResponseMessage('Form submitted successfully!');
-            // console.log('response', response);
         } catch (error) {
             // setError(error); // Set error state
         }

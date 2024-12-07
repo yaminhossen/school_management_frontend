@@ -14,6 +14,7 @@ module.exports = async function (fastify: FastifyInstance) {
             `${prefix}/basic-information/:id`,
             controllerInstance.basic_information,
         )
+        .post(`${prefix}/profile-update`, controllerInstance.profile_update)
         .post(`${prefix}/store`, controllerInstance.store)
         .post(`${prefix}/update`, controllerInstance.update)
         .post(`${prefix}/soft-delete`, controllerInstance.soft_delete)

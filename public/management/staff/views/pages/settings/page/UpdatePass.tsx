@@ -15,7 +15,7 @@ const UpdatePass: React.FC<Props> = (props: Props) => {
 
         try {
             const response = await axios.post(
-                '/api/v1/user-teachers/profile-update',
+                '/api/v1/user-staffs/profile-update',
                 formData,
             );
             // setResponseMessage('Form submitted successfully!');

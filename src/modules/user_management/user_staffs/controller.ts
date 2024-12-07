@@ -18,6 +18,7 @@ import logout from './services/logout';
 import forget from './services/forget';
 import staff_all from './services/staff_all';
 import basic_information from './services/basic_information';
+import profile_update from './services/profile_update';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -44,6 +45,14 @@ export default function (fastify: FastifyInstance) {
 
         store: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await store(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        profile_update: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await profile_update(fastify, req);
             res.code(data.status).send(data);
         },
 

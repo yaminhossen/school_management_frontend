@@ -13,6 +13,7 @@ async function all_students(
     let NoticeSeenByUsersModel = models.NoticeSeenByUsersModel;
     let params = req.params as any;
     const Sequelize = require('sequelize');
+    // console.log('req params', params);
     try {
         let data = await models.NoticesModel.findAll({
             where: {
