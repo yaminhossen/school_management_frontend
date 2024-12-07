@@ -44,6 +44,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-bookmark-alt"
                     label="Reports"
                 />
+                <MenuSingle
+                    to="/settings"
+                    icon="icon-bookmark-alt"
+                    label="Settings"
+                />
 
                 <MenuSingle to="/" icon="icon-power-off" label="Logout" />
 

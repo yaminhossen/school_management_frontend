@@ -9,6 +9,7 @@ import leave_application_routes from '../views/pages/leave_application/config/ro
 import salary_report_routes from '../views/pages/salary_report/config/routes';
 import notices_routes from '../views/pages/notices/config/routes';
 import reports_routes from '../views/pages/reports/config/routes';
+import settings_routes from '../views/pages/settings/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
@@ -22,6 +23,7 @@ const router: RouteTypes[] = [
             notices_routes,
             reports_routes,
             salary_report_routes,
+            settings_routes,
             {
                 path: '',
                 element: <T1 />,
