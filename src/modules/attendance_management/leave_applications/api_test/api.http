@@ -15,6 +15,10 @@ GET {{hostname}}/pending/1 HTTP/1.1
 
 # get
 ###
+GET {{hostname}}/staff/pending/2 HTTP/1.1
+
+# get
+###
 GET {{hostname}}/rejected/1 HTTP/1.1
 
 # get

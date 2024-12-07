@@ -24,6 +24,7 @@ module.exports = async function (fastify: FastifyInstance) {
             `${prefix}/teacher-rejected/:id`,
             controllerInstance.teacher_rejected,
         )
+        .get(`${prefix}/staff/:type/:id`, controllerInstance.staff_leave)
         .post(`${prefix}/store`, controllerInstance.store)
         .post(`${prefix}/student-store`, controllerInstance.student_store)
         .post(`${prefix}/update`, controllerInstance.update)

@@ -20,11 +20,16 @@ import rejected from './services/rejected';
 import teacher_approved from './services/teacher_approved';
 import teacher_rejected from './services/teacher_rejected';
 import teacher_pending from './services/teacher_pending';
+import staff_leave from './services/staff_leave';
 
 export default function (fastify: FastifyInstance) {
     return {
         all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all(fastify, req);
+            res.code(data.status).send(data);
+        },
+        staff_leave: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await staff_leave(fastify, req);
             res.code(data.status).send(data);
         },
 

@@ -144,3 +144,5 @@
 {"level":60,"time":1733562724999,"pid":17292,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/staff/staff.js"}
 {"level":60,"time":1733562748114,"pid":17292,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/teachers"}
 {"level":60,"time":1733563675247,"pid":17520,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/staffs/yamin"}
+{"level":60,"time":1733564566368,"pid":12972,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved/1"}
+{"level":60,"time":1733564573895,"pid":12972,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved/1"}
