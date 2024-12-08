@@ -47,24 +47,63 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>Building Name</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="name"
-                                            name="name"
-                                            defaultValue={state.item.name}
+                                            placeholder="building name"
+                                            name="building_name"
+                                            defaultValue={
+                                                state.item.building_name
+                                            }
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Preferred Name</label>
+                                    <label>Building code</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="email"
-                                            name="email"
-                                            defaultValue={state.item.email}
+                                            placeholder="building code"
+                                            name="building_code"
+                                            defaultValue={
+                                                state.item.building_code
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Attachment</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            placeholder="attachment"
+                                            name="attachment"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Photo</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            placeholder="photo"
+                                            name="photo"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Description</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="description"
+                                            name="description"
+                                            defaultValue={
+                                                state.item.description
+                                            }
                                         />
                                     </div>
                                 </div>

@@ -35,14 +35,45 @@ const Details: React.FC<Props> = (props: Props) => {
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
                                     <tr>
-                                        <td>Name</td>
+                                        <td>Building Name</td>
                                         <td>:</td>
-                                        <td>{state.item.name}</td>
+                                        <td>{state.item.building_name}</td>
                                     </tr>
                                     <tr>
-                                        <td>Preffered Name</td>
+                                        <td>building code</td>
                                         <td>:</td>
-                                        <td>{state.item.email}</td>
+                                        <td>{state.item.building_code}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Attachment</td>
+                                        <td>:</td>
+                                        <td className="font-medium text-dark-medium">
+                                            <a
+                                                href={state.item.attachment}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                Show File
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Photo</td>
+                                        <td>:</td>
+                                        <td>
+                                            <img
+                                                src={state.item.photo}
+                                                alt="Building Photo"
+                                                style={{
+                                                    height: 30,
+                                                }}
+                                            />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>:</td>
+                                        <td>{state.item.description}</td>
                                     </tr>
                                 </tbody>
                             </table>

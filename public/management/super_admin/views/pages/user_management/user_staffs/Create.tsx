@@ -269,7 +269,18 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <div className="form-group form-horizontal">
                                                 <label>Responsibilies</label>
                                                 <div className="form_elements">
-                                                    <label htmlFor="">
+                                                    <select
+                                                        name="branch_id"
+                                                        id=""
+                                                    >
+                                                        <option value="mirpur">
+                                                            mirpur
+                                                        </option>
+                                                        <option value="gulshan">
+                                                            gulshan
+                                                        </option>
+                                                    </select>
+                                                    {/* <label htmlFor="">
                                                         <input
                                                             type="checkbox"
                                                             name="responsibilies"
@@ -284,7 +295,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                             id=""
                                                         />
                                                         <span>teacher</span>
-                                                    </label>
+                                                    </label> */}
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">

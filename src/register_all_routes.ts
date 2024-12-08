@@ -45,9 +45,9 @@ export let active_routes: string[] = [
     'src/modules/auth_management/authetication/routes.ts',
     'src/modules/auth_management/user_management/routes.ts',
 
-    // 'src/modules/branch_management/branches/routes.ts',
+    'src/modules/branch_management/branches/routes.ts',
     // 'src/modules/branch_management/branch_admin/routes.ts',
-    // 'src/modules/branch_management/branch_buildings/routes.ts',
+    'src/modules/branch_management/branch_buildings/routes.ts',
     // 'src/modules/branch_management/branch_building_rooms/routes.ts',
     // 'src/modules/branch_management/branch_building_room_beds/routes.ts',
     // 'src/modules/branch_management/branch_contacts/routes.ts',
@@ -114,7 +114,7 @@ export let active_routes: string[] = [
     // 'src/modules/teacher_evaluations/teacher_kpi_reports/routes.ts',
     // 'src/modules/teacher_evaluations/teacher_overall_evaluations/routes.ts',
 
-    // 'src/modules/todo_management/tasks/routes.ts',
+    'src/modules/todo_management/tasks/routes.ts',
     // 'src/modules/todo_management/task_groups/routes.ts',
     // 'src/modules/todo_management/task_variants/routes.ts',
 

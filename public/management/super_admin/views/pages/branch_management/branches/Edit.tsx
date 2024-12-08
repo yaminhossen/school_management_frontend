@@ -36,7 +36,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                     <Header page_title={setup.edit_page_title}></Header>
 
                     {Object.keys(state.item).length && (
-                        <div className="content_body">
+                        <div className="content_body custom_scroll">
                             <form
                                 onSubmit={(e) => handle_submit(e)}
                                 className="form_600 mx-auto pt-3"
@@ -46,6 +46,19 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     name="id"
                                     defaultValue={state.item.id}
                                 />
+                                <div className="form-group form-horizontal">
+                                    <label>Branch code</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="branch code"
+                                            name="branch_code"
+                                            defaultValue={
+                                                state.item.branch_code
+                                            }
+                                        />
+                                    </div>
+                                </div>
                                 <div className="form-group form-horizontal">
                                     <label>Name</label>
                                     <div className="form_elements">
@@ -58,13 +71,80 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Preferred Name</label>
+                                    <label>Email</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
                                             placeholder="email"
                                             name="email"
                                             defaultValue={state.item.email}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Primary contact</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="primary contact"
+                                            name="primary_contact"
+                                            defaultValue={
+                                                state.item.primary_contact
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Logo</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="file"
+                                            placeholder="logo"
+                                            name="logo"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Address</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="address"
+                                            name="address"
+                                            defaultValue={state.item.address}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Map</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="address"
+                                            name="map"
+                                            defaultValue={state.item.map}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Lat</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="Latitude"
+                                            name="lat"
+                                            defaultValue={state.item.lat}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Lang</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="langitude"
+                                            name="lng"
+                                            defaultValue={state.item.lng}
                                         />
                                     </div>
                                 </div>

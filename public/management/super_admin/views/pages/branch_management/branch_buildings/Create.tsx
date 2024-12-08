@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
 import { useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
 import DropDown from './components/dropdown/DropDown';
+import { useParams } from 'react-router-dom';
+import storeSlice from './config/store';
+import { details } from './config/store/async_actions/details';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -17,6 +20,13 @@ const Create: React.FC<Props> = (props: Props) => {
             e.target.reset();
         }
     }
+
+    const params = useParams();
+
+    // useEffect(() => {
+    //     dispatch(storeSlice.actions.set_item({}));
+    //     dispatch(details({ id: params.id }) as any);
+    // }, []);
 
     return (
         <>
@@ -32,26 +42,40 @@ const Create: React.FC<Props> = (props: Props) => {
                                 <h2 className=""> Major Information</h2>
                             </div> */}
                             <div>
-                                <div className="form-group form-horizontal">
-                                    <label>Branch id</label>
-                                    <div className="form_elements">
-                                        <select name="branch_id" id="">
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Branch Code</label>
                                     <div className="form_elements">
-                                        <select name="branch_code" id="">
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
+                                        <select
+                                            name="branch_code"
+                                            id=""
+                                            // ref={meetingId}
+                                            // defaultValue={meetingId}
+                                        >
+                                            {state?.meeting?.length &&
+                                                state.meeting?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.title}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
                                         </select>
+                                    </div>
+                                </div> */}
+                                <div className="form-group form-horizontal">
+                                    <label>Building Code</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="Building Code"
+                                            name="building_code"
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
@@ -68,7 +92,8 @@ const Create: React.FC<Props> = (props: Props) => {
                                     <label>Attachment</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="file"
+                                            accept="image/*"
                                             placeholder="attachment"
                                             name="attachment"
                                         />
@@ -79,6 +104,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="file"
+                                            accept="image/*"
                                             placeholder="photo"
                                             name="photo"
                                         />

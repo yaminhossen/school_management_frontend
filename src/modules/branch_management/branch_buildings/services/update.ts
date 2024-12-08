@@ -10,18 +10,13 @@ import response from '../helpers/response';
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
+import moment from 'moment/moment';
 
 async function validate(req: Request) {
     await body('id')
         .not()
         .isEmpty()
         .withMessage('the id field is required')
-        .run(req);
-
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
         .run(req);
 
     await body('building_code')
@@ -62,14 +57,31 @@ async function update(
     let body = req.body as anyObject;
     let model = new models.BrancheBuildingsModel();
 
-    let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: body.branch_id,
-        building_code: body.building_code,
-        building_name: body.building_name,
-        attachment: body.attachment,
-        photo: body.photo,
-        description: body.description,
-    };
+    let user = (req as any).user;
+    let auth_user = await models.BranchAdminsModel.findOne({
+        where: {
+            user_admin_id: (req as any).user?.id || null,
+        },
+    });
+
+    let attachment = '';
+    let photo = '';
+
+    if (body['attachment']?.ext) {
+        attachment =
+            'uploads/building' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['attachment'].name;
+        await (fastify_instance as any).upload(body['attachment'], attachment);
+    }
+
+    if (body['photo']?.ext) {
+        photo =
+            'uploads/building' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['photo'].name;
+        await (fastify_instance as any).upload(body['photo'], photo);
+    }
 
     /** print request data into console */
     // console.clear();
@@ -79,6 +91,15 @@ async function update(
     try {
         let data = await models.BrancheBuildingsModel.findByPk(body.id);
         if (data) {
+            let inputs: InferCreationAttributes<typeof model> = {
+                branch_id: auth_user?.branch_id || 1,
+                building_code: body.building_code,
+                building_name: body.building_name,
+                attachment: attachment || data.attachment,
+                photo: photo || data.photo,
+                description: body.description,
+                creator: user?.id || null,
+            };
             data.update(inputs);
             await data.save();
             return response(200, 'data updated', data);

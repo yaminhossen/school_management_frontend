@@ -1,4 +1,4 @@
-import { anyObject } from '../../../../../common_types/object';
+import { anyObject } from '../../../../../../common_types/object';
 import setup from '../setup';
 
 const store_prefix = setup.prefix;
@@ -15,7 +15,7 @@ export const initialState = {
     url: '',
 
     /* data filters */
-    select_fields: 'name',
+    select_fields: 'building_name',
     filter_criteria: {} as anyObject,
     all_data_count: 0, // total data in database
     page: 1,

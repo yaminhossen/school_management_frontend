@@ -29,7 +29,7 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, name, email, phone_number, status',
+                'id, building_name, building_code, photo, description, attachment, status',
             ),
         );
         dispatch(all({}) as any);
@@ -39,38 +39,6 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
-
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            branch_id: 1,
-            building_code: 1,
-            total_room: 30,
-            total_class: 20,
-            total_office: 6,
-            total_leaving: 4,
-            building_name: 'Padma',
-            photo: '/assets/dashboard/images/avatar.png',
-            attachment: 'file.pdf',
-            description: 'This is located north side of the mosque',
-        },
-        {
-            id: 2,
-            branch_id: 2,
-            building_code: 2,
-            total_room: 40,
-            total_class: 26,
-            total_office: 8,
-            total_leaving: 6,
-            building_name: 'Meghna',
-            photo: '/assets/dashboard/images/avatar.png',
-            attachment: 'file.pdf',
-            description: 'This is located at right side main road',
-        },
-    ];
 
     return (
         <div className="page_content">
@@ -99,6 +67,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
+                                            label={`Building Code`}
+                                            col_name={`building_code`}
+                                            sort={true}
+                                        />
+                                        {/* <TableHeading
                                             label={`Total Room`}
                                             col_name={`total_room`}
                                             sort={true}
@@ -117,7 +90,7 @@ const All: React.FC<Props> = (props: Props) => {
                                             label={`Total Leaving`}
                                             col_name={`total_leaving`}
                                             sort={true}
-                                        />
+                                        /> */}
                                         <TableHeading
                                             label={`Attachment`}
                                             col_name={`attachment`}
@@ -132,47 +105,60 @@ const All: React.FC<Props> = (props: Props) => {
                                 </thead>
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
-                                    {datas?.map((i: { [key: string]: any }) => {
-                                        return (
-                                            <tr
-                                                key={i.id}
-                                                className={`table_rows table_row_${i.id}`}
-                                            >
-                                                <td>
-                                                    <TableRowAction item={i} />
-                                                </td>
-                                                <td>
-                                                    <SelectItem item={i} />
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        className="quick_view_trigger"
-                                                        onClick={() =>
-                                                            quick_view(i)
-                                                        }
-                                                    >
-                                                        {i.id}
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td>
-                                                <td>{i.building_name}</td>
-                                                <td>{i.total_room}</td>
-                                                <td>{i.total_office}</td>
-                                                <td>{i.total_class}</td>
-                                                <td>{i.total_leaving}</td>
-                                                <td>{i.attachment}</td>
-                                                <td>{i.description}</td>
-                                            </tr>
-                                        );
-                                    })}
+                                    {(state.all as any)?.data?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <tr
+                                                    key={i.id}
+                                                    className={`table_rows table_row_${i.id}`}
+                                                >
+                                                    <td>
+                                                        <TableRowAction
+                                                            item={i}
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <SelectItem item={i} />
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            className="quick_view_trigger"
+                                                            onClick={() =>
+                                                                quick_view(i)
+                                                            }
+                                                        >
+                                                            {i.id}
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <img
+                                                            src={i.photo}
+                                                            alt="Building Photo"
+                                                            style={{
+                                                                height: 30,
+                                                            }}
+                                                        />
+                                                    </td>
+                                                    <td>{i.building_name}</td>
+                                                    <td>{i.building_code}</td>
+                                                    {/* <td>{i.total_room}</td>
+                                                    <td>{i.total_office}</td>
+                                                    <td>{i.total_class}</td>
+                                                    <td>{i.total_leaving}</td> */}
+                                                    <td className="font-medium text-dark-medium">
+                                                        <a
+                                                            href={i.attachment}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                        >
+                                                            Show File
+                                                        </a>
+                                                    </td>
+                                                    <td>{i.description}</td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
                                 </tbody>
                             </table>
                         </div>

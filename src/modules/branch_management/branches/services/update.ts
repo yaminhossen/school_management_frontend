@@ -10,6 +10,7 @@ import response from '../helpers/response';
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
+import moment from 'moment/moment';
 
 async function validate(req: Request) {
     await body('id')
@@ -30,11 +31,11 @@ async function validate(req: Request) {
         .withMessage('the branch_code field is required')
         .run(req);
 
-    await body('logo')
-        .not()
-        .isEmpty()
-        .withMessage('the logo field is required')
-        .run(req);
+    // await body('logo')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the logo field is required')
+    //     .run(req);
 
     await body('address')
         .not()
@@ -85,18 +86,15 @@ async function update(
     let models = await db();
     let body = req.body as anyObject;
     let model = new models.BranchesModel();
+    let image_path1 = '';
 
-    let inputs: InferCreationAttributes<typeof model> = {
-        name: body.name,
-        branch_code: body.branch_code,
-        logo: body.logo,
-        address: body.address,
-        primary_contact: body.primary_contact,
-        email: body.email,
-        map: body.map,
-        lat: body.lat,
-        lng: body.lng,
-    };
+    if (body['logo']?.ext) {
+        image_path1 =
+            'uploads/accounts' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['logo'].name;
+        await (fastify_instance as any).upload(body['logo'], image_path1);
+    }
 
     /** print request data into console */
     // console.clear();
@@ -106,6 +104,17 @@ async function update(
     try {
         let data = await models.BranchesModel.findByPk(body.id);
         if (data) {
+            let inputs: InferCreationAttributes<typeof model> = {
+                name: body.name,
+                branch_code: body.branch_code,
+                logo: image_path1 || data.logo,
+                address: body.address,
+                primary_contact: body.primary_contact,
+                email: body.email,
+                map: body.map,
+                lat: body.lat,
+                lng: body.lng,
+            };
             data.update(inputs);
             await data.save();
             return response(200, 'data updated', data);

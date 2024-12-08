@@ -10,6 +10,7 @@ import response from '../helpers/response';
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
+import moment from 'moment/moment';
 
 async function validate(req: Request) {
     await body('name')
@@ -79,17 +80,28 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.BranchesModel();
+    let user = (req as any).user;
+    let image_path = '';
+
+    if (body['logo']?.ext) {
+        image_path =
+            'uploads/branch/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['logo'].name;
+        await (fastify_instance as any).upload(body['logo'], image_path);
+    }
 
     let inputs: InferCreationAttributes<typeof data> = {
         name: body.name,
         branch_code: body.branch_code,
-        logo: body.logo,
+        logo: image_path,
         address: body.address,
         primary_contact: body.primary_contact,
         email: body.email,
         map: body.map,
         lat: body.lat,
         lng: body.lng,
+        creator: user?.id || null,
     };
 
     /** print request data into console */

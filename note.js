@@ -1,17 +1,38 @@
-function splitAndSum(data, delimiter) {
-    // Split the string by the given delimiter
-    const numbers = data.split(delimiter);
+/* let data = new models.AccountLogsModel();
+let image_path1 = '';
 
-    // Convert to integers and calculate the sum
-    const sum = numbers.reduce(
-        (total, num) => total + parseInt(num.trim(), 16),
-        0,
-    );
-
-    return sum;
+if (body['attachment']?.ext) {
+    image_path1 =
+        'uploads/accounts' +
+        moment().format('YYYYMMDDHHmmss') +
+        body['attachment'].name;
+    await (fastify_instance as any).upload(body['attachment'], image_path1);
 }
+let income_attachments: anyObject[] = [];
+for (let i = 0; i < parseInt(body.attachment?.length); i++) {
+    let image_path = ``;
+    let image_file = body.attachment[i];
+    if (image_file?.ext) {
+        image_path =
+            'uploads/accounts' +
+            moment().format('YYYYMMDDHHmmss') +
+            image_file.name;
+        await (fastify_instance as any).upload(image_file, image_path);
+    }
+    income_attachments.push({
+        file: image_path,
+    });
+} */
 
-// Example usage:
-const data = '234,342,754,34,867,982,672,23';
-const delimiter = ',';
-console.log(splitAndSum(data, delimiter));
+/* 
+    let user = (req as any).user;
+    let auth_user = await models.BranchStaffsModel.findOne({
+    where: {
+        user_staff_id: (req as any).user.id,
+    },
+}); 
+*/
+
+/* branch_id: auth_user?.branch_id || 1,
+   creator: user?.id || null,
+*/

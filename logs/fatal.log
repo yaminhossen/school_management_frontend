@@ -87,3 +87,22 @@
 {"level":60,"time":1733379136595,"pid":9288,"hostname":"DESKTOP-9421701","file":"services\\student_profile.ts:229:19)","time":"12/5/2024 12:12:16 PM","message":"Unknown column 'qr_code' in 'field list'"}
 {"level":60,"time":1733379157019,"pid":3688,"hostname":"DESKTOP-9421701","file":"services\\student_profile.ts:229:19)","time":"12/5/2024 12:12:37 PM","message":"Unknown column 'class_section' in 'field list'"}
 {"level":60,"time":1733388862084,"pid":16664,"hostname":"DESKTOP-9421701","file":"services\\just_check.ts:44:19)","time":"12/5/2024 2:54:22 PM","message":"UserStudentsModel is associated to UserStudentsModel using an alias. You've included an alias (user_siblings), but it does not match the alias(es) defined in your association (user_siblingss)."}
+{"level":60,"time":1733637434447,"pid":9988,"hostname":"DESKTOP-9421701","file":"services\\all.ts:119:15)","time":"12/8/2024 11:57:14 AM","message":"Unknown column 'email' in 'field list'"}
+{"level":60,"time":1733637450090,"pid":9988,"hostname":"DESKTOP-9421701","file":"services\\all.ts:119:15)","time":"12/8/2024 11:57:30 AM","message":"Unknown column 'email' in 'field list'"}
+{"level":60,"time":1733646803849,"pid":7548,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/8/2024 2:33:23 PM","message":"Unknown column 'phone_number' in 'field list'"}
+{"level":60,"time":1733647943644,"pid":7548,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/8/2024 2:52:23 PM","message":"Unknown column 'phone_number' in 'field list'"}
+{"level":60,"time":1733647946589,"pid":7548,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/8/2024 2:52:26 PM","message":"Unknown column 'phone_number' in 'field list'"}
+{"level":60,"time":1733647949246,"pid":7548,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/8/2024 2:52:29 PM","message":"Unknown column 'phone_number' in 'field list'"}
+{"level":60,"time":1733648130746,"pid":12332,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/8/2024 2:55:30 PM","message":"Unknown column 'phone_number' in 'field list'"}
+{"level":60,"time":1733648653505,"pid":12332,"hostname":"DESKTOP-9421701","file":"services\\store.ts:105:15)","time":"12/8/2024 3:04:13 PM","message":"string violation: logo cannot be an array or an object"}
+{"level":60,"time":1733648755619,"pid":12332,"hostname":"DESKTOP-9421701","file":"services\\store.ts:105:15)","time":"12/8/2024 3:05:55 PM","message":"string violation: logo cannot be an array or an object"}
+{"level":60,"time":1733649577847,"pid":3712,"hostname":"DESKTOP-9421701","file":"services\\all.ts:123:15)","time":"12/8/2024 3:19:37 PM","message":"Unknown column 'email' in 'field list'"}
+{"level":60,"time":1733652787556,"pid":12732,"hostname":"DESKTOP-9421701","file":"services\\all.ts:123:15)","time":"12/8/2024 4:13:07 PM","message":"Unknown column 'email' in 'field list'"}
+{"level":60,"time":1733653956826,"pid":11140,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/8/2024 4:32:36 PM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1733653961240,"pid":11140,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/8/2024 4:32:41 PM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1733654724273,"pid":11140,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/8/2024 4:45:24 PM","message":"Unknown column 'email' in 'field list'"}
+{"level":60,"time":1733658573096,"pid":17912,"hostname":"DESKTOP-9421701","file":"services\\store.ts:57:46)","time":"12/8/2024 5:49:33 PM","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":60,"time":1733658732299,"pid":9452,"hostname":"DESKTOP-9421701","file":"services\\store.ts:57:46)","time":"12/8/2024 5:52:12 PM","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":60,"time":1733658794671,"pid":13388,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/8/2024 5:53:14 PM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1733658930370,"pid":13388,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/8/2024 5:55:30 PM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1733659139160,"pid":13388,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/8/2024 5:58:59 PM","message":"Unknown column 'name' in 'field list'"}
