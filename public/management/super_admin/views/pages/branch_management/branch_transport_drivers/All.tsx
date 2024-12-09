@@ -29,7 +29,7 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, name, email, phone_number, status',
+                'id, name, driver_number, assistant_number_1, assistant_number_2, present_address, driver_licence, permanent_address, status',
             ),
         );
         dispatch(all({}) as any);
@@ -39,36 +39,6 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
-
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            branch_id: 1,
-            name: 'Putin',
-            transports: 'dhaka-1012, kustia-1232, magura-91',
-            phone_number_1: '01897675645',
-            phone_number_2: '01897675646',
-            phone_number_3: '01897675647',
-            present_address: 'mirpur',
-            driver_licence: 'licence.pdf',
-            permanent_address: 'Bhola',
-        },
-        {
-            id: 2,
-            branch_id: 2,
-            name: 'Kim jon',
-            transports: 'dhaka-1034, kustia-1265, magura-098',
-            phone_number_1: '01897675635',
-            phone_number_2: '01897675636',
-            phone_number_3: '01897675637',
-            present_address: 'Uttora',
-            driver_licence: 'licence.pdf',
-            permanent_address: 'Bhola',
-        },
-    ];
 
     return (
         <div className="page_content">
@@ -105,24 +75,24 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`permanent_address`}
                                             sort={true}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Transports`}
                                             col_name={`transports`}
                                             sort={true}
-                                        />
+                                        /> */}
                                         <TableHeading
-                                            label={`Phone Number 1`}
-                                            col_name={`phone_number_1`}
+                                            label={`Driver Number`}
+                                            col_name={`driver_number`}
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Phone Number 2`}
-                                            col_name={`phone_number_2`}
+                                            label={`Assistant Number 1`}
+                                            col_name={`assistant_number_1`}
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Phone Number 3`}
-                                            col_name={`phone_number_3`}
+                                            label={`Assistant Number 2`}
+                                            col_name={`assistant_number_2`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -134,39 +104,48 @@ const All: React.FC<Props> = (props: Props) => {
                                 </thead>
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
-                                    {datas?.map((i: { [key: string]: any }) => {
-                                        return (
-                                            <tr
-                                                key={i.id}
-                                                className={`table_rows table_row_${i.id}`}
-                                            >
-                                                <td>
-                                                    <TableRowAction item={i} />
-                                                </td>
-                                                <td>
-                                                    <SelectItem item={i} />
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        className="quick_view_trigger"
-                                                        onClick={() =>
-                                                            quick_view(i)
-                                                        }
-                                                    >
-                                                        {i.id}
-                                                    </span>
-                                                </td>
-                                                <td>{i.name}</td>
-                                                <td>{i.present_address}</td>
-                                                <td>{i.permanent_address}</td>
-                                                <td>{i.transports}</td>
-                                                <td>{i.phone_number_1}</td>
-                                                <td>{i.phone_number_2}</td>
-                                                <td>{i.phone_number_3}</td>
-                                                <td>{i.driver_licence}</td>
-                                            </tr>
-                                        );
-                                    })}
+                                    {(state.all as any)?.data?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <tr
+                                                    key={i.id}
+                                                    className={`table_rows table_row_${i.id}`}
+                                                >
+                                                    <td>
+                                                        <TableRowAction
+                                                            item={i}
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <SelectItem item={i} />
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            className="quick_view_trigger"
+                                                            onClick={() =>
+                                                                quick_view(i)
+                                                            }
+                                                        >
+                                                            {i.id}
+                                                        </span>
+                                                    </td>
+                                                    <td>{i.name}</td>
+                                                    <td>{i.present_address}</td>
+                                                    <td>
+                                                        {i.permanent_address}
+                                                    </td>
+                                                    <td>{i.driver_number}</td>
+                                                    <td>
+                                                        {i.assistant_number_1}
+                                                    </td>
+                                                    <td>
+                                                        {i.assistant_number_2}
+                                                    </td>
+                                                    <td>{i.driver_licence}</td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
                                 </tbody>
                             </table>
                         </div>

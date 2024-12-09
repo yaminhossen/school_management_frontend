@@ -33,17 +33,6 @@ const Create: React.FC<Props> = (props: Props) => {
                             </div> */}
                             <div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch id</label>
-                                    <div className="form_elements">
-                                        <select name="branch_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo2">demo2</option>
-                                            <option value="demo3">demo3</option>
-                                            <option value="demo4">demo4</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
                                     <label>Name</label>
                                     <div className="form_elements">
                                         <input
@@ -78,37 +67,38 @@ const Create: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="file"
-                                            name="driver_licence"
+                                            accept="image/*"
+                                            name="licence"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Phone number 1</label>
+                                    <label>Driver Number</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="phone number 1"
-                                            name="phone_number_1"
+                                            placeholder="driver number"
+                                            name="driver_number"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Phone number 2</label>
+                                    <label>Assistant Number 1</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="phone number 2"
-                                            name="phone_number_2"
+                                            placeholder="assistant number 1"
+                                            name="assistant_number_1"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Phone number 3</label>
+                                    <label>Assistant Number 2</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="phone number 3"
-                                            name="phone_number_3"
+                                            placeholder="assistant number 2"
+                                            name="assistant_number_2"
                                         />
                                     </div>
                                 </div>

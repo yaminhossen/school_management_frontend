@@ -34,32 +34,32 @@ export let active_routes: string[] = [
 
     // 'src/modules/assignment_management/assignments/routes.ts',
     // 'src/modules/assignment_management/assignment_categorys/routes.ts',
-    'src/modules/assignment_management/assignment_submission/routes.ts',
-    'src/modules/attendance_management/leave_applications/routes.ts',
+    // 'src/modules/assignment_management/assignment_submission/routes.ts',
+    // 'src/modules/attendance_management/leave_applications/routes.ts',
     // 'src/modules/attendance_management/leave_application_paids/routes.ts',
     // 'src/modules/attendance_management/leave_types/routes.ts',
     // 'src/modules/attendance_management/staff_attendances/routes.ts',
-    'src/modules/attendance_management/student_attendances/routes.ts',
+    // 'src/modules/attendance_management/student_attendances/routes.ts',
     // 'src/modules/attendance_management/teacher_attendances/routes.ts',
 
-    'src/modules/auth_management/authetication/routes.ts',
-    'src/modules/auth_management/user_management/routes.ts',
+    // 'src/modules/auth_management/authetication/routes.ts',
+    // 'src/modules/auth_management/user_management/routes.ts',
 
-    'src/modules/branch_management/branches/routes.ts',
+    // 'src/modules/branch_management/branches/routes.ts',
     // 'src/modules/branch_management/branch_admin/routes.ts',
-    'src/modules/branch_management/branch_buildings/routes.ts',
+    // 'src/modules/branch_management/branch_buildings/routes.ts',
     // 'src/modules/branch_management/branch_building_rooms/routes.ts',
     // 'src/modules/branch_management/branch_building_room_beds/routes.ts',
     // 'src/modules/branch_management/branch_contacts/routes.ts',
     // 'src/modules/branch_management/branch_informations/routes.ts',
-    // 'src/modules/branch_management/branch_transports/routes.ts',
-    // 'src/modules/branch_management/branch_transport_drivers/routes.ts',
+    'src/modules/branch_management/branch_transports/routes.ts',
+    'src/modules/branch_management/branch_transport_drivers/routes.ts',
 
     // 'src/modules/class_course_schedule_management/class_course_schedules/routes.ts',
     // 'src/modules/class_course_schedule_management/class_course_schedule_attachements/routes.ts',
     // 'src/modules/class_course_schedule_management/class_course_schedule_images/routes.ts',
 
-    'src/modules/class_management/branch_classes/routes.ts',
+    // 'src/modules/class_management/branch_classes/routes.ts',
     // 'src/modules/class_management/branch_class_fees/routes.ts',
     // 'src/modules/class_management/branch_class_fee_discounts/routes.ts',
     // 'src/modules/class_management/branch_class_fee_types/routes.ts',
@@ -68,7 +68,7 @@ export let active_routes: string[] = [
     // 'src/modules/class_management/branch_class_routin_day_times/routes.ts',
     // 'src/modules/class_management/branch_class_sections/routes.ts',
     // 'src/modules/class_management/branch_class_shifts/routes.ts',
-    'src/modules/class_management/branch_class_subjects/routes.ts',
+    // 'src/modules/class_management/branch_class_subjects/routes.ts',
 
     // 'src/modules/employee_salary_management/branch_employee_job_pay_grades/routes.ts',
     // 'src/modules/employee_salary_management/branch_employee_job_positions/routes.ts',
@@ -99,7 +99,7 @@ export let active_routes: string[] = [
     // 'src/modules/meeting_management/meeting_agendas/routes.ts',
     // 'src/modules/meeting_management/meeting_attachments/routes.ts',
 
-    'src/modules/notice_management/notices/routes.ts',
+    // 'src/modules/notice_management/notices/routes.ts',
     // 'src/modules/notice_management/notice_categorys/routes.ts',
 
     // 'src/modules/personal_calendar_schedule_management/personal_calendar_schedule/routes.ts',
@@ -114,7 +114,7 @@ export let active_routes: string[] = [
     // 'src/modules/teacher_evaluations/teacher_kpi_reports/routes.ts',
     // 'src/modules/teacher_evaluations/teacher_overall_evaluations/routes.ts',
 
-    'src/modules/todo_management/tasks/routes.ts',
+    // 'src/modules/todo_management/tasks/routes.ts',
     // 'src/modules/todo_management/task_groups/routes.ts',
     // 'src/modules/todo_management/task_variants/routes.ts',
 
@@ -122,9 +122,9 @@ export let active_routes: string[] = [
     // 'src/modules/user_management/user_branch_admins/routes.ts',
     // 'src/modules/user_management/user_login_histories/routes.ts',
     // 'src/modules/user_management/user_parents/routes.ts',
-    'src/modules/user_management/user_staffs/routes.ts',
-    'src/modules/user_management/user_students/routes.ts',
-    'src/modules/user_management/user_teachers/routes.ts',
+    // 'src/modules/user_management/user_staffs/routes.ts',
+    // 'src/modules/user_management/user_students/routes.ts',
+    // 'src/modules/user_management/user_teachers/routes.ts',
 ];
 
 function register_all_routes(fastify: FastifyInstance) {

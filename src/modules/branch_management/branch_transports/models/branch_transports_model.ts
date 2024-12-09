@@ -34,9 +34,10 @@ type type = 'van' | 'bus' | 'microbus' | 'private' | 'riksaw';
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
-    declare branch_id: number;
+    declare branch_id?: number;
     declare branch_transport_driver_id: number;
     declare title: string;
+    declare vehicle_no: string;
     declare type: type;
 
     declare status?: status;
@@ -63,6 +64,10 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             title: {
+                type: new DataTypes.STRING(40),
+                allowNull: true,
+            },
+            vehicle_no: {
                 type: new DataTypes.STRING(40),
                 allowNull: true,
             },

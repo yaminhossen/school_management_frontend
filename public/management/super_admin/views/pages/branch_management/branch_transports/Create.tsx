@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
-import { useAppDispatch } from '../../../../store';
+import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
 import DropDown from './components/dropdown/DropDown';
+import storeSlice from './config/store';
+import { drivers } from './config/store/async_actions/drivers';
+import { initialState } from './config/store/inital_state';
+import { useSelector } from 'react-redux';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
+
     const dispatch = useAppDispatch();
 
     async function handle_submit(e) {
@@ -17,6 +25,16 @@ const Create: React.FC<Props> = (props: Props) => {
             e.target.reset();
         }
     }
+
+    async function initdependancy() {
+        await dispatch(storeSlice.actions.set_item({}));
+        await dispatch(drivers({}) as any);
+    }
+
+    useEffect(() => {
+        initdependancy();
+    }, []);
+    console.log('branch state', state.drivers);
 
     return (
         <>
@@ -28,32 +46,28 @@ const Create: React.FC<Props> = (props: Props) => {
                             onSubmit={(e) => handle_submit(e)}
                             className="form_600 mx-auto pt-3"
                         >
-                            {/* <div className="form_section_heading">
-                                <h2 className=""> Major Information</h2>
-                            </div> */}
                             <div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch id</label>
-                                    <div className="form_elements">
-                                        <select name="branch_id" id="">
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Branch transport driver id</label>
+                                    <label>Branch transport driver </label>
                                     <div className="form_elements">
                                         <select
                                             name="branch_transport_driver_id"
                                             id=""
                                         >
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
-                                            <option value="demo">demo</option>
+                                            {state?.drivers?.length &&
+                                                state.drivers?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.name}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
                                         </select>
                                     </div>
                                 </div>
@@ -63,17 +77,17 @@ const Create: React.FC<Props> = (props: Props) => {
                                         <input
                                             type="text"
                                             placeholder="transport title"
-                                            name="transport_title"
+                                            name="title"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Vehicle Number</label>
+                                    <label>Vehicle No</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
                                             placeholder="vehicle number"
-                                            name="vehicle_number"
+                                            name="vehicle_no"
                                         />
                                     </div>
                                 </div>

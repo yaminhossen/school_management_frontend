@@ -11,6 +11,7 @@ async function all(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
+    let driversModel = models.BranchTransportDriversModel;
     let query_param = req.query as any;
 
     const { Op } = require('sequelize');
@@ -31,7 +32,12 @@ async function all(
         where: {
             status: show_active_data == 'true' ? 'active' : 'deactive',
         },
-        // include: [models.Project],
+        include: [
+            {
+                model: driversModel,
+                as: 'driver',
+            },
+        ],
     };
 
     if (select_fields.length) {

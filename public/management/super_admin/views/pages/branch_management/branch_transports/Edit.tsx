@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import { useSelector } from 'react-redux';
@@ -9,9 +9,11 @@ import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
+import { drivers } from './config/store/async_actions/drivers';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
+    const driverId = useRef<HTMLSelectElement>(null);
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -19,15 +21,27 @@ const Edit: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
     const params = useParams();
 
-    useEffect(() => {
-        dispatch(storeSlice.actions.set_item({}));
-        dispatch(details({ id: params.id }) as any);
-    }, []);
-
     async function handle_submit(e) {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
+
+    async function initdependancy() {
+        await dispatch(storeSlice.actions.set_item({}));
+        await dispatch(details({ id: params.id }) as any);
+        await dispatch(drivers({}) as any);
+    }
+
+    useEffect(() => {
+        initdependancy();
+    }, []);
+    useEffect(() => {
+        if (driverId.current) {
+            driverId.current.value =
+                state.item?.branch_transport_driver_id || ''; // Safely set the value
+        }
+        // console.log('Updated driverId:', driverId.current?.value);
+    }, [state.drivers]);
 
     return (
         <>
@@ -47,24 +61,60 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>Branch transport driver </label>
+                                    <div className="form_elements">
+                                        <select
+                                            name="branch_transport_driver_id"
+                                            id=""
+                                            ref={driverId}
+                                        >
+                                            {state?.drivers?.length &&
+                                                state.drivers?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.name}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Vehicle Title</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="name"
-                                            name="name"
-                                            defaultValue={state.item.name}
+                                            placeholder="vehicle title"
+                                            name="title"
+                                            defaultValue={state.item.title}
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Preferred Name</label>
+                                    <label>Vehicle type</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="email"
-                                            name="email"
-                                            defaultValue={state.item.email}
+                                            placeholder="vehicle type"
+                                            name="vehicle_type"
+                                            defaultValue={state.item.type}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Vehicle no</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="vehicle no"
+                                            name="vehicle_no"
+                                            defaultValue={state.item.vehicle_no}
                                         />
                                     </div>
                                 </div>

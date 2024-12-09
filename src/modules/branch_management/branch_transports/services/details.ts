@@ -10,6 +10,7 @@ async function details(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
+    let driversModel = models.BranchTransportDriversModel;
     let params = req.params as any;
 
     try {
@@ -17,10 +18,16 @@ async function details(
             where: {
                 id: params.id,
             },
+            include: [
+                {
+                    model: driversModel,
+                    as: 'driver',
+                },
+            ],
         });
 
         if (data) {
-            return response(200, 'data created', data);
+            return response(200, 'data founded', data);
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import { useSelector } from 'react-redux';
@@ -12,6 +12,7 @@ import { update } from './config/store/async_actions/update';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
+    const [file, setFile] = useState<any>();
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -29,6 +30,11 @@ const Edit: React.FC<Props> = (props: Props) => {
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
 
+    function getFile(e) {
+        setFile(URL.createObjectURL(e.target.files[0]));
+        console.log('file3', file);
+    }
+
     return (
         <>
             <div className="page_content">
@@ -36,7 +42,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                     <Header page_title={setup.edit_page_title}></Header>
 
                     {Object.keys(state.item).length && (
-                        <div className="content_body">
+                        <div className="content_body custom_scroll">
                             <form
                                 onSubmit={(e) => handle_submit(e)}
                                 className="form_600 mx-auto pt-3"
@@ -91,7 +97,30 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             accept="image/*"
                                             placeholder="photo"
                                             name="photo"
+                                            onChange={getFile}
                                         />
+                                        <div className="form-group form-horizontal">
+                                            <label>Preview img</label>
+                                            <div className="form_elements">
+                                                <a target="blank" href={file}>
+                                                    <img
+                                                        src={file}
+                                                        className="img-80"
+                                                        alt="Preview image"
+                                                    />
+                                                </a>
+                                            </div>
+                                            <label>Previous Img</label>
+                                            <div className="form_elements">
+                                                <a target="blank" href={file}>
+                                                    <img
+                                                        src={state.item?.photo}
+                                                        className="img-80"
+                                                        alt="Preview image"
+                                                    />
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">

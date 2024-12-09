@@ -18,12 +18,6 @@ async function validate(req: Request) {
         .withMessage('the id field is required')
         .run(req);
 
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
-
     await body('branch_transport_driver_id')
         .not()
         .isEmpty()
@@ -36,10 +30,10 @@ async function validate(req: Request) {
         .withMessage('the title field is required')
         .run(req);
 
-    await body('type')
+    await body('vehicle_type')
         .not()
         .isEmpty()
-        .withMessage('the type field is required')
+        .withMessage('the vehicle_type field is required')
         .run(req);
 
     let result = await validationResult(req);
@@ -62,12 +56,21 @@ async function update(
     let body = req.body as anyObject;
     let model = new models.BranchTransportsModel();
 
+    let user = (req as any).user;
+    let auth_user = await models.BranchAdminsModel.findOne({
+        where: {
+            user_admin_id: (req as any).user?.id || null,
+        },
+    });
+
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: body.branch_id,
         branch_transport_driver_id: body.branch_transport_driver_id,
         title: body.title,
-        type: body.type,
+        vehicle_no: body.vehicle_no,
+        type: body.vehicle_type,
+        creator: user?.id || null,
     };
+    console.log('transport body', body);
 
     /** print request data into console */
     // console.clear();

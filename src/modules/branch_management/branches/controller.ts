@@ -28,11 +28,16 @@ import teacher_information from './services/teacher_information';
 import parent_information from './services/parent_information';
 import drivers from './services/drivers';
 import driver from './services/driver';
+import branches from './services/branches';
 
 export default function (fastify: FastifyInstance) {
     return {
         all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all(fastify, req);
+            res.code(data.status).send(data);
+        },
+        branches: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await branches(fastify, req);
             res.code(data.status).send(data);
         },
 

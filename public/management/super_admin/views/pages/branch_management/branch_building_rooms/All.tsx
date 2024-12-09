@@ -29,7 +29,7 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, name, email, phone_number, status',
+                'id, room_name, room_code, photo, description, total_seat, total_student, status',
             ),
         );
         dispatch(all({}) as any);
@@ -39,38 +39,6 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
-
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            branch_id: 1,
-            building_id: 1,
-            room_code: 1,
-            room_name: 'A101',
-            room_type: 'class',
-            attachment: 'file.pdf',
-            photo: '/assets/dashboard/images/avatar.png',
-            description: 'This is located north side of the mosque',
-            total_seat: 100,
-            total_student: 100,
-        },
-        {
-            id: 2,
-            branch_id: 2,
-            building_id: 2,
-            room_code: 2,
-            room_name: 'A102',
-            room_type: 'leaving',
-            attachment: 'file.pdf',
-            photo: '/assets/dashboard/images/avatar.png',
-            description: 'This is located at right side main road',
-            total_seat: 80,
-            total_student: 80,
-        },
-    ];
 
     return (
         <div className="page_content">
@@ -99,13 +67,8 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Room Type`}
-                                            col_name={`room_type`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Attachment`}
-                                            col_name={`attachment`}
+                                            label={`Room Code`}
+                                            col_name={`room_code`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -114,7 +77,7 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Booked`}
+                                            label={`Total student`}
                                             col_name={`total_student`}
                                             sort={true}
                                         />
@@ -127,46 +90,49 @@ const All: React.FC<Props> = (props: Props) => {
                                 </thead>
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
-                                    {datas?.map((i: { [key: string]: any }) => {
-                                        return (
-                                            <tr
-                                                key={i.id}
-                                                className={`table_rows table_row_${i.id}`}
-                                            >
-                                                <td>
-                                                    <TableRowAction item={i} />
-                                                </td>
-                                                <td>
-                                                    <SelectItem item={i} />
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        className="quick_view_trigger"
-                                                        onClick={() =>
-                                                            quick_view(i)
-                                                        }
-                                                    >
-                                                        {i.id}
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td>
-                                                <td>{i.room_name}</td>
-                                                <td>{i.room_type}</td>
-                                                <td>{i.attachment}</td>
-                                                <td>{i.total_seat}</td>
-                                                <td>{i.total_student}</td>
-                                                <td>{i.description}</td>
-                                            </tr>
-                                        );
-                                    })}
+                                    {(state.all as any)?.data?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <tr
+                                                    key={i.id}
+                                                    className={`table_rows table_row_${i.id}`}
+                                                >
+                                                    <td>
+                                                        <TableRowAction
+                                                            item={i}
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <SelectItem item={i} />
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            className="quick_view_trigger"
+                                                            onClick={() =>
+                                                                quick_view(i)
+                                                            }
+                                                        >
+                                                            {i.id}
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <img
+                                                            src={i.photo}
+                                                            alt=""
+                                                            style={{
+                                                                height: 30,
+                                                            }}
+                                                        />
+                                                    </td>
+                                                    <td>{i.room_name}</td>
+                                                    <td>{i.room_code}</td>
+                                                    <td>{i.total_seat}</td>
+                                                    <td>{i.total_student}</td>
+                                                    <td>{i.description}</td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
                                 </tbody>
                             </table>
                         </div>

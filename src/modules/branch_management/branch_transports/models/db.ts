@@ -3,6 +3,8 @@ import {
     Sequelize,
 } from 'sequelize';
 import * as branch_transports_model from './branch_transports_model';
+import * as branch_transport_drivers_model from './branch_transport_drivers_model';
+import * as branch_admin_model from './branch_admin_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -21,20 +23,25 @@ const sequelize = new Sequelize(
 
 interface models {
     BranchTransportsModel: typeof branch_transports_model.DataModel;
+    BranchTransportDriversModel: typeof branch_transport_drivers_model.DataModel;
+    BranchAdminsModel: typeof branch_admin_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
 const db = async function (): Promise<models> {
     const BranchTransportsModel = branch_transports_model.init(sequelize);
+    const BranchTransportDriversModel =
+        branch_transport_drivers_model.init(sequelize);
+    const BranchAdminsModel = branch_admin_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
 
-    // Project.hasOne(User, {
-    //     sourceKey: 'user_id',
-    //     foreignKey: 'id',
-    //     as: 'user',
-    // });
+    BranchTransportsModel.hasOne(BranchTransportDriversModel, {
+        sourceKey: 'branch_transport_driver_id',
+        foreignKey: 'id',
+        as: 'driver',
+    });
 
     // User.hasMany(Project, {
     //     sourceKey: 'id',
@@ -57,6 +64,8 @@ const db = async function (): Promise<models> {
 
     let models: models = {
         BranchTransportsModel,
+        BranchTransportDriversModel,
+        BranchAdminsModel,
         // Project,
 
         sequelize,

@@ -10,14 +10,9 @@ import response from '../helpers/response';
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
+import moment from 'moment/moment';
 
 async function validate(req: Request) {
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
-
     await body('name')
         .not()
         .isEmpty()
@@ -48,10 +43,10 @@ async function validate(req: Request) {
         .withMessage('the present_address field is required')
         .run(req);
 
-    await body('driver_licence')
+    await body('licence')
         .not()
         .isEmpty()
-        .withMessage('the driver_licence field is required')
+        .withMessage('the licence field is required')
         .run(req);
 
     await body('permanent_address')
@@ -80,15 +75,32 @@ async function store(
     let body = req.body as anyObject;
     let data = new models.BranchTransportDriversModel();
 
+    let user = (req as any).user;
+    let auth_user = await models.BranchAdminsModel.findOne({
+        where: {
+            user_admin_id: (req as any).user?.id || null,
+        },
+    });
+    let licence = '';
+
+    if (body['licence']?.ext) {
+        licence =
+            'uploads/vehicleDrivers' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['licence'].name;
+        await (fastify_instance as any).upload(body['licence'], licence);
+    }
+
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: body.branch_id,
+        branch_id: auth_user?.branch_id || 1,
         name: body.name,
         driver_number: body.driver_number,
         assistant_number_1: body.assistant_number_1,
         assistant_number_2: body.assistant_number_2,
         present_address: body.present_address,
-        driver_licence: body.driver_licence,
+        driver_licence: licence,
         permanent_address: body.permanent_address,
+        creator: user?.id || null,
     };
 
     /** print request data into console */

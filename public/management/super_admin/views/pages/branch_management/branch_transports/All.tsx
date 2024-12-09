@@ -29,7 +29,7 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, name, email, phone_number, status',
+                'id, title, type, branch_transport_driver_id, vehicle_no, status',
             ),
         );
         dispatch(all({}) as any);
@@ -39,29 +39,6 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
-
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            title: 'information1',
-            driver_name: 'Donalt trump',
-            driver_number: '01786722734',
-            vehicle_number: 'Dhaka-9119',
-            type: 'bus',
-        },
-        {
-            id: 2,
-            title: 'information2',
-            driver_name: 'Vladimir putin',
-            driver_number: '01978538334',
-            vehicle_number: 'Kustia-1928',
-            type: 'bus',
-        },
-    ];
-
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">
@@ -80,6 +57,11 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`ID`}
                                             col_name={`id`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Title`}
+                                            col_name={`title`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -102,45 +84,49 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`vehicle_number`}
                                             sort={true}
                                         />
-                                        <TableHeading
-                                            label={`Title`}
-                                            col_name={`title`}
-                                            sort={true}
-                                        />
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
-                                    {datas?.map((i: { [key: string]: any }) => {
-                                        return (
-                                            <tr
-                                                key={i.id}
-                                                className={`table_rows table_row_${i.id}`}
-                                            >
-                                                <td>
-                                                    <TableRowAction item={i} />
-                                                </td>
-                                                <td>
-                                                    <SelectItem item={i} />
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        className="quick_view_trigger"
-                                                        onClick={() =>
-                                                            quick_view(i)
+                                    {(state.all as any)?.data?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <tr
+                                                    key={i.id}
+                                                    className={`table_rows table_row_${i.id}`}
+                                                >
+                                                    <td>
+                                                        <TableRowAction
+                                                            item={i}
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <SelectItem item={i} />
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            className="quick_view_trigger"
+                                                            onClick={() =>
+                                                                quick_view(i)
+                                                            }
+                                                        >
+                                                            {i.id}
+                                                        </span>
+                                                    </td>
+                                                    <td>{i.title}</td>
+                                                    <td>{i.type}</td>
+                                                    <td>{i.driver?.name}</td>
+                                                    <td>
+                                                        {
+                                                            i.driver
+                                                                ?.driver_number
                                                         }
-                                                    >
-                                                        {i.id}
-                                                    </span>
-                                                </td>
-                                                <td>{i.type}</td>
-                                                <td>{i.driver_name}</td>
-                                                <td>{i.driver_number}</td>
-                                                <td>{i.vehicle_number}</td>
-                                                <td>{i.title}</td>
-                                            </tr>
-                                        );
-                                    })}
+                                                    </td>
+                                                    <td>{i.vehicle_no}</td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
                                 </tbody>
                             </table>
                         </div>

@@ -35,14 +35,63 @@ const Details: React.FC<Props> = (props: Props) => {
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
                                     <tr>
-                                        <td>Name</td>
+                                        <td>Vehicle Title</td>
                                         <td>:</td>
-                                        <td>{state.item.name}</td>
+                                        <td>{state.item.title}</td>
                                     </tr>
                                     <tr>
-                                        <td>Preffered Name</td>
+                                        <td>Vehicle Type</td>
                                         <td>:</td>
-                                        <td>{state.item.email}</td>
+                                        <td>{state.item.type}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Driver</td>
+                                        <td>:</td>
+                                        <td>{state.item?.driver?.name}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Driver Number</td>
+                                        <td>:</td>
+                                        <td>
+                                            {state.item?.driver?.driver_number}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Driver Assistant Number</td>
+                                        <td>:</td>
+                                        <td>
+                                            {
+                                                state.item?.driver
+                                                    ?.assistant_number_1
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Driver Present Address</td>
+                                        <td>:</td>
+                                        <td>
+                                            {
+                                                state.item?.driver
+                                                    ?.present_address
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Driver permanent Address</td>
+                                        <td>:</td>
+                                        <td>
+                                            {
+                                                state.item?.driver
+                                                    ?.permanent_address
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Driver licence</td>
+                                        <td>:</td>
+                                        <td>
+                                            {state.item?.driver?.driver_licence}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

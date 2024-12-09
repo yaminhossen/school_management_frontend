@@ -82,7 +82,7 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             driver_licence: {
-                type: new DataTypes.STRING(40),
+                type: new DataTypes.STRING(100),
                 allowNull: true,
             },
             permanent_address: {
