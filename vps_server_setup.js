@@ -36,9 +36,9 @@ git install
 
 express with nodejs install (for node js project)
   npm i express 
-  (then manualy app.js file create and practive perpose simple hello world project setup)
+  (then manualy app.js file create and practice perpose simple hello world project setup)
 
-firwall setup (for local port like 3000 port access)
+firwall setup (for local port like 3000 port access if have no domain)
   sudo ufw allow 3000/tcp
   sudo ufw status
   (for access the port some change for this express setup given bellow)
@@ -63,7 +63,7 @@ proxy install (after terminate the terminal the nodejs project close but the pro
   pm2 stop id (stop the port like app)
   pm2 delete id (delete the app)
 
-node subdomain mapping(120.213.100.173 to workshopnode.shefat.info)
+  proxy passing(120.213.100.173 to workshopnode.shefat.info)
   at first create .conf file in this (/etc/apache2/sites-available/) directories like(workshopnode.shefat.info.conf)
   <VirtualHost *:80>
    ServerName workshopnode.shefat.info
@@ -96,6 +96,13 @@ mySQL setup (root password setup)
 
 !DONE!
 
+
+const sequelize = new Sequelize(
+    `mysql://root:dbMa$%!#*95ext965874-+\/@localhost:3306/school_managment`,
+    {
+        logging: false,
+    },
+);
 
 
   
