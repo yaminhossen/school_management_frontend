@@ -63,6 +63,41 @@ proxy install (after terminate the terminal the nodejs project close but the pro
   pm2 stop id (stop the port like app)
   pm2 delete id (delete the app)
 
+node subdomain mapping(120.213.100.173 to workshopnode.shefat.info)
+  at first create .conf file in this (/etc/apache2/sites-available/) directories like(workshopnode.shefat.info.conf)
+  <VirtualHost *:80>
+   ServerName workshopnode.shefat.info
+   ProxyPreserveHost on
+   ProxyPass / http://localhost:3000/
+   ProxyPassReverse / http://localhost:3000/
+  </VirtualHost> (write this code in this workshopnode.shefat.info.conf file)
+  sudo a2ensite workshopnode.shefat.info.conf
+  sudo systemctl restart apache2.service or sudo service apache2 restart
+  remove this second parameter port like 0.0.0.0 from this app.js file
+  pm2 start app.js
+  pm2 start app.js --name express_website (for change this name)
+
+mySQL install
+  sudo apt update
+  sudo apt install mysql-server
+  sudo systemctl start mysql.service
+  create sql folder (/var/www/)
+  alert **** this is wrong. git clone (/var/www/sql/) folder (https://github.com/phpmyadmin/phpmyadmin.git)
+  create a sql conf file the workshop.shefat.info.conf file
+  sudo apt update
+  phpmyadmin zip file upload(/var/www/sql) directory then upzip by (unzip filename)
+  then copy this unzip directory and set .conf file in the document root and Directory
+
+mySQL setup (root password setup)
+  sudo mysql
+  ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'dbMa$%!@#*@95ext965874-+/'; (avoid all the @ symbol from this password)
+  exit
+
+
+!DONE!
+
+
+
   
   
 */
