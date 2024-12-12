@@ -24,6 +24,14 @@ module.exports = async function (fastify: FastifyInstance) {
                 return reply.view('dashboard/super_admin_uni.ejs');
             },
         )
+
+        .get(
+            '/admin',
+            // { preHandler: check_is_admin_and_redirect },
+            async (_req: FastifyRequest, reply: FastifyReply) => {
+                return reply.view('dashboard/admin.ejs');
+            },
+        )
         .get(
             '/super-admin/login',
             async (_req: FastifyRequest, reply: FastifyReply) => {
