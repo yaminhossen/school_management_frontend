@@ -18,3 +18,4 @@
 {"level":60,"time":1733999079895,"pid":6748,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-students?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
 {"level":60,"time":1733999234618,"pid":6748,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
 {"level":60,"time":1733999240366,"pid":6748,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
+{"level":60,"time":1733999446866,"pid":5684,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}

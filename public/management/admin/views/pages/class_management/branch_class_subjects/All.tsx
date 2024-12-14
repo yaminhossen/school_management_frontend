@@ -40,42 +40,6 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
 
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            name: 'Chemistry',
-            class: 'Six',
-            section: 'A',
-            code: 'CH101',
-            level: 'O',
-            class_time: '11:30 am',
-            room_no: '301',
-            days: 'sat, mon, tue',
-            teacher: 'Masud rana',
-            description: 'This is science groupe subject',
-            credit: 8,
-            additional_info: 'This is the compulsary subject for this section',
-        },
-        {
-            id: 1,
-            name: 'Biology',
-            class: 'Six',
-            section: 'B',
-            code: 'BI101',
-            level: 'O',
-            class_time: '12:30 am',
-            room_no: '301',
-            days: 'sun, wed, thu',
-            teacher: 'Nazmul haque',
-            description: 'This is science groupe subject',
-            credit: 4,
-            additional_info: 'This is the optional subject for this section',
-        },
-    ];
-
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">
@@ -161,29 +125,32 @@ const All: React.FC<Props> = (props: Props) => {
                                 </thead>
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
-                                    {(state.all as any)?.data?.map((i: { [key: string]: any }) => {
-                                        return (
-                                            <tr
-                                                key={i.id}
-                                                className={`table_rows table_row_${i.id}`}
-                                            >
-                                                <td>
-                                                    <TableRowAction item={i} />
-                                                </td>
-                                                <td>
-                                                    <SelectItem item={i} />
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        className="quick_view_trigger"
-                                                        onClick={() =>
-                                                            quick_view(i)
-                                                        }
-                                                    >
-                                                        {i.id}
-                                                    </span>
-                                                </td>
-                                                {/* <td>
+                                    {(state.all as any)?.data?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <tr
+                                                    key={i.id}
+                                                    className={`table_rows table_row_${i.id}`}
+                                                >
+                                                    <td>
+                                                        <TableRowAction
+                                                            item={i}
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <SelectItem item={i} />
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            className="quick_view_trigger"
+                                                            onClick={() =>
+                                                                quick_view(i)
+                                                            }
+                                                        >
+                                                            {i.id}
+                                                        </span>
+                                                    </td>
+                                                    {/* <td>
                                                     <img
                                                         src="/assets/dashboard/images/avatar.png"
                                                         alt=""
@@ -192,21 +159,22 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                <td>{i.name}</td>
-                                                <td>{i.class}</td>
-                                                <td>{i.section}</td>
-                                                <td>{i.teacher}</td>
-                                                <td>{i.code}</td>
-                                                <td>{i.level}</td>
-                                                <td>{i.class_time}</td>
-                                                <td>{i.room_no}</td>
-                                                <td>{i.days}</td>
-                                                <td>{i.description}</td>
-                                                <td>{i.credit}</td>
-                                                <td>{i.additional_info}</td>
-                                            </tr>
-                                        );
-                                    })}
+                                                    <td>{i.name}</td>
+                                                    <td>{i.class}</td>
+                                                    <td>{i.section}</td>
+                                                    <td>{i.teacher}</td>
+                                                    <td>{i.code}</td>
+                                                    <td>{i.level}</td>
+                                                    <td>{i.class_time}</td>
+                                                    <td>{i.room_no}</td>
+                                                    <td>{i.days}</td>
+                                                    <td>{i.description}</td>
+                                                    <td>{i.credit}</td>
+                                                    <td>{i.additional_info}</td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
                                 </tbody>
                             </table>
                         </div>
