@@ -57,22 +57,12 @@ const All: React.FC<Props> = (props: Props) => {
         {
             id: 2,
             employee_id: 'employee2',
-            gross_salary: 10000,
-            intensive: 1000,
-            lunch_bill: 1000,
-            let_fine: 500,
-            other_deduction: 1000,
-            total: 10500,
-        },
-        {
-            id: 3,
-            employee_id: 'employee3',
-            gross_salary: 25000,
+            gross_salary: 20000,
             intensive: 2000,
             lunch_bill: 2000,
             let_fine: 1000,
             other_deduction: 1000,
-            total: 27000,
+            total: 22000,
         },
     ];
 
