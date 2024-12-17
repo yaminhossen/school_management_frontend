@@ -182,6 +182,22 @@ const T1: React.FC<Props> = (props: Props) => {
                             Class Resources
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/branch-class-resources">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Exam Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/branch-class-resources">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Exam Routine Management
+                        </Link>
+                    </li>
                     {/* <li>
                         <Link to="/user-students/attendance-report">
                             <span className="material-symbols-outlined fill">
@@ -242,6 +258,30 @@ const T1: React.FC<Props> = (props: Props) => {
                             Class Fee Waivers
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/branch-class-fee-types">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Fees Collections
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/branch-class-fee-types">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Due List
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/branch-class-fee-types">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Payment History
+                        </Link>
+                    </li>
                 </ul>
 
                 <h3 className="mt-4 ms-0">Meeting management</h3>
@@ -267,19 +307,11 @@ const T1: React.FC<Props> = (props: Props) => {
                 <h3 className="mt-4 ms-0">Account management</h3>
                 <ul className="dashboard_links ">
                     <li>
-                        <Link to="/fees-collections">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Fees Collections
-                        </Link>
-                    </li>
-                    <li>
                         <Link to="/journals">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Journal Management
+                            Accoutn Management
                         </Link>
                     </li>
                     <li>
@@ -287,7 +319,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            loan Management
+                            Account period Management
                         </Link>
                     </li>
                     <li>
@@ -295,7 +327,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Payroll Management
+                            Account category Management
                         </Link>
                     </li>
                     <li>
@@ -303,7 +335,55 @@ const T1: React.FC<Props> = (props: Props) => {
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Salary Payment Management
+                            Income
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/salary-payments">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Expense
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/salary-payments">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Leadger
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/salary-payments">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Journal
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/salary-payments">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Debit
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/salary-payments">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Credit
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/salary-payments">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Profit And Loss
                         </Link>
                     </li>
                 </ul>
