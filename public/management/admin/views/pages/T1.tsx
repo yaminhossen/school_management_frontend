@@ -11,19 +11,11 @@ const T1: React.FC<Props> = (props: Props) => {
                 <h3 className="mt-4 ms-0">User management</h3>
                 <ul className="dashboard_links ">
                     <li>
-                        <Link to="/user-admins">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Admin Management
-                        </Link>
-                    </li>
-                    <li>
                         <Link to="/user-staffs">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Staff Management
+                            Employee Management
                         </Link>
                     </li>
                     <li>
@@ -48,14 +40,6 @@ const T1: React.FC<Props> = (props: Props) => {
                                 groups
                             </span>
                             Students Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/user-students">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Todo Management
                         </Link>
                     </li>
                 </ul>
@@ -106,14 +90,14 @@ const T1: React.FC<Props> = (props: Props) => {
                             branches Management
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/user-branch-admins">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             user branch admins Management
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/branch-buildings">
                             <span className="material-symbols-outlined fill">
@@ -198,14 +182,14 @@ const T1: React.FC<Props> = (props: Props) => {
                             Class Resources
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/user-students/attendance-report">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             Attendances report
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/user-students/kpi">
                             <span className="material-symbols-outlined fill">
@@ -214,14 +198,14 @@ const T1: React.FC<Props> = (props: Props) => {
                             Kpi report
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/user-students/attendance">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             Student attendances
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
 
                 <h3 className="mt-4 ms-0">Fees management</h3>
@@ -320,6 +304,78 @@ const T1: React.FC<Props> = (props: Props) => {
                                 groups
                             </span>
                             Salary Payment Management
+                        </Link>
+                    </li>
+                </ul>
+
+                <h3 className="mt-4 ms-0">HRM management</h3>
+                <ul className="dashboard_links ">
+                    <li>
+                        <Link to="/user-staffs">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Employee Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/user-teachers">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Teachers Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/fees-collections">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Attendances Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/journals">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Payroll Management
+                        </Link>
+                    </li>
+                </ul>
+
+                <h3 className="mt-4 ms-0">Notice management</h3>
+                <ul className="dashboard_links ">
+                    <li>
+                        <Link to="/user-staffs">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Notice Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/user-teachers">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            FAQ Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/fees-collections">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Settings Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/journals">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Profile Setting Management
                         </Link>
                     </li>
                 </ul>
