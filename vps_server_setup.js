@@ -97,13 +97,6 @@ mySQL setup (root password setup)
 !DONE!
 
 
-const sequelize = new Sequelize(
-    `mysql://root:dbMa$%!#*95ext965874-+\/@localhost:3306/school_managment`,
-    {
-        logging: false,
-    },
-);
-
 
   
   
