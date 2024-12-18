@@ -214,14 +214,6 @@ const T1: React.FC<Props> = (props: Props) => {
                             Kpi report
                         </Link>
                     </li>
-                    {/* <li>
-                        <Link to="/user-students/attendance">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Student attendances
-                        </Link>
-                    </li> */}
                 </ul>
 
                 <h3 className="mt-4 ms-0">Fees management</h3>
