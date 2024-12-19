@@ -29,7 +29,7 @@ const modelName = 'UserStaffInformationsModel';
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
 type status = 'active' | 'deactive';
-type is_married = 'yes' | 'no';
+type gender = 'male' | 'female';
 type blood_group = 'A+' | 'B+' | 'AB+' | 'A-' | 'B-' | 'AB-' | 'O-' | 'O+';
 
 class DataModel extends Model<Infer, InferCreation> {
@@ -43,12 +43,12 @@ class DataModel extends Model<Infer, InferCreation> {
     declare district?: string;
     declare post_code?: string;
     declare qualification?: string;
-    declare gender?: string;
+    declare gender?: gender;
     declare joining_date?: string;
     declare department?: string;
     declare responsibility?: string;
     declare position?: string;
-    declare is_married?: is_married;
+    declare is_married?: number;
     declare blood_group?: blood_group;
     declare national_id?: string;
     declare certificate1?: string;
@@ -102,7 +102,7 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             gender: {
-                type: new DataTypes.STRING(20),
+                type: new DataTypes.ENUM('male', 'female'),
                 allowNull: true,
             },
             joining_date: {
@@ -147,7 +147,7 @@ function init(sequelize: Sequelize) {
                 defaultValue: 'B+',
             },
             is_married: {
-                type: new DataTypes.ENUM('yes', 'no'),
+                type: new DataTypes.TINYINT.UNSIGNED(),
                 allowNull: true,
             },
             status: {

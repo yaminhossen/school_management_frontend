@@ -185,9 +185,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         <option value="female">
                                                             female
                                                         </option>
-                                                        <option value="others">
-                                                            others
-                                                        </option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -198,10 +195,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         name="is_married"
                                                         id=""
                                                     >
-                                                        <option value="yes">
+                                                        <option value="1">
                                                             yes
                                                         </option>
-                                                        <option value="no">
+                                                        <option value="0">
                                                             no
                                                         </option>
                                                     </select>
@@ -328,22 +325,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         </option>
                                                         <option value="librarian">
                                                             librarian
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
-                                                <label>IsMarried</label>
-                                                <div className="form_elements">
-                                                    <select
-                                                        name="ismarried"
-                                                        id=""
-                                                    >
-                                                        <option value="0">
-                                                            no
-                                                        </option>
-                                                        <option value="1">
-                                                            yes
                                                         </option>
                                                     </select>
                                                 </div>
