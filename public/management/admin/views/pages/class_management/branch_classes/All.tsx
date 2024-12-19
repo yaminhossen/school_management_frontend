@@ -27,11 +27,7 @@ const All: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(
-            storeSlice.actions.set_select_fields(
-                'id, name, email, phone_number, status',
-            ),
-        );
+        dispatch(storeSlice.actions.set_select_fields('id, name, status'));
         dispatch(all({}) as any);
     }, []);
 
@@ -134,29 +130,32 @@ const All: React.FC<Props> = (props: Props) => {
                                 </thead>
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
-                                    {datas?.map((i: { [key: string]: any }) => {
-                                        return (
-                                            <tr
-                                                key={i.id}
-                                                className={`table_rows table_row_${i.id}`}
-                                            >
-                                                <td>
-                                                    <TableRowAction item={i} />
-                                                </td>
-                                                <td>
-                                                    <SelectItem item={i} />
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        className="quick_view_trigger"
-                                                        onClick={() =>
-                                                            quick_view(i)
-                                                        }
-                                                    >
-                                                        {i.id}
-                                                    </span>
-                                                </td>
-                                                {/* <td>
+                                    {(state.all as any)?.data?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <tr
+                                                    key={i.id}
+                                                    className={`table_rows table_row_${i.id}`}
+                                                >
+                                                    <td>
+                                                        <TableRowAction
+                                                            item={i}
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <SelectItem item={i} />
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            className="quick_view_trigger"
+                                                            onClick={() =>
+                                                                quick_view(i)
+                                                            }
+                                                        >
+                                                            {i.id}
+                                                        </span>
+                                                    </td>
+                                                    {/* <td>
                                                     <img
                                                         src="/assets/dashboard/images/avatar.png"
                                                         alt=""
@@ -165,16 +164,17 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                <td>{i.name}</td>
-                                                <td>{i.code}</td>
-                                                <td>{i.capacity}</td>
-                                                <td>{i.fee}</td>
-                                                <td>{i.prerequisities}</td>
-                                                <td>{i.policies}</td>
-                                                <td>{i.rules}</td>
-                                            </tr>
-                                        );
-                                    })}
+                                                    <td>{i.name}</td>
+                                                    <td>{i.code}</td>
+                                                    <td>{i.capacity}</td>
+                                                    <td>{i.fee}</td>
+                                                    <td>{i.prerequisities}</td>
+                                                    <td>{i.policies}</td>
+                                                    <td>{i.rules}</td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
                                 </tbody>
                             </table>
                         </div>

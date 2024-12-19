@@ -69,6 +69,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <div className="form_elements">
                                                 <input
                                                     type="file"
+                                                    accept="image/*"
                                                     placeholder="image"
                                                     name="image"
                                                 />
@@ -84,7 +85,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        {/* <div className="form-group form-horizontal">
                                             <label>Confirm Password</label>
                                             <div className="form_elements">
                                                 <input
@@ -93,12 +94,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     name="confirm_password"
                                                 />
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <div className="full_width">
                                         <div className="form_section_heading">
                                             <h2 className="">
-                                                Permanent Address
+                                                Basic Information
                                             </h2>
                                         </div>
                                         <div className="d-flex">
@@ -133,16 +134,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
-                                                <label>Thana</label>
-                                                <div className="form_elements">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="thana"
-                                                        name="thana"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
                                                 <label>Post Code</label>
                                                 <div className="form_elements">
                                                     <input
@@ -152,43 +143,16 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     />
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div className="full_width">
-                                        <div className="form_section_heading">
-                                            <h2 className="">
-                                                Present Address
-                                            </h2>
-                                        </div>
-                                        <div className="d-flex">
                                             <div className="form-group form-horizontal">
                                                 <label>Present Address</label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
                                                         placeholder="present address"
-                                                        name="present address"
+                                                        name="present_address"
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="form-group form-horizontal">
-                                                <label>Post Code</label>
-                                                <div className="form_elements">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="post_code"
-                                                        name="post_code"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="full_width">
-                                        <div className="form_section_heading">
-                                            <h4>Additional Information</h4>
-                                        </div>
-                                        <div className="d-flex">
                                             <div className="form-group form-horizontal">
                                                 <label>
                                                     Gruardian Contact Number
@@ -202,32 +166,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
-                                                <label>Graduation</label>
-                                                <div className="form_elements">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="graduation"
-                                                        name="graduation"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
                                                 <label>Qualification</label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
                                                         placeholder="qualification"
                                                         name="qualification"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
-                                                <label>Experience</label>
-                                                <div className="form_elements">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="experience"
-                                                        name="experience"
                                                     />
                                                 </div>
                                             </div>
@@ -243,6 +187,56 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         </option>
                                                         <option value="others">
                                                             others
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div className="form-group form-horizontal">
+                                                <label>Is Married</label>
+                                                <div className="form_elements">
+                                                    <select
+                                                        name="is_married"
+                                                        id=""
+                                                    >
+                                                        <option value="yes">
+                                                            yes
+                                                        </option>
+                                                        <option value="no">
+                                                            no
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div className="form-group form-horizontal">
+                                                <label>Blood group</label>
+                                                <div className="form_elements">
+                                                    <select
+                                                        name="blood_group"
+                                                        id=""
+                                                    >
+                                                        <option value="A+">
+                                                            A+
+                                                        </option>
+                                                        <option value="B+">
+                                                            B+
+                                                        </option>
+                                                        <option value="A-">
+                                                            A-
+                                                        </option>
+                                                        <option value="AB-">
+                                                            AB-
+                                                        </option>
+                                                        <option value="AB+">
+                                                            AB+
+                                                        </option>
+                                                        <option value="B-">
+                                                            B-
+                                                        </option>
+                                                        <option value="O-">
+                                                            O-
+                                                        </option>
+                                                        <option value="O-">
+                                                            O-
                                                         </option>
                                                     </select>
                                                 </div>
@@ -269,33 +263,41 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <div className="form-group form-horizontal">
                                                 <label>Responsibilies</label>
                                                 <div className="form_elements">
-                                                    <select
-                                                        name="branch_id"
-                                                        id=""
-                                                    >
-                                                        <option value="mirpur">
-                                                            mirpur
-                                                        </option>
-                                                        <option value="gulshan">
-                                                            gulshan
-                                                        </option>
-                                                    </select>
-                                                    {/* <label htmlFor="">
-                                                        <input
-                                                            type="checkbox"
-                                                            name="responsibilies"
-                                                            id=""
-                                                        />
-                                                        <span>pion</span>
-                                                    </label>
-                                                    <label htmlFor="">
-                                                        <input
-                                                            type="checkbox"
-                                                            name="responsibilies"
-                                                            id=""
-                                                        />
-                                                        <span>teacher</span>
-                                                    </label> */}
+                                                    <input
+                                                        type="text"
+                                                        placeholder="responsibility"
+                                                        name="responsibility"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="form-group form-horizontal">
+                                                <label>National Id</label>
+                                                <div className="form_elements">
+                                                    <input
+                                                        type="file"
+                                                        placeholder="national_id"
+                                                        name="national_id"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="form-group form-horizontal">
+                                                <label>Certificate No. 1</label>
+                                                <div className="form_elements">
+                                                    <input
+                                                        type="file"
+                                                        placeholder="certificate_1"
+                                                        name="certificate_1"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="form-group form-horizontal">
+                                                <label>Certificate No. 2</label>
+                                                <div className="form_elements">
+                                                    <input
+                                                        type="file"
+                                                        placeholder="certificate_2"
+                                                        name="certificate_2"
+                                                    />
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
@@ -312,30 +314,14 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
-                                                <label>Branch Id</label>
-                                                <div className="form_elements">
-                                                    <select
-                                                        name="branch_id"
-                                                        id=""
-                                                    >
-                                                        <option value="mirpur">
-                                                            mirpur
-                                                        </option>
-                                                        <option value="gulshan">
-                                                            gulshan
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
                                                 <label>Position</label>
                                                 <div className="form_elements">
                                                     <select
                                                         name="position"
                                                         id=""
                                                     >
-                                                        <option value="teacher">
-                                                            teacher
+                                                        <option value="accountant">
+                                                            accountant
                                                         </option>
                                                         <option value="pion">
                                                             pion
@@ -358,40 +344,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         </option>
                                                         <option value="1">
                                                             yes
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
-                                                <label>Blood Group</label>
-                                                <div className="form_elements">
-                                                    <select
-                                                        name="blood_group"
-                                                        id=""
-                                                    >
-                                                        <option value="A+">
-                                                            A +
-                                                        </option>
-                                                        <option value="A-">
-                                                            A -
-                                                        </option>
-                                                        <option value="B+">
-                                                            B +
-                                                        </option>
-                                                        <option value="B-">
-                                                            B -
-                                                        </option>
-                                                        <option value="O+">
-                                                            O +
-                                                        </option>
-                                                        <option value="O-">
-                                                            O -
-                                                        </option>
-                                                        <option value="AB+">
-                                                            AB +
-                                                        </option>
-                                                        <option value="AB+">
-                                                            AB -
                                                         </option>
                                                     </select>
                                                 </div>

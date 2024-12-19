@@ -10,6 +10,7 @@ import response from '../helpers/response';
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
+import moment from 'moment/moment';
 
 async function validate(req: Request) {
     await body('name')
@@ -72,6 +73,52 @@ async function store(
     const saltRounds = 10;
     let password = await bcrypt.hash(body.password, saltRounds);
 
+    let staff_image = '';
+    let national_id_image = '';
+    let certificate1_image = '';
+    let certificate2_image = '';
+
+    if (body['image']?.ext) {
+        staff_image =
+            'uploads/staffs/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['image'].name;
+        await (fastify_instance as any).upload(body['image'], staff_image);
+    }
+
+    if (body['national_id_image']?.ext) {
+        staff_image =
+            'uploads/staffs/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['national_id_image'].name;
+        await (fastify_instance as any).upload(
+            body['national_id_image'],
+            staff_image,
+        );
+    }
+
+    if (body['certificate1_image']?.ext) {
+        staff_image =
+            'uploads/staffs/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['certificate1_image'].name;
+        await (fastify_instance as any).upload(
+            body['certificate1_image'],
+            staff_image,
+        );
+    }
+
+    if (body['certificate2_image']?.ext) {
+        staff_image =
+            'uploads/staffs/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['certificate2_image'].name;
+        await (fastify_instance as any).upload(
+            body['certificate2_image'],
+            staff_image,
+        );
+    }
+
     let inputs: InferCreationAttributes<typeof data> = {
         name: body.name,
         email: body.email,
@@ -85,8 +132,7 @@ async function store(
         parmenent_address: body.parmenent_address,
         present_address: body.present_address,
         guardian_contact_number: body.guardian_contact_number,
-        ismarried: body.ismarried,
-        graduation: body.graduation,
+        is_married: body.is_married,
     };
 
     /** print request data into console */

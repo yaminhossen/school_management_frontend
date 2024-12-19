@@ -21,7 +21,7 @@ module.exports = {
             present_address,
             guardian_contact_number,
             ismarried,
-            graduation,
+            // graduation,
             status,
         ) {
             data.push({
@@ -31,7 +31,7 @@ module.exports = {
                 present_address,
                 guardian_contact_number,
                 ismarried,
-                graduation,
+                // graduation,
                 status,
                 created_at: '2024-02-14',
                 updated_at: '2024-02-14',
@@ -44,7 +44,7 @@ module.exports = {
             'Dhaka, mirpur',
             '01982738437',
             false,
-            'SSC',
+            // 'SSC',
             'active',
         );
         set_data(
@@ -54,7 +54,7 @@ module.exports = {
             'Dhaka, motijhil',
             '01982738438',
             false,
-            'SSC',
+            // 'SSC',
             'active',
         );
         set_data(
@@ -64,7 +64,7 @@ module.exports = {
             'Dhaka, uttora',
             '01982738439',
             true,
-            'HSC',
+            // 'HSC',
             'active',
         );
 
