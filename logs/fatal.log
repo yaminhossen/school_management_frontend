@@ -5,3 +5,14 @@
 {"level":60,"time":1734560752312,"pid":12996,"hostname":"DESKTOP-9421701","file":"services\\all.ts:119:15)","time":"12/19/2024 4:25:52 AM","message":"Unknown column 'name' in 'field list'"}
 {"level":60,"time":1734560854460,"pid":12996,"hostname":"DESKTOP-9421701","file":"services\\all.ts:116:15)","time":"12/19/2024 4:27:34 AM","message":"Unknown column 'name' in 'field list'"}
 {"level":60,"time":1734560863303,"pid":12996,"hostname":"DESKTOP-9421701","file":"services\\all.ts:116:15)","time":"12/19/2024 4:27:43 AM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1734754517836,"pid":11352,"hostname":"DESKTOP-9421701","file":"","time":"12/21/2024 10:15:17 AM","message":"sequelize_1.DataTypes.TINYINT.UNSIGNED is not a constructor"}
+{"level":60,"time":1734756220994,"pid":11352,"hostname":"DESKTOP-9421701","file":"services\\all.ts:115:15)","time":"12/21/2024 10:43:40 AM","message":"Unknown column 'email' in 'field list'"}
+{"level":60,"time":1734756231434,"pid":11352,"hostname":"DESKTOP-9421701","file":"services\\all.ts:115:15)","time":"12/21/2024 10:43:51 AM","message":"Unknown column 'email' in 'field list'"}
+{"level":60,"time":1734756304070,"pid":11352,"hostname":"DESKTOP-9421701","file":"services\\all.ts:115:15)","time":"12/21/2024 10:45:04 AM","message":"Unknown column 'email' in 'field list'"}
+{"level":60,"time":1734756662895,"pid":11352,"hostname":"DESKTOP-9421701","file":"","time":"12/21/2024 10:51:02 AM","message":"sequelize_1.DataTypes.TINYINT.UNSIGNED is not a constructor"}
+{"level":60,"time":1734759133305,"pid":11352,"hostname":"DESKTOP-9421701","file":"","time":"12/21/2024 11:32:13 AM","message":"sequelize_1.DataTypes.TINYINT.UNSIGNED is not a constructor"}
+{"level":60,"time":1734759141496,"pid":11352,"hostname":"DESKTOP-9421701","file":"","time":"12/21/2024 11:32:21 AM","message":"sequelize_1.DataTypes.TINYINT.UNSIGNED is not a constructor"}
+{"level":60,"time":1734759274727,"pid":11352,"hostname":"DESKTOP-9421701","file":"","time":"12/21/2024 11:34:34 AM","message":"sequelize_1.DataTypes.TINYINT.UNSIGNED is not a constructor"}
+{"level":60,"time":1734760937923,"pid":1984,"hostname":"DESKTOP-9421701","file":"services\\store.ts:158:15)","time":"12/21/2024 12:02:17 PM","message":"string violation: image cannot be an array or an object"}
+{"level":60,"time":1734761003976,"pid":1984,"hostname":"DESKTOP-9421701","file":"services\\store.ts:158:15)","time":"12/21/2024 12:03:23 PM","message":"string violation: image cannot be an array or an object"}
+{"level":60,"time":1734761046977,"pid":1984,"hostname":"DESKTOP-9421701","file":"services\\store.ts:158:15)","time":"12/21/2024 12:04:06 PM","message":"string violation: image cannot be an array or an object"}

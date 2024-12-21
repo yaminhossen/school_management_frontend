@@ -71,7 +71,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     type="file"
                                                     accept="image/*"
                                                     placeholder="image"
-                                                    name="image"
+                                                    name="staff_image"
                                                 />
                                             </div>
                                         </div>

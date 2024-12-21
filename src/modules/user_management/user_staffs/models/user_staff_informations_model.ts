@@ -48,7 +48,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare department?: string;
     declare responsibility?: string;
     declare position?: string;
-    declare is_married?: number;
+    declare is_married?: boolean;
     declare blood_group?: blood_group;
     declare national_id?: string;
     declare certificate1?: string;
@@ -105,22 +105,22 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.ENUM('male', 'female'),
                 allowNull: true,
             },
-            joining_date: {
-                type: new DataTypes.STRING(20),
-                allowNull: true,
-            },
-            department: {
-                type: new DataTypes.STRING(20),
-                allowNull: true,
-            },
+            // joining_date: {
+            //     type: new DataTypes.STRING(20),
+            //     allowNull: true,
+            // },
+            // department: {
+            //     type: new DataTypes.STRING(20),
+            //     allowNull: true,
+            // },
             responsibility: {
                 type: new DataTypes.STRING(200),
                 allowNull: true,
             },
-            position: {
-                type: new DataTypes.STRING(200),
-                allowNull: true,
-            },
+            // position: {
+            //     type: new DataTypes.STRING(200),
+            //     allowNull: true,
+            // },
             national_id: {
                 type: new DataTypes.STRING(250),
                 allowNull: true,
@@ -147,7 +147,7 @@ function init(sequelize: Sequelize) {
                 defaultValue: 'B+',
             },
             is_married: {
-                type: new DataTypes.TINYINT.UNSIGNED(),
+                type: new DataTypes.BOOLEAN(),
                 allowNull: true,
             },
             status: {
