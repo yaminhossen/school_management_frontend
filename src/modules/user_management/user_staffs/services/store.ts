@@ -74,18 +74,26 @@ async function store(
     let password = await bcrypt.hash(body.password, saltRounds);
 
     let user = (req as any).user;
+    let auth_user = await models.BranchAdminsModel.findOne({
+        where: {
+            user_admin_id: (req as any).user?.id || null,
+        },
+    });
 
     let staff_image = '';
     let national_id_image = '';
     let certificate1_image = '';
     let certificate2_image = '';
 
-    if (body['image']?.ext) {
+    if (body['staff_image']?.ext) {
         staff_image =
             'uploads/staffs/' +
             moment().format('YYYYMMDDHHmmss') +
-            body['image'].name;
-        await (fastify_instance as any).upload(body['image'], staff_image);
+            body['staff_image'].name;
+        await (fastify_instance as any).upload(
+            body['staff_image'],
+            staff_image,
+        );
     }
 
     if (body['national_id']?.ext) {
@@ -156,13 +164,21 @@ async function store(
                 gender: body.gender,
                 blood_group: body.blood_group,
                 responsibility: body.responsibility,
-                national_id: body.national_id,
-                certificate1: body.certificate1,
-                certificate2: body.certificate2,
+                national_id: national_id_image,
+                certificate_no_1: certificate1_image,
+                certificate_no_2: certificate2_image,
+                creator: user?.id || null,
+            };
+            let bs_inputs: InferCreationAttributes<typeof bs_model> = {
+                user_staff_id: data.id || body.staff_id,
+                possition: body.possition,
+                joining_date: body.joining_date,
+                department: body.department,
+                branch_id: auth_user?.branch_id || 1,
                 creator: user?.id || null,
             };
             (await usi_model.update(usi_inputs)).save();
-            // (await bs_model.update(useb_inputs)).save();
+            (await bs_model.update(bs_inputs)).save();
         }
         return response(200, 'data created', { data, user_staff });
     } catch (error: any) {

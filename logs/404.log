@@ -23,3 +23,8 @@
 {"level":60,"time":1734756669685,"pid":11352,"hostname":"DESKTOP-9421701","error":"404","url":"/room1.png"}
 {"level":60,"time":1734756669697,"pid":11352,"hostname":"DESKTOP-9421701","error":"404","url":"/room3.png"}
 {"level":60,"time":1734756669692,"pid":11352,"hostname":"DESKTOP-9421701","error":"404","url":"/room2.png"}
+{"level":60,"time":1734771078342,"pid":6748,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description%2C+status"}
+{"level":60,"time":1734771081140,"pid":6748,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description%2C+status"}
+{"level":60,"time":1734771084280,"pid":6748,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/task-variants?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+color%2C+description%2C+status"}
+{"level":60,"time":1734771089016,"pid":6748,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/task-groups?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+color%2C+description%2C+status"}
+{"level":60,"time":1734771094789,"pid":6748,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-buildings?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+building_name%2C+building_code%2C+photo%2C+description%2C+attachment%2C+status"}

@@ -6,6 +6,7 @@ import { useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
 import DropDown from './components/dropdown/DropDown';
 export interface Props {}
+import moment from 'moment/moment';
 
 const Create: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
@@ -244,6 +245,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     <input
                                                         type="date"
                                                         name="joining_date"
+                                                        defaultValue={moment().format(
+                                                            'YYYY-MM-DD',
+                                                        )}
                                                     />
                                                 </div>
                                             </div>
@@ -272,7 +276,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 <div className="form_elements">
                                                     <input
                                                         type="file"
-                                                        placeholder="national_id"
+                                                        placeholder="national id"
                                                         name="national_id"
                                                     />
                                                 </div>
@@ -282,7 +286,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 <div className="form_elements">
                                                     <input
                                                         type="file"
-                                                        placeholder="certificate_1"
+                                                        placeholder="certificate 1"
                                                         name="certificate_1"
                                                     />
                                                 </div>
@@ -292,7 +296,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 <div className="form_elements">
                                                     <input
                                                         type="file"
-                                                        placeholder="certificate_2"
+                                                        placeholder="certificate 2"
                                                         name="certificate_2"
                                                     />
                                                 </div>

@@ -17,13 +17,23 @@ async function details(
             where: {
                 id: params.id,
             },
+            include: [
+                {
+                    model: models.UserStaffInformationsModel,
+                    as: 'staff_infos',
+                },
+                {
+                    model: models.BranchStaffsModel,
+                    as: 'staffs',
+                },
+            ],
             attributes: {
                 exclude: ['password'],
             },
         });
 
         if (data) {
-            return response(200, 'data created', data);
+            return response(200, 'data founded', data);
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }

@@ -51,8 +51,8 @@ class DataModel extends Model<Infer, InferCreation> {
     declare is_married?: boolean;
     declare blood_group?: blood_group;
     declare national_id?: string;
-    declare certificate1?: string;
-    declare certificate2?: string;
+    declare certificate_no_1?: string;
+    declare certificate_no_2?: string;
     declare status?: status;
 
     declare creator?: number;
@@ -125,11 +125,11 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.STRING(250),
                 allowNull: true,
             },
-            certificate1: {
+            certificate_no_1: {
                 type: new DataTypes.STRING(250),
                 allowNull: true,
             },
-            certificate2: {
+            certificate_no_2: {
                 type: new DataTypes.STRING(250),
                 allowNull: true,
             },
