@@ -23,3 +23,7 @@
 {"level":60,"time":1734772320672,"pid":15432,"hostname":"DESKTOP-9421701","file":"services\\store.ts:186:15)","time":"12/21/2024 3:12:00 PM","message":"Unknown column 'certificate1' in 'field list'"}
 {"level":60,"time":1734772578132,"pid":4496,"hostname":"DESKTOP-9421701","file":"","time":"12/21/2024 3:16:18 PM","message":"Incorrect datetime value: 'Invalid date' for column 'joining_date' at row 1"}
 {"level":60,"time":1734774540932,"pid":14504,"hostname":"DESKTOP-9421701","file":"services\\details.ts:45:19)","time":"12/21/2024 3:49:00 PM","message":"BranchStaffsModel is associated to UserStaffsModel using an alias. You've included an alias (staff), but it does not match the alias(es) defined in your association (staffs)."}
+{"level":60,"time":1734858515785,"pid":2368,"hostname":"DESKTOP-9421701","file":"","time":"12/22/2024 3:08:35 PM","message":"Data truncated for column 'possition' at row 1"}
+{"level":60,"time":1734859074658,"pid":7480,"hostname":"DESKTOP-9421701","file":"","time":"12/22/2024 3:17:54 PM","message":"Data truncated for column 'possition' at row 1"}
+{"level":60,"time":1734861639385,"pid":11940,"hostname":"DESKTOP-9421701","file":"","time":"12/22/2024 4:00:39 PM","message":"Data truncated for column 'possition' at row 1"}
+{"level":60,"time":1734861926180,"pid":15832,"hostname":"DESKTOP-9421701","file":"","time":"12/22/2024 4:05:26 PM","message":"Data truncated for column 'possition' at row 1"}

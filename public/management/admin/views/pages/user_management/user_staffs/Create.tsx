@@ -86,16 +86,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        {/* <div className="form-group form-horizontal">
-                                            <label>Confirm Password</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="confirm password"
-                                                    name="confirm_password"
-                                                />
-                                            </div>
-                                        </div> */}
                                     </div>
                                     <div className="full_width">
                                         <div className="form_section_heading">
@@ -105,12 +95,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                         </div>
                                         <div className="d-flex">
                                             <div className="form-group form-horizontal">
-                                                <label>Permanent Address</label>
+                                                <label>Parmanent Address</label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
-                                                        placeholder="Permanent address"
-                                                        name="permanent_address"
+                                                        placeholder="Parmenent address"
+                                                        name="parmenent_address"
                                                     />
                                                 </div>
                                             </div>
@@ -162,7 +152,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     <input
                                                         type="text"
                                                         placeholder="guardian number"
-                                                        name="gruardian_contact_number"
+                                                        name="guardian_contact_number"
                                                     />
                                                 </div>
                                             </div>
@@ -262,6 +252,16 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
+                                                <label>Role</label>
+                                                <div className="form_elements">
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Staff role"
+                                                        name="role"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="form-group form-horizontal">
                                                 <label>Responsibilies</label>
                                                 <div className="form_elements">
                                                     <input
@@ -324,11 +324,11 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         <option value="accountant">
                                                             accountant
                                                         </option>
-                                                        <option value="pion">
-                                                            pion
+                                                        <option value="senior">
+                                                            senior
                                                         </option>
-                                                        <option value="librarian">
-                                                            librarian
+                                                        <option value="junior">
+                                                            junior
                                                         </option>
                                                     </select>
                                                 </div>

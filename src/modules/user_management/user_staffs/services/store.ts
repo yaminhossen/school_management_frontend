@@ -171,7 +171,7 @@ async function store(
             };
             let bs_inputs: InferCreationAttributes<typeof bs_model> = {
                 user_staff_id: data.id || body.staff_id,
-                possition: body.possition,
+                possition: body.position,
                 joining_date: body.joining_date,
                 department: body.department,
                 branch_id: auth_user?.branch_id || 1,
