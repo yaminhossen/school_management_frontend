@@ -8,7 +8,7 @@ const setup: setup_type = {
     route_prefix: 'user-parents',
 
     api_host: location.origin,
-    api_prefix: 'admin-parents',
+    api_prefix: 'user-parents',
 
     store_prefix: 'userParent',
     layout_title: prefix + ' Management',
