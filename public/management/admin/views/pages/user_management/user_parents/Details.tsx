@@ -53,14 +53,14 @@ const Details: React.FC<Props> = (props: Props) => {
                             <div className="item-img">
                                 <img
                                     className="user_profile_img"
-                                    src="/assets/dashboard/images/avatar.png"
+                                    src={state.item?.image}
                                     alt="teacher"
                                 />
                             </div>
                             <div className="item-content">
                                 <div className="header-inline item-header details_header">
                                     <h3 className="text-dark-medium profile_name font-medium mt-4">
-                                        Eng. Kawsar ahmed
+                                        {state.item?.name}
                                     </h3>
                                     <div className="header-elements">
                                         <ul>
@@ -90,16 +90,20 @@ const Details: React.FC<Props> = (props: Props) => {
                                 </div>
                                 <ul className="section_naviagation">
                                     <li>
-                                        <Link to="/user-parents/details/3/information">
+                                        <Link
+                                            to={`/user-parents/details/${params.id}/information`}
+                                        >
                                             Informations
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="/user-parents/details/3/children">
+                                        <Link
+                                            to={`/user-parents/details/${params.id}/children`}
+                                        >
                                             Children
                                         </Link>
                                     </li>
-                                    <li>
+                                    {/* <li>
                                         <Link to="/user-parents/details/3/payment">
                                             Payment
                                         </Link>
@@ -108,7 +112,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <Link to="/user-parents/details/3/due">
                                             Due
                                         </Link>
-                                    </li>
+                                    </li> */}
                                 </ul>
                                 <div></div>
                                 <div className="info-table table-responsive">

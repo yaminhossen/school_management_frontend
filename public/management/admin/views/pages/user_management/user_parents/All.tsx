@@ -40,32 +40,6 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
 
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            branch: 'kustia',
-            name: 'Parent1',
-            designation: 'Doctor',
-            phone_number: '01786867672',
-            email: 'parent1@gamil.com',
-            address: 'Mirpur',
-            image: '/assets/dashboard/images/avatar.png',
-        },
-        {
-            id: 2,
-            branch: 'Barishal',
-            name: 'Parent2',
-            designation: 'Engineer',
-            phone_number: '01786867673',
-            email: 'parent2@gamil.com',
-            address: 'Uttora',
-            image: '/assets/dashboard/images/avatar.png',
-        },
-    ];
-
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">
@@ -121,46 +95,50 @@ const All: React.FC<Props> = (props: Props) => {
                                 </thead>
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
-                                    {datas?.map((i: { [key: string]: any }) => {
-                                        return (
-                                            <tr
-                                                key={i.id}
-                                                className={`table_rows table_row_${i.id}`}
-                                            >
-                                                <td>
-                                                    <TableRowAction item={i} />
-                                                </td>
-                                                <td>
-                                                    <SelectItem item={i} />
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        className="quick_view_trigger"
-                                                        onClick={() =>
-                                                            quick_view(i)
-                                                        }
-                                                    >
-                                                        {i.id}
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td>
-                                                <td>{i.branch}</td>
-                                                <td>{i.name}</td>
-                                                <td>{i.designation}</td>
-                                                <td>{i.phone_number}</td>
-                                                <td>{i.email}</td>
-                                                <td>{i.address}</td>
-                                            </tr>
-                                        );
-                                    })}
+                                    {(state.all as any)?.data?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <tr
+                                                    key={i.id}
+                                                    className={`table_rows table_row_${i.id}`}
+                                                >
+                                                    <td>
+                                                        <TableRowAction
+                                                            item={i}
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <SelectItem item={i} />
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            className="quick_view_trigger"
+                                                            onClick={() =>
+                                                                quick_view(i)
+                                                            }
+                                                        >
+                                                            {i.id}
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <img
+                                                            src="/assets/dashboard/images/avatar.png"
+                                                            alt=""
+                                                            style={{
+                                                                height: 30,
+                                                            }}
+                                                        />
+                                                    </td>
+                                                    <td>{i.branch}</td>
+                                                    <td>{i.name}</td>
+                                                    <td>{i.designation}</td>
+                                                    <td>{i.phone_number}</td>
+                                                    <td>{i.email}</td>
+                                                    <td>{i.address}</td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
                                 </tbody>
                             </table>
                         </div>

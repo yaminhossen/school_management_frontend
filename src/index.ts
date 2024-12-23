@@ -190,11 +190,14 @@ async function boot() {
         });
 
     try {
-        fastify.listen({ port: app_config.port }).then(() => {
-            console.log(
-                '\n Server is running on http://127.0.0.1:' + app_config.port,
-            );
-        });
+        fastify
+            .listen({ port: app_config.port, host: app_config.host })
+            .then(() => {
+                console.log(
+                    `\n Server is running on http://${app_config.host}:` +
+                        app_config.port,
+                );
+            });
     } catch (err) {
         fastify.log.error(err);
         process.exit(1);

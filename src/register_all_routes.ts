@@ -103,10 +103,10 @@ export let active_routes: string[] = [
     // 'src/modules/user_management/user_admin/routes.ts',
     // 'src/modules/user_management/user_branch_admins/routes.ts',
     // 'src/modules/user_management/user_login_histories/routes.ts',
-    // 'src/modules/user_management/user_parents/routes.ts',
-    'src/modules/user_management/user_staffs/routes.ts',
-    // 'src/modules/user_management/user_students/routes.ts',
-    'src/modules/user_management/user_teachers/routes.ts',
+    'src/modules/user_management/user_parents/routes.ts',
+    // 'src/modules/user_management/user_staffs/routes.ts',
+    'src/modules/user_management/user_students/routes.ts',
+    // 'src/modules/user_management/user_teachers/routes.ts',
 ];
 
 function register_all_routes(fastify: FastifyInstance) {

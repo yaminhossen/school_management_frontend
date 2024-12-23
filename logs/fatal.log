@@ -27,3 +27,16 @@
 {"level":60,"time":1734859074658,"pid":7480,"hostname":"DESKTOP-9421701","file":"","time":"12/22/2024 3:17:54 PM","message":"Data truncated for column 'possition' at row 1"}
 {"level":60,"time":1734861639385,"pid":11940,"hostname":"DESKTOP-9421701","file":"","time":"12/22/2024 4:00:39 PM","message":"Data truncated for column 'possition' at row 1"}
 {"level":60,"time":1734861926180,"pid":15832,"hostname":"DESKTOP-9421701","file":"","time":"12/22/2024 4:05:26 PM","message":"Data truncated for column 'possition' at row 1"}
+{"level":60,"time":1734944232408,"pid":8420,"hostname":"DESKTOP-9421701","file":"services\\all.ts:110:15)","time":"12/23/2024 2:57:12 PM","message":"Unknown column 'UserParentsModel.preferred_name' in 'where clause'"}
+{"level":60,"time":1734945819422,"pid":7420,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"12/23/2024 3:23:39 PM","message":"data not found"}
+{"level":60,"time":1734945861157,"pid":7420,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"12/23/2024 3:24:21 PM","message":"data not found"}
+{"level":60,"time":1734945916810,"pid":7420,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"12/23/2024 3:25:16 PM","message":"data not found"}
+{"level":60,"time":1734946113983,"pid":7420,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"12/23/2024 3:28:33 PM","message":"data not found"}
+{"level":60,"time":1734951347925,"pid":14756,"hostname":"DESKTOP-9421701","file":"services\\children_details.ts:29:19)","time":"12/23/2024 4:55:47 PM","message":"data not found"}
+{"level":60,"time":1734951411010,"pid":14756,"hostname":"DESKTOP-9421701","file":"services\\children_details.ts:29:19)","time":"12/23/2024 4:56:51 PM","message":"data not found"}
+{"level":60,"time":1734951429014,"pid":14756,"hostname":"DESKTOP-9421701","file":"services\\children_details.ts:29:19)","time":"12/23/2024 4:57:09 PM","message":"data not found"}
+{"level":60,"time":1734951429774,"pid":14756,"hostname":"DESKTOP-9421701","file":"services\\children_details.ts:29:19)","time":"12/23/2024 4:57:09 PM","message":"data not found"}
+{"level":60,"time":1734951430386,"pid":14756,"hostname":"DESKTOP-9421701","file":"services\\children_details.ts:29:19)","time":"12/23/2024 4:57:10 PM","message":"data not found"}
+{"level":60,"time":1734951431022,"pid":14756,"hostname":"DESKTOP-9421701","file":"services\\children_details.ts:29:19)","time":"12/23/2024 4:57:11 PM","message":"data not found"}
+{"level":60,"time":1734951431624,"pid":14756,"hostname":"DESKTOP-9421701","file":"services\\children_details.ts:29:19)","time":"12/23/2024 4:57:11 PM","message":"data not found"}
+{"level":60,"time":1734951432185,"pid":14756,"hostname":"DESKTOP-9421701","file":"services\\children_details.ts:29:19)","time":"12/23/2024 4:57:12 PM","message":"data not found"}
