@@ -188,20 +188,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Qualification</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="qualification"
-                                            name="qualification"
-                                            defaultValue={
-                                                state.item.teacher_infos
-                                                    ?.qualification
-                                            }
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
                                     <label>Gender</label>
                                     <div className="form_elements">
                                         <select
@@ -283,6 +269,21 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         >
                                             <option value="1">Bangla</option>
                                             <option value="2">English</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Class</label>
+                                    <div className="form_elements">
+                                        <select
+                                            name="class"
+                                            defaultValue={
+                                                state.item.teachers?.class
+                                            }
+                                            id=""
+                                        >
+                                            <option value="1">Six</option>
+                                            <option value="2">Seven</option>
                                         </select>
                                     </div>
                                 </div>
