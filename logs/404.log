@@ -67,3 +67,5 @@
 {"level":60,"time":1734864367167,"pid":1764,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-teachers?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
 {"level":60,"time":1734864382280,"pid":1764,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-parents?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
 {"level":60,"time":1734864597360,"pid":1764,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1734869357671,"pid":12060,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description%2C+status"}
+{"level":60,"time":1734933402171,"pid":10912,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}

@@ -72,7 +72,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     type="file"
                                                     accept="image/*"
                                                     placeholder="image"
-                                                    name="staff_image"
+                                                    name="teacher_image"
                                                 />
                                             </div>
                                         </div>
@@ -244,14 +244,20 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <div className="form-group form-horizontal">
                                                 <label>Department</label>
                                                 <div className="form_elements">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="department"
+                                                    <select
                                                         name="department"
-                                                    />
+                                                        id=""
+                                                    >
+                                                        <option value="1">
+                                                            Bangla
+                                                        </option>
+                                                        <option value="2">
+                                                            English
+                                                        </option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div className="form-group form-horizontal">
+                                            {/* <div className="form-group form-horizontal">
                                                 <label>Role</label>
                                                 <div className="form_elements">
                                                     <input
@@ -260,8 +266,8 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         name="role"
                                                     />
                                                 </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
+                                            </div> */}
+                                            {/* <div className="form-group form-horizontal">
                                                 <label>Responsibilies</label>
                                                 <div className="form_elements">
                                                     <input
@@ -269,6 +275,19 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         placeholder="responsibility"
                                                         name="responsibility"
                                                     />
+                                                </div>
+                                            </div> */}
+                                            <div className="form-group form-horizontal">
+                                                <label>Class</label>
+                                                <div className="form_elements">
+                                                    <select name="class" id="">
+                                                        <option value="1">
+                                                            Six
+                                                        </option>
+                                                        <option value="2">
+                                                            Seven
+                                                        </option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
@@ -301,7 +320,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="form-group form-horizontal">
+                                            {/* <div className="form-group form-horizontal">
                                                 <label>Status</label>
                                                 <div className="form_elements">
                                                     <select name="status" id="">
@@ -313,8 +332,8 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         </option>
                                                     </select>
                                                 </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
+                                            </div> */}
+                                            {/* <div className="form-group form-horizontal">
                                                 <label>Position</label>
                                                 <div className="form_elements">
                                                     <select
@@ -332,7 +351,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         </option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>

@@ -29,20 +29,28 @@ const modelName = 'UserTeacherInformationsModel';
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
 type status = 'active' | 'deactive';
+type gender = 'male' | 'female';
+type blood_group = 'A+' | 'B+' | 'AB+' | 'A-' | 'B-' | 'AB-' | 'O-' | 'O+';
 
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
-    declare user_teacher_id: number;
+    declare user_teacher_id?: number;
     declare parmenent_address: string;
     declare present_address: string;
     declare guardian_contact_number?: string;
-    declare ismarried?: boolean;
-    declare graduation?: string;
+    declare country?: string;
+    declare district?: string;
+    declare post_code?: string;
+    declare gender?: gender;
+    declare joining_date?: string;
+    declare department?: string;
+    declare is_married?: boolean;
+    declare blood_group?: blood_group;
+    declare national_id?: string;
+    declare certificate_no_1?: string;
+    declare certificate_no_2?: string;
     declare status?: status;
-    declare token?: string | null;
-    declare forget_code?: string | null;
-    declare user_agent?: string | null;
 
     declare creator?: number;
 
@@ -74,29 +82,66 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.STRING(20),
                 allowNull: true,
             },
-            ismarried: {
-                type: new DataTypes.BOOLEAN(),
+            country: {
+                type: new DataTypes.STRING(20),
                 allowNull: true,
             },
-            graduation: {
+            district: {
                 type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            post_code: {
+                type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            gender: {
+                type: new DataTypes.ENUM('male', 'female'),
+                allowNull: true,
+            },
+            // joining_date: {
+            //     type: new DataTypes.STRING(20),
+            //     allowNull: true,
+            // },
+            // department: {
+            //     type: new DataTypes.STRING(20),
+            //     allowNull: true,
+            // },
+            // position: {
+            //     type: new DataTypes.STRING(200),
+            //     allowNull: true,
+            // },
+            national_id: {
+                type: new DataTypes.STRING(250),
+                allowNull: true,
+            },
+            certificate_no_1: {
+                type: new DataTypes.STRING(250),
+                allowNull: true,
+            },
+            certificate_no_2: {
+                type: new DataTypes.STRING(250),
+                allowNull: true,
+            },
+            blood_group: {
+                type: new DataTypes.ENUM(
+                    'A+',
+                    'B+',
+                    'AB+',
+                    'A-',
+                    'B-',
+                    'AB-',
+                    'O-',
+                    'O+',
+                ),
+                defaultValue: 'B+',
+            },
+            is_married: {
+                type: new DataTypes.BOOLEAN(),
                 allowNull: true,
             },
             status: {
                 type: new DataTypes.ENUM('active', 'deactive'),
                 defaultValue: 'active',
-            },
-            token: {
-                type: new DataTypes.STRING(100),
-                allowNull: true,
-            },
-            forget_code: {
-                type: new DataTypes.STRING(10),
-                allowNull: true,
-            },
-            user_agent: {
-                type: new DataTypes.STRING(150),
-                allowNull: true,
             },
 
             creator: {

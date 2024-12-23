@@ -17,6 +17,16 @@ async function details(
             where: {
                 id: params.id,
             },
+            include: [
+                {
+                    model: models.UserTeacherInformationsModel,
+                    as: 'teacher_infos',
+                },
+                {
+                    model: models.BranchTeachersModel,
+                    as: 'teachers',
+                },
+            ],
             attributes: {
                 exclude: ['password'],
             },
