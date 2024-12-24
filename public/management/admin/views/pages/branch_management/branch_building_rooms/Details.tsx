@@ -35,14 +35,48 @@ const Details: React.FC<Props> = (props: Props) => {
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
                                     <tr>
-                                        <td>Name</td>
+                                        <td>Room Name</td>
                                         <td>:</td>
-                                        <td>{state.item.name}</td>
+                                        <td>{state.item.room_name}</td>
                                     </tr>
                                     <tr>
-                                        <td>Preffered Name</td>
+                                        <td>Room Code</td>
                                         <td>:</td>
-                                        <td>{state.item.email}</td>
+                                        <td>{state.item.room_code}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Attachment</td>
+                                        <td>:</td>
+                                        <td>
+                                            <a
+                                                href={state.item.photo}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src={state.item.photo}
+                                                    width={30}
+                                                    alt="building photo"
+                                                />
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Photo</td>
+                                        <td>:</td>
+                                        <td>
+                                            <a
+                                                href={state.item.photo}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src={state.item.photo}
+                                                    width={30}
+                                                    alt="building photo"
+                                                />
+                                            </a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

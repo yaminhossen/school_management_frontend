@@ -29,7 +29,7 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, name, logo, address, primary_contact, status',
+                'id, name, email, logo, address, primary_contact, status',
             ),
         );
         dispatch(all({}) as any);
@@ -38,6 +38,9 @@ const All: React.FC<Props> = (props: Props) => {
     function quick_view(data: anyObject = {}) {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
+    }
+    if (state) {
+        console.log('all branches', state);
     }
 
     return (

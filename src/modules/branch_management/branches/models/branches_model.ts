@@ -83,7 +83,7 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             map: {
-                type: new DataTypes.STRING(120),
+                type: new DataTypes.TEXT(),
                 allowNull: true,
             },
             lat: {

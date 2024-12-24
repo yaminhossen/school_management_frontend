@@ -116,17 +116,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Map</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="address"
-                                            name="map"
-                                            defaultValue={state.item.map}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
                                     <label>Lat</label>
                                     <div className="form_elements">
                                         <input
@@ -145,6 +134,16 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             placeholder="langitude"
                                             name="lng"
                                             defaultValue={state.item.lng}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Map</label>
+                                    <div className="form_elements">
+                                        <textarea
+                                            placeholder="address"
+                                            name="map"
+                                            defaultValue={state.item.map}
                                         />
                                     </div>
                                 </div>

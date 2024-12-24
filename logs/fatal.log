@@ -40,3 +40,4 @@
 {"level":60,"time":1734951431022,"pid":14756,"hostname":"DESKTOP-9421701","file":"services\\children_details.ts:29:19)","time":"12/23/2024 4:57:11 PM","message":"data not found"}
 {"level":60,"time":1734951431624,"pid":14756,"hostname":"DESKTOP-9421701","file":"services\\children_details.ts:29:19)","time":"12/23/2024 4:57:11 PM","message":"data not found"}
 {"level":60,"time":1734951432185,"pid":14756,"hostname":"DESKTOP-9421701","file":"services\\children_details.ts:29:19)","time":"12/23/2024 4:57:12 PM","message":"data not found"}
+{"level":60,"time":1735022350692,"pid":14412,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/24/2024 12:39:10 PM","message":"Unknown column 'building_name' in 'field list'"}

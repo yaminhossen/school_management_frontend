@@ -53,7 +53,11 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                Show File
+                                                <img
+                                                    src={state.item.attachment}
+                                                    width={30}
+                                                    alt="attachment"
+                                                />
                                             </a>
                                         </td>
                                     </tr>
@@ -61,13 +65,17 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Photo</td>
                                         <td>:</td>
                                         <td>
-                                            <img
-                                                src={state.item.photo}
-                                                alt="Building Photo"
-                                                style={{
-                                                    height: 30,
-                                                }}
-                                            />
+                                            <a
+                                                href={state.item.photo}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src={state.item.photo}
+                                                    width={30}
+                                                    alt="building photo"
+                                                />
+                                            </a>
                                         </td>
                                     </tr>
                                     <tr>
