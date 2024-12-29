@@ -36,7 +36,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                     <Header page_title={setup.edit_page_title}></Header>
 
                     {Object.keys(state.item).length && (
-                        <div className="content_body">
+                        <div className="content_body custom_scroll">
                             <form
                                 onSubmit={(e) => handle_submit(e)}
                                 className="form_600 mx-auto pt-3"
@@ -58,13 +58,90 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Preferred Name</label>
+                                    <label>Present address</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="email"
-                                            name="email"
-                                            defaultValue={state.item.email}
+                                            placeholder="present address"
+                                            name="present_address"
+                                            defaultValue={
+                                                state.item.present_address
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Permanent address</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="permanent address"
+                                            name="permanent_address"
+                                            defaultValue={
+                                                state.item.permanent_address
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>licence number</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="licence number"
+                                            name="licence_number"
+                                            defaultValue={
+                                                state.item.licence_number
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Driver licence</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            name="licence"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Driver Number</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="driver number"
+                                            name="driver_number"
+                                            defaultValue={
+                                                state.item.driver_number
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Assistant Number 1</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="assistant number 1"
+                                            name="assistant_number_1"
+                                            defaultValue={
+                                                state.item.assistant_number_1
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Assistant Number 2</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="assistant number 2"
+                                            name="assistant_number_2"
+                                            defaultValue={
+                                                state.item.assistant_number_2
+                                            }
                                         />
                                     </div>
                                 </div>

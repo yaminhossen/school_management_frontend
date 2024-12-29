@@ -99,6 +99,7 @@ async function store(
         assistant_number_2: body.assistant_number_2,
         present_address: body.present_address,
         driver_licence: licence,
+        licence_number: body.licence_number,
         permanent_address: body.permanent_address,
         creator: user?.id || null,
     };

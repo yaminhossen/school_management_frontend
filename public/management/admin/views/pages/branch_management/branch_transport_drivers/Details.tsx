@@ -40,9 +40,54 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>{state.item.name}</td>
                                     </tr>
                                     <tr>
-                                        <td>Preffered Name</td>
+                                        <td>Name</td>
                                         <td>:</td>
-                                        <td>{state.item.email}</td>
+                                        <td>{state.item.present_address}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>:</td>
+                                        <td>{state.item.permanent_address}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>:</td>
+                                        <td>{state.item.driver_number}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>:</td>
+                                        <td>{state.item.assistant_number_1}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>:</td>
+                                        <td>{state.item.assistant_number_2}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>:</td>
+                                        <td>{state.item.licence_number}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>:</td>
+                                        <td>
+                                            <a
+                                                href={state.item.driver_licence}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src={
+                                                        state.item
+                                                            .driver_licence
+                                                    }
+                                                    width={40}
+                                                    alt="driving licence"
+                                                />
+                                            </a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

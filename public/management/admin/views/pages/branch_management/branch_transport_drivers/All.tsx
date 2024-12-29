@@ -29,7 +29,7 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, name, driver_number, assistant_number_1, assistant_number_2, present_address, driver_licence, permanent_address, status',
+                'id, name, driver_number, assistant_number_1, assistant_number_2, present_address, driver_licence, licence_number, permanent_address, status',
             ),
         );
         dispatch(all({}) as any);
@@ -96,6 +96,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
+                                            label={`licence Number`}
+                                            col_name={`licence_number`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
                                             label={`Driver licence`}
                                             col_name={`driver_licence`}
                                             sort={true}
@@ -141,7 +146,24 @@ const All: React.FC<Props> = (props: Props) => {
                                                     <td>
                                                         {i.assistant_number_2}
                                                     </td>
-                                                    <td>{i.driver_licence}</td>
+                                                    <td>{i.licence_number}</td>
+                                                    <td>
+                                                        <a
+                                                            href={
+                                                                i.driver_licence
+                                                            }
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                        >
+                                                            <img
+                                                                src={
+                                                                    i.driver_licence
+                                                                }
+                                                                width={40}
+                                                                alt=""
+                                                            />
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             );
                                         },

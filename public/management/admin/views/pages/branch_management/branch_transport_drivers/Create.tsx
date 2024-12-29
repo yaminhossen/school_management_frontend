@@ -63,6 +63,16 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
+                                    <label>licence number</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="licence number"
+                                            name="licence_number"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
                                     <label>Driver licence</label>
                                     <div className="form_elements">
                                         <input

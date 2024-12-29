@@ -23,6 +23,7 @@ module.exports = {
             assistant_number_2,
             present_address,
             driver_licence,
+            licence_number,
             permanent_address,
         ) {
             data.push({
@@ -34,6 +35,7 @@ module.exports = {
                 assistant_number_2,
                 present_address,
                 driver_licence,
+                licence_number,
                 permanent_address,
                 created_at: '2024-02-14',
                 updated_at: '2024-02-14',
@@ -49,6 +51,7 @@ module.exports = {
             '382984293',
             'Mirpur, dhaka',
             'sjhsj35434',
+            'sjhsj35434',
             'cumilla',
         );
 
@@ -61,6 +64,7 @@ module.exports = {
             '382984293',
             'Uttora, dhaka',
             'sjhsj35434',
+            'sjhsj35434',
             'cumilla',
         );
 
@@ -72,6 +76,7 @@ module.exports = {
             '019289489',
             '382984293',
             'Mohakhali, dhaka',
+            'sjhsj35434',
             'sjhsj35434',
             'cumilla',
         );

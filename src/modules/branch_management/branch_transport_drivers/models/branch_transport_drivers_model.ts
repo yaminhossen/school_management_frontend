@@ -40,6 +40,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare assistant_number_2: string;
     declare present_address: string;
     declare driver_licence: string;
+    declare licence_number: string;
     declare permanent_address: string;
 
     declare status?: status;
@@ -82,6 +83,10 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             driver_licence: {
+                type: new DataTypes.STRING(100),
+                allowNull: true,
+            },
+            licence_number: {
                 type: new DataTypes.STRING(100),
                 allowNull: true,
             },
