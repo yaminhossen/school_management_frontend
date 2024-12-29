@@ -13,12 +13,6 @@ import error_trace from '../helpers/error_trace';
 
 /** validation rules */
 async function validate(req: Request) {
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
-
     await body('branch_class_id')
         .not()
         .isEmpty()
@@ -56,10 +50,17 @@ async function store(
     let body = req.body as anyObject;
     let data = new models.BranchClassSectionsModel();
 
+    let user = (req as any).user;
+    let auth_user = await models.BranchAdminsModel.findOne({
+        where: {
+            user_admin_id: (req as any).user?.id || null,
+        },
+    });
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: body.branch_id,
+        branch_id: auth_user?.branch_id || 1,
         branch_class_id: body.branch_class_id,
         title: body.title,
+        creator: user?.id || null,
     };
 
     /** print request data into console */

@@ -8,6 +8,7 @@ import DropDown from './components/dropdown/DropDown';
 import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
 import storeSlice from './config/store';
+import { all_class } from './config/store/async_actions/all_class';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -27,8 +28,11 @@ const Create: React.FC<Props> = (props: Props) => {
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
-        dispatch(details({ id: params.id }) as any);
+        dispatch(all_class({}) as any);
     }, []);
+    if (state) {
+        console.log(state.all_class);
+    }
 
     return (
         <>
@@ -57,9 +61,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Class</label>
                                     <div className="form_elements">
-                                        <select name="event_type_id" id="">
-                                            {state?.event_types?.length &&
-                                                state?.event_types.map(
+                                        <select name="branch_class_id" id="">
+                                            {state?.all_class?.length &&
+                                                state?.all_class.map(
                                                     (i: {
                                                         [key: string]: any;
                                                     }) => {
@@ -67,7 +71,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                             <option
                                                                 value={i.id}
                                                             >
-                                                                {i.title}
+                                                                {i.name}
                                                             </option>
                                                         );
                                                     },
