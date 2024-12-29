@@ -19,12 +19,6 @@ async function validate(req: Request) {
         .withMessage('the id field is required')
         .run(req);
 
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
-
     await body('name')
         .not()
         .isEmpty()
@@ -118,8 +112,14 @@ async function update(
     let body = req.body as anyObject;
     let model = new models.BranchClassesModel();
 
+    let user = (req as any).user;
+    let auth_user = await models.BranchAdminsModel.findOne({
+        where: {
+            user_admin_id: (req as any).user?.id || null,
+        },
+    });
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: body.branch_id,
+        branch_id: auth_user?.branch_id || 1,
         name: body.name,
         code: body.code,
         capacity: body.capacity,
@@ -131,6 +131,7 @@ async function update(
         rules: body.rules,
         waiver_rules: body.waiver_rules,
         discount_rules: body.discount_rules,
+        creator: user?.id || null,
     };
 
     /** print request data into console */

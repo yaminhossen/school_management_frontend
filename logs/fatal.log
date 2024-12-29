@@ -48,3 +48,6 @@
 {"level":60,"time":1735457128572,"pid":11552,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/29/2024 1:25:28 PM","message":"Unknown column 'name' in 'field list'"}
 {"level":60,"time":1735457256913,"pid":11552,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/29/2024 1:27:36 PM","message":"Unknown column 'date' in 'field list'"}
 {"level":60,"time":1735457260189,"pid":11552,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/29/2024 1:27:40 PM","message":"Unknown column 'date' in 'field list'"}
+{"level":60,"time":1735467428270,"pid":10632,"hostname":"DESKTOP-9421701","file":"services\\all.ts:109:15)","time":"12/29/2024 4:17:08 PM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1735467431181,"pid":10632,"hostname":"DESKTOP-9421701","file":"services\\all.ts:109:15)","time":"12/29/2024 4:17:11 PM","message":"Unknown column 'name' in 'field list'"}
+{"level":60,"time":1735467507495,"pid":10632,"hostname":"DESKTOP-9421701","file":"services\\all.ts:109:15)","time":"12/29/2024 4:18:27 PM","message":"Unknown column 'name' in 'field list'"}

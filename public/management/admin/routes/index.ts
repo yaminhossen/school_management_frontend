@@ -33,6 +33,7 @@ import academic_calendar_event_types_routes from "../views/pages/calendar_manage
 import tasks_routes from "../views/pages/todo_management/tasks/config/routes";
 import task_variants_routes from "../views/pages/todo_management/task_variants/config/routes";
 import task_groups_routes from "../views/pages/todo_management/task_groups/config/routes";
+import branch_class_sections_routes from "../views/pages/class_management/branch_class_sections/config/routes";
 
 interface RouteTypes extends NonIndexRouteObject {
     
@@ -78,6 +79,7 @@ const router: RouteTypes[] = [
             tasks_routes,
             task_variants_routes,
             task_groups_routes,
+            branch_class_sections_routes,
         ],
     },
 ];

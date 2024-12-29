@@ -30,33 +30,75 @@ const Details: React.FC<Props> = (props: Props) => {
                 <div className="explore_window fixed_size">
                     <Header page_title={setup.details_page_title}></Header>
 
-                    {/* {Object.keys(state.item).length && (
+                    {Object.keys(state.item).length && (
                         <div className="content_body">
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
                                     <tr>
-                                        <td>Name</td>
+                                        <td>Class</td>
                                         <td>:</td>
                                         <td>{state.item.name}</td>
                                     </tr>
                                     <tr>
-                                        <td>Preffered Name</td>
+                                        <td>Code</td>
                                         <td>:</td>
-                                        <td>{state.item.email}</td>
+                                        <td>{state.item.code}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Capacity</td>
+                                        <td>:</td>
+                                        <td>{state.item.capacity}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fee</td>
+                                        <td>:</td>
+                                        <td>{state.item.fee}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prerequisities</td>
+                                        <td>:</td>
+                                        <td>{state.item.prerequisities}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Student Instructions</td>
+                                        <td>:</td>
+                                        <td>
+                                            {state.item.student_instructions}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Parent Instruction</td>
+                                        <td>:</td>
+                                        <td>
+                                            {state.item.parent_instructions}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Policies</td>
+                                        <td>:</td>
+                                        <td>{state.item.policies}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rules</td>
+                                        <td>:</td>
+                                        <td>{state.item.rules}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Waiver rules</td>
+                                        <td>:</td>
+                                        <td>{state.item.waiver_rules}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Discount rules</td>
+                                        <td>:</td>
+                                        <td>{state.item.discount_rules}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                    )} */}
-                    <div className="content_body custom_scroll">
+                    )}
+                    {/* <div className="content_body custom_scroll">
                         <div className="single-info-details">
-                            {/* <div className="item-img">
-                                <img
-                                    className="user_profile_img"
-                                    src="/assets/dashboard/images/avatar.png"
-                                    alt="teacher"
-                                />
-                            </div> */}
                             <div className="item-content">
                                 <div className="header-inline item-header details_header">
                                     <h3 className="text-dark-medium profile_name font-medium">
@@ -116,7 +158,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <Footer></Footer>
                 </div>

@@ -33,16 +33,6 @@ const Create: React.FC<Props> = (props: Props) => {
                             </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Branch id</label>
-                                    <div className="form_elements">
-                                        <select name="branch_id" id="">
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                            <option value="demo1">demo1</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
                                     <label>Name</label>
                                     <div className="form_elements">
                                         <input

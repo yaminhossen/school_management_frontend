@@ -212,3 +212,14 @@
 {"level":60,"time":1735454831973,"pid":144,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
 {"level":60,"time":1735456887721,"pid":10012,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/store"}
 {"level":60,"time":1735457637793,"pid":11552,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735462669060,"pid":12304,"hostname":"DESKTOP-9421701","error":"404","url":"/building1.png"}
+{"level":60,"time":1735462669067,"pid":12304,"hostname":"DESKTOP-9421701","error":"404","url":"/building2.png"}
+{"level":60,"time":1735462769039,"pid":12304,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-students?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
+{"level":60,"time":1735463334874,"pid":12304,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735463335690,"pid":12304,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735464612640,"pid":5796,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-classes?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+status"}
+{"level":60,"time":1735464615558,"pid":5796,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-classes?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+status"}
+{"level":60,"time":1735465544842,"pid":2584,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735466752775,"pid":2584,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+code%2C+level%2C+description%2C+credit%2C+additional_info%2C+status"}
+{"level":60,"time":1735467392161,"pid":5864,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735467396451,"pid":5864,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-sections?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+status"}

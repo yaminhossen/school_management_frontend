@@ -36,40 +36,6 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
 
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            name: 'SIX',
-            code: 'A101',
-            capacity: 100,
-            fee: 10000,
-            prerequisities: 'Must have good manner',
-            student_prerequisities: 'At least intermidiate',
-            parent_prerequisities: 'dont know',
-            policies: 'three step exam',
-            rules: 'don`t know',
-            waiver_rules: '10% for GPA-5',
-            discount_rules: '5% for CGPA-4',
-        },
-        {
-            id: 2,
-            name: 'SEVEN',
-            code: 'A102',
-            capacity: 100,
-            fee: 10000,
-            prerequisities: 'Must have good manner',
-            student_prerequisities: 'At least intermidiate',
-            parent_prerequisities: 'dont know',
-            policies: 'three step exam',
-            rules: 'don`t know',
-            waiver_rules: '10% for GPA-5',
-            discount_rules: '5% for CGPA-4',
-        },
-    ];
-
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">

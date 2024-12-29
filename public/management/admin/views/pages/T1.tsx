@@ -159,6 +159,14 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                     <li>
+                        <Link to="/branch-class-sections">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Class Section
+                        </Link>
+                    </li>
+                    <li>
                         <Link to="/branch-class-subjects">
                             <span className="material-symbols-outlined fill">
                                 groups

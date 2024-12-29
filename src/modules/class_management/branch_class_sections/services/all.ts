@@ -76,7 +76,12 @@ async function all(
         where: {
             status: show_active_data == 'true' ? 'active' : 'deactive',
         },
-        // include: [models.Project],
+        include: [
+            {
+                model: models.BranchClassesModel,
+                as: 'class',
+            },
+        ],
     };
 
     query.attributes = {

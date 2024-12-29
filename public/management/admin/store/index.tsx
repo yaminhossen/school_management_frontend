@@ -34,6 +34,7 @@ import academic_calendar_event_types_slice from '../views/pages/calendar_managem
 import tasks_slice from '../views/pages/todo_management/tasks/config/store';
 import tasks_variant_slice from '../views/pages/todo_management/task_variants/config/store';
 import tasks_group_slice from '../views/pages/todo_management/task_groups/config/store';
+import branch_class_sections_slice from '../views/pages/class_management/branch_class_sections/config/store';
 
 const store = configureStore({
     reducer: {
@@ -72,6 +73,7 @@ const store = configureStore({
         tasks: tasks_slice.reducer,
         task_variants: tasks_variant_slice.reducer,
         task_groups: tasks_group_slice.reducer,
+        branch_class_sections: branch_class_sections_slice.reducer,
     },
     devTools: true,
 });
