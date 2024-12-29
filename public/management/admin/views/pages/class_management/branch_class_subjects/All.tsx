@@ -77,16 +77,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Teacher`}
-                                            col_name={`teacher`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
                                             label={`Code`}
                                             col_name={`code`}
                                             sort={true}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Level`}
                                             col_name={`level`}
                                             sort={true}
@@ -110,7 +105,7 @@ const All: React.FC<Props> = (props: Props) => {
                                             label={`Description`}
                                             col_name={`description`}
                                             sort={true}
-                                        />
+                                        /> */}
                                         <TableHeading
                                             label={`Credit`}
                                             col_name={`credit`}
@@ -160,15 +155,16 @@ const All: React.FC<Props> = (props: Props) => {
                                                     />
                                                 </td> */}
                                                     <td>{i.name}</td>
-                                                    <td>{i.class}</td>
-                                                    <td>{i.section}</td>
-                                                    <td>{i.teacher}</td>
+                                                    <td>
+                                                        {i.subject_class?.name}
+                                                    </td>
+                                                    <td>
+                                                        {
+                                                            i.subject_section
+                                                                ?.title
+                                                        }
+                                                    </td>
                                                     <td>{i.code}</td>
-                                                    <td>{i.level}</td>
-                                                    <td>{i.class_time}</td>
-                                                    <td>{i.room_no}</td>
-                                                    <td>{i.days}</td>
-                                                    <td>{i.description}</td>
                                                     <td>{i.credit}</td>
                                                     <td>{i.additional_info}</td>
                                                 </tr>

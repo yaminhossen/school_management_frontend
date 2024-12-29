@@ -45,12 +45,13 @@ const Create: React.FC<Props> = (props: Props) => {
                                         <div className="pb-4 px-0">
                                             <button
                                                 className="btn"
-                                                onClick={() =>
+                                                onClick={(e) => {
+                                                    e.preventDefault();
                                                     setTotalSubject([
                                                         ...totalSubject,
                                                         1,
-                                                    ])
-                                                }
+                                                    ]);
+                                                }}
                                             >
                                                 Add new
                                             </button>
@@ -217,13 +218,16 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         1 && (
                                                         <div>
                                                             <button
-                                                                onClick={() =>
+                                                                onClick={(
+                                                                    e,
+                                                                ) => {
+                                                                    e.preventDefault();
                                                                     remove_from_state(
                                                                         index,
                                                                         totalSubject,
                                                                         setTotalSubject,
-                                                                    )
-                                                                }
+                                                                    );
+                                                                }}
                                                                 className="btn btn-danger"
                                                             >
                                                                 remove
@@ -239,7 +243,10 @@ const Create: React.FC<Props> = (props: Props) => {
                             <div className="form-group form-horizontal">
                                 <label></label>
                                 <div className="form_elements">
-                                    <button className="btn btn_1">
+                                    <button
+                                        // onClick={handle_submit}
+                                        className="btn btn_1"
+                                    >
                                         submit
                                     </button>
                                 </div>

@@ -24,6 +24,12 @@ async function details(
             where: {
                 id: params.id,
             },
+            include: [
+                {
+                    model: models.BranchClassesModel,
+                    as: 'class',
+                },
+            ],
             attributes: {
                 exclude: ['password'],
             },

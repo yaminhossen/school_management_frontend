@@ -30,7 +30,7 @@ const Details: React.FC<Props> = (props: Props) => {
                 <div className="explore_window fixed_size">
                     <Header page_title={setup.details_page_title}></Header>
 
-                    {/* {Object.keys(state.item).length && (
+                    {Object.keys(state.item).length && (
                         <div className="content_body">
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
@@ -47,7 +47,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                 </tbody>
                             </table>
                         </div>
-                    )} */}
+                    )}
 
                     <Footer></Footer>
                 </div>

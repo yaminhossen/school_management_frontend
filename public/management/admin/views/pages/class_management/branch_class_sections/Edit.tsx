@@ -9,6 +9,7 @@ import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
+import { all_class } from './config/store/async_actions/all_class';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -22,6 +23,7 @@ const Edit: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(details({ id: params.id }) as any);
+        dispatch(all_class({}) as any);
     }, []);
 
     async function handle_submit(e) {
@@ -51,127 +53,37 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="name"
-                                            name="name"
-                                            defaultValue={state.item.name}
+                                            placeholder="title"
+                                            name="title"
+                                            defaultValue={state.item.title}
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Code</label>
+                                    <label>Class</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="code"
-                                            name="code"
-                                            defaultValue={state.item.code}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Capacity</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="capacity"
-                                            name="capacity"
-                                            defaultValue={state.item.capacity}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Fee</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="number"
-                                            placeholder="fee"
-                                            name="fee"
-                                            defaultValue={state.item.fee}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Prerequisities</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="prerequisities"
-                                            name="prerequisities"
+                                        <select
+                                            name="branch_class_id"
                                             defaultValue={
-                                                state.item.prerequisities
+                                                state.item?.branch_class_id
                                             }
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Student instructions</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            name="student_instructions"
                                             id=""
-                                            placeholder="student instructions"
-                                            defaultValue={
-                                                state.item.student_instructions
-                                            }
-                                        ></textarea>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Parent instructions</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            name="parent_instructions"
-                                            id=""
-                                            placeholder="parent instructions"
-                                            defaultValue={
-                                                state.item.parent_instructions
-                                            }
-                                        ></textarea>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Policies</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="policies"
-                                            name="policies"
-                                            defaultValue={state.item.policies}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Rules</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            placeholder="rules"
-                                            name="rules"
-                                            defaultValue={state.item.rules}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Waiver rules</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            placeholder="waiver rules"
-                                            name="waiver_rules"
-                                            defaultValue={
-                                                state.item.waiver_rules
-                                            }
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Discount rules</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            placeholder="discount rules"
-                                            name="discount_rules"
-                                            defaultValue={
-                                                state.item.discount_rules
-                                            }
-                                        />
+                                        >
+                                            {state?.all_class?.length &&
+                                                state?.all_class.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.name}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
