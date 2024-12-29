@@ -9,6 +9,7 @@ import { details } from './config/store/async_actions/details';
 import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Details: React.FC<Props> = (props: Props) => {
@@ -35,14 +36,37 @@ const Details: React.FC<Props> = (props: Props) => {
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
                                     <tr>
-                                        <td>Name</td>
+                                        <td>Event Name</td>
                                         <td>:</td>
-                                        <td>{state.item.name}</td>
+                                        <td>{state.item.event_name}</td>
                                     </tr>
                                     <tr>
-                                        <td>Preffered Name</td>
+                                        <td>Start Date</td>
                                         <td>:</td>
-                                        <td>{state.item.email}</td>
+                                        <td>
+                                            {moment(
+                                                state.item.start_date,
+                                            ).format('YYYY-MM-DD')}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>End Date</td>
+                                        <td>:</td>
+                                        <td>
+                                            {moment(state.item.end_date).format(
+                                                'YYYY-MM-DD',
+                                            )}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Days</td>
+                                        <td>:</td>
+                                        <td>{state.item.days}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>:</td>
+                                        <td>{state.item.description}</td>
                                     </tr>
                                 </tbody>
                             </table>

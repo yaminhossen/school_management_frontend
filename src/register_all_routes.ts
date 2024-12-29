@@ -4,8 +4,8 @@ import path from 'path';
 let appDir: string = path.resolve(path.dirname(__dirname));
 
 export let active_routes: string[] = [
-    // 'src/modules/academic_calendar_management/academic_calendars/routes.ts',
-    // 'src/modules/academic_calendar_management/academic_calendar_event_types/routes.ts',
+    'src/modules/academic_calendar_management/academic_calendars/routes.ts',
+    'src/modules/academic_calendar_management/academic_calendar_event_types/routes.ts',
     // 'src/modules/accounts_management/accounts/routes.ts',
     // 'src/modules/accounts_management/account_categories/routes.ts',
     // 'src/modules/accounts_management/account_customers/routes.ts',

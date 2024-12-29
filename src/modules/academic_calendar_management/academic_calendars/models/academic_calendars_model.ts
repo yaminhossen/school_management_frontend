@@ -37,7 +37,9 @@ class DataModel extends Model<Infer, InferCreation> {
     declare branch_id: number;
     declare event_type_id: number;
     declare event_name: string;
-    declare date: string;
+    declare days: number;
+    declare start_date: string;
+    declare end_date: string;
     declare description: string;
 
     declare status?: status;
@@ -63,11 +65,19 @@ function init(sequelize: Sequelize) {
                 type: DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },
+            days: {
+                type: DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
             event_name: {
                 type: DataTypes.STRING(40),
                 allowNull: true,
             },
-            date: {
+            start_date: {
+                type: DataTypes.DATE,
+                allowNull: true,
+            },
+            end_date: {
                 type: DataTypes.DATE,
                 allowNull: true,
             },

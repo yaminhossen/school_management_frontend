@@ -16,6 +16,7 @@ import TableRowAction from './components/all_data_page/TableRowAction';
 import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
+import moment from 'moment/moment';
 
 export interface Props {}
 
@@ -27,7 +28,11 @@ const All: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(storeSlice.actions.set_select_fields('id, status'));
+        dispatch(
+            storeSlice.actions.set_select_fields(
+                'id,event_name, start_date, end_date, days, description, status',
+            ),
+        );
         dispatch(all({}) as any);
     }, []);
 
@@ -35,40 +40,6 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
-
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            event: 'Eid-ul-fitr',
-            year: '4',
-            start_date: '13 April, 2024',
-            end_date: '21 April, 2024',
-        },
-        {
-            id: 1,
-            event: 'Eid-ul-adha',
-            year: '5',
-            start_date: '13 June, 2024',
-            end_date: '21 June, 2024',
-        },
-        {
-            id: 1,
-            event: 'Shad-e-Qadr',
-            year: '1',
-            start_date: '6 April, 2024',
-            end_date: '6 April, 2024',
-        },
-        {
-            id: 1,
-            event: 'May day',
-            year: '1',
-            start_date: '01 May, 2024',
-            end_date: '01 May, 2024',
-        },
-    ];
 
     return (
         <div className="page_content">
@@ -115,29 +86,32 @@ const All: React.FC<Props> = (props: Props) => {
                                 </thead>
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
-                                    {datas?.map((i: { [key: string]: any }) => {
-                                        return (
-                                            <tr
-                                                key={i.id}
-                                                className={`table_rows table_row_${i.id}`}
-                                            >
-                                                <td>
-                                                    <TableRowAction item={i} />
-                                                </td>
-                                                <td>
-                                                    <SelectItem item={i} />
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        className="quick_view_trigger"
-                                                        onClick={() =>
-                                                            quick_view(i)
-                                                        }
-                                                    >
-                                                        {i.id}
-                                                    </span>
-                                                </td>
-                                                {/* <td>
+                                    {(state.all as any)?.data?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <tr
+                                                    key={i.id}
+                                                    className={`table_rows table_row_${i.id}`}
+                                                >
+                                                    <td>
+                                                        <TableRowAction
+                                                            item={i}
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <SelectItem item={i} />
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            className="quick_view_trigger"
+                                                            onClick={() =>
+                                                                quick_view(i)
+                                                            }
+                                                        >
+                                                            {i.id}
+                                                        </span>
+                                                    </td>
+                                                    {/* <td>
                                                     <img
                                                         src="/assets/dashboard/images/avatar.png"
                                                         alt=""
@@ -146,13 +120,22 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                <td>{i.event}</td>
-                                                <td>{i.year}</td>
-                                                <td>{i.start_date}</td>
-                                                <td>{i.end_date}</td>
-                                            </tr>
-                                        );
-                                    })}
+                                                    <td>{i.event_name}</td>
+                                                    <td>{i.days}</td>
+                                                    <td>
+                                                        {moment(
+                                                            i.start_date,
+                                                        ).format('YYYY-MM-DD')}
+                                                    </td>
+                                                    <td>
+                                                        {moment(
+                                                            i.end_date,
+                                                        ).format('YYYY-MM-DD')}
+                                                    </td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
                                 </tbody>
                             </table>
                         </div>

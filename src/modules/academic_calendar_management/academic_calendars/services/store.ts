@@ -12,11 +12,6 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
 async function validate(req: Request) {
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
     await body('event_type_id')
         .not()
         .isEmpty()
@@ -27,10 +22,20 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the event_name field is required')
         .run(req);
-    await body('date')
+    await body('start_date')
         .not()
         .isEmpty()
-        .withMessage('the date field is required')
+        .withMessage('the start_date field is required')
+        .run(req);
+    await body('end_date')
+        .not()
+        .isEmpty()
+        .withMessage('the end_date field is required')
+        .run(req);
+    await body('days')
+        .not()
+        .isEmpty()
+        .withMessage('the days field is required')
         .run(req);
     await body('description')
         .not()
@@ -58,12 +63,22 @@ async function store(
     let body = req.body as anyObject;
     let data = new models.AcademicCalendarsModel();
 
+    let user = (req as any).user;
+    let auth_user = await models.BranchAdminsModel.findOne({
+        where: {
+            user_admin_id: (req as any).user?.id || null,
+        },
+    });
+
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: body.branch_id,
+        branch_id: auth_user?.branch_id || 1,
         event_type_id: body.event_type_id,
-        date: body.date,
         event_name: body.event_name,
+        start_date: body.start_date,
+        end_date: body.end_date,
+        days: body.days,
         description: body.description,
+        creator: user?.id || null,
     };
 
     /** print request data into console */

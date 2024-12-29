@@ -200,3 +200,15 @@
 {"level":60,"time":1735009199153,"pid":3056,"hostname":"DESKTOP-9421701","error":"404","url":"/room2.png"}
 {"level":60,"time":1735428086142,"pid":13016,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
 {"level":60,"time":1735451473949,"pid":14736,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735452576578,"pid":7704,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+status"}
+{"level":60,"time":1735452812898,"pid":7704,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+status"}
+{"level":60,"time":1735452835994,"pid":7704,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+status"}
+{"level":60,"time":1735452845093,"pid":7704,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+status"}
+{"level":60,"time":1735454151098,"pid":144,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-classes?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+status"}
+{"level":60,"time":1735454155825,"pid":144,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-classes?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+status"}
+{"level":60,"time":1735454164299,"pid":144,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+code%2C+level%2C+description%2C+credit%2C+additional_info%2C+status"}
+{"level":60,"time":1735454830137,"pid":144,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735454830916,"pid":144,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735454831973,"pid":144,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735456887721,"pid":10012,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/store"}
+{"level":60,"time":1735457637793,"pid":11552,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}

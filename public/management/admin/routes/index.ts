@@ -29,6 +29,7 @@ import loan_managements_routes from "../views/pages/account_management/loan_mana
 import payrolls_routes from "../views/pages/account_management/payrolls/config/routes";
 import salary_payments_routes from "../views/pages/account_management/salary_payments/config/routes";
 import academic_calendars_routes from "../views/pages/calendar_management/academic_calendars/config/routes";
+import academic_calendar_event_types_routes from "../views/pages/calendar_management/academic_calendar_event_types/config/routes";
 import tasks_routes from "../views/pages/todo_management/tasks/config/routes";
 import task_variants_routes from "../views/pages/todo_management/task_variants/config/routes";
 import task_groups_routes from "../views/pages/todo_management/task_groups/config/routes";
@@ -73,6 +74,7 @@ const router: RouteTypes[] = [
             payrolls_routes,
             salary_payments_routes,
             academic_calendars_routes,
+            academic_calendar_event_types_routes,
             tasks_routes,
             task_variants_routes,
             task_groups_routes,
