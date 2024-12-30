@@ -40,9 +40,29 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>{state.item.name}</td>
                                     </tr>
                                     <tr>
-                                        <td>Preffered Name</td>
+                                        <td>Code</td>
                                         <td>:</td>
-                                        <td>{state.item.email}</td>
+                                        <td>{state.item.code}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Level</td>
+                                        <td>:</td>
+                                        <td>{state.item.level}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Credit</td>
+                                        <td>:</td>
+                                        <td>{state.item.credit}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>:</td>
+                                        <td>{state.item.description}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Additional Info</td>
+                                        <td>:</td>
+                                        <td>{state.item.additional_info}</td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -118,8 +118,20 @@ const db = async function (): Promise<models> {
         as: 'subject_routine',
     });
 
+    BranchClassSubjectsModel.hasOne(BranchClassRoutineDayTimesModel, {
+        sourceKey: 'id',
+        foreignKey: 'branch_class_subject_id',
+        as: 'routine_day',
+    });
+
+    BranchClassSubjectsModel.hasOne(BranchClassSubjectTeachersModel, {
+        sourceKey: 'id',
+        foreignKey: 'branch_class_subject_id',
+        as: 'subject_teacher',
+    });
+
     BranchClassSubjectsModel.hasOne(BranchClassesModel, {
-        sourceKey: 'branch_class_id',
+        sourceKey: 'id',
         foreignKey: 'id',
         as: 'subject_class',
     });
