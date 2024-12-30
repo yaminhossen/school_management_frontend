@@ -37,6 +37,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare branch_id: number;
     declare branch_class_routine_id: number;
     declare branch_teacher_id: number;
+    declare branch_class_subject_id: number;
     declare day: string;
     declare start_time: string;
     declare end_time: string;
@@ -66,6 +67,10 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             branch_teacher_id: {
+                type: DataTypes.BIGINT.UNSIGNED,
+                allowNull: true,
+            },
+            branch_class_subject_id: {
                 type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },

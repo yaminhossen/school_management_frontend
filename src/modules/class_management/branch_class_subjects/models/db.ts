@@ -13,6 +13,7 @@ import * as branch_class_rooms_model from './branch_class_rooms_model';
 import * as branch_classes_model from './branch_classes_model';
 import * as user_student_informations_model from './user_student_informations_model';
 import * as branch_class_sections_model from './branch_class_sections_model';
+import * as branch_admin_model from './branch_admin_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -41,6 +42,7 @@ interface models {
     BranchClassesModel: typeof branch_classes_model.DataModel;
     UserStudentInformationsModel: typeof user_student_informations_model.DataModel;
     BranchClassSectionsModel: typeof branch_class_sections_model.DataModel;
+    BranchAdminsModel: typeof branch_admin_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -63,6 +65,7 @@ const db = async function (): Promise<models> {
         user_student_informations_model.init(sequelize);
     const BranchClassSectionsModel =
         branch_class_sections_model.init(sequelize);
+    const BranchAdminsModel = branch_admin_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync({ force: false });
@@ -151,6 +154,7 @@ const db = async function (): Promise<models> {
         BranchClassesModel,
         UserStudentInformationsModel,
         BranchClassSectionsModel,
+        BranchAdminsModel,
         // Project,
 
         sequelize,

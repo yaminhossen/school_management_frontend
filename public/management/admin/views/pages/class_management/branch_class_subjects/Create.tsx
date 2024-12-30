@@ -1,16 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
-import { useAppDispatch } from '../../../../store';
+import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
 import DropDown from './components/dropdown/DropDown';
+import { initialState } from './config/store/inital_state';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import storeSlice from './config/store';
+import { classes } from './config/store/async_actions/classes';
+import { sections } from './config/store/async_actions/sections';
+import { teachers } from './config/store/async_actions/teachers';
+import { rooms } from './config/store/async_actions/rooms';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
-    const [totalSubject, setTotalSubject] = useState([1]);
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
 
     const dispatch = useAppDispatch();
+    const params = useParams();
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -20,10 +31,19 @@ const Create: React.FC<Props> = (props: Props) => {
         }
     }
 
-    function remove_from_state(index, state, setState) {
-        let t = [...state];
-        t.splice(index, 1);
-        setState(t);
+    async function initdependancy() {
+        await dispatch(storeSlice.actions.set_item({}));
+        await dispatch(classes({}) as any);
+        await dispatch(sections({}) as any);
+        await dispatch(teachers({}) as any);
+        await dispatch(rooms({}) as any);
+    }
+
+    useEffect(() => {
+        initdependancy();
+    }, []);
+    if (state) {
+        console.log(state);
     }
 
     return (
@@ -50,18 +70,30 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     </label>
                                                     <div className="form_elements">
                                                         <select
-                                                            name="branch_class"
+                                                            name="branch_class_id"
                                                             id=""
                                                         >
-                                                            <option value="demo1">
-                                                                demo1
-                                                            </option>
-                                                            <option value="demo1">
-                                                                demo1
-                                                            </option>
-                                                            <option value="demo1">
-                                                                demo1
-                                                            </option>
+                                                            {state?.classes
+                                                                ?.length &&
+                                                                state.classes?.map(
+                                                                    (i: {
+                                                                        [
+                                                                            key: string
+                                                                        ]: any;
+                                                                    }) => {
+                                                                        return (
+                                                                            <option
+                                                                                value={
+                                                                                    i.id
+                                                                                }
+                                                                            >
+                                                                                {
+                                                                                    i.name
+                                                                                }
+                                                                            </option>
+                                                                        );
+                                                                    },
+                                                                )}
                                                         </select>
                                                     </div>
                                                 </div>
@@ -74,15 +106,27 @@ const Create: React.FC<Props> = (props: Props) => {
                                                             name="branch_class_section_id"
                                                             id=""
                                                         >
-                                                            <option value="demo1">
-                                                                demo1
-                                                            </option>
-                                                            <option value="demo1">
-                                                                demo1
-                                                            </option>
-                                                            <option value="demo1">
-                                                                demo1
-                                                            </option>
+                                                            {state?.sections
+                                                                ?.length &&
+                                                                state.sections?.map(
+                                                                    (i: {
+                                                                        [
+                                                                            key: string
+                                                                        ]: any;
+                                                                    }) => {
+                                                                        return (
+                                                                            <option
+                                                                                value={
+                                                                                    i.id
+                                                                                }
+                                                                            >
+                                                                                {
+                                                                                    i.title
+                                                                                }
+                                                                            </option>
+                                                                        );
+                                                                    },
+                                                                )}
                                                         </select>
                                                     </div>
                                                 </div>
@@ -93,15 +137,29 @@ const Create: React.FC<Props> = (props: Props) => {
                                                             name="user_teacher_id"
                                                             id=""
                                                         >
-                                                            <option value="demo1">
-                                                                demo1
-                                                            </option>
-                                                            <option value="demo1">
-                                                                demo1
-                                                            </option>
-                                                            <option value="demo1">
-                                                                demo1
-                                                            </option>
+                                                            {state?.teachers
+                                                                ?.length &&
+                                                                state.teachers?.map(
+                                                                    (i: {
+                                                                        [
+                                                                            key: string
+                                                                        ]: any;
+                                                                    }) => {
+                                                                        return (
+                                                                            <option
+                                                                                value={
+                                                                                    i.id
+                                                                                }
+                                                                            >
+                                                                                {
+                                                                                    i
+                                                                                        .user_teacher
+                                                                                        ?.name
+                                                                                }
+                                                                            </option>
+                                                                        );
+                                                                    },
+                                                                )}
                                                         </select>
                                                     </div>
                                                 </div>
@@ -112,15 +170,27 @@ const Create: React.FC<Props> = (props: Props) => {
                                                             name="room_id"
                                                             id=""
                                                         >
-                                                            <option value="demo1">
-                                                                demo1
-                                                            </option>
-                                                            <option value="demo1">
-                                                                demo1
-                                                            </option>
-                                                            <option value="demo1">
-                                                                demo1
-                                                            </option>
+                                                            {state?.rooms
+                                                                ?.length &&
+                                                                state.rooms?.map(
+                                                                    (i: {
+                                                                        [
+                                                                            key: string
+                                                                        ]: any;
+                                                                    }) => {
+                                                                        return (
+                                                                            <option
+                                                                                value={
+                                                                                    i.id
+                                                                                }
+                                                                            >
+                                                                                {
+                                                                                    i.room_name
+                                                                                }
+                                                                            </option>
+                                                                        );
+                                                                    },
+                                                                )}
                                                         </select>
                                                     </div>
                                                 </div>
@@ -169,8 +239,8 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <input
                                                             type="text"
-                                                            placeholder="address"
-                                                            name="address"
+                                                            placeholder="credit"
+                                                            name="credit"
                                                         />
                                                     </div>
                                                 </div>
@@ -211,8 +281,18 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <input
                                                             type="time"
-                                                            placeholder="time"
-                                                            name="time"
+                                                            placeholder="start time"
+                                                            name="start_time"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
+                                                    <label>Time</label>
+                                                    <div className="form_elements">
+                                                        <input
+                                                            type="time"
+                                                            placeholder="end time"
+                                                            name="end_time"
                                                         />
                                                     </div>
                                                 </div>

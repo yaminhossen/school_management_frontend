@@ -19,6 +19,10 @@ import teacher_classes from './services/teacher_classes';
 import class_wise_subject from './services/class_wise_subject';
 import data_import from './services/import';
 import class_wise_teacher from './services/class_wise_teacher';
+import all_class from './services/all_class';
+import class_sections from './services/class_section';
+import all_teacher from './services/all_teacher';
+import class_rooms from './services/class_rooms';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -80,6 +84,29 @@ export default function (fastify: FastifyInstance) {
 
         store: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await store(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        all_class: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await all_class(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        class_sections: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await class_sections(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        all_teacher: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await all_teacher(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        class_rooms: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await class_rooms(fastify, req);
             res.code(data.status).send(data);
         },
 

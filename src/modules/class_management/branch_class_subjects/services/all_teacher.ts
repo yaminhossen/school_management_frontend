@@ -12,7 +12,7 @@ import custom_error from '../helpers/custom_error';
 //     throw new Error('500 test');
 // }
 
-async function all_class(
+async function all_teacher(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -20,17 +20,20 @@ async function all_class(
     let params = req.params as any;
 
     try {
-        let data = await models.BranchClassSubjectsModel.findOne({
-            where: {
-                id: params.id,
-            },
-            attributes: {
-                exclude: ['password'],
-            },
+        let data = await models.BranchTeachersModel.findAll({
+            include: [
+                {
+                    model: models.UserTeacherModel,
+                    as: 'user_teacher',
+                    attributes: {
+                        exclude: ['password'],
+                    },
+                },
+            ],
         });
 
         if (data) {
-            return response(200, 'data found', data);
+            return response(200, 'teacher found', data);
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }
@@ -45,4 +48,4 @@ async function all_class(
     }
 }
 
-export default all_class;
+export default all_teacher;

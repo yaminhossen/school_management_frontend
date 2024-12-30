@@ -20,14 +20,7 @@ async function all_class(
     let params = req.params as any;
 
     try {
-        let data = await models.BranchClassSubjectsModel.findOne({
-            where: {
-                id: params.id,
-            },
-            attributes: {
-                exclude: ['password'],
-            },
-        });
+        let data = await models.BranchClassesModel.findAll({});
 
         if (data) {
             return response(200, 'data found', data);

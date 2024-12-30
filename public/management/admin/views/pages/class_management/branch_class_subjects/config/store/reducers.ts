@@ -1,6 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { initialState } from './inital_state';
-import { anyObject } from '../../../../../common_types/object';
+import { anyObject } from '../../../../../../common_types/object';
 
 export const store_reducers = {
     set_is_loading: (
@@ -77,6 +77,31 @@ export const store_reducers = {
 
     set_item: (state: typeof initialState, action: PayloadAction<object>) => {
         state.item = action.payload;
+    },
+
+    set_classes: (
+        state: typeof initialState,
+        action: PayloadAction<object>,
+    ) => {
+        state.classes = action.payload;
+    },
+
+    set_rooms: (state: typeof initialState, action: PayloadAction<object>) => {
+        state.rooms = action.payload;
+    },
+
+    set_teachers: (
+        state: typeof initialState,
+        action: PayloadAction<object>,
+    ) => {
+        state.teachers = action.payload;
+    },
+
+    set_sections: (
+        state: typeof initialState,
+        action: PayloadAction<object>,
+    ) => {
+        state.sections = action.payload;
     },
     set_show_quick_view_canvas: (
         state: typeof initialState,
