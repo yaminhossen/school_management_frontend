@@ -72,6 +72,7 @@ async function store(
         branch_id: body.branch_id,
         branch_class_room_id: body.branch_class_room_id,
         branch_class_routine_id: body.branch_class_routine_id,
+        branch_class_subject_id: body.branch_class_subject_id,
         branch_teacher_id: body.branch_teacher_id,
         day: body.day,
         start_time: body.start_time,

@@ -42,201 +42,206 @@ const Create: React.FC<Props> = (props: Props) => {
                                         <h4>Class Subjects</h4>
                                     </div>
                                     <div className="multi_inputs">
-                                        <div className="pb-4 px-0">
-                                            <button
-                                                className="btn"
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    setTotalSubject([
-                                                        ...totalSubject,
-                                                        1,
-                                                    ]);
-                                                }}
-                                            >
-                                                Add new
-                                            </button>
-                                        </div>
-                                        {totalSubject.map((i, index) => {
-                                            return (
-                                                <div
-                                                    key={i}
-                                                    className="multi_input_group"
-                                                >
-                                                    <div className="d-flex">
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Branch id
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <select
-                                                                    name="branch_id"
-                                                                    id=""
-                                                                >
-                                                                    <option value="demo1">
-                                                                        demo1
-                                                                    </option>
-                                                                    <option value="demo1">
-                                                                        demo1
-                                                                    </option>
-                                                                    <option value="demo1">
-                                                                        demo1
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Branch class id
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <select
-                                                                    name="branch_class"
-                                                                    id=""
-                                                                >
-                                                                    <option value="demo1">
-                                                                        demo1
-                                                                    </option>
-                                                                    <option value="demo1">
-                                                                        demo1
-                                                                    </option>
-                                                                    <option value="demo1">
-                                                                        demo1
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Branch class
-                                                                section id
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <select
-                                                                    name="branch_class_section_id"
-                                                                    id=""
-                                                                >
-                                                                    <option value="demo1">
-                                                                        demo1
-                                                                    </option>
-                                                                    <option value="demo1">
-                                                                        demo1
-                                                                    </option>
-                                                                    <option value="demo1">
-                                                                        demo1
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Teacher id
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <select
-                                                                    name="user_teacher_id"
-                                                                    id=""
-                                                                >
-                                                                    <option value="demo1">
-                                                                        demo1
-                                                                    </option>
-                                                                    <option value="demo1">
-                                                                        demo1
-                                                                    </option>
-                                                                    <option value="demo1">
-                                                                        demo1
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group form-vertical">
-                                                            <label>Name</label>
-                                                            <div className="form_elements">
-                                                                <input
-                                                                    type="text"
-                                                                    placeholder="name"
-                                                                    name="name"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group form-vertical">
-                                                            <label>Code</label>
-                                                            <div className="form_elements">
-                                                                <input
-                                                                    type="text"
-                                                                    placeholder="code"
-                                                                    name="code"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group form-vertical">
-                                                            <label>Level</label>
-                                                            <div className="form_elements">
-                                                                <input
-                                                                    type="text"
-                                                                    placeholder="level"
-                                                                    name="level"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Description
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <textarea
-                                                                    name="description"
-                                                                    id=""
-                                                                    placeholder="description"
-                                                                ></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Credit
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <input
-                                                                    type="text"
-                                                                    placeholder="address"
-                                                                    name="address"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                        <div className="form-group form-vertical">
-                                                            <label>
-                                                                Additional Info
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <textarea
-                                                                    placeholder="additional info"
-                                                                    name="additional_info"
-                                                                />
-                                                            </div>
-                                                        </div>
+                                        <div className="multi_input_group">
+                                            <div className="d-flex">
+                                                <div className="form-group form-vertical">
+                                                    <label>
+                                                        Branch class id
+                                                    </label>
+                                                    <div className="form_elements">
+                                                        <select
+                                                            name="branch_class"
+                                                            id=""
+                                                        >
+                                                            <option value="demo1">
+                                                                demo1
+                                                            </option>
+                                                            <option value="demo1">
+                                                                demo1
+                                                            </option>
+                                                            <option value="demo1">
+                                                                demo1
+                                                            </option>
+                                                        </select>
                                                     </div>
-                                                    {totalSubject.length >
-                                                        1 && (
-                                                        <div>
-                                                            <button
-                                                                onClick={(
-                                                                    e,
-                                                                ) => {
-                                                                    e.preventDefault();
-                                                                    remove_from_state(
-                                                                        index,
-                                                                        totalSubject,
-                                                                        setTotalSubject,
-                                                                    );
-                                                                }}
-                                                                className="btn btn-danger"
-                                                            >
-                                                                remove
-                                                            </button>
-                                                        </div>
-                                                    )}
                                                 </div>
-                                            );
-                                        })}
+                                                <div className="form-group form-vertical">
+                                                    <label>
+                                                        Branch class section id
+                                                    </label>
+                                                    <div className="form_elements">
+                                                        <select
+                                                            name="branch_class_section_id"
+                                                            id=""
+                                                        >
+                                                            <option value="demo1">
+                                                                demo1
+                                                            </option>
+                                                            <option value="demo1">
+                                                                demo1
+                                                            </option>
+                                                            <option value="demo1">
+                                                                demo1
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
+                                                    <label>Teacher id</label>
+                                                    <div className="form_elements">
+                                                        <select
+                                                            name="user_teacher_id"
+                                                            id=""
+                                                        >
+                                                            <option value="demo1">
+                                                                demo1
+                                                            </option>
+                                                            <option value="demo1">
+                                                                demo1
+                                                            </option>
+                                                            <option value="demo1">
+                                                                demo1
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
+                                                    <label>Room id</label>
+                                                    <div className="form_elements">
+                                                        <select
+                                                            name="room_id"
+                                                            id=""
+                                                        >
+                                                            <option value="demo1">
+                                                                demo1
+                                                            </option>
+                                                            <option value="demo1">
+                                                                demo1
+                                                            </option>
+                                                            <option value="demo1">
+                                                                demo1
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
+                                                    <label>Name</label>
+                                                    <div className="form_elements">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="name"
+                                                            name="name"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
+                                                    <label>Code</label>
+                                                    <div className="form_elements">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="code"
+                                                            name="code"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
+                                                    <label>Level</label>
+                                                    <div className="form_elements">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="level"
+                                                            name="level"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
+                                                    <label>Description</label>
+                                                    <div className="form_elements">
+                                                        <textarea
+                                                            name="description"
+                                                            id=""
+                                                            placeholder="description"
+                                                        ></textarea>
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
+                                                    <label>Credit</label>
+                                                    <div className="form_elements">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="address"
+                                                            name="address"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
+                                                    <label>
+                                                        Additional Info
+                                                    </label>
+                                                    <div className="form_elements">
+                                                        <textarea
+                                                            placeholder="additional info"
+                                                            name="additional_info"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="full_width">
+                                    <div className="form_section_heading">
+                                        <h4>Class Routine Time</h4>
+                                    </div>
+                                    <div className="multi_inputs">
+                                        <div className="multi_input_group">
+                                            <div className="d-flex">
+                                                <div className="form-group form-vertical">
+                                                    <label>Day</label>
+                                                    <div className="form_elements">
+                                                        <input
+                                                            type="date"
+                                                            placeholder="date"
+                                                            name="day"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
+                                                    <label>Time</label>
+                                                    <div className="form_elements">
+                                                        <input
+                                                            type="time"
+                                                            placeholder="time"
+                                                            name="time"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="full_width">
+                                    <div className="form_section_heading">
+                                        <h4>Teacher</h4>
+                                    </div>
+                                    <div className="multi_inputs">
+                                        <div
+                                            // key={i}
+                                            className="multi_input_group"
+                                        >
+                                            <div className="d-flex">
+                                                <div className="form-group form-vertical">
+                                                    <label>Description</label>
+                                                    <div className="form_elements">
+                                                        <input
+                                                            type="text"
+                                                            placeholder="teacher description"
+                                                            name="teacher_description"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
