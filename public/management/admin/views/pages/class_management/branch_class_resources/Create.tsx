@@ -41,15 +41,15 @@ const Create: React.FC<Props> = (props: Props) => {
     }, []);
     console.log('state', state);
 
-    const handleSubmitSub = async (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
-        let search_key: string = '';
-        if (search_input.current) {
-            search_key = search_input.current.value;
-            dispatch(storeSlice.actions.set_search_key(search_key) as any);
-            dispatch(subjects({ id: 1 }) as any);
-        }
-    };
+    // const handleSubmitSub = async (e) => {
+    //     e.preventDefault(); // Prevent the default form submission behavior
+    //     let search_key: string = '';
+    //     if (search_input.current) {
+    //         search_key = search_input.current.value;
+    //         dispatch(storeSlice.actions.set_search_key(search_key) as any);
+    //         dispatch(subjects({ id: 1 }) as any);
+    //     }
+    // };
 
     return (
         <>
