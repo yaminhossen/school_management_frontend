@@ -16,6 +16,8 @@ import data_import from './services/import';
 import academic_resource from './services/academic_resource';
 import teacher_resource from './services/teacher_resource';
 import sub_wise_resource from './services/sub_wise_resource';
+import classes from '../../user_management/user_students/services/classes';
+import class_wise_subject from './services/class_wise_subject';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -55,6 +57,19 @@ export default function (fastify: FastifyInstance) {
 
         store: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await store(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        classes: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await classes(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        class_wise_subject: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await class_wise_subject(fastify, req);
             res.code(data.status).send(data);
         },
 

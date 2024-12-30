@@ -74,6 +74,13 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.BranchClassResourcessModel();
+    let user = (req as any).user;
+    let model = new models.BranchClassSubjectsModel();
+    let auth_user = await models.BranchAdminsModel.findOne({
+        where: {
+            user_admin_id: (req as any).user?.id || null,
+        },
+    });
 
     let image_path = '';
 
@@ -88,13 +95,13 @@ async function store(
     console.log('image Path', image_path);
 
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: 1,
+        branch_id: auth_user?.branch_id || 1,
         branch_class_id: body.class,
         title: body.title,
         description: body.description,
         attachment: image_path,
         branch_class_subject_id: body.subject,
-        creator: 1,
+        creator: user?.id || null,
     };
 
     /** print request data into console */

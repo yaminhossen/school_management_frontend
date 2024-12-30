@@ -8,6 +8,11 @@ module.exports = async function (fastify: FastifyInstance) {
 
     fastify
         .get(`${prefix}`, controllerInstance.all)
+        .get(`${prefix}/classes`, controllerInstance.classes)
+        .get(
+            `${prefix}/class-wise-subject/:id`,
+            controllerInstance.class_wise_subject,
+        )
         .get(`${prefix}/:id`, controllerInstance.find)
         .get(
             `${prefix}/academic-resource/:id`,

@@ -243,3 +243,13 @@
 {"level":60,"time":1735541778998,"pid":12792,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
 {"level":60,"time":1735541779765,"pid":12792,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
 {"level":60,"time":1735543229601,"pid":14964,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735552673198,"pid":13216,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-routine-day-times?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+status"}
+{"level":60,"time":1735552739211,"pid":13216,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-routine-day-times?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+status"}
+{"level":60,"time":1735553486442,"pid":8716,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735555288145,"pid":8716,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735555420088,"pid":8716,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735556236622,"pid":8716,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735556275056,"pid":8716,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
+{"level":60,"time":1735557158645,"pid":8800,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735558582575,"pid":10396,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1735559779696,"pid":8160,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-students?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}

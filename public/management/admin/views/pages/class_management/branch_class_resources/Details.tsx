@@ -37,12 +37,39 @@ const Details: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <td>Name</td>
                                         <td>:</td>
-                                        <td>{state.item.name}</td>
+                                        <td>{state.item.title}</td>
                                     </tr>
                                     <tr>
-                                        <td>Preffered Name</td>
+                                        <td>Description</td>
                                         <td>:</td>
-                                        <td>{state.item.email}</td>
+                                        <td>{state.item.description}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Attachment</td>
+                                        <td>:</td>
+                                        <td>
+                                            <a
+                                                href={state.item.attachment}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src={state.item.attachment}
+                                                    alt=""
+                                                    width={40}
+                                                />
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Class</td>
+                                        <td>:</td>
+                                        <td>{state.item.class?.name}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Subject</td>
+                                        <td>:</td>
+                                        <td>{state.item.subject?.name}</td>
                                     </tr>
                                 </tbody>
                             </table>

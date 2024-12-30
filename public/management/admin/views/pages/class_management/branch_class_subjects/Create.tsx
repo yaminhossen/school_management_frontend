@@ -45,6 +45,16 @@ const Create: React.FC<Props> = (props: Props) => {
     if (state) {
         console.log(state);
     }
+    // let days = Array.from({ length: 7 });
+    let days = [
+        'sunday',
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday',
+    ];
 
     return (
         <>
@@ -265,38 +275,56 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                     <div className="multi_inputs">
                                         <div className="multi_input_group">
-                                            <div className="d-flex">
-                                                <div className="form-group form-vertical">
-                                                    <label>Day</label>
-                                                    <div className="form_elements">
-                                                        <input
-                                                            type="date"
-                                                            placeholder="date"
-                                                            name="day"
-                                                        />
+                                            {days.map((i, index) => (
+                                                <div className="d-flex">
+                                                    <div className="form-group form-vertical">
+                                                        <label>Day</label>
+                                                        <div className="form_elements">
+                                                            <input
+                                                                type="text"
+                                                                readOnly
+                                                                placeholder="date"
+                                                                name="day"
+                                                                defaultValue={i}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div className="form-group form-vertical">
+                                                        {/* <label>Day No</label> */}
+                                                        <div className="form_elements">
+                                                            <input
+                                                                type="hidden"
+                                                                // readOnly
+                                                                placeholder="date"
+                                                                name="day_no"
+                                                                defaultValue={
+                                                                    index + 1
+                                                                }
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div className="form-group form-vertical">
+                                                        <label>Time</label>
+                                                        <div className="form_elements">
+                                                            <input
+                                                                type="time"
+                                                                placeholder="start time"
+                                                                name="start_time"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div className="form-group form-vertical">
+                                                        <label>Time</label>
+                                                        <div className="form_elements">
+                                                            <input
+                                                                type="time"
+                                                                placeholder="end time"
+                                                                name="end_time"
+                                                            />
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div className="form-group form-vertical">
-                                                    <label>Time</label>
-                                                    <div className="form_elements">
-                                                        <input
-                                                            type="time"
-                                                            placeholder="start time"
-                                                            name="start_time"
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div className="form-group form-vertical">
-                                                    <label>Time</label>
-                                                    <div className="form_elements">
-                                                        <input
-                                                            type="time"
-                                                            placeholder="end time"
-                                                            name="end_time"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
