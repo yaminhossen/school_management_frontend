@@ -331,7 +331,7 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/payrolls">
+                        <Link to="/account-categories">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>

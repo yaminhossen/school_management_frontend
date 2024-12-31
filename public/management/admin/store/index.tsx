@@ -37,6 +37,7 @@ import tasks_group_slice from '../views/pages/todo_management/task_groups/config
 import branch_class_sections_slice from '../views/pages/class_management/branch_class_sections/config/store';
 import accounts_slice from '../views/pages/account_management/account/config/store';
 import account_periods_slice from '../views/pages/account_management/account_periods/config/store';
+import account_categories_slice from '../views/pages/account_management/account_categories/config/store';
 
 const store = configureStore({
     reducer: {
@@ -78,6 +79,7 @@ const store = configureStore({
         branch_class_sections: branch_class_sections_slice.reducer,
         accounts: accounts_slice.reducer,
         account_periods: account_periods_slice.reducer,
+        account_categories: account_categories_slice.reducer,
     },
     devTools: true,
 });

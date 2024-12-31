@@ -33,7 +33,12 @@ async function all(
         where: {
             status: show_active_data == 'true' ? 'active' : 'deactive',
         },
-        // include: [models.Project],
+        include: [
+            {
+                model: models.BranchesModel,
+                as: 'branch',
+            },
+        ],
     };
 
     // if (select_fields.length) {
