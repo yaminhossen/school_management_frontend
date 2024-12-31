@@ -93,3 +93,5 @@
 {"level":60,"time":1735558584715,"pid":10396,"hostname":"DESKTOP-9421701","file":"services\\details.ts:45:19)","time":"12/30/2024 5:36:24 PM","message":"data not found"}
 {"level":60,"time":1735558651436,"pid":7756,"hostname":"DESKTOP-9421701","file":"services\\details.ts:45:19)","time":"12/30/2024 5:37:31 PM","message":"data not found"}
 {"level":60,"time":1735560661508,"pid":3204,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:52:19)","time":"12/30/2024 6:11:01 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1735618033281,"pid":7788,"hostname":"DESKTOP-9421701","file":"services\\fees_store.ts:146:15)","time":"12/31/2024 10:07:13 AM","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":60,"time":1735618616513,"pid":15952,"hostname":"DESKTOP-9421701","file":"services\\fees_store.ts:146:15)","time":"12/31/2024 10:16:56 AM","message":"Cannot read properties of undefined (reading 'id')"}

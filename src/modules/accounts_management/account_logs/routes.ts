@@ -8,7 +8,7 @@ module.exports = async function (fastify: FastifyInstance) {
     const controllerInstance = controller(fastify);
 
     fastify
-        .addHook('onRequest', check_auth)
+        // .addHook('onRequest', check_auth)
         .get(`${prefix}`, controllerInstance.all)
         .post(`${prefix}/credit`, controllerInstance.credit)
         .post(

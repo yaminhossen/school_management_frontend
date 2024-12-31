@@ -36,6 +36,7 @@ async function store(
     /** initializations */
     let models = await db();
     let data = new models.AccountLogsModel();
+    let user = (req as any).user;
 
     let student_fees: anyObject[] = [];
     for (
@@ -75,12 +76,12 @@ async function store(
         });
         let auth_user = await models.BranchStaffsModel.findOne({
             where: {
-                user_staff_id: (req as any).user.id,
+                user_staff_id: (req as any).user?.id || null,
             },
         });
 
         let inputs: InferCreationAttributes<typeof data> = {
-            branch_id: auth_user?.branch_id || 0,
+            branch_id: auth_user?.branch_id || 1,
             account_category_id: (req.body as anyObject).category_id || 1,
             account_id: (req.body as anyObject).account_id || 1,
             account_period_id: (req.body as anyObject).period_id || 1,
@@ -89,13 +90,14 @@ async function store(
             amount_in_text: (req.body as anyObject).amount_in_text,
             date: (req.body as anyObject).date,
             type: (req.body as anyObject).type || 'income',
+            creator: user?.id || null,
         };
 
         (await data.update(inputs)).save();
         if (data) {
             let afc_model = new models.AccountFeeCollectionsModel();
             let afc_inputs: InferCreationAttributes<typeof afc_model> = {
-                branch_id: auth_user?.branch_id || 0,
+                branch_id: auth_user?.branch_id || 1,
                 branch_student_id: (req.body as anyObject).branch_student_id,
                 branch_student_class_id: (req.body as anyObject)
                     .branch_student_class_id,
@@ -104,6 +106,7 @@ async function store(
                 account_log_id: data.id || 1,
                 amount: (req.body as anyObject).total_amount || 0,
                 date: (req.body as anyObject).date,
+                creator: user?.id || null,
             };
             afc_inputs.branch_student_id = data2?.user_student_id || 0;
             afc_inputs.branch_student_class_id = data2?.s_class || 0;
@@ -132,6 +135,7 @@ async function store(
                             fee_amount: ss.fee_amount,
                             total: ss.amount,
                             date: (req.body as anyObject).date,
+                            creator: user?.id || null,
                         };
 
                         (await afcd_model.update(afcd_inputs)).save();
