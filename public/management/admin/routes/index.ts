@@ -35,6 +35,7 @@ import task_variants_routes from "../views/pages/todo_management/task_variants/c
 import task_groups_routes from "../views/pages/todo_management/task_groups/config/routes";
 import branch_class_sections_routes from "../views/pages/class_management/branch_class_sections/config/routes";
 import accounts_routes from "../views/pages/account_management/account/config/routes";
+import account_periods_routes from "../views/pages/account_management/account_periods/config/routes";
 
 interface RouteTypes extends NonIndexRouteObject {
     
@@ -82,6 +83,7 @@ const router: RouteTypes[] = [
             task_groups_routes,
             branch_class_sections_routes,
             accounts_routes,
+            account_periods_routes,
         ],
     },
 ];

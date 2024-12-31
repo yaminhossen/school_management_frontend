@@ -156,15 +156,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             );
                                         },
                                     )}
-                                    <tr>
-                                        <td colSpan={8}>
-                                            <div className="text-end">
-                                                Total
-                                            </div>
-                                        </td>
-                                        <td>4000</td>
-                                        <td>3000</td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
