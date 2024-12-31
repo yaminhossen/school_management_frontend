@@ -74,8 +74,8 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.BranchClassResourcessModel();
-    let user = (req as any).user;
     let model = new models.BranchClassSubjectsModel();
+    let user = (req as any).user;
     let auth_user = await models.BranchAdminsModel.findOne({
         where: {
             user_admin_id: (req as any).user?.id || null,

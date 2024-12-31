@@ -315,7 +315,7 @@ const T1: React.FC<Props> = (props: Props) => {
                 <h3 className="mt-4 ms-0">Account management</h3>
                 <ul className="dashboard_links ">
                     <li>
-                        <Link to="/journals">
+                        <Link to="/accounts">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>

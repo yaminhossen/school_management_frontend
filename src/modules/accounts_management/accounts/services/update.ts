@@ -18,11 +18,11 @@ async function validate(req: Request) {
         .withMessage('the id field is required')
         .run(req);
 
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
+    // await body('branch_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_id field is required')
+    //     .run(req);
 
     await body('title')
         .not()
@@ -61,14 +61,21 @@ async function update(
     let models = await db();
     let body = req.body as anyObject;
     let model = new models.AccountsModel();
+    let user = (req as any).user;
+    let auth_user = await models.BranchAdminsModel.findOne({
+        where: {
+            user_admin_id: (req as any).user?.id || null,
+        },
+    });
 
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: 1,
+        branch_id: auth_user?.branch_id || 1,
         opening_balance: body.opening_balance,
-        title: body.account_name,
+        title: body.title,
         number: body.number,
         description: body.description,
         date: body.date,
+        creator: user?.id || null,
     };
 
     /** print request data into console */

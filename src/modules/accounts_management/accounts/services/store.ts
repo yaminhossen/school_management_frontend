@@ -61,14 +61,21 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.AccountsModel();
+    let user = (req as any).user;
+    let auth_user = await models.BranchAdminsModel.findOne({
+        where: {
+            user_admin_id: (req as any).user?.id || null,
+        },
+    });
 
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: 1,
+        branch_id: auth_user?.branch_id || 1,
         opening_balance: body.opening_balance,
         title: body.account_name,
         number: body.account_number,
         description: body.description,
         date: body.date,
+        creator: user?.id || null,
     };
 
     /** print request data into console */
