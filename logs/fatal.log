@@ -1,1 +1,2 @@
 {"level":60,"time":1735634571100,"pid":11168,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"12/31/2024 2:42:51 PM","message":"Unknown column 'title' in 'field list'"}
+{"level":60,"time":1735639752015,"pid":10328,"hostname":"DESKTOP-9421701","file":"services\\month_wise_statement.ts:100:19)","time":"12/31/2024 4:09:12 PM","message":"No data found for the given period"}

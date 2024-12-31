@@ -338,7 +338,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             Account category Management
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/salary-payments">
                             <span className="material-symbols-outlined fill">
                                 groups
@@ -353,9 +353,9 @@ const T1: React.FC<Props> = (props: Props) => {
                             </span>
                             Expense
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
-                        <Link to="/salary-payments">
+                        <Link to="/leadger">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
@@ -363,7 +363,7 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/salary-payments">
+                        <Link to="/journal">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
@@ -371,7 +371,7 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/salary-payments">
+                        <Link to="/debit">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
@@ -379,7 +379,7 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/salary-payments">
+                        <Link to="/credit">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
@@ -387,11 +387,19 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/salary-payments">
+                        <Link to="/profit-loss">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             Profit And Loss
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/month-wise-statement">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Month Wise Statement
                         </Link>
                     </li>
                 </ul>

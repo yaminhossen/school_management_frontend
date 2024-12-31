@@ -7,7 +7,7 @@ import check_account_auth from './services/check_account_auth';
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/auth';
     const controllerInstance = controller(fastify);
-
+    console.log('account longin');
     /** public routes */
     fastify.register(
         async (route, opts) => {

@@ -26,7 +26,7 @@ import meeting_agendas_slice from '../views/pages/meeting_management/meeting_age
 import meetings_slice from '../views/pages/meeting_management/meetings/config/store';
 // import fees_collections_slice from '../views/pages/account_management/fees_collections/config/store';
 import loan_managements_slice from '../views/pages/account_management/loan_managements/config/store';
-import journals_slice from '../views/pages/account_management/journals/config/store';
+// import journals_slice from '../views/pages/account_management/journals/config/store';
 import payrolls_slice from '../views/pages/account_management/payrolls/config/store';
 import salary_payments_slice from '../views/pages/account_management/salary_payments/config/store';
 import academic_calendars_slice from '../views/pages/calendar_management/academic_calendars/config/store';
@@ -67,7 +67,7 @@ const store = configureStore({
         meetings: meetings_slice.reducer,
         // fees_collections: fees_collections_slice.reducer,
         loan_managements: loan_managements_slice.reducer,
-        journals: journals_slice.reducer,
+        // journals: journals_slice.reducer,
         payrolls: payrolls_slice.reducer,
         academic_calendars: academic_calendars_slice.reducer,
         academic_calendar_event_types:

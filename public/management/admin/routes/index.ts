@@ -24,7 +24,12 @@ import branch_class_subjects_routes from "../views/pages/class_management/branch
 import meeting_agendas_routes from "../views/pages/meeting_management/meeting_agendas/config/routes";
 import meetings_routes from "../views/pages/meeting_management/meetings/config/routes";
 import fees_collections_routes from "../views/pages/account_management/fees_collection/config/routes";
-import journals_routes from "../views/pages/account_management/journals/config/routes";
+import journals_routes from "../views/pages/account_management/journal/config/routes";
+import debit_routes from "../views/pages/account_management/debit/config/routes";
+import credit_routes from "../views/pages/account_management/credit/config/routes";
+import profit_and_loss_routes from "../views/pages/account_management/profit_loss/config/routes";
+import month_wise_statement_routes from "../views/pages/account_management/month_wise_statement/config/routes";
+// import journals_routes from "../views/pages/account_management/journals/config/routes";
 import loan_managements_routes from "../views/pages/account_management/loan_managements/config/routes";
 import payrolls_routes from "../views/pages/account_management/payrolls/config/routes";
 import salary_payments_routes from "../views/pages/account_management/salary_payments/config/routes";
@@ -73,7 +78,7 @@ const router: RouteTypes[] = [
             meeting_agendas_routes,
             meetings_routes,
             fees_collections_routes,
-            journals_routes,
+            // journals_routes,
             loan_managements_routes,
             payrolls_routes,
             salary_payments_routes,
@@ -86,6 +91,11 @@ const router: RouteTypes[] = [
             accounts_routes,
             account_periods_routes,
             account_categories_routes,
+            journals_routes,
+            debit_routes,
+            credit_routes,
+            profit_and_loss_routes,
+            month_wise_statement_routes,
         ],
     },
 ];
