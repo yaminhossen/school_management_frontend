@@ -37,3 +37,6 @@
 {"level":60,"time":1736653846548,"pid":7820,"hostname":"DESKTOP-9421701","file":"services\\all.ts:128:15)","time":"1/12/2025 9:50:46 AM","message":"Unknown column 'BranchClassSubjectsModel.email' in 'field list'"}
 {"level":60,"time":1736653948462,"pid":7820,"hostname":"DESKTOP-9421701","file":"services\\all.ts:128:15)","time":"1/12/2025 9:52:28 AM","message":"Unknown column 'BranchClassSubjectsModel.email' in 'field list'"}
 {"level":60,"time":1736653975109,"pid":7820,"hostname":"DESKTOP-9421701","file":"services\\all.ts:128:15)","time":"1/12/2025 9:52:55 AM","message":"Unknown column 'BranchClassSubjectsModel.email' in 'field list'"}
+{"level":60,"time":1736675164306,"pid":21480,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"1/12/2025 3:46:04 PM","message":"data not found"}
+{"level":60,"time":1736676350705,"pid":21480,"hostname":"DESKTOP-9421701","file":"services\\all.ts:68:15)","time":"1/12/2025 4:05:50 PM","message":"Unknown column 'ExamRoutinesModel.title' in 'field list'"}
+{"level":60,"time":1736676622504,"pid":8016,"hostname":"DESKTOP-9421701","file":"services\\details.ts:46:19)","time":"1/12/2025 4:10:22 PM","message":"BranchClassSubjectsModel is associated to ExamRoutinesModel using an alias. You've included an alias (subject), but it does not match the alias(es) defined in your association (subjects)."}

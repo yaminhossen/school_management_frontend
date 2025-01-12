@@ -38,20 +38,35 @@ const Details: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <td>Exam</td>
                                         <td>:</td>
-                                        <td>{state.item.title}</td>
+                                        <td>{state.item.exam?.title}</td>
                                     </tr>
                                     <tr>
                                         <td>Class</td>
                                         <td>:</td>
-                                        <td>{state.item.description}</td>
+                                        <td>{state.item.class?.name}</td>
                                     </tr>
                                     <tr>
                                         <td>Subject</td>
                                         <td>:</td>
-                                        <td>{state.item.description}</td>
+                                        <td>{state.item.subjects?.name}</td>
                                     </tr>
                                     <tr>
-                                        <td>Month</td>
+                                        <td>Start Date</td>
+                                        <td>:</td>
+                                        <td>
+                                            {moment(
+                                                state.item?.start_time,
+                                                'HH:mm:ss',
+                                            ).format('HH:mm')}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>End Date</td>
+                                        <td>:</td>
+                                        <td>{state.item.end_time}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date</td>
                                         <td>:</td>
                                         <td>
                                             {moment(state.item.month).format(

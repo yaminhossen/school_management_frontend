@@ -17,6 +17,20 @@ async function details(
             where: {
                 id: params.id,
             },
+            include: [
+                {
+                    model: models.BrachClassSubjectsModel,
+                    as: 'subjects',
+                },
+                {
+                    model: models.ExamsModel,
+                    as: 'exam',
+                },
+                {
+                    model: models.BranchClassesModel,
+                    as: 'class',
+                },
+            ],
         });
 
         if (data) {

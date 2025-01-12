@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import { useSelector } from 'react-redux';
@@ -9,10 +9,17 @@ import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
+import { classes } from './config/store/async_actions/classes';
+import axios from 'axios';
 import moment from 'moment/moment';
+import { exams } from './config/store/async_actions/all_exams';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+    const [subjects, setSubjects] = useState<any>([]);
+    const [classId, setClassId] = useState<any>(Number);
+    const search_input = useRef<HTMLSelectElement>(null);
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -20,15 +27,49 @@ const Edit: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
     const params = useParams();
 
-    useEffect(() => {
-        dispatch(storeSlice.actions.set_item({}));
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-class-subjects/class-wise-subject/${state.item.class_id}`,
+            );
+            setSubjects(response.data.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    async function initdependancy() {
+        await dispatch(storeSlice.actions.set_item({}));
+        await dispatch(classes({}) as any);
+        await dispatch(exams({}) as any);
         dispatch(details({ id: params.id }) as any);
+    }
+
+    useEffect(() => {
+        initdependancy();
     }, []);
+
+    useEffect(() => {
+        fetchData();
+    }, [state.item.class_id]);
 
     async function handle_submit(e) {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
+    const handleChange = async (
+        event: React.ChangeEvent<HTMLSelectElement>,
+    ) => {
+        let id = event.target.value;
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-class-subjects/class-wise-subject/${id}`,
+            );
+            setSubjects(response.data.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
 
     return (
         <>
@@ -48,37 +89,120 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Title</label>
+                                    <label>Branch Class id</label>
+                                    <div className="form_elements">
+                                        {state.classes.length && (
+                                            <select
+                                                name="class_id"
+                                                id=""
+                                                onChange={handleChange}
+                                                defaultValue={
+                                                    state.item.class_id
+                                                }
+                                            >
+                                                {state?.classes?.length &&
+                                                    state.classes?.map(
+                                                        (i: {
+                                                            [key: string]: any;
+                                                        }) => {
+                                                            return (
+                                                                <option
+                                                                    value={i.id}
+                                                                >
+                                                                    {i.name}
+                                                                </option>
+                                                            );
+                                                        },
+                                                    )}
+                                            </select>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Branch Class subject id</label>
+                                    <div className="form_elements">
+                                        {subjects.length && (
+                                            <select
+                                                name="subject_id"
+                                                defaultValue={
+                                                    state.item.subject_id
+                                                }
+                                                id=""
+                                            >
+                                                {/* <option value={data.class_id}></option> */}
+                                                {subjects.map((i, index) => {
+                                                    return (
+                                                        <option value={i.id}>
+                                                            {i.name}
+                                                        </option>
+                                                    );
+                                                })}
+                                            </select>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Exam</label>
+                                    <div className="form_elements">
+                                        <select
+                                            name="exam_id"
+                                            id=""
+                                            defaultValue={state.item.exam_id}
+                                            // onChange={handleChange}
+                                        >
+                                            {state?.exams?.length &&
+                                                state.exams?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.title}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Start Time</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
-                                            placeholder="title"
-                                            name="title"
-                                            defaultValue={state.item.title}
+                                            type="time"
+                                            placeholder="start time"
+                                            name="start_time"
+                                            defaultValue={moment(
+                                                state.item?.start_time,
+                                                'HH:mm:ss',
+                                            ).format('HH:mm')}
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>End Time</label>
                                     <div className="form_elements">
-                                        <textarea
-                                            name="description"
-                                            id=""
-                                            placeholder="description"
-                                            defaultValue={
-                                                state.item.description
-                                            }
-                                        ></textarea>
+                                        <input
+                                            type="time"
+                                            placeholder="end time"
+                                            name="end_time"
+                                            defaultValue={moment(
+                                                state.item?.end_time,
+                                                'HH:mm:ss',
+                                            ).format('HH:mm')}
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Month</label>
+                                    <label>Date</label>
                                     <div className="form_elements">
                                         <input
                                             type="date"
-                                            name="month"
+                                            name="date"
                                             defaultValue={moment(
-                                                state.item.month,
+                                                state.item?.date,
                                             ).format('YYYY-MM-DD')}
                                         />
                                     </div>

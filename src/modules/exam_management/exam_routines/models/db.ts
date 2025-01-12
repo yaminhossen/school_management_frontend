@@ -60,9 +60,14 @@ const db = async function (): Promise<models> {
         foreignKey: 'id',
         as: 'subjects',
     });
+    ExamRoutinesModel.hasOne(ExamsModel, {
+        sourceKey: 'exam_id',
+        foreignKey: 'id',
+        as: 'exam',
+    });
 
     ExamRoutinesModel.hasOne(BranchClassesModel, {
-        sourceKey: 'subject_id',
+        sourceKey: 'class_id',
         foreignKey: 'id',
         as: 'class',
     });
