@@ -39,6 +39,8 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
+    console.log('sotelsdjfdsjfldsjlf');
+    
 
     return (
         <div className="page_content">
