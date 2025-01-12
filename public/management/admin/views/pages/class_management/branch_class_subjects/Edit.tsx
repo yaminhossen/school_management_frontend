@@ -48,9 +48,6 @@ const Edit: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         initdependancy();
     }, []);
-    if (state) {
-        // console.log(state);
-    }
     async function handle_submit(e) {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
@@ -65,32 +62,6 @@ const Edit: React.FC<Props> = (props: Props) => {
         'friday',
         'saturday',
     ];
-    const handleChange = async (
-        event: React.ChangeEvent<HTMLSelectElement>,
-    ) => {
-        let id = event.target.value;
-        setTeachers(id);
-        let all_teacher =
-            document.querySelectorAll<HTMLSelectElement>('.teacher');
-        console.log('all teacher', all_teacher);
-        all_teacher.forEach((select) => {
-            select.value = id;
-            console.log(select.value);
-        });
-    };
-
-    const handleRoomChange = async (
-        event: React.ChangeEvent<HTMLSelectElement>,
-    ) => {
-        let id = event.target.value;
-        setRooms(id);
-        let all_rooms = document.querySelectorAll<HTMLSelectElement>('.room');
-        console.log('all room', all_rooms);
-        all_rooms.forEach((select) => {
-            select.value = id;
-            console.log(select.value);
-        });
-    };
 
     useEffect(() => {
         if (teacherref.current) {
@@ -115,18 +86,6 @@ const Edit: React.FC<Props> = (props: Props) => {
         if (state.item.subject_teacher?.branch_class_room_id && !selectedRoom) {
             setSelectedRoom(state.item.subject_teacher?.branch_class_room_id);
         }
-        // if (
-        //     state.item.subject_teacher?.branch_teacher_id &&
-        //     !selectedRTeacher
-        // ) {
-        //     setSelectedRTeacher(state.item.subject_teacher?.branch_teacher_id);
-        // }
-        // if (
-        //     state.item.subject_teacher?.branch_class_room_id &&
-        //     !selectedRRoom
-        // ) {
-        //     setSelectedRRoom(state.item.subject_teacher?.branch_class_room_id);
-        // }
     }, [state.item]);
 
     const handleTeacherChange = async (
@@ -143,20 +102,19 @@ const Edit: React.FC<Props> = (props: Props) => {
         setsevenDayRoutines(temp);
     };
 
-    // const handleTeacherChange = async (
-    //     event: React.ChangeEvent<HTMLSelectElement>,
-    //     index,
-    // ) => {
-    //     let id = event.target.value;
-    //     setSelectedRTeacher(id);
-    //     let all_rooms =
-    //         document.querySelectorAll<HTMLSelectElement>('.teacher');
-    //     console.log('all teacher', all_rooms);
-    //     all_rooms.forEach((select) => {
-    //         select.value = id;
-    //         console.log(select.value);
-    //     });
-    // };
+    const handleRoomChange = async (
+        event: React.ChangeEvent<HTMLSelectElement>,
+        index,
+    ) => {
+        // let temp = [...sevenDayRoutines];
+        // let temp: any[] = Array.from(sevenDayRoutines);
+        const temp: any[] = JSON.parse(JSON.stringify(sevenDayRoutines));
+        console.log('tempindex1', temp[index]);
+        console.log('tempindex2', temp);
+        temp[index].branch_class_room_id = event.target.value;
+        console.log('tempindex3', event.target.value);
+        setsevenDayRoutines(temp);
+    };
 
     useEffect(() => {
         setsevenDayRoutines(state.item.routine_days);
@@ -471,6 +429,11 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         <div className="form_section_heading">
                                             <h4>Class Routine Time</h4>
                                         </div>
+                                        <input
+                                            type="hidden"
+                                            name="class_days"
+                                            defaultValue={days.length}
+                                        />
                                         <div className="multi_inputs">
                                             <div className="multi_input_group">
                                                 {/* {state.item.routine_days
@@ -621,6 +584,17 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                                 name="room"
                                                                                 id=""
                                                                                 className="room"
+                                                                                value={
+                                                                                    i.branch_class_room_id
+                                                                                }
+                                                                                onChange={(
+                                                                                    e,
+                                                                                ) => {
+                                                                                    handleRoomChange(
+                                                                                        e,
+                                                                                        index,
+                                                                                    );
+                                                                                }}
                                                                             >
                                                                                 {state
                                                                                     ?.rooms

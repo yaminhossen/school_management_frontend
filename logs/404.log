@@ -85,3 +85,5 @@
 {"level":60,"time":1736593030888,"pid":7912,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
 {"level":60,"time":1736593031946,"pid":7912,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js.map"}
 {"level":60,"time":1736653829225,"pid":7820,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-routine-day-times?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
+{"level":60,"time":1736664676790,"pid":20948,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1736664831124,"pid":16208,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-details/1"}

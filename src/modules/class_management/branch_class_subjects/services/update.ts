@@ -82,6 +82,20 @@ async function update(
         },
     });
 
+    let class_routine: anyObject[] = [];
+    for (let i = 0; i < parseInt(body.class_days); i++) {
+        class_routine.push({
+            day_name: body.day_name[i],
+            day_no: body.day_no[i],
+            start_time: body.start_time[i],
+            end_time: body.end_time[i],
+            // branch_class_subject_id: body.subject_id,
+            branch_class_section_id: body.branch_class_section_id,
+            branch_teacher_id: body.branch_teacher_id[i],
+            branch_class_room_id: body.room[i],
+        });
+    }
+    console.log('update dbody', body);
     /** print request data into console */
     // console.clear();
     // (fastify_instance as any).print(inputs);
@@ -89,17 +103,18 @@ async function update(
     /** store data into database */
     try {
         let data = await models.BranchClassSubjectsModel.findByPk(body.id);
-        let data1 = await models.BranchClassRoutineDayTimesModel.findOne({
+        let r_data = await models.BranchClassRoutinesModel.findOne({
             where: {
                 branch_class_subject_id: body.id,
             },
         });
-        let data2 = await models.BranchClassSubjectTeachersModel.findOne({
+        let st_data = await models.BranchClassSubjectTeachersModel.findOne({
             where: {
                 branch_class_subject_id: body.id,
             },
         });
-        if (data && data1 && data2) {
+
+        if (data && r_data && st_data) {
             let inputs: InferCreationAttributes<typeof model> = {
                 branch_id: auth_user?.branch_id || 1,
                 branch_class_id: body.branch_class_id,
@@ -108,36 +123,69 @@ async function update(
                 code: body.code,
                 level: body.level,
                 description: body.description,
-                credit: body.credit,
+                credit: body.credit || 0,
                 additional_info: body.additional_info,
                 creator: user?.id || null,
             };
             (await data.update(inputs)).save();
-            let day_times_inputs: InferCreationAttributes<typeof data1> = {
+
+            let r_model = new models.BranchClassRoutinesModel();
+            let r_inputs: InferCreationAttributes<typeof r_model> = {
                 branch_id: auth_user?.branch_id || 1,
-                branch_class_room_id: body.room_id,
-                branch_class_routine_id: data1.branch_class_routine_id || 0,
-                branch_teacher_id: body.user_teacher_id,
-                day: body.day,
-                day_no: body.day_no,
-                start_time: body.start_time,
-                end_time: body.end_time,
-                branch_class_subject_id: data1.branch_class_subject_id || 0,
+                branch_class_id: body.branch_class_id,
+                branch_class_section_id: body.branch_class_section_id,
+                branch_class_subject_id: body.id || 0,
+                branch_teacher_id: body.branch_teacher_id1,
                 creator: user?.id || null,
             };
-            (await data1.update(day_times_inputs)).save();
-            let subject_teachers_inputs: InferCreationAttributes<typeof data2> =
-                {
-                    branch_id: auth_user?.branch_id || 1,
-                    branch_class_id: body.branch_class_id,
-                    branch_teacher_id: body.user_teacher_id,
-                    branch_class_room_id: body.room_id,
-                    branch_class_section_id: body.branch_class_section_id,
-                    branch_class_subject_id: data2.branch_class_subject_id || 0,
-                    description: body.teacher_description,
-                    creator: user?.id || null,
-                };
-            (await data2.update(subject_teachers_inputs)).save();
+            (await r_data.update(r_inputs)).save();
+            let bcst_model = new models.BranchClassSubjectTeachersModel();
+            let bcst_inputs: InferCreationAttributes<typeof bcst_model> = {
+                branch_id: auth_user?.branch_id || 1,
+                branch_class_id: body.branch_class_id,
+                branch_teacher_id: body.branch_teacher_id1,
+                branch_class_subject_id: body.id || 0,
+                branch_class_section_id: body.branch_class_section_id,
+                branch_class_room_id: body.room_id,
+                description: body.teacher_description,
+                creator: user?.id || null,
+            };
+            (await st_data.update(bcst_inputs)).save();
+            if (class_routine) {
+                await models.BranchClassRoutineDayTimesModel.destroy({
+                    where: {
+                        branch_class_subject_id: body.id,
+                    },
+                });
+                class_routine.forEach(async (ss) => {
+                    let crdt_model =
+                        new models.BranchClassRoutineDayTimesModel();
+                    let crdt_inputs: InferCreationAttributes<
+                        typeof crdt_model
+                    > = {
+                        branch_id: auth_user?.branch_id || 1,
+                        branch_class_routine_id: r_data.id || 0,
+                        branch_teacher_id: body.branch_teacher_id,
+                        branch_class_subject_id: body.id || 0,
+                        branch_class_room_id: body.room,
+                        day_name: body.day_name,
+                        day_no: body.day_no,
+                        start_time: body.start_time,
+                        end_time: body.end_time,
+                        creator: user?.id || null,
+                    };
+                    crdt_inputs.branch_id = auth_user?.branch_id || 1;
+                    crdt_inputs.branch_class_routine_id = r_data.id || 0;
+                    crdt_inputs.branch_teacher_id = ss.branch_teacher_id;
+                    crdt_inputs.branch_class_subject_id = body.id || 0;
+                    crdt_inputs.branch_class_room_id = ss.branch_class_room_id;
+                    crdt_inputs.day_name = ss.day_name;
+                    crdt_inputs.day_no = ss.day_no;
+                    crdt_inputs.start_time = ss.start_time;
+                    crdt_inputs.end_time = ss.end_time;
+                    (await crdt_model.update(crdt_inputs)).save();
+                });
+            }
             return response(201, 'data updated', data);
         } else {
             throw new custom_error(
