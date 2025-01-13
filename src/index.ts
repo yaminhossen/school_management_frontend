@@ -55,7 +55,7 @@ async function boot() {
         return;
     };
 
-    /** conver input files into buffer string */
+    /** convert input files into buffer string */
     async function onFile(part: any) {
         if (part.type == 'file' && part.filename) {
             const buff = await part.toBuffer();
@@ -106,8 +106,8 @@ async function boot() {
     await findAllRoutesFiles('./src/modules')
         .then((files: string[]) => {
             files.forEach((routes: string) => {
-                // console.log('connecting : ' + JSON.stringify(routes));
-                console.log(JSON.stringify(routes));
+                console.log('connecting : ' + JSON.stringify(routes));
+                // console.log(JSON.stringify(routes));
                 fastify.register(require(path.resolve(appDir, routes)), {
                     prefix: 'api/v1',
                 });
