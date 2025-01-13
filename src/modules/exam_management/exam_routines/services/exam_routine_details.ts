@@ -10,10 +10,6 @@ async function class_routine_details(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
-    // let branchClassSubjectsModel = models.BranchClassSubjectsModel;
-    // let branchClassRoutinesModel = models.BranchClassRoutinesModel;
-    // let branchClassRoutineDayTimesModel =
-    //     models.BranchClassRoutineDayTimesModel;
     let buildingRoomsModel = models.BranchBuildingRoomsModel;
     let hallGuardPlansModel = models.ExamGuardPlansModel;
     let branchClassSubjectsModel = models.BrachClassSubjectsModel;

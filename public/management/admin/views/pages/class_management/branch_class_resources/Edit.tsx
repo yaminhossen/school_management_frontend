@@ -125,7 +125,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                         .branch_class_subject_id
                                                 }
                                             >
-                                                {/* <option value={data.class_id}></option> */}
                                                 {subjects.map((i, index) => {
                                                     return (
                                                         <option value={i.id}>
