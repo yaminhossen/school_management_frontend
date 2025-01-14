@@ -91,26 +91,26 @@ module.exports = async function (fastify: FastifyInstance) {
             },
         )
         .get(
-            '/hostel-super',
-            // { preHandler: check_auth_and_redirect },
-            async (_req: FastifyRequest, reply: FastifyReply) => {
-                return reply.view('dashboard/hostel_super_uni.ejs');
-            },
-        )
-        .get(
-            '/librarian',
-            // { preHandler: check_auth_and_redirect },
-            async (_req: FastifyRequest, reply: FastifyReply) => {
-                return reply.view('dashboard/librarian_uni.ejs');
-            },
-        )
-        .get(
             '/staff',
             // { preHandler: check_auth_and_redirect },
             async (_req: FastifyRequest, reply: FastifyReply) => {
                 return reply.view('dashboard/staff_uni.ejs');
             },
         )
+        // .get(
+        //     '/hostel-super',
+        //     // { preHandler: check_auth_and_redirect },
+        //     async (_req: FastifyRequest, reply: FastifyReply) => {
+        //         return reply.view('dashboard/hostel_super_uni.ejs');
+        //     },
+        // )
+        // .get(
+        //     '/librarian',
+        //     // { preHandler: check_auth_and_redirect },
+        //     async (_req: FastifyRequest, reply: FastifyReply) => {
+        //         return reply.view('dashboard/librarian_uni.ejs');
+        //     },
+        // )
         .get(
             '/dashboard/login',
             async (_req: FastifyRequest, reply: FastifyReply) => {

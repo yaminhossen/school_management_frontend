@@ -17,7 +17,7 @@ function parseCookieString(cookieString: any) {
     }
 }
 
-const check_account_auth = async (
+const check_teacher_auth = async (
     request: FastifyRequest,
     reply: FastifyReply,
 ) => {
@@ -58,4 +58,4 @@ const check_account_auth = async (
     }
 };
 
-export default check_account_auth;
+export default check_teacher_auth;

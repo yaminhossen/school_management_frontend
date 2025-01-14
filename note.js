@@ -72,4 +72,23 @@ useEffect(() => {
             },
         )}
 </select>
+
+// Tostar usecase
+ const [file, setFile] = useState<any>();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let formData = new FormData(e.target);
+
+        try {
+            const response = await axios.post(
+                '/api/v1/account-logs/income-store',
+                formData,
+            );
+            setData('Form submitted successfully!');
+            (window as any).toaster('submitted');
+            e.target.reset();
+        } catch (error) {
+            // setError(error);
+        }
+    };
 */

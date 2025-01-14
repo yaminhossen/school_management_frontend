@@ -37,7 +37,7 @@ export let active_routes: string[] = [
     // 'src/modules/attendance_management/leave_application_paids/routes.ts',
     // 'src/modules/attendance_management/leave_types/routes.ts',
     // 'src/modules/attendance_management/staff_attendances/routes.ts',
-    // 'src/modules/attendance_management/student_attendances/routes.ts',
+    'src/modules/attendance_management/student_attendances/routes.ts',
     // 'src/modules/attendance_management/teacher_attendances/routes.ts',
     // 'src/modules/auth_management/authetication/routes.ts',
     // 'src/modules/auth_management/user_management/routes.ts',
@@ -106,7 +106,7 @@ export let active_routes: string[] = [
     // 'src/modules/user_management/user_login_histories/routes.ts',
     // 'src/modules/user_management/user_parents/routes.ts',
     // 'src/modules/user_management/user_staffs/routes.ts',
-    // 'src/modules/user_management/user_students/routes.ts',
+    'src/modules/user_management/user_students/routes.ts',
     // 'src/modules/user_management/user_teachers/routes.ts',
 ];
 
