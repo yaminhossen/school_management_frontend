@@ -6,6 +6,7 @@ import check_auth from '../modules/auth_management/authetication/services/check_
 import check_account_auth from '../modules/auth_management/authetication/services/check_account_auth';
 import check_teacher_auth from '../modules/auth_management/authetication/services/check_teacher_auth';
 import check_staff_auth from '../modules/auth_management/authetication/services/check_staff_auth';
+import check_parent_auth from '../modules/auth_management/authetication/services/check_parent_auth';
 // import check_is_admin_and_redirect from '../modules/user_management/user_admin/services/check_is_admin_and_redirect';
 // const fs = require('node:fs');
 module.exports = async function (fastify: FastifyInstance) {
@@ -50,8 +51,16 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(
             '/parent',
             // { preHandler: check_auth_and_redirect },
+            { preHandler: check_parent_auth },
             async (_req: FastifyRequest, reply: FastifyReply) => {
                 return reply.view('dashboard/parent_uni.ejs');
+            },
+        )
+        .get(
+            '/parent/login',
+            // { preHandler: check_auth_and_redirect },
+            async (_req: FastifyRequest, reply: FastifyReply) => {
+                return reply.view('auth/parent_login.ejs');
             },
         )
         .get(

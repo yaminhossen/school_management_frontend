@@ -5,6 +5,7 @@ import check_auth from './services/check_auth';
 import check_account_auth from './services/check_account_auth';
 import check_teacher_auth from './services/check_teacher_auth';
 import check_staff_auth from './services/check_staff_auth';
+import check_parent_auth from './services/check_parent_auth';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/auth';
@@ -21,6 +22,7 @@ module.exports = async function (fastify: FastifyInstance) {
                 .post(`/account/login`, controllerInstance.account_login)
                 .post(`/staff/login`, controllerInstance.staff_login)
                 .post(`/teacher/login`, controllerInstance.teacher_login)
+                .post(`/parent/login`, controllerInstance.parent_login)
                 .post(`/login`, controllerInstance.login)
                 .post(`/register`, controllerInstance.register)
                 .post(`/forget`, controllerInstance.forget);
@@ -46,6 +48,11 @@ module.exports = async function (fastify: FastifyInstance) {
                 .post(
                     `/staff/logout`,
                     { preHandler: check_staff_auth },
+                    controllerInstance.logout,
+                )
+                .post(
+                    `/parent/logout`,
+                    { preHandler: check_parent_auth },
                     controllerInstance.logout,
                 )
                 .get(`/info`, controllerInstance.auth_user);

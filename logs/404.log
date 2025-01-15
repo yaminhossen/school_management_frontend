@@ -36,3 +36,7 @@
 {"level":60,"time":1736929398354,"pid":21384,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/basic-information/1"}
 {"level":60,"time":1736930790352,"pid":13160,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/staff/logout"}
 {"level":60,"time":1736930882863,"pid":13160,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/staff/logout"}
+{"level":60,"time":1736930910905,"pid":4084,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/staff/logout"}
+{"level":60,"time":1736931443923,"pid":4084,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/basic-information/1"}
+{"level":60,"time":1736932805266,"pid":4084,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/basic-information/8"}
+{"level":60,"time":1736932805273,"pid":4084,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/basic-information/8"}

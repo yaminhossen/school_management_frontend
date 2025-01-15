@@ -40,11 +40,23 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
     function (response) {
-        (window as any).$('.loader-wrapper').fadeOut('slow', function () {});
+        // console.log('response ok', response);
+        if (response.status == 217) {
+            location.href = '/parent/login';
+        }
+        (window as any)
+            .jQuery('.loader-wrapper')
+            .fadeOut('slow', function () {});
         return response;
     },
     function (error) {
         (window as any).$('.loader-wrapper').fadeOut('slow', function () {});
+        if (error.response.status === 401) {
+            document.cookie =
+                'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            location.href = '/parent/login';
+            console.log('authentication error');
+        }
         if (error.response.data.status === 422) {
             let errors = error.response.data.data;
             errors.forEach((error) => {
