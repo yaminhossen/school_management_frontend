@@ -4,6 +4,7 @@ import { responseObject } from '../../common_types/object';
 import login from './services/login';
 import admission_login from './services/admission_login';
 import account_login from './services/account_login';
+import staff_login from './services/staff_login';
 import teacher_login from './services/teacher_login';
 import register from './services/register';
 import forget from './services/forget';
@@ -47,6 +48,20 @@ export default function (fastify: FastifyInstance) {
 
         account_login: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await account_login(fastify, req);
+            const cookie = serialize('token', 'Bearer ' + data.data.token, {
+                maxAge: 172800,
+                path: '/',
+                httpOnly: false,
+                sameSite: 'lax',
+            });
+
+            res.header('Set-Cookie', cookie);
+            // res.header('Set-Cookie', cookie2);
+            res.code(data.status).send(data);
+        },
+
+        staff_login: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await staff_login(fastify, req);
             const cookie = serialize('token', 'Bearer ' + data.data.token, {
                 maxAge: 172800,
                 path: '/',
