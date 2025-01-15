@@ -30,7 +30,7 @@ const check_teacher_auth = async (
     console.log('request cookies', token);
 
     if (!token || !token.startsWith('Bearer ')) {
-        return reply.redirect('/account/login');
+        return reply.redirect('/teacher/login');
         // reply.code(401).send({ error: 'Unauthorized' });
         // return;
     }
@@ -39,8 +39,8 @@ const check_teacher_auth = async (
         const decoded = jwt.verify(token.slice(7), secretKey);
         let models = await db();
         let user: any = {};
-        if (decoded.user_type == 'staff') {
-            user = await models.UserStaffsModel.findByPk(decoded.id);
+        if (decoded.user_type == 'teacher') {
+            user = await models.UserTeachersModel.findByPk(decoded.id);
         } else {
             user = await models.User.findByPk(decoded.id);
         }

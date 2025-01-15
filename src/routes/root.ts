@@ -4,6 +4,7 @@ import check_auth_and_redirect from '../modules/auth_management/authetication/se
 import minified_view from '../helpers/minified_view';
 import check_auth from '../modules/auth_management/authetication/services/check_auth';
 import check_account_auth from '../modules/auth_management/authetication/services/check_account_auth';
+import check_teacher_auth from '../modules/auth_management/authetication/services/check_teacher_auth';
 // import check_is_admin_and_redirect from '../modules/user_management/user_admin/services/check_is_admin_and_redirect';
 // const fs = require('node:fs');
 module.exports = async function (fastify: FastifyInstance) {
@@ -55,8 +56,16 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(
             '/teacher',
             // { preHandler: check_auth_and_redirect },
+            { preHandler: check_teacher_auth },
             async (_req: FastifyRequest, reply: FastifyReply) => {
                 return reply.view('dashboard/teacher_uni.ejs');
+            },
+        )
+        .get(
+            '/teacher/login',
+            // { preHandler: check_auth_and_redirect },
+            async (_req: FastifyRequest, reply: FastifyReply) => {
+                return reply.view('auth/teacher_login.ejs');
             },
         )
         .get(

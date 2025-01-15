@@ -49,7 +49,7 @@ async function login(
         let data: anyObject | null = {};
         let token: anyObject = {};
         if (body) {
-            data = await models.UserStaffsModel.findOne({
+            data = await models.UserTeachersModel.findOne({
                 where: {
                     email: body.email,
                 },
@@ -71,7 +71,7 @@ async function login(
                             id: data.id,
                             token: secret,
                             user_agent,
-                            user_type: 'staff',
+                            user_type: 'teacher',
                         },
                         secretKey,
                     );

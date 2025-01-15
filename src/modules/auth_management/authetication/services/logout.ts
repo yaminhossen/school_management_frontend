@@ -39,6 +39,25 @@ async function logout(
                     'action not possible',
                 );
             }
+        } else if (authUser.user_type === 'teacher') {
+            let data = await models.UserTeachersModel.findOne({
+                where: {
+                    id: (req as anyObject).user.id,
+                },
+            });
+            if (data) {
+                data.token = null;
+                data.user_agent = null;
+                await data.save();
+                return response(217, 'logout', {});
+                // return response(122, 'ghyhr', {});
+            } else {
+                throw new custom_error(
+                    'Expectation Failed',
+                    417,
+                    'action not possible',
+                );
+            }
         } else if (authUser.user_type === 'student') {
             let data = await models.UserStudentsModel.findOne({
                 where: {
