@@ -1,16 +1,28 @@
 /* eslint-disable no-undef */
-import React from 'react';
+import React, { useState } from 'react';
 import MenuDropDown from './MenuDropDown';
 import MenuDropDownItem from './MenuDropDownItem';
 import MenuSingle from './MenuSingle';
+import axios from 'axios';
 export interface Props {}
 
 const SideBar: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
     setTimeout(() => {
         init_nav_action();
         active_link(window.location.href);
     }, 1000);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+        try {
+            const response = await axios.post('/api/v1/auth/student/logout');
+            console.log('response123', response);
+            // if(response.status)
+        } catch (error) {
+            setError(error);
+        }
+    };
     return (
         <>
             <ul className="sidebar-menu">
@@ -69,7 +81,13 @@ const SideBar: React.FC<Props> = (props: Props) => {
                 /> */}
                 {/* <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" /> */}
 
-                <MenuSingle to="/" icon="icon-power-off" label="Logout" />
+                <MenuSingle
+                    onClick={handleSubmit}
+                    to=""
+                    icon="icon-power-off"
+                    label="Logout"
+                />
+                {/* <MenuSingle to="/" icon="icon-power-off" label="Logout" /> */}
 
                 {/* <li>
                     <a
