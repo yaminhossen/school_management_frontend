@@ -35,12 +35,6 @@ async function details(
             where: {
                 branch_id: staff?.branch_id,
             },
-            // include: [
-            //     {
-            //         model: classStudentsModel,
-            //         as: 'branch_classes',
-            //     },
-            // ],
         });
 
         let data = Dbresponse.rows.map((i) => i.toJSON());

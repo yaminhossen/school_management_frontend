@@ -7,6 +7,7 @@ import check_teacher_auth from './services/check_teacher_auth';
 import check_staff_auth from './services/check_staff_auth';
 import check_parent_auth from './services/check_parent_auth';
 import check_student_auth from './services/check_student_auth';
+import auth_middleware from './services/auth_middleware';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/auth';
@@ -39,7 +40,7 @@ module.exports = async function (fastify: FastifyInstance) {
                 // .addHook('preHandler', check_auth)
                 .post(
                     `/logout`,
-                    { preHandler: check_account_auth },
+                    { preHandler: auth_middleware },
                     controllerInstance.logout,
                 )
                 .post(

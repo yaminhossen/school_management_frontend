@@ -22,3 +22,11 @@
 {"level":60,"time":1737192397505,"pid":24512,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/contact-supports/all"}
 {"level":60,"time":1737192410617,"pid":24512,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/contact-supports/all"}
 {"level":60,"time":1737192413590,"pid":24512,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/contact-supports/all"}
+{"level":60,"time":1737194418907,"pid":4852,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/full-details/11"}
+{"level":60,"time":1737194848313,"pid":3636,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/full-details/11"}
+{"level":60,"time":1737195998764,"pid":10932,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collections/payment-history/1"}
+{"level":60,"time":1737196003540,"pid":10932,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collections/payment-history/1"}
+{"level":60,"time":1737198337953,"pid":19348,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collections/payment-history/1"}
+{"level":60,"time":1737198400030,"pid":19348,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collections/payment-history/1"}
+{"level":60,"time":1737199051497,"pid":1444,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/class-routine/1"}
+{"level":60,"time":1737199134671,"pid":22976,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-routines/plan/1"}

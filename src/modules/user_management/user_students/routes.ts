@@ -64,8 +64,11 @@ module.exports = async function (fastify: FastifyInstance) {
             `${prefix}/class-wise-student/:id`,
             controllerInstance.class_wise_student,
         )
-        .get(`${prefix}/parent/childrens`,
-            { preHandler: [auth_middleware] }, controllerInstance.childrens)
+        .get(
+            `${prefix}/parent/childrens`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.childrens,
+        )
         .get(`${prefix}/:id`, controllerInstance.find)
         .get(`${prefix}/class-details/:id`, controllerInstance.class_details)
         .get(`${prefix}/students/:id`, controllerInstance.find_student)
@@ -74,11 +77,15 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.academic_informations,
         )
         .get(
-            `${prefix}/basic-information/:id`,
+            `${prefix}/basic-information`,
             { preHandler: [auth_middleware] },
             controllerInstance.basic_informations,
         )
-        .get(`${prefix}/documents/:id`, controllerInstance.documents)
+        .get(
+            `${prefix}/documents`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.documents,
+        )
         .get(
             `${prefix}/single-student-details/:id`,
             controllerInstance.single_student_details,
@@ -86,12 +93,20 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(`${prefix}/parents/:id`, controllerInstance.parents)
         .get(`${prefix}/skills/:id`, controllerInstance.skills)
         .get(`${prefix}/languages/:id`, controllerInstance.languages)
-        .get(`${prefix}/contact-number/:id`, controllerInstance.contact_numbers)
+        .get(
+            `${prefix}/contact-number`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.contact_numbers,
+        )
         .get(
             `${prefix}/educational-background/:id`,
             controllerInstance.educational_backgrounds,
         )
-        .get(`${prefix}/full-details/:id`, controllerInstance.full_details)
+        .get(
+            `${prefix}/full-details`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.full_details,
+        )
         .post(`${prefix}/store`, controllerInstance.store)
         // .post(`${prefix}/update`, controllerInstance.update)
         .post(`${prefix}/update`, controllerInstance.full_details_update)

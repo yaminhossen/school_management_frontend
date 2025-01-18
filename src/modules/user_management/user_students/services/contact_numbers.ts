@@ -13,11 +13,12 @@ async function details(
     let contactNumbersModel = models.UserStudentContactNumbersModel;
     let studentsModel = models.UserStudentsModel;
     let params = req.params as any;
+    let user = (req as any).user;
 
     try {
         let data = await studentsModel.findOne({
             where: {
-                id: params.id,
+                id: user?.id,
             },
             attributes: {
                 exclude: ['password'],

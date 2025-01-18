@@ -19,12 +19,13 @@ async function payment_history(
     let accountLogsModel = models.AccountLogsModel;
     let accountFeeCollectionsModel = models.AccountFeesCollectionsModel;
     let params = req.params as any;
-    console.log('student id for payment', params.id);
+    let user = (req as any).user;
+    console.log('student id for payment', user);
 
     try {
         let data = await accountFeeCollectionsModel.findAll({
             where: {
-                branch_student_id: params.id,
+                branch_student_id: user?.id,
             },
             include: [
                 {
@@ -37,7 +38,7 @@ async function payment_history(
         // console.log('data', data);
 
         if (data) {
-            return response(200, 'data foundeds', data);
+            return response(200, 'data founded', data);
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }

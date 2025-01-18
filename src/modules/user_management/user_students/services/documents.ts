@@ -22,11 +22,12 @@ async function details(
     let studentsModel = models.UserStudentsModel;
     let parentsModel = models.UserParentsModel;
     let params = req.params as any;
+    let user = (req as any).user;
 
     try {
         let data = await studentsModel.findOne({
             where: {
-                id: params.id,
+                id: user?.id,
             },
             attributes: {
                 exclude: ['password'],

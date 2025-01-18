@@ -15,9 +15,7 @@ const Details: React.FC<Props> = (props: Props) => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(
-                '/api/v1/user-students/documents/11',
-            );
+            const response = await axios.get('/api/v1/user-students/documents');
             setData(response.data.data);
             // setData(response.data);
         } catch (error) {

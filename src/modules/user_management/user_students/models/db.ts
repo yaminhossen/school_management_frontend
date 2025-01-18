@@ -147,11 +147,6 @@ const db = async function (): Promise<models> {
         as: 'children_basic',
     });
 
-    // UserStudentParentsModel.hasMany(UserStudentsModel, {
-    //     foreignKey: 'user_student_id',
-    //     as: 'children_basic',
-    // });
-
     UserStudentParentsModel.hasOne(UserStudentInformationsModel, {
         foreignKey: 'user_student_id',
         sourceKey: 'user_student_id',

@@ -1,6 +1,7 @@
 'use strict';
 import { FastifyInstance } from 'fastify';
 import controller from './controller';
+import auth_middleware from '../../auth_management/authetication/services/auth_middleware';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/account-fees-collections';
@@ -10,7 +11,8 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(`${prefix}`, controllerInstance.all)
         .get(`${prefix}/:id`, controllerInstance.find)
         .get(
-            `${prefix}/payment-history/:id`,
+            `${prefix}/payment-history`,
+            { preHandler: [auth_middleware] },
             controllerInstance.payment_history,
         )
         .post(`${prefix}/store`, controllerInstance.store)
