@@ -27,7 +27,7 @@ const Index: React.FC<Props> = (props: Props) => {
             formData.month2 = m2;
 
             const response = await axios.get(
-                '/api/v1/user-students/parent/childrens/5',
+                '/api/v1/user-students/parent/childrens',
             );
             setData(response.data.data);
         } catch (error) {

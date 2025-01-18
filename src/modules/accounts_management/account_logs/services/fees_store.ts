@@ -37,6 +37,7 @@ async function store(
     let models = await db();
     let data = new models.AccountLogsModel();
     let user = (req as any).user;
+    console.log('first', user);
 
     let student_fees: anyObject[] = [];
     for (

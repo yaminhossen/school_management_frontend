@@ -15,6 +15,8 @@ async function credit(
     let accountCategoriesModel = models.AccountCategoriesModel;
     let accountsModel = models.AccountsModel;
     let params = req.params as any;
+    let user = (req as any).user;
+    console.log('jsdlfj', user);
 
     let month1 = body.month1 || '2024-09-12'; // Start date
     let month2 = body.month2 || '2024-09-22'; // End date

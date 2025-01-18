@@ -1,0 +1,2 @@
+{"level":60,"time":1737185433159,"pid":10144,"hostname":"DESKTOP-9421701","file":"","time":"1/18/2025 1:30:33 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1737185473904,"pid":10144,"hostname":"DESKTOP-9421701","file":"","time":"1/18/2025 1:31:13 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}

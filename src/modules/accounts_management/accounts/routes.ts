@@ -2,13 +2,19 @@
 import { FastifyInstance } from 'fastify';
 import controller from './controller';
 import check_auth from '../../auth_management/authetication/services/check_auth';
+import check_account_auth from '../../auth_management/authetication/services/check_account_auth';
+import auth_middleware from '../../auth_management/authetication/services/auth_middleware';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/accounts';
     const controllerInstance = controller(fastify);
 
     fastify
-        .get(`${prefix}`, controllerInstance.all)
+        .get(
+            `${prefix}`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all,
+        )
         .get(`${prefix}/all`, controllerInstance.all_accounts)
         .get(`${prefix}/accounts`, controllerInstance.accounts)
         .get(`${prefix}/:id`, controllerInstance.find)

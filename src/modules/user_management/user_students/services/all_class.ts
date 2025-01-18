@@ -20,7 +20,9 @@ async function details(
     let classStudentsModel = models.BranchClassStudentsModel;
     let params = req.params as any;
     let user_id = (req as any).user?.id;
-    console.log('user', user_id);
+    console.log('user1', user_id);
+    console.log('user2', (req as any).user);
+    console.log('user3', req);
 
     try {
         let staff = await staffsModel.findOne({

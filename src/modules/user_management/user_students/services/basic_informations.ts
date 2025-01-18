@@ -16,6 +16,8 @@ async function basic_informations(
     let studentsModel = models.UserStudentsModel;
     let classesModel = models.BranchClassesModel;
     let params = req.params as any;
+    let user = (req as any).user;
+    console.log('jsdlfj', user);
 
     try {
         let data = await studentsModel.findOne({

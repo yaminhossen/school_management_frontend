@@ -13,11 +13,18 @@ async function basic_information(
     let parentsModel = models.UserParentsModel;
     let parentInformationsModel = models.UserParentInformationsModel;
     let params = req.params as any;
+    let user = (req as any).user;
+    // let auth_user = await models.BranchAdminsModel.findOne({
+    //     where: {
+    //         user_admin_id: (req as any).user?.id || null,
+    //     },
+    // });
+    console.log('jsdlfj', user);
 
     try {
         let data = await parentsModel.findOne({
             where: {
-                id: params.id,
+                id: user?.id,
             },
             attributes: {
                 exclude: ['password'],

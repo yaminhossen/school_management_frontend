@@ -17,7 +17,7 @@ function parseCookieString(cookieString: any) {
     }
 }
 
-const check_account_auth = async (
+const auth_middleware = async (
     request: FastifyRequest,
     reply: FastifyReply,
 ) => {
@@ -41,6 +41,14 @@ const check_account_auth = async (
         let user: any = {};
         if (decoded.user_type == 'account') {
             user = await models.UserStaffsModel.findByPk(decoded.id);
+        } else if (decoded.user_type == 'staff') {
+            user = await models.UserStaffsModel.findByPk(decoded.id);
+        } else if (decoded.user_type == 'teacher') {
+            user = await models.UserTeachersModel.findByPk(decoded.id);
+        } else if (decoded.user_type == 'student') {
+            user = await models.UserStudentsModel.findByPk(decoded.id);
+        } else if (decoded.user_type == 'parent') {
+            user = await models.UserParentsModel.findByPk(decoded.id);
         } else {
             user = await models.User.findByPk(decoded.id);
         }
@@ -59,4 +67,4 @@ const check_account_auth = async (
     }
 };
 
-export default check_account_auth;
+export default auth_middleware;

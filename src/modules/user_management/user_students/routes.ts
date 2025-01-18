@@ -3,6 +3,7 @@ import { FastifyInstance } from 'fastify';
 import controller from './controller';
 import check_staff_auth from '../../auth_management/authetication/services/check_staff_auth';
 import check_auth from '../../auth_management/authetication/services/check_auth';
+import auth_middleware from '../../auth_management/authetication/services/auth_middleware';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/user-students';
@@ -63,7 +64,8 @@ module.exports = async function (fastify: FastifyInstance) {
             `${prefix}/class-wise-student/:id`,
             controllerInstance.class_wise_student,
         )
-        .get(`${prefix}/parent/childrens/:id`, controllerInstance.childrens)
+        .get(`${prefix}/parent/childrens`,
+            { preHandler: [auth_middleware] }, controllerInstance.childrens)
         .get(`${prefix}/:id`, controllerInstance.find)
         .get(`${prefix}/class-details/:id`, controllerInstance.class_details)
         .get(`${prefix}/students/:id`, controllerInstance.find_student)
@@ -73,6 +75,7 @@ module.exports = async function (fastify: FastifyInstance) {
         )
         .get(
             `${prefix}/basic-information/:id`,
+            { preHandler: [auth_middleware] },
             controllerInstance.basic_informations,
         )
         .get(`${prefix}/documents/:id`, controllerInstance.documents)

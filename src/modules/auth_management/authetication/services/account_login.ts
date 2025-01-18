@@ -71,7 +71,7 @@ async function login(
                             id: data.id,
                             token: secret,
                             user_agent,
-                            user_type: 'staff',
+                            user_type: 'account',
                         },
                         secretKey,
                     );

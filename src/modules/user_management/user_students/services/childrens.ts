@@ -11,6 +11,7 @@ async function details(
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
+    let user = (req as any).user;
     let studentsModel = models.UserStudentsModel;
     let studentInformationsModel = models.UserStudentInformationsModel;
     let classesModel = models.BranchClassesModel;
@@ -18,7 +19,7 @@ async function details(
 
     try {
         let data = await models.UserStudentParentsModel.findAll({
-            where: { user_parent_id: params.id },
+            where: { user_parent_id: user?.id },
             attributes: {
                 exclude: ['password'],
             },

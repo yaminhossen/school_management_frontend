@@ -12,6 +12,9 @@ async function all(
 ): Promise<responseObject> {
     let models = await db();
     let query_param = req.query as any;
+    let user = (req as any).user;
+    console.log('accountant user', req);
+    console.log('accountant user1213', (req as any).user);
 
     const { Op } = require('sequelize');
     let search_key = query_param.search_key;
