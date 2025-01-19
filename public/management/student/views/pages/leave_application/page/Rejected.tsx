@@ -16,7 +16,7 @@ const Paid: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/leave-applications/rejected/1',
+                '/api/v1/leave-applications/rejected',
             );
             setData(response.data.data);
             // setData(response.data);

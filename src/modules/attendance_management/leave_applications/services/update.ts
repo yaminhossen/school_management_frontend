@@ -18,11 +18,11 @@ async function validate(req: Request) {
         .withMessage('the id field is required')
         .run(req);
 
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
+    // await body('branch_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_id field is required')
+    //     .run(req);
 
     await body('branch_staff_id')
         .not()
@@ -115,9 +115,15 @@ async function update(
     let models = await db();
     let body = req.body as anyObject;
     let model = new models.LeaveApplicationsModel();
+    let user = (req as any).user;
+    let auth_user = await models.UserStudentInformationsModel.findOne({
+        where: {
+            id: (req as any).user?.id || null,
+        },
+    });
 
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: body.branch_id,
+        branch_id: auth_user?.branch_id || 1,
         branch_teacher_id: body.branch_teacher_id,
         branch_student_id: body.branch_student_id,
         branch_staff_id: body.branch_staff_id,
@@ -130,6 +136,7 @@ async function update(
         total_days: body.total_days,
         approved_start_date: body.approved_start_date,
         approved_end_date: body.approved_end_date,
+        creator: user?.id || null,
     };
 
     /** print request data into console */
@@ -140,8 +147,7 @@ async function update(
     try {
         let data = await models.LeaveApplicationsModel.findByPk(body.id);
         if (data) {
-            data.update(inputs);
-            await data.save();
+            (await data.update(inputs)).save();
             return response(200, 'data updated', data);
         } else {
             throw new custom_error('Forbidden', 403, 'operation not possible');

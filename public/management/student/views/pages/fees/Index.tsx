@@ -16,7 +16,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/account-fees-collections/payment-history/1',
+                '/api/v1/account-fees-collections/payment-history',
             );
             setData(response.data.data);
             // setData(response.data);

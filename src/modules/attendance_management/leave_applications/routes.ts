@@ -1,6 +1,7 @@
 'use strict';
 import { FastifyInstance } from 'fastify';
 import controller from './controller';
+import auth_middleware from '../../auth_management/authetication/services/auth_middleware';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/leave-applications';
@@ -9,24 +10,43 @@ module.exports = async function (fastify: FastifyInstance) {
     fastify
         .get(`${prefix}`, controllerInstance.all)
         .get(`${prefix}/:id`, controllerInstance.find)
-        .get(`${prefix}/approved/:id`, controllerInstance.approved)
-        .get(`${prefix}/pending/:id`, controllerInstance.pending)
-        .get(`${prefix}/rejected/:id`, controllerInstance.rejected)
+        .get(
+            `${prefix}/approved`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.approved,
+        )
+        .get(
+            `${prefix}/pending`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.pending,
+        )
+        .get(
+            `${prefix}/rejected`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.rejected,
+        )
         .get(
             `${prefix}/teacher-approved/:id`,
+            // { preHandler: [auth_middleware] },
             controllerInstance.teacher_approved,
         )
         .get(
             `${prefix}/teacher-pending/:id`,
+            // { preHandler: [auth_middleware] },
             controllerInstance.teacher_pending,
         )
         .get(
             `${prefix}/teacher-rejected/:id`,
+            // { preHandler: [auth_middleware] },
             controllerInstance.teacher_rejected,
         )
         .get(`${prefix}/staff/:type/:id`, controllerInstance.staff_leave)
         .post(`${prefix}/store`, controllerInstance.store)
-        .post(`${prefix}/student-store`, controllerInstance.student_store)
+        .post(
+            `${prefix}/student-store`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.student_store,
+        )
         .post(`${prefix}/update`, controllerInstance.update)
         .post(`${prefix}/soft-delete`, controllerInstance.soft_delete)
         .post(`${prefix}/restore`, controllerInstance.restore)

@@ -1,6 +1,7 @@
 'use strict';
 import { FastifyInstance } from 'fastify';
 import controller from './controller';
+import auth_middleware from '../../auth_management/authetication/services/auth_middleware';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/branch-class-resources';
@@ -15,7 +16,8 @@ module.exports = async function (fastify: FastifyInstance) {
         )
         .get(`${prefix}/:id`, controllerInstance.find)
         .get(
-            `${prefix}/academic-resource/:id`,
+            `${prefix}/academic-resource`,
+            { preHandler: [auth_middleware] },
             controllerInstance.academic_resource,
         )
         .get(

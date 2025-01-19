@@ -19,12 +19,18 @@ async function academic_resource(
     let branchClassSubjectsModel = models.BranchClassSubjectsModel;
     let branchClassResoucesModel = models.BranchClassResourcessModel;
     let params = req.params as any;
-    console.log('class', params.id);
+    let user = (req as any).user;
+    console.log('class', user);
 
     try {
+        let data1 = await models.UserStudentInformationsModel.findOne({
+            where: {
+                user_student_id: user?.id,
+            },
+        });
         let data = await branchClassResoucesModel.findAll({
             where: {
-                branch_class_id: params.id,
+                branch_class_id: data1?.s_class,
             },
             include: [
                 {

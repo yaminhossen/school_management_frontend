@@ -28,7 +28,7 @@ async function class_routine_details(
                 user_student_id: user?.id,
             },
         });
-        console.log('data111', data1?.s_class)
+        console.log('data111', data1?.s_class);
         let data = await branchClassSubjectsModel.findAll({
             where: {
                 branch_class_id: data1?.s_class,

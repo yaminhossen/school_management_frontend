@@ -110,8 +110,15 @@ async function store(
     let body = req.body as anyObject;
     let data = new models.LeaveApplicationsModel();
 
+    let user = (req as any).user;
+    let auth_user = await models.UserStudentInformationsModel.findOne({
+        where: {
+            id: (req as any).user?.id || null,
+        },
+    });
+
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: body.branch_id,
+        branch_id: auth_user?.branch_id || 1,
         branch_teacher_id: body.branch_teacher_id,
         branch_student_id: body.branch_student_id,
         branch_staff_id: body.branch_staff_id,
@@ -124,6 +131,7 @@ async function store(
         total_days: body.total_days,
         approved_start_date: body.approved_start_date,
         approved_end_date: body.approved_end_date,
+        creator: user?.id || null,
     };
 
     /** print request data into console */

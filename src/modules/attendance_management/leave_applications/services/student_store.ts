@@ -51,6 +51,12 @@ async function store(
     let body = req.body as anyObject;
     let data = new models.LeaveApplicationsModel();
     let image_path = '';
+    let user = (req as any).user;
+    let auth_user = await models.UserStudentInformationsModel.findOne({
+        where: {
+            id: (req as any).user?.id || null,
+        },
+    });
 
     if (body['attachments']?.ext) {
         image_path =
@@ -62,10 +68,12 @@ async function store(
     // console.log('leave body', body);
 
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_student_id: 1,
+        branch_id: auth_user?.branch_id || 1,
+        branch_student_id: user?.id || null,
         start_date: body.start_date,
         end_date: body.end_date,
         attachments: image_path,
+        creator: user?.id || null,
     };
 
     /** print request data into console */

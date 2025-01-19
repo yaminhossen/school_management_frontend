@@ -11,11 +11,12 @@ async function details(
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
+    let user = (req as any).user;
 
     try {
         let data = await models.LeaveApplicationsModel.findAll({
             where: {
-                branch_student_id: params.id,
+                branch_student_id: user?.id,
                 leave_status: 'pending',
             },
         });
