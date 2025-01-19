@@ -1,6 +1,7 @@
 'use strict';
 import { FastifyInstance } from 'fastify';
 import controller from './controller';
+import auth_middleware from '../../auth_management/authetication/services/auth_middleware';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/exam-routines';
@@ -9,7 +10,8 @@ module.exports = async function (fastify: FastifyInstance) {
     fastify
         .get(`${prefix}`, controllerInstance.all)
         .get(`${prefix}/:id`, controllerInstance.find)
-        .get(`${prefix}/plan/:id`, controllerInstance.exam_routine_details)
+        .get(`${prefix}/plan`,
+            { preHandler: [auth_middleware] }, controllerInstance.exam_routine_details)
         .post(`${prefix}/store`, controllerInstance.store)
         .post(`${prefix}/update`, controllerInstance.update)
         .post(`${prefix}/soft-delete`, controllerInstance.soft_delete)

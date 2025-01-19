@@ -30,3 +30,6 @@
 {"level":60,"time":1737198400030,"pid":19348,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collections/payment-history/1"}
 {"level":60,"time":1737199051497,"pid":1444,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/class-routine/1"}
 {"level":60,"time":1737199134671,"pid":22976,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-routines/plan/1"}
+{"level":60,"time":1737258517304,"pid":14472,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collections/payment-history/1"}
+{"level":60,"time":1737258526301,"pid":14472,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collections/payment-history/1"}
+{"level":60,"time":1737258527916,"pid":14472,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/approved/1"}

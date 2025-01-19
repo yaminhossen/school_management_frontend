@@ -15,7 +15,7 @@ const Index: React.FC<Props> = (props: Props) => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('/api/v1/exam-routines/plan/1');
+            const response = await axios.get('/api/v1/exam-routines/plan');
             setData(response.data.data);
             // setData(response.data);
         } catch (error) {

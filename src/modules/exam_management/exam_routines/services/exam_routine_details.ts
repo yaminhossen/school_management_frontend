@@ -15,12 +15,18 @@ async function class_routine_details(
     let branchClassSubjectsModel = models.BrachClassSubjectsModel;
     let examRoutinesModel = models.ExamRoutinesModel;
     let params = req.params as any;
-    console.log('class', params.id);
+    let user = (req as any).user;
+    console.log('class', user);
 
     try {
+        let data1 = await models.UserStudentInformationsModel.findOne({
+            where: {
+                user_student_id: user?.id,
+            },
+        });
         let data = await examRoutinesModel.findAll({
             where: {
-                class_id: params.id,
+                class_id: data1?.s_class,
             },
             include: [
                 {
