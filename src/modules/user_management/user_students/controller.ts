@@ -45,6 +45,7 @@ import single_student_details from './services/single_student_details';
 import class_wise_student from './services/class_wise_student';
 import just_check from './services/just_check';
 import children_details from './services/children_details';
+import full_details_second from './services/full_details_second';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -164,6 +165,14 @@ export default function (fastify: FastifyInstance) {
 
         full_details: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await full_details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        full_details_second: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await full_details_second(fastify, req);
             res.code(data.status).send(data);
         },
 

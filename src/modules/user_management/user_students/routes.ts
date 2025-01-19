@@ -107,6 +107,11 @@ module.exports = async function (fastify: FastifyInstance) {
             { preHandler: [auth_middleware] },
             controllerInstance.full_details,
         )
+        .get(
+            `${prefix}/full-details/:id`,
+            // { preHandler: [auth_middleware] },
+            controllerInstance.full_details_second,
+        )
         .post(`${prefix}/store`, controllerInstance.store)
         // .post(`${prefix}/update`, controllerInstance.update)
         .post(`${prefix}/update`, controllerInstance.full_details_update)

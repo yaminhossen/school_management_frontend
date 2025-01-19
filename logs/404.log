@@ -41,3 +41,12 @@
 {"level":60,"time":1737264971691,"pid":19608,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/approved/1"}
 {"level":60,"time":1737266590626,"pid":12016,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/academic-resource/1"}
 {"level":60,"time":1737266902571,"pid":12016,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/academic-resource/1"}
+{"level":60,"time":1737269761616,"pid":8768,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1737269805405,"pid":18292,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/periods"}
+{"level":60,"time":1737269805413,"pid":18292,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/accounts/accounts"}
+{"level":60,"time":1737269805416,"pid":18292,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
+{"level":60,"time":1737269809887,"pid":18292,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/accounts/accounts"}
+{"level":60,"time":1737269809892,"pid":18292,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
+{"level":60,"time":1737269809898,"pid":18292,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/periods"}
+{"level":60,"time":1737269886935,"pid":24488,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/full-details/4"}
+{"level":60,"time":1737269889548,"pid":24488,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/full-details/4"}
