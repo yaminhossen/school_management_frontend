@@ -1,0 +1,17 @@
+{"level":60,"time":1737348712035,"pid":13768,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/basic-information/1"}
+{"level":60,"time":1737348724306,"pid":13768,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/basic-information/1"}
+{"level":60,"time":1737348772813,"pid":13768,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/basic-information/1"}
+{"level":60,"time":1737348824717,"pid":13768,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/basic-information/1"}
+{"level":60,"time":1737348828255,"pid":13768,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/basic-information/1"}
+{"level":60,"time":1737348832107,"pid":13768,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/basic-information/1"}
+{"level":60,"time":1737349220516,"pid":8676,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/basic-information"}
+{"level":60,"time":1737349220524,"pid":8676,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/basic-information"}
+{"level":60,"time":1737350292871,"pid":5320,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/teacher-classes/1"}
+{"level":60,"time":1737350297832,"pid":5320,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/teacher-classes/1"}
+{"level":60,"time":1737350986230,"pid":7492,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1737350995736,"pid":7492,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-evaluation-criterias/criterias"}
+{"level":60,"time":1737351791609,"pid":6972,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-overall-evaluations?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+score%2C+evaluation_date%2C+status"}
+{"level":60,"time":1737351798315,"pid":6972,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-overall-evaluations?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+score%2C+evaluation_date%2C+status"}
+{"level":60,"time":1737351799029,"pid":6972,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-overall-evaluations?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+score%2C+evaluation_date%2C+status"}
+{"level":60,"time":1737351830528,"pid":12960,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-overall-evaluations?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+score%2C+evaluation_date%2C+status"}
+{"level":60,"time":1737368623075,"pid":3916,"hostname":"DESKTOP-9421701","error":"404","url":"/transcript.pdf"}

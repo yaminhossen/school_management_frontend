@@ -5,7 +5,7 @@ import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 
-async function basic_information(
+async function basic_informations_second(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -13,12 +13,11 @@ async function basic_information(
     let teachersModel = models.UserTeachersModel;
     let teacherInformationsModel = models.UserTeacherInformationsModel;
     let params = req.params as any;
-    let user = (req as any).user;
 
     try {
         let data = await teachersModel.findOne({
             where: {
-                id: user?.id,
+                id: params.id,
             },
             attributes: {
                 exclude: ['password'],
@@ -47,4 +46,4 @@ async function basic_information(
     }
 }
 
-export default basic_information;
+export default basic_informations_second;

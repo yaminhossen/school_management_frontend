@@ -1,6 +1,7 @@
 'use strict';
 import { FastifyInstance } from 'fastify';
 import controller from './controller';
+import auth_middleware from '../../auth_management/authetication/services/auth_middleware';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/user-teachers';
@@ -11,8 +12,14 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(`${prefix}/teacher-all`, controllerInstance.teacher_all)
         .get(`${prefix}/:id`, controllerInstance.find)
         .get(
-            `${prefix}/basic-information/:id`,
+            `${prefix}/basic-information`,
+            { preHandler: [auth_middleware] },
             controllerInstance.basic_information,
+        )
+        .get(
+            `${prefix}/basic-information/:id`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.basic_informations_second,
         )
         .post(`${prefix}/profile-update`, controllerInstance.profile_update)
         .post(`${prefix}/store`, controllerInstance.store)

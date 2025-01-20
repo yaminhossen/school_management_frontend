@@ -22,11 +22,12 @@ async function details(
     let branchClassSubjectsModel = models.BranchClassSubjectsModel;
     let userStudentInformationsModel = models.UserStudentInformationsModel; // Assuming this is your model
     let params = req.params as any;
+    let user = (req as any).user;
 
     try {
         let data = await models.BranchClassSubjectTeachersModel.findAll({
             where: {
-                branch_teacher_id: params.id,
+                branch_teacher_id: params.id || user?.id,
             },
             include: [
                 {

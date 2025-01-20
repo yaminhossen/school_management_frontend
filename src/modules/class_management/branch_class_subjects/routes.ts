@@ -28,7 +28,13 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.teacher_assignment,
         )
         .get(
+            `${prefix}/teacher-classes`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.teacher_classes,
+        )
+        .get(
             `${prefix}/teacher-classes/:id`,
+            { preHandler: [auth_middleware] },
             controllerInstance.teacher_classes,
         )
         .get(

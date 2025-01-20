@@ -22,7 +22,7 @@ async function basic_informations_second(
     try {
         let data = await studentsModel.findOne({
             where: {
-                id: user?.id,
+                id: params?.id,
             },
             attributes: {
                 exclude: ['password'],
