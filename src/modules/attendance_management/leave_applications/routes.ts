@@ -26,18 +26,18 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.rejected,
         )
         .get(
-            `${prefix}/teacher-approved/:id`,
-            // { preHandler: [auth_middleware] },
+            `${prefix}/teacher-approved`,
+            { preHandler: [auth_middleware] },
             controllerInstance.teacher_approved,
         )
         .get(
-            `${prefix}/teacher-pending/:id`,
-            // { preHandler: [auth_middleware] },
+            `${prefix}/teacher-pending`,
+            { preHandler: [auth_middleware] },
             controllerInstance.teacher_pending,
         )
         .get(
-            `${prefix}/teacher-rejected/:id`,
-            // { preHandler: [auth_middleware] },
+            `${prefix}/teacher-rejected`,
+            { preHandler: [auth_middleware] },
             controllerInstance.teacher_rejected,
         )
         .get(`${prefix}/staff/:type/:id`, controllerInstance.staff_leave)

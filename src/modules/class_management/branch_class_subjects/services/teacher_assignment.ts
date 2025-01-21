@@ -19,11 +19,13 @@ async function details(
     let models = await db();
     let branchClassSubjectsModel = models.BranchClassSubjectsModel;
     let params = req.params as any;
+    let user = (req as any).user;
+    console.log('assignment', params, user);
 
     try {
         let data = await models.BranchClassSubjectTeachersModel.findAll({
             where: {
-                branch_teacher_id: 1, // Filter by teacher ID
+                branch_teacher_id: user?.id, // Filter by teacher ID
                 branch_class_id: params.id, // Use dynamic teacher ID
             },
             include: [

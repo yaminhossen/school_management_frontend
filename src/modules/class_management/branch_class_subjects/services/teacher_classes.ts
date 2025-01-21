@@ -23,6 +23,8 @@ async function details(
     let userStudentInformationsModel = models.UserStudentInformationsModel; // Assuming this is your model
     let params = req.params as any;
     let user = (req as any).user;
+    console.log(' req user for ', user);
+    console.log(' req user for ', params);
 
     try {
         let data = await models.BranchClassSubjectTeachersModel.findAll({

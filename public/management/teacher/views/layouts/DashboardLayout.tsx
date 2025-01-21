@@ -13,7 +13,7 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/user-teachers/basic-information/1',
+                '/api/v1/user-teachers/basic-information',
             );
             setData(response.data.data);
             // setData(response.data);

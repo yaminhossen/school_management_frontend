@@ -16,7 +16,7 @@ const Pending: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/leave-applications/teacher-pending/1',
+                '/api/v1/leave-applications/teacher-pending',
             );
             setData(response.data.data);
             // setData(response.data);
