@@ -13,12 +13,13 @@ async function basic_information(
     let staffsModel = models.UserStaffsModel;
     let staffInformationsModel = models.UserStaffInformationsModel;
     let params = req.params as any;
+    let user = (req as any).user;
     // console.log('req params', params);
 
     try {
         let data = await staffsModel.findOne({
             where: {
-                id: params.id,
+                id: user?.id,
             },
             attributes: {
                 exclude: ['password'],

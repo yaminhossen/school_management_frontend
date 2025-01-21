@@ -11,12 +11,13 @@ async function staff_leave(
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
+    let user = (req as any).user;
     console.log('all params for staff leave', params);
 
     try {
         let data = await models.LeaveApplicationsModel.findAll({
             where: {
-                branch_staff_id: params.id,
+                branch_staff_id: user?.id,
                 leave_status: params.type,
             },
         });
