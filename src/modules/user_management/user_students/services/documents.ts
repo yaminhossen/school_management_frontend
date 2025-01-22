@@ -27,7 +27,7 @@ async function details(
     try {
         let data = await studentsModel.findOne({
             where: {
-                id: user?.id,
+                id: params.id || user?.id,
             },
             attributes: {
                 exclude: ['password'],

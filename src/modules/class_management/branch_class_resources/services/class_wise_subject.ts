@@ -24,16 +24,6 @@ async function class_wise_subject(
             where: {
                 branch_class_id: params.id,
             },
-            // include: [
-            //     {
-            //         model: models.BranchClassSubjectsModel,
-            //         as: 'subject',
-            //     },
-            //     {
-            //         model: models.BranchClassesModel,
-            //         as: 'class',
-            //     },
-            // ],
             attributes: {
                 exclude: ['password'],
             },

@@ -92,6 +92,11 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.documents,
         )
         .get(
+            `${prefix}/documents/:id`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.documents,
+        )
+        .get(
             `${prefix}/single-student-details/:id`,
             controllerInstance.single_student_details,
         )
@@ -100,6 +105,11 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(`${prefix}/languages/:id`, controllerInstance.languages)
         .get(
             `${prefix}/contact-number`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.contact_numbers,
+        )
+        .get(
+            `${prefix}/contact-number/:id`,
             { preHandler: [auth_middleware] },
             controllerInstance.contact_numbers,
         )

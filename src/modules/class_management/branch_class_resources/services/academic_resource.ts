@@ -10,8 +10,6 @@ async function academic_resource(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
-    // let branchClassSubjectsModel = models.BranchClassSubjectsModel;
-    // let branchClassRoutinesModel = models.BranchClassRoutinesModel;
     let userTeachersModel = models.UserTeachersModel;
     let branchTeachersModel = models.BranchTeachersModel;
     let branchClassSubjectTeachersModel =

@@ -82,3 +82,11 @@
 {"level":60,"time":1737450092994,"pid":2100,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/staff/approved"}
 {"level":60,"time":1737450093534,"pid":2100,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/staff/approved"}
 {"level":60,"time":1737450200919,"pid":9320,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/staffs"}
+{"level":60,"time":1737525531719,"pid":8568,"hostname":"DESKTOP-9421701","error":"404","url":"/parnet"}
+{"level":60,"time":1737527293879,"pid":8568,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/documents/4"}
+{"level":60,"time":1737527312759,"pid":8568,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/documents/4"}
+{"level":60,"time":1737527317870,"pid":8568,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/documents/4"}
+{"level":60,"time":1737527341566,"pid":8568,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/documents/1"}
+{"level":60,"time":1737527343957,"pid":8568,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/documents/1"}
+{"level":60,"time":1737527482212,"pid":13444,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/documents/1"}
+{"level":60,"time":1737528576233,"pid":1868,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/contact-number/1"}
