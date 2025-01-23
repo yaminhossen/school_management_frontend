@@ -39,3 +39,5 @@
 {"level":60,"time":1737539933485,"pid":12800,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/22/2025 3:58:53 PM","message":"data not found"}
 {"level":60,"time":1737539974910,"pid":12800,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/22/2025 3:59:34 PM","message":"data not found"}
 {"level":60,"time":1737539974919,"pid":12800,"hostname":"DESKTOP-9421701","file":"","time":"1/22/2025 3:59:34 PM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1737625515563,"pid":12976,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:57:19)","time":"1/23/2025 3:45:15 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1737626873829,"pid":16612,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:72:19)","time":"1/23/2025 4:07:53 PM","message":"Unknown column 'fee_type_id' in 'field list'"}

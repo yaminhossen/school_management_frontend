@@ -167,6 +167,9 @@ const Index: React.FC<Props> = (props: Props) => {
             }
         }
     }, [classes]);
+    // if (classes) {
+    //     console.log('classes', classes);
+    // }
 
     useEffect(() => {
         let sum = feesTypes.reduce(

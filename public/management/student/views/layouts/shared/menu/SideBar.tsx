@@ -59,8 +59,8 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-money"
                 >
                     <MenuDropDownItem label="Payment History" to="/fees" />
-                    {/* <MenuDropDownItem label="Due List" to="/fees/dues" />
-                    <MenuDropDownItem label="Pay Fees" to="/fees/pay" /> */}
+                    <MenuDropDownItem label="Due List" to="/fees/dues" />
+                    {/* <MenuDropDownItem label="Pay Fees" to="/fees/pay" /> */}
                 </MenuDropDown>
 
                 <MenuSingle
