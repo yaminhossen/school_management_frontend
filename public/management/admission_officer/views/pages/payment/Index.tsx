@@ -179,6 +179,9 @@ const Index: React.FC<Props> = (props: Props) => {
         setTotalAmount(sum);
         // console.log(convertamount(33));
     }, [feesTypes]);
+    if (feesTypes) {
+        console.log('feestypes', feesTypes);
+    }
 
     return (
         <div className="admin_dashboard">

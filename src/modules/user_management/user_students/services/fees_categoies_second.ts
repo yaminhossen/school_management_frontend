@@ -22,14 +22,19 @@ async function fees_categories_second(
     let classFeessModel = models.BranchClassFeesModel;
     let params = req.params as any;
     let user_id = (req as any).user?.id;
-    console.log('user', user_id);
+    console.log('user params', params);
     console.log('today month', moment().format('MMMM'));
 
     try {
+        let student_data = await informationsModel.findOne({
+            where: {
+                student_id: params.id,
+            },
+        });
         let data = await classFeessModel.findAll({
             where: {
                 // branch_class_id: params.class,
-                branch_class_id: 1,
+                branch_class_id: student_data?.s_class,
             },
             include: [
                 {
@@ -48,7 +53,7 @@ async function fees_categories_second(
             // Calculate `total` for each ID
             const total = await accountFeesCollectionDetailsModel.sum('total', {
                 where: {
-                    branch_student_id: 22, // Hardcoded for demonstration
+                    branch_student_id: student_data?.user_student_id, // Hardcoded for demonstration
                     branch_class_fees_id: item.id, // Compare with each ID
                 },
             });
@@ -62,57 +67,30 @@ async function fees_categories_second(
             //         'fee_amount',
             //         {
             //             where: {
-            //                 branch_student_id: 22, // Hardcoded for demonstration
+            //                 branch_student_id: student_data?.user_student_id, // Hardcoded for demonstration
             //                 branch_class_fees_id: item.id, // Compare with each ID
             //             },
             //         },
             //     );
             // Check if the `item.name` is "monthly fee"
             if (item.name === 'Monthly fee') {
-                let thisMonth = moment().format('MMMM');
-                // let thisMonth = 'July';
-                console.log('thsimonth', thisMonth);
-                // For other cases, retrieve the fee amount only once
+                let thisMonth = moment().month() + 1; // Get current month index (1-12)
                 const feeRecord =
                     await accountFeesCollectionDetailsModel.findOne({
                         where: {
-                            branch_student_id: 22, // Hardcoded for demonstration
-                            branch_class_fees_id: item.id, // Compare with each ID
+                            branch_student_id: 22,
+                            branch_class_fees_id: item.id,
                         },
                         attributes: ['fee_amount'], // Fetch only `fee_amount` field
                     });
                 let fee = feeRecord ? feeRecord.fee_amount : 0;
-                if (thisMonth === 'January') {
-                    fee_amount = fee * 1;
-                } else if (thisMonth === 'February') {
-                    fee_amount = fee * 2;
-                } else if (thisMonth === 'March') {
-                    fee_amount = fee * 3;
-                } else if (thisMonth === 'April') {
-                    fee_amount = fee * 4;
-                } else if (thisMonth === 'May') {
-                    fee_amount = fee * 5;
-                } else if (thisMonth === 'June') {
-                    fee_amount = fee * 6;
-                } else if (thisMonth === 'July') {
-                    fee_amount = fee * 7;
-                } else if (thisMonth === 'August') {
-                    fee_amount = fee * 8;
-                } else if (thisMonth === 'September') {
-                    fee_amount = fee * 9;
-                } else if (thisMonth === 'October') {
-                    fee_amount = fee * 10;
-                } else if (thisMonth === 'November') {
-                    fee_amount = fee * 11;
-                } else if (thisMonth === 'December') {
-                    fee_amount = fee * 12;
-                }
+                fee_amount = fee * thisMonth;
             } else {
                 // For other cases, retrieve the fee amount only once
                 const feeRecord =
                     await accountFeesCollectionDetailsModel.findOne({
                         where: {
-                            branch_student_id: 22, // Hardcoded for demonstration
+                            branch_student_id: student_data?.user_student_id, // Hardcoded for demonstration
                             branch_class_fees_id: item.id, // Compare with each ID
                         },
                         attributes: ['fee_amount'], // Fetch only `fee_amount` field
@@ -130,7 +108,7 @@ async function fees_categories_second(
             });
         }
         // Calculate overall totals
-        const summary = idWiseTotals.reduce(
+        const summeries = idWiseTotals.reduce(
             (acc, curr) => {
                 acc.total += curr.total || 0;
                 acc.fee_amount += curr.fee_amount || 0;
@@ -143,7 +121,7 @@ async function fees_categories_second(
             return response(200, 'data created', {
                 data,
                 idWiseTotals,
-                summary,
+                summeries,
             });
         } else {
             throw new custom_error('not found', 404, 'data not found');

@@ -42,7 +42,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const [periods, setPeriods] = useState<Periodinfo[]>([]);
     const [classes, setClass] = useState<any>([]);
     const [feesTypes, setFeesTypes] = useState<FeesInfo[]>([]);
-    const [totalAmount, setTotalAmount] = useState(0);
+    const [totalAmount, setTotalAmount] = useState();
     const handleSubmit = async (e) => {
         e.preventDefault();
         let form = document.getElementById('main_form') as HTMLFormElement;
@@ -102,9 +102,10 @@ const Index: React.FC<Props> = (props: Props) => {
     const fetchTypes = async (id: string) => {
         try {
             const response2 = await axios.get(
-                `/api/v1/user-students/fees-categories/${id}`,
+                `/api/v1/user-students/fees-categories-student/${id}`,
             );
-            setFeesTypes(response2.data.data);
+            setFeesTypes(response2.data?.data?.idWiseTotals);
+            setTotalAmount(response2.data?.data?.summeries);
         } catch (error) {
             setError(error);
         }
@@ -131,21 +132,28 @@ const Index: React.FC<Props> = (props: Props) => {
         }
     };
     useEffect(() => {
-        if (classes) {
-            let id = classes.s_class;
-            if (id) {
-                fetchTypes(id);
-            }
+        // if (classes) {
+        //     let id = classes.s_class;
+        //     if (id) {
+        //         fetchTypes(id);
+        //     }
+        // }
+        const id = studentIdRef.current?.value;
+        if (id) {
+            fetchTypes(id);
         }
     }, [classes]);
 
-    useEffect(() => {
-        let sum = feesTypes.reduce(
-            (t, i: anyObject) => (t += +(i.input_amount || 0)),
-            0,
-        );
-        setTotalAmount(sum);
-    }, [feesTypes]);
+    // useEffect(() => {
+    //     let sum = feesTypes.reduce(
+    //         (t, i: anyObject) => (t += +(i.input_amount || 0)),
+    //         0,
+    //     );
+    //     setTotalAmount(sum);
+    // }, [feesTypes]);
+    if (totalAmount) {
+        console.log(totalAmount);
+    }
 
     return (
         <div className="admin_dashboard">
@@ -318,6 +326,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <th>Title</th>
                                         <th>Fees</th>
+                                        <th>Due amount</th>
+                                        <th>Advanced</th>
                                         <th>Given Amount</th>
                                     </tr>
                                 </thead>
@@ -340,9 +350,21 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             <input
                                                                 type="hidden"
                                                                 name={`fees_amount_${index}`}
-                                                                value={i.amount}
+                                                                value={
+                                                                    i.fee_amount
+                                                                }
                                                             />
-                                                            {i.amount}
+                                                            {i.fee_amount}
+                                                        </td>
+                                                        <td>
+                                                            {i.due_amount < 0
+                                                                ? i.due_amount
+                                                                : '0'}
+                                                        </td>
+                                                        <td>
+                                                            {i.due_amount >= 0
+                                                                ? i.due_amount
+                                                                : '0'}
                                                         </td>
                                                         <td>
                                                             <input
@@ -376,16 +398,18 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td></td>
                                         <td>Total</td>
-                                        <td>
+                                        <td>{totalAmount?.['fee_amount']}</td>
+                                        <td>jhg</td>
+                                        <td>hjj</td>
+                                        {/* <td>
                                             {totalAmount} tk
                                             <input
                                                 type="hidden"
                                                 name="total_amount"
                                                 value={totalAmount}
                                             />
-                                        </td>
+                                        </td> */}
                                     </tr>
                                 </tfoot>
                             </table>

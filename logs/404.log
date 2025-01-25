@@ -92,3 +92,15 @@
 {"level":60,"time":1737528576233,"pid":1868,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/contact-number/1"}
 {"level":60,"time":1737776324157,"pid":2888,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
 {"level":60,"time":1737776340891,"pid":2888,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1737797139248,"pid":1808,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/class-routine"}
+{"level":60,"time":1737797145373,"pid":1808,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collections/payment-history"}
+{"level":60,"time":1737797349556,"pid":1808,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
+{"level":60,"time":1737797368273,"pid":1808,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
+{"level":60,"time":1737798609989,"pid":20844,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
+{"level":60,"time":1737798657178,"pid":20844,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
+{"level":60,"time":1737798667761,"pid":20844,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/fees-categories-student/cse101"}
+{"level":60,"time":1737798723395,"pid":18908,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
+{"level":60,"time":1737798771243,"pid":9028,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
+{"level":60,"time":1737798864590,"pid":9028,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
+{"level":60,"time":1737799282370,"pid":1708,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
+{"level":60,"time":1737799283331,"pid":1708,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
