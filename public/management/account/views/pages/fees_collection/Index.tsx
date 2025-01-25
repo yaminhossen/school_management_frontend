@@ -326,8 +326,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <th>Title</th>
                                         <th>Fees</th>
+                                        <th>Paying</th>
                                         <th>Due amount</th>
                                         <th>Advanced</th>
+                                        <th>Payable</th>
                                         <th>Given Amount</th>
                                     </tr>
                                 </thead>
@@ -356,6 +358,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             />
                                                             {i.fee_amount}
                                                         </td>
+                                                        <td>{i.total}</td>
                                                         <td>
                                                             {i.due_amount < 0
                                                                 ? i.due_amount
@@ -366,6 +369,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 ? i.due_amount
                                                                 : '0'}
                                                         </td>
+                                                        <td></td>
                                                         <td>
                                                             <input
                                                                 type="hidden"
@@ -400,8 +404,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <td>Total</td>
                                         <td>{totalAmount?.['fee_amount']}</td>
-                                        <td>jhg</td>
-                                        <td>hjj</td>
+                                        <td>{totalAmount?.['total']}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>{totalAmount?.['due_amount']}</td>
                                         {/* <td>
                                             {totalAmount} tk
                                             <input
