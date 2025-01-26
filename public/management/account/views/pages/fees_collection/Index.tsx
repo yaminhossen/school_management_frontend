@@ -43,6 +43,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const [classes, setClass] = useState<any>([]);
     const [feesTypes, setFeesTypes] = useState<FeesInfo[]>([]);
     const [totalAmount, setTotalAmount] = useState();
+    const [totalAmount2, setTotalAmount2] = useState(0);
     const handleSubmit = async (e) => {
         e.preventDefault();
         let form = document.getElementById('main_form') as HTMLFormElement;
@@ -144,13 +145,13 @@ const Index: React.FC<Props> = (props: Props) => {
         }
     }, [classes]);
 
-    // useEffect(() => {
-    //     let sum = feesTypes.reduce(
-    //         (t, i: anyObject) => (t += +(i.input_amount || 0)),
-    //         0,
-    //     );
-    //     setTotalAmount(sum);
-    // }, [feesTypes]);
+    useEffect(() => {
+        let sum = feesTypes.reduce(
+            (t, i: anyObject) => (t += +(i.input_amount || 0)),
+            0,
+        );
+        setTotalAmount2(sum);
+    }, [feesTypes]);
     if (totalAmount) {
         console.log(totalAmount);
     }
@@ -408,14 +409,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <td></td>
                                         <td></td>
                                         <td>{totalAmount?.['due_amount']}</td>
-                                        {/* <td>
-                                            {totalAmount} tk
+                                        <td>
+                                            {totalAmount2} tk
                                             <input
                                                 type="hidden"
                                                 name="total_amount"
-                                                value={totalAmount}
+                                                value={totalAmount2}
                                             />
-                                        </td> */}
+                                        </td>
                                     </tr>
                                 </tfoot>
                             </table>

@@ -78,9 +78,9 @@ async function mark_store(
         other_mark: body.other_mark == '' ? null : body.other_mark,
     };
 
-    console.log('thsi is update data', body);
-    console.log('thsi is update data', body.exam_id);
-    console.log('thsi is update data', body.exam_id);
+    console.log('thsi is update data11', body);
+    console.log('thsi is update data12', body.mark);
+    console.log('thsi is update data13', body.other_mark);
 
     /** print request data into console */
     // console.clear();
@@ -104,10 +104,11 @@ async function mark_store(
                 student_id: body.student_id,
                 subject_id: body.subject_id,
                 obtained_mark: body.mark || data.obtained_mark,
+                // obtained_mark:
+                //     body?.studentMarks?.obtained_mark || data.obtained_mark,
                 other_mark: body.other_mark || data.other_mark,
             };
-            data.update(inputs);
-            await data.save();
+            (await data.update(inputs)).save();
             return response(200, 'data updated', data);
         } else {
             let newData = (await model.update(inputs1)).save();

@@ -15,6 +15,9 @@ import destroy from './services/destroy';
 import data_import from './services/import';
 import mark_details from './services/exam_marks_details';
 import mark_store from './services/mark_store';
+import student_class from './services/student_class';
+import class_wise_exam from './services/class_wise_exam';
+import exam_wise from './services/exam_wise';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -30,6 +33,24 @@ export default function (fastify: FastifyInstance) {
 
         mark_details: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await mark_details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        student_class: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await student_class(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        class_wise_exam: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await class_wise_exam(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        exam_wise: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await exam_wise(fastify, req);
             res.code(data.status).send(data);
         },
 

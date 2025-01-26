@@ -5,7 +5,7 @@ import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 
-async function class_routine_details(
+async function student_class(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -18,30 +18,53 @@ async function class_routine_details(
     // let hallGuardPlansModel = models.ExamGuardPlansModel;
     let examsModel = models.ExamsModel;
     let examMarksModel = models.ExamStudentMarksModel;
+    let branchClassesModel = models.BranchClassesModel;
     let params = req.params as any;
     console.log('class', params.id);
 
     try {
         let data = await examMarksModel.findAll({
             where: {
-                class_id: params.class,
+                // class_id: 1,
                 student_id: 1,
             },
             include: [
                 {
-                    model: examsModel,
-                    as: 'exams',
-                },
-                {
-                    model: branchClassSubjectsModel,
-                    as: 'subject',
+                    model: branchClassesModel,
+                    as: 'a_class',
+                    attributes: {
+                        include: [
+                            // Subquery to count students for each class
+                            [
+                                models.sequelize.literal(`(
+                                    SELECT COUNT(*)
+                                    FROM user_student_informations
+                                    WHERE user_student_informations.s_class = a_class.id
+                                )`),
+                                'student_count',
+                            ],
+                        ],
+                    },
                 },
             ],
+            attributes: {
+                exclude: ['password'],
+            },
         });
-        // console.log('data', data);
-
         if (data) {
-            return response(200, 'data foundeds', data);
+            const groupedData = data.reduce((acc: any, item: any) => {
+                const classId = item.a_class.id;
+
+                if (!acc[classId]) {
+                    acc[classId] = item.a_class;
+                }
+
+                return acc;
+            }, {});
+
+            const responseData = Object.values(groupedData);
+
+            return response(200, 'data found', responseData);
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }
@@ -56,4 +79,4 @@ async function class_routine_details(
     }
 }
 
-export default class_routine_details;
+export default student_class;

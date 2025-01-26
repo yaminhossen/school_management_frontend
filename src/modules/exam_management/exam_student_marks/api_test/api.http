@@ -1,4 +1,4 @@
-@hostname = http://127.0.0.1:5003/api/v1/exam-student-marks
+@hostname = http://127.0.0.1:5002/api/v1/exam-student-marks
 @token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidG9rZW4iOiJxNm85anE4ZiIsInVzZXJfYWdlbnQiOiJ2c2NvZGUtcmVzdGNsaWVudCIsImlhdCI6MTcxNTQ5MzE0NH0.XAq9b9sahDzxrjSeuF1OS5WPFTjbhg_28ozJpx6odC4
 
 # all
@@ -8,6 +8,18 @@ GET {{hostname}}?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10
 # get
 ###
 GET {{hostname}}/mark-details/1 HTTP/1.1
+
+# get
+###
+GET {{hostname}}/student-class HTTP/1.1
+
+# get
+###
+GET {{hostname}}/class-wise-exam HTTP/1.1
+
+# get
+###
+GET {{hostname}}/exam-wise HTTP/1.1
 
 # get
 ###
