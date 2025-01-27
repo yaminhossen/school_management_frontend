@@ -5,10 +5,12 @@ import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
 
-const Markshit: React.FC<Props> = (props: Props) => {
+const TermResult: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    const [data, setData] = useState<anyObject[]>([]);
-    const { id } = useParams();
+    const [title, setTitle] = useState('');
+    const [data, setData] = useState<any>([]);
+    const { termid, classid } = useParams();
+    console.log('query params', termid, classid);
 
     useEffect(() => {
         // Function to fetch data
@@ -17,9 +19,12 @@ const Markshit: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/exam-student-marks/class-wise-exam/${id}`,
+                `/api/v1/exam-student-marks/exam-wise/${termid}/${classid}`,
             );
-            setData(response.data.data);
+            let newdata = Object.values(response.data.data)[0];
+            // console.log(newdata);
+            setData(newdata);
+            setTitle(Object.keys(response.data.data)[0]);
             // setData(response.data);
         } catch (error) {
             setError(error);
@@ -29,7 +34,7 @@ const Markshit: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-    console.log(data);
+    // console.log(data);
 
     function getGrade(score) {
         if (score >= 30 && score <= 39) {
@@ -50,11 +55,14 @@ const Markshit: React.FC<Props> = (props: Props) => {
             return 'Invalid score'; // Handle scores outside the valid range
         }
     }
-
+    function convertUnderscoreToSpace(str: string): string {
+        return str.replace(/_/g, ' ');
+    }
     return (
         <div className="admin_dashboard">
             <div>{/* <h3>Current CGPA : 4.50</h3> */}</div>
-            <h3 className="table_heading student_semister">Result History</h3>
+            <h3 className="table_heading">{convertUnderscoreToSpace(title)}</h3>
+            {/* <h3 className="table_heading student_semister">Result History</h3> */}
             <div className="content_body ">
                 <div className="data_list mb-4">
                     <div className="table_responsive custom_scroll">
@@ -65,6 +73,8 @@ const Markshit: React.FC<Props> = (props: Props) => {
                                     <th>id</th>
                                     <th>Exam</th>
                                     <th>Subject</th>
+                                    <th>Marks</th>
+                                    <th>Grade</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -74,20 +84,20 @@ const Markshit: React.FC<Props> = (props: Props) => {
                                             <tr>
                                                 <td></td>
                                                 <td>{index + 1}</td>
-                                                <td>{i.title}</td>
-                                                {/* <td>{i?.subject?.name}</td>
-                                                <td>{i?.obtained_mark}</td> */}
-                                                <td>
+                                                <td>{i.exams?.title}</td>
+                                                <td>{i?.subject?.name}</td>
+                                                <td>{i?.obtained_mark}</td>
+                                                {/* <td>
                                                     <Link
                                                         className="btn btn-sm btn-outline-info"
-                                                        to={`/mark-sheet/term-exam/${i.id}/${id}`}
+                                                        to={`/mark-sheet/details/${i.id}`}
                                                     >
                                                         details
                                                     </Link>
-                                                </td>
-                                                {/* <td>
-                                                    {getGrade(i.obtained_mark)}
                                                 </td> */}
+                                                <td>
+                                                    {getGrade(i.obtained_mark)}
+                                                </td>
                                             </tr>
                                         );
                                     },
@@ -132,4 +142,4 @@ const Markshit: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Markshit;
+export default TermResult;

@@ -1,34 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
+    const [error, setError] = useState(null);
+    const [data, setData] = useState<anyObject[]>([]);
+
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/exam-student-marks/student-class',
+            );
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    if (data) {
+        console.log(data);
     }
-    const datas: data[] = [
-        {
-            id: 1,
-            class: 'Six',
-            marks: '480',
-            grade: 'A+',
-            session: '2020',
-        },
-        {
-            id: 2,
-            class: 'Seven',
-            marks: '500',
-            grade: 'A+',
-            session: '2021',
-        },
-        {
-            id: 3,
-            class: 'Eight',
-            marks: '450',
-            grade: 'A',
-            session: '2022',
-        },
-    ];
 
     return (
         <div className="admin_dashboard">
@@ -42,26 +44,23 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>id</th>
                                     <th>Class</th>
-                                    <th>Marks</th>
-                                    <th>Session</th>
-                                    <th>Grade</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
+                                {data?.map((i: { [key: string]: any }) => {
                                     return (
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.class}</td>
-                                            <td>{i.marks}</td>
+                                            <td>{i.name}</td>
+                                            {/* <td>{i.marks}</td>
                                             <td>{i.session}</td>
-                                            <td>{i.grade}</td>
+                                            <td>{i.grade}</td> */}
                                             <td>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info"
-                                                    to="/mark-sheet/details"
+                                                    to={`/mark-sheet/details/${i.id}`}
                                                 >
                                                     details
                                                 </Link>

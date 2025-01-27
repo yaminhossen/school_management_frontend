@@ -19,7 +19,8 @@ async function exam_wise(
     let examsModel = models.ExamsModel;
     let examMarksModel = models.ExamStudentMarksModel;
     let params = req.params as any;
-    console.log('class', params.id);
+    let user = (req as any).user;
+    console.log('class', params);
     try {
         // const { exam_id } = req.query; // Get `exam_id` from query parameters
 
@@ -33,14 +34,18 @@ async function exam_wise(
 
         let data = await examMarksModel.findAll({
             where: {
-                class_id: 1,
-                student_id: 1,
-                exam_id: 2, // Filter by exam_id
+                class_id: params?.classid,
+                student_id: user?.id,
+                exam_id: params?.termid, // Filter by exam_id
             },
             include: [
                 {
                     model: examsModel,
                     as: 'exams',
+                },
+                {
+                    model: branchClassSubjectsModel,
+                    as: 'subject',
                 },
             ],
         });
@@ -49,13 +54,16 @@ async function exam_wise(
             // Group the data by title
             const groupedData = data.reduce((acc: any, item: any) => {
                 const title = item.exams?.title || 'Unknown'; // Default to "Unknown" if title is missing
-                if (!acc[title]) {
-                    acc[title] = [];
+                const snakeCaseTitle = title.replace(/\s+/g, '_');
+                if (!acc[snakeCaseTitle]) {
+                    acc[snakeCaseTitle] = [];
                 }
-                acc[title].push(item);
+                acc[snakeCaseTitle].push(item);
                 return acc;
             }, {});
 
+            // Convert grouped object into an array
+            // const groupedArray = Object.values(groupedData);
             return response(200, 'Data grouped by title', groupedData);
         } else {
             throw new custom_error('Not found', 404, 'Data not found');

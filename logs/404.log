@@ -200,3 +200,11 @@
 {"level":60,"time":1737871586142,"pid":16716,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignment-submissions/sub-wise-assignment/1"}
 {"level":60,"time":1737873591344,"pid":19364,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-routines?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+date%2C+exam_id%2C+class_id%2C+subject_id%2C+status"}
 {"level":60,"time":1737873721632,"pid":19364,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1737947984922,"pid":1176,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1737955288472,"pid":7252,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1737955395219,"pid":13676,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1737955427357,"pid":12508,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1737955441106,"pid":12508,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1737955887995,"pid":8800,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
+{"level":60,"time":1737956414253,"pid":8800,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-routines/plan"}
+{"level":60,"time":1737956749630,"pid":8800,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/exam-wise/$%7Btermid%7D/$%7Bclassid%7D"}

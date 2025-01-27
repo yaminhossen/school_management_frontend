@@ -69,3 +69,10 @@
 {"level":60,"time":1737873463295,"pid":19364,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/26/2025 12:37:43 PM","message":"data not found"}
 {"level":60,"time":1737873463344,"pid":19364,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/26/2025 12:37:43 PM","message":"data not found"}
 {"level":60,"time":1737882883363,"pid":14052,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:53:19)","time":"1/26/2025 3:14:43 PM","message":"WHERE parameter \"class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1737955528677,"pid":10464,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"1/27/2025 11:25:28 AM","message":"data not found"}
+{"level":60,"time":1737955619962,"pid":3276,"hostname":"DESKTOP-9421701","file":"services\\class_wise_exam.ts:69:19)","time":"1/27/2025 11:26:59 AM","message":"WHERE parameter \"student_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1737955622594,"pid":3276,"hostname":"DESKTOP-9421701","file":"services\\class_wise_exam.ts:69:19)","time":"1/27/2025 11:27:02 AM","message":"WHERE parameter \"student_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1737955625721,"pid":3276,"hostname":"DESKTOP-9421701","file":"services\\class_wise_exam.ts:69:19)","time":"1/27/2025 11:27:05 AM","message":"WHERE parameter \"student_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1737957994038,"pid":6356,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"1/27/2025 12:06:34 PM","message":"data not found"}
+{"level":60,"time":1737957999936,"pid":6356,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"1/27/2025 12:06:39 PM","message":"data not found"}
+{"level":60,"time":1737958000650,"pid":6356,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"1/27/2025 12:06:40 PM","message":"data not found"}
