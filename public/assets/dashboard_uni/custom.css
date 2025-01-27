@@ -657,3 +657,103 @@ th {
     }
     }
 }
+.outer-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px double #686565;
+    /* background-color: aliceblue; */
+}
+
+.outer-table td {
+    padding: 8px;
+    .top-cell {
+        height: 60px;
+    }
+    .inner-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        .side-cell{
+            vertical-align:  top !important;
+            .student_image{
+                img{
+                    width: 100px;
+                    height: 120px;
+                    border: 1px solid rgba(199, 179, 90, 0.404);
+                    padding: 2px;
+                    border-radius: 8px;
+                }
+            }
+            .grade_sheet{
+                th, td{
+                    padding: 0 !important;
+                    margin: 0 !important;
+                    font-size: 10px;
+                }
+            }
+        }
+        .middle-cell{
+            width: 60%;
+            vertical-align:  top !important;
+            p{
+                margin: 0px;
+                font-size: 16px;
+                /* @media print {
+                    background-color: red;
+                } */
+            }
+            .logo_image{
+                margin-top: 0px;
+                padding-top: 0px;
+                img{
+                    width: 70px;
+                height: 70px;
+                border-radius: 50px;
+                margin-top: 0px;
+                padding-top: 0px;
+                }
+            }
+            h3{
+                font-size: 16px;
+                margin-top: 10px;
+                font-weight: 600;
+                border-bottom: 2px dotted rgb(211, 178, 71);
+                display: inline-block;
+                /* text-decoration: underline dotted; */
+            }
+        }
+        .bottom-left {
+            width: 60%;
+            /* height: 150px; */
+            .result_table {
+                tr, td{
+                    border: 0 !important;
+                    text-align: left !important;
+                    vertical-align: top !important;
+                }
+            }
+        }
+        
+        .bottom-right {
+            width: 40%;
+            vertical-align: bottom !important; 
+            /* height: 150px; */
+            .result_table2 {
+                tr, td{
+                     border: 0 !important;
+                     text-align: left !important;
+                 }
+             }
+        }
+    }
+}
+.middle_table{
+    max-height: 120px !important;
+}
+
+
+
+
+
+
