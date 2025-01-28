@@ -64,7 +64,7 @@ const TermResult: React.FC<Props> = (props: Props) => {
 
             <div className="content_body ">
                 <div className="data_list mb-4">
-                    <div className="table_responsive custom_scroll">
+                    <div className="table_responsive mark_sheet">
                         <table className="outer-table">
                             <tr>
                                 <td className="top-cell">
@@ -233,7 +233,7 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                 </td>
                             </tr>
                         </table>
-                        <table>
+                        <table className="second_table">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -247,7 +247,7 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                 {data?.map(
                                     (i: { [key: string]: any }, index) => {
                                         return (
-                                            <tr>
+                                            <tr className="grade_table">
                                                 <td></td>
                                                 {/* <td>{index + 1}</td> */}
                                                 <td>{i?.subject?.name}</td>
@@ -259,6 +259,12 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                         );
                                     },
                                 )}
+                                <tr className="grade_table2">
+                                    <td></td>
+                                    <td>RESULT :</td>
+                                    <td>400</td>
+                                    <td>A</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

@@ -217,3 +217,13 @@
 {"level":60,"time":1737958774881,"pid":2156,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
 {"level":60,"time":1737958775041,"pid":2156,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
 {"level":60,"time":1737958775287,"pid":2156,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
+{"level":60,"time":1737961566857,"pid":8056,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1737961577196,"pid":8056,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1737977101637,"pid":8056,"hostname":"DESKTOP-9421701","error":"404","url":"/assets/dashboard_uni/logo(1).png"}
+{"level":60,"time":1737977103407,"pid":8056,"hostname":"DESKTOP-9421701","error":"404","url":"/assets/dashboard_uni/logo(1).png"}
+{"level":60,"time":1737978127966,"pid":8056,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1738016280578,"pid":12000,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1738016296567,"pid":12000,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1738016301356,"pid":12000,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1738017592401,"pid":12000,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
+{"level":60,"time":1738040977655,"pid":17356,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/exam-wise/2/1"}

@@ -657,18 +657,153 @@ th {
     }
     }
 }
+.page-main-header{
+    @media print {
+        display: none !important;
+    }
+}
+body{
+    background-color: white !important;
+}
+#dashboard{
+    background-color: white !important;
+}
+.page-body{
+    height: unset !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: white !important;
+}
+
+.page-main-header{
+    display: none !important;
+}
+.page-sidebar{
+    width: 0 !important;
+}
+.page-body-wrapper{
+    height: unset !important;
+}
+.management_heading{
+    display: none;
+}
+.management_root{
+    padding: 0;
+}
+.table_heading{
+    display: none;
+}
+.data_list{
+    margin: 0 !important;
+}
+.outer-table{
+    border: 0 !important;
+}
+.second_table{
+    margin-top: 15px;
+}
+.custom_scroll{
+    overflow: hidden !important;
+}
+.table_responsive table thead tr {
+    background-color: #fdf8ec;
+    th{
+        color: black;
+        font-weight: 600;
+    }
+}
+.second_table thead tr {
+    background-color: #ecfafa !important;
+    th{
+        color: black;
+        font-weight: 600;
+    }
+}
+.grade_table2{
+    background-color: #f4f6dc !important;
+}
+    .grade_table2{
+        td {
+            color: #008040 !important;
+            font-weight: 600;
+        }
+    }
+.mark_sheet{
+    background-color: white;
+    padding: 0;
+}
+.top-cell {
+    h1{
+        color: black !important;
+        font-weight: 600;
+    }
+}
+.grade_sheet{
+    th, td{
+        padding: 0 !important;
+        margin: 0 !important;
+        font-size: 10px;
+        color: black !important;
+    }
+}
+.middle-cell{
+    width: 60%;
+    vertical-align:  top !important;
+    p{
+        color: black;
+        
+    }
+    h3{
+        color: black !important;
+    }
+}
+.result_table {
+    tr, td{
+        color: black !important;
+    }
+}
+.result_table2 {
+    tr, td{
+        color: black !important;
+    }
+}
+.grade_table{
+    td {
+        color: black !important;
+    }
+}
+.student_image{
+                img{
+                    width: 100px;
+                    height: 120px;
+                    border: 1px solid rgba(46, 42, 24, 0.404);
+                    padding: 2px;
+                    border-radius: 8px;
+                }
+ }
+
+
+
 .outer-table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    border: 1px double #686565;
+    /* border: 1px double #686565; */
     /* background-color: aliceblue; */
 }
-
+.top-cell {
+    h1{
+        /* color: black; */
+        font-weight: 600;
+    }
+}
 .outer-table td {
     padding: 8px;
     .top-cell {
         height: 60px;
+        h1{
+            /* color: black !important; */
+        }
     }
     .inner-table {
         width: 100%;
@@ -680,7 +815,7 @@ th {
                 img{
                     width: 100px;
                     height: 120px;
-                    border: 1px solid rgba(199, 179, 90, 0.404);
+                    border: 1px solid rgba(163, 154, 111, 0.404);
                     padding: 2px;
                     border-radius: 8px;
                 }
@@ -690,6 +825,7 @@ th {
                     padding: 0 !important;
                     margin: 0 !important;
                     font-size: 10px;
+                    /* color: black; */
                 }
             }
         }
@@ -699,9 +835,8 @@ th {
             p{
                 margin: 0px;
                 font-size: 16px;
-                /* @media print {
-                    background-color: red;
-                } */
+                /* color: black; */
+                
             }
             .logo_image{
                 margin-top: 0px;
@@ -718,7 +853,8 @@ th {
                 font-size: 16px;
                 margin-top: 10px;
                 font-weight: 600;
-                border-bottom: 2px dotted rgb(211, 178, 71);
+                /* color: black; */
+                border-bottom: 2px dotted rgba(241, 224, 185, 0.438);
                 display: inline-block;
                 /* text-decoration: underline dotted; */
             }
@@ -728,9 +864,10 @@ th {
             /* height: 150px; */
             .result_table {
                 tr, td{
-                    border: 0 !important;
+                    /* border: 0 !important; */
                     text-align: left !important;
                     vertical-align: top !important;
+                    /* color: black; */
                 }
             }
         }
@@ -741,8 +878,9 @@ th {
             /* height: 150px; */
             .result_table2 {
                 tr, td{
-                     border: 0 !important;
+                     /* border: 0 !important; */
                      text-align: left !important;
+                     /* color: black; */
                  }
              }
         }
@@ -750,6 +888,13 @@ th {
 }
 .middle_table{
     max-height: 120px !important;
+}
+
+.grade_table2{
+    td {
+        /* color: #008040 !important; */
+        font-weight: 600;
+    }
 }
 
 

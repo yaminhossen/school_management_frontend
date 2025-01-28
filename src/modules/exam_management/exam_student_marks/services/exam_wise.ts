@@ -61,9 +61,6 @@ async function exam_wise(
                 acc[snakeCaseTitle].push(item);
                 return acc;
             }, {});
-
-            // Convert grouped object into an array
-            // const groupedArray = Object.values(groupedData);
             return response(200, 'Data grouped by title', groupedData);
         } else {
             throw new custom_error('Not found', 404, 'Data not found');
