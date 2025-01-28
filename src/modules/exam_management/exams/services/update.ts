@@ -63,6 +63,7 @@ async function update(
         branch_id: auth_user?.branch_id || 1,
         title: body.title,
         month: body.month,
+        is_active: body.is_active,
         description: body.description,
         creator: user?.id || null,
     };

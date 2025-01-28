@@ -232,3 +232,14 @@
 {"level":60,"time":1738058159906,"pid":18132,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/1"}
 {"level":60,"time":1738058171032,"pid":18132,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/1"}
 {"level":60,"time":1738058174498,"pid":18132,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/2"}
+{"level":60,"time":1738058313813,"pid":13224,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignment-categories/all-categories"}
+{"level":60,"time":1738058313821,"pid":13224,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-classes/all-class"}
+{"level":60,"time":1738058319542,"pid":13224,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignment-categories/all-categories"}
+{"level":60,"time":1738058319547,"pid":13224,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-classes/all-class"}
+{"level":60,"time":1738058431948,"pid":13224,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved"}
+{"level":60,"time":1738059521919,"pid":13224,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1738061466324,"pid":13224,"hostname":"DESKTOP-9421701","error":"404","url":"/exam"}
+{"level":60,"time":1738064571951,"pid":17684,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exams?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+month%2C+description%2C+status"}
+{"level":60,"time":1738064573424,"pid":17684,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exams?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+month%2C+description%2C+status"}
+{"level":60,"time":1738064575087,"pid":17684,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exams/3"}
+{"level":60,"time":1738064577183,"pid":17684,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exams/3"}

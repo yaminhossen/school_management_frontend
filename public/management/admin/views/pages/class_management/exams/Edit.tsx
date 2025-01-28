@@ -48,6 +48,23 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
+                                    <label>Is active</label>
+                                    <div className="form_elements">
+                                        <select
+                                            name="is_active"
+                                            id=""
+                                            defaultValue={state.item.is_active}
+                                        >
+                                            <option value="active">
+                                                active
+                                            </option>
+                                            <option value="deactive">
+                                                deactive
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
                                     <label>Title</label>
                                     <div className="form_elements">
                                         <input
@@ -77,9 +94,15 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         <input
                                             type="date"
                                             name="month"
-                                            defaultValue={moment(
-                                                state.item.month,
-                                            ).format('YYYY-MM-DD')}
+                                            defaultValue={
+                                                state.item.month
+                                                    ? moment(
+                                                        state.item.month,
+                                                    ).format('YYYY-MM-DD')
+                                                    : moment().format(
+                                                        'YYYY-MM-DD',
+                                                    )
+                                            }
                                         />
                                     </div>
                                 </div>

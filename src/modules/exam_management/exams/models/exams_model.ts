@@ -30,6 +30,7 @@ type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
 // type type = 'income' | 'expense';
 type status = 'active' | 'deactive';
+type is_active = 'active' | 'deactive';
 
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
@@ -38,6 +39,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare title: string;
     declare month: string;
     declare description: string;
+    declare is_active?: is_active;
 
     declare status?: status;
     declare creator?: number;
@@ -69,6 +71,10 @@ function init(sequelize: Sequelize) {
             description: {
                 type: DataTypes.TEXT,
                 allowNull: true,
+            },
+            is_active: {
+                type: new DataTypes.ENUM('active', 'deactive'),
+                defaultValue: 'active',
             },
 
             status: {

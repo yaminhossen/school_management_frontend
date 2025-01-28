@@ -85,3 +85,16 @@
 {"level":60,"time":1738056089404,"pid":18132,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/28/2025 3:21:29 PM","message":"data not found"}
 {"level":60,"time":1738056095838,"pid":18132,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/28/2025 3:21:35 PM","message":"data not found"}
 {"level":60,"time":1738056095861,"pid":18132,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/28/2025 3:21:35 PM","message":"data not found"}
+{"level":60,"time":1738058332073,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/28/2025 3:58:52 PM","message":"data not found"}
+{"level":60,"time":1738058332093,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/28/2025 3:58:52 PM","message":"data not found"}
+{"level":60,"time":1738058436072,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/28/2025 4:00:36 PM","message":"data not found"}
+{"level":60,"time":1738058436102,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/28/2025 4:00:36 PM","message":"data not found"}
+{"level":60,"time":1738058505176,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/28/2025 4:01:45 PM","message":"data not found"}
+{"level":60,"time":1738059582561,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/28/2025 4:19:42 PM","message":"data not found"}
+{"level":60,"time":1738059582579,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/28/2025 4:19:42 PM","message":"data not found"}
+{"level":60,"time":1738063160594,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"1/28/2025 5:19:20 PM","message":"Unknown column 'ExamsModel.name' in 'where clause'"}
+{"level":60,"time":1738063167536,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"1/28/2025 5:19:27 PM","message":"Unknown column 'ExamsModel.name' in 'where clause'"}
+{"level":60,"time":1738063170710,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"1/28/2025 5:19:30 PM","message":"Unknown column 'ExamsModel.name' in 'where clause'"}
+{"level":60,"time":1738063175993,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"1/28/2025 5:19:35 PM","message":"Unknown column 'ExamsModel.name' in 'where clause'"}
+{"level":60,"time":1738063180221,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"1/28/2025 5:19:40 PM","message":"Unknown column 'ExamsModel.name' in 'where clause'"}
+{"level":60,"time":1738063188946,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"1/28/2025 5:19:48 PM","message":"Unknown column 'ExamsModel.name' in 'where clause'"}
