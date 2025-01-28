@@ -81,3 +81,7 @@
 {"level":60,"time":1737977666525,"pid":8056,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/27/2025 5:34:26 PM","message":"data not found"}
 {"level":60,"time":1737977687240,"pid":8056,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/27/2025 5:34:47 PM","message":"data not found"}
 {"level":60,"time":1737977687273,"pid":8056,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/27/2025 5:34:47 PM","message":"data not found"}
+{"level":60,"time":1738056089271,"pid":18132,"hostname":"DESKTOP-9421701","file":"","time":"1/28/2025 3:21:29 PM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1738056089404,"pid":18132,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/28/2025 3:21:29 PM","message":"data not found"}
+{"level":60,"time":1738056095838,"pid":18132,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/28/2025 3:21:35 PM","message":"data not found"}
+{"level":60,"time":1738056095861,"pid":18132,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/28/2025 3:21:35 PM","message":"data not found"}

@@ -16,6 +16,7 @@ import notices_routes from '../views/pages/notices/config/routes';
 import academic_resources_routes from '../views/pages/academic_resources/config/routes';
 import hall_guard_routine_routes from '../views/pages/hall_guard_routine/config/routes';
 import class_attendance_routes from '../views/pages/class_attendance/config/routes';
+import exam_attendance_routes from '../views/pages/exam_attendance/config/routes';
 import assignment_routes from '../views/pages/assignment/config/routes';
 import assignment_marking_routes from '../views/pages/assignment_marking/config/routes';
 import student_routes from '../views/pages/student/config/routes';
@@ -45,6 +46,7 @@ const router: RouteTypes[] = [
             course_materials_routes,
             reports_routes,
             settings_routes,
+            exam_attendance_routes,
             {
                 path: '',
                 element: <T1 />,

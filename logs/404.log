@@ -227,3 +227,8 @@
 {"level":60,"time":1738016301356,"pid":12000,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
 {"level":60,"time":1738017592401,"pid":12000,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
 {"level":60,"time":1738040977655,"pid":17356,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/exam-wise/2/1"}
+{"level":60,"time":1738052609957,"pid":18132,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
+{"level":60,"time":1738058158227,"pid":18132,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/1"}
+{"level":60,"time":1738058159906,"pid":18132,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/1"}
+{"level":60,"time":1738058171032,"pid":18132,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/1"}
+{"level":60,"time":1738058174498,"pid":18132,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/subject-assignment/2"}

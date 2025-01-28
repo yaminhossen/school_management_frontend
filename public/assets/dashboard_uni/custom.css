@@ -657,130 +657,135 @@ th {
     }
     }
 }
-.page-main-header{
-    @media print {
+@media print {
+    #printButton{
+        display: none;
+    }
+    .page-main-header{
+        @media print {
+            display: none !important;
+        }
+    }
+    body{
+        background-color: white !important;
+    }
+    #dashboard{
+        background-color: white !important;
+    }
+    .page-body{
+        height: unset !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background-color: white !important;
+    }
+    
+    .page-main-header{
         display: none !important;
     }
-}
-body{
-    background-color: white !important;
-}
-#dashboard{
-    background-color: white !important;
-}
-.page-body{
-    height: unset !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background-color: white !important;
-}
-
-.page-main-header{
-    display: none !important;
-}
-.page-sidebar{
-    width: 0 !important;
-}
-.page-body-wrapper{
-    height: unset !important;
-}
-.management_heading{
-    display: none;
-}
-.management_root{
-    padding: 0;
-}
-.table_heading{
-    display: none;
-}
-.data_list{
-    margin: 0 !important;
-}
-.outer-table{
-    border: 0 !important;
-}
-.second_table{
-    margin-top: 15px;
-}
-.custom_scroll{
-    overflow: hidden !important;
-}
-.table_responsive table thead tr {
-    background-color: #fdf8ec;
-    th{
-        color: black;
-        font-weight: 600;
+    .page-sidebar{
+        width: 0 !important;
     }
-}
-.second_table thead tr {
-    background-color: #ecfafa !important;
-    th{
-        color: black;
-        font-weight: 600;
+    .page-body-wrapper{
+        height: unset !important;
     }
-}
-.grade_table2{
-    background-color: #f4f6dc !important;
-}
-    .grade_table2{
-        td {
-            color: #008040 !important;
+    .management_heading{
+        display: none;
+    }
+    .management_root{
+        padding: 0;
+    }
+    .table_heading{
+        display: none;
+    }
+    .data_list{
+        margin: 0 !important;
+    }
+    .outer-table{
+        border: 0 !important;
+    }
+    .second_table{
+        margin-top: 15px;
+    }
+    .custom_scroll{
+        overflow: hidden !important;
+    }
+    .table_responsive table thead tr {
+        background-color: #fdf8ec;
+        th{
+            color: black;
             font-weight: 600;
         }
     }
-.mark_sheet{
-    background-color: white;
-    padding: 0;
-}
-.top-cell {
-    h1{
-        color: black !important;
-        font-weight: 600;
+    .second_table thead tr {
+        background-color: #ecfafa !important;
+        th{
+            color: black;
+            font-weight: 600;
+        }
     }
-}
-.grade_sheet{
-    th, td{
-        padding: 0 !important;
-        margin: 0 !important;
-        font-size: 10px;
-        color: black !important;
+    .grade_table2{
+        background-color: #f4f6dc !important;
     }
-}
-.middle-cell{
-    width: 60%;
-    vertical-align:  top !important;
-    p{
-        color: black;
-        
+        .grade_table2{
+            td {
+                color: #008040 !important;
+                font-weight: 600;
+            }
+        }
+    .mark_sheet{
+        background-color: white;
+        padding: 0;
     }
-    h3{
-        color: black !important;
+    .top-cell {
+        h1{
+            color: black !important;
+            font-weight: 600;
+        }
     }
-}
-.result_table {
-    tr, td{
-        color: black !important;
+    .grade_sheet{
+        th, td{
+            padding: 0 !important;
+            margin: 0 !important;
+            font-size: 10px;
+            color: black !important;
+        }
     }
-}
-.result_table2 {
-    tr, td{
-        color: black !important;
+    .middle-cell{
+        width: 60%;
+        vertical-align:  top !important;
+        p{
+            color: black;
+            
+        }
+        h3{
+            color: black !important;
+        }
     }
-}
-.grade_table{
-    td {
-        color: black !important;
+    .result_table {
+        tr, td{
+            color: black !important;
+        }
     }
+    .result_table2 {
+        tr, td{
+            color: black !important;
+        }
+    }
+    .grade_table{
+        td {
+            color: black !important;
+        }
+    }
+    .student_image{
+                    img{
+                        width: 100px;
+                        height: 120px;
+                        border: 1px solid rgba(46, 42, 24, 0.404);
+                        padding: 2px;
+                        border-radius: 8px;
+                    }
+     }
 }
-.student_image{
-                img{
-                    width: 100px;
-                    height: 120px;
-                    border: 1px solid rgba(46, 42, 24, 0.404);
-                    padding: 2px;
-                    border-radius: 8px;
-                }
- }
 
 
 
@@ -895,6 +900,30 @@ body{
         /* color: #008040 !important; */
         font-weight: 600;
     }
+}
+#printButton {
+    background-color: #667566; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove borders */
+    padding: 4px 24px; /* Add some padding */
+    font-size: 16px; /* Increase font size */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#printButton:hover {
+    background-color: #517754; /* Slightly darker green on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Slightly deeper shadow on hover */
+    color: black;
+    transform: translateY(-2px); /* Lift the button slightly on hover */
+}
+
+#printButton:active {
+    background-color: #3e8e41; /* Even darker green when active */
+    transform: translateY(0); /* Reset position */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Reset shadow */
 }
 
 

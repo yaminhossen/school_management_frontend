@@ -56,11 +56,17 @@ const TermResult: React.FC<Props> = (props: Props) => {
         return str.replace(/_/g, ' ');
     }
     // Handle the print functionality
+    function printPage() {
+        window.print();
+    }
 
     return (
         <div className="admin_dashboard">
             <h3 className="table_heading">{convertUnderscoreToSpace(title)}</h3>
             {/* <h3 className="table_heading student_semister">Result History</h3> */}
+            <button id="printButton" onClick={printPage}>
+                Print
+            </button>
 
             <div className="content_body ">
                 <div className="data_list mb-4">

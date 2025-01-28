@@ -44,6 +44,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="Class Attendance"
                 />
                 <MenuSingle
+                    to="/exam-attendance"
+                    icon="icon-receipt"
+                    label="Exam Attendance"
+                />
+                <MenuSingle
                     to="/class-routine"
                     icon="icon-calendar"
                     label="Class Routine"
