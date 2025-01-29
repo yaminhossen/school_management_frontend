@@ -5,6 +5,7 @@ import {
 import * as exam_attendent_students_model from './exam_attendent_students_model';
 import * as exam_student_marks_model from './exam_student_marks_model';
 import * as user_students_model from './user_students_model';
+import * as branch_teachers_model from './branch_teachers_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -25,6 +26,7 @@ interface models {
     ExamAttendentStudentsModel: typeof exam_attendent_students_model.DataModel;
     ExamStudentMarksModel: typeof exam_student_marks_model.DataModel;
     UserStudentsModel: typeof user_students_model.DataModel;
+    BranchTeachersModel: typeof branch_teachers_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -33,6 +35,7 @@ const db = async function (): Promise<models> {
         exam_attendent_students_model.init(sequelize);
     const ExamStudentMarksModel = exam_student_marks_model.init(sequelize);
     const UserStudentsModel = user_students_model.init(sequelize);
+    const BranchTeachersModel = branch_teachers_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -66,6 +69,7 @@ const db = async function (): Promise<models> {
         ExamAttendentStudentsModel,
         ExamStudentMarksModel,
         UserStudentsModel,
+        BranchTeachersModel,
         // Project,
 
         sequelize,

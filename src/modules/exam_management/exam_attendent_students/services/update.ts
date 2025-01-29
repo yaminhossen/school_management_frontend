@@ -59,6 +59,7 @@ async function update(
         class_id: body.class_id,
         subject_id: body.subject_id,
         student_id: body.student_id,
+        attendance_status: body.attendance_status,
     };
 
     /** print request data into console */
@@ -69,8 +70,7 @@ async function update(
     try {
         let data = await models.ExamAttendentStudentsModel.findByPk(body.id);
         if (data) {
-            data.update(inputs);
-            await data.save();
+            (await data.update(inputs)).save();
             return response(200, 'data updated', data);
         } else {
             throw new custom_error('Forbidden', 403, 'operation not possible');

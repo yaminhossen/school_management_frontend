@@ -59,6 +59,7 @@ async function store(
         class_id: body.class_id,
         subject_id: body.subject_id,
         student_id: body.student_id,
+        attendance_status: body.attendance_status,
     };
 
     /** print request data into console */

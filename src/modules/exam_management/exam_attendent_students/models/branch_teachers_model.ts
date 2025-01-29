@@ -23,24 +23,21 @@ import {
     // ForeignKey,
 } from 'sequelize';
 
-const tableName = 'exam_attendent_students';
-const modelName = 'ExamAttendentStudentsModel';
+const tableName = 'branch_teachers';
+const modelName = 'BranchTeachersModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
-// type isApproved = 'yes' | 'no';
 type status = 'active' | 'deactive';
-type attendance_status = 'present' | 'absent';
 
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
+    declare user_teacher_id: number;
     declare branch_id: number;
-    declare exam_id: number;
-    declare class_id: number;
-    declare subject_id: number;
-    declare student_id: string;
-    declare attendance_status?: attendance_status;
+    declare class_teacher_id: number;
+    declare joining_date: string;
+    declare department: string;
 
     declare status?: status;
     declare creator?: number;
@@ -57,29 +54,25 @@ function init(sequelize: Sequelize) {
                 autoIncrement: true,
                 primaryKey: true,
             },
+            user_teacher_id: {
+                type: DataTypes.BIGINT.UNSIGNED,
+                allowNull: true,
+            },
             branch_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
-            exam_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+            class_teacher_id: {
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
-            class_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+            joining_date: {
+                type: new DataTypes.DATE(),
                 allowNull: true,
             },
-            subject_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+            department: {
+                type: new DataTypes.STRING(40),
                 allowNull: true,
-            },
-            student_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            attendance_status: {
-                type: new DataTypes.ENUM('present', 'absent'),
-                defaultValue: null,
             },
 
             status: {

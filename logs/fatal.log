@@ -98,3 +98,21 @@
 {"level":60,"time":1738063175993,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"1/28/2025 5:19:35 PM","message":"Unknown column 'ExamsModel.name' in 'where clause'"}
 {"level":60,"time":1738063180221,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"1/28/2025 5:19:40 PM","message":"Unknown column 'ExamsModel.name' in 'where clause'"}
 {"level":60,"time":1738063188946,"pid":13224,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"1/28/2025 5:19:48 PM","message":"Unknown column 'ExamsModel.name' in 'where clause'"}
+{"level":60,"time":1738120755243,"pid":12184,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/29/2025 9:19:15 AM","message":"data not found"}
+{"level":60,"time":1738120755262,"pid":12184,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/29/2025 9:19:15 AM","message":"data not found"}
+{"level":60,"time":1738124912729,"pid":13380,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/29/2025 10:28:32 AM","message":"data not found"}
+{"level":60,"time":1738124912792,"pid":13380,"hostname":"DESKTOP-9421701","file":"","time":"1/29/2025 10:28:32 AM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1738124920129,"pid":13380,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/29/2025 10:28:40 AM","message":"data not found"}
+{"level":60,"time":1738124920190,"pid":13380,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/29/2025 10:28:40 AM","message":"data not found"}
+{"level":60,"time":1738127579069,"pid":19976,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/29/2025 11:12:59 AM","message":"data not found"}
+{"level":60,"time":1738127579079,"pid":19976,"hostname":"DESKTOP-9421701","file":"","time":"1/29/2025 11:12:59 AM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1738127581865,"pid":19976,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/29/2025 11:13:01 AM","message":"data not found"}
+{"level":60,"time":1738127581875,"pid":19976,"hostname":"DESKTOP-9421701","file":"","time":"1/29/2025 11:13:01 AM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1738127590511,"pid":19976,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/29/2025 11:13:10 AM","message":"data not found"}
+{"level":60,"time":1738127590537,"pid":19976,"hostname":"DESKTOP-9421701","file":"","time":"1/29/2025 11:13:10 AM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1738128281904,"pid":4060,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/29/2025 11:24:41 AM","message":"data not found"}
+{"level":60,"time":1738128281930,"pid":4060,"hostname":"DESKTOP-9421701","file":"","time":"1/29/2025 11:24:41 AM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1738128282974,"pid":4060,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/29/2025 11:24:42 AM","message":"data not found"}
+{"level":60,"time":1738128282989,"pid":4060,"hostname":"DESKTOP-9421701","file":"","time":"1/29/2025 11:24:42 AM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1738128303004,"pid":4060,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:70:19)","time":"1/29/2025 11:25:03 AM","message":"data not found"}
+{"level":60,"time":1738128303018,"pid":4060,"hostname":"DESKTOP-9421701","file":"","time":"1/29/2025 11:25:03 AM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}

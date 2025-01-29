@@ -26,6 +26,7 @@ async function attend_all(
                     exam_id: exam_id,
                     class_id: class_id,
                     subject_id: sub_id,
+                    attendance_status: 'present',
                 },
                 include: [
                     {

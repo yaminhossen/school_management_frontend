@@ -14,9 +14,9 @@ async function all_exam(
 
     try {
         let data = await models.ExamsModel.findAll({
-            // where: {
-            //     id: params.id,
-            // },
+            where: {
+                is_active: 'active',
+            },
         });
 
         if (data) {
