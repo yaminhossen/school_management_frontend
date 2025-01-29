@@ -23,20 +23,27 @@ import {
     // ForeignKey,
 } from 'sequelize';
 
-const tableName = 'account_categories';
-const modelName = 'AccountCategoriesModel';
+const tableName = 'account_logs';
+const modelName = 'AccountLogsModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
-// type attendance_status = 'present' | 'absent' | 'late' | 'leave';
+type type = 'income' | 'expense';
 type status = 'active' | 'deactive';
 
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
     declare branch_id: number;
-    declare title: string;
-    declare description: string;
+    declare account_category_id?: number;
+    declare account_id?: number;
+    declare account_period_id?: number;
+    declare money_receipt_book_id?: number;
+    declare receipt_no?: string;
+    declare date?: string;
+    declare amount?: number;
+    declare amount_in_text?: string;
+    declare type?: type;
 
     declare status?: status;
     declare creator?: number;
@@ -57,12 +64,40 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },
-            title: {
-                type: DataTypes.STRING(100),
+            account_category_id: {
+                type: new DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },
-            description: {
-                type: DataTypes.TEXT,
+            account_id: {
+                type: new DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
+            account_period_id: {
+                type: new DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
+            money_receipt_book_id: {
+                type: new DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
+            receipt_no: {
+                type: DataTypes.STRING(20),
+                allowNull: true,
+            },
+            date: {
+                type: DataTypes.DATE,
+                allowNull: true,
+            },
+            amount: {
+                type: DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
+            amount_in_text: {
+                type: DataTypes.STRING(300),
+                allowNull: true,
+            },
+            type: {
+                type: DataTypes.ENUM('income', 'expense'),
                 allowNull: true,
             },
 

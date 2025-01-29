@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "1234",
-    "database": "school_management",
+    "database": "institute_management",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

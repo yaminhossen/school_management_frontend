@@ -23,22 +23,24 @@ import {
     // ForeignKey,
 } from 'sequelize';
 
-const tableName = 'account_categories';
-const modelName = 'AccountCategoriesModel';
+const tableName = 'branch_admins';
+const modelName = 'BranchAdminsModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
-// type attendance_status = 'present' | 'absent' | 'late' | 'leave';
-type status = 'active' | 'deactive';
+// enum status {
+//     active = 'active',
+//     deactive = 'deactive',
+//     block = 'block',
+// }
 
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
-    declare branch_id: number;
-    declare title: string;
-    declare description: string;
+    declare user_admin_id: number;
 
-    declare status?: status;
+    declare status: string;
+    declare branch_id: number;
     declare creator?: number;
 
     declare created_at?: CreationOptional<Date>;
@@ -53,23 +55,19 @@ function init(sequelize: Sequelize) {
                 autoIncrement: true,
                 primaryKey: true,
             },
+            user_admin_id: {
+                type: DataTypes.BIGINT.UNSIGNED,
+                allowNull: true,
+            },
+            status: {
+                type: new DataTypes.ENUM('active', 'deactive', 'block'),
+                allowNull: true,
+            },
             branch_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            title: {
-                type: DataTypes.STRING(100),
-                allowNull: true,
-            },
-            description: {
-                type: DataTypes.TEXT,
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
 
-            status: {
-                type: new DataTypes.ENUM('active', 'deactive'),
-                defaultValue: 'active',
-            },
             creator: {
                 type: new DataTypes.TINYINT(),
                 allowNull: true,

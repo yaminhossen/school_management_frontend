@@ -23,20 +23,25 @@ import {
     // ForeignKey,
 } from 'sequelize';
 
-const tableName = 'account_categories';
-const modelName = 'AccountCategoriesModel';
+const tableName = 'branches';
+const modelName = 'BranchesModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
-// type attendance_status = 'present' | 'absent' | 'late' | 'leave';
 type status = 'active' | 'deactive';
 
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
-    declare branch_id: number;
-    declare title: string;
-    declare description: string;
+    declare branch_code: string;
+    declare name: string;
+    declare logo: string | null;
+    declare address: string;
+    declare primary_contact: string;
+    declare email: string | null;
+    declare map: string | null;
+    declare lat: string | null;
+    declare lng: string | null;
 
     declare status?: status;
     declare creator?: number;
@@ -53,16 +58,40 @@ function init(sequelize: Sequelize) {
                 autoIncrement: true,
                 primaryKey: true,
             },
-            branch_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+            branch_code: {
+                type: new DataTypes.STRING(50),
                 allowNull: true,
             },
-            title: {
-                type: DataTypes.STRING(100),
+            name: {
+                type: new DataTypes.STRING(40),
                 allowNull: true,
             },
-            description: {
-                type: DataTypes.TEXT,
+            logo: {
+                type: new DataTypes.STRING(120),
+                allowNull: true,
+            },
+            address: {
+                type: new DataTypes.STRING(120),
+                allowNull: true,
+            },
+            primary_contact: {
+                type: new DataTypes.STRING(30),
+                allowNull: true,
+            },
+            email: {
+                type: new DataTypes.STRING(40),
+                allowNull: true,
+            },
+            map: {
+                type: new DataTypes.TEXT(),
+                allowNull: true,
+            },
+            lat: {
+                type: new DataTypes.STRING(120),
+                allowNull: true,
+            },
+            lng: {
+                type: new DataTypes.STRING(120),
                 allowNull: true,
             },
 
