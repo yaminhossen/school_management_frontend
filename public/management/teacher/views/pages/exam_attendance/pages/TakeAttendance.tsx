@@ -44,10 +44,10 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
         formData.append('exam_id', `${exam_id}`);
         try {
             console.log('types of id', id, subjectId, exam_id);
-            // const response = await axios.post(
-            //     '/api/v1/student-attendances/store',
-            //     formData,
-            // );
+            const response = await axios.post(
+                '/api/v1/exam-attendent-students/exam-attendance',
+                formData,
+            );
             // setData(response.data.data.data);
             // setTotalIncome(response.data.data.data2);
         } catch (error) {

@@ -13,11 +13,11 @@ import error_trace from '../helpers/error_trace';
 import moment from 'moment';
 
 async function validate(req: Request) {
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
+    // await body('branch_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_id field is required')
+    //     .run(req);
     await body('exam_id')
         .not()
         .isEmpty()
@@ -28,11 +28,11 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the class_id field is required')
         .run(req);
-    await body('student_id')
-        .not()
-        .isEmpty()
-        .withMessage('the student_id field is required')
-        .run(req);
+    // await body('student_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the student_id field is required')
+    //     .run(req);
 
     let result = await validationResult(req);
 
@@ -70,6 +70,7 @@ async function exam_student_attendance(
     let todayDate = moment().format('YYYY-MM-DD');
     console.log('body class id', body.class_id);
     console.log('body', body);
+    console.log('student attendances', student_attendance);
 
     /** print request data into console */
     // console.clear();
@@ -80,12 +81,20 @@ async function exam_student_attendance(
         if (student_attendance) {
             student_attendance.forEach(async (ss) => {
                 console.log('student_id', ss.branch_student_id);
+                let data = await models.ExamAttendentStudentsModel.destroy({
+                    where: {
+                        exam_id: body?.exam_id,
+                        class_id: body.class_id,
+                        subject_id: body.subject_id,
+                        student_id: ss.branch_student_id,
+                    },
+                });
 
                 let uscn_model = new models.ExamAttendentStudentsModel();
                 let uscn_inputs: InferCreationAttributes<typeof uscn_model> = {
                     branch_id: auth_user?.branch_id || 1,
                     student_id: ss.branch_student_id,
-                    exam_id: user?.id || null,
+                    exam_id: body?.exam_id,
                     class_id: body.class_id,
                     subject_id: body.subject_id,
                     // date: todayDate,
@@ -93,11 +102,10 @@ async function exam_student_attendance(
                     creator: user?.id || null,
                 };
                 uscn_inputs.branch_id = auth_user?.branch_id || 1;
-                // uscn_inputs.branch_student_id = ss.branch_student_id;
-                // uscn_inputs.teacher_id = user?.id || null;
+                uscn_inputs.student_id = ss.branch_student_id;
+                uscn_inputs.exam_id = body.exam_id;
                 uscn_inputs.class_id = body.class_id;
                 uscn_inputs.subject_id = body.subject_id;
-                // uscn_inputs.date = todayDate;
                 uscn_inputs.attendance_status = ss.attendance_status;
                 uscn_inputs.creator = user?.id || null;
                 (await uscn_model.update(uscn_inputs)).save();
