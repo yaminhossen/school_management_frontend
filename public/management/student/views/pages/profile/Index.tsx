@@ -9,10 +9,6 @@ const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<any>([]);
 
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
-
     const fetchData = async () => {
         try {
             const response = await axios.get(

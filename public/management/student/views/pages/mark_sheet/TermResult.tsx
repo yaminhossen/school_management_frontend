@@ -9,12 +9,9 @@ const TermResult: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [title, setTitle] = useState('');
     const [data, setData] = useState<any>([]);
+    const [error2, setError2] = useState(null);
+    const [data2, setData2] = useState<any>([]);
     const { termid, classid } = useParams();
-    console.log('query params', termid, classid);
-
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
 
     const fetchData = async () => {
         try {
@@ -29,12 +26,28 @@ const TermResult: React.FC<Props> = (props: Props) => {
         }
     };
 
+    const fetchData2 = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/user-students/basic-information',
+            );
+            setData2(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError2(error);
+        }
+    };
+
     useEffect(() => {
         fetchData();
+        fetchData2();
     }, []);
+    if (data2) {
+        console.log('data2', data2);
+    }
 
     function getGrade(score) {
-        if (score >= 30 && score <= 39) {
+        if (score >= 33 && score <= 39) {
             return 'D';
         } else if (score >= 40 && score <= 49) {
             return 'C';
@@ -46,7 +59,7 @@ const TermResult: React.FC<Props> = (props: Props) => {
             return 'A';
         } else if (score >= 80 && score <= 100) {
             return 'A+';
-        } else if (score < 30) {
+        } else if (score < 33) {
             return 'F';
         } else {
             return 'Invalid score'; // Handle scores outside the valid range
@@ -84,7 +97,7 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                             <td className="side-cell">
                                                 <div className="student_image">
                                                     <img
-                                                        src="/assets/dashboard_uni/1.jpg"
+                                                        src={data2?.image}
                                                         alt=""
                                                     />
                                                 </div>
@@ -165,29 +178,56 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                                 <table className="result_table">
                                                     <tbody>
                                                         <tr>
-                                                            <td>Branch</td>
+                                                            <td>Student</td>
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
-                                                                Uttora
+                                                                {data2?.name}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Father</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {
+                                                                    data2?.father_name
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Mother</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {
+                                                                    data2?.mother_name
+                                                                }
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                Admission no
+                                                                Student's ID
                                                             </td>
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
-                                                                13lsjdf
+                                                                {
+                                                                    data2
+                                                                        ?.student_info
+                                                                        ?.student_id
+                                                                }
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Roll no</td>
+                                                            <td>Class</td>
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
-                                                                sdf2323234
+                                                                {
+                                                                    data2
+                                                                        ?.student_info
+                                                                        ?.class
+                                                                        ?.name
+                                                                }
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        {/* <tr>
                                                             <td>Date</td>
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
@@ -199,7 +239,7 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                                                     'YYYY-MM-DD',
                                                                 )}
                                                             </td>
-                                                        </tr>
+                                                        </tr> */}
                                                     </tbody>
                                                 </table>
                                             </td>
@@ -207,28 +247,39 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                                 <table className="result_table2">
                                                     <tbody>
                                                         <tr>
-                                                            <td>Branch</td>
+                                                            <td>Role No.</td>
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
-                                                                Uttora
+                                                                {
+                                                                    data2
+                                                                        ?.student_info
+                                                                        ?.role_no
+                                                                }
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                Admission no
+                                                                Admission No
                                                             </td>
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
-                                                                13lsjdf
+                                                                {
+                                                                    data2
+                                                                        ?.student_info
+                                                                        ?.addmission_no
+                                                                }
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                Admission no
-                                                            </td>
+                                                            <td>Section</td>
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
-                                                                13lsjdf
+                                                                {
+                                                                    data2
+                                                                        ?.student_info
+                                                                        ?.student_section
+                                                                        ?.title
+                                                                }
                                                             </td>
                                                         </tr>
                                                     </tbody>
