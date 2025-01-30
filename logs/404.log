@@ -271,3 +271,4 @@
 {"level":60,"time":1738220599985,"pid":4272,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-routines/plan"}
 {"level":60,"time":1738220602081,"pid":4272,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-routines/plan"}
 {"level":60,"time":1738220687911,"pid":15712,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collections/payment-history"}
+{"level":60,"time":1738227731711,"pid":6224,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}

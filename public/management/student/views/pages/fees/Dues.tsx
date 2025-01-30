@@ -1,61 +1,132 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 export interface Props {}
+export interface FeesInfo {
+    account: { title: string };
+    class: object;
+    type: 'income' | 'expense';
+    amount: number;
+}
 
 const Dues: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            perpous: 'Monthly fee',
-            amount: '5000',
-            last_date: '02 May 2024',
-        },
-        {
-            id: 2,
-            perpous: 'Semister fee',
-            amount: '2342',
-            last_date: '10 April 2024',
-        },
-        {
-            id: 3,
-            perpous: 'Transport fee',
-            amount: '2342',
-            last_date: '12 March 2024',
-        },
-    ];
+    const [feesTypes, setFeesTypes] = useState<FeesInfo[]>([]);
+    const [totalAmount, setTotalAmount] = useState();
+    const [error, setError] = useState(null);
 
+    const fetchTypes = async () => {
+        try {
+            const response2 = await axios.get(
+                `/api/v1/user-students/fees-categories-student`,
+            );
+            setFeesTypes(response2.data?.data?.idWiseTotals);
+            setTotalAmount(response2.data?.data?.summeries);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchTypes();
+    }, []);
     return (
         <div className="admin_dashboard">
             <h3 className="table_heading">Dues</h3>
             <div className="content_body">
                 <div className="data_list">
-                    <div className="table_responsive custom_scroll">
-                        <table>
+                    <div className="table_responsive  custom_scroll">
+                        <table className="">
                             <thead>
                                 <tr>
-                                    <th></th>
-                                    <th>Serial</th>
-                                    <th>Perpous</th>
-                                    <th>Amount</th>
-                                    <th>Last Date</th>
+                                    <th>Title</th>
+                                    <th>Fees</th>
+                                    <th>Paying</th>
+                                    <th>Due amount</th>
+                                    <th>Advanced</th>
+                                    <th>Payable</th>
+                                    {/* <th>Given Amount</th> */}
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.perpous}</td>
-                                            <td>{i.amount}</td>
-                                            <td>{i.last_date}</td>
-                                        </tr>
-                                    );
-                                })}
+                                {/* <input
+                                    type="hidden"
+                                    name="total_fees_count"
+                                    value={feesTypes.length}
+                                /> */}
+                                {feesTypes?.length &&
+                                    feesTypes?.map(
+                                        (i: { [key: string]: any }, index) => {
+                                            return (
+                                                <tr>
+                                                    <td>{i.name}</td>
+                                                    <td>
+                                                        <input
+                                                            type="hidden"
+                                                            name={`fees_amount_${index}`}
+                                                            value={i.fee_amount}
+                                                        />
+                                                        {i.fee_amount}
+                                                    </td>
+                                                    <td>{i.total}</td>
+                                                    <td>
+                                                        {i.due_amount < 0
+                                                            ? i.due_amount
+                                                            : '0'}
+                                                    </td>
+                                                    <td>
+                                                        {i.due_amount >= 0
+                                                            ? i.due_amount
+                                                            : '0'}
+                                                    </td>
+                                                    <td></td>
+                                                    {/* <td>
+                                                        <input
+                                                            type="hidden"
+                                                            name={`fees_type_${index}`}
+                                                            value={i.id}
+                                                        />
+                                                        <input
+                                                            name={`fees_${index}`}
+                                                            type="number"
+                                                            onChange={(
+                                                                event,
+                                                            ) => {
+                                                                let temp = [
+                                                                    ...feesTypes,
+                                                                ];
+                                                                temp[index][
+                                                                    'input_amount'
+                                                                ] =
+                                                                    event?.target.value;
+                                                                setFeesTypes(
+                                                                    temp,
+                                                                );
+                                                            }}
+                                                        />
+                                                    </td> */}
+                                                </tr>
+                                            );
+                                        },
+                                    )}
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>Total</td>
+                                    <td>{totalAmount?.['fee_amount']}</td>
+                                    <td>{totalAmount?.['total']}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>{totalAmount?.['due_amount']}</td>
+                                    {/* <td>
+                                        {totalAmount2}
+                                        <input
+                                            type="hidden"
+                                            name="total_amount"
+                                            value={totalAmount2}
+                                        />
+                                    </td> */}
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>

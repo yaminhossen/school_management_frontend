@@ -21,16 +21,17 @@ async function fees_categories_second(
     let classesModel = models.BranchClassesModel;
     let classFeessModel = models.BranchClassFeesModel;
     let params = req.params as any;
-    let user_id = (req as any).user?.id;
+    let user = (req as any).user;
     console.log('user params', params);
+    console.log('user params', user);
     console.log('today month', moment().format('MMMM'));
 
     try {
         let student_data = await informationsModel.findOne({
             where: {
                 [Op.or]: [
-                    { student_id: params.id },
-                    { user_student_id: params.id },
+                    { user_student_id: user?.id },
+                    { student_id: params?.id || 0 },
                 ],
             },
         });

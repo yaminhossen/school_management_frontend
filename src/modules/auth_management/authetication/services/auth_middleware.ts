@@ -30,8 +30,8 @@ const auth_middleware = async (
     console.log('request cookies', token);
 
     if (!token || !token.startsWith('Bearer ')) {
-        return reply.redirect('/account/login');
-        // reply.code(401).send({ error: 'Unauthorized' });
+        // return reply.redirect('/account/login');
+        reply.code(401).send({ error: 'Unauthorized' });
         // return;
     }
 
