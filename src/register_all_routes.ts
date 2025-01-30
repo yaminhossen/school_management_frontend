@@ -75,7 +75,7 @@ export let active_routes: string[] = [
     // 'src/modules/exam_management/exam_equipment_sent_to_branches/routes.ts',
     // 'src/modules/exam_management/exam_hall_guard_plans/routes.ts',
     // 'src/modules/exam_management/exam_preparation_reports/routes.ts',
-    // 'src/modules/exam_management/exam_routines/routes.ts',
+    'src/modules/exam_management/exam_routines/routes.ts',
     // 'src/modules/exam_management/exam_seat_plans/routes.ts',
     'src/modules/exam_management/exam_students/routes.ts',
     'src/modules/exam_management/exam_student_marks/routes.ts',

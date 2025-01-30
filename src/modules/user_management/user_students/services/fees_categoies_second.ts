@@ -5,7 +5,7 @@ import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 import { sequelize } from '../../../../bootstrap/db.sql';
-import { Sequelize } from 'sequelize';
+import { Sequelize, Op } from 'sequelize';
 import moment from 'moment/moment';
 
 async function fees_categories_second(
@@ -28,7 +28,10 @@ async function fees_categories_second(
     try {
         let student_data = await informationsModel.findOne({
             where: {
-                student_id: params.id,
+                [Op.or]: [
+                    { student_id: params.id },
+                    { user_student_id: params.id },
+                ],
             },
         });
         let data = await classFeessModel.findAll({
