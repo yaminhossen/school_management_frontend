@@ -76,7 +76,7 @@ const T1: React.FC<Props> = (props: Props) => {
     const fetchAccedemicCalenderData = async () => {
         try {
             const response = await axios.post(
-                '/api/v1/academic-calendars/get-academic-event-by-month',
+                '/api/v1/academic-calendars/get-academic-event-by-month-account',
                 {
                     month: formattedDate,
                     branch_id: 1,
