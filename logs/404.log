@@ -277,3 +277,9 @@
 {"level":60,"time":1738383701004,"pid":15824,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-attendances/get-full-year-attendence"}
 {"level":60,"time":1738384990980,"pid":18304,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-attendances/get-full-year-attendence"}
 {"level":60,"time":1738385006141,"pid":18304,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-attendances/get-full-year-attendence"}
+{"level":60,"time":1738393455533,"pid":16512,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/basic-information"}
+{"level":60,"time":1738393731452,"pid":16512,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/basic-information"}
+{"level":60,"time":1738393752197,"pid":16512,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/basic-information"}
+{"level":60,"time":1738393802519,"pid":16512,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/basic-information"}
+{"level":60,"time":1738393805142,"pid":16512,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/basic-information"}
+{"level":60,"time":1738393841318,"pid":16512,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/basic-information"}
