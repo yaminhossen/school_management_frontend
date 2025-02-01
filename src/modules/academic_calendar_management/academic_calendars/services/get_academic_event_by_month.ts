@@ -14,6 +14,10 @@ async function get_academic_event_by_month(
     let models = await db();
     let params = req.params as any;
     let body = (await req.body) as any;
+    let full_url = (await req.url) as any;
+    let pre_url = full_url.split('/');
+    let need_url = pre_url[3];
+    console.log('full url', need_url);
 
     const { month, branch_id } = body;
 
