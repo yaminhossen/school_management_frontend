@@ -212,3 +212,4 @@
 {"level":60,"time":1738232809598,"pid":12532,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:138:19)","time":"1/30/2025 4:26:49 PM","message":"WHERE parameter \"student_id\" has invalid \"undefined\" value"}
 {"level":60,"time":1738232839635,"pid":5420,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:138:19)","time":"1/30/2025 4:27:19 PM","message":"WHERE parameter \"student_id\" has invalid \"undefined\" value"}
 {"level":60,"time":1738232840540,"pid":5420,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:138:19)","time":"1/30/2025 4:27:20 PM","message":"WHERE parameter \"student_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1738232923514,"pid":8936,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:48:19)","time":"1/30/2025 4:28:43 PM","message":"data not found"}

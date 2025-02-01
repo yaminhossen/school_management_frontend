@@ -272,3 +272,8 @@
 {"level":60,"time":1738220602081,"pid":4272,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-routines/plan"}
 {"level":60,"time":1738220687911,"pid":15712,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collections/payment-history"}
 {"level":60,"time":1738227731711,"pid":6224,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1738383688630,"pid":15824,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-attendances/get-full-year-attendence"}
+{"level":60,"time":1738383688968,"pid":15824,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-attendances/get-full-year-attendence"}
+{"level":60,"time":1738383701004,"pid":15824,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-attendances/get-full-year-attendence"}
+{"level":60,"time":1738384990980,"pid":18304,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-attendances/get-full-year-attendence"}
+{"level":60,"time":1738385006141,"pid":18304,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/student-attendances/get-full-year-attendence"}
