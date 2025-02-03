@@ -22,7 +22,7 @@ async function get_academic_event_by_month_account(
     });
     let branch_id = auth_user?.branch_id;
     const { month } = body;
-    console.log('jsldfjdlsfjlsj===========----------===========-----', month);
+    console.log('month', month);
 
     const startDate = moment(month, 'MMM-YYYY')
         .startOf('month')
