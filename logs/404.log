@@ -3,3 +3,5 @@
 {"level":60,"time":1738470179519,"pid":3900,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collections/payment-history"}
 {"level":60,"time":1738554972016,"pid":12800,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collections/payment-history"}
 {"level":60,"time":1738564228677,"pid":11696,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collections/payment-history"}
+{"level":60,"time":1738641605785,"pid":2404,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/basic-information"}
+{"level":60,"time":1738641655987,"pid":2404,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/basic-information"}
