@@ -148,6 +148,10 @@ module.exports = async function (fastify: FastifyInstance) {
         .post(`${prefix}/forget`, controllerInstance.forget)
         .post(`${prefix}/change-password`, controllerInstance.change_password)
         .post(`${prefix}/logout`, controllerInstance.logout)
-        .post(`${prefix}/admit`, controllerInstance.admit_student)
+        .post(
+            `${prefix}/admit`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.admit_student,
+        )
         .get(`${prefix}/:id/profile`, controllerInstance.profile);
 };

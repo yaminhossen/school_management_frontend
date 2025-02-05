@@ -1,32 +1,36 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../../common_types/object';
+import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Complain: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            title: 'Class let',
-            description:
-                'Please consider reducing the number to enhance the learning environment',
-        },
-        {
-            id: 2,
-            title: 'Exam missing',
-            description:
-                'Please consider reducing the number to enhance the learning environment',
-        },
-        {
-            id: 3,
-            title: 'Rulls break',
-            description:
-                'Please consider reducing the number to enhance the learning environment',
-        },
-    ];
+    const [error, setError] = useState(null);
+    const [data, setData] = useState<any>([]);
+    const { id } = useParams();
+    console.log('document id ', id);
 
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                `/api/v1/user-students/documents/${id}`,
+            );
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
     return (
         <div className="admin_dashboard">
             <h3 className="table_heading">Complain</h3>
@@ -43,7 +47,7 @@ const Complain: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
+                                {data?.map((i: { [key: string]: any }) => {
                                     return (
                                         <tr>
                                             <td></td>

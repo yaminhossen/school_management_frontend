@@ -28,10 +28,13 @@ const NoticeDetails: React.FC<Props> = (props: Props) => {
     }, []);
     console.log(data);
     return (
-        <div className="admin_dashboard">
+        <div className="admin_dashboard user_notice">
             <div className="col-md-6">
                 <h3>{data?.title}</h3>
                 <p>{data?.description}</p>
+                <div className="user_notice_part">
+                    <img src={data?.attachment} alt="" />
+                </div>
             </div>
         </div>
     );

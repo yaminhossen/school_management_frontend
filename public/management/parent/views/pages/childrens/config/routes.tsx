@@ -14,9 +14,9 @@ import Results from '../pages/Results';
 import Markshit from '../pages/Markshit';
 import Parents from '../pages/Parent';
 import Payments from '../pages/Payments';
-import Complain from '../pages/Complain';
 import Review from '../pages/Review';
 import path from 'path';
+import Complain from '../pages/Complain';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 

@@ -185,11 +185,11 @@ async function store(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
-    /** validation */
-    let validate_result = await validate(req as Request);
-    if (!validate_result.isEmpty()) {
-        return response(422, 'validation error', validate_result.array());
-    }
+    // /** validation */
+    // let validate_result = await validate(req as Request);
+    // if (!validate_result.isEmpty()) {
+    //     return response(422, 'validation error', validate_result.array());
+    // }
 
     /** initializations */
     let models = await db();
@@ -201,6 +201,19 @@ async function store(
     const bcrypt = require('bcrypt');
     const saltRounds = 10;
     let password = await bcrypt.hash(body.password, saltRounds);
+
+    let user = (req as any).user;
+    let auth_user = await models.BranchStaffsModel.findOne({
+        where: {
+            user_staff_id: (req as any).user?.id || null,
+        },
+    });
+    console.log('can you here me', user, auth_user);
+    /** validation */
+    let validate_result = await validate(req as Request);
+    if (!validate_result.isEmpty()) {
+        return response(422, 'validation error', validate_result.array());
+    }
 
     let image_path = 'avatar.png';
     let birth_certi_image = 'avatar.png';
@@ -262,7 +275,8 @@ async function store(
 
     let bcs_inputs: InferCreationAttributes<typeof bcs_model> = {
         // parent_id: body.parent_id,
-        branch_id: body.branch_id,
+
+        branch_id: auth_user?.branch_id || 1,
         branch_class_id: body.class,
         branch_student_id: 1,
         branch_class_section_id: body.section,
@@ -362,7 +376,8 @@ async function store(
 
     let usi_inputs: InferCreationAttributes<typeof usi_model> = {
         user_student_id: 1,
-        branch_id: body.branch_id,
+
+        branch_id: auth_user?.branch_id || 1,
         present_address: body.present_address,
         permanent_address: body.permanent_address,
         date_of_birth: body.date_of_birth,
@@ -441,7 +456,8 @@ async function store(
                             user_student_id: 1,
                             title: body.skills_title,
                             level: body.level,
-                            branch_id: body.branch_id,
+
+                            branch_id: auth_user?.branch_id || 1,
                         };
                     uss_inputs.user_student_id = data.id || 1;
                     uss_inputs.title = ss.title;
@@ -458,7 +474,8 @@ async function store(
                             user_student_id: 1,
                             language_title: body.language_title,
                             profeciency: body.profeciency,
-                            branch_id: body.branch_id,
+
+                            branch_id: auth_user?.branch_id || 1,
                         };
                     usl_inputs.user_student_id = data.id || 1;
                     usl_inputs.language_title = ss.language_title;
@@ -477,7 +494,8 @@ async function store(
                         user_student_id: 1,
                         contact_number: body.contact_number,
                         owner: body.owner,
-                        branch_id: body.branch_id,
+
+                        branch_id: auth_user?.branch_id || 1,
                     };
                     uscn_inputs.user_student_id = data.id || 1;
                     uscn_inputs.contact_number = ss.contact_number;
