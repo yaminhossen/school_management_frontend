@@ -13,7 +13,7 @@ async function all_notice_categorys(
     let params = req.params as any;
 
     try {
-        let data = await models.NoticesModel.findAll({});
+        let data = await models.NoticeCategoysModel.findAll({});
 
         if (data) {
             return response(200, 'data founded', data);

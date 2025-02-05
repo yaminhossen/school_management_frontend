@@ -63,8 +63,7 @@ async function store(
 
     /** store data into database */
     try {
-        data.update(inputs);
-        let task = await data.save();
+        (await data.update(inputs)).save();
         // let task_id = task.id;
 
         // if (task) {
