@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { anyObject } from '../../../../common_types/object';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
@@ -17,7 +17,7 @@ const Markshit1: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/exam-student-marks/student-class',
+                `/api/v1/exam-student-marks/student-class/${id}`,
             );
             setData(response.data.data);
             // setData(response.data);
@@ -38,6 +38,9 @@ const Markshit1: React.FC<Props> = (props: Props) => {
             <h3 className="table_heading">Results</h3>
             <div className="content_body">
                 <div className="data_list">
+                    {/* <div className="management_content_root">
+                        <Outlet></Outlet>
+                    </div> */}
                     <div className="table_responsive custom_scroll">
                         <table>
                             <thead>

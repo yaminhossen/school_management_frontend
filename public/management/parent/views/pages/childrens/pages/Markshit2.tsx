@@ -8,7 +8,7 @@ export interface Props {}
 const Markshit2: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<anyObject[]>([]);
-    const { id } = useParams();
+    const { id, classid } = useParams();
 
     useEffect(() => {
         // Function to fetch data
@@ -17,7 +17,7 @@ const Markshit2: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/exam-student-marks/class-wise-exam/${id}`,
+                `/api/v1/exam-student-marks/class-wise-exam/${id}/${classid}`,
             );
             setData(response.data.data);
             // setData(response.data);
@@ -80,7 +80,7 @@ const Markshit2: React.FC<Props> = (props: Props) => {
                                                 <td>
                                                     <Link
                                                         className="btn btn-sm btn-outline-info"
-                                                        to={`/childrens/details/${id}/mark-sheet/term-exam/${i.id}`}
+                                                        to={`/childrens/details/${id}/mark-sheet/detailss/${classid}/term-exam/${i.id}`}
                                                     >
                                                         details
                                                     </Link>

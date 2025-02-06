@@ -11,12 +11,12 @@ const TermResult: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState<any>([]);
     const [error2, setError2] = useState(null);
     const [data2, setData2] = useState<any>([]);
-    const { termid, classid } = useParams();
+    const { id, termid, classid } = useParams();
 
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/exam-student-marks/exam-wise/${termid}/${classid}`,
+                `/api/v1/exam-student-marks/exam-wise/${id}/${termid}/${classid}`,
             );
             let newdata = Object.values(response.data.data)[0];
             setData(newdata);
@@ -29,7 +29,7 @@ const TermResult: React.FC<Props> = (props: Props) => {
     const fetchData2 = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/user-students/basic-information',
+                `/api/v1/user-students/basic-information/${id}`,
             );
             setData2(response.data.data);
             // setData(response.data);

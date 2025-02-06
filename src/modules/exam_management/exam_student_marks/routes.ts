@@ -17,14 +17,29 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.student_class,
         )
         .get(
+            `${prefix}/student-class/:id`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.student_class_second,
+        )
+        .get(
             `${prefix}/class-wise-exam/:class`,
             { preHandler: [auth_middleware] },
             controllerInstance.class_wise_exam,
         )
         .get(
+            `${prefix}/class-wise-exam/:id/:classid`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.class_wise_exam_second,
+        )
+        .get(
             `${prefix}/exam-wise/:termid/:classid`,
             { preHandler: [auth_middleware] },
             controllerInstance.exam_wise,
+        )
+        .get(
+            `${prefix}/exam-wise/:id/:termid/:classid`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.exam_wise_second,
         )
         .post(`${prefix}/store`, controllerInstance.store)
         .post(`${prefix}/mark-store`, controllerInstance.mark_store)

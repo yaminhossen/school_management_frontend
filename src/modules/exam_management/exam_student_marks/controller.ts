@@ -18,6 +18,9 @@ import mark_store from './services/mark_store';
 import student_class from './services/student_class';
 import class_wise_exam from './services/class_wise_exam';
 import exam_wise from './services/exam_wise';
+import student_class_second from './services/student_class_second';
+import class_wise_exam_second from './services/class_wise_exam_second';
+import exam_wise_second from './services/exam_wise_second';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -41,6 +44,14 @@ export default function (fastify: FastifyInstance) {
             res.code(data.status).send(data);
         },
 
+        student_class_second: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await student_class_second(fastify, req);
+            res.code(data.status).send(data);
+        },
+
         class_wise_exam: async function (
             req: FastifyRequest,
             res: FastifyReply,
@@ -49,8 +60,24 @@ export default function (fastify: FastifyInstance) {
             res.code(data.status).send(data);
         },
 
+        class_wise_exam_second: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await class_wise_exam_second(fastify, req);
+            res.code(data.status).send(data);
+        },
+
         exam_wise: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await exam_wise(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        exam_wise_second: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await exam_wise_second(fastify, req);
             res.code(data.status).send(data);
         },
 

@@ -87,16 +87,24 @@ export default {
                 {
                     path: 'mark-sheet',
                     element: <Markshit1 />,
-                    children: [
-                        {
-                            path: 'detailss/:id',
-                            element: <Markshit2 />,
-                        },
-                        {
-                            path: 'term-exam/:termid/:classid',
-                            element: <TermResult />,
-                        },
-                    ],
+                    // children: [
+                    //     {
+                    //         path: 'detailss/:id',
+                    //         element: <Markshit2 />,
+                    //     },
+                    //     {
+                    //         path: 'term-exam/:termid/:classid',
+                    //         element: <TermResult />,
+                    //     },
+                    // ],
+                },
+                {
+                    path: 'mark-sheet/detailss/:classid',
+                    element: <Markshit2 />,
+                },
+                {
+                    path: 'mark-sheet/detailss/:classid/term-exam/:termid',
+                    element: <TermResult />,
                 },
                 // {
                 //     path: 'mark-sheet/details/:id',
