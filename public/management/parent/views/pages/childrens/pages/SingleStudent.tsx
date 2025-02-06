@@ -129,7 +129,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                             </li>
                             <li>
                                 <Link
-                                    to={`/childrens/details/${id}/result-part`}
+                                    to={`/childrens/details/${id}/mark-sheet`}
                                 >
                                     Result Part
                                 </Link>

@@ -17,6 +17,9 @@ import Payments from '../pages/Payments';
 import Review from '../pages/Review';
 import path from 'path';
 import Complain from '../pages/Complain';
+import Markshit2 from '../pages/Markshit2';
+import Markshit1 from '../pages/Markshit1';
+import TermResult from '../pages/TermResult';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -77,10 +80,28 @@ export default {
                     path: 'result-part',
                     element: <Results />,
                 },
+                // {
+                //     path: 'mark-sheet',
+                //     element: <Markshit />,
+                // },
                 {
                     path: 'mark-sheet',
-                    element: <Markshit />,
+                    element: <Markshit1 />,
+                    children: [
+                        {
+                            path: 'detailss/:id',
+                            element: <Markshit2 />,
+                        },
+                        {
+                            path: 'term-exam/:termid/:classid',
+                            element: <TermResult />,
+                        },
+                    ],
                 },
+                // {
+                //     path: 'mark-sheet/details/:id',
+                //     element: <Markshit2 />,
+                // },
                 {
                     path: 'complain',
                     element: <Complain />,

@@ -3,3 +3,5 @@
 {"level":60,"time":1738812369896,"pid":12100,"hostname":"DESKTOP-9421701","file":"","time":"2/6/2025 9:26:09 AM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1738812748622,"pid":12100,"hostname":"DESKTOP-9421701","file":"","time":"2/6/2025 9:32:28 AM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1738818673557,"pid":12100,"hostname":"DESKTOP-9421701","file":"services\\get_full_year_attendances.ts:76:19)","time":"2/6/2025 11:11:13 AM","message":"data not found"}
+{"level":60,"time":1738819400293,"pid":11436,"hostname":"DESKTOP-9421701","file":"services\\get_full_year_attendances.ts:76:19)","time":"2/6/2025 11:23:20 AM","message":"data not found"}
+{"level":60,"time":1738819436889,"pid":11436,"hostname":"DESKTOP-9421701","file":"services\\get_full_year_attendances.ts:76:19)","time":"2/6/2025 11:23:56 AM","message":"data not found"}
