@@ -7,7 +7,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<any>([]);
     const { id } = useParams();
-    console.log('user student id', id);
+    // console.log('user student id', id);
 
     const fetchData = async () => {
         try {
@@ -25,7 +25,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
         fetchData();
     }, []);
 
-    console.log('newdata from single', data);
+    // console.log('newdata from single', data);
 
     return (
         <div className="admin_dashboard">
@@ -139,11 +139,11 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                     Complain
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link to={`/childrens/details/${id}/review`}>
                                     Review
                                 </Link>
-                            </li>
+                            </li> */}
                         </ul>
                         <div></div>
                         <div className="info-table table-responsive">

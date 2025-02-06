@@ -9,7 +9,7 @@ const Complain: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<any>([]);
     const { id } = useParams();
-    console.log('document id ', id);
+    console.log('fro id ', id);
 
     useEffect(() => {
         // Function to fetch data
@@ -18,7 +18,7 @@ const Complain: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/user-students/documents/${id}`,
+                `/api/v1/student-complains/student-wise/${id}`,
             );
             setData(response.data.data);
             // setData(response.data);
@@ -30,7 +30,9 @@ const Complain: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-    console.log(data);
+    if (data) {
+        console.log(data);
+    }
     return (
         <div className="admin_dashboard">
             <h3 className="table_heading">Complain</h3>
@@ -42,21 +44,22 @@ const Complain: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>SI</th>
-                                    <th>Title</th>
+                                    {/* <th>Title</th> */}
                                     <th>Description</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {data?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.title}</td>
-                                            <td>{i.description}</td>
-                                        </tr>
-                                    );
-                                })}
+                                {data.length &&
+                                    data.map((i: { [key: string]: any }) => {
+                                        return (
+                                            <tr>
+                                                <td></td>
+                                                <td>{i.id}</td>
+                                                {/* <td>{i.complain}</td> */}
+                                                <td>{i.complain}</td>
+                                            </tr>
+                                        );
+                                    })}
                             </tbody>
                         </table>
                     </div>
