@@ -69,6 +69,7 @@ async function store(
             score: body[`score${i}`],
         });
     }
+    console.log('studnet evaluation ', student_evaluation);
 
     /** print request data into console */
     // console.clear();
@@ -90,8 +91,9 @@ async function store(
                 uscn_inputs.branch_student_id = body.student_id;
                 uscn_inputs.student_evaluation_criteria_id =
                     ss.student_evaluation_criteria_id;
-                uscn_inputs.score = ss.score;
+                uscn_inputs.score = ss.score || null;
                 uscn_inputs.creator = 1;
+                console.log('second', uscn_inputs);
                 (await uscn_model.update(uscn_inputs)).save();
             });
         }

@@ -20,7 +20,8 @@ async function student_class(
     let classFeessModel = models.BranchClassFeesModel;
     let params = req.params as any;
     let user_id = (req as any).user?.id;
-    console.log('user', user_id);
+    console.log('user1', user_id);
+    console.log('user2', params);
 
     try {
         let data = await informationsModel.findOne({

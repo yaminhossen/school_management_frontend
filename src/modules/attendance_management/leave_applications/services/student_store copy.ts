@@ -51,26 +51,12 @@ async function store(
     let body = req.body as anyObject;
     let data = new models.LeaveApplicationsModel();
     let image_path = '';
-    let auth_user;
     let user = (req as any).user;
-    if (user?.user_type == 'student') {
-        auth_user = await models.UserStudentInformationsModel.findOne({
-            where: {
-                user_student_id: user?.id || null,
-            },
-        });
-    } else if (user?.user_type == 'staff') {
-        auth_user = await models.BranchStaffsModel.findOne({
-            where: {
-                user_staff_id: user?.id || null,
-            },
-        });
-    }
-    // let auth_user = await models.BranchStaffsModel.findOne({
-    //     where: {
-    //         id: (req as any).user?.id || null,
-    //     },
-    // });
+    let auth_user = await models.UserStudentInformationsModel.findOne({
+        where: {
+            id: (req as any).user?.id || null,
+        },
+    });
 
     if (body['attachments']?.ext) {
         image_path =
@@ -79,8 +65,7 @@ async function store(
             body['attachments'].name;
         await (fastify_instance as any).upload(body['attachments'], image_path);
     }
-    console.log('==========leave body', auth_user);
-    console.log('-----------leave body', user);
+    console.log('leave body', body);
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: auth_user?.branch_id || 1,

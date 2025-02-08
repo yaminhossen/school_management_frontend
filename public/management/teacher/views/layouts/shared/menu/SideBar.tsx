@@ -64,11 +64,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-clipboard"
                     label="Exam Routine"
                 />
-                <MenuSingle
+                {/* <MenuSingle
                     to="/hall-guard-routine"
                     icon="icon-clipboard"
                     label="Hall Guard Routine"
-                />
+                /> */}
                 <MenuSingle
                     to="/result"
                     icon="icon-book"

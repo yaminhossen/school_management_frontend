@@ -54,3 +54,6 @@
 {"level":60,"time":1738994272506,"pid":4040,"hostname":"DESKTOP-9421701","error":"404","url":"/transcript.pdf"}
 {"level":60,"time":1738994297794,"pid":4040,"hostname":"DESKTOP-9421701","error":"404","url":"/transcript.pdf"}
 {"level":60,"time":1738994302851,"pid":4040,"hostname":"DESKTOP-9421701","error":"404","url":"/transcript.pdf"}
+{"level":60,"time":1738997206573,"pid":10596,"hostname":"DESKTOP-9421701","error":"404","url":"/transcript.pdf"}
+{"level":60,"time":1739012136455,"pid":6656,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1739012136467,"pid":6656,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}

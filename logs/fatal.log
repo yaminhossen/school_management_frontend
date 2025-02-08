@@ -40,3 +40,30 @@
 {"level":60,"time":1738995044370,"pid":4040,"hostname":"DESKTOP-9421701","file":"services\\get_academic_event_by_month_account.ts:106:19)","time":"2/8/2025 12:10:44 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
 {"level":60,"time":1738995047293,"pid":4040,"hostname":"DESKTOP-9421701","file":"services\\get_academic_event_by_month_account.ts:106:19)","time":"2/8/2025 12:10:47 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
 {"level":60,"time":1738995294077,"pid":4040,"hostname":"DESKTOP-9421701","file":"services\\get_academic_event_by_month_account.ts:106:19)","time":"2/8/2025 12:14:54 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1738996869300,"pid":10596,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:48:19)","time":"2/8/2025 12:41:09 PM","message":"data not found"}
+{"level":60,"time":1738996873806,"pid":10596,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:48:19)","time":"2/8/2025 12:41:13 PM","message":"data not found"}
+{"level":60,"time":1738996879228,"pid":10596,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:48:19)","time":"2/8/2025 12:41:19 PM","message":"data not found"}
+{"level":60,"time":1738996883361,"pid":10596,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:48:19)","time":"2/8/2025 12:41:23 PM","message":"data not found"}
+{"level":60,"time":1738996887387,"pid":10596,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:48:19)","time":"2/8/2025 12:41:27 PM","message":"data not found"}
+{"level":60,"time":1738996890573,"pid":10596,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:48:19)","time":"2/8/2025 12:41:30 PM","message":"data not found"}
+{"level":60,"time":1738996892843,"pid":10596,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:48:19)","time":"2/8/2025 12:41:32 PM","message":"data not found"}
+{"level":60,"time":1738996962835,"pid":10596,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:48:19)","time":"2/8/2025 12:42:42 PM","message":"data not found"}
+{"level":60,"time":1738996988020,"pid":10596,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:48:19)","time":"2/8/2025 12:43:08 PM","message":"data not found"}
+{"level":60,"time":1738997206515,"pid":10596,"hostname":"DESKTOP-9421701","file":"","time":"2/8/2025 12:46:46 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1738997515956,"pid":10596,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:48:19)","time":"2/8/2025 12:51:55 PM","message":"data not found"}
+{"level":60,"time":1738997721571,"pid":7996,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/8/2025 12:55:21 PM","message":"data not found"}
+{"level":60,"time":1738997823066,"pid":7996,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/8/2025 12:57:03 PM","message":"data not found"}
+{"level":60,"time":1739007647234,"pid":9816,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/8/2025 3:40:47 PM","message":"data not found"}
+{"level":60,"time":1739007647254,"pid":9816,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/8/2025 3:40:47 PM","message":"data not found"}
+{"level":60,"time":1739007647294,"pid":9816,"hostname":"DESKTOP-9421701","file":"","time":"2/8/2025 3:40:47 PM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1739007656183,"pid":9816,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/8/2025 3:40:56 PM","message":"data not found"}
+{"level":60,"time":1739007656194,"pid":9816,"hostname":"DESKTOP-9421701","file":"","time":"2/8/2025 3:40:56 PM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1739007675469,"pid":9816,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/8/2025 3:41:15 PM","message":"data not found"}
+{"level":60,"time":1739007678449,"pid":9816,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/8/2025 3:41:18 PM","message":"data not found"}
+{"level":60,"time":1739007685354,"pid":9816,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/8/2025 3:41:25 PM","message":"data not found"}
+{"level":60,"time":1739007688541,"pid":9816,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/8/2025 3:41:28 PM","message":"data not found"}
+{"level":60,"time":1739007689953,"pid":9816,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/8/2025 3:41:29 PM","message":"data not found"}
+{"level":60,"time":1739007691462,"pid":9816,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/8/2025 3:41:31 PM","message":"data not found"}
+{"level":60,"time":1739007693018,"pid":9816,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/8/2025 3:41:33 PM","message":"data not found"}
+{"level":60,"time":1739007706905,"pid":9816,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/8/2025 3:41:46 PM","message":"data not found"}
+{"level":60,"time":1739007710209,"pid":9816,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/8/2025 3:41:50 PM","message":"data not found"}
