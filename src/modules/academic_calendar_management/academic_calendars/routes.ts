@@ -1,6 +1,7 @@
 'use strict';
 import { FastifyInstance } from 'fastify';
 import controller from './controller';
+import auth_middleware from '../../auth_management/authetication/services/auth_middleware';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/academic-calendars';
@@ -17,6 +18,7 @@ module.exports = async function (fastify: FastifyInstance) {
         )
         .post(
             `${prefix}/get-academic-event-by-month-account`,
+            { preHandler: [auth_middleware] },
             controllerInstance.get_academic_event_by_month_account,
         )
 
