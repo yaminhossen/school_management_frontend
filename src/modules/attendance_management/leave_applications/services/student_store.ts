@@ -65,6 +65,12 @@ async function store(
                 user_staff_id: user?.id || null,
             },
         });
+    } else if (user?.user_type == 'teacher') {
+        auth_user = await models.BranchTeachersModel.findOne({
+            where: {
+                user_teacher_id: user?.id || null,
+            },
+        });
     }
     // let auth_user = await models.BranchStaffsModel.findOne({
     //     where: {
@@ -81,15 +87,25 @@ async function store(
     }
     console.log('==========leave body', auth_user);
     console.log('-----------leave body', user);
-
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: auth_user?.branch_id || 1,
-        branch_student_id: user?.id || null,
+        branch_staff_id: 0,
+        branch_student_id: 0,
+        branch_teacher_id: 0,
         start_date: body.start_date,
         end_date: body.end_date,
         attachments: image_path,
         creator: user?.id || null,
     };
+    if (user.user_type == 'staff') {
+        inputs.branch_staff_id = user?.id || null;
+    }
+    if (user.user_type == 'student') {
+        inputs.branch_student_id = user?.id || null;
+    }
+    if (user.user_type == 'teacher') {
+        inputs.branch_teacher_id = user?.id || null;
+    }
 
     /** print request data into console */
     // console.clear();
