@@ -110,93 +110,16 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </span>
                                 </span>
                             </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        8:00 am - 9:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">201</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        9:00 am - 10:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">102</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        01:00 pm - 02:00 pm
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        01:00 pm - 02:00 pm
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
                         </tr>
                         <tr className="table_body">
                             <td className="subject">Seven</td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
+                            <td className="class_time_and_room_content"></td>
                             <td className="class_time_and_room_content">
                                 <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
@@ -212,105 +135,17 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </span>
                                 </span>
                             </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        9:00 am - 10:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">102</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        10:00 am - 11:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        12:00 am - 01:00 pm
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">201</span>
-                                    </span>
-                                </span> */}
-                            </td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
                         </tr>
                         <tr className="table_body">
                             <td className="subject">Eight</td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
                             <td className="class_time_and_room_content">
                                 <span className="class_time_and_room">
                                     <span className="time_rooom class_time">
@@ -326,42 +161,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </span>
                                 </span>
                             </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        10:00 am - 11:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        01:00 pm - 02:00 pm
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">201</span>
-                                    </span>
-                                </span> */}
-                            </td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
                         </tr>
                         <tr className="table_body">
                             <td className="subject">physics</td>
@@ -381,78 +183,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </span>
                                 </span>
                             </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        02:00 pm - 03:00 pm
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        10:00 am - 11:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        7:00 am - 8:00 am
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">101</span>
-                                    </span>
-                                </span> */}
-                            </td>
-                            <td className="class_time_and_room_content">
-                                {/* <span className="class_time_and_room">
-                                    <span className="time_rooom class_time">
-                                        02:00 pm - 03:00 pm
-                                    </span>
-                                    <span className="time_rooom class_room">
-                                        <span className="room_title">room</span>
-                                        <span className="dash_title">-</span>
-                                        <span className="room_number">201</span>
-                                    </span>
-                                </span> */}
-                            </td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
+                            <td className="class_time_and_room_content"></td>
                         </tr>
                     </tbody>
                 </table>

@@ -67,3 +67,18 @@
 {"level":60,"time":1739007693018,"pid":9816,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/8/2025 3:41:33 PM","message":"data not found"}
 {"level":60,"time":1739007706905,"pid":9816,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/8/2025 3:41:46 PM","message":"data not found"}
 {"level":60,"time":1739007710209,"pid":9816,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/8/2025 3:41:50 PM","message":"data not found"}
+{"level":60,"time":1739082210481,"pid":14288,"hostname":"DESKTOP-9421701","file":"","time":"2/9/2025 12:23:30 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1739082273981,"pid":14288,"hostname":"DESKTOP-9421701","file":"","time":"2/9/2025 12:24:33 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1739082317564,"pid":14288,"hostname":"DESKTOP-9421701","file":"","time":"2/9/2025 12:25:17 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1739083278747,"pid":14288,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/9/2025 12:41:18 PM","message":"data not found"}
+{"level":60,"time":1739084004915,"pid":14288,"hostname":"DESKTOP-9421701","file":"services\\income_store.ts:91:46)","time":"2/9/2025 12:53:24 PM","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":60,"time":1739084184156,"pid":14288,"hostname":"DESKTOP-9421701","file":"services\\income_store.ts:91:46)","time":"2/9/2025 12:56:24 PM","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":60,"time":1739084271912,"pid":14288,"hostname":"DESKTOP-9421701","file":"services\\income_store.ts:91:46)","time":"2/9/2025 12:57:51 PM","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":60,"time":1739085594374,"pid":14288,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/9/2025 1:19:54 PM","message":"data not found"}
+{"level":60,"time":1739085594398,"pid":14288,"hostname":"DESKTOP-9421701","file":"","time":"2/9/2025 1:19:54 PM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1739085611276,"pid":14288,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/9/2025 1:20:11 PM","message":"data not found"}
+{"level":60,"time":1739085611295,"pid":14288,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/9/2025 1:20:11 PM","message":"data not found"}
+{"level":60,"time":1739085629295,"pid":14288,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"2/9/2025 1:20:29 PM","message":"data not found"}
+{"level":60,"time":1739085629306,"pid":14288,"hostname":"DESKTOP-9421701","file":"","time":"2/9/2025 1:20:29 PM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1739085662686,"pid":14288,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/9/2025 1:21:02 PM","message":"data and hash arguments required"}
+{"level":60,"time":1739085677534,"pid":14288,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/9/2025 1:21:17 PM","message":"data and hash arguments required"}
