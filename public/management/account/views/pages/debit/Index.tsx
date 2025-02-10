@@ -27,7 +27,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalIncome, setTotalIncome] = useState<TotalLog>({});
     const [data, setData] = useState<AccountLog[]>([]);
 
-    const totalExpenseValue = totalIncome.total_expense || 0; // Defaults to 0 if undefined
+    const totalExpenseValue = totalIncome.total_expense || 0;
     const totalExpenseQueryValue = totalIncome.total_expense_query_days || 0;
     const totalExpenseQueryPreviousValue =
         totalIncome.total_expense_query_previous_days || 0;
