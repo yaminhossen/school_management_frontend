@@ -109,6 +109,7 @@ async function fees_categories_second(
                 total: total || 0, // Ensure a fallback of 0 if no records are found
                 fee_amount: fee_amount || 0, // Ensure a fallback of 0 if no records are found
                 due_amount: (total || 0) - (fee_amount || 0), // Calculate the due amount
+                // due_amount: Math.abs((total || 0) - (fee_amount || 0)), // Calculate the due amount
             });
         }
         // Calculate overall totals

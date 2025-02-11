@@ -42,8 +42,14 @@ const Index: React.FC<Props> = (props: Props) => {
     const [periods, setPeriods] = useState<Periodinfo[]>([]);
     const [classes, setClass] = useState<any>([]);
     const [feesTypes, setFeesTypes] = useState<FeesInfo[]>([]);
+    const [feesTypes2, setFeesTypes2] = useState<FeesInfo[]>([]);
     const [totalAmount, setTotalAmount] = useState();
     const [totalAmount2, setTotalAmount2] = useState(0);
+    const [totalAmount3, setTotalAmount3] = useState(0);
+    const [remainingDue, setRemainingDue] = useState<{ [key: number]: number }>(
+        {},
+    );
+    const [totalPayable, setTotalPayable] = useState(0);
     const handleSubmit = async (e) => {
         e.preventDefault();
         let form = document.getElementById('main_form') as HTMLFormElement;
@@ -98,6 +104,7 @@ const Index: React.FC<Props> = (props: Props) => {
             setError2(error.response?.data?.message);
             setClass([]);
             setFeesTypes([]);
+            setFeesTypes2([]);
         }
     };
     const fetchTypes = async (id: string) => {
@@ -105,6 +112,7 @@ const Index: React.FC<Props> = (props: Props) => {
             const response2 = await axios.get(
                 `/api/v1/user-students/fees-categories-student/${id}`,
             );
+            setFeesTypes2(response2.data?.data?.idWiseTotals);
             setFeesTypes(response2.data?.data?.idWiseTotals);
             setTotalAmount(response2.data?.data?.summeries);
         } catch (error) {
@@ -152,9 +160,75 @@ const Index: React.FC<Props> = (props: Props) => {
         );
         setTotalAmount2(sum);
     }, [feesTypes]);
+
+    useEffect(() => {
+        let sum = feesTypes2.reduce(
+            (t, i: anyObject) => (t += +(i.input_amount2 || 0)),
+            0,
+        );
+        setTotalAmount3(sum);
+    }, [feesTypes2]);
     if (totalAmount) {
         console.log(totalAmount);
     }
+    const handleFeeChange = (
+        event: React.ChangeEvent<HTMLInputElement>,
+        i: any,
+    ) => {
+        let enteredValue = parseFloat(event.target.value) || 0; // Convert input to number
+        let absolueValue = Math.abs(i.due_amount);
+        if (absolueValue <= enteredValue) {
+            enteredValue = Math.abs(i.due_amount);
+            console.log('entered value111', enteredValue);
+            console.log('absolute value111', absolueValue);
+        }
+        console.log('entered222 value', enteredValue);
+        console.log('absolute222 value', absolueValue);
+        const remaining = absolueValue - enteredValue; // Calculate remaining due amount
+        setRemainingDue((prev) => ({
+            ...prev,
+            [i.id]: Math.abs(remaining), // Store remaining due amount with the corresponding fee ID
+        }));
+        // Calculate total payable sum whenever remainingDue changes
+        useEffect(() => {
+            const total = Object.values(remainingDue).reduce(
+                (acc, val) => acc + val,
+                0,
+            );
+            setTotalPayable(total);
+        }, [remainingDue]);
+    };
+    // Calculate total payable sum whenever remainingDue changes
+    useEffect(() => {
+        const total = Object.values(remainingDue).reduce(
+            (acc, val) => acc + val,
+            0,
+        );
+        setTotalPayable(total);
+    }, [remainingDue]);
+    console.log('ramaing due array', remainingDue);
+
+    // Function to update remaining due (assuming this is updated elsewhere)
+    const handleFeeChange2 = (
+        event: React.ChangeEvent<HTMLInputElement>,
+        i: any,
+    ) => {
+        const enteredValue = parseFloat(event.target.value) || 0; // Convert input to number
+        setRemainingDue((prev) => ({
+            ...prev,
+            [i.id]: enteredValue, // Store payable amount based on id
+        }));
+    };
+
+    // Calculate total payable sum whenever remainingDue changes
+    useEffect(() => {
+        const total = Object.values(remainingDue).reduce(
+            (acc, val) => acc + val,
+            0,
+        );
+        setTotalPayable(total);
+    }, [remainingDue]);
+    console.log('total amount', totalAmount2);
 
     return (
         <div className="admin_dashboard">
@@ -327,11 +401,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <th>Title</th>
                                         <th>Fees</th>
-                                        <th>Paying</th>
+                                        <th>Paid</th>
                                         <th>Due amount</th>
-                                        <th>Advanced</th>
+                                        {/* <th>Advanced</th> */}
+                                        <th>Discount</th>
                                         <th>Payable</th>
                                         <th>Given Amount</th>
+                                        <th>Paying</th>
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
@@ -362,15 +438,70 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <td>{i.total}</td>
                                                         <td>
                                                             {i.due_amount < 0
-                                                                ? i.due_amount
+                                                                ? Math.abs(
+                                                                    i.due_amount,
+                                                                )
                                                                 : '0'}
+                                                        </td>
+                                                        {/* <td>
+                                                            {i.due_amount >= 0
+                                                                ? Math.abs(
+                                                                    i.due_amount,
+                                                                )
+                                                                : '0'}
+                                                        </td> */}
+                                                        <td>
+                                                            <input
+                                                                type="number"
+                                                                max={
+                                                                    i.due_amount
+                                                                }
+                                                                name={`fees_type_${index}`}
+                                                                value={
+                                                                    feesTypes2[
+                                                                        index
+                                                                    ]
+                                                                        ?.input_amount2 ??
+                                                                    ''
+                                                                }
+                                                                onChange={(
+                                                                    event,
+                                                                ) => {
+                                                                    let temp = [
+                                                                        ...feesTypes2,
+                                                                    ];
+                                                                    temp[index][
+                                                                        'input_amount2'
+                                                                    ] =
+                                                                        event?.target.value;
+                                                                    setFeesTypes2(
+                                                                        temp,
+                                                                    );
+                                                                    handleFeeChange(
+                                                                        event,
+                                                                        i,
+                                                                    );
+                                                                }}
+                                                            />
                                                         </td>
                                                         <td>
-                                                            {i.due_amount >= 0
-                                                                ? i.due_amount
-                                                                : '0'}
+                                                            <input
+                                                                type="text"
+                                                                name={`payable[${index}]`}
+                                                                value={
+                                                                    remainingDue[
+                                                                        i.id
+                                                                    ] ??
+                                                                    Math.abs(
+                                                                        i.due_amount <=
+                                                                            0
+                                                                            ? i.due_amount
+                                                                            : 0,
+                                                                    )
+                                                                } // Show updated value
+                                                                readOnly
+                                                            />
                                                         </td>
-                                                        <td></td>
                                                         <td>
                                                             <input
                                                                 type="hidden"
@@ -406,9 +537,25 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <td>Total</td>
                                         <td>{totalAmount?.['fee_amount']}</td>
                                         <td>{totalAmount?.['total']}</td>
-                                        <td></td>
-                                        <td></td>
                                         <td>{totalAmount?.['due_amount']}</td>
+                                        {/* <td></td> */}
+                                        <td>{totalAmount3}</td>
+                                        <td>
+                                            {totalAmount?.['due_amount'] +
+                                                totalAmount3}
+                                        </td>
+                                        {/* <td>
+                                            {totalAmount?.['due_amount'] +
+                                                totalAmount2}
+                                        </td> */}
+                                        <td>
+                                            {totalAmount2} tk
+                                            <input
+                                                type="hidden"
+                                                name="total_amount"
+                                                value={totalAmount2}
+                                            />
+                                        </td>
                                         <td>
                                             {totalAmount2} tk
                                             <input
