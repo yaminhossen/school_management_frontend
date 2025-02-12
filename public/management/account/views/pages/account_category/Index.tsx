@@ -20,7 +20,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/account-categories?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10&select_fields=id,title,status',
+                '/api/v1/account-categories?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=20&select_fields=id,title,status',
             );
             setData(response.data.data.data);
             setTotalIncome(response.data.data);
@@ -53,6 +53,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th>Category</th>
                                     <th className="text-right">Income</th>
                                     <th>Expense</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -72,6 +73,15 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     {i.total_expense
                                                         ? i.total_expense
                                                         : '-'}{' '}
+                                                </td>
+                                                <td>
+                                                    <Link
+                                                        to={`/account-category/details/${i.id}`}
+                                                        className="btn btn-sm  btn-outline-info"
+                                                        type="submit"
+                                                    >
+                                                        Details
+                                                    </Link>
                                                 </td>
                                             </tr>
                                         );

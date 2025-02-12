@@ -2,6 +2,7 @@
 import { FastifyInstance } from 'fastify';
 import controller from './controller';
 import check_auth from '../../auth_management/authetication/services/check_auth';
+import auth_middleware from '../../auth_management/authetication/services/auth_middleware';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/account-logs';
@@ -11,6 +12,7 @@ module.exports = async function (fastify: FastifyInstance) {
         // .addHook('onRequest', check_auth)
         .get(`${prefix}`, controllerInstance.all)
         .post(`${prefix}/credit`, controllerInstance.credit)
+        .post(`${prefix}/category-wise/:id`, controllerInstance.category_wise)
         .post(
             `${prefix}/month-wise-statement`,
             controllerInstance.month_wise_statement,
@@ -25,8 +27,16 @@ module.exports = async function (fastify: FastifyInstance) {
         .post(`${prefix}/debit`, controllerInstance.debit)
         .post(`${prefix}/store`, controllerInstance.store)
         .post(`${prefix}/fees-store`, controllerInstance.fees_store)
-        .post(`${prefix}/income-store`, controllerInstance.income_store)
-        .post(`${prefix}/expense-store`, controllerInstance.expense_store)
+        .post(
+            `${prefix}/income-store`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.income_store,
+        )
+        .post(
+            `${prefix}/expense-store`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.expense_store,
+        )
         .get(`${prefix}/account/:id`, controllerInstance.account_details)
         .get(`${prefix}/categories`, controllerInstance.categories)
         .get(`${prefix}/periods`, controllerInstance.account_periods)

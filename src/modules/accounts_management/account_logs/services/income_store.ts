@@ -88,12 +88,12 @@ async function income_store(
     }
     let auth_user = await models.BranchStaffsModel.findOne({
         where: {
-            user_staff_id: (req as any).user.id,
+            user_staff_id: (req as any).user?.id,
         },
     });
 
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: auth_user?.branch_id || 0,
+        branch_id: auth_user?.branch_id || 1,
         account_category_id: body.category,
         account_id: body.account,
         receipt_no: body.receipt_no,
@@ -102,6 +102,7 @@ async function income_store(
         date: body.date,
         type: 'income',
     };
+    console.log('user auth', auth_user);
 
     /** print request data into console */
     // console.clear();
@@ -125,7 +126,7 @@ async function income_store(
             if (image_path1) {
                 let ala_model = new models.AccountLogAttachmentsModel();
                 let ala_input: InferCreationAttributes<typeof ala_model> = {
-                    branch_id: auth_user?.branch_id || 0,
+                    branch_id: auth_user?.branch_id || 1,
                     attachment_url: image_path1,
                     account_log_id: data.id || 1,
                 };

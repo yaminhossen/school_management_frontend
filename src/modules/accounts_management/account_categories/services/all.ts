@@ -19,7 +19,7 @@ async function all(
     let orderByCol = query_param.orderByCol || 'id';
     let orderByAsc = query_param.orderByAsc || 'true';
     let show_active_data = query_param.show_active_data || 'true';
-    let paginate = parseInt((req.query as any).paginate) || 10;
+    let paginate = parseInt((req.query as any).paginate) || 20;
     let select_fields: string[] = [];
 
     if (query_param.select_fields) {

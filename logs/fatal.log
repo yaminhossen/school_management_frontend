@@ -1,0 +1,17 @@
+{"level":60,"time":1739333817174,"pid":7476,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/12/2025 10:16:57 AM","message":"data not found"}
+{"level":60,"time":1739334168086,"pid":7476,"hostname":"DESKTOP-9421701","file":"","time":"2/12/2025 10:22:48 AM","message":"Data truncated for column 'amount' at row 1"}
+{"level":60,"time":1739334448722,"pid":7476,"hostname":"DESKTOP-9421701","file":"","time":"2/12/2025 10:27:28 AM","message":"Data truncated for column 'amount' at row 1"}
+{"level":60,"time":1739343954946,"pid":616,"hostname":"DESKTOP-9421701","file":"services\\income_store.ts:91:46)","time":"2/12/2025 1:05:54 PM","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":60,"time":1739344117076,"pid":6848,"hostname":"DESKTOP-9421701","file":"","time":"2/12/2025 1:08:37 PM","message":"WHERE parameter \"user_staff_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1739344977299,"pid":1964,"hostname":"DESKTOP-9421701","file":"","time":"2/12/2025 1:22:57 PM","message":"Incorrect integer value: '\\xE0\\xA7\\xAA\\xE0\\xA7\\xAB' for column 'amount' at row 1"}
+{"level":60,"time":1739345324213,"pid":1964,"hostname":"DESKTOP-9421701","file":"services\\expense_store.ts:91:46)","time":"2/12/2025 1:28:44 PM","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":60,"time":1739352550396,"pid":3128,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"2/12/2025 3:29:10 PM","message":"data not found"}
+{"level":60,"time":1739352577840,"pid":3128,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"2/12/2025 3:29:37 PM","message":"data not found"}
+{"level":60,"time":1739352620752,"pid":3128,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"2/12/2025 3:30:20 PM","message":"data not found"}
+{"level":60,"time":1739352683727,"pid":15148,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"2/12/2025 3:31:23 PM","message":"data not found"}
+{"level":60,"time":1739352684429,"pid":15148,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"2/12/2025 3:31:24 PM","message":"data not found"}
+{"level":60,"time":1739352685172,"pid":15148,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"2/12/2025 3:31:25 PM","message":"data not found"}
+{"level":60,"time":1739353174206,"pid":9076,"hostname":"DESKTOP-9421701","file":"","time":"2/12/2025 3:39:34 PM","message":"Data too long for column 'token' at row 1"}
+{"level":60,"time":1739356281241,"pid":6788,"hostname":"DESKTOP-9421701","file":"services\\category_wise.ts:115:19)","time":"2/12/2025 4:31:21 PM","message":"WHERE parameter \"account_category_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1739356282984,"pid":6788,"hostname":"DESKTOP-9421701","file":"services\\category_wise.ts:115:19)","time":"2/12/2025 4:31:22 PM","message":"WHERE parameter \"account_category_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1739356700516,"pid":7172,"hostname":"DESKTOP-9421701","file":"services\\category_wise.ts:115:19)","time":"2/12/2025 4:38:20 PM","message":"WHERE parameter \"account_category_id\" has invalid \"undefined\" value"}

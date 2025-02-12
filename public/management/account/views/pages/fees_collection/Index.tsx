@@ -403,7 +403,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <th>Fees</th>
                                         <th>Paid</th>
                                         <th>Due amount</th>
-                                        {/* <th>Advanced</th> */}
                                         <th>Discount</th>
                                         <th>Payable</th>
                                         <th>Given Amount</th>
@@ -443,13 +442,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 )
                                                                 : '0'}
                                                         </td>
-                                                        {/* <td>
-                                                            {i.due_amount >= 0
-                                                                ? Math.abs(
-                                                                    i.due_amount,
-                                                                )
-                                                                : '0'}
-                                                        </td> */}
                                                         <td>
                                                             <input
                                                                 type="number"
@@ -552,7 +544,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             {totalAmount2} tk
                                             <input
                                                 type="hidden"
-                                                name="total_amount"
+                                                // name="total_amount"
                                                 value={totalAmount2}
                                             />
                                         </td>
