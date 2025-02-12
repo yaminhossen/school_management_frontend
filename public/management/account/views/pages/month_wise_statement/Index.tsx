@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment/moment';
+import { Link } from 'react-router-dom';
 
 export interface AccountLog {
     account: { title: string };
@@ -113,6 +114,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th>Total Income</th>
                                     <th>Total Expence</th>
                                     <th>Balance</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -128,6 +130,15 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <td>
                                             {i.total_income - i.total_expense}{' '}
                                             tk
+                                        </td>
+                                        <td>
+                                            <Link
+                                                to={`/month-wise-statement/details/${i.month}`}
+                                                className="btn btn-sm  btn-outline-info"
+                                                type="submit"
+                                            >
+                                                Details
+                                            </Link>
                                         </td>
                                     </tr>
                                 ))}

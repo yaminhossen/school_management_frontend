@@ -23,11 +23,12 @@ export interface TotalLog {
 
 export interface Props {}
 
-const Index: React.FC<Props> = (props: Props) => {
+const Details: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [totalIncome, setTotalIncome] = useState<TotalLog>({});
     const [data, setData] = useState<AccountLog[]>([]);
-    const { id } = useParams();
+    const { month } = useParams();
+    console.log('sdljdslfjdlsjf', month);
 
     const totalIncomeValue = totalIncome.total_income || 0;
     const totalExpenseValue = totalIncome.total_expense || 0;
@@ -46,9 +47,9 @@ const Index: React.FC<Props> = (props: Props) => {
             formData.month2 = m2;
             // formData.id = id;
 
-            const response = await axios.post(
-                `/api/v1/account-logs/category-wise/${id}`,
-                formData,
+            const response = await axios.get(
+                `/api/v1/account-logs/month-wise-statement/${month}`,
+                // formData,
             );
             setData(response.data.data.data);
             setTotalIncome(response.data.data.data2);
@@ -61,25 +62,25 @@ const Index: React.FC<Props> = (props: Props) => {
         fetchData();
     }, []); // Trigger fetch when dates change
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        let formData = new FormData(e.target);
-        try {
-            const response = await axios.post(
-                `/api/v1/account-logs/category-wise/${id}`,
-                formData,
-            );
-            setData(response.data.data.data);
-            setTotalIncome(response.data.data.data2);
-        } catch (error) {
-            setError(error);
-        }
-    };
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     let formData = new FormData(e.target);
+    //     try {
+    //         const response = await axios.post(
+    //             `/api/v1/account-logs/category-wise/${id}`,
+    //             formData,
+    //         );
+    //         setData(response.data.data.data);
+    //         setTotalIncome(response.data.data.data2);
+    //     } catch (error) {
+    //         setError(error);
+    //     }
+    // };
 
     return (
         <div className="admin_dashboard">
             <div className="content_body">
-                <form onSubmit={handleSubmit}>
+                {/* <form>
                     <div className="teacher_result">
                         <div>
                             <div>Start Date</div>
@@ -110,7 +111,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             Submit
                         </button>
                     </div>
-                </form>
+                </form> */}
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
                         <table>
@@ -185,4 +186,4 @@ const Index: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Index;
+export default Details;
