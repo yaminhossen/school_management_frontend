@@ -40,10 +40,10 @@ async function category_wise(
                     model: accountCategoriesModel,
                     as: 'category',
                 },
-                // {
-                //     model: accountsModel,
-                //     as: 'account',
-                // },
+                {
+                    model: accountsModel,
+                    as: 'account',
+                },
             ],
             order: [['date', 'ASC']],
             // limit: 5,

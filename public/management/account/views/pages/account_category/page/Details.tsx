@@ -30,7 +30,9 @@ const Index: React.FC<Props> = (props: Props) => {
     const { id } = useParams();
 
     const totalIncomeValue = totalIncome.total_income || 0;
+    const totalExpenseValue = totalIncome.total_expense || 0;
     const totalIncomeQueryValue = totalIncome.total_income_query_days || 0; // Defaults to 0 if undefined
+    const totalExpenseQueryValue = totalIncome.total_expense_query_days || 0; // Defaults to 0 if undefined
     const totalIncomeQueryPreviousValue =
         totalIncome.total_income_query_previous_days || 0; // Defaults to 0 if undefined
 
@@ -119,16 +121,18 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th>Purpose</th>
                                     <th>Date</th>
                                     <th>Account</th>
-                                    <th>Amount</th>
+                                    <th>Expense</th>
+                                    <th>Income</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
                                 <tr>
                                     <td></td>
                                     <td>Previous Data</td>
-                                    <td></td>
-                                    <td></td>
                                     <td>Total:</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>{totalIncomeQueryPreviousValue} tk</td>
                                 </tr>
                                 {data.map((i, index) => (
@@ -143,6 +147,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </td>
                                         <td>{i.account?.title}</td>
                                         <td>
+                                            {i.type === 'expense'
+                                                ? i.amount
+                                                : '-'}
+                                        </td>
+                                        <td>
                                             {i.type === 'income'
                                                 ? i.amount
                                                 : '-'}
@@ -155,6 +164,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td></td>
                                     <td></td>
                                     <td>Total:</td>
+                                    <td>{totalExpenseQueryValue} tk</td>
                                     <td>{totalIncomeQueryValue} tk</td>
                                 </tr>
                                 <tr>
@@ -163,6 +173,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td></td>
                                     <td></td>
                                     <td>Grand Total:</td>
+                                    <td>
+                                        {totalExpenseValue}
+                                        tk
+                                    </td>
                                     <td>
                                         {totalIncomeValue}
                                         tk
