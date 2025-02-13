@@ -32,3 +32,5 @@
 {"level":60,"time":1739429895159,"pid":10720,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:124:19)","time":"2/13/2025 12:58:15 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
 {"level":60,"time":1739429896000,"pid":10720,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:124:19)","time":"2/13/2025 12:58:16 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
 {"level":60,"time":1739429962757,"pid":15332,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:124:19)","time":"2/13/2025 12:59:22 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
+{"level":60,"time":1739430017426,"pid":8380,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:124:19)","time":"2/13/2025 1:00:17 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
+{"level":60,"time":1739430018319,"pid":8380,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:124:19)","time":"2/13/2025 1:00:18 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
