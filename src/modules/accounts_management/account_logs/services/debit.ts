@@ -32,6 +32,7 @@ async function debit(
                     [Op.between]: [month1, formattedEndDate],
                 },
                 type: 'expense',
+                amount: { [Op.gte]: 1 },
             },
             include: [
                 {

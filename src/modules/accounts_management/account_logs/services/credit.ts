@@ -33,6 +33,7 @@ async function credit(
                     [Op.between]: [month1, formattedEndDate],
                 },
                 type: 'income',
+                amount: { [Op.gte]: 1 },
             },
             include: [
                 {

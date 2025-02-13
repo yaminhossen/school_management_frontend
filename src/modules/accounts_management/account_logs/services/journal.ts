@@ -30,6 +30,7 @@ async function journal(
                 date: {
                     [Op.between]: [month1, formattedEndDate],
                 },
+                amount: { [Op.gte]: 1 },
             },
             include: [
                 {

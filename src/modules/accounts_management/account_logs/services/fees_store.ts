@@ -47,7 +47,7 @@ async function store(
         i++
     ) {
         let fees = (req.body as anyObject)[`fees_${i}`];
-        if (fees) {
+        if (fees == '') {
             let temp = {
                 receipt_no: (req.body as anyObject).receipt_no,
                 date: (req.body as anyObject).date,
@@ -56,7 +56,7 @@ async function store(
                 account_period_id: (req.body as anyObject).account_period_id,
                 account_id: (req.body as anyObject).account_id,
                 amount_in_text: (req.body as anyObject).amount_in_text,
-                amount: (req.body as anyObject)[`fees_${i}`],
+                amount: (req.body as anyObject)[`fees_${i}`] || 0,
                 fee_amount: (req.body as anyObject)[`fees_amount_${i}`],
                 type: (req.body as anyObject)[`fees_type_${i}`],
             };
@@ -135,7 +135,7 @@ async function store(
                             account_fees_collection_id: afc_model.id || 0,
                             branch_class_fees_id: ss.type,
                             fee_amount: ss.fee_amount,
-                            total: ss.amount,
+                            total: ss.amount || 0,
                             date: (req.body as anyObject).date,
                             creator: user?.id || null,
                         };

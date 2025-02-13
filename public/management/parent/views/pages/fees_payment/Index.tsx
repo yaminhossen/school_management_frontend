@@ -386,6 +386,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             />
                                                             <input
                                                                 name={`fees_${index}`}
+                                                                defaultValue={0}
                                                                 type="number"
                                                                 onChange={(
                                                                     event,

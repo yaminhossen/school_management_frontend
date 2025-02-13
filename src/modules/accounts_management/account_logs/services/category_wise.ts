@@ -33,6 +33,7 @@ async function category_wise(
                     [Op.between]: [month1, formattedEndDate],
                 },
                 account_category_id: params.id,
+                amount: { [Op.gte]: 1 },
                 // type: 'income',
             },
             include: [
