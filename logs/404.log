@@ -7,3 +7,4 @@
 {"level":60,"time":1739359925506,"pid":6820,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/month-wise-statement/undefined"}
 {"level":60,"time":1739360133995,"pid":15492,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/month-wise-statement/undefined"}
 {"level":60,"time":1739360159575,"pid":15492,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/month-wise-statement/undefined"}
+{"level":60,"time":1739425722849,"pid":15056,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}

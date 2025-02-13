@@ -4,7 +4,7 @@ import { responseObject, anyObject } from '../../../common_types/object';
 import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
-import { Op } from 'sequelize';
+import { Op, Sequelize } from 'sequelize';
 
 async function single_month_wise(
     fastify_instance: FastifyInstance,
@@ -16,25 +16,23 @@ async function single_month_wise(
     let accountsModel = models.AccountsModel;
     let params = req.params as any;
     let user = (req as any).user;
-    console.log('jsdlfj', user);
+    const param = '2024-09'; // Input format: YYYY-MM
 
-    let month1 = body.month1 || '2024-09-12'; // Start date
-    let month2 = body.month2 || '2025-09-22'; // End date
-
-    // Add one day to month2
-    const endDate = new Date(month2);
-    endDate.setDate(endDate.getDate() + 1); // Increment by one day
-    const formattedEndDate = endDate.toISOString().split('T')[0]; // Format to YYYY-MM-DD
+    const startDate = `${params.month}-01 00:00:00`; // "2024-09-01 00:00:00"
+    const endDate = `${params.month}-31 00:00:00`; // "2024-09-31 23:59:59" (Handles any month)
+    console.log(
+        '=====================two date00000000000-------------------------',
+        startDate,
+        endDate,
+    );
 
     try {
         let data = await models.AccountLogsModel.findAll({
             where: {
-                // date: {
-                //     [Op.between]: [month1, formattedEndDate],
-                // },
-                date: params.month,
-                // account_category_id: params.id,
-                // type: 'income',
+                date: {
+                    [Op.gte]: '2024-09-11 00:00:00', // Includes records on and after this date
+                    [Op.lte]: '2024-09-22 00:00:00', // Includes records on and before this date
+                },
             },
             include: [
                 {
@@ -63,14 +61,20 @@ async function single_month_wise(
         data2.total_income = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'income',
-                account_category_id: params.id,
+                date: {
+                    [Op.gte]: startDate, // Includes records on and after this date
+                    [Op.lte]: endDate, // Includes records on and before this date
+                },
             },
         });
 
         data2.total_expense = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'expense',
-                account_category_id: params.id,
+                date: {
+                    [Op.gte]: startDate, // Includes records on and after this date
+                    [Op.lte]: endDate, // Includes records on and before this date
+                },
             },
         });
 
@@ -89,9 +93,9 @@ async function single_month_wise(
             await models.AccountLogsModel.sum('amount', {
                 where: {
                     type: 'income',
-                    account_category_id: params.id,
                     date: {
-                        [Op.lt]: month1,
+                        [Op.gte]: startDate, // Includes records on and after this date
+                        [Op.lte]: endDate, // Includes records on and before this date
                     },
                 },
             });
@@ -100,9 +104,9 @@ async function single_month_wise(
             await models.AccountLogsModel.sum('amount', {
                 where: {
                     type: 'expense',
-                    account_category_id: params.id,
                     date: {
-                        [Op.lt]: month1,
+                        [Op.gte]: startDate, // Includes records on and after this date
+                        [Op.lte]: endDate, // Includes records on and before this date
                     },
                 },
             });

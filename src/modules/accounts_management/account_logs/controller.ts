@@ -30,6 +30,7 @@ import fees_store from './services/fees_store';
 import payment_history from './services/payment_history';
 import month_wise_statement from './services/month_wise_statement';
 import category_wise from './services/category_wise';
+import single_month_wise from './services/single_month_wise';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -43,6 +44,14 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data: responseObject = await month_wise_statement(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        single_month_wise: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await single_month_wise(fastify, req);
             res.code(data.status).send(data);
         },
 

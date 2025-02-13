@@ -114,7 +114,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th>Total Income</th>
                                     <th>Total Expence</th>
                                     <th>Balance</th>
-                                    <th>Action</th>
+                                    {/* <th>Action</th> */}
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -131,7 +131,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             {i.total_income - i.total_expense}{' '}
                                             tk
                                         </td>
-                                        <td>
+                                        {/* <td>
                                             <Link
                                                 to={`/month-wise-statement/details/${i.month}`}
                                                 className="btn btn-sm  btn-outline-info"
@@ -139,7 +139,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             >
                                                 Details
                                             </Link>
-                                        </td>
+                                        </td> */}
                                     </tr>
                                 ))}
                                 <tr>
