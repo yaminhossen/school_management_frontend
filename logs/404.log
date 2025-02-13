@@ -8,3 +8,8 @@
 {"level":60,"time":1739360133995,"pid":15492,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/month-wise-statement/undefined"}
 {"level":60,"time":1739360159575,"pid":15492,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/month-wise-statement/undefined"}
 {"level":60,"time":1739425722849,"pid":15056,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1739439568437,"pid":8464,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1739439590291,"pid":8464,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1739439594809,"pid":8464,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1739441201582,"pid":8088,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1739442110846,"pid":8088,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}

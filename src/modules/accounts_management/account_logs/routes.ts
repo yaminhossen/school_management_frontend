@@ -30,7 +30,11 @@ module.exports = async function (fastify: FastifyInstance) {
         .post(`${prefix}/profit-loss`, controllerInstance.profit_loss)
         .post(`${prefix}/debit`, controllerInstance.debit)
         .post(`${prefix}/store`, controllerInstance.store)
-        .post(`${prefix}/fees-store`, controllerInstance.fees_store)
+        .post(
+            `${prefix}/fees-store`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.fees_store,
+        )
         .post(
             `${prefix}/income-store`,
             { preHandler: [auth_middleware] },

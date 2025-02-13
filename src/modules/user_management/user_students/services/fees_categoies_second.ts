@@ -30,7 +30,7 @@ async function fees_categories_second(
         let student_data = await informationsModel.findOne({
             where: {
                 [Op.or]: [
-                    { user_student_id: user?.id },
+                    // { user_student_id: user?.id },
                     { student_id: params?.id || 0 },
                 ],
             },
@@ -82,7 +82,7 @@ async function fees_categories_second(
                 const feeRecord =
                     await accountFeesCollectionDetailsModel.findOne({
                         where: {
-                            branch_student_id: 22,
+                            branch_student_id: student_data?.user_student_id,
                             branch_class_fees_id: item.id,
                         },
                         attributes: ['fee_amount'], // Fetch only `fee_amount` field
@@ -107,11 +107,12 @@ async function fees_categories_second(
                 id: item.id,
                 name: item.name,
                 total: total || 0, // Ensure a fallback of 0 if no records are found
-                fee_amount: fee_amount || 0, // Ensure a fallback of 0 if no records are found
-                due_amount: (total || 0) - (fee_amount || 0), // Calculate the due amount
+                fee_amount: fee_amount || item.amount, // Ensure a fallback of 0 if no records are found
+                due_amount: total - fee_amount, // Calculate the due amount
                 // due_amount: Math.abs((total || 0) - (fee_amount || 0)), // Calculate the due amount
             });
         }
+        console.log('due amount', idWiseTotals);
         // Calculate overall totals
         const summeries = idWiseTotals.reduce(
             (acc, curr) => {
