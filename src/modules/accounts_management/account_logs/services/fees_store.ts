@@ -109,7 +109,7 @@ async function store(
             creator: user?.id || null,
         };
 
-        // (await data.update(inputs)).save();
+        (await data.update(inputs)).save();
         if (data) {
             let afc_model = new models.AccountFeeCollectionsModel();
             let afc_inputs: InferCreationAttributes<typeof afc_model> = {
@@ -136,7 +136,7 @@ async function store(
             afc_inputs.amount = (req.body as anyObject).total_amount || 0;
             afc_inputs.date = (req.body as anyObject).date;
             // insert new fees in afc_model
-            // (await afc_model.update(afc_inputs)).save();
+            (await afc_model.update(afc_inputs)).save();
 
             if (afc_model) {
                 if (student_fees) {
@@ -158,7 +158,7 @@ async function store(
                             creator: user?.id || null,
                         };
 
-                        // (await afcd_model.update(afcd_inputs)).save();
+                        (await afcd_model.update(afcd_inputs)).save();
                     });
                 }
             }
