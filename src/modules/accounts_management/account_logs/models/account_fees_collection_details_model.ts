@@ -42,6 +42,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare fee_amount: number;
     declare date: string;
     declare deduction?: number;
+    declare discount: number;
     declare total: number;
 
     declare status?: status;
@@ -88,6 +89,10 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             total: {
+                type: DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
+            discount: {
                 type: DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },

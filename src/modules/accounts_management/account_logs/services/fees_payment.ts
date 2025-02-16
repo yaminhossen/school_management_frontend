@@ -10,6 +10,7 @@ import response from '../helpers/response';
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
+import moment from 'moment/moment';
 
 async function validate(req: Request) {
     // await body('account_category_id')
@@ -69,6 +70,19 @@ async function store(
     let data = new models.AccountLogsModel();
     let afc_model = new models.AccountFeeCollectionsModel();
 
+    let image_path = 'avatar.png';
+
+    if (body['discount_attachment']?.ext) {
+        image_path =
+            'uploads/discount/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['discount_attachment'].name;
+        await (fastify_instance as any).upload(
+            body['discount_attachment'],
+            image_path,
+        );
+    }
+
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: 1,
         account_category_id: body.category_id || 1,
@@ -104,6 +118,9 @@ async function store(
                 branch_student_class_id: s_class || 1,
                 date: body.date,
                 amount: body.amount,
+                total_discount: body?.total_discount,
+                discount_attachment: image_path,
+                discount_note: body?.discount_note,
                 account_category_id: body.category_id || 1,
                 account_log_id: data.id || 1,
             };

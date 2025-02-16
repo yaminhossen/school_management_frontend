@@ -40,6 +40,9 @@ class DataModel extends Model<Infer, InferCreation> {
     declare account_category_id: number;
     declare account_log_id: number;
     declare amount: number;
+    declare total_discount: number;
+    declare discount_attachment: string;
+    declare discount_note: string;
     declare date: string;
 
     declare status?: status;
@@ -79,6 +82,18 @@ function init(sequelize: Sequelize) {
             },
             amount: {
                 type: DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
+            total_discount: {
+                type: DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
+            discount_attachment: {
+                type: DataTypes.STRING(150),
+                allowNull: true,
+            },
+            discount_note: {
+                type: DataTypes.TEXT,
                 allowNull: true,
             },
             date: {

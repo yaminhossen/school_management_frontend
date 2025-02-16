@@ -10,6 +10,7 @@ import response from '../helpers/response';
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
+import moment from 'moment/moment';
 
 async function validate(req: Request) {
     await body('receipt_no')
@@ -39,6 +40,18 @@ async function store(
     let user = (req as any).user;
     let body = req.body as anyObject;
     console.log('first', user);
+    let image_path = 'avatar.png';
+
+    if (body['discount_attachment']?.ext) {
+        image_path =
+            'uploads/discount/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['discount_attachment'].name;
+        await (fastify_instance as any).upload(
+            body['discount_attachment'],
+            image_path,
+        );
+    }
 
     let student_fees: anyObject[] = [];
     for (
@@ -47,7 +60,7 @@ async function store(
         i++
     ) {
         let fees = (req.body as anyObject)[`fees_${i}`];
-        if (fees == '') {
+        if (fees == '' || fees) {
             let temp = {
                 receipt_no: (req.body as anyObject).receipt_no,
                 date: (req.body as anyObject).date,
@@ -58,6 +71,7 @@ async function store(
                 amount_in_text: (req.body as anyObject).amount_in_text,
                 amount: (req.body as anyObject)[`fees_${i}`] || 0,
                 fee_amount: (req.body as anyObject)[`fees_amount_${i}`],
+                discount: (req.body as anyObject)[`fees_discount_${i}`],
                 type: (req.body as anyObject)[`fees_type_${i}`],
             };
             student_fees.push(temp);
@@ -95,7 +109,7 @@ async function store(
             creator: user?.id || null,
         };
 
-        (await data.update(inputs)).save();
+        // (await data.update(inputs)).save();
         if (data) {
             let afc_model = new models.AccountFeeCollectionsModel();
             let afc_inputs: InferCreationAttributes<typeof afc_model> = {
@@ -107,6 +121,9 @@ async function store(
                     .account_category_id,
                 account_log_id: data.id || 1,
                 amount: (req.body as anyObject).total_amount || 0,
+                total_discount: (req.body as anyObject).total_discount || 0,
+                discount_note: (req.body as anyObject).discount_note,
+                discount_attachment: image_path,
                 date: (req.body as anyObject).date,
                 creator: user?.id || null,
             };
@@ -119,7 +136,7 @@ async function store(
             afc_inputs.amount = (req.body as anyObject).total_amount || 0;
             afc_inputs.date = (req.body as anyObject).date;
             // insert new fees in afc_model
-            (await afc_model.update(afc_inputs)).save();
+            // (await afc_model.update(afc_inputs)).save();
 
             if (afc_model) {
                 if (student_fees) {
@@ -136,11 +153,12 @@ async function store(
                             branch_class_fees_id: ss.type,
                             fee_amount: ss.fee_amount,
                             total: ss.amount || 0,
+                            discount: ss.discount || 0,
                             date: (req.body as anyObject).date,
                             creator: user?.id || null,
                         };
 
-                        (await afcd_model.update(afcd_inputs)).save();
+                        // (await afcd_model.update(afcd_inputs)).save();
                     });
                 }
             }
