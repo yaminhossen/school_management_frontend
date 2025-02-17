@@ -52,3 +52,10 @@
 {"level":60,"time":1739699854836,"pid":8964,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:140:19)","time":"2/16/2025 3:57:34 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
 {"level":60,"time":1739699858117,"pid":8964,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/16/2025 3:57:38 PM","message":"data not found"}
 {"level":60,"time":1739699858220,"pid":8964,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:140:19)","time":"2/16/2025 3:57:38 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1739767778646,"pid":14804,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/17/2025 10:49:38 AM","message":"data not found"}
+{"level":60,"time":1739767778793,"pid":14804,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:140:19)","time":"2/17/2025 10:49:38 AM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1739767783985,"pid":14804,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/17/2025 10:49:43 AM","message":"data not found"}
+{"level":60,"time":1739767784074,"pid":14804,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:140:19)","time":"2/17/2025 10:49:44 AM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1739785437796,"pid":3360,"hostname":"DESKTOP-9421701","file":"services\\auth_middleware.ts:29:39)","time":"2/17/2025 3:43:57 PM","message":"Cannot read properties of undefined (reading 'slice')"}
+{"level":60,"time":1739785518419,"pid":3360,"hostname":"DESKTOP-9421701","file":"services\\auth_middleware.ts:29:39)","time":"2/17/2025 3:45:18 PM","message":"Cannot read properties of undefined (reading 'slice')"}
+{"level":60,"time":1739785519225,"pid":3360,"hostname":"DESKTOP-9421701","file":"services\\auth_middleware.ts:29:39)","time":"2/17/2025 3:45:19 PM","message":"Cannot read properties of undefined (reading 'slice')"}

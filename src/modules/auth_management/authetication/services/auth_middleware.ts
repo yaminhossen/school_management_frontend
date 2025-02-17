@@ -26,12 +26,13 @@ const auth_middleware = async (
     // const token = request.headers.authorization;
     const token = parseCookieString(request.headers.cookie)?.token;
     // const user_agent = request.headers['user-agent'];
-
+    const fullUrl = request.url;
     console.log('request cookies', token);
+    console.log('request cookies', fullUrl);
 
     if (!token || !token.startsWith('Bearer ')) {
-        // return reply.redirect('/account/login');
-        reply.code(401).send({ error: 'Unauthorized' });
+        return reply.redirect(`${fullUrl}/login`);
+        // reply.code(401).send({ error: 'Unauthorized' });
         // return;
     }
 
@@ -58,7 +59,10 @@ const auth_middleware = async (
             (request as anyObject).user = decoded;
             return;
         } else {
-            reply.code(401).send({ error: 'Unauthorized' });
+            console.log('decoded user type', decoded.user_type);
+
+            // reply.code(401).send({ error: 'Unauthorized' });
+            reply.redirect(`/${decoded.user_type}/login`);
             return;
         }
     } catch (error) {

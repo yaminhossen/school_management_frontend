@@ -8,6 +8,7 @@ import check_teacher_auth from '../modules/auth_management/authetication/service
 import check_staff_auth from '../modules/auth_management/authetication/services/check_staff_auth';
 import check_parent_auth from '../modules/auth_management/authetication/services/check_parent_auth';
 import check_student_auth from '../modules/auth_management/authetication/services/check_student_auth';
+import auth_middleware from '../modules/auth_management/authetication/services/auth_middleware';
 // import check_is_admin_and_redirect from '../modules/user_management/user_admin/services/check_is_admin_and_redirect';
 // const fs = require('node:fs');
 module.exports = async function (fastify: FastifyInstance) {
@@ -45,7 +46,8 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(
             '/student',
             // { preHandler: check_auth_and_redirect },
-            { preHandler: check_student_auth },
+            // { preHandler: check_student_auth },
+            { preHandler: auth_middleware },
             async (_req: FastifyRequest, reply: FastifyReply) => {
                 return reply.view('dashboard/student_uni.ejs');
             },
@@ -60,7 +62,8 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(
             '/parent',
             // { preHandler: check_auth_and_redirect },
-            { preHandler: check_parent_auth },
+            { preHandler: auth_middleware },
+            // { preHandler: check_parent_auth },
             async (_req: FastifyRequest, reply: FastifyReply) => {
                 return reply.view('dashboard/parent_uni.ejs');
             },
@@ -75,7 +78,8 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(
             '/teacher',
             // { preHandler: check_auth_and_redirect },
-            { preHandler: check_teacher_auth },
+            // { preHandler: check_teacher_auth },
+            { preHandler: auth_middleware },
             async (_req: FastifyRequest, reply: FastifyReply) => {
                 return reply.view('dashboard/teacher_uni.ejs');
             },
@@ -90,7 +94,8 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(
             '/account',
             // { preHandler: check_auth_and_redirect },
-            { preHandler: check_account_auth },
+            // { preHandler: check_account_auth },
+            { preHandler: auth_middleware },
             async (_req: FastifyRequest, reply: FastifyReply) => {
                 return reply.view('dashboard/account_uni.ejs');
             },
@@ -105,7 +110,8 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(
             '/admission-officer',
             // { preHandler: check_auth_and_redirect },
-            { preHandler: check_auth },
+            // { preHandler: check_auth },
+            { preHandler: auth_middleware },
             async (_req: FastifyRequest, reply: FastifyReply) => {
                 return reply.view('dashboard/admission_officer_uni.ejs');
             },
@@ -121,7 +127,8 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(
             '/staff',
             // { preHandler: check_auth_and_redirect },
-            { preHandler: check_staff_auth },
+            // { preHandler: check_staff_auth },
+            { preHandler: auth_middleware },
             async (_req: FastifyRequest, reply: FastifyReply) => {
                 return reply.view('dashboard/staff_uni.ejs');
             },

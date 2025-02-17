@@ -49,8 +49,8 @@ const check_student_auth = async (
             (request as anyObject).user = decoded;
             return;
         } else {
-            // reply.code(401).send({ error: 'Unauthorized' });
-            reply.redirect('/student/login');
+            reply.code(401).send({ error: 'Unauthorized' });
+            // reply.redirect('/student/login');
             return;
         }
     } catch (error) {

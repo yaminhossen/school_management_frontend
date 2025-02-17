@@ -49,7 +49,8 @@ const check_parent_auth = async (
             (request as anyObject).user = decoded;
             return;
         } else {
-            reply.code(401).send({ error: 'Unauthorized' });
+            // reply.code(401).send({ error: 'Unauthorized' });
+            reply.redirect('/parent/login');
             return;
         }
     } catch (error) {
