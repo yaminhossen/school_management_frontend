@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Accountinfo {
@@ -18,21 +18,19 @@ const Index: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState('');
     const [accounts, setAccounts] = useState<Accountinfo[]>([]);
     const [categories, setCategories] = useState<Categoryinfo[]>([]);
-    const fileInputRef = useRef<HTMLInputElement | null>(null);
-    const imageRef = useRef<HTMLImageElement | null>(null);
+    const [file, setFile] = useState<any>();
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
-        let target = e.target;
-        let formData = new FormData(target);
+        let formData = new FormData(e.target);
 
         try {
             const response = await axios.post(
-                '/api/v1/account-logs/income-store',
+                '/api/v1/account-logs/expense-store',
                 formData,
             );
-            // setData('Form submitted successfully!');
+            setData('Form submitted successfully!');
             (window as any).toaster('submitted');
-            target.reset();
+            e.target.reset();
         } catch (error) {
             // setError(error);
         }
@@ -53,18 +51,10 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
-    const handleFileChange = () => {
-        if (
-            fileInputRef.current?.files &&
-            fileInputRef.current.files.length > 0
-        ) {
-            const file = fileInputRef.current.files[0];
-            const src = URL.createObjectURL(file);
-            if (imageRef.current) {
-                imageRef.current.src = src;
-            }
-        }
-    };
+    function getFile(e) {
+        setFile(URL.createObjectURL(e.target.files[0]));
+    }
+
     useEffect(() => {
         fetchAccounts();
         fetchAccountCategorys();
@@ -177,23 +167,22 @@ const Index: React.FC<Props> = (props: Props) => {
                         <label>Attachment</label>
                         <div className="form_elements">
                             <input
-                                ref={fileInputRef}
                                 type="file"
                                 multiple
                                 accept="image/*"
                                 name="attachment"
-                                onChange={handleFileChange}
+                                onChange={getFile}
                             />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Preview</label>
+                        <label></label>
                         <div className="form_elements">
-                            <a target="_blank" rel="noopener noreferrer">
+                            <a target="blank" href={file}>
                                 <img
-                                    ref={imageRef}
-                                    className="img-80 preview_image"
-                                    alt="Preview"
+                                    src={file}
+                                    className="img-80"
+                                    alt="Preview image"
                                 />
                             </a>
                         </div>

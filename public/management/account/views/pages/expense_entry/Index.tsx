@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Accountinfo {
@@ -18,19 +18,21 @@ const Index: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState('');
     const [accounts, setAccounts] = useState<Accountinfo[]>([]);
     const [categories, setCategories] = useState<Categoryinfo[]>([]);
-    const [file, setFile] = useState<any>();
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
+    const imageRef = useRef<HTMLImageElement | null>(null);
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
-        let formData = new FormData(e.target);
+        let target = e.target;
+        let formData = new FormData(target);
 
         try {
             const response = await axios.post(
                 '/api/v1/account-logs/expense-store',
                 formData,
             );
-            setData('Form submitted successfully!');
+            // setData('Form submitted successfully!');
             (window as any).toaster('submitted');
-            e.target.reset();
+            target.reset();
         } catch (error) {
             // setError(error);
         }
@@ -51,10 +53,18 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
-    function getFile(e) {
-        setFile(URL.createObjectURL(e.target.files[0]));
-    }
-
+    const handleFileChange = () => {
+        if (
+            fileInputRef.current?.files &&
+            fileInputRef.current.files.length > 0
+        ) {
+            const file = fileInputRef.current.files[0];
+            const src = URL.createObjectURL(file);
+            if (imageRef.current) {
+                imageRef.current.src = src;
+            }
+        }
+    };
     useEffect(() => {
         fetchAccounts();
         fetchAccountCategorys();
@@ -167,22 +177,23 @@ const Index: React.FC<Props> = (props: Props) => {
                         <label>Attachment</label>
                         <div className="form_elements">
                             <input
+                                ref={fileInputRef}
                                 type="file"
                                 multiple
                                 accept="image/*"
                                 name="attachment"
-                                onChange={getFile}
+                                onChange={handleFileChange}
                             />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label></label>
+                        <label>Preview</label>
                         <div className="form_elements">
-                            <a target="blank" href={file}>
+                            <a target="_blank" rel="noopener noreferrer">
                                 <img
-                                    src={file}
-                                    className="img-80"
-                                    alt="Preview image"
+                                    ref={imageRef}
+                                    className="img-80 preview_image"
+                                    alt="Preview"
                                 />
                             </a>
                         </div>
