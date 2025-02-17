@@ -22,6 +22,11 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalContactNumber, setTotalContactNumber] = useState([1, 1, 1]);
     const [totalLanguage, setTotalLanguage] = useState([1, 1]);
     const [totalSkill, setTotalSkill] = useState([1, 1]);
+    const [error, setError] = useState<string>('');
+    const [formData, setFormData] = useState({
+        password: '',
+        confirm_password: '',
+    });
     const [phoneNumbers, setPhoneNumbers] = useState<{
         son: string;
         parents: string[];
@@ -83,6 +88,25 @@ const Index: React.FC<Props> = (props: Props) => {
     if (state.classes) {
         console.log('form frontend', state);
     }
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+
+        setFormData((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+        console.log('value', value);
+        console.log('formdata pass', formData.password);
+        console.log('formdata name', name);
+
+        // Validate the passwords when user types
+        if (name === 'confirm_password' && value !== formData.password) {
+            setError('Passwords do not match');
+        } else {
+            setError('');
+        }
+    };
+
     const isValidBDNumber = (number: string): boolean => {
         const regex = /^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/;
         return regex.test(number);
@@ -188,16 +212,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                         )}
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-vertical">
-                                    <label>Phone number</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="phone number"
-                                            name="phone_number"
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Whatsapp</label>
                                     <div className="form_elements">
@@ -237,6 +251,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                             type="text"
                                             placeholder="password"
                                             name="password"
+                                            value={formData.password}
+                                            onChange={handlePasswordChange}
                                         />
                                     </div>
                                 </div>
@@ -247,7 +263,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                             type="text"
                                             placeholder="confirm password"
                                             name="confirm_password"
+                                            // value={formData.confirm_Password}
+                                            onChange={handlePasswordChange}
                                         />
+                                        {error && (
+                                            <p style={{ color: 'red' }}>
+                                                {error}
+                                            </p>
+                                        )}
                                     </div>
                                 </div>
                             </div>
