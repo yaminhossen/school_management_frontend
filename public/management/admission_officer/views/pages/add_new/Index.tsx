@@ -22,6 +22,21 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalContactNumber, setTotalContactNumber] = useState([1, 1, 1]);
     const [totalLanguage, setTotalLanguage] = useState([1, 1]);
     const [totalSkill, setTotalSkill] = useState([1, 1]);
+    const [phoneNumbers, setPhoneNumbers] = useState<{
+        son: string;
+        parents: string[];
+    }>({
+        son: '',
+        parents: [],
+    });
+
+    const [errors, setErrors] = useState<{
+        son: string;
+        parents: string[];
+    }>({
+        son: '',
+        parents: [],
+    });
 
     // const formRef = useRef<HTMLFormElement>(null);
     const [totalEducationalBackground, setTotalEducationalBackground] =
@@ -68,6 +83,37 @@ const Index: React.FC<Props> = (props: Props) => {
     if (state.classes) {
         console.log('form frontend', state);
     }
+    const isValidBDNumber = (number: string): boolean => {
+        const regex = /^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/;
+        return regex.test(number);
+    };
+
+    // Handle input change dynamically
+    const handleChange = (
+        type: 'son' | 'parent',
+        index: number | null,
+        value: string,
+    ) => {
+        if (type === 'son') {
+            setPhoneNumbers((prev) => ({ ...prev, son: value }));
+            setErrors((prev) => ({
+                ...prev,
+                son: isValidBDNumber(value) ? '' : 'Invalid phone number!',
+            }));
+        } else if (index !== null) {
+            const updatedParents = [...phoneNumbers.parents];
+            updatedParents[index] = value;
+
+            const updatedErrors = [...errors.parents];
+            updatedErrors[index] = isValidBDNumber(value)
+                ? ''
+                : 'Invalid phone number!';
+
+            setPhoneNumbers((prev) => ({ ...prev, parents: updatedParents }));
+            setErrors((prev) => ({ ...prev, parents: updatedErrors }));
+        }
+    };
+
     // console.log('moment', moment().format('YYYY-DD-MM'));
     let date = moment().format('YYYY-MM-DD');
     return (
@@ -124,11 +170,34 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="text"
+                                            value={phoneNumbers.son}
+                                            onChange={(e) =>
+                                                handleChange(
+                                                    'son',
+                                                    null,
+                                                    e.target.value,
+                                                )
+                                            }
+                                            placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
+                                            name="phone_number"
+                                        />
+                                        {errors.son && (
+                                            <p style={{ color: 'red' }}>
+                                                {errors.son}
+                                            </p>
+                                        )}
+                                    </div>
+                                </div>
+                                {/* <div className="form-group form-vertical">
+                                    <label>Phone number</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
                                             placeholder="phone number"
                                             name="phone_number"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Whatsapp</label>
                                     <div className="form_elements">
@@ -181,16 +250,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-vertical">
-                                    <label>Parent</label>
-                                    <div className="form_elements">
-                                        <select name="parent_id" id="">
-                                            <option value="1">parent1</option>
-                                            <option value="2">parent2</option>
-                                            <option value="3">parent3</option>
-                                        </select>
-                                    </div>
-                                </div> */}
                             </div>
                         </div>
                         <div className="full_width">
@@ -198,7 +257,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <h2 className="">Admission Information</h2>
                             </div>
                             <div className="d-flex">
-                                <div className="form-group form-vertical">
+                                {/* <div className="form-group form-vertical">
                                     <label>Branch</label>
                                     <div className="form_elements">
                                         <select name="branch_id" id="">
@@ -218,7 +277,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 )}
                                         </select>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Addmission No</label>
                                     <div className="form_elements">
@@ -581,6 +640,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <option value="Non-residential">
                                                 Non-residential
                                             </option>
+                                            <option value="Day-care">
+                                                Day-care
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -816,9 +878,39 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <input
                                                             type="text"
-                                                            placeholder="parent phone number"
+                                                            value={
+                                                                phoneNumbers
+                                                                    .parents[
+                                                                    index
+                                                                ] || ''
+                                                            }
+                                                            onChange={(e) =>
+                                                                handleChange(
+                                                                    'parent',
+                                                                    index,
+                                                                    e.target
+                                                                        .value,
+                                                                )
+                                                            }
+                                                            placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
                                                             name={`parent_phone_number${index}`}
                                                         />
+                                                        {errors.parents[
+                                                            index
+                                                        ] && (
+                                                            <p
+                                                                style={{
+                                                                    color: 'red',
+                                                                }}
+                                                            >
+                                                                {
+                                                                    errors
+                                                                        .parents[
+                                                                        index
+                                                                    ]
+                                                                }
+                                                            </p>
+                                                        )}
                                                     </div>
                                                 </div>
                                                 <div className="form-group form-vertical">
@@ -842,47 +934,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         />
                                                     </div>
                                                 </div>
-                                                {/* <div className="form-group form-vertical">
-                                                    <label>
-                                                        User parent id
-                                                    </label>
-                                                    <div className="form_elements">
-                                                        <select
-                                                            name={`user_parent_id${index}`}
-                                                            id=""
-                                                        >
-                                                            <option value="1">
-                                                                parent1
-                                                            </option>
-                                                            <option value="2">
-                                                                parent2
-                                                            </option>
-                                                            <option value="3">
-                                                                parent3
-                                                            </option>
-                                                            <option value="4">
-                                                                parent4
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div> */}
                                             </div>
-                                            {/* {totalParent.length > 1 && (
-                                                <div>
-                                                    <span
-                                                        onClick={() =>
-                                                            remove_from_state(
-                                                                index,
-                                                                totalParent,
-                                                                setTotalParent,
-                                                            )
-                                                        }
-                                                        className="btn btn-danger"
-                                                    >
-                                                        remove
-                                                    </span>
-                                                </div>
-                                            )} */}
                                         </div>
                                     );
                                 })}
