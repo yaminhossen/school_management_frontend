@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": "1234",
-    "database": "institute_management",
-    "host": "127.0.0.1",
+    "password": "W^W#.^nFFfeL",
+    "database": "nurulhik_backend",
+    "host": "103.213.38.117",
     "dialect": "mysql"
   },
   "test": {

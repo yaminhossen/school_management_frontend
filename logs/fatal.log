@@ -1,61 +1,20 @@
-{"level":60,"time":1739333817174,"pid":7476,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/12/2025 10:16:57 AM","message":"data not found"}
-{"level":60,"time":1739334168086,"pid":7476,"hostname":"DESKTOP-9421701","file":"","time":"2/12/2025 10:22:48 AM","message":"Data truncated for column 'amount' at row 1"}
-{"level":60,"time":1739334448722,"pid":7476,"hostname":"DESKTOP-9421701","file":"","time":"2/12/2025 10:27:28 AM","message":"Data truncated for column 'amount' at row 1"}
-{"level":60,"time":1739343954946,"pid":616,"hostname":"DESKTOP-9421701","file":"services\\income_store.ts:91:46)","time":"2/12/2025 1:05:54 PM","message":"Cannot read properties of undefined (reading 'id')"}
-{"level":60,"time":1739344117076,"pid":6848,"hostname":"DESKTOP-9421701","file":"","time":"2/12/2025 1:08:37 PM","message":"WHERE parameter \"user_staff_id\" has invalid \"undefined\" value"}
-{"level":60,"time":1739344977299,"pid":1964,"hostname":"DESKTOP-9421701","file":"","time":"2/12/2025 1:22:57 PM","message":"Incorrect integer value: '\\xE0\\xA7\\xAA\\xE0\\xA7\\xAB' for column 'amount' at row 1"}
-{"level":60,"time":1739345324213,"pid":1964,"hostname":"DESKTOP-9421701","file":"services\\expense_store.ts:91:46)","time":"2/12/2025 1:28:44 PM","message":"Cannot read properties of undefined (reading 'id')"}
-{"level":60,"time":1739352550396,"pid":3128,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"2/12/2025 3:29:10 PM","message":"data not found"}
-{"level":60,"time":1739352577840,"pid":3128,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"2/12/2025 3:29:37 PM","message":"data not found"}
-{"level":60,"time":1739352620752,"pid":3128,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"2/12/2025 3:30:20 PM","message":"data not found"}
-{"level":60,"time":1739352683727,"pid":15148,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"2/12/2025 3:31:23 PM","message":"data not found"}
-{"level":60,"time":1739352684429,"pid":15148,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"2/12/2025 3:31:24 PM","message":"data not found"}
-{"level":60,"time":1739352685172,"pid":15148,"hostname":"DESKTOP-9421701","file":"services\\details.ts:25:19)","time":"2/12/2025 3:31:25 PM","message":"data not found"}
-{"level":60,"time":1739353174206,"pid":9076,"hostname":"DESKTOP-9421701","file":"","time":"2/12/2025 3:39:34 PM","message":"Data too long for column 'token' at row 1"}
-{"level":60,"time":1739356281241,"pid":6788,"hostname":"DESKTOP-9421701","file":"services\\category_wise.ts:115:19)","time":"2/12/2025 4:31:21 PM","message":"WHERE parameter \"account_category_id\" has invalid \"undefined\" value"}
-{"level":60,"time":1739356282984,"pid":6788,"hostname":"DESKTOP-9421701","file":"services\\category_wise.ts:115:19)","time":"2/12/2025 4:31:22 PM","message":"WHERE parameter \"account_category_id\" has invalid \"undefined\" value"}
-{"level":60,"time":1739356700516,"pid":7172,"hostname":"DESKTOP-9421701","file":"services\\category_wise.ts:115:19)","time":"2/12/2025 4:38:20 PM","message":"WHERE parameter \"account_category_id\" has invalid \"undefined\" value"}
-{"level":60,"time":1739361655619,"pid":16284,"hostname":"DESKTOP-9421701","file":"services\\month_wise_statement.ts:28:14)","time":"2/12/2025 6:00:55 PM","message":"Cannot read properties of undefined (reading 'month1')"}
-{"level":60,"time":1739361714433,"pid":16284,"hostname":"DESKTOP-9421701","file":"services\\month_wise_statement.ts:28:14)","time":"2/12/2025 6:01:54 PM","message":"Cannot read properties of undefined (reading 'month1')"}
-{"level":60,"time":1739361737637,"pid":16284,"hostname":"DESKTOP-9421701","file":"services\\month_wise_statement.ts:28:14)","time":"2/12/2025 6:02:17 PM","message":"Cannot read properties of undefined (reading 'month1')"}
-{"level":60,"time":1739361739810,"pid":16284,"hostname":"DESKTOP-9421701","file":"services\\month_wise_statement.ts:28:14)","time":"2/12/2025 6:02:19 PM","message":"Cannot read properties of undefined (reading 'month1')"}
-{"level":60,"time":1739361740703,"pid":16284,"hostname":"DESKTOP-9421701","file":"services\\month_wise_statement.ts:28:14)","time":"2/12/2025 6:02:20 PM","message":"Cannot read properties of undefined (reading 'month1')"}
-{"level":60,"time":1739361743341,"pid":16284,"hostname":"DESKTOP-9421701","file":"services\\month_wise_statement.ts:28:14)","time":"2/12/2025 6:02:23 PM","message":"Cannot read properties of undefined (reading 'month1')"}
-{"level":60,"time":1739426663954,"pid":15056,"hostname":"DESKTOP-9421701","file":"services\\month_wise_statement.ts:28:14)","time":"2/13/2025 12:04:23 PM","message":"Cannot read properties of undefined (reading 'month1')"}
-{"level":60,"time":1739426678464,"pid":15056,"hostname":"DESKTOP-9421701","file":"services\\month_wise_statement.ts:28:14)","time":"2/13/2025 12:04:38 PM","message":"Cannot read properties of undefined (reading 'month1')"}
-{"level":60,"time":1739426789653,"pid":8904,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:21:23)","time":"2/13/2025 12:06:29 PM","message":"Cannot read properties of undefined (reading 'month1')"}
-{"level":60,"time":1739428061330,"pid":5024,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:109:19)","time":"2/13/2025 12:27:41 PM","message":"Column 'date' in where clause is ambiguous"}
-{"level":60,"time":1739428115446,"pid":13120,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:109:19)","time":"2/13/2025 12:28:35 PM","message":"Unknown column 'created_date' in 'where clause'"}
-{"level":60,"time":1739428811663,"pid":10904,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:21:23)","time":"2/13/2025 12:40:11 PM","message":"Cannot read properties of undefined (reading 'month1')"}
-{"level":60,"time":1739429529289,"pid":3940,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:120:19)","time":"2/13/2025 12:52:09 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
-{"level":60,"time":1739429706125,"pid":1584,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:124:19)","time":"2/13/2025 12:55:06 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
-{"level":60,"time":1739429895159,"pid":10720,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:124:19)","time":"2/13/2025 12:58:15 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
-{"level":60,"time":1739429896000,"pid":10720,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:124:19)","time":"2/13/2025 12:58:16 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
-{"level":60,"time":1739429962757,"pid":15332,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:124:19)","time":"2/13/2025 12:59:22 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
-{"level":60,"time":1739430017426,"pid":8380,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:124:19)","time":"2/13/2025 1:00:17 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
-{"level":60,"time":1739430018319,"pid":8380,"hostname":"DESKTOP-9421701","file":"services\\single_month_wise.ts:124:19)","time":"2/13/2025 1:00:18 PM","message":"Incorrect DATETIME value: 'Invalid date'"}
-{"level":60,"time":1739435258800,"pid":8380,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/13/2025 2:27:38 PM","message":"data not found"}
-{"level":60,"time":1739435269257,"pid":8380,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/13/2025 2:27:49 PM","message":"data not found"}
-{"level":60,"time":1739435303012,"pid":8380,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/13/2025 2:28:23 PM","message":"data not found"}
-{"level":60,"time":1739435397574,"pid":8380,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/13/2025 2:29:57 PM","message":"data not found"}
-{"level":60,"time":1739435491908,"pid":8380,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/13/2025 2:31:31 PM","message":"data not found"}
-{"level":60,"time":1739436730417,"pid":10136,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/13/2025 2:52:10 PM","message":"data not found"}
-{"level":60,"time":1739436788169,"pid":13828,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/13/2025 2:53:08 PM","message":"data not found"}
-{"level":60,"time":1739436788310,"pid":13828,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:139:19)","time":"2/13/2025 2:53:08 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
-{"level":60,"time":1739439562121,"pid":8464,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/13/2025 3:39:22 PM","message":"data and hash arguments required"}
-{"level":60,"time":1739441245783,"pid":8088,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/13/2025 4:07:25 PM","message":"data not found"}
-{"level":60,"time":1739441383502,"pid":8088,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/13/2025 4:09:43 PM","message":"data not found"}
-{"level":60,"time":1739441544227,"pid":8088,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/13/2025 4:12:24 PM","message":"data not found"}
-{"level":60,"time":1739699846185,"pid":8964,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/16/2025 3:57:26 PM","message":"data not found"}
-{"level":60,"time":1739699846430,"pid":8964,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:140:19)","time":"2/16/2025 3:57:26 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
-{"level":60,"time":1739699854714,"pid":8964,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/16/2025 3:57:34 PM","message":"data not found"}
-{"level":60,"time":1739699854836,"pid":8964,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:140:19)","time":"2/16/2025 3:57:34 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
-{"level":60,"time":1739699858117,"pid":8964,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/16/2025 3:57:38 PM","message":"data not found"}
-{"level":60,"time":1739699858220,"pid":8964,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:140:19)","time":"2/16/2025 3:57:38 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
-{"level":60,"time":1739767778646,"pid":14804,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/17/2025 10:49:38 AM","message":"data not found"}
-{"level":60,"time":1739767778793,"pid":14804,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:140:19)","time":"2/17/2025 10:49:38 AM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
-{"level":60,"time":1739767783985,"pid":14804,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"2/17/2025 10:49:43 AM","message":"data not found"}
-{"level":60,"time":1739767784074,"pid":14804,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:140:19)","time":"2/17/2025 10:49:44 AM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
-{"level":60,"time":1739785437796,"pid":3360,"hostname":"DESKTOP-9421701","file":"services\\auth_middleware.ts:29:39)","time":"2/17/2025 3:43:57 PM","message":"Cannot read properties of undefined (reading 'slice')"}
-{"level":60,"time":1739785518419,"pid":3360,"hostname":"DESKTOP-9421701","file":"services\\auth_middleware.ts:29:39)","time":"2/17/2025 3:45:18 PM","message":"Cannot read properties of undefined (reading 'slice')"}
-{"level":60,"time":1739785519225,"pid":3360,"hostname":"DESKTOP-9421701","file":"services\\auth_middleware.ts:29:39)","time":"2/17/2025 3:45:19 PM","message":"Cannot read properties of undefined (reading 'slice')"}
+{"level":60,"time":1739790284128,"pid":4100,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:04:44 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739790289457,"pid":4100,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:04:49 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739790410396,"pid":4100,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:06:50 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739791236674,"pid":4100,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:20:36 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739791338351,"pid":14156,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:22:18 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739791471555,"pid":11328,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:24:31 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739791511203,"pid":15812,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:25:11 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739791635516,"pid":15812,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:27:15 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739791822213,"pid":12888,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:30:22 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739791956212,"pid":2476,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:32:36 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739791974059,"pid":2476,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:32:54 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739791974061,"pid":2476,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:32:54 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739791996533,"pid":2476,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:33:16 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739792965333,"pid":2476,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:49:25 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739793116551,"pid":14892,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:51:56 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739793301167,"pid":9508,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:55:01 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739793438197,"pid":3860,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:57:18 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739793521194,"pid":13304,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:58:41 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739793605402,"pid":5508,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 6:00:05 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
+{"level":60,"time":1739850961617,"pid":6336,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/18/2025 9:56:01 AM","message":"data and hash arguments required"}

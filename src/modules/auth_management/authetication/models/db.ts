@@ -14,10 +14,9 @@ let post = process?.env.DB_PORT || '';
 let user = process?.env.DB_USER || '';
 let pass = process?.env.DB_PASSWORD || '';
 let database = process?.env.DB_DATABASE || '';
+let db_con = `mysql://${user}:${pass}@${host}:${post}/${database}`;
 
-const sequelize = new Sequelize(
-    `mysql://${user}:${pass}@${host}:${post}/${database}`,
-);
+const sequelize = new Sequelize(db_con);
 
 interface models {
     User: typeof user_model.DataModel;
@@ -33,7 +32,9 @@ const db = async function (): Promise<models> {
     const UserStudentsModel = user_students_model.init(sequelize);
     const UserTeachersModel = user_teacher_model.init(sequelize);
     const UserParentsModel = user_parents_model.init(sequelize);
+    console.log(db_con);
     await sequelize.sync();
+
     let models: models = {
         User,
         UserStaffsModel,

@@ -84,7 +84,7 @@ export default function (fastify: FastifyInstance) {
                 httpOnly: false,
                 sameSite: 'lax',
             });
-
+            console.log('auth user middle check', req);
             res.header('Set-Cookie', cookie);
             // res.header('Set-Cookie', cookie2);
             res.code(data.status).send(data);

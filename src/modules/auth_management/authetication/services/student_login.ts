@@ -44,6 +44,7 @@ async function student_login(
 
     let models = await db();
     let body: anyObject = req.body as anyObject;
+    console.log('auth body', body);
 
     try {
         let data: anyObject | null = {};
