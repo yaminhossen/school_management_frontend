@@ -18,3 +18,11 @@
 {"level":60,"time":1739793521194,"pid":13304,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 5:58:41 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
 {"level":60,"time":1739793605402,"pid":5508,"hostname":"DESKTOP-9421701","file":"","time":"2/17/2025 6:00:05 PM","message":"getaddrinfo ENOTFOUND nurulhik_backend"}
 {"level":60,"time":1739850961617,"pid":6336,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/18/2025 9:56:01 AM","message":"data and hash arguments required"}
+{"level":60,"time":1739854663934,"pid":11680,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/18/2025 10:57:43 AM","message":"data and hash arguments required"}
+{"level":60,"time":1739854691287,"pid":11680,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/18/2025 10:58:11 AM","message":"data and hash arguments required"}
+{"level":60,"time":1739855807678,"pid":11680,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/18/2025 11:16:47 AM","message":"data and hash arguments required"}
+{"level":60,"time":1739855811840,"pid":11680,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/18/2025 11:16:51 AM","message":"data and hash arguments required"}
+{"level":60,"time":1739865079160,"pid":5196,"hostname":"DESKTOP-9421701","file":"services\\get_academic_event_by_month_account.ts:106:19)","time":"2/18/2025 1:51:19 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1739865080914,"pid":5196,"hostname":"DESKTOP-9421701","file":"services\\get_academic_event_by_month_account.ts:106:19)","time":"2/18/2025 1:51:20 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1739865702277,"pid":7868,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/18/2025 2:01:42 PM","message":"data and hash arguments required"}
+{"level":60,"time":1739865758273,"pid":7868,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/18/2025 2:02:38 PM","message":"data and hash arguments required"}

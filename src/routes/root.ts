@@ -9,6 +9,7 @@ import check_staff_auth from '../modules/auth_management/authetication/services/
 import check_parent_auth from '../modules/auth_management/authetication/services/check_parent_auth';
 import check_student_auth from '../modules/auth_management/authetication/services/check_student_auth';
 import auth_middleware from '../modules/auth_management/authetication/services/auth_middleware';
+import { request } from 'http';
 // import check_is_admin_and_redirect from '../modules/user_management/user_admin/services/check_is_admin_and_redirect';
 // const fs = require('node:fs');
 module.exports = async function (fastify: FastifyInstance) {
@@ -19,6 +20,8 @@ module.exports = async function (fastify: FastifyInstance) {
         })
         .get('/login', async (_req: FastifyRequest, reply: FastifyReply) => {
             // return reply.view('website/pages/login.ejs');
+            console.log('super admin login url', request);
+
             return reply.view('auth/super_admin_login.ejs');
         })
 

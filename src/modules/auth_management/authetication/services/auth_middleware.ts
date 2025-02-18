@@ -29,9 +29,9 @@ const auth_middleware = async (
     const fullUrl = request.url;
     const needUrl = fullUrl.split('/')[1];
     console.log('request token', token);
-    console.log('request fullurl', needUrl);
+    console.log('request fullurl', fullUrl);
 
-    if (!token || !token.startsWith('Bearer ')) {
+    if (!token || !token.startsWith('Bearer')) {
         return reply.redirect(`${fullUrl}/login`);
         // reply.code(401).send({ error: 'Unauthorized' });
         // return;
@@ -43,15 +43,15 @@ const auth_middleware = async (
         console.log('request decode', decoded);
         let models = await db();
         let user: any = {};
-        if (needUrl == 'account') {
+        if (decoded.user_type == 'account') {
             user = await models.UserStaffsModel.findByPk(decoded.id);
-        } else if (needUrl == 'staff') {
+        } else if (decoded.user_type == 'staff') {
             user = await models.UserStaffsModel.findByPk(decoded.id);
-        } else if (needUrl == 'teacher') {
+        } else if (decoded.user_type == 'teacher') {
             user = await models.UserTeachersModel.findByPk(decoded.id);
-        } else if (needUrl == 'student') {
+        } else if (decoded.user_type == 'student') {
             user = await models.UserStudentsModel.findByPk(decoded.id);
-        } else if (needUrl == 'parent') {
+        } else if (decoded.user_type == 'parent') {
             user = await models.UserParentsModel.findByPk(decoded.id);
         } else {
             user = await models.User.findByPk(decoded.id);
