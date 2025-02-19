@@ -43,11 +43,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="Payment History"
                 />
                 <MenuSingle to="/fees" icon="icon-book" label="Fees" />
-                <MenuSingle
+                {/* <MenuSingle
                     to="/fees-payment"
                     icon="icon-receipt"
                     label="Fees Payment"
-                />
+                /> */}
                 <MenuSingle
                     to="/policies"
                     icon="icon-pencil-alt"
