@@ -26,3 +26,8 @@
 {"level":60,"time":1739865080914,"pid":5196,"hostname":"DESKTOP-9421701","file":"services\\get_academic_event_by_month_account.ts:106:19)","time":"2/18/2025 1:51:20 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
 {"level":60,"time":1739865702277,"pid":7868,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/18/2025 2:01:42 PM","message":"data and hash arguments required"}
 {"level":60,"time":1739865758273,"pid":7868,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/18/2025 2:02:38 PM","message":"data and hash arguments required"}
+{"level":60,"time":1739870558704,"pid":12032,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/18/2025 3:22:38 PM","message":"data and hash arguments required"}
+{"level":60,"time":1739870637383,"pid":12032,"hostname":"DESKTOP-9421701","file":"services\\basic_information.ts:38:19)","time":"2/18/2025 3:23:57 PM","message":"data not found"}
+{"level":60,"time":1739870646400,"pid":12032,"hostname":"DESKTOP-9421701","file":"services\\basic_information.ts:38:19)","time":"2/18/2025 3:24:06 PM","message":"data not found"}
+{"level":60,"time":1739946778064,"pid":18832,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/19/2025 12:32:58 PM","message":"data and hash arguments required"}
+{"level":60,"time":1739949238623,"pid":26440,"hostname":"DESKTOP-9421701","file":"services\\basic_information.ts:38:19)","time":"2/19/2025 1:13:58 PM","message":"data not found"}
