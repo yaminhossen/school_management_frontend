@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
@@ -16,6 +16,25 @@ const Create: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
+
+    const [startDate, setStartDate] = useState(moment().format("YYYY-MM-DD"));
+    const [endDate, setEndDate] = useState(moment().format("YYYY-MM-DD"));
+    const [totalDays, setTotalDays] = useState(0);
+
+    const calculateDays = (start: string, end: string) => {
+        const diff = moment(end).diff(moment(start), "days");
+        setTotalDays(diff >= 0 ? diff : 0); // Prevent negative values
+    };
+
+    const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setStartDate(e.target.value);
+        calculateDays(e.target.value, endDate);
+    };
+
+    const handleEndDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEndDate(e.target.value);
+        calculateDays(startDate, e.target.value);
+    };
 
     const dispatch = useAppDispatch();
 
@@ -81,36 +100,36 @@ const Create: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Start Date</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="date"
-                                            defaultValue={moment().format(
-                                                'YYYY-MM-DD',
-                                            )}
-                                            name="start_date"
-                                        />
-                                    </div>
+                            <div className="form-group form-horizontal">
+                                <label>Start Date</label>
+                                <div className="form_elements">
+                                    <input
+                                        type="date"
+                                        value={startDate}
+                                        name="start_date"
+                                        onChange={handleStartDateChange}
+                                    />
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label>End Date</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="date"
-                                            defaultValue={moment().format(
-                                                'YYYY-MM-DD',
-                                            )}
-                                            name="end_date"
-                                        />
-                                    </div>
+                            </div>
+                
+                            <div className="form-group form-horizontal">
+                                <label>End Date</label>
+                                <div className="form_elements">
+                                    <input
+                                        type="date"
+                                        value={endDate}
+                                        name="end_date"
+                                        onChange={handleEndDateChange}
+                                    />
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Days</label>
-                                    <div className="form_elements">
-                                        <input type="number" name="days" />
-                                    </div>
+                            </div>
+                
+                            <div className="form-group form-horizontal">
+                                <label>Total Days</label>
+                                <div className="form_elements">
+                                    <input type="number" name="days" value={totalDays + 1} readOnly />
                                 </div>
+                            </div>
                             </div>
                             <div className="form-group form-horizontal">
                                 <label></label>
