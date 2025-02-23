@@ -1,7 +1,10 @@
-import React, { useRef } from 'react';
+import axios from 'axios';
+import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 export interface Props {}
 
 const NavigationList: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
     const toggler = useRef(null);
     function active_row() {
         console.log(toggler);
@@ -9,6 +12,17 @@ const NavigationList: React.FC<Props> = (props: Props) => {
             (toggler.current as HTMLElement).classList.toggle('active');
         }
     }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+        try {
+            const response = await axios.post('/api/v1/auth/logout');
+            console.log('response123', response);
+            // if(response.status)
+        } catch (error) {
+            setError(error);
+        }
+    };
 
     return (
         <>
@@ -62,11 +76,20 @@ const NavigationList: React.FC<Props> = (props: Props) => {
                                                     <a href="#"><span className="material-symbols-outlined fill">lock</span></a>
                                                 </li> */}
                                     <li>
-                                        <a href="#dashboard#">
+                                        {/* <a onClick={handleSubmit}>
                                             <span className="material-symbols-outlined fill">
                                                 power_settings_new
                                             </span>
-                                        </a>
+                                        </a> */}
+                                        <Link
+                                            onClick={handleSubmit}
+                                            to=""
+                                            className="sidebar-header"
+                                        >
+                                            <span className="material-symbols-outlined fill">
+                                                power_settings_new
+                                            </span>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>

@@ -30,7 +30,7 @@
                                     <span class="icon material-symbols-outlined">
                                         person
                                     </span>
-                                    <input type="email" value="" placeholder="email" name="email" id="email">
+                                    <input type="email" value="superadmin@gmail.com" placeholder="email" name="email" id="email">
                                 </div>
                                 <label for="email">
                                     <div class="text">Email</div>
@@ -41,7 +41,7 @@
                                     <span class="icon material-symbols-outlined">
                                         key
                                     </span>
-                                    <input type="password" placeholder="password" name="password" id="password">
+                                    <input type="password" value="12345678" placeholder="password" name="password" id="password">
                                 </div>
                                 <label for="password">
                                     <div class="text">password</div>
@@ -110,9 +110,9 @@
         );
         const login = () => {
             event.preventDefault();
-            axios.post("/api/v1/admin-users/login", new FormData(event.currentTarget))
+            axios.post("/api/v1/auth/super-admin/login", new FormData(event.currentTarget))
                 .then(res => {
-                    // return location.href = "/super-admin";
+                    return location.href = "/super-admin";
                 })
                 .catch(err => {
                     let { message, data } = err.response.data;

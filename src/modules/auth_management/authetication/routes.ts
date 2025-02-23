@@ -22,6 +22,11 @@ module.exports = async function (fastify: FastifyInstance) {
                     controllerInstance.admission_login,
                 )
                 .post(`/account/login`, controllerInstance.account_login)
+                .post(`/admin/login`, controllerInstance.admin_loign)
+                .post(
+                    `/super-admin/login`,
+                    controllerInstance.super_admin_login,
+                )
                 .post(`/staff/login`, controllerInstance.staff_login)
                 .post(`/teacher/login`, controllerInstance.teacher_login)
                 .post(`/student/login`, controllerInstance.student_login)

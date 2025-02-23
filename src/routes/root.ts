@@ -27,23 +27,31 @@ module.exports = async function (fastify: FastifyInstance) {
 
         .get(
             '/super-admin',
-            // { preHandler: check_is_admin_and_redirect },
+            { preHandler: auth_middleware },
             async (_req: FastifyRequest, reply: FastifyReply) => {
                 return reply.view('dashboard/super_admin_uni.ejs');
             },
         )
 
         .get(
+            '/super-admin/login',
+            async (_req: FastifyRequest, reply: FastifyReply) => {
+                return reply.view('auth/super_admin_login.ejs');
+            },
+        )
+        .get(
             '/admin',
-            // { preHandler: check_is_admin_and_redirect },
+            { preHandler: auth_middleware },
             async (_req: FastifyRequest, reply: FastifyReply) => {
                 return reply.view('dashboard/admin.ejs');
             },
         )
+
         .get(
-            '/super-admin/login',
+            '/admin/login',
+            // { preHandler: check_is_admin_and_redirect },
             async (_req: FastifyRequest, reply: FastifyReply) => {
-                return reply.view('auth/super_admin_login.ejs');
+                return reply.view('auth/admin_login.ejs');
             },
         )
         .get(

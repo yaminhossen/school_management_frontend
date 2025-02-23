@@ -43,6 +43,7 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
                 formData,
             );
             // setData(response.data.data.data);
+            (window as any).toaster('submitted');
             // setTotalIncome(response.data.data.data2);
         } catch (error) {
             setError(error);

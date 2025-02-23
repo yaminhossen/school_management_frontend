@@ -43,30 +43,59 @@ const auth_middleware = async (
         console.log('request decode', decoded);
         let models = await db();
         let user: any = {};
-        if (decoded.user_type == 'account') {
-            user = await models.UserStaffsModel.findByPk(decoded.id);
-        } else if (decoded.user_type == 'staff') {
-            user = await models.UserStaffsModel.findByPk(decoded.id);
-        } else if (decoded.user_type == 'teacher') {
-            user = await models.UserTeachersModel.findByPk(decoded.id);
-        } else if (decoded.user_type == 'student') {
-            user = await models.UserStudentsModel.findByPk(decoded.id);
-        } else if (decoded.user_type == 'parent') {
-            user = await models.UserParentsModel.findByPk(decoded.id);
-        } else {
-            user = await models.User.findByPk(decoded.id);
-        }
-        // console.log('decoded', decoded);
+        console.log('req url', decoded);
 
-        if (user && user.token == decoded.token) {
+        if (needUrl == 'api') {
             (request as anyObject).user = decoded;
             return;
         } else {
-            console.log('decoded user type', needUrl);
+            if (decoded.user_type == 'account' && fullUrl.includes('account')) {
+                user = await models.UserStaffsModel.findByPk(decoded.id);
+            } else if (
+                decoded.user_type == 'staff' &&
+                fullUrl.includes('staff')
+            ) {
+                user = await models.UserStaffsModel.findByPk(decoded.id);
+            } else if (
+                decoded.user_type == 'teacher' &&
+                fullUrl.includes('teacher')
+            ) {
+                user = await models.UserTeachersModel.findByPk(decoded.id);
+            } else if (
+                decoded.user_type == 'admin' &&
+                fullUrl.includes('admin')
+            ) {
+                user = await models.UserStaffsModel.findByPk(decoded.id);
+            } else if (
+                decoded.user_type == 'super-admin' &&
+                fullUrl.includes('super-admin')
+            ) {
+                user = await models.UserStaffsModel.findByPk(decoded.id);
+            } else if (
+                decoded.user_type == 'student' &&
+                fullUrl.includes('student')
+            ) {
+                user = await models.UserStudentsModel.findByPk(decoded.id);
+            } else if (
+                decoded.user_type == 'parent' &&
+                fullUrl.includes('parent')
+            ) {
+                user = await models.UserParentsModel.findByPk(decoded.id);
+            } else {
+                user = await models.User.findByPk(decoded.id);
+            }
+            // console.log('decoded', decoded);
 
-            // reply.code(401).send({ error: 'Unauthorized' });
-            reply.redirect(`/${needUrl}/login`);
-            return;
+            if (user && user.token == decoded.token) {
+                (request as anyObject).user = decoded;
+                return;
+            } else {
+                console.log('decoded user type', needUrl);
+
+                // reply.code(401).send({ error: 'Unauthorized' });
+                reply.redirect(`/${needUrl}/login`);
+                return;
+            }
         }
     } catch (error) {
         reply.code(401).send({ error: 'Unauthorized' });

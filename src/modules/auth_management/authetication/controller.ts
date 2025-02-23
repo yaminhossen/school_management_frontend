@@ -4,6 +4,8 @@ import { responseObject } from '../../common_types/object';
 import login from './services/login';
 import admission_login from './services/admission_login';
 import account_login from './services/account_login';
+import admin_login from './services/admin_login';
+import super_admin_login from './services/super_admin_login';
 import staff_login from './services/staff_login';
 import teacher_login from './services/teacher_login';
 import register from './services/register';
@@ -50,6 +52,37 @@ export default function (fastify: FastifyInstance) {
 
         account_login: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await account_login(fastify, req);
+            const cookie = serialize('token', 'Bearer ' + data.data.token, {
+                maxAge: 172800,
+                path: '/',
+                httpOnly: false,
+                sameSite: 'lax',
+            });
+
+            res.header('Set-Cookie', cookie);
+            // res.header('Set-Cookie', cookie2);
+            res.code(data.status).send(data);
+        },
+
+        admin_loign: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await admin_login(fastify, req);
+            const cookie = serialize('token', 'Bearer ' + data.data.token, {
+                maxAge: 172800,
+                path: '/',
+                httpOnly: false,
+                sameSite: 'lax',
+            });
+
+            res.header('Set-Cookie', cookie);
+            // res.header('Set-Cookie', cookie2);
+            res.code(data.status).send(data);
+        },
+
+        super_admin_login: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await super_admin_login(fastify, req);
             const cookie = serialize('token', 'Bearer ' + data.data.token, {
                 maxAge: 172800,
                 path: '/',
