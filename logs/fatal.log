@@ -7,3 +7,9 @@
 {"level":60,"time":1740220591747,"pid":24540,"hostname":"DESKTOP-9421701","file":"services\\basic_information.ts:37:19)","time":"2/22/2025 4:36:31 PM","message":"data not found"}
 {"level":60,"time":1740220731418,"pid":17148,"hostname":"DESKTOP-9421701","file":"services\\basic_information.ts:37:19)","time":"2/22/2025 4:38:51 PM","message":"data not found"}
 {"level":60,"time":1740284410463,"pid":14660,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/23/2025 10:20:10 AM","message":"data and hash arguments required"}
+{"level":60,"time":1740567500992,"pid":5348,"hostname":"DESKTOP-9421701","file":"services\\parent_login.ts:111:19)","time":"2/26/2025 4:58:20 PM","message":"data and hash arguments required"}
+{"level":60,"time":1740567605700,"pid":5348,"hostname":"DESKTOP-9421701","file":"","time":"2/26/2025 5:00:05 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1740567731842,"pid":5348,"hostname":"DESKTOP-9421701","file":"","time":"2/26/2025 5:02:11 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1740567843557,"pid":5348,"hostname":"DESKTOP-9421701","file":"","time":"2/26/2025 5:04:03 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1740567849885,"pid":5348,"hostname":"DESKTOP-9421701","file":"","time":"2/26/2025 5:04:09 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1740567850534,"pid":5348,"hostname":"DESKTOP-9421701","file":"","time":"2/26/2025 5:04:10 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
