@@ -117,14 +117,6 @@ const Dues: React.FC<Props> = (props: Props) => {
                                     <td></td>
                                     <td></td>
                                     <td>{totalAmount?.['due_amount']}</td>
-                                    {/* <td>
-                                        {totalAmount2}
-                                        <input
-                                            type="hidden"
-                                            name="total_amount"
-                                            value={totalAmount2}
-                                        />
-                                    </td> */}
                                 </tr>
                             </tfoot>
                         </table>
