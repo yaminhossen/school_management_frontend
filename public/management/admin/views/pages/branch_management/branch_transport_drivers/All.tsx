@@ -75,11 +75,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`permanent_address`}
                                             sort={true}
                                         />
-                                        {/* <TableHeading
-                                            label={`Transports`}
-                                            col_name={`transports`}
-                                            sort={true}
-                                        /> */}
                                         <TableHeading
                                             label={`Driver Number`}
                                             col_name={`driver_number`}

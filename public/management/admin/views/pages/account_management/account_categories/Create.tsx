@@ -30,10 +30,6 @@ const Create: React.FC<Props> = (props: Props) => {
                             onSubmit={(e) => handle_submit(e)}
                             className="form_600 mx-auto pt-3"
                         >
-                            {/* <div className="form_section_heading">
-                                <h2 className=""> Major Information</h2>
-                            </div> */}
-
                             <div className="form-group form-horizontal">
                                 <label>Title</label>
                                 <div className="form_elements">
@@ -54,16 +50,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                     ></textarea>
                                 </div>
                             </div>
-                            {/* <div className="form-group form-horizontal">
-                                <label>Date</label>
-                                <div className="form_elements">
-                                    <input
-                                        type="date"
-                                        defaultValue={date}
-                                        name="year_month"
-                                    />
-                                </div>
-                            </div> */}
                             <div className="form-group form-horizontal">
                                 <label></label>
                                 <div className="form_elements">

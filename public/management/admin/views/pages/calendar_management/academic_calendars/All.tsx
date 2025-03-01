@@ -111,15 +111,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                             {i.id}
                                                         </span>
                                                     </td>
-                                                    {/* <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td> */}
                                                     <td>{i.event_name}</td>
                                                     <td>{i.days}</td>
                                                     <td>

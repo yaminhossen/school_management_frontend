@@ -61,12 +61,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`id`}
                                             sort={true}
                                         />
-                                        {/* <th>Logo</th> */}
-                                        {/* <TableHeading
-                                            label={`Amount`}
-                                            col_name={`amount`}
-                                            sort={true}
-                                        /> */}
                                         <TableHeading
                                             label={`Title`}
                                             col_name={`title`}
@@ -131,19 +125,9 @@ const All: React.FC<Props> = (props: Props) => {
                                                             {i.id}
                                                         </span>
                                                     </td>
-                                                    {/* <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td> */}
                                                     <td>{i.title}</td>
                                                     <td>{i.number}</td>
                                                     <td>{i.opening_balance}</td>
-                                                    {/* <td>{i.amount}</td> */}
                                                     <td>{i.description}</td>
                                                     <td>
                                                         {moment(i.date).format(

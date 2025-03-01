@@ -37,7 +37,7 @@ const Edit: React.FC<Props> = (props: Props) => {
     }, []);
     useEffect(() => {
         if (buildingId.current) {
-            buildingId.current.value = state.item?.building_id || ''; // Safely set the value
+            buildingId.current.value = state.item?.building_id || '';
         }
         // console.log('Updated buildingId:', buildingId.current?.value);
     }, [state.building]);

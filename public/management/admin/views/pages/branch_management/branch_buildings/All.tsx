@@ -71,26 +71,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`building_code`}
                                             sort={true}
                                         />
-                                        {/* <TableHeading
-                                            label={`Total Room`}
-                                            col_name={`total_room`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Total Office`}
-                                            col_name={`total_office`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Total Class`}
-                                            col_name={`total_class`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Total Leaving`}
-                                            col_name={`total_leaving`}
-                                            sort={true}
-                                        /> */}
                                         <TableHeading
                                             label={`Attachment`}
                                             col_name={`attachment`}
@@ -141,10 +121,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                     </td>
                                                     <td>{i.building_name}</td>
                                                     <td>{i.building_code}</td>
-                                                    {/* <td>{i.total_room}</td>
-                                                    <td>{i.total_office}</td>
-                                                    <td>{i.total_class}</td>
-                                                    <td>{i.total_leaving}</td> */}
                                                     <td className="font-medium text-dark-medium">
                                                         <a
                                                             href={i.attachment}

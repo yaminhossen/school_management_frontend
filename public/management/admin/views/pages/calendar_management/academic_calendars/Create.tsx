@@ -17,12 +17,12 @@ const Create: React.FC<Props> = (props: Props) => {
         (state: RootState) => state[setup.module_name],
     );
 
-    const [startDate, setStartDate] = useState(moment().format("YYYY-MM-DD"));
-    const [endDate, setEndDate] = useState(moment().format("YYYY-MM-DD"));
+    const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
+    const [endDate, setEndDate] = useState(moment().format('YYYY-MM-DD'));
     const [totalDays, setTotalDays] = useState(0);
 
     const calculateDays = (start: string, end: string) => {
-        const diff = moment(end).diff(moment(start), "days");
+        const diff = moment(end).diff(moment(start), 'days');
         setTotalDays(diff >= 0 ? diff : 0); // Prevent negative values
     };
 
@@ -63,9 +63,6 @@ const Create: React.FC<Props> = (props: Props) => {
                             onSubmit={(e) => handle_submit(e)}
                             className="form_600 mx-auto pt-3"
                         >
-                            {/* <div className="form_section_heading">
-                                <h2 className=""> Major Information</h2>
-                            </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
                                     <label>Title</label>
@@ -100,36 +97,41 @@ const Create: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                            <div className="form-group form-horizontal">
-                                <label>Start Date</label>
-                                <div className="form_elements">
-                                    <input
-                                        type="date"
-                                        value={startDate}
-                                        name="start_date"
-                                        onChange={handleStartDateChange}
-                                    />
+                                <div className="form-group form-horizontal">
+                                    <label>Start Date</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="date"
+                                            value={startDate}
+                                            name="start_date"
+                                            onChange={handleStartDateChange}
+                                        />
+                                    </div>
                                 </div>
-                            </div>
-                
-                            <div className="form-group form-horizontal">
-                                <label>End Date</label>
-                                <div className="form_elements">
-                                    <input
-                                        type="date"
-                                        value={endDate}
-                                        name="end_date"
-                                        onChange={handleEndDateChange}
-                                    />
+
+                                <div className="form-group form-horizontal">
+                                    <label>End Date</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="date"
+                                            value={endDate}
+                                            name="end_date"
+                                            onChange={handleEndDateChange}
+                                        />
+                                    </div>
                                 </div>
-                            </div>
-                
-                            <div className="form-group form-horizontal">
-                                <label>Total Days</label>
-                                <div className="form_elements">
-                                    <input type="number" name="days" value={totalDays + 1} readOnly />
+
+                                <div className="form-group form-horizontal">
+                                    <label>Total Days</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="number"
+                                            name="days"
+                                            value={totalDays + 1}
+                                            readOnly
+                                        />
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                             <div className="form-group form-horizontal">
                                 <label></label>

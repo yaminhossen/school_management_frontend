@@ -54,10 +54,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Building id</label>
                                     <div className="form_elements">
-                                        <select
-                                            name="building_id"
-                                            id=""
-                                        >
+                                        <select name="building_id" id="">
                                             {state?.building?.length &&
                                                 state.building?.map(
                                                     (i: {
