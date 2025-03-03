@@ -33,43 +33,138 @@ const Management: React.FC<Props> = (props: Props) => {
                     icon: 'manage_accounts',
                 },
                 {
-                    link: '/admin#/staffs',
-                    label: 'Employee',
+                    link: '/admin#/user-teachers',
+                    label: 'Teacher',
                     icon: 'manage_accounts',
                 },
                 {
-                    link: '/admin#/staffs',
-                    label: 'Employee',
-                    icon: 'manage_accounts',
-                },
-            ],
-        },
-        {
-            group: 'user_management',
-            links: [
-                {
-                    link: '/admin#/staffs',
-                    label: 'Employee',
+                    link: '/admin#/user-parents',
+                    label: 'Parent',
                     icon: 'manage_accounts',
                 },
                 {
-                    link: '/admin#/staffs',
-                    label: 'Employee',
+                    link: '/admin#/user-students',
+                    label: 'Student',
                     icon: 'manage_accounts',
                 },
             ],
         },
         {
-            group: 'user_management',
+            group: 'Todo management',
+            links: [
+                {
+                    link: '/admin#/tasks',
+                    label: 'Task',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/task-variants',
+                    label: 'Variant',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/task-groups',
+                    label: 'Group',
+                    icon: 'manage_accounts',
+                },
+            ],
+        },
+        {
+            group: 'Branch management',
             links: [
                 {
                     link: '/admin#/staffs',
-                    label: 'Employee',
+                    label: 'Branch',
                     icon: 'manage_accounts',
                 },
                 {
                     link: '/admin#/staffs',
-                    label: 'Employee',
+                    label: 'Building',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/staffs',
+                    label: 'Room',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/staffs',
+                    label: 'Transport',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/staffs',
+                    label: 'Driver',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/staffs',
+                    label: 'Calendar',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/staffs',
+                    label: 'Event Type',
+                    icon: 'manage_accounts',
+                },
+            ],
+        },
+        {
+            group: 'Academic management',
+            links: [
+                {
+                    link: '/admin#/branch-classes',
+                    label: 'Class',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/branch-class-sections',
+                    label: 'Sections',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/branch-class-subjects',
+                    label: 'Subject',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/branch-class-routine-day-times/class-routine',
+                    label: 'Routines',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/branch-class-resources',
+                    label: 'Resources',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/exams',
+                    label: 'Exam',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/exams-routines',
+                    label: 'Exam Routine',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/exams',
+                    label: 'Exam',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/exams',
+                    label: 'Exam',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/exams',
+                    label: 'Exam',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/exams',
+                    label: 'Exam',
                     icon: 'manage_accounts',
                 },
             ],
@@ -150,9 +245,12 @@ const Management: React.FC<Props> = (props: Props) => {
                                         <h4>{i.group}</h4>
                                         <ul>
                                             {i.links?.map(
-                                                (link: {
-                                                    [key: string]: any;
-                                                }) => {
+                                                (
+                                                    link: {
+                                                        [key: string]: any;
+                                                    },
+                                                    index,
+                                                ) => {
                                                     return (
                                                         <li>
                                                             <a
@@ -160,7 +258,9 @@ const Management: React.FC<Props> = (props: Props) => {
                                                                 href={link.link}
                                                                 className="router-link-active router-link-exact-active"
                                                             >
-                                                                <div className="icon bg_color_1">
+                                                                <div
+                                                                    className={`icon bg_color_${index + 1}`}
+                                                                >
                                                                     <span className="material-symbols-outlined fill">
                                                                         {
                                                                             link.icon
