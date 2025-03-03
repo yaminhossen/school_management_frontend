@@ -2,6 +2,7 @@ import React from 'react';
 import AppNavRight from './AppNavRight';
 import NavigationList from './NavigationList';
 import { Link } from 'react-router-dom';
+import Management from './Management';
 
 export interface Props {}
 
@@ -17,6 +18,7 @@ const AppNav: React.FC<Props> = (props: Props) => {
                     <span className="material-symbols-outlined fill">search</span>
                 </a> 
             </li> -->*/}
+                        <Management></Management>
                         <li className="icon_link_li">
                             <Link
                                 aria-current="page"

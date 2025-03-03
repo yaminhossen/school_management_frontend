@@ -75,8 +75,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Prerequisities</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
+                                        <textarea
                                             placeholder="prerequisities"
                                             name="prerequisities"
                                         />
@@ -105,8 +104,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Policies</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
+                                        <textarea
                                             placeholder="policies"
                                             name="policies"
                                         />

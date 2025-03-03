@@ -16,13 +16,13 @@ module.exports = async function (fastify: FastifyInstance) {
     fastify
         .get('/', async (_req: FastifyRequest, reply: FastifyReply) => {
             // return reply.view('website/index.ejs');
-            return reply.redirect('/super-admin');
+            return reply.redirect('/admin');
         })
         .get('/login', async (_req: FastifyRequest, reply: FastifyReply) => {
             // return reply.view('website/pages/login.ejs');
             console.log('super admin login url', request);
 
-            return reply.view('auth/super_admin_login.ejs');
+            return reply.view('auth/admin_login.ejs');
         })
 
         .get(
