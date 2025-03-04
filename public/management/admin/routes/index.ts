@@ -65,6 +65,10 @@ const router: RouteTypes[] = [
                 path: '',
                 element: <T1/>
             },
+            {
+                path: '/management',
+                element: <T1/>
+            },
             user_branch_staff_routes,
             user_admins_routes,
             user_staffs_routes,

@@ -148,25 +148,185 @@ const Management: React.FC<Props> = (props: Props) => {
                     icon: 'manage_accounts',
                 },
                 {
-                    link: '/admin#/exams',
-                    label: 'Exam',
+                    link: '/admin#/student-overall-evaluations',
+                    label: 'Student Evaluation',
                     icon: 'manage_accounts',
                 },
                 {
-                    link: '/admin#/exams',
-                    label: 'Exam',
+                    link: '/admin#/student-evaluation-criterias',
+                    label: 'Student Evaluation Criteria',
                     icon: 'manage_accounts',
                 },
                 {
-                    link: '/admin#/exams',
-                    label: 'Exam',
+                    link: '/admin#/teacher-overall-evaluations',
+                    label: 'Teacher Evaluation',
                     icon: 'manage_accounts',
                 },
                 {
-                    link: '/admin#/exams',
-                    label: 'Exam',
+                    link: '/admin#/teacher-evaluation-criterias',
+                    label: 'Teacher Evaluation Criteria',
                     icon: 'manage_accounts',
                 },
+            ],
+        },
+        {
+            group: 'Fees management',
+            links: [
+                {
+                    link: '/admin#/branch-class-fee-types',
+                    label: 'Fee Types',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/branch-class-fees',
+                    label: 'Fees',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/branch-class-fee-discounts',
+                    label: 'Discount',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/branch-class-fee-waivers',
+                    label: 'Waivers',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/fees-collection',
+                    label: 'Fee Collection',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/staffs',
+                    label: 'Due-list',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/staffs',
+                    label: 'Payment History',
+                    icon: 'manage_accounts',
+                },
+            ],
+        },
+        {
+            group: 'Meeting management',
+            links: [
+                {
+                    link: '/admin#/meeting',
+                    label: 'Meetings',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/meeting-agendas',
+                    label: 'Agendas',
+                    icon: 'manage_accounts',
+                },
+            ],
+        },
+        {
+            group: 'Account management',
+            links: [
+                {
+                    link: '/admin#/accounts',
+                    label: 'Account',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/account-periods',
+                    label: 'Period',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/account-categories',
+                    label: 'Category',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/leadger',
+                    label: 'Leadger',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/journal',
+                    label: 'Journal',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/debit',
+                    label: 'Debit',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/credit',
+                    label: 'Credit',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/profit-loss',
+                    label: 'Profit&Loss',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/month-wise-statement',
+                    label: 'Month wise',
+                    icon: 'manage_accounts',
+                },
+            ],
+        },
+        {
+            group: 'HRM management',
+            links: [
+                {
+                    link: '/admin#/user-staffs',
+                    label: 'Employee',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/user-teachers',
+                    label: 'Teacher',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/attendances',
+                    label: 'Attendances',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/payrolls',
+                    label: 'Payroll',
+                    icon: 'manage_accounts',
+                },
+            ],
+        },
+        {
+            group: 'Notice management',
+            links: [
+                {
+                    link: '/admin#/notices',
+                    label: 'Notice',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/notice-categorys',
+                    label: 'Category',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/faqs',
+                    label: 'FAQ',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/settings',
+                    label: 'Settings',
+                    icon: 'manage_accounts',
+                },
+                // {
+                //     link: '/admin#/branch-class-fees',
+                //     label: 'App',
+                //     icon: 'manage_accounts',
+                // },
             ],
         },
     ];

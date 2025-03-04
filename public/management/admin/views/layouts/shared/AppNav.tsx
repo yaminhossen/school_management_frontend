@@ -38,7 +38,7 @@ const AppNav: React.FC<Props> = (props: Props) => {
                             </a>
                         </li>
                         <li className="icon_link_li">
-                            <a href="#dashboard#" className="navigation_link">
+                            <a href="#/management" className="navigation_link">
                                 <span className="material-symbols-outlined fill">
                                     event
                                 </span>
