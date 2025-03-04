@@ -18,7 +18,14 @@ const AppNav: React.FC<Props> = (props: Props) => {
                     <span className="material-symbols-outlined fill">search</span>
                 </a> 
             </li> -->*/}
-                        <Management></Management>
+                        {/* <Management></Management> */}
+                        <li className="icon_link_li">
+                            <a href="#/management" className="navigation_link">
+                                <span className="material-symbols-outlined fill">
+                                    dashboard_customize
+                                </span>
+                            </a>
+                        </li>
                         <li className="icon_link_li">
                             <Link
                                 aria-current="page"
