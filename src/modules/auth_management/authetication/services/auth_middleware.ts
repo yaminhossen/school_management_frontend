@@ -69,6 +69,11 @@ const auth_middleware = async (
             ) {
                 user = await models.UserStaffsModel.findByPk(decoded.id);
             } else if (
+                decoded.user_type == 'admission-officer' &&
+                fullUrl.includes('admission-officer')
+            ) {
+                user = await models.UserStaffsModel.findByPk(decoded.id);
+            } else if (
                 decoded.user_type == 'student' &&
                 fullUrl.includes('student')
             ) {

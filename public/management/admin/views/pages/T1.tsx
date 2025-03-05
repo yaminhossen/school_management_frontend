@@ -1,14 +1,359 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 export interface Props {}
+const menuArray = [
+    {
+        group: 'User management',
+        links: [
+            {
+                link: '/admin#/user-staffs',
+                label: 'Employee',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/user-teachers',
+                label: 'Teacher',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/user-parents',
+                label: 'Parent',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/user-students',
+                label: 'Student',
+                icon: 'manage_accounts',
+            },
+        ],
+    },
+    {
+        group: 'Todo management',
+        links: [
+            {
+                link: '/admin#/tasks',
+                label: 'Task',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/task-variants',
+                label: 'Variant',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/task-groups',
+                label: 'Group',
+                icon: 'manage_accounts',
+            },
+        ],
+    },
+    {
+        group: 'Branch management',
+        links: [
+            {
+                link: '/admin#/staffs',
+                label: 'Branch',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/staffs',
+                label: 'Building',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/staffs',
+                label: 'Room',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/staffs',
+                label: 'Transport',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/staffs',
+                label: 'Driver',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/staffs',
+                label: 'Calendar',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/staffs',
+                label: 'Event Type',
+                icon: 'manage_accounts',
+            },
+        ],
+    },
+    {
+        group: 'Academic management',
+        links: [
+            {
+                link: '/admin#/branch-classes',
+                label: 'Class',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/branch-class-sections',
+                label: 'Sections',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/branch-class-subjects',
+                label: 'Subject',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/branch-class-routine-day-times/class-routine',
+                label: 'Routines',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/branch-class-resources',
+                label: 'Resources',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/exams',
+                label: 'Exam',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/exams-routines',
+                label: 'Exam Routine',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/student-overall-evaluations',
+                label: 'Student Evaluation',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/student-evaluation-criterias',
+                label: 'Student Evaluation Criteria',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/teacher-overall-evaluations',
+                label: 'Teacher Evaluation',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/teacher-evaluation-criterias',
+                label: 'Teacher Evaluation Criteria',
+                icon: 'manage_accounts',
+            },
+        ],
+    },
+    {
+        group: 'Fees management',
+        links: [
+            {
+                link: '/admin#/branch-class-fee-types',
+                label: 'Fee Types',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/branch-class-fees',
+                label: 'Fees',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/branch-class-fee-discounts',
+                label: 'Discount',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/branch-class-fee-waivers',
+                label: 'Waivers',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/fees-collection',
+                label: 'Fee Collection',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/staffs',
+                label: 'Due-list',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/staffs',
+                label: 'Payment History',
+                icon: 'manage_accounts',
+            },
+        ],
+    },
+    {
+        group: 'Meeting management',
+        links: [
+            {
+                link: '/admin#/meeting',
+                label: 'Meetings',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/meeting-agendas',
+                label: 'Agendas',
+                icon: 'manage_accounts',
+            },
+        ],
+    },
+    {
+        group: 'Account management',
+        links: [
+            {
+                link: '/admin#/accounts',
+                label: 'Account',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/account-periods',
+                label: 'Period',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/account-categories',
+                label: 'Category',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/leadger',
+                label: 'Leadger',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/journal',
+                label: 'Journal',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/debit',
+                label: 'Debit',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/credit',
+                label: 'Credit',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/profit-loss',
+                label: 'Profit&Loss',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/month-wise-statement',
+                label: 'Month wise',
+                icon: 'manage_accounts',
+            },
+        ],
+    },
+    {
+        group: 'HRM management',
+        links: [
+            {
+                link: '/admin#/user-staffs',
+                label: 'Employee',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/user-teachers',
+                label: 'Teacher',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/attendances',
+                label: 'Attendances',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/payrolls',
+                label: 'Payroll',
+                icon: 'manage_accounts',
+            },
+        ],
+    },
+    {
+        group: 'Notice management',
+        links: [
+            {
+                link: '/admin#/notices',
+                label: 'Notice',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/notice-categorys',
+                label: 'Category',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/faqs',
+                label: 'FAQ',
+                icon: 'manage_accounts',
+            },
+            {
+                link: '/admin#/settings',
+                label: 'Settings',
+                icon: 'manage_accounts',
+            },
+            // {
+            //     link: '/admin#/branch-class-fees',
+            //     label: 'App',
+            //     icon: 'manage_accounts',
+            // },
+        ],
+    },
+];
 
 const T1: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
             <h1>Nurul Hiqamah Model Madrasa</h1>
             <h2>Admin Dashboard</h2>
-            <div className="admin_sideba custom_scroll">
-                <h3 className="mt-4 ms-0">User management</h3>
+            <div className="menu_list custom_scroll">
+                {menuArray?.map((i: { [key: string]: any }) => {
+                    return (
+                        <div className="menu_apart">
+                            <h4>{i.group}</h4>
+                            <ul>
+                                {i.links?.map(
+                                    (
+                                        link: {
+                                            [key: string]: any;
+                                        },
+                                        index,
+                                    ) => {
+                                        return (
+                                            <li>
+                                                <a
+                                                    aria-current="page"
+                                                    href={link.link}
+                                                    className="router-link-active router-link-exact-active"
+                                                >
+                                                    <div
+                                                        className={`icon bg_color_${index + 1}`}
+                                                    >
+                                                        <span className="material-symbols-outlined fill">
+                                                            {link.icon}
+                                                        </span>
+                                                    </div>
+                                                    <div className="text">
+                                                        {link.label}
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        );
+                                    },
+                                )}
+                            </ul>
+                        </div>
+                    );
+                })}
+                {/* <h3 className="mt-4 ms-0">User management</h3>
                 <ul className="dashboard_links ">
                     <li>
                         <Link to="/user-staffs">
@@ -54,14 +399,6 @@ const T1: React.FC<Props> = (props: Props) => {
                             Tasks Management
                         </Link>
                     </li>
-                    {/* <li>
-                        <Link to="/user-staffs">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Task User Management
-                        </Link>
-                    </li> */}
                     <li>
                         <Link to="/task-variants">
                             <span className="material-symbols-outlined fill">
@@ -90,14 +427,6 @@ const T1: React.FC<Props> = (props: Props) => {
                             branches Management
                         </Link>
                     </li>
-                    {/* <li>
-                        <Link to="/user-branch-admins">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            user branch admins Management
-                        </Link>
-                    </li> */}
                     <li>
                         <Link to="/branch-buildings">
                             <span className="material-symbols-outlined fill">
@@ -174,14 +503,6 @@ const T1: React.FC<Props> = (props: Props) => {
                             Class Subjects
                         </Link>
                     </li>
-                    {/* <li>
-                        <Link to="/branch-class-routine-day-times">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Class Routines
-                        </Link>
-                    </li> */}
                     <li>
                         <Link to="/branch-class-routine-day-times/class-routine">
                             <span className="material-symbols-outlined fill">
@@ -214,22 +535,6 @@ const T1: React.FC<Props> = (props: Props) => {
                             Exam Routine Management
                         </Link>
                     </li>
-                    {/* <li>
-                        <Link to="/user-students/attendance-report">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Attendances report
-                        </Link>
-                    </li> */}
-                    {/* <li>
-                        <Link to="/user-students/kpi">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Kpi report
-                        </Link>
-                    </li> */}
                     <li>
                         <Link to="/student-overall-evaluations">
                             <span className="material-symbols-outlined fill">
@@ -370,22 +675,6 @@ const T1: React.FC<Props> = (props: Props) => {
                             Account category Management
                         </Link>
                     </li>
-                    {/* <li>
-                        <Link to="/salary-payments">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Income
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/salary-payments">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Expense
-                        </Link>
-                    </li> */}
                     <li>
                         <Link to="/leadger">
                             <span className="material-symbols-outlined fill">
@@ -514,7 +803,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             App Management
                         </Link>
                     </li>
-                </ul>
+                </ul> */}
             </div>
         </div>
     );

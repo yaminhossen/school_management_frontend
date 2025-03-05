@@ -44,6 +44,7 @@ async function login(
 
     let models = await db();
     let body: anyObject = req.body as anyObject;
+    console.log('request from admission login', body);
 
     try {
         let data: anyObject | null = {};
@@ -71,7 +72,7 @@ async function login(
                             id: data.id,
                             token: secret,
                             user_agent,
-                            user_type: 'staff',
+                            user_type: 'admission-officer',
                         },
                         secretKey,
                     );
