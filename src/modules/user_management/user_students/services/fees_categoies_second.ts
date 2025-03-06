@@ -35,6 +35,7 @@ async function fees_categories_second(
                 ],
             },
         });
+        console.log('studnet dta', student_data);
         let data = await classFeessModel.findAll({
             where: {
                 // branch_class_id: params.class,

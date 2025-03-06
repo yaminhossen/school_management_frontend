@@ -116,7 +116,10 @@ const Dues: React.FC<Props> = (props: Props) => {
                                     <td>{totalAmount?.['total']}</td>
                                     <td></td>
                                     <td></td>
-                                    <td>{totalAmount?.['due_amount']}</td>
+                                    <td>
+                                        {totalAmount?.['fee_amount'] -
+                                            totalAmount?.['total']}
+                                    </td>
                                     {/* <td>
                                         {totalAmount2}
                                         <input

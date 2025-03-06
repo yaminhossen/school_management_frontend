@@ -13,7 +13,7 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(`${prefix}`, controllerInstance.all)
         .get(
             `${prefix}/classes`,
-            { preHandler: [check_staff_auth] },
+            { preHandler: [auth_middleware] },
             controllerInstance.classes,
         )
         .get(`${prefix}/just-check/:id`, controllerInstance.just_check)
@@ -23,7 +23,7 @@ module.exports = async function (fastify: FastifyInstance) {
         )
         .get(
             `${prefix}/pre-info`,
-            { preHandler: [check_staff_auth] },
+            { preHandler: [auth_middleware] },
             controllerInstance.pre_info,
         )
         .get(
@@ -32,38 +32,43 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.fees_categories_second,
         )
         .get(
+            `${prefix}/fees-dues-student/:id`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.fees_categories_one,
+        )
+        .get(
             `${prefix}/fees-categories-student`,
             { preHandler: [auth_middleware] },
-            controllerInstance.fees_categories_second,
+            controllerInstance.fees_categories_third,
         )
         .get(
             `${prefix}/fees-categories/:id`,
-            // { preHandler: [check_staff_auth] },
+            // { preHandler: [auth_middleware] },
             controllerInstance.fees_categories,
         )
         .get(
             `${prefix}/student-class/:id`,
-            // { preHandler: [check_staff_auth] },
+            // { preHandler: [auth_middleware] },
             controllerInstance.student_class,
         )
         .get(
             `${prefix}/shifts`,
-            { preHandler: [check_staff_auth] },
+            { preHandler: [auth_middleware] },
             controllerInstance.shifts,
         )
         .get(
             `${prefix}/branches`,
-            { preHandler: [check_staff_auth] },
+            { preHandler: [auth_middleware] },
             controllerInstance.branches,
         )
         .get(
             `${prefix}/sections`,
-            { preHandler: [check_staff_auth] },
+            { preHandler: [auth_middleware] },
             controllerInstance.sections,
         )
         .get(
             `${prefix}/all-class`,
-            { preHandler: [check_staff_auth] },
+            { preHandler: [auth_middleware] },
             controllerInstance.all_class,
         )
         .get(

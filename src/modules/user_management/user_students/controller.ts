@@ -48,6 +48,8 @@ import children_details from './services/children_details';
 import full_details_second from './services/full_details_second';
 import basic_informations_second from './services/basic_informations_second';
 import fees_categories_second from './services/fees_categoies_second';
+import fees_categories_third from './services/fees_categoies_third';
+import fees_categories_one from './services/fees_categoies_one';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -113,6 +115,22 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data = await fees_categories_second(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        fees_categories_third: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await fees_categories_third(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        fees_categories_one: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await fees_categories_one(fastify, req);
             res.code(data.status).send(data);
         },
 

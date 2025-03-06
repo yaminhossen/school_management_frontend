@@ -315,7 +315,7 @@ const T1: React.FC<Props> = (props: Props) => {
             <h1>Nurul Hiqamah Model Madrasa</h1>
             <h2>Admin Dashboard</h2>
             <div className="menu_list custom_scroll">
-                {menuArray?.map((i: { [key: string]: any }) => {
+                {/* {menuArray?.map((i: { [key: string]: any }) => {
                     return (
                         <div className="menu_apart">
                             <h4>{i.group}</h4>
@@ -352,8 +352,8 @@ const T1: React.FC<Props> = (props: Props) => {
                             </ul>
                         </div>
                     );
-                })}
-                {/* <h3 className="mt-4 ms-0">User management</h3>
+                })} */}
+                <h3 className="mt-4 ms-0">User management</h3>
                 <ul className="dashboard_links ">
                     <li>
                         <Link to="/user-staffs">
@@ -803,7 +803,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             App Management
                         </Link>
                     </li>
-                </ul> */}
+                </ul>
             </div>
         </div>
     );

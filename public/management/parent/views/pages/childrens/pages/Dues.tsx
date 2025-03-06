@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 export interface Props {}
 export interface FeesInfo {
     account: { title: string };
@@ -13,11 +13,13 @@ const Dues: React.FC<Props> = (props: Props) => {
     const [feesTypes, setFeesTypes] = useState<FeesInfo[]>([]);
     const [totalAmount, setTotalAmount] = useState();
     const [error, setError] = useState(null);
+    const { id } = useParams();
+    console.log('user stundeent id', id);
 
     const fetchTypes = async () => {
         try {
             const response2 = await axios.get(
-                `/api/v1/user-students/fees-categories-student`,
+                `api/v1/user-students/fees-dues-student/${id}`,
             );
             setFeesTypes(response2.data?.data?.idWiseTotals);
             setTotalAmount(response2.data?.data?.summeries);
@@ -116,7 +118,10 @@ const Dues: React.FC<Props> = (props: Props) => {
                                     <td>{totalAmount?.['total']}</td>
                                     <td></td>
                                     <td></td>
-                                    <td>{totalAmount?.['due_amount']}</td>
+                                    <td>
+                                        {totalAmount?.['fee_amount'] -
+                                            totalAmount?.['total']}
+                                    </td>
                                 </tr>
                             </tfoot>
                         </table>
