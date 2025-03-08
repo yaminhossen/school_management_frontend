@@ -39,6 +39,12 @@ async function profile_update(
     let body = req.body as anyObject;
     let model = new models.UserTeachersModel();
     let image_path = '';
+    let user = (req as any).user;
+    let auth_user = await models.BranchTeachersModel.findOne({
+        where: {
+            user_teacher_id: (req as any).user?.id || null,
+        },
+    });
 
     if (body['image']?.ext) {
         image_path =
@@ -59,6 +65,7 @@ async function profile_update(
     // }
     console.log('body', body);
     console.log('image_path', image_path);
+    console.log('image_path', user);
 
     /** print request data into console */
     // console.clear();
@@ -68,7 +75,7 @@ async function profile_update(
     try {
         let data = await models.UserTeachersModel.findOne({
             where: {
-                id: 1,
+                id: user?.id,
             },
         });
         if (data) {
