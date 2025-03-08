@@ -96,11 +96,11 @@ async function store(
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: auth_user?.branch_id || 1,
-        branch_class_id: body.branch_class_id,
+        branch_class_id: body.class,
         title: body.title,
         description: body.description,
         attachment: image_path,
-        branch_class_subject_id: body.branch_class_subject_id,
+        branch_class_subject_id: body.subject,
         creator: user?.id || null,
     };
 

@@ -16,7 +16,7 @@ import Parents from '../../../user_management/user_parents/All.tsx';
 import Language from '../pages/Language.tsx';
 import ContactNumber from '../pages/ContactNumer.tsx';
 import EducationalBackground from '../pages/EducationalBackground.tsx';
-import Dues from '../pages/Dues.tsx';
+import Dues from '../Dues.tsx';
 import Payments from '../pages/Payments.tsx';
 import Results from '../pages/Results.tsx';
 import Markshit from '../pages/Markshit.tsx';
@@ -60,6 +60,10 @@ export default {
         {
             path: 'class-details/:id',
             element: <ClassDetails />,
+        },
+        {
+            path: 'student-dues/:id',
+            element: <Dues />,
         },
         {
             path: 'details/:id',

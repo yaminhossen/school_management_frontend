@@ -41,3 +41,5 @@
 {"level":60,"time":1741237781466,"pid":15980,"hostname":"DESKTOP-9421701","file":"services\\logout.ts:138:19)","time":"3/6/2025 11:09:41 AM","message":"action not possible"}
 {"level":60,"time":1741238999141,"pid":14880,"hostname":"DESKTOP-9421701","file":"","time":"3/6/2025 11:29:59 AM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1741239008390,"pid":14880,"hostname":"DESKTOP-9421701","file":"","time":"3/6/2025 11:30:08 AM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1741406945658,"pid":16684,"hostname":"DESKTOP-9421701","file":"","time":"3/8/2025 10:09:05 AM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1741413705338,"pid":16684,"hostname":"DESKTOP-9421701","file":"","time":"3/8/2025 12:01:45 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}

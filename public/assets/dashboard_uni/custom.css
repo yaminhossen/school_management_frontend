@@ -944,6 +944,11 @@ th {
         }
     }
 }
+.due_td{
+    width: 150px !important;
+    font-size: 44px;
+    border: 2px solid red !important;
+}
 
 
 

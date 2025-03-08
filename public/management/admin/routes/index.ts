@@ -52,7 +52,6 @@ import teacher_overall_evaluation_routes from "../views/pages/teacher_kpi_manage
 import teacher_evaluation_criterias_routes from "../views/pages/teacher_kpi_management/teacher_evaluation_criterias/config/routes";
 import exams_routes from "../views/pages/class_management/exams/config/routes";
 import exam_routines_routes from "../views/pages/class_management/exam_routines/config/routes";
-// import students_routes from "../views/pages/class_management/students/config/routes";
 
 interface RouteTypes extends NonIndexRouteObject {
     
@@ -121,7 +120,6 @@ const router: RouteTypes[] = [
             teacher_overall_evaluation_routes,
             exams_routes,
             exam_routines_routes,
-            // students_routes,
         ],
     },
 ];
