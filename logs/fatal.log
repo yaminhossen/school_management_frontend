@@ -57,3 +57,17 @@
 {"level":60,"time":1741420287530,"pid":5768,"hostname":"DESKTOP-9421701","file":"services\\get_full_year_attendances.ts:76:19)","time":"3/8/2025 1:51:27 PM","message":"data not found"}
 {"level":60,"time":1741424122670,"pid":2692,"hostname":"DESKTOP-9421701","file":"services\\profile_update.ts:102:19)","time":"3/8/2025 2:55:22 PM","message":"WHERE parameter \"id\" has invalid \"undefined\" value"}
 {"level":60,"time":1741424223683,"pid":15836,"hostname":"DESKTOP-9421701","file":"services\\profile_update.ts:103:19)","time":"3/8/2025 2:57:03 PM","message":"WHERE parameter \"id\" has invalid \"undefined\" value"}
+{"level":60,"time":1741495982351,"pid":17344,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"3/9/2025 10:53:02 AM","message":"data not found"}
+{"level":60,"time":1741495982418,"pid":17344,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"3/9/2025 10:53:02 AM","message":"data not found"}
+{"level":60,"time":1741495982875,"pid":17344,"hostname":"DESKTOP-9421701","file":"","time":"3/9/2025 10:53:02 AM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1741495982884,"pid":17344,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"3/9/2025 10:53:02 AM","message":"data not found"}
+{"level":60,"time":1741495983537,"pid":17344,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"3/9/2025 10:53:03 AM","message":"data not found"}
+{"level":60,"time":1741495983630,"pid":17344,"hostname":"DESKTOP-9421701","file":"","time":"3/9/2025 10:53:03 AM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1741496102173,"pid":17344,"hostname":"DESKTOP-9421701","file":"","time":"3/9/2025 10:55:02 AM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1741513380264,"pid":4032,"hostname":"DESKTOP-9421701","file":"services\\logout.ts:138:19)","time":"3/9/2025 3:43:00 PM","message":"action not possible"}
+{"level":60,"time":1741513382921,"pid":4032,"hostname":"DESKTOP-9421701","file":"services\\logout.ts:138:19)","time":"3/9/2025 3:43:02 PM","message":"action not possible"}
+{"level":60,"time":1741513383901,"pid":4032,"hostname":"DESKTOP-9421701","file":"services\\logout.ts:138:19)","time":"3/9/2025 3:43:03 PM","message":"action not possible"}
+{"level":60,"time":1741513386387,"pid":4032,"hostname":"DESKTOP-9421701","file":"services\\logout.ts:138:19)","time":"3/9/2025 3:43:06 PM","message":"action not possible"}
+{"level":60,"time":1741513387134,"pid":4032,"hostname":"DESKTOP-9421701","file":"services\\logout.ts:138:19)","time":"3/9/2025 3:43:07 PM","message":"action not possible"}
+{"level":60,"time":1741513387948,"pid":4032,"hostname":"DESKTOP-9421701","file":"services\\logout.ts:138:19)","time":"3/9/2025 3:43:07 PM","message":"action not possible"}
+{"level":60,"time":1741513398749,"pid":4032,"hostname":"DESKTOP-9421701","file":"services\\logout.ts:138:19)","time":"3/9/2025 3:43:18 PM","message":"action not possible"}
