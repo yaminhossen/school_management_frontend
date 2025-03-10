@@ -48,27 +48,33 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                     </tr>
                     <tr>
                         <td>Country:</td>
-                        <td className="font-medium text-dark-medium">What</td>
+                        <td className="font-medium text-dark-medium">
+                            {data.staff_infos?.country}
+                        </td>
                     </tr>
                     <tr>
                         <td>District:</td>
-                        <td className="font-medium text-dark-medium">What</td>
+                        <td className="font-medium text-dark-medium">
+                            {data.staff_infos?.district}
+                        </td>
                     </tr>
-                    <tr>
+                    {/* <tr>
                         <td>Thana:</td>
-                        <td className="font-medium text-dark-medium">What</td>
-                    </tr>
-                    <tr>
+                        <td className="font-medium text-dark-medium">{data.staff_infos?.thana}</td>
+                    </tr> */}
+                    {/* <tr>
                         <td>Graduation:</td>
                         <td className="font-medium text-dark-medium">
                             {data.staff_infos?.graduation}
                         </td>
-                    </tr>
+                    </tr> */}
                     <tr>
                         <td>Qualification:</td>
-                        <td className="font-medium text-dark-medium">What</td>
+                        <td className="font-medium text-dark-medium">
+                            {data.staff_infos?.qualification}
+                        </td>
                     </tr>
-                    <tr>
+                    {/* <tr>
                         <td>Occupation:</td>
                         <td className="font-medium text-dark-medium">
                             {data.staff_infos?.occupation}
@@ -76,11 +82,15 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                     </tr>
                     <tr>
                         <td>Department:</td>
-                        <td className="font-medium text-dark-medium">What</td>
-                    </tr>
+                        <td className="font-medium text-dark-medium">
+                            {data.staff_infos?.department}
+                        </td>
+                    </tr> */}
                     <tr>
                         <td>Blood Groupe:</td>
-                        <td className="font-medium text-dark-medium">What</td>
+                        <td className="font-medium text-dark-medium">
+                            {data.staff_infos?.blood_group}
+                        </td>
                     </tr>
                     <tr>
                         <td>IsMarried:</td>

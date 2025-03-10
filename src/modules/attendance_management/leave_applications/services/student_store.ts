@@ -93,6 +93,7 @@ async function store(
         branch_student_id: 0,
         branch_teacher_id: 0,
         start_date: body.start_date,
+        leave_status: body.leave_status || 'pending',
         end_date: body.end_date,
         attachments: image_path,
         creator: user?.id || null,

@@ -40,6 +40,7 @@ async function profile_update(
     let model = new models.UserStaffsModel();
     let image_path = '';
 
+    let user = (req as any).user;
     if (body['image']?.ext) {
         image_path =
             'uploads/staffs/' +
@@ -68,7 +69,7 @@ async function profile_update(
     try {
         let data = await models.UserStaffsModel.findOne({
             where: {
-                id: 1,
+                id: user?.id,
             },
         });
         if (data) {

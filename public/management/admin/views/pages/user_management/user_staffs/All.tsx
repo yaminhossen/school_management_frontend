@@ -29,7 +29,7 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, name, email, phone_number, role, status',
+                'id, name, email, image, phone_number, role, status',
             ),
         );
         dispatch(all({}) as any);
@@ -111,7 +111,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                     </td>
                                                     <td>
                                                         <img
-                                                            src="/assets/dashboard/images/avatar.png"
+                                                            src={i.image}
                                                             alt=""
                                                             style={{
                                                                 height: 30,

@@ -152,7 +152,7 @@ async function store(
                             account_fees_collection_id: afc_model.id || 0,
                             branch_class_fees_id: ss.type,
                             fee_amount: ss.fee_amount,
-                            total: ss.amount || 0,
+                            total: ss.amount + ss.discount || 0,
                             discount: ss.discount || 0,
                             date: (req.body as anyObject).date,
                             creator: user?.id || null,
