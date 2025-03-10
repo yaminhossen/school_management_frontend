@@ -141,6 +141,13 @@ async function store(
             if (afc_model) {
                 if (student_fees) {
                     student_fees.forEach(async (ss) => {
+                        console.log(
+                            'ss amount',
+                            ss.amount,
+                            'ss discount',
+                            ss.discount,
+                        );
+
                         let afcd_model =
                             new models.AccountFeesCollectionDetailsModel();
                         let afcd_inputs: InferCreationAttributes<
