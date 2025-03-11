@@ -73,3 +73,5 @@
 {"level":60,"time":1741513398749,"pid":4032,"hostname":"DESKTOP-9421701","file":"services\\logout.ts:138:19)","time":"3/9/2025 3:43:18 PM","message":"action not possible"}
 {"level":60,"time":1741578252534,"pid":15812,"hostname":"DESKTOP-9421701","file":"services\\logout.ts:138:19)","time":"3/10/2025 9:44:12 AM","message":"action not possible"}
 {"level":60,"time":1741579946632,"pid":15812,"hostname":"DESKTOP-9421701","file":"services\\logout.ts:138:19)","time":"3/10/2025 10:12:26 AM","message":"action not possible"}
+{"level":60,"time":1741601009443,"pid":10608,"hostname":"DESKTOP-9421701","file":"","time":"3/10/2025 4:03:29 PM","message":"connect ETIMEDOUT"}
+{"level":60,"time":1741601030811,"pid":10608,"hostname":"DESKTOP-9421701","file":"","time":"3/10/2025 4:03:50 PM","message":"connect ETIMEDOUT"}

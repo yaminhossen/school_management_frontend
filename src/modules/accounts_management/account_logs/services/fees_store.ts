@@ -69,15 +69,21 @@ async function store(
                 account_period_id: (req.body as anyObject).account_period_id,
                 account_id: (req.body as anyObject).account_id,
                 amount_in_text: (req.body as anyObject).amount_in_text,
-                amount: (req.body as anyObject)[`fees_${i}`] || 0,
-                fee_amount: (req.body as anyObject)[`fees_amount_${i}`],
-                discount: (req.body as anyObject)[`fees_discount_${i}`],
+                amount:
+                    parseFloat((req.body as anyObject)[`fees_${i}`]) ||
+                    parseInt('0'),
+                fee_amount:
+                    parseFloat((req.body as anyObject)[`fees_amount_${i}`]) ||
+                    parseInt('0'),
+                discount:
+                    parseFloat((req.body as anyObject)[`fees_discount_${i}`]) ||
+                    parseInt('0'),
                 type: (req.body as anyObject)[`fees_type_${i}`],
             };
             student_fees.push(temp);
         }
     }
-    console.log('authenticate user id', body);
+    console.log('authenticate user id', typeof body.fees_amount_0);
 
     /** print request data into console */
     // console.clear();
