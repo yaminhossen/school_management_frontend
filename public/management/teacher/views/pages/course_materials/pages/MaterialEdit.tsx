@@ -89,7 +89,7 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
                                 // ref={inputRef}
                                 onChange={handleChange}
                             >
-                                <option value={data.branch_class_id}></option>
+                                {/* <option value={data.branch_class_id}></option> */}
                                 {classes.map((i, index) => {
                                     return (
                                         <option value={i.id}>{i.name}</option>
