@@ -11,6 +11,7 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
     const [classes, setClasses] = useState<any>([]);
     const [subjects, setSubjects] = useState<any>([]);
     const selectRef = useRef<HTMLSelectElement>(null);
+    const selectRef2 = useRef<HTMLSelectElement>(null);
     const { id } = useParams();
 
     const fetchData = async () => {
@@ -86,6 +87,12 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
         }
     }, [classes]);
 
+    useEffect(() => {
+        if (selectRef2.current && data) {
+            selectRef2.current.value = data.branch_class_subject_id; // Set value after render
+        }
+    }, [subjects]);
+
     return (
         <div className="admin_dashboard">
             <h3>Edit</h3>
@@ -119,9 +126,9 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
                         <div className="form_elements">
                             <select
                                 name="subject"
-                                defaultValue={data.branch_class_subject_id}
+                                // defaultValue={data.branch_class_subject_id}
                                 id=""
-                                // ref={inputRef}
+                                ref={selectRef2}
                                 // onChange={handleChange}
                             >
                                 {subjects.map((i, index) => {
