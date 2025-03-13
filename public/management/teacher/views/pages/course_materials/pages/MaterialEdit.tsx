@@ -10,6 +10,7 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState<any>([]);
     const [classes, setClasses] = useState<any>([]);
     const [subjects, setSubjects] = useState<any>([]);
+    const selectRef = useRef<HTMLSelectElement>(null);
     const { id } = useParams();
 
     const fetchData = async () => {
@@ -33,14 +34,17 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
         }
     };
 
-    useEffect(() => {
-        fetchData();
-        fetchClasses();
-    }, []);
-    console.log(data);
-    function lastDate(date: string) {
-        console.log(moment(date).format('YYYY-MM-DD'));
+    async function init_data() {
+        await fetchData();
+        await fetchClasses();
     }
+
+    useEffect(() => {
+        init_data();
+    }, []);
+    // function lastDate(date: string) {
+    //     console.log(moment(date).format('YYYY-MM-DD'));
+    // }
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
@@ -59,21 +63,29 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
         }
     };
 
-    const handleChange = async (
-        event: React.ChangeEvent<HTMLSelectElement>,
-    ) => {
-        let id = event.target.value;
+    const handleChange = async () => {
+        // let id2 = event.target.value;
+        // console.log('evetn id', id2);
+        let value = selectRef?.current?.value;
+        console.log('select ref value', Number(value));
+
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/class-wise-subject/${id}`,
+                `/api/v1/branch-class-subjects/class-wise-subject/${Number(value)}`,
             );
             setSubjects(response.data.data);
         } catch (error) {
             setError(error);
         }
-        console.log('Selected value:', event.target.value);
     };
-    console.log('Selected dataaa:', subjects);
+
+    useEffect(() => {
+        if (selectRef.current && data) {
+            selectRef.current.value = data.branch_class_id; // Set value after render
+            handleChange();
+        }
+    }, [classes]);
+
     return (
         <div className="admin_dashboard">
             <h3>Edit</h3>
@@ -84,12 +96,11 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
                         <div className="form_elements">
                             <select
                                 name="class"
-                                defaultValue={data.branch_class_id}
+                                // defaultValue={data.branch_class_id}
                                 id=""
-                                // ref={inputRef}
+                                ref={selectRef}
                                 onChange={handleChange}
                             >
-                                {/* <option value={data.branch_class_id}></option> */}
                                 {classes.map((i, index) => {
                                     return (
                                         <option value={i.id}>{i.name}</option>
@@ -113,9 +124,6 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
                                 // ref={inputRef}
                                 // onChange={handleChange}
                             >
-                                <option
-                                    value={data.branch_class_subject_id}
-                                ></option>
                                 {subjects.map((i, index) => {
                                     return (
                                         <option value={i.id}>{i.name}</option>

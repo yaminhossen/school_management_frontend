@@ -85,6 +85,12 @@ async function update(
     let model = new models.BranchClassResourcessModel();
     let data = await models.BranchClassResourcessModel.findByPk(body.id);
     let prevFile = data?.attachment;
+    let user = (req as any).user;
+    let auth_user = await models.BranchAdminsModel.findOne({
+        where: {
+            user_admin_id: (req as any).user?.id || null,
+        },
+    });
 
     let image_path = '';
 
@@ -101,7 +107,7 @@ async function update(
         title: body.title,
         description: body.description,
         attachment: image_path || prevFile || 'avatar.png',
-        branch_class_subject_id: body.branch_class_subject_id,
+        branch_class_subject_id: body.subject,
         creator: 1,
     };
     console.log('update body', body);
