@@ -11,6 +11,9 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
     const [classes, setClasses] = useState<any>([]);
     const [subjects, setSubjects] = useState<any>([]);
     const [categories, setCategories] = useState<any>([]);
+    const selectRef = useRef<HTMLSelectElement>(null);
+    const selectRef2 = useRef<HTMLSelectElement>(null);
+    const selectRef3 = useRef<HTMLSelectElement>(null);
     const { id } = useParams();
 
     const fetchData = async () => {
@@ -42,11 +45,20 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
         }
     };
 
+    async function init_data() {
+        await fetchData();
+        await fetchCategories();
+        await fetchClasses();
+    }
+
     useEffect(() => {
-        fetchData();
-        fetchCategories();
-        fetchClasses();
+        init_data();
     }, []);
+    // useEffect(() => {
+    //     fetchData();
+    //     fetchCategories();
+    //     fetchClasses();
+    // }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -63,19 +75,40 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
         }
     };
 
-    const handleChange = async (
-        event: React.ChangeEvent<HTMLSelectElement>,
-    ) => {
-        let id = event.target.value;
+    const handleChange = async () => {
+        // let id2 = event.target.value;
+        // console.log('evetn id', id2);
+        let value = selectRef?.current?.value;
+        console.log('select ref value', Number(value));
+
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/class-wise-subject/${id}`,
+                `/api/v1/branch-class-subjects/class-wise-subject/${Number(value)}`,
             );
             setSubjects(response.data.data);
         } catch (error) {
             setError(error);
         }
     };
+
+    useEffect(() => {
+        if (selectRef.current && data) {
+            selectRef.current.value = data.class_id; // Set value after render
+            handleChange();
+        }
+    }, [classes]);
+
+    useEffect(() => {
+        if (selectRef2.current && data) {
+            selectRef2.current.value = data.subject_id; // Set value after render
+        }
+    }, [subjects]);
+
+    useEffect(() => {
+        if (selectRef3.current && data) {
+            selectRef3.current.value = data.assignment_categories_id; // Set value after render
+        }
+    }, [categories]);
     return (
         <div className="admin_dashboard">
             <h3>Edit</h3>
@@ -86,11 +119,12 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                         <div className="form_elements">
                             <select
                                 name="class"
-                                defaultValue={data.class_id}
+                                // defaultValue={data.class_id}
                                 id=""
+                                ref={selectRef}
                                 onChange={handleChange}
                             >
-                                <option value={data.class_id}></option>
+                                {/* <option value={data.class_id}></option> */}
                                 {classes.map((i, index) => {
                                     return (
                                         <option value={i.id}>{i.name}</option>
@@ -109,8 +143,9 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                         <div className="form_elements">
                             <select
                                 name="subject"
-                                defaultValue={data.subject_id}
+                                // defaultValue={data.subject_id}
                                 id=""
+                                ref={selectRef2}
                             >
                                 {/* <option value={data.class_id}></option> */}
                                 {subjects.map((i, index) => {
@@ -126,12 +161,10 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                         <div className="form_elements">
                             <select
                                 name="assignment_categories_id"
-                                defaultValue={data.assignment_categories_id}
+                                // defaultValue={data.assignment_categories_id}
                                 id=""
+                                ref={selectRef3}
                             >
-                                <option
-                                    value={data.assignment_categories_id}
-                                ></option>
                                 {categories.map((i, index) => {
                                     return (
                                         <option value={i.id}>{i.title}</option>
