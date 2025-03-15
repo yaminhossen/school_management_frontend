@@ -51,7 +51,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th>Serial</th>
                                     <th>Title</th>
                                     <th>Subject</th>
-                                    <th>Teacher</th>
+                                    {/* <th>Teacher</th> */}
                                     <th>Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -64,13 +64,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td>{i.id}</td>
                                             <td>{i.title}</td>
                                             <td>{i.subject?.name}</td>
-                                            <td>
+                                            {/* <td>
                                                 {
                                                     i.subject_teacher
                                                         ?.branch_teacher
                                                         ?.teacher?.name
                                                 }
-                                            </td>
+                                            </td> */}
                                             <td>{dateFormate(i.updatedAt)}</td>
                                             <td>
                                                 <a

@@ -51,19 +51,7 @@ const Index: React.FC<Props> = (props: Props) => {
                     <thead>
                         <tr className="table_head_area">
                             <th className="head_subject_title">subjects</th>
-                            <th
-                                className="head_day_time_room_title"
-                                style={{ width: 'unset' }}
-                            >
-                                <span className="head_day_time_room head_day">
-                                    saturday
-                                </span>
-                                <span className="head_day_time_room head_time_and_room">
-                                    <span className="head_time">time</span>
-                                    <span className="head_silash">/</span>
-                                    <span className="head_room">room</span>
-                                </span>
-                            </th>
+                            
                             <th
                                 className="head_day_time_room_title"
                                 style={{ width: 'unset' }}
@@ -127,6 +115,19 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <span className="head_room">room</span>
                                 </span>
                             </th>
+                            <th
+                                className="head_day_time_room_title"
+                                style={{ width: 'unset' }}
+                            >
+                                <span className="head_day_time_room head_day">
+                                    saturday
+                                </span>
+                                <span className="head_day_time_room head_time_and_room">
+                                    <span className="head_time">time</span>
+                                    <span className="head_silash">/</span>
+                                    <span className="head_room">room</span>
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -139,45 +140,54 @@ const Index: React.FC<Props> = (props: Props) => {
                                             sortById(
                                                 i.subject_routine?.day_time,
                                             )?.map(
-                                                (i: { [key: string]: any }) => {
+                                                (el: {
+                                                    [key: string]: any;
+                                                }) => {
                                                     return (
                                                         <td className="class_time_and_room_content">
-                                                            <span className="class_time_and_room">
-                                                                <span className="time_rooom class_time">
-                                                                    {timeFormate(
-                                                                        i.start_time,
-                                                                    )}{' '}
-                                                                    -{' '}
-                                                                    {timeFormate(
-                                                                        i.end_time,
-                                                                    )}{' '}
-                                                                </span>
-                                                                <span className="time_rooom class_room">
-                                                                    <span className="room_title">
-                                                                        room
+                                                            {el.day_name ===
+                                                            'friday' ? (
+                                                                    <span className="holiday">
+                                                                    Friday
                                                                     </span>
-                                                                    <span className="dash_title">
-                                                                        -
+                                                                ) : (
+                                                                    <span className="class_time_and_room">
+                                                                        <span className="time_rooom class_time">
+                                                                            {timeFormate(
+                                                                            el.start_time,
+                                                                        )}{' '}
+                                                                        -{' '}
+                                                                        {timeFormate(
+                                                                            el.end_time,
+                                                                        )}
+                                                                        </span>
+                                                                        <span className="time_rooom class_room">
+                                                                            <span className="room_title">
+                                                                            room
+                                                                        </span>
+                                                                            <span className="dash_title">
+                                                                            -
+                                                                        </span>
+                                                                            <span className="room_number">
+                                                                                {
+                                                                                el
+                                                                                    .class_room
+                                                                                    ?.building_room
+                                                                                    ?.room_code
+                                                                            }
+                                                                            </span>
+                                                                            <br />
+                                                                            <span>
+                                                                            {
+                                                                                el
+                                                                                    .branch_teacher
+                                                                                    ?.user_teacher
+                                                                                    ?.name
+                                                                            }
+                                                                        </span>
+                                                                        </span>
                                                                     </span>
-                                                                    <span className="room_number">
-                                                                        {
-                                                                            i
-                                                                                .class_room
-                                                                                ?.building_room
-                                                                                ?.room_code
-                                                                        }
-                                                                    </span>
-                                                                    <br />
-                                                                    <span>
-                                                                        {
-                                                                            i
-                                                                                .branch_teacher
-                                                                                ?.user_teacher
-                                                                                ?.name
-                                                                        }
-                                                                    </span>
-                                                                </span>
-                                                            </span>
+                                                                )}
                                                         </td>
                                                     );
                                                 },

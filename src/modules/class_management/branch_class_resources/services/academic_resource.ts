@@ -35,22 +35,22 @@ async function academic_resource(
                     model: branchClassSubjectsModel,
                     as: 'subject',
                 },
-                {
-                    model: branchClassSubjectTeachersModel,
-                    as: 'subject_teacher',
-                    include: [
-                        {
-                            model: branchTeachersModel,
-                            as: 'branch_teacher',
-                            include: [
-                                {
-                                    model: userTeachersModel,
-                                    as: 'teacher',
-                                },
-                            ],
-                        },
-                    ],
-                },
+                // {
+                //     model: branchClassSubjectTeachersModel,
+                //     as: 'subject_teacher',
+                //     include: [
+                //         {
+                //             model: branchTeachersModel,
+                //             as: 'branch_teacher',
+                //             include: [
+                //                 {
+                //                     model: userTeachersModel,
+                //                     as: 'teacher',
+                //                 },
+                //             ],
+                //         },
+                //     ],
+                // },
             ],
             // order: [['id', 'ASC']],
         });
