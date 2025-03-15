@@ -603,14 +603,14 @@ const T1: React.FC<Props> = (props: Props) => {
                             Class Fee Waivers
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/fees-collection">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             Fees Collections
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/user-students">
                             <span className="material-symbols-outlined fill">
@@ -785,6 +785,14 @@ const T1: React.FC<Props> = (props: Props) => {
                                 groups
                             </span>
                             FAQ Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/policies">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Policy Management
                         </Link>
                     </li>
                     <li>

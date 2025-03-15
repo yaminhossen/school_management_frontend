@@ -459,15 +459,18 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                             Day
                                                                         </label>
                                                                         <div className="form_elements">
-                                                                            <input
-                                                                                type="text"
-                                                                                readOnly
-                                                                                placeholder="date"
-                                                                                name="day_name"
-                                                                                defaultValue={
-                                                                                    i.day_name
-                                                                                }
-                                                                            />
+                                                                            <div>
+                                                                                <input
+                                                                                    className={`${i.day_name}`}
+                                                                                    type="text"
+                                                                                    readOnly
+                                                                                    placeholder="date"
+                                                                                    name="day_name"
+                                                                                    defaultValue={
+                                                                                        i.day_name
+                                                                                    }
+                                                                                />
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <div className="form-group form-vertical">

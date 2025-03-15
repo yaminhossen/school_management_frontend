@@ -47,6 +47,7 @@ import teacher_overall_evaluations_slice from '../views/pages/teacher_kpi_manage
 import teacher_evaluation_criterias_slice from '../views/pages/teacher_kpi_management/teacher_evaluation_criterias/config/store';
 import exams_slice from '../views/pages/class_management/exams/config/store';
 import exam_routines_slice from '../views/pages/class_management/exam_routines/config/store';
+import policies_slice from '../views/pages/notice_management/policies/config/store';
 
 const store = configureStore({
     reducer: {
@@ -100,6 +101,7 @@ const store = configureStore({
             teacher_evaluation_criterias_slice.reducer,
         exams: exams_slice.reducer,
         exam_routines: exam_routines_slice.reducer,
+        policies: policies_slice.reducer,
     },
     devTools: true,
 });
