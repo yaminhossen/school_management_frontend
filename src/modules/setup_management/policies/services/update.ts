@@ -18,11 +18,11 @@ async function validate(req: Request) {
         .withMessage('the id field is required')
         .run(req);
 
-    await body('branch_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_id field is required')
-        .run(req);
+    // await body('branch_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the branch_id field is required')
+    //     .run(req);
 
     await body('title')
         .not()
@@ -55,11 +55,19 @@ async function update(
     let body = req.body as anyObject;
     let model = new models.PoliciesModel();
 
+    let user = (req as any).user;
+    let auth_user = await models.BranchAdminsModel.findOne({
+        where: {
+            user_admin_id: (req as any).user?.id || null,
+        },
+    });
+
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: body.branch_id,
+        branch_id: auth_user?.branch_id || 1,
 
         title: body.title,
         description: body.description,
+        creator: user?.id || null,
     };
     /** print request data into console */
     // console.clear();
@@ -69,8 +77,7 @@ async function update(
     try {
         let data = await models.PoliciesModel.findByPk(body.id);
         if (data) {
-            data.update(inputs);
-            await data.save();
+            (await data.update(inputs)).save();
             return response(200, 'data updated', data);
         } else {
             throw new custom_error(

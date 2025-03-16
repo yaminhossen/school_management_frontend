@@ -35,15 +35,15 @@ const Details: React.FC<Props> = (props: Props) => {
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
                                     <tr>
-                                        <td>Question</td>
+                                        <td>Title</td>
                                         <td>:</td>
-                                        <td>{state.item.question}</td>
+                                        <td>{state.item.title}</td>
                                     </tr>
                                     <tr>
-                                        <td>Answer</td>
+                                        <td>Description</td>
                                         <td>:</td>
                                         <td style={{ whiteSpace: 'wrap' }}>
-                                            {state.item.answer}
+                                            {state.item.description}
                                         </td>
                                     </tr>
                                 </tbody>

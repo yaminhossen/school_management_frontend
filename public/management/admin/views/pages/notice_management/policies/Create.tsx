@@ -33,21 +33,21 @@ const Create: React.FC<Props> = (props: Props) => {
                             </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Question</label>
+                                    <label>Title</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            name="question"
-                                            placeholder="question"
+                                            name="title"
+                                            placeholder="title"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Answer</label>
+                                    <label>Description</label>
                                     <div className="form_elements">
                                         <textarea
-                                            name="answer"
-                                            placeholder="answer"
+                                            name="description"
+                                            placeholder="description"
                                         ></textarea>
                                     </div>
                                 </div>

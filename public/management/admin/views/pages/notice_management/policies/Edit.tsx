@@ -47,24 +47,26 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Question</label>
+                                    <label>Title</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            name="question"
-                                            placeholder="question"
-                                            defaultValue={state.item.question}
+                                            name="title"
+                                            placeholder="title"
+                                            defaultValue={state.item.title}
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Answer</label>
+                                    <label>Description</label>
                                     <div className="form_elements">
                                         <textarea
-                                            name="answer"
+                                            name="description"
                                             id=""
-                                            placeholder="answer"
-                                            defaultValue={state.item.answer}
+                                            placeholder="description"
+                                            defaultValue={
+                                                state.item.description
+                                            }
                                         ></textarea>
                                     </div>
                                 </div>

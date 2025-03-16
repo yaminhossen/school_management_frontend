@@ -18,72 +18,20 @@ async function validate(req: Request) {
         .withMessage('the id field is required')
         .run(req);
 
-    await body('branch_id')
+    await body('name')
         .not()
         .isEmpty()
-        .withMessage('the branch_id field is required')
+        .withMessage('the name field is required')
         .run(req);
-
-    await body('admin_id')
-        .not()
-        .isEmpty()
-        .withMessage('the admin_id field is required')
-        .run(req);
-    await body('teacher_id')
-        .not()
-        .isEmpty()
-        .withMessage('the teacher_id field is required')
-        .run(req);
-    await body('staff_id')
-        .not()
-        .isEmpty()
-        .withMessage('the staff_id field is required')
-        .run(req);
-    await body('student_id')
-        .not()
-        .isEmpty()
-        .withMessage('the student_id field is required')
-        .run(req);
-    await body('parent_id')
-        .not()
-        .isEmpty()
-        .withMessage('the parent_id field is required')
-        .run(req);
-
     await body('title')
         .not()
         .isEmpty()
         .withMessage('the title field is required')
         .run(req);
-    await body('description')
+    await body('number')
         .not()
         .isEmpty()
-        .withMessage('the description field is required')
-        .run(req);
-    await body('date')
-        .not()
-        .isEmpty()
-        .withMessage('the date field is required')
-        .run(req);
-    await body('reminder_date')
-        .not()
-        .isEmpty()
-        .withMessage('the reminder_date field is required')
-        .run(req);
-    await body('is_complete')
-        .not()
-        .isEmpty()
-        .withMessage('the is_complete field is required')
-        .run(req);
-    await body('location')
-        .not()
-        .isEmpty()
-        .withMessage('the location field is required')
-        .run(req);
-    await body('map_link')
-        .not()
-        .isEmpty()
-        .withMessage('the map_link field is required')
+        .withMessage('the number field is required')
         .run(req);
 
     let result = await validationResult(req);
@@ -105,12 +53,19 @@ async function update(
     let models = await db();
     let body = req.body as anyObject;
     let model = new models.ContactSupportsModel();
+    let user = (req as any).user;
+    let auth_user = await models.BranchAdminsModel.findOne({
+        where: {
+            user_admin_id: (req as any).user?.id || null,
+        },
+    });
 
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: body.branch_id,
+        branch_id: auth_user?.branch_id || 1,
         name: body.name,
         title: body.title,
         number: body.number,
+        creator: user?.id || null,
     };
     /** print request data into console */
     // console.clear();
@@ -120,8 +75,7 @@ async function update(
     try {
         let data = await models.ContactSupportsModel.findByPk(body.id);
         if (data) {
-            data.update(inputs);
-            await data.save();
+            (await data.update(inputs)).save();
             return response(200, 'data updated', data);
         } else {
             throw new custom_error(

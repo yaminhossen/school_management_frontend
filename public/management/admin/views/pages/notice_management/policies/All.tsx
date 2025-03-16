@@ -116,7 +116,8 @@ const All: React.FC<Props> = (props: Props) => {
                                                 </td> */}
                                                     <td>{i.title}</td>
                                                     <td>
-                                                        {i.description?.length > 25
+                                                        {i.description?.length >
+                                                        25
                                                             ? i.description?.slice(
                                                                 0,
                                                                 35,
