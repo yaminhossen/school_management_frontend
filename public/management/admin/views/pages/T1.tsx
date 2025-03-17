@@ -759,6 +759,14 @@ const T1: React.FC<Props> = (props: Props) => {
                             Payroll Management
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/journals">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Leave Management
+                        </Link>
+                    </li>
                 </ul>
 
                 <h3 className="mt-4 ms-0">Notice management</h3>

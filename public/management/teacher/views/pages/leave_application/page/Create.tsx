@@ -8,6 +8,25 @@ export interface Props {}
 const Create: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState('');
+
+    const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
+    const [endDate, setEndDate] = useState(moment().format('YYYY-MM-DD'));
+    const [totalDays, setTotalDays] = useState(0);
+
+    const calculateDays = (start: string, end: string) => {
+        const diff = moment(end).diff(moment(start), 'days');
+        setTotalDays(diff >= 0 ? diff : 0); // Prevent negative values
+    };
+
+    const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setStartDate(e.target.value);
+        calculateDays(e.target.value, endDate);
+    };
+
+    const handleEndDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEndDate(e.target.value);
+        calculateDays(startDate, e.target.value);
+    };
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         let formData = new FormData(e.target);
@@ -37,22 +56,37 @@ const Create: React.FC<Props> = (props: Props) => {
             <div className="content_body">
                 <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
-                        <label>Start date</label>
+                        <label>Start Date</label>
                         <div className="form_elements">
                             <input
                                 type="date"
-                                defaultValue={date}
+                                value={startDate}
                                 name="start_date"
+                                onChange={handleStartDateChange}
                             />
                         </div>
                     </div>
+
                     <div className="form-group form-horizontal">
-                        <label>End date</label>
+                        <label>End Date</label>
                         <div className="form_elements">
                             <input
                                 type="date"
-                                defaultValue={date}
+                                value={endDate}
                                 name="end_date"
+                                onChange={handleEndDateChange}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="form-group form-horizontal">
+                        <label>Total Days</label>
+                        <div className="form_elements">
+                            <input
+                                type="number"
+                                name="days"
+                                value={totalDays + 1}
+                                readOnly
                             />
                         </div>
                     </div>
