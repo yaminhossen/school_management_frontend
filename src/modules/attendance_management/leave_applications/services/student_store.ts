@@ -19,6 +19,12 @@ async function validate(req: Request) {
         .withMessage('the start_date field is required')
         .run(req);
 
+    await body('leave_type')
+        .not()
+        .isEmpty()
+        .withMessage('the leave_type field is required')
+        .run(req);
+
     await body('end_date')
         .not()
         .isEmpty()
@@ -95,6 +101,7 @@ async function store(
         start_date: body.start_date,
         leave_status: body.leave_status || 'pending',
         total_days: body.days,
+        leave_type_id: body.leave_type,
         end_date: body.end_date,
         attachments: image_path,
         creator: user?.id || null,

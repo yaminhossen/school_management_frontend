@@ -83,3 +83,12 @@
 {"level":60,"time":1742193627971,"pid":6088,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2Cevent_name%2C+start_date%2C+end_date%2C+days%2C+description%2C+status"}
 {"level":60,"time":1742193629454,"pid":6088,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendar-event-types/event-types"}
 {"level":60,"time":1742194040545,"pid":6088,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/student-store"}
+{"level":60,"time":1742198832844,"pid":14664,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1742198834896,"pid":14664,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-types/all-type"}
+{"level":60,"time":1742200263930,"pid":16132,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1742200265845,"pid":16132,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1742200374104,"pid":16132,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1742200390463,"pid":16132,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1742200632965,"pid":15596,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignment-categories/all-categories"}
+{"level":60,"time":1742200634500,"pid":15596,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/store"}
+{"level":60,"time":1742200635420,"pid":15596,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/assignments/store"}

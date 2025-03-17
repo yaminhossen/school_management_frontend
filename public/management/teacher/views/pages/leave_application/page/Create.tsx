@@ -8,6 +8,21 @@ export interface Props {}
 const Create: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState('');
+    const [leaveTypes, setLeaveType] = useState<any>();
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('/api/v1/leave-types/all-type');
+            setLeaveType(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
     const [endDate, setEndDate] = useState(moment().format('YYYY-MM-DD'));
@@ -39,7 +54,7 @@ const Create: React.FC<Props> = (props: Props) => {
             );
             // setResponseMessage('Form submitted successfully!');
             setData('Form submitted successfully!'); // Clear any previous error
-            console.log('response', response);
+            (window as any).toaster('submitted');
         } catch (error) {
             // setError(error); // Set error state
             // setResponseMessage('Failed to submit form.');
@@ -55,6 +70,24 @@ const Create: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <div className="content_body">
                 <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
+                    <div className="form-group form-horizontal">
+                        <label>Leave Type</label>
+                        <div className="form_elements">
+                            <select name="leave_type" id="">
+                                <option></option>
+                                {leaveTypes?.length &&
+                                    leaveTypes?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <option value={i.id}>
+                                                    {i.title}
+                                                </option>
+                                            );
+                                        },
+                                    )}
+                            </select>
+                        </div>
+                    </div>
                     <div className="form-group form-horizontal">
                         <label>Start Date</label>
                         <div className="form_elements">

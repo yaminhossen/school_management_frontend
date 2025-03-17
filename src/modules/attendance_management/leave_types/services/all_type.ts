@@ -5,7 +5,7 @@ import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 
-async function details(
+async function all_type(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -13,11 +13,7 @@ async function details(
     let params = req.params as any;
 
     try {
-        let data = await models.LeaveTypesModel.findOne({
-            where: {
-                id: params.id,
-            },
-        });
+        let data = await models.LeaveTypesModel.findAll();
 
         if (data) {
             return response(200, 'data founded', data);
@@ -35,4 +31,4 @@ async function details(
     }
 }
 
-export default details;
+export default all_type;
