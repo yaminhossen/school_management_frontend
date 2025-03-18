@@ -12,6 +12,7 @@ async function all(
 ): Promise<responseObject> {
     let models = await db();
     let query_param = req.query as any;
+    let leave_type_model = models.LeaveTypesModel;
 
     const { Op } = require('sequelize');
     let search_key = query_param.search_key;
@@ -31,7 +32,12 @@ async function all(
         where: {
             status: show_active_data == 'true' ? 'active ' : 'deactive',
         },
-        // include: [models.Project],
+        include: [
+            {
+                model: leave_type_model,
+                as: 'leave_type',
+            },
+        ],
     };
 
     if (select_fields.length) {

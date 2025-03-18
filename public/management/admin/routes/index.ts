@@ -54,6 +54,7 @@ import exams_routes from "../views/pages/class_management/exams/config/routes";
 import exam_routines_routes from "../views/pages/class_management/exam_routines/config/routes";
 import policies_routes from "../views/pages/notice_management/policies/config/routes";
 import contact_supports_routes from "../views/pages/notice_management/contact_supports/config/routes";
+import leave_applications_routes from "../views/pages/notice_management/leave_applications/config/routes";
 
 interface RouteTypes extends NonIndexRouteObject {
     
@@ -124,6 +125,7 @@ const router: RouteTypes[] = [
             exam_routines_routes,
             policies_routes,
             contact_supports_routes,
+            leave_applications_routes,
         ],
     },
 ];

@@ -49,6 +49,7 @@ import exams_slice from '../views/pages/class_management/exams/config/store';
 import exam_routines_slice from '../views/pages/class_management/exam_routines/config/store';
 import policies_slice from '../views/pages/notice_management/policies/config/store';
 import contact_supports_slice from '../views/pages/notice_management/contact_supports/config/store';
+import leave_applications_slice from '../views/pages/notice_management/leave_applications/config/store';
 
 const store = configureStore({
     reducer: {
@@ -104,6 +105,7 @@ const store = configureStore({
         exam_routines: exam_routines_slice.reducer,
         policies: policies_slice.reducer,
         contact_supports: contact_supports_slice.reducer,
+        leave_applications: leave_applications_slice.reducer,
     },
     devTools: true,
 });

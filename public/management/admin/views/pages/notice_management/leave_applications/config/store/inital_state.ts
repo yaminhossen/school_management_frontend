@@ -15,7 +15,7 @@ export const initialState = {
     url: '',
 
     /* data filters */
-    select_fields: 'title',
+    select_fields: 'reason',
     filter_criteria: {} as anyObject,
     all_data_count: 0, // total data in database
     page: 1,

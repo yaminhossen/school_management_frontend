@@ -218,3 +218,5 @@
 {"level":60,"time":1742105573336,"pid":15008,"hostname":"DESKTOP-9421701","file":"","time":"3/16/2025 12:12:53 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1742105579362,"pid":15008,"hostname":"DESKTOP-9421701","file":"","time":"3/16/2025 12:12:59 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1742271841428,"pid":8728,"hostname":"DESKTOP-9421701","file":"services\\store.ts:187:15)","time":"3/18/2025 10:24:01 AM","message":"Unknown column 'joining_date' in 'field list'"}
+{"level":60,"time":1742278315232,"pid":12024,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"3/18/2025 12:11:55 PM","message":"Unknown column 'title' in 'field list'"}
+{"level":60,"time":1742278316685,"pid":12024,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"3/18/2025 12:11:56 PM","message":"Unknown column 'title' in 'field list'"}

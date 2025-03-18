@@ -29,7 +29,7 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, title, description, status',
+                'id, branch_teacher_id, branch_staff_id, branch_student_id, leave_type_id, reason, status',
             ),
         );
         dispatch(all({}) as any);
@@ -62,13 +62,23 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                         {/* <th>Logo</th> */}
                                         <TableHeading
-                                            label={`Title`}
-                                            col_name={`title`}
+                                            label={`Staff/Student`}
+                                            col_name={`staff/student`}
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Description`}
-                                            col_name={`description`}
+                                            label={`Reason`}
+                                            col_name={`reason`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Leave Type`}
+                                            col_name={`leave type`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Action`}
+                                            col_name={`action`}
                                             sort={true}
                                         />
                                         {/* <TableHeading
@@ -114,16 +124,20 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                    <td>{i.title}</td>
                                                     <td>
-                                                        {i.description?.length >
-                                                        25
-                                                            ? i.description?.slice(
-                                                                0,
-                                                                35,
-                                                            ) + ' ...'
-                                                            : i.description}
+                                                        {i.branch_teacher_id
+                                                            ? 'Teacher'
+                                                            : i.branch_staff_id
+                                                                ? 'Staff'
+                                                                : i.branch_student_id
+                                                                    ? 'Student'
+                                                                    : 0}
                                                     </td>
+                                                    <td>{i.reason}</td>
+                                                    <td>
+                                                        {i.leave_type?.title}
+                                                    </td>
+                                                    <td>{i.title}</td>
                                                 </tr>
                                             );
                                         },
