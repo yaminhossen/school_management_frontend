@@ -45,6 +45,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare gender?: gender;
     declare joining_date?: string;
     declare department?: string;
+    declare qualification?: string;
     declare is_married?: boolean;
     declare blood_group?: blood_group;
     declare national_id?: string;
@@ -98,18 +99,18 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.ENUM('male', 'female'),
                 allowNull: true,
             },
-            // joining_date: {
-            //     type: new DataTypes.STRING(20),
-            //     allowNull: true,
-            // },
-            // department: {
-            //     type: new DataTypes.STRING(20),
-            //     allowNull: true,
-            // },
-            // position: {
-            //     type: new DataTypes.STRING(200),
-            //     allowNull: true,
-            // },
+            joining_date: {
+                type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            department: {
+                type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            qualification: {
+                type: new DataTypes.STRING(30),
+                allowNull: true,
+            },
             national_id: {
                 type: new DataTypes.STRING(250),
                 allowNull: true,

@@ -35,9 +35,9 @@ class DataModel extends Model<Infer, InferCreation> {
 
     declare user_teacher_id: number;
     declare branch_id: number;
-    declare class_teacher_id: number;
-    declare joining_date: string;
-    declare department: string;
+    declare class_teacher_id?: number;
+    declare joining_date?: string;
+    declare department?: string;
 
     declare status?: status;
     declare creator?: number;

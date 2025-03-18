@@ -31,17 +31,17 @@ async function validate(req: Request) {
     //     .withMessage('the branch_class_section_id field is required')
     //     .run(req);
 
-    // await body('name')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the name field is required')
-    //     .run(req);
+    await body('name')
+        .not()
+        .isEmpty()
+        .withMessage('the name field is required')
+        .run(req);
 
-    // await body('code')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the code field is required')
-    //     .run(req);
+    await body('code')
+        .not()
+        .isEmpty()
+        .withMessage('the code field is required')
+        .run(req);
 
     // await body('level')
     //     .not()

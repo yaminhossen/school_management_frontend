@@ -13,41 +13,41 @@ import error_trace from '../helpers/error_trace';
 import moment from 'moment/moment';
 
 async function validate(req: Request) {
-    // await body('name')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the name field is required')
-    //     .run(req);
+    await body('name')
+        .not()
+        .isEmpty()
+        .withMessage('the name field is required')
+        .run(req);
 
-    // await body('email')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the email field is required')
-    //     .run(req);
+    await body('email')
+        .not()
+        .isEmpty()
+        .withMessage('the email field is required')
+        .run(req);
 
-    // await body('phone_number')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the phone_number field is required')
-    //     .run(req);
+    await body('phone_number')
+        .not()
+        .isEmpty()
+        .withMessage('the phone_number field is required')
+        .run(req);
 
-    // await body('password')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the password field is required')
-    //     .run(req);
+    await body('password')
+        .not()
+        .isEmpty()
+        .withMessage('the password field is required')
+        .run(req);
 
-    // await body('parmenent_address')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the parmenent_address field is required')
-    //     .run(req);
+    await body('parmenent_address')
+        .not()
+        .isEmpty()
+        .withMessage('the parmenent_address field is required')
+        .run(req);
 
-    // await body('present_address')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the present_address field is required')
-    //     .run(req);
+    await body('present_address')
+        .not()
+        .isEmpty()
+        .withMessage('the present_address field is required')
+        .run(req);
 
     let result = await validationResult(req);
 
@@ -162,6 +162,9 @@ async function store(
                 district: body.district,
                 post_code: body.post_code,
                 gender: body.gender,
+                joining_date: body.joining_date,
+                department: body.department,
+                qualification: body.qualification,
                 blood_group: body.blood_group,
                 national_id: national_id_image,
                 certificate_no_1: certificate1_image,
@@ -170,7 +173,7 @@ async function store(
             };
             let bs_inputs: InferCreationAttributes<typeof bs_model> = {
                 user_teacher_id: data.id || body.staff_id,
-                class_teacher_id: body.class,
+                // class_teacher_id: body.class,
                 joining_date: body.joining_date,
                 department: body.department,
                 branch_id: auth_user?.branch_id || 1,

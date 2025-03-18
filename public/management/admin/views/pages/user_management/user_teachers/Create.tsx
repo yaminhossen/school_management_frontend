@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
-import { useAppDispatch } from '../../../../store';
+import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
 import DropDown from './components/dropdown/DropDown';
 import moment from 'moment/moment';
+import { initialState } from './config/store/inital_state';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import storeSlice from './config/store';
+import { classes } from './config/store/async_actions/classes';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
+
     const dispatch = useAppDispatch();
+    const params = useParams();
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -18,6 +28,15 @@ const Create: React.FC<Props> = (props: Props) => {
             e.target.reset();
         }
     }
+
+    async function initdependancy() {
+        await dispatch(storeSlice.actions.set_item({}));
+        await dispatch(classes({}) as any);
+    }
+
+    useEffect(() => {
+        initdependancy();
+    }, []);
 
     return (
         <>
@@ -245,6 +264,37 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 <label>Department</label>
                                                 <div className="form_elements">
                                                     <select
+                                                        name="branch_class_id"
+                                                        id=""
+                                                    >
+                                                        {state?.classes
+                                                            ?.length &&
+                                                            state.classes?.map(
+                                                                (i: {
+                                                                    [
+                                                                        key: string
+                                                                    ]: any;
+                                                                }) => {
+                                                                    return (
+                                                                        <option
+                                                                            value={
+                                                                                i.id
+                                                                            }
+                                                                        >
+                                                                            {
+                                                                                i.name
+                                                                            }
+                                                                        </option>
+                                                                    );
+                                                                },
+                                                            )}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            {/* <div className="form-group form-horizontal">
+                                                <label>Department</label>
+                                                <div className="form_elements">
+                                                    <select
                                                         name="department"
                                                         id=""
                                                     >
@@ -256,7 +306,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         </option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                             {/* <div className="form-group form-horizontal">
                                                 <label>Role</label>
                                                 <div className="form_elements">
@@ -277,7 +327,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     />
                                                 </div>
                                             </div> */}
-                                            <div className="form-group form-horizontal">
+                                            {/* <div className="form-group form-horizontal">
                                                 <label>Class</label>
                                                 <div className="form_elements">
                                                     <select name="class" id="">
@@ -289,7 +339,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         </option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                             <div className="form-group form-horizontal">
                                                 <label>National Id</label>
                                                 <div className="form_elements">
