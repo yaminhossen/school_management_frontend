@@ -58,7 +58,7 @@ export let active_routes: string[] = [
     // 'src/modules/class_management/branch_class_fee_discounts/routes.ts',
     // 'src/modules/class_management/branch_class_fee_types/routes.ts',
     // 'src/modules/class_management/branch_class_fee_waivers/routes.ts',
-    // 'src/modules/class_management/branch_class_resources/routes.ts',
+    'src/modules/class_management/branch_class_resources/routes.ts',
     // 'src/modules/class_management/branch_class_routin_day_times/routes.ts',
     // 'src/modules/class_management/branch_class_sections/routes.ts',
     // 'src/modules/class_management/branch_class_shifts/routes.ts',

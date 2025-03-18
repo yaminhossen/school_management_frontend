@@ -47,7 +47,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Title</label>
+                                    <label>Staff/Student</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -58,14 +58,14 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>Leave Type</label>
                                     <div className="form_elements">
                                         <textarea
                                             name="description"
                                             id=""
                                             placeholder="description"
                                             defaultValue={
-                                                state.item.description
+                                                state.item.leave_type?.title
                                             }
                                         ></textarea>
                                     </div>

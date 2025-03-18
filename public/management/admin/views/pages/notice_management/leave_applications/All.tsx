@@ -16,6 +16,7 @@ import TableRowAction from './components/all_data_page/TableRowAction';
 import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
+import { Link } from 'react-router-dom';
 
 export interface Props {}
 
@@ -137,7 +138,15 @@ const All: React.FC<Props> = (props: Props) => {
                                                     <td>
                                                         {i.leave_type?.title}
                                                     </td>
-                                                    <td>{i.title}</td>
+                                                    <td>
+                                                        <Link
+                                                            to={`/leave-applications/edit/${i.id}`}
+                                                            className="btn btn-sm  btn-outline-info"
+                                                            type="submit"
+                                                        >
+                                                            Take Action
+                                                        </Link>
+                                                    </td>
                                                 </tr>
                                             );
                                         },
