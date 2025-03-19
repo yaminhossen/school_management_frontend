@@ -10,6 +10,7 @@ async function details(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
+    let leaveTypesModel = models.LeaveTypesModel;
     let params = req.params as any;
 
     try {
@@ -17,6 +18,12 @@ async function details(
             where: {
                 id: params.id,
             },
+            include: [
+                {
+                    model: leaveTypesModel,
+                    as: 'leave_type',
+                }
+            ]
         });
 
         if (data) {

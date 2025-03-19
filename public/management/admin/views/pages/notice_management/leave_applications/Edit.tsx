@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import { useSelector } from 'react-redux';
@@ -9,6 +9,7 @@ import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -18,6 +19,35 @@ const Edit: React.FC<Props> = (props: Props) => {
 
     const dispatch = useAppDispatch();
     const params = useParams();
+    
+        const [apStartDate, setApStartDate] = useState('');
+        const [apEndDate, setApEndDate] = useState('');
+        const [aptotalDays, setApTotalDays] = useState(0);
+  
+        useEffect(() => {
+            let ss_Date = moment(state.item.start_date).format('YYYY-MM-DD');
+            setApStartDate(ss_Date)
+            setApEndDate(moment(state.item.end_Date).format('YYYY-MM-DD'))
+        }, [state.item]);  
+        console.log('star_date', apStartDate);
+        console.log('end_date', apEndDate);
+        
+
+        const calculateDays = (start: string, end: string) => {
+            const diff = moment(end).diff(moment(start), 'days');
+            setApTotalDays(diff >= 0 ? diff : 0); // Prevent negative values
+        };
+    
+        const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+            setApStartDate(e.target.value);
+            calculateDays(e.target.value, apEndDate);
+        };
+    
+        const handleEndDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+            setApEndDate(e.target.value);
+            calculateDays(apStartDate, e.target.value);
+        };
+
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
@@ -36,7 +66,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                     <Header page_title={setup.edit_page_title}></Header>
 
                     {Object.keys(state.item).length && (
-                        <div className="content_body">
+                        <div className="content_body custom_scroll">
                             <form
                                 onSubmit={(e) => handle_submit(e)}
                                 className="form_600 mx-auto pt-3"
@@ -60,14 +90,13 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Leave Type</label>
                                     <div className="form_elements">
-                                        <textarea
+                                        <input
+                                        type='text'
                                             name="description"
-                                            id=""
-                                            placeholder="description"
                                             defaultValue={
                                                 state.item.leave_type?.title
                                             }
-                                        ></textarea>
+                                        ></input>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
@@ -88,7 +117,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             type="date"
                                             name="start_date"
                                             placeholder="Start date"
-                                            defaultValue={state.item.start_date}
+                                            defaultValue={moment(state.item.start_date).format('YYYY-MM-DD')}
                                         />
                                     </div>
                                 </div>
@@ -99,7 +128,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             type="date"
                                             name="end_date"
                                             placeholder="End Date"
-                                            defaultValue={state.item.end_date}
+                                            defaultValue={moment(state.item.end_date).format('YYYY-MM-DD')}
                                         />
                                     </div>
                                 </div>
@@ -121,9 +150,8 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             type="date"
                                             name="approved_start_date"
                                             placeholder="Approved start date"
-                                            defaultValue={
-                                                state.item.approved_start_date
-                                            }
+                                            defaultValue={moment(state.item.start_date).format('YYYY-MM-DD')}
+                                            onChange={handleStartDateChange}
                                         />
                                     </div>
                                 </div>
@@ -134,14 +162,24 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             type="date"
                                             name="approved_end_date"
                                             placeholder="Approved end Date"
-                                            defaultValue={
-                                                state.item.approved_end_date
-                                            }
+                                            defaultValue={moment(state.item.end_date).format('YYYY-MM-DD')}
+                                            onChange={handleEndDateChange}
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
                                     <label>Approved Total Days</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="number"
+                                            name="approved_days"
+                                            placeholder="Approved days"
+                                            value={aptotalDays + 1}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Pre Approved Days</label>
                                     <div className="form_elements">
                                         <input
                                             type="number"
