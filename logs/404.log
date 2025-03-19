@@ -144,3 +144,17 @@
 {"level":60,"time":1742290236530,"pid":3420,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/subject-wise/1"}
 {"level":60,"time":1742290239875,"pid":3420,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/subject-wise/2"}
 {"level":60,"time":1742290244459,"pid":3420,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-resources/subject-wise/6"}
+{"level":60,"time":1742373135390,"pid":8400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1742373135405,"pid":8400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1742373146961,"pid":8400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1742373146972,"pid":8400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1742373150273,"pid":8400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1742373150287,"pid":8400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1742373171974,"pid":8400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1742373171987,"pid":8400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1742373172933,"pid":8400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1742373172954,"pid":8400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1742373204169,"pid":8400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1742373204189,"pid":8400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1742373213309,"pid":8400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1742373213329,"pid":8400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}

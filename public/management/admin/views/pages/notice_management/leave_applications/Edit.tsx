@@ -71,6 +71,89 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
+                                    <label>Reason</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            name="reason"
+                                            placeholder="reason"
+                                            defaultValue={state.item.reason}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Start Date</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="date"
+                                            name="start_date"
+                                            placeholder="Start date"
+                                            defaultValue={state.item.start_date}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>End Date</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="date"
+                                            name="end_date"
+                                            placeholder="End Date"
+                                            defaultValue={state.item.end_date}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Total Days</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="number"
+                                            name="total_days"
+                                            placeholder="Toatal days"
+                                            defaultValue={state.item.total_days}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Approved Start Date</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="date"
+                                            name="approved_start_date"
+                                            placeholder="Approved start date"
+                                            defaultValue={
+                                                state.item.approved_start_date
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Approved End Date</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="date"
+                                            name="approved_end_date"
+                                            placeholder="Approved end Date"
+                                            defaultValue={
+                                                state.item.approved_end_date
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Approved Total Days</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="number"
+                                            name="approved_days"
+                                            placeholder="Approved days"
+                                            defaultValue={
+                                                state.item.approved_days
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
                                     <label></label>
                                     <div className="form_elements">
                                         <button className="btn btn_1">

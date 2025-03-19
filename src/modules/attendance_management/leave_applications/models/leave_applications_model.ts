@@ -47,6 +47,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare total_days?: number;
     declare approved_start_date?: string;
     declare approved_end_date?: string;
+    declare approved_days?: number;
 
     declare status?: status;
     declare creator?: number;
@@ -113,6 +114,10 @@ function init(sequelize: Sequelize) {
             },
             approved_end_date: {
                 type: DataTypes.DATE,
+                allowNull: true,
+            },
+            approved_days: {
+                type: DataTypes.INTEGER.UNSIGNED,
                 allowNull: true,
             },
 
