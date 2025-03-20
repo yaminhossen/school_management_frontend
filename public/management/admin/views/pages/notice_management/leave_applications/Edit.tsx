@@ -36,13 +36,21 @@ const Edit: React.FC<Props> = (props: Props) => {
     }, [state.item?.start_date, state.item?.end_date]);
 
     const calculateDays = (start: string, end: string) => {
+        console.log('aa, bb', start, end);
+        let aa = moment(start).format('YYYY-MM-DD');
+        let bb = moment(end).format('YYYY-MM-DD');
+
         const diff = moment(end).diff(moment(start), 'days');
-        setApTotalDays(diff >= 0 ? diff : 0);
+        setApTotalDays(diff >= 0 ? diff + 1 : 0);
     };
 
     const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setApStartDate(e.target.value);
-        calculateDays(e.target.value, apEndDate);
+        // console.log('start date', apStartDate);
+        // console.log('end date', apEndDate);
+        console.log('end date2', state.item?.end_date);
+
+        calculateDays(e.target.value, state.item?.end_date);
     };
 
     const handleEndDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,7 +63,7 @@ const Edit: React.FC<Props> = (props: Props) => {
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
 
-    console.log('end_date', aptotalDays);
+    console.log('end_date2', aptotalDays);
     return (
         <>
             <div className="page_content">
@@ -242,7 +250,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             placeholder="Approved days"
                                             value={
                                                 aptotalDays
-                                                    ? aptotalDays + 1
+                                                    ? aptotalDays
                                                     : state.item?.total_days
                                             }
                                         />
