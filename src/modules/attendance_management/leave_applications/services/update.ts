@@ -18,30 +18,6 @@ async function validate(req: Request) {
         .withMessage('the id field is required')
         .run(req);
 
-    // await body('branch_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the branch_id field is required')
-    //     .run(req);
-
-    await body('branch_staff_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_staff_id field is required')
-        .run(req);
-
-    await body('branch_teacher_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_teacher_id field is required')
-        .run(req);
-
-    await body('branch_student_id')
-        .not()
-        .isEmpty()
-        .withMessage('the branch_student_id field is required')
-        .run(req);
-
     await body('leave_type_id')
         .not()
         .isEmpty()
@@ -72,12 +48,6 @@ async function validate(req: Request) {
         .withMessage('the leave_status field is required')
         .run(req);
 
-    await body('attachments')
-        .not()
-        .isEmpty()
-        .withMessage('the attachments field is required')
-        .run(req);
-
     await body('total_days')
         .not()
         .isEmpty()
@@ -94,6 +64,12 @@ async function validate(req: Request) {
         .not()
         .isEmpty()
         .withMessage('the approved_end_date field is required')
+        .run(req);
+
+    await body('approved_days')
+        .not()
+        .isEmpty()
+        .withMessage('the approved_days field is required')
         .run(req);
 
     let result = await validationResult(req);
@@ -124,18 +100,19 @@ async function update(
 
     let inputs: InferCreationAttributes<typeof model> = {
         branch_id: auth_user?.branch_id || 1,
-        branch_teacher_id: body.branch_teacher_id,
-        branch_student_id: body.branch_student_id,
-        branch_staff_id: body.branch_staff_id,
+        branch_teacher_id: body.teacher_id,
+        branch_student_id: body.student_id,
+        branch_staff_id: body.staff_id,
         leave_type_id: body.leave_type_id,
         start_date: body.start_date,
         end_date: body.end_date,
         reason: body.reason,
         leave_status: body.leave_status,
-        attachments: body.attachments,
-        total_days: body.total_days,
+        // attachments: body.attachments,
+        // total_days: body.approved_days,
         approved_start_date: body.approved_start_date,
         approved_end_date: body.approved_end_date,
+        approved_days: body.approved_days,
         creator: user?.id || null,
     };
 

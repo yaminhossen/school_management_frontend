@@ -43,7 +43,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare end_date: string;
     declare reason?: string;
     declare leave_status?: leave_status;
-    declare attachments: string;
+    declare attachments?: string;
     declare total_days?: number;
     declare approved_start_date?: string;
     declare approved_end_date?: string;

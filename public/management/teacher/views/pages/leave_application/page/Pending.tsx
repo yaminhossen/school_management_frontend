@@ -44,7 +44,8 @@ const Pending: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Title</th>
-                                    <th>Date</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -55,6 +56,7 @@ const Pending: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{index + 1}</td>
+                                            <td>{i.reason}</td>
                                             <td>{dateFormate(i.start_date)}</td>
                                             <td>{dateFormate(i.end_date)}</td>
                                             <td>{i.leave_status}</td>

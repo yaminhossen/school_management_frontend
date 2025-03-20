@@ -36,20 +36,12 @@ const Edit: React.FC<Props> = (props: Props) => {
     }, [state.item?.start_date, state.item?.end_date]);
 
     const calculateDays = (start: string, end: string) => {
-        console.log('aa, bb', start, end);
-        let aa = moment(start).format('YYYY-MM-DD');
-        let bb = moment(end).format('YYYY-MM-DD');
-
         const diff = moment(end).diff(moment(start), 'days');
         setApTotalDays(diff >= 0 ? diff + 1 : 0);
     };
 
     const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setApStartDate(e.target.value);
-        // console.log('start date', apStartDate);
-        // console.log('end date', apEndDate);
-        console.log('end date2', state.item?.end_date);
-
         calculateDays(e.target.value, state.item?.end_date);
     };
 
@@ -79,7 +71,12 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 <input
                                     type="hidden"
                                     name="id"
-                                    defaultValue={state.item.id}
+                                    defaultValue={state.item?.id}
+                                />
+                                <input
+                                    type="hidden"
+                                    name="leave_type_id"
+                                    defaultValue={state.item?.leave_type_id}
                                 />
                                 {state.item.student && (
                                     <div className="form-group form-horizontal">
@@ -211,6 +208,22 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             placeholder="Toatal days"
                                             defaultValue={state.item.total_days}
                                         />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Permission</label>
+                                    <div className="form_elements">
+                                        <select name="leave_status" id="">
+                                            <option value="pending">
+                                                Pending
+                                            </option>
+                                            <option value="approved">
+                                                Approved
+                                            </option>
+                                            <option value="rejected">
+                                                Reject
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
