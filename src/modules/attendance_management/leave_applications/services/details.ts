@@ -11,6 +11,9 @@ async function details(
 ): Promise<responseObject> {
     let models = await db();
     let leaveTypesModel = models.LeaveTypesModel;
+    let staffModel = models.UserStaffsModel;
+    let studentModel = models.UserStudentsModel;
+    let teacherModel = models.UserTeachersModel;
     let params = req.params as any;
 
     try {
@@ -22,8 +25,20 @@ async function details(
                 {
                     model: leaveTypesModel,
                     as: 'leave_type',
-                }
-            ]
+                },
+                {
+                    model: studentModel,
+                    as: 'student',
+                },
+                {
+                    model: staffModel,
+                    as: 'staff',
+                },
+                {
+                    model: teacherModel,
+                    as: 'teacher',
+                },
+            ],
         });
 
         if (data) {

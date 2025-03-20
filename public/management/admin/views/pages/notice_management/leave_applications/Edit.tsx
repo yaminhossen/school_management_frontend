@@ -19,46 +19,43 @@ const Edit: React.FC<Props> = (props: Props) => {
 
     const dispatch = useAppDispatch();
     const params = useParams();
-    
-        const [apStartDate, setApStartDate] = useState('');
-        const [apEndDate, setApEndDate] = useState('');
-        const [aptotalDays, setApTotalDays] = useState(0);
-  
-        useEffect(() => {
-            let ss_Date = moment(state.item.start_date).format('YYYY-MM-DD');
-            setApStartDate(ss_Date)
-            setApEndDate(moment(state.item.end_Date).format('YYYY-MM-DD'))
-        }, [state.item]);  
-        console.log('star_date', apStartDate);
-        console.log('end_date', apEndDate);
-        
-
-        const calculateDays = (start: string, end: string) => {
-            const diff = moment(end).diff(moment(start), 'days');
-            setApTotalDays(diff >= 0 ? diff : 0); // Prevent negative values
-        };
-    
-        const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-            setApStartDate(e.target.value);
-            calculateDays(e.target.value, apEndDate);
-        };
-    
-        const handleEndDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-            setApEndDate(e.target.value);
-            calculateDays(apStartDate, e.target.value);
-        };
-
-
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(details({ id: params.id }) as any);
     }, []);
+
+    const [apStartDate, setApStartDate] = useState('');
+    const [apEndDate, setApEndDate] = useState('');
+    const [aptotalDays, setApTotalDays] = useState(0);
+
+    useEffect(() => {
+        let ss_Date = moment(state.item?.start_date).format('YYYY-MM-DD');
+        setApStartDate(ss_Date);
+        let ee_Date = moment(state.item?.end_Date).format('YYYY-MM-DD');
+        setApEndDate(ee_Date);
+    }, [state.item?.start_date, state.item?.end_date]);
+
+    const calculateDays = (start: string, end: string) => {
+        const diff = moment(end).diff(moment(start), 'days');
+        setApTotalDays(diff >= 0 ? diff : 0);
+    };
+
+    const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setApStartDate(e.target.value);
+        calculateDays(e.target.value, apEndDate);
+    };
+
+    const handleEndDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setApEndDate(e.target.value);
+        calculateDays(apStartDate, e.target.value);
+    };
 
     async function handle_submit(e) {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
 
+    console.log('end_date', aptotalDays);
     return (
         <>
             <div className="page_content">
@@ -76,22 +73,80 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     name="id"
                                     defaultValue={state.item.id}
                                 />
-                                <div className="form-group form-horizontal">
-                                    <label>Staff/Student</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            name="title"
-                                            placeholder="notice title"
-                                            defaultValue={state.item.title}
-                                        />
+                                {state.item.student && (
+                                    <div className="form-group form-horizontal">
+                                        <label>Student</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                name="student"
+                                                placeholder="notice title"
+                                                defaultValue={
+                                                    state.item?.student?.name
+                                                }
+                                            />
+                                            <input
+                                                type="hidden"
+                                                name="student_id"
+                                                placeholder="notice title"
+                                                defaultValue={
+                                                    state.item.branch_student_id
+                                                }
+                                            />
+                                        </div>
                                     </div>
-                                </div>
+                                )}
+                                {state.item.staff && (
+                                    <div className="form-group form-horizontal">
+                                        <label>Staff</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                name="staff"
+                                                placeholder="notice title"
+                                                defaultValue={
+                                                    state.item?.staff?.name
+                                                }
+                                            />
+                                            <input
+                                                type="hidden"
+                                                name="staff_id"
+                                                placeholder="notice title"
+                                                defaultValue={
+                                                    state.item.branch_staff_id
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                )}
+                                {state.item.teacher && (
+                                    <div className="form-group form-horizontal">
+                                        <label>Teacher</label>
+                                        <div className="form_elements">
+                                            <input
+                                                type="text"
+                                                name="teacher"
+                                                placeholder="notice title"
+                                                defaultValue={
+                                                    state.item?.teacher?.name
+                                                }
+                                            />
+                                            <input
+                                                type="hidden"
+                                                name="teacher_id"
+                                                placeholder="notice title"
+                                                defaultValue={
+                                                    state.item.branch_teacher_id
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                )}
                                 <div className="form-group form-horizontal">
                                     <label>Leave Type</label>
                                     <div className="form_elements">
                                         <input
-                                        type='text'
+                                            type="text"
                                             name="description"
                                             defaultValue={
                                                 state.item.leave_type?.title
@@ -115,9 +170,12 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="date"
+                                            readOnly
                                             name="start_date"
                                             placeholder="Start date"
-                                            defaultValue={moment(state.item.start_date).format('YYYY-MM-DD')}
+                                            defaultValue={moment(
+                                                state.item.start_date,
+                                            ).format('YYYY-MM-DD')}
                                         />
                                     </div>
                                 </div>
@@ -127,8 +185,11 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         <input
                                             type="date"
                                             name="end_date"
+                                            readOnly
                                             placeholder="End Date"
-                                            defaultValue={moment(state.item.end_date).format('YYYY-MM-DD')}
+                                            defaultValue={moment(
+                                                state.item.end_date,
+                                            ).format('YYYY-MM-DD')}
                                         />
                                     </div>
                                 </div>
@@ -138,6 +199,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         <input
                                             type="number"
                                             name="total_days"
+                                            readOnly
                                             placeholder="Toatal days"
                                             defaultValue={state.item.total_days}
                                         />
@@ -150,7 +212,9 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             type="date"
                                             name="approved_start_date"
                                             placeholder="Approved start date"
-                                            defaultValue={moment(state.item.start_date).format('YYYY-MM-DD')}
+                                            defaultValue={moment(
+                                                state.item.start_date,
+                                            ).format('YYYY-MM-DD')}
                                             onChange={handleStartDateChange}
                                         />
                                     </div>
@@ -162,7 +226,9 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             type="date"
                                             name="approved_end_date"
                                             placeholder="Approved end Date"
-                                            defaultValue={moment(state.item.end_date).format('YYYY-MM-DD')}
+                                            defaultValue={moment(
+                                                state.item.end_date,
+                                            ).format('YYYY-MM-DD')}
                                             onChange={handleEndDateChange}
                                         />
                                     </div>
@@ -174,11 +240,15 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             type="number"
                                             name="approved_days"
                                             placeholder="Approved days"
-                                            value={aptotalDays + 1}
+                                            value={
+                                                aptotalDays
+                                                    ? aptotalDays + 1
+                                                    : state.item?.total_days
+                                            }
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Pre Approved Days</label>
                                     <div className="form_elements">
                                         <input
@@ -190,7 +260,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             }
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label></label>
                                     <div className="form_elements">

@@ -91,4 +91,33 @@ useEffect(() => {
             // setError(error);
         }
     };
+
+    // day calculation
+    
+    const [apStartDate, setApStartDate] = useState('');
+    const [apEndDate, setApEndDate] = useState('');
+    const [aptotalDays, setApTotalDays] = useState(0);
+
+    useEffect(() => {
+        let ss_Date = moment(state.item.start_date).format('YYYY-MM-DD');
+        setApStartDate(ss_Date);
+        setApEndDate(moment(state.item.end_Date).format('YYYY-MM-DD'));
+    }, [state.item]);
+    console.log('star_date', apStartDate);
+    console.log('end_date', apEndDate);
+
+    const calculateDays = (start: string, end: string) => {
+        const diff = moment(end).diff(moment(start), 'days');
+        setApTotalDays(diff >= 0 ? diff : 0); // Prevent negative values
+    };
+
+    const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setApStartDate(e.target.value);
+        calculateDays(e.target.value, apEndDate);
+    };
+
+    const handleEndDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setApEndDate(e.target.value);
+        calculateDays(apStartDate, e.target.value);
+    };
 */
