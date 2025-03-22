@@ -399,7 +399,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             Tasks Management
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/task-variants">
                             <span className="material-symbols-outlined fill">
                                 groups
@@ -414,7 +414,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             </span>
                             Task Groups Management
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
 
                 <h3 className="mt-4 ms-0">Branch management</h3>
@@ -656,7 +656,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Accoutn Management
+                            Account Management
                         </Link>
                     </li>
                     <li>
