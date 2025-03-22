@@ -85,6 +85,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             <input
                                                 type="text"
                                                 name="student"
+                                                readOnly
                                                 placeholder="notice title"
                                                 defaultValue={
                                                     state.item?.student?.name
@@ -108,6 +109,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             <input
                                                 type="text"
                                                 name="staff"
+                                                readOnly
                                                 placeholder="notice title"
                                                 defaultValue={
                                                     state.item?.staff?.name
@@ -131,6 +133,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             <input
                                                 type="text"
                                                 name="teacher"
+                                                readOnly
                                                 placeholder="notice title"
                                                 defaultValue={
                                                     state.item?.teacher?.name
@@ -152,7 +155,8 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            name="description"
+                                            name="leave_type"
+                                            readOnly
                                             defaultValue={
                                                 state.item.leave_type?.title
                                             }
@@ -165,6 +169,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         <input
                                             type="text"
                                             name="reason"
+                                            readOnly
                                             placeholder="reason"
                                             defaultValue={state.item.reason}
                                         />
