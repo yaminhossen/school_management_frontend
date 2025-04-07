@@ -220,8 +220,8 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         <option value="B-">
                                                             B-
                                                         </option>
-                                                        <option value="O-">
-                                                            O-
+                                                        <option value="O+">
+                                                            O+
                                                         </option>
                                                         <option value="O-">
                                                             O-
@@ -254,11 +254,29 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <div className="form-group form-horizontal">
                                                 <label>Role</label>
                                                 <div className="form_elements">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="Staff role"
-                                                        name="role"
-                                                    />
+                                                    <select name="role" id="">
+                                                        <option value="principle">
+                                                            principle
+                                                        </option>
+                                                        <option value="super admin">
+                                                            super admin
+                                                        </option>
+                                                        <option value="vice-principle">
+                                                            vice-principle
+                                                        </option>
+                                                        <option value="doctor">
+                                                            doctor
+                                                        </option>
+                                                        <option value="admission-officer">
+                                                            admission-officer
+                                                        </option>
+                                                        <option value="librarian">
+                                                            librarian
+                                                        </option>
+                                                        <option value="accountan">
+                                                            accountan
+                                                        </option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">

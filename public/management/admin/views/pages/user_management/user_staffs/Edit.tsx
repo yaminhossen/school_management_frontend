@@ -299,12 +299,25 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             <option value="principle">
                                                 principle
                                             </option>
+                                            <option value="super admin">
+                                                super admin
+                                            </option>
                                             <option value="vice-principle">
                                                 vice-principle
                                             </option>
-                                            <option value="accountant">
-                                                accountant
+                                            <option value="doctor">
+                                                doctor
                                             </option>
+                                            <option value="admission-officer">
+                                                admission-officer
+                                            </option>
+                                            <option value="librarian">
+                                                librarian
+                                            </option>
+                                            <option value="accountan">
+                                                accountan
+                                            </option>
+                                            <option value="staff">staff</option>
                                         </select>
                                     </div>
                                 </div>

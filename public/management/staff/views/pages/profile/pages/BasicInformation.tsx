@@ -95,7 +95,9 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                     <tr>
                         <td>IsMarried:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.staff_infos?.ismarried == true ? 'Yes' : 'No'}
+                            {data.staff_infos?.is_married == true
+                                ? 'Yes'
+                                : 'No'}
                         </td>
                     </tr>
                     <tr>
