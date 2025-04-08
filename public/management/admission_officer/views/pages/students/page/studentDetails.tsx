@@ -123,13 +123,13 @@ const Details: React.FC<Props> = (props: Props) => {
                             <div className="basic_info mb-4 ">
                                 <table className="table text-nowrap student_table">
                                     <tbody>
-                                        <tr>
+                                        {/* <tr>
                                             <td>Branch</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
                                                 Uttora
                                             </td>
-                                        </tr>
+                                        </tr> */}
                                         <tr>
                                             <td>Student Id</td>
                                             <td>:</td>

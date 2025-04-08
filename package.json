@@ -68,6 +68,7 @@
     "test": "jest",
 
     "server": "nodemon",
+    "serve": "ts-node src/index.ts",
 
     "central-branch": "vite build --config vite-config-central-branch.js --watch --sourcemap",
     "super-admin": "vite build --config vite-config-super-admin.js --watch --sourcemap",

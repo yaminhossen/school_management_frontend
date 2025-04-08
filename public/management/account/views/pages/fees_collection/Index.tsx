@@ -540,8 +540,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                             />
                                         </td>
                                         <td>
-                                            {totalAmount?.['due_amount'] +
-                                                totalAmount3}
+                                            {totalAmount3
+                                                ? totalAmount?.['due_amount'] +
+                                                  totalAmount3
+                                                : totalAmount?.['due_amount'] -
+                                                  totalAmount3}
                                         </td>
                                         {/* <td>
                                             {totalAmount?.['due_amount'] +
