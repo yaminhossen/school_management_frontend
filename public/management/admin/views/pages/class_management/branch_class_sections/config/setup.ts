@@ -1,6 +1,6 @@
 import setup_type from './setup_type';
 
-const prefix: string = 'Class';
+const prefix: string = 'Class Section';
 const setup: setup_type = {
     prefix,
     module_name: 'branch_class_sections',

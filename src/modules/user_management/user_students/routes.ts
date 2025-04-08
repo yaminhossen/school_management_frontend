@@ -144,7 +144,11 @@ module.exports = async function (fastify: FastifyInstance) {
         )
         .post(`${prefix}/store`, controllerInstance.store)
         // .post(`${prefix}/update`, controllerInstance.update)
-        .post(`${prefix}/update`, controllerInstance.full_details_update)
+        .post(
+            `${prefix}/update`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.full_details_update,
+        )
         .post(`${prefix}/soft-delete`, controllerInstance.soft_delete)
         .post(`${prefix}/restore`, controllerInstance.restore)
         .post(`${prefix}/destroy`, controllerInstance.destroy)

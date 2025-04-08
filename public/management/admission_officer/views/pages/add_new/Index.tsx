@@ -365,7 +365,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="form-group form-vertical">
+                                {/* <div className="form-group form-vertical">
                                     <label>Shift</label>
                                     <div className="form_elements">
                                         <select name="shift" id="">
@@ -385,7 +385,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 )}
                                         </select>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Section</label>
                                     <div className="form_elements">
@@ -537,11 +537,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Current medcation</label>
+                                    <label>Current medication</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            placeholder="current medcation"
+                                            placeholder="current medication"
                                             name="current_medications"
                                         />
                                     </div>
@@ -576,7 +576,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <option value="AB-">AB-</option>
                                             <option value="AB+">AB+</option>
                                             <option value="B-">B-</option>
-                                            <option value="O-">O-</option>
+                                            <option value="O+">O+</option>
                                             <option value="O-">O-</option>
                                         </select>
                                     </div>

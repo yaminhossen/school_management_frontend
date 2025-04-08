@@ -101,7 +101,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                         </span>
                                                     </td>
                                                     <td>{i.name}</td>
-                                                    <td>{i.description}</td>\
+                                                    <td>{i.description}</td>
                                                 </tr>
                                             );
                                         },

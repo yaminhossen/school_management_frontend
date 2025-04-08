@@ -74,6 +74,12 @@ async function store(
         aweight = 0;
     }
 
+    let user = (req as any).user;
+    let auth_user = await models.BranchStaffsModel.findOne({
+        where: {
+            user_staff_id: (req as any).user?.id || null,
+        },
+    });
     if (body['image']?.ext) {
         image_path =
             'uploads/students/' +
@@ -125,6 +131,7 @@ async function store(
         whatsapp_number: body.whatsapp_number,
         image: image_path,
         password: password,
+        status: body.status,
     };
 
     let student_number: anyObject[] = [];
@@ -268,7 +275,8 @@ async function store(
 
     let usi_inputs: InferCreationAttributes<typeof usi_model> = {
         user_student_id: body.id,
-        branch_id: body.branch_id,
+        // branch_id: body.branch_id,
+        branch_id: auth_user?.branch_id || 1,
         present_address: body.present_address,
         permanent_address: body.permanent_address,
         date_of_birth: body.date_of_birth,
@@ -304,6 +312,7 @@ async function store(
         height: aheight,
         weight: aweight,
         as_on_date: body.as_on_date,
+        status: body.status,
     };
 
     /** print request data into console */

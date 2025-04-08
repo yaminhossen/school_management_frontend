@@ -238,12 +238,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 defaultValue={state.item.status}
                                                 id=""
                                             >
-                                                <option value=""></option>
+                                                {/* <option value=""></option> */}
                                                 <option value="active">
                                                     active
                                                 </option>
-                                                <option value="block">
-                                                    block
+                                                <option value="deactive">
+                                                    deactive
                                                 </option>
                                             </select>
                                         </div>
@@ -275,7 +275,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h2 className="">Admission Information</h2>
                                 </div>
                                 <div className="d-flex">
-                                    <div className="form-group form-vertical">
+                                    {/* <div className="form-group form-vertical">
                                         <label>Branch</label>
                                         <div className="form_elements">
                                             <select
@@ -303,7 +303,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     )}
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div className="form-group form-vertical">
                                         <label>Addmission no</label>
                                         <div className="form_elements">
@@ -361,33 +361,39 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form-group form-vertical">
                                         <label>Class</label>
                                         <div className="form_elements">
-                                            <select
-                                                name="class"
-                                                defaultValue={
-                                                    state.item.student_info
-                                                        ?.s_class
-                                                }
-                                                id=""
-                                            >
-                                                {add_new_state?.classes
-                                                    ?.length &&
-                                                    add_new_state.classes?.map(
-                                                        (i: {
-                                                            [key: string]: any;
-                                                        }) => {
-                                                            return (
-                                                                <option
-                                                                    value={i.id}
-                                                                >
-                                                                    {i.name}
-                                                                </option>
-                                                            );
-                                                        },
-                                                    )}
-                                            </select>
+                                            {add_new_state?.classes?.length && (
+                                                <select
+                                                    name="class"
+                                                    defaultValue={
+                                                        state.item.student_info
+                                                            ?.s_class
+                                                    }
+                                                    id=""
+                                                >
+                                                    {add_new_state?.classes
+                                                        ?.length &&
+                                                        add_new_state.classes?.map(
+                                                            (i: {
+                                                                [
+                                                                    key: string
+                                                                ]: any;
+                                                            }) => {
+                                                                return (
+                                                                    <option
+                                                                        value={
+                                                                            i.id
+                                                                        }
+                                                                    >
+                                                                        {i.name}
+                                                                    </option>
+                                                                );
+                                                            },
+                                                        )}
+                                                </select>
+                                            )}
                                         </div>
                                     </div>
-                                    <div className="form-group form-vertical">
+                                    {/* <div className="form-group form-vertical">
                                         <label>Shift</label>
                                         <div className="form_elements">
                                             <select
@@ -414,34 +420,42 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     )}
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div className="form-group form-vertical">
                                         <label>Section</label>
                                         <div className="form_elements">
-                                            <select
-                                                name="section"
-                                                // defaultValue={
-                                                //     state.item.student_info
-                                                //         ?.section
-                                                // }
-                                                id=""
-                                            >
-                                                {add_new_state.sections
-                                                    ?.length &&
-                                                    add_new_state.sections?.map(
-                                                        (i: {
-                                                            [key: string]: any;
-                                                        }) => {
-                                                            return (
-                                                                <option
-                                                                    value={i.id}
-                                                                >
-                                                                    {i.title}
-                                                                </option>
-                                                            );
-                                                        },
-                                                    )}
-                                            </select>
+                                            {add_new_state.sections?.length && (
+                                                <select
+                                                    name="section"
+                                                    defaultValue={
+                                                        state.item.student_info
+                                                            ?.section
+                                                    }
+                                                    id=""
+                                                >
+                                                    {add_new_state.sections
+                                                        ?.length &&
+                                                        add_new_state.sections?.map(
+                                                            (i: {
+                                                                [
+                                                                    key: string
+                                                                ]: any;
+                                                            }) => {
+                                                                return (
+                                                                    <option
+                                                                        value={
+                                                                            i.id
+                                                                        }
+                                                                    >
+                                                                        {
+                                                                            i.title
+                                                                        }
+                                                                    </option>
+                                                                );
+                                                            },
+                                                        )}
+                                                </select>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -602,11 +616,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
-                                        <label>Current medcation</label>
+                                        <label>Current medication</label>
                                         <div className="form_elements">
                                             <input
                                                 type="text"
-                                                placeholder="current medcation"
+                                                placeholder="current medication"
                                                 name="current_medications"
                                                 defaultValue={
                                                     state.item.student_info
@@ -811,7 +825,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             />
                                         </div>
                                     </div>
-                                    <div className="form-group form-vertical">
+                                    {/* <div className="form-group form-vertical">
                                         <label>Cast</label>
                                         <div className="form_elements">
                                             <select
@@ -836,7 +850,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 </option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
 

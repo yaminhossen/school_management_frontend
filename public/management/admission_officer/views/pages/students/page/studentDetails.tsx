@@ -108,7 +108,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Stutas</td>
+                                            <td>Status</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
                                                 {state.item?.status}
@@ -175,7 +175,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 }
                                             </td>
                                         </tr>
-                                        <tr>
+                                        {/* <tr>
                                             <td>Shift</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
@@ -194,7 +194,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                                         ?.student_category
                                                 }
                                             </td>
-                                        </tr>
+                                        </tr> */}
                                         <tr>
                                             <td>Section</td>
                                             <td>:</td>
@@ -288,7 +288,8 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 {
                                                     state.item?.student_info
                                                         ?.height
-                                                }
+                                                }{' '}
+                                                "
                                             </td>
                                         </tr>
                                         <tr>
@@ -298,7 +299,8 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 {
                                                     state.item?.student_info
                                                         ?.weight
-                                                }
+                                                }{' '}
+                                                kg
                                             </td>
                                         </tr>
                                         <tr>
@@ -486,13 +488,13 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 </a>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        {/* <tr>
                                             <td>Cast</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
                                                 {state.item?.student_info?.cast}
                                             </td>
-                                        </tr>
+                                        </tr> */}
                                     </tbody>
                                 </table>
                             </div>
