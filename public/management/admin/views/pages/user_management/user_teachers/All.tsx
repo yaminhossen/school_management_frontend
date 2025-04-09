@@ -111,7 +111,11 @@ const All: React.FC<Props> = (props: Props) => {
                                                     </td>
                                                     <td>
                                                         <img
-                                                            src="/assets/dashboard/images/avatar.png"
+                                                            src={
+                                                                i.image
+                                                                    ? i.image
+                                                                    : '/assets/dashboard/images/avatar.png'
+                                                            }
                                                             alt=""
                                                             style={{
                                                                 height: 30,

@@ -54,7 +54,7 @@ const Children: React.FC<Props> = (props: Props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>Stutas:</td>
+                        <td>Status:</td>
                         <td className="font-medium text-dark-medium">
                             {state.children?.children_basic?.status
                                 ? 'active'

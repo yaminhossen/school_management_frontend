@@ -40,7 +40,7 @@ const Index: React.FC<Props> = (props: Props) => {
                         <h3 className="text-dark-medium profile_name font-medium">
                             {data.name}
                         </h3>
-                        <div className="header-elements">
+                        {/* <div className="header-elements">
                             <ul>
                                 <li>
                                     <a href="">
@@ -64,7 +64,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> */}
                     </div>
                     <ul className="section_naviagation">
                         <li>

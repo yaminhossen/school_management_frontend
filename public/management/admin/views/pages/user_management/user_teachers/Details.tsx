@@ -228,13 +228,13 @@ const Details: React.FC<Props> = (props: Props) => {
                                             ).format('YYYY-MM-DD')}
                                         </td>
                                     </tr>
-                                    <tr>
+                                    {/* <tr>
                                         <td>Department</td>
                                         <td>:</td>
                                         <td>
                                             {state.item.teachers?.department}
                                         </td>
-                                    </tr>
+                                    </tr> */}
                                 </tbody>
                             </table>
                         </div>

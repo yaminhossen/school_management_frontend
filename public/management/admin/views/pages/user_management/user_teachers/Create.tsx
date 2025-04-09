@@ -205,10 +205,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         name="is_married"
                                                         id=""
                                                     >
-                                                        <option value="1">
+                                                        <option value="yes">
                                                             yes
                                                         </option>
-                                                        <option value="0">
+                                                        <option value="no">
                                                             no
                                                         </option>
                                                     </select>
@@ -239,8 +239,8 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         <option value="B-">
                                                             B-
                                                         </option>
-                                                        <option value="O-">
-                                                            O-
+                                                        <option value="O+">
+                                                            O+
                                                         </option>
                                                         <option value="O-">
                                                             O-
@@ -260,7 +260,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="form-group form-horizontal">
+                                            {/* <div className="form-group form-horizontal">
                                                 <label>Department</label>
                                                 <div className="form_elements">
                                                     <select
@@ -290,7 +290,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                             )}
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                             {/* <div className="form-group form-horizontal">
                                                 <label>Department</label>
                                                 <div className="form_elements">
