@@ -60,13 +60,13 @@ const Details: React.FC<Props> = (props: Props) => {
                             <div className="basic_info mb-4 ">
                                 <table className="table text-nowrap student_table">
                                     <tbody>
-                                        <tr>
+                                        {/* <tr>
                                             <td>Branch</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
                                                 Uttora
                                             </td>
-                                        </tr>
+                                        </tr> */}
                                         <tr>
                                             <td>Admission no</td>
                                             <td>:</td>
@@ -106,7 +106,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 {data?.student_info?.s_class}
                                             </td>
                                         </tr>
-                                        <tr>
+                                        {/* <tr>
                                             <td>Shift</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
@@ -122,7 +122,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                                         ?.student_category
                                                 }
                                             </td>
-                                        </tr>
+                                        </tr> */}
                                         <tr>
                                             <td>Section</td>
                                             <td>:</td>
@@ -390,13 +390,13 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 </a>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        {/* <tr>
                                             <td>Cast</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
                                                 {data?.student_info?.cast}
                                             </td>
-                                        </tr>
+                                        </tr> */}
                                     </tbody>
                                 </table>
                             </div>
