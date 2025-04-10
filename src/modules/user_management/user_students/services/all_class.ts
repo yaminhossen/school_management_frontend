@@ -30,15 +30,17 @@ async function details(
                 user_staff_id: user_id,
             },
         });
-
+        console.log('staff id', staff);
+        console.log('staff id', staff?.branch_id);
         let Dbresponse = await classesModel.findAndCountAll({
             where: {
                 branch_id: staff?.branch_id,
+                // branch_id: 1,
             },
         });
 
         let data = Dbresponse.rows.map((i) => i.toJSON());
-        console.log(data);
+        // console.log(data);
 
         // let data: anyObject[] = [];
         for (let index = 0; index < data.length; index++) {
