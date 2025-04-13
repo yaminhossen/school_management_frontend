@@ -49,12 +49,12 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td>
                                             <a
-                                                href={state.item.photo}
+                                                href={state.item.attachment}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
                                                 <img
-                                                    src={state.item.photo}
+                                                    src={state.item.attachment}
                                                     width={30}
                                                     alt="building photo"
                                                 />
