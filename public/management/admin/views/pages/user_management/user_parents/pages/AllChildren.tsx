@@ -36,7 +36,7 @@ const Children: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Name</th>
-                                    <th>Name</th>
+                                    <th>Image</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
                                     <th>Whatsapp </th>

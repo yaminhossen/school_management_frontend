@@ -61,21 +61,21 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <th>Image</th>
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Branch`}
                                             col_name={`branch`}
                                             sort={true}
-                                        />
+                                        /> */}
                                         <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
                                             sort={true}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Designation`}
                                             col_name={`designation`}
                                             sort={true}
-                                        />
+                                        /> */}
                                         <TableHeading
                                             label={`Phone number`}
                                             col_name={`phone_number`}
@@ -86,11 +86,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`email`}
                                             sort={true}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Address`}
                                             col_name={`address`}
                                             sort={true}
-                                        />
+                                        /> */}
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">

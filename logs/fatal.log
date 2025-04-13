@@ -49,3 +49,6 @@
 {"level":60,"time":1744273988130,"pid":7012,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:61:19)","time":"4/10/2025 2:33:08 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
 {"level":60,"time":1744275077062,"pid":12208,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/10/2025 2:51:17 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
 {"level":60,"time":1744275464411,"pid":9656,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/10/2025 2:57:44 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1744278249945,"pid":16992,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/10/2025 3:44:09 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1744278260705,"pid":16992,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/10/2025 3:44:20 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1744278262338,"pid":16992,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/10/2025 3:44:22 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
