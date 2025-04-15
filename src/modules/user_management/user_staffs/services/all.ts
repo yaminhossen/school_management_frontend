@@ -84,8 +84,13 @@ async function all(
         include: select_fields,
         exclude: exclude_fields,
     };
+    console.log('params', query_param.page);
 
     if (search_key) {
+        // query_param.paginate = 25;
+        query_param.page = 1;
+
+        // query_param.paginate = 25;
         query.where = {
             ...query.where,
             [Op.or]: [
