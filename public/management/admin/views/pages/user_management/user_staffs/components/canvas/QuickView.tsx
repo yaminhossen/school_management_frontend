@@ -40,15 +40,112 @@ const QuickView: React.FC<Props> = (props: Props) => {
                         <table className="table quick_modal_table">
                             <tbody>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>:</th>
-                                    <th>{state.item.name}</th>
+                                    <td>Photo</td>
+                                    <td>:</td>
+                                    <td>
+                                        {state.item?.image ? (
+                                            <a
+                                                href={state.item.image}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src={
+                                                        state.item.image
+                                                            ? state.item.image
+                                                            : '/assets/dashboard/images/avatar.png'
+                                                    }
+                                                    alt="profile image"
+                                                    style={{
+                                                        height: 50,
+                                                    }}
+                                                />
+                                            </a>
+                                        ) : (
+                                            <img
+                                                src={
+                                                    '/assets/dashboard/images/avatar.png'
+                                                }
+                                                alt="profile image"
+                                                style={{
+                                                    height: 50,
+                                                }}
+                                            />
+                                        )}
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <th>Preffered name</th>
-                                    <th>:</th>
-                                    <th>{state.item.email}</th>
+                                    <td>Name</td>
+                                    <td>:</td>
+                                    <td>{state.item.name}</td>
                                 </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>:</td>
+                                    <td>{state.item.email}</td>
+                                </tr>
+                                <tr>
+                                    <td>Phone Number</td>
+                                    <td>:</td>
+                                    <td>{state.item.phone_number}</td>
+                                </tr>
+                                <tr>
+                                    <td>Role</td>
+                                    <td>:</td>
+                                    <td>{state.item.role}</td>
+                                </tr>
+                                {/* <tr>
+                                    <td>Parmenent Address</td>
+                                    <td>:</td>
+                                    <td>
+                                        {
+                                            state.item.staff_infos
+                                                ?.parmenent_address
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Present Address</td>
+                                    <td>:</td>
+                                    <td>
+                                        {
+                                            state.item.staff_infos
+                                                ?.present_address
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Guardian Number</td>
+                                    <td>:</td>
+                                    <td>
+                                        {
+                                            state.item.staff_infos
+                                                ?.guardian_contact_number
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>District</td>
+                                    <td>:</td>
+                                    <td>{state.item.staff_infos?.district}</td>
+                                </tr>
+                                <tr>
+                                    <td>Post Code</td>
+                                    <td>:</td>
+                                    <td>{state.item.staff_infos?.post_code}</td>
+                                </tr>
+                                <tr>
+                                    <td>Qualification</td>
+                                    <td>:</td>
+                                    <td>
+                                        {state.item.staff_infos?.qualification}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Gender</td>
+                                    <td>:</td>
+                                    <td>{state.item.staff_infos?.gender}</td>
+                                </tr> */}
                             </tbody>
                         </table>
                     </div>

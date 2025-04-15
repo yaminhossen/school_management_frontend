@@ -17,7 +17,7 @@ const AppNavRight: React.FC<Props> = (props: Props) => {
                 <li className="icon_link_li text_line">
                     cached {state.cached} KB
                 </li>
-                <li className="icon_link_li">
+                {/* <li className="icon_link_li">
                     <a href="#dashboard#" className="navigation_link">
                         <span className="material-symbols-outlined fill">
                             expand_less
@@ -34,7 +34,7 @@ const AppNavRight: React.FC<Props> = (props: Props) => {
                             fullscreen
                         </span>
                     </a>
-                </li>
+                </li> */}
                 {/* <li className="icon_link_li">
                     <a href="#dashboard#" className="navigation_link">
                         <span className="material-symbols-outlined fill">

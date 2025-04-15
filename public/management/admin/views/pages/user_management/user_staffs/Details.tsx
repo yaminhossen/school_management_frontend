@@ -192,10 +192,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                                         />
                                                 </a>
                                             ) : (
-                                                <a
-                                                        rel="noopener noreferrer"
-                                                    rel="noopener noreferrer"
-                                                ></a>
+                                                <img alt="national_id"></img>
                                             )}
                                         </td>
                                     </tr>
@@ -226,10 +223,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                                         />
                                                 </a>
                                             ) : (
-                                                <a
-                                                        rel="noopener noreferrer"
-                                                    rel="noopener noreferrer"
-                                                ></a>
+                                                <img alt="No Certificate"></img>
                                             )}
                                         </td>
                                     </tr>
@@ -260,10 +254,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                                         />
                                                 </a>
                                             ) : (
-                                                <a
-                                                        rel="noopener noreferrer"
-                                                    rel="noopener noreferrer"
-                                                ></a>
+                                                <img alt="No Certificate"></img>
                                             )}
                                         </td>
                                     </tr>

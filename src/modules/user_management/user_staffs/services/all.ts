@@ -73,11 +73,21 @@ async function all(
     }
 
     let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
+        order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
         where: {
             status: show_active_data == 'true' ? 'active' : 'deactive',
         },
         // include: [models.Project],
+        // include: [
+        //     {
+        //         model: models.UserStaffInformationsModel,
+        //         as: 'staff_infos',
+        //     },
+        //     {
+        //         model: models.BranchStaffsModel,
+        //         as: 'staffs',
+        //     },
+        // ],
     };
 
     query.attributes = {

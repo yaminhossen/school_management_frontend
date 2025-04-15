@@ -55,6 +55,7 @@ const All: React.FC<Props> = (props: Props) => {
                                         <th>
                                             <SelectAll />
                                         </th>
+                                        <th>No.</th>
                                         <TableHeading
                                             label={`ID`}
                                             col_name={`id`}
@@ -66,11 +67,12 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`name`}
                                             sort={true}
                                         />
-                                        <TableHeading
+                                        <th>Designation</th>
+                                        {/* <TableHeading
                                             label={`Designation`}
                                             col_name={`designation`}
                                             sort={true}
-                                        />
+                                        /> */}
                                         <TableHeading
                                             label={`Phone number`}
                                             col_name={`phone_number`}
@@ -85,7 +87,7 @@ const All: React.FC<Props> = (props: Props) => {
                                 </thead>
                                 <tbody id="all_list">
                                     {(state.all as any)?.data?.map(
-                                        (i: { [key: string]: any }) => {
+                                        (i: { [key: string]: any }, index) => {
                                             return (
                                                 <tr
                                                     key={i.id}
@@ -100,6 +102,9 @@ const All: React.FC<Props> = (props: Props) => {
                                                         <SelectItem item={i} />
                                                     </td>
                                                     <td>
+                                                        <span>{index + 1}</span>
+                                                    </td>
+                                                    <td>
                                                         <span
                                                             className="quick_view_trigger"
                                                             onClick={() =>
@@ -111,7 +116,11 @@ const All: React.FC<Props> = (props: Props) => {
                                                     </td>
                                                     <td>
                                                         <img
-                                                            src={i.image ? i.image : "/assets/dashboard/images/avatar.png"}
+                                                            src={
+                                                                i.image
+                                                                    ? i.image
+                                                                    : '/assets/dashboard/images/avatar.png'
+                                                            }
                                                             alt=""
                                                             style={{
                                                                 height: 30,

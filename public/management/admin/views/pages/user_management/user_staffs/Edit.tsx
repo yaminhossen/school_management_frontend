@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import { useSelector } from 'react-redux';
@@ -29,6 +29,49 @@ const Edit: React.FC<Props> = (props: Props) => {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
+
+    const [phoneNumbers, setPhoneNumbers] = useState<{
+        son: string;
+        parents: string;
+    }>({
+        son: '',
+        parents: '',
+    });
+
+    const [errors, setErrors] = useState<{
+        son: string;
+        parents: string;
+    }>({
+        son: '',
+        parents: '',
+    });
+
+    const isValidBDNumber = (number: string): boolean => {
+        const regex = /^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/;
+        return regex.test(number);
+    };
+
+    // Handle input change dynamically
+    const handleChange = (
+        type: 'son' | 'parent',
+        index: number | null,
+        value: string,
+    ) => {
+        if (type === 'son') {
+            setPhoneNumbers((prev) => ({ ...prev, son: value }));
+            setErrors((prev) => ({
+                ...prev,
+                son: isValidBDNumber(value) ? '' : 'Invalid phone number!',
+            }));
+        }
+        if (type === 'parent') {
+            setPhoneNumbers((prev) => ({ ...prev, parents: value }));
+            setErrors((prev) => ({
+                ...prev,
+                parents: isValidBDNumber(value) ? '' : 'Invalid phone number!',
+            }));
+        }
+    };
 
     return (
         <>
@@ -86,12 +129,35 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             type="text"
                                             placeholder="phone number"
                                             name="phone_number"
+                                            defaultValue={state.item.phone_number}
+                                            onChange={(e) =>
+                                                handleChange(
+                                                    'son',
+                                                    null,
+                                                    e.target.value,
+                                                )
+                                            }
+                                        />
+                                        {errors.son && (
+                                            <p style={{ color: 'red' }}>
+                                                {errors.son}
+                                            </p>
+                                        )}
+                                    </div>
+                                </div>
+                                {/* <div className="form-group form-horizontal">
+                                    <label>Phone number</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="phone number"
+                                            name="phone_number"
                                             defaultValue={
                                                 state.item.phone_number
                                             }
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>Image</label>
                                     <div className="form_elements">
@@ -182,7 +248,19 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                 state.item.staff_infos
                                                     ?.guardian_contact_number
                                             }
+                                            onChange={(e) =>
+                                                handleChange(
+                                                    'parent',
+                                                    null,
+                                                    e.target.value,
+                                                )
+                                            }
                                         />
+                                        {errors.parents && (
+                                            <p style={{ color: 'red' }}>
+                                                {errors.parents}
+                                            </p>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">

@@ -47,6 +47,9 @@ axios.interceptors.response.use(
         if (response.status == 217) {
             location.href = '/admission-officer/login';
         }
+        if (response.status == 201) {
+            (window as any).toaster('submitted');
+        }
         (window as any)
             .jQuery('.loader-wrapper')
             .fadeOut('slow', function () {});

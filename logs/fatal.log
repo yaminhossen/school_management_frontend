@@ -110,3 +110,4 @@
 {"level":60,"time":1744539156824,"pid":10384,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"4/13/2025 4:12:36 PM","message":"Unknown column 'BranchTransportDriversModel.preferred_name' in 'where clause'"}
 {"level":60,"time":1744539173854,"pid":10384,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"4/13/2025 4:12:53 PM","message":"Unknown column 'BranchTransportDriversModel.preferred_name' in 'where clause'"}
 {"level":60,"time":1744541445297,"pid":13112,"hostname":"DESKTOP-9421701","file":"services\\all.ts:63:15)","time":"4/13/2025 4:50:45 PM","message":"Unknown column 'AcademicCalendarsModel.name' in 'where clause'"}
+{"level":60,"time":1744716908669,"pid":2760,"hostname":"DESKTOP-9421701","file":"services\\all.ts:116:15)","time":"4/15/2025 5:35:08 PM","message":"Unknown column 'UserStaffsModel.designation' in 'order clause'"}
