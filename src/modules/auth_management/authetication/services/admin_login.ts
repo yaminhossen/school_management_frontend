@@ -52,6 +52,7 @@ async function login(
             data = await models.UserStaffsModel.findOne({
                 where: {
                     email: body.email,
+                    role: 'principle',
                 },
             });
 
@@ -95,7 +96,7 @@ async function login(
                     {
                         type: 'field',
                         value: '',
-                        msg: 'the given email is incorrect',
+                        msg: 'the given email or role is incorrect',
                         path: 'email',
                         location: 'body',
                     },

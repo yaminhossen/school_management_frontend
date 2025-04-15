@@ -75,3 +75,12 @@
 {"level":60,"time":1744701488431,"pid":13856,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-classes?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+status"}
 {"level":60,"time":1744701499764,"pid":13856,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-classes?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+status"}
 {"level":60,"time":1744701508637,"pid":13856,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-classes?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+status"}
+{"level":60,"time":1744701876118,"pid":10708,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1744708450623,"pid":17168,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1744708772565,"pid":7504,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/auth/admin/login"}
+{"level":60,"time":1744708779375,"pid":7504,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/auth/admin/login"}
+{"level":60,"time":1744708922204,"pid":5288,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/auth/admin/login"}
+{"level":60,"time":1744710467156,"pid":13204,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1744710469037,"pid":13204,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1744710470086,"pid":13204,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1744710470710,"pid":13204,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}

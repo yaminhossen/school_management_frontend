@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
@@ -10,6 +10,48 @@ import moment from 'moment/moment';
 
 const Create: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
+    const [phoneNumbers, setPhoneNumbers] = useState<{
+        son: string;
+        parents: string;
+    }>({
+        son: '',
+        parents: '',
+    });
+
+    const [errors, setErrors] = useState<{
+        son: string;
+        parents: string;
+    }>({
+        son: '',
+        parents: '',
+    });
+
+    const isValidBDNumber = (number: string): boolean => {
+        const regex = /^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/;
+        return regex.test(number);
+    };
+
+    // Handle input change dynamically
+    const handleChange = (
+        type: 'son' | 'parent',
+        index: number | null,
+        value: string,
+    ) => {
+        if (type === 'son') {
+            setPhoneNumbers((prev) => ({ ...prev, son: value }));
+            setErrors((prev) => ({
+                ...prev,
+                son: isValidBDNumber(value) ? '' : 'Invalid phone number!',
+            }));
+        }
+        if (type === 'parent') {
+            setPhoneNumbers((prev) => ({ ...prev, parents: value }));
+            setErrors((prev) => ({
+                ...prev,
+                parents: isValidBDNumber(value) ? '' : 'Invalid phone number!',
+            }));
+        }
+    };
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -49,13 +91,13 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <label>Email</label>
                                             <div className="form_elements">
                                                 <input
-                                                    type="text"
+                                                    type="email"
                                                     placeholder="email"
                                                     name="email"
                                                 />
                                             </div>
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        {/* <div className="form-group form-horizontal">
                                             <label>Phone number</label>
                                             <div className="form_elements">
                                                 <input
@@ -63,6 +105,29 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     placeholder="phone number"
                                                     name="phone_number"
                                                 />
+                                            </div>
+                                        </div> */}
+                                        <div className="form-group form-horizontal">
+                                            <label>Phone number</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    value={phoneNumbers.son}
+                                                    onChange={(e) =>
+                                                        handleChange(
+                                                            'son',
+                                                            null,
+                                                            e.target.value,
+                                                        )
+                                                    }
+                                                    placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
+                                                    name="phone_number"
+                                                />
+                                                {errors.son && (
+                                                    <p style={{ color: 'red' }}>
+                                                        {errors.son}
+                                                    </p>
+                                                )}
                                             </div>
                                         </div>
                                         <div className="form-group form-horizontal">
@@ -157,6 +222,35 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
+                                                <label>Phone number</label>
+                                                <div className="form_elements">
+                                                    <input
+                                                        type="text"
+                                                        value={
+                                                            phoneNumbers.parents
+                                                        }
+                                                        onChange={(e) =>
+                                                            handleChange(
+                                                                'parent',
+                                                                null,
+                                                                e.target.value,
+                                                            )
+                                                        }
+                                                        placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
+                                                        name={`parent_phone_number`}
+                                                    />
+                                                    {errors.parents && (
+                                                        <p
+                                                            style={{
+                                                                color: 'red',
+                                                            }}
+                                                        >
+                                                            {errors.parents}
+                                                        </p>
+                                                    )}
+                                                </div>
+                                            </div>
+                                            <div className="form-group form-horizontal">
                                                 <label>Qualification</label>
                                                 <div className="form_elements">
                                                     <input
@@ -241,7 +335,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="form-group form-horizontal">
+                                            {/* <div className="form-group form-horizontal">
                                                 <label>Department</label>
                                                 <div className="form_elements">
                                                     <input
@@ -250,7 +344,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         name="department"
                                                     />
                                                 </div>
-                                            </div>
+                                            </div> */}
                                             <div className="form-group form-horizontal">
                                                 <label>Role</label>
                                                 <div className="form_elements">
@@ -258,14 +352,8 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         <option value="principle">
                                                             principle
                                                         </option>
-                                                        <option value="super admin">
-                                                            super admin
-                                                        </option>
-                                                        <option value="vice-principle">
-                                                            vice-principle
-                                                        </option>
-                                                        <option value="doctor">
-                                                            doctor
+                                                        <option value="admin">
+                                                            admin
                                                         </option>
                                                         <option value="admission-officer">
                                                             admission-officer
@@ -273,13 +361,13 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         <option value="librarian">
                                                             librarian
                                                         </option>
-                                                        <option value="accountan">
-                                                            accountan
+                                                        <option value="accountant">
+                                                            accountant
                                                         </option>
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div className="form-group form-horizontal">
+                                            {/* <div className="form-group form-horizontal">
                                                 <label>Responsibilies</label>
                                                 <div className="form_elements">
                                                     <input
@@ -288,7 +376,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         name="responsibility"
                                                     />
                                                 </div>
-                                            </div>
+                                            </div> */}
                                             <div className="form-group form-horizontal">
                                                 <label>National Id</label>
                                                 <div className="form_elements">
@@ -319,7 +407,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="form-group form-horizontal">
+                                            {/* <div className="form-group form-horizontal">
                                                 <label>Status</label>
                                                 <div className="form_elements">
                                                     <select name="status" id="">
@@ -331,8 +419,8 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         </option>
                                                     </select>
                                                 </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
+                                            </div> */}
+                                            {/* <div className="form-group form-horizontal">
                                                 <label>Position</label>
                                                 <div className="form_elements">
                                                     <select
@@ -350,7 +438,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         </option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
