@@ -209,7 +209,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="form-group form-horizontal">
+                                            {/* <div className="form-group form-horizontal">
                                                 <label>
                                                     Gruardian Contact Number
                                                 </label>
@@ -220,9 +220,11 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         name="guardian_contact_number"
                                                     />
                                                 </div>
-                                            </div>
+                                            </div> */}
                                             <div className="form-group form-horizontal">
-                                                <label>Phone number</label>
+                                                <label>
+                                                    Gruardian Contact Number
+                                                </label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
@@ -237,7 +239,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                             )
                                                         }
                                                         placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
-                                                        name={`parent_phone_number`}
+                                                        name={`guardian_contact_number`}
                                                     />
                                                     {errors.parents && (
                                                         <p

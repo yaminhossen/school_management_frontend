@@ -268,7 +268,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Department</label>
                                     <div className="form_elements">
                                         <select
@@ -287,41 +287,28 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             <option value="it">It</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>Role</label>
                                     <div className="form_elements">
-                                        <select
-                                            name="role"
-                                            defaultValue={state.item.role}
-                                            id=""
-                                        >
+                                        <select name="role" id="">
                                             <option value="principle">
                                                 principle
                                             </option>
-                                            <option value="super admin">
-                                                super admin
-                                            </option>
-                                            <option value="vice-principle">
-                                                vice-principle
-                                            </option>
-                                            <option value="doctor">
-                                                doctor
-                                            </option>
+                                            <option value="admin">admin</option>
                                             <option value="admission-officer">
                                                 admission-officer
                                             </option>
                                             <option value="librarian">
                                                 librarian
                                             </option>
-                                            <option value="accountan">
-                                                accountan
+                                            <option value="accountant">
+                                                accountant
                                             </option>
-                                            <option value="staff">staff</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Responsibilies</label>
                                     <div className="form_elements">
                                         <input
@@ -334,7 +321,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             }
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>National Id</label>
                                     <div className="form_elements">
@@ -365,7 +352,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Position</label>
                                     <div className="form_elements">
                                         <select
@@ -386,7 +373,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             </option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label></label>
                                     <div className="form_elements">
