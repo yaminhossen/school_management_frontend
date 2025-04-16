@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import { useSelector } from 'react-redux';
@@ -10,6 +10,8 @@ import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
 import moment from 'moment/moment';
+import InputImage from './components/management_data_page/InputImage';
+import Input from './components/management_data_page/Input';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -45,6 +47,20 @@ const Edit: React.FC<Props> = (props: Props) => {
         son: '',
         parents: '',
     });
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
+    const imageRef = useRef<HTMLImageElement | null>(null);
+    const handleFileChange = () => {
+        if (
+            fileInputRef.current?.files &&
+            fileInputRef.current.files.length > 0
+        ) {
+            const file = fileInputRef.current.files[0];
+            const src = URL.createObjectURL(file);
+            if (imageRef.current) {
+                imageRef.current.src = src;
+            }
+        }
+    };
 
     const isValidBDNumber = (number: string): boolean => {
         const regex = /^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/;
@@ -72,6 +88,16 @@ const Edit: React.FC<Props> = (props: Props) => {
             }));
         }
     };
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
 
     return (
         <>
@@ -129,7 +155,9 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             type="text"
                                             placeholder="phone number"
                                             name="phone_number"
-                                            defaultValue={state.item.phone_number}
+                                            defaultValue={
+                                                state.item?.phone_number
+                                            }
                                             onChange={(e) =>
                                                 handleChange(
                                                     'son',
@@ -158,7 +186,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div> */}
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Image</label>
                                     <div className="form_elements">
                                         <input
@@ -168,6 +196,14 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             name="staff_image"
                                         />
                                     </div>
+                                </div> */}
+
+                                <div className="form-group form-horizontal">
+                                    <InputImage
+                                        label={'image'}
+                                        name={'staff_image'}
+                                        defalut_preview={get_value('image')}
+                                    />
                                 </div>
                                 <div className="form-group form-horizontal">
                                     <label>Parmanent Address</label>
@@ -301,9 +337,9 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             name="is_married"
                                             defaultValue={
                                                 state.item.staff_infos
-                                                    ?.is_married
-                                                    ? 'Married'
-                                                    : 'UnMarried'
+                                                    ?.is_married === true
+                                                    ? 1
+                                                    : 0
                                             }
                                             id=""
                                         >
@@ -369,7 +405,11 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Role</label>
                                     <div className="form_elements">
-                                        <select name="role" id="">
+                                        <select
+                                            name="role"
+                                            id=""
+                                            defaultValue={state.item?.role}
+                                        >
                                             <option value="principle">
                                                 principle
                                             </option>
@@ -400,7 +440,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div> */}
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>National Id</label>
                                     <div className="form_elements">
                                         <input
@@ -409,8 +449,35 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             name="national_id"
                                         />
                                     </div>
+                                </div> */}
+                                <div className="form-group form-horizontal">
+                                    <InputImage
+                                        label={'National Id'}
+                                        name={'national_id'}
+                                        defalut_preview={get_value(
+                                            'national_id',
+                                        )}
+                                    />
                                 </div>
                                 <div className="form-group form-horizontal">
+                                    <InputImage
+                                        label={'Certificate No. 1'}
+                                        name={'certificate_1'}
+                                        defalut_preview={get_value(
+                                            'certificate_no_1',
+                                        )}
+                                    />
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <InputImage
+                                        label={'Certificate No. 2'}
+                                        name={'certificate_2'}
+                                        defalut_preview={get_value(
+                                            'certificate_no_2',
+                                        )}
+                                    />
+                                </div>
+                                {/* <div className="form-group form-horizontal">
                                     <label>Certificate No. 1</label>
                                     <div className="form_elements">
                                         <input
@@ -429,7 +496,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             name="certificate_2"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 {/* <div className="form-group form-horizontal">
                                     <label>Position</label>
                                     <div className="form_elements">

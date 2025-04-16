@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
@@ -25,6 +25,22 @@ const Create: React.FC<Props> = (props: Props) => {
         son: '',
         parents: '',
     });
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
+    const imageRef = useRef<HTMLImageElement | null>(null);
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const handleFileChange = () => {
+        if (
+            fileInputRef.current?.files &&
+            fileInputRef.current.files.length > 0
+        ) {
+            const file = fileInputRef.current.files[0];
+            const src = URL.createObjectURL(file);
+            if (imageRef.current) {
+                imageRef.current.src = src;
+            }
+        }
+    };
 
     const isValidBDNumber = (number: string): boolean => {
         const regex = /^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/;
@@ -55,6 +71,13 @@ const Create: React.FC<Props> = (props: Props) => {
 
     async function handle_submit(e) {
         e.preventDefault();
+        if (!password.trim()) {
+            setError('Password cannot be empty or just whitespace.');
+            (window as any).toaster(
+                'Password cannot be empty or just whitespace.',
+            );
+            return;
+        }
         let response = await dispatch(store(new FormData(e.target)) as any);
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
             e.target.reset();
@@ -97,16 +120,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        {/* <div className="form-group form-horizontal">
-                                            <label>Phone number</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="phone number"
-                                                    name="phone_number"
-                                                />
-                                            </div>
-                                        </div> */}
                                         <div className="form-group form-horizontal">
                                             <label>Phone number</label>
                                             <div className="form_elements">
@@ -134,14 +147,45 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <label>Image</label>
                                             <div className="form_elements">
                                                 <input
+                                                    ref={fileInputRef}
                                                     type="file"
                                                     accept="image/*"
                                                     placeholder="image"
                                                     name="staff_image"
+                                                    onChange={handleFileChange}
                                                 />
+                                                <a
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <img
+                                                        ref={imageRef}
+                                                        width={60}
+                                                        height={60}
+                                                        className="img-80 mt-2 preview_image"
+                                                        alt="Preview"
+                                                    />
+                                                </a>
                                             </div>
+                                            {/* <div className="form_elements">
+                                            </div> */}
                                         </div>
-                                        <div className="form-group form-horizontal">
+                                        {/* <div className="form-group form-horizontal">
+                                            <label>Preview</label>
+                                            <div className="form_elements">
+                                                <a
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <img
+                                                        ref={imageRef}
+                                                        className="img-80 preview_image"
+                                                        alt="Preview"
+                                                    />
+                                                </a>
+                                            </div>
+                                        </div> */}
+                                        {/* <div className="form-group form-horizontal">
                                             <label>Password</label>
                                             <div className="form_elements">
                                                 <input
@@ -149,6 +193,38 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     placeholder="password"
                                                     name="password"
                                                 />
+                                            </div>
+                                        </div> */}
+                                        <div className="form-group form-horizontal">
+                                            <label>Password</label>
+                                            <div className="form_elements">
+                                                <input
+                                                    type="text"
+                                                    placeholder="password"
+                                                    name="password"
+                                                    value={password}
+                                                    onChange={(e) =>
+                                                        setPassword(
+                                                            e.target.value,
+                                                        )
+                                                    }
+                                                    onBlur={() => {
+                                                        if (!password.trim()) {
+                                                            setError(
+                                                                'Password cannot be empty or just whitespace.',
+                                                            );
+                                                        } else {
+                                                            setError('');
+                                                        }
+                                                    }}
+                                                />
+                                                {error && (
+                                                    <small
+                                                        style={{ color: 'red' }}
+                                                    >
+                                                        {error}
+                                                    </small>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -266,6 +342,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 <label>Gender</label>
                                                 <div className="form_elements">
                                                     <select name="gender" id="">
+                                                        <option value="">
+                                                            Select gender
+                                                        </option>
                                                         <option value="male">
                                                             male
                                                         </option>
@@ -282,6 +361,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         name="is_married"
                                                         id=""
                                                     >
+                                                        <option value="">
+                                                            Are you married
+                                                        </option>
                                                         <option value="1">
                                                             yes
                                                         </option>
@@ -298,6 +380,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         name="blood_group"
                                                         id=""
                                                     >
+                                                        <option value="">
+                                                            Select Group
+                                                        </option>
                                                         <option value="A+">
                                                             A+
                                                         </option>
@@ -351,6 +436,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 <label>Role</label>
                                                 <div className="form_elements">
                                                     <select name="role" id="">
+                                                        <option value="">
+                                                            Select role
+                                                        </option>
                                                         <option value="principle">
                                                             principle
                                                         </option>

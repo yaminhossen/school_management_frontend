@@ -29,7 +29,7 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, name, description, status',
+                'id, name, session, description, status',
             ),
         );
         dispatch(all({}) as any);
@@ -77,6 +77,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
+                                            label={`Session`}
+                                            col_name={`session`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
                                             sort={true}
@@ -118,6 +123,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                     <td>{i.name}</td>
                                                     <td>{i.class?.name}</td>
                                                     <td>{i.fee_types?.name}</td>
+                                                    <td>{i.session}</td>
                                                     <td>{i.description}</td>
                                                     <td>{i.amount}</td>
                                                 </tr>

@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { classes } from './config/store/async_actions/classes';
 import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -139,6 +140,18 @@ const Create: React.FC<Props> = (props: Props) => {
                                             type="number"
                                             placeholder="amount"
                                             name="amount"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Session</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="date"
+                                            name="session"
+                                            defaultValue={moment().format(
+                                                'YYYY-MM-DD',
+                                            )}
                                         />
                                     </div>
                                 </div>

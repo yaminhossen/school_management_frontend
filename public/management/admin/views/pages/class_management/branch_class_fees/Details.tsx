@@ -45,6 +45,11 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>{state.item.description}</td>
                                     </tr>
                                     <tr>
+                                        <td>Session</td>
+                                        <td>:</td>
+                                        <td>{state.item.session}</td>
+                                    </tr>
+                                    <tr>
                                         <td>Amount</td>
                                         <td>:</td>
                                         <td>{state.item.amount}</td>

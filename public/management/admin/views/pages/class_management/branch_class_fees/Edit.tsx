@@ -11,6 +11,7 @@ import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
 import { classes } from './config/store/async_actions/classes';
 import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -158,6 +159,19 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             placeholder="amount"
                                             name="amount"
                                             defaultValue={state.item.amount}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="form-group form-horizontal">
+                                    <label>Session</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="date"
+                                            name="session"
+                                            defaultValue={moment(
+                                                `${state.item?.session}-01-01`,
+                                            ).format('YYYY-MM-DD')}
                                         />
                                     </div>
                                 </div>

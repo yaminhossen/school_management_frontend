@@ -25,6 +25,12 @@ async function validate(req: Request) {
         .withMessage('the email field is required')
         .run(req);
 
+    await body('gender')
+        .not()
+        .isEmpty()
+        .withMessage('the gender field is required')
+        .run(req);
+
     await body('phone_number')
         .not()
         .isEmpty()
