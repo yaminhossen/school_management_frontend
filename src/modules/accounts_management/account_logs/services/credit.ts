@@ -25,6 +25,10 @@ async function credit(
     const endDate = new Date(month2);
     endDate.setDate(endDate.getDate() + 1); // Increment by one day
     const formattedEndDate = endDate.toISOString().split('T')[0]; // Format to YYYY-MM-DD
+    console.log('month 1', month1);
+    console.log('month 2', month2);
+    console.log('month 3', endDate);
+    console.log('month 4', formattedEndDate);
 
     try {
         let data = await models.AccountLogsModel.findAll({

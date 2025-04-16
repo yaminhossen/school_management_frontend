@@ -19,11 +19,16 @@ import forget from './services/forget';
 import staff_all from './services/staff_all';
 import basic_information from './services/basic_information';
 import profile_update from './services/profile_update';
+import filter_all from './services/filter_all';
 
 export default function (fastify: FastifyInstance) {
     return {
         all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all(fastify, req);
+            res.code(data.status).send(data);
+        },
+        filter_all: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await filter_all(fastify, req);
             res.code(data.status).send(data);
         },
         basic_information: async function (

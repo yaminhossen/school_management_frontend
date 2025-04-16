@@ -41,7 +41,7 @@ async function validate(req: Request) {
 
     return result;
 }
-async function all(
+async function filter_all(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -70,36 +70,25 @@ async function all(
         select_fields = ['id', 'email', 'status', 'name', 'phone_number'];
     }
 
-    // let query: FindAndCountOptions = {
-    //     order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
-    //     where: {
-    //         status: show_active_data == 'true' ? 'active' : 'deactive',
-    //         created_at: {
-    //             [Op.between]: [query_param?.start_date, query_param?.end_date],
-    //         },
-    //     },
-    //     // include: [models.Project],
-    // };\
-
-    const whereClause: any = {
-        status: show_active_data === 'true' ? 'active' : 'deactive',
-    };
-
-    if (query_param?.start_date && query_param?.end_date) {
-        const endDate = new Date(query_param.end_date);
-        endDate.setDate(endDate.getDate() + 1); // Increment by one day
-        const formattedEndDate = endDate.toISOString().split('T')[0];
-        console.log('month2', formattedEndDate);
-
-        whereClause.created_at = {
-            [Op.between]: [query_param.start_date, formattedEndDate],
-        };
-    }
-
-    const query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc === 'true' ? 'DESC' : 'ASC']],
-        where: whereClause,
+    let query: FindAndCountOptions = {
+        order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
+        where: {
+            status: show_active_data == 'true' ? 'active' : 'deactive',
+            created_at: {
+                [Op.between]: [query_param?.start_date, query_param?.end_date],
+            },
+        },
         // include: [models.Project],
+        // include: [
+        //     {
+        //         model: models.UserStaffInformationsModel,
+        //         as: 'staff_infos',
+        //     },
+        //     {
+        //         model: models.BranchStaffsModel,
+        //         as: 'staffs',
+        //     },
+        // ],
     };
 
     query.attributes = {
@@ -141,4 +130,4 @@ async function all(
     }
 }
 
-export default all;
+export default filter_all;

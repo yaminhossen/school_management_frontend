@@ -101,3 +101,10 @@
 {"level":60,"time":1744715122877,"pid":14780,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
 {"level":60,"time":1744715123743,"pid":14780,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
 {"level":60,"time":1744716297684,"pid":2760,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1744720455009,"pid":12700,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1744779713827,"pid":11784,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month-account"}
+{"level":60,"time":1744779713833,"pid":11784,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1744779715893,"pid":11784,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/debit"}
+{"level":60,"time":1744779716369,"pid":11784,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/credit"}
+{"level":60,"time":1744779870232,"pid":1152,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/credit"}
+{"level":60,"time":1744779876992,"pid":1152,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/credit"}
