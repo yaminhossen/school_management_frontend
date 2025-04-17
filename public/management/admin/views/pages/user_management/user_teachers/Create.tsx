@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { classes } from './config/store/async_actions/classes';
+import InputImage from './components/management_data_page/InputImage';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -19,10 +20,72 @@ const Create: React.FC<Props> = (props: Props) => {
     );
 
     const dispatch = useAppDispatch();
+
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const params = useParams();
+
+    const [phoneNumbers, setPhoneNumbers] = useState<{
+        son: string;
+        parents: string;
+    }>({
+        son: '',
+        parents: '',
+    });
+
+    const [errors, setErrors] = useState<{
+        son: string;
+        parents: string;
+    }>({
+        son: '',
+        parents: '',
+    });
+    const isValidBDNumber = (number: string): boolean => {
+        const regex = /^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/;
+        return regex.test(number);
+    };
+
+    // Handle input change dynamically
+    const handleChange = (
+        type: 'son' | 'parent',
+        index: number | null,
+        value: string,
+    ) => {
+        if (type === 'son') {
+            setPhoneNumbers((prev) => ({ ...prev, son: value }));
+            setErrors((prev) => ({
+                ...prev,
+                son: isValidBDNumber(value) ? '' : 'Invalid phone number!',
+            }));
+        }
+        if (type === 'parent') {
+            setPhoneNumbers((prev) => ({ ...prev, parents: value }));
+            setErrors((prev) => ({
+                ...prev,
+                parents: isValidBDNumber(value) ? '' : 'Invalid phone number!',
+            }));
+        }
+    };
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
 
     async function handle_submit(e) {
         e.preventDefault();
+        if (!password.trim()) {
+            setError('Password cannot be empty or just whitespace.');
+            (window as any).toaster(
+                'Password cannot be empty or just whitespace.',
+            );
+            return;
+        }
         let response = await dispatch(store(new FormData(e.target)) as any);
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
             e.target.reset();
@@ -79,21 +142,32 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
-                                                    placeholder="phone number"
+                                                    value={phoneNumbers.son}
+                                                    onChange={(e) =>
+                                                        handleChange(
+                                                            'son',
+                                                            null,
+                                                            e.target.value,
+                                                        )
+                                                    }
+                                                    placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
                                                     name="phone_number"
                                                 />
+                                                {errors.son && (
+                                                    <p style={{ color: 'red' }}>
+                                                        {errors.son}
+                                                    </p>
+                                                )}
                                             </div>
                                         </div>
                                         <div className="form-group form-horizontal">
-                                            <label>Image</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="file"
-                                                    accept="image/*"
-                                                    placeholder="image"
-                                                    name="teacher_image"
-                                                />
-                                            </div>
+                                            <InputImage
+                                                label={'image'}
+                                                name={'teacher_image'}
+                                                defalut_preview={get_value(
+                                                    'image',
+                                                )}
+                                            />
                                         </div>
                                         <div className="form-group form-horizontal">
                                             <label>Password</label>
@@ -102,7 +176,29 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     type="text"
                                                     placeholder="password"
                                                     name="password"
+                                                    value={password}
+                                                    onChange={(e) =>
+                                                        setPassword(
+                                                            e.target.value,
+                                                        )
+                                                    }
+                                                    onBlur={() => {
+                                                        if (!password.trim()) {
+                                                            setError(
+                                                                'Password cannot be empty or just whitespace.',
+                                                            );
+                                                        } else {
+                                                            setError('');
+                                                        }
+                                                    }}
                                                 />
+                                                {error && (
+                                                    <small
+                                                        style={{ color: 'red' }}
+                                                    >
+                                                        {error}
+                                                    </small>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -170,9 +266,28 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
-                                                        placeholder="guardian number"
-                                                        name="guardian_contact_number"
+                                                        value={
+                                                            phoneNumbers.parents
+                                                        }
+                                                        onChange={(e) =>
+                                                            handleChange(
+                                                                'parent',
+                                                                null,
+                                                                e.target.value,
+                                                            )
+                                                        }
+                                                        placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
+                                                        name={`guardian_contact_number`}
                                                     />
+                                                    {errors.parents && (
+                                                        <p
+                                                            style={{
+                                                                color: 'red',
+                                                            }}
+                                                        >
+                                                            {errors.parents}
+                                                        </p>
+                                                    )}
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
@@ -341,6 +456,33 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div> */}
                                             <div className="form-group form-horizontal">
+                                                <InputImage
+                                                    label={'National Id'}
+                                                    name={'national_id'}
+                                                    defalut_preview={get_value(
+                                                        'national_id',
+                                                    )}
+                                                />
+                                            </div>
+                                            <div className="form-group form-horizontal">
+                                                <InputImage
+                                                    label={'Certificate No. 1'}
+                                                    name={'certificate_1'}
+                                                    defalut_preview={get_value(
+                                                        'certificate_no_1',
+                                                    )}
+                                                />
+                                            </div>
+                                            <div className="form-group form-horizontal">
+                                                <InputImage
+                                                    label={'Certificate No. 2'}
+                                                    name={'certificate_2'}
+                                                    defalut_preview={get_value(
+                                                        'certificate_no_2',
+                                                    )}
+                                                />
+                                            </div>
+                                            {/* <div className="form-group form-horizontal">
                                                 <label>National Id</label>
                                                 <div className="form_elements">
                                                     <input
@@ -369,7 +511,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         name="certificate_2"
                                                     />
                                                 </div>
-                                            </div>
+                                            </div> */}
                                             {/* <div className="form-group form-horizontal">
                                                 <label>Status</label>
                                                 <div className="form_elements">

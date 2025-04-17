@@ -114,3 +114,11 @@
 {"level":60,"time":1744780166531,"pid":8332,"hostname":"DESKTOP-9421701","file":"services\\all.ts:129:15)","time":"4/16/2025 11:09:26 AM","message":"Unknown column 'UserStaffsModel.date' in 'where clause'"}
 {"level":60,"time":1744800981767,"pid":1624,"hostname":"DESKTOP-9421701","file":"","time":"4/16/2025 4:56:21 PM","message":"Data truncated for column 'session' at row 1"}
 {"level":60,"time":1744800983309,"pid":1624,"hostname":"DESKTOP-9421701","file":"","time":"4/16/2025 4:56:23 PM","message":"Data truncated for column 'session' at row 1"}
+{"level":60,"time":1744865252907,"pid":9288,"hostname":"DESKTOP-9421701","file":"services\\details.ts:34:19)","time":"4/17/2025 10:47:32 AM","message":"data not found"}
+{"level":60,"time":1744865255137,"pid":9288,"hostname":"DESKTOP-9421701","file":"services\\details.ts:34:19)","time":"4/17/2025 10:47:35 AM","message":"data not found"}
+{"level":60,"time":1744865255774,"pid":9288,"hostname":"DESKTOP-9421701","file":"services\\details.ts:34:19)","time":"4/17/2025 10:47:35 AM","message":"data not found"}
+{"level":60,"time":1744865261025,"pid":9288,"hostname":"DESKTOP-9421701","file":"services\\details.ts:34:19)","time":"4/17/2025 10:47:41 AM","message":"data not found"}
+{"level":60,"time":1744868333555,"pid":9288,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/17/2025 11:38:53 AM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1744868335177,"pid":9288,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/17/2025 11:38:55 AM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1744868346701,"pid":9288,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/17/2025 11:39:06 AM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1744868360656,"pid":9288,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/17/2025 11:39:20 AM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}

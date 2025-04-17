@@ -45,19 +45,19 @@ axios.interceptors.request.use(
 );
 
 axios.interceptors.response.use(
-    function (response) {
-        return response;
-    },
     // function (response) {
-    //     console.log('response ok', response);
-    //     if (response.status == 201) {
-    //         (window as any).toaster('submitted');
-    //     }
-    //     (window as any)
-    //         .jQuery('.loader-wrapper')
-    //         .fadeOut('slow', function () {});
     //     return response;
     // },
+    function (response) {
+        // console.log('response ok', response);
+        if (response.status == 217) {
+            location.href = '/admin/login';
+        }
+        // (window as any)
+        //     .jQuery('.loader-wrapper')
+        //     .fadeOut('slow', function () {});
+        return response;
+    },
 
     function (error) {
         if (error.response.data.status === 422) {
