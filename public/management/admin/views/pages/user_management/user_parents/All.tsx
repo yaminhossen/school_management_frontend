@@ -61,11 +61,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <th>Image</th>
-                                        {/* <TableHeading
-                                            label={`Branch`}
-                                            col_name={`branch`}
-                                            sort={true}
-                                        /> */}
                                         <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
@@ -122,19 +117,23 @@ const All: React.FC<Props> = (props: Props) => {
                                                     </td>
                                                     <td>
                                                         <img
-                                                            src="/assets/dashboard/images/avatar.png"
+                                                            src={
+                                                                i?.image
+                                                                    ? i?.image
+                                                                    : '/assets/dashboard/images/avatar.png'
+                                                            }
                                                             alt=""
                                                             style={{
                                                                 height: 30,
                                                             }}
                                                         />
                                                     </td>
-                                                    <td>{i.branch}</td>
+                                                    {/* <td>{i.branch}</td> */}
                                                     <td>{i.name}</td>
-                                                    <td>{i.designation}</td>
+                                                    {/* <td>{i.designation}</td> */}
                                                     <td>{i.phone_number}</td>
                                                     <td>{i.email}</td>
-                                                    <td>{i.address}</td>
+                                                    {/* <td>{i.address}</td> */}
                                                 </tr>
                                             );
                                         },

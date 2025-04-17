@@ -63,7 +63,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         {state.item?.name}
                                     </h3>
                                     <div className="header-elements">
-                                        <ul>
+                                        {/* <ul>
                                             <li>
                                                 <a href="">
                                                     <span className="material-symbols-outlined fill">
@@ -85,13 +85,13 @@ const Details: React.FC<Props> = (props: Props) => {
                                                     </span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul> */}
                                     </div>
                                 </div>
                                 <ul className="section_naviagation">
                                     <li>
                                         <Link
-                                            to={`/user-parents/details/${params.id}/information`}
+                                            to={`/user-parents/details/${params.id}`}
                                         >
                                             Informations
                                         </Link>

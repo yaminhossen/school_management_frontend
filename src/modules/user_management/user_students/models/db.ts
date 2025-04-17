@@ -21,6 +21,7 @@ import * as branch_class_sections_model from './branch_class_sections_model';
 import * as branch_class_shifts_model from './branch_class_shifts_model';
 import * as branches_model from './branches_model';
 import * as user_parents_model from './user_parents_model';
+import * as user_parent_informations_model from './user_parent_informations_model';
 import * as branch_class_subjects_model from './branch_class_subjects_model';
 import * as branch_class_fees_model from './branch_class_fees_model';
 import * as branch_class_fee_types_model from './branch_class_fee_types_model';
@@ -48,6 +49,7 @@ interface models {
     UserStudentInformationsModel: typeof user_student_informations_model.DataModel;
     UserStudentDocumentValuesModel: typeof user_student_document_values_model.DataModel;
     UserStudentParentsModel: typeof user_student_parents_model.DataModel;
+    UserStudentParentInformationsModel: typeof user_parent_informations_model.DataModel;
     UserStudentHostelsModel: typeof user_student_hostels_model.DataModel;
     UserStudentTransportsModel: typeof user_student_transports_model.DataModel;
     UserStudentContactNumbersModel: typeof user_student_contact_numbers_model.DataModel;
@@ -79,6 +81,8 @@ const db = async function (): Promise<models> {
     const UserStudentDocumentValuesModel =
         user_student_document_values_model.init(sequelize);
     const UserStudentParentsModel = user_student_parents_model.init(sequelize);
+    const UserStudentParentInformationsModel =
+        user_parent_informations_model.init(sequelize);
     const UserStudentHostelsModel = user_student_hostels_model.init(sequelize);
     const UserStudentTransportsModel =
         user_student_transports_model.init(sequelize);
@@ -278,6 +282,7 @@ const db = async function (): Promise<models> {
         BranchClassFeeTypesModel,
         UserStudentComplainReviewsModel,
         AccountFeesCollectionDetailsModel,
+        UserStudentParentInformationsModel,
         // Project,
 
         sequelize,
