@@ -69,8 +69,8 @@ const Create: React.FC<Props> = (props: Props) => {
     function get_value(key) {
         try {
             if (state.item[key]) return state.item[key];
-            if (state.item?.staff_infos[key])
-                return state.item?.staff_infos[key];
+            if (state.item?.teacher_infos[key])
+                return state.item?.teacher_infos[key];
         } catch (error) {
             return '';
         }
@@ -304,6 +304,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 <label>Gender</label>
                                                 <div className="form_elements">
                                                     <select name="gender" id="">
+                                                        <option value="">
+                                                            Select Gender
+                                                        </option>
                                                         <option value="male">
                                                             male
                                                         </option>
@@ -320,10 +323,13 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         name="is_married"
                                                         id=""
                                                     >
-                                                        <option value="yes">
+                                                        <option value="">
+                                                            Are you married
+                                                        </option>
+                                                        <option value="1">
                                                             yes
                                                         </option>
-                                                        <option value="no">
+                                                        <option value="0">
                                                             no
                                                         </option>
                                                     </select>
@@ -336,6 +342,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         name="blood_group"
                                                         id=""
                                                     >
+                                                        <option value="">
+                                                            Select Group
+                                                        </option>
                                                         <option value="A+">
                                                             A+
                                                         </option>

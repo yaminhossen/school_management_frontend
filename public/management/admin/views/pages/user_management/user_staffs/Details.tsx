@@ -272,9 +272,10 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Is Married</td>
                                         <td>:</td>
                                         <td>
-                                            {state.item.staff_infos?.is_married
+                                            {state.item.staff_infos
+                                                ?.is_married === true
                                                 ? 'Married'
-                                                : 'Un Married'}
+                                                : 'Un married'}
                                         </td>
                                     </tr>
                                     {/* <tr>

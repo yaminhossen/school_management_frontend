@@ -2,13 +2,19 @@ import React, { useRef, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
-import { useAppDispatch } from '../../../../store';
+import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
 import DropDown from './components/dropdown/DropDown';
 export interface Props {}
 import moment from 'moment/moment';
+import InputImage from './components/management_data_page/InputImage';
+import { initialState } from './config/store/inital_state';
+import { useSelector } from 'react-redux';
 
 const Create: React.FC<Props> = (props: Props) => {
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
     const dispatch = useAppDispatch();
     const [phoneNumbers, setPhoneNumbers] = useState<{
         son: string;
@@ -68,6 +74,16 @@ const Create: React.FC<Props> = (props: Props) => {
             }));
         }
     };
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -468,6 +484,33 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div> */}
                                             <div className="form-group form-horizontal">
+                                                <InputImage
+                                                    label={'National Id'}
+                                                    name={'national_id'}
+                                                    defalut_preview={get_value(
+                                                        'national_id',
+                                                    )}
+                                                />
+                                            </div>
+                                            <div className="form-group form-horizontal">
+                                                <InputImage
+                                                    label={'Certificate No. 1'}
+                                                    name={'certificate_1'}
+                                                    defalut_preview={get_value(
+                                                        'certificate_no_1',
+                                                    )}
+                                                />
+                                            </div>
+                                            <div className="form-group form-horizontal">
+                                                <InputImage
+                                                    label={'Certificate No. 2'}
+                                                    name={'certificate_2'}
+                                                    defalut_preview={get_value(
+                                                        'certificate_no_2',
+                                                    )}
+                                                />
+                                            </div>
+                                            {/* <div className="form-group form-horizontal">
                                                 <label>National Id</label>
                                                 <div className="form_elements">
                                                     <input
@@ -496,7 +539,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         name="certificate_2"
                                                     />
                                                 </div>
-                                            </div>
+                                            </div> */}
                                             {/* <div className="form-group form-horizontal">
                                                 <label>Status</label>
                                                 <div className="form_elements">

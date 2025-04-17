@@ -34,6 +34,7 @@ const InputImage: React.FC<Props> = ({
             <label>{label}</label>
             <div>
                 <input
+                    style={{ maxWidth: '213px', maxHeight: '80px' }}
                     type="file"
                     name={name}
                     ref={fileInputRef}

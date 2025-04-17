@@ -39,19 +39,36 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Photo</td>
                                         <td>:</td>
                                         <td>
-                                            <a
-                                                href={state.item.image}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
+                                            {state.item?.image ? (
+                                                <a
+                                                    href={state.item.image}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <img
+                                                        src={
+                                                            state.item.image
+                                                                ? state.item
+                                                                    .image
+                                                                : '/assets/dashboard/images/avatar.png'
+                                                        }
+                                                        alt="profile image"
+                                                        style={{
+                                                            height: 50,
+                                                        }}
+                                                    />
+                                                </a>
+                                            ) : (
                                                 <img
-                                                    src={state.item.image}
+                                                    src={
+                                                        '/assets/dashboard/images/avatar.png'
+                                                    }
                                                     alt="profile image"
                                                     style={{
                                                         height: 50,
                                                     }}
                                                 />
-                                            </a>
+                                            )}
                                         </td>
                                     </tr>
                                     <tr>
@@ -124,78 +141,96 @@ const Details: React.FC<Props> = (props: Props) => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>National ID</td>
+                                        <td>national Id</td>
                                         <td>:</td>
                                         <td>
-                                            <a
-                                                href={
-                                                    state.item.teacher_infos
-                                                        ?.national_id
-                                                }
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img
-                                                    src={
-                                                        state.item.teacher_infos
+                                            {state.item.teacher_infos
+                                                ?.national_id ? (
+                                                <a
+                                                        href={
+                                                            state.item.teacher_infos
                                                             ?.national_id
                                                     }
-                                                    alt="national id"
-                                                    style={{
-                                                        height: 30,
-                                                    }}
-                                                />
-                                            </a>
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                >
+                                                        <img
+                                                            src={
+                                                            state.item
+                                                                .teacher_infos
+                                                                    ?.national_id
+                                                        }
+                                                            alt="national_id"
+                                                            style={{
+                                                                height: 30,
+                                                        }}
+                                                        />
+                                                </a>
+                                            ) : (
+                                                <img alt="national_id"></img>
+                                            )}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Certificate No. 1</td>
                                         <td>:</td>
                                         <td>
-                                            <a
-                                                href={
-                                                    state.item.teacher_infos
-                                                        ?.certificate_no_1
-                                                }
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img
-                                                    src={
-                                                        state.item.teacher_infos
+                                            {state.item.teacher_infos
+                                                ?.certificate_no_1 ? (
+                                                <a
+                                                        href={
+                                                            state.item.teacher_infos
                                                             ?.certificate_no_1
                                                     }
-                                                    alt="certificate 1"
-                                                    style={{
-                                                        height: 30,
-                                                    }}
-                                                />
-                                            </a>
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                >
+                                                        <img
+                                                            src={
+                                                            state.item
+                                                                .teacher_infos
+                                                                    ?.certificate_no_1
+                                                        }
+                                                            alt="certificate 1"
+                                                            style={{
+                                                                height: 30,
+                                                        }}
+                                                        />
+                                                </a>
+                                            ) : (
+                                                <img alt="No Certificate"></img>
+                                            )}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Certificate No. 2</td>
                                         <td>:</td>
                                         <td>
-                                            <a
-                                                href={
-                                                    state.item.teacher_infos
-                                                        ?.certificate_no_2
-                                                }
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img
-                                                    src={
-                                                        state.item.teacher_infos
+                                            {state.item.teacher_infos
+                                                ?.certificate_no_2 ? (
+                                                <a
+                                                        href={
+                                                            state.item.teacher_infos
                                                             ?.certificate_no_2
                                                     }
-                                                    alt="certificate 2"
-                                                    style={{
-                                                        height: 30,
-                                                    }}
-                                                />
-                                            </a>
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                >
+                                                        <img
+                                                            src={
+                                                            state.item
+                                                                .teacher_infos
+                                                                    ?.certificate_no_2
+                                                        }
+                                                            alt="certificate 2"
+                                                            style={{
+                                                                height: 30,
+                                                        }}
+                                                        />
+                                                </a>
+                                            ) : (
+                                                <img alt="No Certificate"></img>
+                                            )}
                                         </td>
                                     </tr>
                                     <tr>
@@ -213,9 +248,9 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td>
                                             {state.item.teacher_infos
-                                                ?.is_married
+                                                ?.is_married === true
                                                 ? 'Married'
-                                                : 'Un Married'}
+                                                : 'Un married'}
                                         </td>
                                     </tr>
                                     <tr>
