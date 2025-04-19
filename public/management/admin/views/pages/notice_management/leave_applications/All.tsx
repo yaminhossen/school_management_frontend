@@ -67,11 +67,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`staff/student`}
                                             sort={true}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Reason`}
                                             col_name={`reason`}
                                             sort={true}
-                                        />
+                                        /> */}
                                         <TableHeading
                                             label={`Leave Type`}
                                             col_name={`leave type`}
@@ -134,7 +134,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                                     ? 'Student'
                                                                     : 0}
                                                     </td>
-                                                    <td>{i.reason}</td>
+                                                    {/* <td>{i.reason}</td> */}
                                                     <td>
                                                         {i.leave_type?.title}
                                                     </td>

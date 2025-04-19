@@ -57,8 +57,15 @@ async function profile_update(
     // if (password) {
     //     inputs.password = password;
     // }
+
+    let user = (req as any).user;
+    let auth_user = await models.BranchStaffsModel.findOne({
+        where: {
+            user_staff_id: (req as any).user?.id || null,
+        },
+    });
     console.log('body', body);
-    console.log('image_path', image_path);
+    console.log('image_path', user);
 
     /** print request data into console */
     // console.clear();
@@ -68,7 +75,7 @@ async function profile_update(
     try {
         let data = await models.UserAdminsModel.findOne({
             where: {
-                id: 1,
+                id: user?.id,
             },
         });
         if (data) {
@@ -78,8 +85,7 @@ async function profile_update(
             };
             inputs.image = image_path || data.image;
             inputs.password = password || data.password;
-            data.update(inputs);
-            await data.save();
+            (await data.update(inputs)).save();
             return response(200, 'data updated', data);
         } else {
             throw new custom_error(

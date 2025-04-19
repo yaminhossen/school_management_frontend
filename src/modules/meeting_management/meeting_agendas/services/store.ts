@@ -30,6 +30,12 @@ async function validate(req: Request) {
         .withMessage('the description field is required')
         .run(req);
 
+    await body('role')
+        .not()
+        .isEmpty()
+        .withMessage('the role field is required')
+        .run(req);
+
     let result = await validationResult(req);
 
     return result;
@@ -63,8 +69,9 @@ async function store(
         meeting_id: body.meeting_id,
         title: body.title,
         description: body.description,
+        role: body.role,
         is_complete: body.pending,
-        creator: user.id || null,
+        creator: user?.id || null,
     };
 
     /** print request data into console */

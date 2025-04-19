@@ -37,12 +37,14 @@ const Details: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <td>Title</td>
                                         <td>:</td>
-                                        <td>{state.item.title}</td>
+                                        <td>{state.item?.leave_type.title}</td>
                                     </tr>
                                     <tr>
                                         <td>Description</td>
                                         <td>:</td>
-                                        <td>{state.item.description}</td>
+                                        <td>
+                                            {state.item?.leave_type.description}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

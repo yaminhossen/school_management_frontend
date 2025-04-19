@@ -163,7 +163,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         ></input>
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Reason</label>
                                     <div className="form_elements">
                                         <input
@@ -174,7 +174,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             defaultValue={state.item.reason}
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>Attachment</label>
                                     <div className="form_elements">

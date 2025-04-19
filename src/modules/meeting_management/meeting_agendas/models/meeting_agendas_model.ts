@@ -43,6 +43,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare meeting_id: number;
     declare title: string;
     declare description: string;
+    declare role: string;
     declare is_complete?: is_complete;
 
     declare status?: status;
@@ -73,6 +74,10 @@ function init(sequelize: Sequelize) {
             },
             description: {
                 type: new DataTypes.TEXT(),
+                allowNull: true,
+            },
+            role: {
+                type: new DataTypes.STRING(50),
                 allowNull: true,
             },
             is_complete: {

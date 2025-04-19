@@ -74,7 +74,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     <label>Date</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="date"
                                             placeholder="date"
                                             name="date"
                                             defaultValue={moment(

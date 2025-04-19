@@ -69,7 +69,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Date</td>
                                         <td>:</td>
                                         <td>
-                                            {moment(state.item.month).format(
+                                            {moment(state.item?.date).format(
                                                 'YYYY-MM-DD',
                                             )}
                                         </td>

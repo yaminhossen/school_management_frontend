@@ -134,7 +134,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                     <td>{i.title}</td>
                                                     <td>{i.description}</td>
                                                     <td>
-                                                        {moment().format(
+                                                        {moment(i.date).format(
                                                             'YYYY-MM-DD',
                                                         )}
                                                     </td>

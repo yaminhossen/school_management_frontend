@@ -86,6 +86,32 @@ const Create: React.FC<Props> = (props: Props) => {
                                         ></textarea>
                                     </div>
                                 </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Group</label>
+                                    <div className="form_elements">
+                                        <select name="role" id="">
+                                            <option value="">
+                                                select group
+                                            </option>
+                                            <option value="admin">admin</option>
+                                            <option value="admission-officer">
+                                                admission-officer
+                                            </option>
+                                            <option value="librarian">
+                                                librarian
+                                            </option>
+                                            <option value="accountant">
+                                                accountant
+                                            </option>
+                                            <option value="driver">
+                                                driver
+                                            </option>
+                                            <option value="teacher">
+                                                teacher
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div className="form-group form-horizontal">
                                 <label></label>
