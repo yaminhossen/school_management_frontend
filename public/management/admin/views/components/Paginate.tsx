@@ -18,6 +18,7 @@ export interface Props {
         total: number;
     };
     set_url: Function;
+    set_id?: Function;
     all: Function;
     set_paginate: Function;
     set_page: Function;
@@ -27,6 +28,7 @@ export interface Props {
 const Paginate: React.FC<Props> = ({
     data,
     set_url,
+    // set_id,
     set_page,
     all,
     set_paginate,
@@ -51,6 +53,7 @@ const Paginate: React.FC<Props> = ({
         }
         dispatch(set_url(final_url.href));
         dispatch(all({}));
+        // dispatch(set_id(set_id));
     }
 
     function set_page_limit(value) {
@@ -58,6 +61,7 @@ const Paginate: React.FC<Props> = ({
         dispatch(set_page(1));
         dispatch(set_paginate(value));
         dispatch(all({}));
+        // dispatch(set_id(set_id));
     }
 
     if (data && !Object.keys(data).length) {

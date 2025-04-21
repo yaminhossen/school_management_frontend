@@ -146,3 +146,41 @@
 {"level":60,"time":1745058632226,"pid":2500,"hostname":"DESKTOP-9421701","file":"services\\profile_update.ts:85:19)","time":"4/19/2025 4:30:32 PM","message":"operation not possible"}
 {"level":60,"time":1745059696171,"pid":2500,"hostname":"DESKTOP-9421701","file":"services\\profile_update.ts:85:19)","time":"4/19/2025 4:48:16 PM","message":"operation not possible"}
 {"level":60,"time":1745059704871,"pid":2500,"hostname":"DESKTOP-9421701","file":"services\\profile_update.ts:85:19)","time":"4/19/2025 4:48:24 PM","message":"operation not possible"}
+{"level":60,"time":1745060463415,"pid":16672,"hostname":"DESKTOP-9421701","file":"services\\profile_update.ts:91:19)","time":"4/19/2025 5:01:03 PM","message":"operation not possible"}
+{"level":60,"time":1745122460905,"pid":13016,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/20/2025 10:14:20 AM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1745122462312,"pid":13016,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/20/2025 10:14:22 AM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1745211516547,"pid":1420,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/21/2025 10:58:36 AM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1745213390807,"pid":1420,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/21/2025 11:29:50 AM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1745213396063,"pid":1420,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/21/2025 11:29:56 AM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1745213397333,"pid":1420,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/21/2025 11:29:57 AM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1745213398142,"pid":1420,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/21/2025 11:29:58 AM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1745213409928,"pid":1420,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/21/2025 11:30:09 AM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1745213452374,"pid":1420,"hostname":"DESKTOP-9421701","file":"services\\details.ts:102:19)","time":"4/21/2025 11:30:52 AM","message":"data not found"}
+{"level":60,"time":1745213851393,"pid":1420,"hostname":"DESKTOP-9421701","file":"services\\details.ts:102:19)","time":"4/21/2025 11:37:31 AM","message":"data not found"}
+{"level":60,"time":1745213899644,"pid":1420,"hostname":"DESKTOP-9421701","file":"services\\details.ts:102:19)","time":"4/21/2025 11:38:19 AM","message":"data not found"}
+{"level":60,"time":1745213900327,"pid":1420,"hostname":"DESKTOP-9421701","file":"services\\details.ts:102:19)","time":"4/21/2025 11:38:20 AM","message":"data not found"}
+{"level":60,"time":1745213912935,"pid":1420,"hostname":"DESKTOP-9421701","file":"services\\details.ts:102:19)","time":"4/21/2025 11:38:32 AM","message":"data not found"}
+{"level":60,"time":1745213914013,"pid":1420,"hostname":"DESKTOP-9421701","file":"services\\details.ts:102:19)","time":"4/21/2025 11:38:34 AM","message":"data not found"}
+{"level":60,"time":1745215267574,"pid":12876,"hostname":"DESKTOP-9421701","file":"services\\details.ts:102:19)","time":"4/21/2025 12:01:07 PM","message":"data not found"}
+{"level":60,"time":1745215267674,"pid":12876,"hostname":"DESKTOP-9421701","file":"services\\details.ts:102:19)","time":"4/21/2025 12:01:07 PM","message":"data not found"}
+{"level":60,"time":1745215271044,"pid":12876,"hostname":"DESKTOP-9421701","file":"services\\details.ts:102:19)","time":"4/21/2025 12:01:11 PM","message":"data not found"}
+{"level":60,"time":1745224157288,"pid":12876,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:131:15)","time":"4/21/2025 2:29:17 PM","message":"Unknown column 'BranchClassStudentsModel.name' in 'where clause'"}
+{"level":60,"time":1745224200521,"pid":12876,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:131:15)","time":"4/21/2025 2:30:00 PM","message":"Unknown column 'BranchClassStudentsModel.name' in 'where clause'"}
+{"level":60,"time":1745225074642,"pid":9032,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/21/2025 2:44:34 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1745225076696,"pid":9032,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/21/2025 2:44:36 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1745225369029,"pid":2576,"hostname":"DESKTOP-9421701","file":"services\\details.ts:102:19)","time":"4/21/2025 2:49:29 PM","message":"data not found"}
+{"level":60,"time":1745225369115,"pid":2576,"hostname":"DESKTOP-9421701","file":"services\\details.ts:102:19)","time":"4/21/2025 2:49:29 PM","message":"data not found"}
+{"level":60,"time":1745225370890,"pid":2576,"hostname":"DESKTOP-9421701","file":"services\\details.ts:102:19)","time":"4/21/2025 2:49:30 PM","message":"data not found"}
+{"level":60,"time":1745225371552,"pid":2576,"hostname":"DESKTOP-9421701","file":"services\\details.ts:102:19)","time":"4/21/2025 2:49:31 PM","message":"data not found"}
+{"level":60,"time":1745225373066,"pid":2576,"hostname":"DESKTOP-9421701","file":"services\\details.ts:102:19)","time":"4/21/2025 2:49:33 PM","message":"data not found"}
+{"level":60,"time":1745227112099,"pid":2576,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:131:15)","time":"4/21/2025 3:18:32 PM","message":"Unknown column 'BranchClassStudentsModel.name' in 'where clause'"}
+{"level":60,"time":1745227116667,"pid":2576,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:131:15)","time":"4/21/2025 3:18:36 PM","message":"Unknown column 'BranchClassStudentsModel.name' in 'where clause'"}
+{"level":60,"time":1745227137495,"pid":2576,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:131:15)","time":"4/21/2025 3:18:57 PM","message":"Unknown column 'BranchClassStudentsModel.name' in 'where clause'"}
+{"level":60,"time":1745227811142,"pid":13724,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:147:15)","time":"4/21/2025 3:30:11 PM","message":"Unknown column 'infostudent.student_name' in 'on clause'"}
+{"level":60,"time":1745227822314,"pid":13724,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:147:15)","time":"4/21/2025 3:30:22 PM","message":"Unknown column 'infostudent.student_name' in 'on clause'"}
+{"level":60,"time":1745227838070,"pid":13724,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:147:15)","time":"4/21/2025 3:30:38 PM","message":"Unknown column 'infostudent.student_name' in 'on clause'"}
+{"level":60,"time":1745229329849,"pid":15392,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:139:15)","time":"4/21/2025 3:55:29 PM","message":"Unknown column 'infostudent.student_name' in 'on clause'"}
+{"level":60,"time":1745230385641,"pid":14072,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:147:15)","time":"4/21/2025 4:13:05 PM","message":"Unknown column 'BranchClassStudentsModel.student_id' in 'where clause'"}
+{"level":60,"time":1745233028215,"pid":10128,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:106:15)","time":"4/21/2025 4:57:08 PM","message":"Unknown column 'infostudent.student_idd' in 'on clause'"}
+{"level":60,"time":1745235463488,"pid":8416,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:121:15)","time":"4/21/2025 5:37:43 PM","message":"Unknown column 'infostudent.student_name' in 'on clause'"}
+{"level":60,"time":1745235470112,"pid":8416,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:121:15)","time":"4/21/2025 5:37:50 PM","message":"Unknown column 'infostudent.student_name' in 'on clause'"}

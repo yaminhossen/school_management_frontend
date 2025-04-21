@@ -95,14 +95,6 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                         >
                                                             Dues
                                                         </Link>
-                                                        {/* <Link
-                                                            // to="/students/update"
-                                                            to={`/students/edit/${i.branch_student_id}`}
-                                                            className="btn btn-sm ml-2  btn-outline-info"
-                                                            type="submit"
-                                                        >
-                                                            Edit
-                                                        </Link> */}
                                                     </td>
                                                 </tr>
                                             );

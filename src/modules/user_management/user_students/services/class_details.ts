@@ -2,7 +2,7 @@ import { FindAndCountOptions } from 'sequelize';
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import response from '../helpers/response';
-import { body, validationResult, query, param } from 'express-validator';
+import { validationResult } from 'express-validator';
 import {
     anyObject,
     responseObject,
@@ -11,48 +11,20 @@ import {
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 
-/** validation rules */
 async function validate(req: Request) {
-    console.log('req', req.query);
-
-    // await query('orderByCol')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the orderByCol field is required')
-    //     .run(req);
-
-    // await query('orderByAsc')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the orderByAsc field is required')
-    //     .run(req);
-
-    // await query('show_active_data')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the show_active_data field is required')
-    //     .run(req);
-
-    // await query('paginate')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the paginate field is required')
-    //     .run(req);
-
     let result = await validationResult(req);
-
     return result;
 }
+
 async function all(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
-    /** validation */
     let validate_result = await validate(req as Request);
     if (!validate_result.isEmpty()) {
         return response(422, 'validation error', validate_result.array());
     }
-    /** initializations */
+
     let models = await db();
     let informationsModel = models.UserStudentInformationsModel;
     let studentsModel = models.UserStudentsModel;
@@ -65,7 +37,7 @@ async function all(
     let orderByCol = query_param.orderByCol || 'id';
     let orderByAsc = query_param.orderByAsc || 'true';
     let show_active_data = query_param.show_active_data || 'true';
-    let paginate = parseInt((req.query as any).paginate) || 10;
+    let paginate = parseInt(query_param.paginate) || 10;
     let select_fields: string[] = [];
     let exclude_fields: string[] = ['password'];
 
@@ -75,15 +47,13 @@ async function all(
     } else {
         select_fields = ['id'];
     }
-    console.log('all studnet id', params.id);
 
     let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
+        order: [[orderByCol, orderByAsc === 'true' ? 'ASC' : 'DESC']],
         where: {
-            status: show_active_data == 'true' ? 'active' : 'deactive',
+            status: show_active_data === 'true' ? 'active' : 'deactive',
             branch_class_id: params.id,
         },
-        // include: [models.Project],
         include: [
             {
                 model: studentsModel,
@@ -100,26 +70,62 @@ async function all(
                 ],
             },
         ],
-    };
-
-    query.attributes = {
-        include: select_fields,
-        exclude: exclude_fields,
+        attributes: {
+            include: select_fields,
+            exclude: exclude_fields,
+        },
     };
 
     if (search_key) {
         query.where = {
             ...query.where,
             [Op.or]: [
-                { name: { [Op.like]: `%${search_key}%` } },
-                { status: { [Op.like]: `%${search_key}%` } },
-                { id: { [Op.like]: `%${search_key}%` } },
+                {
+                    '$infostudent.student_id$': {
+                        [Op.like]: `%${search_key}%`,
+                    },
+                },
+                { '$infostudent.role_no$': { [Op.like]: `%${search_key}%` } },
+                { '$branchstudent.name$': { [Op.like]: `%${search_key}%` } },
+                // { id: { [Op.like]: `%${search_key}%` } },
             ],
         };
     }
 
+    // Apply search ONLY to infostudent
+    // if (search_key && query.include) {
+    //     const includeArr = query.include as Array<any>;
+
+    //     // Apply search on 'infostudent'
+    //     const infoInclude = includeArr.find(
+    //         (inc: any) =>
+    //             inc && typeof inc === 'object' && inc.as === 'infostudent',
+    //     );
+
+    //     if (infoInclude) {
+    //         infoInclude.where = {
+    //             [Op.or]: [
+    //                 { student_id: { [Op.like]: `%${search_key}%` } },
+    //                 { role_no: { [Op.like]: `%${search_key}%` } },
+    //             ],
+    //         };
+    //     }
+
+    //     // Apply search on 'branchstudent'
+    //     const branchInclude = includeArr.find(
+    //         (inc: any) =>
+    //             inc && typeof inc === 'object' && inc.as === 'branchstudent',
+    //     );
+
+    //     if (branchInclude) {
+    //         branchInclude.where = {
+    //             name: { [Op.like]: `%${search_key}%` },
+    //         };
+    //     }
+    // }
+
     try {
-        let data = await (fastify_instance as anyObject).paginate(
+        const data = await (fastify_instance as anyObject).paginate(
             req,
             models.BranchClassStudentsModel,
             paginate,
@@ -127,7 +133,7 @@ async function all(
         );
         return response(200, 'data fetched', data);
     } catch (error: any) {
-        let uid = await error_trace(models, error, req.url, req.query);
+        const uid = await error_trace(models, error, req.url, req.query);
         throw new custom_error('server error', 500, error.message, uid);
     }
 }

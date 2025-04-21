@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 // import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
-import { all } from './config/store/async_actions/all';
+// import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
 import { initialState } from './config/store/inital_state';
 import Header from './components/all_data_page/Header';
@@ -16,37 +16,37 @@ import TableRowAction from './components/all_data_page/TableRowAction';
 import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
-import { all_class } from './config/store/async_actions/all_class';
+import { class_details1 } from './config/store/async_actions/class_details1';
 import { Link, useParams } from 'react-router-dom';
-import { class_details } from './config/store/async_actions/class_details';
+import Paginate2 from '../../../components/Paginate2';
+import Header2 from './components/all_data_page/Header2';
 
 export interface Props {}
 
 const ClassDetails: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
 
     const dispatch = useAppDispatch();
     const params = useParams();
-    console.log('id', params.id);
+    console.log('param id', params.id);
 
     useEffect(() => {
-        dispatch(storeSlice.actions.set_item({}));
-        dispatch(class_details({ id: params.id }) as any);
+        dispatch(storeSlice.actions.set_select_fields('id'));
+        dispatch(class_details1({ id: params.id }) as any);
     }, []);
 
     function quick_view(data: anyObject = {}) {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
+    // console.log('state date', (state.class_details1 as any)?.data?.length);
+
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">
-                <Header></Header>
+                <Header2></Header2>
 
                 <div className="content_body">
                     <div className="data_list">
@@ -55,34 +55,26 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                 <thead>
                                     <tr>
                                         <th />
+                                        <th>
+                                            <SelectAll />
+                                        </th>
+                                        <th>No.</th>
                                         <TableHeading
                                             label={`ID`}
                                             col_name={`id`}
                                             sort={false}
                                         />
-                                        <TableHeading
-                                            label={``}
-                                            col_name={``}
-                                            sort={false}
-                                        />
-                                        <TableHeading
-                                            label={`Serial`}
-                                            col_name={`serial`}
-                                            sort={false}
-                                        />
+                                        {/* <th>Serial</th> */}
+                                        <th>Image</th>
                                         <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
                                             sort={false}
                                         />
+                                        <th>Student Id</th>
                                         <TableHeading
-                                            label={`Student Id`}
-                                            col_name={`student id`}
-                                            sort={false}
-                                        />
-                                        <TableHeading
-                                            label={`Roll`}
-                                            col_name={`roll`}
+                                            label={`Role`}
+                                            col_name={`role`}
                                             sort={false}
                                         />
                                         <TableHeading
@@ -97,25 +89,53 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                         />
                                     </tr>
                                 </thead>
-                                <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
-                                    {(state.item as any)?.data?.map(
-                                        (i: { [key: string]: any }) => {
-                                            return (
+                                {(state.all as any)?.data?.length ? (
+                                    <tbody id="all_list">
+                                        {(state.all as any)?.data?.map(
+                                            (
+                                                i: { [key: string]: any },
+                                                index: number,
+                                            ) => (
                                                 <tr
                                                     key={i.id}
                                                     className={`table_rows table_row_${i.id}`}
                                                 >
-                                                    <td> </td>
+                                                    <td>
+                                                        <TableRowAction
+                                                            item={i}
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <SelectItem item={i} />
+                                                    </td>
+                                                    <td>
+                                                        <span>{index + 1}</span>
+                                                    </td>
                                                     <td>
                                                         <span
                                                             className="quick_view_trigger"
-                                                            // onClick={() =>
-                                                            //     quick_view(i)
-                                                            // }
+                                                            onClick={() =>
+                                                                quick_view(i)
+                                                            }
                                                         >
                                                             {i.id}
                                                         </span>
+                                                    </td>
+                                                    <td>
+                                                        <img
+                                                            src={
+                                                                i.branchstudent
+                                                                    ?.image
+                                                                    ? i
+                                                                        .branchstudent
+                                                                        ?.image
+                                                                    : '/assets/dashboard/images/avatar.png'
+                                                            }
+                                                            alt=""
+                                                            style={{
+                                                                height: 30,
+                                                            }}
+                                                        />
                                                     </td>
                                                     <td>
                                                         {i.branchstudent?.name}
@@ -135,6 +155,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                                 ?.name
                                                         }
                                                     </td>
+
                                                     <td>
                                                         <Link
                                                             // to="/students/single/student/"
@@ -154,21 +175,37 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                         </Link>
                                                     </td>
                                                 </tr>
-                                            );
-                                        },
-                                    )}
-                                </tbody>
+                                            ),
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 
-                        <Paginate
+                        <Paginate2
                             set_url={storeSlice.actions.set_url}
+                            set_id={1}
                             set_paginate={storeSlice.actions.set_paginate}
                             set_page={storeSlice.actions.set_page}
-                            all={all}
-                            data={state.item as any}
+                            all={class_details1}
+                            data={state.all as any}
                             selected_paginate={state.paginate}
-                        ></Paginate>
+                        ></Paginate2>
                     </div>
                 </div>
                 <TableFooter></TableFooter>
