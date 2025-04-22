@@ -2843,6 +2843,22 @@ td.col_id {
 .single-info-details .item-content .section_naviagation li a {
   white-space: nowrap;
 }
+.single-info-details .item-content .section_naviagation .active_Li {
+  padding: 0px 0px 0px 0px;
+  border: 1px solid rgb(197, 197, 247);
+}
+.single-info-details .item-content .section_naviagation .active_Li .active_nav_link {
+  color: #fefefe !important; /* Or your desired active color */
+  background-color: #0570eb !important; /* Or your desired active color */
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+.single-info-details .item-content .section_naviagation .active_Li .normal_nav_link {
+  color: #fdfcfc !important; /* Or your desired active color */
+  background-color: rgba(36, 31, 31, 0.5607843137) !important; /* Or your desired active color */
+  padding: 8px 12px;
+  border-radius: 8px;
+}
 .single-info-details .item-content .info-table .table_heading {
   color: rgba(113, 247, 158, 0.849);
   font-size: 22px;

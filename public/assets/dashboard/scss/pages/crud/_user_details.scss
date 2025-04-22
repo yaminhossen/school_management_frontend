@@ -53,6 +53,29 @@
         white-space: nowrap;
       }
     }
+    .active_Li{
+      
+      padding: 0px 0px 0px 0px;
+      // margin:  0px 12px !important;
+      border: 1px solid rgb(197, 197, 247);
+      .active_nav_link {
+        color: #fefefe !important; /* Or your desired active color */
+        background-color: #0570eb !important; /* Or your desired active color */
+        // font-weight: bold !important;
+        padding: 8px 12px;
+        
+      // border: 1px solid rgb(194, 179, 179);
+      border-radius: 8px;
+      }
+      .normal_nav_link {
+        color: #fdfcfc !important; /* Or your desired active color */
+        background-color: #241f1f8f !important; /* Or your desired active color */
+        // font-weight: bold !important;
+        padding: 8px 12px;
+        // border: 1px solid rgb(170, 170, 187);
+        border-radius: 8px;
+      }
+    }
   }
 
   .info-table {

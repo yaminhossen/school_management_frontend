@@ -184,3 +184,5 @@
 {"level":60,"time":1745233028215,"pid":10128,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:106:15)","time":"4/21/2025 4:57:08 PM","message":"Unknown column 'infostudent.student_idd' in 'on clause'"}
 {"level":60,"time":1745235463488,"pid":8416,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:121:15)","time":"4/21/2025 5:37:43 PM","message":"Unknown column 'infostudent.student_name' in 'on clause'"}
 {"level":60,"time":1745235470112,"pid":8416,"hostname":"DESKTOP-9421701","file":"services\\class_details.ts:121:15)","time":"4/21/2025 5:37:50 PM","message":"Unknown column 'infostudent.student_name' in 'on clause'"}
+{"level":60,"time":1745236991850,"pid":11148,"hostname":"DESKTOP-9421701","file":"services\\all.ts:110:15)","time":"4/21/2025 6:03:11 PM","message":"Unknown column 'UserTeachersModel.preferred_name' in 'where clause'"}
+{"level":60,"time":1745298964131,"pid":13004,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/22/2025 11:16:04 AM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}

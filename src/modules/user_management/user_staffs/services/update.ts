@@ -201,7 +201,7 @@ async function update(
                 await staff_branch.update(bs_inputs);
             }
         }
-        return response(200, 'data created', { data });
+        return response(200, 'data updated', { data });
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
         if (error instanceof custom_error) {

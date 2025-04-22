@@ -7,7 +7,7 @@ import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { details } from './config/store/async_actions/details';
 import { initialState } from './config/store/inital_state';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 export interface Props {}
 
@@ -37,104 +37,126 @@ const Details: React.FC<Props> = (props: Props) => {
                             <div className="item-img">
                                 <img
                                     className="user_profile_img"
-                                    src={state.item.image}
+                                    src={state.item?.image}
                                     alt="student"
                                 />
                             </div>
                             <div className="item-content">
                                 <div className="header-inline item-header details_header">
                                     <h3 className="text-dark-medium profile_name font-medium">
-                                        Masud Rana
+                                        {state.item?.name}
                                     </h3>
-                                    <div className="header-elements">
-                                        <ul>
-                                            <li>
-                                                <a href="">
-                                                    <span className="material-symbols-outlined fill">
-                                                        edit_square
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span className="material-symbols-outlined fill">
-                                                        print
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span className="material-symbols-outlined fill">
-                                                        system_update_alt
-                                                    </span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <div className="header-elements"></div>
                                 </div>
                                 <ul className="section_naviagation">
-                                    <li>
-                                        <Link
+                                    <li className="active_Li">
+                                        <NavLink
                                             to={`/user-students/details/${params.id}/basic-information`}
+                                            // className="active_nav_link"
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? 'active_nav_link'
+                                                    : 'normal_nav_link'
+                                            }
                                         >
                                             Basic informations
-                                        </Link>
+                                        </NavLink>
                                     </li>
-                                    <li>
-                                        <Link
+                                    <li className="active_Li">
+                                        <NavLink
                                             to={`/user-students/details/${params.id}/academic-information`}
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? 'active_nav_link'
+                                                    : 'normal_nav_link'
+                                            }
                                         >
                                             Informations
-                                        </Link>
+                                        </NavLink>
                                     </li>
-                                    <li>
-                                        <Link
+                                    <li className="active_Li">
+                                        <NavLink
                                             to={`/user-students/details/${params.id}/document`}
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? 'active_nav_link'
+                                                    : 'normal_nav_link'
+                                            }
                                         >
                                             Documents
-                                        </Link>
+                                        </NavLink>
                                     </li>
-                                    <li>
-                                        <Link
+                                    <li className="active_Li">
+                                        <NavLink
                                             to={`/user-students/details/${params.id}/parent`}
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? 'active_nav_link'
+                                                    : 'normal_nav_link'
+                                            }
                                         >
                                             Parents
-                                        </Link>
+                                        </NavLink>
                                     </li>
-                                    <li>
-                                        <Link
+                                    <li className="active_Li">
+                                        <NavLink
                                             to={`/user-students/details/${params.id}/skill`}
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? 'active_nav_link'
+                                                    : 'normal_nav_link'
+                                            }
                                         >
                                             Skills
-                                        </Link>
+                                        </NavLink>
                                     </li>
-                                    <li>
-                                        <Link
+                                    <li className="active_Li">
+                                        <NavLink
                                             to={`/user-students/details/${params.id}/language`}
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? 'active_nav_link'
+                                                    : 'normal_nav_link'
+                                            }
                                         >
                                             Languages
-                                        </Link>
+                                        </NavLink>
                                     </li>
-                                    <li>
-                                        <Link
+                                    <li className="active_Li">
+                                        <NavLink
                                             to={`/user-students/details/${params.id}/contact-number`}
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? 'active_nav_link'
+                                                    : 'normal_nav_link'
+                                            }
                                         >
                                             Contact Numbers
-                                        </Link>
+                                        </NavLink>
                                     </li>
-                                    <li>
-                                        <Link
+                                    <li className="active_Li">
+                                        <NavLink
                                             to={`/user-students/details/${params.id}/educational-background`}
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? 'active_nav_link'
+                                                    : 'normal_nav_link'
+                                            }
                                         >
                                             Educational Backgrounds
-                                        </Link>
+                                        </NavLink>
                                     </li>
-                                    <li>
-                                        <Link
+                                    <li className="active_Li">
+                                        <NavLink
                                             to={`/user-students/details/${params.id}/payments`}
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? 'active_nav_link'
+                                                    : 'normal_nav_link'
+                                            }
                                         >
                                             Payments
-                                        </Link>
+                                        </NavLink>
                                     </li>
                                     {/* <li>
                                         <Link
