@@ -77,16 +77,14 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                                                                 i.values_title
                                                                     ?.file
                                                             }
-                                                            width={40}
+                                                            width={50}
+                                                            height={50}
                                                             alt=""
                                                         />
                                                     </a>
                                                 </td>
-                                                <td>
+                                                {/* <td>
                                                     <button className="btn btn_1">
-                                                        <span className="material-symbols-outlined pointer">
-                                                            download
-                                                        </span>
                                                         <span>
                                                             <a
                                                                 target="blank"
@@ -101,8 +99,28 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                                                             >
                                                                 download
                                                             </a>
+                                                            <span className="material-symbols-outlined pointer">
+                                                                download
+                                                            </span>{' '}
                                                         </span>
                                                     </button>
+                                                </td> */}
+                                                <td className="download_td">
+                                                    <a
+                                                        className="btn download_btn"
+                                                        target="blank"
+                                                        href={
+                                                            i.values_title?.file
+                                                        }
+                                                        download={i.values_title?.file
+                                                            .split('/')
+                                                            .pop()}
+                                                    >
+                                                        download
+                                                        <span className="material-symbols-outlined pointer">
+                                                            download
+                                                        </span>{' '}
+                                                    </a>
                                                 </td>
                                             </tr>
                                         );

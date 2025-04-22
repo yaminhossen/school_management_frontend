@@ -61,18 +61,6 @@ const TaskAssign: React.FC<Props> = (props: Props) => {
         dispatch(all_teacher({}) as any);
     }, []);
 
-    // useEffect(() => {
-    //     console.log('teachers', teachers);
-    // }, [teachers]);
-
-    // useEffect(() => {
-    //     console.log('staffs', staffs);
-    // }, [staffs]);
-
-    // if (state.teachers) {
-    //     console.log('state teachers', state.teachers);
-    // }
-
     async function handle_submit(e) {
         e.preventDefault();
         console.log('yamjin');
@@ -80,6 +68,7 @@ const TaskAssign: React.FC<Props> = (props: Props) => {
         let response = await dispatch(
             assign_task({ staffs, teachers, id }) as any,
         );
+        console.log('response', response);
     }
 
     return (
@@ -89,7 +78,7 @@ const TaskAssign: React.FC<Props> = (props: Props) => {
                     <Header page_title={setup.details_page_title}></Header>
 
                     {Object.keys(state.item).length && (
-                        <div className="content_body">
+                        <div className="content_body custom_scroll">
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
                                     <tr>

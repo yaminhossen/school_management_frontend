@@ -66,11 +66,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`name`}
                                             sort={true}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Designation`}
                                             col_name={`designation`}
                                             sort={true}
-                                        />
+                                        /> */}
                                         <TableHeading
                                             label={`Phone number`}
                                             col_name={`phone_number`}
@@ -124,11 +124,11 @@ const All: React.FC<Props> = (props: Props) => {
                                                     </td>
                                                     {/* <td>{i.branch}</td> */}
                                                     <td>{i.name}</td>
-                                                    <td>
+                                                    {/* <td>
                                                         {i.role
                                                             ? i.role
-                                                            : 'staff'}
-                                                    </td>
+                                                            : 'Te'}
+                                                    </td> */}
                                                     <td>{i.phone_number}</td>
                                                     <td>{i.email}</td>
                                                     {/* <td>{i.address}</td> */}

@@ -21,3 +21,20 @@
         background-color: rgba(15, 113, 170, 0.534);
     }
 }
+
+.download_td {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.download_btn {
+    border: 1px solid rgba(15, 113, 170, 0.534);
+    color: var(--brand_white);
+    width: 140px;
+    display: flex;
+    align-items: center;
+    &:hover {
+        background-color: rgba(15, 113, 170, 0.534);
+    }
+}

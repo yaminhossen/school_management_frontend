@@ -40,7 +40,17 @@ const All: React.FC<Props> = (props: Props) => {
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">
-                <Header></Header>
+                <div className="action_bar">
+                    <div className="navigation">
+                        <ul>
+                            <li className="search_li"></li>
+                        </ul>
+                    </div>
+                    <div className="title no_move" id="users_drag">
+                        <h2>All Students</h2>
+                    </div>
+                    <div className="control"></div>
+                </div>
 
                 <div className="content_body">
                     <div className="data_list">
@@ -120,11 +130,11 @@ const All: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                <TableFooter></TableFooter>
+                {/* <TableFooter></TableFooter> */}
             </div>
 
-            <Filter></Filter>
-            <QuickView></QuickView>
+            {/* <Filter></Filter>
+            <QuickView></QuickView> */}
         </div>
     );
 };

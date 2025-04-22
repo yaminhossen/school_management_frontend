@@ -52,7 +52,11 @@ const EducationalBackground: React.FC<Props> = (props: Props) => {
                                                 <td></td>
                                                 <td>{i.id}</td>
                                                 <td>{i.previous_institute}</td>
-                                                <td>{i.year_of_leaving}</td>
+                                                <td>
+                                                    {moment(
+                                                        i.year_of_leaving,
+                                                    ).format('YYYY-MM-DD')}
+                                                </td>
                                                 <td>
                                                     <a
                                                         href={
@@ -70,7 +74,24 @@ const EducationalBackground: React.FC<Props> = (props: Props) => {
                                                         />
                                                     </a>
                                                 </td>
-                                                <td>
+                                                <td className="download_td">
+                                                    <a
+                                                        className="btn download_btn"
+                                                        target="blank"
+                                                        href={
+                                                            i.transfer_cirtificate
+                                                        }
+                                                        download={i.transfer_cirtificate
+                                                            .split('/')
+                                                            .pop()}
+                                                    >
+                                                        download
+                                                        <span className="material-symbols-outlined pointer">
+                                                            download
+                                                        </span>{' '}
+                                                    </a>
+                                                </td>
+                                                {/* <td>
                                                     <button className="btn btn_1">
                                                         <span className="material-symbols-outlined pointer">
                                                             download
@@ -89,7 +110,7 @@ const EducationalBackground: React.FC<Props> = (props: Props) => {
                                                             </a>
                                                         </span>
                                                     </button>
-                                                </td>
+                                                </td> */}
                                                 <td>{i.result}</td>
                                             </tr>
                                         );
