@@ -56,6 +56,10 @@ axios.interceptors.response.use(
         // (window as any)
         //     .jQuery('.loader-wrapper')
         //     .fadeOut('slow', function () {});
+        (window as anyObject).toaster(
+            `${response.status} - ${response.statusText}`,
+        );
+        console.log('response data', response);
         return response;
     },
 

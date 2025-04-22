@@ -70,7 +70,7 @@ async function update(
         password = await bcrypt.hash(body.password, saltRounds);
     }
 
-    let image_path = 'avatar.png';
+    let image_path = '';
 
     if (body['image']?.ext) {
         image_path =
@@ -93,7 +93,7 @@ async function update(
                 name: body.name,
                 email: body.email,
                 phone_number: body.phone_number,
-                image: image_path,
+                image: image_path || data.image,
             };
             if (password) {
                 inputs.password = password || data.password;

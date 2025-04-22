@@ -53,8 +53,12 @@ const Details: React.FC<Props> = (props: Props) => {
                             <div className="item-img">
                                 <img
                                     className="user_profile_img"
-                                    src={state.item?.image}
-                                    alt="teacher"
+                                    src={
+                                        state.item?.image
+                                            ? state.item?.image
+                                            : '/assets/dashboard/images/avatar.png'
+                                    }
+                                    alt="parent"
                                 />
                             </div>
                             <div className="item-content">

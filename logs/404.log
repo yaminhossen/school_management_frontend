@@ -418,3 +418,12 @@
 {"level":60,"time":1745318683847,"pid":9920,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/2"}
 {"level":60,"time":1745318684386,"pid":9920,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/2"}
 {"level":60,"time":1745318690666,"pid":9920,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/2"}
+{"level":60,"time":1745318786285,"pid":8644,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1745318787048,"pid":8644,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1745321739586,"pid":8644,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
+{"level":60,"time":1745321743778,"pid":8644,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/18"}
+{"level":60,"time":1745321747078,"pid":8644,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/18"}
+{"level":60,"time":1745321749584,"pid":8644,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/18"}
+{"level":60,"time":1745322412721,"pid":6300,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/18"}
+{"level":60,"time":1745322413100,"pid":6300,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/18"}
+{"level":60,"time":1745322414193,"pid":6300,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/18"}
