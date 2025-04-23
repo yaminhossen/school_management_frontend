@@ -14,11 +14,27 @@ import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
 import task_assign from './services/task_assign';
+import teacher_pending from './services/teacher_pending';
+import teacher_complete from './services/teacher_complete';
 
 export default function (fastify: FastifyInstance) {
     return {
         all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all(fastify, req);
+            res.code(data.status).send(data);
+        },
+        teacher_pending: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await teacher_pending(fastify, req);
+            res.code(data.status).send(data);
+        },
+        teacher_complete: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await teacher_complete(fastify, req);
             res.code(data.status).send(data);
         },
 
