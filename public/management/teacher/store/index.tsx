@@ -4,11 +4,13 @@ import { useDispatch } from 'react-redux';
 import commonStore from './slices/common_slice';
 import users from '../views/pages/users/config/store';
 import tasks_slice from '../views/pages/tasks/config/store';
+import meeting_agendas_slice from '../views/pages/meeting_agendas/config/store';
 
 const store = configureStore({
     reducer: {
         users: users.reducer,
         tasks: tasks_slice.reducer,
+        meeting_agendas: meeting_agendas_slice.reducer,
         common_store: commonStore.reducer,
     },
     devTools: true,

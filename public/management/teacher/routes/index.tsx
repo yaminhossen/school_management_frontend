@@ -24,6 +24,7 @@ import course_materials_routes from '../views/pages/course_materials/config/rout
 import reports_routes from '../views/pages/teacher_reports/config/routes';
 import settings_routes from '../views/pages/settings/config/routes';
 import tasks_routes from '../views/pages/tasks/config/routes';
+import meeting_agendas_routes from '../views/pages/meeting_agendas/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
@@ -62,6 +63,7 @@ const router: RouteTypes[] = [
             },
             user_branch_staff_routes,
             tasks_routes,
+            meeting_agendas_routes,
         ],
     },
 ];

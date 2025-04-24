@@ -206,3 +206,4 @@
 {"level":60,"time":1745483620900,"pid":20316,"hostname":"DESKTOP-9421701","file":"services\\teacher_pending.ts:134:15)","time":"4/24/2025 2:33:40 PM","message":"Unknown column 'TaskUsersModel.name' in 'where clause'"}
 {"level":60,"time":1745484677128,"pid":20316,"hostname":"DESKTOP-9421701","file":"services\\teacher_pending.ts:134:15)","time":"4/24/2025 2:51:17 PM","message":"Unknown column 'TaskUsersModel.name' in 'where clause'"}
 {"level":60,"time":1745487906778,"pid":8436,"hostname":"DESKTOP-9421701","file":"services\\teacher_pending.ts:134:15)","time":"4/24/2025 3:45:06 PM","message":"Unknown column 'TaskUsersModel.name' in 'where clause'"}
+{"level":60,"time":1745490436820,"pid":19740,"hostname":"DESKTOP-9421701","file":"","time":"4/24/2025 4:27:16 PM","message":"You have used the alias agendas in two separate associations. Aliased associations must have unique aliases."}
