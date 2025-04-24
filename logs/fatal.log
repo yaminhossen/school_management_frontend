@@ -205,3 +205,4 @@
 {"level":60,"time":1745472769640,"pid":20316,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/24/2025 11:32:49 AM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
 {"level":60,"time":1745483620900,"pid":20316,"hostname":"DESKTOP-9421701","file":"services\\teacher_pending.ts:134:15)","time":"4/24/2025 2:33:40 PM","message":"Unknown column 'TaskUsersModel.name' in 'where clause'"}
 {"level":60,"time":1745484677128,"pid":20316,"hostname":"DESKTOP-9421701","file":"services\\teacher_pending.ts:134:15)","time":"4/24/2025 2:51:17 PM","message":"Unknown column 'TaskUsersModel.name' in 'where clause'"}
+{"level":60,"time":1745487906778,"pid":8436,"hostname":"DESKTOP-9421701","file":"services\\teacher_pending.ts:134:15)","time":"4/24/2025 3:45:06 PM","message":"Unknown column 'TaskUsersModel.name' in 'where clause'"}

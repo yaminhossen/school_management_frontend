@@ -169,9 +169,9 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                         {i.tasks?.description}
                                                     </td>
                                                     <td>
-                                                        {moment(i.date).format(
-                                                            'YYYY-MM-DD',
-                                                        )}
+                                                        {moment(
+                                                            i.created_at,
+                                                        ).format('YYYY-MM-DD')}
                                                     </td>
                                                     <td>
                                                         <button

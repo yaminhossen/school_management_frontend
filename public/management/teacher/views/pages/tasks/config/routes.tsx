@@ -4,6 +4,7 @@ import Index from '../Index';
 import Completed from '../page/Completed';
 import Pending from '../page/Pending';
 import Details from '../page/Details';
+import DetailsComplete from '../page/DetailsComplete';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -25,6 +26,10 @@ export default {
                     element: <Completed />,
                 },
             ],
+        },
+        {
+            path: 'details/complete/:id',
+            element: <DetailsComplete />,
         },
         {
             path: 'details/:id',

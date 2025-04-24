@@ -177,7 +177,7 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                     <td>
                                                         <Link
                                                             // to="/students/single/student/"
-                                                            to={`/${setup.route_prefix}/details/${i.tasks?.id}`}
+                                                            to={`/${setup.route_prefix}/details/complete/${i.tasks?.id}`}
                                                             className="btn btn-sm  btn-outline-info ml-2"
                                                             type="submit"
                                                         >

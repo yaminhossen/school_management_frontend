@@ -5,7 +5,7 @@ export interface Props {
     page_title: string;
 }
 
-const Header: React.FC<Props> = (props: Props) => {
+const HeaderComplete: React.FC<Props> = (props: Props) => {
     return (
         <>
             <div className="action_bar">
@@ -20,7 +20,7 @@ const Header: React.FC<Props> = (props: Props) => {
                 <div className="control">
                     <ul>
                         <li>
-                            <Link to={`/${setup.route_prefix}/pending`}>
+                            <Link to={`/${setup.route_prefix}/completed`}>
                                 <span className="material-symbols-outlined fill">
                                     arrow_back
                                 </span>
@@ -33,4 +33,4 @@ const Header: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Header;
+export default HeaderComplete;
