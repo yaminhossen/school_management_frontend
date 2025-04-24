@@ -45,16 +45,20 @@ const Pending: React.FC<Props> = (props: Props) => {
     }
     // let date = moment().format('YYYY-MM-DD');
 
-    const handleConfirmSubmit = async (e) => {
-        const confirmed = window.confirm('Are you sure you want to submit?');
-        if (!confirmed) return;
-        try {
-            console.log('it is confirmed');
-            // const response = await axios.post(
-            //     '/api/v1/student-evaluations/store',
-            // );
-        } catch (error) {
-            setError(error);
+    const handleConfirmSubmit = async (id) => {
+        // const confirmed = (window as any).s_confirm('Are you sure you want to submit?');
+        let confirm = await (window as anyObject).s_confirm('Are you sure');
+        console.log('thsis is the id', id);
+        // if (!confirmed) return;
+        if (confirm) {
+            try {
+                console.log('it is confirmed');
+                const response = await axios.post(
+                    `/api/v1/tasks/teacher-update/${id}`,
+                );
+            } catch (error) {
+                setError(error);
+            }
         }
     };
 
@@ -86,8 +90,8 @@ const Pending: React.FC<Props> = (props: Props) => {
                             <table>
                                 <thead>
                                     <tr>
-                                        {/* <th />
-                                        <th></th> */}
+                                        {/* <th /> */}
+                                        {/* <th></th> */}
                                         {/* <th>
                                             <SelectAll />
                                         </th>
@@ -136,16 +140,16 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                         <TableRowAction
                                                             item={i}
                                                         />
-                                                    </td>
-                                                    <td>
+                                                    </td> */}
+                                                    {/* <td>
                                                         <SelectItem item={i} />
                                                     </td> */}
                                                     <td>
                                                         <span
                                                             className="quick_view_trigger"
-                                                            // onClick={() =>
-                                                            //     quick_view(i)
-                                                            // }
+                                                            onClick={() =>
+                                                                quick_view(i)
+                                                            }
                                                         >
                                                             {index + 1}
                                                         </span>
@@ -169,14 +173,14 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                         )}
                                                     </td>
                                                     <td>
-                                                        <button
-                                                            onClick={
-                                                                handleConfirmSubmit
-                                                            }
-                                                            className="btn btn-sm btn-outline-info"
+                                                        <Link
+                                                            // to="/students/single/student/"
+                                                            to={`/${setup.route_prefix}/details/${i.tasks?.id}`}
+                                                            className="btn btn-sm  btn-outline-info ml-2"
+                                                            type="submit"
                                                         >
-                                                            Done
-                                                        </button>
+                                                            Show
+                                                        </Link>
                                                     </td>
                                                 </tr>
                                             );

@@ -24,9 +24,8 @@ import {
 } from 'sequelize';
 enum is_complete {
     pending = 'pending',
-    running = 'running',
     completed = 'completed',
-    nexttime = 'nexttime',
+    nexttime = 'block',
 }
 
 const tableName = 'tasks';
@@ -72,12 +71,7 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             is_complete: {
-                type: new DataTypes.ENUM(
-                    'pending',
-                    'running',
-                    'completed',
-                    'nexttime',
-                ),
+                type: new DataTypes.ENUM('pending', 'completed', 'block'),
                 allowNull: true,
             },
 

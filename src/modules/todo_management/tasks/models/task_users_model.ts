@@ -24,9 +24,8 @@ import {
 } from 'sequelize';
 enum is_complete {
     pending = 'pending',
-    running = 'running',
     completed = 'completed',
-    nexttime = 'nexttime',
+    nexttime = 'block',
 }
 
 const tableName = 'task_users';
@@ -39,8 +38,8 @@ type status = 'active' | 'deactive';
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
-    declare branch_id: number;
-    declare task_id: number;
+    declare branch_id?: number;
+    declare task_id?: number;
     declare staff_id?: number;
     declare teacher_id?: number;
     declare admin_id?: number;
@@ -81,12 +80,7 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             is_complete: {
-                type: new DataTypes.ENUM(
-                    'pending',
-                    'running',
-                    'completed',
-                    'nexttime',
-                ),
+                type: new DataTypes.ENUM('pending', 'completed', 'block'),
                 allowNull: true,
                 defaultValue: 'completed',
             },

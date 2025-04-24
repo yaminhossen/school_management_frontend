@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 // import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
@@ -20,6 +20,7 @@ import moment from 'moment/moment';
 import { Link } from 'react-router-dom';
 import HeadSearch from '../components/all_data_page/HeadSearch';
 import HeadRightButtons from '../components/all_data_page/HeadRightButtons';
+import axios from 'axios';
 
 export interface Props {}
 
@@ -27,6 +28,8 @@ const Pending: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
+
+    const [error, setError] = useState(null);
 
     const dispatch = useAppDispatch();
 
@@ -40,6 +43,25 @@ const Pending: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
     // let date = moment().format('YYYY-MM-DD');
+
+    const handleConfirmSubmit = async (id) => {
+        // const confirmed = (window as any).s_confirm('Are you sure you want to submit?');
+        let confirm = await (window as anyObject).s_confirm('Are you sure');
+        console.log('thsis is the id', id);
+        // if (!confirmed) return;
+        if (confirm) {
+            try {
+                console.log('it is confirmed');
+                const response = await axios.post(
+                    `/api/v1/tasks/teacher-update/${id}`,
+                );
+
+                dispatch(all({}) as any);
+            } catch (error) {
+                setError(error);
+            }
+        }
+    };
 
     return (
         <div className="page_content">
@@ -153,8 +175,12 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                     </td>
                                                     <td>
                                                         <button
+                                                            onClick={() =>
+                                                                handleConfirmSubmit(
+                                                                    i.tasks?.id,
+                                                                )
+                                                            }
                                                             className="btn btn-sm btn-outline-info"
-                                                            type="submit"
                                                         >
                                                             Done
                                                         </button>

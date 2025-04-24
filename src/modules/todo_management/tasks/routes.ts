@@ -19,6 +19,11 @@ module.exports = async function (fastify: FastifyInstance) {
             { preHandler: [auth_middleware] },
             controllerInstance.teacher_complete,
         )
+        .post(
+            `${prefix}/teacher-update/:id`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.teacher_update,
+        )
         .get(`${prefix}/:id`, controllerInstance.find)
         .post(`${prefix}/store`, controllerInstance.store)
         .post(`${prefix}/task-assign`, controllerInstance.task_assign)

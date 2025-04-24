@@ -198,3 +198,4 @@
 {"level":60,"time":1745402472564,"pid":6812,"hostname":"DESKTOP-9421701","file":"services\\teacher_pending.ts:128:15)","time":"4/23/2025 4:01:12 PM","message":"Unknown column 'TaskUsersModel.name' in 'where clause'"}
 {"level":60,"time":1745403270164,"pid":11016,"hostname":"DESKTOP-9421701","file":"","time":"4/23/2025 4:14:30 PM","message":"Unknown attribute \"task_id\" passed as sourceKey, define this attribute on model \"TasksModel\" first"}
 {"level":60,"time":1745403280627,"pid":11016,"hostname":"DESKTOP-9421701","file":"","time":"4/23/2025 4:14:40 PM","message":"Unknown attribute \"task_id\" passed as sourceKey, define this attribute on model \"TasksModel\" first"}
+{"level":60,"time":1745405093438,"pid":14188,"hostname":"DESKTOP-9421701","file":"services\\all_class.ts:63:19)","time":"4/23/2025 4:44:53 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
