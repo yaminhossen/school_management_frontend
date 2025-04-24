@@ -65,7 +65,7 @@ const Pending: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="page_content">
-            <div className="explore_window fixed_size">
+            <div className="explore_window pending_explore_window fixed_size">
                 <div className="action_bar">
                     <div className="navigation">
                         <ul>
@@ -184,6 +184,15 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                         >
                                                             Done
                                                         </button>
+
+                                                        <Link
+                                                            // to="/students/single/student/"
+                                                            to={`/${setup.route_prefix}/details/${i.tasks?.id}`}
+                                                            className="btn btn-sm  btn-outline-info ml-2"
+                                                            type="submit"
+                                                        >
+                                                            Show
+                                                        </Link>
                                                     </td>
                                                 </tr>
                                             );
@@ -203,7 +212,7 @@ const Pending: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                <TableFooter></TableFooter>
+                {/* <TableFooter></TableFooter> */}
             </div>
 
             <Filter></Filter>

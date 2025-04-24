@@ -22,6 +22,8 @@ import { teacher_complete } from '../config/store/async_actions/teacher_complete
 import HeadSearch from '../components/all_data_page/HeadSearch';
 import HeadRightButtons from '../components/all_data_page/HeadRightButtons';
 import axios from 'axios';
+import HeadSearchComplete from '../components/all_data_page/HeadSearchComplete';
+import FilterComplete from '../components/canvas/FilterComplete';
 
 export interface Props {}
 
@@ -64,12 +66,12 @@ const Pending: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="page_content">
-            <div className="explore_window fixed_size">
+            <div className="explore_window pending_explore_window fixed_size">
                 <div className="action_bar">
                     <div className="navigation">
                         <ul>
                             <li className="search_li">
-                                <HeadSearch></HeadSearch>
+                                <HeadSearchComplete></HeadSearchComplete>
                             </li>
                         </ul>
                     </div>
@@ -168,9 +170,9 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                         {i.tasks?.description}
                                                     </td>
                                                     <td>
-                                                        {moment(i.date).format(
-                                                            'YYYY-MM-DD',
-                                                        )}
+                                                        {moment(
+                                                            i.created_at,
+                                                        ).format('YYYY-MM-DD')}
                                                     </td>
                                                     <td>
                                                         <Link
@@ -194,16 +196,16 @@ const Pending: React.FC<Props> = (props: Props) => {
                             set_url={storeSlice.actions.set_url}
                             set_paginate={storeSlice.actions.set_paginate}
                             set_page={storeSlice.actions.set_page}
-                            all={all}
+                            all={teacher_complete}
                             data={state.all as any}
                             selected_paginate={state.paginate}
                         ></Paginate>
                     </div>
                 </div>
-                <TableFooter></TableFooter>
+                {/* <TableFooter></TableFooter> */}
             </div>
 
-            <Filter></Filter>
+            <FilterComplete></FilterComplete>
             <QuickView></QuickView>
         </div>
     );

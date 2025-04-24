@@ -2154,6 +2154,10 @@ input.form_checkbox:checked::after {
   font-size: 13px;
 }
 
+.pending_explore_window {
+  height: 440px !important;
+}
+
 .calendar_app {
   position: absolute;
   top: 15px;
@@ -2814,6 +2818,9 @@ td.col_id {
   background-color: transparent;
   color: red;
   cursor: pointer;
+}
+.off_canvas .off_canvas_body .pending_header {
+  margin-top: 83px !important;
 }
 .off_canvas .off_canvas_body .data_content {
   height: calc(100svh - 52px);
