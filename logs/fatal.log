@@ -207,3 +207,8 @@
 {"level":60,"time":1745484677128,"pid":20316,"hostname":"DESKTOP-9421701","file":"services\\teacher_pending.ts:134:15)","time":"4/24/2025 2:51:17 PM","message":"Unknown column 'TaskUsersModel.name' in 'where clause'"}
 {"level":60,"time":1745487906778,"pid":8436,"hostname":"DESKTOP-9421701","file":"services\\teacher_pending.ts:134:15)","time":"4/24/2025 3:45:06 PM","message":"Unknown column 'TaskUsersModel.name' in 'where clause'"}
 {"level":60,"time":1745490436820,"pid":19740,"hostname":"DESKTOP-9421701","file":"","time":"4/24/2025 4:27:16 PM","message":"You have used the alias agendas in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1745491098726,"pid":19740,"hostname":"DESKTOP-9421701","file":"services\\basic_information.ts:37:19)","time":"4/24/2025 4:38:18 PM","message":"data not found"}
+{"level":60,"time":1745491098761,"pid":19740,"hostname":"DESKTOP-9421701","file":"services\\basic_information.ts:37:19)","time":"4/24/2025 4:38:18 PM","message":"data not found"}
+{"level":60,"time":1745493231431,"pid":19740,"hostname":"DESKTOP-9421701","file":"","time":"4/24/2025 5:13:51 PM","message":"You have used the alias agendas in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1745493244663,"pid":19740,"hostname":"DESKTOP-9421701","file":"","time":"4/24/2025 5:14:04 PM","message":"You have used the alias agendas in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1745647530908,"pid":12660,"hostname":"DESKTOP-9421701","file":"services\\details.ts:30:19)","time":"4/26/2025 12:05:30 PM","message":"data not found"}

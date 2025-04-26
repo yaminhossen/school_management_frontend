@@ -9,6 +9,7 @@ import { details } from './config/store/async_actions/details';
 import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Details: React.FC<Props> = (props: Props) => {
@@ -49,7 +50,26 @@ const Details: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <td>Meeting</td>
                                         <td>:</td>
-                                        <td>{state.item.agendas?.title}</td>
+                                        <td>{state.item.agenda?.title}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date</td>
+                                        <td>:</td>
+                                        <td>
+                                            {moment(
+                                                state.item.agenda?.date,
+                                            ).format('YYYY-MM-DD')}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Time</td>
+                                        <td>:</td>
+                                        <td>
+                                            {moment(
+                                                state.item.agenda?.time,
+                                                'HH:mm:ss',
+                                            ).format('hh:mm A')}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

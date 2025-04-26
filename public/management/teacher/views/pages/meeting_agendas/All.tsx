@@ -17,6 +17,7 @@ import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
 import moment from 'moment/moment';
+import { Link } from 'react-router-dom';
 
 export interface Props {}
 
@@ -30,7 +31,7 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, title, description, status',
+                'id, title, description, date, time, meeting_link, meeting_type, status',
             ),
         );
         dispatch(all({}) as any);
@@ -40,6 +41,8 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
+    let today = moment().format('YYYY-MM-DD');
+    let nowTime = moment().format('hh:mm A');
 
     return (
         <div className="page_content">
@@ -52,7 +55,7 @@ const All: React.FC<Props> = (props: Props) => {
                             <table>
                                 <thead>
                                     <tr>
-                                        <th />
+                                        {/* <th /> */}
                                         <th>
                                             <SelectAll />
                                         </th>
@@ -65,32 +68,42 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Title`}
                                             col_name={`title`}
-                                            sort={true}
+                                            sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Branch`}
-                                            col_name={`branch`}
-                                            sort={true}
-                                        /> */}
-                                        {/* <TableHeading
-                                            label={`Meeting`}
-                                            col_name={`meeting`}
-                                            sort={true}
-                                        /> */}
                                         <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
-                                            sort={true}
+                                            sort={false}
                                         />
-                                        {/* <TableHeading
+                                        <TableHeading
                                             label={`Date`}
                                             col_name={`date`}
-                                            sort={true}
-                                        /> */}
+                                            sort={false}
+                                        />
                                         <TableHeading
+                                            label={`Time`}
+                                            col_name={`time`}
+                                            sort={false}
+                                        />
+                                        <TableHeading
+                                            label={`Meeting Type`}
+                                            col_name={`meeting_type`}
+                                            sort={false}
+                                        />
+                                        <TableHeading
+                                            label={`Meeting Link`}
+                                            col_name={`meeting link`}
+                                            sort={false}
+                                        />
+                                        {/* <TableHeading
                                             label={`Is Complete`}
                                             col_name={`is_complete`}
-                                            sort={true}
+                                            sort={false}
+                                        /> */}
+                                        <TableHeading
+                                            label={`Action`}
+                                            col_name={`action`}
+                                            sort={false}
                                         />
                                     </tr>
                                 </thead>
@@ -103,20 +116,20 @@ const All: React.FC<Props> = (props: Props) => {
                                                     key={i.id}
                                                     className={`table_rows table_row_${i.id}`}
                                                 >
-                                                    <td>
+                                                    {/* <td>
                                                         <TableRowAction
                                                             item={i}
                                                         />
-                                                    </td>
+                                                    </td> */}
                                                     <td>
                                                         <SelectItem item={i} />
                                                     </td>
                                                     <td>
                                                         <span
                                                             className="quick_view_trigger"
-                                                            onClick={() =>
-                                                                quick_view(i)
-                                                            }
+                                                            // onClick={() =>
+                                                            //     quick_view(i)
+                                                            // }
                                                         >
                                                             {i.id}
                                                         </span>
@@ -131,16 +144,88 @@ const All: React.FC<Props> = (props: Props) => {
                                                     />
                                                 </td> */}
                                                     <td>{i.title}</td>
+                                                    <td>{i.description}</td>
                                                     <td>
-                                                        <a
-                                                            href={i.description}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                        >
-                                                            {i.description}
-                                                        </a>
+                                                        {moment(i.date).format(
+                                                            'YYYY-MM-DD',
+                                                        )}
                                                     </td>
-                                                    <td>{i.is_complete}</td>
+                                                    <td>
+                                                        {moment(
+                                                            i.time,
+                                                            'HH:mm:ss',
+                                                        ).format('hh:mm A')}
+                                                    </td>
+                                                    <td>{i.meeting_type}</td>
+                                                    <td>
+                                                        {i.meeting_link ? (
+                                                            moment(
+                                                                i.date,
+                                                            ).format(
+                                                                'YYYY-MM-DD',
+                                                            ) === today &&
+                                                            moment().isBetween(
+                                                                moment(
+                                                                    `${i.date} ${i.time}`,
+                                                                    'YYYY-MM-DD HH:mm:ss',
+                                                                ).subtract(
+                                                                    10,
+                                                                    'minutes',
+                                                                ),
+                                                                moment(
+                                                                    `${i.date} ${i.time}`,
+                                                                    'YYYY-MM-DD HH:mm:ss',
+                                                                ).add(
+                                                                    4,
+                                                                    'hour',
+                                                                ),
+                                                            ) ? (
+                                                                <a
+                                                                    href={
+                                                                        i.meeting_link
+                                                                    }
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                >
+                                                                    Click Here
+                                                                    </a>
+                                                            ) : (
+                                                                'Link active 10 mins before on meeting times'
+                                                            )
+                                                        ) : (
+                                                            'Offline meeting'
+                                                        )}
+                                                    </td>
+
+                                                    {/* <td>
+                                                        {i.meeting_link ? (
+                                                            <a
+                                                                href={
+                                                                    i.meeting_link
+                                                                }
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                            >
+                                                                {moment(
+                                                                    i.date,
+                                                                ).format(
+                                                                    'YYYY-MM-DD',
+                                                                ) == today
+                                                                    ? i.meeting_link
+                                                                    : 'have more days'}
+                                                            </a>
+                                                        ) : (
+                                                            'Offline meeting'
+                                                        )}
+                                                    </td> */}
+                                                    <td>
+                                                        <Link
+                                                            // to="/students/single/student/"
+                                                            to={`/${setup.route_prefix}/details/${i.id}`}
+                                                        >
+                                                            Show
+                                                        </Link>
+                                                    </td>
                                                 </tr>
                                             );
                                         },

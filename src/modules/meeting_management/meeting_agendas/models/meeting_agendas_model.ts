@@ -35,6 +35,7 @@ enum is_complete {
     nexttime = 'nexttime',
 }
 type status = 'active' | 'deactive';
+type meeting_type = 'online' | 'offline';
 
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
@@ -45,6 +46,10 @@ class DataModel extends Model<Infer, InferCreation> {
     declare description: string;
     declare role: string;
     declare is_complete?: is_complete;
+    declare time?: string;
+    declare date?: string;
+    declare meeting_link?: string;
+    declare meeting_type?: meeting_type;
 
     declare status?: status;
     declare creator?: number;
@@ -80,6 +85,18 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.STRING(50),
                 allowNull: true,
             },
+            time: {
+                type: new DataTypes.TIME(),
+                allowNull: true,
+            },
+            date: {
+                type: new DataTypes.DATE(),
+                allowNull: true,
+            },
+            meeting_link: {
+                type: new DataTypes.STRING(150),
+                allowNull: true,
+            },
             is_complete: {
                 type: new DataTypes.ENUM(
                     'pending',
@@ -88,6 +105,10 @@ function init(sequelize: Sequelize) {
                     'nexttime',
                 ),
                 allowNull: true,
+            },
+            meeting_type: {
+                type: new DataTypes.ENUM('online', 'offline'),
+                defaultValue: 'offline',
             },
             creator: {
                 type: new DataTypes.TINYINT(),
