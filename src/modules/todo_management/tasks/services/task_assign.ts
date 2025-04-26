@@ -44,20 +44,24 @@ async function task_assign(
             user_staff_id: user?.id || null,
         },
     });
+    const fstaffs = JSON.parse(body.staffs);
+    const fteachers = JSON.parse(body.teachers);
 
     let staffs: anyObject[] = [];
-    for (let i = 0; i < parseInt(body.staffs.length); i++) {
+    for (let i = 0; i < parseInt(fstaffs.length); i++) {
         staffs.push({
-            staff_id: body.staffs[i],
+            staff_id: fstaffs[i],
         });
     }
 
     let teachers: anyObject[] = [];
-    for (let i = 0; i < parseInt(body.teachers.length); i++) {
+    for (let i = 0; i < parseInt(fteachers.length); i++) {
         teachers.push({
-            teacher_id: body.teachers[i],
+            teacher_id: fteachers[i],
         });
     }
+    console.log('form body form task assign page', body.title);
+    console.log('form body form task assign page', body);
 
     /** print request data into console */
     // console.clear();

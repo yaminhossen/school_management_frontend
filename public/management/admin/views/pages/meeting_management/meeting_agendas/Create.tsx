@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
@@ -17,6 +17,7 @@ const Create: React.FC<Props> = (props: Props) => {
         (state: RootState) => state[setup.module_name],
     );
     const dispatch = useAppDispatch();
+    const [meetingType, setMeetingType] = useState('');
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -45,9 +46,12 @@ const Create: React.FC<Props> = (props: Props) => {
                         >
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Meeting id</label>
+                                    <label>Meeting</label>
                                     <div className="form_elements">
                                         <select name="meeting_id" id="">
+                                            <option value="">
+                                                Select Meeting
+                                            </option>
                                             {state?.meeting?.length &&
                                                 state.meeting?.map(
                                                     (i: {
@@ -87,24 +91,63 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
+                                    <label>Date</label>
+                                    <div className="form_elements">
+                                        <input type="date" name="date"></input>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Time</label>
+                                    <div className="form_elements">
+                                        <input type="time" name="time"></input>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Meeting Type</label>
+                                    <div className="form_elements">
+                                        <select
+                                            name="meeting_type"
+                                            value={meetingType}
+                                            onChange={(e) =>
+                                                setMeetingType(e.target.value)
+                                            }
+                                        >
+                                            <option value="">
+                                                Select type
+                                            </option>
+                                            <option value="online">
+                                                Online
+                                            </option>
+                                            <option value="offline">
+                                                Offline
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                {meetingType === 'online' && (
+                                    <div className="form-group form-horizontal">
+                                        <label>Meeting Link</label>
+                                        <div className="form_elements">
+                                            <textarea
+                                                name="meeting_link"
+                                                placeholder="Enter meeting link"
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                )}
+                                <div className="form-group form-horizontal">
                                     <label>Group</label>
                                     <div className="form_elements">
                                         <select name="role" id="">
                                             <option value="">
-                                                select group
+                                                Select group
                                             </option>
-                                            <option value="admin">admin</option>
                                             <option value="admission-officer">
                                                 admission-officer
                                             </option>
-                                            <option value="librarian">
-                                                librarian
-                                            </option>
                                             <option value="accountant">
                                                 accountant
-                                            </option>
-                                            <option value="driver">
-                                                driver
                                             </option>
                                             <option value="teacher">
                                                 teacher

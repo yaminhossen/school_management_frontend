@@ -30,6 +30,18 @@ async function validate(req: Request) {
         .withMessage('the description field is required')
         .run(req);
 
+    await body('date')
+        .not()
+        .isEmpty()
+        .withMessage('the date field is required')
+        .run(req);
+
+    await body('time')
+        .not()
+        .isEmpty()
+        .withMessage('the time field is required')
+        .run(req);
+
     await body('role')
         .not()
         .isEmpty()
@@ -70,6 +82,10 @@ async function store(
         title: body.title,
         description: body.description,
         role: body.role,
+        date: body.date,
+        time: body.time,
+        meeting_type: body.meeting_type,
+        meeting_link: body.meeting_link,
         is_complete: body.pending,
         creator: user?.id || null,
     };
