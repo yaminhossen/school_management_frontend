@@ -20,6 +20,9 @@ const Edit: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [date, setDate] = useState('');
     const dispatch = useAppDispatch();
     const params = useParams();
     let id = params.id;
@@ -80,6 +83,14 @@ const Edit: React.FC<Props> = (props: Props) => {
         }
     }
 
+    useEffect(() => {
+        if (state.item) {
+            setTitle(state.item.title || '');
+            setDescription(state.item.description || '');
+            setDate(moment(state.item.date).format('YYYY-MM-DD') || '');
+        }
+    }, [state.item]);
+
     async function handle_submit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         try {
@@ -116,7 +127,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             type="text"
                                             placeholder="title"
                                             name="title"
-                                            value={state.item?.title}
+                                            value={title}
+                                            onChange={(e) =>
+                                                setTitle(e.target.value)
+                                            }
                                         />
                                     </div>
                                 </div>
@@ -127,7 +141,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             name="description"
                                             id=""
                                             placeholder="description"
-                                            value={state.item?.description}
+                                            value={description}
+                                            onChange={(e) =>
+                                                setDescription(e.target.value)
+                                            }
                                         ></textarea>
                                     </div>
                                 </div>
@@ -136,10 +153,15 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="date"
-                                            value={moment(
-                                                state.item?.date,
-                                            ).format('YYYY-MM-DD')}
                                             name="date"
+                                            value={date}
+                                            onChange={(e) =>
+                                                setDate(
+                                                    moment(
+                                                        e.target.value,
+                                                    ).format('YYYY-MM-DD'),
+                                                )
+                                            }
                                             id=""
                                         />
                                     </div>

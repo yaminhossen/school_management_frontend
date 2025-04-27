@@ -38,13 +38,21 @@ async function soft_delete(
                 id: body.id,
             },
         });
-
         if (data) {
-            // await data.update({
-            //     status: 0,
-            // });
+            // Update the main task
             data.status = 'deactive';
             await data.save();
+
+            // Bulk update related task users
+            await models.TaskUsersModel.update(
+                { status: 'deactive' },
+                {
+                    where: {
+                        task_id: body.id,
+                    },
+                },
+            );
+
             return response(200, 'data deactivated', data);
         } else {
             throw new custom_error('Forbidden', 403, 'operation not possible');

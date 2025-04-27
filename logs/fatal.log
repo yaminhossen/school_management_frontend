@@ -373,3 +373,10 @@
 {"level":60,"time":1745744234428,"pid":2480,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 2:57:14 PM","message":"data not found"}
 {"level":60,"time":1745744240534,"pid":2480,"hostname":"DESKTOP-9421701","file":"","time":"4/27/2025 2:57:20 PM","message":"You have used the alias tasks in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1745744244271,"pid":2480,"hostname":"DESKTOP-9421701","file":"","time":"4/27/2025 2:57:24 PM","message":"You have used the alias tasks in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1745745004161,"pid":20376,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 3:10:04 PM","message":"data not found"}
+{"level":60,"time":1745745251443,"pid":20376,"hostname":"DESKTOP-9421701","file":"","time":"4/27/2025 3:14:11 PM","message":"You have used the alias tasks in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1745745252247,"pid":20376,"hostname":"DESKTOP-9421701","file":"","time":"4/27/2025 3:14:12 PM","message":"You have used the alias tasks in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1745748778278,"pid":20376,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 4:12:58 PM","message":"data not found"}
+{"level":60,"time":1745748779865,"pid":20376,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 4:12:59 PM","message":"data not found"}
+{"level":60,"time":1745751604957,"pid":4992,"hostname":"DESKTOP-9421701","file":"services\\all.ts:117:15)","time":"4/27/2025 5:00:04 PM","message":"Unknown column 'TasksModel.name' in 'where clause'"}
+{"level":60,"time":1745751683075,"pid":18696,"hostname":"DESKTOP-9421701","file":"services\\all.ts:117:15)","time":"4/27/2025 5:01:23 PM","message":"Unknown column 'TasksModel.designation' in 'where clause'"}
