@@ -56,9 +56,9 @@ axios.interceptors.response.use(
         // (window as any)
         //     .jQuery('.loader-wrapper')
         //     .fadeOut('slow', function () {});
-        // (window as anyObject).toaster(
-        //     `${response.status} - ${response.statusText}`,
-        // );
+        if (response.status == 202) {
+            (window as anyObject).toaster(`Successfuly task created`);
+        }
         console.log('response data', response);
         return response;
     },
@@ -85,6 +85,7 @@ axios.interceptors.response.use(
 
             (window as anyObject).toaster(
                 `${error.response.status} - ${error.response.statusText}`,
+                'error',
             );
 
             console.log(error.response);

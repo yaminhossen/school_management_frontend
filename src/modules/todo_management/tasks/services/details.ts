@@ -23,7 +23,7 @@ async function details(
         });
 
         if (data) {
-            return response(200, 'data created', data);
+            return response(200, 'data founded', data);
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }

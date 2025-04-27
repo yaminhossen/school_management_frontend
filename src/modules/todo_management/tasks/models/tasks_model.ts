@@ -41,7 +41,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare branch_id?: number;
     declare title: string;
     declare description: string;
-    declare is_complete: is_complete;
+    declare is_complete?: is_complete;
     declare date: string;
 
     declare status?: status;

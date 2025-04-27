@@ -41,7 +41,7 @@ async function teacher_update(
             let inputs: InferCreationAttributes<typeof taskModel> = {
                 title: data.title,
                 description: data.description,
-                is_complete: ssss || params?.is_complete,
+                // is_complete: ssss || params?.is_complete,
                 date: data.date,
             };
             (await data.update(inputs)).save();
