@@ -20,6 +20,7 @@ import staff_all from './services/staff_all';
 import basic_information from './services/basic_information';
 import profile_update from './services/profile_update';
 import filter_all from './services/filter_all';
+import staff_all_task_user from './services/staff_all_task_user';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -40,6 +41,13 @@ export default function (fastify: FastifyInstance) {
         },
         staff_all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await staff_all(fastify, req);
+            res.code(data.status).send(data);
+        },
+        staff_all_task_user: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await staff_all_task_user(fastify, req);
             res.code(data.status).send(data);
         },
 

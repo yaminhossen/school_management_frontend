@@ -11,6 +11,10 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(`${prefix}`, controllerInstance.all)
         .get(`${prefix}/filter-all`, controllerInstance.filter_all)
         .get(`${prefix}/staff-all`, controllerInstance.staff_all)
+        .get(
+            `${prefix}/staff-all-task/:id`,
+            controllerInstance.staff_all_task_user,
+        )
         .get(`${prefix}/:id`, controllerInstance.find)
         .get(
             `${prefix}/basic-information`,

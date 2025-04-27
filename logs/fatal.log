@@ -356,3 +356,11 @@
 {"level":60,"time":1745731193546,"pid":19436,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 11:19:53 AM","message":"data not found"}
 {"level":60,"time":1745731583156,"pid":19436,"hostname":"DESKTOP-9421701","file":"services\\all.ts:117:15)","time":"4/27/2025 11:26:23 AM","message":"Unknown column 'TasksModel.name' in 'where clause'"}
 {"level":60,"time":1745731595530,"pid":19436,"hostname":"DESKTOP-9421701","file":"services\\all.ts:117:15)","time":"4/27/2025 11:26:35 AM","message":"Unknown column 'TasksModel.name' in 'where clause'"}
+{"level":60,"time":1745735131919,"pid":15860,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 12:25:31 PM","message":"data not found"}
+{"level":60,"time":1745735134162,"pid":15860,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 12:25:34 PM","message":"data not found"}
+{"level":60,"time":1745735147776,"pid":15860,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 12:25:47 PM","message":"data not found"}
+{"level":60,"time":1745736083612,"pid":7380,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 12:41:23 PM","message":"data not found"}
+{"level":60,"time":1745736086568,"pid":7380,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 12:41:26 PM","message":"data not found"}
+{"level":60,"time":1745737279303,"pid":15060,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 1:01:19 PM","message":"data not found"}
+{"level":60,"time":1745737697645,"pid":13560,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 1:08:17 PM","message":"data not found"}
+{"level":60,"time":1745737800039,"pid":1784,"hostname":"DESKTOP-9421701","file":"services\\teacher_all_task_user.ts:44:19)","time":"4/27/2025 1:10:00 PM","message":"TaskUsersModel is associated to UserTeachersModel using an alias. You've included an alias (tasksteachers), but it does not match the alias(es) defined in your association (taskteachers)."}

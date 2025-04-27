@@ -17,18 +17,18 @@ async function staff_all(
             attributes: {
                 exclude: ['password'],
             },
-            include: [
-                {
-                    model: models.TaskUsersModel,
-                    as: 'taskstaffs',
-                    required: false,
-                    where: [
-                        {
-                            task_id: 7,
-                        },
-                    ],
-                },
-            ],
+            // include: [
+            //     {
+            //         model: models.TaskUsersModel,
+            //         as: 'taskstaffs',
+            //         required: false,
+            //         where: [
+            //             {
+            //                 task_id: 3,
+            //             },
+            //         ],
+            //     },
+            // ],
         });
 
         if (data) {

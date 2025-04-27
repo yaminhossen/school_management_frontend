@@ -15,6 +15,8 @@ import moment from 'moment/moment';
 import { all_staff } from './config/store/async_actions/all_staff';
 import { all_teacher } from './config/store/async_actions/all_teacher';
 import { assign_task } from './config/store/async_actions/assign_task';
+import { all_staff_task } from './config/store/async_actions/all_staff_task';
+import { all_teacher_task } from './config/store/async_actions/all_teacher_task';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -25,7 +27,7 @@ const Edit: React.FC<Props> = (props: Props) => {
     );
     const dispatch = useAppDispatch();
     const params = useParams();
-    let id = params.id || 2;
+    let id = params.id;
     console.log('assing page id', id);
 
     useEffect(() => {
@@ -35,8 +37,8 @@ const Edit: React.FC<Props> = (props: Props) => {
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
-        dispatch(all_staff({}) as any);
-        dispatch(all_teacher({}) as any);
+        dispatch(all_staff_task({ id: id }) as any);
+        dispatch(all_teacher_task({ id: id }) as any);
     }, []);
 
     // Initialize pre-assigned staffs
@@ -48,6 +50,16 @@ const Edit: React.FC<Props> = (props: Props) => {
             setStaffs(preAssignedStaffIds);
         }
     }, [state.staffs]);
+
+    // // Initialize pre-assigned staffs
+    // useEffect(() => {
+    //     if (state?.staffs?.length) {
+    //         const preAssignedStaffIds = state.staffs
+    //             .filter((staff: any) => staff.taskstaffs !== null)
+    //             .map((staff: any) => staff.id);
+    //         setStaffs(preAssignedStaffIds);
+    //     }
+    // }, [state.staffs]);
 
     function toggleStaff(id: number, user: string) {
         if (user === 'staff') {
