@@ -364,3 +364,12 @@
 {"level":60,"time":1745737279303,"pid":15060,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 1:01:19 PM","message":"data not found"}
 {"level":60,"time":1745737697645,"pid":13560,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 1:08:17 PM","message":"data not found"}
 {"level":60,"time":1745737800039,"pid":1784,"hostname":"DESKTOP-9421701","file":"services\\teacher_all_task_user.ts:44:19)","time":"4/27/2025 1:10:00 PM","message":"TaskUsersModel is associated to UserTeachersModel using an alias. You've included an alias (tasksteachers), but it does not match the alias(es) defined in your association (taskteachers)."}
+{"level":60,"time":1745742237526,"pid":18120,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 2:23:57 PM","message":"data not found"}
+{"level":60,"time":1745743532346,"pid":2480,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 2:45:32 PM","message":"data not found"}
+{"level":60,"time":1745743829227,"pid":2480,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 2:50:29 PM","message":"data not found"}
+{"level":60,"time":1745744233173,"pid":2480,"hostname":"DESKTOP-9421701","file":"","time":"4/27/2025 2:57:13 PM","message":"You have used the alias tasks in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1745744233181,"pid":2480,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 2:57:13 PM","message":"data not found"}
+{"level":60,"time":1745744234422,"pid":2480,"hostname":"DESKTOP-9421701","file":"","time":"4/27/2025 2:57:14 PM","message":"You have used the alias tasks in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1745744234428,"pid":2480,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/27/2025 2:57:14 PM","message":"data not found"}
+{"level":60,"time":1745744240534,"pid":2480,"hostname":"DESKTOP-9421701","file":"","time":"4/27/2025 2:57:20 PM","message":"You have used the alias tasks in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1745744244271,"pid":2480,"hostname":"DESKTOP-9421701","file":"","time":"4/27/2025 2:57:24 PM","message":"You have used the alias tasks in two separate associations. Aliased associations must have unique aliases."}

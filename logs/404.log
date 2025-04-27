@@ -704,3 +704,5 @@
 {"level":60,"time":1745737716564,"pid":13560,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/teacher-all-task/31"}
 {"level":60,"time":1745737721192,"pid":13560,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/teacher-all-task/7"}
 {"level":60,"time":1745737745546,"pid":13560,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/teacher-all-task/7"}
+{"level":60,"time":1745738247786,"pid":888,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}
+{"level":60,"time":1745743720078,"pid":2480,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js"}

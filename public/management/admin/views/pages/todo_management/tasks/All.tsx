@@ -63,11 +63,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`id`}
                                             sort={true}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Assign Task`}
                                             col_name={`assign task`}
                                             sort={false}
-                                        />
+                                        /> */}
                                         <TableHeading
                                             label={`Title`}
                                             col_name={`title`}
@@ -112,7 +112,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                             {i.id}
                                                         </span>
                                                     </td>
-                                                    <td>
+                                                    {/* <td>
                                                         <Link
                                                             to={`/${setup.route_prefix}/assign/${i.id}`}
                                                         >
@@ -120,7 +120,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 assign
                                                             </span>
                                                         </Link>
-                                                    </td>
+                                                    </td> */}
                                                     <td>{i.title}</td>
                                                     <td>{i.description}</td>
                                                     <td>

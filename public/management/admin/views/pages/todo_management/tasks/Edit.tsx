@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
-import { store } from './config/store/async_actions/store';
-import DropDown from './components/dropdown/DropDown';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../../../store';
 import { details } from './config/store/async_actions/details';
@@ -12,11 +9,9 @@ import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import moment from 'moment/moment';
-import { all_staff } from './config/store/async_actions/all_staff';
-import { all_teacher } from './config/store/async_actions/all_teacher';
-import { assign_task } from './config/store/async_actions/assign_task';
 import { all_staff_task } from './config/store/async_actions/all_staff_task';
 import { all_teacher_task } from './config/store/async_actions/all_teacher_task';
+import { assign_task_update } from './config/store/async_actions/assign_task_update';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -30,15 +25,15 @@ const Edit: React.FC<Props> = (props: Props) => {
     let id = params.id;
     console.log('assing page id', id);
 
-    useEffect(() => {
-        dispatch(storeSlice.actions.set_item({}));
-        dispatch(details({ id: params.id }) as any);
-    }, []);
+    async function initdependancy() {
+        await dispatch(storeSlice.actions.set_item({}));
+        await dispatch(details({ id: id }) as any);
+        await dispatch(all_staff_task({ id: id }) as any);
+        await dispatch(all_teacher_task({ id: id }) as any);
+    }
 
     useEffect(() => {
-        dispatch(storeSlice.actions.set_item({}));
-        dispatch(all_staff_task({ id: id }) as any);
-        dispatch(all_teacher_task({ id: id }) as any);
+        initdependancy();
     }, []);
 
     // Initialize pre-assigned staffs
@@ -51,15 +46,15 @@ const Edit: React.FC<Props> = (props: Props) => {
         }
     }, [state.staffs]);
 
-    // // Initialize pre-assigned staffs
-    // useEffect(() => {
-    //     if (state?.staffs?.length) {
-    //         const preAssignedStaffIds = state.staffs
-    //             .filter((staff: any) => staff.taskstaffs !== null)
-    //             .map((staff: any) => staff.id);
-    //         setStaffs(preAssignedStaffIds);
-    //     }
-    // }, [state.staffs]);
+    // Initialize pre-assigned staffs
+    useEffect(() => {
+        if (state?.teachers?.length) {
+            const preAssignedStaffIds = state.teachers
+                .filter((staff: any) => staff.taskteachers !== null)
+                .map((staff: any) => staff.id);
+            setTeachers(preAssignedStaffIds);
+        }
+    }, [state.teachers]);
 
     function toggleStaff(id: number, user: string) {
         if (user === 'staff') {
@@ -94,7 +89,7 @@ const Edit: React.FC<Props> = (props: Props) => {
             formdata.append('teachers', JSON.stringify(teachers));
             formdata.append('id', id);
 
-            let response = await dispatch(assign_task(formdata) as any);
+            let response = await dispatch(assign_task_update(formdata) as any);
             console.log('response', response);
         } catch (error) {
             console.error('Error during form submission:', error);
@@ -121,11 +116,8 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             type="text"
                                             placeholder="title"
                                             name="title"
-                                            defaultValue={state.item.title}
+                                            value={state.item?.title}
                                         />
-                                        {/* <div className="form_error">
-                                            The title field is required
-                                        </div> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
@@ -135,38 +127,17 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             name="description"
                                             id=""
                                             placeholder="description"
-                                            defaultValue={
-                                                state.item.description
-                                            }
+                                            value={state.item?.description}
                                         ></textarea>
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Admin</label>
-                                    <div className="form_elements">
-                                        <select name="admin" id="">
-                                            <option value="admin1">
-                                                Admin1
-                                            </option>
-                                            <option value="running">
-                                                Admin2
-                                            </option>
-                                            <option value="completed">
-                                                Admin3
-                                            </option>
-                                            <option value="nexttime">
-                                                Admin4
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>Date</label>
                                     <div className="form_elements">
                                         <input
                                             type="date"
-                                            defaultValue={moment(
-                                                state.item.date,
+                                            value={moment(
+                                                state.item?.date,
                                             ).format('YYYY-MM-DD')}
                                             name="date"
                                             id=""
@@ -274,22 +245,11 @@ const Edit: React.FC<Props> = (props: Props) => {
                             </div>
                             <div className="form-group form-horizonta">
                                 <div className="task_assign_submit_btn">
-                                    <button
-                                        // onClick={handle_submit}
-                                        className="btn btn_1"
-                                    >
-                                        submit
-                                    </button>
-                                </div>
-                            </div>
-                            {/* <div className="form-group form-horizontal">
-                                <label></label>
-                                <div className="form_elements">
                                     <button className="btn btn_1">
                                         submit
                                     </button>
                                 </div>
-                            </div> */}
+                            </div>
                         </form>
                     </div>
                     <Footer></Footer>

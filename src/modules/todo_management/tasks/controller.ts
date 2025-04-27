@@ -17,6 +17,7 @@ import task_assign from './services/task_assign';
 import teacher_pending from './services/teacher_pending';
 import teacher_complete from './services/teacher_complete';
 import teacher_update from './services/teacher_update';
+import task_assign_updated from './services/task_assign_update';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -51,6 +52,14 @@ export default function (fastify: FastifyInstance) {
 
         task_assign: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await task_assign(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        task_assign_updated: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await task_assign_updated(fastify, req);
             res.code(data.status).send(data);
         },
 

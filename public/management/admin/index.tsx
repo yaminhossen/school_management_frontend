@@ -59,6 +59,9 @@ axios.interceptors.response.use(
         if (response.status == 202) {
             (window as anyObject).toaster(`Successfuly task created`);
         }
+        if (response.status == 204) {
+            (window as anyObject).toaster(`Successfuly task updated`);
+        }
         console.log('response data', response);
         return response;
     },
