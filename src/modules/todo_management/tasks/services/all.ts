@@ -10,6 +10,7 @@ import {
 } from '../../../common_types/object';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
+import moment from 'moment/moment';
 
 /** validation rules */
 async function validate(req: Request) {
@@ -79,13 +80,38 @@ async function all(
         ];
     }
 
-    let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
-        where: {
-            status: show_active_data == 'true' ? 'active' : 'deactive',
-        },
+    const whereClause: any = {
+        status: show_active_data === 'true' ? 'active' : 'deactive',
+    };
+    const today = moment().format('YYYY-MM-DD');
+    console.log('todya', today);
+
+    let month1 = query_param?.start_date || today; // Start date
+    let month2 = query_param?.end_date || today;
+    if (query_param?.start_date && query_param?.end_date) {
+        const endDate = new Date(query_param.end_date);
+        endDate.setDate(endDate.getDate() + 1); // Increment by one day
+        const formattedEndDate = endDate.toISOString().split('T')[0];
+        console.log('month2', formattedEndDate);
+
+        whereClause.date = {
+            [Op.between]: [query_param.start_date, formattedEndDate],
+        };
+    }
+
+    const query: FindAndCountOptions = {
+        order: [[orderByCol, orderByAsc === 'true' ? 'DESC' : 'ASC']],
+        where: whereClause,
         // include: [models.Project],
     };
+
+    // let query: FindAndCountOptions = {
+    //     order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
+    //     where: {
+    //         status: show_active_data == 'true' ? 'active' : 'deactive',
+    //     },
+    //     // include: [models.Project],
+    // };
 
     query.attributes = {
         include: select_fields,
