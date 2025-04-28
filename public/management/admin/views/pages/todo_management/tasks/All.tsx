@@ -147,7 +147,7 @@ const All: React.FC<Props> = (props: Props) => {
                                         )
                                     ) : (
                                         <tr>
-                                            <td colSpan={6}>
+                                            <td colSpan={7}>
                                                 <div
                                                     style={{
                                                         fontSize: '24px',

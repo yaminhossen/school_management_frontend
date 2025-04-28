@@ -77,11 +77,11 @@ const TaskDetails: React.FC<Props> = (props: Props) => {
                                         )}
                                     </td>
                                 </tr>
-                                <tr>
+                                {/* <tr>
                                     <td>Is completed</td>
                                     <td>:</td>
                                     <td>{data2.is_complete}</td>
-                                </tr>
+                                </tr> */}
                             </tbody>
                         </table>
                         <div className="data_list">

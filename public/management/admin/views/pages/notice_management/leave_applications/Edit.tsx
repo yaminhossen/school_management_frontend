@@ -163,29 +163,20 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         ></input>
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Reason</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            name="reason"
-                                            readOnly
-                                            placeholder="reason"
-                                            defaultValue={state.item.reason}
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>Attachment</label>
                                     <div className="form_elements">
                                         <a
                                             target="blank"
-                                            href={state.item?.attachments}
+                                            href={
+                                                state.item?.attachments ||
+                                                undefined
+                                            }
                                         >
                                             <img
                                                 src={state.item?.attachments}
                                                 height={100}
-                                                alt=""
+                                                alt="attachment"
                                             />
                                         </a>
                                     </div>
