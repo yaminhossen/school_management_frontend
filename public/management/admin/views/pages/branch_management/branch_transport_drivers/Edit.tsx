@@ -9,6 +9,7 @@ import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
+import InputImage from './components/management_data_page/InputImage';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -27,6 +28,16 @@ const Edit: React.FC<Props> = (props: Props) => {
     async function handle_submit(e) {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
+    }
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
     }
 
     return (
@@ -99,11 +110,18 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Driver licence</label>
                                     <div className="form_elements">
-                                        <input
+                                        <InputImage
+                                            label={''}
+                                            name={'licence'}
+                                            defalut_preview={get_value(
+                                                'driver_licence',
+                                            )}
+                                        />
+                                        {/* <input
                                             type="file"
                                             accept="image/*"
                                             name="licence"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
@@ -149,7 +167,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     <label></label>
                                     <div className="form_elements">
                                         <button className="btn btn_1">
-                                            submit
+                                            Update
                                         </button>
                                     </div>
                                 </div>

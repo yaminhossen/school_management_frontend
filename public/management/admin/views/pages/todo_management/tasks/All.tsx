@@ -62,7 +62,7 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`ID`}
                                             col_name={`id`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         {/* <TableHeading
                                             label={`Assign Task`}
@@ -72,17 +72,22 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Title`}
                                             col_name={`title`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Date`}
                                             col_name={`date`}
-                                            sort={true}
+                                            sort={false}
+                                        />
+                                        <TableHeading
+                                            label={`Action`}
+                                            col_name={`action`}
+                                            sort={false}
                                         />
                                     </tr>
                                 </thead>
@@ -126,6 +131,15 @@ const All: React.FC<Props> = (props: Props) => {
                                                             ).format(
                                                                 'YYYY-MM-DD',
                                                             )}
+                                                        </td>
+                                                        <td>
+                                                            <Link
+                                                                to={`/${setup.route_prefix}/task-details/${i.id}`}
+                                                                className="btn btn-sm  btn-outline-info"
+                                                                type="submit"
+                                                            >
+                                                                Details
+                                                            </Link>
                                                         </td>
                                                     </tr>
                                                 );

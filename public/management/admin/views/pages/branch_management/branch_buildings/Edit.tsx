@@ -9,6 +9,7 @@ import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
+import InputImage from './components/management_data_page/InputImage';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -33,6 +34,16 @@ const Edit: React.FC<Props> = (props: Props) => {
     function getFile(e) {
         setFile(URL.createObjectURL(e.target.files[0]));
         console.log('file3', file);
+    }
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
     }
 
     return (
@@ -81,25 +92,37 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Attachment</label>
                                     <div className="form_elements">
-                                        <input
+                                        <InputImage
+                                            label={''}
+                                            name={'attachment'}
+                                            defalut_preview={get_value(
+                                                'attachment',
+                                            )}
+                                        />
+                                        {/* <input
                                             type="file"
                                             accept="image/*"
                                             placeholder="attachment"
                                             name="attachment"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
                                     <label>Photo</label>
                                     <div className="form_elements">
-                                        <input
+                                        <InputImage
+                                            label={''}
+                                            name={'photo'}
+                                            defalut_preview={get_value('photo')}
+                                        />
+                                        {/* <input
                                             type="file"
                                             accept="image/*"
                                             placeholder="photo"
                                             name="photo"
                                             onChange={getFile}
-                                        />
-                                        <div className="form-group form-horizontal">
+                                        /> */}
+                                        {/* <div className="form-group form-horizontal">
                                             <label>Preview img</label>
                                             <div className="form_elements">
                                                 <a target="blank" href={file}>
@@ -120,7 +143,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                     />
                                                 </a>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
@@ -140,7 +163,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     <label></label>
                                     <div className="form_elements">
                                         <button className="btn btn_1">
-                                            submit
+                                            Update
                                         </button>
                                     </div>
                                 </div>

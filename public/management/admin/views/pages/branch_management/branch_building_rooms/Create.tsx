@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { details } from './config/store/async_actions/details';
 import { building } from './config/store/async_actions/building';
+import InputImage from './components/management_data_page/InputImage';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -37,6 +38,16 @@ const Create: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         initdependancy();
     }, []);
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
 
     console.log('branch state', state.building);
 
@@ -98,7 +109,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                     <label>Total seat</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="number"
                                             placeholder="total seat"
                                             name="total_seat"
                                         />
@@ -108,7 +119,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                     <label>Total student</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="number"
                                             placeholder="total student"
                                             name="total_student"
                                         />
@@ -117,23 +128,33 @@ const Create: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Attachment</label>
                                     <div className="form_elements">
-                                        <input
+                                        <InputImage
+                                            label={''}
+                                            name={'attachment'}
+                                            defalut_preview={get_value('')}
+                                        />
+                                        {/* <input
                                             type="file"
                                             accept="image/*"
                                             placeholder="attachment"
                                             name="attachment"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
                                     <label>Photo</label>
                                     <div className="form_elements">
-                                        <input
+                                        <InputImage
+                                            label={''}
+                                            name={'photo'}
+                                            defalut_preview={get_value('')}
+                                        />
+                                        {/* <input
                                             type="file"
                                             accept="image/*"
                                             placeholder="photo"
                                             name="photo"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">

@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
 import { building } from './config/store/async_actions/building';
+import InputImage from './components/management_data_page/InputImage';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -41,6 +42,17 @@ const Edit: React.FC<Props> = (props: Props) => {
         }
         // console.log('Updated buildingId:', buildingId.current?.value);
     }, [state.building]);
+
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
     return (
         <>
             <div className="page_content">
@@ -147,30 +159,42 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Attachment</label>
                                     <div className="form_elements">
-                                        <input
+                                        <InputImage
+                                            label={''}
+                                            name={'attachment'}
+                                            defalut_preview={get_value(
+                                                'attachment',
+                                            )}
+                                        />
+                                        {/* <input
                                             type="file"
                                             accept="image/*"
                                             placeholder="attachment"
                                             name="attachment"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
                                     <label>Photo</label>
                                     <div className="form_elements">
-                                        <input
+                                        <InputImage
+                                            label={''}
+                                            name={'photo'}
+                                            defalut_preview={get_value('photo')}
+                                        />
+                                        {/* <input
                                             type="file"
                                             accept="image/*"
                                             placeholder="photo"
                                             name="photo"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
                                     <label></label>
                                     <div className="form_elements">
                                         <button className="btn btn_1">
-                                            submit
+                                            Update
                                         </button>
                                     </div>
                                 </div>

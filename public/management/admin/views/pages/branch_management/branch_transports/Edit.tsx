@@ -42,6 +42,16 @@ const Edit: React.FC<Props> = (props: Props) => {
         }
         // console.log('Updated driverId:', driverId.current?.value);
     }, [state.drivers]);
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
 
     return (
         <>
@@ -99,12 +109,30 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Vehicle type</label>
                                     <div className="form_elements">
-                                        <input
+                                        <select
+                                            name="vehicle_type"
+                                            defaultValue={state.item.type}
+                                            id=""
+                                        >
+                                            <option value="van">Van</option>
+                                            <option value="bus">Bus</option>
+                                            <option value="microbus">
+                                                Microbus
+                                            </option>
+                                            <option value="private">
+                                                Private
+                                            </option>
+                                            <option value="riksaw">
+                                                Riksaw
+                                            </option>
+                                        </select>
+
+                                        {/* <input
                                             type="text"
                                             placeholder="vehicle type"
                                             name="vehicle_type"
                                             defaultValue={state.item.type}
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
@@ -122,7 +150,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     <label></label>
                                     <div className="form_elements">
                                         <button className="btn btn_1">
-                                            submit
+                                            Update
                                         </button>
                                     </div>
                                 </div>

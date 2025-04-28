@@ -6,6 +6,7 @@ import Create from '../Create.jsx';
 import Details from '../Details.jsx';
 import Edit from '../Edit.jsx';
 import TaskAssign from '../TaskAssign.tsx';
+import TaskDetails from '../TaskDetails.tsx';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -32,6 +33,10 @@ export default {
         {
             path: 'details/:id',
             element: <Details />,
+        },
+        {
+            path: 'task-details/:id',
+            element: <TaskDetails />,
         },
     ],
 };

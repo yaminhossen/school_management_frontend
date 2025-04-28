@@ -25,6 +25,7 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.teacher_update,
         )
         .get(`${prefix}/:id`, controllerInstance.find)
+        .get(`${prefix}/task-details/:id`, controllerInstance.task_details)
         .post(`${prefix}/store`, controllerInstance.store)
         .post(`${prefix}/task-assign`, controllerInstance.task_assign)
         .post(

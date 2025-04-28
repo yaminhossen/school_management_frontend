@@ -35,6 +35,16 @@ const Create: React.FC<Props> = (props: Props) => {
         initdependancy();
     }, []);
     console.log('branch state', state.drivers);
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
 
     return (
         <>
