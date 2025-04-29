@@ -23,54 +23,10 @@ const Create: React.FC<Props> = (props: Props) => {
     );
 
     const dispatch = useAppDispatch();
-
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
     const params = useParams();
 
     const [showPassword, setShowPassword] = useState(false);
 
-    const [phoneNumbers, setPhoneNumbers] = useState<{
-        son: string;
-        parents: string;
-    }>({
-        son: '',
-        parents: '',
-    });
-
-    const [errors, setErrors] = useState<{
-        son: string;
-        parents: string;
-    }>({
-        son: '',
-        parents: '',
-    });
-    const isValidBDNumber = (number: string): boolean => {
-        const regex = /^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/;
-        return regex.test(number);
-    };
-
-    // Handle input change dynamically
-    const handleChange = (
-        type: 'son' | 'parent',
-        index: number | null,
-        value: string,
-    ) => {
-        if (type === 'son') {
-            setPhoneNumbers((prev) => ({ ...prev, son: value }));
-            setErrors((prev) => ({
-                ...prev,
-                son: isValidBDNumber(value) ? '' : 'Invalid phone number!',
-            }));
-        }
-        if (type === 'parent') {
-            setPhoneNumbers((prev) => ({ ...prev, parents: value }));
-            setErrors((prev) => ({
-                ...prev,
-                parents: isValidBDNumber(value) ? '' : 'Invalid phone number!',
-            }));
-        }
-    };
     function get_value(key) {
         try {
             if (state.item[key]) return state.item[key];
@@ -155,22 +111,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
-                                                    // value={phoneNumbers.son}
-                                                    // onChange={(e) =>
-                                                    //     handleChange(
-                                                    //         'son',
-                                                    //         null,
-                                                    //         e.target.value,
-                                                    //     )
-                                                    // }
-                                                    placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
+                                                    placeholder="01XXX or +8801XXX"
                                                     name="phone_number"
                                                 />
-                                                {errors.son && (
-                                                    <p style={{ color: 'red' }}>
-                                                        {errors.son}
-                                                    </p>
-                                                )}
                                             </div>
                                         </div>
                                         <div className="form-group form-horizontal">
@@ -227,13 +170,11 @@ const Create: React.FC<Props> = (props: Props) => {
                                                             !showPassword,
                                                         )
                                                     }
-                                                    className="material-symbols-outlined"
+                                                    className="material-symbols-outlined visible_icon"
                                                     style={{
                                                         position: 'absolute',
                                                         top: '10px',
                                                         right: '10px',
-                                                        // transform:
-                                                        //     'translateY(-50%)',
                                                         cursor: 'pointer',
                                                         color: '#666',
                                                         fontSize: '24px',
@@ -334,18 +275,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         //         e.target.value,
                                                         //     )
                                                         // }
-                                                        placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
+                                                        placeholder="01XXX or +8801XXX"
                                                         name={`guardian_contact_number`}
                                                     />
-                                                    {errors.parents && (
-                                                        <p
-                                                            style={{
-                                                                color: 'red',
-                                                            }}
-                                                        >
-                                                            {errors.parents}
-                                                        </p>
-                                                    )}
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">

@@ -21,7 +21,8 @@
         min-width: 200px;
         display: block;
     }
-    .valid_star{
+
+    .valid_star {
         color: rgb(255, 0, 0);
     }
 
@@ -47,24 +48,26 @@
             width: unset;
         }
     }
+
     .form_elements_valid {
-            // width: 100%;
-            width: 213px;
-            display: block;
-        }
+        // width: 100%;
+        width: 213px;
+        display: block;
+        position: relative;
+    }
 
-        // >input,
-        // >select {
-        //     min-width: 214px;
-        // }
+    // >input,
+    // >select {
+    //     min-width: 214px;
+    // }
 
-        // >input[type="file"] {
-        //     max-width: 214px;
-        // }
+    // >input[type="file"] {
+    //     max-width: 214px;
+    // }
 
-        // button {
-        //     width: unset;
-        // }
+    // button {
+    //     width: unset;
+    // }
 }
 
 .form-vertical {
@@ -97,6 +100,7 @@
 .multi_inputs {
     .multi_input_group {
         max-width: max-content;
+
         &:nth-child(n+3) {
             border-top: 1px solid gray;
             padding-top: 40px;

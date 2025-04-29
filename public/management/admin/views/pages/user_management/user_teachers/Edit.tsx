@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import { useSelector } from 'react-redux';
@@ -17,6 +17,7 @@ const Edit: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
+    const [showPassword, setShowPassword] = useState(false);
 
     const dispatch = useAppDispatch();
     const params = useParams();
@@ -60,7 +61,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>
+                                        Name{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -71,7 +75,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Email</label>
+                                    <label>
+                                        Email{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="email"
@@ -82,17 +89,53 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Password</label>
-                                    <div className="form_elements">
+                                    <label>
+                                        Password{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
+                                    <div
+                                        className="form_elements_valid"
+                                        style={{ position: 'relative' }}
+                                    >
                                         <input
-                                            type="password"
-                                            placeholder="password"
+                                            type={
+                                                showPassword
+                                                    ? 'text'
+                                                    : 'password'
+                                            }
+                                            placeholder="Password"
                                             name="password"
+                                            style={{
+                                                paddingRight: '40px',
+                                                width: '214px',
+                                            }}
                                         />
+                                        <span
+                                            onClick={() =>
+                                                setShowPassword(!showPassword)
+                                            }
+                                            className="material-symbols-outlined visible_icon"
+                                            style={{
+                                                position: 'absolute',
+                                                top: '10px',
+                                                right: '10px',
+                                                cursor: 'pointer',
+                                                color: '#666',
+                                                fontSize: '24px',
+                                                userSelect: 'none',
+                                            }}
+                                        >
+                                            {showPassword
+                                                ? 'visibility_off'
+                                                : 'visibility'}
+                                        </span>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Phone number</label>
+                                    <label>
+                                        Phone number{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -112,7 +155,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     />
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Parmanent Address</label>
+                                    <label>
+                                        Parmanent Address{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -182,7 +228,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Alternative Contact Number</label>
+                                    <label>
+                                        Alternative Number{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"

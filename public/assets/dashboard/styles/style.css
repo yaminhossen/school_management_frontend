@@ -1374,6 +1374,7 @@ input.form_checkbox:checked::after {
 .form-horizontal .form_elements_valid {
   width: 213px;
   display: block;
+  position: relative;
 }
 
 .form-vertical label {
