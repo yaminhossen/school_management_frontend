@@ -70,13 +70,13 @@ async function validate(req: Request, models: any) {
     await body('parmenent_address')
         .not()
         .isEmpty()
-        .withMessage('the parmenent_address field is required')
+        .withMessage('the parmenent ddress field is required')
         .run(req);
 
     await body('present_address')
         .not()
         .isEmpty()
-        .withMessage('the present_address field is required')
+        .withMessage('the present address field is required')
         .run(req);
 
     let result = await validationResult(req);

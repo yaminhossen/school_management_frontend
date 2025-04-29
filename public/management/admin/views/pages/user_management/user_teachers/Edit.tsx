@@ -74,7 +74,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     <label>Email</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="email"
                                             placeholder="email"
                                             name="email"
                                             defaultValue={state.item.email}
@@ -85,7 +85,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     <label>Password</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="password"
                                             placeholder="password"
                                             name="password"
                                         />
@@ -182,7 +182,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Gruardian Contact Number</label>
+                                    <label>Alternative Contact Number</label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -265,36 +265,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Department</label>
-                                    <div className="form_elements">
-                                        <select
-                                            name="department"
-                                            defaultValue={
-                                                state.item.teachers?.department
-                                            }
-                                            id=""
-                                        >
-                                            <option value="1">Bangla</option>
-                                            <option value="2">English</option>
-                                        </select>
-                                    </div>
-                                </div> */}
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Class</label>
-                                    <div className="form_elements">
-                                        <select
-                                            name="class"
-                                            defaultValue={
-                                                state.item.teachers?.class
-                                            }
-                                            id=""
-                                        >
-                                            <option value="1">Six</option>
-                                            <option value="2">Seven</option>
-                                        </select>
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <InputImage
                                         label={'National Id'}
@@ -322,37 +292,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         )}
                                     />
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>National Id</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="file"
-                                            placeholder="national id"
-                                            name="national_id"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Certificate No. 1</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="file"
-                                            placeholder="certificate 1"
-                                            name="certificate_1"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Certificate No. 2</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="file"
-                                            placeholder="certificate 2"
-                                            name="certificate_2"
-                                        />
-                                    </div>
-                                </div> */}
-                                <div className="form-group form-horizontal">
+                                <div className="form-group student_submit form-horizontal">
                                     <label></label>
                                     <div className="form_elements">
                                         <button className="btn btn_1">

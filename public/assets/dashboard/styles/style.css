@@ -1351,11 +1351,14 @@ input.form_checkbox:checked::after {
   min-width: 200px;
   display: block;
 }
+.form-horizontal .valid_star {
+  color: rgb(255, 0, 0);
+}
 .form-horizontal .form_elements {
   flex: 1;
 }
 .form-horizontal .form_elements > * {
-  width: 200px;
+  width: 213px;
   display: block;
 }
 .form-horizontal .form_elements > input,
@@ -1367,6 +1370,10 @@ input.form_checkbox:checked::after {
 }
 .form-horizontal .form_elements button {
   width: unset;
+}
+.form-horizontal .form_elements_valid {
+  width: 213px;
+  display: block;
 }
 
 .form-vertical label {

@@ -12,6 +12,9 @@ import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { classes } from './config/store/async_actions/classes';
 import InputImage from './components/management_data_page/InputImage';
+
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -24,6 +27,8 @@ const Create: React.FC<Props> = (props: Props) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const params = useParams();
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const [phoneNumbers, setPhoneNumbers] = useState<{
         son: string;
@@ -79,13 +84,6 @@ const Create: React.FC<Props> = (props: Props) => {
 
     async function handle_submit(e) {
         e.preventDefault();
-        if (!password.trim()) {
-            setError('Password cannot be empty or just whitespace.');
-            (window as any).toaster(
-                'Password cannot be empty or just whitespace.',
-            );
-            return;
-        }
         let response = await dispatch(store(new FormData(e.target)) as any);
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
             e.target.reset();
@@ -118,7 +116,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                     <div className="d-flex">
                                         <div className="form-group form-horizontal">
-                                            <label>Name</label>
+                                            <label>
+                                                Name{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
@@ -128,7 +131,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-horizontal">
-                                            <label>Email</label>
+                                            <label>
+                                                Email{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
@@ -138,7 +146,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-horizontal">
-                                            <label>Phone number</label>
+                                            <label>
+                                                Phone number{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
@@ -169,36 +182,68 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 )}
                                             />
                                         </div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Password</label>
+                                        {/* <div className="form-group form-horizontal">
+                                            <label>
+                                                Password{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
                                                     placeholder="password"
                                                     name="password"
-                                                    value={password}
-                                                    onChange={(e) =>
-                                                        setPassword(
-                                                            e.target.value,
-                                                        )
+                                                />
+                                            </div>
+                                        </div> */}
+                                        <div className="form-group form-horizontal">
+                                            <label>
+                                                Password{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
+                                            <div
+                                                className="form_elements_valid"
+                                                style={{ position: 'relative' }}
+                                            >
+                                                <input
+                                                    type={
+                                                        showPassword
+                                                            ? 'text'
+                                                            : 'password'
                                                     }
-                                                    onBlur={() => {
-                                                        if (!password.trim()) {
-                                                            setError(
-                                                                'Password cannot be empty or just whitespace.',
-                                                            );
-                                                        } else {
-                                                            setError('');
-                                                        }
+                                                    placeholder="Password"
+                                                    name="password"
+                                                    style={{
+                                                        paddingRight: '40px',
+                                                        width: '214px',
                                                     }}
                                                 />
-                                                {error && (
-                                                    <small
-                                                        style={{ color: 'red' }}
-                                                    >
-                                                        {error}
-                                                    </small>
-                                                )}
+                                                <span
+                                                    onClick={() =>
+                                                        setShowPassword(
+                                                            !showPassword,
+                                                        )
+                                                    }
+                                                    className="material-symbols-outlined"
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: '10px',
+                                                        right: '10px',
+                                                        // transform:
+                                                        //     'translateY(-50%)',
+                                                        cursor: 'pointer',
+                                                        color: '#666',
+                                                        fontSize: '24px',
+                                                        userSelect: 'none',
+                                                    }}
+                                                >
+                                                    {showPassword
+                                                        ? 'visibility_off'
+                                                        : 'visibility'}
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -210,7 +255,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                         </div>
                                         <div className="d-flex">
                                             <div className="form-group form-horizontal">
-                                                <label>Parmanent Address</label>
+                                                <label>
+                                                    Parmanent Address{' '}
+                                                    <span className="valid_star">
+                                                        *
+                                                    </span>
+                                                </label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
@@ -244,13 +294,18 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
-                                                        placeholder="post_code"
+                                                        placeholder="post code"
                                                         name="post_code"
                                                     />
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
-                                                <label>Present Address</label>
+                                                <label>
+                                                    Present Address{' '}
+                                                    <span className="valid_star">
+                                                        *
+                                                    </span>
+                                                </label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
@@ -261,7 +316,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                             <div className="form-group form-horizontal">
                                                 <label>
-                                                    Alternative Contact Number
+                                                    Alternative Number{' '}
+                                                    <span className="valid_star">
+                                                        *
+                                                    </span>
                                                 </label>
                                                 <div className="form_elements">
                                                     <input
