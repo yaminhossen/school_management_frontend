@@ -37,11 +37,6 @@ async function validate(req: Request, models: any) {
         })
         .run(req);
 
-    // await body('phone_number')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the phone_number field is required')
-    //     .run(req);
     await body('phone_number')
         .not()
         .isEmpty()

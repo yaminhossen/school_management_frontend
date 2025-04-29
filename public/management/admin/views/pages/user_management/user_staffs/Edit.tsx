@@ -19,6 +19,7 @@ const Edit: React.FC<Props> = (props: Props) => {
         (state: RootState) => state[setup.module_name],
     );
 
+    const [showPassword, setShowPassword] = useState(false);
     const dispatch = useAppDispatch();
     const params = useParams();
 
@@ -32,62 +33,6 @@ const Edit: React.FC<Props> = (props: Props) => {
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
 
-    const [phoneNumbers, setPhoneNumbers] = useState<{
-        son: string;
-        parents: string;
-    }>({
-        son: '',
-        parents: '',
-    });
-
-    const [errors, setErrors] = useState<{
-        son: string;
-        parents: string;
-    }>({
-        son: '',
-        parents: '',
-    });
-    const fileInputRef = useRef<HTMLInputElement | null>(null);
-    const imageRef = useRef<HTMLImageElement | null>(null);
-    const handleFileChange = () => {
-        if (
-            fileInputRef.current?.files &&
-            fileInputRef.current.files.length > 0
-        ) {
-            const file = fileInputRef.current.files[0];
-            const src = URL.createObjectURL(file);
-            if (imageRef.current) {
-                imageRef.current.src = src;
-            }
-        }
-    };
-
-    const isValidBDNumber = (number: string): boolean => {
-        const regex = /^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/;
-        return regex.test(number);
-    };
-
-    // Handle input change dynamically
-    const handleChange = (
-        type: 'son' | 'parent',
-        index: number | null,
-        value: string,
-    ) => {
-        if (type === 'son') {
-            setPhoneNumbers((prev) => ({ ...prev, son: value }));
-            setErrors((prev) => ({
-                ...prev,
-                son: isValidBDNumber(value) ? '' : 'Invalid phone number!',
-            }));
-        }
-        if (type === 'parent') {
-            setPhoneNumbers((prev) => ({ ...prev, parents: value }));
-            setErrors((prev) => ({
-                ...prev,
-                parents: isValidBDNumber(value) ? '' : 'Invalid phone number!',
-            }));
-        }
-    };
     function get_value(key) {
         try {
             if (state.item[key]) return state.item[key];
@@ -117,7 +62,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>
+                                        Name{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -128,7 +76,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Email</label>
+                                    <label>
+                                        Email{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -139,17 +90,53 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Password</label>
-                                    <div className="form_elements">
+                                    <label>
+                                        Password{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
+                                    <div
+                                        className="form_elements_valid"
+                                        style={{ position: 'relative' }}
+                                    >
                                         <input
-                                            type="text"
-                                            placeholder="password"
+                                            type={
+                                                showPassword
+                                                    ? 'text'
+                                                    : 'password'
+                                            }
+                                            placeholder="Password"
                                             name="password"
+                                            style={{
+                                                paddingRight: '40px',
+                                                width: '214px',
+                                            }}
                                         />
+                                        <span
+                                            onClick={() =>
+                                                setShowPassword(!showPassword)
+                                            }
+                                            className="material-symbols-outlined visible_icon"
+                                            style={{
+                                                position: 'absolute',
+                                                top: '10px',
+                                                right: '10px',
+                                                cursor: 'pointer',
+                                                color: '#666',
+                                                fontSize: '24px',
+                                                userSelect: 'none',
+                                            }}
+                                        >
+                                            {showPassword
+                                                ? 'visibility_off'
+                                                : 'visibility'}
+                                        </span>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Phone number</label>
+                                    <label>
+                                        Phone number{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -158,45 +145,9 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             defaultValue={
                                                 state.item?.phone_number
                                             }
-                                            onChange={(e) =>
-                                                handleChange(
-                                                    'son',
-                                                    null,
-                                                    e.target.value,
-                                                )
-                                            }
                                         />
-                                        {errors.son && (
-                                            <p style={{ color: 'red' }}>
-                                                {errors.son}
-                                            </p>
-                                        )}
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Phone number</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="phone number"
-                                            name="phone_number"
-                                            defaultValue={
-                                                state.item.phone_number
-                                            }
-                                        />
-                                    </div>
-                                </div> */}
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Image</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            placeholder="image"
-                                            name="staff_image"
-                                        />
-                                    </div>
-                                </div> */}
 
                                 <div className="form-group form-horizontal">
                                     <InputImage
@@ -206,7 +157,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     />
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Parmanent Address</label>
+                                    <label>
+                                        Parmanent Address{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -274,7 +228,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Gruardian Contact Number</label>
+                                    <label>
+                                        Alternative Number{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -284,19 +241,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                 state.item.staff_infos
                                                     ?.guardian_contact_number
                                             }
-                                            onChange={(e) =>
-                                                handleChange(
-                                                    'parent',
-                                                    null,
-                                                    e.target.value,
-                                                )
-                                            }
                                         />
-                                        {errors.parents && (
-                                            <p style={{ color: 'red' }}>
-                                                {errors.parents}
-                                            </p>
-                                        )}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
@@ -382,26 +327,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Department</label>
-                                    <div className="form_elements">
-                                        <select
-                                            name="department"
-                                            defaultValue={
-                                                state.item.staffs?.department
-                                            }
-                                            id=""
-                                        >
-                                            <option value="marketing">
-                                                Marketing
-                                            </option>
-                                            <option value="english">
-                                                English
-                                            </option>
-                                            <option value="it">It</option>
-                                        </select>
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>Role</label>
                                     <div className="form_elements">
@@ -519,7 +444,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div> */}
-                                <div className="form-group form-horizontal">
+                                <div className="form-group student_submit form-horizontal">
                                     <label></label>
                                     <div className="form_elements">
                                         <button className="btn btn_1">

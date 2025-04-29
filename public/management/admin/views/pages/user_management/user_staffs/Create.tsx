@@ -15,65 +15,9 @@ const Create: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
+    const [showPassword, setShowPassword] = useState(false);
     const dispatch = useAppDispatch();
-    const [phoneNumbers, setPhoneNumbers] = useState<{
-        son: string;
-        parents: string;
-    }>({
-        son: '',
-        parents: '',
-    });
 
-    const [errors, setErrors] = useState<{
-        son: string;
-        parents: string;
-    }>({
-        son: '',
-        parents: '',
-    });
-    const fileInputRef = useRef<HTMLInputElement | null>(null);
-    const imageRef = useRef<HTMLImageElement | null>(null);
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const handleFileChange = () => {
-        if (
-            fileInputRef.current?.files &&
-            fileInputRef.current.files.length > 0
-        ) {
-            const file = fileInputRef.current.files[0];
-            const src = URL.createObjectURL(file);
-            if (imageRef.current) {
-                imageRef.current.src = src;
-            }
-        }
-    };
-
-    const isValidBDNumber = (number: string): boolean => {
-        const regex = /^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/;
-        return regex.test(number);
-    };
-
-    // Handle input change dynamically
-    const handleChange = (
-        type: 'son' | 'parent',
-        index: number | null,
-        value: string,
-    ) => {
-        if (type === 'son') {
-            setPhoneNumbers((prev) => ({ ...prev, son: value }));
-            setErrors((prev) => ({
-                ...prev,
-                son: isValidBDNumber(value) ? '' : 'Invalid phone number!',
-            }));
-        }
-        if (type === 'parent') {
-            setPhoneNumbers((prev) => ({ ...prev, parents: value }));
-            setErrors((prev) => ({
-                ...prev,
-                parents: isValidBDNumber(value) ? '' : 'Invalid phone number!',
-            }));
-        }
-    };
     function get_value(key) {
         try {
             if (state.item[key]) return state.item[key];
@@ -87,13 +31,6 @@ const Create: React.FC<Props> = (props: Props) => {
 
     async function handle_submit(e) {
         e.preventDefault();
-        if (!password.trim()) {
-            setError('Password cannot be empty or just whitespace.');
-            (window as any).toaster(
-                'Password cannot be empty or just whitespace.',
-            );
-            return;
-        }
         let response = await dispatch(store(new FormData(e.target)) as any);
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
             e.target.reset();
@@ -117,7 +54,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                     <div className="d-flex">
                                         <div className="form-group form-horizontal">
-                                            <label>Name</label>
+                                            <label>
+                                                Name{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
@@ -127,7 +69,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-horizontal">
-                                            <label>Email</label>
+                                            <label>
+                                                Email{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
                                             <div className="form_elements">
                                                 <input
                                                     type="email"
@@ -137,26 +84,18 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-horizontal">
-                                            <label>Phone number</label>
+                                            <label>
+                                                Phone number{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
-                                                    value={phoneNumbers.son}
-                                                    onChange={(e) =>
-                                                        handleChange(
-                                                            'son',
-                                                            null,
-                                                            e.target.value,
-                                                        )
-                                                    }
-                                                    placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
+                                                    placeholder="01XXX or +8801XXX"
                                                     name="phone_number"
                                                 />
-                                                {errors.son && (
-                                                    <p style={{ color: 'red' }}>
-                                                        {errors.son}
-                                                    </p>
-                                                )}
                                             </div>
                                         </div>
                                         <div className="form-group form-horizontal">
@@ -168,61 +107,51 @@ const Create: React.FC<Props> = (props: Props) => {
                                             {/* <div className="form_elements">
                                             </div> */}
                                         </div>
-                                        {/* <div className="form-group form-horizontal">
-                                            <label>Preview</label>
-                                            <div className="form_elements">
-                                                <a
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                >
-                                                    <img
-                                                        ref={imageRef}
-                                                        className="img-80 preview_image"
-                                                        alt="Preview"
-                                                    />
-                                                </a>
-                                            </div>
-                                        </div> */}
-                                        {/* <div className="form-group form-horizontal">
-                                            <label>Password</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="password"
-                                                    name="password"
-                                                />
-                                            </div>
-                                        </div> */}
                                         <div className="form-group form-horizontal">
-                                            <label>Password</label>
-                                            <div className="form_elements">
+                                            <label>
+                                                Password{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
+                                            <div
+                                                className="form_elements_valid"
+                                                style={{ position: 'relative' }}
+                                            >
                                                 <input
-                                                    type="text"
-                                                    placeholder="password"
-                                                    name="password"
-                                                    value={password}
-                                                    onChange={(e) =>
-                                                        setPassword(
-                                                            e.target.value,
-                                                        )
+                                                    type={
+                                                        showPassword
+                                                            ? 'text'
+                                                            : 'password'
                                                     }
-                                                    onBlur={() => {
-                                                        if (!password.trim()) {
-                                                            setError(
-                                                                'Password cannot be empty or just whitespace.',
-                                                            );
-                                                        } else {
-                                                            setError('');
-                                                        }
+                                                    placeholder="Password"
+                                                    name="password"
+                                                    style={{
+                                                        paddingRight: '40px',
+                                                        width: '214px',
                                                     }}
                                                 />
-                                                {error && (
-                                                    <small
-                                                        style={{ color: 'red' }}
-                                                    >
-                                                        {error}
-                                                    </small>
-                                                )}
+                                                <span
+                                                    onClick={() =>
+                                                        setShowPassword(
+                                                            !showPassword,
+                                                        )
+                                                    }
+                                                    className="material-symbols-outlined visible_icon"
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: '10px',
+                                                        right: '10px',
+                                                        cursor: 'pointer',
+                                                        color: '#666',
+                                                        fontSize: '24px',
+                                                        userSelect: 'none',
+                                                    }}
+                                                >
+                                                    {showPassword
+                                                        ? 'visibility_off'
+                                                        : 'visibility'}
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -234,7 +163,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                         </div>
                                         <div className="d-flex">
                                             <div className="form-group form-horizontal">
-                                                <label>Parmanent Address</label>
+                                                <label>
+                                                    Parmanent Address{' '}
+                                                    <span className="valid_star">
+                                                        *
+                                                    </span>
+                                                </label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
@@ -283,47 +217,19 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     />
                                                 </div>
                                             </div>
-                                            {/* <div className="form-group form-horizontal">
-                                                <label>
-                                                    Gruardian Contact Number
-                                                </label>
-                                                <div className="form_elements">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="guardian number"
-                                                        name="guardian_contact_number"
-                                                    />
-                                                </div>
-                                            </div> */}
                                             <div className="form-group form-horizontal">
                                                 <label>
-                                                    Gruardian Contact Number
+                                                    Alternative Number{' '}
+                                                    <span className="valid_star">
+                                                        *
+                                                    </span>
                                                 </label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
-                                                        value={
-                                                            phoneNumbers.parents
-                                                        }
-                                                        onChange={(e) =>
-                                                            handleChange(
-                                                                'parent',
-                                                                null,
-                                                                e.target.value,
-                                                            )
-                                                        }
-                                                        placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
+                                                        placeholder="01XXX or +8801XXX"
                                                         name={`guardian_contact_number`}
                                                     />
-                                                    {errors.parents && (
-                                                        <p
-                                                            style={{
-                                                                color: 'red',
-                                                            }}
-                                                        >
-                                                            {errors.parents}
-                                                        </p>
-                                                    )}
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
@@ -558,7 +464,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group form-horizontal">
+                            <div className="form-group student_submit form-horizontal">
                                 <label></label>
                                 <div className="form_elements">
                                     <button className="btn btn_1">

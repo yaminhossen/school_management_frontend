@@ -11,7 +11,7 @@ import { InferCreationAttributes, Op } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
-import moment from 'moment';
+import moment from 'moment/moment';
 
 async function validate(req: Request, models: any) {
     await body('name')
@@ -46,23 +46,6 @@ async function validate(req: Request, models: any) {
         })
         .run(req);
 
-    // await body('email')
-    //     .custom(async (email) => {
-    //         const existing = await models.UserTeachersModel.findOne({
-    //             where: { email },
-    //         });
-    //         if (existing) {
-    //             throw new Error('Email already exists');
-    //         }
-    //         return true;
-    //     })
-    //     .run(req);
-
-    // await body('phone_number')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the phone_number field is required')
-    //     .run(req);
     await body('phone_number')
         .not()
         .isEmpty()
@@ -80,14 +63,6 @@ async function validate(req: Request, models: any) {
         .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
         .withMessage('Phone number must be a valid Bangladeshi number')
         .run(req);
-
-    // await body('password')
-    //     .not()
-    //     .isEmpty()
-    //     .isLength({ min: 6 })
-    //     .withMessage('Password must be at least 6 characters')
-    //     // .withMessage('the password field is required')
-    //     .run(req);
 
     if (req?.body?.password) {
         await body('password')
