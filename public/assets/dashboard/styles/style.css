@@ -1355,7 +1355,7 @@ input.form_checkbox:checked::after {
   flex: 1;
 }
 .form-horizontal .form_elements > * {
-  width: 100%;
+  width: 200px;
   display: block;
 }
 .form-horizontal .form_elements > input,

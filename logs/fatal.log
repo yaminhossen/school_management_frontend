@@ -382,3 +382,7 @@
 {"level":60,"time":1745751683075,"pid":18696,"hostname":"DESKTOP-9421701","file":"services\\all.ts:117:15)","time":"4/27/2025 5:01:23 PM","message":"Unknown column 'TasksModel.designation' in 'where clause'"}
 {"level":60,"time":1745811244778,"pid":18596,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"4/28/2025 9:34:04 AM","message":"data not found"}
 {"level":60,"time":1745821054054,"pid":6724,"hostname":"DESKTOP-9421701","file":"","time":"4/28/2025 12:17:34 PM","message":"You have used the alias tasks in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1745841080161,"pid":18708,"hostname":"DESKTOP-9421701","file":"services\\all.ts:110:15)","time":"4/28/2025 5:51:20 PM","message":"Unknown column 'UserTeachersModel.preferred_name' in 'where clause'"}
+{"level":60,"time":1745841466866,"pid":16376,"hostname":"DESKTOP-9421701","file":"services\\get_academic_event_by_month_account.ts:106:19)","time":"4/28/2025 5:57:46 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1745841707071,"pid":16376,"hostname":"DESKTOP-9421701","file":"services\\get_academic_event_by_month_account.ts:106:19)","time":"4/28/2025 6:01:47 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1745898524832,"pid":1420,"hostname":"DESKTOP-9421701","file":"services\\store.ts:188:15)","time":"4/29/2025 9:48:44 AM","message":"Validation error"}

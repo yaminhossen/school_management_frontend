@@ -142,14 +142,14 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
-                                                    value={phoneNumbers.son}
-                                                    onChange={(e) =>
-                                                        handleChange(
-                                                            'son',
-                                                            null,
-                                                            e.target.value,
-                                                        )
-                                                    }
+                                                    // value={phoneNumbers.son}
+                                                    // onChange={(e) =>
+                                                    //     handleChange(
+                                                    //         'son',
+                                                    //         null,
+                                                    //         e.target.value,
+                                                    //     )
+                                                    // }
                                                     placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
                                                     name="phone_number"
                                                 />
@@ -261,21 +261,21 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                             <div className="form-group form-horizontal">
                                                 <label>
-                                                    Gruardian Contact Number
+                                                    Alternative Contact Number
                                                 </label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
-                                                        value={
-                                                            phoneNumbers.parents
-                                                        }
-                                                        onChange={(e) =>
-                                                            handleChange(
-                                                                'parent',
-                                                                null,
-                                                                e.target.value,
-                                                            )
-                                                        }
+                                                        // value={
+                                                        //     phoneNumbers.parents
+                                                        // }
+                                                        // onChange={(e) =>
+                                                        //     handleChange(
+                                                        //         'parent',
+                                                        //         null,
+                                                        //         e.target.value,
+                                                        //     )
+                                                        // }
                                                         placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
                                                         name={`guardian_contact_number`}
                                                     />

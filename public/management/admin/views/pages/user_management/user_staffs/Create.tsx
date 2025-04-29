@@ -160,29 +160,11 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-horizontal">
-                                            <label>Image</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    ref={fileInputRef}
-                                                    type="file"
-                                                    accept="image/*"
-                                                    placeholder="image"
-                                                    name="staff_image"
-                                                    onChange={handleFileChange}
-                                                />
-                                                <a
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                >
-                                                    <img
-                                                        ref={imageRef}
-                                                        width={60}
-                                                        height={60}
-                                                        className="img-80 mt-2 preview_image"
-                                                        alt="Preview"
-                                                    />
-                                                </a>
-                                            </div>
+                                            <InputImage
+                                                label={'Image'}
+                                                name={'staff_image'}
+                                                defalut_preview={get_value('')}
+                                            />
                                             {/* <div className="form_elements">
                                             </div> */}
                                         </div>
@@ -488,7 +470,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     label={'National Id'}
                                                     name={'national_id'}
                                                     defalut_preview={get_value(
-                                                        'national_id',
+                                                        '',
                                                     )}
                                                 />
                                             </div>
@@ -497,7 +479,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     label={'Certificate No. 1'}
                                                     name={'certificate_1'}
                                                     defalut_preview={get_value(
-                                                        'certificate_no_1',
+                                                        '',
                                                     )}
                                                 />
                                             </div>
@@ -506,7 +488,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     label={'Certificate No. 2'}
                                                     name={'certificate_2'}
                                                     defalut_preview={get_value(
-                                                        'certificate_no_2',
+                                                        '',
                                                     )}
                                                 />
                                             </div>
