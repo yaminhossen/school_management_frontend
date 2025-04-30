@@ -254,9 +254,9 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                 state.item.teacher_infos?.gender
                                             }
                                         >
-                                            <option value="male">male</option>
+                                            <option value="male">Male</option>
                                             <option value="female">
-                                                female
+                                                Female
                                             </option>
                                         </select>
                                     </div>
@@ -274,8 +274,8 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             }
                                             id=""
                                         >
-                                            <option value="1">yes</option>
-                                            <option value="0">no</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
                                         </select>
                                     </div>
                                 </div>

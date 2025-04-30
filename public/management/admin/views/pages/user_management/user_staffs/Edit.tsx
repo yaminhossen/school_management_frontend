@@ -268,9 +268,9 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                 state.item.staff_infos?.gender
                                             }
                                         >
-                                            <option value="male">male</option>
+                                            <option value="male">Male</option>
                                             <option value="female">
-                                                female
+                                                Female
                                             </option>
                                         </select>
                                     </div>
@@ -288,8 +288,8 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             }
                                             id=""
                                         >
-                                            <option value="1">yes</option>
-                                            <option value="0">no</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
                                         </select>
                                     </div>
                                 </div>
@@ -336,45 +336,21 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             defaultValue={state.item?.role}
                                         >
                                             <option value="principle">
-                                                principle
+                                                Principle
                                             </option>
-                                            <option value="admin">admin</option>
+                                            <option value="admin">Admin</option>
                                             <option value="admission-officer">
-                                                admission-officer
+                                                Admission-officer
                                             </option>
                                             <option value="librarian">
-                                                librarian
+                                                Librarian
                                             </option>
                                             <option value="accountant">
-                                                accountant
+                                                Accountant
                                             </option>
                                         </select>
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Responsibilies</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="responsibility"
-                                            name="responsibility"
-                                            defaultValue={
-                                                state.item.staff_infos
-                                                    ?.responsibility
-                                            }
-                                        />
-                                    </div>
-                                </div> */}
-                                {/* <div className="form-group form-horizontal">
-                                    <label>National Id</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="file"
-                                            placeholder="national id"
-                                            name="national_id"
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <InputImage
                                         label={'National Id'}
@@ -402,48 +378,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         )}
                                     />
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Certificate No. 1</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="file"
-                                            placeholder="certificate 1"
-                                            name="certificate_1"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Certificate No. 2</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="file"
-                                            placeholder="certificate 2"
-                                            name="certificate_2"
-                                        />
-                                    </div>
-                                </div> */}
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Position</label>
-                                    <div className="form_elements">
-                                        <select
-                                            name="possition"
-                                            // defaultValue={
-                                            //     state.item.staffs?.possition
-                                            // }
-                                            id=""
-                                        >
-                                            <option value="accountant">
-                                                accountant
-                                            </option>
-                                            <option value="senior">
-                                                senior
-                                            </option>
-                                            <option value="junior">
-                                                junior
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div> */}
                                 <div className="form-group student_submit form-horizontal">
                                     <label></label>
                                     <div className="form_elements">

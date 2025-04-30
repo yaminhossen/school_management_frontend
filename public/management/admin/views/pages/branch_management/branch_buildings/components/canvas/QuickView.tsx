@@ -19,6 +19,7 @@ const QuickView: React.FC<Props> = (props: Props) => {
     function close_canvas(action: boolean = true) {
         dispatch(storeSlice.actions.set_show_quick_view_canvas(action));
     }
+    console.log('building quick view', state.item?.building_name);
 
     if (modalRoot && state.show_quick_view_canvas) {
         return createPortal(
@@ -42,12 +43,25 @@ const QuickView: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th>Name</th>
                                     <th>:</th>
-                                    <th>{state.item.name}</th>
+                                    <th>{state.item?.building_name}</th>
                                 </tr>
                                 <tr>
-                                    <th>Preffered name</th>
+                                    <th>Code</th>
                                     <th>:</th>
-                                    <th>{state.item.email}</th>
+                                    <th>{state.item?.building_code}</th>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>:</th>
+                                    <th
+                                        style={{
+                                            whiteSpace: 'pre-wrap',
+                                            wordWrap: 'break-word',
+                                            maxWidth: '300px',
+                                        }}
+                                    >
+                                        {state.item?.description}
+                                    </th>
                                 </tr>
                             </tbody>
                         </table>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
@@ -18,12 +18,15 @@ const Create: React.FC<Props> = (props: Props) => {
         (state: RootState) => state[setup.module_name],
     );
     const dispatch = useAppDispatch();
+    const [clearPreview, setClearPreview] = useState(false);
 
     async function handle_submit(e) {
         e.preventDefault();
+        setClearPreview(false)
         let response = await dispatch(store(new FormData(e.target)) as any);
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
             e.target.reset();
+            setClearPreview(true)
         }
     }
 
@@ -58,34 +61,11 @@ const Create: React.FC<Props> = (props: Props) => {
                                 <h2 className=""> Major Information</h2>
                             </div> */}
                             <div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Branch Code</label>
-                                    <div className="form_elements">
-                                        <select
-                                            name="branch_code"
-                                            id=""
-                                            // ref={meetingId}
-                                            // defaultValue={meetingId}
-                                        >
-                                            {state?.meeting?.length &&
-                                                state.meeting?.map(
-                                                    (i: {
-                                                        [key: string]: any;
-                                                    }) => {
-                                                        return (
-                                                            <option
-                                                                value={i.id}
-                                                            >
-                                                                {i.title}
-                                                            </option>
-                                                        );
-                                                    },
-                                                )}
-                                        </select>
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
-                                    <label>Building Code</label>
+                                    <label>
+                                        Building Code{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -95,7 +75,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Building Name</label>
+                                    <label>
+                                        Building Name{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -110,14 +93,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                         <InputImage
                                             label={''}
                                             name={'attachment'}
-                                            defalut_preview={get_value('')}
+                                            // defalut_preview={get_value('')}
+                                            clearPreview={clearPreview}
                                         />
-                                        {/* <input
-                                            type="file"
-                                            accept="image/*"
-                                            placeholder="attachment"
-                                            name="attachment"
-                                        /> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
@@ -126,18 +104,16 @@ const Create: React.FC<Props> = (props: Props) => {
                                         <InputImage
                                             label={''}
                                             name={'photo'}
-                                            defalut_preview={get_value('')}
+                                            // defalut_preview={get_value('')}
+                                            clearPreview={clearPreview}
                                         />
-                                        {/* <input
-                                            type="file"
-                                            accept="image/*"
-                                            placeholder="photo"
-                                            name="photo"
-                                        /> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>
+                                        Description{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <textarea
                                             placeholder="description"
@@ -147,7 +123,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group form-horizontal">
+                            <div className="form-group student_submit form-horizontal">
                                 <label></label>
                                 <div className="form_elements">
                                     <button className="btn btn_1">

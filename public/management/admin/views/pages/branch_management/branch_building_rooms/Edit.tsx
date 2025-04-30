@@ -71,7 +71,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Building id</label>
+                                    <label>
+                                        Building id{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <select
                                             name="building_id"
@@ -98,7 +101,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Room Name</label>
+                                    <label>
+                                        Room Name{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -109,7 +115,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Room code</label>
+                                    <label>
+                                        Room code{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -120,10 +129,12 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>
+                                        Description{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
+                                        <textarea
                                             placeholder="description"
                                             name="description"
                                             defaultValue={
@@ -133,7 +144,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Total seat</label>
+                                    <label>
+                                        Total seat{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -144,7 +158,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Total student</label>
+                                    <label>
+                                        Total student{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -190,7 +207,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         /> */}
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                <div className="form-group student_submit form-horizontal">
                                     <label></label>
                                     <div className="form_elements">
                                         <button className="btn btn_1">

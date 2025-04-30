@@ -43,8 +43,8 @@ export let active_routes: string[] = [
     // 'src/modules/auth_management/user_management/routes.ts',
     // 'src/modules/branch_management/branches/routes.ts',
     // 'src/modules/branch_management/branch_admin/routes.ts',
-    // 'src/modules/branch_management/branch_buildings/routes.ts',
-    // 'src/modules/branch_management/branch_building_rooms/routes.ts',
+    'src/modules/branch_management/branch_buildings/routes.ts',
+    'src/modules/branch_management/branch_building_rooms/routes.ts',
     // 'src/modules/branch_management/branch_building_room_beds/routes.ts',
     // 'src/modules/branch_management/branch_contacts/routes.ts',
     // 'src/modules/branch_management/branch_informations/routes.ts',
@@ -104,9 +104,9 @@ export let active_routes: string[] = [
     // 'src/modules/user_management/user_admin/routes.ts',
     // 'src/modules/user_management/user_branch_admins/routes.ts',
     // 'src/modules/user_management/user_login_histories/routes.ts',
-    'src/modules/user_management/user_parents/routes.ts',
+    // 'src/modules/user_management/user_parents/routes.ts',
     // 'src/modules/user_management/user_staffs/routes.ts',
-    'src/modules/user_management/user_students/routes.ts',
+    // 'src/modules/user_management/user_students/routes.ts',
     // 'src/modules/user_management/user_teachers/routes.ts',
 ];
 

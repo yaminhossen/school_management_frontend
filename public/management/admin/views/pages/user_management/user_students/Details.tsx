@@ -37,7 +37,7 @@ const Details: React.FC<Props> = (props: Props) => {
                         <div className="navigation">
                             <ul>
                                 <li className="search_li">
-                                    <HeadSearch></HeadSearch>
+                                    {/* <HeadSearch></HeadSearch> */}
                                 </li>
                             </ul>
                         </div>

@@ -2571,6 +2571,9 @@ td.col_id {
   white-space: nowrap;
   padding: 13px;
 }
+.table tr .details_descrtiption2 {
+  white-space: normal !important;
+}
 .table.table-bordered tr td,
 .table.table-bordered tr th {
   border: 1px solid var(--brand_color2);

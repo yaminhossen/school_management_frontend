@@ -78,6 +78,13 @@ const Details: React.FC<Props> = (props: Props) => {
                                             </a>
                                         </td>
                                     </tr>
+                                    <tr className="">
+                                        <td>Description</td>
+                                        <td>:</td>
+                                        <td className="details_descrtiption2">
+                                            {state.item?.description}
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

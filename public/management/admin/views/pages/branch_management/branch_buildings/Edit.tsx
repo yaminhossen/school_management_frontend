@@ -64,7 +64,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Building Name</label>
+                                    <label>
+                                        Building Name{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -77,7 +80,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Building code</label>
+                                    <label>
+                                        Building code{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -99,12 +105,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                 'attachment',
                                             )}
                                         />
-                                        {/* <input
-                                            type="file"
-                                            accept="image/*"
-                                            placeholder="attachment"
-                                            name="attachment"
-                                        /> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
@@ -115,42 +115,15 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             name={'photo'}
                                             defalut_preview={get_value('photo')}
                                         />
-                                        {/* <input
-                                            type="file"
-                                            accept="image/*"
-                                            placeholder="photo"
-                                            name="photo"
-                                            onChange={getFile}
-                                        /> */}
-                                        {/* <div className="form-group form-horizontal">
-                                            <label>Preview img</label>
-                                            <div className="form_elements">
-                                                <a target="blank" href={file}>
-                                                    <img
-                                                        src={file}
-                                                        className="img-80"
-                                                        alt="Preview image"
-                                                    />
-                                                </a>
-                                            </div>
-                                            <label>Previous Img</label>
-                                            <div className="form_elements">
-                                                <a target="blank" href={file}>
-                                                    <img
-                                                        src={state.item?.photo}
-                                                        className="img-80"
-                                                        alt="Preview image"
-                                                    />
-                                                </a>
-                                            </div>
-                                        </div> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>
+                                        Description{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
+                                        <textarea
                                             placeholder="description"
                                             name="description"
                                             defaultValue={
@@ -159,7 +132,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                <div className="form-group student_submit form-horizontal">
                                     <label></label>
                                     <div className="form_elements">
                                         <button className="btn btn_1">

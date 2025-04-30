@@ -55,6 +55,7 @@ const All: React.FC<Props> = (props: Props) => {
                                         <th>
                                             <SelectAll />
                                         </th>
+                                        <th>Serial</th>
                                         <TableHeading
                                             label={`ID`}
                                             col_name={`id`}
@@ -64,29 +65,29 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Building Name`}
                                             col_name={`building_name`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Building Code`}
                                             col_name={`building_code`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Attachment`}
                                             col_name={`attachment`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Description`}
                                             col_name={`deacription`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
                                     {(state.all as any)?.data?.map(
-                                        (i: { [key: string]: any }) => {
+                                        (i: { [key: string]: any }, index) => {
                                             return (
                                                 <tr
                                                     key={i.id}
@@ -100,6 +101,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                     <td>
                                                         <SelectItem item={i} />
                                                     </td>
+                                                    <td>{index + 1}</td>
                                                     <td>
                                                         <span
                                                             className="quick_view_trigger"
@@ -123,14 +125,25 @@ const All: React.FC<Props> = (props: Props) => {
                                                     <td>{i.building_code}</td>
                                                     <td className="font-medium text-dark-medium">
                                                         <a
-                                                            href={i.attachment}
+                                                            href={
+                                                                i.attachment ||
+                                                                undefined
+                                                            }
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                         >
                                                             Show File
                                                         </a>
                                                     </td>
-                                                    <td>{i.description}</td>
+                                                    <td>
+                                                        {i.description?.length >
+                                                        60
+                                                            ? i.description.slice(
+                                                                0,
+                                                                40,
+                                                            ) + '...'
+                                                            : i.description}
+                                                    </td>
                                                 </tr>
                                             );
                                         },
