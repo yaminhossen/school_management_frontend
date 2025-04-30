@@ -7,7 +7,7 @@ import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { details } from './config/store/async_actions/details';
 import { initialState } from './config/store/inital_state';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 export interface Props {}
 
@@ -54,9 +54,8 @@ const Details: React.FC<Props> = (props: Props) => {
                                 <img
                                     className="user_profile_img"
                                     src={
-                                        state.item?.image
-                                            ? state.item?.image
-                                            : '/assets/dashboard/images/avatar.png'
+                                        state.item?.image ||
+                                        '/assets/dashboard/images/avatar.png'
                                     }
                                     alt="parent"
                                 />
@@ -93,7 +92,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <ul className="section_naviagation">
-                                    <li>
+                                    {/* <li>
                                         <Link
                                             to={`/user-parents/details/${params.id}`}
                                         >
@@ -106,17 +105,32 @@ const Details: React.FC<Props> = (props: Props) => {
                                         >
                                             Childrens
                                         </Link>
-                                    </li>
-                                    {/* <li>
-                                        <Link to="/user-parents/details/3/payment">
-                                            Payment
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/user-parents/details/3/due">
-                                            Due
-                                        </Link>
                                     </li> */}
+                                    <li className="active_Li">
+                                        <NavLink
+                                            to={`/user-parents/details/${params.id}/information`}
+                                            // className="active_nav_link"
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? 'active_nav_link'
+                                                    : 'normal_nav_link'
+                                            }
+                                        >
+                                            Informations
+                                        </NavLink>
+                                    </li>
+                                    <li className="active_Li">
+                                        <NavLink
+                                            to={`/user-parents/details/${params.id}/childrens`}
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? 'active_nav_link'
+                                                    : 'normal_nav_link'
+                                            }
+                                        >
+                                            Childrens
+                                        </NavLink>
+                                    </li>
                                 </ul>
                                 <div></div>
                                 <div className="info-table table-responsive">

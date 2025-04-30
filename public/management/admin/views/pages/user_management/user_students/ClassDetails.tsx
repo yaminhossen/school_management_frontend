@@ -167,7 +167,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                         </Link>
                                                         <Link
                                                             // to="/students/single/student/"
-                                                            to={`/user-students/student-dues/${i.branch_student_id}`}
+                                                            to={`/user-students/student-dues/${i.branch_student_id}?idd=${params.id}`}
                                                             className="btn btn-sm  btn-outline-info ml-2"
                                                             type="submit"
                                                         >

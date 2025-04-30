@@ -25,28 +25,32 @@ async function boot() {
 
     /** assets middleware */
     const commonMiddleware = async function (request: FastifyRequest) {
-        const extension = path.extname(request.raw.url as string).toLowerCase();
+        const url = (request.raw.url as string).split('?')[0];
+        const extension = path.extname(url.toLowerCase());
 
         if (extension !== '') {
-            if (
-                [
-                    '.ico',
-                    '.jpg',
-                    '.jpeg',
-                    '.png',
-                    '.gif',
-                    '.svg',
-                    '.mp4',
-                    '.webm',
-                    '.pdf',
-                    '.css',
-                    '.js',
-                    '.map',
-                    '.ttf',
-                    '.woff',
-                    '.woff2',
-                ].includes(extension)
-            ) {
+            const check = [
+                '.ico',
+                '.jpg',
+                '.jpeg',
+                '.png',
+                '.gif',
+                '.svg',
+                '.mp4',
+                '.webm',
+                '.pdf',
+                '.css',
+                '.js',
+                '.map',
+                '.ttf',
+                '.woff',
+                '.woff2',
+            ].find((i) => i.includes(extension));
+
+            console.log('check', check);
+            console.log('extention', extension);
+
+            if (check) {
                 return;
             } else {
                 throw new custom_error('not found', 404, 'target not found.');

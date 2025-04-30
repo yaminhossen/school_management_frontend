@@ -18,9 +18,9 @@ const Children: React.FC<Props> = (props: Props) => {
     const params = useParams();
 
     useEffect(() => {
-        dispatch(storeSlice.actions.set_item({}));
+        dispatch(storeSlice.actions.set_children({}));
         dispatch(children_details({ id: params.id }) as any);
-        dispatch(details({ id: params.id }) as any);
+        // dispatch(details({ id: params.id }) as any);
     }, []);
     console.log('childfdlf', state);
 

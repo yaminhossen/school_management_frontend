@@ -37,6 +37,10 @@ export default {
                     path: '',
                     element: <BasicInformation />,
                 },
+                {
+                    path: 'information',
+                    element: <BasicInformation />,
+                },
                 // {
                 //     path: 'payment',
                 //     element: <Payments />,

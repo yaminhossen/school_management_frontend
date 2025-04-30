@@ -9,6 +9,8 @@ import { details } from './config/store/async_actions/details';
 import { initialState } from './config/store/inital_state';
 import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
 import storeSlice from './config/store';
+import Header3 from './components/all_data_page/Header3';
+import HeadSearch from './components/all_data_page/HeadSearch';
 export interface Props {}
 
 const Details: React.FC<Props> = (props: Props) => {
@@ -31,13 +33,43 @@ const Details: React.FC<Props> = (props: Props) => {
         <>
             <div className="page_content">
                 <div className="explore_window fixed_size">
-                    <Header page_title={setup.details_page_title}></Header>
+                    <div className="action_bar">
+                        <div className="navigation">
+                            <ul>
+                                <li className="search_li">
+                                    <HeadSearch></HeadSearch>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="title no_move" id="users_drag">
+                            <h2>
+                                Student Details
+                                {/* {state.is_loading && <span> loading..</span>} */}
+                            </h2>
+                        </div>
+                        <div className="control">
+                            <ul>
+                                <li>
+                                    <Link
+                                        to={`/${setup.route_prefix}/class-details/${state.item?.student_info?.s_class}`}
+                                    >
+                                        <span className="material-symbols-outlined fill">
+                                            arrow_back
+                                        </span>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                     <div className="content_body custom_scroll">
                         <div className="single-info-details">
                             <div className="item-img">
                                 <img
                                     className="user_profile_img"
-                                    src={state.item?.image}
+                                    src={
+                                        state.item?.image ||
+                                        '/assets/dashboard/images/avatar.png'
+                                    }
                                     alt="student"
                                 />
                             </div>

@@ -22,6 +22,28 @@
     }
 }
 
+.dues_back_btn{
+    display: flex;
+    justify-content: space-between;
+    .back_btn{
+        border: 1px solid var(--brand_color2);
+    background: transparent;
+    color: var(--brand_white2);
+    padding: 6px 15px;
+    text-transform: uppercase;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px !important;
+
+    &:hover {
+        border: 1px solid rgba(15, 113, 170, 0.534);
+        background-color: rgba(15, 113, 170, 0.534);
+        color: var(--brand_white);
+    }
+}
+}
+
 .download_td {
     display: flex;
     align-items: center;

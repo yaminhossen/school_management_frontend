@@ -1163,6 +1163,27 @@ body {
   background-color: rgba(15, 113, 170, 0.534);
 }
 
+.dues_back_btn {
+  display: flex;
+  justify-content: space-between;
+}
+.dues_back_btn .back_btn {
+  border: 1px solid var(--brand_color2);
+  background: transparent;
+  color: var(--brand_white2);
+  padding: 6px 15px;
+  text-transform: uppercase;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 10px !important;
+}
+.dues_back_btn .back_btn:hover {
+  border: 1px solid rgba(15, 113, 170, 0.534);
+  background-color: rgba(15, 113, 170, 0.534);
+  color: var(--brand_white);
+}
+
 .download_td {
   display: flex;
   align-items: center;
@@ -2888,7 +2909,7 @@ td.col_id {
 }
 
 .user_profile_img {
-  max-width: 225px;
+  max-width: 130px;
 }
 
 @media only screen and (max-width: 1199px) {
