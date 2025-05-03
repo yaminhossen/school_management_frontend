@@ -147,7 +147,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                 <div className="d-flex">
                                                     <div className="form-group form-vertical">
                                                         <label>
-                                                            Branch class id
+                                                            Class
                                                             {/* <div>
                                                                 {
                                                                     state.item
@@ -204,7 +204,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                     <div className="form-group form-vertical">
                                                         <label>
                                                             Branch class section
-                                                            id
                                                         </label>
                                                         <div className="form_elements">
                                                             <select
@@ -247,9 +246,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                         </div>
                                                     </div>
                                                     <div className="form-group form-vertical">
-                                                        <label>
-                                                            Teacher id
-                                                        </label>
+                                                        <label>Teacher</label>
                                                         <div className="form_elements">
                                                             <select
                                                                 name="user_teacher_id"
@@ -293,7 +290,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                         </div>
                                                     </div>
                                                     <div className="form-group form-vertical">
-                                                        <label>Room id</label>
+                                                        <label>Room</label>
                                                         <div className="form_elements">
                                                             <select
                                                                 name="room_id"
@@ -663,14 +660,14 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label></label>
-                                    <div className="form_elements">
+                                <div className="form-group student_submit form-horizontal">
+                                    {/* <label></label> */}
+                                    <div className="form_elementss">
                                         <button
                                             // onClick={handle_submit}
                                             className="btn btn_1"
                                         >
-                                            submit
+                                            update
                                         </button>
                                     </div>
                                 </div>

@@ -13,6 +13,7 @@ import { classes } from './config/store/async_actions/classes';
 import { sections } from './config/store/async_actions/sections';
 import { teachers } from './config/store/async_actions/teachers';
 import { rooms } from './config/store/async_actions/rooms';
+import axios from 'axios';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -20,6 +21,9 @@ const Create: React.FC<Props> = (props: Props) => {
     const [teacher, setTeachers] = useState<any>(Number);
     const roomref = useRef<HTMLSelectElement>(null);
     const [room, setRooms] = useState<any>(Number);
+    const [error, setError] = useState(null);
+    const [sections, setSections] = useState<any>([]);
+    const [selectedClassId, setSelectedClassId] = useState('');
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -34,11 +38,23 @@ const Create: React.FC<Props> = (props: Props) => {
             e.target.reset();
         }
     }
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-class-sections/class-wise/1`,
+            );
+            setSections(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
 
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(classes({}) as any);
-        await dispatch(sections({}) as any);
+        // await dispatch(sections({}) as any);
+        await fetchData();
         await dispatch(teachers({}) as any);
         await dispatch(rooms({}) as any);
     }
@@ -103,6 +119,22 @@ const Create: React.FC<Props> = (props: Props) => {
         }
     }, []);
 
+    const handleChange2 = async (
+        event: React.ChangeEvent<HTMLSelectElement>,
+    ) => {
+        let id = event.target.value;
+        setSelectedClassId(id);
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-class-sections/class-wise/${id}`,
+            );
+            setSections(response.data.data);
+        } catch (error) {
+            setError(error);
+        }
+        console.log('Selected value:', event.target.value);
+    };
+
     return (
         <>
             <div className="page_content">
@@ -122,14 +154,19 @@ const Create: React.FC<Props> = (props: Props) => {
                                         <div className="multi_input_group">
                                             <div className="d-flex">
                                                 <div className="form-group form-vertical">
-                                                    <label>
-                                                        Branch class id
-                                                    </label>
+                                                    <label>Branch class</label>
                                                     <div className="form_elements">
                                                         <select
                                                             name="branch_class_id"
                                                             id=""
+                                                            onChange={
+                                                                handleChange2
+                                                            }
+                                                            value={selectedClassId}
                                                         >
+                                                            <option value="">
+                                                                Select Class
+                                                            </option>
                                                             {state?.classes
                                                                 ?.length &&
                                                                 state.classes?.map(
@@ -155,6 +192,43 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     </div>
                                                 </div>
                                                 <div className="form-group form-vertical">
+                                                    <label>
+                                                        Branch class section
+                                                    </label>
+                                                    <div className="form_elements">
+                                                        {sections.length && (
+                                                            <select
+                                                                name="branch_class_section_id"
+                                                                disabled={!selectedClassId || sections.length === 0}
+                                                            >
+                                                                <option value="">
+                                                                    {' '}
+                                                                    Select
+                                                                    section{' '}
+                                                                </option>
+                                                                {sections.map(
+                                                                    (
+                                                                        i,
+                                                                        index,
+                                                                    ) => {
+                                                                        return (
+                                                                            <option
+                                                                                value={
+                                                                                    i.id
+                                                                                }
+                                                                            >
+                                                                                {
+                                                                                    i.title
+                                                                                }
+                                                                            </option>
+                                                                        );
+                                                                    },
+                                                                )}
+                                                            </select>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                                <div className="form-group form-vertical">
                                                     <label>Teacher</label>
                                                     <div className="form_elements">
                                                         <select
@@ -165,6 +239,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                 handleChange
                                                             }
                                                         >
+                                                            <option value="">
+                                                                Select Teacher
+                                                            </option>
                                                             {state?.teachers
                                                                 ?.length &&
                                                                 state.teachers?.map(
@@ -192,40 +269,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     </div>
                                                 </div>
                                                 <div className="form-group form-vertical">
-                                                    <label>
-                                                        Branch class section id
-                                                    </label>
-                                                    <div className="form_elements">
-                                                        <select
-                                                            name="branch_class_section_id"
-                                                            id=""
-                                                        >
-                                                            {state?.sections
-                                                                ?.length &&
-                                                                state.sections?.map(
-                                                                    (i: {
-                                                                        [
-                                                                            key: string
-                                                                        ]: any;
-                                                                    }) => {
-                                                                        return (
-                                                                            <option
-                                                                                value={
-                                                                                    i.id
-                                                                                }
-                                                                            >
-                                                                                {
-                                                                                    i.title
-                                                                                }
-                                                                            </option>
-                                                                        );
-                                                                    },
-                                                                )}
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div className="form-group form-vertical">
-                                                    <label>Room id</label>
+                                                    <label>Room</label>
                                                     <div className="form_elements">
                                                         <select
                                                             name="room_id"
@@ -235,6 +279,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                 handleRoomChange
                                                             }
                                                         >
+                                                            <option value="">
+                                                                Select Room
+                                                            </option>
                                                             {state?.rooms
                                                                 ?.length &&
                                                                 state.rooms?.map(
@@ -279,16 +326,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         />
                                                     </div>
                                                 </div>
-                                                {/* <div className="form-group form-vertical">
-                                                    <label>Level</label>
-                                                    <div className="form_elements">
-                                                        <input
-                                                            type="text"
-                                                            placeholder="level"
-                                                            name="level"
-                                                        />
-                                                    </div>
-                                                </div> */}
                                                 <div className="form-group form-vertical">
                                                     <label>Description</label>
                                                     <div className="form_elements">
@@ -299,27 +336,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         ></textarea>
                                                     </div>
                                                 </div>
-                                                {/* <div className="form-group form-vertical">
-                                                    <label>Credit</label>
-                                                    <div className="form_elements">
-                                                        <input
-                                                            type="text"
-                                                            placeholder="credit"
-                                                            name="credit"
-                                                        />
-                                                    </div>
-                                                </div> */}
-                                                {/* <div className="form-group form-vertical">
-                                                    <label>
-                                                        Additional Info
-                                                    </label>
-                                                    <div className="form_elements">
-                                                        <textarea
-                                                            placeholder="additional info"
-                                                            name="additional_info"
-                                                        />
-                                                    </div>
-                                                </div> */}
                                             </div>
                                         </div>
                                     </div>
@@ -408,6 +424,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                     id=""
                                                                     className="teacher"
                                                                 >
+                                                                    <option value="">
+                                                                        Select
+                                                                        Teacher
+                                                                    </option>
                                                                     {state
                                                                         ?.teachers
                                                                         ?.length &&
@@ -443,6 +463,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                     id=""
                                                                     className="room"
                                                                 >
+                                                                    <option value="">
+                                                                        Select
+                                                                        Room
+                                                                    </option>
                                                                     {state
                                                                         ?.rooms
                                                                         ?.length &&
@@ -475,7 +499,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="full_width">
-                                    <div className="form_section_heading">
+                                    {/* <div className="form_section_heading">
                                         <h4>Teacher Part</h4>
                                     </div>
                                     <div className="multi_inputs">
@@ -496,12 +520,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
-                            <div className="form-group form-horizontal">
-                                <label></label>
-                                <div className="form_elements">
+                            <div className="form-group student_submit form-horizontal">
+                                {/* <label></label> */}
+                                <div className="form_elementss">
                                     <button
                                         // onClick={handle_submit}
                                         className="btn btn_1"

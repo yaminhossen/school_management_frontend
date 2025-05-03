@@ -108,7 +108,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch Class subject id</label>
+                                    <label>Branch Class subject</label>
                                     <div className="form_elements">
                                         {subjects.length && (
                                             <select

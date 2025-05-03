@@ -64,57 +64,27 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Class`}
                                             col_name={`class`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Section`}
                                             col_name={`section`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Code`}
                                             col_name={`code`}
-                                            sort={true}
-                                        />
-                                        {/* <TableHeading
-                                            label={`Level`}
-                                            col_name={`level`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Class_time`}
-                                            col_name={`class_time`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Room_no`}
-                                            col_name={`room_no`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Days`}
-                                            col_name={`days`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
-                                            sort={true}
-                                        /> */}
-                                        <TableHeading
-                                            label={`Credit`}
-                                            col_name={`credit`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Additional Info`}
-                                            col_name={`additional_info`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                     </tr>
                                 </thead>
@@ -165,8 +135,15 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }
                                                     </td>
                                                     <td>{i.code}</td>
-                                                    <td>{i.credit}</td>
-                                                    <td>{i.additional_info}</td>
+                                                    <td>
+                                                        {i.description?.length >
+                                                        60
+                                                            ? i.description.slice(
+                                                                0,
+                                                                40,
+                                                            ) + '...'
+                                                            : i.description}
+                                                    </td>
                                                 </tr>
                                             );
                                         },

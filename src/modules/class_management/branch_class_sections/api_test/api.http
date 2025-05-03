@@ -1,4 +1,4 @@
-@hostname = http://127.0.0.1:5003/api/v1/branch-class-sections
+@hostname = http://127.0.0.1:5002/api/v1/branch-class-sections
 
 # all
 ###
@@ -7,6 +7,10 @@ GET {{hostname}}?orderByCol=id&orderByAsc=true&show_active_data=true&paginate=10
 # get
 ###
 GET {{hostname}}/1 HTTP/1.1
+
+# get
+###
+GET {{hostname}}/class-wise/2 HTTP/1.1
 
 # store
 ###
