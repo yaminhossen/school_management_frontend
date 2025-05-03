@@ -5,8 +5,8 @@ let appDir: string = path.resolve(path.dirname(__dirname));
 
 export let active_routes: string[] = [
     'src/modules/auth_management/authetication/routes.ts',
-    // 'src/modules/academic_calendar_management/academic_calendars/routes.ts',
-    // 'src/modules/academic_calendar_management/academic_calendar_event_types/routes.ts',
+    'src/modules/academic_calendar_management/academic_calendars/routes.ts',
+    'src/modules/academic_calendar_management/academic_calendar_event_types/routes.ts',
     // 'src/modules/accounts_management/accounts/routes.ts',
     // 'src/modules/accounts_management/account_categories/routes.ts',
     // 'src/modules/accounts_management/account_customers/routes.ts',
@@ -48,8 +48,8 @@ export let active_routes: string[] = [
     // 'src/modules/branch_management/branch_building_room_beds/routes.ts',
     // 'src/modules/branch_management/branch_contacts/routes.ts',
     // 'src/modules/branch_management/branch_informations/routes.ts',
-    'src/modules/branch_management/branch_transports/routes.ts',
-    'src/modules/branch_management/branch_transport_drivers/routes.ts',
+    // 'src/modules/branch_management/branch_transports/routes.ts',
+    // 'src/modules/branch_management/branch_transport_drivers/routes.ts',
     // 'src/modules/class_course_schedule_management/class_course_schedules/routes.ts',
     // 'src/modules/class_course_schedule_management/class_course_schedule_attachements/routes.ts',
     // 'src/modules/class_course_schedule_management/class_course_schedule_images/routes.ts',

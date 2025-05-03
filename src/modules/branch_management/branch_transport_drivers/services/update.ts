@@ -23,18 +23,27 @@ async function validate(req: Request) {
         .not()
         .isEmpty()
         .withMessage('the driver_number field is required')
+        .bail()
+        .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+        .withMessage('Phone number must be a valid Bangladeshi number')
         .run(req);
 
     await body('assistant_number_1')
         .not()
         .isEmpty()
         .withMessage('the assistant_number_1 field is required')
+        .bail()
+        .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+        .withMessage('Phone number must be a valid Bangladeshi number')
         .run(req);
 
     await body('assistant_number_2')
         .not()
         .isEmpty()
         .withMessage('the assistant_number_2 field is required')
+        .bail()
+        .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+        .withMessage('Phone number must be a valid Bangladeshi number')
         .run(req);
 
     await body('present_address')

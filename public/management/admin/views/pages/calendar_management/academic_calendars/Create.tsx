@@ -94,7 +94,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                         <input
                                             type="text"
                                             name="event_name"
-                                            required
                                         />
                                     </div>
                                 </div>
@@ -104,7 +103,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                         <input
                                             type="text"
                                             name="description"
-                                            required
                                         />
                                     </div>
                                 </div>
@@ -138,7 +136,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                             value={startDate}
                                             onChange={handleStartDateChange}
                                             name="start_date"
-                                            required
                                         />
                                         {errorMessage && (
                                             <div
@@ -162,7 +159,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                             value={endDate}
                                             onChange={handleEndDateChange}
                                             name="end_date"
-                                            required
                                         />
                                         {errorMessage2 && (
                                             <div
@@ -187,7 +183,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                             onChange={handleDaysChange}
                                             name="days"
                                             min="1"
-                                            required
                                         />
                                     </div>
                                 </div>
