@@ -40,14 +40,23 @@ const QuickView: React.FC<Props> = (props: Props) => {
                         <table className="table quick_modal_table">
                             <tbody>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>Title</th>
                                     <th>:</th>
-                                    <th>{state.item.name}</th>
+                                    <th>{state.item.title}</th>
                                 </tr>
+                                
                                 <tr>
-                                    <th>Preffered name</th>
+                                    <th>Description</th>
                                     <th>:</th>
-                                    <th>{state.item.email}</th>
+                                    <th
+                                        style={{
+                                            whiteSpace: 'pre-wrap',
+                                            wordWrap: 'break-word',
+                                            maxWidth: '300px',
+                                        }}
+                                    >
+                                        {state.item?.description}
+                                    </th>
                                 </tr>
                             </tbody>
                         </table>

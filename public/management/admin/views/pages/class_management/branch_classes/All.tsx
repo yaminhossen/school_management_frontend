@@ -60,29 +60,29 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Code`}
                                             col_name={`code`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Capacity`}
                                             col_name={`capacity`}
-                                            sort={true}
+                                            sort={false}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Fee`}
                                             col_name={`fee`}
-                                            sort={true}
-                                        />
+                                            sort={false}
+                                        /> */}
                                         <TableHeading
                                             label={`Prerequisites`}
                                             col_name={`prerequisities`}
-                                            sort={true}
+                                            sort={false}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Policies`}
                                             col_name={`policies`}
                                             sort={true}
@@ -91,7 +91,7 @@ const All: React.FC<Props> = (props: Props) => {
                                             label={`Rules`}
                                             col_name={`rules`}
                                             sort={true}
-                                        />
+                                        /> */}
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
@@ -133,10 +133,10 @@ const All: React.FC<Props> = (props: Props) => {
                                                     <td>{i.name}</td>
                                                     <td>{i.code}</td>
                                                     <td>{i.capacity}</td>
-                                                    <td>{i.fee}</td>
+                                                    {/* <td>{i.fee}</td> */}
                                                     <td>{i.prerequisities}</td>
-                                                    <td>{i.policies}</td>
-                                                    <td>{i.rules}</td>
+                                                    {/* <td>{i.policies}</td>
+                                                    <td>{i.rules}</td> */}
                                                 </tr>
                                             );
                                         },

@@ -89,25 +89,28 @@ const Create: React.FC<Props> = (props: Props) => {
                         >
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Title</label>
+                                    <label>
+                                        Title{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            name="event_name"
-                                        />
+                                        <input type="text" name="event_name" />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>
+                                        Description{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            name="description"
-                                        />
+                                        <input type="text" name="description" />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Event Type</label>
+                                    <label>
+                                        Event Type{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <select name="event_type_id" required>
                                             {state?.event_types?.length &&
@@ -129,7 +132,10 @@ const Create: React.FC<Props> = (props: Props) => {
 
                                 {/* Start Date */}
                                 <div className="form-group form-horizontal">
-                                    <label>Start Date</label>
+                                    <label>
+                                        Start Date{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="date"
@@ -152,7 +158,10 @@ const Create: React.FC<Props> = (props: Props) => {
 
                                 {/* End Date */}
                                 <div className="form-group form-horizontal">
-                                    <label>End Date</label>
+                                    <label>
+                                        End Date{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="date"
@@ -175,11 +184,15 @@ const Create: React.FC<Props> = (props: Props) => {
 
                                 {/* Total Days */}
                                 <div className="form-group form-horizontal">
-                                    <label>Total Days</label>
+                                    <label>
+                                        Total Days{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="number"
                                             value={days}
+                                            readOnly
                                             onChange={handleDaysChange}
                                             name="days"
                                             min="1"
@@ -200,9 +213,9 @@ const Create: React.FC<Props> = (props: Props) => {
                             </div>
 
                             {/* Submit Button */}
-                            <div className="form-group form-horizontal">
-                                <label></label>
-                                <div className="form_elements">
+                            <div className="form-group student_submit form-horizontal">
+                                {/* <label></label> */}
+                                <div className="form_elementss">
                                     <button
                                         type="submit"
                                         className={`btn btn_1 ${errorMessage || errorMessage2 ? 'btn_error' : ''}`}

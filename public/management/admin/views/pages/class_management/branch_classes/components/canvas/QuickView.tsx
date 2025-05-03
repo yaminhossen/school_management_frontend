@@ -45,9 +45,45 @@ const QuickView: React.FC<Props> = (props: Props) => {
                                     <th>{state.item.name}</th>
                                 </tr>
                                 <tr>
-                                    <th>Preffered name</th>
+                                    <th>Code</th>
                                     <th>:</th>
-                                    <th>{state.item.email}</th>
+                                    <th>{state.item.code}</th>
+                                </tr>
+                                <tr>
+                                    <th>Capacity</th>
+                                    <th>:</th>
+                                    <th>{state.item.capacity}</th>
+                                </tr>
+                                {/* <tr>
+                                    <th>Prerequisites</th>
+                                    <th>:</th>
+                                    <th>{state.item.prerequisites}</th>
+                                </tr> */}
+                                <tr>
+                                    <th>Prerequisities</th>
+                                    <th>:</th>
+                                    <th
+                                        style={{
+                                            whiteSpace: 'pre-wrap',
+                                            wordWrap: 'break-word',
+                                            maxWidth: '300px',
+                                        }}
+                                    >
+                                        {state.item?.prerequisities}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>Rules</th>
+                                    <th>:</th>
+                                    <th
+                                        style={{
+                                            whiteSpace: 'pre-wrap',
+                                            wordWrap: 'break-word',
+                                            maxWidth: '300px',
+                                        }}
+                                    >
+                                        {state.item?.rules}
+                                    </th>
                                 </tr>
                             </tbody>
                         </table>
