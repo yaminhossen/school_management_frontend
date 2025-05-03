@@ -36,6 +36,12 @@ async function validate(req: Request) {
         .withMessage('the vehicle_type field is required')
         .run(req);
 
+    await body('vehicle_no')
+        .not()
+        .isEmpty()
+        .withMessage('the vehicle_no field is required')
+        .run(req);
+
     let result = await validationResult(req);
 
     return result;
@@ -80,8 +86,7 @@ async function update(
     try {
         let data = await models.BranchTransportsModel.findByPk(body.id);
         if (data) {
-            data.update(inputs);
-            await data.save();
+            (await data.update(inputs)).save();
             return response(200, 'data updated', data);
         } else {
             throw new custom_error('Forbidden', 403, 'operation not possible');
@@ -98,3 +103,7 @@ async function update(
 }
 
 export default update;
+function save() {
+    throw new Error('Function not implemented.');
+}
+

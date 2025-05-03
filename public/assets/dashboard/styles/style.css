@@ -2396,8 +2396,9 @@ input.form_checkbox:checked::after {
 }
 
 .student_submit {
-  display: grid;
-  justify-content: center;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center;
 }
 .student_submit .btn {
   padding: 10px 20px;

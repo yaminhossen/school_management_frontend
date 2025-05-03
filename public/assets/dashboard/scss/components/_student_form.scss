@@ -6,8 +6,10 @@
     margin: 0px 70px;
 }
 .student_submit{
-    display: grid;
-    justify-content: center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center;
+    // border: 1px solid red;
     .btn{
         padding: 10px 20px;
         border-radius: 8px;

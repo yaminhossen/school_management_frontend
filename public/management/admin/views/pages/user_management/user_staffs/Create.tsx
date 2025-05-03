@@ -383,8 +383,8 @@ const Create: React.FC<Props> = (props: Props) => {
                                 </div>
                             </div>
                             <div className="form-group student_submit form-horizontal">
-                                <label></label>
-                                <div className="form_elements">
+                                {/* <label></label> */}
+                                <div className="form_elementss">
                                     <button className="btn btn_1">
                                         submit
                                     </button>
