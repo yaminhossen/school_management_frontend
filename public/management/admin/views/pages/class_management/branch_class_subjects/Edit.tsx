@@ -16,6 +16,7 @@ import { rooms } from './config/store/async_actions/rooms';
 import { details } from './config/store/async_actions/details';
 import { update } from './config/store/async_actions/update';
 import moment from 'moment/moment';
+import axios from 'axios';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -30,17 +31,31 @@ const Edit: React.FC<Props> = (props: Props) => {
     const [selectedRRoom, setSelectedRRoom] = useState<any>(Number);
     const roomref = useRef<HTMLSelectElement>(null);
     const [room, setRooms] = useState<any>(Number);
+    const [sections, setSections] = useState<any>([]);
+    const [error, setError] = useState(null);
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
 
     const dispatch = useAppDispatch();
     const params = useParams();
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-class-sections/class-wise/${params.id}`,
+            );
+            setSections(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(details({ id: params.id }) as any);
         await dispatch(classes({}) as any);
-        await dispatch(sections({}) as any);
+        // await dispatch(sections({}) as any);
+        await fetchData();
         await dispatch(teachers({}) as any);
         await dispatch(rooms({}) as any);
     }
@@ -206,29 +221,28 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                             Branch class section
                                                         </label>
                                                         <div className="form_elements">
-                                                            <select
-                                                                name="branch_class_section_id"
-                                                                id=""
-                                                                value={
-                                                                    selectedSection
-                                                                }
-                                                                onChange={(
-                                                                    e,
-                                                                ) => {
-                                                                    setSelectedSection(
-                                                                        e.target
-                                                                            .value,
-                                                                    );
-                                                                }}
-                                                            >
-                                                                {state?.sections
-                                                                    ?.length &&
-                                                                    state.sections?.map(
-                                                                        (i: {
-                                                                            [
-                                                                                key: string
-                                                                            ]: any;
-                                                                        }) => {
+                                                            {sections.length && (
+                                                                <select
+                                                                    name="branch_class_section_id"
+                                                                    id=""
+                                                                    value={
+                                                                        selectedSection
+                                                                    }
+                                                                    onChange={(
+                                                                        e,
+                                                                    ) => {
+                                                                        setSelectedSection(
+                                                                            e
+                                                                                .target
+                                                                                .value,
+                                                                        );
+                                                                    }}
+                                                                >
+                                                                    {sections?.map(
+                                                                        (
+                                                                            i,
+                                                                            index,
+                                                                        ) => {
                                                                             return (
                                                                                 <option
                                                                                     value={
@@ -242,7 +256,8 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                             );
                                                                         },
                                                                     )}
-                                                            </select>
+                                                                </select>
+                                                            )}
                                                         </div>
                                                     </div>
                                                     <div className="form-group form-vertical">
