@@ -39,23 +39,13 @@ const Edit: React.FC<Props> = (props: Props) => {
 
     const dispatch = useAppDispatch();
     const params = useParams();
-    const fetchData = async () => {
-        try {
-            const response = await axios.get(
-                `/api/v1/branch-class-sections/class-wise/${params.id}`,
-            );
-            setSections(response.data.data);
-            // setData(response.data);
-        } catch (error) {
-            setError(error);
-        }
-    };
+
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(details({ id: params.id }) as any);
         await dispatch(classes({}) as any);
         // await dispatch(sections({}) as any);
-        await fetchData();
+        // await fetchData();
         await dispatch(teachers({}) as any);
         await dispatch(rooms({}) as any);
     }
@@ -67,6 +57,7 @@ const Edit: React.FC<Props> = (props: Props) => {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
+    console.log('class section', selectedClass);
 
     let days = [
         'sunday',
@@ -130,6 +121,23 @@ const Edit: React.FC<Props> = (props: Props) => {
         console.log('tempindex3', event.target.value);
         setsevenDayRoutines(temp);
     };
+    const fetchData = async (classId: string) => {
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-class-sections/class-wise/${classId}`,
+            );
+            setSections(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        if (selectedClass) {
+            fetchData(selectedClass);
+        }
+    }, [selectedClass]);
 
     useEffect(() => {
         setsevenDayRoutines(state.item.routine_days);
@@ -374,7 +382,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                             />
                                                         </div>
                                                     </div>
-                                                    <div className="form-group form-vertical">
+                                                    {/* <div className="form-group form-vertical">
                                                         <label>Level</label>
                                                         <div className="form_elements">
                                                             <input
@@ -387,7 +395,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                 }
                                                             />
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                     <div className="form-group form-vertical">
                                                         <label>
                                                             Description
@@ -404,7 +412,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                             ></textarea>
                                                         </div>
                                                     </div>
-                                                    <div className="form-group form-vertical">
+                                                    {/* <div className="form-group form-vertical">
                                                         <label>Credit</label>
                                                         <div className="form_elements">
                                                             <input
@@ -417,8 +425,8 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                 }
                                                             />
                                                         </div>
-                                                    </div>
-                                                    <div className="form-group form-vertical">
+                                                    </div> */}
+                                                    {/* <div className="form-group form-vertical">
                                                         <label>
                                                             Additional Info
                                                         </label>
@@ -432,7 +440,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                 }
                                                             />
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -643,7 +651,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="full_width">
+                                    {/* <div className="full_width">
                                         <div className="form_section_heading">
                                             <h4>Teacher</h4>
                                         </div>
@@ -673,7 +681,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className="form-group student_submit form-horizontal">
                                     {/* <label></label> */}

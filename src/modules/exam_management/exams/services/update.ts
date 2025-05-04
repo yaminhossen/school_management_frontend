@@ -27,11 +27,11 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the month field is required')
         .run(req);
-    await body('description')
-        .not()
-        .isEmpty()
-        .withMessage('the description field is required')
-        .run(req);
+    // await body('description')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the description field is required')
+    //     .run(req);
 
     let result = await validationResult(req);
 

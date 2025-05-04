@@ -107,11 +107,33 @@ const All: React.FC<Props> = (props: Props) => {
                                                     </td>
                                                     <td>{i.title}</td>
                                                     <td>{i.description}</td>
-                                                    <td>
-                                                        <a href="">
-                                                            download pdf
+
+                                                    <td className="download_td">
+                                                        <a
+                                                            className="btn download_btn"
+                                                            target="blank"
+                                                            href={i.attachment}
+                                                            download={i.attachment
+                                                                .split('/')
+                                                                .pop()}
+                                                        >
+                                                            download
+                                                            <span className="material-symbols-outlined pointer">
+                                                                download
+                                                            </span>{' '}
                                                         </a>
                                                     </td>
+                                                    {/* <td>
+                                                        <a
+                                                            target="blank"
+                                                            href={i.attachment}
+                                                            download={i.attachment
+                                                                .split('/')
+                                                                .pop()}
+                                                        >
+                                                            download
+                                                        </a>
+                                                    </td> */}
                                                 </tr>
                                             );
                                         },

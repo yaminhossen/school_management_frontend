@@ -11,6 +11,7 @@ import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
 import { classes } from './config/store/async_actions/classes';
 import axios from 'axios';
+import InputImage from './components/management_data_page/InputImage';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -67,6 +68,16 @@ const Edit: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.teacher_infos[key])
+                return state.item?.teacher_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
 
     return (
         <>
@@ -86,7 +97,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Branch Class id</label>
+                                    <label>Branch Class id{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span></label>
                                     <div className="form_elements">
                                         <select
                                             name="branch_class_id"
@@ -114,7 +128,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch Class subject id</label>
+                                    <label>Branch Class subject id{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span></label>
                                     <div className="form_elements">
                                         {subjects.length && (
                                             <select
@@ -137,7 +154,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Title</label>
+                                    <label>Title {' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span></label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -162,16 +182,25 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Attachment</label>
                                     <div className="form_elements">
-                                        <input
+                                        {/* <input
                                             type="file"
                                             name="attachment"
                                             accept="image/*, ./*"
+                                        /> */}
+                                        <InputImage
+                                            label={'attachment'}
+                                            name={'attachment'}
+                                            // accept="image/*, ./*"
+                                            accept="image/*,application/pdf"
+                                            defalut_preview={get_value(
+                                                'attachment',
+                                            )}
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label></label>
-                                    <div className="form_elements">
+                                <div className="form-group student_submit form-horizontal">
+                                    {/* <label></label> */}
+                                    <div className="form_elementss">
                                         <button className="btn btn_1">
                                             submit
                                         </button>

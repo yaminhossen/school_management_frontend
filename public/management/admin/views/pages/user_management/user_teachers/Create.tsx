@@ -120,9 +120,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <InputImage
                                                 label={'image'}
                                                 name={'teacher_image'}
-                                                defalut_preview={get_value(
-                                                    'image',
-                                                )}
+                                                defalut_preview={get_value('')}
                                             />
                                         </div>
                                         {/* <div className="form-group form-horizontal">
@@ -369,7 +367,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     label={'National Id'}
                                                     name={'national_id'}
                                                     defalut_preview={get_value(
-                                                        'national_id',
+                                                        '',
                                                     )}
                                                 />
                                             </div>
@@ -378,7 +376,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     label={'Certificate No. 1'}
                                                     name={'certificate_1'}
                                                     defalut_preview={get_value(
-                                                        'certificate_no_1',
+                                                        '',
                                                     )}
                                                 />
                                             </div>
@@ -387,7 +385,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     label={'Certificate No. 2'}
                                                     name={'certificate_2'}
                                                     defalut_preview={get_value(
-                                                        'certificate_no_2',
+                                                        '',
                                                     )}
                                                 />
                                             </div>

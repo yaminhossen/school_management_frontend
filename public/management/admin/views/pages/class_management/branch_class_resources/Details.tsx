@@ -47,18 +47,59 @@ const Details: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <td>Attachment</td>
                                         <td>:</td>
-                                        <td>
+                                        {/* <td>
                                             <a
-                                                href={state.item.attachment}
+                                                href={
+                                                    state.item.attachment ||
+                                                    undefined
+                                                }
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
                                                 <img
-                                                    src={state.item.attachment}
+                                                    src={
+                                                        state.item.attachment ||
+                                                        '/assets/dashboard/images/avatar.png'
+                                                    }
                                                     alt=""
                                                     width={40}
                                                 />
                                             </a>
+                                        </td> */}
+                                        <td>
+                                            {state.item.attachment?.endsWith(
+                                                '.pdf',
+                                            ) ? (
+                                                <a
+                                                    href={state.item.attachment}
+                                                    download // this triggers download
+                                                >
+                                                    <img
+                                                        src="/assets/icons/pdf-icon.png" // Replace with your actual PDF icon
+                                                        alt="PDF Download"
+                                                        width={40}
+                                                    />
+                                                </a>
+                                            ) : (
+                                                <a
+                                                    href={
+                                                        state.item.attachment ||
+                                                        undefined
+                                                    }
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <img
+                                                        src={
+                                                            state.item
+                                                                .attachment ||
+                                                            '/assets/dashboard/images/avatar.png'
+                                                        }
+                                                        alt="Attachment"
+                                                        width={40}
+                                                    />
+                                                </a>
+                                            )}
                                         </td>
                                     </tr>
                                     <tr>
