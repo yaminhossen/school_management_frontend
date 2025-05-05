@@ -24,11 +24,11 @@ async function validate(req: Request) {
         .withMessage('the title field is required')
         .run(req);
 
-    await body('description')
-        .not()
-        .isEmpty()
-        .withMessage('the description field is required')
-        .run(req);
+    // await body('description')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the description field is required')
+    //     .run(req);
 
     await body('date')
         .not()

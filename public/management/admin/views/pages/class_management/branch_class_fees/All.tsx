@@ -124,7 +124,15 @@ const All: React.FC<Props> = (props: Props) => {
                                                     <td>{i.class?.name}</td>
                                                     <td>{i.fee_types?.name}</td>
                                                     <td>{i.session}</td>
-                                                    <td>{i.description}</td>
+                                                    <td>
+                                                        {i.description?.length >
+                                                        60
+                                                            ? i.description.slice(
+                                                                0,
+                                                                40,
+                                                            ) + '...'
+                                                            : i.description}
+                                                    </td>
                                                     <td>{i.amount}</td>
                                                 </tr>
                                             );

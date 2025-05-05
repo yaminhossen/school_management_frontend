@@ -63,7 +63,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item?.agenda?.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Meeting id</label>
+                                    <label>
+                                        Meeting{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <select
                                             name="meeting_id"
@@ -89,7 +92,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Title</label>
+                                    <label>
+                                        Title{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -115,7 +121,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Date</label>
+                                    <label>
+                                        Date{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="date"
@@ -127,7 +136,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Time</label>
+                                    <label>
+                                        Time{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="time"
@@ -140,7 +152,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Meeting Type</label>
+                                    <label>
+                                        Meeting Type{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <select
                                             name="meeting_type"
@@ -166,7 +181,12 @@ const Edit: React.FC<Props> = (props: Props) => {
 
                                 {meetingType === 'online' && (
                                     <div className="form-group form-horizontal">
-                                        <label>Meeting Link</label>
+                                        <label>
+                                            Meeting Link{' '}
+                                            <span className="valid_star">
+                                                *
+                                            </span>
+                                        </label>
                                         <div className="form_elements">
                                             <textarea
                                                 name="meeting_link"
@@ -180,7 +200,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 )}
                                 <div className="form-group form-horizontal">
-                                    <label>Group</label>
+                                    <label>
+                                        Group{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <select
                                             name="role"
@@ -205,7 +228,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Meeting Status</label>
+                                    <label>
+                                        Meeting Status{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <select
                                             name="is_complete"
@@ -223,11 +249,11 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label></label>
-                                    <div className="form_elements">
+                                <div className="form-group student_submit form-horizontal">
+                                    {/* <label></label> */}
+                                    <div className="form_elementss">
                                         <button className="btn btn_1">
-                                            submit
+                                            update
                                         </button>
                                     </div>
                                 </div>

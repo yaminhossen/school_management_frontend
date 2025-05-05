@@ -36,11 +36,11 @@ async function validate(req: Request) {
         .withMessage('the title field is required')
         .run(req);
 
-    await body('description')
-        .not()
-        .isEmpty()
-        .withMessage('the description field is required')
-        .run(req);
+    // await body('description')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the description field is required')
+    //     .run(req);
 
     await body('role')
         .not()
@@ -110,8 +110,7 @@ async function update(
     try {
         let data = await models.MeetingAgendasModel.findByPk(body.id);
         if (data) {
-            data.update(inputs);
-            await data.save();
+            (await data.update(inputs)).save;
             return response(200, 'data updated', data);
         } else {
             throw new custom_error(

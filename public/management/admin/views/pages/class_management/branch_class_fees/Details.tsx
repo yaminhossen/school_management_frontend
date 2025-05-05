@@ -39,10 +39,12 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td>{state.item.name}</td>
                                     </tr>
-                                    <tr>
+                                    <tr className="">
                                         <td>Description</td>
                                         <td>:</td>
-                                        <td>{state.item.description}</td>
+                                        <td className="details_descrtiption2">
+                                            {state.item?.description}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Session</td>
