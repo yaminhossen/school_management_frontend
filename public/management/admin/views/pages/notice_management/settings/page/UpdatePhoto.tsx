@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import InputImage, { InputImageRef } from './InputImage';
+import { Link } from 'react-router-dom';
 
 const UpdatePhoto: React.FC = () => {
     const [error, setError] = useState(null);
@@ -58,6 +59,14 @@ const UpdatePhoto: React.FC = () => {
     return (
         <div className="admin_dashboard">
             <div className="content_body">
+                <div className="settings_back">
+                    <Link
+                        className="btn btn-sm btn-outline-info mb-1"
+                        to="/settings"
+                    >
+                        Back
+                    </Link>
+                </div>
                 <form
                     onSubmit={handleSubmit}
                     className="form_600 mx-auto pt-3"

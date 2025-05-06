@@ -2186,6 +2186,9 @@ input.form_checkbox:checked::after {
   height: calc(100% - 77px);
   padding: 10px;
 }
+.explore_window .settings_back {
+  border: 1px solid red;
+}
 .explore_window .footer {
   position: relative;
   z-index: 9;
