@@ -1306,3 +1306,16 @@
 {"level":60,"time":1746502962446,"pid":12676,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved"}
 {"level":60,"time":1746502963471,"pid":12676,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-types/all-type"}
 {"level":60,"time":1746502971551,"pid":12676,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-types/all-type"}
+{"level":60,"time":1746505079551,"pid":7356,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/accounts?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+number%2C+opening_balance%2C+description%2Cdate%2C+status"}
+{"level":60,"time":1746505285993,"pid":7356,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2Cevent_name%2C+start_date%2C+end_date%2C+days%2C+description%2C+status"}
+{"level":60,"time":1746505287363,"pid":7356,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendar-event-types/event-types"}
+{"level":60,"time":1746506577499,"pid":7356,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.5730796174198882"}
+{"level":60,"time":1746507178441,"pid":7356,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.46471146651208195"}
+{"level":60,"time":1746512076972,"pid":7648,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.2924888532667711"}
+{"level":60,"time":1746513319973,"pid":10092,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.5444194468590464"}
+{"level":60,"time":1746514085034,"pid":10092,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-types?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description"}
+{"level":60,"time":1746514088230,"pid":10092,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-types?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description"}
+{"level":60,"time":1746514092535,"pid":10092,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+branch_teacher_id%2C+branch_staff_id%2C+branch_student_id%2C+leave_type_id%2C+reason%2C+status"}
+{"level":60,"time":1746515179229,"pid":10092,"hostname":"DESKTOP-9421701","error":"404","url":"/image"}
+{"level":60,"time":1746515249332,"pid":10092,"hostname":"DESKTOP-9421701","error":"404","url":"/image"}
+{"level":60,"time":1746515279398,"pid":10092,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.8409374228212314"}

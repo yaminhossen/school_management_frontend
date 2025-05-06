@@ -94,10 +94,10 @@ const Create: React.FC<Props> = (props: Props) => {
                         >
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Branch Class id{' '}
-                                                <span className="valid_star">
-                                                    *
-                                                </span></label>
+                                    <label>
+                                        Branch Class id{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <select
                                             name="branch_class_id"
@@ -122,10 +122,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch Class subject{' '}
-                                                <span className="valid_star">
-                                                    *
-                                                </span></label>
+                                    <label>
+                                        Branch Class subject{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         {subjects.length && (
                                             <select
@@ -145,10 +145,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Title{' '}
-                                                <span className="valid_star">
-                                                    *
-                                                </span></label>
+                                    <label>
+                                        Title{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -167,10 +167,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Attachment{' '}
-                                                <span className="valid_star">
-                                                    *
-                                                </span></label>
+                                    <label>
+                                        Attachment{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         {/* <input
                                             type="file"

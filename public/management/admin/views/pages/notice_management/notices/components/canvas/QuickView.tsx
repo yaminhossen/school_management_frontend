@@ -40,14 +40,73 @@ const QuickView: React.FC<Props> = (props: Props) => {
                         <table className="table quick_modal_table">
                             <tbody>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>Title</th>
                                     <th>:</th>
-                                    <th>{state.item.name}</th>
+                                    <th>{state.item.title}</th>
                                 </tr>
                                 <tr>
-                                    <th>Preffered name</th>
+                                    <th>description</th>
                                     <th>:</th>
-                                    <th>{state.item.email}</th>
+                                    <th
+                                        style={{
+                                            whiteSpace: 'pre-wrap',
+                                            wordWrap: 'break-word',
+                                            maxWidth: '300px',
+                                        }}
+                                    >
+                                        {state.item?.description}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>Notice For</th>
+                                    <th>:</th>
+                                    <th>{state.item.notice_for}</th>
+                                </tr>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>:</th>
+                                    <th>
+                                        <a
+                                            href={state.item.image || undefined}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <img
+                                                src={
+                                                    state.item.image || 'image'
+                                                }
+                                                alt="profile image"
+                                                style={{
+                                                    height: 50,
+                                                }}
+                                            />
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>Attachment</th>
+                                    <th>:</th>
+                                    <th>
+                                        <a
+                                            href={
+                                                state.item.attachment ||
+                                                undefined
+                                            }
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <img
+                                                src={
+                                                    state.item.attachment ||
+                                                    'image'
+                                                }
+                                                alt="profile image"
+                                                style={{
+                                                    height: 50,
+                                                }}
+                                            />
+                                        </a>
+                                    </th>
                                 </tr>
                             </tbody>
                         </table>

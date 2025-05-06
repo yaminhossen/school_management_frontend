@@ -65,12 +65,18 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td>
                                             <a
-                                                href={state.item.image}
+                                                href={
+                                                    state.item.image ||
+                                                    undefined
+                                                }
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
                                                 <img
-                                                    src={state.item.image}
+                                                    src={
+                                                        state.item.image ||
+                                                        'Image'
+                                                    }
                                                     width={40}
                                                     alt=""
                                                 />
@@ -82,12 +88,18 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td>
                                             <a
-                                                href={state.item.attachment}
+                                                href={
+                                                    state.item.attachment ||
+                                                    undefined
+                                                }
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
                                                 <img
-                                                    src={state.item.attachment}
+                                                    src={
+                                                        state.item.attachment ||
+                                                        'Image'
+                                                    }
                                                     width={40}
                                                     alt=""
                                                 />

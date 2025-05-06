@@ -64,32 +64,32 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Title`}
                                             col_name={`title`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Attachment`}
                                             col_name={`attachment`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Image`}
                                             col_name={`image`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Notice For`}
                                             col_name={`notice for`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         {/* <TableHeading
                                             label={`Text`}
                                             col_name={`text`}
-                                            sort={true}
+                                            sort={false}
                                         /> */}
                                     </tr>
                                 </thead>
@@ -133,12 +133,39 @@ const All: React.FC<Props> = (props: Props) => {
                                                     <td>
                                                         {i.description?.length >
                                                         25
-                                                            ? i.description?.slice( 0, 35) + ' ...'
+                                                            ? i.description?.slice(
+                                                                  0,
+                                                                  35,
+                                                              ) + ' ...'
                                                             : i.description}
                                                     </td>
-                                                    <td>{i.title}</td>
-                                                    <td>{i.title}</td>
-                                                    <td>{i.title}</td>
+                                                    <td>
+                                                        <img
+                                                            src={
+                                                                i.attachment
+                                                                    ? i.attachment
+                                                                    : '/assets/dashboard/images/avatar.png'
+                                                            }
+                                                            alt=""
+                                                            style={{
+                                                                height: 30,
+                                                            }}
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <img
+                                                            src={
+                                                                i.image
+                                                                    ? i.image
+                                                                    : '/assets/dashboard/images/avatar.png'
+                                                            }
+                                                            alt=""
+                                                            style={{
+                                                                height: 30,
+                                                            }}
+                                                        />
+                                                    </td>
+                                                    <td>{i.notice_for}</td>
                                                 </tr>
                                             );
                                         },
