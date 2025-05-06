@@ -28,10 +28,19 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the title field is required')
         .run(req);
+    // await body('number')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the number field is required')
+    //     .run(req);
+
     await body('number')
         .not()
         .isEmpty()
         .withMessage('the number field is required')
+        .bail()
+        .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+        .withMessage('Phone number must be a valid Bangladeshi number')
         .run(req);
 
     let result = await validationResult(req);

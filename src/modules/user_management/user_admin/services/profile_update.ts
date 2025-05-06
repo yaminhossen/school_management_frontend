@@ -18,6 +18,19 @@ async function validate(req: Request) {
     //     .isEmpty()
     //     .withMessage('the image field is required')
     //     .run(req);
+    if (req?.body?.image) {
+        await body('image')
+            .not()
+            .isEmpty()
+            .withMessage('the image field is required')
+            .run(req);
+    }
+    if (req?.body?.password) {
+        await body('password')
+            .isLength({ min: 6 })
+            .withMessage('Password must be at least 6 characters')
+            .run(req);
+    }
 
     let result = await validationResult(req);
 
@@ -37,7 +50,8 @@ async function profile_update(
     /** initializations */
     let models = await db();
     let body = req.body as anyObject;
-    let model = new models.UserAdminsModel();
+    // let model = new models.UserAdminsModel();
+    let model = new models.UserStaffsModel();
     let image_path = '';
 
     if (body['image']?.ext) {
@@ -73,7 +87,12 @@ async function profile_update(
 
     /** store data into database */
     try {
-        let data = await models.UserAdminsModel.findOne({
+        // let data = await models.UserAdminsModel.findOne({
+        //     where: {
+        //         id: user?.id,
+        //     },
+        // });
+        let data = await models.UserStaffsModel.findOne({
             where: {
                 id: user?.id,
             },

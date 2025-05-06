@@ -64,17 +64,17 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Question`}
                                             col_name={`question`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Answer`}
                                             col_name={`answer`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         {/* <TableHeading
                                             label={`Text`}
                                             col_name={`text`}
-                                            sort={true}
+                                            sort={false}
                                         /> */}
                                     </tr>
                                 </thead>

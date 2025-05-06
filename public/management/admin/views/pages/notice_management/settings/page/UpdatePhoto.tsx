@@ -1,46 +1,94 @@
-import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../../../common_types/object';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import moment from 'moment/moment';
-export interface Props {}
+import InputImage, { InputImageRef } from './InputImage';
 
-const UpdatePhoto: React.FC<Props> = (props: Props) => {
+const UpdatePhoto: React.FC = () => {
     const [error, setError] = useState(null);
-    const [data, setData] = useState('');
-    const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
-        let formData = new FormData(e.target);
-        console.log('ne form data', formData);
+    const [errors, setErrors] = useState<{ image?: string }>({});
+    const [data, setData] = useState<any>();
+    const formRef = useRef<HTMLFormElement>(null);
+    const inputImageRef = useRef<InputImageRef>(null); // ref for InputImage
 
+    const fetchData = async () => {
         try {
-            const response = await axios.post(
-                '/api/v1/admin-users/profile-update',
-                formData,
+            const response = await axios.get(
+                '/api/v1/user-staffs/admin-details',
             );
-            // setResponseMessage('Form submitted successfully!');
-            // console.log('response', response);
+            setData(response.data.data);
         } catch (error) {
-            // setError(error); // Set error state
+            setError(error);
         }
     };
-    let date = moment().format('YYYY-MM-DD');
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const form = formRef.current;
+        if (!form) return;
+
+        const formData = new FormData(form);
+        const image = formData.get('image') as File;
+        const newErrors: { image?: string } = {};
+
+        if (!image || image.size === 0) {
+            newErrors.image = 'Please select the image.';
+        }
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+            return;
+        }
+
+        setErrors({});
+
+        try {
+            await axios.post('/api/v1/admin-users/profile-update', formData);
+            (window as any).toaster('Form submitted successfully!');
+            form.reset();
+            inputImageRef.current?.reset(); // reset preview manually
+            fetchData();
+        } catch (error) {
+            setError(error);
+        }
+    };
 
     return (
         <div className="admin_dashboard">
             <div className="content_body">
-                <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
+                <form
+                    onSubmit={handleSubmit}
+                    className="form_600 mx-auto pt-3"
+                    ref={formRef}
+                >
+                    <div className="form-group form-horizontal">
+                        <label>Previous Photo</label>
+                        <div className="form_elements">
+                            <img src={data?.image} alt="" />
+                        </div>
+                    </div>
+
                     <div className="form-group form-horizontal">
                         <label>New Photo</label>
                         <div className="form_elements">
-                            <input type="file" accept="image/*" name="image" />
+                            <InputImage
+                                ref={inputImageRef}
+                                label=""
+                                name="image"
+                                defalut_preview=""
+                            />
+                            {errors.image && (
+                                <p style={{ color: 'red' }}>{errors.image}</p>
+                            )}
                         </div>
                     </div>
-                    <div className="form-group form-horizontal">
-                        <label></label>
-                        <div className="form_elements">
+
+                    <div className="form-group student_submit form-horizontal">
+                        <div className="form_elementss">
                             <button className="btn btn-sm btn-outline-info">
-                                submit
+                                Update
                             </button>
                         </div>
                     </div>

@@ -39,11 +39,11 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td>{state.item.question}</td>
                                     </tr>
-                                    <tr>
+                                    <tr className="">
                                         <td>Answer</td>
                                         <td>:</td>
-                                        <td style={{ whiteSpace: 'wrap' }}>
-                                            {state.item.answer}
+                                        <td className="details_descrtiption2">
+                                            {state.item?.answer}
                                         </td>
                                     </tr>
                                 </tbody>

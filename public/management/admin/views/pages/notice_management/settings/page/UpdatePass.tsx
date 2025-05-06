@@ -33,14 +33,14 @@ const UpdatePass: React.FC<Props> = (props: Props) => {
                     <div className="form-group form-horizontal">
                         <label>New Password</label>
                         <div className="form_elements">
-                            <input type="number" name="password" />
+                            <input type="text" name="password" />
                         </div>
                     </div>
-                    <div className="form-group form-horizontal">
-                        <label></label>
-                        <div className="form_elements">
+                    <div className="form-group student_submit form-horizontal">
+                        {/* <label></label> */}
+                        <div className="form_elementss">
                             <button className="btn btn-sm btn-outline-info">
-                                submit
+                                update
                             </button>
                         </div>
                     </div>

@@ -1319,3 +1319,15 @@
 {"level":60,"time":1746515179229,"pid":10092,"hostname":"DESKTOP-9421701","error":"404","url":"/image"}
 {"level":60,"time":1746515249332,"pid":10092,"hostname":"DESKTOP-9421701","error":"404","url":"/image"}
 {"level":60,"time":1746515279398,"pid":10092,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.8409374228212314"}
+{"level":60,"time":1746521185461,"pid":5564,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/faqs?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+question%2C+answer%2C+status"}
+{"level":60,"time":1746521188700,"pid":5564,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/faqs/store"}
+{"level":60,"time":1746521396076,"pid":5564,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/faqs/store"}
+{"level":60,"time":1746521396991,"pid":5564,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/faqs/store"}
+{"level":60,"time":1746521975761,"pid":5960,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/policies?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description%2C+status"}
+{"level":60,"time":1746523173516,"pid":18120,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-users/profile-update"}
+{"level":60,"time":1746523187188,"pid":18120,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/admin-users/profile-update"}
+{"level":60,"time":1746526268560,"pid":12696,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/admin-details"}
+{"level":60,"time":1746526653252,"pid":15752,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.9881423002323939"}
+{"level":60,"time":1746526750666,"pid":15752,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.7001042262080199"}
+{"level":60,"time":1746526751919,"pid":15752,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.05150436438323425"}
+{"level":60,"time":1746526928146,"pid":15752,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.3428105213946506"}
