@@ -1301,3 +1301,8 @@
 {"level":60,"time":1746444291175,"pid":3172,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs?page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+image%2C+phone_number%2C+role%2C+status"}
 {"level":60,"time":1746444293427,"pid":3172,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs?page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+image%2C+phone_number%2C+role%2C+status"}
 {"level":60,"time":1746444316103,"pid":3172,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/store"}
+{"level":60,"time":1746502959710,"pid":12676,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1746502959735,"pid":12676,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1746502962446,"pid":12676,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved"}
+{"level":60,"time":1746502963471,"pid":12676,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-types/all-type"}
+{"level":60,"time":1746502971551,"pid":12676,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-types/all-type"}

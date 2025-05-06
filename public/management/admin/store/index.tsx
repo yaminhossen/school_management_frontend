@@ -50,6 +50,7 @@ import exam_routines_slice from '../views/pages/class_management/exam_routines/c
 import policies_slice from '../views/pages/notice_management/policies/config/store';
 import contact_supports_slice from '../views/pages/notice_management/contact_supports/config/store';
 import leave_applications_slice from '../views/pages/notice_management/leave_applications/config/store';
+import leave_types_slice from '../views/pages/notice_management/leave_types/config/store';
 
 const store = configureStore({
     reducer: {
@@ -106,6 +107,7 @@ const store = configureStore({
         policies: policies_slice.reducer,
         contact_supports: contact_supports_slice.reducer,
         leave_applications: leave_applications_slice.reducer,
+        leave_types: leave_types_slice.reducer,
     },
     devTools: true,
 });

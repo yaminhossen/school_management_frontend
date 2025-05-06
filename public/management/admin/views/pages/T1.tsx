@@ -727,7 +727,7 @@ const T1: React.FC<Props> = (props: Props) => {
 
                 <h3 className="mt-4 ms-0">HRM management</h3>
                 <ul className="dashboard_links ">
-                    <li>
+                    {/* <li>
                         <Link to="/user-staffs">
                             <span className="material-symbols-outlined fill">
                                 groups
@@ -742,7 +742,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             </span>
                             Teachers Management
                         </Link>
-                    </li>
+                    </li> */}
                     {/* <li>
                         <Link to="/fees-collections">
                             <span className="material-symbols-outlined fill">
@@ -765,6 +765,14 @@ const T1: React.FC<Props> = (props: Props) => {
                                 groups
                             </span>
                             Leave Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/leave-types">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Leave Type Management
                         </Link>
                     </li>
                 </ul>
