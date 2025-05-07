@@ -40,9 +40,12 @@ const Dues: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <div className="dues_back_btn">
                 <h3 className="table_heading">Dues</h3>
-                <button className="btn back_btn">
+                <button className="back_btn">
                     <Link to={`/${setup.route_prefix}/class-details/${idd}`}>
-                        Back
+                        <span className="material-symbols-outlined fill">
+                            arrow_back
+                        </span>
+                        <div className="text">Back</div>
                     </Link>
                 </button>
             </div>

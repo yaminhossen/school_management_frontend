@@ -1171,12 +1171,17 @@ body {
   border: 1px solid var(--brand_color2);
   background: transparent;
   color: var(--brand_white2);
-  padding: 6px 15px;
   text-transform: uppercase;
   font-size: 13px;
   cursor: pointer;
   border-radius: 5px;
   margin-bottom: 10px !important;
+}
+.dues_back_btn .back_btn a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 15px;
 }
 .dues_back_btn .back_btn:hover {
   border: 1px solid rgba(15, 113, 170, 0.534);
@@ -1216,10 +1221,12 @@ body {
 }
 
 .btn_error {
-  background-color: #e74c3c; /* Red background */
+  background-color: #e74c3c;
+  /* Red background */
   opacity: 0.6;
   cursor: not-allowed;
-  pointer-events: none; /* Prevent click */
+  pointer-events: none;
+  /* Prevent click */
 }
 
 .d_btn_1 {

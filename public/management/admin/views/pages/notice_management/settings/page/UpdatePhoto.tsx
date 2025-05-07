@@ -58,15 +58,26 @@ const UpdatePhoto: React.FC = () => {
 
     return (
         <div className="admin_dashboard">
+            <div className="dues_back_btn">
+                <h3 className="table_heading"></h3>
+                <button className="back_btn settings_bacsk">
+                    <Link to="/settings">
+                        <span className="material-symbols-outlined fill">
+                            arrow_back
+                        </span>
+                        <div className="text">Back</div>
+                    </Link>
+                </button>
+            </div>
             <div className="content_body">
-                <div className="settings_back">
+                {/* <div className="settings_back">
                     <Link
                         className="btn btn-sm btn-outline-info mb-1"
                         to="/settings"
                     >
                         Back
                     </Link>
-                </div>
+                </div> */}
                 <form
                     onSubmit={handleSubmit}
                     className="form_600 mx-auto pt-3"

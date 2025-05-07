@@ -273,7 +273,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group form-horizonta">
+                            <div className="form-group student_submit form-horizonta">
                                 <div className="task_assign_submit_btn">
                                     <button
                                         // onClick={handle_submit}
