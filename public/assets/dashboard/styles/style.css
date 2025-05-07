@@ -2779,6 +2779,15 @@ td.col_id {
 .table_responsive table tbody tr td:nth-child(1) .table_action_btns ul li a:hover {
   background-color: rgba(128, 128, 128, 0.123);
 }
+.table_responsive .account_table tr td:nth-child(1), .table_responsive .account_table tr td:nth-child(2) {
+  width: 150px;
+}
+.table_responsive .account_table .pre_total {
+  background-color: #30343d;
+}
+.table_responsive .account_table .present_total {
+  background-color: #30343d;
+}
 
 .notification-bell {
   position: relative;

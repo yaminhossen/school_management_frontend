@@ -111,11 +111,12 @@ const Index: React.FC<Props> = (props: Props) => {
                 </form>
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
-                        <table>
+                        <table className="account_table">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    {/* <th></th> */}
                                     <th>Serial</th>
+                                    {/* <th></th> */}
                                     <th>Purpose</th>
                                     <th>Date</th>
                                     <th>Debit</th>
@@ -124,8 +125,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                <tr>
-                                    <td></td>
+                                <tr className="pre_total">
+                                    {/* <td></td> */}
+                                    {/* <td></td> */}
                                     <td>Previous Data</td>
                                     <td></td>
                                     <td>Total:</td>
@@ -139,8 +141,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </tr>
                                 {data.map((i, index) => (
                                     <tr key={index}>
-                                        <td></td>
+                                        {/* <td></td> */}
                                         <td>{index + 1}</td>
+                                        {/* <td></td> */}
                                         <td>{i.category?.title}</td>
                                         <td>
                                             {moment(i.created_at).format(
@@ -160,8 +163,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <td>-</td>
                                     </tr>
                                 ))}
-                                <tr>
-                                    <td></td>
+                                <tr className="present_total">
+                                    {/* <td></td> */}
+                                    {/* <td></td> */}
                                     <td>Present Data</td>
                                     <td></td>
                                     <td>Total:</td>
@@ -174,7 +178,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </td>
                                 </tr>
                                 <tr className="total_row">
-                                    <td></td>
+                                    {/* <td></td> */}
+                                    {/* <td></td> */}
                                     <td>All Data</td>
                                     <td></td>
                                     <td>Grand Total:</td>

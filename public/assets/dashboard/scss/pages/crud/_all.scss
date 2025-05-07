@@ -146,6 +146,8 @@
                     &:nth-child(1),
                     &:nth-child(2) {
                         width: 20px;
+                        // min-width: 20px;
+                        // max-width: 100px;
                     }
 
                     &:nth-child(1) {
@@ -205,7 +207,28 @@
                 }
             }
         }
+        
     }
+    .account_table{
+        tr{
+            td {
+
+                &:nth-child(1),
+                &:nth-child(2) {
+                    width: 150px;
+                    // min-width: 100px;
+                    // max-width: 150px;
+                }
+            }
+        }
+        .pre_total{
+            background-color: #30343d;
+        }
+        .present_total{
+            background-color: #30343d;
+        }
+    }
+    
 }
 .notification-bell {
     position: relative;
