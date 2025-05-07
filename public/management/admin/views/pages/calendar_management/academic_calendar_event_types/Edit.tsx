@@ -80,7 +80,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     {/* <label></label> */}
                                     <div className="form_elementss">
                                         <button className="btn btn_1">
-                                            submit
+                                            update
                                         </button>
                                     </div>
                                 </div>

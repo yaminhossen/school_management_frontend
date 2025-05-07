@@ -265,10 +265,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group form-horizonta">
+                            <div className="form-group student_submit form-horizonta">
                                 <div className="task_assign_submit_btn">
                                     <button className="btn btn_1">
-                                        submit
+                                        update
                                     </button>
                                 </div>
                             </div>

@@ -248,7 +248,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             className={`btn btn_1 ${errorMessage || errorMessage2 ? 'btn_error' : ''}`}
                                             disabled={!!errorMessage}
                                         >
-                                            submit
+                                            update
                                         </button>
                                     </div>
                                 </div>

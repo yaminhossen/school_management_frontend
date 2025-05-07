@@ -105,8 +105,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         <span className="valid_star">*</span>
                                     </label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
+                                        <textarea
                                             placeholder="prerequisities"
                                             name="prerequisities"
                                             defaultValue={
