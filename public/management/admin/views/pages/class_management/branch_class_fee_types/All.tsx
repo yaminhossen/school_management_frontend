@@ -67,6 +67,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
+                                            label={`Class`}
+                                            col_name={`class`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
                                             sort={true}
@@ -101,6 +106,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                         </span>
                                                     </td>
                                                     <td>{i.name}</td>
+                                                    <td>{i.class?.name}</td>
                                                     <td>
                                                         {i.description?.length >
                                                         60

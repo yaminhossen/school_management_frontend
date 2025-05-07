@@ -100,6 +100,12 @@ async function all(
         order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
         where: whereClause,
         // include: [models.Project],
+        include: [
+            {
+                model: models.BranchClassesModel,
+                as: 'class',
+            },
+        ],
     };
 
     query.attributes = {

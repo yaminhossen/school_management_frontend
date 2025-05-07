@@ -82,9 +82,9 @@ const Index: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <div className="content_body">
                 <form onSubmit={handleSubmit}>
-                    <div className="teacher_result">
+                    <div className="account_results">
                         <div>
-                            <div>Start Date</div>
+                            <div className="mb-1">Start Date</div>
                             <div>
                                 <input
                                     type="date"
@@ -96,7 +96,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             </div>
                         </div>
                         <div>
-                            <div>End Date</div>
+                            <div className="mb-1">End Date</div>
                             <div>
                                 <input
                                     type="date"
@@ -106,7 +106,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             </div>
                         </div>
                         <button
-                            className="btn btn-sm btn-outline-info"
+                            className="btn btn-sm account_filter_btn btn-outline-info"
                             type="submit"
                         >
                             Submit

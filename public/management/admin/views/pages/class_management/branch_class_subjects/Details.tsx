@@ -44,16 +44,6 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td>{state.item.code}</td>
                                     </tr>
-                                    <tr>
-                                        <td>Level</td>
-                                        <td>:</td>
-                                        <td>{state.item.level}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Credit</td>
-                                        <td>:</td>
-                                        <td>{state.item.credit}</td>
-                                    </tr>
                                     <tr className="">
                                         <td>Description</td>
                                         <td>:</td>

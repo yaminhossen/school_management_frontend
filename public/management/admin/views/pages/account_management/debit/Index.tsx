@@ -75,7 +75,7 @@ const Index: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <div className="content_body">
                 <form onSubmit={handleSubmit}>
-                    <div className="teacher_result">
+                    <div className="account_results">
                         <div>
                             <div className="mb-1">Start Date</div>
                             <div>
