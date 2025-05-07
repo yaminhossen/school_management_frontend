@@ -30,42 +30,11 @@ const Create: React.FC<Props> = (props: Props) => {
                             onSubmit={(e) => handle_submit(e)}
                             className="form_600 mx-auto pt-3"
                         >
-                            {/* <div className="form_section_heading">
-                                <h2 className=""> Major Information</h2>
-                            </div> */}
-
-                            {/* <div className="form-group form-horizontal">
-                                <label>Account Name</label>
-                                <div className="form_elements">
-                                    <input
-                                        type="text"
-                                        placeholder="Enter Account Name"
-                                        name="account_name"
-                                    />
-                                </div>
-                            </div>
                             <div className="form-group form-horizontal">
-                                <label>Account Number</label>
-                                <div className="form_elements">
-                                    <input
-                                        type="text"
-                                        placeholder="Enter Account Number"
-                                        name="account_number"
-                                    />
-                                </div>
-                            </div> */}
-                            {/* <div className="form-group form-horizontal">
-                                <label>Opening Balance</label>
-                                <div className="form_elements">
-                                    <input
-                                        type="number"
-                                        placeholder="Your opening balance"
-                                        name="opening_balance"
-                                    />
-                                </div>
-                            </div> */}
-                            <div className="form-group form-horizontal">
-                                <label>Description</label>
+                                <label>
+                                    Description{' '}
+                                    <span className="valid_star">*</span>
+                                </label>
                                 <div className="form_elements">
                                     <textarea
                                         name="description"
@@ -75,7 +44,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                 </div>
                             </div>
                             <div className="form-group form-horizontal">
-                                <label>Date</label>
+                                <label>
+                                    Date <span className="valid_star">*</span>
+                                </label>
                                 <div className="form_elements">
                                     <input
                                         type="date"
@@ -84,9 +55,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                     />
                                 </div>
                             </div>
-                            <div className="form-group form-horizontal">
-                                <label></label>
-                                <div className="form_elements">
+                            <div className="form-group student_submit form-horizontal">
+                                {/* <label></label> */}
+                                <div className="form_elementss">
                                     <button className="btn btn-sm btn-outline-info">
                                         submit
                                     </button>

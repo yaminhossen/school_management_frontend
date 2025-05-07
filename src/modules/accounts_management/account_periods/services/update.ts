@@ -77,8 +77,7 @@ async function update(
     try {
         let data = await models.AccontPeriodsModel.findByPk(body.id);
         if (data) {
-            data.update(inputs);
-            await data.save();
+            (await data.update(inputs)).save();
             return response(200, 'data updated', data);
         } else {
             throw new custom_error('Forbidden', 403, 'operation not possible');

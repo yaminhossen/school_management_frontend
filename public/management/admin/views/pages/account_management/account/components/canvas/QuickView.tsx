@@ -5,6 +5,7 @@ import storeSlice from '../../config/store';
 import { initialState } from '../../config/store/inital_state';
 import { useSelector } from 'react-redux';
 import setup from '../../config/setup';
+import moment from 'moment/moment';
 export interface Props {}
 
 const modalRoot = document.getElementById('filter-root');
@@ -40,14 +41,46 @@ const QuickView: React.FC<Props> = (props: Props) => {
                         <table className="table quick_modal_table">
                             <tbody>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>Title</th>
                                     <th>:</th>
-                                    <th>{state.item.name}</th>
+                                    <th>{state.item.title}</th>
                                 </tr>
                                 <tr>
-                                    <th>Preffered name</th>
+                                    <th>Number</th>
                                     <th>:</th>
-                                    <th>{state.item.email}</th>
+                                    <th>{state.item.number}</th>
+                                </tr>
+                                <tr>
+                                    <th>description</th>
+                                    <th>:</th>
+                                    <th
+                                        style={{
+                                            whiteSpace: 'pre-wrap',
+                                            wordWrap: 'break-word',
+                                            maxWidth: '300px',
+                                        }}
+                                    >
+                                        {state.item?.description}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>:</th>
+                                    <th>
+                                        {moment(state.item.date).format(
+                                            'YYYY-MM-DD',
+                                        )}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>Total Income</th>
+                                    <th>:</th>
+                                    <th>{state.item.total_income}</th>
+                                </tr>
+                                <tr>
+                                    <th>Total Expense</th>
+                                    <th>:</th>
+                                    <th>{state.item.total_expense}</th>
                                 </tr>
                             </tbody>
                         </table>

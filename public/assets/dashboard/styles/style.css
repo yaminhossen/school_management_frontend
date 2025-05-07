@@ -1163,6 +1163,11 @@ body {
   background-color: rgba(15, 113, 170, 0.534);
 }
 
+.account_filter_btn {
+  border: 1px solid rgb(165, 156, 156);
+  border-radius: 5px;
+}
+
 .dues_back_btn {
   display: flex;
   justify-content: space-between;
@@ -1428,6 +1433,11 @@ input.form_checkbox:checked::after {
   border-top: 1px solid gray;
   padding-top: 40px;
   margin-top: 30px;
+}
+
+.total_row {
+  background-color: #20232a;
+  padding: 10px;
 }
 
 .admin_dashboard h1 {
