@@ -159,7 +159,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                     <td>
                                                         <Link
                                                             // to="/students/single/student/"
-                                                            to={`/user-students/details/${i.branch_student_id}`}
+                                                            to={`/user-students/details/${i.branch_student_id}/basic-information`}
                                                             className="btn btn-sm  btn-outline-info"
                                                             type="submit"
                                                         >

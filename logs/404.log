@@ -1510,3 +1510,13 @@
 {"level":60,"time":1746699694065,"pid":3512,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-sections/class-wise/1"}
 {"level":60,"time":1746700648917,"pid":14296,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-buildings?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+building_name%2C+building_code%2C+photo%2C+description%2C+attachment%2C+status"}
 {"level":60,"time":1746700655366,"pid":14296,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-buildings?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+building_name%2C+building_code%2C+photo%2C+description%2C+attachment%2C+status"}
+{"level":60,"time":1746701182031,"pid":560,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-building-rooms?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+room_name%2C+room_code%2C+photo%2C+description%2C+total_seat%2C+total_student%2C+status"}
+{"level":60,"time":1746701183154,"pid":560,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-building-rooms/building"}
+{"level":60,"time":1746701206054,"pid":560,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-building-rooms?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+room_name%2C+room_code%2C+photo%2C+description%2C+total_seat%2C+total_student%2C+status"}
+{"level":60,"time":1746701207835,"pid":560,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-building-rooms/3"}
+{"level":60,"time":1746701207841,"pid":560,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-building-rooms/building"}
+{"level":60,"time":1746701210020,"pid":560,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-building-rooms/3"}
+{"level":60,"time":1746701210022,"pid":560,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-building-rooms/building"}
+{"level":60,"time":1746701386762,"pid":560,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-building-rooms?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+room_name%2C+room_code%2C+photo%2C+description%2C+total_seat%2C+total_student%2C+status"}
+{"level":60,"time":1746701780172,"pid":560,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}
+{"level":60,"time":1746701782244,"pid":560,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class"}

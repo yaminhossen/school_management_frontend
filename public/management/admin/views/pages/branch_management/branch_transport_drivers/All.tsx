@@ -102,82 +102,115 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                     </tr>
                                 </thead>
-                                <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
-                                    {(state.all as any)?.data?.map(
-                                        (i: { [key: string]: any }) => {
-                                            return (
-                                                <tr
-                                                    key={i.id}
-                                                    className={`table_rows table_row_${i.id}`}
-                                                >
-                                                    <td>
-                                                        <TableRowAction
-                                                            item={i}
-                                                        />
-                                                    </td>
-                                                    <td>
-                                                        <SelectItem item={i} />
-                                                    </td>
-                                                    <td>
-                                                        <span
-                                                            className="quick_view_trigger"
-                                                            onClick={() =>
-                                                                quick_view(i)
-                                                            }
-                                                        >
-                                                            {i.id}
-                                                        </span>
-                                                    </td>
-                                                    <td>{i.name}</td>
-                                                    <td>{i.present_address}</td>
-                                                    <td>
-                                                        {i.permanent_address}
-                                                    </td>
-                                                    <td>{i.driver_number}</td>
-                                                    <td>
-                                                        {i.assistant_number_1}
-                                                    </td>
-                                                    <td>
-                                                        {i.assistant_number_2}
-                                                    </td>
-                                                    <td>{i.licence_number}</td>
-                                                    <td>
-                                                        {i.driver_licence ? (
-                                                            <a
-                                                                href={
-                                                                    i.driver_licence
+                                {(state.all as any)?.data?.length ? (
+                                    <tbody id="all_list">
+                                        {/* {(state.all as any)?.data?.map( */}
+                                        {(state.all as any)?.data?.map(
+                                            (i: { [key: string]: any }) => {
+                                                return (
+                                                    <tr
+                                                        key={i.id}
+                                                        className={`table_rows table_row_${i.id}`}
+                                                    >
+                                                        <td>
+                                                            <TableRowAction
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <SelectItem
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <span
+                                                                className="quick_view_trigger"
+                                                                onClick={() =>
+                                                                    quick_view(
+                                                                        i,
+                                                                    )
                                                                 }
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
                                                             >
-                                                                <img
-                                                                    src={
+                                                                {i.id}
+                                                            </span>
+                                                        </td>
+                                                        <td>{i.name}</td>
+                                                        <td>
+                                                            {i.present_address}
+                                                        </td>
+                                                        <td>
+                                                            {
+                                                                i.permanent_address
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            {i.driver_number}
+                                                        </td>
+                                                        <td>
+                                                            {
+                                                                i.assistant_number_1
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            {
+                                                                i.assistant_number_2
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            {i.licence_number}
+                                                        </td>
+                                                        <td>
+                                                            {i.driver_licence ? (
+                                                                <a
+                                                                    href={
                                                                         i.driver_licence
                                                                     }
-                                                                    alt="profile image"
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                >
+                                                                    <img
+                                                                        src={
+                                                                            i.driver_licence
+                                                                        }
+                                                                        alt="profile image"
+                                                                        style={{
+                                                                            height: 50,
+                                                                        }}
+                                                                    />
+                                                                </a>
+                                                            ) : (
+                                                                <img
+                                                                    // src={
+                                                                    //     '/assets/dashboard/images/avatar.png'
+                                                                    // }
+                                                                    alt="driver license"
                                                                     style={{
                                                                         height: 50,
                                                                     }}
                                                                 />
-                                                            </a>
-                                                        ) : (
-                                                            <img
-                                                                // src={
-                                                                //     '/assets/dashboard/images/avatar.png'
-                                                                // }
-                                                                alt="driver license"
-                                                                style={{
-                                                                    height: 50,
-                                                                }}
-                                                            />
-                                                        )}
-                                                    </td>
-                                                </tr>
-                                            );
-                                        },
-                                    )}
-                                </tbody>
+                                                            )}
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            },
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={11}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 

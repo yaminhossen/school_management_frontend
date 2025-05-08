@@ -52,7 +52,7 @@ const Dues: React.FC<Props> = (props: Props) => {
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive  custom_scroll">
-                        <table className="">
+                        <table className="account_table">
                             <thead>
                                 <tr>
                                     <th>Title</th>
@@ -104,7 +104,7 @@ const Dues: React.FC<Props> = (props: Props) => {
                                     )}
                             </tbody>
                             <tfoot>
-                                <tr>
+                                <tr className="total_row">
                                     <td>Total</td>
                                     <td>{totalAmount?.['fee_amount']}</td>
                                     <td>{totalAmount?.['total']}</td>

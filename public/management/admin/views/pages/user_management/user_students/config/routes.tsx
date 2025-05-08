@@ -58,7 +58,7 @@ export default {
             element: <Details />,
             children: [
                 {
-                    path: '',
+                    path: 'basic-information',
                     element: <BasicInformation />,
                 },
                 {
