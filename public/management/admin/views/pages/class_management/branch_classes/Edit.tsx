@@ -47,7 +47,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>
+                                        Name{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -58,7 +61,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Code</label>
+                                    <label>
+                                        Code{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -69,17 +75,20 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Capacity</label>
+                                    <label>
+                                        Capacity{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="number"
                                             placeholder="capacity"
                                             name="capacity"
                                             defaultValue={state.item.capacity}
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Fee</label>
                                     <div className="form_elements">
                                         <input
@@ -89,12 +98,14 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             defaultValue={state.item.fee}
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-horizontal">
-                                    <label>Prerequisities</label>
+                                    <label>
+                                        Prerequisities{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
+                                        <textarea
                                             placeholder="prerequisities"
                                             name="prerequisities"
                                             defaultValue={
@@ -103,7 +114,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Student instructions</label>
                                     <div className="form_elements">
                                         <textarea
@@ -139,7 +150,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             defaultValue={state.item.policies}
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>Rules</label>
                                     <div className="form_elements">
@@ -150,7 +161,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Waiver rules</label>
                                     <div className="form_elements">
                                         <textarea
@@ -173,10 +184,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             }
                                         />
                                     </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label></label>
-                                    <div className="form_elements">
+                                </div> */}
+                                <div className="form-group student_submit form-horizontal">
+                                    {/* <label></label> */}
+                                    <div className="form_elementss">
                                         <button className="btn btn_1">
                                             submit
                                         </button>

@@ -36,11 +36,11 @@ async function validate(req: Request) {
         .withMessage('the end_date field is required')
         .run(req);
 
-    await body('reason')
-        .not()
-        .isEmpty()
-        .withMessage('the reason field is required')
-        .run(req);
+    // await body('reason')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the reason field is required')
+    //     .run(req);
 
     await body('leave_status')
         .not()
@@ -106,7 +106,6 @@ async function update(
         leave_type_id: body.leave_type_id,
         start_date: body.start_date,
         end_date: body.end_date,
-        reason: body.reason,
         leave_status: body.leave_status,
         // attachments: body.attachments,
         // total_days: body.approved_days,

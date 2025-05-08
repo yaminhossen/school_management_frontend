@@ -62,20 +62,15 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                         <th>Image</th>
                                         <TableHeading
-                                            label={`Branch`}
-                                            col_name={`branch`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
                                             sort={true}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Designation`}
                                             col_name={`designation`}
                                             sort={true}
-                                        />
+                                        /> */}
                                         <TableHeading
                                             label={`Phone number`}
                                             col_name={`phone_number`}
@@ -86,11 +81,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`email`}
                                             sort={true}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Address`}
                                             col_name={`address`}
                                             sort={true}
-                                        />
+                                        /> */}
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
@@ -122,19 +117,23 @@ const All: React.FC<Props> = (props: Props) => {
                                                     </td>
                                                     <td>
                                                         <img
-                                                            src="/assets/dashboard/images/avatar.png"
+                                                            src={
+                                                                i?.image
+                                                                    ? i?.image
+                                                                    : '/assets/dashboard/images/avatar.png'
+                                                            }
                                                             alt=""
                                                             style={{
                                                                 height: 30,
                                                             }}
                                                         />
                                                     </td>
-                                                    <td>{i.branch}</td>
+                                                    {/* <td>{i.branch}</td> */}
                                                     <td>{i.name}</td>
-                                                    <td>{i.designation}</td>
+                                                    {/* <td>{i.designation}</td> */}
                                                     <td>{i.phone_number}</td>
                                                     <td>{i.email}</td>
-                                                    <td>{i.address}</td>
+                                                    {/* <td>{i.address}</td> */}
                                                 </tr>
                                             );
                                         },

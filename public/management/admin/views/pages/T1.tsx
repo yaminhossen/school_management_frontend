@@ -270,11 +270,11 @@ const menuArray = [
                 label: 'Attendances',
                 icon: 'manage_accounts',
             },
-            {
-                link: '/admin#/payrolls',
-                label: 'Payroll',
-                icon: 'manage_accounts',
-            },
+            // {
+            //     link: '/admin#/payrolls',
+            //     label: 'Payroll',
+            //     icon: 'manage_accounts',
+            // },
         ],
     },
     {
@@ -551,7 +551,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             Student Evaluation Criteria
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/teacher-overall-evaluations">
                             <span className="material-symbols-outlined fill">
                                 groups
@@ -566,7 +566,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             </span>
                             Teacher Evaluation Criteria
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
 
                 <h3 className="mt-4 ms-0">Fees management</h3>
@@ -587,7 +587,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             Class Fees
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/branch-class-fee-discounts">
                             <span className="material-symbols-outlined fill">
                                 groups
@@ -602,7 +602,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             </span>
                             Class Fee Waivers
                         </Link>
-                    </li>
+                    </li> */}
                     {/* <li>
                         <Link to="/fees-collection">
                             <span className="material-symbols-outlined fill">
@@ -619,14 +619,14 @@ const T1: React.FC<Props> = (props: Props) => {
                             Due List
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/branch-class-fee-types">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             Payment History
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
 
                 <h3 className="mt-4 ms-0">Meeting management</h3>
@@ -675,14 +675,14 @@ const T1: React.FC<Props> = (props: Props) => {
                             Account category Management
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/leadger">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             Leadger
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/journal">
                             <span className="material-symbols-outlined fill">
@@ -727,7 +727,7 @@ const T1: React.FC<Props> = (props: Props) => {
 
                 <h3 className="mt-4 ms-0">HRM management</h3>
                 <ul className="dashboard_links ">
-                    <li>
+                    {/* <li>
                         <Link to="/user-staffs">
                             <span className="material-symbols-outlined fill">
                                 groups
@@ -742,29 +742,37 @@ const T1: React.FC<Props> = (props: Props) => {
                             </span>
                             Teachers Management
                         </Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                         <Link to="/fees-collections">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             Attendances Management
                         </Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                         <Link to="/journals">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             Payroll Management
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/leave-applications">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             Leave Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/leave-types">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Leave Type Management
                         </Link>
                     </li>
                 </ul>
@@ -819,14 +827,14 @@ const T1: React.FC<Props> = (props: Props) => {
                             Settings Management
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/app-settings">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             App Management
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
         </div>

@@ -49,7 +49,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>
+                                        Name{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -60,37 +63,42 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Class</label>
+                                    <label>
+                                        Class{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
-                                        <select
-                                            name="branch_class_id"
-                                            defaultValue={
-                                                state.item?.branch_class_id
-                                            }
-                                            id=""
-                                        >
-                                            {state?.all_class?.length &&
-                                                state?.all_class.map(
-                                                    (i: {
-                                                        [key: string]: any;
-                                                    }) => {
-                                                        return (
-                                                            <option
-                                                                value={i.id}
-                                                            >
-                                                                {i.name}
-                                                            </option>
-                                                        );
-                                                    },
-                                                )}
-                                        </select>
+                                        {state.all_class.length && (
+                                            <select
+                                                name="branch_class_id"
+                                                defaultValue={
+                                                    state.item?.class?.id
+                                                }
+                                                id=""
+                                            >
+                                                {state?.all_class?.length &&
+                                                    state?.all_class.map(
+                                                        (i: {
+                                                            [key: string]: any;
+                                                        }) => {
+                                                            return (
+                                                                <option
+                                                                    value={i.id}
+                                                                >
+                                                                    {i.name}
+                                                                </option>
+                                                            );
+                                                        },
+                                                    )}
+                                            </select>
+                                        )}
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label></label>
-                                    <div className="form_elements">
+                                <div className="form-group student_submit form-horizontal">
+                                    {/* <label></label> */}
+                                    <div className="form_elementss">
                                         <button className="btn btn_1">
-                                            submit
+                                            update
                                         </button>
                                     </div>
                                 </div>

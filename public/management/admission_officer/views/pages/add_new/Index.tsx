@@ -183,7 +183,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <label>Email</label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="email"
                                             placeholder="email"
                                             name="email"
                                         />

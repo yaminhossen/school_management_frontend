@@ -65,27 +65,27 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Staff/Student`}
                                             col_name={`staff/student`}
-                                            sort={true}
+                                            sort={false}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Reason`}
                                             col_name={`reason`}
-                                            sort={true}
-                                        />
+                                            sort={false}
+                                        /> */}
                                         <TableHeading
                                             label={`Leave Type`}
                                             col_name={`leave type`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Action`}
                                             col_name={`action`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         {/* <TableHeading
                                             label={`Text`}
                                             col_name={`text`}
-                                            sort={true}
+                                            sort={false}
                                         /> */}
                                     </tr>
                                 </thead>
@@ -134,7 +134,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                                     ? 'Student'
                                                                     : 0}
                                                     </td>
-                                                    <td>{i.reason}</td>
+                                                    {/* <td>{i.reason}</td> */}
                                                     <td>
                                                         {i.leave_type?.title}
                                                     </td>

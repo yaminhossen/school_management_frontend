@@ -46,7 +46,10 @@ const Create: React.FC<Props> = (props: Props) => {
                         >
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Title</label>
+                                    <label>
+                                        Title{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -56,9 +59,15 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Class</label>
+                                    <label>
+                                        Class{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <select name="branch_class_id" id="">
+                                            <option value="">
+                                                Select class
+                                            </option>
                                             {state?.all_class?.length &&
                                                 state?.all_class.map(
                                                     (i: {
@@ -77,9 +86,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group form-horizontal">
-                                <label></label>
-                                <div className="form_elements">
+                            <div className="form-group student_submit form-horizontal">
+                                {/* <label></label> */}
+                                <div className="form_elementss">
                                     <button className="btn btn_1">
                                         submit
                                     </button>

@@ -54,18 +54,6 @@ export default {
             element: <TakeAttendance />,
         },
         {
-            path: 'edit/:id',
-            element: <Edit />,
-        },
-        {
-            path: 'class-details/:id',
-            element: <ClassDetails />,
-        },
-        {
-            path: 'student-dues/:id',
-            element: <Dues />,
-        },
-        {
             path: 'details/:id',
             element: <Details />,
             children: [
@@ -122,6 +110,18 @@ export default {
                     element: <Markshit />,
                 },
             ],
+        },
+        {
+            path: 'edit/:id',
+            element: <Edit />,
+        },
+        {
+            path: 'class-details/:id',
+            element: <ClassDetails />,
+        },
+        {
+            path: 'student-dues/:id',
+            element: <Dues />,
         },
     ],
 };

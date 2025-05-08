@@ -29,11 +29,7 @@ const All: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(
-            storeSlice.actions.set_select_fields(
-                'id, name, email, phone_number, status',
-            ),
-        );
+        dispatch(storeSlice.actions.set_select_fields('id'));
         dispatch(all_class({}) as any);
     }, []);
 
@@ -41,35 +37,20 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
-
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            branch: 'kustia',
-            name: 'Student1',
-            phone_number: '01786867672',
-            email: 'student1@gamil.com',
-            address: 'Mirpur',
-            image: '/assets/dashboard/images/avatar.png',
-        },
-        {
-            id: 2,
-            branch: 'Barishal',
-            name: 'Student2',
-            phone_number: '01786867673',
-            email: 'student2@gamil.com',
-            address: 'Uttora',
-            image: '/assets/dashboard/images/avatar.png',
-        },
-    ];
-
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">
-                <Header></Header>
+                <div className="action_bar">
+                    <div className="navigation">
+                        <ul>
+                            <li className="search_li"></li>
+                        </ul>
+                    </div>
+                    <div className="title no_move" id="users_drag">
+                        <h2>All Students</h2>
+                    </div>
+                    <div className="control"></div>
+                </div>
 
                 <div className="content_body">
                     <div className="data_list">
@@ -84,8 +65,8 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={false}
                                         />
                                         <TableHeading
-                                            label={`Name`}
-                                            col_name={`name`}
+                                            label={`Class`}
+                                            col_name={`class`}
                                             sort={false}
                                         />
                                         <TableHeading
@@ -149,11 +130,11 @@ const All: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                <TableFooter></TableFooter>
+                {/* <TableFooter></TableFooter> */}
             </div>
 
-            <Filter></Filter>
-            <QuickView></QuickView>
+            {/* <Filter></Filter>
+            <QuickView></QuickView> */}
         </div>
     );
 };

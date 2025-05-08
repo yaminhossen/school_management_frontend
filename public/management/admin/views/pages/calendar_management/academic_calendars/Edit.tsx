@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import { useSelector } from 'react-redux';
@@ -21,16 +21,82 @@ const Edit: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
     const params = useParams();
 
+    const [startDate, setStartDate] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [errorMessage2, setErrorMessage2] = useState('');
+
+    const [endDate, setEndDate] = useState('');
+    const [days, setDays] = useState(0);
+
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(details({ id: params.id }) as any);
         dispatch(event_types({}) as any);
     }, []);
 
+    // After data loaded, set the dates
+    useEffect(() => {
+        if (state.item && Object.keys(state.item).length) {
+            setStartDate(moment(state.item.start_date).format('YYYY-MM-DD'));
+            setEndDate(moment(state.item.end_date).format('YYYY-MM-DD'));
+            setDays(state.item.days);
+        }
+    }, [state.item]);
+    useEffect(() => {
+        const start = moment(startDate);
+        const end = moment(endDate);
+        const today = moment().startOf('day');
+
+        if (start.isBefore(today)) {
+            setErrorMessage('Start date cannot be before today.');
+            setErrorMessage2('');
+            setDays(0);
+            return;
+        }
+
+        if (end.isBefore(start)) {
+            setErrorMessage('');
+            setErrorMessage2('End date cannot be before start date.');
+            setDays(0);
+            return;
+        }
+
+        const diffDays = end.diff(start, 'days') + 1;
+        setDays(diffDays);
+        setErrorMessage('');
+        setErrorMessage2('');
+    }, [startDate, endDate]);
+
+    // // Auto-calculate days when dates change
+    // useEffect(() => {
+    //     if (startDate && endDate) {
+    //         const start = moment(startDate);
+    //         const end = moment(endDate);
+    //         const diffDays = end.diff(start, 'days') + 1;
+    //         if (diffDays > 0) {
+    //             setDays(diffDays);
+    //         } else {
+    //             setDays(0);
+    //         }
+    //     }
+    // }, [startDate, endDate]);
+
     async function handle_submit(e) {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
+
+    const handleStartDateChange = (e) => {
+        setStartDate(e.target.value);
+    };
+
+    const handleEndDateChange = (e) => {
+        setEndDate(e.target.value);
+    };
+
+    const handleDaysChange = (e) => {
+        setDays(Number(e.target.value));
+    };
 
     return (
         <>
@@ -50,7 +116,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>
+                                        Name{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -61,7 +130,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>
+                                        Description{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -73,7 +145,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Event Type</label>
+                                    <label>
+                                        Event Type{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <select
                                             name="event_type_id"
@@ -100,44 +175,80 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Start Date</label>
+                                    <label>
+                                        Start Date{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="date"
-                                            defaultValue={moment(
-                                                state.item.start_date,
-                                            ).format('YYYY-MM-DD')}
+                                            value={startDate}
+                                            onChange={handleStartDateChange}
                                             name="start_date"
                                         />
+                                        {errorMessage && (
+                                            <div
+                                                style={{
+                                                    color: 'red',
+                                                    marginTop: '5px',
+                                                }}
+                                            >
+                                                {errorMessage}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
+
                                 <div className="form-group form-horizontal">
-                                    <label>End Date</label>
+                                    <label>
+                                        End Date{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="date"
-                                            defaultValue={moment(
-                                                state.item.end_date,
-                                            ).format('YYYY-MM-DD')}
+                                            value={endDate}
+                                            onChange={handleEndDateChange}
                                             name="end_date"
                                         />
+                                        {errorMessage2 && (
+                                            <div
+                                                style={{
+                                                    color: 'red',
+                                                    marginTop: '5px',
+                                                }}
+                                            >
+                                                {errorMessage2}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
+
                                 <div className="form-group form-horizontal">
-                                    <label>Days</label>
+                                    <label>
+                                        Days{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="number"
-                                            defaultValue={state.item.days}
+                                            readOnly
+                                            value={days}
+                                            onChange={handleDaysChange}
                                             name="days"
+                                            min="1"
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label></label>
-                                    <div className="form_elements">
-                                        <button className="btn btn_1">
-                                            submit
+                                <div className="form-group student_submit form-horizontal">
+                                    {/* <label></label> */}
+                                    <div className="form_elementss">
+                                        <button
+                                            // className="d_btn d_btn_1"
+                                            className={`btn btn_1 ${errorMessage || errorMessage2 ? 'btn_error' : ''}`}
+                                            disabled={!!errorMessage}
+                                        >
+                                            update
                                         </button>
                                     </div>
                                 </div>

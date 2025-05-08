@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
+import setup from './config/setup';
 export interface Props {}
 export interface FeesInfo {
     account: { title: string };
@@ -14,6 +15,11 @@ const Dues: React.FC<Props> = (props: Props) => {
     const [totalAmount, setTotalAmount] = useState();
     const [error, setError] = useState(null);
     const { id } = useParams();
+
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const idd = searchParams.get('idd');
+    console.log('params qurey idd', idd);
 
     const fetchTypes = async () => {
         try {
@@ -32,7 +38,17 @@ const Dues: React.FC<Props> = (props: Props) => {
     }, []);
     return (
         <div className="admin_dashboard">
-            <h3 className="table_heading">Dues</h3>
+            <div className="dues_back_btn">
+                <h3 className="table_heading">Dues</h3>
+                <button className="back_btn">
+                    <Link to={`/${setup.route_prefix}/class-details/${idd}`}>
+                        <span className="material-symbols-outlined fill">
+                            arrow_back
+                        </span>
+                        <div className="text">Back</div>
+                    </Link>
+                </button>
+            </div>
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive  custom_scroll">

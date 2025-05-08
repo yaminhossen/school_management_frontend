@@ -10,11 +10,10 @@ import {
 } from '../../../common_types/object';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
+import moment from 'moment/moment';
 
 /** validation rules */
 async function validate(req: Request) {
-    console.log('req', req.query);
-
     await query('orderByCol')
         .not()
         .isEmpty()
@@ -72,11 +71,39 @@ async function all(
         select_fields = ['id', 'email', 'status', 'name', 'phone_number'];
     }
 
-    let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
-        where: {
-            status: show_active_data == 'true' ? 'active' : 'deactive',
-        },
+    // let query: FindAndCountOptions = {
+    //     order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
+    //     where: {
+    //         status: show_active_data == 'true' ? 'active' : 'deactive',
+    //         created_at: {
+    //             [Op.between]: [query_param?.start_date, query_param?.end_date],
+    //         },
+    //     },
+    //     // include: [models.Project],
+    // };\
+
+    const whereClause: any = {
+        status: show_active_data === 'true' ? 'active' : 'deactive',
+    };
+    const today = moment().format('YYYY-MM-DD');
+    console.log('todya', today);
+
+    let month1 = query_param?.start_date || today; // Start date
+    let month2 = query_param?.end_date || today;
+    if (query_param?.start_date && query_param?.end_date) {
+        const endDate = new Date(query_param.end_date);
+        endDate.setDate(endDate.getDate() + 1); // Increment by one day
+        const formattedEndDate = endDate.toISOString().split('T')[0];
+        console.log('month2', formattedEndDate);
+
+        whereClause.created_at = {
+            [Op.between]: [query_param.start_date, formattedEndDate],
+        };
+    }
+
+    const query: FindAndCountOptions = {
+        order: [[orderByCol, orderByAsc === 'true' ? 'DESC' : 'ASC']],
+        where: whereClause,
         // include: [models.Project],
     };
 
@@ -84,8 +111,15 @@ async function all(
         include: select_fields,
         exclude: exclude_fields,
     };
+    console.log('params', query_param);
+    console.log('params2', query_param.start_date);
+    console.log('params3', query_param.end_date);
 
     if (search_key) {
+        // query_param.paginate = 25;
+        // query_param.page = 1;
+
+        // query_param.paginate = 25;
         query.where = {
             ...query.where,
             [Op.or]: [

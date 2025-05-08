@@ -18,16 +18,22 @@ async function validate(req: Request) {
         .withMessage('the id field is required')
         .run(req);
 
-    // await body('branch_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the branch_id field is required')
-    //     .run(req);
-
     await body('title')
         .not()
         .isEmpty()
-        .withMessage('the title field is required')
+        .withMessage('the account_name field is required')
+        .run(req);
+
+    await body('opening_balance')
+        .not()
+        .isEmpty()
+        .withMessage('the opening_balance field is required')
+        .run(req);
+
+    await body('number')
+        .not()
+        .isEmpty()
+        .withMessage('the account_number field is required')
         .run(req);
 
     await body('description')

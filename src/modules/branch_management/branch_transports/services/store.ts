@@ -30,6 +30,18 @@ async function validate(req: Request) {
         .withMessage('the type field is required')
         .run(req);
 
+    await body('vehicle_no')
+        .not()
+        .isEmpty()
+        .withMessage('the vehicle_no field is required')
+        .run(req);
+
+    await body('type')
+        .not()
+        .isEmpty()
+        .withMessage('the type field is required')
+        .run(req);
+
     let result = await validationResult(req);
 
     return result;

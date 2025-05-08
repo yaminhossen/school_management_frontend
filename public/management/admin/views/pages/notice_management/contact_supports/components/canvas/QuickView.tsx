@@ -45,9 +45,14 @@ const QuickView: React.FC<Props> = (props: Props) => {
                                     <th>{state.item.name}</th>
                                 </tr>
                                 <tr>
-                                    <th>Preffered name</th>
+                                    <th>Title</th>
                                     <th>:</th>
-                                    <th>{state.item.email}</th>
+                                    <th>{state.item.title}</th>
+                                </tr>
+                                <tr>
+                                    <th>Number</th>
+                                    <th>:</th>
+                                    <th>{state.item.number}</th>
                                 </tr>
                             </tbody>
                         </table>

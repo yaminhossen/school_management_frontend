@@ -100,7 +100,15 @@ const All: React.FC<Props> = (props: Props) => {
                                                             {i.id}
                                                         </span>
                                                     </td>
-                                                    <td>{i.description}</td>
+                                                    <td>
+                                                        {i.description?.length >
+                                                        60
+                                                            ? i.description.slice(
+                                                                0,
+                                                                40,
+                                                            ) + '...'
+                                                            : i.description}
+                                                    </td>
                                                     <td>
                                                         {moment(
                                                             i.year_month,

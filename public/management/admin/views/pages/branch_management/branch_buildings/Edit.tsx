@@ -9,6 +9,7 @@ import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
+import InputImage from './components/management_data_page/InputImage';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -34,6 +35,16 @@ const Edit: React.FC<Props> = (props: Props) => {
         setFile(URL.createObjectURL(e.target.files[0]));
         console.log('file3', file);
     }
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
 
     return (
         <>
@@ -53,7 +64,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Building Name</label>
+                                    <label>
+                                        Building Name{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -66,7 +80,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Building code</label>
+                                    <label>
+                                        Building code{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -81,53 +98,32 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Attachment</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            placeholder="attachment"
-                                            name="attachment"
+                                        <InputImage
+                                            label={''}
+                                            name={'attachment'}
+                                            defalut_preview={get_value(
+                                                'attachment',
+                                            )}
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
                                     <label>Photo</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            placeholder="photo"
-                                            name="photo"
-                                            onChange={getFile}
+                                        <InputImage
+                                            label={''}
+                                            name={'photo'}
+                                            defalut_preview={get_value('photo')}
                                         />
-                                        <div className="form-group form-horizontal">
-                                            <label>Preview img</label>
-                                            <div className="form_elements">
-                                                <a target="blank" href={file}>
-                                                    <img
-                                                        src={file}
-                                                        className="img-80"
-                                                        alt="Preview image"
-                                                    />
-                                                </a>
-                                            </div>
-                                            <label>Previous Img</label>
-                                            <div className="form_elements">
-                                                <a target="blank" href={file}>
-                                                    <img
-                                                        src={state.item?.photo}
-                                                        className="img-80"
-                                                        alt="Preview image"
-                                                    />
-                                                </a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>
+                                        Description{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
+                                        <textarea
                                             placeholder="description"
                                             name="description"
                                             defaultValue={
@@ -136,11 +132,11 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                <div className="form-group student_submit form-horizontal">
                                     <label></label>
                                     <div className="form_elements">
                                         <button className="btn btn_1">
-                                            submit
+                                            Update
                                         </button>
                                     </div>
                                 </div>

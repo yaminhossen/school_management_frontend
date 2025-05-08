@@ -116,9 +116,9 @@ const T1: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="custom_scroll">
-            <div className="name my-3">
+            {/* <div className="name my-3">
                 <h2>Shafiqur Rahman</h2>
-            </div>
+            </div> */}
             {/* analytics */}
             <div
                 className="mt-4"
@@ -222,7 +222,7 @@ const T1: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                 </div>
-                <div className="card w-100 mb-0" data-intro="This is card">
+                {/* <div className="card w-100 mb-0" data-intro="This is card">
                     <div className="business-top-widget card-body">
                         <h5 className="mb-2">লাইব্রেরী বই ইস্যু</h5>
                         <div className="media d-inline-flex">
@@ -235,7 +235,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             ></i>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="card w-100 mb-0" data-intro="This is card">
                     <div className="business-top-widget card-body">
                         <h5 className="mb-2">ফিস বকেয়া</h5>

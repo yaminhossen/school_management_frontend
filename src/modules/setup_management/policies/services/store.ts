@@ -65,17 +65,6 @@ async function store(
     /** store data into database */
     try {
         (await data.update(inputs)).save();
-        // let task_id = task.id;
-
-        // if (task) {
-        //     let inputs2 = {
-        //         branch_id: body.branch_id,
-        //         task_id: task_id,
-        //         variants_id: 2,
-        //     };
-        //     taskVariantTasks.update(inputs2);
-        //     let task_variant_task = await taskVariantTasks.save();
-        // }
         return response(200, 'data created', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);

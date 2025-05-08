@@ -48,7 +48,11 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Title</label>
+                                    <label>
+                                        Title{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span></label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -59,7 +63,11 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>
+                                        Description{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span></label>
                                     <div className="form_elements">
                                         <textarea
                                             placeholder="description"
@@ -71,10 +79,14 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Date</label>
+                                    <label>
+                                        Date{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span></label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="date"
                                             placeholder="date"
                                             name="date"
                                             defaultValue={moment(
@@ -83,11 +95,11 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label></label>
-                                    <div className="form_elements">
+                                <div className="form-group student_submit form-horizontal">
+                                    {/* <label></label> */}
+                                    <div className="form_elementss">
                                         <button className="btn btn_1">
-                                            submit
+                                            updated
                                         </button>
                                     </div>
                                 </div>

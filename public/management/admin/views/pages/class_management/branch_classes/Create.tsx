@@ -33,7 +33,10 @@ const Create: React.FC<Props> = (props: Props) => {
                             </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>
+                                        Name{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -43,7 +46,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Code</label>
+                                    <label>
+                                        Code{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -53,16 +59,19 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Capacity</label>
+                                    <label>
+                                        Capacity{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="number"
                                             placeholder="capacity"
                                             name="capacity"
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Fee</label>
                                     <div className="form_elements">
                                         <input
@@ -71,42 +80,16 @@ const Create: React.FC<Props> = (props: Props) => {
                                             name="fee"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-horizontal">
-                                    <label>Prerequisities</label>
+                                    <label>
+                                        Prerequisities{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <textarea
                                             placeholder="prerequisities"
                                             name="prerequisities"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Student instructions</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            name="student_instructions"
-                                            id=""
-                                            placeholder="student instructions"
-                                        ></textarea>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Parent instructions</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            name="parent_instructions"
-                                            id=""
-                                            placeholder="parent instructions"
-                                        ></textarea>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Policies</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            placeholder="policies"
-                                            name="policies"
                                         />
                                     </div>
                                 </div>
@@ -119,28 +102,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Waiver rules</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            placeholder="waiver rules"
-                                            name="waiver_rules"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Discount rules</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            placeholder="discount rules"
-                                            name="discount_rules"
-                                        />
-                                    </div>
-                                </div>
                             </div>
-                            <div className="form-group form-horizontal">
-                                <label></label>
-                                <div className="form_elements">
+                            <div className="form-group student_submit form-horizontal">
+                                {/* <label></label> */}
+                                <div className="form_elementss">
                                     <button className="btn btn_1">
                                         submit
                                     </button>

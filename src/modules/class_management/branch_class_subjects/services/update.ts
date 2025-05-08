@@ -37,17 +37,17 @@ async function validate(req: Request) {
         .withMessage('the code field is required')
         .run(req);
 
-    await body('level')
-        .not()
-        .isEmpty()
-        .withMessage('the level field is required')
-        .run(req);
+    // await body('level')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the level field is required')
+    //     .run(req);
 
-    await body('credit')
-        .not()
-        .isEmpty()
-        .withMessage('the credit field is required')
-        .run(req);
+    // await body('credit')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the credit field is required')
+    //     .run(req);
 
     let result = await validationResult(req);
 

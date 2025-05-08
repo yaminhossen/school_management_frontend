@@ -37,11 +37,11 @@ async function validate(req: Request) {
         .withMessage('the capacity field is required')
         .run(req);
 
-    await body('fee')
-        .not()
-        .isEmpty()
-        .withMessage('the fee field is required')
-        .run(req);
+    // await body('fee')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the fee field is required')
+    //     .run(req);
 
     await body('prerequisities')
         .not()
@@ -49,23 +49,23 @@ async function validate(req: Request) {
         .withMessage('the prerequisities field is required')
         .run(req);
 
-    await body('student_instructions')
-        .not()
-        .isEmpty()
-        .withMessage('the student_instructions field is required')
-        .run(req);
+    // await body('student_instructions')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the student_instructions field is required')
+    //     .run(req);
 
-    await body('parent_instructions')
-        .not()
-        .isEmpty()
-        .withMessage('the parent_instructions field is required')
-        .run(req);
+    // await body('parent_instructions')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the parent_instructions field is required')
+    //     .run(req);
 
-    await body('policies')
-        .not()
-        .isEmpty()
-        .withMessage('the policies field is required')
-        .run(req);
+    // await body('policies')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the policies field is required')
+    //     .run(req);
 
     await body('rules')
         .not()
@@ -73,17 +73,17 @@ async function validate(req: Request) {
         .withMessage('the rules field is required')
         .run(req);
 
-    await body('waiver_rules')
-        .not()
-        .isEmpty()
-        .withMessage('the waiver_rules field is required')
-        .run(req);
+    // await body('waiver_rules')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the waiver_rules field is required')
+    //     .run(req);
 
-    await body('discount_rules')
-        .not()
-        .isEmpty()
-        .withMessage('the discount_rules field is required')
-        .run(req);
+    // await body('discount_rules')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the discount_rules field is required')
+    //     .run(req);
 
     let result = await validationResult(req);
 

@@ -25,16 +25,22 @@ async function validate(req: Request) {
         .withMessage('the name field is required')
         .run(req);
 
-    await body('description')
-        .not()
-        .isEmpty()
-        .withMessage('the description field is required')
-        .run(req);
+    // await body('description')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the description field is required')
+    //     .run(req);
 
     await body('amount')
         .not()
         .isEmpty()
         .withMessage('the amount field is required')
+        .run(req);
+
+    await body('session')
+        .not()
+        .isEmpty()
+        .withMessage('the session field is required')
         .run(req);
 
     await body('fee_type_id')
@@ -73,6 +79,9 @@ async function store(
             user_admin_id: (req as any).user?.id || null,
         },
     });
+    const year = new Date(body?.session).getFullYear();
+    // const year = body?.session.slice(0, 4);
+    console.log('year', year);
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: auth_user?.branch_id || 1,
@@ -80,6 +89,7 @@ async function store(
         name: body.name,
         description: body.description,
         amount: body.amount,
+        session: year,
         fee_type_id: body.fee_type_id,
         creator: user?.id || null,
     };

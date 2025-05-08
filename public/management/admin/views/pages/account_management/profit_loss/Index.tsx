@@ -82,9 +82,9 @@ const Index: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <div className="content_body">
                 <form onSubmit={handleSubmit}>
-                    <div className="teacher_result">
+                    <div className="account_results">
                         <div>
-                            <div>Start Date</div>
+                            <div className="mb-1">Start Date</div>
                             <div>
                                 <input
                                     type="date"
@@ -96,7 +96,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             </div>
                         </div>
                         <div>
-                            <div>End Date</div>
+                            <div className="mb-1">End Date</div>
                             <div>
                                 <input
                                     type="date"
@@ -106,7 +106,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             </div>
                         </div>
                         <button
-                            className="btn btn-sm btn-outline-info"
+                            className="btn btn-sm account_filter_btn btn-outline-info"
                             type="submit"
                         >
                             Submit
@@ -115,10 +115,10 @@ const Index: React.FC<Props> = (props: Props) => {
                 </form>
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
-                        <table>
+                        <table className="account_table">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    {/* <th></th> */}
                                     <th>SERIAL</th>
                                     <th>INCOME</th>
                                     <th>CATEGORY</th>
@@ -130,7 +130,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     (i: { [key: string]: any }, index) => {
                                         return (
                                             <tr>
-                                                <td></td>
+                                                {/* <td></td> */}
                                                 <td>{index + 1}</td>
                                                 <td></td>
                                                 <td>{i.category}</td>
@@ -144,9 +144,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                         );
                                     },
                                 )}
-                                <tr>
+                                <tr className="pre_total">
                                     <td></td>
-                                    <td></td>
+                                    {/* <td></td> */}
                                     <td>Income Total:</td>
                                     <td></td>
                                     <td>
@@ -160,7 +160,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     (i: { [key: string]: any }, index) => {
                                         return (
                                             <tr>
-                                                <td></td>
+                                                {/* <td></td> */}
                                                 <td>{index + 1}</td>
                                                 <td></td>
                                                 <td>{i.category}</td>
@@ -174,9 +174,9 @@ const Index: React.FC<Props> = (props: Props) => {
                                         );
                                     },
                                 )}
-                                <tr>
+                                <tr className="pre_total">
                                     <td></td>
-                                    <td></td>
+                                    {/* <td></td> */}
                                     <td>Expense Total:</td>
                                     <td></td>
                                     <td>
@@ -188,13 +188,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td></td>
+                                    {/* <td></td> */}
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                <tr>
-                                    <td></td>
+                                <tr className="total_row">
+                                    {/* <td></td> */}
                                     <td></td>
                                     <td>Profit Balance:</td>
                                     <td>Total:</td>
@@ -203,8 +203,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                         tk
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td></td>
+                                <tr className="total_row">
+                                    {/* <td></td> */}
                                     <td></td>
                                     <td>Loss Balance:</td>
                                     <td>Total:</td>

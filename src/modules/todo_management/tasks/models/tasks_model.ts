@@ -24,9 +24,8 @@ import {
 } from 'sequelize';
 enum is_complete {
     pending = 'pending',
-    running = 'running',
     completed = 'completed',
-    nexttime = 'nexttime',
+    nexttime = 'block',
 }
 
 const tableName = 'tasks';
@@ -42,7 +41,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare branch_id?: number;
     declare title: string;
     declare description: string;
-    declare is_complete: is_complete;
+    declare is_complete?: is_complete;
     declare date: string;
 
     declare status?: status;
@@ -72,12 +71,7 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             is_complete: {
-                type: new DataTypes.ENUM(
-                    'pending',
-                    'running',
-                    'completed',
-                    'nexttime',
-                ),
+                type: new DataTypes.ENUM('pending', 'completed', 'block'),
                 allowNull: true,
             },
 

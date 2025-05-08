@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { anyObject } from '../../../common_types/object';
 export interface Props {}
 
 const NavigationList: React.FC<Props> = (props: Props) => {
@@ -16,9 +17,10 @@ const NavigationList: React.FC<Props> = (props: Props) => {
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         try {
-            const response = await axios.post('/api/v1/auth/logout');
-            console.log('response123', response);
-            // if(response.status)
+            let confirm = await (window as anyObject).s_confirm('Logout');
+            if (confirm) {
+                const response = await axios.post('/api/v1/auth/logout');
+            }
         } catch (error) {
             setError(error);
         }

@@ -9,6 +9,7 @@ import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
+import InputImage from './components/management_data_page/InputImage';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -23,6 +24,16 @@ const Edit: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(details({ id: params.id }) as any);
     }, []);
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.parent_infos[key])
+                return state.item?.parent_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -124,14 +135,11 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Image</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            name="image"
-                                        />
-                                    </div>
+                                    <InputImage
+                                        label={'image'}
+                                        name={'image'}
+                                        defalut_preview={get_value('image')}
+                                    />
                                 </div>
                                 <div className="form-group form-horizontal">
                                     <label></label>

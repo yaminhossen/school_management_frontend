@@ -20,23 +20,23 @@ async function validate(req: Request) {
     //     .withMessage('the branch_id field is required')
     //     .run(req);
 
-    // await body('branch_class_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the branch_class_id field is required')
-    //     .run(req);
+    await body('branch_class_id')
+        .not()
+        .isEmpty()
+        .withMessage('the branch_class_id field is required')
+        .run(req);
 
-    // await body('branch_class_subject_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the branch_class_subject_id field is required')
-    //     .run(req);
+    await body('branch_class_subject_id')
+        .not()
+        .isEmpty()
+        .withMessage('the branch_class_subject_id field is required')
+        .run(req);
 
-    // await body('title')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the title field is required')
-    //     .run(req);
+    await body('title')
+        .not()
+        .isEmpty()
+        .withMessage('the title field is required')
+        .run(req);
 
     // await body('description')
     //     .not()
@@ -44,11 +44,11 @@ async function validate(req: Request) {
     //     .withMessage('the description field is required')
     //     .run(req);
 
-    // await body('attachments')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the attachments field is required')
-    //     .run(req);
+    await body('attachment')
+        .not()
+        .isEmpty()
+        .withMessage('the attachment field is required')
+        .run(req);
 
     let result = await validationResult(req);
 
@@ -96,11 +96,11 @@ async function store(
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: auth_user?.branch_id || 1,
-        branch_class_id: body.class,
+        branch_class_id: body.branch_class_id,
         title: body.title,
         description: body.description,
         attachment: image_path,
-        branch_class_subject_id: body.subject,
+        branch_class_subject_id: body.branch_class_subject_id,
         creator: user?.id || null,
     };
 

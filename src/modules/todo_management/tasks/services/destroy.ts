@@ -41,6 +41,12 @@ async function destroy(
 
         if (data) {
             await data.destroy();
+
+            await models.TaskUsersModel.destroy({
+                where: {
+                    task_id: body.id,
+                },
+            });
             return response(200, 'data permanently deleted', {});
         } else {
             throw new custom_error('Forbidden', 403, 'operation not possible');

@@ -34,7 +34,7 @@ async function fetch_and_save_to_cache(url, cache, startTime) {
 
         return response;
     } catch (error) {
-        console.error(error.response.data);
+        console.error(error.response?.data);
 
         let endTime = performance.now();
         let duration = endTime - startTime;

@@ -13,11 +13,11 @@ import error_trace from '../helpers/error_trace';
 import moment from 'moment/moment';
 
 async function validate(req: Request) {
-    await body('id')
-        .not()
-        .isEmpty()
-        .withMessage('the id field is required')
-        .run(req);
+    // await body('id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the id field is required')
+    //     .run(req);
 
     await body('building_code')
         .not()

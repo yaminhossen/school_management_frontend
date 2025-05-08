@@ -7,7 +7,7 @@ import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { details } from './config/store/async_actions/details';
 import { initialState } from './config/store/inital_state';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 export interface Props {}
 
@@ -53,8 +53,11 @@ const Details: React.FC<Props> = (props: Props) => {
                             <div className="item-img">
                                 <img
                                     className="user_profile_img"
-                                    src={state.item?.image}
-                                    alt="teacher"
+                                    src={
+                                        state.item?.image ||
+                                        '/assets/dashboard/images/avatar.png'
+                                    }
+                                    alt="parent"
                                 />
                             </div>
                             <div className="item-content">
@@ -63,7 +66,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         {state.item?.name}
                                     </h3>
                                     <div className="header-elements">
-                                        <ul>
+                                        {/* <ul>
                                             <li>
                                                 <a href="">
                                                     <span className="material-symbols-outlined fill">
@@ -85,13 +88,13 @@ const Details: React.FC<Props> = (props: Props) => {
                                                     </span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul> */}
                                     </div>
                                 </div>
                                 <ul className="section_naviagation">
-                                    <li>
+                                    {/* <li>
                                         <Link
-                                            to={`/user-parents/details/${params.id}/information`}
+                                            to={`/user-parents/details/${params.id}`}
                                         >
                                             Informations
                                         </Link>
@@ -102,17 +105,32 @@ const Details: React.FC<Props> = (props: Props) => {
                                         >
                                             Childrens
                                         </Link>
-                                    </li>
-                                    {/* <li>
-                                        <Link to="/user-parents/details/3/payment">
-                                            Payment
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/user-parents/details/3/due">
-                                            Due
-                                        </Link>
                                     </li> */}
+                                    <li className="active_Li">
+                                        <NavLink
+                                            to={`/user-parents/details/${params.id}/information`}
+                                            // className="active_nav_link"
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? 'active_nav_link'
+                                                    : 'normal_nav_link'
+                                            }
+                                        >
+                                            Informations
+                                        </NavLink>
+                                    </li>
+                                    <li className="active_Li">
+                                        <NavLink
+                                            to={`/user-parents/details/${params.id}/childrens`}
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? 'active_nav_link'
+                                                    : 'normal_nav_link'
+                                            }
+                                        >
+                                            Childrens
+                                        </NavLink>
+                                    </li>
                                 </ul>
                                 <div></div>
                                 <div className="info-table table-responsive">

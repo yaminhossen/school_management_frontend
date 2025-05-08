@@ -20,29 +20,24 @@ async function validate(req: Request) {
     //     .withMessage('the id field is required')
     //     .run(req);
 
-    // await body('branch_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the branch_id field is required')
-    //     .run(req);
+  
+    await body('branch_class_id')
+        .not()
+        .isEmpty()
+        .withMessage('the branch_class_id field is required')
+        .run(req);
 
-    // await body('branch_class_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the branch_class_id field is required')
-    //     .run(req);
+    await body('branch_class_subject_id')
+        .not()
+        .isEmpty()
+        .withMessage('the branch_class_subject_id field is required')
+        .run(req);
 
-    // await body('branch_class_subject_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the branch_class_subject_id field is required')
-    //     .run(req);
-
-    // await body('title')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the title field is required')
-    //     .run(req);
+    await body('title')
+        .not()
+        .isEmpty()
+        .withMessage('the title field is required')
+        .run(req);
 
     // await body('description')
     //     .not()

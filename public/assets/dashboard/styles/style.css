@@ -1163,6 +1163,91 @@ body {
   background-color: rgba(15, 113, 170, 0.534);
 }
 
+.account_filter_btn {
+  border: 1px solid rgb(227, 223, 223);
+  border-radius: 5px;
+}
+
+.dues_back_btn {
+  display: flex;
+  justify-content: space-between;
+}
+.dues_back_btn .back_btn {
+  border: 1px solid var(--brand_color2);
+  background: transparent;
+  color: var(--brand_white2);
+  text-transform: uppercase;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 10px !important;
+}
+.dues_back_btn .back_btn a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 15px;
+}
+.dues_back_btn .back_btn:hover {
+  border: 1px solid rgba(15, 113, 170, 0.534);
+  background-color: rgba(15, 113, 170, 0.534);
+  color: var(--brand_white);
+}
+
+.download_td {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.download_btn {
+  border: 1px solid rgba(15, 113, 170, 0.534);
+  color: var(--brand_white);
+  width: 140px;
+  display: flex;
+  align-items: center;
+}
+.download_btn:hover {
+  background-color: rgba(15, 113, 170, 0.534);
+}
+
+.d_btn {
+  border: 1px solid rgb(91, 132, 255);
+  background: transparent;
+  color: rgb(198, 197, 197);
+  padding: 6px 15px;
+  text-transform: uppercase;
+  font-size: 13px;
+  cursor: pointer;
+}
+.d_btn:hover {
+  border: 1px solid rgb(198, 197, 197);
+  color: rgb(198, 197, 197);
+}
+
+.btn_error {
+  background-color: #e74c3c;
+  /* Red background */
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+  /* Prevent click */
+}
+
+.d_btn_1 {
+  border: 1px solid rgba(15, 113, 170, 0.534);
+  color: rgb(198, 197, 197);
+}
+.d_btn_1:hover {
+  background-color: rgba(15, 113, 170, 0.534);
+}
+
+.error_message {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
 .card {
   padding: 11px;
   border-radius: 3px;
@@ -1299,11 +1384,14 @@ input.form_checkbox:checked::after {
   min-width: 200px;
   display: block;
 }
+.form-horizontal .valid_star {
+  color: rgb(255, 0, 0);
+}
 .form-horizontal .form_elements {
   flex: 1;
 }
 .form-horizontal .form_elements > * {
-  width: 100%;
+  width: 213px;
   display: block;
 }
 .form-horizontal .form_elements > input,
@@ -1316,13 +1404,18 @@ input.form_checkbox:checked::after {
 .form-horizontal .form_elements button {
   width: unset;
 }
+.form-horizontal .form_elements_valid {
+  width: 213px;
+  display: block;
+  position: relative;
+}
 
 .form-vertical label {
   display: block;
   margin-bottom: 20px;
 }
 .form-vertical .form_elements > * {
-  width: 100%;
+  width: 230px;
   display: block;
 }
 .form-vertical .form_elements > input,
@@ -1340,6 +1433,11 @@ input.form_checkbox:checked::after {
   border-top: 1px solid gray;
   padding-top: 40px;
   margin-top: 30px;
+}
+
+.total_row {
+  background-color: #20232a;
+  padding: 10px;
 }
 
 .admin_dashboard h1 {
@@ -2105,6 +2203,9 @@ input.form_checkbox:checked::after {
   height: calc(100% - 77px);
   padding: 10px;
 }
+.explore_window .settings_back {
+  border: 1px solid red;
+}
 .explore_window .footer {
   position: relative;
   z-index: 9;
@@ -2135,6 +2236,10 @@ input.form_checkbox:checked::after {
 .explore_window .footer .action_btns ul li a .text {
   text-transform: capitalize;
   font-size: 13px;
+}
+
+.pending_explore_window {
+  height: 440px !important;
 }
 
 .calendar_app {
@@ -2311,8 +2416,9 @@ input.form_checkbox:checked::after {
 }
 
 .student_submit {
-  display: grid;
-  justify-content: center;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center;
 }
 .student_submit .btn {
   padding: 10px 20px;
@@ -2485,6 +2591,9 @@ td.col_id {
 .table tr th {
   white-space: nowrap;
   padding: 13px;
+}
+.table tr .details_descrtiption2 {
+  white-space: normal !important;
 }
 .table.table-bordered tr td,
 .table.table-bordered tr th {
@@ -2670,6 +2779,37 @@ td.col_id {
 .table_responsive table tbody tr td:nth-child(1) .table_action_btns ul li a:hover {
   background-color: rgba(128, 128, 128, 0.123);
 }
+.table_responsive .account_table tr td:nth-child(1), .table_responsive .account_table tr td:nth-child(2) {
+  width: 150px;
+}
+.table_responsive .account_table .pre_total {
+  background-color: #30343d;
+}
+.table_responsive .account_table .present_total {
+  background-color: #30343d;
+}
+
+.notification-bell {
+  position: relative;
+}
+
+.notification-badge {
+  position: absolute;
+  padding: 3px 0px;
+  margin: 2px 0px;
+  top: 15px;
+  right: -3px;
+  background-color: red;
+  color: white;
+  font-size: 11px;
+  font-weight: normal;
+  border-radius: 50%;
+  height: 18px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .form_input_grid,
 .form_input_full {
@@ -2776,6 +2916,9 @@ td.col_id {
   color: red;
   cursor: pointer;
 }
+.off_canvas .off_canvas_body .pending_header {
+  margin-top: 83px !important;
+}
 .off_canvas .off_canvas_body .data_content {
   height: calc(100svh - 52px);
   padding: 10px;
@@ -2799,7 +2942,7 @@ td.col_id {
 }
 
 .user_profile_img {
-  max-width: 225px;
+  max-width: 130px;
 }
 
 @media only screen and (max-width: 1199px) {
@@ -2842,6 +2985,22 @@ td.col_id {
 }
 .single-info-details .item-content .section_naviagation li a {
   white-space: nowrap;
+}
+.single-info-details .item-content .section_naviagation .active_Li {
+  padding: 0px 0px 0px 0px;
+  border: 1px solid rgb(197, 197, 247);
+}
+.single-info-details .item-content .section_naviagation .active_Li .active_nav_link {
+  color: #fefefe !important; /* Or your desired active color */
+  background-color: #0570eb !important; /* Or your desired active color */
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+.single-info-details .item-content .section_naviagation .active_Li .normal_nav_link {
+  color: #fdfcfc !important; /* Or your desired active color */
+  background-color: rgba(36, 31, 31, 0.5607843137) !important; /* Or your desired active color */
+  padding: 8px 12px;
+  border-radius: 8px;
 }
 .single-info-details .item-content .info-table .table_heading {
   color: rgba(113, 247, 158, 0.849);

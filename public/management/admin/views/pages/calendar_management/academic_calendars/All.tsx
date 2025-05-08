@@ -65,22 +65,22 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Event`}
                                             col_name={`event`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Days`}
                                             col_name={`days`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Start Date`}
                                             col_name={`start_date`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`End Date`}
                                             col_name={`end_date`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                     </tr>
                                 </thead>

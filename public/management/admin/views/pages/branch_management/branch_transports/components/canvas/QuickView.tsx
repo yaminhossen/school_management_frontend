@@ -19,6 +19,7 @@ const QuickView: React.FC<Props> = (props: Props) => {
     function close_canvas(action: boolean = true) {
         dispatch(storeSlice.actions.set_show_quick_view_canvas(action));
     }
+    // console.log('state item', state);
 
     if (modalRoot && state.show_quick_view_canvas) {
         return createPortal(
@@ -40,14 +41,29 @@ const QuickView: React.FC<Props> = (props: Props) => {
                         <table className="table quick_modal_table">
                             <tbody>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>Title</th>
                                     <th>:</th>
-                                    <th>{state.item.name}</th>
+                                    <th>{state.item.title}</th>
                                 </tr>
                                 <tr>
-                                    <th>Preffered name</th>
+                                    <th>Type</th>
                                     <th>:</th>
-                                    <th>{state.item.email}</th>
+                                    <th>{state.item.type}</th>
+                                </tr>
+                                <tr>
+                                    <th>Driver</th>
+                                    <th>:</th>
+                                    <th>{state.item?.driver?.name}</th>
+                                </tr>
+                                <tr>
+                                    <th>Driver number</th>
+                                    <th>:</th>
+                                    <th>{state.item?.driver?.driver_number}</th>
+                                </tr>
+                                <tr>
+                                    <th>Vehicle no</th>
+                                    <th>:</th>
+                                    <th>{state.item.vehicle_no}</th>
                                 </tr>
                             </tbody>
                         </table>

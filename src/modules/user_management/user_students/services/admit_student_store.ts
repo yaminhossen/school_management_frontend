@@ -507,6 +507,8 @@ async function store(
             if (student_guardians) {
                 student_guardians.forEach(async (ss) => {
                     let usp_model = new models.UserStudentParentsModel();
+                    let uspi_model =
+                        new models.UserStudentParentInformationsModel();
                     let up_model = new models.UserParentsModel();
                     let up_inputs: InferCreationAttributes<typeof up_model> = {
                         name: body.parent_name,
@@ -542,6 +544,21 @@ async function store(
                         // console.log('parent id', up_model.id);
 
                         (await usp_model.update(usp_inputs)).save();
+                        let uspi_inputs: InferCreationAttributes<
+                            typeof uspi_model
+                        > = {
+                            user_parent_id: up_model.id,
+                            guardian_contact_number: body.relation,
+                        };
+                        // eslint-disable-next-line no-redeclare
+                        // let id = up_model.id;
+                        uspi_inputs.user_parent_id = up_model.id;
+                        uspi_inputs.guardian_contact_number =
+                            up_model.phone_number;
+                        // uspi_inputs.is_parent = ss.is_parent;
+                        // console.log('parent id', up_model.id);
+
+                        (await uspi_model.update(uspi_inputs)).save();
                     }
                 });
             }

@@ -7,18 +7,12 @@ import {
     Request,
 } from '../../../common_types/object';
 import response from '../helpers/response';
-import { InferCreationAttributes } from 'sequelize';
+import { InferCreationAttributes, Op } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
-import moment from 'moment';
+import moment from 'moment/moment';
 
-async function validate(req: Request) {
-    // await body('id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the id field is required')
-    //     .run(req);
-
+async function validate(req: Request, models: any) {
     await body('name')
         .not()
         .isEmpty()
@@ -31,17 +25,62 @@ async function validate(req: Request) {
         .withMessage('the email field is required')
         .run(req);
 
+    await body('email')
+        .custom(async (email, { req }) => {
+            const teacherId = req.body.id; // the ID of the user being updated
+            console.log('validation teacherId', teacherId);
+
+            const existing = await models.UserStaffsModel.findOne({
+                where: {
+                    email,
+                    id: { [Op.ne]: teacherId }, // EXCLUDE self
+                },
+            });
+
+            if (existing) {
+                throw new Error('Email already exists');
+            }
+
+            return true;
+        })
+        .run(req);
+
     await body('phone_number')
         .not()
         .isEmpty()
         .withMessage('the phone_number field is required')
+        .bail()
+        .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+        .withMessage('Phone number must be a valid Bangladeshi number')
         .run(req);
 
-    // await body('image')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the image field is required')
-    //     .run(req);
+    await body('guardian_contact_number')
+        .not()
+        .isEmpty()
+        .withMessage('the guardian_contact_number field is required')
+        .bail()
+        .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+        .withMessage('Phone number must be a valid Bangladeshi number')
+        .run(req);
+
+    if (req?.body?.password) {
+        await body('password')
+            .isLength({ min: 6 })
+            .withMessage('Password must be at least 6 characters')
+            .run(req);
+    }
+
+    await body('parmenent_address')
+        .not()
+        .isEmpty()
+        .withMessage('the parmenent ddress field is required')
+        .run(req);
+
+    await body('present_address')
+        .not()
+        .isEmpty()
+        .withMessage('the present address field is required')
+        .run(req);
 
     let result = await validationResult(req);
 
@@ -53,13 +92,13 @@ async function update(
     req: FastifyRequest,
 ): Promise<responseObject> {
     /** validation */
-    let validate_result = await validate(req as Request);
+    let models = await db();
+    let validate_result = await validate(req as Request, models);
     if (!validate_result.isEmpty()) {
         return response(422, 'validation error', validate_result.array());
     }
 
     /** initializations */
-    let models = await db();
     let body = req.body as anyObject;
     let data = new models.UserStaffsModel();
     let user_staff = new models.UserStaffInformationsModel();
@@ -201,7 +240,7 @@ async function update(
                 await staff_branch.update(bs_inputs);
             }
         }
-        return response(200, 'data created', { data });
+        return response(200, 'data updated', { data });
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
         if (error instanceof custom_error) {

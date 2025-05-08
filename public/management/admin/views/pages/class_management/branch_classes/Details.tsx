@@ -49,17 +49,24 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td>{state.item.capacity}</td>
                                     </tr>
-                                    <tr>
+                                    {/* <tr>
                                         <td>Fee</td>
                                         <td>:</td>
                                         <td>{state.item.fee}</td>
-                                    </tr>
-                                    <tr>
+                                    </tr> */}
+                                    {/* <tr>
                                         <td>Prerequisities</td>
                                         <td>:</td>
                                         <td>{state.item.prerequisities}</td>
+                                    </tr> */}
+                                    <tr className="">
+                                        <td>Prerequisities</td>
+                                        <td>:</td>
+                                        <td className="details_descrtiption2">
+                                            {state.item?.prerequisities}
+                                        </td>
                                     </tr>
-                                    <tr>
+                                    {/* <tr>
                                         <td>Student Instructions</td>
                                         <td>:</td>
                                         <td>
@@ -72,18 +79,25 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>
                                             {state.item.parent_instructions}
                                         </td>
-                                    </tr>
-                                    <tr>
+                                    </tr> */}
+                                    {/* <tr>
                                         <td>Policies</td>
                                         <td>:</td>
                                         <td>{state.item.policies}</td>
-                                    </tr>
-                                    <tr>
+                                    </tr> */}
+                                    {/* <tr>
                                         <td>Rules</td>
                                         <td>:</td>
                                         <td>{state.item.rules}</td>
+                                    </tr> */}
+                                    <tr className="">
+                                        <td>Rules</td>
+                                        <td>:</td>
+                                        <td className="details_descrtiption2">
+                                            {state.item?.rules}
+                                        </td>
                                     </tr>
-                                    <tr>
+                                    {/* <tr>
                                         <td>Waiver rules</td>
                                         <td>:</td>
                                         <td>{state.item.waiver_rules}</td>
@@ -92,7 +106,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Discount rules</td>
                                         <td>:</td>
                                         <td>{state.item.discount_rules}</td>
-                                    </tr>
+                                    </tr> */}
                                 </tbody>
                             </table>
                         </div>

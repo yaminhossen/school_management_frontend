@@ -20,7 +20,7 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
     const params = useParams();
 
     useEffect(() => {
-        dispatch(storeSlice.actions.set_item({}));
+        // dispatch(storeSlice.actions.set_item({}));
         dispatch(details({ id: params.id }) as any);
     }, []);
     return (
@@ -53,7 +53,7 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>Stutas:</td>
+                        <td>Status:</td>
                         <td className="font-medium text-dark-medium">
                             {state.item.status ? 'active' : 'deactive'}
                         </td>

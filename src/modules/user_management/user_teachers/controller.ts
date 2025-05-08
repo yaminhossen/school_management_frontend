@@ -20,6 +20,7 @@ import basic_information from './services/basic_information';
 import profile_update from './services/profile_update';
 import teacher_all from './services/teacher_all';
 import basic_informations_second from './services/basic_information_second';
+import teacher_all_task_user from './services/teacher_all_task_user';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -29,6 +30,16 @@ export default function (fastify: FastifyInstance) {
         },
         teacher_all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await teacher_all(fastify, req);
+            res.code(data.status).send(data);
+        },
+        teacher_all_task_user: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await teacher_all_task_user(
+                fastify,
+                req,
+            );
             res.code(data.status).send(data);
         },
 

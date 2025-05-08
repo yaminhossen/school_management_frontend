@@ -45,7 +45,24 @@ axios.interceptors.request.use(
 );
 
 axios.interceptors.response.use(
+    // function (response) {
+    //     return response;
+    // },
     function (response) {
+        // console.log('response ok', response);
+        if (response.status == 217) {
+            location.href = '/admin/login';
+        }
+        // (window as any)
+        //     .jQuery('.loader-wrapper')
+        //     .fadeOut('slow', function () {});
+        if (response.status == 202) {
+            (window as anyObject).toaster(`Successfuly task created`);
+        }
+        if (response.status == 204) {
+            (window as anyObject).toaster(`Successfuly task updated`);
+        }
+        console.log('response data', response);
         return response;
     },
 
@@ -71,6 +88,7 @@ axios.interceptors.response.use(
 
             (window as anyObject).toaster(
                 `${error.response.status} - ${error.response.statusText}`,
+                'error',
             );
 
             console.log(error.response);

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
@@ -10,6 +10,7 @@ import storeSlice from './config/store';
 import { meeting_all } from './config/store/async_actions/meeting_all';
 import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -17,6 +18,7 @@ const Create: React.FC<Props> = (props: Props) => {
         (state: RootState) => state[setup.module_name],
     );
     const dispatch = useAppDispatch();
+    const [meetingType, setMeetingType] = useState('');
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -45,9 +47,15 @@ const Create: React.FC<Props> = (props: Props) => {
                         >
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Meeting id</label>
+                                    <label>
+                                        Meeting{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <select name="meeting_id" id="">
+                                            <option value="">
+                                                Select Meeting
+                                            </option>
                                             {state?.meeting?.length &&
                                                 state.meeting?.map(
                                                     (i: {
@@ -67,7 +75,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                 </div>
                                 {/* <div> thsi si five {state.meeting.length}</div> */}
                                 <div className="form-group form-horizontal">
-                                    <label>Title</label>
+                                    <label>
+                                        Title{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -86,10 +97,98 @@ const Create: React.FC<Props> = (props: Props) => {
                                         ></textarea>
                                     </div>
                                 </div>
+                                <div className="form-group form-horizontal">
+                                    <label>
+                                        Date{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="date"
+                                            // defaultValue={moment().format(
+                                            //     'YYYY-MM-DD',
+                                            // )}
+                                            name="date"
+                                        ></input>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>
+                                        Time{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
+                                    <div className="form_elements">
+                                        <input type="time" name="time"></input>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>
+                                        Meeting Type{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
+                                    <div className="form_elements">
+                                        <select
+                                            name="meeting_type"
+                                            value={meetingType}
+                                            onChange={(e) =>
+                                                setMeetingType(e.target.value)
+                                            }
+                                        >
+                                            <option value="">
+                                                Select type
+                                            </option>
+                                            <option value="online">
+                                                Online
+                                            </option>
+                                            <option value="offline">
+                                                Offline
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                {meetingType === 'online' && (
+                                    <div className="form-group form-horizontal">
+                                        <label>
+                                            Meeting Link{' '}
+                                            <span className="valid_star">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div className="form_elements">
+                                            <textarea
+                                                name="meeting_link"
+                                                placeholder="Enter meeting link"
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                )}
+                                <div className="form-group form-horizontal">
+                                    <label>
+                                        Group{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
+                                    <div className="form_elements">
+                                        <select name="role" id="">
+                                            <option value="">
+                                                Select group
+                                            </option>
+                                            <option value="admission-officer">
+                                                admission-officer
+                                            </option>
+                                            <option value="accountant">
+                                                accountant
+                                            </option>
+                                            <option value="teacher">
+                                                teacher
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="form-group form-horizontal">
-                                <label></label>
-                                <div className="form_elements">
+                            <div className="form-group student_submit form-horizontal">
+                                {/* <label></label> */}
+                                <div className="form_elementss">
                                     <button className="btn btn_1">
                                         submit
                                     </button>

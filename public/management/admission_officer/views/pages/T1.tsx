@@ -128,14 +128,7 @@ const T1: React.FC<Props> = (props: Props) => {
                     gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr)',
                 }}
             >
-                {[
-                    'নোটিশ',
-                    'বাড়ির কাজ',
-                    'এই মাসের উপস্থিতি',
-                    'উপস্থিতি %',
-                    'লাইব্রেরী বই ইস্যু',
-                    'ফিস বকেয়া',
-                ].map((i) => {
+                {['নোটিশ', 'মোট ছাত্র/ছাত্রী'].map((i) => {
                     return (
                         <div className="card w-100" data-intro="This is card">
                             <div className="business-top-widget card-body">

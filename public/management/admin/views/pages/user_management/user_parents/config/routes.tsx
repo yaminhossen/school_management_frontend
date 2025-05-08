@@ -34,6 +34,10 @@ export default {
             element: <Details />,
             children: [
                 {
+                    path: '',
+                    element: <BasicInformation />,
+                },
+                {
                     path: 'information',
                     element: <BasicInformation />,
                 },

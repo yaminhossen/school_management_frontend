@@ -90,8 +90,60 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Driver licence</td>
                                         <td>:</td>
                                         <td>
-                                            {state.item?.driver?.driver_licence}
+                                            <a
+                                                href={
+                                                    state.item?.drivert
+                                                        ?.driver_licence ||
+                                                    undefined
+                                                }
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src={
+                                                        state.item?.drivert
+                                                            ?.driver_licence ||
+                                                        ''
+                                                    }
+                                                    alt="driver license"
+                                                    style={{ height: 50 }}
+                                                />
+                                            </a>
                                         </td>
+                                        {/* <td>
+                                            {state.item?.driver
+                                                ?.driver_licence ? (
+                                                    <a
+                                                        href={
+                                                            state.item?.driver
+                                                                ?.driver_licence
+                                                        }
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        <img
+                                                            src={
+                                                                state.item?.driver
+                                                                    ?.driver_licence
+                                                            }
+                                                            alt="profile image"
+                                                            style={{
+                                                                height: 50,
+                                                            }}
+                                                        />
+                                                    </a>
+                                                ) : (
+                                                    <img
+                                                    // src={
+                                                    //     '/assets/dashboard/images/avatar.png'
+                                                    // }
+                                                        alt="driver license"
+                                                        style={{
+                                                            height: 50,
+                                                        }}
+                                                    />
+                                                )}
+                                        </td> */}
                                     </tr>
                                 </tbody>
                             </table>

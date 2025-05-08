@@ -24,38 +24,61 @@ const Edit: React.FC<Props> = (props: Props) => {
         dispatch(details({ id: params.id }) as any);
     }, []);
 
-    const [apStartDate, setApStartDate] = useState('');
-    const [apEndDate, setApEndDate] = useState('');
-    const [aptotalDays, setApTotalDays] = useState(0);
+    const [startDate, setStartDate] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [errorMessage2, setErrorMessage2] = useState('');
 
+    const [endDate, setEndDate] = useState('');
+    const [days, setDays] = useState(0);
+    // After data loaded, set the dates
     useEffect(() => {
-        let ss_Date = moment(state.item?.start_date).format('YYYY-MM-DD');
-        setApStartDate(ss_Date);
-        let ee_Date = moment(state.item?.end_Date).format('YYYY-MM-DD');
-        setApEndDate(ee_Date);
-    }, [state.item?.start_date, state.item?.end_date]);
+        if (state.item && Object.keys(state.item).length) {
+            setStartDate(moment(state.item.start_date).format('YYYY-MM-DD'));
+            setEndDate(moment(state.item.end_date).format('YYYY-MM-DD'));
+            setDays(state.item.days);
+        }
+    }, [state.item]);
+    useEffect(() => {
+        const start = moment(startDate);
+        const end = moment(endDate);
+        const today = moment().startOf('day');
 
-    const calculateDays = (start: string, end: string) => {
-        const diff = moment(end).diff(moment(start), 'days');
-        setApTotalDays(diff >= 0 ? diff + 1 : 0);
-    };
+        if (start.isBefore(today)) {
+            setErrorMessage('Start date cannot be before today.');
+            setErrorMessage2('');
+            setDays(0);
+            return;
+        }
 
-    const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setApStartDate(e.target.value);
-        calculateDays(e.target.value, state.item?.end_date);
-    };
+        if (end.isBefore(start)) {
+            setErrorMessage('');
+            setErrorMessage2('End date cannot be before start date.');
+            setDays(0);
+            return;
+        }
 
-    const handleEndDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setApEndDate(e.target.value);
-        calculateDays(apStartDate, e.target.value);
-    };
+        const diffDays = end.diff(start, 'days') + 1;
+        setDays(diffDays);
+        setErrorMessage('');
+        setErrorMessage2('');
+    }, [startDate, endDate]);
 
     async function handle_submit(e) {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
 
-    console.log('end_date2', aptotalDays);
+    const handleStartDateChange = (e) => {
+        setStartDate(e.target.value);
+    };
+
+    const handleEndDateChange = (e) => {
+        setEndDate(e.target.value);
+    };
+
+    const handleDaysChange = (e) => {
+        setDays(Number(e.target.value));
+    };
     return (
         <>
             <div className="page_content">
@@ -164,28 +187,19 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Reason</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            name="reason"
-                                            readOnly
-                                            placeholder="reason"
-                                            defaultValue={state.item.reason}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
                                     <label>Attachment</label>
                                     <div className="form_elements">
                                         <a
                                             target="blank"
-                                            href={state.item?.attachments}
+                                            href={
+                                                state.item?.attachments ||
+                                                undefined
+                                            }
                                         >
                                             <img
                                                 src={state.item?.attachments}
                                                 height={100}
-                                                alt=""
+                                                alt="attachment"
                                             />
                                         </a>
                                     </div>
@@ -231,9 +245,15 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Permission</label>
+                                    <label>
+                                        Permission{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <select name="leave_status" id="">
+                                            <option value="">
+                                                Select Option
+                                            </option>
                                             <option value="pending">
                                                 Pending
                                             </option>
@@ -247,31 +267,51 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Approved Start Date</label>
+                                    <label>
+                                        Approved Start Date{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="date"
-                                            name="approved_start_date"
-                                            placeholder="Approved start date"
-                                            defaultValue={moment(
-                                                state.item.start_date,
-                                            ).format('YYYY-MM-DD')}
+                                            value={startDate}
                                             onChange={handleStartDateChange}
+                                            name="approved_start_date"
                                         />
+                                        {errorMessage && (
+                                            <div
+                                                style={{
+                                                    color: 'red',
+                                                    marginTop: '5px',
+                                                }}
+                                            >
+                                                {errorMessage}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Approved End Date</label>
+                                    <label>
+                                        Approved End Date{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="date"
-                                            name="approved_end_date"
-                                            placeholder="Approved end Date"
-                                            defaultValue={moment(
-                                                state.item.end_date,
-                                            ).format('YYYY-MM-DD')}
+                                            value={endDate}
                                             onChange={handleEndDateChange}
+                                            name="approved_end_date"
                                         />
+                                        {errorMessage2 && (
+                                            <div
+                                                style={{
+                                                    color: 'red',
+                                                    marginTop: '5px',
+                                                }}
+                                            >
+                                                {errorMessage2}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
@@ -281,11 +321,15 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             type="number"
                                             name="approved_days"
                                             placeholder="Approved days"
-                                            value={
-                                                aptotalDays
-                                                    ? aptotalDays
-                                                    : state.item?.total_days
-                                            }
+                                            value={days}
+                                            onChange={handleDaysChange}
+                                            min="1"
+                                            readOnly
+                                            // value={
+                                            //     aptotalDays
+                                            //         ? aptotalDays
+                                            //         : state.item?.total_days
+                                            // }
                                         />
                                     </div>
                                 </div>
@@ -302,11 +346,15 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div> */}
-                                <div className="form-group form-horizontal">
-                                    <label></label>
-                                    <div className="form_elements">
-                                        <button className="btn btn_1">
-                                            submit
+                                <div className="form-group student_submit form-horizontal">
+                                    {/* <label></label> */}
+                                    <div className="form_elementss">
+                                        <button
+                                            // className="d_btn d_btn_1"
+                                            className={`btn btn_1 ${errorMessage || errorMessage2 ? 'btn_error' : ''}`}
+                                            disabled={!!errorMessage}
+                                        >
+                                            update
                                         </button>
                                     </div>
                                 </div>

@@ -45,9 +45,32 @@ const QuickView: React.FC<Props> = (props: Props) => {
                                     <th>{state.item.name}</th>
                                 </tr>
                                 <tr>
-                                    <th>Preffered name</th>
+                                    <th>Code</th>
                                     <th>:</th>
-                                    <th>{state.item.email}</th>
+                                    <th>{state.item.code}</th>
+                                </tr>
+                                <tr>
+                                    <th>Class</th>
+                                    <th>:</th>
+                                    <th>{state.item.subject_class?.name}</th>
+                                </tr>
+                                <tr>
+                                    <th>Section</th>
+                                    <th>:</th>
+                                    <th>{state.item.subject_section?.title}</th>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>:</th>
+                                    <th
+                                        style={{
+                                            whiteSpace: 'pre-wrap',
+                                            wordWrap: 'break-word',
+                                            maxWidth: '300px',
+                                        }}
+                                    >
+                                        {state.item?.description}
+                                    </th>
                                 </tr>
                             </tbody>
                         </table>

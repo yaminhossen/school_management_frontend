@@ -35,6 +35,16 @@ const Create: React.FC<Props> = (props: Props) => {
         initdependancy();
     }, []);
     console.log('branch state', state.drivers);
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
 
     return (
         <>
@@ -48,7 +58,10 @@ const Create: React.FC<Props> = (props: Props) => {
                         >
                             <div>
                                 <div className="form-group form-horizontal">
-                                    <label>Branch transport driver </label>
+                                    <label>
+                                        Branch transport driver{' '}
+                                        <span className="valid_star">*</span>{' '}
+                                    </label>
                                     <div className="form_elements">
                                         <select
                                             name="branch_transport_driver_id"
@@ -72,7 +85,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Transport Title</label>
+                                    <label>
+                                        Transport Title{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -82,7 +98,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Vehicle No</label>
+                                    <label>
+                                        Vehicle No{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -92,7 +111,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Type</label>
+                                    <label>
+                                        Type{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <select name="type" id="">
                                             <option value="van">van</option>
@@ -110,9 +132,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group form-horizontal">
-                                <label></label>
-                                <div className="form_elements">
+                            <div className="form-group student_submit form-horizontal">
+                                {/* <label></label> */}
+                                <div className="form_elementss">
                                     <button className="btn btn_1">
                                         submit
                                     </button>

@@ -45,6 +45,15 @@ async function restore(
             // });
             data.status = 'active';
             await data.save();
+            // Bulk update related task users
+            await models.TaskUsersModel.update(
+                { status: 'active' },
+                {
+                    where: {
+                        task_id: body.id,
+                    },
+                },
+            );
             return response(205, 'data restored', data);
         } else {
             throw new custom_error(

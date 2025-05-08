@@ -1,65 +1,142 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
+// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
+// import { all } from './config/store/async_actions/all';
+import setup from './config/setup';
+import { initialState } from './config/store/inital_state';
+import Header from './components/all_data_page/Header';
+import TableFooter from './components/all_data_page/TableFooter';
+import Paginate from '../../../components/Paginate';
+import Filter from './components/canvas/Filter';
+import QuickView from './components/canvas/QuickView';
+import storeSlice from './config/store';
+import { anyObject } from '../../../../common_types/object';
+import TableRowAction from './components/all_data_page/TableRowAction';
+import SelectItem from './components/all_data_page/SelectItem';
+import SelectAll from './components/all_data_page/SelectIAll';
+import TableHeading from './components/all_data_page/TableHeading';
+import { class_details1 } from './config/store/async_actions/class_details1';
 import { Link, useParams } from 'react-router-dom';
-import { initialState } from './config/store/inital_state.ts';
-import setup from './config/setup.ts';
-import storeSlice from './config/store/index.ts';
-import { class_details } from './config/store/async_actions/class_details.ts';
+import Paginate2 from '../../../components/Paginate2';
+import Header2 from './components/all_data_page/Header2';
+
 export interface Props {}
 
 const ClassDetails: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
 
     const dispatch = useAppDispatch();
     const params = useParams();
-    console.log('id', params.id);
+    console.log('param id', params.id);
 
     useEffect(() => {
-        dispatch(storeSlice.actions.set_item({}));
-        dispatch(class_details({ id: params.id }) as any);
+        dispatch(storeSlice.actions.set_select_fields('id'));
+        dispatch(class_details1({ id: params.id }) as any);
     }, []);
-    console.log('state', state.item);
+
+    function quick_view(data: anyObject = {}) {
+        dispatch(storeSlice.actions.set_item(data));
+        dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
+    }
+    // console.log('state date', (state.class_details1 as any)?.data?.length);
 
     return (
-        <div className="admin_dashboard">
-            <div className="content_body">
-                {/* <Link
-                    to="/add-new"
-                    className="btn btn-sm btn-outline-info mb-2"
-                    type="submit"
-                >
-                    Add New
-                </Link> */}
-                <div className="data_list">
-                    <div className="table_responsive custom_scroll">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Serial</th>
-                                    <th>Name</th>
-                                    <th>Student Id</th>
-                                    <th>Roll</th>
-                                    <th>Class</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="all_list">
-                                {Object.keys(state.item)?.length &&
-                                    state.item.length &&
-                                    state?.item?.map(
-                                        (i: { [key: string]: any }) => {
-                                            return (
-                                                <tr>
-                                                    <td></td>
-                                                    <td>{i.id}</td>
+        <div className="page_content">
+            <div className="explore_window fixed_size">
+                <Header2></Header2>
+
+                <div className="content_body">
+                    <div className="data_list">
+                        <div className="table_responsive custom_scroll">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th />
+                                        <th>
+                                            <SelectAll />
+                                        </th>
+                                        <th>No.</th>
+                                        <TableHeading
+                                            label={`ID`}
+                                            col_name={`id`}
+                                            sort={false}
+                                        />
+                                        {/* <th>Serial</th> */}
+                                        <th>Image</th>
+                                        <TableHeading
+                                            label={`Name`}
+                                            col_name={`name`}
+                                            sort={false}
+                                        />
+                                        <th>Student Id</th>
+                                        <TableHeading
+                                            label={`Role`}
+                                            col_name={`role`}
+                                            sort={false}
+                                        />
+                                        <TableHeading
+                                            label={`Class`}
+                                            col_name={`class`}
+                                            sort={false}
+                                        />
+                                        <TableHeading
+                                            label={`Action`}
+                                            col_name={`action`}
+                                            sort={false}
+                                        />
+                                    </tr>
+                                </thead>
+                                {(state.all as any)?.data?.length ? (
+                                    <tbody id="all_list">
+                                        {(state.all as any)?.data?.map(
+                                            (
+                                                i: { [key: string]: any },
+                                                index: number,
+                                            ) => (
+                                                <tr
+                                                    key={i.id}
+                                                    className={`table_rows table_row_${i.id}`}
+                                                >
+                                                    <td>
+                                                        <TableRowAction
+                                                            item={i}
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <SelectItem item={i} />
+                                                    </td>
+                                                    <td>
+                                                        <span>{index + 1}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            className="quick_view_trigger"
+                                                            onClick={() =>
+                                                                quick_view(i)
+                                                            }
+                                                        >
+                                                            {i.id}
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <img
+                                                            src={
+                                                                i.branchstudent
+                                                                    ?.image
+                                                                    ? i
+                                                                        .branchstudent
+                                                                        ?.image
+                                                                    : '/assets/dashboard/images/avatar.png'
+                                                            }
+                                                            alt=""
+                                                            style={{
+                                                                height: 30,
+                                                            }}
+                                                        />
+                                                    </td>
                                                     <td>
                                                         {i.branchstudent?.name}
                                                     </td>
@@ -78,6 +155,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                                 ?.name
                                                         }
                                                     </td>
+
                                                     <td>
                                                         <Link
                                                             // to="/students/single/student/"
@@ -89,30 +167,52 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                         </Link>
                                                         <Link
                                                             // to="/students/single/student/"
-                                                            to={`/user-students/student-dues/${i.branch_student_id}`}
+                                                            to={`/user-students/student-dues/${i.branch_student_id}?idd=${params.id}`}
                                                             className="btn btn-sm  btn-outline-info ml-2"
                                                             type="submit"
                                                         >
                                                             Dues
                                                         </Link>
-                                                        {/* <Link
-                                                            // to="/students/update"
-                                                            to={`/students/edit/${i.branch_student_id}`}
-                                                            className="btn btn-sm ml-2  btn-outline-info"
-                                                            type="submit"
-                                                        >
-                                                            Edit
-                                                        </Link> */}
                                                     </td>
                                                 </tr>
-                                            );
-                                        },
-                                    )}
-                            </tbody>
-                        </table>
+                                            ),
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
+                            </table>
+                        </div>
+
+                        <Paginate2
+                            set_url={storeSlice.actions.set_url}
+                            set_id={1}
+                            set_paginate={storeSlice.actions.set_paginate}
+                            set_page={storeSlice.actions.set_page}
+                            all={class_details1}
+                            data={state.all as any}
+                            selected_paginate={state.paginate}
+                        ></Paginate2>
                     </div>
                 </div>
+                <TableFooter></TableFooter>
             </div>
+
+            <Filter></Filter>
+            <QuickView></QuickView>
         </div>
     );
 };

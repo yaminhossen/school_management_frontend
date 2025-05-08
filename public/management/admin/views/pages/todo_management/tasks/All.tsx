@@ -42,6 +42,7 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
     // let date = moment().format('YYYY-MM-DD');
+    console.log('all data length', (state.all as any)?.data?.length);
 
     return (
         <div className="page_content">
@@ -61,76 +62,102 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`ID`}
                                             col_name={`id`}
-                                            sort={true}
+                                            sort={false}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Assign Task`}
                                             col_name={`assign task`}
                                             sort={false}
-                                        />
+                                        /> */}
                                         <TableHeading
                                             label={`Title`}
                                             col_name={`title`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Date`}
                                             col_name={`date`}
-                                            sort={true}
+                                            sort={false}
+                                        />
+                                        <TableHeading
+                                            label={`Action`}
+                                            col_name={`action`}
+                                            sort={false}
                                         />
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
-                                    {(state.all as any)?.data?.map(
-                                        (i: { [key: string]: any }) => {
-                                            return (
-                                                <tr
-                                                    key={i.id}
-                                                    className={`table_rows table_row_${i.id}`}
-                                                >
-                                                    <td>
-                                                        <TableRowAction
-                                                            item={i}
-                                                        />
-                                                    </td>
-                                                    <td>
-                                                        <SelectItem item={i} />
-                                                    </td>
-                                                    <td>
-                                                        <span
-                                                            className="quick_view_trigger"
-                                                            onClick={() =>
-                                                                quick_view(i)
-                                                            }
-                                                        >
-                                                            {i.id}
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <Link
-                                                            to={`/${setup.route_prefix}/assign/${i.id}`}
-                                                        >
-                                                            <span className="agenda_btn">
-                                                                assign
+                                    {(state.all as any)?.data?.length ? (
+                                        (state.all as any)?.data?.map(
+                                            (i: { [key: string]: any }) => {
+                                                return (
+                                                    <tr
+                                                        key={i.id}
+                                                        className={`table_rows table_row_${i.id}`}
+                                                    >
+                                                        <td>
+                                                            <TableRowAction
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <SelectItem
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <span
+                                                                className="quick_view_trigger"
+                                                                onClick={() =>
+                                                                    quick_view(
+                                                                        i,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {i.id}
                                                             </span>
-                                                        </Link>
-                                                    </td>
-                                                    <td>{i.title}</td>
-                                                    <td>{i.description}</td>
-                                                    <td>
-                                                        {moment(i.date).format(
-                                                            'YYYY-MM-DD',
-                                                        )}
-                                                    </td>
-                                                </tr>
-                                            );
-                                        },
+                                                        </td>
+                                                        <td>{i.title}</td>
+                                                        <td>{i.description}</td>
+                                                        <td>
+                                                            {moment(
+                                                                i.date,
+                                                            ).format(
+                                                                'YYYY-MM-DD',
+                                                            )}
+                                                        </td>
+                                                        <td>
+                                                            <Link
+                                                                to={`/${setup.route_prefix}/task-details/${i.id}`}
+                                                                className="btn btn-sm  btn-outline-info"
+                                                                type="submit"
+                                                            >
+                                                                Details
+                                                            </Link>
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            },
+                                        )
+                                    ) : (
+                                        <tr>
+                                            <td colSpan={7}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
                                     )}
                                 </tbody>
                             </table>

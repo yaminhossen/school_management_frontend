@@ -19,17 +19,28 @@ async function validate(req: Request) {
     //     .withMessage('the branch_id field is required')
     //     .run(req);
 
-    // await body('branch_class_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the branch_class_id field is required')
-    //     .run(req);
+    await body('branch_class_id')
+        .not()
+        .isEmpty()
+        .withMessage('the branch_class_id field is required')
+        .run(req);
 
-    // await body('branch_class_section_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the branch_class_section_id field is required')
-    //     .run(req);
+    await body('branch_teacher_id1')
+        .not()
+        .isEmpty()
+        .withMessage('the branch_teacher_id field is required')
+        .run(req);
+    await body('branch_class_section_id')
+        .not()
+        .isEmpty()
+        .withMessage('the branch_class_section_id field is required')
+        .run(req);
+
+    await body('room_id')
+        .not()
+        .isEmpty()
+        .withMessage('the room_id field is required')
+        .run(req);
 
     await body('name')
         .not()
@@ -147,7 +158,7 @@ async function store(
                 branch_class_subject_id: data.id || 0,
                 branch_class_section_id: body.branch_class_section_id,
                 branch_class_room_id: body.room_id,
-                description: body.teacher_description,
+                description: body.description,
                 creator: user?.id || null,
             };
             (await bcst_model.update(bcst_inputs)).save();

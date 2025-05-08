@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
@@ -11,6 +11,10 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { classes } from './config/store/async_actions/classes';
+import InputImage from './components/management_data_page/InputImage';
+
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -20,6 +24,19 @@ const Create: React.FC<Props> = (props: Props) => {
 
     const dispatch = useAppDispatch();
     const params = useParams();
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.teacher_infos[key])
+                return state.item?.teacher_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -55,7 +72,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                     <div className="d-flex">
                                         <div className="form-group form-horizontal">
-                                            <label>Name</label>
+                                            <label>
+                                                Name{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
@@ -65,7 +87,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-horizontal">
-                                            <label>Email</label>
+                                            <label>
+                                                Email{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
@@ -75,34 +102,87 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-horizontal">
-                                            <label>Phone number</label>
+                                            <label>
+                                                Phone number{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
-                                                    placeholder="phone number"
+                                                    placeholder="01XXX or +8801XXX"
                                                     name="phone_number"
                                                 />
                                             </div>
                                         </div>
                                         <div className="form-group form-horizontal">
-                                            <label>Image</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="file"
-                                                    accept="image/*"
-                                                    placeholder="image"
-                                                    name="teacher_image"
-                                                />
-                                            </div>
+                                            <InputImage
+                                                label={'image'}
+                                                name={'teacher_image'}
+                                                defalut_preview={get_value('')}
+                                            />
                                         </div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Password</label>
+                                        {/* <div className="form-group form-horizontal">
+                                            <label>
+                                                Password{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
                                                     placeholder="password"
                                                     name="password"
                                                 />
+                                            </div>
+                                        </div> */}
+                                        <div className="form-group form-horizontal">
+                                            <label>
+                                                Password{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
+                                            <div
+                                                className="form_elements_valid"
+                                                style={{ position: 'relative' }}
+                                            >
+                                                <input
+                                                    type={
+                                                        showPassword
+                                                            ? 'text'
+                                                            : 'password'
+                                                    }
+                                                    placeholder="Password"
+                                                    name="password"
+                                                    style={{
+                                                        paddingRight: '40px',
+                                                        width: '214px',
+                                                    }}
+                                                />
+                                                <span
+                                                    onClick={() =>
+                                                        setShowPassword(
+                                                            !showPassword,
+                                                        )
+                                                    }
+                                                    className="material-symbols-outlined visible_icon"
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: '10px',
+                                                        right: '10px',
+                                                        cursor: 'pointer',
+                                                        color: '#666',
+                                                        fontSize: '24px',
+                                                        userSelect: 'none',
+                                                    }}
+                                                >
+                                                    {showPassword
+                                                        ? 'visibility_off'
+                                                        : 'visibility'}
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -114,7 +194,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                         </div>
                                         <div className="d-flex">
                                             <div className="form-group form-horizontal">
-                                                <label>Parmanent Address</label>
+                                                <label>
+                                                    Parmanent Address{' '}
+                                                    <span className="valid_star">
+                                                        *
+                                                    </span>
+                                                </label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
@@ -148,13 +233,18 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
-                                                        placeholder="post_code"
+                                                        placeholder="post code"
                                                         name="post_code"
                                                     />
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
-                                                <label>Present Address</label>
+                                                <label>
+                                                    Present Address{' '}
+                                                    <span className="valid_star">
+                                                        *
+                                                    </span>
+                                                </label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
@@ -165,13 +255,16 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                             <div className="form-group form-horizontal">
                                                 <label>
-                                                    Gruardian Contact Number
+                                                    Alternative Number{' '}
+                                                    <span className="valid_star">
+                                                        *
+                                                    </span>
                                                 </label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
-                                                        placeholder="guardian number"
-                                                        name="guardian_contact_number"
+                                                        placeholder="01XXX or +8801XXX"
+                                                        name={`guardian_contact_number`}
                                                     />
                                                 </div>
                                             </div>
@@ -189,11 +282,14 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 <label>Gender</label>
                                                 <div className="form_elements">
                                                     <select name="gender" id="">
+                                                        <option value="">
+                                                            Select Gender
+                                                        </option>
                                                         <option value="male">
-                                                            male
+                                                            Male
                                                         </option>
                                                         <option value="female">
-                                                            female
+                                                            Female
                                                         </option>
                                                     </select>
                                                 </div>
@@ -205,11 +301,14 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         name="is_married"
                                                         id=""
                                                     >
+                                                        <option value="">
+                                                            Are you married
+                                                        </option>
                                                         <option value="1">
-                                                            yes
+                                                            Yes
                                                         </option>
                                                         <option value="0">
-                                                            no
+                                                            No
                                                         </option>
                                                     </select>
                                                 </div>
@@ -221,6 +320,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         name="blood_group"
                                                         id=""
                                                     >
+                                                        <option value="">
+                                                            Select Group
+                                                        </option>
                                                         <option value="A+">
                                                             A+
                                                         </option>
@@ -239,8 +341,8 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         <option value="B-">
                                                             B-
                                                         </option>
-                                                        <option value="O-">
-                                                            O-
+                                                        <option value="O+">
+                                                            O+
                                                         </option>
                                                         <option value="O-">
                                                             O-
@@ -261,154 +363,39 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
-                                                <label>Department</label>
-                                                <div className="form_elements">
-                                                    <select
-                                                        name="branch_class_id"
-                                                        id=""
-                                                    >
-                                                        {state?.classes
-                                                            ?.length &&
-                                                            state.classes?.map(
-                                                                (i: {
-                                                                    [
-                                                                        key: string
-                                                                    ]: any;
-                                                                }) => {
-                                                                    return (
-                                                                        <option
-                                                                            value={
-                                                                                i.id
-                                                                            }
-                                                                        >
-                                                                            {
-                                                                                i.name
-                                                                            }
-                                                                        </option>
-                                                                    );
-                                                                },
-                                                            )}
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            {/* <div className="form-group form-horizontal">
-                                                <label>Department</label>
-                                                <div className="form_elements">
-                                                    <select
-                                                        name="department"
-                                                        id=""
-                                                    >
-                                                        <option value="1">
-                                                            Bangla
-                                                        </option>
-                                                        <option value="2">
-                                                            English
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div> */}
-                                            {/* <div className="form-group form-horizontal">
-                                                <label>Role</label>
-                                                <div className="form_elements">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="Staff role"
-                                                        name="role"
-                                                    />
-                                                </div>
-                                            </div> */}
-                                            {/* <div className="form-group form-horizontal">
-                                                <label>Responsibilies</label>
-                                                <div className="form_elements">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="responsibility"
-                                                        name="responsibility"
-                                                    />
-                                                </div>
-                                            </div> */}
-                                            {/* <div className="form-group form-horizontal">
-                                                <label>Class</label>
-                                                <div className="form_elements">
-                                                    <select name="class" id="">
-                                                        <option value="1">
-                                                            Six
-                                                        </option>
-                                                        <option value="2">
-                                                            Seven
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div> */}
-                                            <div className="form-group form-horizontal">
-                                                <label>National Id</label>
-                                                <div className="form_elements">
-                                                    <input
-                                                        type="file"
-                                                        placeholder="national id"
-                                                        name="national_id"
-                                                    />
-                                                </div>
+                                                <InputImage
+                                                    label={'National Id'}
+                                                    name={'national_id'}
+                                                    defalut_preview={get_value(
+                                                        '',
+                                                    )}
+                                                />
                                             </div>
                                             <div className="form-group form-horizontal">
-                                                <label>Certificate No. 1</label>
-                                                <div className="form_elements">
-                                                    <input
-                                                        type="file"
-                                                        placeholder="certificate 1"
-                                                        name="certificate_1"
-                                                    />
-                                                </div>
+                                                <InputImage
+                                                    label={'Certificate No. 1'}
+                                                    name={'certificate_1'}
+                                                    defalut_preview={get_value(
+                                                        '',
+                                                    )}
+                                                />
                                             </div>
                                             <div className="form-group form-horizontal">
-                                                <label>Certificate No. 2</label>
-                                                <div className="form_elements">
-                                                    <input
-                                                        type="file"
-                                                        placeholder="certificate 2"
-                                                        name="certificate_2"
-                                                    />
-                                                </div>
+                                                <InputImage
+                                                    label={'Certificate No. 2'}
+                                                    name={'certificate_2'}
+                                                    defalut_preview={get_value(
+                                                        '',
+                                                    )}
+                                                />
                                             </div>
-                                            {/* <div className="form-group form-horizontal">
-                                                <label>Status</label>
-                                                <div className="form_elements">
-                                                    <select name="status" id="">
-                                                        <option value="active">
-                                                            active
-                                                        </option>
-                                                        <option value="block">
-                                                            block
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div> */}
-                                            {/* <div className="form-group form-horizontal">
-                                                <label>Position</label>
-                                                <div className="form_elements">
-                                                    <select
-                                                        name="position"
-                                                        id=""
-                                                    >
-                                                        <option value="accountant">
-                                                            accountant
-                                                        </option>
-                                                        <option value="senior">
-                                                            senior
-                                                        </option>
-                                                        <option value="junior">
-                                                            junior
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="form-group student_submit form-horizontal">
-                                <label></label>
-                                <div className="form_elements">
+                                {/* <label></label> */}
+                                <div className="form_elementss">
                                     <button className="btn btn_1">
                                         submit
                                     </button>

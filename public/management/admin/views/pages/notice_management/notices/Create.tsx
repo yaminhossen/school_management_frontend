@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { notice_categorys } from './config/store/async_actions/notice_categorys';
+import InputImage from './components/management_data_page/InputImage';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -32,6 +33,16 @@ const Create: React.FC<Props> = (props: Props) => {
             e.target.reset();
         }
     }
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.teacher_infos[key])
+                return state.item?.teacher_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
 
     return (
         <>
@@ -48,7 +59,10 @@ const Create: React.FC<Props> = (props: Props) => {
                             </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Notice Category id</label>
+                                    <label>
+                                        Notice Category{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <select name="notice_category_id" id="">
                                             {state?.categorys?.length &&
@@ -69,7 +83,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Title</label>
+                                    <label>
+                                        Title{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -79,7 +96,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>
+                                        Description{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <textarea
                                             name="description"
@@ -89,46 +109,72 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Notice For</label>
+                                    <label>
+                                        Notice For{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <select name="notice_for" id="">
+                                            <option value="">
+                                                Select user
+                                            </option>
                                             <option value="students">
-                                                students
+                                                Students
                                             </option>
                                             <option value="teachers">
-                                                teachers
+                                                Teachers
                                             </option>
                                             <option value="staffs">
-                                                staffs
+                                                Staffs
                                             </option>
-                                            <option value="all">all</option>
+                                            <option value="all">All</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Image</label>
+                                    <label>
+                                        Image{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
-                                        <input
+                                        {/* <input
                                             type="file"
                                             accept="image/*"
                                             name="image"
+                                        /> */}
+                                        <InputImage
+                                            label={''}
+                                            name={'image'}
+                                            // accept="image/*, ./*"
+                                            accept="image/*,application/pdf"
+                                            defalut_preview={get_value('')}
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Attachment</label>
+                                    <label>
+                                        Attachment{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
-                                        <input
+                                        {/* <input
                                             type="file"
                                             accept="image/*"
                                             name="attachment"
+                                        /> */}
+                                        <InputImage
+                                            label={''}
+                                            name={'attachment'}
+                                            // accept="image/*, ./*"
+                                            accept="image/*,application/pdf"
+                                            defalut_preview={get_value('')}
                                         />
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group form-horizontal">
-                                <label></label>
-                                <div className="form_elements">
+                            <div className="form-groups student_submit form-horizontal">
+                                {/* <label></label> */}
+                                <div className="form_elementss">
                                     <button className="btn btn_1">
                                         submit
                                     </button>

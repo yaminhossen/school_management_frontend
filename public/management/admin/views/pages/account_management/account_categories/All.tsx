@@ -61,20 +61,20 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`id`}
                                             sort={true}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Branch`}
                                             col_name={`branch`}
-                                            sort={true}
-                                        />
+                                            sort={false}
+                                        /> */}
                                         <TableHeading
                                             label={`Title`}
                                             col_name={`title`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                     </tr>
                                 </thead>
@@ -105,9 +105,17 @@ const All: React.FC<Props> = (props: Props) => {
                                                             {i.id}
                                                         </span>
                                                     </td>
-                                                    <td>{i.branch?.name}</td>
+                                                    {/* <td>{i.branch?.name}</td> */}
                                                     <td>{i.title}</td>
-                                                    <td>{i.description}</td>
+                                                    <td>
+                                                        {i.description?.length >
+                                                        60
+                                                            ? i.description.slice(
+                                                                0,
+                                                                40,
+                                                            ) + '...'
+                                                            : i.description}
+                                                    </td>
                                                 </tr>
                                             );
                                         },

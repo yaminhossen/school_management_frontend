@@ -49,7 +49,7 @@ const MajorInformation: React.FC<Props> = (props: Props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>Stutas:</td>
+                        <td>Status:</td>
                         <td className="font-medium text-dark-medium">
                             {data.status}
                         </td>

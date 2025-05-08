@@ -139,7 +139,7 @@ const Details: React.FC<Props> = (props: Props) => {
                             </td>
                         </tr>
                         <tr>
-                            <td>Stutas</td>
+                            <td>Status</td>
                             <td>:</td>
                             <td className="font-medium text-dark-medium">
                                 Active

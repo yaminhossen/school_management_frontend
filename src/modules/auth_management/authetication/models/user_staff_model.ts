@@ -29,6 +29,13 @@ const modelName = 'UserStaffsModel';
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
 type status = 'active' | 'deactive';
+type role =
+    | 'princple'
+    | 'admin'
+    | 'admission-officer'
+    | 'librarian'
+    | 'hostel-super'
+    | 'accountant';
 
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
@@ -38,6 +45,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare phone_number: string | null;
     declare image: string | null;
     declare password?: string;
+    declare role?: role;
     declare status?: status;
     declare token?: string | null;
     declare forget_code?: string | null;
@@ -80,6 +88,17 @@ function init(sequelize: Sequelize) {
             status: {
                 type: new DataTypes.ENUM('active', 'deactive'),
                 defaultValue: 'active',
+            },
+            role: {
+                type: new DataTypes.ENUM(
+                    'principle',
+                    'admin',
+                    'admission-officer',
+                    'librarian',
+                    'hostel-super',
+                    'accountant',
+                ),
+                defaultValue: 'librarian',
             },
             token: {
                 type: new DataTypes.STRING(100),

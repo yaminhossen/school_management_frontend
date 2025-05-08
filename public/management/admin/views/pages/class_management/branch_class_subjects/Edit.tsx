@@ -16,6 +16,7 @@ import { rooms } from './config/store/async_actions/rooms';
 import { details } from './config/store/async_actions/details';
 import { update } from './config/store/async_actions/update';
 import moment from 'moment/moment';
+import axios from 'axios';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -30,17 +31,21 @@ const Edit: React.FC<Props> = (props: Props) => {
     const [selectedRRoom, setSelectedRRoom] = useState<any>(Number);
     const roomref = useRef<HTMLSelectElement>(null);
     const [room, setRooms] = useState<any>(Number);
+    const [sections, setSections] = useState<any>([]);
+    const [error, setError] = useState(null);
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
 
     const dispatch = useAppDispatch();
     const params = useParams();
+
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(details({ id: params.id }) as any);
         await dispatch(classes({}) as any);
-        await dispatch(sections({}) as any);
+        // await dispatch(sections({}) as any);
+        // await fetchData();
         await dispatch(teachers({}) as any);
         await dispatch(rooms({}) as any);
     }
@@ -52,6 +57,7 @@ const Edit: React.FC<Props> = (props: Props) => {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
+    console.log('class section', selectedClass);
 
     let days = [
         'sunday',
@@ -115,6 +121,23 @@ const Edit: React.FC<Props> = (props: Props) => {
         console.log('tempindex3', event.target.value);
         setsevenDayRoutines(temp);
     };
+    const fetchData = async (classId: string) => {
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-class-sections/class-wise/${classId}`,
+            );
+            setSections(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        if (selectedClass) {
+            fetchData(selectedClass);
+        }
+    }, [selectedClass]);
 
     useEffect(() => {
         setsevenDayRoutines(state.item.routine_days);
@@ -147,7 +170,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                 <div className="d-flex">
                                                     <div className="form-group form-vertical">
                                                         <label>
-                                                            Branch class id
+                                                            Class
                                                             {/* <div>
                                                                 {
                                                                     state.item
@@ -204,32 +227,30 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                     <div className="form-group form-vertical">
                                                         <label>
                                                             Branch class section
-                                                            id
                                                         </label>
                                                         <div className="form_elements">
-                                                            <select
-                                                                name="branch_class_section_id"
-                                                                id=""
-                                                                value={
-                                                                    selectedSection
-                                                                }
-                                                                onChange={(
-                                                                    e,
-                                                                ) => {
-                                                                    setSelectedSection(
-                                                                        e.target
-                                                                            .value,
-                                                                    );
-                                                                }}
-                                                            >
-                                                                {state?.sections
-                                                                    ?.length &&
-                                                                    state.sections?.map(
-                                                                        (i: {
-                                                                            [
-                                                                                key: string
-                                                                            ]: any;
-                                                                        }) => {
+                                                            {sections.length && (
+                                                                <select
+                                                                    name="branch_class_section_id"
+                                                                    id=""
+                                                                    value={
+                                                                        selectedSection
+                                                                    }
+                                                                    onChange={(
+                                                                        e,
+                                                                    ) => {
+                                                                        setSelectedSection(
+                                                                            e
+                                                                                .target
+                                                                                .value,
+                                                                        );
+                                                                    }}
+                                                                >
+                                                                    {sections?.map(
+                                                                        (
+                                                                            i,
+                                                                            index,
+                                                                        ) => {
                                                                             return (
                                                                                 <option
                                                                                     value={
@@ -243,13 +264,12 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                             );
                                                                         },
                                                                     )}
-                                                            </select>
+                                                                </select>
+                                                            )}
                                                         </div>
                                                     </div>
                                                     <div className="form-group form-vertical">
-                                                        <label>
-                                                            Teacher id
-                                                        </label>
+                                                        <label>Teacher</label>
                                                         <div className="form_elements">
                                                             <select
                                                                 name="user_teacher_id"
@@ -293,7 +313,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                         </div>
                                                     </div>
                                                     <div className="form-group form-vertical">
-                                                        <label>Room id</label>
+                                                        <label>Room</label>
                                                         <div className="form_elements">
                                                             <select
                                                                 name="room_id"
@@ -362,7 +382,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                             />
                                                         </div>
                                                     </div>
-                                                    <div className="form-group form-vertical">
+                                                    {/* <div className="form-group form-vertical">
                                                         <label>Level</label>
                                                         <div className="form_elements">
                                                             <input
@@ -375,7 +395,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                 }
                                                             />
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                     <div className="form-group form-vertical">
                                                         <label>
                                                             Description
@@ -392,7 +412,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                             ></textarea>
                                                         </div>
                                                     </div>
-                                                    <div className="form-group form-vertical">
+                                                    {/* <div className="form-group form-vertical">
                                                         <label>Credit</label>
                                                         <div className="form_elements">
                                                             <input
@@ -405,8 +425,8 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                 }
                                                             />
                                                         </div>
-                                                    </div>
-                                                    <div className="form-group form-vertical">
+                                                    </div> */}
+                                                    {/* <div className="form-group form-vertical">
                                                         <label>
                                                             Additional Info
                                                         </label>
@@ -420,7 +440,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                 }
                                                             />
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -631,7 +651,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="full_width">
+                                    {/* <div className="full_width">
                                         <div className="form_section_heading">
                                             <h4>Teacher</h4>
                                         </div>
@@ -661,16 +681,16 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label></label>
-                                    <div className="form_elements">
+                                <div className="form-group student_submit form-horizontal">
+                                    {/* <label></label> */}
+                                    <div className="form_elementss">
                                         <button
                                             // onClick={handle_submit}
                                             className="btn btn_1"
                                         >
-                                            submit
+                                            update
                                         </button>
                                     </div>
                                 </div>

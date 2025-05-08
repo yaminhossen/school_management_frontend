@@ -26,7 +26,7 @@ const storeSlice = createSlice({
             .addCase(
                 assign_task.fulfilled,
                 (state, { type, payload, meta }) => {
-                    // console.log(type, payload, meta);
+                    console.log('this is just test', type, payload, meta);
                 },
             )
             .addCase(details.fulfilled, (state, { type, payload, meta }) => {

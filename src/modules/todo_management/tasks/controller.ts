@@ -14,6 +14,11 @@ import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
 import task_assign from './services/task_assign';
+import teacher_pending from './services/teacher_pending';
+import teacher_complete from './services/teacher_complete';
+import teacher_update from './services/teacher_update';
+import task_assign_updated from './services/task_assign_update';
+import task_details from './services/task_details';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -21,9 +26,28 @@ export default function (fastify: FastifyInstance) {
             let data: responseObject = await all(fastify, req);
             res.code(data.status).send(data);
         },
+        teacher_pending: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await teacher_pending(fastify, req);
+            res.code(data.status).send(data);
+        },
+        teacher_complete: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await teacher_complete(fastify, req);
+            res.code(data.status).send(data);
+        },
 
         find: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        task_details: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await task_details(fastify, req);
             res.code(data.status).send(data);
         },
 
@@ -37,8 +61,24 @@ export default function (fastify: FastifyInstance) {
             res.code(data.status).send(data);
         },
 
+        task_assign_updated: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await task_assign_updated(fastify, req);
+            res.code(data.status).send(data);
+        },
+
         update: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await update(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        teacher_update: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await teacher_update(fastify, req);
             res.code(data.status).send(data);
         },
 

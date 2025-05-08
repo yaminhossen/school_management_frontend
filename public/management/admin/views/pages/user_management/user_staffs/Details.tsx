@@ -42,19 +42,36 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Photo</td>
                                         <td>:</td>
                                         <td>
-                                            <a
-                                                href={state.item.image}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
+                                            {state.item?.image ? (
+                                                <a
+                                                    href={state.item.image}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <img
+                                                        src={
+                                                            state.item.image
+                                                                ? state.item
+                                                                    .image
+                                                                : '/assets/dashboard/images/avatar.png'
+                                                        }
+                                                        alt="profile image"
+                                                        style={{
+                                                            height: 50,
+                                                        }}
+                                                    />
+                                                </a>
+                                            ) : (
                                                 <img
-                                                    src={state.item.image}
+                                                    src={
+                                                        '/assets/dashboard/images/avatar.png'
+                                                    }
                                                     alt="profile image"
                                                     style={{
                                                         height: 50,
                                                     }}
                                                 />
-                                            </a>
+                                            )}
                                         </td>
                                     </tr>
                                     <tr>
@@ -138,7 +155,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                             {state.item.staff_infos?.gender}
                                         </td>
                                     </tr>
-                                    <tr>
+                                    {/* <tr>
                                         <td>Responsibility</td>
                                         <td>:</td>
                                         <td>
@@ -147,80 +164,98 @@ const Details: React.FC<Props> = (props: Props) => {
                                                     ?.responsibility
                                             }
                                         </td>
-                                    </tr>
+                                    </tr> */}
                                     <tr>
-                                        <td>National ID</td>
+                                        <td>national Id</td>
                                         <td>:</td>
                                         <td>
-                                            <a
-                                                href={
-                                                    state.item.staff_infos
-                                                        ?.national_id
-                                                }
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img
-                                                    src={
-                                                        state.item.staff_infos
+                                            {state.item.staff_infos
+                                                ?.national_id ? (
+                                                <a
+                                                        href={
+                                                            state.item.staff_infos
                                                             ?.national_id
                                                     }
-                                                    alt="national id"
-                                                    style={{
-                                                        height: 30,
-                                                    }}
-                                                />
-                                            </a>
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                >
+                                                        <img
+                                                            src={
+                                                            state.item
+                                                                .staff_infos
+                                                                    ?.national_id
+                                                        }
+                                                            alt="national_id"
+                                                            style={{
+                                                                height: 30,
+                                                        }}
+                                                        />
+                                                </a>
+                                            ) : (
+                                                <img alt="national_id"></img>
+                                            )}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Certificate No. 1</td>
                                         <td>:</td>
                                         <td>
-                                            <a
-                                                href={
-                                                    state.item.staff_infos
-                                                        ?.certificate_no_1
-                                                }
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img
-                                                    src={
-                                                        state.item.staff_infos
+                                            {state.item.staff_infos
+                                                ?.certificate_no_1 ? (
+                                                <a
+                                                        href={
+                                                            state.item.staff_infos
                                                             ?.certificate_no_1
                                                     }
-                                                    alt="certificate 1"
-                                                    style={{
-                                                        height: 30,
-                                                    }}
-                                                />
-                                            </a>
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                >
+                                                        <img
+                                                            src={
+                                                            state.item
+                                                                .staff_infos
+                                                                    ?.certificate_no_1
+                                                        }
+                                                            alt="certificate 1"
+                                                            style={{
+                                                                height: 30,
+                                                        }}
+                                                        />
+                                                </a>
+                                            ) : (
+                                                <img alt="No Certificate"></img>
+                                            )}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Certificate No. 2</td>
                                         <td>:</td>
                                         <td>
-                                            <a
-                                                href={
-                                                    state.item.staff_infos
-                                                        ?.certificate_no_2
-                                                }
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img
-                                                    src={
-                                                        state.item.staff_infos
+                                            {state.item.staff_infos
+                                                ?.certificate_no_2 ? (
+                                                <a
+                                                        href={
+                                                            state.item.staff_infos
                                                             ?.certificate_no_2
                                                     }
-                                                    alt="certificate 2"
-                                                    style={{
-                                                        height: 30,
-                                                    }}
-                                                />
-                                            </a>
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                >
+                                                        <img
+                                                            src={
+                                                            state.item
+                                                                .staff_infos
+                                                                    ?.certificate_no_2
+                                                        }
+                                                            alt="certificate 2"
+                                                            style={{
+                                                                height: 30,
+                                                        }}
+                                                        />
+                                                </a>
+                                            ) : (
+                                                <img alt="No Certificate"></img>
+                                            )}
                                         </td>
                                     </tr>
                                     <tr>
@@ -237,16 +272,17 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Is Married</td>
                                         <td>:</td>
                                         <td>
-                                            {state.item.staff_infos?.is_married
+                                            {state.item.staff_infos
+                                                ?.is_married === true
                                                 ? 'Married'
-                                                : 'Un Married'}
+                                                : 'Un married'}
                                         </td>
                                     </tr>
-                                    <tr>
+                                    {/* <tr>
                                         <td>Position</td>
                                         <td>:</td>
                                         <td>{state.item.staffs?.possition}</td>
-                                    </tr>
+                                    </tr> */}
                                     <tr>
                                         <td>Joining Date</td>
                                         <td>:</td>
@@ -256,11 +292,11 @@ const Details: React.FC<Props> = (props: Props) => {
                                             ).format('YYYY-MM-DD')}
                                         </td>
                                     </tr>
-                                    <tr>
+                                    {/* <tr>
                                         <td>Department</td>
                                         <td>:</td>
                                         <td>{state.item.staffs?.department}</td>
-                                    </tr>
+                                    </tr> */}
                                 </tbody>
                             </table>
                         </div>

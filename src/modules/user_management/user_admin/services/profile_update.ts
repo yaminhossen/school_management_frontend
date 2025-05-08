@@ -18,6 +18,19 @@ async function validate(req: Request) {
     //     .isEmpty()
     //     .withMessage('the image field is required')
     //     .run(req);
+    if (req?.body?.image) {
+        await body('image')
+            .not()
+            .isEmpty()
+            .withMessage('the image field is required')
+            .run(req);
+    }
+    if (req?.body?.password) {
+        await body('password')
+            .isLength({ min: 6 })
+            .withMessage('Password must be at least 6 characters')
+            .run(req);
+    }
 
     let result = await validationResult(req);
 
@@ -37,7 +50,8 @@ async function profile_update(
     /** initializations */
     let models = await db();
     let body = req.body as anyObject;
-    let model = new models.UserAdminsModel();
+    // let model = new models.UserAdminsModel();
+    let model = new models.UserStaffsModel();
     let image_path = '';
 
     if (body['image']?.ext) {
@@ -57,8 +71,15 @@ async function profile_update(
     // if (password) {
     //     inputs.password = password;
     // }
+
+    let user = (req as any).user;
+    let auth_user = await models.BranchStaffsModel.findOne({
+        where: {
+            user_staff_id: (req as any).user?.id || null,
+        },
+    });
     console.log('body', body);
-    console.log('image_path', image_path);
+    console.log('image_path', user);
 
     /** print request data into console */
     // console.clear();
@@ -66,9 +87,14 @@ async function profile_update(
 
     /** store data into database */
     try {
-        let data = await models.UserAdminsModel.findOne({
+        // let data = await models.UserAdminsModel.findOne({
+        //     where: {
+        //         id: user?.id,
+        //     },
+        // });
+        let data = await models.UserStaffsModel.findOne({
             where: {
-                id: 1,
+                id: user?.id,
             },
         });
         if (data) {
@@ -78,8 +104,7 @@ async function profile_update(
             };
             inputs.image = image_path || data.image;
             inputs.password = password || data.password;
-            data.update(inputs);
-            await data.save();
+            (await data.update(inputs)).save();
             return response(200, 'data updated', data);
         } else {
             throw new custom_error(

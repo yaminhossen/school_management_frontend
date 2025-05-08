@@ -10,6 +10,7 @@ export const initialState = {
     loading_text: 'loading..',
 
     /* data store */
+    id: 1,
     all: {},
     item: {} as anyObject,
     document: {} as anyObject,

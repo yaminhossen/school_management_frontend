@@ -46,6 +46,11 @@ td.col_id {
             white-space: nowrap;
             padding: 13px;
         }
+        .details_descrtiption2 {
+            white-space: normal !important;
+            // word-wrap: break-word;
+            // max-width: 300px !important;
+        }
 }
 
     &.table-bordered {
@@ -65,6 +70,7 @@ td.col_id {
             }
         }
     }
+    
 }
 
 .quick_modal_table {

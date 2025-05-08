@@ -40,53 +40,70 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>{state.item.name}</td>
                                     </tr>
                                     <tr>
-                                        <td>Name</td>
+                                        <td>Present Address</td>
                                         <td>:</td>
                                         <td>{state.item.present_address}</td>
                                     </tr>
                                     <tr>
-                                        <td>Name</td>
+                                        <td>Permanent Address</td>
                                         <td>:</td>
                                         <td>{state.item.permanent_address}</td>
                                     </tr>
                                     <tr>
-                                        <td>Name</td>
+                                        <td>Number</td>
                                         <td>:</td>
                                         <td>{state.item.driver_number}</td>
                                     </tr>
                                     <tr>
-                                        <td>Name</td>
+                                        <td>Assistant Number 1.</td>
                                         <td>:</td>
                                         <td>{state.item.assistant_number_1}</td>
                                     </tr>
                                     <tr>
-                                        <td>Name</td>
+                                        <td>Assistant Number 2.</td>
                                         <td>:</td>
                                         <td>{state.item.assistant_number_2}</td>
                                     </tr>
                                     <tr>
-                                        <td>Name</td>
+                                        <td>License Number</td>
                                         <td>:</td>
                                         <td>{state.item.licence_number}</td>
                                     </tr>
                                     <tr>
-                                        <td>Name</td>
+                                        <td>Driver License</td>
                                         <td>:</td>
                                         <td>
-                                            <a
-                                                href={state.item.driver_licence}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <img
-                                                    src={
+                                            {state.item.driver_licence ? (
+                                                <a
+                                                    href={
                                                         state.item
                                                             .driver_licence
                                                     }
-                                                    width={40}
-                                                    alt="driving licence"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <img
+                                                        src={
+                                                            state.item
+                                                                .driver_licence
+                                                        }
+                                                        alt="profile image"
+                                                        style={{
+                                                            height: 50,
+                                                        }}
+                                                    />
+                                                </a>
+                                            ) : (
+                                                <img
+                                                    // src={
+                                                    //     '/assets/dashboard/images/avatar.png'
+                                                    // }
+                                                    alt="driver license"
+                                                    style={{
+                                                        height: 50,
+                                                    }}
                                                 />
-                                            </a>
+                                            )}
                                         </td>
                                     </tr>
                                 </tbody>

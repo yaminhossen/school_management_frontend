@@ -42,6 +42,16 @@ const Edit: React.FC<Props> = (props: Props) => {
         }
         // console.log('Updated driverId:', driverId.current?.value);
     }, [state.drivers]);
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
 
     return (
         <>
@@ -61,7 +71,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Branch transport driver </label>
+                                    <label>
+                                        Branch transport driver{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <select
                                             name="branch_transport_driver_id"
@@ -86,7 +99,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Vehicle Title</label>
+                                    <label>
+                                        Vehicle Title{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -97,18 +113,42 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Vehicle type</label>
+                                    <label>
+                                        Vehicle type{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
-                                        <input
+                                        <select
+                                            name="vehicle_type"
+                                            defaultValue={state.item.type}
+                                            id=""
+                                        >
+                                            <option value="van">Van</option>
+                                            <option value="bus">Bus</option>
+                                            <option value="microbus">
+                                                Microbus
+                                            </option>
+                                            <option value="private">
+                                                Private
+                                            </option>
+                                            <option value="riksaw">
+                                                Riksaw
+                                            </option>
+                                        </select>
+
+                                        {/* <input
                                             type="text"
                                             placeholder="vehicle type"
                                             name="vehicle_type"
                                             defaultValue={state.item.type}
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Vehicle no</label>
+                                    <label>
+                                        Vehicle no{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -118,11 +158,11 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label></label>
-                                    <div className="form_elements">
+                                <div className="form-group student_submit form-horizontal">
+                                    {/* <label></label> */}
+                                    <div className="form_elementss">
                                         <button className="btn btn_1">
-                                            submit
+                                            Update
                                         </button>
                                     </div>
                                 </div>

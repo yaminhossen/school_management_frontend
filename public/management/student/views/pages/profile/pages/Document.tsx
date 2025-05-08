@@ -93,17 +93,29 @@ const Details: React.FC<Props> = (props: Props) => {
                                                             </td>
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
-                                                                <a
-                                                                    href={
-                                                                        i
-                                                                            .values_title
-                                                                            ?.file
-                                                                    }
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                >
-                                                                    Show File
-                                                                </a>
+                                                                {i.values_title
+                                                                    ?.file ? (
+                                                                        <a
+                                                                        href={
+                                                                            i
+                                                                                .values_title
+                                                                                .file
+                                                                        }
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                    >
+                                                                        Show
+                                                                        File
+                                                                    </a>
+                                                                ) : (
+                                                                    <a
+                                                                        href="javascript:void(0)"
+                                                                        rel="noopener noreferrer"
+                                                                    >
+                                                                        Show
+                                                                        File
+                                                                    </a>
+                                                                )}
                                                             </td>
                                                         </tr>
                                                         <tr>

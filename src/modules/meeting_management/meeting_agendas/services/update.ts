@@ -36,17 +36,29 @@ async function validate(req: Request) {
         .withMessage('the title field is required')
         .run(req);
 
-    await body('description')
-        .not()
-        .isEmpty()
-        .withMessage('the description field is required')
-        .run(req);
-
-    // await body('is_complete')
+    // await body('description')
     //     .not()
     //     .isEmpty()
-    //     .withMessage('the is_complete field is required')
+    //     .withMessage('the description field is required')
     //     .run(req);
+
+    await body('role')
+        .not()
+        .isEmpty()
+        .withMessage('the role field is required')
+        .run(req);
+
+    await body('date')
+        .not()
+        .isEmpty()
+        .withMessage('the date field is required')
+        .run(req);
+
+    await body('time')
+        .not()
+        .isEmpty()
+        .withMessage('the time field is required')
+        .run(req);
 
     let result = await validationResult(req);
 
@@ -68,10 +80,27 @@ async function update(
     let body = req.body as anyObject;
     let model = new models.MeetingAgendasModel();
 
+    let user = (req as any).user;
+    // console.log('auth user', user);
+
+    let auth_user = await models.BranchStaffsModel.findOne({
+        where: {
+            user_staff_id: user?.id || null,
+        },
+    });
+
     let inputs: InferCreationAttributes<typeof model> = {
+        branch_id: auth_user?.branch_id || 1,
         meeting_id: body.meeting_id,
         title: body.title,
         description: body.description,
+        role: body.role,
+        date: body.date,
+        time: body.time,
+        meeting_type: body.meeting_type,
+        meeting_link: body.meeting_link || null,
+        is_complete: body.is_complete || 'pending',
+        creator: user?.id || null,
     };
     /** print request data into console */
     // console.clear();
@@ -81,8 +110,7 @@ async function update(
     try {
         let data = await models.MeetingAgendasModel.findByPk(body.id);
         if (data) {
-            data.update(inputs);
-            await data.save();
+            (await data.update(inputs)).save;
             return response(200, 'data updated', data);
         } else {
             throw new custom_error(

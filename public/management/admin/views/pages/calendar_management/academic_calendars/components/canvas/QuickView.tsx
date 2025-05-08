@@ -5,6 +5,7 @@ import storeSlice from '../../config/store';
 import { initialState } from '../../config/store/inital_state';
 import { useSelector } from 'react-redux';
 import setup from '../../config/setup';
+import moment from 'moment/moment';
 export interface Props {}
 
 const modalRoot = document.getElementById('filter-root');
@@ -40,14 +41,45 @@ const QuickView: React.FC<Props> = (props: Props) => {
                         <table className="table quick_modal_table">
                             <tbody>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>Event name</th>
                                     <th>:</th>
-                                    <th>{state.item.name}</th>
+                                    <th>{state.item.event_name}</th>
                                 </tr>
                                 <tr>
-                                    <th>Preffered name</th>
+                                    <th>Days</th>
                                     <th>:</th>
-                                    <th>{state.item.email}</th>
+                                    <th>{state.item.days}</th>
+                                </tr>
+                                <tr>
+                                    <th>Start date</th>
+                                    <th>:</th>
+                                    <th>
+                                        {moment(state.item.start_date).format(
+                                            'YYYY-MM-DD',
+                                        )}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>End date</th>
+                                    <th>:</th>
+                                    <th>
+                                        {moment(state.item.end_date).format(
+                                            'YYYY-MM-DD',
+                                        )}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>:</th>
+                                    <th
+                                        style={{
+                                            whiteSpace: 'pre-wrap',
+                                            wordWrap: 'break-word',
+                                            maxWidth: '300px',
+                                        }}
+                                    >
+                                        {state.item?.description}
+                                    </th>
                                 </tr>
                             </tbody>
                         </table>

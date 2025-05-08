@@ -16,6 +16,7 @@ import { rooms } from './config/store/async_actions/rooms';
 import { details } from './config/store/async_actions/details';
 import { update } from './config/store/async_actions/update';
 import moment from 'moment/moment';
+import axios from 'axios';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -30,12 +31,25 @@ const Edit: React.FC<Props> = (props: Props) => {
     const [selectedRRoom, setSelectedRRoom] = useState<any>(Number);
     const roomref = useRef<HTMLSelectElement>(null);
     const [room, setRooms] = useState<any>(Number);
+    // const [sections, setSections] = useState<any>([]);
+    // const [error, setError] = useState(null);
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
 
     const dispatch = useAppDispatch();
     const params = useParams();
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-class-sections/class-wise/${params.id}`,
+            );
+            // setSections(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            // setError(error);
+        }
+    };
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(details({ id: params.id }) as any);
@@ -48,9 +62,6 @@ const Edit: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         initdependancy();
     }, []);
-    if (state) {
-        // console.log(state);
-    }
     async function handle_submit(e) {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
@@ -65,32 +76,6 @@ const Edit: React.FC<Props> = (props: Props) => {
         'friday',
         'saturday',
     ];
-    const handleChange = async (
-        event: React.ChangeEvent<HTMLSelectElement>,
-    ) => {
-        let id = event.target.value;
-        setTeachers(id);
-        let all_teacher =
-            document.querySelectorAll<HTMLSelectElement>('.teacher');
-        console.log('all teacher', all_teacher);
-        all_teacher.forEach((select) => {
-            select.value = id;
-            console.log(select.value);
-        });
-    };
-
-    const handleRoomChange = async (
-        event: React.ChangeEvent<HTMLSelectElement>,
-    ) => {
-        let id = event.target.value;
-        setRooms(id);
-        let all_rooms = document.querySelectorAll<HTMLSelectElement>('.room');
-        console.log('all room', all_rooms);
-        all_rooms.forEach((select) => {
-            select.value = id;
-            console.log(select.value);
-        });
-    };
 
     useEffect(() => {
         if (teacherref.current) {
@@ -115,32 +100,34 @@ const Edit: React.FC<Props> = (props: Props) => {
         if (state.item.subject_teacher?.branch_class_room_id && !selectedRoom) {
             setSelectedRoom(state.item.subject_teacher?.branch_class_room_id);
         }
-        // if (
-        //     state.item.subject_teacher?.branch_teacher_id &&
-        //     !selectedRTeacher
-        // ) {
-        //     setSelectedRTeacher(state.item.subject_teacher?.branch_teacher_id);
-        // }
-        // if (
-        //     state.item.subject_teacher?.branch_class_room_id &&
-        //     !selectedRRoom
-        // ) {
-        //     setSelectedRRoom(state.item.subject_teacher?.branch_class_room_id);
-        // }
     }, [state.item]);
 
     const handleTeacherChange = async (
         event: React.ChangeEvent<HTMLSelectElement>,
+        index,
     ) => {
-        let id = event.target.value;
-        setSelectedRTeacher(id);
-        let all_rooms =
-            document.querySelectorAll<HTMLSelectElement>('.teacher');
-        console.log('all teacher', all_rooms);
-        all_rooms.forEach((select) => {
-            select.value = id;
-            console.log(select.value);
-        });
+        // let temp = [...sevenDayRoutines];
+        // let temp: any[] = Array.from(sevenDayRoutines);
+        const temp: any[] = JSON.parse(JSON.stringify(sevenDayRoutines));
+        console.log('tempindex1', temp[index]);
+        console.log('tempindex2', temp);
+        temp[index].branch_teacher_id = event.target.value;
+        console.log('tempindex3', event.target.value);
+        setsevenDayRoutines(temp);
+    };
+
+    const handleRoomChange = async (
+        event: React.ChangeEvent<HTMLSelectElement>,
+        index,
+    ) => {
+        // let temp = [...sevenDayRoutines];
+        // let temp: any[] = Array.from(sevenDayRoutines);
+        const temp: any[] = JSON.parse(JSON.stringify(sevenDayRoutines));
+        console.log('tempindex1', temp[index]);
+        console.log('tempindex2', temp);
+        temp[index].branch_class_room_id = event.target.value;
+        console.log('tempindex3', event.target.value);
+        setsevenDayRoutines(temp);
     };
 
     useEffect(() => {
@@ -174,7 +161,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                 <div className="d-flex">
                                                     <div className="form-group form-vertical">
                                                         <label>
-                                                            Branch class id
+                                                            Class
                                                             {/* <div>
                                                                 {
                                                                     state.item
@@ -231,7 +218,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                     <div className="form-group form-vertical">
                                                         <label>
                                                             Branch class section
-                                                            id
                                                         </label>
                                                         <div className="form_elements">
                                                             <select
@@ -274,9 +260,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                         </div>
                                                     </div>
                                                     <div className="form-group form-vertical">
-                                                        <label>
-                                                            Teacher id
-                                                        </label>
+                                                        <label>Teacher</label>
                                                         <div className="form_elements">
                                                             <select
                                                                 name="user_teacher_id"
@@ -320,7 +304,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                         </div>
                                                     </div>
                                                     <div className="form-group form-vertical">
-                                                        <label>Room id</label>
+                                                        <label>Room</label>
                                                         <div className="form_elements">
                                                             <select
                                                                 name="room_id"
@@ -456,11 +440,19 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         <div className="form_section_heading">
                                             <h4>Class Routine Time</h4>
                                         </div>
+                                        <input
+                                            type="hidden"
+                                            name="class_days"
+                                            defaultValue={days.length}
+                                        />
                                         <div className="multi_inputs">
                                             <div className="multi_input_group">
-                                                {state.item.routine_days
+                                                {/* {state.item.routine_days
                                                     .length &&
                                                     state.item.routine_days.map(
+                                                        (i, index) => ( */}
+                                                {sevenDayRoutines?.length &&
+                                                    sevenDayRoutines.map(
                                                         (i, index) => (
                                                             <div>
                                                                 <div
@@ -478,15 +470,18 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                             Day
                                                                         </label>
                                                                         <div className="form_elements">
-                                                                            <input
-                                                                                type="text"
-                                                                                readOnly
-                                                                                placeholder="date"
-                                                                                name="day_name"
-                                                                                defaultValue={
-                                                                                    i.day_name
-                                                                                }
-                                                                            />
+                                                                            <div>
+                                                                                <input
+                                                                                    className={`${i.day_name}`}
+                                                                                    type="text"
+                                                                                    readOnly
+                                                                                    placeholder="date"
+                                                                                    name="day_name"
+                                                                                    defaultValue={
+                                                                                        i.day_name
+                                                                                    }
+                                                                                />
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <div className="form-group form-vertical">
@@ -555,12 +550,16 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                                     id=""
                                                                                     className="teacher"
                                                                                     value={
-                                                                                        selectedRTeacher ||
                                                                                         i.branch_teacher_id
                                                                                     }
-                                                                                    // onChange={
-                                                                                    //     handleTeacherChange
-                                                                                    // }
+                                                                                    onChange={(
+                                                                                        e,
+                                                                                    ) => {
+                                                                                        handleTeacherChange(
+                                                                                            e,
+                                                                                            index,
+                                                                                        );
+                                                                                    }}
                                                                                 >
                                                                                     {state
                                                                                         ?.teachers
@@ -599,6 +598,17 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                                 name="room"
                                                                                 id=""
                                                                                 className="room"
+                                                                                value={
+                                                                                    i.branch_class_room_id
+                                                                                }
+                                                                                onChange={(
+                                                                                    e,
+                                                                                ) => {
+                                                                                    handleRoomChange(
+                                                                                        e,
+                                                                                        index,
+                                                                                    );
+                                                                                }}
                                                                             >
                                                                                 {state
                                                                                     ?.rooms
@@ -664,14 +674,14 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label></label>
-                                    <div className="form_elements">
+                                <div className="form-group student_submit form-horizontal">
+                                    {/* <label></label> */}
+                                    <div className="form_elementss">
                                         <button
                                             // onClick={handle_submit}
                                             className="btn btn_1"
                                         >
-                                            submit
+                                            update
                                         </button>
                                     </div>
                                 </div>
