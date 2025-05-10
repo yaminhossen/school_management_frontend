@@ -61,44 +61,49 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
+                                            label={`Serial`}
+                                            col_name={`serial`}
+                                            sort={false}
+                                        />
+                                        <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Present Address`}
                                             col_name={`present_address`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Permanent Address`}
                                             col_name={`permanent_address`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Driver Number`}
                                             col_name={`driver_number`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Assistant Number 1`}
                                             col_name={`assistant_number_1`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Assistant Number 2`}
                                             col_name={`assistant_number_2`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`licence Number`}
                                             col_name={`licence_number`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Driver licence`}
                                             col_name={`driver_licence`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                     </tr>
                                 </thead>
@@ -106,7 +111,7 @@ const All: React.FC<Props> = (props: Props) => {
                                     <tbody id="all_list">
                                         {/* {(state.all as any)?.data?.map( */}
                                         {(state.all as any)?.data?.map(
-                                            (i: { [key: string]: any }) => {
+                                            (i: { [key: string]: any }, index) => {
                                                 return (
                                                     <tr
                                                         key={i.id}
@@ -134,6 +139,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 {i.id}
                                                             </span>
                                                         </td>
+                                                        <td>{index + 1}</td>
                                                         <td>{i.name}</td>
                                                         <td>
                                                             {i.present_address}

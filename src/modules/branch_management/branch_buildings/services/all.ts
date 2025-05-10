@@ -59,7 +59,7 @@ async function all(
         query.where = {
             ...query.where,
             [Op.or]: [
-                { building_code: { [Op.like]: `%${search_key}%` } },
+                { building_name: { [Op.like]: `%${search_key}%` } },
                 { building_code: { [Op.like]: `%${search_key}%` } },
                 { description: { [Op.like]: `%${search_key}%` } },
                 { id: { [Op.like]: `%${search_key}%` } },

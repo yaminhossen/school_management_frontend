@@ -94,34 +94,39 @@ const All: React.FC<Props> = (props: Props) => {
                                         /> */}
                                     </tr>
                                 </thead>
-                                <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
-                                    {(state.all as any)?.data?.map(
-                                        (i: { [key: string]: any }) => {
-                                            return (
-                                                <tr
-                                                    key={i.id}
-                                                    className={`table_rows table_row_${i.id}`}
-                                                >
-                                                    <td>
-                                                        <TableRowAction
-                                                            item={i}
-                                                        />
-                                                    </td>
-                                                    <td>
-                                                        <SelectItem item={i} />
-                                                    </td>
-                                                    <td>
-                                                        <span
-                                                            className="quick_view_trigger"
-                                                            onClick={() =>
-                                                                quick_view(i)
-                                                            }
-                                                        >
-                                                            {i.id}
-                                                        </span>
-                                                    </td>
-                                                    {/* <td>
+                                {(state.all as any)?.data?.length ? (
+                                    <tbody id="all_list">
+                                        {/* {(state.all as any)?.data?.map( */}
+                                        {(state.all as any)?.data?.map(
+                                            (i: { [key: string]: any }) => {
+                                                return (
+                                                    <tr
+                                                        key={i.id}
+                                                        className={`table_rows table_row_${i.id}`}
+                                                    >
+                                                        <td>
+                                                            <TableRowAction
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <SelectItem
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <span
+                                                                className="quick_view_trigger"
+                                                                onClick={() =>
+                                                                    quick_view(
+                                                                        i,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {i.id}
+                                                            </span>
+                                                        </td>
+                                                        {/* <td>
                                                     <img
                                                         src="/assets/dashboard/images/avatar.png"
                                                         alt=""
@@ -130,18 +135,46 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                    <td>{i.name}</td>
-                                                    <td>{i.code}</td>
-                                                    <td>{i.capacity}</td>
-                                                    {/* <td>{i.fee}</td> */}
-                                                    <td>{i.prerequisities}</td>
-                                                    {/* <td>{i.policies}</td>
+                                                        <td>{i.name}</td>
+                                                        <td>{i.code}</td>
+                                                        <td>{i.capacity}</td>
+                                                        {/* <td>{i.fee}</td> */}
+                                                        {/* <td>
+                                                            {i.prerequisities}
+                                                        </td> */}
+                                                        
+                                                        <td>
+                                                            {i.prerequisities
+                                                                ?.length > 60
+                                                                ? i.prerequisities.slice(
+                                                                    0,
+                                                                    40,
+                                                                ) + '...'
+                                                                : i.prerequisities}
+                                                        </td>
+                                                        {/* <td>{i.policies}</td>
                                                     <td>{i.rules}</td> */}
-                                                </tr>
-                                            );
-                                        },
-                                    )}
-                                </tbody>
+                                                    </tr>
+                                                );
+                                            },
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 

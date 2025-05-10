@@ -34,18 +34,18 @@ const Details: React.FC<Props> = (props: Props) => {
                         <div className="content_body">
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
-                                    <tr>
+                                    {/* <tr>
                                         <td>Name</td>
                                         <td>:</td>
                                         <td>{state.item.name}</td>
-                                    </tr>
-                                    <tr className="">
+                                    </tr> */}
+                                    {/* <tr className="">
                                         <td>Description</td>
                                         <td>:</td>
                                         <td className="details_descrtiption2">
                                             {state.item?.description}
                                         </td>
-                                    </tr>
+                                    </tr> */}
                                     <tr>
                                         <td>Session</td>
                                         <td>:</td>

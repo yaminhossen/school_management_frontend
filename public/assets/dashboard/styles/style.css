@@ -1385,7 +1385,7 @@ input.form_checkbox:checked::after {
   display: block;
 }
 .form-horizontal .valid_star {
-  color: rgb(255, 0, 0);
+  color: #0e6aa2;
 }
 .form-horizontal .form_elements {
   flex: 1;

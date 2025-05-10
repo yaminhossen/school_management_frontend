@@ -65,17 +65,17 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Class`}
                                             col_name={`class`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         {/* <TableHeading
                                             label={`Subject`}
                                             col_name={`subject`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Exam`}
                                             col_name={`exam`}
-                                            sort={true}
+                                            sort={false}
                                         /> */}
                                         <TableHeading
                                             label={`Date`}
@@ -84,46 +84,69 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                     </tr>
                                 </thead>
-                                <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
-                                    {(state.all as any)?.data?.map(
-                                        (i: { [key: string]: any }) => {
-                                            return (
-                                                <tr
-                                                    key={i.id}
-                                                    className={`table_rows table_row_${i.id}`}
-                                                >
-                                                    <td>
-                                                        <TableRowAction
-                                                            item={i}
-                                                        />
-                                                    </td>
-                                                    <td>
-                                                        <SelectItem item={i} />
-                                                    </td>
-                                                    <td>
-                                                        <span
-                                                            className="quick_view_trigger"
-                                                            onClick={() =>
-                                                                quick_view(i)
-                                                            }
-                                                        >
-                                                            {i.id}
-                                                        </span>
-                                                    </td>
-                                                    <td>{i.class?.name}</td>
-                                                    {/* <td>{i.subject_id}</td>
+                                {(state.all as any)?.data?.length ? (
+                                    <tbody id="all_list">
+                                        {/* {(state.all as any)?.data?.map( */}
+                                        {(state.all as any)?.data?.map(
+                                            (i: { [key: string]: any }) => {
+                                                return (
+                                                    <tr
+                                                        key={i.id}
+                                                        className={`table_rows table_row_${i.id}`}
+                                                    >
+                                                        <td>
+                                                            <TableRowAction
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <SelectItem
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <span
+                                                                className="quick_view_trigger"
+                                                                onClick={() =>
+                                                                    quick_view(
+                                                                        i,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {i.id}
+                                                            </span>
+                                                        </td>
+                                                        <td>{i.class?.name}</td>
+                                                        {/* <td>{i.subject_id}</td>
                                                     <td>{i.exam_id}</td> */}
-                                                    <td>
-                                                        {moment(i.date).format(
-                                                            'YYYY-MM-DD',
-                                                        )}
-                                                    </td>
-                                                </tr>
-                                            );
-                                        },
-                                    )}
-                                </tbody>
+                                                        <td>
+                                                            {moment(
+                                                                i.date,
+                                                            ).format(
+                                                                'YYYY-MM-DD',
+                                                            )}
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            },
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 

@@ -64,48 +64,53 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Title`}
                                             col_name={`title`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         {/* <TableHeading
                                             label={`Text`}
                                             col_name={`text`}
-                                            sort={true}
+                                            sort={false}
                                         /> */}
                                     </tr>
                                 </thead>
-                                <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
-                                    {(state.all as any)?.data?.map(
-                                        (i: { [key: string]: any }) => {
-                                            return (
-                                                <tr
-                                                    key={i.id}
-                                                    className={`table_rows table_row_${i.id}`}
-                                                >
-                                                    <td>
-                                                        <TableRowAction
-                                                            item={i}
-                                                        />
-                                                    </td>
-                                                    <td>
-                                                        <SelectItem item={i} />
-                                                    </td>
-                                                    <td>
-                                                        <span
-                                                            className="quick_view_trigger"
-                                                            onClick={() =>
-                                                                quick_view(i)
-                                                            }
-                                                        >
-                                                            {i.id}
-                                                        </span>
-                                                    </td>
-                                                    {/* <td>
+                                {(state.all as any)?.data?.length ? (
+                                    <tbody id="all_list">
+                                        {/* {(state.all as any)?.data?.map( */}
+                                        {(state.all as any)?.data?.map(
+                                            (i: { [key: string]: any }) => {
+                                                return (
+                                                    <tr
+                                                        key={i.id}
+                                                        className={`table_rows table_row_${i.id}`}
+                                                    >
+                                                        <td>
+                                                            <TableRowAction
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <SelectItem
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <span
+                                                                className="quick_view_trigger"
+                                                                onClick={() =>
+                                                                    quick_view(
+                                                                        i,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {i.id}
+                                                            </span>
+                                                        </td>
+                                                        {/* <td>
                                                     <img
                                                         src="/assets/dashboard/images/avatar.png"
                                                         alt=""
@@ -114,21 +119,37 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                    <td>{i.title}</td>
-                                                    <td>
-                                                        {i.description?.length >
-                                                        25
-                                                            ? i.description?.slice(
-                                                                0,
-                                                                35,
-                                                            ) + ' ...'
-                                                            : i.description}
-                                                    </td>
-                                                </tr>
-                                            );
-                                        },
-                                    )}
-                                </tbody>
+                                                        <td>{i.title}</td>
+                                                        <td>
+                                                            {i.description
+                                                                ?.length > 25
+                                                                ? i.description?.slice(
+                                                                      0,
+                                                                      35,
+                                                                ) + ' ...'
+                                                                : i.description}
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            },
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 

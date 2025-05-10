@@ -66,6 +66,14 @@ const Details: React.FC<Props> = (props: Props) => {
                                             {state.item?.prerequisities}
                                         </td>
                                     </tr>
+                                    
+                                    {/* <tr className="">
+                                        <td>Prerequisities</td>
+                                        <td>:</td>
+                                        <td className="details_descrtiption2">
+                                            {state.item?.prerequisities}
+                                        </td>
+                                    </tr> */}
                                     {/* <tr>
                                         <td>Student Instructions</td>
                                         <td>:</td>

@@ -195,7 +195,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Description</label>
                                     <div className="form_elements">
                                         <textarea
@@ -207,7 +207,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             }
                                         ></textarea>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group student_submit form-horizontal">
                                     {/* <label></label> */}
                                     <div className="form_elementss">
