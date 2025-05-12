@@ -388,6 +388,7 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                 </ul>
+                <div style={{ height: '1px', width: '98%', backgroundColor: '#808080', margin: '10px 0' }}></div>
 
                 <h3 className="mt-4 ms-0">Todo management</h3>
                 <ul className="dashboard_links ">
@@ -416,6 +417,8 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li> */}
                 </ul>
+                <div style={{ height: '1px', width: '98%', backgroundColor: '#808080', margin: '10px 0' }}></div>
+
 
                 <h3 className="mt-4 ms-0">Branch management</h3>
                 <ul className="dashboard_links ">
@@ -476,6 +479,8 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                 </ul>
+                <div style={{ height: '1px', width: '98%', backgroundColor: '#808080', margin: '10px 0' }}></div>
+
 
                 <h3 className="mt-4 ms-0">Academic management</h3>
                 <ul className="dashboard_links ">
@@ -568,6 +573,8 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li> */}
                 </ul>
+                <div style={{ height: '1px', width: '98%', backgroundColor: '#808080', margin: '10px 0' }}></div>
+
 
                 <h3 className="mt-4 ms-0">Fees management</h3>
                 <ul className="dashboard_links ">
@@ -628,6 +635,8 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li> */}
                 </ul>
+                <div style={{ height: '1px', width: '98%', backgroundColor: '#808080', margin: '10px 0' }}></div>
+
 
                 <h3 className="mt-4 ms-0">Meeting management</h3>
                 <ul className="dashboard_links ">
@@ -648,6 +657,8 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                 </ul>
+                <div style={{ height: '1px', width: '98%', backgroundColor: '#808080', margin: '10px 0' }}></div>
+
 
                 <h3 className="mt-4 ms-0">Account management</h3>
                 <ul className="dashboard_links ">
@@ -724,6 +735,8 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                 </ul>
+                <div style={{ height: '1px', width: '98%', backgroundColor: '#808080', margin: '10px 0' }}></div>
+
 
                 <h3 className="mt-4 ms-0">HRM management</h3>
                 <ul className="dashboard_links ">
@@ -776,6 +789,8 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                 </ul>
+                <div style={{ height: '1px', width: '98%', backgroundColor: '#808080', margin: '10px 0' }}></div>
+
 
                 <h3 className="mt-4 ms-0">Notice management</h3>
                 <ul className="dashboard_links ">
@@ -836,6 +851,7 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li> */}
                 </ul>
+                <div style={{ height: '1px', width: '98%', backgroundColor: '#808080', margin: '10px 0' }}></div>
             </div>
         </div>
     );

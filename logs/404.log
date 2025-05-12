@@ -1620,3 +1620,7 @@
 {"level":60,"time":1746868945191,"pid":2328,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.26690765915494197"}
 {"level":60,"time":1746869146582,"pid":2328,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.779909347123229"}
 {"level":60,"time":1746871418337,"pid":2328,"hostname":"DESKTOP-9421701","error":"404","url":"/assets/icons/pdf-icon.png"}
+{"level":60,"time":1747026447004,"pid":2228,"hostname":"DESKTOP-I0UCE3Q","error":"404","url":"/assets/dashboard/images/mbg1.png"}
+{"level":60,"time":1747027693624,"pid":2228,"hostname":"DESKTOP-I0UCE3Q","error":"404","url":"/assets/dashboard/images/bg1.jpg"}
+{"level":60,"time":1747028647375,"pid":2228,"hostname":"DESKTOP-I0UCE3Q","error":"404","url":"/assets/dashboard/images/mbg8.png"}
+{"level":60,"time":1747028655810,"pid":2228,"hostname":"DESKTOP-I0UCE3Q","error":"404","url":"/assets/dashboard/images/mbg7.png"}
