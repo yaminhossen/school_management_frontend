@@ -99,6 +99,16 @@ async function all(
         //     status: show_active_data == 'true' ? 'active' : 'deactive',
         // },
         // include: [models.Project],
+
+        include: [
+            {
+                model: models.UserParentInformationsModel,
+                as: 'parent_infos',
+            },
+        ],
+        attributes: {
+            exclude: ['password'],
+        },
     };
 
     query.attributes = {

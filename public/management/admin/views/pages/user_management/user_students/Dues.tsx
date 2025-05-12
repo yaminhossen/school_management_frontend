@@ -65,11 +65,59 @@ const Dues: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {/* <input
-                                    type="hidden"
-                                    name="total_fees_count"
-                                    value={feesTypes.length}
-                                /> */}
+                                {feesTypes.length > 0 ? (
+                                    feesTypes.map(
+                                        (
+                                            i: { [key: string]: any },
+                                            index: number,
+                                        ) => (
+                                            <tr key={index}>
+                                                <td className="due_td">
+                                                    {i.name}
+                                                </td>
+                                                <td>
+                                                    <input
+                                                        type="hidden"
+                                                        name={`fees_amount_${index}`}
+                                                        value={i.fee_amount}
+                                                    />
+                                                    {i.fee_amount}
+                                                </td>
+                                                <td>{i.total}</td>
+                                                <td>
+                                                    {i.due_amount < 0
+                                                        ? i.due_amount
+                                                        : '0'}
+                                                </td>
+                                                <td>
+                                                    {i.due_amount >= 0
+                                                        ? i.due_amount
+                                                        : '0'}
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                        ),
+                                    )
+                                ) : (
+                                    <tr>
+                                        <td
+                                            colSpan={6}
+                                            style={{ textAlign: 'center' }}
+                                        >
+                                            <div
+                                                style={{
+                                                    fontSize: '24px',
+                                                }}
+                                                className="not_found f-size-4 m-2"
+                                            >
+                                                No dues
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )}
+                            </tbody>
+
+                            {/* <tbody id="all_list">
                                 {feesTypes?.length &&
                                     feesTypes?.map(
                                         (i: { [key: string]: any }, index) => {
@@ -102,7 +150,7 @@ const Dues: React.FC<Props> = (props: Props) => {
                                             );
                                         },
                                     )}
-                            </tbody>
+                            </tbody> */}
                             <tfoot>
                                 <tr className="total_row">
                                     <td>Total</td>
