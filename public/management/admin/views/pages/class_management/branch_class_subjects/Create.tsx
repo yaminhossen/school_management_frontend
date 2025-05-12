@@ -508,12 +508,14 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                 Teacher
                                                             </label>
                                                             <div className="form_elements">
-                                                                <select
+                                                                {
+                                                                    i !== 'friday' ? 
+                                                                    <select
                                                                     name="branch_teacher_id"
                                                                     id=""
                                                                     className="teacher"
                                                                 >
-                                                                    <option value="">
+                                                                    <option value="0">
                                                                         Select
                                                                         Teacher
                                                                     </option>
@@ -542,6 +544,42 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                             },
                                                                         )}
                                                                 </select>
+                                                                 : 'fiday'
+                                                                }
+                                                                {/* // <select
+                                                                //     name="branch_teacher_id"
+                                                                //     id=""
+                                                                //     className="teacher"
+                                                                // >
+                                                                //     <option value="0">
+                                                                //         Select
+                                                                //         Teacher
+                                                                //     </option>
+                                                                //     {state
+                                                                //         ?.teachers
+                                                                //         ?.length &&
+                                                                //         state.teachers?.map(
+                                                                //             (i: {
+                                                                //                 [
+                                                                //                     key: string
+                                                                //                 ]: any;
+                                                                //             }) => {
+                                                                //                 return (
+                                                                //                     <option
+                                                                //                         value={
+                                                                //                             i.id
+                                                                //                         }
+                                                                //                     >
+                                                                //                         {
+                                                                //                             i
+                                                                //                                 .user_teacher
+                                                                //                                 ?.name
+                                                                //                         }
+                                                                //                     </option>
+                                                                //                 );
+                                                                //             },
+                                                                //         )}
+                                                                // </select> */}
                                                             </div>
                                                         </div>
                                                         <div className="form-group form-vertical">
@@ -552,7 +590,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                     id=""
                                                                     className="room"
                                                                 >
-                                                                    <option value="">
+                                                                    <option value="0">
                                                                         Select
                                                                         Room
                                                                     </option>
