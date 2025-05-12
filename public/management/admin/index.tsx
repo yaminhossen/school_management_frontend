@@ -56,7 +56,7 @@ axios.interceptors.response.use(
         // (window as any)
         //     .jQuery('.loader-wrapper')
         //     .fadeOut('slow', function () {});
-        if (response.status == 202) {
+        if (response.status == 202 || 200) {
             (window as anyObject).toaster(`Successfuly task created`);
         }
         if (response.status == 204) {
