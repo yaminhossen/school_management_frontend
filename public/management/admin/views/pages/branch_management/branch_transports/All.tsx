@@ -62,27 +62,27 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Title`}
                                             col_name={`title`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Type`}
                                             col_name={`type`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Driver`}
                                             col_name={`driver`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Driver Number`}
                                             col_name={`driver_number`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Vehicle Number`}
                                             col_name={`vehicle_number`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                     </tr>
                                 </thead>

@@ -9,7 +9,7 @@ import moment from 'moment/moment';
 
 export interface Props {}
 
-const ExportSelected: React.FC<Props> = () => {
+const SelectDelete: React.FC<Props> = () => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -17,19 +17,7 @@ const ExportSelected: React.FC<Props> = () => {
     function handle_export(e: React.MouseEvent<HTMLElement, MouseEvent>) {
         e.preventDefault();
 
-        // You can customize these columns including nested keys
-        const columns = ['ID', 'Class', 'Date'];
-
-        const rows: string[][] = state.selected.map((data: anyObject) => [
-            `${data.id}`,
-            data.class?.name || 'Not found',
-            data.date || '',
-        ]);
-
-        new CsvBuilder(`${setup.module_name}.csv`)
-            .setColumns(columns)
-            .addRows(rows)
-            .exportFile();
+        console.log('this is work able');
     }
 
     if (!state.selected || state.selected.length === 0) {
@@ -38,10 +26,10 @@ const ExportSelected: React.FC<Props> = () => {
 
     return (
         <a href="#" onClick={handle_export}>
-            <span className="material-symbols-outlined fill">download</span>
-            <div className="text">Export ({state.selected.length})</div>
+            <span className="material-symbols-outlined fill">delete</span>
+            <div className="text">Delete ({state.selected.length})</div>
         </a>
     );
 };
 
-export default ExportSelected;
+export default SelectDelete;

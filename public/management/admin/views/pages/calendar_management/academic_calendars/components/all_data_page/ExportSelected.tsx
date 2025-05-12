@@ -15,7 +15,14 @@ const ExportSelected: React.FC<Props> = (props: Props) => {
 
     function handle_export(e: React.MouseEvent<HTMLElement, MouseEvent>) {
         e.preventDefault();
-        let columns = ['id', 'name', 'email'];
+        let columns = [
+            'id',
+            'event_name',
+            'start_date',
+            'end_date',
+            'days',
+            'description',
+        ];
         let rows: string[][] = [];
 
         state.selected.forEach((data: anyObject) => {

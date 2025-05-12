@@ -1437,7 +1437,10 @@ input.form_checkbox:checked::after {
 
 .total_row {
   background-color: #20232a;
-  padding: 10px;
+  padding: 0px;
+}
+.total_row td {
+  padding: 8px !important;
 }
 
 .admin_dashboard h1 {

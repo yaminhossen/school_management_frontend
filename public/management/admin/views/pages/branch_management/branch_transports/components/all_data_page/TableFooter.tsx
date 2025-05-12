@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../../../../store';
 import ExportSelected from './ExportSelected';
 import AllDeactivatedData from './AllDeactivatedData';
+import SelectDelete from './SelectDelete';
 
 let route_prefix = setup.route_prefix;
 
@@ -30,6 +31,9 @@ const Footer: React.FC<Props> = (props: Props) => {
                     <li>
                         <ExportSelected />
                     </li>
+                    {/* <li>
+                        <SelectDelete />
+                    </li> */}
                     <li>
                         <AllDeactivatedData />
                     </li>

@@ -102,6 +102,20 @@ async function all(
         order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
         where: whereClause,
         // include: [models.Project],
+
+        include: [
+            {
+                model: models.BranchClassSubjectsModel,
+                as: 'subject',
+            },
+            {
+                model: models.BranchClassesModel,
+                as: 'class',
+            },
+        ],
+        attributes: {
+            exclude: ['password'],
+        },
     };
 
     query.attributes = {
