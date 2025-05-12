@@ -43,7 +43,6 @@ const NavigationList: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
-
     const menuArray = [
         {
             group: 'User management',
@@ -51,6 +50,246 @@ const NavigationList: React.FC<Props> = (props: Props) => {
                 {
                     link: '/admin#/user-staffs',
                     label: 'Employee',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/user-teachers',
+                    label: 'Teacher',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/user-parents',
+                    label: 'Parent',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/user-students',
+                    label: 'Student',
+                    icon: 'manage_accounts',
+                },
+            ],
+        },
+        {
+            group: 'Todo management',
+            links: [
+                {
+                    link: '/admin#/tasks',
+                    label: 'Task',
+                    icon: 'manage_accounts',
+                },
+            ],
+        },
+        {
+            group: 'Branch management',
+            links: [
+                {
+                    link: '/admin#/branch-buildings',
+                    label: 'Building',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/branch-building-rooms',
+                    label: 'Room',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/branch-transports',
+                    label: 'Transport',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/branch-transport-drivers',
+                    label: 'Driver',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/academic-calendars',
+                    label: 'Calendar',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/academic-calendar-event-types',
+                    label: 'Event Type',
+                    icon: 'manage_accounts',
+                },
+            ],
+        },
+        {
+            group: 'Academic management',
+            links: [
+                {
+                    link: '/admin#/branch-classes',
+                    label: 'Class',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/branch-class-sections',
+                    label: 'Sections',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/branch-class-subjects',
+                    label: 'Subject',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/branch-class-routine-day-times/class-routine',
+                    label: 'Routines',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/branch-class-resources',
+                    label: 'Resources',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/exams',
+                    label: 'Exam',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/exams-routines',
+                    label: 'Exam Routine',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/student-overall-evaluations',
+                    label: 'Student Evaluation',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/student-evaluation-criterias',
+                    label: 'Student Evaluation Criteria',
+                    icon: 'manage_accounts',
+                },
+            ],
+        },
+        {
+            group: 'Fees management',
+            links: [
+                {
+                    link: '/admin#/branch-class-fee-types',
+                    label: 'Fee Types',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/branch-class-fees',
+                    label: 'Fees',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/user-students',
+                    label: 'Due-list',
+                    icon: 'manage_accounts',
+                },
+            ],
+        },
+        {
+            group: 'Meeting management',
+            links: [
+                {
+                    link: '/admin#/meeting',
+                    label: 'Meetings',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/meeting-agendas',
+                    label: 'Agendas',
+                    icon: 'manage_accounts',
+                },
+            ],
+        },
+        {
+            group: 'Account management',
+            links: [
+                {
+                    link: '/admin#/accounts',
+                    label: 'Account',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/account-periods',
+                    label: 'Period',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/account-categories',
+                    label: 'Category',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/journal',
+                    label: 'Journal',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/debit',
+                    label: 'Debit',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/credit',
+                    label: 'Credit',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/profit-loss',
+                    label: 'Profit&Loss',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/month-wise-statement',
+                    label: 'Month wise',
+                    icon: 'manage_accounts',
+                },
+            ],
+        },
+        {
+            group: 'HRM management',
+            links: [
+                {
+                    link: '/admin#/leave-applications',
+                    label: 'Leave application',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/leave-types',
+                    label: 'Leave types',
+                    icon: 'manage_accounts',
+                },
+            ],
+        },
+        {
+            group: 'Notice management',
+            links: [
+                {
+                    link: '/admin#/notices',
+                    label: 'Notice',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/notice-categorys',
+                    label: 'Notice Category',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/faqs',
+                    label: 'FAQs',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/policies',
+                    label: 'Policies',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/contact-supports',
+                    label: 'Contact support',
+                    icon: 'manage_accounts',
+                },
+                {
+                    link: '/admin#/settings',
+                    label: 'Settings',
                     icon: 'manage_accounts',
                 },
             ],
@@ -94,7 +333,9 @@ const NavigationList: React.FC<Props> = (props: Props) => {
                             </div>
                             <div className="action">
                                 <ul>
-                                    <li>
+                                    <li onClick={() =>
+                                                    setIsActive(false)
+                                                }>
                                         <a href="/admin#/settings">
                                             <span className="material-symbols-outlined fill">
                                                 manage_accounts
@@ -116,7 +357,7 @@ const NavigationList: React.FC<Props> = (props: Props) => {
                             </div>
                         </div>
                         <div className="search">
-                            <input type="search" placeholder="search.." />
+                            {/* <input type="search" placeholder="search.." /> */}
                         </div>
                         <div className="menu_list custom_scroll">
                             {menuArray?.map((i) => (

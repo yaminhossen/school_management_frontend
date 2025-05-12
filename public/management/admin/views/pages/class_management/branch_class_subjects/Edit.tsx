@@ -570,6 +570,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                                         );
                                                                                     }}
                                                                                 >
+                                                                                    <option value="0">
+                                                                                        Select
+                                                                                        Teacher
+                                                                                    </option>
                                                                                     {state
                                                                                         ?.teachers
                                                                                         ?.length &&
@@ -619,6 +623,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                                     );
                                                                                 }}
                                                                             >
+                                                                                <option value="0">
+                                                                                    Select
+                                                                                    Room
+                                                                                </option>
                                                                                 {state
                                                                                     ?.rooms
                                                                                     ?.length &&

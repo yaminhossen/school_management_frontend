@@ -99,6 +99,20 @@ async function all(
         // },
         // include: [models.Project],
         where: whereClause,
+
+        include: [
+            {
+                model: models.UserTeacherInformationsModel,
+                as: 'teacher_infos',
+            },
+            {
+                model: models.BranchTeachersModel,
+                as: 'teachers',
+            },
+        ],
+        attributes: {
+            exclude: ['password'],
+        },
     };
 
     query.attributes = {
