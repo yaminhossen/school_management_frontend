@@ -1299,3 +1299,40 @@
 {"level":60,"time":1746615677488,"pid":12868,"hostname":"DESKTOP-9421701","file":"","time":"5/7/2025 5:01:17 PM","message":"target not found."}
 {"level":60,"time":1746615827182,"pid":8188,"hostname":"DESKTOP-9421701","file":"","time":"5/7/2025 5:03:47 PM","message":"target not found."}
 {"level":60,"time":1746615922216,"pid":8188,"hostname":"DESKTOP-9421701","file":"","time":"5/7/2025 5:05:22 PM","message":"target not found."}
+{"level":60,"time":1746694282500,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all_class.ts:63:19)","time":"5/8/2025 2:51:22 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1746694347191,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all_class.ts:63:19)","time":"5/8/2025 2:52:27 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1746694366223,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all_class.ts:63:19)","time":"5/8/2025 2:52:46 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1746694413749,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all_class.ts:63:19)","time":"5/8/2025 2:53:33 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1746694467927,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all_class.ts:63:19)","time":"5/8/2025 2:54:27 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1746694481505,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all_class.ts:63:19)","time":"5/8/2025 2:54:41 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1746696251340,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\student_payment_history.ts:47:19)","time":"5/8/2025 3:24:11 PM","message":"No payment history found"}
+{"level":60,"time":1746696318971,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\student_payment_history.ts:47:19)","time":"5/8/2025 3:25:18 PM","message":"No payment history found"}
+{"level":60,"time":1746696332383,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\student_payment_history.ts:47:19)","time":"5/8/2025 3:25:32 PM","message":"No payment history found"}
+{"level":60,"time":1746696455650,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\details.ts:28:19)","time":"5/8/2025 3:27:35 PM","message":"data not found"}
+{"level":60,"time":1746697415877,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\details.ts:28:19)","time":"5/8/2025 3:43:35 PM","message":"data not found"}
+{"level":60,"time":1746697872267,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\details.ts:28:19)","time":"5/8/2025 3:51:12 PM","message":"data not found"}
+{"level":60,"time":1746697877020,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\details.ts:28:19)","time":"5/8/2025 3:51:17 PM","message":"data not found"}
+{"level":60,"time":1746699821034,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:23:41 PM","message":"Unknown column 'BranchBuildingsModel.name' in 'where clause'"}
+{"level":60,"time":1746699855858,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:24:15 PM","message":"Unknown column 'BranchBuildingsModel.name' in 'where clause'"}
+{"level":60,"time":1746700602420,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:36:42 PM","message":"Unknown column 'BranchBuildingsModel.name' in 'where clause'"}
+{"level":60,"time":1746700607863,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:36:47 PM","message":"Unknown column 'BranchBuildingsModel.name' in 'where clause'"}
+{"level":60,"time":1746700629249,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:37:09 PM","message":"Unknown column 'BranchBuildingsModel.name' in 'where clause'"}
+{"level":60,"time":1746700634292,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:37:14 PM","message":"Unknown column 'BranchBuildingsModel.name' in 'where clause'"}
+{"level":60,"time":1746700643106,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:37:23 PM","message":"Unknown column 'BranchBuildingsModel.name' in 'where clause'"}
+{"level":60,"time":1746700653298,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:37:33 PM","message":"Unknown column 'BranchBuildingsModel.name' in 'where clause'"}
+{"level":60,"time":1746700658047,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:37:38 PM","message":"Unknown column 'BranchBuildingsModel.name' in 'where clause'"}
+{"level":60,"time":1746700681943,"pid":15308,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:38:01 PM","message":"Unknown column 'BranchBuildingsModel.name' in 'where clause'"}
+{"level":60,"time":1746701407645,"pid":10564,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:50:07 PM","message":"Unknown column 'BranchBuildingRoomsModel.name' in 'where clause'"}
+{"level":60,"time":1746701414111,"pid":10564,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:50:14 PM","message":"Unknown column 'BranchBuildingRoomsModel.name' in 'where clause'"}
+{"level":60,"time":1746701418723,"pid":10564,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:50:18 PM","message":"Unknown column 'BranchBuildingRoomsModel.name' in 'where clause'"}
+{"level":60,"time":1746701430304,"pid":10564,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:50:30 PM","message":"Unknown column 'BranchBuildingRoomsModel.name' in 'where clause'"}
+{"level":60,"time":1746701500271,"pid":10564,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:51:40 PM","message":"Unknown column 'BranchBuildingRoomsModel.name' in 'where clause'"}
+{"level":60,"time":1746701508191,"pid":10564,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:63:15)","time":"5/8/2025 4:51:48 PM","message":"Unknown column 'BranchBuildingRoomsModel.name' in 'where clause'"}
+{"level":60,"time":1746703003294,"pid":10564,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/8/2025 5:16:43 PM","message":"Data too long for column 'title' at row 1"}
+{"level":60,"time":1746703005915,"pid":10564,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/8/2025 5:16:45 PM","message":"Data too long for column 'title' at row 1"}
+{"level":60,"time":1746703006759,"pid":10564,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/8/2025 5:16:46 PM","message":"Data too long for column 'title' at row 1"}
+{"level":60,"time":1746703007214,"pid":10564,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/8/2025 5:16:47 PM","message":"Data too long for column 'title' at row 1"}
+{"level":60,"time":1746703007401,"pid":10564,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/8/2025 5:16:47 PM","message":"Data too long for column 'title' at row 1"}
+{"level":60,"time":1746703007560,"pid":10564,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/8/2025 5:16:47 PM","message":"Data too long for column 'title' at row 1"}
+{"level":60,"time":1746703007778,"pid":10564,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/8/2025 5:16:47 PM","message":"Data too long for column 'title' at row 1"}
+{"level":60,"time":1746703061144,"pid":10564,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/8/2025 5:17:41 PM","message":"Data too long for column 'title' at row 1"}
