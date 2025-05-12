@@ -419,14 +419,14 @@ const T1: React.FC<Props> = (props: Props) => {
 
                 <h3 className="mt-4 ms-0">Branch management</h3>
                 <ul className="dashboard_links ">
-                    <li>
+                    {/* <li>
                         <Link to="/branches">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             branches Management
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/branch-buildings">
                             <span className="material-symbols-outlined fill">

@@ -130,7 +130,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                         )}
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Name{' '}
                                                 <span className="valid_star">
                                                     *
@@ -142,7 +142,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                             name="name"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>Amount{' '}
                                                 <span className="valid_star">
@@ -171,7 +171,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Description</label>
                                     <div className="form_elements">
                                         <textarea
@@ -180,7 +180,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                             placeholder="description"
                                         ></textarea>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="form-group student_submit form-horizontal">
                                 {/* <label></label> */}

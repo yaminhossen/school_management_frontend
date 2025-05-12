@@ -61,70 +61,77 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         {/* <th>Logo</th> */}
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
-                                            sort={true}
-                                        />
+                                            sort={false}
+                                        /> */}
                                         <TableHeading
                                             label={`Class`}
                                             col_name={`class`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Fee Type`}
                                             col_name={`fee_type`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Session`}
                                             col_name={`session`}
-                                            sort={true}
+                                            sort={false}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
-                                            sort={true}
-                                        />
+                                            sort={false}
+                                        /> */}
                                         <TableHeading
                                             label={`Amount`}
                                             col_name={`amount`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                     </tr>
                                 </thead>
-                                <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
-                                    {(state.all as any)?.data?.map(
-                                        (i: { [key: string]: any }) => {
-                                            return (
-                                                <tr
-                                                    key={i.id}
-                                                    className={`table_rows table_row_${i.id}`}
-                                                >
-                                                    <td>
-                                                        <TableRowAction
-                                                            item={i}
-                                                        />
-                                                    </td>
-                                                    <td>
-                                                        <SelectItem item={i} />
-                                                    </td>
-                                                    <td>
-                                                        <span
-                                                            className="quick_view_trigger"
-                                                            onClick={() =>
-                                                                quick_view(i)
-                                                            }
-                                                        >
-                                                            {i.id}
-                                                        </span>
-                                                    </td>
-                                                    <td>{i.name}</td>
-                                                    <td>{i.class?.name}</td>
-                                                    <td>{i.fee_types?.name}</td>
-                                                    <td>{i.session}</td>
-                                                    <td>
+                                {(state.all as any)?.data?.length ? (
+                                    <tbody id="all_list">
+                                        {/* {(state.all as any)?.data?.map( */}
+                                        {(state.all as any)?.data?.map(
+                                            (i: { [key: string]: any }) => {
+                                                return (
+                                                    <tr
+                                                        key={i.id}
+                                                        className={`table_rows table_row_${i.id}`}
+                                                    >
+                                                        <td>
+                                                            <TableRowAction
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <SelectItem
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <span
+                                                                className="quick_view_trigger"
+                                                                onClick={() =>
+                                                                    quick_view(
+                                                                        i,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {i.id}
+                                                            </span>
+                                                        </td>
+                                                        {/* <td>{i.name}</td> */}
+                                                        <td>{i.class?.name}</td>
+                                                        <td>
+                                                            {i.fee_types?.name}
+                                                        </td>
+                                                        <td>{i.session}</td>
+                                                        {/* <td>
                                                         {i.description?.length >
                                                         60
                                                             ? i.description.slice(
@@ -132,13 +139,29 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 40,
                                                             ) + '...'
                                                             : i.description}
-                                                    </td>
-                                                    <td>{i.amount}</td>
-                                                </tr>
-                                            );
-                                        },
-                                    )}
-                                </tbody>
+                                                    </td> */}
+                                                        <td>{i.amount}</td>
+                                                    </tr>
+                                                );
+                                            },
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 

@@ -25,18 +25,19 @@ async function validate(req: Request, models: any) {
         .withMessage('the email field is required')
         .run(req);
 
-    await body('email')
-        .custom(async (email) => {
-            const existing = await models.UserStaffsModel.findOne({
-                where: { email },
-            });
-            if (existing) {
-                throw new Error('Email already exists');
-            }
-            return true;
-        })
-        .run(req);
-
+    if (req.body?.email) {
+        await body('email')
+            .custom(async (email) => {
+                const existing = await models.UserStaffsModel.findOne({
+                    where: { email },
+                });
+                if (existing) {
+                    throw new Error('Email already exists');
+                }
+                return true;
+            })
+            .run(req);
+    }
     await body('phone_number')
         .not()
         .isEmpty()

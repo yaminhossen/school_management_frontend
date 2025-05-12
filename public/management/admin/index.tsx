@@ -93,6 +93,12 @@ axios.interceptors.response.use(
 
             console.log(error.response);
         }
+        if (error.response.data.status == 500) {
+            (window as anyObject).toaster(
+                `${error.response.data.message}`,
+                'error',
+            );
+        }
         return Promise.reject(error);
     },
 );

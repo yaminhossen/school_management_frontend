@@ -88,6 +88,7 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                     </tr>
                                 </thead>
+                                {(state.all as any)?.data?.length ? (
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
                                     {(state.all as any)?.data?.map(
@@ -136,7 +137,8 @@ const All: React.FC<Props> = (props: Props) => {
                                                     </td>
                                                     <td>{i.code}</td>
                                                     <td>
-                                                        {i.description?.length >
+                                                        {
+                                                        i.description?.length >
                                                         60
                                                             ? i.description.slice(
                                                                 0,
@@ -149,6 +151,22 @@ const All: React.FC<Props> = (props: Props) => {
                                         },
                                     )}
                                 </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 

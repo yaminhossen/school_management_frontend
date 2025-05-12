@@ -14,6 +14,7 @@ import { sections } from './config/store/async_actions/sections';
 import { teachers } from './config/store/async_actions/teachers';
 import { rooms } from './config/store/async_actions/rooms';
 import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -31,13 +32,6 @@ const Create: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
     const params = useParams();
 
-    async function handle_submit(e) {
-        e.preventDefault();
-        let response = await dispatch(store(new FormData(e.target)) as any);
-        if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
-            e.target.reset();
-        }
-    }
     const fetchData = async () => {
         try {
             const response = await axios.get(
@@ -71,6 +65,37 @@ const Create: React.FC<Props> = (props: Props) => {
         'friday',
         'saturday',
     ];
+    const now = moment();
+    const oneHourLater = moment().add(1, 'hour');
+    const [schedule, setSchedule] = useState(
+        days.map(() => ({
+            start_time: now.format('HH:mm'),
+            end_time: oneHourLater.format('HH:mm'),
+            error: '',
+        })),
+    );
+    const handleTimeChange = (index, field, value) => {
+        const newSchedule = [...schedule];
+        newSchedule[index][field] = value;
+
+        // Validation: end time must be after start time
+        const { start_time, end_time } = newSchedule[index];
+
+        if (start_time && end_time) {
+            const start = moment(start_time, 'HH:mm');
+            const end = moment(end_time, 'HH:mm');
+
+            if (end.isBefore(start)) {
+                newSchedule[index].error = 'End time must be after start time';
+            } else {
+                newSchedule[index].error = '';
+            }
+        } else {
+            newSchedule[index].error = '';
+        }
+
+        setSchedule(newSchedule);
+    };
 
     // defaultValue={moment(
     //     state.item
@@ -135,6 +160,15 @@ const Create: React.FC<Props> = (props: Props) => {
         console.log('Selected value:', event.target.value);
     };
 
+    async function handle_submit(e) {
+        e.preventDefault();
+        let response = await dispatch(store(new FormData(e.target)) as any);
+        if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
+            e.target.reset();
+        }
+    }
+    const hasErrors = schedule.some((day) => day.error);
+
     return (
         <>
             <div className="page_content">
@@ -162,7 +196,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                                             onChange={
                                                                 handleChange2
                                                             }
-                                                            value={selectedClassId}
+                                                            value={
+                                                                selectedClassId
+                                                            }
                                                         >
                                                             <option value="">
                                                                 Select Class
@@ -199,7 +235,11 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         {sections.length && (
                                                             <select
                                                                 name="branch_class_section_id"
-                                                                disabled={!selectedClassId || sections.length === 0}
+                                                                disabled={
+                                                                    !selectedClassId ||
+                                                                    sections.length ===
+                                                                        0
+                                                                }
                                                             >
                                                                 <option value="">
                                                                     {' '}
@@ -399,6 +439,23 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                     type="time"
                                                                     placeholder="start time"
                                                                     name="start_time"
+                                                                    value={
+                                                                        schedule[
+                                                                            index
+                                                                        ]
+                                                                            .start_time
+                                                                    }
+                                                                    onChange={(
+                                                                        e,
+                                                                    ) =>
+                                                                        handleTimeChange(
+                                                                            index,
+                                                                            'start_time',
+                                                                            e
+                                                                                .target
+                                                                                .value,
+                                                                        )
+                                                                    }
                                                                 />
                                                             </div>
                                                         </div>
@@ -411,7 +468,39 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                     type="time"
                                                                     placeholder="end time"
                                                                     name="end_time"
+                                                                    value={
+                                                                        schedule[
+                                                                            index
+                                                                        ]
+                                                                            .end_time
+                                                                    }
+                                                                    onChange={(
+                                                                        e,
+                                                                    ) =>
+                                                                        handleTimeChange(
+                                                                            index,
+                                                                            'end_time',
+                                                                            e
+                                                                                .target
+                                                                                .value,
+                                                                        )
+                                                                    }
                                                                 />
+                                                                {schedule[index]
+                                                                    .error && (
+                                                                    <div
+                                                                        style={{
+                                                                            color: 'red',
+                                                                        }}
+                                                                    >
+                                                                        {
+                                                                            schedule[
+                                                                                index
+                                                                            ]
+                                                                                .error
+                                                                        }
+                                                                    </div>
+                                                                )}
                                                             </div>
                                                         </div>
                                                         <div className="form-group form-vertical">
@@ -526,9 +615,17 @@ const Create: React.FC<Props> = (props: Props) => {
                             <div className="form-group student_submit form-horizontal">
                                 {/* <label></label> */}
                                 <div className="form_elementss">
-                                    <button
+                                    {/* <button
                                         // onClick={handle_submit}
                                         className="btn btn_1"
+                                        // disabled={hasErrors}
+                                    >
+                                        submit
+                                    </button> */}
+                                    <button
+                                        // className="d_btn d_btn_1"
+                                        className={`btn btn_1 ${hasErrors ? 'btn_error' : ''}`}
+                                        disabled={!!hasErrors}
                                     >
                                         submit
                                     </button>

@@ -78,52 +78,59 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                     </tr>
                                 </thead>
-                                <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
-                                    {(state.all as any)?.data?.map(
-                                        (i: { [key: string]: any }) => {
-                                            return (
-                                                <tr
-                                                    key={i.id}
-                                                    className={`table_rows table_row_${i.id}`}
-                                                >
-                                                    <td>
-                                                        <TableRowAction
-                                                            item={i}
-                                                        />
-                                                    </td>
-                                                    <td>
-                                                        <SelectItem item={i} />
-                                                    </td>
-                                                    <td>
-                                                        <span
-                                                            className="quick_view_trigger"
-                                                            onClick={() =>
-                                                                quick_view(i)
-                                                            }
-                                                        >
-                                                            {i.id}
-                                                        </span>
-                                                    </td>
-                                                    <td>{i.title}</td>
-                                                    <td>{i.description}</td>
+                                {(state.all as any)?.data?.length ? (
+                                    <tbody id="all_list">
+                                        {/* {(state.all as any)?.data?.map( */}
+                                        {(state.all as any)?.data?.map(
+                                            (i: { [key: string]: any }) => {
+                                                return (
+                                                    <tr
+                                                        key={i.id}
+                                                        className={`table_rows table_row_${i.id}`}
+                                                    >
+                                                        <td>
+                                                            <TableRowAction
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <SelectItem
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <span
+                                                                className="quick_view_trigger"
+                                                                onClick={() =>
+                                                                    quick_view(
+                                                                        i,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {i.id}
+                                                            </span>
+                                                        </td>
+                                                        <td>{i.title}</td>
+                                                        <td>{i.description}</td>
 
-                                                    <td className="download_td">
-                                                        <a
-                                                            className="btn download_btn"
-                                                            target="blank"
-                                                            href={i.attachment}
-                                                            download={i.attachment
-                                                                .split('/')
-                                                                .pop()}
-                                                        >
-                                                            download
-                                                            <span className="material-symbols-outlined pointer">
+                                                        <td className="download_td">
+                                                            <a
+                                                                className="btn download_btn"
+                                                                target="blank"
+                                                                href={
+                                                                    i.attachment
+                                                                }
+                                                                download={i.attachment
+                                                                    .split('/')
+                                                                    .pop()}
+                                                            >
                                                                 download
-                                                            </span>{' '}
-                                                        </a>
-                                                    </td>
-                                                    {/* <td>
+                                                                <span className="material-symbols-outlined pointer">
+                                                                    download
+                                                                </span>{' '}
+                                                            </a>
+                                                        </td>
+                                                        {/* <td>
                                                         <a
                                                             target="blank"
                                                             href={i.attachment}
@@ -134,11 +141,27 @@ const All: React.FC<Props> = (props: Props) => {
                                                             download
                                                         </a>
                                                     </td> */}
-                                                </tr>
-                                            );
-                                        },
-                                    )}
-                                </tbody>
+                                                    </tr>
+                                                );
+                                            },
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 

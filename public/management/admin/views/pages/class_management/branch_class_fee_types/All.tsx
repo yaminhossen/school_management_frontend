@@ -64,20 +64,21 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Class`}
                                             col_name={`class`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                     </tr>
                                 </thead>
+                                {(state.all as any)?.data?.length ? (
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
                                     {(state.all as any)?.data?.map(
@@ -121,6 +122,22 @@ const All: React.FC<Props> = (props: Props) => {
                                         },
                                     )}
                                 </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 

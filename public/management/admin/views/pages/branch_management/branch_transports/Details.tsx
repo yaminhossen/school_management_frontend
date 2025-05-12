@@ -92,7 +92,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>
                                             <a
                                                 href={
-                                                    state.item?.drivert
+                                                    state.item?.driver
                                                         ?.driver_licence ||
                                                     undefined
                                                 }
@@ -101,7 +101,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                             >
                                                 <img
                                                     src={
-                                                        state.item?.drivert
+                                                        state.item?.driver
                                                             ?.driver_licence ||
                                                         ''
                                                     }

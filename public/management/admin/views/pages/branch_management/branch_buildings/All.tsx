@@ -84,71 +84,99 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                     </tr>
                                 </thead>
-                                <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
-                                    {(state.all as any)?.data?.map(
-                                        (i: { [key: string]: any }, index) => {
-                                            return (
-                                                <tr
-                                                    key={i.id}
-                                                    className={`table_rows table_row_${i.id}`}
+                                {(state.all as any)?.data?.length ? (
+                                    <tbody id="all_list">
+                                        {/* {(state.all as any)?.data?.map( */}
+                                        {(state.all as any)?.data?.map(
+                                            (
+                                                i: { [key: string]: any },
+                                                index,
+                                            ) => {
+                                                return (
+                                                    <tr
+                                                        key={i.id}
+                                                        className={`table_rows table_row_${i.id}`}
+                                                    >
+                                                        <td>
+                                                            <TableRowAction
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <SelectItem
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>{index + 1}</td>
+                                                        <td>
+                                                            <span
+                                                                className="quick_view_trigger"
+                                                                onClick={() =>
+                                                                    quick_view(
+                                                                        i,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {i.id}
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <img
+                                                                src={i.photo}
+                                                                alt="Building Photo"
+                                                                style={{
+                                                                    height: 30,
+                                                                }}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            {i.building_name}
+                                                        </td>
+                                                        <td>
+                                                            {i.building_code}
+                                                        </td>
+                                                        <td className="font-medium text-dark-medium">
+                                                            <a
+                                                                href={
+                                                                    i.attachment ||
+                                                                    undefined
+                                                                }
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                            >
+                                                                Show File
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            {i.description
+                                                                ?.length > 60
+                                                                ? i.description.slice(
+                                                                    0,
+                                                                    40,
+                                                                ) + '...'
+                                                                : i.description}
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            },
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
                                                 >
-                                                    <td>
-                                                        <TableRowAction
-                                                            item={i}
-                                                        />
-                                                    </td>
-                                                    <td>
-                                                        <SelectItem item={i} />
-                                                    </td>
-                                                    <td>{index + 1}</td>
-                                                    <td>
-                                                        <span
-                                                            className="quick_view_trigger"
-                                                            onClick={() =>
-                                                                quick_view(i)
-                                                            }
-                                                        >
-                                                            {i.id}
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <img
-                                                            src={i.photo}
-                                                            alt="Building Photo"
-                                                            style={{
-                                                                height: 30,
-                                                            }}
-                                                        />
-                                                    </td>
-                                                    <td>{i.building_name}</td>
-                                                    <td>{i.building_code}</td>
-                                                    <td className="font-medium text-dark-medium">
-                                                        <a
-                                                            href={
-                                                                i.attachment ||
-                                                                undefined
-                                                            }
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                        >
-                                                            Show File
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        {i.description?.length >
-                                                        60
-                                                            ? i.description.slice(
-                                                                0,
-                                                                40,
-                                                            ) + '...'
-                                                            : i.description}
-                                                    </td>
-                                                </tr>
-                                            );
-                                        },
-                                    )}
-                                </tbody>
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 

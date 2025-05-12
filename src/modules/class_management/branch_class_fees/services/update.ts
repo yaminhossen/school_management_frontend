@@ -25,11 +25,11 @@ async function validate(req: Request) {
         .withMessage('the branch_class_id field is required')
         .run(req);
 
-    await body('name')
-        .not()
-        .isEmpty()
-        .withMessage('the name field is required')
-        .run(req);
+    // await body('name')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the name field is required')
+    //     .run(req);
 
     // await body('description')
     //     .not()

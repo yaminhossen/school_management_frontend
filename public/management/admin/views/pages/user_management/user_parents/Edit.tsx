@@ -141,11 +141,11 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         defalut_preview={get_value('image')}
                                     />
                                 </div>
-                                <div className="form-group form-horizontal">
-                                    <label></label>
-                                    <div className="form_elements">
+                                <div className="form-group student_submit form-horizontal">
+                                    {/* <label></label> */}
+                                    <div className="form_elementss">
                                         <button className="btn btn_1">
-                                            submit
+                                            update
                                         </button>
                                     </div>
                                 </div>

@@ -150,7 +150,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="number"
                                             placeholder="total seat"
                                             name="total_seat"
                                             defaultValue={state.item.total_seat}
@@ -164,7 +164,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="number"
                                             placeholder="total student"
                                             name="total_student"
                                             defaultValue={

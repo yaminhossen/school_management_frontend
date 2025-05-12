@@ -208,7 +208,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
-                                                <label>Present Address</label>
+                                                <label>
+                                                    Present Address{' '}
+                                                    <span className="valid_star">
+                                                        *
+                                                    </span>
+                                                </label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"

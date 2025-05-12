@@ -70,10 +70,69 @@ const Create: React.FC<Props> = (props: Props) => {
         }
         console.log('Selected value:', event.target.value);
     };
-    console.log('Selected dataaa:', subjects);
-    if (state) {
-        console.log('exams', state);
-    }
+    const now = moment();
+    const oneHourLater = moment().add(1, 'hour');
+    const [formData, setFormData] = useState({
+        start_time: now.format('HH:mm'),
+        end_time: oneHourLater.format('HH:mm'),
+        date: moment().format('YYYY-MM-DD'),
+    });
+
+    const [errorMessageStartTime, setErrorMessageStartTime] = useState('');
+    const [errorMessageEndTime, setErrorMessageEndTime] = useState('');
+    const [errorMessageDate, setErrorMessageDate] = useState('');
+
+    const handleChange2 = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    // Real-time validation
+    useEffect(() => {
+        // Start Time
+        if (!formData.start_time) {
+            setErrorMessageStartTime('Start time is required');
+        } else if (
+            formData.end_time &&
+            moment(formData.start_time, 'HH:mm').isAfter(
+                moment(formData.end_time, 'HH:mm'),
+            )
+        ) {
+            setErrorMessageStartTime('Start time cannot be after end time');
+        } else {
+            setErrorMessageStartTime('');
+        }
+
+        // End Time
+        if (!formData.end_time) {
+            setErrorMessageEndTime('End time is required');
+        } else if (
+            formData.start_time &&
+            moment(formData.end_time, 'HH:mm').isBefore(
+                moment(formData.start_time, 'HH:mm'),
+            )
+        ) {
+            setErrorMessageEndTime(
+                'End time cannot be earlier than start time',
+            );
+        } else {
+            setErrorMessageEndTime('');
+        }
+
+        // Date
+        if (!formData.date) {
+            setErrorMessageDate('Date is required');
+        } else if (
+            moment(formData.date).isBefore(moment().format('YYYY-MM-DD'))
+        ) {
+            setErrorMessageDate('Date cannot be in the past');
+        } else {
+            setErrorMessageDate('');
+        }
+    }, [formData]);
+
+    const hasError =
+        errorMessageStartTime || errorMessageEndTime || errorMessageDate;
 
     return (
         <>
@@ -175,7 +234,14 @@ const Create: React.FC<Props> = (props: Props) => {
                                             type="time"
                                             placeholder="start time"
                                             name="start_time"
+                                            value={formData.start_time}
+                                            onChange={handleChange2}
                                         />
+                                        {errorMessageStartTime && (
+                                            <div style={{ color: 'red' }}>
+                                                {errorMessageStartTime}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
@@ -188,7 +254,14 @@ const Create: React.FC<Props> = (props: Props) => {
                                             type="time"
                                             placeholder="end time"
                                             name="end_time"
+                                            value={formData.end_time}
+                                            onChange={handleChange2}
                                         />
+                                        {errorMessageEndTime && (
+                                            <div style={{ color: 'red' }}>
+                                                {errorMessageEndTime}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
@@ -200,18 +273,34 @@ const Create: React.FC<Props> = (props: Props) => {
                                         <input
                                             type="date"
                                             name="date"
-                                            defaultValue={moment().format(
-                                                'YYYY-MM-DD',
-                                            )}
+                                            value={formData.date}
+                                            onChange={handleChange2}
                                         />
+                                        {errorMessageDate && (
+                                            <div style={{ color: 'red' }}>
+                                                {errorMessageDate}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
                             <div className="form-group student_submit form-horizontal">
                                 {/* <label></label> */}
                                 <div className="form_elementss">
-                                    <button className="btn btn_1">
+                                    {/* <button className="btn btn_1">
                                         submit
+                                    </button> */}
+                                    {/* {!hasError && (
+                                        <button className="btn btn_1">
+                                            Update
+                                        </button>
+                                    )} */}
+                                    <button
+                                        // className="d_btn d_btn_1"
+                                        className={`btn btn_1 ${hasError ? 'btn_error' : ''}`}
+                                        disabled={!!hasError}
+                                    >
+                                        update
                                     </button>
                                 </div>
                             </div>

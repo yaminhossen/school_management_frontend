@@ -1,30 +1,49 @@
+import React, { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
-import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { anyObject } from '../../../common_types/object';
+
 export interface Props {}
 
 const NavigationList: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    const toggler = useRef(null);
-    function active_row() {
-        console.log(toggler);
-        if (toggler && toggler.current) {
-            (toggler.current as HTMLElement).classList.toggle('active');
-        }
-    }
+    const [isActive, setIsActive] = useState(false); // Track drawer state
+    const toggler = useRef<HTMLLIElement>(null);
+
+    // Toggle drawer manually
+    const active_row = () => {
+        setIsActive((prev) => !prev);
+    };
+
+    // Detect outside click
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                isActive &&
+                toggler.current &&
+                !toggler.current.contains(event.target as Node)
+            ) {
+                setIsActive(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () =>
+            document.removeEventListener('mousedown', handleClickOutside);
+    }, [isActive]);
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
+        e.preventDefault();
         try {
             let confirm = await (window as anyObject).s_confirm('Logout');
             if (confirm) {
-                const response = await axios.post('/api/v1/auth/logout');
+                await axios.post('/api/v1/auth/logout');
             }
         } catch (error) {
             setError(error);
         }
     };
+
     const menuArray = [
         {
             group: 'User management',
@@ -34,301 +53,6 @@ const NavigationList: React.FC<Props> = (props: Props) => {
                     label: 'Employee',
                     icon: 'manage_accounts',
                 },
-                {
-                    link: '/admin#/user-teachers',
-                    label: 'Teacher',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/user-parents',
-                    label: 'Parent',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/user-students',
-                    label: 'Student',
-                    icon: 'manage_accounts',
-                },
-            ],
-        },
-        {
-            group: 'Todo management',
-            links: [
-                {
-                    link: '/admin#/tasks',
-                    label: 'Task',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/task-variants',
-                    label: 'Variant',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/task-groups',
-                    label: 'Group',
-                    icon: 'manage_accounts',
-                },
-            ],
-        },
-        {
-            group: 'Branch management',
-            links: [
-                {
-                    link: '/admin#/staffs',
-                    label: 'Branch',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/staffs',
-                    label: 'Building',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/staffs',
-                    label: 'Room',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/staffs',
-                    label: 'Transport',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/staffs',
-                    label: 'Driver',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/staffs',
-                    label: 'Calendar',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/staffs',
-                    label: 'Event Type',
-                    icon: 'manage_accounts',
-                },
-            ],
-        },
-        {
-            group: 'Academic management',
-            links: [
-                {
-                    link: '/admin#/branch-classes',
-                    label: 'Class',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/branch-class-sections',
-                    label: 'Sections',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/branch-class-subjects',
-                    label: 'Subject',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/branch-class-routine-day-times/class-routine',
-                    label: 'Routines',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/branch-class-resources',
-                    label: 'Resources',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/exams',
-                    label: 'Exam',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/exams-routines',
-                    label: 'Exam Routine',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/student-overall-evaluations',
-                    label: 'Student Evaluation',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/student-evaluation-criterias',
-                    label: 'Student Evaluation Criteria',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/teacher-overall-evaluations',
-                    label: 'Teacher Evaluation',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/teacher-evaluation-criterias',
-                    label: 'Teacher Evaluation Criteria',
-                    icon: 'manage_accounts',
-                },
-            ],
-        },
-        {
-            group: 'Fees management',
-            links: [
-                {
-                    link: '/admin#/branch-class-fee-types',
-                    label: 'Fee Types',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/branch-class-fees',
-                    label: 'Fees',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/branch-class-fee-discounts',
-                    label: 'Discount',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/branch-class-fee-waivers',
-                    label: 'Waivers',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/fees-collection',
-                    label: 'Fee Collection',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/staffs',
-                    label: 'Due-list',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/staffs',
-                    label: 'Payment History',
-                    icon: 'manage_accounts',
-                },
-            ],
-        },
-        {
-            group: 'Meeting management',
-            links: [
-                {
-                    link: '/admin#/meeting',
-                    label: 'Meetings',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/meeting-agendas',
-                    label: 'Agendas',
-                    icon: 'manage_accounts',
-                },
-            ],
-        },
-        {
-            group: 'Account management',
-            links: [
-                {
-                    link: '/admin#/accounts',
-                    label: 'Account',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/account-periods',
-                    label: 'Period',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/account-categories',
-                    label: 'Category',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/leadger',
-                    label: 'Leadger',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/journal',
-                    label: 'Journal',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/debit',
-                    label: 'Debit',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/credit',
-                    label: 'Credit',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/profit-loss',
-                    label: 'Profit&Loss',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/month-wise-statement',
-                    label: 'Month wise',
-                    icon: 'manage_accounts',
-                },
-            ],
-        },
-        {
-            group: 'HRM management',
-            links: [
-                {
-                    link: '/admin#/user-staffs',
-                    label: 'Employee',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/user-teachers',
-                    label: 'Teacher',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/attendances',
-                    label: 'Attendances',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/payrolls',
-                    label: 'Payroll',
-                    icon: 'manage_accounts',
-                },
-            ],
-        },
-        {
-            group: 'Notice management',
-            links: [
-                {
-                    link: '/admin#/notices',
-                    label: 'Notice',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/notice-categorys',
-                    label: 'Category',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/faqs',
-                    label: 'FAQ',
-                    icon: 'manage_accounts',
-                },
-                {
-                    link: '/admin#/settings',
-                    label: 'Settings',
-                    icon: 'manage_accounts',
-                },
-                // {
-                //     link: '/admin#/branch-class-fees',
-                //     label: 'App',
-                //     icon: 'manage_accounts',
-                // },
             ],
         },
     ];
@@ -337,7 +61,7 @@ const NavigationList: React.FC<Props> = (props: Props) => {
         <>
             <li
                 ref={toggler}
-                className="icon_link_li app_drawar_link_li"
+                className={`icon_link_li app_drawar_link_li ${isActive ? 'active' : ''}`}
                 onClick={active_row}
             >
                 <a
@@ -349,7 +73,10 @@ const NavigationList: React.FC<Props> = (props: Props) => {
                 </a>
 
                 <div className="apps_list_drawer">
-                    <div className="content">
+                    <div
+                        className="content"
+                        onClick={(e) => e.stopPropagation()}
+                    >
                         <div className="top">
                             <div className="profile">
                                 <div className="img">
@@ -368,16 +95,9 @@ const NavigationList: React.FC<Props> = (props: Props) => {
                             <div className="action">
                                 <ul>
                                     <li>
-                                        <a href="#dashboard#">
+                                        <a href="/admin#/settings">
                                             <span className="material-symbols-outlined fill">
                                                 manage_accounts
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#dashboard#">
-                                            <span className="material-symbols-outlined fill">
-                                                settings
                                             </span>
                                         </a>
                                     </li>
@@ -399,234 +119,51 @@ const NavigationList: React.FC<Props> = (props: Props) => {
                             <input type="search" placeholder="search.." />
                         </div>
                         <div className="menu_list custom_scroll">
-                            {menuArray?.map((i: { [key: string]: any }) => {
-                                return (
-                                    <div className="menu_apart">
-                                        <h4>{i.group}</h4>
-                                        <ul>
-                                            {i.links?.map(
-                                                (
-                                                    link: {
-                                                        [key: string]: any;
-                                                    },
-                                                    index,
-                                                ) => {
-                                                    return (
-                                                        <li>
-                                                            <a
-                                                                aria-current="page"
-                                                                href={link.link}
-                                                                className="router-link-active router-link-exact-active"
-                                                            >
-                                                                <div
-                                                                    className={`icon bg_color_${index + 1}`}
-                                                                >
-                                                                    <span className="material-symbols-outlined fill">
-                                                                        {
-                                                                            link.icon
-                                                                        }
-                                                                    </span>
-                                                                </div>
-                                                                <div className="text">
-                                                                    {link.label}
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                    );
-                                                },
-                                            )}
-                                        </ul>
-                                    </div>
-                                );
-                            })}
+                            {menuArray?.map((i) => (
+                                <div className="menu_apart" key={i.group}>
+                                    <h4>{i.group}</h4>
+                                    <ul>
+                                        {i.links?.map((link, index) => (
+                                            <li
+                                                key={link.link}
+                                                onClick={() =>
+                                                    setIsActive(false)
+                                                } // <-- Close drawer on click
+                                            >
+                                                <a
+                                                    aria-current="page"
+                                                    href={link.link}
+                                                    className="router-link-active router-link-exact-active"
+                                                >
+                                                    <div
+                                                        className={`icon bg_color_${index + 1}`}
+                                                    >
+                                                        <span className="material-symbols-outlined fill">
+                                                            {link.icon}
+                                                        </span>
+                                                    </div>
+                                                    <div className="text">
+                                                        {link.label}
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
                         </div>
-                        {/* <div className="menu_list custom_scroll">
-                                <div className="menu_apart">
-                                    <h4>User Management</h4>
-                                    <ul>
-                                        <li>
-                                            <a
-                                                aria-current="page"
-                                                href="/admin#/user-staffs"
-                                                className="router-link-active router-link-exact-active"
-                                            >
-                                                <div className="icon bg_color_1">
-                                                    <span className="material-symbols-outlined fill">
-                                                        group
-                                                    </span>
-                                                </div>
-                                                <div className="text">Employee</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/admin#/user-teachers"
-                                                className=""
-                                            >
-                                                <div className="icon bg_color_2">
-                                                    <span className="material-symbols-outlined fill">
-                                                        group
-                                                    </span>
-                                                </div>
-                                                <div className="text">Teachers</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/admin#/user-parents"
-                                                className=""
-                                            >
-                                                <div className="icon bg_color_3">
-                                                    <span className="material-symbols-outlined fill">
-                                                        group
-                                                    </span>
-                                                </div>
-                                                <div className="text">Parents</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/admin#/user-students"
-                                                className=""
-                                            >
-                                                <div className="icon bg_color_4">
-                                                    <span className="material-symbols-outlined fill">
-                                                        group
-                                                    </span>
-                                                </div>
-                                                <div className="text">Students</div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="menu_apart">
-                                    <h4>Todo Management</h4>
-                                    <ul>
-                                        <li>
-                                            <a href="#dashboard#">
-                                                <div className="icon bg_color_3">
-                                                    <span className="material-symbols-outlined fill">
-                                                        fact_check
-                                                    </span>
-                                                </div>
-                                                <div className="text">Task</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#dashboard#">
-                                                <div className="icon bg_color_4">
-                                                    <span className="material-symbols-outlined fill">
-                                                        calendar_month
-                                                    </span>
-                                                </div>
-                                                <div className="text">Variant</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#dashboard#">
-                                                <div className="icon bg_color_5">
-                                                    <span className="material-symbols-outlined fill">
-                                                        calculate
-                                                    </span>
-                                                </div>
-                                                <div className="text">Group</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#dashboard#">
-                                                <div className="icon bg_color_6">
-                                                    <span className="material-symbols-outlined fill">
-                                                        email
-                                                    </span>
-                                                </div>
-                                                <div className="text">Messages</div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="menu_apart">
-                                    <h4>Management</h4>
-                                    <ul>
-                                        <li>
-                                            <a href="#dashboard#">
-                                                <div className="icon bg_color_7">
-                                                    <span className="material-symbols-outlined fill">
-                                                        supervisor_account
-                                                    </span>
-                                                </div>
-                                                <div className="text">Users</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#dashboard#">
-                                                <div className="icon bg_color_9">
-                                                    <span className="material-symbols-outlined fill">
-                                                        news
-                                                    </span>
-                                                </div>
-                                                <div className="text">Blog</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#dashboard#">
-                                                <div className="icon bg_color_8">
-                                                    <span className="material-symbols-outlined fill">
-                                                        card_membership
-                                                    </span>
-                                                </div>
-                                                <div className="text">
-                                                    Subscribers
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#dashboard#">
-                                                <div className="icon bg_color_10">
-                                                    <span className="material-symbols-outlined fill">
-                                                        format_list_bulleted_add
-                                                    </span>
-                                                </div>
-                                                <div className="text">Contacts</div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="menu_apart">
-                                    <h4>Frontend Management</h4>
-                                    <ul>
-                                        <li>
-                                            <a href="#dashboard#">
-                                                <div className="icon bg_color_11">
-                                                    <span className="material-symbols-outlined fill">
-                                                        image
-                                                    </span>
-                                                </div>
-                                                <div className="text">Banners</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#dashboard#">
-                                                <div className="icon bg_color_1">
-                                                    <span className="material-symbols-outlined fill">
-                                                        speaker_notes
-                                                    </span>
-                                                </div>
-                                                <div className="text">Notice</div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div> */}
                     </div>
                 </div>
 
-                <div
-                    className="backdrop"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        active_row();
-                    }}
-                ></div>
+                {isActive && (
+                    <div
+                        className="backdrop"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setIsActive(false);
+                        }}
+                    ></div>
+                )}
             </li>
         </>
     );
