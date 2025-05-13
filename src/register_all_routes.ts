@@ -4,8 +4,8 @@ import path from 'path';
 let appDir: string = path.resolve(path.dirname(__dirname));
 
 export let active_routes: string[] = [
-    // 'src/modules/auth_management/authetication/routes.ts',
-    // 'src/modules/academic_calendar_management/academic_calendars/routes.ts',
+    'src/modules/auth_management/authetication/routes.ts',
+    'src/modules/academic_calendar_management/academic_calendars/routes.ts',
     // 'src/modules/academic_calendar_management/academic_calendar_event_types/routes.ts',
     // 'src/modules/accounts_management/accounts/routes.ts',
     // 'src/modules/accounts_management/account_categories/routes.ts',
@@ -76,7 +76,7 @@ export let active_routes: string[] = [
     // 'src/modules/exam_management/exam_equipment_sent_to_branches/routes.ts',
     // 'src/modules/exam_management/exam_hall_guard_plans/routes.ts',
     // 'src/modules/exam_management/exam_preparation_reports/routes.ts',
-    'src/modules/exam_management/exam_routines/routes.ts',
+    // 'src/modules/exam_management/exam_routines/routes.ts',
     // 'src/modules/exam_management/exam_seat_plans/routes.ts',
     // 'src/modules/exam_management/exam_students/routes.ts',
     // 'src/modules/exam_management/exam_student_marks/routes.ts',

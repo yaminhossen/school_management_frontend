@@ -34,6 +34,16 @@ async function details(
                     as: 'subject_teacher',
                 },
             ],
+            order: [
+                [
+                    {
+                        model: models.BranchClassRoutineDayTimesModel,
+                        as: 'routine_days',
+                    },
+                    'day_no',
+                    'ASC',
+                ],
+            ],
             attributes: {
                 exclude: ['password'],
             },

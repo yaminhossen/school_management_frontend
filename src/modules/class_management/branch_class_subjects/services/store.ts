@@ -162,8 +162,36 @@ async function store(
                 creator: user?.id || null,
             };
             (await bcst_model.update(bcst_inputs)).save();
+
+            // this is for handeling order by data insert.
+            // if (class_routine && Array.isArray(class_routine)) {
+            //     for (const ss of class_routine) {
+            //         console.log('Processing:', ss);
+
+            //         let crdt_model =
+            //             new models.BranchClassRoutineDayTimesModel();
+            //         let crdt_inputs: InferCreationAttributes<
+            //             typeof crdt_model
+            //         > = {
+            //             branch_id: auth_user?.branch_id || 1,
+            //             branch_class_routine_id: r_model.id || 0,
+            //             branch_teacher_id: ss.branch_teacher_id || 0,
+            //             branch_class_subject_id: data.id || 0,
+            //             branch_class_room_id: ss.branch_class_room_id || 0,
+            //             day_name: ss.day_name,
+            //             day_no: ss.day_no,
+            //             start_time: ss.start_time || null,
+            //             end_time: ss.end_time || null,
+            //             creator: user?.id || null,
+            //         };
+
+            //         await crdt_model.update(crdt_inputs).save();
+            //     }
+            // }
+
             if (class_routine) {
                 class_routine.forEach(async (ss) => {
+                    console.log('sfldjfldsj', ss);
                     let crdt_model =
                         new models.BranchClassRoutineDayTimesModel();
                     let crdt_inputs: InferCreationAttributes<
