@@ -430,7 +430,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                 />
                                                             </div>
                                                         </div>
-                                                        <div className="form-group form-vertical">
+                                                        {/* <div className="form-group form-vertical">
                                                             <label>
                                                                 Start Time
                                                             </label>
@@ -458,48 +458,122 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                     }
                                                                 />
                                                             </div>
+                                                        </div> */}
+                                                        <div className="form-group form-vertical">
+                                                            <label>
+                                                                End Time
+                                                            </label>
+                                                            <div className="form_elements">
+                                                                {i !==
+                                                                'friday' ? (
+                                                                    <>
+                                                                        <input
+                                                                            type="time"
+                                                                            placeholder="Start time"
+                                                                            name="start_time"
+                                                                            value={
+                                                                                schedule[
+                                                                                    index
+                                                                                ]
+                                                                                    ?.start_time ||
+                                                                                ''
+                                                                            }
+                                                                            onChange={(
+                                                                                e,
+                                                                            ) =>
+                                                                                handleTimeChange(
+                                                                                    index,
+                                                                                    'start_time',
+                                                                                    e
+                                                                                        .target
+                                                                                        .value,
+                                                                                )
+                                                                            }
+                                                                        />
+                                                                        {schedule[
+                                                                            index
+                                                                        ]
+                                                                            ?.error && (
+                                                                            <div
+                                                                                style={{
+                                                                                    color: 'red',
+                                                                                }}
+                                                                            >
+                                                                                {
+                                                                                    schedule[
+                                                                                        index
+                                                                                    ]
+                                                                                        .error
+                                                                                }
+                                                                            </div>
+                                                                        )}
+                                                                    </>
+                                                                ) : (
+                                                                    <input
+                                                                        name="start_time"
+                                                                        type="text"
+                                                                        placeholder="This is Friday"
+                                                                        readOnly
+                                                                    />
+                                                                )}
+                                                            </div>
                                                         </div>
                                                         <div className="form-group form-vertical">
                                                             <label>
                                                                 End Time
                                                             </label>
                                                             <div className="form_elements">
-                                                                <input
-                                                                    type="time"
-                                                                    placeholder="end time"
-                                                                    name="end_time"
-                                                                    value={
-                                                                        schedule[
+                                                                {i !==
+                                                                'friday' ? (
+                                                                    <>
+                                                                        <input
+                                                                            type="time"
+                                                                            placeholder="End time"
+                                                                            name="end_time"
+                                                                            value={
+                                                                                schedule[
+                                                                                    index
+                                                                                ]
+                                                                                    ?.end_time ||
+                                                                                ''
+                                                                            }
+                                                                            onChange={(
+                                                                                e,
+                                                                            ) =>
+                                                                                handleTimeChange(
+                                                                                    index,
+                                                                                    'end_time',
+                                                                                    e
+                                                                                        .target
+                                                                                        .value,
+                                                                                )
+                                                                            }
+                                                                        />
+                                                                        {schedule[
                                                                             index
                                                                         ]
-                                                                            .end_time
-                                                                    }
-                                                                    onChange={(
-                                                                        e,
-                                                                    ) =>
-                                                                        handleTimeChange(
-                                                                            index,
-                                                                            'end_time',
-                                                                            e
-                                                                                .target
-                                                                                .value,
-                                                                        )
-                                                                    }
-                                                                />
-                                                                {schedule[index]
-                                                                    .error && (
-                                                                    <div
-                                                                        style={{
-                                                                            color: 'red',
-                                                                        }}
-                                                                    >
-                                                                        {
-                                                                            schedule[
-                                                                                index
-                                                                            ]
-                                                                                .error
-                                                                        }
-                                                                    </div>
+                                                                            ?.error && (
+                                                                            <div
+                                                                                style={{
+                                                                                    color: 'red',
+                                                                                }}
+                                                                            >
+                                                                                {
+                                                                                    schedule[
+                                                                                        index
+                                                                                    ]
+                                                                                        .error
+                                                                                }
+                                                                            </div>
+                                                                        )}
+                                                                    </>
+                                                                ) : (
+                                                                    <input
+                                                                        name="end_time"
+                                                                        type="text"
+                                                                        placeholder="This is Friday"
+                                                                        readOnly
+                                                                    />
                                                                 )}
                                                             </div>
                                                         </div>
@@ -507,10 +581,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                                             <label>
                                                                 Teacher
                                                             </label>
-                                                            <div className="form_elements">
+                                                            {/* <div className="form_elements">
                                                                 {
                                                                     i !== 'friday' ? 
-                                                                    <select
+                                                                    (<select
                                                                     name="branch_teacher_id"
                                                                     id=""
                                                                     className="teacher"
@@ -543,46 +617,132 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                                 );
                                                                             },
                                                                         )}
-                                                                </select>
-                                                                 : 'fiday'
+                                                                </select>)
+                                                                 : ( <div>
+                                                                    <input name="branch_teacher_id" type="text" placeholder='This is Friday' readOnly /> 
+                                                                 </div> )
                                                                 }
-                                                                {/* // <select
-                                                                //     name="branch_teacher_id"
-                                                                //     id=""
-                                                                //     className="teacher"
-                                                                // >
-                                                                //     <option value="0">
-                                                                //         Select
-                                                                //         Teacher
-                                                                //     </option>
-                                                                //     {state
-                                                                //         ?.teachers
-                                                                //         ?.length &&
-                                                                //         state.teachers?.map(
-                                                                //             (i: {
-                                                                //                 [
-                                                                //                     key: string
-                                                                //                 ]: any;
-                                                                //             }) => {
-                                                                //                 return (
-                                                                //                     <option
-                                                                //                         value={
-                                                                //                             i.id
-                                                                //                         }
-                                                                //                     >
-                                                                //                         {
-                                                                //                             i
-                                                                //                                 .user_teacher
-                                                                //                                 ?.name
-                                                                //                         }
-                                                                //                     </option>
-                                                                //                 );
-                                                                //             },
-                                                                //         )}
-                                                                // </select> */}
+                                                            </div> */}
+                                                            <div className="form_elements">
+                                                                {i !==
+                                                                'friday' ? (
+                                                                    <select
+                                                                        name="branch_teacher_id"
+                                                                        className="teacher"
+                                                                    >
+                                                                        <option value="0">
+                                                                            Select
+                                                                            Teacher
+                                                                        </option>
+                                                                        {Array.isArray(
+                                                                            state?.teachers,
+                                                                        ) &&
+                                                                        state
+                                                                            .teachers
+                                                                            .length >
+                                                                            0 ? (
+                                                                            state.teachers.map(
+                                                                                (teacher: {
+                                                                                    [
+                                                                                        key: string
+                                                                                    ]: any;
+                                                                                }) => (
+                                                                                    <option
+                                                                                        key={
+                                                                                            teacher.id
+                                                                                        }
+                                                                                        value={
+                                                                                            teacher.id
+                                                                                        }
+                                                                                    >
+                                                                                        {teacher
+                                                                                            .user_teacher
+                                                                                            ?.name ||
+                                                                                            'Unnamed'}
+                                                                                    </option>
+                                                                                ),
+                                                                            )
+                                                                        ) : (
+                                                                            <option
+                                                                                disabled
+                                                                            >
+                                                                                No
+                                                                                teachers
+                                                                                available
+                                                                            </option>
+                                                                        )}
+                                                                    </select>
+                                                                ) : (
+                                                                    <input
+                                                                        name="branch_teacher_id"
+                                                                        type="text"
+                                                                        placeholder="This is Friday"
+                                                                        readOnly
+                                                                        />
+                                                                )}
                                                             </div>
                                                         </div>
                                                         <div className="form-group form-vertical">
+                                                            <label>Room</label>
+                                                            <div className="form_elements">
+                                                                {i !==
+                                                                'friday' ? (
+                                                                    <select
+                                                                            name="room"
+                                                                        className="room"
+                                                                        >
+                                                                            <option value="0">
+                                                                            Select
+                                                                            Room
+                                                                            </option>
+                                                                            {Array.isArray(
+                                                                            state?.rooms,
+                                                                        ) &&
+                                                                        state
+                                                                            .rooms
+                                                                            .length >
+                                                                            0 ? (
+                                                                            state.rooms.map(
+                                                                                        (room: {
+                                                                                    [
+                                                                                        key: string
+                                                                                    ]: any;
+                                                                                }) => (
+                                                                                    <option
+                                                                                                key={
+                                                                                            room.id
+                                                                                                }
+                                                                                        value={
+                                                                                                    room.id
+                                                                                        }
+                                                                                            >
+                                                                                        {room.room_name ||
+                                                                                            'Unnamed Room'}
+                                                                                    </option>
+                                                                                        ),
+                                                                            )
+                                                                                ) : (
+                                                                            <option
+                                                                                        disabled
+                                                                            >
+                                                                                No
+                                                                                rooms
+                                                                                available
+                                                                                    </option>
+                                                                        )}
+                                                                        </select>
+                                                                ) : (
+                                                                    <input
+                                                                        name="room"
+                                                                        type="text"
+                                                                        placeholder="This is Friday"
+                                                                        readOnly
+                                                                        />
+                                                                )}
+                                                            </div>
+                                                        </div>
+
+                                                        {/* <div className="form-group form-vertical">
                                                             <label>Room</label>
                                                             <div className="form_elements">
                                                                 <select
@@ -618,7 +778,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                         )}
                                                                 </select>
                                                             </div>
-                                                        </div>
+                                                        </div> */}
                                                     </div>
                                                 </div>
                                             ))}

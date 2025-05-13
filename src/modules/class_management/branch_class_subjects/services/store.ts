@@ -171,24 +171,25 @@ async function store(
                     > = {
                         branch_id: auth_user?.branch_id || 1,
                         branch_class_routine_id: r_model.id || 0,
-                        branch_teacher_id: body.branch_teacher_id,
+                        branch_teacher_id: body.branch_teacher_id || 0,
                         branch_class_subject_id: data.id || 0,
-                        branch_class_room_id: body.room,
+                        branch_class_room_id: body.room || 0,
                         day_name: body.day_name,
                         day_no: body.day_no,
-                        start_time: body.start_time,
-                        end_time: body.end_time,
+                        start_time: body.start_time || null,
+                        end_time: body.end_time || null,
                         creator: user?.id || null,
                     };
                     crdt_inputs.branch_id = auth_user?.branch_id || 1;
                     crdt_inputs.branch_class_routine_id = r_model.id || 0;
-                    crdt_inputs.branch_teacher_id = ss.branch_teacher_id;
+                    crdt_inputs.branch_teacher_id = ss.branch_teacher_id || 0;
                     crdt_inputs.branch_class_subject_id = data.id || 0;
-                    crdt_inputs.branch_class_room_id = ss.branch_class_room_id;
+                    crdt_inputs.branch_class_room_id =
+                        ss.branch_class_room_id || 0;
                     crdt_inputs.day_name = ss.day_name;
                     crdt_inputs.day_no = ss.day_no;
-                    crdt_inputs.start_time = ss.start_time;
-                    crdt_inputs.end_time = ss.end_time;
+                    crdt_inputs.start_time = ss.start_time || null;
+                    crdt_inputs.end_time = ss.end_time || null;
                     (await crdt_model.update(crdt_inputs)).save();
                 });
             }
