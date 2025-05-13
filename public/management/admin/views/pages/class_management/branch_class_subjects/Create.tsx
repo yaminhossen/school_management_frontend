@@ -461,7 +461,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         </div> */}
                                                         <div className="form-group form-vertical">
                                                             <label>
-                                                                End Time
+                                                                Start Time
                                                             </label>
                                                             <div className="form_elements">
                                                                 {i !==

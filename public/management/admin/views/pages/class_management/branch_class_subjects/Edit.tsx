@@ -138,10 +138,50 @@ const Edit: React.FC<Props> = (props: Props) => {
             fetchData(selectedClass);
         }
     }, [selectedClass]);
-
+    const now = moment();
+    const oneHourLater = moment().add(1, 'hour');
+    const [schedule, setSchedule] = useState(
+        days.map(() => ({
+            start_time: now.format('HH:mm'),
+            end_time: oneHourLater.format('HH:mm'),
+            error: '',
+        })),
+    );
+    const initializeSchedule = (sourceData) => {
+        return sourceData?.map((day) => ({
+            start_time: day.start_time || now.format('HH:mm'),
+            end_time: day.end_time || oneHourLater.format('HH:mm'),
+            error: '',
+        }));
+    };
     useEffect(() => {
         setsevenDayRoutines(state.item.routine_days);
+        setSchedule(initializeSchedule(state.item.routine_days));
     }, [state.item]);
+    // console.log('sevenDayRoutines', sevenDayRoutines);
+
+    const handleTimeChange = (index, field, value) => {
+        const newSchedule = [...schedule];
+        newSchedule[index][field] = value;
+
+        const { start_time, end_time } = newSchedule[index];
+
+        if (start_time && end_time) {
+            const start = moment(start_time, 'HH:mm');
+            const end = moment(end_time, 'HH:mm');
+
+            if (end.isBefore(start)) {
+                newSchedule[index].error = 'End time must be after start time';
+            } else {
+                newSchedule[index].error = '';
+            }
+        } else {
+            newSchedule[index].error = '';
+        }
+
+        setSchedule(newSchedule);
+    };
+    const hasErrors = schedule?.some((day) => day.error);
     return (
         <>
             <div className="page_content">
@@ -513,7 +553,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                             Time
                                                                         </label>
                                                                         <div className="form_elements">
-                                                                            <input
+                                                                            {/* <input
                                                                                 type="time"
                                                                                 placeholder="start time"
                                                                                 name="start_time"
@@ -523,7 +563,49 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                                 ).format(
                                                                                     'HH:mm',
                                                                                 )}
-                                                                            />
+                                                                            /> */}
+                                                                            <>
+                                                                                <input
+                                                                                    type="time"
+                                                                                    placeholder="Start time"
+                                                                                    name="start_time"
+                                                                                    value={
+                                                                                        schedule[
+                                                                                            index
+                                                                                        ]
+                                                                                            ?.start_time ||
+                                                                                        ''
+                                                                                    }
+                                                                                    onChange={(
+                                                                                        e,
+                                                                                    ) =>
+                                                                                        handleTimeChange(
+                                                                                            index,
+                                                                                            'start_time',
+                                                                                            e
+                                                                                                .target
+                                                                                                .value,
+                                                                                        )
+                                                                                    }
+                                                                                />
+                                                                                {schedule[
+                                                                                    index
+                                                                                ]
+                                                                                    ?.error && (
+                                                                                    <div
+                                                                                        style={{
+                                                                                            color: 'red',
+                                                                                        }}
+                                                                                    >
+                                                                                        {
+                                                                                            schedule[
+                                                                                                index
+                                                                                            ]
+                                                                                                .error
+                                                                                        }
+                                                                                    </div>
+                                                                                )}
+                                                                            </>
                                                                         </div>
                                                                     </div>
                                                                     <div className="form-group form-vertical">
@@ -532,7 +614,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                             Time
                                                                         </label>
                                                                         <div className="form_elements">
-                                                                            <input
+                                                                            {/* <input
                                                                                 type="time"
                                                                                 placeholder="end time"
                                                                                 name="end_time"
@@ -542,7 +624,49 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                                 ).format(
                                                                                     'HH:mm',
                                                                                 )}
-                                                                            />
+                                                                            /> */}
+                                                                            <>
+                                                                                <input
+                                                                                    type="time"
+                                                                                    placeholder="Start time"
+                                                                                    name="end_time"
+                                                                                    value={
+                                                                                        schedule[
+                                                                                            index
+                                                                                        ]
+                                                                                            ?.end_time ||
+                                                                                        ''
+                                                                                    }
+                                                                                    onChange={(
+                                                                                        e,
+                                                                                    ) =>
+                                                                                        handleTimeChange(
+                                                                                            index,
+                                                                                            'end_time',
+                                                                                            e
+                                                                                                .target
+                                                                                                .value,
+                                                                                        )
+                                                                                    }
+                                                                                />
+                                                                                {schedule[
+                                                                                    index
+                                                                                ]
+                                                                                    ?.error && (
+                                                                                    <div
+                                                                                        style={{
+                                                                                            color: 'red',
+                                                                                        }}
+                                                                                    >
+                                                                                        {
+                                                                                            schedule[
+                                                                                                index
+                                                                                            ]
+                                                                                                .error
+                                                                                        }
+                                                                                    </div>
+                                                                                )}
+                                                                            </>
                                                                         </div>
                                                                     </div>
                                                                     <div className="form-group form-vertical">
@@ -696,7 +820,8 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     <div className="form_elementss">
                                         <button
                                             // onClick={handle_submit}
-                                            className="btn btn_1"
+                                            className={`btn btn_1 ${hasErrors ? 'btn_error' : ''}`}
+                                            disabled={!!hasErrors}
                                         >
                                             update
                                         </button>
