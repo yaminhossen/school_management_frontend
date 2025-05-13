@@ -12,7 +12,7 @@ function Component() {
     return <RouterProvider router={router}></RouterProvider>;
 }
 
-const container: HTMLElement | null = document.getElementById('app');
+const container: HTMLElement | null = document.getElementById('appi');
 if (container) {
     const root = createRoot(container);
     root.render(
@@ -55,7 +55,7 @@ axios.interceptors.response.use(
         // (window as any)
         //     .jQuery('.loader-wrapper')
         //     .fadeOut('slow', function () {});
-        if (response.status == 202 || 200) {
+        if (response.status == 200) {
             (window as anyObject).toaster(`Successfuly task created`);
         }
         if (response.status == 204) {

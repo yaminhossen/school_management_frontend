@@ -1635,3 +1635,8 @@
 {"level":60,"time":1747124350137,"pid":6456,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 2:19:10 PM","message":"target not found."}
 {"level":60,"time":1747124350750,"pid":6456,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:110:15)","time":"5/13/2025 2:19:10 PM","message":"Unknown column 'UserAdminModels.role' in 'where clause'"}
 {"level":60,"time":1747124363643,"pid":6456,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:110:15)","time":"5/13/2025 2:19:23 PM","message":"Unknown column 'UserAdminModels.role' in 'where clause'"}
+{"level":60,"time":1747126380050,"pid":13016,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 2:53:00 PM","message":"target not found."}
+{"level":60,"time":1747126388254,"pid":13016,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 2:53:08 PM","message":"Data truncated for column 'role' at row 1"}
+{"level":60,"time":1747126473591,"pid":13016,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 2:54:33 PM","message":"target not found."}
+{"level":60,"time":1747126477373,"pid":13016,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 2:54:37 PM","message":"target not found."}
+{"level":60,"time":1747126494161,"pid":13016,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 2:54:54 PM","message":"target not found."}
