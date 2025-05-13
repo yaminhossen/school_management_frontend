@@ -1663,3 +1663,4 @@
 {"level":60,"time":1747112479279,"pid":5380,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/classes"}
 {"level":60,"time":1747112479320,"pid":5380,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/teachers"}
 {"level":60,"time":1747112479327,"pid":5380,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/rooms"}
+{"level":60,"time":1747116608581,"pid":7480,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.49126573542974517"}

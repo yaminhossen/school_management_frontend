@@ -60,13 +60,13 @@ const Edit: React.FC<Props> = (props: Props) => {
     console.log('class section', selectedClass);
 
     let days = [
+        'saturday',
         'sunday',
         'monday',
         'tuesday',
         'wednesday',
         'thursday',
         'friday',
-        'saturday',
     ];
 
     useEffect(() => {
@@ -553,59 +553,58 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                             Time
                                                                         </label>
                                                                         <div className="form_elements">
-                                                                            {/* <input
-                                                                                type="time"
-                                                                                placeholder="start time"
-                                                                                name="start_time"
-                                                                                defaultValue={moment(
-                                                                                    i?.start_time,
-                                                                                    'HH:mm:ss',
-                                                                                ).format(
-                                                                                    'HH:mm',
-                                                                                )}
-                                                                            /> */}
-                                                                            <>
-                                                                                <input
-                                                                                    type="time"
-                                                                                    placeholder="Start time"
-                                                                                    name="start_time"
-                                                                                    value={
-                                                                                        schedule[
-                                                                                            index
-                                                                                        ]
-                                                                                            ?.start_time ||
-                                                                                        ''
-                                                                                    }
-                                                                                    onChange={(
-                                                                                        e,
-                                                                                    ) =>
-                                                                                        handleTimeChange(
-                                                                                            index,
-                                                                                            'start_time',
-                                                                                            e
-                                                                                                .target
-                                                                                                .value,
-                                                                                        )
-                                                                                    }
-                                                                                />
-                                                                                {schedule[
-                                                                                    index
-                                                                                ]
-                                                                                    ?.error && (
-                                                                                    <div
-                                                                                        style={{
-                                                                                            color: 'red',
-                                                                                        }}
-                                                                                    >
-                                                                                        {
-                                                                                            schedule[
+                                                                            {i.day_name !==
+                                                                            'friday' ? (
+                                                                                    <>
+                                                                                    <input
+                                                                                            type="time"
+                                                                                        placeholder="Start time"
+                                                                                            name="start_time"
+                                                                                        value={
+                                                                                                schedule[
                                                                                                 index
-                                                                                            ]
-                                                                                                .error
+                                                                                                ]
+                                                                                                    ?.start_time ||
+                                                                                            ''
                                                                                         }
-                                                                                    </div>
+                                                                                            onChange={(
+                                                                                            e,
+                                                                                            ) =>
+                                                                                            handleTimeChange(
+                                                                                                    index,
+                                                                                                    'start_time',
+                                                                                                e
+                                                                                                        .target
+                                                                                                        .value,
+                                                                                                )
+                                                                                        }
+                                                                                        />
+                                                                                        {schedule[
+                                                                                            index
+                                                                                    ]
+                                                                                            ?.error && (
+                                                                                        <div
+                                                                                                style={{
+                                                                                                color: 'red',
+                                                                                                }}
+                                                                                        >
+                                                                                                {
+                                                                                                schedule[
+                                                                                                        index
+                                                                                                ]
+                                                                                                        .error
+                                                                                            }
+                                                                                            </div>
+                                                                                        )}
+                                                                                </>
+                                                                                ) : (
+                                                                                    <input
+                                                                                    name="start_time"
+                                                                                        type="text"
+                                                                                        placeholder="This is Friday"
+                                                                                        readOnly
+                                                                                />
                                                                                 )}
-                                                                            </>
                                                                         </div>
                                                                     </div>
                                                                     <div className="form-group form-vertical">
@@ -614,66 +613,67 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                             Time
                                                                         </label>
                                                                         <div className="form_elements">
-                                                                            {/* <input
-                                                                                type="time"
-                                                                                placeholder="end time"
-                                                                                name="end_time"
-                                                                                defaultValue={moment(
-                                                                                    i?.end_time,
-                                                                                    'HH:mm:ss',
-                                                                                ).format(
-                                                                                    'HH:mm',
-                                                                                )}
-                                                                            /> */}
-                                                                            <>
-                                                                                <input
-                                                                                    type="time"
-                                                                                    placeholder="Start time"
-                                                                                    name="end_time"
-                                                                                    value={
-                                                                                        schedule[
-                                                                                            index
-                                                                                        ]
-                                                                                            ?.end_time ||
-                                                                                        ''
-                                                                                    }
-                                                                                    onChange={(
-                                                                                        e,
-                                                                                    ) =>
-                                                                                        handleTimeChange(
-                                                                                            index,
-                                                                                            'end_time',
-                                                                                            e
-                                                                                                .target
-                                                                                                .value,
-                                                                                        )
-                                                                                    }
-                                                                                />
-                                                                                {schedule[
-                                                                                    index
-                                                                                ]
-                                                                                    ?.error && (
-                                                                                    <div
-                                                                                        style={{
-                                                                                            color: 'red',
-                                                                                        }}
-                                                                                    >
-                                                                                        {
-                                                                                            schedule[
+                                                                            {i.day_name !==
+                                                                            'friday' ? (
+                                                                                <>
+                                                                                        <input
+                                                                                            type="time"
+                                                                                            placeholder="Start time"
+                                                                                        name="end_time"
+                                                                                            value={
+                                                                                                schedule[
                                                                                                 index
                                                                                             ]
-                                                                                                .error
+                                                                                                    ?.end_time ||
+                                                                                            ''
                                                                                         }
-                                                                                    </div>
+                                                                                            onChange={(
+                                                                                                e,
+                                                                                            ) =>
+                                                                                                handleTimeChange(
+                                                                                                index,
+                                                                                                    'end_time',
+                                                                                                    e
+                                                                                                    .target
+                                                                                                        .value,
+                                                                                            )
+                                                                                            }
+                                                                                    />
+                                                                                        {schedule[
+                                                                                        index
+                                                                                        ]
+                                                                                        ?.error && (
+                                                                                            <div
+                                                                                                style={{
+                                                                                                    color: 'red',
+                                                                                            }}
+                                                                                            >
+                                                                                                {
+                                                                                                    schedule[
+                                                                                                    index
+                                                                                                    ]
+                                                                                                        .error
+                                                                                            }
+                                                                                            </div>
+                                                                                        )}
+                                                                                    </>
+                                                                                ) : (
+                                                                                    <input
+                                                                                    name="start_time"
+                                                                                        type="text"
+                                                                                        placeholder="This is Friday"
+                                                                                    readOnly
+                                                                                />
                                                                                 )}
-                                                                            </>
                                                                         </div>
                                                                     </div>
                                                                     <div className="form-group form-vertical">
                                                                         <label>
                                                                             Teacher
                                                                         </label>
-                                                                        <div className="form_elements">
+                                                                        {/* <div className="form_elements">
+                                                                            {i.day_name !==
+                                                                'friday' ? (
                                                                             {state
                                                                                 .item
                                                                                 .routine_days
@@ -724,6 +724,101 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                                         )}
                                                                                 </select>
                                                                             )}
+                                                                ) : (
+                                                                    <input
+                                                                        name="start_time"
+                                                                        type="text"
+                                                                        placeholder="This is Friday"
+                                                                        readOnly
+                                                                    />
+                                                                )}
+                                                                        </div> */}
+                                                                        <div className="form_elements">
+                                                                            {i.day_name !==
+                                                                            'friday' ? (
+                                                                                Array.isArray(
+                                                                                    state
+                                                                                        ?.item
+                                                                                        ?.routine_days,
+                                                                                ) &&
+                                                                                state
+                                                                                    .item
+                                                                                    .routine_days
+                                                                                    .length >
+                                                                                    0 ? (
+                                                                                    <select
+                                                                                        name="branch_teacher_id"
+                                                                                        className="teacher"
+                                                                                        value={
+                                                                                            i.branch_teacher_id
+                                                                                        }
+                                                                                        onChange={(
+                                                                                            e,
+                                                                                        ) =>
+                                                                                            handleTeacherChange(
+                                                                                                e,
+                                                                                                index,
+                                                                                            )
+                                                                                        }
+                                                                                    >
+                                                                                        <option value="0">
+                                                                                            Select
+                                                                                            Teacher
+                                                                                        </option>
+                                                                                        {Array.isArray(
+                                                                                            state?.teachers,
+                                                                                        ) &&
+                                                                                        state
+                                                                                            .teachers
+                                                                                            .length >
+                                                                                            0 ? (
+                                                                                            state.teachers.map(
+                                                                                                (teacher: {
+                                                                                                    [
+                                                                                                        key: string
+                                                                                                    ]: any;
+                                                                                                }) => (
+                                                                                                    <option
+                                                                                                        key={
+                                                                                                            teacher.id
+                                                                                                        }
+                                                                                                        value={
+                                                                                                            teacher.id
+                                                                                                        }
+                                                                                                    >
+                                                                                                        {teacher
+                                                                                                            .user_teacher
+                                                                                                            ?.name ||
+                                                                                                            'Unnamed'}
+                                                                                                    </option>
+                                                                                                ),
+                                                                                            )
+                                                                                        ) : (
+                                                                                            <option
+                                                                                                disabled
+                                                                                            >
+                                                                                                No
+                                                                                                teachers
+                                                                                                available
+                                                                                            </option>
+                                                                                        )}
+                                                                                    </select>
+                                                                                ) : (
+                                                                                    <input
+                                                                                        name="branch_teacher_id"
+                                                                                        type="text"
+                                                                                        placeholder="No routine days found"
+                                                                                        readOnly
+                                                                                    />
+                                                                                )
+                                                                            ) : (
+                                                                                <input
+                                                                                    name="start_time"
+                                                                                    type="text"
+                                                                                    placeholder="This is Friday"
+                                                                                    readOnly
+                                                                                />
+                                                                            )}
                                                                         </div>
                                                                     </div>
                                                                     <div className="form-group form-vertical">
@@ -731,49 +826,91 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                             Room
                                                                         </label>
                                                                         <div className="form_elements">
-                                                                            <select
-                                                                                name="room"
-                                                                                id=""
-                                                                                className="room"
-                                                                                value={
-                                                                                    i.branch_class_room_id
-                                                                                }
-                                                                                onChange={(
-                                                                                    e,
-                                                                                ) => {
-                                                                                    handleRoomChange(
-                                                                                        e,
-                                                                                        index,
-                                                                                    );
-                                                                                }}
-                                                                            >
-                                                                                <option value="0">
-                                                                                    Select
-                                                                                    Room
-                                                                                </option>
-                                                                                {state
-                                                                                    ?.rooms
-                                                                                    ?.length &&
-                                                                                    state.rooms?.map(
-                                                                                        (i: {
-                                                                                            [
-                                                                                                key: string
-                                                                                            ]: any;
-                                                                                        }) => {
-                                                                                            return (
+                                                                            <div className="form_elements">
+                                                                                {i.day_name !==
+                                                                                'friday' ? (
+                                                                                    Array.isArray(
+                                                                                        state
+                                                                                            ?.item
+                                                                                            ?.routine_days,
+                                                                                    ) &&
+                                                                                    state
+                                                                                        .item
+                                                                                        .routine_days
+                                                                                        .length >
+                                                                                        0 ? (
+                                                                                        <select
+                                                                                            name="room"
+                                                                                            className="room"
+                                                                                            value={
+                                                                                                i.branch_class_room_id
+                                                                                            }
+                                                                                            onChange={(
+                                                                                                e,
+                                                                                            ) =>
+                                                                                                handleRoomChange(
+                                                                                                    e,
+                                                                                                    index,
+                                                                                                )
+                                                                                            }
+                                                                                        >
+                                                                                            <option value="0">
+                                                                                                Select
+                                                                                                Room
+                                                                                            </option>
+                                                                                            {Array.isArray(
+                                                                                                state?.rooms,
+                                                                                            ) &&
+                                                                                            state
+                                                                                                .rooms
+                                                                                                .length >
+                                                                                                0 ? (
+                                                                                                state.rooms.map(
+                                                                                                    (room: {
+                                                                                                        [
+                                                                                                            key: string
+                                                                                                        ]: any;
+                                                                                                    }) => (
+                                                                                                        <option
+                                                                                                            key={
+                                                                                                                room.id
+                                                                                                            }
+                                                                                                            value={
+                                                                                                                room.id
+                                                                                                            }
+                                                                                                        >
+                                                                                                            {room.room_name ||
+                                                                                                                'Unnamed Room'}
+                                                                                                        </option>
+                                                                                                    ),
+                                                                                                )
+                                                                                            ) : (
                                                                                                 <option
-                                                                                                    value={
-                                                                                                        i.id
-                                                                                                    }
+                                                                                                    disabled
                                                                                                 >
-                                                                                                    {
-                                                                                                        i.room_name
-                                                                                                    }
+                                                                                                    No
+                                                                                                    rooms
+                                                                                                    available
                                                                                                 </option>
-                                                                                            );
-                                                                                        },
-                                                                                    )}
-                                                                            </select>
+                                                                                            )}
+                                                                                        </select>
+                                                                                    ) : (
+                                                                                        <input
+                                                                                            name="room"
+                                                                                            type="text"
+                                                                                            placeholder="No routine days found"
+                                                                                            readOnly
+                                                                                        />
+                                                                                    )
+                                                                                ) : (
+                                                                                    <input
+                                                                                        name="room"
+                                                                                        type="text"
+                                                                                        placeholder="This is Friday"
+                                                                                        readOnly
+                                                                                    />
+                                                                                )}
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>

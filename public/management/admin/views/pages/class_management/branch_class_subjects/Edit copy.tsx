@@ -31,30 +31,21 @@ const Edit: React.FC<Props> = (props: Props) => {
     const [selectedRRoom, setSelectedRRoom] = useState<any>(Number);
     const roomref = useRef<HTMLSelectElement>(null);
     const [room, setRooms] = useState<any>(Number);
-    // const [sections, setSections] = useState<any>([]);
-    // const [error, setError] = useState(null);
+    const [sections, setSections] = useState<any>([]);
+    const [error, setError] = useState(null);
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
 
     const dispatch = useAppDispatch();
     const params = useParams();
-    const fetchData = async () => {
-        try {
-            const response = await axios.get(
-                `/api/v1/branch-class-sections/class-wise/${params.id}`,
-            );
-            // setSections(response.data.data);
-            // setData(response.data);
-        } catch (error) {
-            // setError(error);
-        }
-    };
+
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(details({ id: params.id }) as any);
         await dispatch(classes({}) as any);
-        await dispatch(sections({}) as any);
+        // await dispatch(sections({}) as any);
+        // await fetchData();
         await dispatch(teachers({}) as any);
         await dispatch(rooms({}) as any);
     }
@@ -66,6 +57,7 @@ const Edit: React.FC<Props> = (props: Props) => {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
+    console.log('class section', selectedClass);
 
     let days = [
         'sunday',
@@ -129,10 +121,67 @@ const Edit: React.FC<Props> = (props: Props) => {
         console.log('tempindex3', event.target.value);
         setsevenDayRoutines(temp);
     };
+    const fetchData = async (classId: string) => {
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-class-sections/class-wise/${classId}`,
+            );
+            setSections(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
 
     useEffect(() => {
+        if (selectedClass) {
+            fetchData(selectedClass);
+        }
+    }, [selectedClass]);
+    const now = moment();
+    const oneHourLater = moment().add(1, 'hour');
+    const [schedule, setSchedule] = useState(
+        days.map(() => ({
+            start_time: now.format('HH:mm'),
+            end_time: oneHourLater.format('HH:mm'),
+            error: '',
+        })),
+    );
+    const initializeSchedule = (sourceData) => {
+        return sourceData?.map((day) => ({
+            start_time: day.start_time || now.format('HH:mm'),
+            end_time: day.end_time || oneHourLater.format('HH:mm'),
+            error: '',
+        }));
+    };
+    useEffect(() => {
         setsevenDayRoutines(state.item.routine_days);
+        setSchedule(initializeSchedule(state.item.routine_days));
     }, [state.item]);
+    // console.log('sevenDayRoutines', sevenDayRoutines);
+
+    const handleTimeChange = (index, field, value) => {
+        const newSchedule = [...schedule];
+        newSchedule[index][field] = value;
+
+        const { start_time, end_time } = newSchedule[index];
+
+        if (start_time && end_time) {
+            const start = moment(start_time, 'HH:mm');
+            const end = moment(end_time, 'HH:mm');
+
+            if (end.isBefore(start)) {
+                newSchedule[index].error = 'End time must be after start time';
+            } else {
+                newSchedule[index].error = '';
+            }
+        } else {
+            newSchedule[index].error = '';
+        }
+
+        setSchedule(newSchedule);
+    };
+    const hasErrors = schedule?.some((day) => day.error);
     return (
         <>
             <div className="page_content">
@@ -220,29 +269,28 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                             Branch class section
                                                         </label>
                                                         <div className="form_elements">
-                                                            <select
-                                                                name="branch_class_section_id"
-                                                                id=""
-                                                                value={
-                                                                    selectedSection
-                                                                }
-                                                                onChange={(
-                                                                    e,
-                                                                ) => {
-                                                                    setSelectedSection(
-                                                                        e.target
-                                                                            .value,
-                                                                    );
-                                                                }}
-                                                            >
-                                                                {state?.sections
-                                                                    ?.length &&
-                                                                    state.sections?.map(
-                                                                        (i: {
-                                                                            [
-                                                                                key: string
-                                                                            ]: any;
-                                                                        }) => {
+                                                            {sections.length && (
+                                                                <select
+                                                                    name="branch_class_section_id"
+                                                                    id=""
+                                                                    value={
+                                                                        selectedSection
+                                                                    }
+                                                                    onChange={(
+                                                                        e,
+                                                                    ) => {
+                                                                        setSelectedSection(
+                                                                            e
+                                                                                .target
+                                                                                .value,
+                                                                        );
+                                                                    }}
+                                                                >
+                                                                    {sections?.map(
+                                                                        (
+                                                                            i,
+                                                                            index,
+                                                                        ) => {
                                                                             return (
                                                                                 <option
                                                                                     value={
@@ -256,7 +304,8 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                             );
                                                                         },
                                                                     )}
-                                                            </select>
+                                                                </select>
+                                                            )}
                                                         </div>
                                                     </div>
                                                     <div className="form-group form-vertical">
@@ -373,7 +422,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                             />
                                                         </div>
                                                     </div>
-                                                    <div className="form-group form-vertical">
+                                                    {/* <div className="form-group form-vertical">
                                                         <label>Level</label>
                                                         <div className="form_elements">
                                                             <input
@@ -386,7 +435,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                 }
                                                             />
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                     <div className="form-group form-vertical">
                                                         <label>
                                                             Description
@@ -403,7 +452,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                             ></textarea>
                                                         </div>
                                                     </div>
-                                                    <div className="form-group form-vertical">
+                                                    {/* <div className="form-group form-vertical">
                                                         <label>Credit</label>
                                                         <div className="form_elements">
                                                             <input
@@ -416,8 +465,8 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                 }
                                                             />
                                                         </div>
-                                                    </div>
-                                                    <div className="form-group form-vertical">
+                                                    </div> */}
+                                                    {/* <div className="form-group form-vertical">
                                                         <label>
                                                             Additional Info
                                                         </label>
@@ -431,7 +480,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                 }
                                                             />
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -504,7 +553,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                             Time
                                                                         </label>
                                                                         <div className="form_elements">
-                                                                            <input
+                                                                            {/* <input
                                                                                 type="time"
                                                                                 placeholder="start time"
                                                                                 name="start_time"
@@ -514,7 +563,49 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                                 ).format(
                                                                                     'HH:mm',
                                                                                 )}
-                                                                            />
+                                                                            /> */}
+                                                                            <>
+                                                                                <input
+                                                                                    type="time"
+                                                                                    placeholder="Start time"
+                                                                                    name="start_time"
+                                                                                    value={
+                                                                                        schedule[
+                                                                                            index
+                                                                                        ]
+                                                                                            ?.start_time ||
+                                                                                        ''
+                                                                                    }
+                                                                                    onChange={(
+                                                                                        e,
+                                                                                    ) =>
+                                                                                        handleTimeChange(
+                                                                                            index,
+                                                                                            'start_time',
+                                                                                            e
+                                                                                                .target
+                                                                                                .value,
+                                                                                        )
+                                                                                    }
+                                                                                />
+                                                                                {schedule[
+                                                                                    index
+                                                                                ]
+                                                                                    ?.error && (
+                                                                                    <div
+                                                                                        style={{
+                                                                                            color: 'red',
+                                                                                        }}
+                                                                                    >
+                                                                                        {
+                                                                                            schedule[
+                                                                                                index
+                                                                                            ]
+                                                                                                .error
+                                                                                        }
+                                                                                    </div>
+                                                                                )}
+                                                                            </>
                                                                         </div>
                                                                     </div>
                                                                     <div className="form-group form-vertical">
@@ -523,7 +614,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                             Time
                                                                         </label>
                                                                         <div className="form_elements">
-                                                                            <input
+                                                                            {/* <input
                                                                                 type="time"
                                                                                 placeholder="end time"
                                                                                 name="end_time"
@@ -533,7 +624,49 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                                 ).format(
                                                                                     'HH:mm',
                                                                                 )}
-                                                                            />
+                                                                            /> */}
+                                                                            <>
+                                                                                <input
+                                                                                    type="time"
+                                                                                    placeholder="Start time"
+                                                                                    name="end_time"
+                                                                                    value={
+                                                                                        schedule[
+                                                                                            index
+                                                                                        ]
+                                                                                            ?.end_time ||
+                                                                                        ''
+                                                                                    }
+                                                                                    onChange={(
+                                                                                        e,
+                                                                                    ) =>
+                                                                                        handleTimeChange(
+                                                                                            index,
+                                                                                            'end_time',
+                                                                                            e
+                                                                                                .target
+                                                                                                .value,
+                                                                                        )
+                                                                                    }
+                                                                                />
+                                                                                {schedule[
+                                                                                    index
+                                                                                ]
+                                                                                    ?.error && (
+                                                                                    <div
+                                                                                        style={{
+                                                                                            color: 'red',
+                                                                                        }}
+                                                                                    >
+                                                                                        {
+                                                                                            schedule[
+                                                                                                index
+                                                                                            ]
+                                                                                                .error
+                                                                                        }
+                                                                                    </div>
+                                                                                )}
+                                                                            </>
                                                                         </div>
                                                                     </div>
                                                                     <div className="form-group form-vertical">
@@ -561,6 +694,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                                         );
                                                                                     }}
                                                                                 >
+                                                                                    <option value="0">
+                                                                                        Select
+                                                                                        Teacher
+                                                                                    </option>
                                                                                     {state
                                                                                         ?.teachers
                                                                                         ?.length &&
@@ -610,6 +747,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                                     );
                                                                                 }}
                                                                             >
+                                                                                <option value="0">
+                                                                                    Select
+                                                                                    Room
+                                                                                </option>
                                                                                 {state
                                                                                     ?.rooms
                                                                                     ?.length &&
@@ -642,7 +783,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="full_width">
+                                    {/* <div className="full_width">
                                         <div className="form_section_heading">
                                             <h4>Teacher</h4>
                                         </div>
@@ -672,14 +813,15 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className="form-group student_submit form-horizontal">
                                     {/* <label></label> */}
                                     <div className="form_elementss">
                                         <button
                                             // onClick={handle_submit}
-                                            className="btn btn_1"
+                                            className={`btn btn_1 ${hasErrors ? 'btn_error' : ''}`}
+                                            disabled={!!hasErrors}
                                         >
                                             update
                                         </button>

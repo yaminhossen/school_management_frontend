@@ -57,13 +57,13 @@ const Create: React.FC<Props> = (props: Props) => {
         initdependancy();
     }, []);
     let days = [
+        'saturday',
         'sunday',
         'monday',
         'tuesday',
         'wednesday',
         'thursday',
         'friday',
-        'saturday',
     ];
     const now = moment();
     const oneHourLater = moment().add(1, 'hour');
