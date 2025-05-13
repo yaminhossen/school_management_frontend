@@ -9,6 +9,7 @@ import BasicInformation from '../pages/BasicInformation.tsx';
 import Payments from '../pages/Payments.tsx';
 import Dues from '../pages/Dues.tsx';
 import AllChildren from '../pages/AllChildren.tsx';
+import Children from '../pages/Children.tsx';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -33,21 +34,29 @@ export default {
             element: <Details />,
             children: [
                 {
-                    path: 'information',
+                    path: '',
                     element: <BasicInformation />,
                 },
                 {
-                    path: 'payment',
-                    element: <Payments />,
+                    path: 'information',
+                    element: <BasicInformation />,
                 },
+                // {
+                //     path: 'payment',
+                //     element: <Payments />,
+                // },
                 {
-                    path: 'children',
+                    path: 'childrens',
                     element: <AllChildren />,
                 },
-                {
-                    path: 'due',
-                    element: <Dues />,
-                },
+                // {
+                //     path: 'children',
+                //     element: <Children />,
+                // },
+                // {
+                //     path: 'due',
+                //     element: <Dues />,
+                // },
             ],
         },
     ],

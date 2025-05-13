@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider, createHashRouter } from 'react-router-dom';
@@ -49,7 +50,6 @@ axios.interceptors.response.use(
     //     return response;
     // },
     function (response) {
-        // console.log('response ok', response);
         if (response.status == 217) {
             location.href = '/admin/login';
         }
@@ -69,10 +69,12 @@ axios.interceptors.response.use(
     function (error) {
         if (error.response.data.status === 422) {
             let errors = error.response.data.data;
-
+            (window as anyObject).toaster(
+                `${error.response.data.message}`,
+                'error',
+            );
             errors.forEach((error) => {
                 let el = document.querySelector(`[name="${error.path}"]`);
-
                 if (el) {
                     (el.parentNode as HTMLElement)?.classList.add('has_error');
                     (el.parentNode as HTMLElement)?.insertAdjacentHTML(

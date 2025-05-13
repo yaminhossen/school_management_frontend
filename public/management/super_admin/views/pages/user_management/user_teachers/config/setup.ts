@@ -8,7 +8,7 @@ const setup: setup_type = {
     route_prefix: 'user-teachers',
 
     api_host: location.origin,
-    api_prefix: 'admin-teachers',
+    api_prefix: 'user-teachers',
 
     store_prefix: 'userTeacher',
     layout_title: prefix + ' Management',

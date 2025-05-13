@@ -1,28 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import setup from '../config/setup';
+import { RootState, useAppDispatch } from '../../../../../store';
+import { details } from '../config/store/async_actions/details';
+import { initialState } from '../config/store/inital_state';
+import { Link, Outlet, useParams } from 'react-router-dom';
+import storeSlice from '../config/store';
+import { document } from '../config/store/async_actions/document';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Language: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            title: 'Bangla',
-            profeciency: 'Native',
-        },
-        {
-            id: 2,
-            title: 'English',
-            profeciency: 'Fluent',
-        },
-        {
-            id: 3,
-            title: 'Hindi',
-            profeciency: 'mid',
-        },
-    ];
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
+
+    const dispatch = useAppDispatch();
+    const params = useParams();
+
+    useEffect(() => {
+        dispatch(storeSlice.actions.set_document({}));
+        // dispatch(document({ id: params.id }) as any);
+        dispatch(details({ id: params.id }) as any);
+    }, []);
 
     return (
         <div className="admin_dashboard">
@@ -40,16 +40,18 @@ const Language: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.title}</td>
-                                            <td>{i.profeciency}</td>
-                                        </tr>
-                                    );
-                                })}
+                                {(state.item as any)?.languages?.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
+                                            <tr>
+                                                <td></td>
+                                                <td>{i.id}</td>
+                                                <td>{i.language_title}</td>
+                                                <td>{i.profeciency}</td>
+                                            </tr>
+                                        );
+                                    },
+                                )}
                             </tbody>
                         </table>
                     </div>

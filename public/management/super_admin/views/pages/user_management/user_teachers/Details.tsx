@@ -9,6 +9,7 @@ import { details } from './config/store/async_actions/details';
 import { initialState } from './config/store/inital_state';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import storeSlice from './config/store';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Details: React.FC<Props> = (props: Props) => {
@@ -30,25 +31,251 @@ const Details: React.FC<Props> = (props: Props) => {
                 <div className="explore_window fixed_size">
                     <Header page_title={setup.details_page_title}></Header>
 
-                    {/* {Object.keys(state.item).length && (
-                        <div className="content_body">
+                    {Object.keys(state.item).length && (
+                        <div className="content_body custom_scroll">
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
+                                    <tr>
+                                        <td>Photo</td>
+                                        <td>:</td>
+                                        <td>
+                                            {state.item?.image ? (
+                                                <a
+                                                    href={state.item.image}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <img
+                                                        src={
+                                                            state.item.image
+                                                                ? state.item
+                                                                    .image
+                                                                : '/assets/dashboard/images/avatar.png'
+                                                        }
+                                                        alt="profile image"
+                                                        style={{
+                                                            height: 50,
+                                                        }}
+                                                    />
+                                                </a>
+                                            ) : (
+                                                <img
+                                                    src={
+                                                        '/assets/dashboard/images/avatar.png'
+                                                    }
+                                                    alt="profile image"
+                                                    style={{
+                                                        height: 50,
+                                                    }}
+                                                />
+                                            )}
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <td>Name</td>
                                         <td>:</td>
                                         <td>{state.item.name}</td>
                                     </tr>
                                     <tr>
-                                        <td>Preffered Name</td>
+                                        <td>Email</td>
                                         <td>:</td>
                                         <td>{state.item.email}</td>
                                     </tr>
+                                    <tr>
+                                        <td>Phone Number</td>
+                                        <td>:</td>
+                                        <td>{state.item.phone_number}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Parmenent Address</td>
+                                        <td>:</td>
+                                        <td>
+                                            {
+                                                state.item.teacher_infos
+                                                    ?.parmenent_address
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Present Address</td>
+                                        <td>:</td>
+                                        <td>
+                                            {
+                                                state.item.teacher_infos
+                                                    ?.present_address
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Guardian Number</td>
+                                        <td>:</td>
+                                        <td>
+                                            {
+                                                state.item.teacher_infos
+                                                    ?.guardian_contact_number
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>District</td>
+                                        <td>:</td>
+                                        <td>
+                                            {state.item.teacher_infos?.district}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Post Code</td>
+                                        <td>:</td>
+                                        <td>
+                                            {
+                                                state.item.teacher_infos
+                                                    ?.post_code
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gender</td>
+                                        <td>:</td>
+                                        <td>
+                                            {state.item.teacher_infos?.gender}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>national Id</td>
+                                        <td>:</td>
+                                        <td>
+                                            {state.item.teacher_infos
+                                                ?.national_id ? (
+                                                <a
+                                                        href={
+                                                            state.item.teacher_infos
+                                                            ?.national_id
+                                                    }
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                >
+                                                        <img
+                                                            src={
+                                                            state.item
+                                                                .teacher_infos
+                                                                    ?.national_id
+                                                        }
+                                                            alt="national_id"
+                                                            style={{
+                                                                height: 30,
+                                                        }}
+                                                        />
+                                                </a>
+                                            ) : (
+                                                <img alt="national_id"></img>
+                                            )}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Certificate No. 1</td>
+                                        <td>:</td>
+                                        <td>
+                                            {state.item.teacher_infos
+                                                ?.certificate_no_1 ? (
+                                                <a
+                                                        href={
+                                                            state.item.teacher_infos
+                                                            ?.certificate_no_1
+                                                    }
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                >
+                                                        <img
+                                                            src={
+                                                            state.item
+                                                                .teacher_infos
+                                                                    ?.certificate_no_1
+                                                        }
+                                                            alt="certificate 1"
+                                                            style={{
+                                                                height: 30,
+                                                        }}
+                                                        />
+                                                </a>
+                                            ) : (
+                                                <img alt="No Certificate"></img>
+                                            )}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Certificate No. 2</td>
+                                        <td>:</td>
+                                        <td>
+                                            {state.item.teacher_infos
+                                                ?.certificate_no_2 ? (
+                                                <a
+                                                        href={
+                                                            state.item.teacher_infos
+                                                            ?.certificate_no_2
+                                                    }
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                >
+                                                        <img
+                                                            src={
+                                                            state.item
+                                                                .teacher_infos
+                                                                    ?.certificate_no_2
+                                                        }
+                                                            alt="certificate 2"
+                                                            style={{
+                                                                height: 30,
+                                                        }}
+                                                        />
+                                                </a>
+                                            ) : (
+                                                <img alt="No Certificate"></img>
+                                            )}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Blood Group</td>
+                                        <td>:</td>
+                                        <td>
+                                            {
+                                                state.item.teacher_infos
+                                                    ?.blood_group
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Is Married</td>
+                                        <td>:</td>
+                                        <td>
+                                            {state.item.teacher_infos
+                                                ?.is_married === true
+                                                ? 'Married'
+                                                : 'Un married'}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Joining Date</td>
+                                        <td>:</td>
+                                        <td>
+                                            {moment(
+                                                state.item.teachers
+                                                    ?.joining_date,
+                                            ).format('YYYY-MM-DD')}
+                                        </td>
+                                    </tr>
+                                    {/* <tr>
+                                        <td>Department</td>
+                                        <td>:</td>
+                                        <td>
+                                            {state.item.teachers?.department}
+                                        </td>
+                                    </tr> */}
                                 </tbody>
                             </table>
                         </div>
-                    )} */}
-                    <div className="content_body custom_scroll">
+                    )}
+                    {/* this is for all details for teacher dashboard which is suitable for only teacher or specific staff  or teacher*/}
+                    {/* <div className="content_body custom_scroll">
                         <div className="single-info-details">
                             <div className="item-img">
                                 <img
@@ -131,7 +358,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <Footer></Footer>
                 </div>

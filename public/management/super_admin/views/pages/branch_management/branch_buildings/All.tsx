@@ -55,6 +55,7 @@ const All: React.FC<Props> = (props: Props) => {
                                         <th>
                                             <SelectAll />
                                         </th>
+                                        <th>Serial</th>
                                         <TableHeading
                                             label={`ID`}
                                             col_name={`id`}
@@ -64,102 +65,118 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Building Name`}
                                             col_name={`building_name`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Building Code`}
                                             col_name={`building_code`}
-                                            sort={true}
+                                            sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Total Room`}
-                                            col_name={`total_room`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Total Office`}
-                                            col_name={`total_office`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Total Class`}
-                                            col_name={`total_class`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Total Leaving`}
-                                            col_name={`total_leaving`}
-                                            sort={true}
-                                        /> */}
                                         <TableHeading
                                             label={`Attachment`}
                                             col_name={`attachment`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Description`}
                                             col_name={`deacription`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                     </tr>
                                 </thead>
-                                <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
-                                    {(state.all as any)?.data?.map(
-                                        (i: { [key: string]: any }) => {
-                                            return (
-                                                <tr
-                                                    key={i.id}
-                                                    className={`table_rows table_row_${i.id}`}
+                                {(state.all as any)?.data?.length ? (
+                                    <tbody id="all_list">
+                                        {/* {(state.all as any)?.data?.map( */}
+                                        {(state.all as any)?.data?.map(
+                                            (
+                                                i: { [key: string]: any },
+                                                index,
+                                            ) => {
+                                                return (
+                                                    <tr
+                                                        key={i.id}
+                                                        className={`table_rows table_row_${i.id}`}
+                                                    >
+                                                        <td>
+                                                            <TableRowAction
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <SelectItem
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>{index + 1}</td>
+                                                        <td>
+                                                            <span
+                                                                className="quick_view_trigger"
+                                                                onClick={() =>
+                                                                    quick_view(
+                                                                        i,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {i.id}
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <img
+                                                                src={i.photo}
+                                                                alt="Building Photo"
+                                                                style={{
+                                                                    height: 30,
+                                                                }}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            {i.building_name}
+                                                        </td>
+                                                        <td>
+                                                            {i.building_code}
+                                                        </td>
+                                                        <td className="font-medium text-dark-medium">
+                                                            <a
+                                                                href={
+                                                                    i.attachment ||
+                                                                    undefined
+                                                                }
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                            >
+                                                                Show File
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            {i.description
+                                                                ?.length > 60
+                                                                ? i.description.slice(
+                                                                    0,
+                                                                    40,
+                                                                ) + '...'
+                                                                : i.description}
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            },
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
                                                 >
-                                                    <td>
-                                                        <TableRowAction
-                                                            item={i}
-                                                        />
-                                                    </td>
-                                                    <td>
-                                                        <SelectItem item={i} />
-                                                    </td>
-                                                    <td>
-                                                        <span
-                                                            className="quick_view_trigger"
-                                                            onClick={() =>
-                                                                quick_view(i)
-                                                            }
-                                                        >
-                                                            {i.id}
-                                                        </span>
-                                                    </td>
-                                                    <td>
-                                                        <img
-                                                            src={i.photo}
-                                                            alt="Building Photo"
-                                                            style={{
-                                                                height: 30,
-                                                            }}
-                                                        />
-                                                    </td>
-                                                    <td>{i.building_name}</td>
-                                                    <td>{i.building_code}</td>
-                                                    {/* <td>{i.total_room}</td>
-                                                    <td>{i.total_office}</td>
-                                                    <td>{i.total_class}</td>
-                                                    <td>{i.total_leaving}</td> */}
-                                                    <td className="font-medium text-dark-medium">
-                                                        <a
-                                                            href={i.attachment}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                        >
-                                                            Show File
-                                                        </a>
-                                                    </td>
-                                                    <td>{i.description}</td>
-                                                </tr>
-                                            );
-                                        },
-                                    )}
-                                </tbody>
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 

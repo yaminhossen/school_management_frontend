@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { initialState } from '../../config/store/inital_state';
 import setup from '../../config/setup';
 import storeSlice from '../../config/store';
+import { Link } from 'react-router-dom';
 export interface Props {}
 
 const HeadRightButtons: React.FC<Props> = (props: Props) => {
@@ -41,12 +42,19 @@ const HeadRightButtons: React.FC<Props> = (props: Props) => {
                 </a>
             </li> */}
             <li>
+                <Link to={`/${setup.route_prefix}`}>
+                    <span className="material-symbols-outlined fill">
+                        arrow_back
+                    </span>
+                </Link>
+            </li>
+            {/* <li>
                 <a href="#" onClick={() => show_filter(true)}>
                     <span className="material-symbols-outlined fill">
                         event_list
                     </span>
                 </a>
-            </li>
+            </li> */}
         </ul>
     );
 };

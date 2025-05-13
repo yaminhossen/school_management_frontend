@@ -2,12 +2,18 @@ import React from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
-import { useAppDispatch } from '../../../../store';
+import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
 import DropDown from './components/dropdown/DropDown';
+import { initialState } from './config/store/inital_state';
+import { useSelector } from 'react-redux';
+import InputImage from './components/management_data_page/InputImage';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
     const dispatch = useAppDispatch();
 
     async function handle_submit(e) {
@@ -16,6 +22,16 @@ const Create: React.FC<Props> = (props: Props) => {
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
             e.target.reset();
         }
+    }
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
     }
 
     return (
@@ -28,12 +44,12 @@ const Create: React.FC<Props> = (props: Props) => {
                             onSubmit={(e) => handle_submit(e)}
                             className="form_600 mx-auto pt-3"
                         >
-                            {/* <div className="form_section_heading">
-                                <h2 className=""> Major Information</h2>
-                            </div> */}
                             <div>
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>
+                                        Name{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -43,7 +59,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Present address</label>
+                                    <label>
+                                        Present address{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -53,7 +72,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Permanent address</label>
+                                    <label>
+                                        Permanent address{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -63,17 +85,41 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Driver licence</label>
+                                    <label>
+                                        licence number{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
-                                            type="file"
-                                            accept="image/*"
-                                            name="licence"
+                                            type="text"
+                                            placeholder="licence number"
+                                            name="licence_number"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Driver Number</label>
+                                    <label>
+                                        Driver licence{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
+                                    <div className="form_elements">
+                                        <InputImage
+                                            label={''}
+                                            name={'licence'}
+                                            defalut_preview={get_value('')}
+                                        />
+                                        {/* <input
+                                            type="file"
+                                            accept="image/*"
+                                            name="licence"
+                                        /> */}
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>
+                                        Driver Number{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -83,7 +129,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Assistant Number 1</label>
+                                    <label>
+                                        Assistant Number 1{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -93,7 +142,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Assistant Number 2</label>
+                                    <label>
+                                        Assistant Number 2{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -103,9 +155,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group form-horizontal">
-                                <label></label>
-                                <div className="form_elements">
+                            <div className="form-group student_submit form-horizontal">
+                                {/* <label></label> */}
+                                <div className="form_elementss">
                                     <button className="btn btn_1">
                                         submit
                                     </button>

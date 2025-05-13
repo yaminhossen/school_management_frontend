@@ -1,44 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { initialState } from '../config/store/inital_state';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../../../../../store';
+import setup from '../config/setup';
+import { children_details } from '../config/store/async_actions/children_details';
+import storeSlice from '../config/store';
+import { details } from '../config/store/async_actions/details';
 export interface Props {}
 
 const Children: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            name: 'Sakin Khan',
-            class: 'Play',
-            roll: '001',
-            section: 'A',
-            kpi: '95/100',
-            due: '0001',
-        },
-        {
-            id: 2,
-            name: 'Tasin ahmed',
-            class: 'Two',
-            roll: '002',
-            section: 'A',
-            kpi: '95/100',
-            due: '1000',
-        },
-        {
-            id: 3,
-            name: 'Munjerin',
-            class: 'Three',
-            roll: '005',
-            section: 'B',
-            kpi: '80/100',
-            due: '1500',
-        },
-    ];
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
+
+    const dispatch = useAppDispatch();
+    const params = useParams();
+
+    useEffect(() => {
+        dispatch(storeSlice.actions.set_children({}));
+        dispatch(children_details({ id: params.id }) as any);
+        // dispatch(details({ id: params.id }) as any);
+    }, []);
+    console.log('childfdlf', state);
 
     return (
         <div className="admin_dashboard">
-            <h3 className="table_heading mt-4">Children</h3>
+            <h3 className="table_heading mt-4">Childrens</h3>
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
@@ -48,30 +36,60 @@ const Children: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Name</th>
-                                    <th>Class</th>
-                                    <th>Roll</th>
-                                    <th>Section</th>
-                                    <th>Kpi</th>
-                                    <th>Due</th>
-                                    <th>Actions</th>
+                                    <th>Image</th>
+                                    <th>Email</th>
+                                    <th>Phone Number</th>
+                                    <th>Whatsapp </th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.name}</td>
-                                            <td>{i.class}</td>
-                                            <td>{i.roll}</td>
-                                            <td>{i.section}</td>
-                                            <td>{i.kpi}</td>
-                                            <td>{i.due}</td>
-                                            <td>details</td>
-                                        </tr>
-                                    );
-                                })}
+                                {state.children?.data?.map(
+                                    (i: { [key: string]: any }, index) => {
+                                        return (
+                                            <tr>
+                                                <td></td>
+                                                <td>{index + 1}</td>
+                                                <td>
+                                                    {i.children_basic?.name}
+                                                </td>
+                                                <td>
+                                                    <a
+                                                        href={
+                                                            i.children_basic
+                                                                ?.image
+                                                        }
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        <img
+                                                            src={
+                                                                i.children_basic
+                                                                    ?.image
+                                                            }
+                                                            alt="Photo"
+                                                            width={40}
+                                                        />
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    {i.children_basic.email}
+                                                </td>
+                                                <td>
+                                                    {
+                                                        i.children_basic
+                                                            .phone_number
+                                                    }
+                                                </td>
+                                                <td>
+                                                    {
+                                                        i.children_basic
+                                                            .whatsapp_number
+                                                    }
+                                                </td>
+                                            </tr>
+                                        );
+                                    },
+                                )}
                             </tbody>
                         </table>
                     </div>

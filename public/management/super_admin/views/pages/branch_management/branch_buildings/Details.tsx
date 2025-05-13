@@ -23,7 +23,9 @@ const Details: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(details({ id: params.id }) as any);
     }, []);
-
+    if (state.item) {
+        console.log('lent', state.item?.description?.length);
+    }
     return (
         <>
             <div className="page_content">
@@ -49,11 +51,21 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td className="font-medium text-dark-medium">
                                             <a
-                                                href={state.item.attachment}
+                                                href={
+                                                    state.item.attachment ||
+                                                    undefined
+                                                }
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                Show File
+                                                <img
+                                                    src={
+                                                        state.item.attachment ||
+                                                        '/assets/dashboard/images/avatar.png'
+                                                    }
+                                                    width={30}
+                                                    alt="attachment"
+                                                />
                                             </a>
                                         </td>
                                     </tr>
@@ -61,19 +73,25 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Photo</td>
                                         <td>:</td>
                                         <td>
-                                            <img
-                                                src={state.item.photo}
-                                                alt="Building Photo"
-                                                style={{
-                                                    height: 30,
-                                                }}
-                                            />
+                                            <a
+                                                href={state.item.photo}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src={state.item.photo}
+                                                    width={30}
+                                                    alt="building photo"
+                                                />
+                                            </a>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr className="">
                                         <td>Description</td>
                                         <td>:</td>
-                                        <td>{state.item.description}</td>
+                                        <td className="details_descrtiption2">
+                                            {state.item?.description}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -75,6 +75,7 @@ async function all(
         order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
         where: {
             status: show_active_data == 'true' ? 'active' : 'deactive',
+            role: 'admin',
         },
         // include: [models.Project],
     };

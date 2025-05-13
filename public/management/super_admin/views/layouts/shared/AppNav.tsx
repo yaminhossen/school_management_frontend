@@ -2,6 +2,7 @@ import React from 'react';
 import AppNavRight from './AppNavRight';
 import NavigationList from './NavigationList';
 import { Link } from 'react-router-dom';
+import Management from './Management';
 
 export interface Props {}
 
@@ -17,6 +18,14 @@ const AppNav: React.FC<Props> = (props: Props) => {
                     <span className="material-symbols-outlined fill">search</span>
                 </a> 
             </li> -->*/}
+                        {/* <Management></Management> */}
+                        {/* <li className="icon_link_li">
+                            <a href="#/management" className="navigation_link">
+                                <span className="material-symbols-outlined fill">
+                                    dashboard_customize
+                                </span>
+                            </a>
+                        </li> */}
                         <li className="icon_link_li">
                             <Link
                                 aria-current="page"
@@ -28,7 +37,7 @@ const AppNav: React.FC<Props> = (props: Props) => {
                                 </span>
                             </Link>
                         </li>
-                        <li className="icon_link_li">
+                        {/* <li className="icon_link_li">
                             <a href="#dashboard#" className="navigation_link">
                                 <span className="material-symbols-outlined fill">
                                     mail
@@ -36,16 +45,16 @@ const AppNav: React.FC<Props> = (props: Props) => {
                             </a>
                         </li>
                         <li className="icon_link_li">
-                            <a href="#dashboard#" className="navigation_link">
+                        <a href="#dashboard#" className="navigation_link">
+                        <span className="material-symbols-outlined fill">
+                        checklist
+                        </span>
+                        </a>
+                        </li> */}
+                        <li className="icon_link_li">
+                            <a href="#/management" className="navigation_link">
                                 <span className="material-symbols-outlined fill">
                                     event
-                                </span>
-                            </a>
-                        </li>
-                        <li className="icon_link_li">
-                            <a href="#dashboard#" className="navigation_link">
-                                <span className="material-symbols-outlined fill">
-                                    checklist
                                 </span>
                             </a>
                         </li>

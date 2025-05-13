@@ -43,6 +43,38 @@ const Filter: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_only_latest_data(true));
         dispatch(all({}) as any);
     }
+    function submit2() {
+        const start = new Date(state.filter_criteria.start_date || '');
+        const end = new Date(state.filter_criteria.end_date || '');
+        const today = new Date(new Date().toISOString().slice(0, 10)); // Clear time
+
+        // Validation
+        if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+            alert('Please provide both start and end dates.');
+            return;
+        }
+
+        if (end < start) {
+            alert('End date cannot be earlier than start date.');
+            return;
+        }
+
+        if (end < today) {
+            alert('End date cannot be earlier than today.');
+            return;
+        }
+
+        dispatch(storeSlice.actions.set_only_latest_data(true));
+        dispatch(all({}) as any);
+    }
+    const start = new Date(state.filter_criteria.start_date || '');
+    const end = new Date(state.filter_criteria.end_date || '');
+    const today = new Date(new Date().toISOString().slice(0, 10));
+    const isInvalid =
+        isNaN(start.getTime()) ||
+        isNaN(end.getTime()) ||
+        end < start ||
+        end < today;
 
     if (modalRoot && state.show_filter_canvas) {
         return createPortal(
@@ -82,6 +114,7 @@ const Filter: React.FC<Props> = (props: Props) => {
                                 onClick={submit}
                                 type="button"
                                 className="btn btn-sm btn-outline-info"
+                                // disabled={isInvalid}
                             >
                                 Submit
                             </button>

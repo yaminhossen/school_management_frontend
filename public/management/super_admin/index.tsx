@@ -45,17 +45,35 @@ axios.interceptors.request.use(
 );
 
 axios.interceptors.response.use(
+    // function (response) {
+    //     return response;
+    // },
     function (response) {
+        if (response.status == 217) {
+            location.href = '/super-admin/login';
+        }
+        // (window as any)
+        //     .jQuery('.loader-wrapper')
+        //     .fadeOut('slow', function () {});
+        if (response.status == 202 || 200) {
+            (window as anyObject).toaster(`Successfuly task created`);
+        }
+        if (response.status == 204) {
+            (window as anyObject).toaster(`Successfuly task updated`);
+        }
+        console.log('response data', response);
         return response;
     },
 
     function (error) {
         if (error.response.data.status === 422) {
             let errors = error.response.data.data;
-
+            (window as anyObject).toaster(
+                `${error.response.data.message}`,
+                'error',
+            );
             errors.forEach((error) => {
                 let el = document.querySelector(`[name="${error.path}"]`);
-
                 if (el) {
                     (el.parentNode as HTMLElement)?.classList.add('has_error');
                     (el.parentNode as HTMLElement)?.insertAdjacentHTML(
@@ -71,9 +89,16 @@ axios.interceptors.response.use(
 
             (window as anyObject).toaster(
                 `${error.response.status} - ${error.response.statusText}`,
+                'error',
             );
 
             console.log(error.response);
+        }
+        if (error.response.data.status == 500) {
+            (window as anyObject).toaster(
+                `${error.response.data.message}`,
+                'error',
+            );
         }
         return Promise.reject(error);
     },

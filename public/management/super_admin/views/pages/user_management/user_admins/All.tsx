@@ -29,7 +29,7 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, name, email, phone_number, status',
+                'id, name, email, image, phone_number, status',
             ),
         );
         dispatch(all({}) as any);
@@ -39,6 +39,7 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
+    console.log('state date', (state.all as any)?.data?.length);
 
     return (
         <div className="page_content">
@@ -55,6 +56,7 @@ const All: React.FC<Props> = (props: Props) => {
                                         <th>
                                             <SelectAll />
                                         </th>
+                                        <th>No.</th>
                                         <TableHeading
                                             label={`ID`}
                                             col_name={`id`}
@@ -66,22 +68,31 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`name`}
                                             sort={true}
                                         />
+                                        <th>Designation</th>
+                                        {/* <TableHeading
+                                            label={`Designation`}
+                                            col_name={`designation`}
+                                            sort={true}
+                                        /> */}
+                                        <TableHeading
+                                            label={`Phone number`}
+                                            col_name={`phone_number`}
+                                            sort={true}
+                                        />
                                         <TableHeading
                                             label={`Email`}
                                             col_name={`email`}
                                             sort={true}
                                         />
-                                        <TableHeading
-                                            label={`Phone number`}
-                                            col_name={`email`}
-                                            sort={true}
-                                        />
                                     </tr>
                                 </thead>
-                                <tbody id="all_list">
-                                    {(state.all as any)?.data?.map(
-                                        (i: { [key: string]: any }) => {
-                                            return (
+                                {(state.all as any)?.data?.length ? (
+                                    <tbody id="all_list">
+                                        {(state.all as any)?.data?.map(
+                                            (
+                                                i: { [key: string]: any },
+                                                index: number,
+                                            ) => (
                                                 <tr
                                                     key={i.id}
                                                     className={`table_rows table_row_${i.id}`}
@@ -94,15 +105,8 @@ const All: React.FC<Props> = (props: Props) => {
                                                     <td>
                                                         <SelectItem item={i} />
                                                     </td>
-                                                    <td>{i.id}</td>
                                                     <td>
-                                                        <img
-                                                            src="/assets/dashboard/images/avatar.png"
-                                                            alt=""
-                                                            style={{
-                                                                height: 30,
-                                                            }}
-                                                        />
+                                                        <span>{index + 1}</span>
                                                     </td>
                                                     <td>
                                                         <span
@@ -111,16 +115,50 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 quick_view(i)
                                                             }
                                                         >
-                                                            {i.name}
+                                                            {i.id}
                                                         </span>
                                                     </td>
-                                                    <td>{i.email}</td>
+                                                    <td>
+                                                        <img
+                                                            src={
+                                                                i.image
+                                                                    ? i.image
+                                                                    : '/assets/dashboard/images/avatar.png'
+                                                            }
+                                                            alt=""
+                                                            style={{
+                                                                height: 30,
+                                                            }}
+                                                        />
+                                                    </td>
+                                                    <td>{i.name}</td>
+                                                    <td>
+                                                        {i.role
+                                                            ? i.role
+                                                            : 'admin'}
+                                                    </td>
                                                     <td>{i.phone_number}</td>
+                                                    <td>{i.email}</td>
                                                 </tr>
-                                            );
-                                        },
-                                    )}
-                                </tbody>
+                                            ),
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 

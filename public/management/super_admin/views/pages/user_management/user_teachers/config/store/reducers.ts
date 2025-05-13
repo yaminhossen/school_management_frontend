@@ -1,6 +1,6 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { initialState } from './inital_state';
-import { anyObject } from '../../../../../common_types/object';
+import { anyObject } from '../../../../../../common_types/object';
 
 export const store_reducers = {
     set_is_loading: (
@@ -36,6 +36,13 @@ export const store_reducers = {
         action: PayloadAction<string>,
     ) => {
         state.search_key = action.payload;
+    },
+
+    set_classes: (
+        state: typeof initialState,
+        action: PayloadAction<object>,
+    ) => {
+        state.classes = action.payload;
     },
     set_order_by_col: (
         state: typeof initialState,

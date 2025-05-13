@@ -1,4 +1,4 @@
-import { anyObject } from '../../../../../common_types/object';
+import { anyObject } from '../../../../../../common_types/object';
 import setup from '../setup';
 
 const store_prefix = setup.prefix;
@@ -10,8 +10,11 @@ export const initialState = {
     loading_text: 'loading..',
 
     /* data store */
+    id: 1,
     all: {},
     item: {} as anyObject,
+    document: {} as anyObject,
+    payments: {} as anyObject,
     url: '',
 
     /* data filters */

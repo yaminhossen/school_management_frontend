@@ -20,12 +20,12 @@ const Footer: React.FC<Props> = (props: Props) => {
             <div className="action_btns">
                 <ul>
                     <li>
-                        <Link to={`/${route_prefix}/create`}>
+                        {/* <Link to={`/${route_prefix}/create`}>
                             <span className="material-symbols-outlined fill">
                                 add
                             </span>
                             <div className="text">create new</div>
-                        </Link>
+                        </Link> */}
                     </li>
                     <li>
                         <ExportSelected />

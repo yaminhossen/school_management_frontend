@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { details } from './config/store/async_actions/details';
 import { building } from './config/store/async_actions/building';
+import InputImage from './components/management_data_page/InputImage';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -37,6 +38,16 @@ const Create: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         initdependancy();
     }, []);
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
 
     console.log('branch state', state.building);
 
@@ -52,12 +63,12 @@ const Create: React.FC<Props> = (props: Props) => {
                         >
                             <div>
                                 <div className="form-group form-horizontal">
-                                    <label>Building id</label>
+                                    <label>
+                                        Building id{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
-                                        <select
-                                            name="building_id"
-                                            id=""
-                                        >
+                                        <select name="building_id" id="">
                                             {state?.building?.length &&
                                                 state.building?.map(
                                                     (i: {
@@ -78,7 +89,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Room Code</label>
+                                    <label>
+                                        Room Code{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -88,7 +102,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Room Name</label>
+                                    <label>
+                                        Room Name{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -98,20 +115,26 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Total seat</label>
+                                    <label>
+                                        Total seat{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="number"
                                             placeholder="total seat"
                                             name="total_seat"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Total student</label>
+                                    <label>
+                                        Total student{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
-                                            type="text"
+                                            type="number"
                                             placeholder="total student"
                                             name="total_student"
                                         />
@@ -120,27 +143,40 @@ const Create: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Attachment</label>
                                     <div className="form_elements">
-                                        <input
+                                        <InputImage
+                                            label={''}
+                                            name={'attachment'}
+                                            defalut_preview={get_value('')}
+                                        />
+                                        {/* <input
                                             type="file"
                                             accept="image/*"
                                             placeholder="attachment"
                                             name="attachment"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
                                     <label>Photo</label>
                                     <div className="form_elements">
-                                        <input
+                                        <InputImage
+                                            label={''}
+                                            name={'photo'}
+                                            defalut_preview={get_value('')}
+                                        />
+                                        {/* <input
                                             type="file"
                                             accept="image/*"
                                             placeholder="photo"
                                             name="photo"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>
+                                        Description{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <textarea
                                             placeholder="description"
@@ -150,7 +186,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group form-horizontal">
+                            <div className="form-group student_submit form-horizontal">
                                 <label></label>
                                 <div className="form_elements">
                                     <button className="btn btn_1">

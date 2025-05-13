@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
-import { useAppDispatch } from '../../../../store';
+import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
 import DropDown from './components/dropdown/DropDown';
 export interface Props {}
+import moment from 'moment/moment';
+import InputImage from './components/management_data_page/InputImage';
+import { initialState } from './config/store/inital_state';
+import { useSelector } from 'react-redux';
 
 const Create: React.FC<Props> = (props: Props) => {
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
+    const [showPassword, setShowPassword] = useState(false);
     const dispatch = useAppDispatch();
+
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -35,7 +54,12 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                     <div className="d-flex">
                                         <div className="form-group form-horizontal">
-                                            <label>Name</label>
+                                            <label>
+                                                Name{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
@@ -45,70 +69,111 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                         <div className="form-group form-horizontal">
-                                            <label>Email</label>
+                                            <label>
+                                                Email{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
                                             <div className="form_elements">
                                                 <input
-                                                    type="text"
+                                                    type="email"
                                                     placeholder="email"
                                                     name="email"
                                                 />
                                             </div>
                                         </div>
                                         <div className="form-group form-horizontal">
-                                            <label>Phone number</label>
+                                            <label>
+                                                Phone number{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
                                             <div className="form_elements">
                                                 <input
                                                     type="text"
-                                                    placeholder="phone number"
+                                                    placeholder="01XXX or +8801XXX"
                                                     name="phone_number"
                                                 />
                                             </div>
                                         </div>
                                         <div className="form-group form-horizontal">
-                                            <label>Image</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="file"
-                                                    placeholder="image"
-                                                    name="image"
-                                                />
-                                            </div>
+                                            <InputImage
+                                                label={'Image'}
+                                                name={'staff_image'}
+                                                defalut_preview={get_value('')}
+                                            />
+                                            {/* <div className="form_elements">
+                                            </div> */}
                                         </div>
                                         <div className="form-group form-horizontal">
-                                            <label>Password</label>
-                                            <div className="form_elements">
+                                            <label>
+                                                Password{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
+                                            <div
+                                                className="form_elements_valid"
+                                                style={{ position: 'relative' }}
+                                            >
                                                 <input
-                                                    type="text"
-                                                    placeholder="password"
+                                                    type={
+                                                        showPassword
+                                                            ? 'text'
+                                                            : 'password'
+                                                    }
+                                                    placeholder="Password"
                                                     name="password"
+                                                    style={{
+                                                        paddingRight: '40px',
+                                                        width: '214px',
+                                                    }}
                                                 />
-                                            </div>
-                                        </div>
-                                        <div className="form-group form-horizontal">
-                                            <label>Confirm Password</label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="confirm password"
-                                                    name="confirm_password"
-                                                />
+                                                <span
+                                                    onClick={() =>
+                                                        setShowPassword(
+                                                            !showPassword,
+                                                        )
+                                                    }
+                                                    className="material-symbols-outlined visible_icon"
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: '10px',
+                                                        right: '10px',
+                                                        cursor: 'pointer',
+                                                        color: '#666',
+                                                        fontSize: '24px',
+                                                        userSelect: 'none',
+                                                    }}
+                                                >
+                                                    {showPassword
+                                                        ? 'visibility_off'
+                                                        : 'visibility'}
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="full_width">
                                         <div className="form_section_heading">
                                             <h2 className="">
-                                                Permanent Address
+                                                Basic Information
                                             </h2>
                                         </div>
                                         <div className="d-flex">
                                             <div className="form-group form-horizontal">
-                                                <label>Permanent Address</label>
+                                                <label>
+                                                    Parmanent Address{' '}
+                                                    <span className="valid_star">
+                                                        *
+                                                    </span>
+                                                </label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
-                                                        placeholder="Permanent address"
-                                                        name="permanent_address"
+                                                        placeholder="Parmenent address"
+                                                        name="parmenent_address"
                                                     />
                                                 </div>
                                             </div>
@@ -133,81 +198,42 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
-                                                <label>Thana</label>
-                                                <div className="form_elements">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="thana"
-                                                        name="thana"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
                                                 <label>Post Code</label>
                                                 <div className="form_elements">
                                                     <input
-                                                        type="text"
+                                                        type="number"
                                                         placeholder="post_code"
                                                         name="post_code"
                                                     />
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div className="full_width">
-                                        <div className="form_section_heading">
-                                            <h2 className="">
-                                                Present Address
-                                            </h2>
-                                        </div>
-                                        <div className="d-flex">
-                                            <div className="form-group form-horizontal">
-                                                <label>Present Address</label>
-                                                <div className="form_elements">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="present address"
-                                                        name="present address"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
-                                                <label>Post Code</label>
-                                                <div className="form_elements">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="post_code"
-                                                        name="post_code"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="full_width">
-                                        <div className="form_section_heading">
-                                            <h4>Additional Information</h4>
-                                        </div>
-                                        <div className="d-flex">
                                             <div className="form-group form-horizontal">
                                                 <label>
-                                                    Gruardian Contact Number
+                                                    Present Address{' '}
+                                                    <span className="valid_star">
+                                                        *
+                                                    </span>
                                                 </label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
-                                                        placeholder="guardian number"
-                                                        name="gruardian_contact_number"
+                                                        placeholder="present address"
+                                                        name="present_address"
                                                     />
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
-                                                <label>Graduation</label>
+                                                <label>
+                                                    Alternative Number{' '}
+                                                    <span className="valid_star">
+                                                        *
+                                                    </span>
+                                                </label>
                                                 <div className="form_elements">
                                                     <input
                                                         type="text"
-                                                        placeholder="graduation"
-                                                        name="graduation"
+                                                        placeholder="01XXX or +8801XXX"
+                                                        name={`guardian_contact_number`}
                                                     />
                                                 </div>
                                             </div>
@@ -222,27 +248,73 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
-                                                <label>Experience</label>
-                                                <div className="form_elements">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="experience"
-                                                        name="experience"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
                                                 <label>Gender</label>
                                                 <div className="form_elements">
                                                     <select name="gender" id="">
+                                                        <option value="">
+                                                            Select gender
+                                                        </option>
                                                         <option value="male">
-                                                            male
+                                                            Male
                                                         </option>
                                                         <option value="female">
-                                                            female
+                                                            Female
                                                         </option>
-                                                        <option value="others">
-                                                            others
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div className="form-group form-horizontal">
+                                                <label>Is Married</label>
+                                                <div className="form_elements">
+                                                    <select
+                                                        name="is_married"
+                                                        id=""
+                                                    >
+                                                        <option value="">
+                                                            Are you married
+                                                        </option>
+                                                        <option value="1">
+                                                            Yes
+                                                        </option>
+                                                        <option value="0">
+                                                            No
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div className="form-group form-horizontal">
+                                                <label>Blood group</label>
+                                                <div className="form_elements">
+                                                    <select
+                                                        name="blood_group"
+                                                        id=""
+                                                    >
+                                                        <option value="">
+                                                            Select Group
+                                                        </option>
+                                                        <option value="A+">
+                                                            A+
+                                                        </option>
+                                                        <option value="B+">
+                                                            B+
+                                                        </option>
+                                                        <option value="A-">
+                                                            A-
+                                                        </option>
+                                                        <option value="AB-">
+                                                            AB-
+                                                        </option>
+                                                        <option value="AB+">
+                                                            AB+
+                                                        </option>
+                                                        <option value="B-">
+                                                            B-
+                                                        </option>
+                                                        <option value="O+">
+                                                            O+
+                                                        </option>
+                                                        <option value="O-">
+                                                            O-
                                                         </option>
                                                     </select>
                                                 </div>
@@ -253,156 +325,71 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     <input
                                                         type="date"
                                                         name="joining_date"
+                                                        defaultValue={moment().format(
+                                                            'YYYY-MM-DD',
+                                                        )}
                                                     />
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
-                                                <label>Department</label>
+                                                <label>Role</label>
                                                 <div className="form_elements">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="department"
-                                                        name="department"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
-                                                <label>Responsibilies</label>
-                                                <div className="form_elements">
-                                                    <select
-                                                        name="branch_id"
-                                                        id=""
-                                                    >
-                                                        <option value="mirpur">
-                                                            mirpur
+                                                    <select name="role" id="">
+                                                        <option value="">
+                                                            Select role
                                                         </option>
-                                                        <option value="gulshan">
-                                                            gulshan
+                                                        <option value="principle">
+                                                            Principle
                                                         </option>
-                                                    </select>
-                                                    {/* <label htmlFor="">
-                                                        <input
-                                                            type="checkbox"
-                                                            name="responsibilies"
-                                                            id=""
-                                                        />
-                                                        <span>pion</span>
-                                                    </label>
-                                                    <label htmlFor="">
-                                                        <input
-                                                            type="checkbox"
-                                                            name="responsibilies"
-                                                            id=""
-                                                        />
-                                                        <span>teacher</span>
-                                                    </label> */}
-                                                </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
-                                                <label>Status</label>
-                                                <div className="form_elements">
-                                                    <select name="status" id="">
-                                                        <option value="active">
-                                                            active
+                                                        <option value="admin">
+                                                            Admin
                                                         </option>
-                                                        <option value="block">
-                                                            block
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
-                                                <label>Branch Id</label>
-                                                <div className="form_elements">
-                                                    <select
-                                                        name="branch_id"
-                                                        id=""
-                                                    >
-                                                        <option value="mirpur">
-                                                            mirpur
-                                                        </option>
-                                                        <option value="gulshan">
-                                                            gulshan
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div className="form-group form-horizontal">
-                                                <label>Position</label>
-                                                <div className="form_elements">
-                                                    <select
-                                                        name="position"
-                                                        id=""
-                                                    >
-                                                        <option value="teacher">
-                                                            teacher
-                                                        </option>
-                                                        <option value="pion">
-                                                            pion
+                                                        <option value="admission-officer">
+                                                            Admission-officer
                                                         </option>
                                                         <option value="librarian">
-                                                            librarian
+                                                            Librarian
+                                                        </option>
+                                                        <option value="accountant">
+                                                            Accountant
                                                         </option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div className="form-group form-horizontal">
-                                                <label>IsMarried</label>
-                                                <div className="form_elements">
-                                                    <select
-                                                        name="ismarried"
-                                                        id=""
-                                                    >
-                                                        <option value="0">
-                                                            no
-                                                        </option>
-                                                        <option value="1">
-                                                            yes
-                                                        </option>
-                                                    </select>
-                                                </div>
+                                                <InputImage
+                                                    label={'National Id'}
+                                                    name={'national_id'}
+                                                    defalut_preview={get_value(
+                                                        '',
+                                                    )}
+                                                />
                                             </div>
                                             <div className="form-group form-horizontal">
-                                                <label>Blood Group</label>
-                                                <div className="form_elements">
-                                                    <select
-                                                        name="blood_group"
-                                                        id=""
-                                                    >
-                                                        <option value="A+">
-                                                            A +
-                                                        </option>
-                                                        <option value="A-">
-                                                            A -
-                                                        </option>
-                                                        <option value="B+">
-                                                            B +
-                                                        </option>
-                                                        <option value="B-">
-                                                            B -
-                                                        </option>
-                                                        <option value="O+">
-                                                            O +
-                                                        </option>
-                                                        <option value="O-">
-                                                            O -
-                                                        </option>
-                                                        <option value="AB+">
-                                                            AB +
-                                                        </option>
-                                                        <option value="AB+">
-                                                            AB -
-                                                        </option>
-                                                    </select>
-                                                </div>
+                                                <InputImage
+                                                    label={'Certificate No. 1'}
+                                                    name={'certificate_1'}
+                                                    defalut_preview={get_value(
+                                                        '',
+                                                    )}
+                                                />
+                                            </div>
+                                            <div className="form-group form-horizontal">
+                                                <InputImage
+                                                    label={'Certificate No. 2'}
+                                                    name={'certificate_2'}
+                                                    defalut_preview={get_value(
+                                                        '',
+                                                    )}
+                                                />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group form-horizontal">
-                                <label></label>
-                                <div className="form_elements">
+                            <div className="form-group student_submit form-horizontal">
+                                {/* <label></label> */}
+                                <div className="form_elementss">
                                     <button className="btn btn_1">
                                         submit
                                     </button>

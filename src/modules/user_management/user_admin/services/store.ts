@@ -65,6 +65,23 @@ async function store(
         phone_number: body.phone_number,
         image: body.image,
         password: password,
+        token: body.token,
+        forget_code: body.forget_code,
+        user_agent: body.user_agent,
+        parmanent_address: body.parmanent_address,
+        country: body.country,
+        district: body.district,
+        post_code: body.post_code,
+        alternative_number: body.alternative_number,
+        qualification: body.qualification,
+        gender: body.gender,
+        is_married: body.is_married,
+        blood_group: body.blood_group,
+        joining_date: body.joining_date,
+        role: body.role,
+        national_id: body.national_id,
+        certificate_no_1: body.certificate_no_1,
+        certificate_no_2: body.certificate_no_2,
     };
 
     /** print request data into console */

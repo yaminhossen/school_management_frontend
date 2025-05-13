@@ -14,25 +14,8 @@ import branch_buildings_slice from '../views/pages/branch_management/branch_buil
 import branch_building_rooms_slice from '../views/pages/branch_management/branch_building_rooms/config/store';
 import branch_transports_slice from '../views/pages/branch_management/branch_transports/config/store';
 import branch_transport_drivers_slice from '../views/pages/branch_management/branch_transport_drivers/config/store';
-import branch_classes_slice from '../views/pages/class_management/branch_classes/config/store';
-import branch_class_fee_types_slice from '../views/pages/class_management/branch_class_fee_types/config/store';
-import branch_class_fee_discounts_slice from '../views/pages/class_management/branch_class_fee_discounts/config/store';
-import branch_class_fee_waivers_slice from '../views/pages/class_management/branch_class_fee_waivers/config/store';
-import branch_class_fees_slice from '../views/pages/class_management/branch_class_fees/config/store';
-import branch_class_routine_day_times_slice from '../views/pages/class_management/branch_class_routine_day_times/config/store';
-import branch_class_resources_slice from '../views/pages/class_management/branch_class_resources/config/store';
-import branch_class_subjects_slice from '../views/pages/class_management/branch_class_subjects/config/store';
-import meeting_agendas_slice from '../views/pages/meeting_management/meeting_agendas/config/store';
-import meetings_slice from '../views/pages/meeting_management/meetings/config/store';
-import fees_collections_slice from '../views/pages/account_management/fees_collections/config/store';
-import loan_managements_slice from '../views/pages/account_management/loan_managements/config/store';
-import journals_slice from '../views/pages/account_management/journals/config/store';
-import payrolls_slice from '../views/pages/account_management/payrolls/config/store';
-import salary_payments_slice from '../views/pages/account_management/salary_payments/config/store';
-import academic_calendars_slice from '../views/pages/calendar_management/academic_calendars/config/store';
-import tasks_slice from '../views/pages/todo_management/tasks/config/store';
-import tasks_variant_slice from '../views/pages/todo_management/task_variants/config/store';
-import tasks_group_slice from '../views/pages/todo_management/task_groups/config/store';
+// import fees_collections_slice from '../views/pages/account_management/fees_collections/config/store';
+// import journals_slice from '../views/pages/account_management/journals/config/store';
 
 const store = configureStore({
     reducer: {
@@ -49,26 +32,8 @@ const store = configureStore({
         branch_building_rooms: branch_building_rooms_slice.reducer,
         branch_transports: branch_transports_slice.reducer,
         branch_transport_drivers: branch_transport_drivers_slice.reducer,
-        branch_classes: branch_classes_slice.reducer,
-        branch_class_fee_types: branch_class_fee_types_slice.reducer,
-        branch_class_fee_discounts: branch_class_fee_discounts_slice.reducer,
-        branch_class_fee_waivers: branch_class_fee_waivers_slice.reducer,
-        branch_class_fees: branch_class_fees_slice.reducer,
-        branch_class_routine_day_times:
-            branch_class_routine_day_times_slice.reducer,
-        branch_class_resources: branch_class_resources_slice.reducer,
-        branch_class_subjects: branch_class_subjects_slice.reducer,
-        meeting_agendas: meeting_agendas_slice.reducer,
-        meetings: meetings_slice.reducer,
-        fees_collections: fees_collections_slice.reducer,
-        loan_managements: loan_managements_slice.reducer,
-        journals: journals_slice.reducer,
-        payrolls: payrolls_slice.reducer,
-        academic_calendars: academic_calendars_slice.reducer,
-        salary_payments: salary_payments_slice.reducer,
-        tasks: tasks_slice.reducer,
-        task_variants: tasks_variant_slice.reducer,
-        task_groups: tasks_group_slice.reducer,
+        // fees_collections: fees_collections_slice.reducer,
+        // journals: journals_slice.reducer,
     },
     devTools: true,
 });

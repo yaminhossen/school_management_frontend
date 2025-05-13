@@ -45,9 +45,59 @@ const QuickView: React.FC<Props> = (props: Props) => {
                                     <th>{state.item.name}</th>
                                 </tr>
                                 <tr>
-                                    <th>Preffered name</th>
+                                    <th>Present Address</th>
                                     <th>:</th>
-                                    <th>{state.item.email}</th>
+                                    <th>{state.item.present_address}</th>
+                                </tr>
+                                <tr>
+                                    <th>Parmenent Address</th>
+                                    <th>:</th>
+                                    <th>{state.item.permanent_address}</th>
+                                </tr>
+                                <tr>
+                                    <th>Number</th>
+                                    <th>:</th>
+                                    <th>{state.item.driver_number}</th>
+                                </tr>
+                                <tr>
+                                    <th>Assistant number 1</th>
+                                    <th>:</th>
+                                    <th>{state.item.assistant_number_1}</th>
+                                </tr>
+                                <tr>
+                                    <th>Assistant number 2</th>
+                                    <th>:</th>
+                                    <th>{state.item.assistant_number_2}</th>
+                                </tr>
+                                <tr>
+                                    <th>Licence number</th>
+                                    <th>:</th>
+                                    <th>{state.item.licence_number}</th>
+                                </tr>
+                                <tr>
+                                    <td>Licence</td>
+                                    <td>:</td>
+                                    <td>
+                                        <a
+                                            href={
+                                                state.item.driver_licence ||
+                                                undefined
+                                            }
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <img
+                                                src={
+                                                    state.item.driver_licence ||
+                                                    '/assets/dashboard/images/avatar.png'
+                                                }
+                                                alt="licence"
+                                                style={{
+                                                    height: 50,
+                                                }}
+                                            />
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

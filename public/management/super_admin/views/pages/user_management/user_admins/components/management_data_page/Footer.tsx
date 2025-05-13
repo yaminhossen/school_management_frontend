@@ -10,10 +10,7 @@ const Footer: React.FC<Props> = (props: Props) => {
                 <div className="action_btns">
                     <ul>
                         <li>
-                            <Link
-                                to={`/${setup.route_prefix}`}
-                                className="outline"
-                            >
+                            <Link to={'/user-admins'} className="outline">
                                 <span className="material-symbols-outlined fill">
                                     arrow_back
                                 </span>

@@ -1517,3 +1517,121 @@
 {"level":60,"time":1747042778353,"pid":21928,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 3:39:38 PM","message":"target not found."}
 {"level":60,"time":1747042850925,"pid":21928,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 3:40:50 PM","message":"target not found."}
 {"level":60,"time":1747042920045,"pid":21928,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 3:42:00 PM","message":"target not found."}
+{"level":60,"time":1747043276268,"pid":21928,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 3:47:56 PM","message":"target not found."}
+{"level":60,"time":1747043443044,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 3:50:43 PM","message":"target not found."}
+{"level":60,"time":1747044807297,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 4:13:27 PM","message":"target not found."}
+{"level":60,"time":1747044832389,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 4:13:52 PM","message":"target not found."}
+{"level":60,"time":1747045161061,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 4:19:21 PM","message":"target not found."}
+{"level":60,"time":1747045227611,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 4:20:27 PM","message":"target not found."}
+{"level":60,"time":1747045243889,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 4:20:43 PM","message":"target not found."}
+{"level":60,"time":1747045388745,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 4:23:08 PM","message":"target not found."}
+{"level":60,"time":1747045580147,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 4:26:20 PM","message":"target not found."}
+{"level":60,"time":1747045710184,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 4:28:30 PM","message":"target not found."}
+{"level":60,"time":1747045770543,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 4:29:30 PM","message":"target not found."}
+{"level":60,"time":1747046214919,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 4:36:54 PM","message":"target not found."}
+{"level":60,"time":1747046225703,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 4:37:05 PM","message":"target not found."}
+{"level":60,"time":1747046545585,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 4:42:25 PM","message":"target not found."}
+{"level":60,"time":1747046635685,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:145:15)","time":"5/12/2025 4:43:55 PM","message":"Unknown column 'BranchClassFeesModel.email' in 'field list'"}
+{"level":60,"time":1747046868481,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 4:47:48 PM","message":"target not found."}
+{"level":60,"time":1747046869295,"pid":16592,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:145:15)","time":"5/12/2025 4:47:49 PM","message":"Unknown column 'BranchClassFeesModel.email' in 'field list'"}
+{"level":60,"time":1747048616429,"pid":12904,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 5:16:56 PM","message":"target not found."}
+{"level":60,"time":1747049035717,"pid":12904,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 5:23:55 PM","message":"target not found."}
+{"level":60,"time":1747049831235,"pid":18264,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 5:37:11 PM","message":"target not found."}
+{"level":60,"time":1747049840731,"pid":18264,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 5:37:20 PM","message":"target not found."}
+{"level":60,"time":1747049860096,"pid":18264,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 5:37:40 PM","message":"target not found."}
+{"level":60,"time":1747049991871,"pid":18264,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 5:39:51 PM","message":"target not found."}
+{"level":60,"time":1747050201844,"pid":18264,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/12/2025 5:43:21 PM","message":"target not found."}
+{"level":60,"time":1747110298206,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:24:58 AM","message":"target not found."}
+{"level":60,"time":1747110303420,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:25:03 AM","message":"target not found."}
+{"level":60,"time":1747110345328,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:25:45 AM","message":"target not found."}
+{"level":60,"time":1747110541596,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:29:01 AM","message":"target not found."}
+{"level":60,"time":1747110558203,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:29:18 AM","message":"target not found."}
+{"level":60,"time":1747111004438,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:36:44 AM","message":"target not found."}
+{"level":60,"time":1747111475073,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:44:35 AM","message":"target not found."}
+{"level":60,"time":1747111477492,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:109:15)","time":"5/13/2025 10:44:37 AM","message":"Unknown column 'role' in 'field list'"}
+{"level":60,"time":1747111479232,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:44:39 AM","message":"target not found."}
+{"level":60,"time":1747111479693,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:109:15)","time":"5/13/2025 10:44:39 AM","message":"Unknown column 'role' in 'field list'"}
+{"level":60,"time":1747111490042,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:109:15)","time":"5/13/2025 10:44:50 AM","message":"Unknown column 'role' in 'field list'"}
+{"level":60,"time":1747111493911,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:109:15)","time":"5/13/2025 10:44:53 AM","message":"Unknown column 'role' in 'field list'"}
+{"level":60,"time":1747111495697,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:44:55 AM","message":"target not found."}
+{"level":60,"time":1747111496097,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:109:15)","time":"5/13/2025 10:44:56 AM","message":"Unknown column 'role' in 'field list'"}
+{"level":60,"time":1747111524775,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:45:24 AM","message":"target not found."}
+{"level":60,"time":1747111525184,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:109:15)","time":"5/13/2025 10:45:25 AM","message":"Unknown column 'role' in 'field list'"}
+{"level":60,"time":1747111526806,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:45:26 AM","message":"target not found."}
+{"level":60,"time":1747111527189,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:109:15)","time":"5/13/2025 10:45:27 AM","message":"Unknown column 'role' in 'field list'"}
+{"level":60,"time":1747111528514,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:45:28 AM","message":"target not found."}
+{"level":60,"time":1747111528911,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:109:15)","time":"5/13/2025 10:45:28 AM","message":"Unknown column 'role' in 'field list'"}
+{"level":60,"time":1747111531517,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:109:15)","time":"5/13/2025 10:45:31 AM","message":"Unknown column 'role' in 'field list'"}
+{"level":60,"time":1747111532605,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:109:15)","time":"5/13/2025 10:45:32 AM","message":"Unknown column 'role' in 'field list'"}
+{"level":60,"time":1747111559219,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:45:59 AM","message":"target not found."}
+{"level":60,"time":1747111559772,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:109:15)","time":"5/13/2025 10:45:59 AM","message":"Unknown column 'role' in 'field list'"}
+{"level":60,"time":1747111622196,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:47:02 AM","message":"target not found."}
+{"level":60,"time":1747111885298,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:51:25 AM","message":"target not found."}
+{"level":60,"time":1747111889974,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:51:29 AM","message":"target not found."}
+{"level":60,"time":1747112084118,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:54:44 AM","message":"target not found."}
+{"level":60,"time":1747112101457,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:55:01 AM","message":"target not found."}
+{"level":60,"time":1747112297742,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:58:17 AM","message":"target not found."}
+{"level":60,"time":1747112311334,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:58:31 AM","message":"target not found."}
+{"level":60,"time":1747112322745,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:58:42 AM","message":"target not found."}
+{"level":60,"time":1747112324238,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 10:58:44 AM","message":"target not found."}
+{"level":60,"time":1747113679038,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:21:19 AM","message":"target not found."}
+{"level":60,"time":1747113681140,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:21:21 AM","message":"target not found."}
+{"level":60,"time":1747113880282,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:24:40 AM","message":"target not found."}
+{"level":60,"time":1747113908639,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:25:08 AM","message":"target not found."}
+{"level":60,"time":1747114147795,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:29:07 AM","message":"target not found."}
+{"level":60,"time":1747114149489,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:29:09 AM","message":"target not found."}
+{"level":60,"time":1747114196124,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:29:56 AM","message":"target not found."}
+{"level":60,"time":1747114400732,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:33:20 AM","message":"target not found."}
+{"level":60,"time":1747114527955,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:35:27 AM","message":"target not found."}
+{"level":60,"time":1747115246778,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:47:26 AM","message":"target not found."}
+{"level":60,"time":1747115406635,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:50:06 AM","message":"target not found."}
+{"level":60,"time":1747115413096,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:50:13 AM","message":"target not found."}
+{"level":60,"time":1747115491315,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:51:31 AM","message":"target not found."}
+{"level":60,"time":1747115502992,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:51:42 AM","message":"target not found."}
+{"level":60,"time":1747115581983,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:53:01 AM","message":"target not found."}
+{"level":60,"time":1747115582310,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:109:15)","time":"5/13/2025 11:53:02 AM","message":"Unknown column 'role' in 'field list'"}
+{"level":60,"time":1747115594101,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:109:15)","time":"5/13/2025 11:53:14 AM","message":"Unknown column 'role' in 'field list'"}
+{"level":60,"time":1747115804130,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:56:44 AM","message":"target not found."}
+{"level":60,"time":1747115851900,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:57:31 AM","message":"target not found."}
+{"level":60,"time":1747115978374,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 11:59:38 AM","message":"target not found."}
+{"level":60,"time":1747116003662,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:00:03 PM","message":"target not found."}
+{"level":60,"time":1747116153641,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:02:33 PM","message":"target not found."}
+{"level":60,"time":1747116186359,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:03:06 PM","message":"target not found."}
+{"level":60,"time":1747117472104,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:24:32 PM","message":"target not found."}
+{"level":60,"time":1747117525614,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:25:25 PM","message":"target not found."}
+{"level":60,"time":1747117819243,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:30:19 PM","message":"target not found."}
+{"level":60,"time":1747117826587,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:30:26 PM","message":"target not found."}
+{"level":60,"time":1747117899241,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:31:39 PM","message":"target not found."}
+{"level":60,"time":1747117921522,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:32:01 PM","message":"target not found."}
+{"level":60,"time":1747118142992,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:35:42 PM","message":"target not found."}
+{"level":60,"time":1747118149265,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:35:49 PM","message":"target not found."}
+{"level":60,"time":1747118184197,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:36:24 PM","message":"target not found."}
+{"level":60,"time":1747118198223,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:36:38 PM","message":"target not found."}
+{"level":60,"time":1747118218567,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:36:58 PM","message":"target not found."}
+{"level":60,"time":1747118353004,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:39:13 PM","message":"target not found."}
+{"level":60,"time":1747118665541,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:44:25 PM","message":"target not found."}
+{"level":60,"time":1747118676811,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:44:36 PM","message":"target not found."}
+{"level":60,"time":1747118880941,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:48:00 PM","message":"target not found."}
+{"level":60,"time":1747118888987,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:48:08 PM","message":"target not found."}
+{"level":60,"time":1747118890330,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:48:10 PM","message":"target not found."}
+{"level":60,"time":1747118891447,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:48:11 PM","message":"target not found."}
+{"level":60,"time":1747118892646,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:48:12 PM","message":"target not found."}
+{"level":60,"time":1747118904641,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:48:24 PM","message":"target not found."}
+{"level":60,"time":1747118930764,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:48:50 PM","message":"target not found."}
+{"level":60,"time":1747119508126,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:58:28 PM","message":"target not found."}
+{"level":60,"time":1747119509713,"pid":15176,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 12:58:29 PM","message":"target not found."}
+{"level":60,"time":1747119951511,"pid":5384,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 1:05:51 PM","message":"target not found."}
+{"level":60,"time":1747120259161,"pid":17036,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 1:10:59 PM","message":"target not found."}
+{"level":60,"time":1747120439775,"pid":17036,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 1:13:59 PM","message":"target not found."}
+{"level":60,"time":1747120440466,"pid":17036,"hostname":"DESKTOP-I0UCE3Q","file":"services\\alladmins.ts:112:15)","time":"5/13/2025 1:14:00 PM","message":"Invalid value { role: 'admin' }"}
+{"level":60,"time":1747120448112,"pid":17036,"hostname":"DESKTOP-I0UCE3Q","file":"services\\alladmins.ts:112:15)","time":"5/13/2025 1:14:08 PM","message":"Invalid value { role: 'admin' }"}
+{"level":60,"time":1747122245363,"pid":6456,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 1:44:05 PM","message":"target not found."}
+{"level":60,"time":1747122245890,"pid":6456,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:110:15)","time":"5/13/2025 1:44:05 PM","message":"Unknown column 'UserAdminModels.role' in 'where clause'"}
+{"level":60,"time":1747124218262,"pid":6456,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 2:16:58 PM","message":"target not found."}
+{"level":60,"time":1747124218738,"pid":6456,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:110:15)","time":"5/13/2025 2:16:58 PM","message":"Unknown column 'UserAdminModels.role' in 'where clause'"}
+{"level":60,"time":1747124286973,"pid":6456,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 2:18:06 PM","message":"target not found."}
+{"level":60,"time":1747124296623,"pid":6456,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 2:18:16 PM","message":"target not found."}
+{"level":60,"time":1747124297197,"pid":6456,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:110:15)","time":"5/13/2025 2:18:17 PM","message":"Unknown column 'UserAdminModels.role' in 'where clause'"}
+{"level":60,"time":1747124350137,"pid":6456,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/13/2025 2:19:10 PM","message":"target not found."}
+{"level":60,"time":1747124350750,"pid":6456,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:110:15)","time":"5/13/2025 2:19:10 PM","message":"Unknown column 'UserAdminModels.role' in 'where clause'"}
+{"level":60,"time":1747124363643,"pid":6456,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:110:15)","time":"5/13/2025 2:19:23 PM","message":"Unknown column 'UserAdminModels.role' in 'where clause'"}

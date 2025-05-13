@@ -19,6 +19,10 @@ export const store_reducers = {
     set_url: (state: typeof initialState, action: PayloadAction<string>) => {
         state.url = action.payload;
     },
+
+    set_id: (state: typeof initialState, action: PayloadAction<number>) => {
+        state.id = action.payload;
+    },
     set_all: (state: typeof initialState, action: PayloadAction<string>) => {
         state.all = action.payload;
     },
@@ -77,6 +81,20 @@ export const store_reducers = {
 
     set_item: (state: typeof initialState, action: PayloadAction<object>) => {
         state.item = action.payload;
+    },
+
+    set_payment: (
+        state: typeof initialState,
+        action: PayloadAction<object>,
+    ) => {
+        state.payments = action.payload;
+    },
+
+    set_document: (
+        state: typeof initialState,
+        action: PayloadAction<object>,
+    ) => {
+        state.document = action.payload;
     },
     set_show_quick_view_canvas: (
         state: typeof initialState,

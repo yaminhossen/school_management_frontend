@@ -57,6 +57,7 @@ const DateEl: React.FC<Props> = ({ value, name, handler }: Props) => {
         >
             <input
                 type="date"
+                required
                 ref={date_input}
                 onClick={(e) => handleClick(e)}
                 id={name}

@@ -65,24 +65,38 @@ async function update(
         password = await bcrypt.hash(body.password, saltRounds);
     }
 
-    let inputs: InferCreationAttributes<typeof model> = {
-        name: body.name,
-        email: body.email,
-        phone_number: body.phone_number,
-        image: body.image,
-    };
-    if (password) {
-        inputs.password = password;
-    }
-
-    /** print request data into console */
-    // console.clear();
-    // (fastify_instance as any).print(inputs);
-
     /** store data into database */
     try {
         let data = await models.UserAdminsModel.findByPk(body.id);
         if (data) {
+            let inputs: InferCreationAttributes<typeof model> = {
+                name: body.name || data.name,
+                email: body.email || data.email,
+                phone_number: body.phone_number || data.phone_number,
+                image: body.image || data.image,
+                password: password || data.password,
+                token: body.token || data.token,
+                forget_code: body.forget_code || data.forget_code,
+                user_agent: body.user_agent || data.user_agent,
+                parmanent_address:
+                    body.parmanent_address || data.parmanent_address,
+                country: body.country || data.country,
+                district: body.district || data.district,
+                post_code: body.post_code || data.post_code,
+                alternative_number:
+                    body.alternative_number || data.alternative_number,
+                qualification: body.qualification || data.qualification,
+                gender: body.gender || data.gender,
+                is_married: body.is_married || data.is_married,
+                blood_group: body.blood_group || data.blood_group,
+                joining_date: body.joining_date || data.joining_date,
+                role: body.role || data.role,
+                national_id: body.national_id || data.national_id,
+                certificate_no_1:
+                    body.certificate_no_1 || data.certificate_no_1,
+                certificate_no_2:
+                    body.certificate_no_2 || data.certificate_no_2,
+            };
             data.update(inputs);
             await data.save();
             return response(201, 'data updated', data);

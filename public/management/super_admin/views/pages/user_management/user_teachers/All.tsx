@@ -40,32 +40,6 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
 
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            branch: 'kustia',
-            name: 'Teacher1',
-            designation: 'Teacher',
-            phone_number: '01786867672',
-            email: 'teacher1@gamil.com',
-            address: 'Mirpur',
-            image: '/assets/dashboard/images/avatar.png',
-        },
-        {
-            id: 2,
-            branch: 'Barishal',
-            name: 'Teacher2',
-            designation: 'Teacher',
-            phone_number: '01786867673',
-            email: 'teacher2@gamil.com',
-            address: 'Uttora',
-            image: '/assets/dashboard/images/avatar.png',
-        },
-    ];
-
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">
@@ -88,20 +62,15 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                         <th>Image</th>
                                         <TableHeading
-                                            label={`Branch`}
-                                            col_name={`branch`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
                                             sort={true}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Designation`}
                                             col_name={`designation`}
                                             sort={true}
-                                        />
+                                        /> */}
                                         <TableHeading
                                             label={`Phone number`}
                                             col_name={`phone_number`}
@@ -112,56 +81,85 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`email`}
                                             sort={true}
                                         />
-                                        <TableHeading
-                                            label={`Address`}
-                                            col_name={`address`}
-                                            sort={true}
-                                        />
                                     </tr>
                                 </thead>
-                                <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
-                                    {datas?.map((i: { [key: string]: any }) => {
-                                        return (
-                                            <tr
-                                                key={i.id}
-                                                className={`table_rows table_row_${i.id}`}
-                                            >
-                                                <td>
-                                                    <TableRowAction item={i} />
-                                                </td>
-                                                <td>
-                                                    <SelectItem item={i} />
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        className="quick_view_trigger"
-                                                        onClick={() =>
-                                                            quick_view(i)
-                                                        }
+                                {(state.all as any)?.data?.length ? (
+                                    <tbody id="all_list">
+                                        {(state.all as any)?.data?.map(
+                                            (i: { [key: string]: any }) => {
+                                                return (
+                                                    <tr
+                                                        key={i.id}
+                                                        className={`table_rows table_row_${i.id}`}
                                                     >
-                                                        {i.id}
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td>
-                                                <td>{i.branch}</td>
-                                                <td>{i.name}</td>
-                                                <td>{i.designation}</td>
-                                                <td>{i.phone_number}</td>
-                                                <td>{i.email}</td>
-                                                <td>{i.address}</td>
-                                            </tr>
-                                        );
-                                    })}
-                                </tbody>
+                                                        <td>
+                                                            <TableRowAction
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <SelectItem
+                                                                item={i}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <span
+                                                                className="quick_view_trigger"
+                                                                onClick={() =>
+                                                                    quick_view(
+                                                                        i,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {i.id}
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <img
+                                                                src={
+                                                                    i.image
+                                                                        ? i.image
+                                                                        : '/assets/dashboard/images/avatar.png'
+                                                                }
+                                                                alt=""
+                                                                style={{
+                                                                    height: 30,
+                                                                }}
+                                                            />
+                                                        </td>
+                                                        {/* <td>{i.branch}</td> */}
+                                                        <td>{i.name}</td>
+                                                        {/* <td>
+                                                        {i.role
+                                                            ? i.role
+                                                            : 'Te'}
+                                                    </td> */}
+                                                        <td>
+                                                            {i.phone_number}
+                                                        </td>
+                                                        <td>{i.email}</td>
+                                                        {/* <td>{i.address}</td> */}
+                                                    </tr>
+                                                );
+                                            },
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 

@@ -16,6 +16,8 @@ import TableRowAction from './components/all_data_page/TableRowAction';
 import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
+import { all_class } from './config/store/async_actions/all_class';
+import { Link } from 'react-router-dom';
 
 export interface Props {}
 
@@ -27,47 +29,28 @@ const All: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(
-            storeSlice.actions.set_select_fields(
-                'id, name, email, phone_number, status',
-            ),
-        );
-        dispatch(all({}) as any);
+        dispatch(storeSlice.actions.set_select_fields('id'));
+        dispatch(all_class({}) as any);
     }, []);
 
     function quick_view(data: anyObject = {}) {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
-
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            branch: 'kustia',
-            name: 'Student1',
-            phone_number: '01786867672',
-            email: 'student1@gamil.com',
-            address: 'Mirpur',
-            image: '/assets/dashboard/images/avatar.png',
-        },
-        {
-            id: 2,
-            branch: 'Barishal',
-            name: 'Student2',
-            phone_number: '01786867673',
-            email: 'student2@gamil.com',
-            address: 'Uttora',
-            image: '/assets/dashboard/images/avatar.png',
-        },
-    ];
-
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">
-                <Header></Header>
+                <div className="action_bar">
+                    <div className="navigation">
+                        <ul>
+                            <li className="search_li"></li>
+                        </ul>
+                    </div>
+                    <div className="title no_move" id="users_drag">
+                        <h2>All Students</h2>
+                    </div>
+                    <div className="control"></div>
+                </div>
 
                 <div className="content_body">
                     <div className="data_list">
@@ -76,83 +59,63 @@ const All: React.FC<Props> = (props: Props) => {
                                 <thead>
                                     <tr>
                                         <th />
-                                        <th>
-                                            <SelectAll />
-                                        </th>
                                         <TableHeading
                                             label={`ID`}
                                             col_name={`id`}
-                                            sort={true}
-                                        />
-                                        <th>Image</th>
-                                        <TableHeading
-                                            label={`Branch`}
-                                            col_name={`branch`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
-                                            label={`Name`}
-                                            col_name={`name`}
-                                            sort={true}
+                                            label={`Class`}
+                                            col_name={`class`}
+                                            sort={false}
                                         />
                                         <TableHeading
-                                            label={`Phone number`}
-                                            col_name={`phone_number`}
-                                            sort={true}
+                                            label={`Total Student`}
+                                            col_name={`total student`}
+                                            sort={false}
                                         />
                                         <TableHeading
-                                            label={`Email`}
-                                            col_name={`email`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Address`}
-                                            col_name={`address`}
-                                            sort={true}
+                                            label={`Action`}
+                                            col_name={`action`}
+                                            sort={false}
                                         />
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
-                                    {datas?.map((i: { [key: string]: any }) => {
-                                        return (
-                                            <tr
-                                                key={i.id}
-                                                className={`table_rows table_row_${i.id}`}
-                                            >
-                                                <td>
-                                                    <TableRowAction item={i} />
-                                                </td>
-                                                <td>
-                                                    <SelectItem item={i} />
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        className="quick_view_trigger"
-                                                        onClick={() =>
-                                                            quick_view(i)
-                                                        }
-                                                    >
-                                                        {i.id}
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td>
-                                                <td>{i.branch}</td>
-                                                <td>{i.name}</td>
-                                                <td>{i.phone_number}</td>
-                                                <td>{i.email}</td>
-                                                <td>{i.address}</td>
-                                            </tr>
-                                        );
-                                    })}
+                                    {(state.item as any)?.data?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <tr
+                                                    key={i.id}
+                                                    className={`table_rows table_row_${i.id}`}
+                                                >
+                                                    <td> </td>
+                                                    <td>
+                                                        <span
+                                                            className="quick_view_trigger"
+                                                            // onClick={() =>
+                                                            //     quick_view(i)
+                                                            // }
+                                                        >
+                                                            {i.id}
+                                                        </span>
+                                                    </td>
+                                                    <td>{i.name}</td>
+                                                    <td>{i.count}</td>
+                                                    <td>
+                                                        <Link
+                                                            to={`/user-students/class-details/${i.id}`}
+                                                            className="btn btn-sm  btn-outline-info"
+                                                            type="submit"
+                                                        >
+                                                            Details
+                                                        </Link>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
                                 </tbody>
                             </table>
                         </div>
@@ -167,11 +130,11 @@ const All: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                <TableFooter></TableFooter>
+                {/* <TableFooter></TableFooter> */}
             </div>
 
-            <Filter></Filter>
-            <QuickView></QuickView>
+            {/* <Filter></Filter>
+            <QuickView></QuickView> */}
         </div>
     );
 };

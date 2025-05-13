@@ -40,15 +40,47 @@ const QuickView: React.FC<Props> = (props: Props) => {
                         <table className="table quick_modal_table">
                             <tbody>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>:</th>
-                                    <th>{state.item.name}</th>
+                                    <td>Photo</td>
+                                    <td>:</td>
+                                    <td>
+                                        <a
+                                            href={state.item.image || undefined}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <img
+                                                src={
+                                                    state.item.image ||
+                                                    '/assets/dashboard/images/avatar.png'
+                                                }
+                                                alt="profile image"
+                                                style={{
+                                                    height: 50,
+                                                }}
+                                            />
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <th>Preffered name</th>
-                                    <th>:</th>
-                                    <th>{state.item.email}</th>
+                                    <td>Name</td>
+                                    <td>:</td>
+                                    <td>{state.item.name}</td>
                                 </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>:</td>
+                                    <td>{state.item.email}</td>
+                                </tr>
+                                <tr>
+                                    <td>Phone Number</td>
+                                    <td>:</td>
+                                    <td>{state.item.phone_number}</td>
+                                </tr>
+                                {/* <tr>
+                                    <td>Role</td>
+                                    <td>:</td>
+                                    <td>{state.item.role}</td>
+                                </tr> */}
                             </tbody>
                         </table>
                     </div>

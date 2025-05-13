@@ -29,7 +29,7 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, name, logo, address, primary_contact, status',
+                'id, name, email, logo, address, primary_contact, status',
             ),
         );
         dispatch(all({}) as any);
@@ -38,6 +38,9 @@ const All: React.FC<Props> = (props: Props) => {
     function quick_view(data: anyObject = {}) {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
+    }
+    if (state) {
+        console.log('all branches', state);
     }
 
     return (
@@ -82,7 +85,7 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                     </tr>
-                                </thead>
+                                </thead>{(state.all as any)?.data?.length ? (
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
                                     {(state.all as any)?.data?.map(
@@ -112,7 +115,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                     </td>
                                                     <td>
                                                         <img
-                                                            src="/assets/dashboard/images/avatar.png"
+                                                            src={i.logo ? i.logo : "/assets/dashboard/images/avatar.png"}
                                                             alt=""
                                                             style={{
                                                                 height: 30,
@@ -128,6 +131,22 @@ const All: React.FC<Props> = (props: Props) => {
                                         },
                                     )}
                                 </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 

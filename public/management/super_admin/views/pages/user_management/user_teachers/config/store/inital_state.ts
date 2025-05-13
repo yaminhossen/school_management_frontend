@@ -1,4 +1,4 @@
-import { anyObject } from '../../../../../common_types/object';
+import { anyObject } from '../../../../../../common_types/object';
 import setup from '../setup';
 
 const store_prefix = setup.prefix;
@@ -12,6 +12,7 @@ export const initialState = {
     /* data store */
     all: {},
     item: {} as anyObject,
+    classes: {} as anyObject,
     url: '',
 
     /* data filters */
@@ -19,7 +20,7 @@ export const initialState = {
     filter_criteria: {} as anyObject,
     all_data_count: 0, // total data in database
     page: 1,
-    paginate: 13,
+    paginate: 10,
     search_key: ``,
     orderByCol: 'id',
     orderByAsc: true,
