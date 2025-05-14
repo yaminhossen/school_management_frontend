@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { anyObject } from '../../../common_types/object';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Accountinfo {
@@ -43,41 +42,37 @@ const Index: React.FC<Props> = (props: Props) => {
     const [periods, setPeriods] = useState<Periodinfo[]>([]);
     const [classes, setClass] = useState<any>([]);
     const [feesTypes, setFeesTypes] = useState<FeesInfo[]>([]);
-    const [totalAmount, setTotalAmount] = useState(0);
+    const [feesTypes2, setFeesTypes2] = useState<FeesInfo[]>([]);
+    const [totalAmount, setTotalAmount] = useState();
+    const [totalAmount2, setTotalAmount2] = useState(0);
+    const [totalAmount3, setTotalAmount3] = useState(0);
+    const [remainingDue, setRemainingDue] = useState<{ [key: number]: number }>(
+        {},
+    );
+    const [totalPayable, setTotalPayable] = useState(0);
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
+        e.preventDefault();
         let form = document.getElementById('main_form') as HTMLFormElement;
         if (!form) {
             return;
         }
 
         let formData = new FormData(form);
-        // let netAmount = convertamount(totalAmount);
-        // console.log('net amount', netAmount);
-        // return;
         try {
-            // Make POST request with form data
             const response = await axios.post(
                 '/api/v1/account-logs/fees-store',
                 formData,
             );
-            // setResponseMessage('Form submitted successfully!');
-            setData('Form submitted successfully!');
-            (window as any).toaster('submitted'); // Clear any previous error
+            (window as any).toaster('submitted');
             form.reset();
-            console.log('response', response);
         } catch (error) {
-            // setError(error); // Set error state
-            // setResponseMessage('Failed to submit form.');
-            // console.log('data', error.msg);
+            // setError(error);
         }
-        // console.log('data', error);
     };
     const fetchAccounts = async () => {
         try {
             const response = await axios.get('/api/v1/accounts/accounts');
             setAccounts(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -86,7 +81,6 @@ const Index: React.FC<Props> = (props: Props) => {
         try {
             const response = await axios.get('/api/v1/account-categories/all');
             setCategories(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -95,7 +89,6 @@ const Index: React.FC<Props> = (props: Props) => {
         try {
             const response = await axios.get('/api/v1/account-logs/periods');
             setPeriods(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -107,81 +100,135 @@ const Index: React.FC<Props> = (props: Props) => {
                 `/api/v1/user-students/student-class/${id}`,
             );
             setClass(response.data.data);
-
-            // const response2 = await axios.get(
-            //     '/api/v1/user-students/fees-categories/1',
-            // );
-            // setFeesTypes(response2.data.data);
-
-            // setData(response.data);
         } catch (error) {
             setError2(error.response?.data?.message);
             setClass([]);
             setFeesTypes([]);
+            setFeesTypes2([]);
         }
     };
-    console.log('window amount', classes);
-    // console.log('window amount error', error2);
     const fetchTypes = async (id: string) => {
         try {
             const response2 = await axios.get(
-                `/api/v1/user-students/fees-categories/${id}`,
+                `/api/v1/user-students/fees-categories-student/${id}`,
             );
-            setFeesTypes(response2.data.data);
-
-            // setData(response.data);
+            setFeesTypes2(response2.data?.data?.idWiseTotals);
+            setFeesTypes(response2.data?.data?.idWiseTotals);
+            setTotalAmount(response2.data?.data?.summeries);
         } catch (error) {
             setError(error);
         }
     };
-    console.log('Fees types', feesTypes);
-    console.log('Fees errors', error);
 
     useEffect(() => {
         fetchAccounts();
         fetchAccountCategorys();
         fetchPeriods();
-        // fetchClass();
     }, []);
     const handleStudentIdBlur = () => {
-        const id = studentIdRef.current?.value; // Get the value from the ref
-        console.log('studnet_id', id);
+        const id = studentIdRef.current?.value;
 
         if (id) {
-            fetchClass(id); // Pass the id to fetchClass
+            fetchClass(id);
         }
     };
     const handleStudentSubmit = (
         event: React.KeyboardEvent<HTMLInputElement>,
     ) => {
         if (event.key === 'Enter') {
-            event.preventDefault(); // Prevent default form submission
-            handleStudentIdBlur(); // Trigger the blur event
+            event.preventDefault();
+            handleStudentIdBlur();
         }
     };
     useEffect(() => {
-        if (classes) {
-            let id = classes.s_class;
-            if (id) {
-                fetchTypes(id);
-            }
+        // if (classes) {
+        //     let id = classes.s_class;
+        //     if (id) {
+        //         fetchTypes(id);
+        //     }
+        // }
+        const id = studentIdRef.current?.value;
+        if (id) {
+            fetchTypes(id);
         }
     }, [classes]);
-    // if (classes) {
-    //     console.log('classes', classes);
-    // }
 
     useEffect(() => {
         let sum = feesTypes.reduce(
             (t, i: anyObject) => (t += +(i.input_amount || 0)),
             0,
         );
-        setTotalAmount(sum);
-        // console.log(convertamount(33));
+        setTotalAmount2(sum);
     }, [feesTypes]);
-    if (feesTypes) {
-        console.log('feestypes', feesTypes);
+
+    useEffect(() => {
+        let sum = feesTypes2.reduce(
+            (t, i: anyObject) => (t += +(i.input_amount2 || 0)),
+            0,
+        );
+        setTotalAmount3(sum);
+    }, [feesTypes2]);
+    if (totalAmount) {
+        console.log(totalAmount);
     }
+    const handleFeeChange = (
+        event: React.ChangeEvent<HTMLInputElement>,
+        i: any,
+    ) => {
+        let enteredValue = parseFloat(event.target.value) || 0; // Convert input to number
+        let absolueValue = Math.abs(i.due_amount);
+        if (absolueValue <= enteredValue) {
+            enteredValue = Math.abs(i.due_amount);
+            console.log('entered value111', enteredValue);
+            console.log('absolute value111', absolueValue);
+        }
+        console.log('entered222 value', enteredValue);
+        console.log('absolute222 value', absolueValue);
+        const remaining = absolueValue - enteredValue; // Calculate remaining due amount
+        setRemainingDue((prev) => ({
+            ...prev,
+            [i.id]: Math.abs(remaining), // Store remaining due amount with the corresponding fee ID
+        }));
+        // Calculate total payable sum whenever remainingDue changes
+        useEffect(() => {
+            const total = Object.values(remainingDue).reduce(
+                (acc, val) => acc + val,
+                0,
+            );
+            setTotalPayable(total);
+        }, [remainingDue]);
+    };
+    // Calculate total payable sum whenever remainingDue changes
+    useEffect(() => {
+        const total = Object.values(remainingDue).reduce(
+            (acc, val) => acc + val,
+            0,
+        );
+        setTotalPayable(total);
+    }, [remainingDue]);
+    console.log('ramaing due array', remainingDue);
+
+    // Function to update remaining due (assuming this is updated elsewhere)
+    const handleFeeChange2 = (
+        event: React.ChangeEvent<HTMLInputElement>,
+        i: any,
+    ) => {
+        const enteredValue = parseFloat(event.target.value) || 0; // Convert input to number
+        setRemainingDue((prev) => ({
+            ...prev,
+            [i.id]: enteredValue, // Store payable amount based on id
+        }));
+    };
+
+    // Calculate total payable sum whenever remainingDue changes
+    useEffect(() => {
+        const total = Object.values(remainingDue).reduce(
+            (acc, val) => acc + val,
+            0,
+        );
+        setTotalPayable(total);
+    }, [remainingDue]);
+    console.log('total amount', totalAmount2);
 
     return (
         <div className="admin_dashboard">
@@ -316,34 +363,28 @@ const Index: React.FC<Props> = (props: Props) => {
                             <table className="mb-4">
                                 <thead>
                                     <tr>
-                                        {/* <th>Serial</th> */}
                                         <th>Title</th>
                                         <th>Value</th>
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
                                     <tr>
-                                        {/* <td>1</td> */}
                                         <td>Name</td>
                                         <td>{classes.student?.name}</td>
                                     </tr>
                                     <tr>
-                                        {/* <td>1</td> */}
                                         <td>ID</td>
                                         <td>{classes.student_id}</td>
                                     </tr>
                                     <tr>
-                                        {/* <td>1</td> */}
                                         <td>Class</td>
                                         <td>{classes.class?.name}</td>
                                     </tr>
                                     <tr>
-                                        {/* <td>1</td> */}
                                         <td>Addmission No</td>
                                         <td>{classes.addmission_no}</td>
                                     </tr>
                                     <tr>
-                                        {/* <td>1</td> */}
                                         <td>Photo</td>
                                         <td>
                                             <img
@@ -360,7 +401,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <th>Title</th>
                                         <th>Fees</th>
+                                        <th>Paid</th>
+                                        <th>Due amount</th>
+                                        <th>Discount</th>
+                                        <th>Payable</th>
                                         <th>Given Amount</th>
+                                        <th>Paying</th>
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
@@ -382,9 +428,71 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             <input
                                                                 type="hidden"
                                                                 name={`fees_amount_${index}`}
-                                                                value={i.amount}
+                                                                value={
+                                                                    i.fee_amount
+                                                                }
                                                             />
-                                                            {i.amount}
+                                                            {i.fee_amount}
+                                                        </td>
+                                                        <td>{i.total}</td>
+                                                        <td>
+                                                            {i.due_amount < 0
+                                                                ? Math.abs(
+                                                                    i.due_amount,
+                                                                )
+                                                                : '0'}
+                                                        </td>
+                                                        <td>
+                                                            <input
+                                                                type="number"
+                                                                max={
+                                                                    i.due_amount
+                                                                }
+                                                                name={`fees_discount_${index}`}
+                                                                value={
+                                                                    feesTypes2[
+                                                                        index
+                                                                    ]
+                                                                        ?.input_amount2 ??
+                                                                    ''
+                                                                }
+                                                                onChange={(
+                                                                    event,
+                                                                ) => {
+                                                                    let temp = [
+                                                                        ...feesTypes2,
+                                                                    ];
+                                                                    temp[index][
+                                                                        'input_amount2'
+                                                                    ] =
+                                                                        event?.target.value;
+                                                                    setFeesTypes2(
+                                                                        temp,
+                                                                    );
+                                                                    handleFeeChange(
+                                                                        event,
+                                                                        i,
+                                                                    );
+                                                                }}
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <input
+                                                                type="text"
+                                                                name={`payable[${index}]`}
+                                                                value={
+                                                                    remainingDue[
+                                                                        i.id
+                                                                    ] ??
+                                                                    Math.abs(
+                                                                        i.due_amount <=
+                                                                            0
+                                                                            ? i.due_amount
+                                                                            : 0,
+                                                                    )
+                                                                } // Show updated value
+                                                                readOnly
+                                                            />
                                                         </td>
                                                         <td>
                                                             <input
@@ -418,19 +526,77 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td></td>
                                         <td>Total</td>
+                                        <td>{totalAmount?.['fee_amount']}</td>
+                                        <td>{totalAmount?.['total']}</td>
+                                        <td>{totalAmount?.['due_amount']}</td>
+                                        {/* <td></td> */}
                                         <td>
-                                            {totalAmount} tk
+                                            {totalAmount3}
+                                            <input
+                                                type="hidden"
+                                                name="total_discount"
+                                                value={totalAmount3}
+                                            />
+                                        </td>
+                                        <td>
+                                            {totalAmount3
+                                                ? totalAmount?.['due_amount'] +
+                                                  totalAmount3
+                                                : totalAmount?.['due_amount'] -
+                                                  totalAmount3}
+                                        </td>
+                                        {/* <td>
+                                            {totalAmount?.['due_amount'] +
+                                                totalAmount2}
+                                        </td> */}
+                                        <td>
+                                            {totalAmount2} tk
+                                            <input
+                                                type="hidden"
+                                                // name="total_amount"
+                                                value={totalAmount2}
+                                            />
+                                        </td>
+                                        <td>
+                                            {totalAmount2} tk
                                             <input
                                                 type="hidden"
                                                 name="total_amount"
-                                                value={totalAmount}
+                                                value={totalAmount2}
                                             />
                                         </td>
                                     </tr>
                                 </tfoot>
                             </table>
+                        </div>
+                    </div>
+                    <div className="student_form mt-4">
+                        <div className="full_width">
+                            <div className="form_section_heading">
+                                <h4 className="">Discount Document</h4>
+                            </div>
+                            <div className="d-flex">
+                                <div className="form-group form-vertical">
+                                    <label>Discount attachement</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="file"
+                                            name="discount_attachment"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group  form-vertical">
+                                    <label>Discount Note</label>
+                                    <div className="form_elements">
+                                        <textarea
+                                            style={{ resize: 'both' }}
+                                            placeholder="write your discont reason"
+                                            name="discount_note"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="form-group student_submit form-horizontal">

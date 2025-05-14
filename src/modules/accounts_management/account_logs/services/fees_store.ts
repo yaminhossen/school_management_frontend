@@ -12,12 +12,26 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 import moment from 'moment/moment';
 
-async function validate(req: Request) {
+async function validate(req: Request, models: any) {
     await body('receipt_no')
         .not()
         .isEmpty()
         .withMessage('the receipt_no field is required')
         .run(req);
+
+    if (req.body?.receipt_no) {
+        await body('receipt_no')
+            .custom(async (receipt_no) => {
+                const existing = await models.AccountLogsModel.findOne({
+                    where: { receipt_no },
+                });
+                if (existing) {
+                    throw new Error('receipt_no already exists');
+                }
+                return true;
+            })
+            .run(req);
+    }
 
     let result = await validationResult(req);
 
@@ -29,17 +43,17 @@ async function store(
     req: FastifyRequest,
 ): Promise<responseObject> {
     /** validation */
-    let validate_result = await validate(req as Request);
+    let models = await db();
+    let validate_result = await validate(req as Request, models);
     if (!validate_result.isEmpty()) {
         return response(422, 'validation error', validate_result.array());
     }
 
     /** initializations */
-    let models = await db();
     let data = new models.AccountLogsModel();
     let user = (req as any).user;
     let body = req.body as anyObject;
-    console.log('first', user);
+    // console.log('first', user);
     let image_path = 'avatar.png';
 
     if (body['discount_attachment']?.ext) {
@@ -84,10 +98,6 @@ async function store(
         }
     }
     console.log('authenticate user id', typeof body.fees_amount_0);
-
-    /** print request data into console */
-    // console.clear();
-    // (fastify_instance as any).print(inputs);
 
     /** store data into database */
     try {

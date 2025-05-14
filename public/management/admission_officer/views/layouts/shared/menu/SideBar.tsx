@@ -4,6 +4,7 @@ import MenuDropDown from './MenuDropDown';
 import MenuDropDownItem from './MenuDropDownItem';
 import MenuSingle from './MenuSingle';
 import axios from 'axios';
+import { anyObject } from '../../../../common_types/object';
 export interface Props {}
 
 const SideBar: React.FC<Props> = (props: Props) => {
@@ -15,17 +16,14 @@ const SideBar: React.FC<Props> = (props: Props) => {
     }, 1000);
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submission behavior
+        e.preventDefault();
         try {
-            // fetch('/api/v1/auth/logout', {
-            //     method: 'POST',
-            // });
-            const response = await axios.post('/api/v1/auth/logout');
-            console.log('response123', response);
-            // if(response.status)
+            let confirm = await (window as anyObject).s_confirm('Logout');
+            if (confirm) {
+                await axios.post('/api/v1/auth/logout');
+            }
         } catch (error) {
             setError(error);
-            console.log('someting', error);
         }
     };
     return (

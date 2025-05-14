@@ -311,7 +311,7 @@ const menuArray = [
 
 const T1: React.FC<Props> = (props: Props) => {
     return (
-        <div className="admin_dashboard">
+        <div className="admin_dashboard optimized_title">
             <h1>Nurul Hiqamah Model Madrasa</h1>
             <h2>Admin Dashboard</h2>
             <div className="menu_list custom_scroll">

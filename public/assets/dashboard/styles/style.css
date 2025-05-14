@@ -274,25 +274,11 @@ img {
 }
 
 body {
-  position: relative;
   height: 100vh;
-  background: url("/assets/dashboard/images/mbg3.png") no-repeat center center;
+  background: url("/assets/dashboard/images/bg2.jpg");
   background-size: cover;
   overflow-y: hidden;
-  }
-  
-  body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7); /* You can adjust the opacity and color here */
-  z-index: 0;
-  }
-  
-  body > * {
-  position: relative;
-  z-index: 1;
-  }
+}
 
 .checking_auth_div {
   height: 100vh;
@@ -1455,14 +1441,11 @@ input.form_checkbox:checked::after {
 }
 
 .admin_dashboard h1 {
-  width: 92vw;
   margin: 20px 0;
   text-align: center;
   font-size: 24px;
 }
 .admin_dashboard h2 {
-  width: 92vw;
-  text-align: center;
   margin-top: 20px;
   font-size: larger;
 }
@@ -1485,6 +1468,34 @@ input.form_checkbox:checked::after {
 }
 .admin_dashboard .dashboard_links li a:hover {
   color: rgb(70, 236, 153);
+}
+
+.optimized_title h1 {
+  text-align: center;
+  font-size: 24px;
+  width: 92vw;
+}
+
+.optimized_title h2 {
+  text-align: center;
+  font-size: larger;
+  width: 92vw;
+}
+
+body {
+  position: relative;
+  height: 100vh;
+  background: url("/assets/dashboard/images/mbg3.png") no-repeat center center;
+  background-size: cover;
+  overflow-y: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7); /* You can adjust the opacity and color here */
+  z-index: 0;
 }
 
 .calendar_dashboard ul {
