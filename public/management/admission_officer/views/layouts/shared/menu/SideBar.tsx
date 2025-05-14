@@ -41,6 +41,23 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-calendar"
                     label="Payment"
                 />
+                <MenuSingle
+                    to="/tasks/pending"
+                    icon="icon-notepad"
+                    label="Tasks"
+                />
+                <MenuSingle
+                    to="/meeting-agendas"
+                    icon="icon-notepad"
+                    label="Meetings"
+                />
+                <MenuSingle to="/notices" icon="icon-bell" label="Notices" />
+
+                <MenuSingle
+                    to="/settings"
+                    icon="icon-receipt"
+                    label="Settings"
+                />
 
                 <MenuSingle
                     onClick={handleSubmit}

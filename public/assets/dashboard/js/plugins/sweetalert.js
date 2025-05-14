@@ -54,19 +54,19 @@ window.s_confirm = async (title = "Are you sure?", confirmButtonText = 'Yes, do 
 //     });
 // };
 
-// window.s_confirm = async (
-//     title = 'Are you sure?',
-//     confirmButtonText = 'Yes, do it!',
-//     icon = 'warning',
-// ) => {
-//     let result = await Swal.fire({
-//         title,
-//         text: '',
-//         icon,
-//         showCancelButton: true,
-//         confirmButtonColor: '#3085d6',
-//         cancelButtonColor: '#d33',
-//         confirmButtonText,
-//     });
-//     return result.isConfirmed ? true : false;
-// };
+window.s_confirm = async (
+    title = 'Are you sure?',
+    confirmButtonText = 'Yes, do it!',
+    icon = 'warning',
+) => {
+    let result = await Swal.fire({
+        title,
+        text: '',
+        icon,
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText,
+    });
+    return result.isConfirmed ? true : false;
+};
