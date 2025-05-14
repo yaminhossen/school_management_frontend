@@ -43,9 +43,14 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
                     <div className="sidebar-user text-center">
                         <div>
                             <img
-                                className="img-50 rounded-circle"
+                                className="rounded-circle img-fluid"
+                                style={{
+                                    width: '50px',
+                                    height: '50px',
+                                    objectFit: 'cover',
+                                }}
                                 src={data?.image}
-                                alt="Teacher"
+                                alt="Admission Officer"
                             />
                         </div>
                         <h6 className="mt-3 f-12">{data.name}</h6>

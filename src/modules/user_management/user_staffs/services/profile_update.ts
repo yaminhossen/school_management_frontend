@@ -13,11 +13,19 @@ import error_trace from '../helpers/error_trace';
 import moment from 'moment/moment';
 
 async function validate(req: Request) {
-    // await body('image')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the image field is required')
-    //     .run(req);
+    if (req?.body?.image) {
+        await body('image')
+            .not()
+            .isEmpty()
+            .withMessage('the image field is required')
+            .run(req);
+    }
+    if (req?.body?.password) {
+        await body('password')
+            .isLength({ min: 6 })
+            .withMessage('Password must be at least 6 characters')
+            .run(req);
+    }
 
     let result = await validationResult(req);
 
