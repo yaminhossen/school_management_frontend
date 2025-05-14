@@ -9,6 +9,11 @@ import * as branch_class_rooms_model from './branch_class_rooms_model';
 import * as user_students_model from './user_students_model';
 import * as user_student_informations_model from './user_student_informations_model';
 import * as branch_admin_model from './branch_admin_model';
+import * as branch_class_routine_day_times_model from './branch_class_routine_day_times_model';
+import * as branch_class_subjects_model from './branch_class_subjects_model';
+import * as branch_teachers_model from './branch_teachers_model';
+import * as user_teacher_model from './user_teacher_model';
+import * as branche_building_rooms_model from './branche_building_rooms_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -33,6 +38,11 @@ interface models {
     UserStudentsModel: typeof user_students_model.DataModel;
     UserStudentInformationsModel: typeof user_student_informations_model.DataModel;
     BranchAdminsModel: typeof branch_admin_model.DataModel;
+    BranchClassRoutineDayTimesModel: typeof branch_class_routine_day_times_model.DataModel;
+    BranchClassSubjecsModel: typeof branch_class_subjects_model.DataModel;
+    BranchTeachersModel: typeof branch_teachers_model.DataModel;
+    UserTeachersModel: typeof user_teacher_model.DataModel;
+    BranchBuildingRoomsModel: typeof branche_building_rooms_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -47,6 +57,13 @@ const db = async function (): Promise<models> {
     const UserStudentInformationsModel =
         user_student_informations_model.init(sequelize);
     const BranchAdminsModel = branch_admin_model.init(sequelize);
+    const BranchClassRoutineDayTimesModel =
+        branch_class_routine_day_times_model.init(sequelize);
+    const BranchClassSubjecsModel = branch_class_subjects_model.init(sequelize);
+    const BranchTeachersModel = branch_teachers_model.init(sequelize);
+    const UserTeachersModel = user_teacher_model.init(sequelize);
+    const BranchBuildingRoomsModel =
+        branche_building_rooms_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -61,6 +78,36 @@ const db = async function (): Promise<models> {
         sourceKey: 'branch_student_id',
         foreignKey: 'user_student_id',
         as: 'info_details',
+    });
+
+    BranchClassRoutinesModel.hasMany(BranchClassRoutineDayTimesModel, {
+        sourceKey: 'id',
+        foreignKey: 'branch_class_routine_id',
+        as: 'routines',
+    });
+
+    BranchClassRoutinesModel.hasOne(BranchClassSubjecsModel, {
+        sourceKey: 'branch_class_subject_id',
+        foreignKey: 'id',
+        as: 'subject',
+    });
+
+    BranchClassRoutineDayTimesModel.hasOne(BranchTeachersModel, {
+        sourceKey: 'branch_teacher_id',
+        foreignKey: 'id',
+        as: 'b_teacher',
+    });
+
+    BranchClassRoutineDayTimesModel.hasOne(BranchBuildingRoomsModel, {
+        sourceKey: 'branch_class_room_id',
+        foreignKey: 'id',
+        as: 'room',
+    });
+
+    BranchTeachersModel.hasOne(UserTeachersModel, {
+        sourceKey: 'user_teacher_id',
+        foreignKey: 'id',
+        as: 'teacher',
     });
 
     // User.hasMany(Project, {
@@ -90,6 +137,11 @@ const db = async function (): Promise<models> {
         UserStudentsModel,
         UserStudentInformationsModel,
         BranchAdminsModel,
+        BranchClassRoutineDayTimesModel,
+        BranchClassSubjecsModel,
+        BranchTeachersModel,
+        UserTeachersModel,
+        BranchBuildingRoomsModel,
         // Project,
 
         sequelize,

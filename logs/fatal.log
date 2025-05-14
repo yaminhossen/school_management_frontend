@@ -1652,3 +1652,33 @@
 {"level":60,"time":1747129133148,"pid":9528,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"5/13/2025 3:38:53 PM","message":"data not found"}
 {"level":60,"time":1747201211961,"pid":18456,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 11:40:11 AM","message":"target not found."}
 {"level":60,"time":1747201214593,"pid":18456,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 11:40:14 AM","message":"target not found."}
+{"level":60,"time":1747201244640,"pid":7428,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 11:40:44 AM","message":"target not found."}
+{"level":60,"time":1747201245520,"pid":7428,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 11:40:45 AM","message":"target not found."}
+{"level":60,"time":1747201253316,"pid":7428,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 11:40:53 AM","message":"target not found."}
+{"level":60,"time":1747201299060,"pid":7428,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 11:41:39 AM","message":"target not found."}
+{"level":60,"time":1747201439693,"pid":7428,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 11:43:59 AM","message":"target not found."}
+{"level":60,"time":1747202299916,"pid":7428,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 11:58:19 AM","message":"target not found."}
+{"level":60,"time":1747203436045,"pid":7428,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 12:17:16 PM","message":"target not found."}
+{"level":60,"time":1747203443397,"pid":7428,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 12:17:23 PM","message":"target not found."}
+{"level":60,"time":1747203444043,"pid":7428,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 12:17:24 PM","message":"target not found."}
+{"level":60,"time":1747206243276,"pid":7428,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 1:04:03 PM","message":"target not found."}
+{"level":60,"time":1747206979171,"pid":7428,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 1:16:19 PM","message":"target not found."}
+{"level":60,"time":1747207708511,"pid":7428,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 1:28:28 PM","message":"target not found."}
+{"level":60,"time":1747212899109,"pid":2256,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 2:54:59 PM","message":"target not found."}
+{"level":60,"time":1747213344643,"pid":22056,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 3:02:24 PM","message":"target not found."}
+{"level":60,"time":1747215367750,"pid":2556,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 3:36:07 PM","message":"target not found."}
+{"level":60,"time":1747215443302,"pid":6524,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 3:37:23 PM","message":"target not found."}
+{"level":60,"time":1747215447579,"pid":6524,"hostname":"DESKTOP-9421701","file":"services\\branch_class_wise_student.ts:105:19)","time":"5/14/2025 3:37:27 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1747215546497,"pid":17784,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 3:39:06 PM","message":"target not found."}
+{"level":60,"time":1747215551344,"pid":17784,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 3:39:11 PM","message":"target not found."}
+{"level":60,"time":1747215554778,"pid":17784,"hostname":"DESKTOP-9421701","file":"services\\branch_class_wise_student.ts:105:19)","time":"5/14/2025 3:39:14 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1747215616872,"pid":7316,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 3:40:16 PM","message":"target not found."}
+{"level":60,"time":1747217554221,"pid":10712,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 4:12:34 PM","message":"target not found."}
+{"level":60,"time":1747217555320,"pid":10712,"hostname":"DESKTOP-9421701","file":"services\\class_routine.ts:72:19)","time":"5/14/2025 4:12:35 PM","message":"BranchTeachersModel is associated to BranchClassRoutineDayTimesModel using an alias. You've included an alias (b_teachers), but it does not match the alias(es) defined in your association (b_teacher)."}
+{"level":60,"time":1747217901441,"pid":8868,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 4:18:21 PM","message":"target not found."}
+{"level":60,"time":1747218038221,"pid":8868,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 4:20:38 PM","message":"target not found."}
+{"level":60,"time":1747218457861,"pid":15164,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 4:27:37 PM","message":"target not found."}
+{"level":60,"time":1747218458704,"pid":15164,"hostname":"DESKTOP-9421701","file":"services\\class_routine.ts:72:19)","time":"5/14/2025 4:27:38 PM","message":"BranchClassRoomsModel is not associated to BranchClassRoutineDayTimesModel!"}
+{"level":60,"time":1747218638381,"pid":19348,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 4:30:38 PM","message":"target not found."}
+{"level":60,"time":1747218816854,"pid":12924,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 4:33:36 PM","message":"target not found."}
+{"level":60,"time":1747219122952,"pid":8408,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 4:38:42 PM","message":"target not found."}

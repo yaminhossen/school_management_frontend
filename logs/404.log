@@ -1765,3 +1765,11 @@
 {"level":60,"time":1747201207787,"pid":18456,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-buildings?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+building_name%2C+building_code%2C+photo%2C+description%2C+attachment%2C+status"}
 {"level":60,"time":1747201208457,"pid":18456,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-buildings?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+building_name%2C+building_code%2C+photo%2C+description%2C+attachment%2C+status"}
 {"level":60,"time":1747201214807,"pid":18456,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-buildings?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+building_name%2C+building_code%2C+photo%2C+description%2C+attachment%2C+status"}
+{"level":60,"time":1747206981033,"pid":7428,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-routine-day-times/store"}
+{"level":60,"time":1747212893379,"pid":2256,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-routine-day-times/class-routine"}
+{"level":60,"time":1747212893388,"pid":2256,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-routine-day-times/class-routine"}
+{"level":60,"time":1747212894053,"pid":2256,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-routine-day-times/class-routine"}
+{"level":60,"time":1747212895117,"pid":2256,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-routine-day-times/class-routine"}
+{"level":60,"time":1747212903470,"pid":2256,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-routine-day-times/class-routine"}
+{"level":60,"time":1747215369019,"pid":2556,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-routine-day-times/class-routine"}
+{"level":60,"time":1747215546570,"pid":17784,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.40144724964044176"}

@@ -13,10 +13,10 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
         e.preventDefault();
         let formData = new FormData(e.target);
         try {
-            // const response = await axios.post(
-            //     '/api/v1/account-logs/credit',
-            //     formData,
-            // );
+            const response = await axios.post(
+                '/api/v1/branch-classes/class-routine',
+                formData,
+            );
             console.log('ksdfjlsdjfldsjok');
 
             // setData(response.data.data.data);
@@ -42,13 +42,13 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                         <label>Branch</label>
                                         <div className="form_elements">
                                             <select name="branch_id" id="">
-                                                <option value="mirpur">
+                                                <option value="1">
                                                     mirpur
                                                 </option>
-                                                <option value="gulshan">
+                                                <option value="2">
                                                     gulshan
                                                 </option>
-                                                <option value="uttara">
+                                                <option value="3">
                                                     uttara
                                                 </option>
                                             </select>
@@ -213,12 +213,12 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                 <tbody>
                                     {/* table_body area start */}
                                     <tr className="table_body">
-                                        <td className="class" rowSpan={4}>
-                                            9
-                                        </td>
-                                        <td className="batch" rowSpan={2}>
-                                            science 1
-                                        </td>
+                                        <td rowSpan={4}>One</td>
+                                    </tr>
+                                    <tr className="table_body">
+                                        <td rowSpan={4}>Section A</td>
+                                    </tr>
+                                    <tr className="table_body">
                                         <td className="subject">bangla</td>
                                         <td className="class_time_and_room_content">
                                             <span className="class_time_and_room">
@@ -347,8 +347,6 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                             </span>
                                         </td>
                                     </tr>
-                                    {/* table_body area end */}
-                                    {/* table_body area start */}
                                     <tr className="table_body">
                                         <td className="subject">english</td>
                                         <td className="class_time_and_room_content">
@@ -478,12 +476,7 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                             </span>
                                         </td>
                                     </tr>
-                                    {/* table_body area end */}
-                                    {/* table_body area start */}
                                     <tr className="table_body">
-                                        <td className="batch" rowSpan={2}>
-                                            science 2
-                                        </td>
                                         <td className="subject">math</td>
                                         <td className="class_time_and_room_content">
                                             <span className="class_time_and_room">
@@ -612,138 +605,6 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                             </span>
                                         </td>
                                     </tr>
-                                    {/* table_body area end */}
-                                    {/* table_body area start */}
-                                    <tr className="table_body">
-                                        <td className="subject">physics</td>
-                                        <td className="class_time_and_room_content">
-                                            <span className="class_time_and_room">
-                                                <span className="time_rooom class_time">
-                                                    7:00 am - 8:00 am
-                                                </span>
-                                                <span className="time_rooom class_room">
-                                                    <span className="room_title">
-                                                        room
-                                                    </span>
-                                                    <span className="dash_title">
-                                                        -
-                                                    </span>
-                                                    <span className="room_number">
-                                                        101
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </td>
-                                        <td className="class_time_and_room_content">
-                                            <span className="class_time_and_room">
-                                                <span className="time_rooom class_time">
-                                                    7:00 am - 8:00 am
-                                                </span>
-                                                <span className="time_rooom class_room">
-                                                    <span className="room_title">
-                                                        room
-                                                    </span>
-                                                    <span className="dash_title">
-                                                        -
-                                                    </span>
-                                                    <span className="room_number">
-                                                        101
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </td>
-                                        <td className="class_time_and_room_content">
-                                            <span className="class_time_and_room">
-                                                <span className="time_rooom class_time">
-                                                    7:00 am - 8:00 am
-                                                </span>
-                                                <span className="time_rooom class_room">
-                                                    <span className="room_title">
-                                                        room
-                                                    </span>
-                                                    <span className="dash_title">
-                                                        -
-                                                    </span>
-                                                    <span className="room_number">
-                                                        101
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </td>
-                                        <td className="class_time_and_room_content">
-                                            <span className="class_time_and_room">
-                                                <span className="time_rooom class_time">
-                                                    7:00 am - 8:00 am
-                                                </span>
-                                                <span className="time_rooom class_room">
-                                                    <span className="room_title">
-                                                        room
-                                                    </span>
-                                                    <span className="dash_title">
-                                                        -
-                                                    </span>
-                                                    <span className="room_number">
-                                                        101
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </td>
-                                        <td className="class_time_and_room_content">
-                                            <span className="class_time_and_room">
-                                                <span className="time_rooom class_time">
-                                                    7:00 am - 8:00 am
-                                                </span>
-                                                <span className="time_rooom class_room">
-                                                    <span className="room_title">
-                                                        room
-                                                    </span>
-                                                    <span className="dash_title">
-                                                        -
-                                                    </span>
-                                                    <span className="room_number">
-                                                        101
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </td>
-                                        <td className="class_time_and_room_content">
-                                            <span className="class_time_and_room">
-                                                <span className="time_rooom class_time">
-                                                    7:00 am - 8:00 am
-                                                </span>
-                                                <span className="time_rooom class_room">
-                                                    <span className="room_title">
-                                                        room
-                                                    </span>
-                                                    <span className="dash_title">
-                                                        -
-                                                    </span>
-                                                    <span className="room_number">
-                                                        101
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </td>
-                                        <td className="class_time_and_room_content">
-                                            <span className="class_time_and_room">
-                                                <span className="time_rooom class_time">
-                                                    7:00 am - 8:00 am
-                                                </span>
-                                                <span className="time_rooom class_room">
-                                                    <span className="room_title">
-                                                        room
-                                                    </span>
-                                                    <span className="dash_title">
-                                                        -
-                                                    </span>
-                                                    <span className="room_number">
-                                                        101
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    {/* table_body area end */}
                                 </tbody>
                             </table>
                             {/* table_area end */}

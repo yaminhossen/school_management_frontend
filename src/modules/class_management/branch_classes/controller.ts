@@ -15,6 +15,7 @@ import destroy from './services/destroy';
 import all_class from './services/all_class';
 import data_import from './services/import';
 import branch_class_wise_student from './services/branch_class_wise_student';
+import class_routine from './services/class_routine';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -41,6 +42,11 @@ export default function (fastify: FastifyInstance) {
 
         find: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        class_routine: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await class_routine(fastify, req);
             res.code(data.status).send(data);
         },
 
