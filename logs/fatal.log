@@ -1650,3 +1650,5 @@
 {"level":60,"time":1747128425311,"pid":13980,"hostname":"DESKTOP-9421701","file":"","time":"5/13/2025 3:27:05 PM","message":"target not found."}
 {"level":60,"time":1747128504406,"pid":13980,"hostname":"DESKTOP-9421701","file":"","time":"5/13/2025 3:28:24 PM","message":"target not found."}
 {"level":60,"time":1747129133148,"pid":9528,"hostname":"DESKTOP-9421701","file":"services\\details.ts:28:19)","time":"5/13/2025 3:38:53 PM","message":"data not found"}
+{"level":60,"time":1747201211961,"pid":18456,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 11:40:11 AM","message":"target not found."}
+{"level":60,"time":1747201214593,"pid":18456,"hostname":"DESKTOP-9421701","file":"","time":"5/14/2025 11:40:14 AM","message":"target not found."}

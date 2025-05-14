@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import setup from './config/setup';
 import { useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
+import axios from 'axios';
 export interface Props {}
 
 const ClassRoutine: React.FC<Props> = (props: Props) => {
-    const dispatch = useAppDispatch();
-
-    async function handle_submit(e) {
+    const [error, setError] = useState(null);
+    const [data, setData] = useState([]);
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        let response = await dispatch(store(new FormData(e.target)) as any);
-        if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
-            e.target.reset();
+        let formData = new FormData(e.target);
+        try {
+            // const response = await axios.post(
+            //     '/api/v1/account-logs/credit',
+            //     formData,
+            // );
+            console.log('ksdfjlsdjfldsjok');
+
+            // setData(response.data.data.data);
+        } catch (error) {
+            setError(error);
         }
-    }
+    };
     return (
         <div className="admin_dashboard">
             <h2>Class routine information</h2>
@@ -25,7 +34,7 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                         <div className="class_schedule_title">
                             <h2>class schedule</h2>
                             <form
-                                onSubmit={(e) => handle_submit(e)}
+                                onSubmit={(e) => handleSubmit(e)}
                                 className="form_600 mx-auto pt-3"
                             >
                                 <div className="mt-4 d-flex text-left">
@@ -57,6 +66,14 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                                     eight
                                                 </option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-horizontal">
+                                        <label></label>
+                                        <div className="form_elements">
+                                            <button className="btn btn_1">
+                                                submit
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
