@@ -1727,3 +1727,11 @@
 {"level":60,"time":1747214430663,"pid":4500,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/14/2025 3:20:30 PM","message":"target not found."}
 {"level":60,"time":1747214473364,"pid":4500,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/14/2025 3:21:13 PM","message":"target not found."}
 {"level":60,"time":1747215313995,"pid":4500,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/14/2025 3:35:13 PM","message":"target not found."}
+{"level":60,"time":1747216854001,"pid":4500,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/14/2025 4:00:54 PM","message":"target not found."}
+{"level":60,"time":1747216913474,"pid":4500,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/14/2025 4:01:53 PM","message":"target not found."}
+{"level":60,"time":1747216926932,"pid":4500,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/14/2025 4:02:06 PM","message":"target not found."}
+{"level":60,"time":1747217065957,"pid":4500,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/14/2025 4:04:25 PM","message":"target not found."}
+{"level":60,"time":1747217070844,"pid":4500,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/14/2025 4:04:30 PM","message":"target not found."}
+{"level":60,"time":1747217078733,"pid":4500,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/14/2025 4:04:38 PM","message":"target not found."}
+{"level":60,"time":1747217311349,"pid":4500,"hostname":"DESKTOP-I0UCE3Q","file":"services\\profile_update.ts:92:19)","time":"5/14/2025 4:08:31 PM","message":"operation not possible"}
+{"level":60,"time":1747217320437,"pid":4500,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/14/2025 4:08:40 PM","message":"target not found."}
