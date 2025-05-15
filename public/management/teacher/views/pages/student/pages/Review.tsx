@@ -29,7 +29,7 @@ const Review: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-    console.log(data);
+    console.log(id);
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior

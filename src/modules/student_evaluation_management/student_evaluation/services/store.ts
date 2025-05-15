@@ -10,6 +10,7 @@ import response from '../helpers/response';
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
+import moment from 'moment/moment';
 
 /** validation rules */
 async function validate(req: Request) {
@@ -75,7 +76,8 @@ async function store(
             score: body[`score${i}`],
         });
     }
-    console.log('studnet evaluation ', student_evaluation);
+    console.log('studnet evaluation ', body.student_id);
+    let today = moment().format('YYYY-MM-DD');
 
     /** print request data into console */
     // console.clear();
@@ -83,28 +85,56 @@ async function store(
 
     /** store data into database */
     try {
-        if (student_evaluation) {
-            student_evaluation.forEach(async (ss) => {
-                let uscn_model = new models.StudentEvaluationsModel();
-                let uscn_inputs: InferCreationAttributes<typeof uscn_model> = {
-                    branch_id: auth_user?.branch_id || 1,
-                    branch_student_id: 1,
-                    branch_teacher_id: user?.id || null,
-                    student_evaluation_criteria_id: 1,
-                    score: body.score,
-                    creator: user?.id || null,
-                };
-                uscn_inputs.branch_id = 1;
-                uscn_inputs.branch_student_id = body.student_id;
-                uscn_inputs.student_evaluation_criteria_id =
-                    ss.student_evaluation_criteria_id;
-                uscn_inputs.score = ss.score || null;
-                uscn_inputs.creator = 1;
-                console.log('second', uscn_inputs);
-                (await uscn_model.update(uscn_inputs)).save();
+        // ✅ First delete existing evaluations for that student and teacher
+        await models.StudentEvaluationsModel.destroy({
+            where: {
+                branch_student_id: body.student_id,
+                branch_teacher_id: user?.id,
+            },
+        });
+
+        // ✅ Then insert fresh data
+        for (const ss of student_evaluation) {
+            await models.StudentEvaluationsModel.create({
+                branch_id: auth_user?.branch_id || 1,
+                branch_student_id: body.student_id,
+                branch_teacher_id: user?.id || null,
+                student_evaluation_criteria_id:
+                    ss.student_evaluation_criteria_id,
+                score: ss.score || null,
+                creator: user?.id || null,
             });
         }
-        return response(201, 'data created', data);
+        /** ✅ Calculate total score */
+        const all_evaluations = await models.StudentEvaluationsModel.findAll({
+            where: {
+                branch_student_id: body.student_id,
+            },
+        });
+
+        let total_score = all_evaluations.reduce(
+            (acc, curr) => acc + (curr.score || 0),
+            0,
+        );
+
+        /** ✅ Divide by 5 */
+        let final_score = total_score / 5;
+
+        /** ✅ Insert or update overall evaluation */
+        await models.StudentOverallEvaluationsModel.destroy({
+            where: {
+                branch_student_id: body.student_id,
+            },
+        });
+
+        await models.StudentOverallEvaluationsModel.create({
+            branch_id: auth_user?.branch_id || 1,
+            branch_student_id: body.student_id,
+            score: final_score,
+            evaluation_date: today,
+            creator: user?.id || null,
+        });
+        return response(201, 'Data created successfully', {});
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
         throw new custom_error('server error', 500, error.message, uid);

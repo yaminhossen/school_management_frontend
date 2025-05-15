@@ -4,6 +4,7 @@ import {
 } from 'sequelize';
 import * as student_evaluations_model from './student_evaluations_model';
 import * as branch_teachers_model from './branch_teachers_model';
+import * as student_overall_evaluations_model from './student_overall_evaluations_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -23,12 +24,15 @@ const sequelize = new Sequelize(
 interface models {
     StudentEvaluationsModel: typeof student_evaluations_model.DataModel;
     BranchTeachersModel: typeof branch_teachers_model.DataModel;
+    StudentOverallEvaluationsModel: typeof student_overall_evaluations_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
 const db = async function (): Promise<models> {
     const StudentEvaluationsModel = student_evaluations_model.init(sequelize);
     const BranchTeachersModel = branch_teachers_model.init(sequelize);
+    const StudentOverallEvaluationsModel =
+        student_overall_evaluations_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -61,6 +65,7 @@ const db = async function (): Promise<models> {
     let models: models = {
         StudentEvaluationsModel,
         BranchTeachersModel,
+        StudentOverallEvaluationsModel,
         // Project,
 
         sequelize,
