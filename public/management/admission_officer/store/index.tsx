@@ -6,6 +6,8 @@ import users from '../views/pages/users/config/store';
 import user_students from '../views/pages/students/config/store';
 import student_add_new from '../views/pages/add_new/config/store';
 import student_payments from '../views/pages/payment/config/store';
+import meeting_agendas from '../views/pages/meeting_agendas/config/store';
+import tasks from '../views/pages/tasks/config/store';
 
 const store = configureStore({
     reducer: {
@@ -14,6 +16,8 @@ const store = configureStore({
         student_add_new: student_add_new.reducer,
         student_payments: student_payments.reducer,
         common_store: commonStore.reducer,
+        meeting_agendas: meeting_agendas.reducer,
+        tasks: tasks.reducer,
     },
     devTools: true,
 });
