@@ -10,6 +10,7 @@ import {
     responseObject,
     Request,
 } from '../../../common_types/object';
+import moment from 'moment/moment';
 
 /** validation rules */
 async function validate(req: Request) {
@@ -77,11 +78,27 @@ async function all(
         ];
     }
 
+    const whereClause: any = {
+        status: show_active_data === 'true' ? 'active' : 'deactive',
+    };
+    const today = moment().format('YYYY-MM-DD');
+    console.log('todya', today);
+
+    let month1 = query_param?.start_date || today; // Start date
+    let month2 = query_param?.end_date || today;
+    if (query_param?.start_date && query_param?.end_date) {
+        const endDate = new Date(query_param.end_date);
+        endDate.setDate(endDate.getDate() + 1); // Increment by one day
+        const formattedEndDate = endDate.toISOString().split('T')[0];
+        console.log('month2', formattedEndDate);
+
+        whereClause.evaluation_date = {
+            [Op.between]: [query_param.start_date, formattedEndDate],
+        };
+    }
     let query: FindAndCountOptions = {
         order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
-        where: {
-            status: show_active_data == 'true' ? 'active' : 'deactive',
-        },
+        where: whereClause,
         include: [
             {
                 model: models.UserStudentsModel,
@@ -99,8 +116,9 @@ async function all(
         query.where = {
             ...query.where,
             [Op.or]: [
-                { name: { [Op.like]: `%${search_key}%` } },
-                { preferred_name: { [Op.like]: `%${search_key}%` } },
+                { '$student.name$': { [Op.like]: `%${search_key}%` } },
+                { '$student.phone_number$': { [Op.like]: `%${search_key}%` } },
+                // { preferred_name: { [Op.like]: `%${search_key}%` } },
                 { status: { [Op.like]: `%${search_key}%` } },
                 { id: { [Op.like]: `%${search_key}%` } },
             ],

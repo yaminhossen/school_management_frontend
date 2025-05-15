@@ -1862,3 +1862,14 @@
 {"level":60,"time":1747302036343,"pid":19244,"hostname":"DESKTOP-9421701","file":"","time":"5/15/2025 3:40:36 PM","message":"target not found."}
 {"level":60,"time":1747302216060,"pid":4952,"hostname":"DESKTOP-9421701","file":"","time":"5/15/2025 3:43:36 PM","message":"target not found."}
 {"level":60,"time":1747304063571,"pid":20204,"hostname":"DESKTOP-9421701","file":"","time":"5/15/2025 4:14:23 PM","message":"target not found."}
+{"level":60,"time":1747304456724,"pid":21076,"hostname":"DESKTOP-9421701","file":"","time":"5/15/2025 4:20:56 PM","message":"target not found."}
+{"level":60,"time":1747304461743,"pid":21076,"hostname":"DESKTOP-9421701","file":"","time":"5/15/2025 4:21:01 PM","message":"target not found."}
+{"level":60,"time":1747304463045,"pid":21076,"hostname":"DESKTOP-9421701","file":"","time":"5/15/2025 4:21:03 PM","message":"target not found."}
+{"level":60,"time":1747304484698,"pid":21076,"hostname":"DESKTOP-9421701","file":"","time":"5/15/2025 4:21:24 PM","message":"target not found."}
+{"level":60,"time":1747304485239,"pid":21076,"hostname":"DESKTOP-9421701","file":"","time":"5/15/2025 4:21:25 PM","message":"target not found."}
+{"level":60,"time":1747304485707,"pid":21076,"hostname":"DESKTOP-9421701","file":"","time":"5/15/2025 4:21:25 PM","message":"target not found."}
+{"level":60,"time":1747304528093,"pid":21076,"hostname":"DESKTOP-9421701","file":"services\\all.ts:120:15)","time":"5/15/2025 4:22:08 PM","message":"Unknown column 'StudentOverallEvaluationsModel.name' in 'where clause'"}
+{"level":60,"time":1747305942948,"pid":12024,"hostname":"DESKTOP-9421701","file":"","time":"5/15/2025 4:45:42 PM","message":"target not found."}
+{"level":60,"time":1747305943907,"pid":12024,"hostname":"DESKTOP-9421701","file":"","time":"5/15/2025 4:45:43 PM","message":"target not found."}
+{"level":60,"time":1747305944611,"pid":12024,"hostname":"DESKTOP-9421701","file":"","time":"5/15/2025 4:45:44 PM","message":"target not found."}
+{"level":60,"time":1747306020110,"pid":3968,"hostname":"DESKTOP-9421701","file":"","time":"5/15/2025 4:47:00 PM","message":"target not found."}

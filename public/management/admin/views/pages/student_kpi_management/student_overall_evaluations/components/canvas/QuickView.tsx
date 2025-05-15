@@ -5,6 +5,7 @@ import storeSlice from '../../config/store';
 import { initialState } from '../../config/store/inital_state';
 import { useSelector } from 'react-redux';
 import setup from '../../config/setup';
+import moment from 'moment/moment';
 export interface Props {}
 
 const modalRoot = document.getElementById('filter-root');
@@ -42,12 +43,26 @@ const QuickView: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th>Name</th>
                                     <th>:</th>
-                                    <th>{state.item.name}</th>
+                                    <th>{state.item.student?.name}</th>
                                 </tr>
                                 <tr>
-                                    <th>Preffered name</th>
+                                    <th>Score</th>
                                     <th>:</th>
-                                    <th>{state.item.email}</th>
+                                    <th>{state.item.score}</th>
+                                </tr>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>:</th>
+                                    <th>{state.item.student?.phone_number}</th>
+                                </tr>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>:</th>
+                                    <th>
+                                        {moment(
+                                            state.item.evaluation_date,
+                                        ).format('YYYY-MM-DD')}
+                                    </th>
                                 </tr>
                             </tbody>
                         </table>
