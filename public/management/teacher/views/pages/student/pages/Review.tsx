@@ -75,19 +75,42 @@ const Review: React.FC<Props> = (props: Props) => {
                                         name="student_id"
                                         value={id}
                                     />
-                                    {data?.map(
-                                        (i: { [key: string]: any }, index) => {
-                                            return (
-                                                <tr>
+                                    {data && data.length > 0 ? (
+                                        data.map(
+                                            (
+                                                i: { [key: string]: any },
+                                                index,
+                                            ) => (
+                                                <tr key={i.id}>
                                                     <td>{i.name}</td>
                                                     <td>{i.max_score}</td>
                                                     <td>
                                                         <input
                                                             type="number"
+                                                            min={0}
                                                             max={i.max_score}
                                                             name={`score${index}`}
-                                                            id=""
                                                             placeholder="given marks"
+                                                            onInput={(
+                                                                e: React.ChangeEvent<HTMLInputElement>,
+                                                            ) => {
+                                                                const value =
+                                                                    parseFloat(
+                                                                        e.target
+                                                                            .value,
+                                                                    );
+                                                                if (
+                                                                    value >
+                                                                    i.max_score
+                                                                ) {
+                                                                    e.target.value =
+                                                                        i.max_score;
+                                                                }
+                                                                if (value < 0) {
+                                                                    e.target.value =
+                                                                        '0';
+                                                                }
+                                                            }}
                                                         />
                                                         <input
                                                             type="hidden"
@@ -96,13 +119,25 @@ const Review: React.FC<Props> = (props: Props) => {
                                                         />
                                                     </td>
                                                 </tr>
-                                            );
-                                        },
+                                            ),
+                                        )
+                                    ) : (
+                                        <tr>
+                                            <td
+                                                colSpan={3}
+                                                style={{
+                                                    textAlign: 'center',
+                                                    color: 'white',
+                                                }}
+                                            >
+                                                No data found
+                                            </td>
+                                        </tr>
                                     )}
                                 </tbody>
                             </table>
                         </div>
-                        <div className="attendance_form_btn">
+                        <div className="attendance_form_btn student_submit">
                             <button
                                 className="btn btn-sm btn-outline-info "
                                 type="submit"

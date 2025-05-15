@@ -61,6 +61,12 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.StudentEvaluationsModel();
+    let user = (req as any).user;
+    let auth_user = await models.BranchTeachersModel.findOne({
+        where: {
+            user_teacher_id: (req as any).user?.id || null,
+        },
+    });
 
     let student_evaluation: anyObject[] = [];
     for (let i = 0; i < parseInt(body.criteria_count); i++) {
@@ -81,11 +87,12 @@ async function store(
             student_evaluation.forEach(async (ss) => {
                 let uscn_model = new models.StudentEvaluationsModel();
                 let uscn_inputs: InferCreationAttributes<typeof uscn_model> = {
-                    branch_id: body.branch_id,
+                    branch_id: auth_user?.branch_id || 1,
                     branch_student_id: 1,
+                    branch_teacher_id: user?.id || null,
                     student_evaluation_criteria_id: 1,
                     score: body.score,
-                    creator: 1,
+                    creator: user?.id || null,
                 };
                 uscn_inputs.branch_id = 1;
                 uscn_inputs.branch_student_id = body.student_id;

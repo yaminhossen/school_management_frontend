@@ -71,13 +71,13 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
-            <h2>Class routine information</h2>
+            {/* <h2>Class routine information</h2> */}
             <div className="admin_sideba custom_scroll">
                 <section className="class_schedule_area">
                     <div className="container">
                         {/* class_schedule_title start */}
                         <div className="class_schedule_title">
-                            <h2>class schedule</h2>
+                            <h2>class Routine</h2>
                             <form
                                 onSubmit={(e) => handleSubmit(e)}
                                 className="form_600 mx-auto pt-3"
@@ -138,8 +138,14 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                                     )}
                                                 </select>
                                             ) : (
-                                                <div className="not_found_text">
-                                                    Please Select Class
+                                                <div
+                                                    style={{
+                                                        fontSize: '14px',
+                                                        color: 'black',
+                                                    }}
+                                                    className="not_found_text"
+                                                >
+                                                    At First Select Class
                                                 </div>
                                             )}
                                         </div>
@@ -147,9 +153,7 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                     <div className="form-group student_submit form-horizontal">
                                         <label></label>
                                         <div className="form_elements">
-                                            <button 
-                                                className="btn btn_1"
-                                            >
+                                            <button className="btn btn_1">
                                                 submit
                                             </button>
                                         </div>
@@ -372,7 +376,10 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td colSpan={9}>
                                                 <div
-                                                    style={{ fontSize: '24px' }}
+                                                    style={{
+                                                        fontSize: '24px',
+                                                        color: 'white',
+                                                    }}
                                                     className="not_found routine_not_found f-size-4 m-4"
                                                 >
                                                     No data found

@@ -25,7 +25,7 @@ const Details: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(class_details({ id: params.id }) as any);
     }, []);
-    console.log('state34324', state.item?.data);
+    console.log('state34324', state.item);
 
     return (
         <div className="admin_dashboard">

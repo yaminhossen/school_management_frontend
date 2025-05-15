@@ -23,9 +23,8 @@ import {
     // ForeignKey,
 } from 'sequelize';
 
-// import {DataModel as Project} from "./project_model"
-const tableName = 'student_evaluations';
-const modelName = 'StudentEvaluationsModel';
+const tableName = 'branch_teachers';
+const modelName = 'BranchTeachersModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
@@ -34,11 +33,11 @@ type status = 'active' | 'deactive';
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
-    declare branch_id?: number;
-    declare branch_student_id: number;
-    declare branch_teacher_id: number;
-    declare student_evaluation_criteria_id?: number;
-    declare score?: number;
+    declare user_teacher_id: number;
+    declare branch_id: number;
+    declare class_teacher_id?: number;
+    declare joining_date?: string;
+    declare department?: string;
 
     declare status?: status;
     declare creator?: number;
@@ -55,24 +54,24 @@ function init(sequelize: Sequelize) {
                 autoIncrement: true,
                 primaryKey: true,
             },
+            user_teacher_id: {
+                type: DataTypes.BIGINT.UNSIGNED,
+                allowNull: true,
+            },
             branch_id: {
                 type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
-            branch_student_id: {
-                type: new DataTypes.BIGINT(),
+            class_teacher_id: {
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
-            branch_teacher_id: {
-                type: new DataTypes.BIGINT(),
+            joining_date: {
+                type: new DataTypes.DATE(),
                 allowNull: true,
             },
-            student_evaluation_criteria_id: {
-                type: new DataTypes.BIGINT(),
-                allowNull: true,
-            },
-            score: {
-                type: DataTypes.FLOAT.UNSIGNED,
+            department: {
+                type: new DataTypes.STRING(40),
                 allowNull: true,
             },
 

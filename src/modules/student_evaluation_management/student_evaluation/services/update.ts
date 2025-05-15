@@ -69,10 +69,17 @@ async function update(
     let models = await db();
     let body = req.body as anyObject;
     let model = new models.StudentEvaluationsModel();
+    let user = (req as any).user;
+    let auth_user = await models.BranchTeachersModel.findOne({
+        where: {
+            user_teacher_id: (req as any).user?.id || null,
+        },
+    });
 
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: body.branch_id,
+        branch_id: auth_user?.branch_id || 1,
         branch_student_id: body.branch_student_id,
+        branch_teacher_id: user?.id || null,
         student_evaluation_criteria_id: body.student_evaluation_criteria_id,
         score: body.score,
     };
