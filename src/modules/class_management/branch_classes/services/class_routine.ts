@@ -24,12 +24,14 @@ async function class_routine(
     let branch_teachers_model = models.BranchTeachersModel;
     let user_teachers_model = models.UserTeachersModel;
     let params = req.params as any;
+    let body = req.body as any;
+    console.log('body', req.body);
 
     try {
         let data = await models.BranchClassRoutinesModel.findAll({
             where: {
-                branch_class_id: 1,
-                branch_class_section_id: 1,
+                branch_class_id: body.branch_class_id,
+                branch_class_section_id: body.branch_class_section_id,
             },
             include: [
                 {
@@ -61,8 +63,19 @@ async function class_routine(
             ],
         });
 
+        let s_class = await models.BranchClassesModel.findOne({
+            where: {
+                id: body.branch_class_id,
+            },
+        });
+        let section = await models.BranchClassSectionsModel.findOne({
+            where: {
+                id: body.branch_class_section_id,
+            },
+        });
+
         if (data) {
-            return response(200, 'data found', data);
+            return response(200, 'data found', { data, s_class, section });
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }

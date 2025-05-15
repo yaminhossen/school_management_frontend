@@ -1773,3 +1773,14 @@
 {"level":60,"time":1747212903470,"pid":2256,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-routine-day-times/class-routine"}
 {"level":60,"time":1747215369019,"pid":2556,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-routine-day-times/class-routine"}
 {"level":60,"time":1747215546570,"pid":17784,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.40144724964044176"}
+{"level":60,"time":1747219713050,"pid":20972,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1747219713056,"pid":20972,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/basic-information"}
+{"level":60,"time":1747220891394,"pid":20972,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.9817997062919894"}
+{"level":60,"time":1747220892318,"pid":20972,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.14261068723846226"}
+{"level":60,"time":1747220894180,"pid":20972,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.11151608980644001"}
+{"level":60,"time":1747220894944,"pid":20972,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.35878531813651926"}
+{"level":60,"time":1747220895639,"pid":20972,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.46335484916065606"}
+{"level":60,"time":1747285492746,"pid":6676,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.40287775589167896"}
+{"level":60,"time":1747285494767,"pid":6676,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.9451961900077239"}
+{"level":60,"time":1747285934583,"pid":6676,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.24321295680064758"}
+{"level":60,"time":1747286922600,"pid":6676,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.7393689362761202"}
