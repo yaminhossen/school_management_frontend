@@ -20,7 +20,7 @@ const RestoreButton: React.FC<Props> = (props: Props) => {
 
         let confirm = await (window as anyObject).s_confirm('restore data');
         if (confirm) {
-            dispatch(restore({ id: props.item.id }) as any);
+            dispatch(restore({ id: props.item.branch_student_id }) as any);
         }
     }
     if (state.show_active_data) {
@@ -30,7 +30,7 @@ const RestoreButton: React.FC<Props> = (props: Props) => {
         <>
             <a
                 onClick={(e) => handle_delete(e)}
-                href={`/${setup.route_prefix}/delete/${props.item.id}`}
+                href={`/${setup.route_prefix}/delete/${props.item.branch_student_id}`}
             >
                 Restore
             </a>

@@ -12,7 +12,7 @@ import BasicInformation from '../pages/BasicInformation.tsx';
 import AcademicInformation from '../pages/AcademicInformation.tsx';
 import Document from '../pages/Document.tsx';
 import Skills from '../pages/Skills.tsx';
-import Parents from '../../../user_management/user_parents/All.tsx';
+// import Parents from '../../../user_management/user_parents/All.tsx';
 import Language from '../pages/Language.tsx';
 import ContactNumber from '../pages/ContactNumer.tsx';
 import EducationalBackground from '../pages/EducationalBackground.tsx';
@@ -22,6 +22,7 @@ import Results from '../pages/Results.tsx';
 import Markshit from '../pages/Markshit.tsx';
 import TakeAttendance from '../TakeAttendance.tsx';
 import ClassDetails from '../ClassDetails.tsx';
+import Parents from '../pages/Parents.tsx';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 

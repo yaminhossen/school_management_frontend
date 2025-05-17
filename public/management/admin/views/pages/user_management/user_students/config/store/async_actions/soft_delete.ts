@@ -7,6 +7,8 @@ import { end_point } from '../../../../../../../config/api';
 import storeSlice from '..';
 import { all } from './all';
 import { anyObject } from '../../../../../../../common_types/object';
+import { useParams } from 'react-router-dom';
+import { class_details1 } from './class_details1';
 
 type ReturnType = void;
 type PayloadType = { [key: string]: any };
@@ -29,15 +31,16 @@ const fetch_api = async (param, thunkAPI) => {
         `${end_point}/${api_prefix}/soft-delete`,
         { id: param.id },
     );
-
+    console.log('class', param.class);
     dispatch(storeSlice.actions.set_is_loading(false));
     let row = document.querySelector(`.table_row_${param.id}`);
     if (row) {
         row.classList.add('hide');
     }
-    await dispatch(all({}));
-
+    // await dispatch(all({}));
     (window as anyObject).toaster('data deleted.');
+    await dispatch(class_details1({ id: param.class }) as any);
+
 
     return response.data;
     // thunkAPI.dispatch(storeSlice.actions.my_action())

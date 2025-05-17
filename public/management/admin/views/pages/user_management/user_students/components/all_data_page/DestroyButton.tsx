@@ -17,14 +17,14 @@ const DestroyButton: React.FC<Props> = (props: Props) => {
             'Delete permanently.',
         );
         if (confirm) {
-            dispatch(destroy({ id: props.item.id }) as any);
+            dispatch(destroy({ id: props.item.branch_student_id }) as any);
         }
     }
     return (
         <>
             <a
                 onClick={(e) => handle_delete(e)}
-                href={`/${setup.route_prefix}/destroy/${props.item.id}`}
+                href={`/${setup.route_prefix}/destroy/${props.item.branch_student_id}`}
             >
                 Destroy
             </a>

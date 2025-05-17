@@ -6,7 +6,9 @@ import HeadSearch2 from './HeadSearch2';
 import { Link } from 'react-router-dom';
 import setup from '../../config/setup';
 import HeadRightButtons2 from './HeadRightButtons2';
-export interface Props {}
+interface Props {
+    id: string | undefined;
+}
 
 const Header2: React.FC<Props> = (props: Props) => {
     return (
@@ -15,7 +17,7 @@ const Header2: React.FC<Props> = (props: Props) => {
                 <div className="navigation">
                     <ul>
                         <li className="search_li">
-                            <HeadSearch2></HeadSearch2>
+                            <HeadSearch2 id={props.id}></HeadSearch2>
                         </li>
                     </ul>
                 </div>

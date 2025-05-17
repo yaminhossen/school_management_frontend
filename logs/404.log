@@ -7,3 +7,15 @@
 {"level":60,"time":1747457699612,"pid":17296,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
 {"level":60,"time":1747462633681,"pid":14736,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
 {"level":60,"time":1747462649070,"pid":14736,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/destroy"}
+{"level":60,"time":1747471578023,"pid":18656,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1747471578035,"pid":18656,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1747472143497,"pid":18656,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collection-details/student-payment-history/3"}
+{"level":60,"time":1747472156102,"pid":18656,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collection-details/student-payment-history/3"}
+{"level":60,"time":1747472166381,"pid":18656,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-fees-collection-details/student-payment-history/2"}
+{"level":60,"time":1747473002322,"pid":18656,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js.map"}
+{"level":60,"time":1747473008156,"pid":18656,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.36253265557109193"}
+{"level":60,"time":1747479524773,"pid":16132,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.49780113768585665"}
+{"level":60,"time":1747479526737,"pid":16132,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.9808252374967499"}
+{"level":60,"time":1747479528525,"pid":16132,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.592149505362441"}
+{"level":60,"time":1747480764694,"pid":21128,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.816591448874125"}
+{"level":60,"time":1747480766361,"pid":21128,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.497080934447631"}

@@ -46,7 +46,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">
-                <Header2></Header2>
+                <Header2 id={params.id}></Header2>
 
                 <div className="content_body">
                     <div className="data_list">
@@ -114,9 +114,9 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                     <td>
                                                         <span
                                                             className="quick_view_trigger"
-                                                            onClick={() =>
-                                                                quick_view(i)
-                                                            }
+                                                            // onClick={() =>
+                                                            //     quick_view(i)
+                                                            // }
                                                         >
                                                             {i.id}
                                                         </span>
@@ -127,7 +127,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                                 i.branchstudent
                                                                     ?.image
                                                                     ? i
-                                                                        .branchstudent
+                                                                         .branchstudent
                                                                         ?.image
                                                                     : '/assets/dashboard/images/avatar.png'
                                                             }
@@ -181,7 +181,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                 ) : (
                                     <tbody>
                                         <tr>
-                                            <td colSpan={9}>
+                                            <td colSpan={10}>
                                                 <div
                                                     style={{
                                                         fontSize: '24px',
@@ -202,7 +202,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                             set_id={1}
                             set_paginate={storeSlice.actions.set_paginate}
                             set_page={storeSlice.actions.set_page}
-                            all={class_details1}
+                            all={class_details1({ id: params.id })}
                             data={state.all as any}
                             selected_paginate={state.paginate}
                         ></Paginate2>

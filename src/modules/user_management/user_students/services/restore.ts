@@ -33,9 +33,9 @@ async function restore(
     let body = req.body as { [key: string]: any };
 
     try {
-        let data = await models.UserStudentsModel.findOne({
+        let data = await models.BranchClassStudentsModel.findOne({
             where: {
-                id: body.id,
+                branch_student_id: body.id,
             },
         });
 

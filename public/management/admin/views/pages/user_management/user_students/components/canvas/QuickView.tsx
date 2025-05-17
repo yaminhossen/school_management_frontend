@@ -42,7 +42,7 @@ const QuickView: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th>Name</th>
                                     <th>:</th>
-                                    <th>{state.item.name}</th>
+                                    <th>{state.item?.branchstudent?.name}</th>
                                 </tr>
                                 <tr>
                                     <th>Preffered name</th>

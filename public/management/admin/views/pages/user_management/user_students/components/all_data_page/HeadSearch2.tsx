@@ -8,7 +8,9 @@ import { all } from '../../config/store/async_actions/all';
 import { useDebouncedCallback } from 'use-debounce';
 import { class_details1 } from '../../config/store/async_actions/class_details1';
 
-export interface Props {}
+interface Props {
+    id: string | undefined;
+}
 
 const HeadSearch2: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
@@ -23,7 +25,7 @@ const HeadSearch2: React.FC<Props> = (props: Props) => {
         if (search_input.current) {
             search_key = search_input.current.value;
             dispatch(storeSlice.actions.set_search_key(search_key) as any);
-            dispatch(class_details1({ id: 1 }) as any);
+            dispatch(class_details1({ id: props.id }) as any);
         }
     }, 1000);
 

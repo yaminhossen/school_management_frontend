@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import setup from '../../config/setup';
 import { initialState } from '../../config/store/inital_state';
 import { all } from '../../config/store/async_actions/all';
+import { class_details1 } from '../../config/store/async_actions/class_details1';
 export interface Props {}
 
 const AllDeactivatedData: React.FC<Props> = (props: Props) => {
@@ -21,7 +22,9 @@ const AllDeactivatedData: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_show_active_data(type));
         dispatch(storeSlice.actions.set_only_latest_data(true));
         dispatch(storeSlice.actions.set_page(1));
-        dispatch(all({}) as any);
+        // dispatch(all({}) as any);
+
+        dispatch(class_details1({ id: 2 }) as any);
     }
 
     return (

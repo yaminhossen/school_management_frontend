@@ -20,7 +20,12 @@ const DeleteButton: React.FC<Props> = (props: Props) => {
 
         let confirm = await (window as anyObject).s_confirm('delete data');
         if (confirm) {
-            dispatch(soft_delete({ id: props.item.id }) as any);
+            dispatch(
+                soft_delete({
+                    id: props.item.branch_student_id,
+                    class: props.item.branch_class_id,
+                }) as any,
+            );
         }
     }
     if (!state.show_active_data) {
@@ -30,7 +35,7 @@ const DeleteButton: React.FC<Props> = (props: Props) => {
         <>
             <a
                 onClick={(e) => handle_delete(e)}
-                href={`/${setup.route_prefix}/delete/${props.item.id}`}
+                href={`/${setup.route_prefix}/delete/${props.item.branch_student_id}`}
             >
                 Delete
             </a>
