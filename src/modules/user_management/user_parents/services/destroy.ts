@@ -38,9 +38,19 @@ async function destroy(
                 id: body.id,
             },
         });
+        let data2 = await models.UserParentInformationsModel.findOne({
+            where: {
+                user_parent_id: body.id,
+            },
+        });
 
         if (data) {
-            await data.destroy();
+            if (data2) {
+                await data2.destroy();
+            }
+            if (data) {
+                await data.destroy();
+            }
             return response(200, 'data permanently deleted', {});
         } else {
             throw new custom_error('Forbidden', 403, 'operation not possible');

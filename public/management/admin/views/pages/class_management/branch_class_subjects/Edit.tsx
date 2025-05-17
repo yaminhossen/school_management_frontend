@@ -238,6 +238,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                         );
                                                                     }}
                                                                 >
+                                                                <option value="">
+                                                                    Select
+                                                                    Class
+                                                                </option>
                                                                     {state
                                                                         ?.classes
                                                                         ?.length &&
@@ -286,6 +290,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                         );
                                                                     }}
                                                                 >
+                                                                <option value="">
+                                                                    Select
+                                                                    Section
+                                                                </option>
                                                                     {sections?.map(
                                                                         (
                                                                             i,
@@ -326,6 +334,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                     );
                                                                 }}
                                                             >
+                                                                <option value="">
+                                                                    Select
+                                                                    teacher
+                                                                </option>
                                                                 {state?.teachers
                                                                     ?.length &&
                                                                     state.teachers?.map(
@@ -370,6 +382,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                     );
                                                                 }}
                                                             >
+                                                                <option value="">
+                                                                    Select
+                                                                    room
+                                                                </option>
                                                                 {state?.rooms
                                                                     ?.length &&
                                                                     state.rooms?.map(
@@ -452,35 +468,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                             ></textarea>
                                                         </div>
                                                     </div>
-                                                    {/* <div className="form-group form-vertical">
-                                                        <label>Credit</label>
-                                                        <div className="form_elements">
-                                                            <input
-                                                                type="text"
-                                                                placeholder="credit"
-                                                                name="credit"
-                                                                defaultValue={
-                                                                    state.item
-                                                                        .credit
-                                                                }
-                                                            />
-                                                        </div>
-                                                    </div> */}
-                                                    {/* <div className="form-group form-vertical">
-                                                        <label>
-                                                            Additional Info
-                                                        </label>
-                                                        <div className="form_elements">
-                                                            <textarea
-                                                                placeholder="additional info"
-                                                                name="additional_info"
-                                                                defaultValue={
-                                                                    state.item
-                                                                        .additional_info
-                                                                }
-                                                            />
-                                                        </div>
-                                                    </div> */}
                                                 </div>
                                             </div>
                                         </div>

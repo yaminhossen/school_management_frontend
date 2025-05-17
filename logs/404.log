@@ -1,0 +1,9 @@
+{"level":60,"time":1747452527691,"pid":8736,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-sections/class-wise/2"}
+{"level":60,"time":1747452529429,"pid":8736,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-sections/class-wise/1"}
+{"level":60,"time":1747454856820,"pid":5772,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/classes"}
+{"level":60,"time":1747454887614,"pid":20780,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/classes"}
+{"level":60,"time":1747454909469,"pid":20780,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/classes"}
+{"level":60,"time":1747454941977,"pid":18612,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-classes/class-routine"}
+{"level":60,"time":1747457699612,"pid":17296,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
+{"level":60,"time":1747462633681,"pid":14736,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
+{"level":60,"time":1747462649070,"pid":14736,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/destroy"}

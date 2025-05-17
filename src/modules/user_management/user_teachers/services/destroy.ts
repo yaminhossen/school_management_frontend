@@ -38,9 +38,27 @@ async function destroy(
                 id: body.id,
             },
         });
+        let data2 = await models.UserTeacherInformationsModel.findOne({
+            where: {
+                user_teacher_id: body.id,
+            },
+        });
+        let data3 = await models.BranchTeachersModel.findOne({
+            where: {
+                user_teacher_id: body.id,
+            },
+        });
 
-        if (data) {
-            await data.destroy();
+        if (data || data2 || data3) {
+            if (data3) {
+                await data3.destroy();
+            }
+            if (data2) {
+                await data2.destroy();
+            }
+            if (data) {
+                await data.destroy();
+            }
             return response(200, 'data permanently deleted', {});
         } else {
             throw new custom_error('Forbidden', 403, 'operation not possible');

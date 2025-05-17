@@ -6,6 +6,7 @@ import setup from '../../setup';
 import { end_point } from '../../../../../../../config/api';
 import storeSlice from '..';
 import { all } from './all';
+import { anyObject } from '../../../../../../../common_types/object';
 
 type ReturnType = void;
 type PayloadType = { [key: string]: any };
@@ -34,6 +35,9 @@ const fetch_api = async (param, thunkAPI) => {
     }
     await dispatch(all({}));
     dispatch(storeSlice.actions.set_is_loading(false));
+    (window as anyObject).toaster(
+        `${response.status} - ${response.data.message}`,
+    );
     return response.data;
     // thunkAPI.dispatch(storeSlice.actions.my_action())
 };

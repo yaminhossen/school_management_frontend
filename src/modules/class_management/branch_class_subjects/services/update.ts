@@ -105,7 +105,7 @@ async function update(
         let data = await models.BranchClassSubjectsModel.findByPk(body.id);
         let r_data = await models.BranchClassRoutinesModel.findOne({
             where: {
-                branch_class_subject_id: body.id,
+                branch_class_subject_id: body?.id,
             },
         });
         let st_data = await models.BranchClassSubjectTeachersModel.findOne({
