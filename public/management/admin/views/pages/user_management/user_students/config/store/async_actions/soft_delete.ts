@@ -41,7 +41,6 @@ const fetch_api = async (param, thunkAPI) => {
     (window as anyObject).toaster('data deleted.');
     await dispatch(class_details1({ id: param.class }) as any);
 
-
     return response.data;
     // thunkAPI.dispatch(storeSlice.actions.my_action())
 };

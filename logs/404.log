@@ -20,3 +20,14 @@
 {"level":60,"time":1747480764694,"pid":21128,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.816591448874125"}
 {"level":60,"time":1747480766361,"pid":21128,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.497080934447631"}
 {"level":60,"time":1747540684846,"pid":17888,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.1054138592385625"}
+{"level":60,"time":1747559692230,"pid":19988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description%2C+status"}
+{"level":60,"time":1747559815772,"pid":14280,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description%2C+status"}
+{"level":60,"time":1747559821221,"pid":14280,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/task-details/3"}
+{"level":60,"time":1747559823262,"pid":14280,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description%2C+status"}
+{"level":60,"time":1747559824670,"pid":14280,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description%2C+status"}
+{"level":60,"time":1747559825949,"pid":14280,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/task-details/3"}
+{"level":60,"time":1747559828614,"pid":14280,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description%2C+status"}
+{"level":60,"time":1747559831091,"pid":14280,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/task-details/1"}
+{"level":60,"time":1747559832542,"pid":14280,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description%2C+status"}
+{"level":60,"time":1747559833379,"pid":14280,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/task-details/6"}
+{"level":60,"time":1747559834918,"pid":14280,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description%2C+status"}

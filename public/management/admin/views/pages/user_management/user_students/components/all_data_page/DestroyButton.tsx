@@ -17,7 +17,12 @@ const DestroyButton: React.FC<Props> = (props: Props) => {
             'Delete permanently.',
         );
         if (confirm) {
-            dispatch(destroy({ id: props.item.branch_student_id }) as any);
+            dispatch(
+                destroy({
+                    id: props.item.branch_student_id,
+                    class: props.item.branch_class_id,
+                }) as any,
+            );
         }
     }
     return (

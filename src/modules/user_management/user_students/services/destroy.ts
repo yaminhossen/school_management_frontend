@@ -33,6 +33,8 @@ async function destroy(
     /** initializations */
     let models = await db();
     let body = req.body as { [key: string]: any };
+    console.log('thsis body form destroy', body);
+    console.log('thsis params form destroy', req.params);
 
     try {
         const branchStudent = await models.BranchClassStudentsModel.findOne({

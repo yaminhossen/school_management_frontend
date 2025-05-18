@@ -120,6 +120,9 @@ async function teacher_pending(
             {
                 model: models.TasksModel,
                 as: 'tasks',
+                where: {
+                    status: 'active',
+                },
             },
         ],
     };
