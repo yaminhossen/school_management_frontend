@@ -67,6 +67,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
+                                            label={`Building Name`}
+                                            col_name={`building_name`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
                                             label={`Room Code`}
                                             col_name={`room_code`}
                                             sort={true}
@@ -129,6 +134,12 @@ const All: React.FC<Props> = (props: Props) => {
                                                             />
                                                         </td>
                                                         <td>{i.room_name}</td>
+                                                        <td>
+                                                            {
+                                                                i.buildings
+                                                                    ?.building_name
+                                                            }
+                                                        </td>
                                                         <td>{i.room_code}</td>
                                                         <td>{i.total_seat}</td>
                                                         <td>

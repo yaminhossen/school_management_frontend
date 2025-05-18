@@ -49,6 +49,15 @@ async function all(
         order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
         where: whereClause,
         // include: [models.Project],
+        include: [
+            {
+                model: models.BrancheBuildingsModel,
+                as: 'buildings',
+                where: {
+                    status: 'active',
+                },
+            },
+        ],
     };
 
     if (select_fields.length) {

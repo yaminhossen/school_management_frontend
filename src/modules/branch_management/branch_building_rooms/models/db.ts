@@ -37,11 +37,11 @@ const db = async function (): Promise<models> {
 
     await sequelize.sync();
 
-    // Project.hasOne(User, {
-    //     sourceKey: 'user_id',
-    //     foreignKey: 'id',
-    //     as: 'user',
-    // });
+    BrancheBuildingRoomsModel.hasOne(BrancheBuildingsModel, {
+        sourceKey: 'building_id',
+        foreignKey: 'id',
+        as: 'buildings',
+    });
 
     // User.hasMany(Project, {
     //     sourceKey: 'id',

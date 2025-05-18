@@ -57,6 +57,9 @@ async function all(
             {
                 model: driversModel,
                 as: 'driver',
+                where: {
+                    status: 'active',
+                },
             },
         ],
     };

@@ -53,6 +53,15 @@ async function all(
         // },
         where: whereClause,
         // include: [models.Project],
+        include: [
+            {
+                model: models.AcademicCalendarEventTypesModel,
+                as: 'event',
+                where: {
+                    status: 'active',
+                },
+            },
+        ],
     };
 
     if (select_fields.length) {

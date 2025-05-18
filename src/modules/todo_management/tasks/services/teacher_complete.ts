@@ -120,6 +120,9 @@ async function teacher_complete(
             {
                 model: models.TasksModel,
                 as: 'tasks',
+                where: {
+                    status: 'active',
+                },
             },
         ],
     };
