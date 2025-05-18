@@ -40,7 +40,6 @@ const Paginate2: React.FC<Props> = ({
         e.preventDefault();
         let final_url: InstanceType<typeof URL> = new URL(url);
         let page_no: string | null = '';
-        // let set_id: 1;
 
         if (isNaN(label) === false) {
             dispatch(set_page(label));
@@ -54,6 +53,7 @@ const Paginate2: React.FC<Props> = ({
         }
         dispatch(set_url(final_url.href));
         dispatch(all({ id: set_id }));
+        // dispatch(all({}));
         // dispatch(set_id(set_id));
     }
 
@@ -62,6 +62,7 @@ const Paginate2: React.FC<Props> = ({
         dispatch(set_page(1));
         dispatch(set_paginate(value));
         dispatch(all({ id: set_id }));
+        // dispatch(all({}));
         // dispatch(set_id(set_id));
     }
 

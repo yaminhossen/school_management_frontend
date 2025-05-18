@@ -30,7 +30,8 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
 
     const dispatch = useAppDispatch();
     const params = useParams();
-    console.log('param id', params.id);
+    const idd = Number(params.id);
+    console.log('param id', typeof idd);
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_select_fields('id'));
@@ -127,7 +128,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                                 i.branchstudent
                                                                     ?.image
                                                                     ? i
-                                                                         .branchstudent
+                                                                          .branchstudent
                                                                         ?.image
                                                                     : '/assets/dashboard/images/avatar.png'
                                                             }
@@ -199,10 +200,11 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
 
                         <Paginate2
                             set_url={storeSlice.actions.set_url}
-                            set_id={1}
+                            set_id={idd}
                             set_paginate={storeSlice.actions.set_paginate}
                             set_page={storeSlice.actions.set_page}
-                            all={class_details1({ id: params.id })}
+                            // class_details1={class_details1({})}
+                            all={class_details1}
                             data={state.all as any}
                             selected_paginate={state.paginate}
                         ></Paginate2>

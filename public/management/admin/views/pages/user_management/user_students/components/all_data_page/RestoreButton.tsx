@@ -20,7 +20,12 @@ const RestoreButton: React.FC<Props> = (props: Props) => {
 
         let confirm = await (window as anyObject).s_confirm('restore data');
         if (confirm) {
-            dispatch(restore({ id: props.item.branch_student_id }) as any);
+            dispatch(
+                restore({
+                    id: props.item.branch_student_id,
+                    class: props.item.branch_class_id,
+                }) as any,
+            );
         }
     }
     if (state.show_active_data) {

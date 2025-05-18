@@ -31,7 +31,7 @@ const Footer: React.FC<Props> = (props: Props) => {
                         <ExportSelected />
                     </li>
                     <li>
-                        <AllDeactivatedData />
+                        <AllDeactivatedData item={state.item} />
                     </li>
                     {/* <li>
                         <a href="#">

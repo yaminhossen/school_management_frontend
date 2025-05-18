@@ -31,6 +31,8 @@ async function restore(
     /** initializations */
     let models = await db();
     let body = req.body as { [key: string]: any };
+    console.log('req params', req.params);
+    
 
     try {
         let data = await models.BranchClassStudentsModel.findOne({

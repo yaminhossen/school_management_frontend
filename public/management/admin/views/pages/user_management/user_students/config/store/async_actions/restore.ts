@@ -7,6 +7,7 @@ import { end_point } from '../../../../../../../config/api';
 import storeSlice from '..';
 import { all } from './all';
 import { anyObject } from '../../../../../../../common_types/object';
+import { class_details1 } from './class_details1';
 
 type ReturnType = void;
 type PayloadType = { [key: string]: any };
@@ -33,7 +34,8 @@ const fetch_api = async (param, thunkAPI) => {
     if (row) {
         row.classList.add('hide');
     }
-    await dispatch(all({}));
+    // await dispatch(all({}));
+    await dispatch(class_details1({ id: param.class }) as any);
 
     (window as anyObject).toaster('data restored.');
     dispatch(storeSlice.actions.set_is_loading(false));
