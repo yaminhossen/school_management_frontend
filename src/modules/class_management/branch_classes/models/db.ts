@@ -15,6 +15,9 @@ import * as branch_teachers_model from './branch_teachers_model';
 import * as user_teacher_model from './user_teacher_model';
 import * as branche_building_rooms_model from './branche_building_rooms_model';
 import * as branch_class_sections_model from './branch_class_sections_model';
+import * as branch_class_resources_model from './branch_class_resources_model';
+import * as branch_class_fees_model from './branch_class_fees_model';
+import * as branch_class_fee_types_model from './branch_class_fee_types_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -45,6 +48,9 @@ interface models {
     UserTeachersModel: typeof user_teacher_model.DataModel;
     BranchBuildingRoomsModel: typeof branche_building_rooms_model.DataModel;
     BranchClassSectionsModel: typeof branch_class_sections_model.DataModel;
+    BranchClassResourcesModel: typeof branch_class_resources_model.DataModel;
+    BranchClassFeesModel: typeof branch_class_fees_model.DataModel;
+    BranchClassFeesTypesModel: typeof branch_class_fee_types_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -68,6 +74,11 @@ const db = async function (): Promise<models> {
         branche_building_rooms_model.init(sequelize);
     const BranchClassSectionsModel =
         branch_class_sections_model.init(sequelize);
+    const BranchClassResourcesModel =
+        branch_class_resources_model.init(sequelize);
+    const BranchClassFeesModel = branch_class_fees_model.init(sequelize);
+    const BranchClassFeesTypesModel =
+        branch_class_fee_types_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -147,6 +158,9 @@ const db = async function (): Promise<models> {
         UserTeachersModel,
         BranchBuildingRoomsModel,
         BranchClassSectionsModel,
+        BranchClassResourcesModel,
+        BranchClassFeesModel,
+        BranchClassFeesTypesModel,
         // Project,
 
         sequelize,

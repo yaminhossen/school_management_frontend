@@ -46,6 +46,61 @@ async function destroy(
 
         if (data) {
             await data.destroy();
+            await models.BranchClassSubjecsModel.destroy({
+                where: {
+                    branch_class_id: body.id,
+                },
+            });
+            await models.BranchClassStudentsModel.destroy({
+                where: {
+                    branch_class_id: body.id,
+                },
+            });
+            await models.BranchClassSectionsModel.destroy({
+                where: {
+                    branch_class_id: body.id,
+                },
+            });
+            await models.BranchClassRoutinesModel.destroy({
+                where: {
+                    branch_class_id: body.id,
+                },
+            });
+            // await models.BranchClassResoucesModel.destroy({
+            //     where: {
+            //         branch_class_id: body.id,
+            //     },
+            // });
+            // await models.UserStudentInformationsModel.destroy({
+            //     where: {
+            //         branch_class_id: body.id,
+            //     },
+            // });
+            await models.BranchClassSubjecsModel.destroy({
+                where: {
+                    branch_class_id: body.id,
+                },
+            });
+            await models.BranchClassSubjecsModel.destroy({
+                where: {
+                    branch_class_id: body.id,
+                },
+            });
+            await models.BranchClassSubjecsModel.destroy({
+                where: {
+                    branch_class_id: body.id,
+                },
+            });
+            await models.BranchClassSubjecsModel.destroy({
+                where: {
+                    branch_class_id: body.id,
+                },
+            });
+            await models.BranchClassSubjecsModel.destroy({
+                where: {
+                    branch_class_id: body.id,
+                },
+            });
             return response(200, 'data permanently deleted', {});
         } else {
             throw new custom_error(

@@ -13,18 +13,23 @@ const DestroyButton: React.FC<Props> = (props: Props) => {
 
     async function handle_delete(e: React.MouseEvent<HTMLElement, MouseEvent>) {
         e.preventDefault();
-
-        const phrase = `Delete ${props.item?.name}`;
-
-        const confirmed = await (window as anyObject).s_confirm(
-            `To permanently delete this class, type "${phrase}" below.`,
-            'Yes, delete it!',
-            phrase, // ✨ pass the required input
+        let confirm = await (window as anyObject).s_confirm(
+            'The class will be permanently deleted along with all its associated data, including students, parents, fee records, routines, and other related information. This action is irreversible. Please proceed with caution.',
         );
+        if (confirm) {
+            const phrase = `Delete ${props.item?.name}`;
 
-        if (confirmed) {
-            dispatch(destroy({ id: props.item.id }) as any);
+            const confirmed = await (window as anyObject).s_confirm(
+                `To permanently delete this class, type "${phrase}" below.`,
+                'Yes, delete it!',
+                phrase, // ✨ pass the required input
+            );
+
+            if (confirmed) {
+                dispatch(destroy({ id: props.item.id }) as any);
+            }
         }
+
         // const input = await (window as anyObject).s_confirm(
         //     `Type "Delete ${props.label}" to confirm deletion.`,
         // );
