@@ -10,32 +10,36 @@ import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 
+/** validation rules */
 async function validate(req: Request) {
     await body('id')
-        .notEmpty()
-        .withMessage('The id field is required')
+        .not()
+        .isEmpty()
+        .withMessage('the id field is required')
         .run(req);
-    return validationResult(req);
+
+    let result = await validationResult(req);
+
+    return result;
 }
 
 async function destroy(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
-    const validate_result = await validate(req as Request);
+    /** validation */
+    let validate_result = await validate(req as Request);
     if (!validate_result.isEmpty()) {
-        return response(422, 'Validation error', validate_result.array());
+        return response(422, 'validation error', validate_result.array());
     }
 
-    const models = await db();
-    const body = req.body as { [key: string]: any };
-
-    const transaction = await models.sequelize.transaction();
+    /** initializations */
+    let models = await db();
+    let body = req.body as { [key: string]: any };
 
     try {
         const classData = await models.BranchClassesModel.findOne({
             where: { id: body.id },
-            transaction,
         });
 
         if (!classData) {
@@ -46,128 +50,114 @@ async function destroy(
             );
         }
 
+        // 1. Get all student infos linked to this class
         const studentInfos = await models.UserStudentInformationsModel.findAll({
             where: { s_class: body.id },
-            transaction,
         });
 
         for (const info of studentInfos) {
             const studentId = info.user_student_id;
 
+            // 1. Get all student parents linked to this student
             const parents = await models.UserStudentParentsModel.findAll({
                 where: { user_student_id: studentId },
-                transaction,
             });
-
             for (const parent of parents) {
-                const parentId = parent.user_parent_id;
-
+                const parent_id = parent.user_parent_id;
+                // 1.1. Delete user parent
                 await models.UserParentsModel.destroy({
-                    where: { id: parentId },
-                    transaction,
+                    where: { id: parent_id },
                 });
+                // 1.2. Delete  parent information
                 await models.UserParentInformationsModel.destroy({
-                    where: { user_parent_id: parentId },
-                    transaction,
+                    where: { user_parent_id: parent_id },
                 });
-                await parent.destroy({ transaction });
+                // 1.3. Delete user student parent
+                await parent.destroy();
             }
 
+            // Delete other student-related data
             await Promise.all([
                 models.UserStudentComplainReviewsModel.destroy({
                     where: { user_student_id: studentId },
-                    transaction,
                 }),
                 models.UserStudentContactNumbersModel.destroy({
                     where: { user_student_id: studentId },
-                    transaction,
                 }),
                 models.UserStudentDocumentTitlesModel.destroy({
                     where: { user_student_id: studentId },
-                    transaction,
                 }),
                 models.UserStudnetDocumentValuesModel.destroy({
                     where: { user_student_id: studentId },
-                    transaction,
                 }),
                 models.UserStudentEducationBackgroundsModel.destroy({
                     where: { user_student_id: studentId },
-                    transaction,
                 }),
                 models.UserStudentHostelsModel.destroy({
                     where: { user_student_id: studentId },
-                    transaction,
                 }),
                 models.UserStudentLanguagesModel.destroy({
                     where: { user_student_id: studentId },
-                    transaction,
                 }),
                 models.UserStudentSkillsModel.destroy({
                     where: { user_student_id: studentId },
-                    transaction,
                 }),
+                info.destroy(),
             ]);
-
-            await info.destroy({ transaction });
         }
 
-        const routines = await models.BranchClassRoutinesModel.findAll({
+        // 1. Get all student infos linked to this class
+        const routines_info = await models.BranchClassRoutinesModel.findAll({
             where: { branch_class_id: body.id },
-            transaction,
         });
 
-        for (const routine of routines) {
-            await models.BranchClassRoutineDayTimesModel.destroy({
-                where: { branch_class_routine_id: routine.id },
-                transaction,
-            });
+        for (const routine of routines_info) {
+            const routineId = routine.id;
 
-            await routine.destroy({ transaction });
+            // 1. Get all student parents linked to this student
+            const r_days = await models.BranchClassRoutineDayTimesModel.destroy(
+                {
+                    where: { branch_class_routine_id: routineId },
+                },
+            );
+
+            // 4. Delete student info
+            await routine.destroy();
         }
 
+        /** Delete other related class data */
         await Promise.all([
             models.BranchClassSubjecsModel.destroy({
                 where: { branch_class_id: body.id },
-                transaction,
             }),
             models.BranchClassSubjectTeachersModel.destroy({
                 where: { branch_class_id: body.id },
-                transaction,
             }),
             models.BranchClassStudentsModel.destroy({
                 where: { branch_class_id: body.id },
-                transaction,
             }),
             models.BranchClassSectionsModel.destroy({
                 where: { branch_class_id: body.id },
-                transaction,
             }),
             models.BranchClassResourcesModel.destroy({
                 where: { branch_class_id: body.id },
-                transaction,
             }),
             models.BranchClassFeesModel.destroy({
                 where: { branch_class_id: body.id },
-                transaction,
             }),
             models.BranchClassFeesTypesModel.destroy({
                 where: { branch_class_id: body.id },
-                transaction,
             }),
         ]);
-
-        await classData.destroy({ transaction });
-
-        await transaction.commit();
-        return response(200, 'Data permanently deleted', {});
+        // 7. Finally, delete the class itself
+        await classData.destroy();
+        return response(200, 'data permanently deleted', {});
     } catch (error: any) {
-        await transaction.rollback();
-
-        const uid = await error_trace(models, error, req.url, req.body);
+        let uid = await error_trace(models, error, req.url, req.body);
         if (error instanceof custom_error) {
             error.uid = uid;
         } else {
-            throw new custom_error('Server error', 500, error.message, uid);
+            throw new custom_error('server error', 500, error.message, uid);
         }
         throw error;
     }

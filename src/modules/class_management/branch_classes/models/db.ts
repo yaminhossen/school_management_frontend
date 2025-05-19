@@ -18,6 +18,18 @@ import * as branch_class_sections_model from './branch_class_sections_model';
 import * as branch_class_resources_model from './branch_class_resources_model';
 import * as branch_class_fees_model from './branch_class_fees_model';
 import * as branch_class_fee_types_model from './branch_class_fee_types_model';
+import * as user_parent_informations_model from './user_parent_informations_model';
+import * as user_parents_model from './user_parents_model';
+import * as user_student_complain_review_model from './user_student_complain_review_model';
+import * as user_student_contact_numbers_model from './user_student_contact_numbers_model';
+import * as user_student_document_titles_model from './user_student_document_titles_model';
+import * as user_student_document_values_model from './user_student_document_values_model';
+import * as user_student_educational_backgrounds_model from './user_student_educational_backgrounds_model';
+import * as user_student_hostels_model from './user_student_hostels_model';
+import * as user_student_languages_model from './user_student_languages_model';
+import * as user_student_parents_model from './user_student_parents_model';
+import * as user_student_skills_model from './user_student_skills_model';
+import * as branch_class_subject_teachers_model from './branch_class_subject_teachers_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -51,6 +63,18 @@ interface models {
     BranchClassResourcesModel: typeof branch_class_resources_model.DataModel;
     BranchClassFeesModel: typeof branch_class_fees_model.DataModel;
     BranchClassFeesTypesModel: typeof branch_class_fee_types_model.DataModel;
+    UserParentInformationsModel: typeof user_parent_informations_model.DataModel;
+    UserParentsModel: typeof user_parents_model.DataModel;
+    UserStudentComplainReviewsModel: typeof user_student_complain_review_model.DataModel;
+    UserStudentContactNumbersModel: typeof user_student_contact_numbers_model.DataModel;
+    UserStudentDocumentTitlesModel: typeof user_student_document_titles_model.DataModel;
+    UserStudnetDocumentValuesModel: typeof user_student_document_values_model.DataModel;
+    UserStudentEducationBackgroundsModel: typeof user_student_educational_backgrounds_model.DataModel;
+    UserStudentHostelsModel: typeof user_student_hostels_model.DataModel;
+    UserStudentLanguagesModel: typeof user_student_languages_model.DataModel;
+    UserStudentParentsModel: typeof user_student_parents_model.DataModel;
+    UserStudentSkillsModel: typeof user_student_skills_model.DataModel;
+    BranchClassSubjectTeachersModel: typeof branch_class_subject_teachers_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -79,6 +103,26 @@ const db = async function (): Promise<models> {
     const BranchClassFeesModel = branch_class_fees_model.init(sequelize);
     const BranchClassFeesTypesModel =
         branch_class_fee_types_model.init(sequelize);
+    const UserParentInformationsModel =
+        user_parent_informations_model.init(sequelize);
+    const UserParentsModel = user_parents_model.init(sequelize);
+    const UserStudentComplainReviewsModel =
+        user_student_complain_review_model.init(sequelize);
+    const UserStudentContactNumbersModel =
+        user_student_contact_numbers_model.init(sequelize);
+    const UserStudentDocumentTitlesModel =
+        user_student_document_titles_model.init(sequelize);
+    const UserStudnetDocumentValuesModel =
+        user_student_document_values_model.init(sequelize);
+    const UserStudentEducationBackgroundsModel =
+        user_student_educational_backgrounds_model.init(sequelize);
+    const UserStudentHostelsModel = user_student_hostels_model.init(sequelize);
+    const UserStudentLanguagesModel =
+        user_student_languages_model.init(sequelize);
+    const UserStudentParentsModel = user_student_parents_model.init(sequelize);
+    const UserStudentSkillsModel = user_student_skills_model.init(sequelize);
+    const BranchClassSubjectTeachersModel =
+        branch_class_subject_teachers_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -161,6 +205,18 @@ const db = async function (): Promise<models> {
         BranchClassResourcesModel,
         BranchClassFeesModel,
         BranchClassFeesTypesModel,
+        UserParentInformationsModel,
+        UserParentsModel,
+        UserStudentComplainReviewsModel,
+        UserStudentContactNumbersModel,
+        UserStudentDocumentTitlesModel,
+        UserStudentEducationBackgroundsModel,
+        UserStudentHostelsModel,
+        UserStudentLanguagesModel,
+        UserStudentParentsModel,
+        UserStudentSkillsModel,
+        UserStudnetDocumentValuesModel,
+        BranchClassSubjectTeachersModel,
         // Project,
 
         sequelize,
