@@ -5,8 +5,8 @@ let appDir: string = path.resolve(path.dirname(__dirname));
 
 export let active_routes: string[] = [
     'src/modules/auth_management/authetication/routes.ts',
-    'src/modules/academic_calendar_management/academic_calendars/routes.ts',
-    'src/modules/academic_calendar_management/academic_calendar_event_types/routes.ts',
+    // 'src/modules/academic_calendar_management/academic_calendars/routes.ts',
+    // 'src/modules/academic_calendar_management/academic_calendar_event_types/routes.ts',
     // 'src/modules/accounts_management/accounts/routes.ts',
     // 'src/modules/accounts_management/account_categories/routes.ts',
     // 'src/modules/accounts_management/account_customers/routes.ts',
@@ -53,7 +53,7 @@ export let active_routes: string[] = [
     // 'src/modules/class_course_schedule_management/class_course_schedules/routes.ts',
     // 'src/modules/class_course_schedule_management/class_course_schedule_attachements/routes.ts',
     // 'src/modules/class_course_schedule_management/class_course_schedule_images/routes.ts',
-    // 'src/modules/class_management/branch_classes/routes.ts',
+    'src/modules/class_management/branch_classes/routes.ts',
     // 'src/modules/class_management/branch_class_rooms/routes.ts',
     // 'src/modules/class_management/branch_class_fees/routes.ts',
     // 'src/modules/class_management/branch_class_fee_discounts/routes.ts',

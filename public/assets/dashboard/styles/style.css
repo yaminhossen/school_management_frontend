@@ -2682,6 +2682,10 @@ td.col_id {
   background-color: var(--brand_color);
 }
 
+.swal_input_light {
+  color: white;
+}
+
 .table_responsive {
   overflow: auto;
   height: 100%;

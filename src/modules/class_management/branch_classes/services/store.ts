@@ -12,12 +12,26 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
 /** validation rules */
-async function validate(req: Request) {
+async function validate(req: Request, models: any) {
     await body('name')
         .not()
         .isEmpty()
         .withMessage('the name field is required')
         .run(req);
+
+    if (req.body?.name) {
+        await body('name')
+            .custom(async (name) => {
+                const existing = await models.BranchClassesModel.findOne({
+                    where: { name },
+                });
+                if (existing) {
+                    throw new Error(`${req.body?.name} class already exists`);
+                }
+                return true;
+            })
+            .run(req);
+    }
 
     await body('code')
         .not()
@@ -58,13 +72,14 @@ async function store(
     req: FastifyRequest,
 ): Promise<responseObject> {
     /** validation */
-    let validate_result = await validate(req as Request);
+    let models = await db();
+    let validate_result = await validate(req as Request, models);
     if (!validate_result.isEmpty()) {
         return response(422, 'validation error', validate_result.array());
     }
 
     /** initializations */
-    let models = await db();
+
     let body = req.body as anyObject;
     let data = new models.BranchClassesModel();
 
