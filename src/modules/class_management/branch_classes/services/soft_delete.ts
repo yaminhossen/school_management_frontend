@@ -40,20 +40,32 @@ async function soft_delete(
             },
         });
 
-        if (data) {
-            // await data.update({
-            //     status: 0,
-            // });
-            data.status = 'deactive';
-            await data.save();
-            return response(205, 'data deactivated', data);
-        } else {
+        // Check if the main subject exists
+        if (!data) {
             throw new custom_error(
                 'data not found',
                 404,
                 'operation not possible',
             );
         }
+
+        // Deactivate main data
+        data.status = 'deactive';
+        await data.save();
+
+        const examRoutines = await models.ExamRoutinesModel.findAll({
+            where: { class_id: body.id },
+        });
+
+        // Deactivate all dayTimes entries
+        if (examRoutines && examRoutines.length > 0) {
+            for (const routine of examRoutines) {
+                routine.status = 'deactive';
+                await routine.save();
+            }
+        }
+
+        return response(205, 'All related data deactivated', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
         if (error instanceof custom_error) {

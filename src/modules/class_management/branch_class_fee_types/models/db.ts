@@ -5,6 +5,7 @@ import {
 import * as branch_class_fee_types_model from './branch_class_fee_types_model';
 import * as branch_admin_model from './branch_admin_model';
 import * as branch_classes_model from './branch_classes_model';
+import * as branch_class_fees_model from './branch_class_fees_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -25,6 +26,7 @@ interface models {
     BranchClassFeeTypesModel: typeof branch_class_fee_types_model.DataModel;
     BranchAdminsModel: typeof branch_admin_model.DataModel;
     BranchClassesModel: typeof branch_classes_model.DataModel;
+    BranchClasseFeesModel: typeof branch_class_fees_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -33,6 +35,7 @@ const db = async function (): Promise<models> {
         branch_class_fee_types_model.init(sequelize);
     const BranchAdminsModel = branch_admin_model.init(sequelize);
     const BranchClassesModel = branch_classes_model.init(sequelize);
+    const BranchClasseFeesModel = branch_class_fees_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -66,6 +69,7 @@ const db = async function (): Promise<models> {
         BranchClassFeeTypesModel,
         BranchAdminsModel,
         BranchClassesModel,
+        BranchClasseFeesModel,
         // Project,
 
         sequelize,

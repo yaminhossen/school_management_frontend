@@ -41,6 +41,9 @@ async function destroy(
 
         if (data) {
             await data.destroy();
+            const examRoutines = await models.LeaveApplicationsModel.destroy({
+                where: { leave_type_id: body.id },
+            });
             return response(200, 'data permanently deleted', data);
         } else {
             throw new custom_error('Forbidden', 403, 'operation not possible');

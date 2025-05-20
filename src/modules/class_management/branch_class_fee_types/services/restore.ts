@@ -40,20 +40,32 @@ async function restore(
             },
         });
 
-        if (data) {
-            // await data.update({
-            //     status: 'active',
-            // });
-            data.status = 'active';
-            await data.save();
-            return response(205, 'data restored', data);
-        } else {
+        // Check if the main subject exists
+        if (!data) {
             throw new custom_error(
                 'data not found',
                 404,
                 'operation not possible',
             );
         }
+
+        // Deactivate main data
+        data.status = 'active';
+        await data.save();
+
+        const classesFees = await models.BranchClasseFeesModel.findAll({
+            where: { fee_type_id: body.id },
+        });
+
+        // Deactivate all dayTimes entries
+        if (classesFees && classesFees.length > 0) {
+            for (const fee of classesFees) {
+                fee.status = 'active';
+                await fee.save();
+            }
+        }
+
+        return response(205, 'All related data deactivated', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
         if (error instanceof custom_error) {

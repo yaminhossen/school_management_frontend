@@ -39,20 +39,32 @@ async function restore(
             },
         });
 
-        if (data) {
-            // await data.update({
-            //     status: 1,
-            // });
-            data.status = 'active';
-            await data.save();
-            return response(205, 'data restored', data);
-        } else {
+        // Check if the main subject exists
+        if (!data) {
             throw new custom_error(
                 'data not found',
                 404,
                 'operation not possible',
             );
         }
+
+        // Deactivate main data
+        data.status = 'active';
+        await data.save();
+
+        const notices = await models.NoticesModel.findAll({
+            where: { notice_category_id: body.id },
+        });
+
+        // Deactivate all dayTimes entries
+        if (notices && notices.length > 0) {
+            for (const notice of notices) {
+                notice.status = 'active';
+                await notice.save();
+            }
+        }
+
+        return response(205, 'All related data deactivated', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
         if (error instanceof custom_error) {

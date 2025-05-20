@@ -46,13 +46,12 @@ async function destroy(
 
         if (data) {
             await data.destroy();
-            return response(200, 'data permanently deleted', {});
+            const classFees = await models.BranchClasseFeesModel.destroy({
+                where: { fee_type_id: body.id },
+            });
+            return response(200, 'data permanently deleted', data);
         } else {
-            throw new custom_error(
-                'data not found',
-                404,
-                'operation not possible',
-            );
+            throw new custom_error('Forbidden', 403, 'operation not possible');
         }
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);

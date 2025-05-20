@@ -39,16 +39,32 @@ async function soft_delete(
             },
         });
 
-        if (data) {
-            // await data.update({
-            //     status: 0,
-            // });
-            data.status = 'deactive';
-            await data.save();
-            return response(200, 'data deactivated', data);
-        } else {
-            throw new custom_error('Forbidden', 403, 'operation not possible');
+        // Check if the main subject exists
+        if (!data) {
+            throw new custom_error(
+                'data not found',
+                404,
+                'operation not possible',
+            );
         }
+
+        // Deactivate main data
+        data.status = 'deactive';
+        await data.save();
+
+        const meetingAgendas = await models.MeetignAgendasModel.findAll({
+            where: { meeting_id: body.id },
+        });
+
+        // Deactivate all dayTimes entries
+        if (meetingAgendas && meetingAgendas.length > 0) {
+            for (const agenda of meetingAgendas) {
+                agenda.status = 'deactive';
+                await agenda.save();
+            }
+        }
+
+        return response(205, 'All related data deactivated', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
         if (error instanceof custom_error) {
