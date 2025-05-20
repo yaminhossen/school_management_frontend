@@ -32,6 +32,7 @@ async function class_routine(
             where: {
                 branch_class_id: body.branch_class_id,
                 branch_class_section_id: body.branch_class_section_id,
+                status: 'active',
             },
             include: [
                 {

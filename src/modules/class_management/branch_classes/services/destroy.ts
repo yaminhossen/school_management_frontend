@@ -154,6 +154,10 @@ async function destroy(
                 where: { branch_class_id: body.id },
                 transaction,
             }),
+            models.ExamRoutinesModel.destroy({
+                where: { class_id: body.id },
+                transaction,
+            }),
         ]);
 
         await classData.destroy({ transaction });

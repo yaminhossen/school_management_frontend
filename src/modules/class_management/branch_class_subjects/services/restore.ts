@@ -34,26 +34,59 @@ async function restore(
     let body = req.body as { [key: string]: any };
 
     try {
-        let data = await models.BranchClassSubjectsModel.findOne({
-            where: {
-                id: body.id,
-            },
+        // Fetch all related data
+        const subject = await models.BranchClassSubjectsModel.findOne({
+            where: { id: body.id },
         });
 
-        if (data) {
-            // await data.update({
-            //     status: 'active',
-            // });
-            data.status = 'active';
-            await data.save();
-            return response(205, 'data restored', data);
-        } else {
+        const routine = await models.BranchClassRoutinesModel.findOne({
+            where: { branch_class_subject_id: body.id },
+        });
+
+        const dayTimes = await models.BranchClassRoutineDayTimesModel.findAll({
+            where: { branch_class_subject_id: body.id },
+        });
+
+        const examRoutines = await models.ExamRoutinesModel.findAll({
+            where: { subject_id: body.id },
+        });
+
+        // Check if the main subject exists
+        if (!subject) {
             throw new custom_error(
                 'data not found',
                 404,
                 'operation not possible',
             );
         }
+
+        // Deactivate main subject
+        subject.status = 'active';
+        await subject.save();
+
+        // Deactivate routine if exists
+        if (routine) {
+            routine.status = 'active';
+            await routine.save();
+        }
+
+        // Deactivate all dayTimes entries
+        if (dayTimes && dayTimes.length > 0) {
+            for (const dayTime of dayTimes) {
+                dayTime.status = 'active';
+                await dayTime.save();
+            }
+        }
+
+        // Deactivate all dayTimes entries
+        if (examRoutines && examRoutines.length > 0) {
+            for (const routine of examRoutines) {
+                routine.status = 'active';
+                await routine.save();
+            }
+        }
+
+        return response(205, 'All related data deactivated', subject);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
         if (error instanceof custom_error) {

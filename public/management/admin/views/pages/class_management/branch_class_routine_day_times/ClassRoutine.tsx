@@ -295,10 +295,10 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                 <tbody>
                                     {/* table_body area start */}
                                     <tr className="table_body">
-                                        <td rowSpan={7}>{s_class?.name}</td>
+                                        <td rowSpan={9}>{s_class?.name}</td>
                                     </tr>
                                     <tr className="table_body">
-                                        <td rowSpan={7}>{section?.title}</td>
+                                        <td rowSpan={9}>{section?.title}</td>
                                     </tr>
                                     {data.length ? (
                                         data.map((i, index) => (

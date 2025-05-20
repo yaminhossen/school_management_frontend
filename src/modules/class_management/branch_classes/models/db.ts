@@ -30,6 +30,7 @@ import * as user_student_languages_model from './user_student_languages_model';
 import * as user_student_parents_model from './user_student_parents_model';
 import * as user_student_skills_model from './user_student_skills_model';
 import * as branch_class_subject_teachers_model from './branch_class_subject_teachers_model';
+import * as exam_routines_model from './exam_routines_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -75,6 +76,7 @@ interface models {
     UserStudentParentsModel: typeof user_student_parents_model.DataModel;
     UserStudentSkillsModel: typeof user_student_skills_model.DataModel;
     BranchClassSubjectTeachersModel: typeof branch_class_subject_teachers_model.DataModel;
+    ExamRoutinesModel: typeof exam_routines_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -123,6 +125,7 @@ const db = async function (): Promise<models> {
     const UserStudentSkillsModel = user_student_skills_model.init(sequelize);
     const BranchClassSubjectTeachersModel =
         branch_class_subject_teachers_model.init(sequelize);
+    const ExamRoutinesModel = exam_routines_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -217,6 +220,7 @@ const db = async function (): Promise<models> {
         UserStudentSkillsModel,
         UserStudnetDocumentValuesModel,
         BranchClassSubjectTeachersModel,
+        ExamRoutinesModel,
         // Project,
 
         sequelize,

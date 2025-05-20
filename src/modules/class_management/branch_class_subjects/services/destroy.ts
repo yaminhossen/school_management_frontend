@@ -38,22 +38,39 @@ async function destroy(
     let body = req.body as { [key: string]: any };
 
     try {
-        let data = await models.BranchClassSubjectsModel.findOne({
-            where: {
-                id: body.id,
-            },
+        // Check if the main subject exists
+        const subject = await models.BranchClassSubjectsModel.findOne({
+            where: { id: body.id },
         });
 
-        if (data) {
-            await data.destroy();
-            return response(200, 'data permanently deleted', {});
-        } else {
+        if (!subject) {
             throw new custom_error(
                 'data not found',
                 404,
                 'operation not possible',
             );
         }
+
+        // Destroy all related day times
+        await models.BranchClassRoutineDayTimesModel.destroy({
+            where: { branch_class_subject_id: body.id },
+        });
+
+        // Destroy the related routine
+        await models.BranchClassRoutinesModel.destroy({
+            where: { branch_class_subject_id: body.id },
+        });
+
+        // Finally, destroy the subject itself
+        await models.BranchClassSubjectsModel.destroy({
+            where: { id: body.id },
+        });
+        // Finally, destroy the subject itself
+        await models.ExamRoutinesModel.destroy({
+            where: { subject_id: body.id },
+        });
+
+        return response(200, 'All related data deleted successfully', {});
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
         if (error instanceof custom_error) {
