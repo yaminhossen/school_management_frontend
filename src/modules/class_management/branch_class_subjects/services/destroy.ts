@@ -69,6 +69,10 @@ async function destroy(
         await models.ExamRoutinesModel.destroy({
             where: { subject_id: body.id },
         });
+        // Finally, destroy the subject itself
+        await models.BranchClassSubjectTeachersModel.destroy({
+            where: { branch_class_subject_id: body.id },
+        });
 
         return response(200, 'All related data deleted successfully', {});
     } catch (error: any) {
