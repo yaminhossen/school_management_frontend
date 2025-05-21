@@ -19,13 +19,11 @@ const Details: React.FC<Props> = (props: Props) => {
 
     const dispatch = useAppDispatch();
     const params = useParams();
-    console.log('id', params.id);
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(class_details({ id: params.id }) as any);
     }, []);
-    console.log('state', state.item);
 
     return (
         <div className="admin_dashboard">
@@ -52,9 +50,8 @@ const Details: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {Object.keys(state.item)?.length &&
-                                    state.item.length &&
-                                    state?.item?.map(
+                                {state.item?.data?.length &&
+                                    state?.item?.data?.map(
                                         (i: { [key: string]: any }) => {
                                             return (
                                                 <tr>
