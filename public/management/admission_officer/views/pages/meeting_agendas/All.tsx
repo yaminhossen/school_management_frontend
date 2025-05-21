@@ -43,7 +43,7 @@ const All: React.FC<Props> = (props: Props) => {
     }
     let today = moment().format('YYYY-MM-DD');
     let nowTime = moment().format('hh:mm A');
-    console.log('state', state);
+
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">
@@ -109,7 +109,7 @@ const All: React.FC<Props> = (props: Props) => {
                                 </thead>
                                 <tbody id="all_list">
                                     {/* {(state.all as any)?.data?.map( */}
-                                    {(state?.all as any)?.data?.map(
+                                    {(state.all as any)?.data?.map(
                                         (i: { [key: string]: any }) => {
                                             return (
                                                 <tr
