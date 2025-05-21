@@ -171,3 +171,11 @@
 {"level":60,"time":1747811820520,"pid":16852,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/super_admin/super_admin.js"}
 {"level":60,"time":1747811820980,"pid":16852,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/super_admin/super_admin.js"}
 {"level":60,"time":1747811821567,"pid":16852,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/super_admin/super_admin.js"}
+{"level":60,"time":1747818247816,"pid":1292,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/classes"}
+{"level":60,"time":1747820190732,"pid":19536,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/classes"}
+{"level":60,"time":1747821378085,"pid":17264,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1747821378092,"pid":17264,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/user/students"}
+{"level":60,"time":1747821380338,"pid":17264,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/basic-information"}
+{"level":60,"time":1747821380342,"pid":17264,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/basic-information"}
+{"level":60,"time":1747821380819,"pid":17264,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-subjects/class-routine"}
+{"level":60,"time":1747821381227,"pid":17264,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/student-class"}

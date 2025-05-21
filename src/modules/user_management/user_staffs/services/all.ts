@@ -115,6 +115,12 @@ async function all(
             {
                 model: models.BranchStaffsModel,
                 as: 'staffs',
+                include: [
+                    {
+                        model: models.BranchesModel,
+                        as: 'branch',
+                    },
+                ],
             },
         ],
         attributes: {
@@ -139,8 +145,9 @@ async function all(
             ...query.where,
             [Op.or]: [
                 { name: { [Op.like]: `%${search_key}%` } },
-                // { designation: { [Op.like]: `%${search_key}%` } },
+                { role: { [Op.like]: `%${search_key}%` } },
                 { phone_number: { [Op.like]: `%${search_key}%` } },
+                { '$staffs.branch.name$': { [Op.like]: `%${search_key}%` } },
                 { email: { [Op.like]: `%${search_key}%` } },
                 { id: { [Op.like]: `%${search_key}%` } },
             ],

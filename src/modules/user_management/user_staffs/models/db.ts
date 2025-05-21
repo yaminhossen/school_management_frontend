@@ -7,6 +7,7 @@ import * as user_staff_informations_model from './user_staff_informations_model'
 import * as branch_staffs_model from './branch_staffs_model';
 import * as branch_admins_model from './branch_admins_model';
 import * as task_users_model from './task_users_model';
+import * as branches_model from './branches_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -29,6 +30,7 @@ interface models {
     BranchStaffsModel: typeof branch_staffs_model.DataModel;
     BranchAdminsModel: typeof branch_admins_model.DataModel;
     TaskUsersModel: typeof task_users_model.DataModel;
+    BranchesModel: typeof branches_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -39,6 +41,7 @@ const db = async function (): Promise<models> {
     const BranchStaffsModel = branch_staffs_model.init(sequelize);
     const BranchAdminsModel = branch_admins_model.init(sequelize);
     const TaskUsersModel = task_users_model.init(sequelize);
+    const BranchesModel = branches_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -58,6 +61,11 @@ const db = async function (): Promise<models> {
         sourceKey: 'id',
         foreignKey: 'staff_id',
         as: 'taskstaffs',
+    });
+    BranchStaffsModel.hasOne(BranchesModel, {
+        sourceKey: 'branch_id',
+        foreignKey: 'id',
+        as: 'branch',
     });
 
     // User.hasOne(Project, {
@@ -79,6 +87,7 @@ const db = async function (): Promise<models> {
         BranchStaffsModel,
         BranchAdminsModel,
         TaskUsersModel,
+        BranchesModel,
         // Project,
 
         sequelize,

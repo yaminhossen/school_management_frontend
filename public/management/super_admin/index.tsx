@@ -46,6 +46,9 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
     function (response) {
+        if (response.status == 217) {
+            location.href = '/super-admin/login';
+        }
         return response;
     },
 

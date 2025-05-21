@@ -108,6 +108,12 @@ async function all(
             {
                 model: models.BranchTeachersModel,
                 as: 'teachers',
+                include: [
+                    {
+                        model: models.BranchesModel,
+                        as: 'branch',
+                    },
+                ],
             },
         ],
         attributes: {
@@ -127,6 +133,7 @@ async function all(
                 { name: { [Op.like]: `%${search_key}%` } },
                 { email: { [Op.like]: `%${search_key}%` } },
                 { phone_number: { [Op.like]: `%${search_key}%` } },
+                { '$teachers.branch.name$': { [Op.like]: `%${search_key}%` } },
                 { status: { [Op.like]: `%${search_key}%` } },
                 { id: { [Op.like]: `%${search_key}%` } },
             ],

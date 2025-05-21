@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
@@ -10,6 +10,8 @@ import moment from 'moment/moment';
 import InputImage from './components/management_data_page/InputImage';
 import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
+import storeSlice from './config/store';
+import { branches } from './config/store/async_actions/branches';
 
 const Create: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
@@ -18,6 +20,14 @@ const Create: React.FC<Props> = (props: Props) => {
     const [showPassword, setShowPassword] = useState(false);
     const dispatch = useAppDispatch();
 
+    async function initdependancy() {
+        await dispatch(storeSlice.actions.set_item({}));
+        await dispatch(branches({}) as any);
+    }
+
+    useEffect(() => {
+        initdependancy();
+    }, []);
     function get_value(key) {
         try {
             if (state.item[key]) return state.item[key];
@@ -83,6 +93,34 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
+                                        {/* <div className="form-group form-vertical">
+                                            <label>Branch</label>
+                                            <div className="form_elements">
+                                                <select name="branch_id" id="">
+                                                    <option value="">
+                                                        Select branch
+                                                    </option>
+                                                    {state.branches?.length &&
+                                                        state.branches?.map(
+                                                            (i: {
+                                                                [
+                                                                    key: string
+                                                                ]: any;
+                                                            }) => {
+                                                                return (
+                                                                    <option
+                                                                        value={
+                                                                            i.id
+                                                                        }
+                                                                    >
+                                                                        {i.name}
+                                                                    </option>
+                                                                );
+                                                            },
+                                                        )}
+                                                </select>
+                                            </div>
+                                        </div> */}
                                         <div className="form-group form-horizontal">
                                             <label>
                                                 Phone number{' '}

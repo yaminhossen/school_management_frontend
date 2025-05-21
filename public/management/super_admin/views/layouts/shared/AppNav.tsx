@@ -28,7 +28,7 @@ const AppNav: React.FC<Props> = (props: Props) => {
                                 </span>
                             </Link>
                         </li>
-                        <li className="icon_link_li">
+                        {/* <li className="icon_link_li">
                             <a href="#dashboard#" className="navigation_link">
                                 <span className="material-symbols-outlined fill">
                                     mail
@@ -48,7 +48,7 @@ const AppNav: React.FC<Props> = (props: Props) => {
                                     checklist
                                 </span>
                             </a>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
                 <div className="active_window">

@@ -18,6 +18,22 @@ const T1: React.FC<Props> = (props: Props) => {
                             Admin Management
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/user-staffs">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Staff Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/user-teachers">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Teacher Management
+                        </Link>
+                    </li>
                 </ul>
 
                 <h3 className="mt-4 ms-0">Branch management</h3>
