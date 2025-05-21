@@ -29,7 +29,7 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, name, email, logo, address, primary_contact, status',
+                'id, name, email, phone_number, status',
             ),
         );
         dispatch(all({}) as any);
@@ -38,9 +38,6 @@ const All: React.FC<Props> = (props: Props) => {
     function quick_view(data: anyObject = {}) {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
-    }
-    if (state) {
-        console.log('all branches', state);
     }
 
     return (
@@ -63,7 +60,7 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`id`}
                                             sort={true}
                                         />
-                                        <th>Logo</th>
+                                        <th>Image</th>
                                         <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
@@ -75,19 +72,13 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <TableHeading
-                                            label={`Address`}
-                                            col_name={`address`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Primary contact`}
-                                            col_name={`primary_contact`}
+                                            label={`Phone number`}
+                                            col_name={`email`}
                                             sort={true}
                                         />
                                     </tr>
-                                </thead>{(state.all as any)?.data?.length ? (
+                                </thead>
                                 <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
                                     {(state.all as any)?.data?.map(
                                         (i: { [key: string]: any }) => {
                                             return (
@@ -103,6 +94,16 @@ const All: React.FC<Props> = (props: Props) => {
                                                     <td>
                                                         <SelectItem item={i} />
                                                     </td>
+                                                    <td>{i.id}</td>
+                                                    <td>
+                                                        <img
+                                                            src="/assets/dashboard/images/avatar.png"
+                                                            alt=""
+                                                            style={{
+                                                                height: 30,
+                                                            }}
+                                                        />
+                                                    </td>
                                                     <td>
                                                         <span
                                                             className="quick_view_trigger"
@@ -110,43 +111,16 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 quick_view(i)
                                                             }
                                                         >
-                                                            {i.id}
+                                                            {i.name}
                                                         </span>
                                                     </td>
-                                                    <td>
-                                                        <img
-                                                            src={i.logo ? i.logo : "/assets/dashboard/images/avatar.png"}
-                                                            alt=""
-                                                            style={{
-                                                                height: 30,
-                                                            }}
-                                                        />
-                                                    </td>
-                                                    <td>{i.name}</td>
                                                     <td>{i.email}</td>
-                                                    <td>{i.address}</td>
-                                                    <td>{i.primary_contact}</td>
+                                                    <td>{i.phone_number}</td>
                                                 </tr>
                                             );
                                         },
                                     )}
                                 </tbody>
-                                ) : (
-                                    <tbody>
-                                        <tr>
-                                            <td colSpan={9}>
-                                                <div
-                                                    style={{
-                                                        fontSize: '24px',
-                                                    }}
-                                                    className="not_found f-size-4 m-4"
-                                                >
-                                                    No data found
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                )}
                             </table>
                         </div>
 

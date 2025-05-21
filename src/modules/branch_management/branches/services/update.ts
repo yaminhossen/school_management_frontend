@@ -12,7 +12,7 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 import moment from 'moment/moment';
 
-async function validate(req: Request) {
+async function validate(req: Request, models: any) {
     await body('id')
         .not()
         .isEmpty()
@@ -48,6 +48,27 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the email field is required')
         .run(req);
+    if (req.body?.email) {
+        await body('email')
+            .custom(async (email) => {
+                const existing = await models.UserStaffsModel.findOne({
+                    where: { email },
+                });
+                if (existing) {
+                    throw new Error('Email already exists');
+                }
+                return true;
+            })
+            .run(req);
+    }
+    await body('primary_contact')
+        .not()
+        .isEmpty()
+        .withMessage('the primary_contact field is required')
+        .bail()
+        .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+        .withMessage('Phone number must be a valid Bangladeshi number')
+        .run(req);
 
     await body('map')
         .not()
@@ -77,13 +98,13 @@ async function update(
     req: FastifyRequest,
 ): Promise<responseObject> {
     /** validation */
-    let validate_result = await validate(req as Request);
+    let models = await db();
+    let validate_result = await validate(req as Request, models);
     if (!validate_result.isEmpty()) {
         return response(422, 'validation error', validate_result.array());
     }
 
     /** initializations */
-    let models = await db();
     let body = req.body as anyObject;
     let model = new models.BranchesModel();
     let image_path1 = '';

@@ -9,6 +9,7 @@ import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
+import InputImage from './components/management_data_page/InputImage';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -24,6 +25,16 @@ const Edit: React.FC<Props> = (props: Props) => {
         dispatch(details({ id: params.id }) as any);
     }, []);
 
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
     async function handle_submit(e) {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
@@ -97,10 +108,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Logo</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="file"
-                                            placeholder="logo"
-                                            name="logo"
+                                        <InputImage
+                                            label={''}
+                                            name={'logo'}
+                                            defalut_preview={get_value('logo')}
                                         />
                                     </div>
                                 </div>
@@ -112,17 +123,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             placeholder="address"
                                             name="address"
                                             defaultValue={state.item.address}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Map</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="address"
-                                            name="map"
-                                            defaultValue={state.item.map}
                                         />
                                     </div>
                                 </div>
@@ -149,10 +149,20 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label></label>
+                                    <label>Map</label>
                                     <div className="form_elements">
+                                        <textarea
+                                            placeholder="address"
+                                            name="map"
+                                            defaultValue={state.item.map}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group student_submit form-horizontal">
+                                    {/* <label></label> */}
+                                    <div className="form_elementss">
                                         <button className="btn btn_1">
-                                            submit
+                                            update
                                         </button>
                                     </div>
                                 </div>

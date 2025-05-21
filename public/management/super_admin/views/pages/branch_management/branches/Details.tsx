@@ -30,33 +30,83 @@ const Details: React.FC<Props> = (props: Props) => {
                 <div className="explore_window fixed_size">
                     <Header page_title={setup.details_page_title}></Header>
 
-                    {/* {Object.keys(state.item).length && (
-                        <div className="content_body">
+                    {Object.keys(state.item).length && (
+                        <div className="content_body custom_scroll">
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
+                                    <tr>
+                                        <td>Logo</td>
+                                        <td>:</td>
+                                        <td>
+                                            <a
+                                                href={state.item.logo}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img
+                                                    src={state.item.logo}
+                                                    width={50}
+                                                    alt="branch logo"
+                                                />
+                                            </a>
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <td>Name</td>
                                         <td>:</td>
                                         <td>{state.item.name}</td>
                                     </tr>
                                     <tr>
-                                        <td>Preffered Name</td>
+                                        <td>Email</td>
                                         <td>:</td>
                                         <td>{state.item.email}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address</td>
+                                        <td>:</td>
+                                        <td>{state.item.address}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Primary Contact</td>
+                                        <td>:</td>
+                                        <td>{state.item.primary_contact}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Latitude</td>
+                                        <td>:</td>
+                                        <td>{state.item.lat}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Longitude</td>
+                                        <td>:</td>
+                                        <td>{state.item.lng}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status</td>
+                                        <td>:</td>
+                                        <td>
+                                            {state.item.status == 'active'
+                                                ? 'Active'
+                                                : 'Deactive'}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Map</td>
+                                        <td>:</td>
+                                        <td>
+                                            <div
+                                                dangerouslySetInnerHTML={{
+                                                    __html: state.item.map,
+                                                }}
+                                            ></div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                    )} */}
-                    <div className="content_body custom_scroll">
+                    )}
+                    {/* <div className="content_body custom_scroll">
                         <div className="single-info-details">
-                            {/* <div className="item-img">
-                                <img
-                                    className="user_profile_img"
-                                    src="/assets/dashboard/images/avatar.png"
-                                    alt="teacher"
-                                />
-                            </div> */}
                             <div className="item-content">
                                 <div className="header-inline item-header details_header">
                                     <h3 className="text-dark-medium profile_name font-medium">
@@ -146,7 +196,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <Footer></Footer>
                 </div>

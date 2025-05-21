@@ -2,15 +2,14 @@ import { FindAndCountOptions } from 'sequelize';
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import response from '../helpers/response';
+import error_trace from '../helpers/error_trace';
+import custom_error from '../helpers/custom_error';
 import { validationResult, query } from 'express-validator';
 import {
     anyObject,
     responseObject,
     Request,
 } from '../../../common_types/object';
-import error_trace from '../helpers/error_trace';
-import custom_error from '../helpers/custom_error';
-import moment from 'moment/moment';
 
 /** validation rules */
 async function validate(req: Request) {
@@ -42,6 +41,7 @@ async function validate(req: Request) {
 
     return result;
 }
+
 async function all(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
@@ -71,78 +71,26 @@ async function all(
         select_fields = ['id', 'email', 'status', 'name', 'phone_number'];
     }
 
-    // let query: FindAndCountOptions = {
-    //     order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
-    //     where: {
-    //         status: show_active_data == 'true' ? 'active' : 'deactive',
-    //         created_at: {
-    //             [Op.between]: [query_param?.start_date, query_param?.end_date],
-    //         },
-    //     },
-    //     // include: [models.Project],
-    // };\
-
-    const whereClause: any = {
-        status: show_active_data === 'true' ? 'active' : 'deactive',
-        // role: { [Op.ne]: 'admin' }, // role not equal to 'admin'
-        role: 'admin',
-    };
-    const today = moment().format('YYYY-MM-DD');
-    console.log('todya', today);
-
-    let month1 = query_param?.start_date || today; // Start date
-    let month2 = query_param?.end_date || today;
-    if (query_param?.start_date && query_param?.end_date) {
-        const endDate = new Date(query_param.end_date);
-        endDate.setDate(endDate.getDate() + 1); // Increment by one day
-        const formattedEndDate = endDate.toISOString().split('T')[0];
-        console.log('month2', formattedEndDate);
-
-        whereClause.created_at = {
-            [Op.between]: [query_param.start_date, formattedEndDate],
-        };
-    }
-
-    const query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc === 'true' ? 'DESC' : 'ASC']],
-        where: whereClause,
-        // include: [models.Project],
-
-        include: [
-            {
-                model: models.UserStaffInformationsModel,
-                as: 'staff_infos',
-            },
-            {
-                model: models.BranchStaffsModel,
-                as: 'staffs',
-            },
-        ],
-        attributes: {
-            exclude: ['password'],
+    let query: FindAndCountOptions = {
+        order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
+        where: {
+            status: show_active_data == 'true' ? 'active' : 'deactive',
         },
+        // include: [models.Project],
     };
 
     query.attributes = {
         include: select_fields,
         exclude: exclude_fields,
     };
-    console.log('params', query_param);
-    console.log('params2', query_param.start_date);
-    console.log('params3', query_param.end_date);
 
     if (search_key) {
-        // query_param.paginate = 25;
-        // query_param.page = 1;
-
-        // query_param.paginate = 25;
         query.where = {
             ...query.where,
             [Op.or]: [
                 { name: { [Op.like]: `%${search_key}%` } },
-                // { designation: { [Op.like]: `%${search_key}%` } },
-                { phone_number: { [Op.like]: `%${search_key}%` } },
-                { email: { [Op.like]: `%${search_key}%` } },
+                { preferred_name: { [Op.like]: `%${search_key}%` } },
+                { status: { [Op.like]: `%${search_key}%` } },
                 { id: { [Op.like]: `%${search_key}%` } },
             ],
         };
@@ -151,7 +99,7 @@ async function all(
     try {
         let data = await (fastify_instance as anyObject).paginate(
             req,
-            models.UserStaffsModel,
+            models.UserAdminsModel,
             paginate,
             query,
         );

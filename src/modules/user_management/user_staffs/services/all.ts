@@ -84,6 +84,7 @@ async function all(
 
     const whereClause: any = {
         status: show_active_data === 'true' ? 'active' : 'deactive',
+        role: { [Op.ne]: 'admin' }, // role not equal to 'admin'
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);
