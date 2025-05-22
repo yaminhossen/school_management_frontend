@@ -77,6 +77,21 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 </div>
                                 <div className="form-group form-horizontal">
                                     <label>
+                                        User Type{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="type"
+                                            name="type"
+                                            readOnly
+                                            defaultValue={state.item.type}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>
                                         Email{' '}
                                         <span className="valid_star">*</span>
                                     </label>
@@ -157,177 +172,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     />
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>
-                                        Parmanent Address{' '}
-                                        <span className="valid_star">*</span>
-                                    </label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="Parmenent address"
-                                            name="parmenent_address"
-                                            defaultValue={
-                                                state.item.staff_infos
-                                                    ?.parmenent_address
-                                            }
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Country</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="country"
-                                            name="country"
-                                            defaultValue={
-                                                state.item.staff_infos?.country
-                                            }
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>District</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="district"
-                                            name="district"
-                                            defaultValue={
-                                                state.item.staff_infos?.district
-                                            }
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Post Code</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="post_code"
-                                            name="post_code"
-                                            defaultValue={
-                                                state.item.staff_infos
-                                                    ?.post_code
-                                            }
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Present Address</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="present address"
-                                            name="present_address"
-                                            defaultValue={
-                                                state.item.staff_infos
-                                                    ?.present_address
-                                            }
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>
-                                        Alternative Number{' '}
-                                        <span className="valid_star">*</span>
-                                    </label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="guardian number"
-                                            name="guardian_contact_number"
-                                            defaultValue={
-                                                state.item.staff_infos
-                                                    ?.guardian_contact_number
-                                            }
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Qualification</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="qualification"
-                                            name="qualification"
-                                            defaultValue={
-                                                state.item.staff_infos
-                                                    ?.qualification
-                                            }
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Gender</label>
-                                    <div className="form_elements">
-                                        <select
-                                            name="gender"
-                                            id=""
-                                            defaultValue={
-                                                state.item.staff_infos?.gender
-                                            }
-                                        >
-                                            <option value="male">Male</option>
-                                            <option value="female">
-                                                Female
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Is Married</label>
-                                    <div className="form_elements">
-                                        <select
-                                            name="is_married"
-                                            defaultValue={
-                                                state.item.staff_infos
-                                                    ?.is_married === true
-                                                    ? 1
-                                                    : 0
-                                            }
-                                            id=""
-                                        >
-                                            <option value="1">Yes</option>
-                                            <option value="0">No</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Blood group</label>
-                                    <div className="form_elements">
-                                        <select
-                                            name="blood_group"
-                                            defaultValue={
-                                                state.item.staff_infos
-                                                    ?.blood_group
-                                            }
-                                            id=""
-                                        >
-                                            <option value="A+">A+</option>
-                                            <option value="B+">B+</option>
-                                            <option value="A-">A-</option>
-                                            <option value="AB-">AB-</option>
-                                            <option value="AB+">AB+</option>
-                                            <option value="B-">B-</option>
-                                            <option value="O+">O+</option>
-                                            <option value="O-">O-</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Joining Date</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="date"
-                                            name="joining_date"
-                                            defaultValue={moment(
-                                                state.item.staffs?.joining_date,
-                                            ).format('YYYY-MM-DD')}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
                                     <label>Role</label>
                                     <div className="form_elements">
                                         <select
@@ -335,48 +179,16 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             id=""
                                             defaultValue={state.item?.role}
                                         >
-                                            <option value="principle">
-                                                Principle
+                                            <option value="">
+                                                Select role
                                             </option>
                                             <option value="admin">Admin</option>
-                                            <option value="admission-officer">
-                                                Admission-officer
-                                            </option>
-                                            <option value="librarian">
-                                                Librarian
-                                            </option>
-                                            <option value="accountant">
-                                                Accountant
+                                            <option value="staff">Staff</option>
+                                            <option value="teacher">
+                                                Teacher
                                             </option>
                                         </select>
                                     </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <InputImage
-                                        label={'National Id'}
-                                        name={'national_id'}
-                                        defalut_preview={get_value(
-                                            'national_id',
-                                        )}
-                                    />
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <InputImage
-                                        label={'Certificate No. 1'}
-                                        name={'certificate_1'}
-                                        defalut_preview={get_value(
-                                            'certificate_no_1',
-                                        )}
-                                    />
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <InputImage
-                                        label={'Certificate No. 2'}
-                                        name={'certificate_2'}
-                                        defalut_preview={get_value(
-                                            'certificate_no_2',
-                                        )}
-                                    />
                                 </div>
                                 <div className="form-group student_submit form-horizontal">
                                     {/* <label></label> */}

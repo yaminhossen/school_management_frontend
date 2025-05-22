@@ -108,16 +108,16 @@ async function all(
         where: whereClause,
         // include: [models.Project],
 
-        include: [
-            {
-                model: models.UserStaffInformationsModel,
-                as: 'staff_infos',
-            },
-            {
-                model: models.BranchStaffsModel,
-                as: 'staffs',
-            },
-        ],
+        // include: [
+        //     {
+        //         model: models.UserStaffInformationsModel,
+        //         as: 'staff_infos',
+        //     },
+        //     {
+        //         model: models.BranchStaffsModel,
+        //         as: 'staffs',
+        //     },
+        // ],
         attributes: {
             exclude: ['password'],
         },
@@ -140,7 +140,7 @@ async function all(
             ...query.where,
             [Op.or]: [
                 { name: { [Op.like]: `%${search_key}%` } },
-                // { designation: { [Op.like]: `%${search_key}%` } },
+                { type: { [Op.like]: `%${search_key}%` } },
                 { phone_number: { [Op.like]: `%${search_key}%` } },
                 { email: { [Op.like]: `%${search_key}%` } },
                 { id: { [Op.like]: `%${search_key}%` } },
@@ -151,7 +151,7 @@ async function all(
     try {
         let data = await (fastify_instance as anyObject).paginate(
             req,
-            models.UserStaffsModel,
+            models.UserAdminsModel,
             paginate,
             query,
         );

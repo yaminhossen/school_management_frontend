@@ -204,11 +204,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                         />
                                                     </td>
                                                     <td>{i.name}</td>
-                                                    <td>
-                                                        {i.role
-                                                            ? i.role
-                                                            : 'staff'}
-                                                    </td>
+                                                    <td>{i.type}</td>
                                                     <td>{i.phone_number}</td>
                                                     <td>{i.email}</td>
                                                 </tr>

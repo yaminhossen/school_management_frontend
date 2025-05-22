@@ -55,7 +55,7 @@ async function make_admin_teacher(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.UserAdminsModel();
-    let u_staff = new models.UserStaffsModel();
+    let u_teacher = new models.UserTeachersModel();
     let param = req.params as any;
     // const bcrypt = require('bcrypt');
     // const saltRounds = 10;
@@ -69,33 +69,33 @@ async function make_admin_teacher(
 
     /** make_admin_teacher data into database */
     try {
-        let staff = await models.UserStaffsModel.findOne({
+        let teacher = await models.UserTeachersModel.findOne({
             where: {
                 id: param.id,
             },
         });
-        let inputs2: InferCreationAttributes<typeof u_staff> = {
+        let inputs2: InferCreationAttributes<typeof u_teacher> = {
             role_2: 'admin',
         };
-        if (staff) {
-            let b_staff = await models.BranchStaffsModel.findOne({
+        if (teacher) {
+            let b_teacher = await models.BranchTeachersModel.findOne({
                 where: {
-                    user_staff_id: param.id,
+                    user_teacher_id: param.id,
                 },
             });
             let inputs: InferCreationAttributes<typeof data> = {
-                branch_id: b_staff?.branch_id || 0,
-                staff_id: param.id,
-                name: staff?.name,
-                email: staff?.email,
-                phone_number: staff?.phone_number,
-                image: staff?.image,
-                password: staff?.password,
+                branch_id: b_teacher?.branch_id || 0,
+                teacher_id: param.id,
+                name: teacher?.name,
+                email: teacher?.email,
+                phone_number: teacher?.phone_number,
+                image: teacher?.image,
+                password: teacher?.password,
                 role: 'admin',
-                type: 'staff',
+                type: 'teacher',
             };
             (await data.update(inputs)).save();
-            (await staff.update(inputs2)).save();
+            (await teacher.update(inputs2)).save();
         }
 
         return response(201, 'data created', data);

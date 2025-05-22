@@ -93,7 +93,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                        {/* <div className="form-group form-vertical">
+                                        <div className="form-group form-horizontal">
                                             <label>Branch</label>
                                             <div className="form_elements">
                                                 <select name="branch_id" id="">
@@ -120,7 +120,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         )}
                                                 </select>
                                             </div>
-                                        </div> */}
+                                        </div>
                                         <div className="form-group form-horizontal">
                                             <label>
                                                 Phone number{' '}
@@ -139,7 +139,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                         <div className="form-group form-horizontal">
                                             <InputImage
                                                 label={'Image'}
-                                                name={'staff_image'}
+                                                name={'image'}
                                                 defalut_preview={get_value('')}
                                             />
                                             {/* <div className="form_elements">
@@ -193,7 +193,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="full_width">
+                                    {/* <div className="full_width">
                                         <div className="form_section_heading">
                                             <h2 className="">
                                                 Basic Information
@@ -422,7 +422,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 />
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                             <div className="form-group student_submit form-horizontal">

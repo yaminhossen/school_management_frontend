@@ -27,7 +27,7 @@ const fetch_api = async (param: anyObject, thunkAPI) => {
     // const response = await axios.get(
     //     `${end_point}/${api_prefix}/students/${param.id}`,
     // );
-    const response = await axios.get(`${end_point}/${api_prefix}/branches`);
+    const response = await axios.get(`${end_point}/user-students/branches`);
 
     dispatch(storeSlice.actions.set_is_loading(false));
     dispatch(storeSlice.actions.set_branch(response.data.data));
