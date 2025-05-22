@@ -33,7 +33,9 @@ const fetch_api = async (param, thunkAPI) => {
     if (row) {
         row.classList.add('hide');
     }
-    await dispatch(all({}));
+    dispatch(storeSlice.actions.set_only_latest_data(true));
+    dispatch(all({}));
+    dispatch(storeSlice.actions.set_only_latest_data(false));
 
     (window as anyObject).toaster('data restored.');
     dispatch(storeSlice.actions.set_is_loading(false));

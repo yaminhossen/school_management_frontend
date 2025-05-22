@@ -48,8 +48,16 @@ async function destroy(
                 user_teacher_id: body.id,
             },
         });
+        let data4 = await models.UserAdminsModel.findOne({
+            where: {
+                teacher_id: body.id,
+            },
+        });
 
-        if (data || data2 || data3) {
+        if (data || data2 || data3 || data4) {
+            if (data4) {
+                await data4.destroy();
+            }
             if (data3) {
                 await data3.destroy();
             }

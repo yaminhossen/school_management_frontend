@@ -18,23 +18,7 @@ const ExportSelected: React.FC<Props> = () => {
         e.preventDefault();
 
         // You can customize these columns including nested keys
-        const columns = [
-            'ID',
-            'Name',
-            'Email',
-            'Phone',
-            'Role',
-            'Present Address',
-            'Permanent Address',
-            'Relative no',
-            'District',
-            'Post Code',
-            'Gender',
-            'Qualification',
-            'Blood Group',
-            'Is Married',
-            'Joining Date',
-        ];
+        const columns = ['ID', 'Name', 'Email', 'Phone', 'Role'];
 
         const rows: string[][] = state.selected.map((data: anyObject) => [
             `${data.id}`,
@@ -42,16 +26,6 @@ const ExportSelected: React.FC<Props> = () => {
             data.email || '',
             data.phone_number || '',
             data.role || '',
-            data.staff_infos?.present_address || 'N/A',
-            data.staff_infos?.parmenent_address || 'N/A',
-            data.staff_infos?.guardian_contact_number || 'N/A',
-            data.staff_infos?.district || 'N/A',
-            data.staff_infos?.post_code || 'N/A',
-            data.staff_infos?.gender || 'N/A',
-            data.staff_infos?.qualification || 'N/A',
-            data.staff_infos?.blood_group || 'N/A',
-            data.staff_infos?.is_married === true ? 'Married' : 'UnMarried',
-            data.staffs?.joining_date || 'N/A',
             // data.staffs?.joining_date
             //     ? moment(data.staffs?.joining_date).format('YYYY-MM-DD')
             //     : 'N/A',
