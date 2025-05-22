@@ -10,6 +10,11 @@ module.exports = async function (fastify: FastifyInstance) {
     fastify
         .get(`${prefix}`, controllerInstance.all)
         .get(`${prefix}/:id`, controllerInstance.find)
+        .post(`${prefix}/make-admin/:id`, controllerInstance.make_admin)
+        .post(
+            `${prefix}/make-admin-teacher/:id`,
+            controllerInstance.make_admin_teacher,
+        )
         .post(`${prefix}/store`, controllerInstance.store)
         .post(
             `${prefix}/profile-update`,

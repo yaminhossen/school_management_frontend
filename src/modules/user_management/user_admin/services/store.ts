@@ -60,6 +60,7 @@ async function store(
     let password = await bcrypt.hash(body.password, saltRounds);
 
     let inputs: InferCreationAttributes<typeof data> = {
+        branch_id: 0,
         name: body.name,
         email: body.email,
         phone_number: body.phone_number,

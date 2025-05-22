@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 // import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
@@ -16,6 +16,7 @@ import TableRowAction from './components/all_data_page/TableRowAction';
 import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
+import axios from 'axios';
 
 export interface Props {}
 
@@ -25,6 +26,7 @@ const All: React.FC<Props> = (props: Props) => {
     );
 
     const dispatch = useAppDispatch();
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         dispatch(
@@ -39,6 +41,36 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
+
+    const handleSubmit = async (e, i) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+        try {
+            let confirm = await (window as anyObject).s_confirm(
+                'Are you sure?',
+            );
+            if (confirm) {
+                const response = await axios.post(
+                    `/api/v1/admin-users/make-admin-teacher/${i.id}`,
+                );
+                dispatch(storeSlice.actions.set_only_latest_data(true));
+                dispatch(all({}) as any);
+                dispatch(storeSlice.actions.set_only_latest_data(false));
+                (window as any).toaster('Admin make successfully');
+            }
+
+            console.log('this enent and i', e.target, i.id);
+
+            // setData(response.data.data.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    const handleSubmit2 = async (e, i) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+
+        (window as any).toaster('This user allready admin');
+    };
 
     return (
         <div className="page_content">
@@ -64,23 +96,29 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Name`}
                                             col_name={`name`}
-                                            sort={true}
+                                            sort={false}
                                         />
+                                        <th>Role</th>
                                         <th>Branch</th>
                                         {/* <TableHeading
                                             label={`Designation`}
                                             col_name={`designation`}
-                                            sort={true}
+                                            sort={false}
                                         /> */}
                                         <TableHeading
                                             label={`Phone number`}
                                             col_name={`phone_number`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Email`}
                                             col_name={`email`}
-                                            sort={true}
+                                            sort={false}
+                                        />
+                                        <TableHeading
+                                            label={`Action`}
+                                            col_name={`action`}
+                                            sort={false}
                                         />
                                     </tr>
                                 </thead>
@@ -137,6 +175,11 @@ const All: React.FC<Props> = (props: Props) => {
                                                                     ?.name
                                                             }
                                                         </td>
+                                                        <td>
+                                                            {i.role_2
+                                                                ? i.role_2
+                                                                : ''}
+                                                        </td>
                                                         {/* <td>
                                                         {i.role
                                                             ? i.role
@@ -147,6 +190,38 @@ const All: React.FC<Props> = (props: Props) => {
                                                         </td>
                                                         <td>{i.email}</td>
                                                         {/* <td>{i.address}</td> */}
+                                                        <td>
+                                                            {i.role_2 ===
+                                                            'admin' ? (
+                                                                <button
+                                                                        className="btn btn_submit"
+                                                                    onClick={(
+                                                                        e,
+                                                                    ) =>
+                                                                            handleSubmit2(
+                                                                            e,
+                                                                                i,
+                                                                            )
+                                                                    }
+                                                                    >
+                                                                    Make Admin
+                                                                </button>
+                                                                ) : (
+                                                                    <button
+                                                                        className="btn btn_submit"
+                                                                    onClick={(
+                                                                        e,
+                                                                    ) =>
+                                                                            handleSubmit(
+                                                                            e,
+                                                                                i,
+                                                                            )
+                                                                    }
+                                                                    >
+                                                                    Make Admin
+                                                                </button>
+                                                            )}
+                                                        </td>
                                                     </tr>
                                                 );
                                             },

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 // import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
@@ -16,6 +16,7 @@ import TableRowAction from './components/all_data_page/TableRowAction';
 import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
+import axios from 'axios';
 
 export interface Props {}
 
@@ -26,10 +27,12 @@ const All: React.FC<Props> = (props: Props) => {
 
     const dispatch = useAppDispatch();
 
+    const [error, setError] = useState(null);
+
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, name, email, image, phone_number, role, status',
+                'id, name, email, image, phone_number, role, role_2, status',
             ),
         );
         dispatch(all({}) as any);
@@ -40,6 +43,36 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
     console.log('state date', (state.all as any)?.data?.length);
+
+    const handleSubmit = async (e, i) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+        try {
+            let confirm = await (window as anyObject).s_confirm(
+                'Are you sure?',
+            );
+            if (confirm) {
+                const response = await axios.post(
+                    `/api/v1/admin-users/make-admin/${i.id}`,
+                );
+                dispatch(storeSlice.actions.set_only_latest_data(true));
+                dispatch(all({}) as any);
+                dispatch(storeSlice.actions.set_only_latest_data(false));
+                (window as any).toaster('Admin make successfully');
+            }
+
+            console.log('this enent and i', e.target, i.id);
+
+            // setData(response.data.data.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    const handleSubmit2 = async (e, i) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+
+        (window as any).toaster('This user allready admin');
+    };
 
     return (
         <div className="page_content">
@@ -69,6 +102,7 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={false}
                                         />
                                         <th>Designation</th>
+                                        <th>Role</th>
                                         <th>Branch</th>
                                         {/* <TableHeading
                                             label={`Designation`}
@@ -144,11 +178,43 @@ const All: React.FC<Props> = (props: Props) => {
                                                             : 'staff'}
                                                     </td>
                                                     <td>
+                                                        {i.role_2
+                                                            ? i.role_2
+                                                            : ''}
+                                                    </td>
+                                                    <td>
                                                         {i.staffs?.branch?.name}
                                                     </td>
                                                     <td>{i.phone_number}</td>
                                                     <td>{i.email}</td>
-                                                    <td> Make Admin</td>
+                                                    <td>
+                                                        {i.role_2 ===
+                                                        'admin' ? (
+                                                            <button
+                                                                className="btn btn_submit"
+                                                                onClick={(e) =>
+                                                                    handleSubmit2(
+                                                                        e,
+                                                                        i,
+                                                                    )
+                                                                }
+                                                            >
+                                                                Make Admin
+                                                            </button>
+                                                        ) : (
+                                                            <button
+                                                                className="btn btn_submit"
+                                                                onClick={(e) =>
+                                                                    handleSubmit(
+                                                                        e,
+                                                                        i,
+                                                                    )
+                                                                }
+                                                            >
+                                                                Make Admin
+                                                            </button>
+                                                        )}
+                                                    </td>
                                                 </tr>
                                             ),
                                         )}

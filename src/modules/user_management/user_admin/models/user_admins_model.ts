@@ -34,10 +34,15 @@ class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
     declare name?: string;
+    declare branch_id: number;
+    declare staff_id?: number;
+    declare teacher_id?: number;
     declare email?: string | null;
     declare phone_number?: string | null;
     declare image?: string;
     declare password?: string;
+    declare role?: string;
+    declare type?: string;
     declare token?: string | null;
     declare forget_code?: string | null;
     declare user_agent?: string | null;
@@ -57,6 +62,18 @@ function init(sequelize: Sequelize) {
                 autoIncrement: true,
                 primaryKey: true,
             },
+            branch_id: {
+                type: DataTypes.INTEGER.UNSIGNED,
+                allowNull: true,
+            },
+            staff_id: {
+                type: DataTypes.INTEGER.UNSIGNED,
+                allowNull: true,
+            },
+            teacher_id: {
+                type: DataTypes.INTEGER.UNSIGNED,
+                allowNull: true,
+            },
             name: {
                 type: new DataTypes.STRING(120),
                 allowNull: true,
@@ -75,6 +92,14 @@ function init(sequelize: Sequelize) {
             },
             password: {
                 type: new DataTypes.STRING(100),
+                allowNull: true,
+            },
+            role: {
+                type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            type: {
+                type: new DataTypes.STRING(20),
                 allowNull: true,
             },
             token: {

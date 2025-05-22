@@ -66,6 +66,7 @@ async function update(
     }
 
     let inputs: InferCreationAttributes<typeof model> = {
+        branch_id: 0,
         name: body.name,
         email: body.email,
         phone_number: body.phone_number,

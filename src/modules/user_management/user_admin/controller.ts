@@ -18,6 +18,8 @@ import login from './services/login';
 import logout from './services/logout';
 import forget from './services/forget';
 import profile_update from './services/profile_update';
+import make_admin from './services/make_admin';
+import make_admin_teacher from './services/make_admin_teacher';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -33,6 +35,19 @@ export default function (fastify: FastifyInstance) {
 
         store: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await store(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        make_admin: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await make_admin(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        make_admin_teacher: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await make_admin_teacher(fastify, req);
             res.code(data.status).send(data);
         },
 
