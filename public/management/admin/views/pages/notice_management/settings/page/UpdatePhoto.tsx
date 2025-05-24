@@ -13,7 +13,7 @@ const UpdatePhoto: React.FC = () => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/user-staffs/admin-details',
+                '/api/v1/admin-users/admin-details',
             );
             setData(response.data.data);
         } catch (error) {

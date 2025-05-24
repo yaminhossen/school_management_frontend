@@ -7,6 +7,7 @@ export interface Props {}
 
 const NavigationList: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
+    const [data, setData] = useState<any>();
     const [isActive, setIsActive] = useState(false); // Track drawer state
     const toggler = useRef<HTMLLIElement>(null);
 
@@ -43,6 +44,20 @@ const NavigationList: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/admin-users/admin-details',
+            );
+            setData(response.data.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
     const menuArray = [
         {
             group: 'User management',
@@ -320,12 +335,15 @@ const NavigationList: React.FC<Props> = (props: Props) => {
                             <div className="profile">
                                 <div className="img">
                                     <img
-                                        src="/assets/dashboard/images/avatar.png"
+                                        src={
+                                            data?.image ||
+                                            '/assets/dashboard/images/avatar.png'
+                                        }
                                         alt=""
                                     />
                                 </div>
                                 <div className="profile_info">
-                                    <h2>mr admin</h2>
+                                    <h2>{data?.name}</h2>
                                     <h3>
                                         <span>admin</span>
                                     </h3>
@@ -333,9 +351,7 @@ const NavigationList: React.FC<Props> = (props: Props) => {
                             </div>
                             <div className="action">
                                 <ul>
-                                    <li onClick={() =>
-                                                    setIsActive(false)
-                                                }>
+                                    <li onClick={() => setIsActive(false)}>
                                         <a href="/admin#/settings">
                                             <span className="material-symbols-outlined fill">
                                                 manage_accounts

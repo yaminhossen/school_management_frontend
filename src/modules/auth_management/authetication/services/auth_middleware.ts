@@ -62,7 +62,7 @@ const auth_middleware = async (
             ) {
                 user = await models.UserTeachersModel.findByPk(decoded.id);
             } else if (decoded.user_type == 'admin' && needUrl == 'admin') {
-                user = await models.UserStaffsModel.findByPk(decoded.id);
+                user = await models.UserAdminsModel.findByPk(decoded.id);
             } else if (
                 decoded.user_type == 'super-admin' &&
                 fullUrl.includes('super-admin')

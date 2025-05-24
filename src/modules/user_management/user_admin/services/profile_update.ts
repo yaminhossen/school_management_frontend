@@ -51,7 +51,7 @@ async function profile_update(
     let models = await db();
     let body = req.body as anyObject;
     // let model = new models.UserAdminsModel();
-    let model = new models.UserStaffsModel();
+    let model = new models.UserAdminsModel();
     let image_path = '';
 
     if (body['image']?.ext) {
@@ -92,7 +92,7 @@ async function profile_update(
         //         id: user?.id,
         //     },
         // });
-        let data = await models.UserStaffsModel.findOne({
+        let data = await models.UserAdminsModel.findOne({
             where: {
                 id: user?.id,
             },

@@ -167,7 +167,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <InputImage
                                         label={'image'}
-                                        name={'staff_image'}
+                                        name={'image'}
                                         defalut_preview={get_value('image')}
                                     />
                                 </div>

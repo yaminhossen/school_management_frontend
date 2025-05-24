@@ -73,7 +73,8 @@ axios.interceptors.response.use(
             });
 
             (window as anyObject).toaster(
-                `${error.response.status} - ${error.response.statusText}`,
+                // `${error.response.status} - ${error.response.statusText}`,
+                `${error.response.status} - validation error`,
                 'error',
             );
 

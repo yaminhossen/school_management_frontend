@@ -133,7 +133,7 @@ async function update(
             );
             if (!teacher) {
                 throw new custom_error(
-                    'Teacher not found',
+                    'Admin not found',
                     404,
                     'operation not possible',
                 );
@@ -163,13 +163,13 @@ async function update(
 
             await data.update(inputs);
 
-            return response(201, 'Teacher updated', data);
+            return response(201, 'Admin updated', data);
         }
         if (data.type === 'staff') {
             const staff = await models.UserStaffsModel.findByPk(data.staff_id);
             if (!staff) {
                 throw new custom_error(
-                    'Teacher not found',
+                    'Admin not found',
                     404,
                     'operation not possible',
                 );
@@ -199,7 +199,7 @@ async function update(
 
             await data.update(inputs);
 
-            return response(201, 'Staff updated', data);
+            return response(201, 'Admin updated', data);
         }
 
         // If none matched

@@ -55,6 +55,18 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li> */}
                 </ul>
+
+                <h3 className="mt-4 ms-0">Profile management</h3>
+                <ul className="dashboard_links ">
+                    <li>
+                        <Link to="/settings">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Settings Management
+                        </Link>
+                    </li>
+                </ul>
             </div>
         </div>
     );

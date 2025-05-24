@@ -59,7 +59,7 @@ async function logout(
                 );
             }
         } else if (authUser.user_type === 'admin') {
-            let data = await models.UserStaffsModel.findOne({
+            let data = await models.UserAdminsModel.findOne({
                 where: {
                     id: (req as anyObject).user.id,
                 },

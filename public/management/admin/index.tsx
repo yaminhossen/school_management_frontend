@@ -69,6 +69,10 @@ axios.interceptors.response.use(
     function (error) {
         if (error.response.data.status === 422) {
             let errors = error.response.data.data;
+            console.log('422 ererr ------------------', error);
+            console.log('423 ererr ------------------', error.response);
+            console.log('424 ererr ------------------', error.response.data);
+            console.log('425 ererr ------------------', errors);
 
             errors.forEach((error) => {
                 let el = document.querySelector(`[name="${error.path}"]`);
@@ -87,11 +91,13 @@ axios.interceptors.response.use(
             });
 
             (window as anyObject).toaster(
-                `${error.response.status} - ${error.response.statusText}`,
+                // `${error.response.status} - ${error.response.statusText}`,
+                `${error.response.status} - validation error`,
                 'error',
             );
 
-            console.log(error.response);
+            console.log(error.response.statusText);
+            console.log(error.response?.statusText);
         }
         if (error.response.data.status == 500) {
             (window as anyObject).toaster(

@@ -34,7 +34,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
     declare name?: string;
-    declare branch_id: number;
+    declare branch_id?: number;
     declare staff_id?: number;
     declare teacher_id?: number;
     declare email?: string | null;

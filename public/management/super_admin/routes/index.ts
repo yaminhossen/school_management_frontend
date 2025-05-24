@@ -5,6 +5,7 @@ import user_admins_routes from "../views/pages/user_management/user_admins/confi
 import user_staffs_routes from "../views/pages/user_management/user_staffs/config/routes";
 import user_teachers_routes from "../views/pages/user_management/user_teachers/config/routes";
 import branches_routes from "../views/pages/branch_management/branches/config/routes";
+import settings_routes from "../views/pages/settings/config/routes";
 
 interface RouteTypes extends NonIndexRouteObject {
     
@@ -22,6 +23,7 @@ const router: RouteTypes[] = [
             user_staffs_routes,
             user_teachers_routes,
             branches_routes,
+            settings_routes,
         ],
     },
 ];
