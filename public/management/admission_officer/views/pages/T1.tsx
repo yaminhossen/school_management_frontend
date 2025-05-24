@@ -172,49 +172,30 @@ const T1: React.FC<Props> = (props: Props) => {
                         <ul>
                             {array.map((value, vIndex) =>
                                 value.map((element, eIndex) => (
-                                    <>
-                                        {
-                                            <li
-                                                key={`${vIndex}- ${eIndex}`}
-                                                className={`${element.day === 5 ? 'absent' : ''} || ${moment(element.date).isSame(moment(), 'day') ? 'today' : ''}`}
-                                            >
-                                                <time dateTime={element.date}>
-                                                    {moment(
-                                                        element.date,
-                                                    ).format('D')}{' '}
-                                                </time>
-                                                {/* {element.day} */}
-                                                {moment(element.date).format(
-                                                    'dddd',
-                                                )}
-                                                <div
-                                                    className={`text-${element.events?.length ? 'warning' : 'info'}`}
-                                                >
-                                                    {element.events?.map(
-                                                        (ev, i) => (
-                                                            <div
-                                                                key={i}
-                                                                className="event"
-                                                            >
-                                                                <i className="icon-check-box"></i>
-                                                                <span className="event_title">
-                                                                    {
-                                                                        ev.event_name
-                                                                    }
-                                                                </span>
-                                                            </div>
-                                                        ),
-                                                    )}
+                                    <li
+                                        key={`${vIndex}-${eIndex}`}
+                                        className={`${element.day === 5 ? 'absent' : ''} ${moment(element.date).isSame(moment(), 'day') ? 'today' : ''}`}
+                                    >
+                                        <time dateTime={element.date}>
+                                            {moment(element.date).format('D')}{' '}
+                                        </time>
+                                        {moment(element.date).format('dddd')}
+                                        <div
+                                            className={`events-container ${element.events?.length ? 'text-warning' : 'text-info'} custom_scroll`}
+                                        >
+                                            {element.events?.map((ev, i) => (
+                                                <div key={i} className="event">
+                                                    <i className="icon-check-box text-xs"></i>
+                                                    <span className="text-sm">
+                                                        {ev.event_name}
+                                                    </span>
                                                 </div>
-                                            </li>
-                                        }
-                                    </>
+                                            ))}
+                                        </div>
+                                    </li>
                                 )),
                             )}
                         </ul>
-                        {/* <ul>
-                            {days.map((index, day) => get_day_data(index, day))}
-                        </ul> */}
                     </div>
                 </div>
             </div>
