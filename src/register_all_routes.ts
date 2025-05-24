@@ -5,8 +5,8 @@ let appDir: string = path.resolve(path.dirname(__dirname));
 
 export let active_routes: string[] = [
     'src/modules/auth_management/authetication/routes.ts',
-    // 'src/modules/academic_calendar_management/academic_calendars/routes.ts',
-    // 'src/modules/academic_calendar_management/academic_calendar_event_types/routes.ts',
+    'src/modules/academic_calendar_management/academic_calendars/routes.ts',
+    'src/modules/academic_calendar_management/academic_calendar_event_types/routes.ts',
     // 'src/modules/accounts_management/accounts/routes.ts',
     // 'src/modules/accounts_management/account_categories/routes.ts',
     // 'src/modules/accounts_management/account_customers/routes.ts',
@@ -88,7 +88,7 @@ export let active_routes: string[] = [
     // 'src/modules/meeting_management/meetings/routes.ts',
     // 'src/modules/meeting_management/meeting_agendas/routes.ts',
     // 'src/modules/meeting_management/meeting_attachments/routes.ts',
-    // 'src/modules/notice_management/notices/routes.ts',
+    'src/modules/notice_management/notices/routes.ts',
     // 'src/modules/notice_management/notice_categorys/routes.ts',
     // 'src/modules/personal_calendar_schedule_management/personal_calendar_schedule/routes.ts',
     // 'src/modules/student_evaluation_management/student_evaluation/routes.ts',

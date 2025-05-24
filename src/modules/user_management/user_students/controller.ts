@@ -50,6 +50,7 @@ import basic_informations_second from './services/basic_informations_second';
 import fees_categories_second from './services/fees_categoies_second';
 import fees_categories_third from './services/fees_categoies_third';
 import fees_categories_one from './services/fees_categoies_one';
+import all_class_admin from './services/all_class_admin';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -220,6 +221,15 @@ export default function (fastify: FastifyInstance) {
         all_class: async function (req: FastifyRequest, res: FastifyReply) {
             // res.code(200).send('ldsfjdls');
             let data = await all_class(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        all_class_admin: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            // res.code(200).send('ldsfjdls');
+            let data = await all_class_admin(fastify, req);
             res.code(data.status).send(data);
         },
 
