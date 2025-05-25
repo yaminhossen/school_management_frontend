@@ -2,10 +2,10 @@ import React, { useRef } from 'react';
 import { anyObject } from '../../../../../common_types/object';
 import setup from '../../config/setup';
 import { Link } from 'react-router-dom';
-import active_row from '../../helpers/table_active_row';
 import DeleteButton from './DeleteButton';
 import DestroyButton from './DestroyButton';
 import RestoreButton from './RestoreButton';
+import active_row from '../../helpers/table_active_row';
 export interface Props {
     item: anyObject;
 }

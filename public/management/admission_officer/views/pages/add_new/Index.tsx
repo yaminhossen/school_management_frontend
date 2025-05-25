@@ -13,6 +13,7 @@ import { branches } from './config/store/async_actions/branches';
 import { sections } from './config/store/async_actions/sections';
 import { shifts } from './config/store/async_actions/shifts';
 import { preInfo } from './config/store/async_actions/pre_info';
+import ImageUpload from './components/ImageUpload';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -166,6 +167,16 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
+                                    <label>Session</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="text"
+                                            placeholder="session"
+                                            name="session"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
                                     <label>Gender</label>
                                     <div className="form_elements">
                                         <select name="gender" id="">
@@ -225,12 +236,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Image</label>
                                     <div className="form_elements">
-                                        <input
+                                        {/* <input
                                             type="file"
                                             accept="image/*"
                                             placeholder="image"
                                             name="image"
-                                        />
+                                        /> */}
+                                        <ImageUpload name={'image'} />
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
@@ -672,22 +684,26 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Birth certificate</label>
                                     <div className="form_elements">
-                                        <input
+                                        {/* <input
                                             type="file"
                                             accept="image/*"
                                             name="birth_certificate"
+                                        /> */}
+                                        <ImageUpload
+                                            name={'birth_certificate'}
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
                                     <label>NID</label>
-                                    <div className="form_elements">
+                                    {/* <div className="form_elements">
                                         <input
                                             type="file"
                                             accept="image/*"
                                             name="national_id"
                                         />
-                                    </div>
+                                    </div> */}
+                                    <ImageUpload name={'national_id'} />
                                 </div>
                                 {/* <div className="form-group form-vertical">
                                     <label>Cast</label>
@@ -754,9 +770,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 <div className="form-group form-vertical">
                                                     <label>Document file</label>
                                                     <div className="form_elements">
-                                                        <input
+                                                        {/* <input
                                                             type="file"
                                                             placeholder="document file"
+                                                            name={`document_file${index}`}
+                                                        /> */}
+                                                        <ImageUpload
                                                             name={`document_file${index}`}
                                                         />
                                                     </div>
@@ -939,10 +958,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 <div className="form-group form-vertical">
                                                     <label>Image</label>
                                                     <div className="form_elements">
-                                                        <input
+                                                        {/* <input
                                                             type="file"
                                                             placeholder="image"
                                                             accept="image/*"
+                                                            name={`parent_image${index}`}
+                                                        /> */}
+
+                                                        <ImageUpload
                                                             name={`parent_image${index}`}
                                                         />
                                                     </div>
@@ -1301,10 +1324,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         Transfer certificate
                                                     </label>
                                                     <div className="form_elements">
-                                                        <input
+                                                        {/* <input
                                                             type="file"
                                                             accept="image/*"
                                                             placeholder="transfer cirtificate"
+                                                            name={`educational_background_transfer_cirtificate_${index}`}
+                                                        /> */}
+                                                        <ImageUpload
                                                             name={`educational_background_transfer_cirtificate_${index}`}
                                                         />
                                                     </div>
