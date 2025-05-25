@@ -55,16 +55,16 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                             <table>
                                 <thead>
                                     <tr>
-                                        <th />
+                                        {/* <th /> */}
                                         <th>
                                             <SelectAll />
                                         </th>
                                         <th>No.</th>
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`ID`}
                                             col_name={`id`}
                                             sort={false}
-                                        />
+                                        /> */}
                                         {/* <th>Serial</th> */}
                                         <th>Image</th>
                                         <TableHeading
@@ -106,18 +106,18 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                     key={i.id}
                                                     className={`table_rows table_row_${i.id}`}
                                                 >
-                                                    <td>
+                                                    {/* <td>
                                                         <TableRowAction
                                                             item={i}
                                                         />
-                                                    </td>
+                                                    </td> */}
                                                     <td>
                                                         <SelectItem item={i} />
                                                     </td>
                                                     <td>
                                                         <span>{index + 1}</span>
                                                     </td>
-                                                    <td>
+                                                    {/* <td>
                                                         <span
                                                             className="quick_view_trigger"
                                                             // onClick={() =>
@@ -126,7 +126,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                         >
                                                             {i.id}
                                                         </span>
-                                                    </td>
+                                                    </td> */}
                                                     <td>
                                                         <img
                                                             src={
@@ -165,13 +165,13 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                     <td>
                                                         <Link
                                                             className="btn btn-sm btn-outline-info mr-1"
-                                                            to={`/student/review/${i.user_student_id}`}
+                                                            to={`/student/review/${i.branch_student_id}`}
                                                         >
                                                             Review
                                                         </Link>
                                                         <Link
                                                             className="btn btn-sm btn-outline-info mr-1"
-                                                            to={`/student/complain/${i.user_student_id}`}
+                                                            to={`/student/complain/${i.branch_student_id}`}
                                                         >
                                                             Complain
                                                         </Link>
@@ -179,7 +179,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                     <td>
                                                         <Link
                                                             className="btn btn-sm btn-outline-info mr-1"
-                                                            to={`/student/single-student/${i.user_student_id}`}
+                                                            to={`/student/single-student/${i.branch_student_id}`}
                                                         >
                                                             Details
                                                         </Link>

@@ -42,7 +42,7 @@ const HeadRightButtons: React.FC<Props> = (props: Props) => {
                 </a>
             </li> */}
             <li>
-                <Link to={`/${setup.route_prefix}`}>
+                <Link to={`/student`}>
                     <span className="material-symbols-outlined fill">
                         arrow_back
                     </span>
