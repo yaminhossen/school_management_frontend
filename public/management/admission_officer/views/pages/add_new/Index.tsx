@@ -205,14 +205,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            value={phoneNumbers.son}
-                                            onChange={(e) =>
-                                                handleChange(
-                                                    'son',
-                                                    null,
-                                                    e.target.value,
-                                                )
-                                            }
+                                            // defaultValue={phoneNumbers.son}
+                                            // onChange={(e) =>
+                                            //     handleChange(
+                                            //         'son',
+                                            //         null,
+                                            //         e.target.value,
+                                            //     )
+                                            // }
                                             placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
                                             name="phone_number"
                                         />
@@ -920,20 +920,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <input
                                                             type="text"
-                                                            value={
-                                                                phoneNumbers
-                                                                    .parents[
-                                                                    index
-                                                                ] || ''
-                                                            }
-                                                            onChange={(e) =>
-                                                                handleChange(
-                                                                    'parent',
-                                                                    index,
-                                                                    e.target
-                                                                        .value,
-                                                                )
-                                                            }
+                                                            // value={
+                                                            //     phoneNumbers
+                                                            //         .parents[
+                                                            //         index
+                                                            //     ] || ''
+                                                            // }
+                                                            // onChange={(e) =>
+                                                            //     handleChange(
+                                                            //         'parent',
+                                                            //         index,
+                                                            //         e.target
+                                                            //             .value,
+                                                            //     )
+                                                            // }
                                                             placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
                                                             name={`parent_phone_number${index}`}
                                                         />
