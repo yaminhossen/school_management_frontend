@@ -20,7 +20,7 @@ const TableRowAction: React.FC<Props> = ({ item }: Props) => {
                 onClick={(e) => active_row(toggle_icon, e)}
             />
             <div className="table_action_btns">
-                <ul>
+                <ul className="section_naviagation">
                     <li>
                         <Link
                             to={`/${setup.route_prefix}/details/${item.id}/information`}

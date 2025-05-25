@@ -15,7 +15,7 @@ export default {
             element: <Index />,
             children: [
                 {
-                    index: true,
+                    // index: true,
                     path: 'basic-information',
                     element: <BasicInformation />,
                 },

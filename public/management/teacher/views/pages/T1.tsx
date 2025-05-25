@@ -208,7 +208,7 @@ const T1: React.FC<Props> = (props: Props) => {
                                                     'dddd',
                                                 )}
                                                 <div
-                                                    className={`text-${element.events?.length ? 'warning' : 'info'}`}
+                                                    className={`text-${element.events?.length ? 'warning' : 'info'} custom_scroll`}
                                                 >
                                                     {element.events?.map(
                                                         (ev, i) => (

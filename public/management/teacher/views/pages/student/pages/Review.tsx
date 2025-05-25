@@ -40,6 +40,7 @@ const Review: React.FC<Props> = (props: Props) => {
                 '/api/v1/student-evaluations/store',
                 formData,
             );
+            (window as any).toaster('Review done');
             // setData(response.data.data.data);
             // setTotalIncome(response.data.data.data2);
         } catch (error) {

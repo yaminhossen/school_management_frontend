@@ -1473,6 +1473,11 @@ input.form_checkbox:checked::after {
   color: rgb(70, 236, 153);
 }
 
+.img-50 {
+  width: 50px !important;
+  height: 50px;
+}
+
 .calendar_dashboard ul {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;

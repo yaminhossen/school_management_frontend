@@ -4,6 +4,7 @@ import MenuDropDown from './MenuDropDown';
 import MenuDropDownItem from './MenuDropDownItem';
 import MenuSingle from './MenuSingle';
 import axios from 'axios';
+import { anyObject } from '../../../../../admin/common_types/object';
 export interface Props {}
 
 const SideBar: React.FC<Props> = (props: Props) => {
@@ -16,8 +17,12 @@ const SideBar: React.FC<Props> = (props: Props) => {
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         try {
-            const response = await axios.post('/api/v1/auth/teacher/logout');
-            console.log('response123', response);
+            let confirm = await (window as anyObject).s_confirm('Logout');
+            if (confirm) {
+                await axios.post('/api/v1/auth/teacher/logout');
+            }
+            // const response = await axios.post('/api/v1/auth/teacher/logout');
+            // console.log('response123', response);
             // if(response.status)
         } catch (error) {
             setError(error);
@@ -32,11 +37,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-user"
                     label="Profile"
                 />
-                <MenuSingle
+                {/* <MenuSingle
                     to="/attendance"
                     icon="icon-receipt"
                     label="Attendance"
-                />
+                /> */}
                 <MenuSingle to="/student" icon="icon-receipt" label="Student" />
                 <MenuSingle
                     to="/class-attendance"

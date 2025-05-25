@@ -72,18 +72,18 @@ const Children: React.FC<Props> = (props: Props) => {
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    {i.children_basic.email}
+                                                    {i.children_basic?.email}
                                                 </td>
                                                 <td>
                                                     {
                                                         i.children_basic
-                                                            .phone_number
+                                                            ?.phone_number
                                                     }
                                                 </td>
                                                 <td>
                                                     {
                                                         i.children_basic
-                                                            .whatsapp_number
+                                                            ?.whatsapp_number
                                                     }
                                                 </td>
                                             </tr>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { anyObject } from '../../../common_types/object';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
@@ -35,7 +35,11 @@ const Index: React.FC<Props> = (props: Props) => {
                 <div className="item-img">
                     <img
                         className="user_profile_img"
-                        src={data?.image}
+                        src={
+                            data.image
+                                ? data.image
+                                : '/assets/dashboard/images/avatar.png'
+                        }
                         alt="teacher"
                     />
                 </div>
@@ -45,7 +49,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             {data.name}
                         </h3>
                         <div className="header-elements">
-                            <ul>
+                            {/* <ul>
                                 <li>
                                     <a href="">
                                         <span className="material-symbols-outlined fill">
@@ -67,11 +71,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </span>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                     <ul className="section_naviagation">
-                        <li>
+                        {/* <li>
                             <Link to="/profile/major-information">
                                 Major informations
                             </Link>
@@ -80,6 +84,31 @@ const Index: React.FC<Props> = (props: Props) => {
                             <Link to="/profile/basic-information">
                                 Basic informations
                             </Link>
+                        </li> */}
+                        <li className="active_Li">
+                            <NavLink
+                                to={`/profile/major-information`}
+                                // className="active_nav_link"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? 'active_nav_link'
+                                        : 'normal_nav_link'
+                                }
+                            >
+                                Major informations
+                            </NavLink>
+                        </li>
+                        <li className="active_Li">
+                            <NavLink
+                                to={`/profile/basic-information`}
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? 'active_nav_link'
+                                        : 'normal_nav_link'
+                                }
+                            >
+                                Basic informations
+                            </NavLink>
                         </li>
                     </ul>
                     <div></div>
