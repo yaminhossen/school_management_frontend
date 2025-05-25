@@ -21,6 +21,7 @@ import { classes } from '../../add_new/config/store/async_actions/classes';
 import { branches } from '../../add_new/config/store/async_actions/branches';
 import { sections } from '../../add_new/config/store/async_actions/sections';
 import { shifts } from '../../add_new/config/store/async_actions/shifts';
+import ImageUpload from '../../add_new/components/ImageUpload';
 export interface Props { }
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -127,6 +128,25 @@ const Index: React.FC<Props> = (props: Props) => {
         ? moment(studentExpire_date).format('YYYY-MM-DD')
         : moment().format('YYYY-MM-DD');
 
+
+    const startYear = "2025";
+    const years = Array.from({ length: 31 }, (_, i) => Number(startYear) + i);
+
+    // State for selected year
+    const [selectedYear, setSelectedYear] = useState(
+        sessionStorage.getItem('selectedYear') || startYear
+    );
+
+    // Update session storage when year changes
+    useEffect(() => {
+        sessionStorage.setItem('selectedYear', selectedYear);
+    }, [selectedYear]);
+
+    // Handle year selection
+    const handleYearChange = (event) => {
+        setSelectedYear(event.target.value);
+    };
+
     return (
         <div className="admin_dashboard">
             {Object.keys(state.item)?.length && (
@@ -221,17 +241,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form-group form-vertical">
                                         <label>Image</label>
                                         <div className="form_elements">
-                                            <input
-                                                type="file"
-                                                accept="image/*"
-                                                placeholder="image"
-                                                name="image"
-                                            />
-                                            <img
-                                                src={state.item.image}
-                                                style={{ width: '100px' }}
-                                                alt=""
-                                            />
+                                            <ImageUpload name ="image" defaultImage={state.item.image} />
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
@@ -259,7 +269,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 type="password"
                                                 placeholder="password"
                                                 name="password"
-                                                value={password}
+                                                defaultValue={password}
                                                 onChange={(e) => {
                                                     setPassword(e.target.value);
                                                     // Clear error when user starts typing
@@ -275,7 +285,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 type="password"
                                                 placeholder="confirm password"
                                                 name="confirm_password"
-                                                value={confirmPassword}
+                                                defaultValue={confirmPassword}
                                                 onChange={(e) => {
                                                     setConfirmPassword(e.target.value);
                                                     // Validate on change
@@ -423,6 +433,24 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         )}
                                                 </select>
                                             )}
+                                        </div>
+                                    </div>
+
+                                    <div className="form-group form-vertical custom_scroll">
+                                        <label>Session</label>
+                                        <div className="form_elements custom_scroll">
+                                            <select
+                                                name="session"
+                                                value={selectedYear}
+                                                onChange={handleYearChange}
+                                                className="form-control custom_scroll"
+                                            >
+                                                {years.map((year) => (
+                                                    <option key={year} value={year}>
+                                                        {year}
+                                                    </option>
+                                                ))}
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -759,7 +787,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form-group form-vertical">
                                         <label>Birth certificate</label>
                                         <div className="form_elements">
-                                            <input
+                                            {/* <input
                                                 type="file"
                                                 accept="image/*"
                                                 name="birth_certificate"
@@ -771,13 +799,15 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                                 style={{ width: '100px' }}
                                                 alt=""
-                                            />
+                                            /> */}
+                                            <ImageUpload name ="birth_certificate" defaultImage={state.item.student_info
+                                                        ?.birth_certificate} />
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
                                         <label>NID</label>
                                         <div className="form_elements">
-                                            <input
+                                            {/* <input
                                                 type="file"
                                                 accept="image/*"
                                                 name="national_id"
@@ -789,7 +819,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                                 style={{ width: '100px' }}
                                                 alt=""
-                                            />
+                                            /> */}
+
+                                            <ImageUpload name ="national_id" defaultImage={state.item.student_info
+                                                        ?.national_id} />
                                         </div>
                                     </div>
                                 </div>
@@ -816,8 +849,8 @@ const Index: React.FC<Props> = (props: Props) => {
                             <Skill setTotalSkill={setTotalSkill}></Skill>
                         </div>
                         <div className="form-group student_submit form-horizontal">
-                            <label></label>
-                            <div className="form_elements">
+                            {/* <label></label> */}
+                            <div className="form_elementss">
                                 <button className="btn btn-sm  btn-outline-info">
                                     submit
                                 </button>

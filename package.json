@@ -31,6 +31,7 @@
     "nodemailer": "^6.9.13",
     "pino-pretty": "^11.0.0",
     "react": "^18.2.0",
+    "react-datepicker": "^8.3.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.1",
     "react-router-dom": "^6.22.3",
@@ -66,10 +67,8 @@
   },
   "scripts": {
     "test": "jest",
-
     "server": "nodemon",
     "serve": "ts-node src/index.ts",
-
     "central-branch": "vite build --config vite-config-central-branch.js --watch --sourcemap",
     "super-admin": "vite build --config vite-config-super-admin.js --watch --sourcemap",
     "admin": "vite build --config vite-config-admin.js --watch --sourcemap",
@@ -81,13 +80,10 @@
     "admission-officer": "vite build --config vite-config-admission-officer.js --watch  --sourcemap",
     "hostel-super": "vite build --config vite-config-hostel-super.js --watch --sourcemap",
     "librarian": "vite build --config vite-config-librarian.js --watch --sourcemap",
-
     "server:lint": "npx esw --ext .ts src --fix",
     "server:lint:watch": "npx esw  --watch --ext .ts src --fix",
-
     "client:lint": "npx esw --ext .tsx public/management  --config .eslintrc.react.json --fix",
     "client:lint:watch": "npx esw  --watch --ext .tsx public/management  --config .eslintrc.react.json --fix",
-
     "client:sass": " npx sass public/assets/dashboard/scss/style.scss public/assets/dashboard/styles/style.css -w",
     "website:sass": "sass public/assets/website/sass/style.scss public/assets/website/styles/style.css -w"
   }

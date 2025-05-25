@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { anyObject } from '../../../../common_types/object';
 
 interface ImageUploadProps {
     defaultImage?: string;
@@ -6,6 +7,7 @@ interface ImageUploadProps {
 }
 
 const ImageUpload: React.FC<ImageUploadProps> = ({ defaultImage, name }) => {
+     const fileInputRef = useRef<HTMLInputElement>(null);
     const [preview, setPreview] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
 
@@ -33,7 +35,16 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ defaultImage, name }) => {
                 setPreview(defaultImage || null);
                 return;
             }
-
+// Validate file type
+            const allowedTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
+            if (!allowedTypes.includes(file.type)) {
+                (window as anyObject).toaster('Invalid file type. Only JPG, JPEG, PNG, and GIF are allowed.', 'warning',);
+                setPreview(null);
+                if (fileInputRef.current) {
+                    fileInputRef.current.value = '';
+                }
+                return;
+            }
             const reader = new FileReader();
             reader.onloadend = () => {
                 setPreview(reader.result as string);
@@ -47,7 +58,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ defaultImage, name }) => {
     };
 
     const handleRemove = () => {
-        setPreview(defaultImage || null);
+        setPreview(null);
         setError(null);
         // Reset input value
         const input = document.querySelector(
@@ -64,6 +75,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ defaultImage, name }) => {
             <div className="form_elements">
                 <input
                     type="file"
+                     ref={fileInputRef}
                     accept="image/*"
                     className="form-control"
                     placeholder="image"

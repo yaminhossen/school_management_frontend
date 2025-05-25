@@ -19,16 +19,25 @@ async function validate(req: Request, models: any) {
         .withMessage('the name field is required')
         .run(req);
 
+    await body('session')
+        .not()
+        .isEmpty()
+        .withMessage('the session field is required')
+        .run(req);
+
     await body('email')
         .not()
         .isEmpty()
         .withMessage('the email field is required')
+        .isEmail()
+        .withMessage('Please enter a valid email address')
+        .normalizeEmail()
         .run(req);
 
     if (req.body?.email) {
         await body('email')
             .custom(async (email) => {
-                const existing = await models.UserStaffsModel.findOne({
+                const existing = await models.UserStudentsModel.findOne({
                     where: { email },
                 });
                 if (existing) {
@@ -56,8 +65,8 @@ async function validate(req: Request, models: any) {
         .withMessage('WhatsApp must be a valid Bangladeshi number')
         .run(req);
 
-    if (req.body?.parent_phone_number1) {
-        await body('parent_phone_number1')
+    if (req.body?.parent_phone_number0) {
+        await body('parent_phone_number0')
             .not()
             .isEmpty()
             .bail()
@@ -67,8 +76,9 @@ async function validate(req: Request, models: any) {
             )
             .run(req);
     }
-    if (req.body?.parent_phone_number2) {
-        await body('parent_phone_number2')
+
+    if (req.body?.parent_phone_number1) {
+        await body('parent_phone_number1')
             .not()
             .isEmpty()
             .bail()
@@ -78,14 +88,51 @@ async function validate(req: Request, models: any) {
             )
             .run(req);
     }
-    if (req.body?.parent_phone_number3) {
-        await body('parent_phone_number3')
+
+    if (req.body?.parent_phone_number2) {
+        await body('parent_phone_number2')
             .not()
             .isEmpty()
             .bail()
             .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
             .withMessage(
                 'Parent Phone number3 must be a valid Bangladeshi number',
+            )
+            .run(req);
+    }
+
+    if (req.body?.contact_number0) {
+        await body('contact_number0')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage(
+                'Contact number1 must be a valid Bangladeshi number',
+            )
+            .run(req);
+    }
+
+    if (req.body?.contact_number1) {
+        await body('contact_number1')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage(
+                'Contact number2 must be a valid Bangladeshi number',
+            )
+            .run(req);
+    }
+
+    if (req.body?.contact_number2) {
+        await body('contact_number2')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage(
+                'Contact number3 must be a valid Bangladeshi number',
             )
             .run(req);
     }
@@ -98,10 +145,10 @@ async function validate(req: Request, models: any) {
         // .withMessage('the password field is required')
         .run(req);
 
-    await body('parmenent_address')
+    await body('permanent_address')
         .not()
         .isEmpty()
-        .withMessage('the parmenent_address field is required')
+        .withMessage('the permanent_address field is required')
         .run(req);
 
     await body('present_address')
@@ -316,6 +363,7 @@ async function store(
         permanent_address: body.permanent_address,
         date_of_birth: body.date_of_birth,
         gender: body.gender,
+        session: body.session,
         nationality: body.nationality,
         city: body.city,
         state: body.state,

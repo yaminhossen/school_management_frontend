@@ -208,6 +208,16 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 }
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>Session</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.session
+                                                }
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

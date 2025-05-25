@@ -14,7 +14,7 @@ import { sections } from './config/store/async_actions/sections';
 import { shifts } from './config/store/async_actions/shifts';
 import { preInfo } from './config/store/async_actions/pre_info';
 import ImageUpload from './components/ImageUpload';
-export interface Props {}
+export interface Props { }
 
 const Index: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
@@ -141,6 +141,26 @@ const Index: React.FC<Props> = (props: Props) => {
 
     // console.log('moment', moment().format('YYYY-DD-MM'));
     let date = moment().format('YYYY-MM-DD');
+
+    const startYear = "2025";
+    const years = Array.from({ length: 31 }, (_, i) => Number(startYear) + i);
+
+    // State for selected year
+    const [selectedYear, setSelectedYear] = useState(
+        sessionStorage.getItem('selectedYear') || startYear
+    );
+
+    // Update session storage when year changes
+    useEffect(() => {
+        sessionStorage.setItem('selectedYear', selectedYear);
+    }, [selectedYear]);
+
+    // Handle year selection
+    const handleYearChange = (event) => {
+        setSelectedYear(event.target.value);
+    };
+
+
     return (
         <div className="admin_dashboard">
             <div className="content_body">
@@ -163,16 +183,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                             type="text"
                                             placeholder="name"
                                             name="name"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
-                                    <label>Session</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="session"
-                                            name="session"
                                         />
                                     </div>
                                 </div>
@@ -416,6 +426,24 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         );
                                                     },
                                                 )}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div className="form-group form-vertical custom_scroll">
+                                    <label>Session</label>
+                                    <div className="form_elements custom_scroll">
+                                        <select
+                                            name="session"
+                                            value={selectedYear}
+                                            onChange={handleYearChange}
+                                            className="form-control custom_scroll"
+                                        >
+                                            {years.map((year) => (
+                                                <option key={year} value={year}>
+                                                    {year}
+                                                </option>
+                                            ))}
                                         </select>
                                     </div>
                                 </div>
@@ -940,19 +968,19 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         {errors.parents[
                                                             index
                                                         ] && (
-                                                            <p
-                                                                style={{
-                                                                    color: 'red',
-                                                                }}
-                                                            >
-                                                                {
-                                                                    errors
-                                                                        .parents[
+                                                                <p
+                                                                    style={{
+                                                                        color: 'red',
+                                                                    }}
+                                                                >
+                                                                    {
+                                                                        errors
+                                                                            .parents[
                                                                         index
-                                                                    ]
-                                                                }
-                                                            </p>
-                                                        )}
+                                                                        ]
+                                                                    }
+                                                                </p>
+                                                            )}
                                                     </div>
                                                 </div>
                                                 <div className="form-group form-vertical">

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../../../../store';
 import { initialState } from '../../config/store/inital_state';
 import setup from '../../config/setup';
+import ImageUpload from '../../../add_new/components/ImageUpload';
 export interface Props {
     // state: anyObject;
     setEducationalBackground: Function;
@@ -138,7 +139,7 @@ const EducationalBackgound: React.FC<Props> = (props: Props) => {
                                     <div className="form-group form-vertical">
                                         <label>Transfer certificate</label>
                                         <div className="form_elements">
-                                            <input
+                                            {/* <input
                                                 type="file"
                                                 accept="image/*"
                                                 placeholder="transfer cirtificate"
@@ -151,7 +152,8 @@ const EducationalBackgound: React.FC<Props> = (props: Props) => {
                                                     height: '50px',
                                                 }}
                                                 alt=""
-                                            />
+                                            /> */}
+                                            <ImageUpload name={`educational_background_transfer_cirtificate_${index}`} defaultImage={i.transfer_cirtificate} />
                                         </div>
                                     </div>
                                 </div>

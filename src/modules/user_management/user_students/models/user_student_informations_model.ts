@@ -40,6 +40,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare permanent_address?: string;
     declare date_of_birth?: Date;
     declare gender: string | null;
+    declare session?: string;
     declare nationality?: string | null;
     declare city?: string | null;
     declare state?: string | null;
@@ -112,6 +113,10 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             gender: {
+                type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            session: {
                 type: new DataTypes.STRING(20),
                 allowNull: true,
             },
