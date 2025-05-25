@@ -3,15 +3,30 @@ import { anyObject } from '../../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+import { useSelector } from 'react-redux';
+import { initialState } from '../config/store/inital_state';
+import { RootState } from '../../../../store';
+import setup from '../config/setup';
 export interface Props {}
 
 const Review: React.FC<Props> = (props: Props) => {
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
     const { id } = useParams();
+    const [classValue, setClassValue] = useState<string | null>(null);
 
     useEffect(() => {
-        // Function to fetch data
+        const hash = window.location.hash; // "#/student/review/12?class=1"
+        const queryIndex = hash.indexOf('?');
+
+        if (queryIndex !== -1) {
+            const queryString = hash.substring(queryIndex + 1); // "class=1"
+            const params = new URLSearchParams(queryString);
+            setClassValue(params.get('class'));
+        }
     }, []);
 
     const fetchData = async () => {
@@ -29,7 +44,7 @@ const Review: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-    console.log(id);
+    console.log(classValue);
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
@@ -50,6 +65,17 @@ const Review: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
             {/* <h3>Create New Review</h3> */}
+            <div className="dues_back_btn">
+                <h3 className="table_heading"></h3>
+                <button className="back_btn settings_bacsk">
+                    <Link to={`/student/details/${classValue}`}>
+                        <span className="material-symbols-outlined fill">
+                            arrow_back
+                        </span>
+                        <div className="text">Back</div>
+                    </Link>
+                </button>
+            </div>
             <div className="content_body">
                 <div className="data_list">
                     <form

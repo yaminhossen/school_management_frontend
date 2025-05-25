@@ -43,7 +43,7 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
                 formData,
             );
             // setData(response.data.data.data);
-            (window as any).toaster('submitted');
+            (window as any).toaster('Attendance submitted');
             // setTotalIncome(response.data.data.data2);
         } catch (error) {
             setError(error);
@@ -52,6 +52,17 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
+            <div className="dues_back_btn">
+                <h3 className="table_heading"></h3>
+                <button className="back_btn settings_bacsk">
+                    <Link to={`/class-attendance/details/${id}`}>
+                        <span className="material-symbols-outlined fill">
+                            arrow_back
+                        </span>
+                        <div className="text">Back</div>
+                    </Link>
+                </button>
+            </div>
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
@@ -68,60 +79,84 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
                                         <th>Status</th>
                                     </tr>
                                 </thead>
-                                <tbody id="all_list">
-                                    <input
-                                        type="hidden"
-                                        name="student_count"
-                                        value={data.length}
-                                    />
-                                    {data?.map(
-                                        (i: { [key: string]: any }, index) => {
-                                            return (
-                                                <tr>
-                                                    <td></td>
-                                                    <td>{index + 1}</td>
-                                                    <td>{i.student?.name}</td>
-                                                    <td>{i.role_no}</td>
-                                                    <td>{date}</td>
+                                {data?.length ? (
+                                    <tbody id="all_list">
+                                        <input
+                                            type="hidden"
+                                            name="student_count"
+                                            value={data.length}
+                                        />
+                                        {data?.map(
+                                            (
+                                                i: { [key: string]: any },
+                                                index,
+                                            ) => {
+                                                return (
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>{index + 1}</td>
+                                                        <td>
+                                                            {i.student?.name}
+                                                        </td>
+                                                        <td>{i.role_no}</td>
+                                                        <td>{date}</td>
 
-                                                    <td>
-                                                        <input
-                                                            type="hidden"
-                                                            name={`student_id${index}`}
-                                                            value={
-                                                                i.user_student_id
-                                                            }
-                                                        />
-                                                    </td>
-                                                    <td>
-                                                        <select
-                                                            name={`attendance_status${index}`}
-                                                            id=""
-                                                        >
-                                                            <option value="present">
-                                                                Present
-                                                            </option>
-                                                            <option value="absent">
-                                                                absent
-                                                            </option>
-                                                            <option value="late">
-                                                                Late
-                                                            </option>
-                                                            <option value="leave">
-                                                                Leave
-                                                            </option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            );
-                                        },
-                                    )}
-                                </tbody>
+                                                        <td>
+                                                            <input
+                                                                type="hidden"
+                                                                name={`student_id${index}`}
+                                                                value={
+                                                                    i.user_student_id
+                                                                }
+                                                            />
+                                                        </td>
+                                                        <td>
+                                                            <select
+                                                                name={`attendance_status${index}`}
+                                                                id=""
+                                                            >
+                                                                <option value="present">
+                                                                    Present
+                                                                </option>
+                                                                <option value="absent">
+                                                                    absent
+                                                                </option>
+                                                                <option value="late">
+                                                                    Late
+                                                                </option>
+                                                                <option value="leave">
+                                                                    Leave
+                                                                </option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            },
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={10}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
-                            <div className="attendance_form_btn">
+                            <div className="attendance_form_btn student_submit">
                                 <button
-                                    className="btn btn-sm btn-outline-info "
+                                    // className="btn btn-sm btn-outline-info "
                                     type="submit"
+                                    className={`btn btn-sm btn-outline-info  ${!data?.length ? 'error_btn' : ''}`}
+                                    disabled={!data?.length}
                                 >
                                     Submit
                                 </button>

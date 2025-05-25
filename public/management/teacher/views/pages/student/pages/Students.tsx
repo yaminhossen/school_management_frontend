@@ -78,11 +78,11 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                             col_name={`role`}
                                             sort={false}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Class`}
                                             col_name={`class`}
                                             sort={false}
-                                        />
+                                        /> */}
                                         <TableHeading
                                             label={`Report`}
                                             col_name={`report`}
@@ -155,23 +155,23 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                     <td>
                                                         {i.infostudent?.role_no}
                                                     </td>
-                                                    <td>
+                                                    {/* <td>
                                                         {
                                                             i.infostudent?.class
                                                                 ?.name
                                                         }
-                                                    </td>
+                                                    </td> */}
 
                                                     <td>
                                                         <Link
                                                             className="btn btn-sm btn-outline-info mr-1"
-                                                            to={`/student/review/${i.branch_student_id}`}
+                                                            to={`/student/review/${i.branch_student_id}?class=${params.id}`}
                                                         >
                                                             Review
                                                         </Link>
                                                         <Link
                                                             className="btn btn-sm btn-outline-info mr-1"
-                                                            to={`/student/complain/${i.branch_student_id}`}
+                                                            to={`/student/complain/${i.branch_student_id}?class=${params.id}`}
                                                         >
                                                             Complain
                                                         </Link>

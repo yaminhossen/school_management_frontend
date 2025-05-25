@@ -33,6 +33,17 @@ const Details: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
+            <div className="dues_back_btn">
+                <h3 className="table_heading"></h3>
+                <button className="back_btn settings_bacsk">
+                    <Link to={`/class-attendance`}>
+                        <span className="material-symbols-outlined fill">
+                            arrow_back
+                        </span>
+                        <div className="text">Back</div>
+                    </Link>
+                </button>
+            </div>
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">

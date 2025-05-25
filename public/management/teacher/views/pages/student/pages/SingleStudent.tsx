@@ -32,6 +32,19 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
     console.log(data);
     return (
         <div className="admin_dashboard">
+            <div className="dues_back_btn">
+                <h3 className="table_heading"></h3>
+                <button className="back_btn settings_bacsk">
+                    <Link
+                        to={`/student/details/${data?.student_info?.s_class}`}
+                    >
+                        <span className="material-symbols-outlined fill">
+                            arrow_back
+                        </span>
+                        <div className="text">Back</div>
+                    </Link>
+                </button>
+            </div>
             <div className="content_body">
                 <div className="single_student_details">
                     <div className="">

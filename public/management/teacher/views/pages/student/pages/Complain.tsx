@@ -9,6 +9,18 @@ const Complain: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<any>([]);
     const { id } = useParams();
+    const [classValue, setClassValue] = useState<string | null>(null);
+
+    useEffect(() => {
+        const hash = window.location.hash; // "#/student/review/12?class=1"
+        const queryIndex = hash.indexOf('?');
+
+        if (queryIndex !== -1) {
+            const queryString = hash.substring(queryIndex + 1); // "class=1"
+            const params = new URLSearchParams(queryString);
+            setClassValue(params.get('class'));
+        }
+    }, []);
 
     useEffect(() => {
         // Function to fetch data
@@ -49,6 +61,17 @@ const Complain: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
             {/* <h3>Create New Complain</h3> */}
+            <div className="dues_back_btn">
+                <h3 className="table_heading"></h3>
+                <button className="back_btn settings_bacsk">
+                    <Link to={`/student/details/${classValue}`}>
+                        <span className="material-symbols-outlined fill">
+                            arrow_back
+                        </span>
+                        <div className="text">Back</div>
+                    </Link>
+                </button>
+            </div>
             <div className="content_body">
                 <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
