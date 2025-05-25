@@ -106,6 +106,42 @@ async function validate(req: Request, models: any) {
             .run(req);
     }
 
+    if (req.body?.contact_number0) {
+        await body('contact_number0')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage(
+                'Contact number1 must be a valid Bangladeshi number',
+            )
+            .run(req);
+    }
+
+    if (req.body?.contact_number1) {
+        await body('contact_number1')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage(
+                'Contact number2 must be a valid Bangladeshi number',
+            )
+            .run(req);
+    }
+
+    if (req.body?.contact_number2) {
+        await body('contact_number2')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage(
+                'Contact number3 must be a valid Bangladeshi number',
+            )
+            .run(req);
+    }
+
     if(req?.body?.password){
         await body('password')
         .not()
