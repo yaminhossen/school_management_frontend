@@ -224,4 +224,36 @@ body {
   font-size: 14px;
   padding: 5px;
 }
+
+  .school_title{
+    font-size: 58px;
+    color: #ffffff;
+    margin-bottom: 80px;
+    text-align: center;
+    font-weight: 700;
+  }
+    .grid_container {
+      display: grid;
+      grid-template-columns: repeat(4, 220px);
+      gap: 20px;
+    }
+
+    .role_button {
+      background-color: #223ea3;
+      color: white;
+      border: none;
+      padding: 20px 10px;
+      text-align: center;
+      font-size: 16px;
+      /* font-weight: bold; */
+      /* border-radius: 6px; */
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+    }
+
+    .role_button:hover {
+      background-color: #011a7b;
+      color: rgb(168, 164, 164);
+    }
 /*# sourceMappingURL=./login.css.map */

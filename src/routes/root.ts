@@ -15,8 +15,8 @@ import { request } from 'http';
 module.exports = async function (fastify: FastifyInstance) {
     fastify
         .get('/', async (_req: FastifyRequest, reply: FastifyReply) => {
-            // return reply.view('website/index.ejs');
-            return reply.redirect('/admin');
+            return reply.view('auth/sms_home.ejs');
+            // return reply.redirect('auth/account_login.ejs');
         })
         .get('/login', async (_req: FastifyRequest, reply: FastifyReply) => {
             // return reply.view('website/pages/login.ejs');
