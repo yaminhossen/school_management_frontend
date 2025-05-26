@@ -22,6 +22,7 @@ import { branches } from '../../add_new/config/store/async_actions/branches';
 import { sections } from '../../add_new/config/store/async_actions/sections';
 import { shifts } from '../../add_new/config/store/async_actions/shifts';
 import ImageUpload from '../../add_new/components/ImageUpload';
+import BackButton from './components/BackButton';
 export interface Props { }
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -149,6 +150,7 @@ const Index: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
+            <BackButton/>
             {Object.keys(state.item)?.length && (
                 <div className="content_body">
                     <form

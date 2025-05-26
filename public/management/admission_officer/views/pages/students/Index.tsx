@@ -57,7 +57,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Class</th>
-                                    <th>Total Student</th>
+                                    <th>Total Students</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

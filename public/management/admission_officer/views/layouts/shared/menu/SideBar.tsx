@@ -5,9 +5,11 @@ import MenuDropDownItem from './MenuDropDownItem';
 import MenuSingle from './MenuSingle';
 import axios from 'axios';
 import { anyObject } from '../../../../common_types/object';
+import { Button, Modal } from 'react-bootstrap';
 export interface Props {}
 
 const SideBar: React.FC<Props> = (props: Props) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [error, setError] = useState(null);
 
     setTimeout(() => {
@@ -18,14 +20,27 @@ const SideBar: React.FC<Props> = (props: Props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let confirm = await (window as anyObject).s_confirm('Logout');
-            if (confirm) {
-                await axios.post('/api/v1/auth/logout');
-            }
+            setIsModalOpen(true); // Show Bootstrap modal for logout confirmation
         } catch (error) {
             setError(error);
         }
     };
+
+    const handleConfirm = async () => {
+        try {
+            await axios.post('/api/v1/auth/logout');
+            setIsModalOpen(false); // Close modal after logout
+            // Optionally redirect or update UI after logout
+            window.location.href = '/login'; // Example redirect
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false); // Close modal without logging out
+    };
+
     return (
         <>
             <ul className="sidebar-menu">
@@ -76,6 +91,24 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     </a>
                 </li> */}
             </ul>
+
+            {/* Bootstrap Logout Confirmation Modal */}
+            <Modal show={isModalOpen} onHide={handleCancel} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>Confirm Logout</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Are you sure you want to logout?</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCancel}>
+                        No
+                    </Button>
+                    <Button variant="primary" onClick={handleConfirm}>
+                        Yes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 };

@@ -56,7 +56,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th />
+                                            {/* <th /> */}
                                             <th>
                                                 <SelectAll />
                                             </th>
@@ -102,11 +102,11 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                         key={i.id}
                                                         className={`table_rows table_row_${i.id}`}
                                                     >
-                                                        <td>
+                                                        {/* <td>
                                                             <TableRowAction
                                                                 item={i}
                                                             />
-                                                        </td>
+                                                        </td> */}
                                                         <td>
                                                             <SelectItem
                                                                 item={i}
@@ -197,7 +197,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                     ) : (
                                         <tbody>
                                             <tr>
-                                                <td colSpan={9}>
+                                                <td colSpan={10}>
                                                     <div
                                                         style={{
                                                             fontSize: '24px',
@@ -224,7 +224,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                             ></Paginate2>
                         </div>
                     </div>
-                    <TableFooter></TableFooter>
+                    {/* <TableFooter></TableFooter> */}
                 </div>
 
                 <Filter></Filter>

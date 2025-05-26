@@ -1,19 +1,18 @@
-/* eslint-disable no-constant-condition */
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider, createHashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/index.js';
-import dashboard_routes from './routes';
+import dashboard_routes from './routes/index.js';
 import axios from 'axios';
-import { anyObject } from '../../../src/modules/common_types/object';
+import { anyObject } from './common_types/object.js';
 
 function Component() {
     const router = createHashRouter(dashboard_routes);
     return <RouterProvider router={router}></RouterProvider>;
 }
 
-const container: HTMLElement | null = document.getElementById('app');
+const container: HTMLElement | null = document.getElementById('app2');
 if (container) {
     const root = createRoot(container);
     root.render(
@@ -22,22 +21,19 @@ if (container) {
         </Provider>,
     );
 }
-// Reusable function to clear previous error elements and classes
-function clearErrors() {
-    // Remove all '.form_error' elements
-    let form_errors = document.querySelectorAll('.form_error');
-    // console.log('form errrors', form_errors);
-    [...form_errors].forEach((e) => e.remove());
 
-    // Remove 'has_error' class from elements
-    let has_errors = document.querySelectorAll('.has_error');
-    [...has_errors].forEach((e) => e.classList.remove('has_error'));
-}
-
+(window as any).axios = axios;
 axios.interceptors.request.use(
     function (config) {
-        clearErrors();
+        let form_errors = document.querySelectorAll('.form_error');
+        [...form_errors].forEach((e) => e.remove());
+        let has_errors = document.querySelectorAll('.has_error');
+        [...has_errors].forEach((e) => e.classList.remove('has_error'));
 
+        // eslint-disable-next-line no-undef
+        (window as any)
+            .jQuery('.loader-wrapper')
+            .fadeIn('slow', function () {});
         return config;
     },
     function (error) {
@@ -46,37 +42,38 @@ axios.interceptors.request.use(
 );
 
 axios.interceptors.response.use(
-    // function (response) {
-    //     return response;
-    // },
     function (response) {
+        console.log('response ok', response);
         if (response.status == 217) {
             location.href = '/admin/login';
         }
-        // (window as any)
-        //     .jQuery('.loader-wrapper')
-        //     .fadeOut('slow', function () {});
-        if (response.status == 202) {
-            (window as anyObject).toaster(`Successfuly task created`);
+        if (response.status == 201) {
+            (window as any).toaster('submitted');
         }
-        if (response.status == 204) {
-            (window as anyObject).toaster(`Successfuly task updated`);
-        }
-        console.log('response data', response);
+        (window as any)
+            .jQuery('.loader-wrapper')
+            .fadeOut('slow', function () {});
         return response;
     },
-
     function (error) {
+        console.log('response not ok', error.response);
+
+        (window as any)
+            .jQuery('.loader-wrapper')
+            .fadeOut('slow', function () {});
+
+        if (error.response.status === 401) {
+            document.cookie =
+                'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            location.href = '/admission-officer/login';
+            console.log('authentication error');
+        }
         if (error.response.data.status === 422) {
-            let errors = error.response.data.data;
-            (window as anyObject).toaster(
-                `${error.response.data.message}`,
-                'error',
-            );
+            let errors = error.response?.data?.data;
             errors.forEach((error) => {
                 let el = document.querySelector(`[name="${error.path}"]`);
                 if (el) {
-                    (el.parentNode as HTMLElement)?.classList.add('has_error');
+                    (el.parentNode as HTMLElement).classList.add('has_error');
                     (el.parentNode as HTMLElement)?.insertAdjacentHTML(
                         'beforeend',
                         `
@@ -87,20 +84,22 @@ axios.interceptors.response.use(
                     );
                 }
             });
-
             (window as anyObject).toaster(
                 `${error.response.status} - ${error.response.statusText}`,
-                'error',
             );
-
-            console.log(error.response);
+            let error_el = document.querySelector('.has_error');
+            if (error_el) {
+                setTimeout(() => {
+                    error_el.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center',
+                    });
+                }, 300);
+            }
         }
-        if (error.response.data.status == 500) {
-            (window as anyObject).toaster(
-                `${error.response.data.message}`,
-                'error',
-            );
-        }
+        console.log(error.response);
         return Promise.reject(error);
     },
 );
+
+export const custom_axios = axios;

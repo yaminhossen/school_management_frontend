@@ -1,23 +1,36 @@
 import React, { useState } from 'react';
 import NavbarSwitch from './NavbarSwitch';
 import axios from 'axios';
-import { anyObject } from '../../../common_types/object';
+import { Modal, Button } from 'react-bootstrap'; // Import Bootstrap components
 
 export interface Props {}
 
 const TopHeader: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let confirm = await (window as anyObject).s_confirm('Logout');
-            if (confirm) {
-                await axios.post('/api/v1/auth/logout');
-            }
+            setIsModalOpen(true); // Show Bootstrap modal for logout confirmation
         } catch (error) {
             setError(error);
         }
+    };
+
+    const handleConfirm = async () => {
+        try {
+            await axios.post('/api/v1/auth/logout');
+            setIsModalOpen(false); // Close modal after logout
+            // Optionally redirect or update UI after logout
+            window.location.href = '/login'; // Example redirect
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false); // Close modal without logging out
     };
 
     return (
@@ -28,17 +41,7 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                     semilight-bg-color="bg-default-light-colo"
                 >
                     <div className="logo-wrapper">
-                        <a href="#/">
-                            Nurul Hikma Model Madrasah
-                            {/* <img
-                                src="https://uniflexlimited.com/wp-content/uploads/2024/05/Untitled-1.png"
-                                className="image-dark"
-                            />
-                            <img
-                                src="https://uniflexlimited.com/wp-content/uploads/2024/05/Untitled-1.png"
-                                className="image-light"
-                            /> */}
-                        </a>
+                        <a href="#/">Nurul Hikma Model Madrasah</a>
                     </div>
                 </div>
                 <div
@@ -48,32 +51,8 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                     <NavbarSwitch />
                     <div className="nav-right col">
                         <ul className="nav-menus">
-                            {/* <li>
-                      <form className="form-inline search-form">
-                          <div className="form-group">
-                              <label className="sr-only">Email</label>
-                              <input type="search" className="form-control-plaintext" placeholder="Search..">
-                              <span className="d-sm-none mobile-search">
-                              </span>
-                          </div>
-                      </form>
-                  </li> */}
-                            {/* <li>
-                                <a href="#!" className="text-dark">
-                                    <img
-                                        className="align-self-center pull-right me-2"
-                                        src="/assets/dashboard_uni/browser.png"
-                                        alt="header-browser"
-                                    />
-                                </a>
-                            </li> */}
                             <li className="onhover-dropdown">
                                 <div className="d-flex align-items-center">
-                                    {/* <img
-                                        className="align-self-center pull-right flex-shrink-0 me-2"
-                                        src="/assets/dashboard_uni/user.png"
-                                        alt="header-user"
-                                    /> */}
                                     <div>
                                         <h6 className="m-0 txt-dark f-16">
                                             My Account
@@ -103,6 +82,24 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                     </div>
                 </div>
             </div>
+
+            {/* Bootstrap Logout Confirmation Modal */}
+            <Modal show={isModalOpen} onHide={handleCancel} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>Confirm Logout</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Are you sure you want to logout?</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCancel}>
+                        No
+                    </Button>
+                    <Button variant="primary" onClick={handleConfirm}>
+                        Yes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 };

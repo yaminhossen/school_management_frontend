@@ -208,7 +208,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                         ></Paginate2>
                     </div>
                 </div>
-                <TableFooter></TableFooter>
+                {/* <TableFooter></TableFooter> */}
             </div>
 
             <Filter></Filter>
