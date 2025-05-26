@@ -49,7 +49,7 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
                                     height: '50px',
                                     objectFit: 'cover',
                                 }}
-                                src={data?.image}
+                                src={data?.image || 'https://i.ibb.co/Wx1JfLK/user-icon.png'}
                                 alt="Admission Officer"
                             />
                         </div>
