@@ -39,7 +39,7 @@ const Filter: React.FC<Props> = (props: Props) => {
             }),
         );
     }
-console.log('state datea', state?.id);
+// console.log('state datea', state?.id);
 
     function submit() {
         dispatch(storeSlice.actions.set_only_latest_data(true));

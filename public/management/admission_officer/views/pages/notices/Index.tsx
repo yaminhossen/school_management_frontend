@@ -101,6 +101,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 i.description,
                                                                 15,
                                                             )}
+                                                            <br/> <br/>
                                                             <Link
                                                                 className="read_more_area"
                                                                 to={`/notices/details/${i.id}`}

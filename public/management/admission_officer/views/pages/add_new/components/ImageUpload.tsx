@@ -4,6 +4,7 @@ import { anyObject } from '../../../../common_types/object';
 interface ImageUploadProps {
     defaultImage?: string;
     name: string; // Dynamic name prop
+    ref: React.RefObject<HTMLInputElement>;
 }
 
 const ImageUpload: React.FC<ImageUploadProps> = ({ defaultImage, name }) => {
@@ -35,7 +36,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ defaultImage, name }) => {
                 setPreview(defaultImage || null);
                 return;
             }
-// Validate file type
+            // Validate file type
             const allowedTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
             if (!allowedTypes.includes(file.type)) {
                 (window as anyObject).toaster('Invalid file type. Only JPG, JPEG, PNG, and GIF are allowed.', 'warning',);

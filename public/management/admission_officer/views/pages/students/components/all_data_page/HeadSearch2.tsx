@@ -18,13 +18,14 @@ const HeadSearch2: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
     const search_input = useRef<HTMLInputElement>(null);
 
+
     const search_handle = useDebouncedCallback(() => {
         let search_key: string = '';
         if (search_input.current) {
             search_key = search_input.current.value;
             dispatch(storeSlice.actions.set_search_key(search_key) as any);
             dispatch(storeSlice.actions.set_page(1));
-            dispatch(class_details1({ id: 1 }) as any); 
+            dispatch(class_details1({ id: state?.id }) as any); 
         }
     }, 1000);
 

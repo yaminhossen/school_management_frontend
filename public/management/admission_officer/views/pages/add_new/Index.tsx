@@ -14,7 +14,7 @@ import { sections } from './config/store/async_actions/sections';
 import { shifts } from './config/store/async_actions/shifts';
 import { preInfo } from './config/store/async_actions/pre_info';
 import ImageUpload from './components/ImageUpload';
-export interface Props {}
+export interface Props { }
 
 const Index: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
@@ -160,6 +160,8 @@ const Index: React.FC<Props> = (props: Props) => {
         setSelectedYear(event.target.value);
     };
 
+    const [showPassword, setShowPassword] = useState(false);
+
     return (
         <div className="admin_dashboard">
             <div className="content_body">
@@ -265,19 +267,47 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="form-group form-vertical">
-                                    <label>Password</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="password"
-                                            name="password"
-                                            value={formData.password}
-                                            onChange={handlePasswordChange}
-                                        />
+                                
+                                    <div className="form-group form-vertical">
+                                        <label>Password</label>
+                                        <div className="form_elements_valid"
+                                            style={{ position: 'relative' }}>
+                                            <input
+                                                type={
+                                                    showPassword
+                                                        ? 'text'
+                                                        : 'password'
+                                                }
+                                                placeholder="password"
+                                                name="password"
+                                                value={formData.password}
+                                                onChange={handlePasswordChange}
+                                            />
+                                            <span
+                                                onClick={() =>
+                                                    setShowPassword(
+                                                        !showPassword,
+                                                    )
+                                                }
+                                                className="material-symbols-outlined visible_icon"
+                                                style={{
+                                                    position: 'absolute',
+                                                    top: '10px',
+                                                    right: '10px',
+                                                    cursor: 'pointer',
+                                                    color: '#666',
+                                                    fontSize: '24px',
+                                                    userSelect: 'none',
+                                                }}
+                                            >
+                                                {showPassword
+                                                    ? 'visibility_off'
+                                                    : 'visibility'}
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="form-group form-vertical">
+                            
+                                {/* <div className="form-group form-vertical">
                                     <label>Confirm Password</label>
                                     <div className="form_elements">
                                         <input
@@ -293,7 +323,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             </p>
                                         )}
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="full_width">
@@ -973,19 +1003,19 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         {errors.parents[
                                                             index
                                                         ] && (
-                                                            <p
-                                                                style={{
-                                                                    color: 'red',
-                                                                }}
-                                                            >
-                                                                {
-                                                                    errors
-                                                                        .parents[
+                                                                <p
+                                                                    style={{
+                                                                        color: 'red',
+                                                                    }}
+                                                                >
+                                                                    {
+                                                                        errors
+                                                                            .parents[
                                                                         index
                                                                         ]
-                                                                }
-                                                            </p>
-                                                        )}
+                                                                    }
+                                                                </p>
+                                                            )}
                                                     </div>
                                                 </div>
                                                 <div className="form-group form-vertical">
