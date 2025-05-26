@@ -215,7 +215,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
 
                             <Paginate2
                                 set_url={storeSlice.actions.set_url}
-                                set_id={1}
+                                set_id={Number(params.id)}
                                 set_paginate={storeSlice.actions.set_paginate}
                                 set_page={storeSlice.actions.set_page}
                                 all={class_details1}

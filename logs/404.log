@@ -1684,3 +1684,8 @@
 {"level":60,"time":1748239643012,"pid":15060,"hostname":"DESKTOP-I0UCE3Q","error":"404","url":"/api/v1/accounts/accounts"}
 {"level":60,"time":1748239643019,"pid":15060,"hostname":"DESKTOP-I0UCE3Q","error":"404","url":"/api/v1/account-categories/all"}
 {"level":60,"time":1748239643022,"pid":15060,"hostname":"DESKTOP-I0UCE3Q","error":"404","url":"/api/v1/account-logs/periods"}
+{"level":60,"time":1748242469145,"pid":15060,"hostname":"DESKTOP-I0UCE3Q","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
+{"level":60,"time":1748242472153,"pid":15060,"hostname":"DESKTOP-I0UCE3Q","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
+{"level":60,"time":1748243331218,"pid":15060,"hostname":"DESKTOP-I0UCE3Q","error":"404","url":"/api/v1/accounts/accounts"}
+{"level":60,"time":1748243331224,"pid":15060,"hostname":"DESKTOP-I0UCE3Q","error":"404","url":"/api/v1/account-categories/all"}
+{"level":60,"time":1748243331232,"pid":15060,"hostname":"DESKTOP-I0UCE3Q","error":"404","url":"/api/v1/account-logs/periods"}
