@@ -39,11 +39,11 @@ const Filter: React.FC<Props> = (props: Props) => {
             }),
         );
     }
-// console.log('state datea', state?.id);
+    // console.log('state datea', state?.id);
 
     function submit() {
         dispatch(storeSlice.actions.set_only_latest_data(true));
-        dispatch(class_details1({id: state?.id}) as any);
+        dispatch(class_details1({ id: state?.id }) as any);
     }
 
     if (modalRoot && state.show_filter_canvas) {

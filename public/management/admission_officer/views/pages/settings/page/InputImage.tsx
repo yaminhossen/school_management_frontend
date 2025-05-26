@@ -25,7 +25,11 @@ const InputImage = forwardRef<InputImageRef, InputImageProps>(
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const selectedFile = e.target.files?.[0];
             if (selectedFile) {
-                const validImageTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+                const validImageTypes = [
+                    'image/png',
+                    'image/jpeg',
+                    'image/jpg',
+                ];
                 if (validImageTypes.includes(selectedFile.type)) {
                     setFile(selectedFile);
                     setPreview(URL.createObjectURL(selectedFile));
@@ -36,10 +40,10 @@ const InputImage = forwardRef<InputImageRef, InputImageProps>(
         return (
             <div>
                 {label && <label>{label}</label>}
-                <input 
-                    type="file" 
-                    name={name} 
-                    onChange={handleChange} 
+                <input
+                    type="file"
+                    name={name}
+                    onChange={handleChange}
                     accept="image/png,image/jpeg,image/jpg"
                 />
                 {preview && (
