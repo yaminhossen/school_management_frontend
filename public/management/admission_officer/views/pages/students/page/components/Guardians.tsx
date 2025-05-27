@@ -255,7 +255,12 @@ const Guardians: React.FC<Props> = (props: Props) => {
                                                 }}
                                                 alt=""
                                             /> */}
-                                            <ImageUpload name ={`parent_image${index}`} defaultImage={i.parent_details?.image} />
+                                            <ImageUpload
+                                                name={`parent_image${index}`}
+                                                defaultImage={
+                                                    i.parent_details?.image
+                                                }
+                                            />
                                         </div>
                                     </div>
                                 </div>
