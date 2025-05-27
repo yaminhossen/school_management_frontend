@@ -80,7 +80,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ defaultImage, name }) => {
     return (
         <div className="form-group mb-3">
             {/* <label className="form-label">Image</label> */}
-            <div className="form_elements">
+            <div className="form_elements mb-3">
                 <input
                     type="file"
                     ref={fileInputRef}
@@ -106,10 +106,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ defaultImage, name }) => {
                     />
                     <button
                         onClick={handleRemove}
-                        className="btn btn-sm position-absolute top-0 end-0"
+                        className="btn position-absolute top-0 translate-middle"
                         style={{
-                            background: 'rgba(0, 0, 0, 0.5)',
-                            color: 'red',
+                            background: 'rgba(255, 255, 255, 0.9)',
+                            color: '#dc3545',
                             borderRadius: '50%',
                             width: '24px',
                             height: '24px',
@@ -117,11 +117,16 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ defaultImage, name }) => {
                             alignItems: 'center',
                             justifyContent: 'center',
                             fontSize: '16px',
+                            fontWeight: 'bold',
+                            border: '1px solid #dc3545',
+                            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+                            cursor: 'pointer',
+                            padding: 0,
                             lineHeight: '1',
                         }}
                         aria-label="Remove image"
                     >
-                        X
+                        ×
                     </button>
                 </div>
             )}
