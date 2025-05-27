@@ -28,7 +28,6 @@ export interface Props {}
 const Index: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
     // const [totalDocument, setTotalDocument] = useState([1]);
-    const [selectedClass, setSelectedClass] = useState('');
     const [totalContactNumber, setTotalContactNumber] = useState([1]);
     const [totalLanguage, setTotalLanguage] = useState<anyObject[]>([]);
     const [totalSkill, setTotalSkill] = useState<anyObject[]>([]);
@@ -67,16 +66,33 @@ const Index: React.FC<Props> = (props: Props) => {
         // console.log('frontend state', add_new_state);
     }, [add_new_state]);
 
+    // Initialize selectedClass with a fallback value
+    const [selectedClass, setSelectedClass] = useState<string>(
+        state.item.student_info?.s_class || '',
+    );
+
     // Handle class selection
     const handleClassChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedClass(e.target.value);
     };
 
-    // Filter sections based on selected class
+    // Remove invalid direct call to handleClassChange
+    // If you need to set initial class, use useEffect instead:
+    useEffect(() => {
+        if (state.item.student_info?.s_class) {
+            setSelectedClass(state.item.student_info.s_class);
+        }
+    }, [state.item.student_info?.s_class]);
+
+    // Filter sections with proper typing
+    interface Section {
+        branch_class_id: number;
+        [key: string]: any;
+    }
+
     const filteredSections =
         add_new_state.sections?.filter(
-            (section: { [key: string]: any }) =>
-                section.branch_class_id === parseInt(selectedClass),
+            (section) => section.branch_class_id === parseInt(selectedClass),
         ) || [];
 
     async function handle_submit(e) {
@@ -482,7 +498,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             )?.length && (
                                                 <select
                                                     name="section"
-                                                    disabled={!selectedClass}
+                                                    // disabled={!selectedClass}
                                                     defaultValue={
                                                         state.item.student_info
                                                             ?.section
