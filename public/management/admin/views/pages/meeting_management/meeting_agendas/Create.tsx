@@ -19,6 +19,9 @@ const Create: React.FC<Props> = (props: Props) => {
     );
     const dispatch = useAppDispatch();
     const [meetingType, setMeetingType] = useState('');
+    const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
+
+    const [errorMessage, setErrorMessage] = useState('');
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -35,6 +38,20 @@ const Create: React.FC<Props> = (props: Props) => {
     }, []);
     console.log('state meeting', state.meeting);
     // if (state.meeting.length < 1) return <></>;
+    useEffect(() => {
+        const start = moment(startDate);
+        const today = moment().startOf('day');
+
+        if (start.isBefore(today)) {
+            setErrorMessage('Date cannot be before today.');
+            return;
+        }
+
+        setErrorMessage('');
+    }, [startDate]);
+    const handleStartDateChange = (e) => {
+        setStartDate(e.target.value);
+    };
     return (
         <>
             <div className="page_content">
@@ -105,11 +122,20 @@ const Create: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="date"
-                                            // defaultValue={moment().format(
-                                            //     'YYYY-MM-DD',
-                                            // )}
+                                            value={startDate}
+                                            onChange={handleStartDateChange}
                                             name="date"
-                                        ></input>
+                                        />
+                                        {errorMessage && (
+                                            <div
+                                                style={{
+                                                    color: 'red',
+                                                    marginTop: '5px',
+                                                }}
+                                            >
+                                                {errorMessage}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
@@ -189,7 +215,11 @@ const Create: React.FC<Props> = (props: Props) => {
                             <div className="form-group student_submit form-horizontal">
                                 {/* <label></label> */}
                                 <div className="form_elementss">
-                                    <button className="btn btn_1">
+                                    <button
+                                        type="submit"
+                                        className={`btn btn_1 ${errorMessage ? 'btn_error' : ''}`}
+                                        disabled={!!errorMessage}
+                                    >
                                         submit
                                     </button>
                                 </div>

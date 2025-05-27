@@ -21,9 +21,6 @@ const SideBar: React.FC<Props> = (props: Props) => {
             if (confirm) {
                 await axios.post('/api/v1/auth/teacher/logout');
             }
-            // const response = await axios.post('/api/v1/auth/teacher/logout');
-            // console.log('response123', response);
-            // if(response.status)
         } catch (error) {
             setError(error);
         }

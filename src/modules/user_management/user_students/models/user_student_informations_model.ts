@@ -56,6 +56,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare addmission_no?: string | null;
     declare role_no: string | null;
     declare section?: string | null;
+    declare session?: string;
     declare s_class?: number;
     declare shift?: string | null;
     declare division?: string | null;
@@ -185,6 +186,10 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             section: {
+                type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            session: {
                 type: new DataTypes.STRING(20),
                 allowNull: true,
             },

@@ -19,6 +19,9 @@ export const store_reducers = {
     set_url: (state: typeof initialState, action: PayloadAction<string>) => {
         state.url = action.payload;
     },
+    set_id: (state: typeof initialState, action: PayloadAction<number>) => {
+        state.id = action.payload;
+    },
     set_all: (state: typeof initialState, action: PayloadAction<object>) => {
         state.all = action.payload;
     },

@@ -22,6 +22,11 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.admin_details,
         )
         .get(
+            `${prefix}/staff-details`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.staff_details,
+        )
+        .get(
             `${prefix}/basic-information`,
             { preHandler: [auth_middleware] },
             controllerInstance.basic_information,

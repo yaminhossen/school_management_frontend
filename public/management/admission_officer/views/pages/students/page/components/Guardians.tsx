@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../../../../store';
 import { initialState } from '../../config/store/inital_state';
 import setup from '../../config/setup';
+import ImageUpload from '../../../add_new/components/ImageUpload';
 export interface Props {
     // state: anyObject;
     setTotalGuardians: Function;
@@ -232,7 +233,7 @@ const Guardians: React.FC<Props> = (props: Props) => {
                                     <div className="form-group form-vertical">
                                         <label>Image</label>
                                         <div className="form_elements">
-                                            <input
+                                            {/* <input
                                                 type="file"
                                                 placeholder="image"
                                                 accept="image/*"
@@ -253,7 +254,8 @@ const Guardians: React.FC<Props> = (props: Props) => {
                                                     height: '50px',
                                                 }}
                                                 alt=""
-                                            />
+                                            /> */}
+                                            <ImageUpload name ={`parent_image${index}`} defaultImage={i.parent_details?.image} />
                                         </div>
                                     </div>
                                 </div>

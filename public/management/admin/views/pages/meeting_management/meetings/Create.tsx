@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
@@ -10,6 +10,9 @@ export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
+    const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
+
+    const [errorMessage, setErrorMessage] = useState('');
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -18,7 +21,20 @@ const Create: React.FC<Props> = (props: Props) => {
             e.target.reset();
         }
     }
+    useEffect(() => {
+        const start = moment(startDate);
+        const today = moment().startOf('day');
 
+        if (start.isBefore(today)) {
+            setErrorMessage('Date cannot be before today.');
+            return;
+        }
+
+        setErrorMessage('');
+    }, [startDate]);
+    const handleStartDateChange = (e) => {
+        setStartDate(e.target.value);
+    };
     return (
         <>
             <div className="page_content">
@@ -36,9 +52,8 @@ const Create: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>
                                         Title{' '}
-                                                <span className="valid_star">
-                                                    *
-                                                </span></label>
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -50,9 +65,8 @@ const Create: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>
                                         Description{' '}
-                                                <span className="valid_star">
-                                                    *
-                                                </span></label>
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <textarea
                                             name="description"
@@ -64,24 +78,36 @@ const Create: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>
                                         Date{' '}
-                                                <span className="valid_star">
-                                                    *
-                                                </span></label>
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="date"
+                                            value={startDate}
+                                            onChange={handleStartDateChange}
                                             name="date"
-                                            defaultValue={moment().format(
-                                                'YYYY-MM-DD',
-                                            )}
                                         />
+                                        {errorMessage && (
+                                            <div
+                                                style={{
+                                                    color: 'red',
+                                                    marginTop: '5px',
+                                                }}
+                                            >
+                                                {errorMessage}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
                             <div className="form-group student_submit form-horizontal">
                                 {/* <label></label> */}
                                 <div className="form_elementss">
-                                    <button className="btn btn_1">
+                                    <button
+                                        type="submit"
+                                        className={`btn btn_1 ${errorMessage ? 'btn_error' : ''}`}
+                                        disabled={!!errorMessage}
+                                    >
                                         submit
                                     </button>
                                 </div>

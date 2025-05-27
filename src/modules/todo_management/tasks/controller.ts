@@ -19,6 +19,9 @@ import teacher_complete from './services/teacher_complete';
 import teacher_update from './services/teacher_update';
 import task_assign_updated from './services/task_assign_update';
 import task_details from './services/task_details';
+import staff_pending from './services/staff_pending';
+import staff_complete from './services/staff_complete';
+import staff_update from './services/staff_update';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -31,6 +34,17 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data: responseObject = await teacher_pending(fastify, req);
+            res.code(data.status).send(data);
+        },
+        staff_pending: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await staff_pending(fastify, req);
+            res.code(data.status).send(data);
+        },
+        staff_complete: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await staff_complete(fastify, req);
             res.code(data.status).send(data);
         },
         teacher_complete: async function (
@@ -79,6 +93,11 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data: responseObject = await teacher_update(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        staff_update: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await staff_update(fastify, req);
             res.code(data.status).send(data);
         },
 

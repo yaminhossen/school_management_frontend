@@ -13,6 +13,7 @@ import { branches } from './config/store/async_actions/branches';
 import { sections } from './config/store/async_actions/sections';
 import { shifts } from './config/store/async_actions/shifts';
 import { preInfo } from './config/store/async_actions/pre_info';
+import ImageUpload from './components/ImageUpload';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -140,6 +141,27 @@ const Index: React.FC<Props> = (props: Props) => {
 
     // console.log('moment', moment().format('YYYY-DD-MM'));
     let date = moment().format('YYYY-MM-DD');
+
+    const startYear = '2025';
+    const years = Array.from({ length: 31 }, (_, i) => Number(startYear) + i);
+
+    // State for selected year
+    const [selectedYear, setSelectedYear] = useState(
+        sessionStorage.getItem('selectedYear') || startYear,
+    );
+
+    // Update session storage when year changes
+    useEffect(() => {
+        sessionStorage.setItem('selectedYear', selectedYear);
+    }, [selectedYear]);
+
+    // Handle year selection
+    const handleYearChange = (event) => {
+        setSelectedYear(event.target.value);
+    };
+
+    const [showPassword, setShowPassword] = useState(false);
+
     return (
         <div className="admin_dashboard">
             <div className="content_body">
@@ -194,14 +216,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            value={phoneNumbers.son}
-                                            onChange={(e) =>
-                                                handleChange(
-                                                    'son',
-                                                    null,
-                                                    e.target.value,
-                                                )
-                                            }
+                                            // defaultValue={phoneNumbers.son}
+                                            // onChange={(e) =>
+                                            //     handleChange(
+                                            //         'son',
+                                            //         null,
+                                            //         e.target.value,
+                                            //     )
+                                            // }
                                             placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
                                             name="phone_number"
                                         />
@@ -225,12 +247,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Image</label>
                                     <div className="form_elements">
-                                        <input
+                                        {/* <input
                                             type="file"
                                             accept="image/*"
                                             placeholder="image"
                                             name="image"
-                                        />
+                                        /> */}
+                                        <ImageUpload name={'image'} />
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
@@ -244,19 +267,47 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
+
                                 <div className="form-group form-vertical">
                                     <label>Password</label>
-                                    <div className="form_elements">
+                                    <div
+                                        className="form_elements_valid"
+                                        style={{ position: 'relative' }}
+                                    >
                                         <input
-                                            type="text"
+                                            type={
+                                                showPassword
+                                                    ? 'text'
+                                                    : 'password'
+                                            }
                                             placeholder="password"
                                             name="password"
                                             value={formData.password}
                                             onChange={handlePasswordChange}
                                         />
+                                        <span
+                                            onClick={() =>
+                                                setShowPassword(!showPassword)
+                                            }
+                                            className="material-symbols-outlined visible_icon"
+                                            style={{
+                                                position: 'absolute',
+                                                top: '10px',
+                                                right: '10px',
+                                                cursor: 'pointer',
+                                                color: '#666',
+                                                fontSize: '24px',
+                                                userSelect: 'none',
+                                            }}
+                                        >
+                                            {showPassword
+                                                ? 'visibility_off'
+                                                : 'visibility'}
+                                        </span>
                                     </div>
                                 </div>
-                                <div className="form-group form-vertical">
+
+                                {/* <div className="form-group form-vertical">
                                     <label>Confirm Password</label>
                                     <div className="form_elements">
                                         <input
@@ -272,7 +323,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             </p>
                                         )}
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="full_width">
@@ -404,6 +455,30 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         );
                                                     },
                                                 )}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div className="form-group form-vertical custom_scroll">
+                                    <label htmlFor="session">Session</label>
+                                    <div className="form_elements custom_scroll">
+                                        <select
+                                            id="session"
+                                            name="session"
+                                            value={selectedYear}
+                                            onChange={handleYearChange}
+                                            className="form-control custom_scroll"
+                                            style={{ paddingRight: '30px' }} // Ensures space for the native arrow
+                                        >
+                                            <option value="" disabled>
+                                                Select a year
+                                            </option>{' '}
+                                            {/* Optional placeholder */}
+                                            {years.map((year) => (
+                                                <option key={year} value={year}>
+                                                    {year}
+                                                </option>
+                                            ))}
                                         </select>
                                     </div>
                                 </div>
@@ -672,22 +747,26 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Birth certificate</label>
                                     <div className="form_elements">
-                                        <input
+                                        {/* <input
                                             type="file"
                                             accept="image/*"
                                             name="birth_certificate"
+                                        /> */}
+                                        <ImageUpload
+                                            name={'birth_certificate'}
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
                                     <label>NID</label>
-                                    <div className="form_elements">
+                                    {/* <div className="form_elements">
                                         <input
                                             type="file"
                                             accept="image/*"
                                             name="national_id"
                                         />
-                                    </div>
+                                    </div> */}
+                                    <ImageUpload name={'national_id'} />
                                 </div>
                                 {/* <div className="form-group form-vertical">
                                     <label>Cast</label>
@@ -754,9 +833,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 <div className="form-group form-vertical">
                                                     <label>Document file</label>
                                                     <div className="form_elements">
-                                                        <input
+                                                        {/* <input
                                                             type="file"
                                                             placeholder="document file"
+                                                            name={`document_file${index}`}
+                                                        /> */}
+                                                        <ImageUpload
                                                             name={`document_file${index}`}
                                                         />
                                                     </div>
@@ -901,20 +983,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <input
                                                             type="text"
-                                                            value={
-                                                                phoneNumbers
-                                                                    .parents[
-                                                                    index
-                                                                ] || ''
-                                                            }
-                                                            onChange={(e) =>
-                                                                handleChange(
-                                                                    'parent',
-                                                                    index,
-                                                                    e.target
-                                                                        .value,
-                                                                )
-                                                            }
+                                                            // value={
+                                                            //     phoneNumbers
+                                                            //         .parents[
+                                                            //         index
+                                                            //     ] || ''
+                                                            // }
+                                                            // onChange={(e) =>
+                                                            //     handleChange(
+                                                            //         'parent',
+                                                            //         index,
+                                                            //         e.target
+                                                            //             .value,
+                                                            //     )
+                                                            // }
                                                             placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
                                                             name={`parent_phone_number${index}`}
                                                         />
@@ -929,7 +1011,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 {
                                                                     errors
                                                                         .parents[
-                                                                        index
+                                                                            index
                                                                     ]
                                                                 }
                                                             </p>
@@ -939,10 +1021,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 <div className="form-group form-vertical">
                                                     <label>Image</label>
                                                     <div className="form_elements">
-                                                        <input
+                                                        {/* <input
                                                             type="file"
                                                             placeholder="image"
                                                             accept="image/*"
+                                                            name={`parent_image${index}`}
+                                                        /> */}
+
+                                                        <ImageUpload
                                                             name={`parent_image${index}`}
                                                         />
                                                     </div>
@@ -1301,10 +1387,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         Transfer certificate
                                                     </label>
                                                     <div className="form_elements">
-                                                        <input
+                                                        {/* <input
                                                             type="file"
                                                             accept="image/*"
                                                             placeholder="transfer cirtificate"
+                                                            name={`educational_background_transfer_cirtificate_${index}`}
+                                                        /> */}
+                                                        <ImageUpload
                                                             name={`educational_background_transfer_cirtificate_${index}`}
                                                         />
                                                     </div>

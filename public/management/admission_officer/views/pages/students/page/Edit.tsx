@@ -21,7 +21,9 @@ import { classes } from '../../add_new/config/store/async_actions/classes';
 import { branches } from '../../add_new/config/store/async_actions/branches';
 import { sections } from '../../add_new/config/store/async_actions/sections';
 import { shifts } from '../../add_new/config/store/async_actions/shifts';
-export interface Props {}
+import ImageUpload from '../../add_new/components/ImageUpload';
+import BackButton from './components/BackButton';
+export interface Props { }
 
 const Index: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
@@ -35,6 +37,10 @@ const Index: React.FC<Props> = (props: Props) => {
     const [totalGuardians, setTotalGuardians] = useState<anyObject[]>([]);
     const [totalNumbers, setTotalNumber] = useState<anyObject[]>([]);
     const [totalDocuments, setTotalDocument] = useState<anyObject[]>([]);
+
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [passwordError, setPasswordError] = useState('');
     // const [totalParent, setTotalParent] = useState<anyObject[]>([]);
     // let date22 = moment().format('YYYY-DD-MM');
 
@@ -85,16 +91,16 @@ const Index: React.FC<Props> = (props: Props) => {
         initdependancy();
     }, []);
     useEffect(() => {
-        console.log('frontend state', add_new_state);
+        // console.log('frontend state', add_new_state);
     }, [add_new_state]);
 
     const params = useParams();
-    console.log('id', params.id);
+    // console.log('id', params.id);
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(full_details({ id: params.id }) as any);
-        console.log('state', state);
+        // console.log('state', state);
     }, []);
 
     // console.log('moment', moment().format('YYYY-DD-MM'));
@@ -123,8 +129,28 @@ const Index: React.FC<Props> = (props: Props) => {
         ? moment(studentExpire_date).format('YYYY-MM-DD')
         : moment().format('YYYY-MM-DD');
 
+
+    const startYear = "2025";
+    const years = Array.from({ length: 31 }, (_, i) => Number(startYear) + i);
+
+    // State for selected year
+    const [selectedYear, setSelectedYear] = useState(
+        sessionStorage.getItem('selectedYear') || startYear
+    );
+
+    // Update session storage when year changes
+    useEffect(() => {
+        sessionStorage.setItem('selectedYear', selectedYear);
+    }, [selectedYear]);
+
+    // Handle year selection
+    const handleYearChange = (event) => {
+        setSelectedYear(event.target.value);
+    };
+
     return (
         <div className="admin_dashboard">
+            <BackButton/>
             {Object.keys(state.item)?.length && (
                 <div className="content_body">
                     <form
@@ -217,17 +243,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form-group form-vertical">
                                         <label>Image</label>
                                         <div className="form_elements">
-                                            <input
-                                                type="file"
-                                                accept="image/*"
-                                                placeholder="image"
-                                                name="image"
-                                            />
-                                            <img
-                                                src={state.item.image}
-                                                style={{ width: '100px' }}
-                                                alt=""
-                                            />
+                                            <ImageUpload name ="image" defaultImage={state.item.image} />
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
@@ -252,9 +268,15 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <label>Password</label>
                                         <div className="form_elements">
                                             <input
-                                                type="text"
+                                                type="password"
                                                 placeholder="password"
                                                 name="password"
+                                                defaultValue={password}
+                                                onChange={(e) => {
+                                                    setPassword(e.target.value);
+                                                    // Clear error when user starts typing
+                                                    if (passwordError) setPasswordError('');
+                                                }}
                                             />
                                         </div>
                                     </div>
@@ -262,10 +284,24 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <label>Confirm Password</label>
                                         <div className="form_elements">
                                             <input
-                                                type="text"
+                                                type="password"
                                                 placeholder="confirm password"
                                                 name="confirm_password"
+                                                defaultValue={confirmPassword}
+                                                onChange={(e) => {
+                                                    setConfirmPassword(e.target.value);
+                                                    // Validate on change
+                                                    if (password !== e.target.value) {
+                                                        setPasswordError('Passwords do not match');
+                                                    } else {
+                                                        setPasswordError('');
+                                                    }
+                                                }}
                                             />
+                                            {/* Simple warning message appears here when passwords don't match */}
+                                            {passwordError && (
+                                                <p className="text-danger small mt-1">{passwordError}</p>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -275,35 +311,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <h2 className="">Admission Information</h2>
                                 </div>
                                 <div className="d-flex">
-                                    {/* <div className="form-group form-vertical">
-                                        <label>Branch</label>
-                                        <div className="form_elements">
-                                            <select
-                                                name="branch_id"
-                                                // defaultValue={
-                                                //     state.item.student_info
-                                                //         ?.branch_id
-                                                // }
-                                                id=""
-                                            >
-                                                {add_new_state?.branches
-                                                    ?.length &&
-                                                    add_new_state.branches?.map(
-                                                        (i: {
-                                                            [key: string]: any;
-                                                        }) => {
-                                                            return (
-                                                                <option
-                                                                    value={i.id}
-                                                                >
-                                                                    {i.name}
-                                                                </option>
-                                                            );
-                                                        },
-                                                    )}
-                                            </select>
-                                        </div>
-                                    </div> */}
                                     <div className="form-group form-vertical">
                                         <label>Addmission no</label>
                                         <div className="form_elements">
@@ -375,7 +382,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         add_new_state.classes?.map(
                                                             (i: {
                                                                 [
-                                                                    key: string
+                                                                key: string
                                                                 ]: any;
                                                             }) => {
                                                                 return (
@@ -393,34 +400,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                             )}
                                         </div>
                                     </div>
-                                    {/* <div className="form-group form-vertical">
-                                        <label>Shift</label>
-                                        <div className="form_elements">
-                                            <select
-                                                name="shift"
-                                                // defaultValue={
-                                                //     state.item.student_info
-                                                //         ?.shift
-                                                // }
-                                                id=""
-                                            >
-                                                {add_new_state.shifts?.length &&
-                                                    add_new_state.shifts?.map(
-                                                        (i: {
-                                                            [key: string]: any;
-                                                        }) => {
-                                                            return (
-                                                                <option
-                                                                    value={i.id}
-                                                                >
-                                                                    {i.title}
-                                                                </option>
-                                                            );
-                                                        },
-                                                    )}
-                                            </select>
-                                        </div>
-                                    </div> */}
                                     <div className="form-group form-vertical">
                                         <label>Section</label>
                                         <div className="form_elements">
@@ -438,7 +417,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         add_new_state.sections?.map(
                                                             (i: {
                                                                 [
-                                                                    key: string
+                                                                key: string
                                                                 ]: any;
                                                             }) => {
                                                                 return (
@@ -456,6 +435,24 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         )}
                                                 </select>
                                             )}
+                                        </div>
+                                    </div>
+
+                                    <div className="form-group form-vertical custom_scroll">
+                                        <label>Session</label>
+                                        <div className="form_elements custom_scroll">
+                                            <select
+                                                name="session"
+                                                value={selectedYear}
+                                                onChange={handleYearChange}
+                                                className="form-control custom_scroll"
+                                            >
+                                                {years.map((year) => (
+                                                    <option key={year} value={year}>
+                                                        {year}
+                                                    </option>
+                                                ))}
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -792,7 +789,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form-group form-vertical">
                                         <label>Birth certificate</label>
                                         <div className="form_elements">
-                                            <input
+                                            {/* <input
                                                 type="file"
                                                 accept="image/*"
                                                 name="birth_certificate"
@@ -804,13 +801,15 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                                 style={{ width: '100px' }}
                                                 alt=""
-                                            />
+                                            /> */}
+                                            <ImageUpload name ="birth_certificate" defaultImage={state.item.student_info
+                                                        ?.birth_certificate} />
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
                                         <label>NID</label>
                                         <div className="form_elements">
-                                            <input
+                                            {/* <input
                                                 type="file"
                                                 accept="image/*"
                                                 name="national_id"
@@ -822,35 +821,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                                 style={{ width: '100px' }}
                                                 alt=""
-                                            />
+                                            /> */}
+
+                                            <ImageUpload name ="national_id" defaultImage={state.item.student_info
+                                                        ?.national_id} />
                                         </div>
                                     </div>
-                                    {/* <div className="form-group form-vertical">
-                                        <label>Cast</label>
-                                        <div className="form_elements">
-                                            <select
-                                                name="cast"
-                                                defaultValue={
-                                                    state.item.student_info
-                                                        ?.cast
-                                                }
-                                                id=""
-                                            >
-                                                <option value="Khan">
-                                                    Khan
-                                                </option>
-                                                <option value="chowdhuri">
-                                                    Chowdhuri
-                                                </option>
-                                                <option value="Patowari">
-                                                    Patowari
-                                                </option>
-                                                <option value="Shikdar">
-                                                    Shikdar
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div> */}
                                 </div>
                             </div>
 
@@ -875,8 +851,8 @@ const Index: React.FC<Props> = (props: Props) => {
                             <Skill setTotalSkill={setTotalSkill}></Skill>
                         </div>
                         <div className="form-group student_submit form-horizontal">
-                            <label></label>
-                            <div className="form_elements">
+                            {/* <label></label> */}
+                            <div className="form_elementss">
                                 <button className="btn btn-sm  btn-outline-info">
                                     submit
                                 </button>

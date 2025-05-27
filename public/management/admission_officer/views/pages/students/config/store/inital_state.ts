@@ -10,6 +10,7 @@ export const initialState = {
     loading_text: 'loading..',
 
     /* data store */
+    id: 1,
     all: {} as anyObject,
     item: {} as anyObject,
     url: '',
@@ -19,7 +20,7 @@ export const initialState = {
     filter_criteria: {} as anyObject,
     all_data_count: 0, // total data in database
     page: 1,
-    paginate: 13,
+    paginate: 10,
     search_key: ``,
     orderByCol: 'id',
     orderByAsc: true,

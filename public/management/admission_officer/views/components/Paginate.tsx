@@ -1,26 +1,24 @@
 import React from 'react';
 import parse from 'html-react-parser';
 import { useAppDispatch } from '../../store';
-import { anyObject } from '../../common_types/object';
 export interface Props {
-    data:
-        | {
-              current_page: number;
-              data: [{ [key: string]: any }];
-              first_page_url: string;
-              from: number;
-              last_page: number;
-              last_page_url: string;
-              links: [{ [key: string]: any }];
-              next_page_url: string | null;
-              path: string;
-              per_page: number;
-              prev_page_url: string | null;
-              to: number;
-              total: number;
-          }
-        | anyObject;
+    data: {
+        current_page: number;
+        data: [{ [key: string]: any }];
+        first_page_url: string;
+        from: number;
+        last_page: number;
+        last_page_url: string;
+        links: [{ [key: string]: any }];
+        next_page_url: string | null;
+        path: string;
+        per_page: number;
+        prev_page_url: string | null;
+        to: number;
+        total: number;
+    };
     set_url: Function;
+    set_id?: Function;
     all: Function;
     set_paginate: Function;
     set_page: Function;
@@ -30,6 +28,7 @@ export interface Props {
 const Paginate: React.FC<Props> = ({
     data,
     set_url,
+    // set_id,
     set_page,
     all,
     set_paginate,
@@ -39,7 +38,7 @@ const Paginate: React.FC<Props> = ({
 
     function change_page(url: string, e, label) {
         e.preventDefault();
-        const final_url: InstanceType<typeof URL> = new URL(url);
+        let final_url: InstanceType<typeof URL> = new URL(url);
         let page_no: string | null = '';
 
         if (isNaN(label) === false) {
@@ -54,6 +53,7 @@ const Paginate: React.FC<Props> = ({
         }
         dispatch(set_url(final_url.href));
         dispatch(all({}));
+        // dispatch(set_id(set_id));
     }
 
     function set_page_limit(value) {
@@ -61,6 +61,7 @@ const Paginate: React.FC<Props> = ({
         dispatch(set_page(1));
         dispatch(set_paginate(value));
         dispatch(all({}));
+        // dispatch(set_id(set_id));
     }
 
     if (data && !Object.keys(data).length) {
@@ -95,7 +96,7 @@ const Paginate: React.FC<Props> = ({
                     value={selected_paginate}
                     onChange={(e) => set_page_limit(e.target.value)}
                 >
-                    <option value={13}>13</option>
+                    {/* <option value={5}>5</option> */}
                     <option value={10}>10</option>
                     <option value={25}>25</option>
                     <option value={50}>50</option>

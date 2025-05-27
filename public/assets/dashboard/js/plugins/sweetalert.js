@@ -1457,7 +1457,7 @@
             showClass: {
                 popup: 'swal2-show',
                 backdrop: 'swal2-backdrop-show',
-                icon: 'swal2-icon-show',
+                // icon: 'swal2-icon-show',
             },
             hideClass: {
                 popup: 'swal2-hide',
@@ -2555,7 +2555,7 @@ window.toaster = function toaster(message, icon = 'success') {
 //     return result.isConfirmed ? true : false;
 // };
 window.s_confirm = async (
-    title = 'Are you sure?',
+    title = 'Are you sure?' + "lkjsdfkl",
     confirmButtonText = 'Yes, do it!',
     // icon = 'warning',
     expectedInput = null // Only use input when this is provided

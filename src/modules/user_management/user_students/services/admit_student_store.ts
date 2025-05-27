@@ -12,168 +12,143 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 import moment from 'moment';
 
-async function validate(req: Request) {
+async function validate(req: Request, models: any) {
     await body('name')
         .not()
         .isEmpty()
         .withMessage('the name field is required')
         .run(req);
 
+    await body('session')
+        .not()
+        .isEmpty()
+        .withMessage('the session field is required')
+        .run(req);
+
     await body('email')
         .not()
         .isEmpty()
         .withMessage('the email field is required')
+        .isEmail()
+        .withMessage('Please enter a valid email address')
+        .normalizeEmail()
         .run(req);
 
-    // await body('gender')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the gender field is required')
-    //     .run(req);
-    await body('image')
+    if (req.body?.email) {
+        await body('email')
+            .custom(async (email) => {
+                const existing = await models.UserStudentsModel.findOne({
+                    where: { email },
+                });
+                if (existing) {
+                    throw new Error('Email already exists');
+                }
+                return true;
+            })
+            .run(req);
+    }
+    await body('phone_number')
         .not()
         .isEmpty()
-        .withMessage('the image field is required')
+        .withMessage('the phone number field is required')
+        .bail()
+        .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+        .withMessage('Phone number must be a valid Bangladeshi number')
         .run(req);
+
+    await body('whatsapp_number')
+        .not()
+        .isEmpty()
+        .withMessage('the whatsapp number field is required')
+        .bail()
+        .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+        .withMessage('WhatsApp must be a valid Bangladeshi number')
+        .run(req);
+
+    if (req.body?.parent_phone_number0) {
+        await body('parent_phone_number0')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage(
+                'Parent Phone number1 must be a valid Bangladeshi number',
+            )
+            .run(req);
+    }
+
+    if (req.body?.parent_phone_number1) {
+        await body('parent_phone_number1')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage(
+                'Parent Phone number2 must be a valid Bangladeshi number',
+            )
+            .run(req);
+    }
+
+    if (req.body?.parent_phone_number2) {
+        await body('parent_phone_number2')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage(
+                'Parent Phone number3 must be a valid Bangladeshi number',
+            )
+            .run(req);
+    }
+
+    if (req.body?.contact_number0) {
+        await body('contact_number0')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage('Contact number1 must be a valid Bangladeshi number')
+            .run(req);
+    }
+
+    if (req.body?.contact_number1) {
+        await body('contact_number1')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage('Contact number2 must be a valid Bangladeshi number')
+            .run(req);
+    }
+
+    if (req.body?.contact_number2) {
+        await body('contact_number2')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage('Contact number3 must be a valid Bangladeshi number')
+            .run(req);
+    }
+
     await body('password')
         .not()
         .isEmpty()
-        .withMessage('the password field is required')
+        .isLength({ min: 6 })
+        .withMessage('Password must be at least 6 characters')
+        // .withMessage('the password field is required')
         .run(req);
-    await body('admission_no')
-        .not()
-        .isEmpty()
-        .withMessage('the admission_no field is required')
-        .run(req);
-    await body('role_no')
-        .not()
-        .isEmpty()
-        .withMessage('the role_no field is required')
-        .run(req);
-    await body('student_id')
-        .not()
-        .isEmpty()
-        .withMessage('the student_id field is required')
-        .run(req);
-    await body('admission_date')
-        .not()
-        .isEmpty()
-        .withMessage('the admission_date field is required')
-        .run(req);
-    await body('class')
-        .not()
-        .isEmpty()
-        .withMessage('the class field is required')
-        .run(req);
-    await body('gender')
-        .not()
-        .isEmpty()
-        .withMessage('the gender field is required')
-        .run(req);
-    await body('present_address')
-        .not()
-        .isEmpty()
-        .withMessage('the present_address field is required')
-        .run(req);
+
     await body('permanent_address')
         .not()
         .isEmpty()
         .withMessage('the permanent_address field is required')
         .run(req);
-    await body('date_of_birth')
+
+    await body('present_address')
         .not()
         .isEmpty()
-        .withMessage('the date_of_birth field is required')
-        .run(req);
-    await body('religion')
-        .not()
-        .isEmpty()
-        .withMessage('the religion field is required')
-        .run(req);
-    await body('nationality')
-        .not()
-        .isEmpty()
-        .withMessage('the nationality field is required')
-        .run(req);
-    // await body('division')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the division field is required')
-    //     .run(req);
-    await body('city')
-        .not()
-        .isEmpty()
-        .withMessage('the city field is required')
-        .run(req);
-    await body('post_code')
-        .not()
-        .isEmpty()
-        .withMessage('the post_code field is required')
-        .run(req);
-    await body('country')
-        .not()
-        .isEmpty()
-        .withMessage('the country field is required')
-        .run(req);
-    await body('telegram_name')
-        .not()
-        .isEmpty()
-        .withMessage('the telegram_name field is required')
-        .run(req);
-    await body('telegram_id')
-        .not()
-        .isEmpty()
-        .withMessage('the telegram_id field is required')
-        .run(req);
-    await body('blood_group')
-        .not()
-        .isEmpty()
-        .withMessage('the blood_group field is required')
-        .run(req);
-    await body('student_expire_date')
-        .not()
-        .isEmpty()
-        .withMessage('the student_expire_date field is required')
-        .run(req);
-    await body('height')
-        .not()
-        .isEmpty()
-        .withMessage('the height field is required')
-        .run(req);
-    await body('weight')
-        .not()
-        .isEmpty()
-        .withMessage('the weight field is required')
-        .run(req);
-    await body('as_on_date')
-        .not()
-        .isEmpty()
-        .withMessage('the as_on_date field is required')
-        .run(req);
-    // await body('family_information')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the family_information field is required')
-    //     .run(req);
-    // await body('shibling_information')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the shibling_information field is required')
-    //     .run(req);
-    // await body('living_house_type')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the living_house_type field is required')
-    //     .run(req);
-    // await body('student_house_type')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the student_house_type field is required')
-    //     .run(req);
-    await body('birth_certificate')
-        .not()
-        .isEmpty()
-        .withMessage('the birth_certificate field is required')
+        .withMessage('the present_address field is required')
         .run(req);
 
     let result = await validationResult(req);
@@ -208,9 +183,9 @@ async function store(
             user_staff_id: (req as any).user?.id || null,
         },
     });
-    console.log('can you here me', user, auth_user);
+    // console.log('can you here me', user, auth_user);
     /** validation */
-    let validate_result = await validate(req as Request);
+    let validate_result = await validate(req as Request, models);
     if (!validate_result.isEmpty()) {
         return response(422, 'validation error', validate_result.array());
     }
@@ -382,6 +357,7 @@ async function store(
         permanent_address: body.permanent_address,
         date_of_birth: body.date_of_birth,
         gender: body.gender,
+        session: body.session,
         nationality: body.nationality,
         city: body.city,
         state: body.state,

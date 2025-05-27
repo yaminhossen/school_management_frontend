@@ -2,10 +2,10 @@ import React, { useRef } from 'react';
 import { anyObject } from '../../../../../common_types/object';
 import setup from '../../config/setup';
 import { Link } from 'react-router-dom';
-import active_row from '../../helpers/table_active_row';
 import DeleteButton from './DeleteButton';
 import DestroyButton from './DestroyButton';
 import RestoreButton from './RestoreButton';
+import active_row from '../../helpers/table_active_row';
 export interface Props {
     item: anyObject;
 }
@@ -22,12 +22,12 @@ const TableRowAction: React.FC<Props> = ({ item }: Props) => {
             <div className="table_action_btns">
                 <ul>
                     <li>
-                        <Link to={`/${setup.route_prefix}/details/${item.id}`}>
+                        <Link to={`/students/single/student/${item.branch_student_id}`}>
                             Show
                         </Link>
                     </li>
                     <li>
-                        <Link to={`/${setup.route_prefix}/edit/${item.id}`}>
+                        <Link to={`/students/edit/${item.branch_student_id}`}>
                             Edit
                         </Link>
                     </li>

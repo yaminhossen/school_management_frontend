@@ -7,29 +7,156 @@ import {
     Request,
 } from '../../../common_types/object';
 import response from '../helpers/response';
-import { InferCreationAttributes } from 'sequelize';
+import { InferCreationAttributes, Op } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 import moment from 'moment';
 
-async function validate(req: Request) {
-    // await body('name')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the name field is required')
-    //     .run(req);
+async function validate(req: Request, models: any) {
+    await body('name')
+        .not()
+        .isEmpty()
+        .withMessage('the name field is required')
+        .run(req);
 
-    // await body('email')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the email field is required')
-    //     .run(req);
+    await body('session')
+        .not()
+        .isEmpty()
+        .withMessage('the session field is required')
+        .run(req);
 
-    // await body('gender')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the gender field is required')
-    //     .run(req);
+    await body('email')
+        .not()
+        .isEmpty()
+        .withMessage('the email field is required')
+        .run(req);
+
+    await body('email')
+        .custom(async (email, { req }) => {
+            const student_id = req.body.id; // the ID of the user being updated
+            console.log('validation student_id', student_id);
+
+            const existing = await models.UserStudentsModel.findOne({
+                where: {
+                    email,
+                    id: { [Op.ne]: student_id }, // EXCLUDE self
+                },
+            });
+
+            if (existing) {
+                throw new Error('Email already exists');
+            }
+
+            return true;
+        })
+        .isEmail()
+        .withMessage('Please enter a valid email address')
+        .normalizeEmail()
+        .run(req);
+
+    await body('phone_number')
+        .not()
+        .isEmpty()
+        .withMessage('the phone number field is required')
+        .bail()
+        .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+        .withMessage('Phone number must be a valid Bangladeshi number')
+        .run(req);
+
+    await body('whatsapp_number')
+        .not()
+        .isEmpty()
+        .withMessage('the whatsapp number field is required')
+        .bail()
+        .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+        .withMessage('WhatsApp must be a valid Bangladeshi number')
+        .run(req);
+
+    if (req.body?.parent_phone_number0) {
+        await body('parent_phone_number0')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage(
+                'Parent Phone number1 must be a valid Bangladeshi number',
+            )
+            .run(req);
+    }
+    if (req.body?.parent_phone_number1) {
+        await body('parent_phone_number1')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage(
+                'Parent Phone number2 must be a valid Bangladeshi number',
+            )
+            .run(req);
+    }
+    if (req.body?.parent_phone_number2) {
+        await body('parent_phone_number2')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage(
+                'Parent Phone number3 must be a valid Bangladeshi number',
+            )
+            .run(req);
+    }
+
+    if (req.body?.contact_number0) {
+        await body('contact_number0')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage('Contact number1 must be a valid Bangladeshi number')
+            .run(req);
+    }
+
+    if (req.body?.contact_number1) {
+        await body('contact_number1')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage('Contact number2 must be a valid Bangladeshi number')
+            .run(req);
+    }
+
+    if (req.body?.contact_number2) {
+        await body('contact_number2')
+            .not()
+            .isEmpty()
+            .bail()
+            .matches(/^(?:\+8801[3-9]\d{8}|01[3-9]\d{8})$/)
+            .withMessage('Contact number3 must be a valid Bangladeshi number')
+            .run(req);
+    }
+
+    if (req?.body?.password) {
+        await body('password')
+            .not()
+            .isEmpty()
+            .isLength({ min: 6 })
+            .withMessage('Password must be at least 6 characters')
+            // .withMessage('the password field is required')
+            .run(req);
+    }
+
+    await body('permanent_address')
+        .not()
+        .isEmpty()
+        .withMessage('the permanent_address field is required')
+        .run(req);
+
+    await body('present_address')
+        .not()
+        .isEmpty()
+        .withMessage('the present_address field is required')
+        .run(req);
 
     let result = await validationResult(req);
 
@@ -40,18 +167,17 @@ async function store(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
-    /** validation */
-    let validate_result = await validate(req as Request);
-    if (!validate_result.isEmpty()) {
-        return response(422, 'validation error', validate_result.array());
-    }
-
     /** initializations */
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.UserStudentsModel();
     let usi_model = new models.UserStudentInformationsModel();
 
+    /** validation */
+    let validate_result = await validate(req as Request, models);
+    if (!validate_result.isEmpty()) {
+        return response(422, 'validation error', validate_result.array());
+    }
     const bcrypt = require('bcrypt');
     const saltRounds = 10;
     let password = await bcrypt.hash(body.password, saltRounds);
@@ -100,12 +226,12 @@ async function store(
     }
     // console.log('id image1', body);
 
-    console.log('id image2', body['national_id']);
-    console.log('id image3', body['national_id']?.ext);
-    console.log('id image22', body['birth_certificate']);
-    console.log('id image33', body['birth_certificate']?.ext);
-    console.log('id image222', national_id_image);
-    console.log('id image333', birth_certi_image);
+    // console.log('id image2', body['national_id']);
+    // console.log('id image3', body['national_id']?.ext);
+    // console.log('id image22', body['birth_certificate']);
+    // console.log('id image33', body['birth_certificate']?.ext);
+    // console.log('id image222', national_id_image);
+    // console.log('id image333', birth_certi_image);
 
     if (body['birth_certificate']?.ext) {
         birth_certi_image =
@@ -281,6 +407,7 @@ async function store(
         permanent_address: body.permanent_address,
         date_of_birth: body.date_of_birth,
         gender: body.gender,
+        session: body.session,
         nationality: body.nationality,
         city: body.city,
         state: body.state,

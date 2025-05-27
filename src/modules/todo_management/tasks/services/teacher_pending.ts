@@ -64,6 +64,8 @@ async function teacher_pending(
         },
     });
 
+    console.log('teacher pending user', user);
+
     const { Op } = require('sequelize');
     let search_key = query_param.search_key;
     let orderByCol = query_param.orderByCol || 'id';
@@ -110,18 +112,13 @@ async function teacher_pending(
     let query: FindAndCountOptions = {
         order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
         where: whereClause,
-        // where: {
-        //     status: show_active_data == 'true' ? 'active' : 'deactive',
-        //     is_complete: 'pending',
-        //     teacher_id: user?.id,
-        // },
-        // include: [models.Project],
         include: [
             {
                 model: models.TasksModel,
                 as: 'tasks',
                 where: {
                     status: 'active',
+                    is_complete: 'pending',
                 },
             },
         ],
@@ -145,9 +142,6 @@ async function teacher_pending(
             ],
         };
     }
-    console.log('teacher pending ok');
-    console.log('teacher pending auth', auth_user);
-    console.log('teacher pending user', user);
 
     try {
         let data = await (fastify_instance as anyObject).paginate(

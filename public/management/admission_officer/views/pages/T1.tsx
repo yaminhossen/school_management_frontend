@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../common_types/object';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
@@ -7,72 +6,53 @@ export interface Props {}
 
 const T1: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    const [data, setData] = useState();
+    const [data, setData] = useState<any[]>([]);
     const [accdemicCalander, setAccademicCalander] = useState<any[]>([]);
-    // console.log(accdemicCalander);
-
+    const [noticeCount, setNoticeCount] = useState(0);
+    const [totalStudents, setTotalStudents] = useState(0);
     const [selectedDate, setSelectedDate] = useState(
         moment().format('YYYY-MM-DD'),
-    ); // Default to today's date
+    );
 
     const handleDateChange = (event) => {
-        setSelectedDate(event.target.value); // Update the selected date
+        setSelectedDate(event.target.value);
     };
 
     // Dynamically format month and year based on the selected date
     const selectedMoment = moment(selectedDate);
-    const month = selectedMoment.format('MMM').toLowerCase(); // e.g., "jan"
-    const year = selectedMoment.format('YYYY'); // e.g., "2025"
+    const month = selectedMoment.format('MMM').toLowerCase();
+    const year = selectedMoment.format('YYYY');
     const formattedDate = `${month}-${year}`;
-    const fetchData = async () => {
+
+    // Fetch notice count
+    const fetchNoticeCount = async () => {
         try {
-            const response = await axios.get('/api/v1/notices/user/students');
-            setData(response.data.data);
-            // setData(response.data);
+            const response = await axios.get(
+                '/api/v1/notices/user/admission-officer',
+            );
+            setNoticeCount(response.data.data.length);
         } catch (error) {
+            console.error('Error fetching notice count:', error);
             setError(error);
         }
     };
 
-    useEffect(() => {
-        fetchData();
-    }, []);
-    console.log(data);
-    let days = [
-        'saturday',
-        'sunday',
-        'monday',
-        'tuesday',
-        'wednesday',
-        'thursday',
-        'friday',
-    ];
-
-    function dateFormate(date: string) {
-        return moment(date).format('dddd').toLowerCase();
-    }
-    // console.log('date', dateFormate('2024-09-07T00:00:00.000Z'));
-
-    function get_day_data(i, day) {
-        if (dateFormate(i.date) === day) {
-            return (
-                <li className="absent">
-                    <time dateTime="2022-02-02">{i.id}</time>
-                    <div className="text-warning">
-                        <i className="icon-close"></i>
-                        <span className="event_title">Class Present</span>
-                    </div>
-                </li>
+    // Fetch total student count
+    const fetchStudentCount = async () => {
+        try {
+            const response = await axios.get('/api/v1/user-students/all-class');
+            const total = response.data.data.reduce(
+                (sum, classItem) => sum + classItem.count,
+                0,
             );
-        } else {
-            return (
-                <li className="absent">
-                    <time dateTime="2022-02-02">{i.id}</time>
-                </li>
-            );
+            setTotalStudents(total);
+        } catch (error) {
+            console.error('Error fetching student count:', error);
+            setError(error);
         }
-    }
+    };
 
+    // Fetch academic calendar data
     const fetchAccedemicCalenderData = async () => {
         try {
             const response = await axios.post(
@@ -82,28 +62,26 @@ const T1: React.FC<Props> = (props: Props) => {
                     branch_id: 1,
                 },
             );
-
-            // Assuming setAccademicCalander is a state setter function
             setAccademicCalander(response.data.data);
-
-            // Clear any previous errors
             setError(null);
         } catch (error) {
             console.error('Error fetching academic calendar data:', error);
-            setError(error); // Assuming setError is a state setter for errors
+            setError(error);
         }
     };
+
     useEffect(() => {
+        fetchNoticeCount();
+        fetchStudentCount();
         fetchAccedemicCalenderData();
     }, [selectedDate]);
 
     let array: any[][] = [];
     let count = 0;
 
-    // Initialize the 2D array
+    // Initialize the 2D array for calendar
     for (let i = 0; i < 5; i++) {
-        array[i] = []; // Initialize each row
-
+        array[i] = [];
         for (let j = 0; j < 7; j++) {
             if (count < accdemicCalander.length) {
                 array[i][j] = accdemicCalander[count] || { date: '', day: '' };
@@ -116,38 +94,40 @@ const T1: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="custom_scroll">
-            <div className="name my-3">
-                <h2>Muhammad Shafiq AO</h2>
-            </div>
             {/* analytics */}
             <div
                 className="mt-4"
                 style={{
                     display: 'grid',
                     gap: '30px',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr)',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
                 }}
             >
-                {['নোটিশ', 'মোট ছাত্র/ছাত্রী'].map((i) => {
-                    return (
-                        <div className="card w-100" data-intro="This is card">
-                            <div className="business-top-widget card-body">
-                                <h5 className="mb-2">{i}</h5>
-                                <div className="media d-inline-flex">
-                                    <div className="media-body">
-                                        <h2 className="total-value m-0 counter">
-                                            {Math.round(Math.random() * 1000)}
-                                        </h2>
-                                    </div>
-                                    <i
-                                        style={{ opacity: '.4' }}
-                                        className="icon-bar-chart font-info align-self-center"
-                                    ></i>
+                {[
+                    { title: 'নোটিশ', value: noticeCount },
+                    { title: 'মোট ছাত্র/ছাত্রী', value: totalStudents },
+                ].map((item, index) => (
+                    <div
+                        className="card w-100"
+                        key={index}
+                        data-intro="This is card"
+                    >
+                        <div className="business-top-widget card-body">
+                            <h5 className="mb-2">{item.title}</h5>
+                            <div className="media d-inline-flex">
+                                <div className="media-body">
+                                    <h2 className="total-value m-0 counter">
+                                        {item.value}
+                                    </h2>
                                 </div>
+                                <i
+                                    style={{ opacity: '.4' }}
+                                    className="icon-bar-chart font-info align-self-center"
+                                ></i>
                             </div>
                         </div>
-                    );
-                })}
+                    </div>
+                ))}
             </div>
             {/* attendance calendar */}
             <div className="calendar_dashboard mt-4">
@@ -172,49 +152,30 @@ const T1: React.FC<Props> = (props: Props) => {
                         <ul>
                             {array.map((value, vIndex) =>
                                 value.map((element, eIndex) => (
-                                    <>
-                                        {
-                                            <li
-                                                key={`${vIndex}- ${eIndex}`}
-                                                className={`${element.day === 5 ? 'absent' : ''} || ${moment(element.date).isSame(moment(), 'day') ? 'today' : ''}`}
-                                            >
-                                                <time dateTime={element.date}>
-                                                    {moment(
-                                                        element.date,
-                                                    ).format('D')}{' '}
-                                                </time>
-                                                {/* {element.day} */}
-                                                {moment(element.date).format(
-                                                    'dddd',
-                                                )}
-                                                <div
-                                                    className={`text-${element.events?.length ? 'warning' : 'info'}`}
-                                                >
-                                                    {element.events?.map(
-                                                        (ev, i) => (
-                                                            <div
-                                                                key={i}
-                                                                className="event"
-                                                            >
-                                                                <i className="icon-check-box"></i>
-                                                                <span className="event_title">
-                                                                    {
-                                                                        ev.event_name
-                                                                    }
-                                                                </span>
-                                                            </div>
-                                                        ),
-                                                    )}
+                                    <li
+                                        key={`${vIndex}-${eIndex}`}
+                                        className={`${element.day === 5 ? 'absent' : ''} ${moment(element.date).isSame(moment(), 'day') ? 'today' : ''}`}
+                                    >
+                                        <time dateTime={element.date}>
+                                            {moment(element.date).format('D')}{' '}
+                                        </time>
+                                        {moment(element.date).format('dddd')}
+                                        <div
+                                            className={`events-container ${element.events?.length ? 'text-warning' : 'text-info'} custom_scroll`}
+                                        >
+                                            {element.events?.map((ev, i) => (
+                                                <div key={i} className="event">
+                                                    <i className="icon-check-box text-xs"></i>
+                                                    <span className="text-sm">
+                                                        {ev.event_name}
+                                                    </span>
                                                 </div>
-                                            </li>
-                                        }
-                                    </>
+                                            ))}
+                                        </div>
+                                    </li>
                                 )),
                             )}
                         </ul>
-                        {/* <ul>
-                            {days.map((index, day) => get_day_data(index, day))}
-                        </ul> */}
                     </div>
                 </div>
             </div>

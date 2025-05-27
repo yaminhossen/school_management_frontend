@@ -23,6 +23,9 @@ const Edit: React.FC<Props> = (props: Props) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('');
+
+    const [startDate, setStartDate] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const dispatch = useAppDispatch();
     const params = useParams();
     let id = params.id;
@@ -86,10 +89,12 @@ const Edit: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         if (state.item) {
             setTitle(state.item.title || '');
+            setStartDate(moment(state.item.date).format('YYYY-MM-DD'));
             setDescription(state.item.description || '');
             setDate(moment(state.item.date).format('YYYY-MM-DD') || '');
         }
     }, [state.item]);
+    console.log('notun data', state?.item);
 
     async function handle_submit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -108,6 +113,20 @@ const Edit: React.FC<Props> = (props: Props) => {
     }
 
     let formateddata = moment().format('YYYY-MM-DD');
+    useEffect(() => {
+        const start = moment(startDate);
+        const today = moment().startOf('day');
+
+        if (start.isBefore(today)) {
+            setErrorMessage('Date cannot be before today.');
+            return;
+        }
+
+        setErrorMessage('');
+    }, [startDate]);
+    const handleStartDateChange = (e) => {
+        setStartDate(e.target.value);
+    };
 
     return (
         <>
@@ -121,7 +140,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                         >
                             <div className="form_600">
                                 <div className="form-group form-horizontal">
-                                    <label>Title</label>
+                                    <label>
+                                        Title{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -135,7 +157,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>
+                                        Description{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <textarea
                                             name="description"
@@ -148,7 +173,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         ></textarea>
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Date</label>
                                     <div className="form_elements">
                                         <input
@@ -164,6 +189,30 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             }
                                             id=""
                                         />
+                                    </div>
+                                </div> */}
+                                <div className="form-group form-horizontal">
+                                    <label>
+                                        Date{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="date"
+                                            value={startDate}
+                                            onChange={handleStartDateChange}
+                                            name="date"
+                                        />
+                                        {errorMessage && (
+                                            <div
+                                                style={{
+                                                    color: 'red',
+                                                    marginTop: '5px',
+                                                }}
+                                            >
+                                                {errorMessage}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -267,7 +316,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                             </div>
                             <div className="form-group student_submit form-horizonta">
                                 <div className="task_assign_submit_btn">
-                                    <button className="btn btn_1">
+                                    <button
+                                        className={`btn btn_1 ${errorMessage ? 'btn_error' : ''}`}
+                                        disabled={!!errorMessage}
+                                    >
                                         update
                                     </button>
                                 </div>

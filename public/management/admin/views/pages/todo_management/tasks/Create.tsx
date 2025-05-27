@@ -20,6 +20,9 @@ export interface Props {}
 const Create: React.FC<Props> = (props: Props) => {
     const [staffs, setStaffs] = useState<number[]>([]);
     const [teachers, setTeachers] = useState<number[]>([]);
+    const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
+
+    const [errorMessage, setErrorMessage] = useState('');
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -109,6 +112,20 @@ const Create: React.FC<Props> = (props: Props) => {
 
     let formateddata = moment().format('YYYY-MM-DD');
     // console.log('dateff', formateddata);
+    useEffect(() => {
+        const start = moment(startDate);
+        const today = moment().startOf('day');
+
+        if (start.isBefore(today)) {
+            setErrorMessage('Date cannot be before today.');
+            return;
+        }
+
+        setErrorMessage('');
+    }, [startDate]);
+    const handleStartDateChange = (e) => {
+        setStartDate(e.target.value);
+    };
 
     return (
         <>
@@ -122,20 +139,23 @@ const Create: React.FC<Props> = (props: Props) => {
                         >
                             <div className="form_600">
                                 <div className="form-group form-horizontal">
-                                    <label>Title</label>
+                                    <label>
+                                        Title{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
                                             placeholder="title"
                                             name="title"
                                         />
-                                        {/* <div className="form_error">
-                                            The title field is required
-                                        </div> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>
+                                        Description{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <textarea
                                             name="description"
@@ -144,34 +164,28 @@ const Create: React.FC<Props> = (props: Props) => {
                                         ></textarea>
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Admin</label>
-                                    <div className="form_elements">
-                                        <select name="admin" id="">
-                                            <option value="admin1">
-                                                Admin1
-                                            </option>
-                                            <option value="running">
-                                                Admin2
-                                            </option>
-                                            <option value="completed">
-                                                Admin3
-                                            </option>
-                                            <option value="nexttime">
-                                                Admin4
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
-                                    <label>Date</label>
+                                    <label>
+                                        Date{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="date"
-                                            defaultValue={formateddata}
+                                            value={startDate}
+                                            onChange={handleStartDateChange}
                                             name="date"
-                                            id=""
                                         />
+                                        {errorMessage && (
+                                            <div
+                                                style={{
+                                                    color: 'red',
+                                                    marginTop: '5px',
+                                                }}
+                                            >
+                                                {errorMessage}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -276,21 +290,14 @@ const Create: React.FC<Props> = (props: Props) => {
                             <div className="form-group student_submit form-horizonta">
                                 <div className="task_assign_submit_btn">
                                     <button
-                                        // onClick={handle_submit}
-                                        className="btn btn_1"
+                                        type="submit"
+                                        className={`btn btn_1 ${errorMessage ? 'btn_error' : ''}`}
+                                        disabled={!!errorMessage}
                                     >
                                         submit
                                     </button>
                                 </div>
                             </div>
-                            {/* <div className="form-group form-horizontal">
-                                <label></label>
-                                <div className="form_elements">
-                                    <button className="btn btn_1">
-                                        submit
-                                    </button>
-                                </div>
-                            </div> */}
                         </form>
                     </div>
                     <Footer></Footer>

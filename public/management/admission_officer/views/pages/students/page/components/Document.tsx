@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../../../../store';
 import { initialState } from '../../config/store/inital_state';
 import setup from '../../config/setup';
+import ImageUpload from '../../../add_new/components/ImageUpload';
 export interface Props {
     // state: anyObject;
     setTotalDocument: Function;
@@ -103,7 +104,7 @@ const Documents: React.FC<Props> = (props: Props) => {
                                     <div className="form-group form-vertical">
                                         <label>Document file</label>
                                         <div className="form_elements">
-                                            <input
+                                            {/* <input
                                                 type="file"
                                                 accept="image/*"
                                                 placeholder="document file"
@@ -123,7 +124,8 @@ const Documents: React.FC<Props> = (props: Props) => {
                                                     height: '50px',
                                                 }}
                                                 alt=""
-                                            />
+                                            /> */}
+                                            <ImageUpload name ={`document_file${index}`} defaultImage={i.values_title?.file} />
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">

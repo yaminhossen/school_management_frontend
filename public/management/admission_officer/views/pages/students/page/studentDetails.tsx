@@ -11,6 +11,8 @@ import { initialState } from '../config/store/inital_state';
 import { Link, useParams } from 'react-router-dom';
 import storeSlice from '../config/store';
 import moment from 'moment/moment';
+import BackButton from './components/BackButton.tsx';
+
 export interface Props {}
 
 const Details: React.FC<Props> = (props: Props) => {
@@ -37,6 +39,7 @@ const Details: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
+            <BackButton />
             <h3 className="table_heading">Basic information</h3>
             <div className="content_body">
                 <div className="student_details">
@@ -202,6 +205,16 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 {
                                                     state.item?.student_info
                                                         ?.student_section?.title
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Session</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {
+                                                    state.item?.student_info
+                                                        ?.session
                                                 }
                                             </td>
                                         </tr>
@@ -452,49 +465,46 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td>Birth Cirtificate</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
-                                                {/* {
-                                                    state.item?.student_info
-                                                        ?.birth_certificate
-                                                } */}
-                                                <a
-                                                    href={
-                                                        state.item?.student_info
-                                                            ?.birth_certificate
-                                                    }
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                >
-                                                    Show cirtificate
-                                                </a>
+                                                {state.item?.student_info
+                                                    ?.birth_certificate ? (
+                                                    <a
+                                                        href={
+                                                            state.item
+                                                                ?.student_info
+                                                                ?.birth_certificate
+                                                        }
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        Show certificate
+                                                    </a>
+                                                ) : (
+                                                    'No certificate found'
+                                                )}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>National ID</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
-                                                {/* {
-                                                    state.item?.student_info
-                                                        ?.birth_certificate
-                                                } */}
-                                                <a
-                                                    href={
-                                                        state.item?.student_info
-                                                            ?.national_id
-                                                    }
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                >
-                                                    Show NID
-                                                </a>
+                                                {state.item?.student_info
+                                                    ?.national_id ? (
+                                                    <a
+                                                        href={
+                                                            state.item
+                                                                ?.student_info
+                                                                ?.national_id
+                                                        }
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        Show NID
+                                                    </a>
+                                                ) : (
+                                                    'No NID found'
+                                                )}
                                             </td>
                                         </tr>
-                                        {/* <tr>
-                                            <td>Cast</td>
-                                            <td>:</td>
-                                            <td className="font-medium text-dark-medium">
-                                                {state.item?.student_info?.cast}
-                                            </td>
-                                        </tr> */}
                                     </tbody>
                                 </table>
                             </div>
@@ -541,17 +551,23 @@ const Details: React.FC<Props> = (props: Props) => {
                                                             </td>
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
-                                                                <a
-                                                                    href={
-                                                                        i
-                                                                            .values_title
-                                                                            ?.file
-                                                                    }
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                >
-                                                                    Show File
-                                                                </a>
+                                                                {i.values_title
+                                                                    .values_title
+                                                                    ?.file ? (
+                                                                    <a
+                                                                        href={
+                                                                            i
+                                                                                .values_title
+                                                                                ?.file
+                                                                        }
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                    >
+                                                                        Show
+                                                                    </a>
+                                                                ) : (
+                                                                    'No File'
+                                                                )}
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -738,15 +754,19 @@ const Details: React.FC<Props> = (props: Props) => {
                                                             </td>
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
-                                                                <a
-                                                                    href={
-                                                                        i.transfer_cirtificate
-                                                                    }
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                >
-                                                                    Show File
-                                                                </a>
+                                                                {i.transfer_cirtificate ? (
+                                                                    <a
+                                                                        href={
+                                                                            i.transfer_cirtificate
+                                                                        }
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                    >
+                                                                        Show
+                                                                    </a>
+                                                                ) : (
+                                                                    'No File'
+                                                                )}
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -763,86 +783,97 @@ const Details: React.FC<Props> = (props: Props) => {
                                 state.item?.parents.map(
                                     (i: { [key: string]: any }) => {
                                         return (
-                                            <div className="basic_info mb-4 ">
-                                                <table className="table text-nowrap student_table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Name</td>
-                                                            <td>:</td>
-                                                            <td className="font-medium text-dark-medium">
-                                                                {
-                                                                    i
-                                                                        .parent_details
-                                                                        ?.name
-                                                                }
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Email</td>
-                                                            <td>:</td>
-                                                            <td className="font-medium text-dark-medium">
-                                                                {
-                                                                    i
-                                                                        .parent_details
-                                                                        ?.email
-                                                                }
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Relation</td>
-                                                            <td>:</td>
-                                                            <td className="font-medium text-dark-medium">
-                                                                {i.relation}
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                <table className="table text-nowrap student_table ml-2">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                Phone Number
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td className="font-medium text-dark-medium">
-                                                                {
-                                                                    i
-                                                                        .parent_details
-                                                                        ?.phone_number
-                                                                }
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Status</td>
-                                                            <td>:</td>
-                                                            <td className="font-medium text-dark-medium">
-                                                                {
-                                                                    i
-                                                                        .parent_details
-                                                                        ?.status
-                                                                }
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Picture</td>
-                                                            <td>:</td>
-                                                            <td className="font-medium text-dark-medium">
-                                                                <a
-                                                                    href={
+                                            <>
+                                                <div className="basic_info mb-4 ">
+                                                    <table className="table text-nowrap student_table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>:</td>
+                                                                <td className="font-medium text-dark-medium">
+                                                                    {
                                                                         i
                                                                             .parent_details
-                                                                            ?.image
+                                                                            ?.name
                                                                     }
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                >
-                                                                    Show Image
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Email</td>
+                                                                <td>:</td>
+                                                                <td className="font-medium text-dark-medium">
+                                                                    {
+                                                                        i
+                                                                            .parent_details
+                                                                            ?.email
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Relation
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td className="font-medium text-dark-medium">
+                                                                    {i.relation}
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <table className="table text-nowrap student_table ml-2">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    Phone Number
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td className="font-medium text-dark-medium">
+                                                                    {
+                                                                        i
+                                                                            .parent_details
+                                                                            ?.phone_number
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Status</td>
+                                                                <td>:</td>
+                                                                <td className="font-medium text-dark-medium">
+                                                                    {
+                                                                        i
+                                                                            .parent_details
+                                                                            ?.status
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Picture</td>
+                                                                <td>:</td>
+                                                                <td className="font-medium text-dark-medium">
+                                                                    {i
+                                                                        .parent_details
+                                                                        ?.image ? (
+                                                                        <a
+                                                                                href={
+                                                                                    i
+                                                                                        .parent_details
+                                                                                        ?.image
+                                                                                }
+                                                                                target="_blank"
+                                                                                rel="noopener noreferrer"
+                                                                            >
+                                                                            Show
+                                                                            Image
+                                                                        </a>
+                                                                        ) : (
+                                                                            'No Image'
+                                                                        )}
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </>
                                         );
                                     },
                                 )}

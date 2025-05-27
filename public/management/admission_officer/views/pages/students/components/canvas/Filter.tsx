@@ -7,6 +7,7 @@ import { initialState } from '../../config/store/inital_state';
 import { useSelector } from 'react-redux';
 import setup from '../../config/setup';
 import { all } from '../../config/store/async_actions/all';
+import { class_details1 } from '../../config/store/async_actions/class_details1';
 export interface Props {}
 
 const modalRoot = document.getElementById('filter-root');
@@ -38,17 +39,18 @@ const Filter: React.FC<Props> = (props: Props) => {
             }),
         );
     }
+console.log('state datea', state?.id);
 
     function submit() {
         dispatch(storeSlice.actions.set_only_latest_data(true));
-        dispatch(all({}) as any);
+        dispatch(class_details1({id: state?.id}) as any);
     }
 
     if (modalRoot && state.show_filter_canvas) {
         return createPortal(
             <div className="off_canvas data_filter">
                 <div className="off_canvas_body">
-                    <div className="header">
+                    <div className="header pending_header">
                         <h3 className="heading_text">Filter</h3>
                         <button
                             className="close_button"
