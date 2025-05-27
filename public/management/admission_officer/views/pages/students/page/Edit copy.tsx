@@ -23,7 +23,7 @@ import { sections } from '../../add_new/config/store/async_actions/sections';
 import { shifts } from '../../add_new/config/store/async_actions/shifts';
 import ImageUpload from '../../add_new/components/ImageUpload';
 import BackButton from './components/BackButton';
-export interface Props {}
+export interface Props { }
 
 const Index: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
@@ -44,13 +44,6 @@ const Index: React.FC<Props> = (props: Props) => {
     // const [totalParent, setTotalParent] = useState<anyObject[]>([]);
     // let date22 = moment().format('YYYY-DD-MM');
 
-    const state: typeof initialState = useSelector(
-        (state: RootState) => state[setup.module_name],
-    );
-    const add_new_state: typeof addNewState = useSelector(
-        (state: RootState) => state['student_add_new'],
-    );
-
     async function initdependancy() {
         // await dispatch(storeSlice.actions.set_item({}));
         await dispatch(shifts({}) as any);
@@ -59,41 +52,6 @@ const Index: React.FC<Props> = (props: Props) => {
         await dispatch(classes({}) as any);
         await dispatch(sections({}) as any);
     }
-    useEffect(() => {
-        initdependancy();
-    }, []);
-    useEffect(() => {
-        // console.log('frontend state', add_new_state);
-    }, [add_new_state]);
-
-    // Initialize selectedClass with a fallback value
-    const [selectedClass, setSelectedClass] = useState<string>(
-        state.item.student_info?.s_class || '',
-    );
-
-    // Handle class selection
-    const handleClassChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedClass(e.target.value);
-    };
-
-    // Remove invalid direct call to handleClassChange
-    // If you need to set initial class, use useEffect instead:
-    useEffect(() => {
-        if (state.item.student_info?.s_class) {
-            setSelectedClass(state.item.student_info.s_class);
-        }
-    }, [state.item.student_info?.s_class]);
-
-    // Filter sections with proper typing
-    interface Section {
-        branch_class_id: number;
-        [key: string]: any;
-    }
-
-    const filteredSections =
-        add_new_state.sections?.filter(
-            (section) => section.branch_class_id === parseInt(selectedClass),
-        ) || [];
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -122,6 +80,19 @@ const Index: React.FC<Props> = (props: Props) => {
             // e.target.reset();
         }
     }
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
+    const add_new_state: typeof addNewState = useSelector(
+        (state: RootState) => state['student_add_new'],
+    );
+
+    useEffect(() => {
+        initdependancy();
+    }, []);
+    useEffect(() => {
+        // console.log('frontend state', add_new_state);
+    }, [add_new_state]);
 
     const params = useParams();
     // console.log('id', params.id);
@@ -158,12 +129,13 @@ const Index: React.FC<Props> = (props: Props) => {
         ? moment(studentExpire_date).format('YYYY-MM-DD')
         : moment().format('YYYY-MM-DD');
 
-    const startYear = '2025';
+
+    const startYear = "2025";
     const years = Array.from({ length: 31 }, (_, i) => Number(startYear) + i);
 
     // State for selected year
     const [selectedYear, setSelectedYear] = useState(
-        sessionStorage.getItem('selectedYear') || startYear,
+        sessionStorage.getItem('selectedYear') || startYear
     );
 
     // Update session storage when year changes
@@ -176,11 +148,9 @@ const Index: React.FC<Props> = (props: Props) => {
         setSelectedYear(event.target.value);
     };
 
-    const [showPassword, setShowPassword] = useState(false);
-
     return (
         <div className="admin_dashboard">
-            <BackButton />
+            <BackButton/>
             {Object.keys(state.item)?.length && (
                 <div className="content_body">
                     <form
@@ -273,10 +243,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form-group form-vertical">
                                         <label>Image</label>
                                         <div className="form_elements">
-                                            <ImageUpload
-                                                name="image"
-                                                defaultImage={state.item.image}
-                                            />
+                                            <ImageUpload name ="image" defaultImage={state.item.image} />
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
@@ -297,7 +264,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             </select>
                                         </div>
                                     </div>
-                                    {/* <div className="form-group form-vertical">
+                                    <div className="form-group form-vertical">
                                         <label>Password</label>
                                         <div className="form_elements">
                                             <input
@@ -308,58 +275,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 onChange={(e) => {
                                                     setPassword(e.target.value);
                                                     // Clear error when user starts typing
-                                                    if (passwordError)
-                                                        setPasswordError('');
+                                                    if (passwordError) setPasswordError('');
                                                 }}
                                             />
-                                        </div>
-                                    </div> */}
-                                    <div className="form-group form-vertical">
-                                        <label>Password</label>
-                                        <div
-                                            className="form_elements_valid"
-                                            style={{ position: 'relative' }}
-                                        >
-                                            <input
-                                                type={
-                                                    showPassword
-                                                        ? 'text'
-                                                        : 'password'
-                                                }
-                                                placeholder="password"
-                                                name="password"
-                                                defaultValue={password}
-                                                onChange={(e) => {
-                                                    setPassword(e.target.value);
-                                                    // Clear error when user starts typing
-                                                    if (passwordError)
-                                                        setPasswordError('');
-                                                }}
-                                            />
-                                            <span
-                                                onClick={() =>
-                                                    setShowPassword(
-                                                        !showPassword,
-                                                    )
-                                                }
-                                                className="material-symbols-outlined visible_icon"
-                                                style={{
-                                                    position: 'absolute',
-                                                    top: '10px',
-                                                    right: '10px',
-                                                    cursor: 'pointer',
-                                                    color: '#666',
-                                                    fontSize: '24px',
-                                                    userSelect: 'none',
-                                                }}
-                                            >
-                                                {showPassword
-                                                    ? 'visibility_off'
-                                                    : 'visibility'}
-                                            </span>
                                         </div>
                                     </div>
-                                    {/* <div className="form-group form-vertical">
+                                    <div className="form-group form-vertical">
                                         <label>Confirm Password</label>
                                         <div className="form_elements">
                                             <input
@@ -368,29 +289,21 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 name="confirm_password"
                                                 defaultValue={confirmPassword}
                                                 onChange={(e) => {
-                                                    setConfirmPassword(
-                                                        e.target.value,
-                                                    );
+                                                    setConfirmPassword(e.target.value);
                                                     // Validate on change
-                                                    if (
-                                                        password !==
-                                                        e.target.value
-                                                    ) {
-                                                        setPasswordError(
-                                                            'Passwords do not match',
-                                                        );
+                                                    if (password !== e.target.value) {
+                                                        setPasswordError('Passwords do not match');
                                                     } else {
                                                         setPasswordError('');
                                                     }
                                                 }}
                                             />
+                                            {/* Simple warning message appears here when passwords don't match */}
                                             {passwordError && (
-                                                <p className="text-danger small mt-1">
-                                                    {passwordError}
-                                                </p>
+                                                <p className="text-danger small mt-1">{passwordError}</p>
                                             )}
                                         </div>
-                                    </div> */}
+                                    </div>
                                 </div>
                             </div>
                             <div className="full_width">
@@ -463,14 +376,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             ?.s_class
                                                     }
                                                     id=""
-                                                    onChange={handleClassChange}
                                                 >
                                                     {add_new_state?.classes
                                                         ?.length &&
                                                         add_new_state.classes?.map(
                                                             (i: {
                                                                 [
-                                                                    key: string
+                                                                key: string
                                                                 ]: any;
                                                             }) => {
                                                                 return (
@@ -491,33 +403,21 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form-group form-vertical">
                                         <label>Section</label>
                                         <div className="form_elements">
-                                            {(
-                                                (!selectedClass &&
-                                                    add_new_state.sections) ||
-                                                filteredSections
-                                            )?.length && (
+                                            {add_new_state.sections?.length && (
                                                 <select
                                                     name="section"
-                                                    // disabled={!selectedClass}
                                                     defaultValue={
                                                         state.item.student_info
                                                             ?.section
                                                     }
                                                     id=""
                                                 >
-                                                    {(
-                                                        (!selectedClass &&
-                                                            add_new_state.sections) ||
-                                                        filteredSections
-                                                    )?.length &&
-                                                        (
-                                                            (!selectedClass &&
-                                                                add_new_state.sections) ||
-                                                            filteredSections
-                                                        )?.map(
+                                                    {add_new_state.sections
+                                                        ?.length &&
+                                                        add_new_state.sections?.map(
                                                             (i: {
                                                                 [
-                                                                    key: string
+                                                                key: string
                                                                 ]: any;
                                                             }) => {
                                                                 return (
@@ -548,10 +448,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 className="form-control custom_scroll"
                                             >
                                                 {years.map((year) => (
-                                                    <option
-                                                        key={year}
-                                                        value={year}
-                                                    >
+                                                    <option key={year} value={year}>
                                                         {year}
                                                     </option>
                                                 ))}
@@ -905,13 +802,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 style={{ width: '100px' }}
                                                 alt=""
                                             /> */}
-                                            <ImageUpload
-                                                name="birth_certificate"
-                                                defaultImage={
-                                                    state.item.student_info
-                                                        ?.birth_certificate
-                                                }
-                                            />
+                                            <ImageUpload name ="birth_certificate" defaultImage={state.item.student_info
+                                                        ?.birth_certificate} />
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
@@ -931,13 +823,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 alt=""
                                             /> */}
 
-                                            <ImageUpload
-                                                name="national_id"
-                                                defaultImage={
-                                                    state.item.student_info
-                                                        ?.national_id
-                                                }
-                                            />
+                                            <ImageUpload name ="national_id" defaultImage={state.item.student_info
+                                                        ?.national_id} />
                                         </div>
                                     </div>
                                 </div>

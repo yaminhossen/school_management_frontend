@@ -18,6 +18,7 @@ export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
+    const [selectedClass, setSelectedClass] = useState('');
     const [totalDocument, setTotalDocument] = useState([1, 1, 1]);
     const [totalParent, setTotalParent] = useState([1, 1, 1]);
     const [totalContactNumber, setTotalContactNumber] = useState([1, 1, 1]);
@@ -44,10 +45,26 @@ const Index: React.FC<Props> = (props: Props) => {
         parents: [],
     });
 
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
+
     // const formRef = useRef<HTMLFormElement>(null);
     const [totalEducationalBackground, setTotalEducationalBackground] =
         useState([1, 1]);
     // let date22 = moment().format('YYYY-DD-MM');
+
+    // Handle class selection
+    const handleClassChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedClass(e.target.value);
+    };
+
+    // Filter sections based on selected class
+    const filteredSections =
+        state.sections?.filter(
+            (section: { [key: string]: any }) =>
+                section.branch_class_id === parseInt(selectedClass),
+        ) || [];
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -64,10 +81,6 @@ const Index: React.FC<Props> = (props: Props) => {
             form.reset();
         }
     }
-    const state: typeof initialState = useSelector(
-        (state: RootState) => state[setup.module_name],
-    );
-
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(classes({}) as any);
@@ -161,6 +174,21 @@ const Index: React.FC<Props> = (props: Props) => {
     };
 
     const [showPassword, setShowPassword] = useState(false);
+    const [showGuardianPasswords, setShowGuardianPasswords] = useState(
+        totalParent.map(() => false),
+    );
+
+    // Update the showGuardianPasswords state when totalParent changes
+    useEffect(() => {
+        setShowGuardianPasswords(totalParent.map(() => false));
+    }, [totalParent]);
+
+    // Function to toggle password visibility for a specific guardian
+    const toggleGuardianPassword = (index) => {
+        setShowGuardianPasswords((prev) =>
+            prev.map((value, i) => (i === index ? !value : value)),
+        );
+    };
 
     return (
         <div className="admin_dashboard">
@@ -398,20 +426,26 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Class</label>
                                     <div className="form_elements">
-                                        <select name="class" id="">
+                                        <select
+                                            name="class"
+                                            value={selectedClass}
+                                            onChange={handleClassChange}
+                                        >
+                                            <option value="">
+                                                Select a class
+                                            </option>
                                             {state.classes?.length &&
-                                                state.classes?.map(
+                                                state.classes.map(
                                                     (i: {
                                                         [key: string]: any;
-                                                    }) => {
-                                                        return (
-                                                            <option
-                                                                value={i.id}
-                                                            >
-                                                                {i.name}
-                                                            </option>
-                                                        );
-                                                    },
+                                                    }) => (
+                                                        <option
+                                                            key={i.id}
+                                                            value={i.id}
+                                                        >
+                                                            {i.name}
+                                                        </option>
+                                                    ),
                                                 )}
                                         </select>
                                     </div>
@@ -440,20 +474,25 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Section</label>
                                     <div className="form_elements">
-                                        <select name="section" id="">
-                                            {state.sections?.length &&
-                                                state.sections?.map(
+                                        <select
+                                            name="section"
+                                            disabled={!selectedClass}
+                                        >
+                                            <option value="">
+                                                Select a section
+                                            </option>
+                                            {filteredSections.length > 0 &&
+                                                filteredSections.map(
                                                     (i: {
                                                         [key: string]: any;
-                                                    }) => {
-                                                        return (
-                                                            <option
-                                                                value={i.id}
-                                                            >
-                                                                {i.title}
-                                                            </option>
-                                                        );
-                                                    },
+                                                    }) => (
+                                                        <option
+                                                            key={i.id}
+                                                            value={i.id}
+                                                        >
+                                                            {i.title}
+                                                        </option>
+                                                    ),
                                                 )}
                                         </select>
                                     </div>
@@ -890,16 +929,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <h4>Guardians</h4>
                             </div>
                             <div className="multi_inputs">
-                                {/* <div className="pb-4 px-0">
-                                    <span
-                                        className="btn btn-sm  btn-outline-info"
-                                        onClick={() =>
-                                            setTotalParent([...totalParent, 1])
-                                        }
-                                    >
-                                        Add new
-                                    </span>
-                                </div> */}
                                 <input
                                     type="hidden"
                                     name="totalParent_count"
@@ -983,20 +1012,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <input
                                                             type="text"
-                                                            // value={
-                                                            //     phoneNumbers
-                                                            //         .parents[
-                                                            //         index
-                                                            //     ] || ''
-                                                            // }
-                                                            // onChange={(e) =>
-                                                            //     handleChange(
-                                                            //         'parent',
-                                                            //         index,
-                                                            //         e.target
-                                                            //             .value,
-                                                            //     )
-                                                            // }
                                                             placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
                                                             name={`parent_phone_number${index}`}
                                                         />
@@ -1012,7 +1027,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                     errors
                                                                         .parents[
                                                                             index
-                                                                    ]
+                                                                        ]
                                                                 }
                                                             </p>
                                                         )}
@@ -1021,13 +1036,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 <div className="form-group form-vertical">
                                                     <label>Image</label>
                                                     <div className="form_elements">
-                                                        {/* <input
-                                                            type="file"
-                                                            placeholder="image"
-                                                            accept="image/*"
-                                                            name={`parent_image${index}`}
-                                                        /> */}
-
                                                         <ImageUpload
                                                             name={`parent_image${index}`}
                                                         />
@@ -1035,12 +1043,50 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 </div>
                                                 <div className="form-group form-vertical">
                                                     <label>Password</label>
-                                                    <div className="form_elements">
+                                                    <div
+                                                        className="form_elements_valid"
+                                                        style={{
+                                                            position:
+                                                                'relative',
+                                                        }}
+                                                    >
                                                         <input
-                                                            type="text"
+                                                            type={
+                                                                showGuardianPasswords[
+                                                                    index
+                                                                ]
+                                                                    ? 'text'
+                                                                    : 'password'
+                                                            }
                                                             placeholder="parent password"
                                                             name={`parent_password${index}`}
                                                         />
+                                                        <span
+                                                            onClick={() =>
+                                                                toggleGuardianPassword(
+                                                                    index,
+                                                                )
+                                                            }
+                                                            className="material-symbols-outlined visible_icon"
+                                                            style={{
+                                                                position:
+                                                                    'absolute',
+                                                                top: '10px',
+                                                                right: '10px',
+                                                                cursor: 'pointer',
+                                                                color: '#666',
+                                                                fontSize:
+                                                                    '24px',
+                                                                userSelect:
+                                                                    'none',
+                                                            }}
+                                                        >
+                                                            {showGuardianPasswords[
+                                                                index
+                                                            ]
+                                                                ? 'visibility_off'
+                                                                : 'visibility'}
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>

@@ -29,11 +29,11 @@ export interface FeesInfo {
     class?: object;
     type?: 'income' | 'expense';
     amount?: number;
-    id: number;
+    id?: number;
     name?: string;
     total?: number;
-    fee_amount: number;
-    due_amount: number;
+    fee_amount?: number;
+    due_amount?: number;
     input_amount?: string;
     input_amount2?: string;
 }
@@ -75,13 +75,10 @@ const Index: React.FC<Props> = (props: Props) => {
         let isValid = true;
         feesTypes.forEach((fee: FeesInfo, index) => {
             if (!feesTypes2[index]) return; // Skip if feesTypes2[index] is undefined
-            const maxAmount =
-                fee.due_amount !== 0
-                    ? Math.abs(fee.due_amount || 0)
-                    : fee.fee_amount; // Use fee_amount if due_amount is 0
+            const due = Math.abs(fee.due_amount || 0);
             const discount =
                 parseFloat(feesTypes2[index].input_amount2 ?? '0') || 0;
-            const payable = maxAmount - discount;
+            const payable = due - discount;
             const given = parseFloat(fee.input_amount ?? '0') || 0;
             if (given > payable) {
                 isValid = false;
@@ -210,11 +207,9 @@ const Index: React.FC<Props> = (props: Props) => {
     ) => {
         const enteredValue = parseFloat(event.target.value) || 0;
         if (type === 'discount') {
-            const absoluteValue = Math.abs(i.due_amount || 0);
-            const maxDiscount =
-                i.due_amount !== 0 ? absoluteValue : i.fee_amount; // Use fee_amount if due_amount is 0
-            const newValue = Math.min(enteredValue, maxDiscount);
-            const remaining = maxDiscount - newValue;
+            const absoluteValue = Math.abs(i.due_amount);
+            const newValue = Math.min(enteredValue, absoluteValue);
+            const remaining = absoluteValue - newValue;
             setRemainingDue((prev) => ({
                 ...prev,
                 [i.id]: remaining,
@@ -224,8 +219,7 @@ const Index: React.FC<Props> = (props: Props) => {
             setFeesTypes2(temp);
         } else if (type === 'given') {
             if (!feesTypes2[index]) return; // Skip if feesTypes2[index] is undefined
-            const absoluteValue =
-                i.due_amount !== 0 ? Math.abs(i.due_amount) : i.fee_amount; // Use fee_amount if due_amount is 0
+            const absoluteValue = Math.abs(i.due_amount);
             const discount =
                 parseFloat(feesTypes2[index].input_amount2 ?? '0') || 0;
             const payable = absoluteValue - discount;
@@ -270,18 +264,6 @@ const Index: React.FC<Props> = (props: Props) => {
         setTotalPayable(total);
     }, [remainingDue]);
     // console.log('total amount', totalAmount2);
-
-    useEffect(() => {
-        const initialRemainingDue = feesTypes.reduce((acc, i, index) => {
-            const maxAmount =
-                i.due_amount !== 0 ? Math.abs(i.due_amount || 0) : i.fee_amount;
-            const discount =
-                parseFloat(feesTypes2[index]?.input_amount2 ?? '0') || 0;
-            const payable = maxAmount - discount;
-            return { ...acc, [i.id]: payable };
-        }, {});
-        setRemainingDue(initialRemainingDue);
-    }, [feesTypes, feesTypes2]);
 
     return (
         <div className="admin_dashboard">
@@ -479,21 +461,15 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     i: { [key: string]: any },
                                                     index,
                                                 ) => {
-                                                    const maxAmount =
-                                                        i.due_amount !== 0
-                                                            ? Math.abs(
-                                                                i.due_amount ||
-                                                                      0,
-                                                            )
-                                                            : i.fee_amount; // Use fee_amount if due_amount is 0
-                                                    const discount =
-                                                        parseFloat(
+                                                    const payable =
+                                                        Math.abs(
+                                                            i.due_amount || 0,
+                                                        ) -
+                                                        (parseFloat(
                                                             feesTypes2[index]
                                                                 ?.input_amount2 ??
                                                                 '0',
-                                                        ) || 0;
-                                                    const payable =
-                                                        maxAmount - discount;
+                                                        ) || 0);
                                                     return (
                                                         <tr>
                                                             <td>{i.name}</td>
@@ -512,16 +488,15 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 {i.due_amount <
                                                                 0
                                                                     ? Math.abs(
-                                                                        i.due_amount,
-                                                                    )
-                                                                    : i.due_amount ||
-                                                                      '0'}
+                                                                          i.due_amount,
+                                                                      )
+                                                                    : '0'}
                                                             </td>
                                                             <td>
                                                                 <input
                                                                     type="number"
                                                                     max={
-                                                                        maxAmount
+                                                                        i.due_amount
                                                                     }
                                                                     name={`fees_discount_${index}`}
                                                                     value={
@@ -551,10 +526,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                         remainingDue[
                                                                             i.id
                                                                         ] ??
-                                                                        (payable <=
-                                                                        0
-                                                                            ? 0
-                                                                            : payable)
+                                                                        Math.abs(
+                                                                            i.due_amount <=
+                                                                                0
+                                                                                ? i.due_amount
+                                                                                : 0,
+                                                                        )
                                                                     }
                                                                     readOnly
                                                                 />
@@ -618,13 +595,15 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 />
                                             </td>
                                             <td>
-                                                {totalPayable}{' '}
-                                                {/* Use totalPayable for the Payable column */}
-                                                <input
-                                                    type="hidden"
-                                                    name="total_payable"
-                                                    value={totalPayable}
-                                                />
+                                                {totalAmount?.due_amount !==
+                                                    undefined &&
+                                                totalAmount?.due_amount !== null
+                                                    ? totalAmount3
+                                                        ? totalAmount.due_amount +
+                                                          totalAmount3
+                                                        : totalAmount.due_amount -
+                                                          totalAmount3
+                                                    : 0}
                                             </td>
                                             <td>
                                                 {totalAmount2} tk
