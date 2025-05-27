@@ -18,6 +18,7 @@ export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
+    const [selectedClass, setSelectedClass] = useState('');
     const [totalDocument, setTotalDocument] = useState([1, 1, 1]);
     const [totalParent, setTotalParent] = useState([1, 1, 1]);
     const [totalContactNumber, setTotalContactNumber] = useState([1, 1, 1]);
@@ -44,10 +45,26 @@ const Index: React.FC<Props> = (props: Props) => {
         parents: [],
     });
 
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
+
     // const formRef = useRef<HTMLFormElement>(null);
     const [totalEducationalBackground, setTotalEducationalBackground] =
         useState([1, 1]);
     // let date22 = moment().format('YYYY-DD-MM');
+
+    // Handle class selection
+    const handleClassChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedClass(e.target.value);
+    };
+
+    // Filter sections based on selected class
+    const filteredSections =
+        state.sections?.filter(
+            (section: { [key: string]: any }) =>
+                section.branch_class_id === parseInt(selectedClass),
+        ) || [];
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -64,10 +81,6 @@ const Index: React.FC<Props> = (props: Props) => {
             form.reset();
         }
     }
-    const state: typeof initialState = useSelector(
-        (state: RootState) => state[setup.module_name],
-    );
-
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(classes({}) as any);
@@ -161,8 +174,6 @@ const Index: React.FC<Props> = (props: Props) => {
     };
 
     const [showPassword, setShowPassword] = useState(false);
-
-    // Add this state to manage the visibility of each guardian's password
     const [showGuardianPasswords, setShowGuardianPasswords] = useState(
         totalParent.map(() => false),
     );
@@ -415,20 +426,26 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Class</label>
                                     <div className="form_elements">
-                                        <select name="class" id="">
+                                        <select
+                                            name="class"
+                                            value={selectedClass}
+                                            onChange={handleClassChange}
+                                        >
+                                            <option value="">
+                                                Select a class
+                                            </option>
                                             {state.classes?.length &&
-                                                state.classes?.map(
+                                                state.classes.map(
                                                     (i: {
                                                         [key: string]: any;
-                                                    }) => {
-                                                        return (
-                                                            <option
-                                                                value={i.id}
-                                                            >
-                                                                {i.name}
-                                                            </option>
-                                                        );
-                                                    },
+                                                    }) => (
+                                                        <option
+                                                            key={i.id}
+                                                            value={i.id}
+                                                        >
+                                                            {i.name}
+                                                        </option>
+                                                    ),
                                                 )}
                                         </select>
                                     </div>
@@ -457,20 +474,25 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Section</label>
                                     <div className="form_elements">
-                                        <select name="section" id="">
-                                            {state.sections?.length &&
-                                                state.sections?.map(
+                                        <select
+                                            name="section"
+                                            disabled={!selectedClass}
+                                        >
+                                            <option value="">
+                                                Select a section
+                                            </option>
+                                            {filteredSections.length > 0 &&
+                                                filteredSections.map(
                                                     (i: {
                                                         [key: string]: any;
-                                                    }) => {
-                                                        return (
-                                                            <option
-                                                                value={i.id}
-                                                            >
-                                                                {i.title}
-                                                            </option>
-                                                        );
-                                                    },
+                                                    }) => (
+                                                        <option
+                                                            key={i.id}
+                                                            value={i.id}
+                                                        >
+                                                            {i.title}
+                                                        </option>
+                                                    ),
                                                 )}
                                         </select>
                                     </div>
