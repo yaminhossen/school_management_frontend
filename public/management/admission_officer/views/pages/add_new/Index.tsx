@@ -14,7 +14,7 @@ import { sections } from './config/store/async_actions/sections';
 import { shifts } from './config/store/async_actions/shifts';
 import { preInfo } from './config/store/async_actions/pre_info';
 import ImageUpload from './components/ImageUpload';
-export interface Props { }
+export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
@@ -162,6 +162,23 @@ const Index: React.FC<Props> = (props: Props) => {
 
     const [showPassword, setShowPassword] = useState(false);
 
+    // Add this state to manage the visibility of each guardian's password
+    const [showGuardianPasswords, setShowGuardianPasswords] = useState(
+        totalParent.map(() => false),
+    );
+
+    // Update the showGuardianPasswords state when totalParent changes
+    useEffect(() => {
+        setShowGuardianPasswords(totalParent.map(() => false));
+    }, [totalParent]);
+
+    // Function to toggle password visibility for a specific guardian
+    const toggleGuardianPassword = (index) => {
+        setShowGuardianPasswords((prev) =>
+            prev.map((value, i) => (i === index ? !value : value)),
+        );
+    };
+
     return (
         <div className="admin_dashboard">
             <div className="content_body">
@@ -267,46 +284,46 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                                
-                                    <div className="form-group form-vertical">
-                                        <label>Password</label>
-                                        <div className="form_elements_valid"
-                                            style={{ position: 'relative' }}>
-                                            <input
-                                                type={
-                                                    showPassword
-                                                        ? 'text'
-                                                        : 'password'
-                                                }
-                                                placeholder="password"
-                                                name="password"
-                                                value={formData.password}
-                                                onChange={handlePasswordChange}
-                                            />
-                                            <span
-                                                onClick={() =>
-                                                    setShowPassword(
-                                                        !showPassword,
-                                                    )
-                                                }
-                                                className="material-symbols-outlined visible_icon"
-                                                style={{
-                                                    position: 'absolute',
-                                                    top: '10px',
-                                                    right: '10px',
-                                                    cursor: 'pointer',
-                                                    color: '#666',
-                                                    fontSize: '24px',
-                                                    userSelect: 'none',
-                                                }}
-                                            >
-                                                {showPassword
-                                                    ? 'visibility_off'
-                                                    : 'visibility'}
-                                            </span>
-                                        </div>
+
+                                <div className="form-group form-vertical">
+                                    <label>Password</label>
+                                    <div
+                                        className="form_elements_valid"
+                                        style={{ position: 'relative' }}
+                                    >
+                                        <input
+                                            type={
+                                                showPassword
+                                                    ? 'text'
+                                                    : 'password'
+                                            }
+                                            placeholder="password"
+                                            name="password"
+                                            value={formData.password}
+                                            onChange={handlePasswordChange}
+                                        />
+                                        <span
+                                            onClick={() =>
+                                                setShowPassword(!showPassword)
+                                            }
+                                            className="material-symbols-outlined visible_icon"
+                                            style={{
+                                                position: 'absolute',
+                                                top: '10px',
+                                                right: '10px',
+                                                cursor: 'pointer',
+                                                color: '#666',
+                                                fontSize: '24px',
+                                                userSelect: 'none',
+                                            }}
+                                        >
+                                            {showPassword
+                                                ? 'visibility_off'
+                                                : 'visibility'}
+                                        </span>
                                     </div>
-                            
+                                </div>
+
                                 {/* <div className="form-group form-vertical">
                                     <label>Confirm Password</label>
                                     <div className="form_elements">
@@ -890,16 +907,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <h4>Guardians</h4>
                             </div>
                             <div className="multi_inputs">
-                                {/* <div className="pb-4 px-0">
-                                    <span
-                                        className="btn btn-sm  btn-outline-info"
-                                        onClick={() =>
-                                            setTotalParent([...totalParent, 1])
-                                        }
-                                    >
-                                        Add new
-                                    </span>
-                                </div> */}
                                 <input
                                     type="hidden"
                                     name="totalParent_count"
@@ -983,51 +990,30 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <input
                                                             type="text"
-                                                            // value={
-                                                            //     phoneNumbers
-                                                            //         .parents[
-                                                            //         index
-                                                            //     ] || ''
-                                                            // }
-                                                            // onChange={(e) =>
-                                                            //     handleChange(
-                                                            //         'parent',
-                                                            //         index,
-                                                            //         e.target
-                                                            //             .value,
-                                                            //     )
-                                                            // }
                                                             placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
                                                             name={`parent_phone_number${index}`}
                                                         />
                                                         {errors.parents[
                                                             index
                                                         ] && (
-                                                                <p
-                                                                    style={{
-                                                                        color: 'red',
-                                                                    }}
-                                                                >
-                                                                    {
-                                                                        errors
-                                                                            .parents[
-                                                                        index
+                                                            <p
+                                                                style={{
+                                                                    color: 'red',
+                                                                }}
+                                                            >
+                                                                {
+                                                                    errors
+                                                                        .parents[
+                                                                            index
                                                                         ]
-                                                                    }
-                                                                </p>
-                                                            )}
+                                                                }
+                                                            </p>
+                                                        )}
                                                     </div>
                                                 </div>
                                                 <div className="form-group form-vertical">
                                                     <label>Image</label>
                                                     <div className="form_elements">
-                                                        {/* <input
-                                                            type="file"
-                                                            placeholder="image"
-                                                            accept="image/*"
-                                                            name={`parent_image${index}`}
-                                                        /> */}
-
                                                         <ImageUpload
                                                             name={`parent_image${index}`}
                                                         />
@@ -1035,12 +1021,50 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 </div>
                                                 <div className="form-group form-vertical">
                                                     <label>Password</label>
-                                                    <div className="form_elements">
+                                                    <div
+                                                        className="form_elements_valid"
+                                                        style={{
+                                                            position:
+                                                                'relative',
+                                                        }}
+                                                    >
                                                         <input
-                                                            type="text"
+                                                            type={
+                                                                showGuardianPasswords[
+                                                                    index
+                                                                ]
+                                                                    ? 'text'
+                                                                    : 'password'
+                                                            }
                                                             placeholder="parent password"
                                                             name={`parent_password${index}`}
                                                         />
+                                                        <span
+                                                            onClick={() =>
+                                                                toggleGuardianPassword(
+                                                                    index,
+                                                                )
+                                                            }
+                                                            className="material-symbols-outlined visible_icon"
+                                                            style={{
+                                                                position:
+                                                                    'absolute',
+                                                                top: '10px',
+                                                                right: '10px',
+                                                                cursor: 'pointer',
+                                                                color: '#666',
+                                                                fontSize:
+                                                                    '24px',
+                                                                userSelect:
+                                                                    'none',
+                                                            }}
+                                                        >
+                                                            {showGuardianPasswords[
+                                                                index
+                                                            ]
+                                                                ? 'visibility_off'
+                                                                : 'visibility'}
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>

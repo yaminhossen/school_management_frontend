@@ -4,7 +4,6 @@ import { anyObject } from '../../../../common_types/object';
 interface ImageUploadProps {
     defaultImage?: string;
     name: string; // Dynamic name prop
-    ref: React.RefObject<HTMLInputElement>;
 }
 
 const ImageUpload: React.FC<ImageUploadProps> = ({ defaultImage, name }) => {
