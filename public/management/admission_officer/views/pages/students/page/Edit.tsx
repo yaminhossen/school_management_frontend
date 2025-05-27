@@ -475,18 +475,30 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form-group form-vertical">
                                         <label>Section</label>
                                         <div className="form_elements">
-                                            {filteredSections?.length && (
+                                            {(
+                                                (!selectedClass &&
+                                                    add_new_state.sections) ||
+                                                filteredSections
+                                            )?.length && (
                                                 <select
                                                     name="section"
+                                                    disabled={!selectedClass}
                                                     defaultValue={
                                                         state.item.student_info
                                                             ?.section
                                                     }
                                                     id=""
                                                 >
-                                                    {add_new_state.sections
-                                                        ?.length &&
-                                                        filteredSections?.map(
+                                                    {(
+                                                        (!selectedClass &&
+                                                            add_new_state.sections) ||
+                                                        filteredSections
+                                                    )?.length &&
+                                                        (
+                                                            (!selectedClass &&
+                                                                add_new_state.sections) ||
+                                                            filteredSections
+                                                        )?.map(
                                                             (i: {
                                                                 [
                                                                     key: string
