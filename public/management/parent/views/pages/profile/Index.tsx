@@ -45,7 +45,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             {data.name}
                         </h3>
                         <div className="header-elements">
-                            <ul>
+                            {/* <ul>
                                 <li>
                                     <a href="">
                                         <span className="material-symbols-outlined fill">
@@ -67,7 +67,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </span>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                     <ul className="section_naviagation">

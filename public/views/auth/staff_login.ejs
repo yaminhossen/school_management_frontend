@@ -112,7 +112,10 @@
             event.preventDefault();
             axios.post("/api/v1/auth/staff/login", new FormData(event.currentTarget))
                 .then(res => {
-                    return location.href = "/staff";
+                    window.toaster("login successful", "success");
+                    setTimeout(() => {
+                        location.href = "/staff";
+                    }, 1000);
                 })
                 .catch(err => {
                     let { message, data } = err.response.data;

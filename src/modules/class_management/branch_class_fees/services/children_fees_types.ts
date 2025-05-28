@@ -24,6 +24,12 @@ async function details(
             where: {
                 branch_class_id: params.id,
             },
+            include: [
+                {
+                    model: models.BranchClassFeeTypesModel,
+                    as: 'fee_types',
+                },
+            ],
         });
 
         // Initialize data2 object

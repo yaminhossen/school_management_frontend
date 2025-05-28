@@ -68,7 +68,7 @@ const Fees: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            <td>{i.name}</td>
+                                            <td>{i.fee_types?.name}</td>
                                             <td>{i.amount} tk</td>
                                         </tr>
                                     );

@@ -121,3 +121,5 @@
 {"level":60,"time":1748336840001,"pid":12388,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
 {"level":60,"time":1748336844510,"pid":12388,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
 {"level":60,"time":1748341378858,"pid":11548,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1748412012379,"pid":3276,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1748412242783,"pid":3276,"hostname":"DESKTOP-9421701","error":"404","url":"/settings"}

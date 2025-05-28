@@ -42,7 +42,7 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                           </div>
                       </form>
                   </li> */}
-                            <li>
+                            {/* <li>
                                 <a href="#!" className="text-dark">
                                     <img
                                         className="align-self-center pull-right me-2"
@@ -50,14 +50,14 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                                         alt="header-browser"
                                     />
                                 </a>
-                            </li>
+                            </li> */}
                             <li className="onhover-dropdown">
                                 <div className="d-flex align-items-center">
-                                    <img
+                                    {/* <img
                                         className="align-self-center pull-right flex-shrink-0 me-2"
                                         src="/assets/dashboard_uni/user.png"
                                         alt="header-user"
-                                    />
+                                    /> */}
                                     <div>
                                         <h6 className="m-0 txt-dark f-16">
                                             My Account
@@ -66,12 +66,12 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <ul className="profile-dropdown onhover-show-div p-20">
-                                    <li>
+                                    {/* <li>
                                         <a href="#">
                                             <i className="icon-user" />
                                             Edit Profile
                                         </a>
-                                    </li>
+                                    </li> */}
                                     <li>
                                         <a href="#">
                                             <i className="icon-power-off" />

@@ -81,6 +81,14 @@ async function store(
     let body = req.body as anyObject;
     let data = new models.AssignmentsModel();
     let image_path = '';
+    let user = (req as any).user;
+    // console.log('auth user', user);
+
+    let auth_user = await models.BranchTeachersModel.findOne({
+        where: {
+            user_teacher_id: user?.id || null,
+        },
+    });
 
     if (body['attachment']?.ext) {
         image_path =
@@ -91,17 +99,17 @@ async function store(
     }
 
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: body.branch_id || 1,
+        branch_id: auth_user?.branch_id || 1,
         title: body.title,
         description: body.description,
-        assignment_categories_id: body.assignment_categories_id,
+        // assignment_categories_id: body.assignment_categories_id,
         attachment: image_path,
         image: body.image,
         mark: body.mark,
         class_id: body.class,
         subject_id: body.subject,
         deadline: body.deadline,
-        creator: 1,
+        creator: user?.id || null,
     };
 
     console.log('update body', body);
