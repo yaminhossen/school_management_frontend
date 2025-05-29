@@ -52,6 +52,7 @@ async function login(
             data = await models.UserStaffsModel.findOne({
                 where: {
                     email: body.email,
+                    role: 'accountant',
                 },
             });
 

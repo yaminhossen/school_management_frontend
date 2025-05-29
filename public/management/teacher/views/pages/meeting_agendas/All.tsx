@@ -157,7 +157,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                         ).format('hh:mm A')}
                                                     </td>
                                                     <td>{i.meeting_type}</td>
-                                                    <td>
+                                                    {/* <td>
                                                         {i.meeting_link ? (
                                                             moment(
                                                                 i.date,
@@ -191,6 +191,59 @@ const All: React.FC<Props> = (props: Props) => {
                                                                     </a>
                                                             ) : (
                                                                 'Link active 10 mins before on meeting times'
+                                                            )
+                                                        ) : (
+                                                            'Offline meeting'
+                                                        )}
+                                                    </td> */}
+                                                    <td>
+                                                        {i.meeting_link ? (
+                                                            moment(
+                                                                i.date,
+                                                            ).format(
+                                                                'YYYY-MM-DD',
+                                                            ) === today ? (
+                                                                moment().isBetween(
+                                                                    moment(
+                                                                        `${i.date} ${i.time}`,
+                                                                        'YYYY-MM-DD HH:mm:ss',
+                                                                    ).subtract(
+                                                                        10,
+                                                                        'minutes',
+                                                                    ),
+                                                                    moment(
+                                                                        `${i.date} ${i.time}`,
+                                                                        'YYYY-MM-DD HH:mm:ss',
+                                                                    ).add(
+                                                                        1,
+                                                                        'day',
+                                                                    ),
+                                                                ) ? (
+                                                                    <a
+                                                                        href={
+                                                                            i.meeting_link
+                                                                        }
+                                                                                target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                    >
+                                                                        Click
+                                                                        Here
+                                                                    </a>
+                                                                ) : (
+                                                                    'Link active 10 mins before on meeting times'
+                                                                        )
+                                                            ) : moment().isAfter(
+                                                                  moment(
+                                                                      `${i.date} ${i.time}`,
+                                                                      'YYYY-MM-DD HH:mm:ss',
+                                                                  ).add(
+                                                                      1,
+                                                                      'day',
+                                                                  ),
+                                                              ) ? (
+                                                                'Meeting is expired'
+                                                            ) : (
+                                                                'Meeting is scheduled for another day'
                                                             )
                                                         ) : (
                                                             'Offline meeting'
