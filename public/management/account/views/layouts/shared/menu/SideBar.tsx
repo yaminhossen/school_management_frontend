@@ -4,6 +4,7 @@ import MenuDropDown from './MenuDropDown';
 import MenuDropDownItem from './MenuDropDownItem';
 import MenuSingle from './MenuSingle';
 import axios from 'axios';
+import { anyObject } from '../../../../../admin/common_types/object';
 export interface Props {}
 
 const SideBar: React.FC<Props> = (props: Props) => {
@@ -16,9 +17,10 @@ const SideBar: React.FC<Props> = (props: Props) => {
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         try {
-            const response = await axios.post('/api/v1/auth/logout');
-            console.log('response123', response);
-            // if(response.status)
+            let confirm = await (window as anyObject).s_confirm('Logout');
+            if (confirm) {
+                await axios.post('/api/v1/auth/logout');
+            }
         } catch (error) {
             setError(error);
         }

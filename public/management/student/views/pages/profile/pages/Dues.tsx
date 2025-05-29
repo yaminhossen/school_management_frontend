@@ -19,7 +19,7 @@ const Dues: React.FC<Props> = (props: Props) => {
     const fetchTypes = async () => {
         try {
             const response2 = await axios.get(
-                `api/v1/user-students/fees-dues-student/1`,
+                `api/v1/user-students/fees-dues-student/2`,
             );
             setFeesTypes(response2.data?.data?.idWiseTotals);
             setTotalAmount(response2.data?.data?.summeries);
