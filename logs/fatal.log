@@ -479,3 +479,116 @@
 {"level":60,"time":1748341189110,"pid":11548,"hostname":"DESKTOP-9421701","file":"","time":"5/27/2025 4:19:49 PM","message":"target not found."}
 {"level":60,"time":1748341376258,"pid":11548,"hostname":"DESKTOP-9421701","file":"","time":"5/27/2025 4:22:56 PM","message":"target not found."}
 {"level":60,"time":1748341378288,"pid":11548,"hostname":"DESKTOP-9421701","file":"","time":"5/27/2025 4:22:58 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748412573920,"pid":4660,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 12:09:33 PM","message":"target not found."}
+{"level":60,"time":1748412578950,"pid":4660,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 12:09:38 PM","message":"target not found."}
+{"level":60,"time":1748413211002,"pid":15668,"hostname":"DESKTOP-I0UCE3Q","file":"services\\all.ts:119:15)","time":"5/28/2025 12:20:11 PM","message":"Unknown column 'branch_class_id' in 'field list'"}
+{"level":60,"time":1748416281114,"pid":4136,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 1:11:21 PM","message":"target not found."}
+{"level":60,"time":1748416281714,"pid":4136,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:67:19)","time":"5/28/2025 1:11:21 PM","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":60,"time":1748416389676,"pid":16636,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 1:13:09 PM","message":"target not found."}
+{"level":60,"time":1748416390119,"pid":16636,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:67:19)","time":"5/28/2025 1:13:10 PM","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":60,"time":1748416550156,"pid":11436,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 1:15:50 PM","message":"target not found."}
+{"level":60,"time":1748416550631,"pid":11436,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:67:19)","time":"5/28/2025 1:15:50 PM","message":"WHERE parameter \"branch_teacher_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1748416723913,"pid":17072,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 1:18:43 PM","message":"target not found."}
+{"level":60,"time":1748416724463,"pid":17072,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:67:19)","time":"5/28/2025 1:18:44 PM","message":"WHERE parameter \"branch_teacher_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1748416982285,"pid":16048,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 1:23:02 PM","message":"target not found."}
+{"level":60,"time":1748416982856,"pid":16048,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:67:19)","time":"5/28/2025 1:23:02 PM","message":"WHERE parameter \"id\" has invalid \"undefined\" value"}
+{"level":60,"time":1748417186102,"pid":16048,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 1:26:26 PM","message":"target not found."}
+{"level":60,"time":1748417186614,"pid":16048,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:67:19)","time":"5/28/2025 1:26:26 PM","message":"WHERE parameter \"id\" has invalid \"undefined\" value"}
+{"level":60,"time":1748417349397,"pid":15832,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 1:29:09 PM","message":"target not found."}
+{"level":60,"time":1748422800016,"pid":5340,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 3:00:00 PM","message":"target not found."}
+{"level":60,"time":1748422800907,"pid":5340,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:72:19)","time":"5/28/2025 3:00:00 PM","message":"BranchBuildingRoomsModel is not associated to BranchClassRoutineDayTimesModel!"}
+{"level":60,"time":1748423099296,"pid":15884,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 3:04:59 PM","message":"target not found."}
+{"level":60,"time":1748423099773,"pid":15884,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:72:19)","time":"5/28/2025 3:04:59 PM","message":"Unknown column 'BranchClassRoutineDayTimesModel.room_id' in 'field list'"}
+{"level":60,"time":1748423290849,"pid":17812,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 3:08:10 PM","message":"target not found."}
+{"level":60,"time":1748424856962,"pid":14992,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 3:34:16 PM","message":"target not found."}
+{"level":60,"time":1748427093736,"pid":18488,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 4:11:33 PM","message":"target not found."}
+{"level":60,"time":1748427224291,"pid":17148,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 4:13:44 PM","message":"target not found."}
+{"level":60,"time":1748427224852,"pid":17148,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:84:19)","time":"5/28/2025 4:13:44 PM","message":"Unknown column 'teacher.name' in 'field list'"}
+{"level":60,"time":1748427425642,"pid":16024,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 4:17:05 PM","message":"target not found."}
+{"level":60,"time":1748427972979,"pid":1800,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 4:26:12 PM","message":"target not found."}
+{"level":60,"time":1748428138284,"pid":16764,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 4:28:58 PM","message":"target not found."}
+{"level":60,"time":1748428336844,"pid":12040,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 4:32:16 PM","message":"target not found."}
+{"level":60,"time":1748428791703,"pid":1460,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 4:39:51 PM","message":"target not found."}
+{"level":60,"time":1748429187215,"pid":18936,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 4:46:27 PM","message":"target not found."}
+{"level":60,"time":1748429187819,"pid":18936,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:97:19)","time":"5/28/2025 4:46:27 PM","message":"Unknown column 'BranchClassRoutineDayTimesModel.branch_class_id' in 'field list'"}
+{"level":60,"time":1748429482842,"pid":4020,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 4:51:22 PM","message":"target not found."}
+{"level":60,"time":1748429483417,"pid":4020,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:97:19)","time":"5/28/2025 4:51:23 PM","message":"BranchClassesModel is not associated to BranchClassRoutineDayTimesModel!"}
+{"level":60,"time":1748429680246,"pid":18120,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 4:54:40 PM","message":"target not found."}
+{"level":60,"time":1748429762087,"pid":13960,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 4:56:02 PM","message":"target not found."}
+{"level":60,"time":1748429967225,"pid":15420,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 4:59:27 PM","message":"target not found."}
+{"level":60,"time":1748429967743,"pid":15420,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:112:19)","time":"5/28/2025 4:59:27 PM","message":"Unknown column 'BranchClassSubjectTeachersModel.day_name' in 'field list'"}
+{"level":60,"time":1748430084812,"pid":18412,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 5:01:24 PM","message":"target not found."}
+{"level":60,"time":1748430177307,"pid":14780,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 5:02:57 PM","message":"target not found."}
+{"level":60,"time":1748430372843,"pid":11272,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 5:06:12 PM","message":"target not found."}
+{"level":60,"time":1748430569903,"pid":11272,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 5:09:29 PM","message":"target not found."}
+{"level":60,"time":1748431899130,"pid":11272,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 5:31:39 PM","message":"target not found."}
+{"level":60,"time":1748432043884,"pid":18356,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 5:34:03 PM","message":"target not found."}
+{"level":60,"time":1748432044683,"pid":18356,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:120:19)","time":"5/28/2025 5:34:04 PM","message":"Table 'institute_management.models' doesn't exist"}
+{"level":60,"time":1748432089672,"pid":7408,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 5:34:49 PM","message":"target not found."}
+{"level":60,"time":1748432090245,"pid":7408,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:120:19)","time":"5/28/2025 5:34:50 PM","message":"BranchClassesModel is not associated to BranchClassSubjectTeachersModel!"}
+{"level":60,"time":1748432118965,"pid":16988,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/28/2025 5:35:18 PM","message":"target not found."}
+{"level":60,"time":1748490288944,"pid":4544,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 9:44:48 AM","message":"target not found."}
+{"level":60,"time":1748490346301,"pid":4544,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 9:45:46 AM","message":"target not found."}
+{"level":60,"time":1748490562628,"pid":4544,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 9:49:22 AM","message":"target not found."}
+{"level":60,"time":1748490937803,"pid":16692,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 9:55:37 AM","message":"target not found."}
+{"level":60,"time":1748490938530,"pid":16692,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:120:19)","time":"5/29/2025 9:55:38 AM","message":"Unknown column 'subjects.branch_class_subject_id' in 'on clause'"}
+{"level":60,"time":1748491432116,"pid":8412,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:03:52 AM","message":"target not found."}
+{"level":60,"time":1748491432648,"pid":8412,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:120:19)","time":"5/29/2025 10:03:52 AM","message":"BranchClassSubjectsModel is associated to BranchClassRoutineDayTimesModel using an alias. You've included an alias (subjects), but it does not match the alias(es) defined in your association (subject)."}
+{"level":60,"time":1748491479068,"pid":19204,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:04:39 AM","message":"target not found."}
+{"level":60,"time":1748491819566,"pid":6812,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:10:19 AM","message":"target not found."}
+{"level":60,"time":1748491846320,"pid":6812,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:10:46 AM","message":"target not found."}
+{"level":60,"time":1748492261987,"pid":20408,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:17:41 AM","message":"target not found."}
+{"level":60,"time":1748492401049,"pid":17228,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:20:01 AM","message":"target not found."}
+{"level":60,"time":1748492401490,"pid":17228,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:134:19)","time":"5/29/2025 10:20:01 AM","message":"BranchClassSubjectsModel is not associated to BranchClassesModel!"}
+{"level":60,"time":1748492474540,"pid":17172,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:21:14 AM","message":"target not found."}
+{"level":60,"time":1748492475110,"pid":17172,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:134:19)","time":"5/29/2025 10:21:15 AM","message":"BranchClassesModel is not associated to BranchClassSubjectTeachersModel!"}
+{"level":60,"time":1748492503485,"pid":14068,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:21:43 AM","message":"target not found."}
+{"level":60,"time":1748492503936,"pid":14068,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:134:19)","time":"5/29/2025 10:21:43 AM","message":"BranchClassSubjectsModel is not associated to BranchClassesModel!"}
+{"level":60,"time":1748492788183,"pid":17180,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:26:28 AM","message":"target not found."}
+{"level":60,"time":1748492788711,"pid":17180,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:134:19)","time":"5/29/2025 10:26:28 AM","message":"BranchClassesModel is not associated to BranchClassRoutineDayTimesModel!"}
+{"level":60,"time":1748492824559,"pid":17900,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:27:04 AM","message":"target not found."}
+{"level":60,"time":1748492825046,"pid":17900,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_wise_class_routine.ts:134:19)","time":"5/29/2025 10:27:05 AM","message":"BranchClassSubjectsModel is not associated to BranchClassesModel!"}
+{"level":60,"time":1748492877217,"pid":17880,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:27:57 AM","message":"target not found."}
+{"level":60,"time":1748493255893,"pid":17880,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:34:15 AM","message":"target not found."}
+{"level":60,"time":1748493508306,"pid":17880,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:38:28 AM","message":"target not found."}
+{"level":60,"time":1748493659450,"pid":17880,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:40:59 AM","message":"target not found."}
+{"level":60,"time":1748493812390,"pid":17880,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:43:32 AM","message":"target not found."}
+{"level":60,"time":1748493882177,"pid":17880,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:44:42 AM","message":"target not found."}
+{"level":60,"time":1748494256986,"pid":20308,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:50:56 AM","message":"target not found."}
+{"level":60,"time":1748494259919,"pid":20308,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:50:59 AM","message":"target not found."}
+{"level":60,"time":1748494297374,"pid":20308,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:51:37 AM","message":"target not found."}
+{"level":60,"time":1748494344275,"pid":11292,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:52:24 AM","message":"target not found."}
+{"level":60,"time":1748494346606,"pid":11292,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:52:26 AM","message":"target not found."}
+{"level":60,"time":1748494391923,"pid":20872,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:53:11 AM","message":"target not found."}
+{"level":60,"time":1748494394632,"pid":20872,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:53:14 AM","message":"target not found."}
+{"level":60,"time":1748494517768,"pid":20752,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:55:17 AM","message":"target not found."}
+{"level":60,"time":1748494569416,"pid":18776,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:56:09 AM","message":"target not found."}
+{"level":60,"time":1748494737950,"pid":20968,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 10:58:57 AM","message":"target not found."}
+{"level":60,"time":1748495653192,"pid":20968,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:14:13 AM","message":"target not found."}
+{"level":60,"time":1748495852224,"pid":6620,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:17:32 AM","message":"target not found."}
+{"level":60,"time":1748496054332,"pid":6620,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:20:54 AM","message":"target not found."}
+{"level":60,"time":1748496167073,"pid":6620,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:22:47 AM","message":"target not found."}
+{"level":60,"time":1748496305123,"pid":6620,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:25:05 AM","message":"target not found."}
+{"level":60,"time":1748496437329,"pid":21472,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:27:17 AM","message":"target not found."}
+{"level":60,"time":1748496501075,"pid":21472,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:28:21 AM","message":"target not found."}
+{"level":60,"time":1748496651855,"pid":21472,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:30:51 AM","message":"target not found."}
+{"level":60,"time":1748496755227,"pid":21472,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:32:35 AM","message":"target not found."}
+{"level":60,"time":1748496761509,"pid":21472,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:32:41 AM","message":"target not found."}
+{"level":60,"time":1748496801491,"pid":21472,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:33:21 AM","message":"target not found."}
+{"level":60,"time":1748497028831,"pid":21472,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:37:08 AM","message":"target not found."}
+{"level":60,"time":1748497094405,"pid":21472,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:38:14 AM","message":"target not found."}
+{"level":60,"time":1748497138751,"pid":21472,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:38:58 AM","message":"target not found."}
+{"level":60,"time":1748497732057,"pid":8056,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:48:52 AM","message":"target not found."}
+{"level":60,"time":1748497782623,"pid":17076,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:49:42 AM","message":"target not found."}
+{"level":60,"time":1748497854662,"pid":17076,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:50:54 AM","message":"target not found."}
+{"level":60,"time":1748498166244,"pid":20384,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 11:56:06 AM","message":"target not found."}
+{"level":60,"time":1748498486724,"pid":18084,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 12:01:26 PM","message":"target not found."}
+{"level":60,"time":1748498609567,"pid":18280,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 12:03:29 PM","message":"target not found."}
+{"level":60,"time":1748498717894,"pid":17540,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 12:05:17 PM","message":"target not found."}
+{"level":60,"time":1748498718592,"pid":17540,"hostname":"DESKTOP-I0UCE3Q","file":"services\\teacher_pending_tasks.ts:104:15)","time":"5/29/2025 12:05:18 PM","message":"Invalid value {\n  order: [ [Array] ],\n  where: { status: 'active', is_complete: 'pending', teacher_id: 1 },\n  include: [ [Object] ],\n  attributes: { include: [Array], exclude: [Array] }\n}"}
+{"level":60,"time":1748499241890,"pid":15040,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 12:14:01 PM","message":"target not found."}
+{"level":60,"time":1748499292157,"pid":15040,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 12:14:52 PM","message":"target not found."}
+{"level":60,"time":1748499294772,"pid":15040,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 12:14:54 PM","message":"target not found."}
+{"level":60,"time":1748499329730,"pid":15040,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 12:15:29 PM","message":"target not found."}
+{"level":60,"time":1748499346999,"pid":15040,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 12:15:46 PM","message":"target not found."}
+{"level":60,"time":1748499376658,"pid":15040,"hostname":"DESKTOP-I0UCE3Q","file":"","time":"5/29/2025 12:16:16 PM","message":"target not found."}

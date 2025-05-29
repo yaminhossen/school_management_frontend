@@ -1,4 +1,4 @@
-@hostname = http://127.0.0.1:5003/api/v1/branch-class-routine-day-times
+@hostname = http://127.0.0.1:5002/api/v1/branch-class-routine-day-times
 
 # all
 ###

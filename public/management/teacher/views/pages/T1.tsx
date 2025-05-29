@@ -7,7 +7,9 @@ export interface Props {}
 
 const T1: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    const [data, setData] = useState();
+    const [noticeData, setNoticeData] = useState();
+    const [taskData, setTaskData] = useState();
+    const [meetingData, setMeetingData] = useState();
     const [accdemicCalander, setAccademicCalander] = useState<any[]>([]);
     // console.log(accdemicCalander);
 
@@ -24,10 +26,31 @@ const T1: React.FC<Props> = (props: Props) => {
     const month = selectedMoment.format('MMM').toLowerCase(); // e.g., "jan"
     const year = selectedMoment.format('YYYY'); // e.g., "2025"
     const formattedDate = `${month}-${year}`;
-    const fetchData = async () => {
+    const fetchNoticeData = async () => {
         try {
-            const response = await axios.get('/api/v1/notices/user/students');
-            setData(response.data.data);
+            const response = await axios.get('/api/v1/notices/user/teachers');
+            setNoticeData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+    const fetchTaskData = async () => {
+        try {
+            const response = await axios.get('/api/v1/tasks/teacher/pending');
+            setTaskData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    const fetchMeetingData = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/meeting-agendas/teacher/meetings',
+            );
+            setMeetingData(response.data.data);
             // setData(response.data);
         } catch (error) {
             setError(error);
@@ -35,9 +58,11 @@ const T1: React.FC<Props> = (props: Props) => {
     };
 
     useEffect(() => {
-        fetchData();
+        fetchNoticeData();
+        fetchTaskData();
+        fetchMeetingData();
     }, []);
-    console.log(data);
+    console.log('notice data', noticeData);
     let days = [
         'saturday',
         'sunday',
@@ -129,20 +154,16 @@ const T1: React.FC<Props> = (props: Props) => {
             >
                 {[
                     {
-                        title: 'নোটিশ',
-                        value: 7,
+                        title: 'Notices',
+                        value: noticeData?.length,
                     },
                     {
-                        title: 'বাড়ির কাজ',
-                        value: 2,
+                        title: 'Tasks',
+                        value: taskData?.length,
                     },
                     {
-                        title: 'এই মাসের উপস্থিতি',
-                        value: '78 / 88',
-                    },
-                    {
-                        title: 'উপস্থিতি %',
-                        value: 89,
+                        title: 'Mettings',
+                        value: meetingData?.length,
                     },
                 ].map((i) => {
                     return (

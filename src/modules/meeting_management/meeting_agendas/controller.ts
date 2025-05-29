@@ -15,12 +15,20 @@ import destroy from './services/destroy';
 import data_import from './services/import';
 import meeting_all from './services/meeting_all';
 import teacher_all from './services/teacher_all';
+import teacher_all_meetings from './services/teacher_all_meetings';
 import admission_officer_all from './services/admission_officer_all';
 
 export default function (fastify: FastifyInstance) {
     return {
         all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all(fastify, req);
+            res.code(data.status).send(data);
+        },
+        teacher_all_meetings: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await teacher_all_meetings(fastify, req);
             res.code(data.status).send(data);
         },
         teacher_all: async function (req: FastifyRequest, res: FastifyReply) {

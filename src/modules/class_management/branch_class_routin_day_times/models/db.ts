@@ -1,19 +1,20 @@
-import {
-    // Model,
-    Sequelize,
-} from 'sequelize';
+import { Sequelize } from 'sequelize';
 import * as branch_class_routine_day_times_model from './branch_class_routine_day_times_model';
-// import * as project_model from '../../user_admin copy/models/project_model';
+import * as branch_class_subject_teachers_model from './branch_class_subject_teachers_model';
+import * as branch_building_rooms_model from './branche_building_rooms_model';
+import * as branch_class_subjects_model from './branch_class_subjects_model';
+import * as branch_class_teachers_model from './user_teacher_model';
+import * as branch_classes_model from './branch_classes_model';
 require('dotenv').config();
 
 let host = process?.env.DB_HOST || '';
-let post = process?.env.DB_PORT || '';
+let port = process?.env.DB_PORT || '';
 let user = process?.env.DB_USER || '';
 let pass = process?.env.DB_PASSWORD || '';
 let database = process?.env.DB_DATABASE || '';
 
 const sequelize = new Sequelize(
-    `mysql://${user}:${pass}@${host}:${post}/${database}`,
+    `mysql://${user}:${pass}@${host}:${port}/${database}`,
     {
         logging: false,
     },
@@ -21,47 +22,96 @@ const sequelize = new Sequelize(
 
 interface models {
     BranchClassRoutineDayTimesModel: typeof branch_class_routine_day_times_model.DataModel;
-    // Project: typeof project_model.DataModel;
+    BranchClassSubjectTeachersModel: typeof branch_class_subject_teachers_model.DataModel;
+    BranchBuildingRoomsModel: typeof branch_building_rooms_model.DataModel;
+    BranchClassSubjectsModel: typeof branch_class_subjects_model.DataModel;
+    BranchClassTeachersModel: typeof branch_class_teachers_model.DataModel;
+    BranchClassesModel: typeof branch_classes_model.DataModel;
     sequelize: Sequelize;
 }
+
 const db = async function (): Promise<models> {
     const BranchClassRoutineDayTimesModel =
         branch_class_routine_day_times_model.init(sequelize);
-    // const Project = project_model.init(sequelize);
+    const BranchClassSubjectTeachersModel =
+        branch_class_subject_teachers_model.init(sequelize);
+    const BranchBuildingRoomsModel =
+        branch_building_rooms_model.init(sequelize);
+    const BranchClassSubjectsModel =
+        branch_class_subjects_model.init(sequelize);
+    const BranchClassTeachersModel =
+        branch_class_teachers_model.init(sequelize);
+    const BranchClassesModel = branch_classes_model.init(sequelize);
 
     await sequelize.sync();
 
-    // Project.hasOne(User, {
-    //     sourceKey: 'user_id',
-    //     foreignKey: 'id',
-    //     as: 'user',
-    // });
+    // Define associations
+    BranchClassRoutineDayTimesModel.belongsTo(BranchClassTeachersModel, {
+        foreignKey: 'branch_teacher_id',
+        as: 'teacher',
+    });
 
-    // User.hasMany(Project, {
-    //     sourceKey: 'id',
-    //     foreignKey: 'user_id',
-    //     as: 'projects',
-    // });
+    // Each routine slot belongs to a subject
+    BranchClassRoutineDayTimesModel.belongsTo(BranchClassSubjectsModel, {
+        foreignKey: 'branch_class_subject_id',
+        as: 'subject',
+    });
 
-    // User.hasOne(Project, {
-    //     sourceKey: 'id',
-    //     foreignKey: 'user_id',
-    //     as: 'project',
-    // });
+    // Each routine slot belongs to a room
+    BranchClassRoutineDayTimesModel.belongsTo(BranchBuildingRoomsModel, {
+        foreignKey: 'branch_class_room_id',
+        as: 'room',
+    });
 
-    // Project.belongsToMany(User, {
-    //     through: 'project_user',
-    // });
-    // User.belongsToMany(Project, {
-    //     through: 'project_user',
-    // });
+    // Each routine slot belongs to a class (via branch_class_id, assuming branch_class_routine_id relates to BranchClassesModel)
+    BranchClassRoutineDayTimesModel.belongsTo(BranchClassesModel, {
+        foreignKey: 'branch_class_id',
+        as: 'class',
+    });
+
+    // BranchClassTeachersModel relationships
+    // Each teacher belongs to a class
+    BranchClassTeachersModel.belongsTo(BranchClassesModel, {
+        foreignKey: 'branch_class_id',
+        as: 'class',
+    });
+
+    // BranchClassSubjectsModel relationships
+    // Each subject belongs to a class
+    BranchClassSubjectsModel.belongsTo(BranchClassesModel, {
+        foreignKey: 'branch_class_id',
+        as: 'class',
+    });
+
+    // BranchClassSubjectTeachersModel relationships
+    // Each subject-teacher assignment belongs to a class
+    BranchClassSubjectTeachersModel.belongsTo(BranchClassesModel, {
+        foreignKey: 'branch_class_id',
+        as: 'class',
+    });
+
+    // Each subject-teacher assignment belongs to a teacher
+    BranchClassSubjectTeachersModel.belongsTo(BranchClassTeachersModel, {
+        foreignKey: 'branch_teacher_id',
+        as: 'teacher',
+    });
+
+    // Each subject-teacher assignment belongs to a subject
+    BranchClassSubjectTeachersModel.belongsTo(BranchClassSubjectsModel, {
+        foreignKey: 'branch_class_subject_id',
+        as: 'subject',
+    });
 
     let models: models = {
         BranchClassRoutineDayTimesModel,
-        // Project,
-
+        BranchClassSubjectTeachersModel,
+        BranchBuildingRoomsModel,
+        BranchClassSubjectsModel,
+        BranchClassTeachersModel,
+        BranchClassesModel,
         sequelize,
     };
     return models;
 };
+
 export default db;
