@@ -1469,8 +1469,8 @@ const Index: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group student_submit form-horizontal">
-                        <label></label>
-                        <div className="form_elements">
+                        {/* <label></label> */}
+                        <div className="form_elementss">
                             <button
                                 onClick={handle_submit}
                                 type="button"

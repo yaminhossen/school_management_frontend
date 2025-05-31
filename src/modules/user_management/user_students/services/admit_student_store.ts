@@ -25,6 +25,12 @@ async function validate(req: Request, models: any) {
         .withMessage('the session field is required')
         .run(req);
 
+    await body('section')
+        .not()
+        .isEmpty()
+        .withMessage('the section field is required')
+        .run(req);
+
     await body('email')
         .not()
         .isEmpty()

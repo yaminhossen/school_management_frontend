@@ -23,3 +23,9 @@
 {"level":60,"time":1748518568413,"pid":17016,"hostname":"DESKTOP-9421701","file":"","time":"5/29/2025 5:36:08 PM","message":"target not found."}
 {"level":60,"time":1748518568772,"pid":17016,"hostname":"DESKTOP-9421701","file":"","time":"5/29/2025 5:36:08 PM","message":"target not found."}
 {"level":60,"time":1748518569125,"pid":17016,"hostname":"DESKTOP-9421701","file":"","time":"5/29/2025 5:36:09 PM","message":"target not found."}
+{"level":60,"time":1748518642792,"pid":15696,"hostname":"DESKTOP-9421701","file":"","time":"5/29/2025 5:37:22 PM","message":"target not found."}
+{"level":60,"time":1748518643720,"pid":15696,"hostname":"DESKTOP-9421701","file":"","time":"5/29/2025 5:37:23 PM","message":"target not found."}
+{"level":60,"time":1748664954147,"pid":17356,"hostname":"DESKTOP-9421701","file":"","time":"5/31/2025 10:15:54 AM","message":"Incorrect integer value: '' for column 's_class' at row 1"}
+{"level":60,"time":1748664976771,"pid":17356,"hostname":"DESKTOP-9421701","file":"","time":"5/31/2025 10:16:16 AM","message":"Incorrect integer value: '' for column 's_class' at row 1"}
+{"level":60,"time":1748665014473,"pid":17356,"hostname":"DESKTOP-9421701","file":"","time":"5/31/2025 10:16:54 AM","message":"target not found."}
+{"level":60,"time":1748665067753,"pid":17356,"hostname":"DESKTOP-9421701","file":"","time":"5/31/2025 10:17:47 AM","message":"Incorrect integer value: '' for column 'branch_class_section_id' at row 1"}
