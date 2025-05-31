@@ -1026,7 +1026,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 {
                                                                     errors
                                                                         .parents[
-                                                                            index
+                                                                        index
                                                                         ]
                                                                 }
                                                             </p>
