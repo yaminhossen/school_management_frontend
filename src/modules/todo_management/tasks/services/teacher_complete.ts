@@ -122,7 +122,7 @@ async function teacher_complete(
                 as: 'tasks',
                 where: {
                     status: 'active',
-                    is_complete: 'completed',
+                    // is_complete: 'completed',
                 },
             },
         ],

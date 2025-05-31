@@ -61,11 +61,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="Course Materials"
                 />
 
-                <MenuSingle
+                {/* <MenuSingle
                     to="/exam-routine"
                     icon="icon-clipboard"
                     label="Exam Routine"
-                />
+                /> */}
                 {/* <MenuSingle
                     to="/hall-guard-routine"
                     icon="icon-clipboard"

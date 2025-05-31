@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -7,34 +7,34 @@ const Index: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <h3 className="table_heading"></h3>
             <div className="content_body">
-                <Link
+                <NavLink
                     to="/leave-application/create"
                     className="btn btn-sm btn-outline-info mb-2 mr-2"
                     type="submit"
                 >
                     Create
-                </Link>
-                <Link
+                </NavLink>
+                <NavLink
                     to="/leave-application/approved"
                     className="btn btn-sm btn-outline-info mb-2 mr-2"
                     type="submit"
                 >
                     Approved
-                </Link>
-                <Link
+                </NavLink>
+                <NavLink
                     to="/leave-application/rejected"
                     className="btn btn-sm btn-outline-info mb-2 mr-2"
                     type="submit"
                 >
                     Rejected
-                </Link>
-                <Link
+                </NavLink>
+                <NavLink
                     to="/leave-application/pending"
                     className="btn btn-sm btn-outline-info mb-2 mr-2"
                     type="submit"
                 >
                     Pending
-                </Link>
+                </NavLink>
                 <div className="info-table table-responsive">
                     <Outlet></Outlet>
                 </div>
