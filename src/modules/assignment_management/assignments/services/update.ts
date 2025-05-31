@@ -24,11 +24,11 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the description field is required')
         .run(req);
-    await body('assignment_categories_id')
-        .not()
-        .isEmpty()
-        .withMessage('the assignment_categories_id field is required')
-        .run(req);
+    // await body('assignment_categories_id')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the assignment_categories_id field is required')
+    //     .run(req);
     await body('mark')
         .not()
         .isEmpty()

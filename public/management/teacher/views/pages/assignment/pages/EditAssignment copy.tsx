@@ -3,21 +3,31 @@ import { anyObject } from '../../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
-import BackButton from './BackButton';
 export interface Props {}
 
-const CreateAssignment: React.FC<Props> = (props: Props) => {
+const EditAssignment: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<any>([]);
     const [classes, setClasses] = useState<any>([]);
     const [subjects, setSubjects] = useState<any>([]);
     const [categories, setCategories] = useState<any>([]);
+    const selectRef = useRef<HTMLSelectElement>(null);
+    const selectRef2 = useRef<HTMLSelectElement>(null);
+    const selectRef3 = useRef<HTMLSelectElement>(null);
     const { id } = useParams();
 
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`/api/v1/assignments/${id}`);
+            setData(response.data.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
     const fetchClasses = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/class-wise-teacher`,
+                `/api/v1/branch-classes/all-class`,
             );
             setClasses(response.data.data);
         } catch (error) {
@@ -35,18 +45,27 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
         }
     };
 
+    async function init_data() {
+        await fetchData();
+        await fetchCategories();
+        await fetchClasses();
+    }
+
     useEffect(() => {
-        fetchCategories();
-        fetchClasses();
+        init_data();
     }, []);
+    // useEffect(() => {
+    //     fetchData();
+    //     fetchCategories();
+    //     fetchClasses();
+    // }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         let formData = new FormData(e.target);
-        console.log('formData', formData);
         try {
             const response = await axios.post(
-                '/api/v1/assignments/store',
+                '/api/v1/assignments/update',
                 formData,
             );
             // here use toastar
@@ -56,25 +75,43 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
         }
     };
 
-    const handleChange = async (
-        event: React.ChangeEvent<HTMLSelectElement>,
-    ) => {
-        let id = event.target.value;
+    const handleChange = async () => {
+        // let id2 = event.target.value;
+        // console.log('evetn id', id2);
+        let value = selectRef?.current?.value;
+        console.log('select ref value', Number(value));
+
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/class-wise-subject/${id}`,
+                `/api/v1/branch-class-subjects/class-wise-subject/${Number(value)}`,
             );
             setSubjects(response.data.data);
         } catch (error) {
             setError(error);
         }
-        console.log('Selected value:', event.target.value);
     };
-    console.log('Selected dataaa:', subjects);
+
+    useEffect(() => {
+        if (selectRef.current && data) {
+            selectRef.current.value = data.class_id; // Set value after render
+            handleChange();
+        }
+    }, [classes]);
+
+    useEffect(() => {
+        if (selectRef2.current && data) {
+            selectRef2.current.value = data.subject_id; // Set value after render
+        }
+    }, [subjects]);
+
+    useEffect(() => {
+        if (selectRef3.current && data) {
+            selectRef3.current.value = data.assignment_categories_id; // Set value after render
+        }
+    }, [categories]);
     return (
         <div className="admin_dashboard">
-            <h3>Create</h3>
-            <BackButton></BackButton>
+            <h3>Edit</h3>
             <div className="content_body">
                 <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
@@ -82,11 +119,12 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
                         <div className="form_elements">
                             <select
                                 name="class"
+                                // defaultValue={data.class_id}
                                 id=""
-                                value={data.class_id}
+                                ref={selectRef}
                                 onChange={handleChange}
                             >
-                                <option value="">Select class</option>
+                                {/* <option value={data.class_id}></option> */}
                                 {classes.map((i, index) => {
                                     return (
                                         <option value={i.id}>{i.name}</option>
@@ -103,8 +141,13 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
                     <div className="form-group form-horizontal">
                         <label>Subject</label>
                         <div className="form_elements">
-                            <select name="subject" id="">
-                                <option value="">Select subject</option>
+                            <select
+                                name="subject"
+                                // defaultValue={data.subject_id}
+                                id=""
+                                ref={selectRef2}
+                            >
+                                {/* <option value={data.class_id}></option> */}
                                 {subjects.map((i, index) => {
                                     return (
                                         <option value={i.id}>{i.name}</option>
@@ -113,13 +156,15 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
                             </select>
                         </div>
                     </div>
-                    {/* <div className="form-group form-horizontal">
+                    <div className="form-group form-horizontal">
                         <label>Category</label>
                         <div className="form_elements">
-                            <select name="assignment_categories_id" id="">
-                                <option
-                                    value={data.assignment_categories_id}
-                                ></option>
+                            <select
+                                name="assignment_categories_id"
+                                // defaultValue={data.assignment_categories_id}
+                                id=""
+                                ref={selectRef3}
+                            >
                                 {categories.map((i, index) => {
                                     return (
                                         <option value={i.id}>{i.title}</option>
@@ -127,7 +172,7 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
                                 })}
                             </select>
                         </div>
-                    </div> */}
+                    </div>
                     <div className="form-group form-horizontal">
                         <label>Title</label>
                         <div className="form_elements">
@@ -135,6 +180,7 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
                                 type="text"
                                 placeholder="title"
                                 name="title"
+                                defaultValue={data.title}
                             />
                         </div>
                     </div>
@@ -144,6 +190,7 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
                             <textarea
                                 placeholder="description"
                                 name="description"
+                                defaultValue={data.description}
                             />
                         </div>
                     </div>
@@ -156,7 +203,11 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
                     <div className="form-group form-horizontal">
                         <label>Mark</label>
                         <div className="form_elements">
-                            <input type="number" name="mark" />
+                            <input
+                                type="number"
+                                name="mark"
+                                defaultValue={data.mark}
+                            />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
@@ -185,4 +236,4 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default CreateAssignment;
+export default EditAssignment;

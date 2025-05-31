@@ -39,12 +39,13 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.teacher_classes,
         )
         .get(
-            `${prefix}/class-wise-subject/:id`,
-            controllerInstance.class_wise_subject,
+            `${prefix}/class-wise-teacher`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.class_wise_teacher,
         )
         .get(
-            `${prefix}/class-wise-teacher`,
-            controllerInstance.class_wise_teacher,
+            `${prefix}/class-wise-subject/:id`,
+            controllerInstance.class_wise_subject,
         )
         .post(`${prefix}/store`, controllerInstance.store)
         .post(`${prefix}/update`, controllerInstance.update)

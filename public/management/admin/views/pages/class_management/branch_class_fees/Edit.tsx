@@ -49,6 +49,7 @@ const Edit: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, [state.item.branch_class_id]);
+
     const handleChange = async (
         event: React.ChangeEvent<HTMLSelectElement>,
     ) => {
