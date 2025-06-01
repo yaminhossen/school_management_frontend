@@ -13,7 +13,8 @@ module.exports = async function (fastify: FastifyInstance) {
             `${prefix}/notice-categorys`,
             controllerInstance.all_notice_categorys,
         )
-        .get(`${prefix}/user/:user`, controllerInstance.user_notices)
+        .get(`${prefix}/user/:user`, controllerInstance.notices)
+        .get(`${prefix}/all/:user`, controllerInstance.user_notices)
         .post(
             `${prefix}/store`,
             { preHandler: [auth_middleware] },

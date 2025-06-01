@@ -28,7 +28,7 @@ const T1: React.FC<Props> = (props: Props) => {
     const fetchNoticeCount = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/notices/user/admission-officer',
+                '/api/v1/notices/all/admission-officer',
             );
             setNoticeCount(response.data.data.length);
         } catch (error) {

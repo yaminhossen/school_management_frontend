@@ -8,6 +8,7 @@ import student_add_new from '../views/pages/add_new/config/store';
 import student_payments from '../views/pages/payment/config/store';
 import meeting_agendas from '../views/pages/meeting_agendas/config/store';
 import tasks from '../views/pages/tasks/config/store';
+import notices from '../views/pages/notices/config/store';
 
 const store = configureStore({
     reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
         common_store: commonStore.reducer,
         meeting_agendas: meeting_agendas.reducer,
         tasks: tasks.reducer,
+        notices: notices.reducer,
     },
     devTools: true,
 });

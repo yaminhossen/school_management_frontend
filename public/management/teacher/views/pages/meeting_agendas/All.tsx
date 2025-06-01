@@ -134,15 +134,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                             {i.id}
                                                         </span>
                                                     </td>
-                                                    {/* <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td> */}
                                                     <td>{i.title}</td>
                                                     <td>{i.description}</td>
                                                     <td>
@@ -157,45 +148,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                         ).format('hh:mm A')}
                                                     </td>
                                                     <td>{i.meeting_type}</td>
-                                                    {/* <td>
-                                                        {i.meeting_link ? (
-                                                            moment(
-                                                                i.date,
-                                                            ).format(
-                                                                'YYYY-MM-DD',
-                                                            ) === today &&
-                                                            moment().isBetween(
-                                                                moment(
-                                                                    `${i.date} ${i.time}`,
-                                                                    'YYYY-MM-DD HH:mm:ss',
-                                                                ).subtract(
-                                                                    10,
-                                                                    'minutes',
-                                                                ),
-                                                                moment(
-                                                                    `${i.date} ${i.time}`,
-                                                                    'YYYY-MM-DD HH:mm:ss',
-                                                                ).add(
-                                                                    4,
-                                                                    'hour',
-                                                                ),
-                                                            ) ? (
-                                                                <a
-                                                                    href={
-                                                                        i.meeting_link
-                                                                    }
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                >
-                                                                    Click Here
-                                                                    </a>
-                                                            ) : (
-                                                                'Link active 10 mins before on meeting times'
-                                                            )
-                                                        ) : (
-                                                            'Offline meeting'
-                                                        )}
-                                                    </td> */}
                                                     <td>
                                                         {i.meeting_link ? (
                                                             moment(
@@ -249,31 +201,8 @@ const All: React.FC<Props> = (props: Props) => {
                                                             'Offline meeting'
                                                         )}
                                                     </td>
-
-                                                    {/* <td>
-                                                        {i.meeting_link ? (
-                                                            <a
-                                                                href={
-                                                                    i.meeting_link
-                                                                }
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                            >
-                                                                {moment(
-                                                                    i.date,
-                                                                ).format(
-                                                                    'YYYY-MM-DD',
-                                                                ) == today
-                                                                    ? i.meeting_link
-                                                                    : 'have more days'}
-                                                            </a>
-                                                        ) : (
-                                                            'Offline meeting'
-                                                        )}
-                                                    </td> */}
                                                     <td>
                                                         <Link
-                                                            // to="/students/single/student/"
                                                             to={`/${setup.route_prefix}/details/${i.id}`}
                                                         >
                                                             Show
@@ -297,7 +226,7 @@ const All: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                <TableFooter></TableFooter>
+                {/* <TableFooter></TableFooter> */}
             </div>
 
             <Filter></Filter>

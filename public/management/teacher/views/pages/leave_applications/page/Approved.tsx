@@ -35,7 +35,11 @@ const Approved: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(storeSlice.actions.set_select_fields('id, status'));
+        dispatch(
+            storeSlice.actions.set_select_fields(
+                'id, status, attachments, start_date, end_date, leave_status, total_days',
+            ),
+        );
         dispatch(approved({}) as any);
     }, []);
 
@@ -100,8 +104,18 @@ const Approved: React.FC<Props> = (props: Props) => {
                                             sort={false}
                                         />
                                         <TableHeading
-                                            label={`Date`}
-                                            col_name={`date`}
+                                            label={`Start date`}
+                                            col_name={`start date`}
+                                            sort={false}
+                                        />
+                                        <TableHeading
+                                            label={`End date`}
+                                            col_name={`end date`}
+                                            sort={false}
+                                        />
+                                        <TableHeading
+                                            label={`Total days`}
+                                            col_name={`total days`}
                                             sort={false}
                                         />
                                         <TableHeading
@@ -111,59 +125,86 @@ const Approved: React.FC<Props> = (props: Props) => {
                                         />
                                     </tr>
                                 </thead>
-                                <tbody id="all_list">
-                                    {(state?.all as any)?.data?.map(
-                                        (i: { [key: string]: any }, index) => {
-                                            return (
-                                                <tr
-                                                    key={i.id}
-                                                    className={`table_rows table_row_${i.id}`}
+                                {(state.all as any)?.data?.length ? (
+                                    <tbody id="all_list">
+                                        {(state?.all as any)?.data?.map(
+                                            (
+                                                i: { [key: string]: any },
+                                                index,
+                                            ) => {
+                                                return (
+                                                    <tr
+                                                        key={i.id}
+                                                        className={`table_rows table_row_${i.id}`}
+                                                    >
+                                                        <td>
+                                                            <span
+                                                                className="quick_view_trigger"
+                                                                // onClick={() =>
+                                                                //     quick_view(i)
+                                                                // }
+                                                            >
+                                                                {index + 1}
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            {
+                                                                i.leave_type
+                                                                    ?.title
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            {
+                                                                i.leave_type
+                                                                    ?.description
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            {moment(
+                                                                i.start_date,
+                                                            ).format(
+                                                                'YYYY-MM-DD',
+                                                            )}
+                                                        </td>
+                                                        <td>
+                                                            {moment(
+                                                                i.end_date,
+                                                            ).format(
+                                                                'YYYY-MM-DD',
+                                                            )}
+                                                        </td>
+                                                        <td>{i.total_days}</td>
+                                                        <td>
+                                                            <a
+                                                                href={
+                                                                    i.attachments ||
+                                                                    undefined
+                                                                }
+                                                            >
+                                                                show
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            },
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
                                                 >
-                                                    <td>
-                                                        <span
-                                                            className="quick_view_trigger"
-                                                            // onClick={() =>
-                                                            //     quick_view(i)
-                                                            // }
-                                                        >
-                                                            {index + 1}
-                                                        </span>
-                                                    </td>
-                                                    <td>{i.leave_type?.title}</td>
-                                                    <td>
-                                                        {i.leave_type?.description}
-                                                    </td>
-                                                    <td>
-                                                        {moment(
-                                                            i.leave_type?.created_at,
-                                                        ).format('YYYY-MM-DD')}
-                                                    </td>
-                                                    <td>
-                                                        <button
-                                                            // onClick={() =>
-                                                            //     handleConfirmSubmit(
-                                                            //         i.tasks?.id,
-                                                            //     )
-                                                            // }
-                                                            className="btn btn-sm btn-outline-info"
-                                                        >
-                                                            Done
-                                                        </button>
-
-                                                        <Link
-                                                            // to="/students/single/student/"
-                                                            to={`/${setup.route_prefix}/details/${i.id}`}
-                                                            className="btn btn-sm  btn-outline-info ml-2"
-                                                            type="submit"
-                                                        >
-                                                            Show
-                                                        </Link>
-                                                    </td>
-                                                </tr>
-                                            );
-                                        },
-                                    )}
-                                </tbody>
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 
@@ -177,7 +218,7 @@ const Approved: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                <TableFooter></TableFooter>
+                {/* <TableFooter></TableFooter> */}
             </div>
 
             <Filter></Filter>

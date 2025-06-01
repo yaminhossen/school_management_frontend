@@ -61,30 +61,47 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody id="all_list">
-                                {state.item?.length &&
-                                    state.item?.map(
-                                        (i: { [key: string]: any }) => {
-                                            return (
-                                                <tr>
-                                                    <td></td>
-                                                    <td>{i.id}</td>
-                                                    <td>{i.name}</td>
-                                                    <td>{i?.count}</td>
-                                                    <td>
-                                                        <Link
-                                                            to={`/students/details/${i.id}`}
-                                                            className="btn btn-sm  btn-outline-info"
-                                                            type="submit"
-                                                        >
-                                                            Details
-                                                        </Link>
-                                                    </td>
-                                                </tr>
-                                            );
-                                        },
-                                    )}
-                            </tbody>
+                            {state.item?.length ? (
+                                <tbody id="all_list">
+                                    {state.item?.length &&
+                                        state.item?.map(
+                                            (i: { [key: string]: any }) => {
+                                                return (
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>{i.id}</td>
+                                                        <td>{i.name}</td>
+                                                        <td>{i?.count}</td>
+                                                        <td>
+                                                            <Link
+                                                                to={`/students/details/${i.id}`}
+                                                                className="btn btn-sm  btn-outline-info"
+                                                                type="submit"
+                                                            >
+                                                                Details
+                                                            </Link>
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            },
+                                        )}
+                                </tbody>
+                            ) : (
+                                <tbody>
+                                    <tr>
+                                        <td colSpan={9}>
+                                            <div
+                                                style={{
+                                                    fontSize: '24px',
+                                                }}
+                                                className="not_found f-size-4 m-4"
+                                            >
+                                                No data found
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            )}
                         </table>
                     </div>
                 </div>

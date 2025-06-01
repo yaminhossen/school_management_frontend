@@ -76,6 +76,11 @@ async function teachers_approved(
             [Op.or]: [
                 { leave_status: { [Op.like]: `%${search_key}%` } },
                 { '$leave_type.title$': { [Op.like]: `%${search_key}%` } },
+                {
+                    '$leave_type.description$': {
+                        [Op.like]: `%${search_key}%`,
+                    },
+                },
                 { status: { [Op.like]: `%${search_key}%` } },
                 { id: { [Op.like]: `%${search_key}%` } },
             ],

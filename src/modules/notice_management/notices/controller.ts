@@ -15,6 +15,7 @@ import destroy from './services/destroy';
 import data_import from './services/import';
 import user_notices from './services/notice_for_users';
 import all_notice_categorys from './services/all_notice_categorys';
+import notices from './services/notices';
 // import student_notices from './services/student_notices';
 
 export default function (fastify: FastifyInstance) {
@@ -76,6 +77,10 @@ export default function (fastify: FastifyInstance) {
         },
         user_notices: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await user_notices(fastify, req);
+            res.code(data.status).send(data);
+        },
+        notices: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await notices(fastify, req);
             res.code(data.status).send(data);
         },
 

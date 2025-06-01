@@ -23,6 +23,7 @@ const HeadSearchComplete: React.FC<Props> = (props: Props) => {
         if (search_input.current) {
             search_key = search_input.current.value;
             dispatch(storeSlice.actions.set_search_key(search_key) as any);
+            dispatch(storeSlice.actions.set_page(1) as any);
             dispatch(teacher_complete({}) as any);
         }
     }, 1000);

@@ -31,14 +31,14 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.teachers_approved,
         )
         .get(
-            `${prefix}/teacher-pending`,
-            { preHandler: [auth_middleware] },
-            controllerInstance.teacher_pending,
-        )
-        .get(
             `${prefix}/teacher-rejected`,
             { preHandler: [auth_middleware] },
-            controllerInstance.teacher_rejected,
+            controllerInstance.teachers_rejected,
+        )
+        .get(
+            `${prefix}/teacher-pending`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.teachers_pending,
         )
         .get(
             `${prefix}/staff/:type`,

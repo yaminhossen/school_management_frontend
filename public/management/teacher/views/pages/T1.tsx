@@ -24,19 +24,19 @@ const T1: React.FC<Props> = (props: Props) => {
     const month = selectedMoment.format('MMM').toLowerCase(); // e.g., "jan"
     const year = selectedMoment.format('YYYY'); // e.g., "2025"
     const formattedDate = `${month}-${year}`;
-    const fetchData = async () => {
-        try {
-            const response = await axios.get('/api/v1/notices/user/students');
-            setData(response.data.data);
-            // setData(response.data);
-        } catch (error) {
-            setError(error);
-        }
-    };
+    // const fetchData = async () => {
+    //     try {
+    //         const response = await axios.get('/api/v1/notices/user/students');
+    //         setData(response.data.data);
+    //         // setData(response.data);
+    //     } catch (error) {
+    //         setError(error);
+    //     }
+    // };
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
     console.log(data);
     let days = [
         'saturday',
