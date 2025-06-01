@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom';
 import storeSlice from '.././config/store';
 import moment from 'moment/moment';
 import HeaderComplete from '../components/management_data_page/HeaderComplete';
+import BackButton from './BackButton';
 export interface Props {}
 
 const DetailsComplete: React.FC<Props> = (props: Props) => {

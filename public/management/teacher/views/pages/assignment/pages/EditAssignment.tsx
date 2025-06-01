@@ -61,7 +61,7 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
     const fetchSubjects = async (e) => {
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/class-wise-subject/${Number(e)}`,
+                `/api/v1/branch-classes/class-wise-subject/${Number(e)}`,
             );
             setSubjects(response.data.data);
         } catch (error) {
@@ -79,7 +79,7 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
         let id = event.target.value;
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/class-wise-subject/${id}`,
+                `/api/v1/branch-classes/class-wise-subject/${id}`,
             );
             setSubjects(response.data.data);
         } catch (error) {
@@ -89,7 +89,7 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
-            <h3>Edit</h3>
+            <h3>Edit okkkkkk</h3>
             <BackButton></BackButton>
             <div className="content_body">
                 <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">

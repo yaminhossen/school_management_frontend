@@ -10,6 +10,7 @@ import { initialState } from '.././config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from '.././config/store';
 import moment from 'moment/moment';
+import BackButton from './BackButton';
 export interface Props {}
 
 const Details: React.FC<Props> = (props: Props) => {
@@ -28,6 +29,7 @@ const Details: React.FC<Props> = (props: Props) => {
     return (
         <>
             <div className="page_content">
+                <BackButton></BackButton>
                 <div className="explore_window fixed_size">
                     <Header page_title={setup.details_page_title}></Header>
 

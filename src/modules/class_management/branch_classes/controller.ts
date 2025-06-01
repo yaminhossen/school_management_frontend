@@ -16,6 +16,7 @@ import all_class from './services/all_class';
 import data_import from './services/import';
 import branch_class_wise_student from './services/branch_class_wise_student';
 import class_routine from './services/class_routine';
+import class_wise_subject from './services/class_wise_subject';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -47,6 +48,14 @@ export default function (fastify: FastifyInstance) {
 
         class_routine: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await class_routine(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        class_wise_subject: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await class_wise_subject(fastify, req);
             res.code(data.status).send(data);
         },
 

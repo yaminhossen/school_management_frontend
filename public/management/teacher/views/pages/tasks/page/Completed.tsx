@@ -130,33 +130,39 @@ const Pending: React.FC<Props> = (props: Props) => {
                                         />
                                     </tr>
                                 </thead>
-                                <tbody id="all_list">
-                                    {(state.all as any)?.data?.map(
-                                        (i: { [key: string]: any }, index) => {
-                                            return (
-                                                <tr
-                                                    key={i.id}
-                                                    className={`table_rows table_row_${i.id}`}
-                                                >
-                                                    {/* <td>
+                                {(state.all as any)?.data?.length ? (
+                                    <tbody id="all_list">
+                                        {(state.all as any)?.data?.map(
+                                            (
+                                                i: { [key: string]: any },
+                                                index,
+                                            ) => {
+                                                return (
+                                                    <tr
+                                                        key={i.id}
+                                                        className={`table_rows table_row_${i.id}`}
+                                                    >
+                                                        {/* <td>
                                                         <TableRowAction
                                                             item={i}
                                                         />
                                                     </td> */}
-                                                    {/* <td>
+                                                        {/* <td>
                                                         <SelectItem item={i} />
                                                     </td> */}
-                                                    <td>
-                                                        <span
-                                                            className="quick_view_trigger"
-                                                            onClick={() =>
-                                                                quick_view(i)
-                                                            }
-                                                        >
-                                                            {index + 1}
-                                                        </span>
-                                                    </td>
-                                                    {/* <td>
+                                                        <td>
+                                                            <span
+                                                                className="quick_view_trigger"
+                                                                onClick={() =>
+                                                                    quick_view(
+                                                                        i,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {index + 1}
+                                                            </span>
+                                                        </td>
+                                                        {/* <td>
                                                         <Link
                                                             to={`/${setup.route_prefix}/assign/${i.id}`}
                                                         >
@@ -165,30 +171,53 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                             </span>
                                                         </Link>
                                                     </td> */}
-                                                    <td>{i.tasks?.title}</td>
-                                                    <td>
-                                                        {i.tasks?.description}
-                                                    </td>
-                                                    <td>
-                                                        {moment(
-                                                            i.created_at,
-                                                        ).format('YYYY-MM-DD')}
-                                                    </td>
-                                                    <td>
-                                                        <Link
-                                                            // to="/students/single/student/"
-                                                            to={`/${setup.route_prefix}/details/complete/${i.tasks?.id}`}
-                                                            className="btn btn-sm  btn-outline-info ml-2"
-                                                            type="submit"
-                                                        >
-                                                            Show
-                                                        </Link>
-                                                    </td>
-                                                </tr>
-                                            );
-                                        },
-                                    )}
-                                </tbody>
+                                                        <td>
+                                                            {i.tasks?.title}
+                                                        </td>
+                                                        <td>
+                                                            {
+                                                                i.tasks
+                                                                    ?.description
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            {moment(
+                                                                i.created_at,
+                                                            ).format(
+                                                                'YYYY-MM-DD',
+                                                            )}
+                                                        </td>
+                                                        <td>
+                                                            <Link
+                                                                // to="/students/single/student/"
+                                                                to={`/${setup.route_prefix}/details/complete/${i.tasks?.id}`}
+                                                                className="btn btn-sm  btn-outline-info ml-2"
+                                                                type="submit"
+                                                            >
+                                                                Show
+                                                            </Link>
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            },
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={9}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 
