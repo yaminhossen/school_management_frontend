@@ -339,3 +339,9 @@
 {"level":60,"time":1748693434193,"pid":8128,"hostname":"DESKTOP-9421701","file":"","time":"5/31/2025 6:10:34 PM","message":"You have used the alias class_room in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1748693481551,"pid":8128,"hostname":"DESKTOP-9421701","file":"","time":"5/31/2025 6:11:21 PM","message":"target not found."}
 {"level":60,"time":1748693482051,"pid":8128,"hostname":"DESKTOP-9421701","file":"","time":"5/31/2025 6:11:22 PM","message":"You have used the alias class_room in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748693582764,"pid":10780,"hostname":"DESKTOP-9421701","file":"","time":"5/31/2025 6:13:02 PM","message":"target not found."}
+{"level":60,"time":1748693583077,"pid":10780,"hostname":"DESKTOP-9421701","file":"","time":"5/31/2025 6:13:03 PM","message":"target not found."}
+{"level":60,"time":1748693584201,"pid":10780,"hostname":"DESKTOP-9421701","file":"","time":"5/31/2025 6:13:04 PM","message":"target not found."}
+{"level":60,"time":1748693586155,"pid":10780,"hostname":"DESKTOP-9421701","file":"","time":"5/31/2025 6:13:06 PM","message":"You have used the alias class_room in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748693587707,"pid":10780,"hostname":"DESKTOP-9421701","file":"","time":"5/31/2025 6:13:07 PM","message":"target not found."}
+{"level":60,"time":1748693587995,"pid":10780,"hostname":"DESKTOP-9421701","file":"","time":"5/31/2025 6:13:07 PM","message":"You have used the alias class_room in two separate associations. Aliased associations must have unique aliases."}

@@ -6,6 +6,7 @@ import users from '../views/pages/users/config/store';
 import user_students_slice from '../views/pages/student/config/store';
 import tasks_slice from '../views/pages/tasks/config/store';
 import meeting_agendas_slice from '../views/pages/meeting_agendas/config/store';
+import leave_applications_slice from '../views/pages/leave_applications/config/store';
 
 const store = configureStore({
     reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
         tasks: tasks_slice.reducer,
         user_students: user_students_slice.reducer,
         meeting_agendas: meeting_agendas_slice.reducer,
+        leave_applications: leave_applications_slice.reducer,
         common_store: commonStore.reducer,
     },
     devTools: true,

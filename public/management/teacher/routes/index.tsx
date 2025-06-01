@@ -11,7 +11,7 @@ import class_routine_routes from '../views/pages/class_routine/config/routes';
 import exam_routine_routes from '../views/pages/exam_routine/config/routes';
 import result_routes from '../views/pages/result/config/routes';
 import attendance_routes from '../views/pages/attendance/config/routes';
-import leave_application_routes from '../views/pages/leave_application/config/routes';
+import leave_application_routes from '../views/pages/leave_applications/config/routes';
 import notices_routes from '../views/pages/notices/config/routes';
 import academic_resources_routes from '../views/pages/academic_resources/config/routes';
 import hall_guard_routine_routes from '../views/pages/hall_guard_routine/config/routes';
