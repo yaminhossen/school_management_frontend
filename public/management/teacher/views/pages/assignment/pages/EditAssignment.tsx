@@ -100,7 +100,9 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
             <div className="content_body">
                 <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
-                        <label>Class</label>
+                        <label>
+                            Class <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             {classes.length && (
                                 <select
@@ -128,7 +130,9 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Subject</label>
+                        <label>
+                            Subject <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             {subjects.length && (
                                 <select
@@ -149,7 +153,9 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Title</label>
+                        <label>
+                            Title <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 type="text"
@@ -170,13 +176,17 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Attachment</label>
+                        <label>
+                            Attachment <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input type="file" name="attachment" />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Mark</label>
+                        <label>
+                            Mark <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 type="number"
@@ -186,7 +196,9 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Deadline</label>
+                        <label>
+                            Deadline <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 type="date"

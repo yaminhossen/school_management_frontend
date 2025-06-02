@@ -95,12 +95,12 @@ const Create: React.FC<Props> = (props: Props) => {
                             <div className="">
                                 <div className="form-group form-horizontal">
                                     <label>
-                                        Branch Class id{' '}
+                                        Branch Class{' '}
                                         <span className="valid_star">*</span>
                                     </label>
                                     <div className="form_elements">
                                         <select
-                                            name="branch_class_id"
+                                            name="class"
                                             id=""
                                             onChange={handleChange}
                                         >
@@ -128,10 +128,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </label>
                                     <div className="form_elements">
                                         {subjects.length && (
-                                            <select
-                                                name="branch_class_subject_id"
-                                                id=""
-                                            >
+                                            <select name="subject" id="">
                                                 {/* <option value={data.class_id}></option> */}
                                                 {subjects.map((i, index) => {
                                                     return (

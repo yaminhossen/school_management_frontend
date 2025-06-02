@@ -3,6 +3,7 @@ import { anyObject } from '../../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+import BackButton from './BackButton';
 export interface Props {}
 
 const Details: React.FC<Props> = (props: Props) => {
@@ -33,6 +34,7 @@ const Details: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
+            <BackButton></BackButton>
             <div className="result_details"></div>
             <div className="content_body">
                 <div className="data_list">

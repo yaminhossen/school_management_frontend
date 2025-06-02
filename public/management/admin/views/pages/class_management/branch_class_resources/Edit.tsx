@@ -103,7 +103,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                 </span></label>
                                     <div className="form_elements">
                                         <select
-                                            name="branch_class_id"
+                                            name="class"
                                             id=""
                                             onChange={handleChange}
                                             defaultValue={
@@ -135,7 +135,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         {subjects.length && (
                                             <select
-                                                name="branch_class_subject_id"
+                                                name="subject"
                                                 id=""
                                                 defaultValue={
                                                     state.item
@@ -180,7 +180,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Attachment</label>
+                                    <label>Attachment{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span></label>
                                     <div className="form_elements">
                                         {/* <input
                                             type="file"

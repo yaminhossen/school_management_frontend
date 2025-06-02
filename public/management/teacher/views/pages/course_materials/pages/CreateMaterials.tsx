@@ -3,6 +3,7 @@ import { anyObject } from '../../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+import BackButton from './BackButton';
 export interface Props {}
 
 const CreateMaterials: React.FC<Props> = (props: Props) => {
@@ -52,6 +53,8 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
                 '/api/v1/branch-class-resources/store',
                 formData,
             );
+            e.target.reset();
+            (window as any).toaster('Materials Created');
             // here use toastar
             // setData(response.data.data.data);
             // setTotalIncome(response.data.data.data2);
@@ -66,7 +69,7 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
         let id = event.target.value;
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/class-wise-subject/${id}`,
+                `/api/v1/branch-classes/class-wise-subject/${id}`,
             );
             setSubjects(response.data.data);
         } catch (error) {
@@ -77,11 +80,14 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
     console.log('Selected dataaa:', classIdRef.current?.value);
     return (
         <div className="admin_dashboard">
+            <BackButton></BackButton>
             <h3>Create</h3>
             <div className="content_body">
                 <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
-                        <label>Class</label>
+                        <label>
+                            Class <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <select
                                 name="class"
@@ -90,7 +96,7 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
                                 ref={classIdRef}
                                 onChange={handleChange}
                             >
-                                <option></option>
+                                <option value="">Select class</option>
                                 {classes.map((i, index) => {
                                     return (
                                         <option value={i.id}>{i.name}</option>
@@ -105,7 +111,9 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Subject</label>
+                        <label>
+                            Subject <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <select
                                 name="subject"
@@ -114,7 +122,7 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
                                 // ref={inputRef}
                                 // onChange={handleChange}
                             >
-                                {/* <option></option> */}
+                                <option value="">Select subject</option>
                                 {subjects.map((i, index) => {
                                     return (
                                         <option value={i.id}>{i.name}</option>
@@ -124,7 +132,9 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Title</label>
+                        <label>
+                            Title <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 type="text"
@@ -145,7 +155,9 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Attachment</label>
+                        <label>
+                            Attachment <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input type="file" name="attachment" />
                         </div>

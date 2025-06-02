@@ -71,7 +71,9 @@ const Create: React.FC<Props> = (props: Props) => {
             <div className="content_body">
                 <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
-                        <label>Leave Type</label>
+                        <label>
+                            Leave Type <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <select name="leave_type" id="">
                                 <option></option>
@@ -89,7 +91,9 @@ const Create: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Start Date</label>
+                        <label>
+                            Start Date <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 type="date"
@@ -101,7 +105,9 @@ const Create: React.FC<Props> = (props: Props) => {
                     </div>
 
                     <div className="form-group form-horizontal">
-                        <label>End Date</label>
+                        <label>
+                            End Date <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 type="date"
@@ -113,7 +119,9 @@ const Create: React.FC<Props> = (props: Props) => {
                     </div>
 
                     <div className="form-group form-horizontal">
-                        <label>Total Days</label>
+                        <label>
+                            Total Days <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 type="number"
@@ -124,7 +132,9 @@ const Create: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Attchment</label>
+                        <label>
+                            Attchment <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 type="file"

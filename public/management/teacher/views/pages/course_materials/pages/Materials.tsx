@@ -3,6 +3,7 @@ import { anyObject } from '../../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+import BackButton from './BackButton';
 export interface Props {}
 
 const Materials: React.FC<Props> = (props: Props) => {
@@ -41,6 +42,7 @@ const Materials: React.FC<Props> = (props: Props) => {
                     Create New
                 </Link>
             </div>
+            <BackButton></BackButton>
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">

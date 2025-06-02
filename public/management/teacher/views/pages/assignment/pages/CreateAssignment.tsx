@@ -11,7 +11,7 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState<any>([]);
     const [classes, setClasses] = useState<any>([]);
     const [subjects, setSubjects] = useState<any>([]);
-    const [categories, setCategories] = useState<any>([]);
+    // const [categories, setCategories] = useState<any>([]);
     const { id } = useParams();
 
     const fetchClasses = async () => {
@@ -24,19 +24,19 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
-    const fetchCategories = async () => {
-        try {
-            const response = await axios.get(
-                `/api/v1/assignment-categories/all-categories`,
-            );
-            setCategories(response.data.data);
-        } catch (error) {
-            setError(error);
-        }
-    };
+    // const fetchCategories = async () => {
+    //     try {
+    //         const response = await axios.get(
+    //             `/api/v1/assignment-categories/all-categories`,
+    //         );
+    //         setCategories(response.data.data);
+    //     } catch (error) {
+    //         setError(error);
+    //     }
+    // };
 
     useEffect(() => {
-        fetchCategories();
+        // fetchCategories();
         fetchClasses();
     }, []);
 
@@ -80,7 +80,9 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
             <div className="content_body">
                 <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
-                        <label>Class</label>
+                        <label>
+                            Class <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <select
                                 name="class"
@@ -103,7 +105,9 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Subject</label>
+                        <label>
+                            Subject <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <select name="subject" id="">
                                 <option value="">Select subject</option>
@@ -131,7 +135,9 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
                         </div>
                     </div> */}
                     <div className="form-group form-horizontal">
-                        <label>Title</label>
+                        <label>
+                            Title <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 type="text"
@@ -150,19 +156,25 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Attachment</label>
+                        <label>
+                            Attachment <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input type="file" name="attachment" />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Mark</label>
+                        <label>
+                            Mark <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input type="number" name="mark" />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Deadline</label>
+                        <label>
+                            Deadline <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 type="date"

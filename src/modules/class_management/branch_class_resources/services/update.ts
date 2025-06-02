@@ -14,23 +14,16 @@ import moment from 'moment/moment';
 
 /** validation rules */
 async function validate(req: Request) {
-    // await body('id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the id field is required')
-    //     .run(req);
-
-  
-    await body('branch_class_id')
+    await body('class')
         .not()
         .isEmpty()
-        .withMessage('the branch_class_id field is required')
+        .withMessage('the class field is required')
         .run(req);
 
-    await body('branch_class_subject_id')
+    await body('subject')
         .not()
         .isEmpty()
-        .withMessage('the branch_class_subject_id field is required')
+        .withMessage('the subject field is required')
         .run(req);
 
     await body('title')
@@ -38,18 +31,6 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the title field is required')
         .run(req);
-
-    // await body('description')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the description field is required')
-    //     .run(req);
-
-    // await body('attachment')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the attachment field is required')
-    //     .run(req);
 
     let result = await validationResult(req);
 

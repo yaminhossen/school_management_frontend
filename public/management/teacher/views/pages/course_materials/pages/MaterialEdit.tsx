@@ -3,6 +3,7 @@ import { anyObject } from '../../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+import BackButton from './BackButton';
 export interface Props {}
 
 const MaterialEdit: React.FC<Props> = (props: Props) => {
@@ -27,7 +28,8 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
     const fetchClasses = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/branch-classes/all-class`,
+                `/api/v1/branch-class-subjects/class-wise-teacher`,
+                // `/api/v1/branch-classes/all-class`,
             );
             setClasses(response.data.data);
         } catch (error) {
@@ -56,6 +58,7 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
                 '/api/v1/branch-class-resources/update',
                 formData,
             );
+            (window as any).toaster('Materials Updated');
             // here use toastar
             // setData(response.data.data.data);
             // setTotalIncome(response.data.data.data2);
@@ -64,15 +67,11 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
         }
     };
 
-    const handleChange = async () => {
-        // let id2 = event.target.value;
-        // console.log('evetn id', id2);
-        let value = selectRef?.current?.value;
-        console.log('select ref value', Number(value));
-
+    const fetchSubjects = async (e) => {
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/class-wise-subject/${Number(value)}`,
+                // `/api/v1/branch-classes/class-wise-subject/${Number(e)}`,
+                `/api/v1/branch-classes/class-wise-subject/${e}`,
             );
             setSubjects(response.data.data);
         } catch (error) {
@@ -80,40 +79,57 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
         }
     };
 
+    // useEffect(() => {
+    //     fetchSubjects(data.class_id);
+    // }, [classes]);
     useEffect(() => {
-        if (selectRef.current && data) {
-            selectRef.current.value = data.branch_class_id; // Set value after render
-            handleChange();
+        if (data?.branch_class_id && Number(data.branch_class_id) > 0) {
+            fetchSubjects(Number(data.branch_class_id));
         }
-    }, [classes]);
+    }, [data?.branch_class_id]);
 
-    useEffect(() => {
-        if (selectRef2.current && data) {
-            selectRef2.current.value = data.branch_class_subject_id; // Set value after render
+    const handleChange = async (
+        event: React.ChangeEvent<HTMLSelectElement>,
+    ) => {
+        let id = event.target.value;
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-classes/class-wise-subject/${id}`,
+            );
+            setSubjects(response.data.data);
+        } catch (error) {
+            setError(error);
         }
-    }, [subjects]);
-
+    };
     return (
         <div className="admin_dashboard">
+            <BackButton></BackButton>
             <h3>Edit</h3>
             <div className="content_body">
                 <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
-                        <label>Class</label>
+                        <label>
+                            Class <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
-                            <select
-                                name="class"
-                                // defaultValue={data.branch_class_id}
-                                id=""
-                                ref={selectRef}
-                                onChange={handleChange}
-                            >
-                                {classes.map((i, index) => {
-                                    return (
-                                        <option value={i.id}>{i.name}</option>
-                                    );
-                                })}
-                            </select>
+                            {classes.length && (
+                                <select
+                                    name="class"
+                                    // defaultValue={data.class_id}
+                                    id=""
+                                    defaultValue={data?.branch_class_id}
+                                    onChange={handleChange}
+                                >
+                                    {/* <option value={data.class_id}></option> */}
+                                    {classes.map((i, index) => {
+                                        return (
+                                            <option value={i.id}>
+                                                {i.name}
+                                            </option>
+                                        );
+                                    })}
+                                </select>
+                            )}
                             <input
                                 type="hidden"
                                 defaultValue={data.id}
@@ -122,25 +138,32 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Subject</label>
+                        <label>
+                            Subject <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
-                            <select
-                                name="subject"
-                                // defaultValue={data.branch_class_subject_id}
-                                id=""
-                                ref={selectRef2}
-                                // onChange={handleChange}
-                            >
-                                {subjects.map((i, index) => {
-                                    return (
-                                        <option value={i.id}>{i.name}</option>
-                                    );
-                                })}
-                            </select>
+                            {subjects.length && (
+                                <select
+                                    name="subject"
+                                    defaultValue={data?.branch_class_subject_id}
+                                    id=""
+                                >
+                                    {/* <option value={data.class_id}></option> */}
+                                    {subjects.map((i, index) => {
+                                        return (
+                                            <option value={i.id}>
+                                                {i.name}
+                                            </option>
+                                        );
+                                    })}
+                                </select>
+                            )}
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Title</label>
+                        <label>
+                            Title <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 type="text"
@@ -161,7 +184,9 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Attachment</label>
+                        <label>
+                            Attachment <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input type="file" name="attachment" />
                         </div>
