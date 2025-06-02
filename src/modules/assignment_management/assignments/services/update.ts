@@ -13,26 +13,32 @@ import error_trace from '../helpers/error_trace';
 import moment from 'moment/moment';
 
 async function validate(req: Request) {
+    await body('class')
+        .not()
+        .isEmpty()
+        .withMessage('the class field is required')
+        .run(req);
+
+    await body('subject')
+        .not()
+        .isEmpty()
+        .withMessage('the subject field is required')
+        .run(req);
+
     await body('title')
         .not()
         .isEmpty()
         .withMessage('the title field is required')
         .run(req);
-
-    await body('description')
-        .not()
-        .isEmpty()
-        .withMessage('the description field is required')
-        .run(req);
-    // await body('assignment_categories_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the assignment_categories_id field is required')
-    //     .run(req);
     await body('mark')
         .not()
         .isEmpty()
         .withMessage('the mark field is required')
+        .run(req);
+    await body('deadline')
+        .not()
+        .isEmpty()
+        .withMessage('the deadline field is required')
         .run(req);
 
     let result = await validationResult(req);
@@ -57,6 +63,14 @@ async function update(
     let data = await models.AssignmentsModel.findByPk(body.id);
     let prevFile = data?.attachment;
     let image_path = '';
+    let user = (req as any).user;
+    // console.log('auth user', user);
+
+    let auth_user = await models.BranchTeachersModel.findOne({
+        where: {
+            user_teacher_id: user?.id || null,
+        },
+    });
 
     if (body['attachment']?.ext) {
         image_path =
@@ -69,7 +83,7 @@ async function update(
     console.log('update body', body);
     console.log('attachemetn', image_path);
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: body.branch_id || 1,
+        branch_id: auth_user?.branch_id || 1,
         title: body.title,
         description: body.description,
         // assignment_categories_id: body.assignment_categories_id,
@@ -79,7 +93,7 @@ async function update(
         class_id: body.class,
         subject_id: body.subject,
         deadline: body.deadline,
-        creator: 1,
+        creator: user?.id || null,
     };
     /** print request data into console */
     // console.clear();
@@ -89,8 +103,7 @@ async function update(
     try {
         let data = await models.AssignmentsModel.findByPk(body.id);
         if (data) {
-            data.update(inputs);
-            await data.save();
+            (await data.update(inputs)).save();
             return response(200, 'data updated', data);
         } else {
             throw new custom_error(

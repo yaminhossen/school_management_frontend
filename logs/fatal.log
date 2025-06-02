@@ -524,3 +524,195 @@
 {"level":60,"time":1748777786237,"pid":14172,"hostname":"DESKTOP-9421701","file":"","time":"6/1/2025 5:36:26 PM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
 {"level":60,"time":1748777793690,"pid":14172,"hostname":"DESKTOP-9421701","file":"","time":"6/1/2025 5:36:33 PM","message":"target not found."}
 {"level":60,"time":1748777794080,"pid":14172,"hostname":"DESKTOP-9421701","file":"","time":"6/1/2025 5:36:34 PM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748777868532,"pid":9272,"hostname":"DESKTOP-9421701","file":"","time":"6/1/2025 5:37:48 PM","message":"target not found."}
+{"level":60,"time":1748777921667,"pid":9272,"hostname":"DESKTOP-9421701","file":"","time":"6/1/2025 5:38:41 PM","message":"target not found."}
+{"level":60,"time":1748778301240,"pid":9272,"hostname":"DESKTOP-9421701","file":"","time":"6/1/2025 5:45:01 PM","message":"target not found."}
+{"level":60,"time":1748834682714,"pid":11388,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:24:42 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748834698110,"pid":11388,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:24:58 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748834710299,"pid":11388,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:25:10 AM","message":"target not found."}
+{"level":60,"time":1748834718189,"pid":11388,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:25:18 AM","message":"target not found."}
+{"level":60,"time":1748834718738,"pid":11388,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:25:18 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748834740525,"pid":11388,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:25:40 AM","message":"target not found."}
+{"level":60,"time":1748834948965,"pid":9208,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:29:08 AM","message":"target not found."}
+{"level":60,"time":1748835134265,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:14 AM","message":"target not found."}
+{"level":60,"time":1748835134707,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:32:14 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835134763,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:14 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835136824,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:16 AM","message":"target not found."}
+{"level":60,"time":1748835137205,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:32:17 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835137268,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:17 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835138081,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:18 AM","message":"target not found."}
+{"level":60,"time":1748835138423,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:32:18 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835138476,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:18 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835139063,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:19 AM","message":"target not found."}
+{"level":60,"time":1748835139392,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:32:19 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835139444,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:19 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835139779,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:19 AM","message":"target not found."}
+{"level":60,"time":1748835140160,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:32:20 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835140223,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:20 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835140246,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:20 AM","message":"target not found."}
+{"level":60,"time":1748835140602,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:32:20 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835140666,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:20 AM","message":"target not found."}
+{"level":60,"time":1748835140705,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:20 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835141012,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:32:21 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835141069,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:21 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835146039,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:26 AM","message":"target not found."}
+{"level":60,"time":1748835146536,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:32:26 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835146593,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:26 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835179841,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:32:59 AM","message":"target not found."}
+{"level":60,"time":1748835180270,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:33:00 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835180330,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:33:00 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835181235,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:33:01 AM","message":"target not found."}
+{"level":60,"time":1748835181580,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:33:01 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835181655,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:33:01 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835182364,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:33:02 AM","message":"target not found."}
+{"level":60,"time":1748835182730,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:33:02 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835182780,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:33:02 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835183070,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:33:03 AM","message":"target not found."}
+{"level":60,"time":1748835183386,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:33:03 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835183436,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:33:03 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835183989,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:33:03 AM","message":"target not found."}
+{"level":60,"time":1748835184288,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:33:04 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835184357,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:33:04 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835184805,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:33:04 AM","message":"target not found."}
+{"level":60,"time":1748835185118,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:33:05 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835185166,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:33:05 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835185743,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:33:05 AM","message":"target not found."}
+{"level":60,"time":1748835186129,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:33:06 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835186175,"pid":6248,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:33:06 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835248601,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:34:08 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835257451,"pid":6248,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:45:19)","time":"6/2/2025 9:34:17 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835398916,"pid":12104,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:36:38 AM","message":"target not found."}
+{"level":60,"time":1748835399351,"pid":12104,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:46:19)","time":"6/2/2025 9:36:39 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835399409,"pid":12104,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:36:39 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835414781,"pid":12104,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:46:19)","time":"6/2/2025 9:36:54 AM","message":"Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'institute_management.BranchClassSubjectTeachersModel.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"}
+{"level":60,"time":1748835485918,"pid":10100,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:38:05 AM","message":"target not found."}
+{"level":60,"time":1748835486402,"pid":10100,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:38:06 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835610094,"pid":10100,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:40:10 AM","message":"target not found."}
+{"level":60,"time":1748835610589,"pid":10100,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:40:10 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748835973533,"pid":7308,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:46:13 AM","message":"target not found."}
+{"level":60,"time":1748835974881,"pid":7308,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:46:14 AM","message":"target not found."}
+{"level":60,"time":1748835975801,"pid":7308,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:46:15 AM","message":"target not found."}
+{"level":60,"time":1748835976720,"pid":7308,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:46:16 AM","message":"target not found."}
+{"level":60,"time":1748835977567,"pid":7308,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:46:17 AM","message":"target not found."}
+{"level":60,"time":1748836037780,"pid":6560,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:47:17 AM","message":"target not found."}
+{"level":60,"time":1748836045268,"pid":6560,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:47:25 AM","message":"target not found."}
+{"level":60,"time":1748836045709,"pid":6560,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:47:25 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748836046994,"pid":6560,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:47:26 AM","message":"target not found."}
+{"level":60,"time":1748836047362,"pid":6560,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:47:27 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748836048058,"pid":6560,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:47:28 AM","message":"target not found."}
+{"level":60,"time":1748836048491,"pid":6560,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:47:28 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748836049159,"pid":6560,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:47:29 AM","message":"target not found."}
+{"level":60,"time":1748836049553,"pid":6560,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:47:29 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748836116828,"pid":6956,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:48:36 AM","message":"target not found."}
+{"level":60,"time":1748836117249,"pid":6956,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:48:37 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748836122544,"pid":6956,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:48:42 AM","message":"target not found."}
+{"level":60,"time":1748836122911,"pid":6956,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:48:42 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748836390265,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:53:10 AM","message":"target not found."}
+{"level":60,"time":1748836390892,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:53:10 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748836391542,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:53:11 AM","message":"target not found."}
+{"level":60,"time":1748836392020,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:53:12 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748836413659,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:53:33 AM","message":"target not found."}
+{"level":60,"time":1748836414833,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:53:34 AM","message":"target not found."}
+{"level":60,"time":1748836415749,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:53:35 AM","message":"target not found."}
+{"level":60,"time":1748836422071,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:53:42 AM","message":"target not found."}
+{"level":60,"time":1748836452227,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:54:12 AM","message":"target not found."}
+{"level":60,"time":1748836457003,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:54:17 AM","message":"target not found."}
+{"level":60,"time":1748836457440,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:54:17 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748836458149,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:54:18 AM","message":"target not found."}
+{"level":60,"time":1748836458502,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:54:18 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748836458994,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:54:18 AM","message":"target not found."}
+{"level":60,"time":1748836459351,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:54:19 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748836459629,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:54:19 AM","message":"target not found."}
+{"level":60,"time":1748836459963,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:54:19 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748836460605,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:54:20 AM","message":"target not found."}
+{"level":60,"time":1748836460992,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:54:20 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748836542036,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:55:42 AM","message":"target not found."}
+{"level":60,"time":1748836543257,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:55:43 AM","message":"target not found."}
+{"level":60,"time":1748836544170,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:55:44 AM","message":"target not found."}
+{"level":60,"time":1748836545037,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:55:45 AM","message":"target not found."}
+{"level":60,"time":1748836545864,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:55:45 AM","message":"target not found."}
+{"level":60,"time":1748836546683,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:55:46 AM","message":"target not found."}
+{"level":60,"time":1748836552135,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:55:52 AM","message":"target not found."}
+{"level":60,"time":1748836665328,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:57:45 AM","message":"target not found."}
+{"level":60,"time":1748836667525,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:57:47 AM","message":"target not found."}
+{"level":60,"time":1748836667922,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 9:57:47 AM","message":"You have used the alias info in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1748836893115,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:01:33 AM","message":"target not found."}
+{"level":60,"time":1748836894263,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:01:34 AM","message":"target not found."}
+{"level":60,"time":1748836895481,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:01:35 AM","message":"target not found."}
+{"level":60,"time":1748836896381,"pid":6536,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:01:36 AM","message":"target not found."}
+{"level":60,"time":1748837174930,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:06:14 AM","message":"target not found."}
+{"level":60,"time":1748838184308,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:23:04 AM","message":"target not found."}
+{"level":60,"time":1748838184987,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:23:04 AM","message":"target not found."}
+{"level":60,"time":1748838811163,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:33:31 AM","message":"target not found."}
+{"level":60,"time":1748838813761,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:33:33 AM","message":"target not found."}
+{"level":60,"time":1748838884414,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:34:44 AM","message":"target not found."}
+{"level":60,"time":1748838886201,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:34:46 AM","message":"target not found."}
+{"level":60,"time":1748838915403,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:35:15 AM","message":"target not found."}
+{"level":60,"time":1748838922407,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:35:22 AM","message":"target not found."}
+{"level":60,"time":1748838923616,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:35:23 AM","message":"target not found."}
+{"level":60,"time":1748838924761,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:35:24 AM","message":"target not found."}
+{"level":60,"time":1748838925818,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:35:25 AM","message":"target not found."}
+{"level":60,"time":1748838928280,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:35:28 AM","message":"target not found."}
+{"level":60,"time":1748838948557,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:35:48 AM","message":"target not found."}
+{"level":60,"time":1748838949698,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:35:49 AM","message":"target not found."}
+{"level":60,"time":1748838950554,"pid":19640,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:35:50 AM","message":"target not found."}
+{"level":60,"time":1748839099067,"pid":19520,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:38:19 AM","message":"target not found."}
+{"level":60,"time":1748839123489,"pid":19520,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:38:43 AM","message":"target not found."}
+{"level":60,"time":1748839124455,"pid":19520,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:38:44 AM","message":"target not found."}
+{"level":60,"time":1748839503722,"pid":19520,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:45:03 AM","message":"target not found."}
+{"level":60,"time":1748839680002,"pid":19520,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:48:00 AM","message":"target not found."}
+{"level":60,"time":1748839716845,"pid":19520,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:48:36 AM","message":"target not found."}
+{"level":60,"time":1748839859609,"pid":19520,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:50:59 AM","message":"target not found."}
+{"level":60,"time":1748839897459,"pid":19520,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:51:37 AM","message":"Data truncated for column 'mark' at row 1"}
+{"level":60,"time":1748839944974,"pid":19520,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:52:24 AM","message":"target not found."}
+{"level":60,"time":1748840026911,"pid":8612,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:53:46 AM","message":"target not found."}
+{"level":60,"time":1748840027470,"pid":8612,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:66:19)","time":"6/2/2025 10:53:47 AM","message":"WHERE parameter \"branch_teacher_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1748840028624,"pid":8612,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:53:48 AM","message":"target not found."}
+{"level":60,"time":1748840028965,"pid":8612,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:66:19)","time":"6/2/2025 10:53:48 AM","message":"WHERE parameter \"branch_teacher_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1748840178613,"pid":18660,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:56:18 AM","message":"target not found."}
+{"level":60,"time":1748840265855,"pid":18660,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 10:57:45 AM","message":"target not found."}
+{"level":60,"time":1748840485438,"pid":14896,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:01:25 AM","message":"target not found."}
+{"level":60,"time":1748840495564,"pid":14896,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:01:35 AM","message":"target not found."}
+{"level":60,"time":1748840581304,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:03:01 AM","message":"target not found."}
+{"level":60,"time":1748840680883,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:04:40 AM","message":"target not found."}
+{"level":60,"time":1748840688051,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:04:48 AM","message":"target not found."}
+{"level":60,"time":1748840731129,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:05:31 AM","message":"target not found."}
+{"level":60,"time":1748840731948,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:05:31 AM","message":"target not found."}
+{"level":60,"time":1748840795215,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:06:35 AM","message":"target not found."}
+{"level":60,"time":1748840945317,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:09:05 AM","message":"target not found."}
+{"level":60,"time":1748841204692,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:13:24 AM","message":"target not found."}
+{"level":60,"time":1748841208649,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:13:28 AM","message":"target not found."}
+{"level":60,"time":1748841280173,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:14:40 AM","message":"target not found."}
+{"level":60,"time":1748841281218,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:14:41 AM","message":"target not found."}
+{"level":60,"time":1748841282073,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:14:42 AM","message":"target not found."}
+{"level":60,"time":1748841298870,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:14:58 AM","message":"target not found."}
+{"level":60,"time":1748841299947,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:14:59 AM","message":"target not found."}
+{"level":60,"time":1748841383574,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:16:23 AM","message":"target not found."}
+{"level":60,"time":1748843632742,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:53:52 AM","message":"target not found."}
+{"level":60,"time":1748843635586,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:53:55 AM","message":"target not found."}
+{"level":60,"time":1748843644985,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:54:04 AM","message":"target not found."}
+{"level":60,"time":1748843651503,"pid":14264,"hostname":"DESKTOP-9421701","file":"services\\assignment_marking.ts:120:19)","time":"6/2/2025 11:54:11 AM","message":"operation not possible"}
+{"level":60,"time":1748843834782,"pid":14264,"hostname":"DESKTOP-9421701","file":"services\\assignment_marking.ts:120:19)","time":"6/2/2025 11:57:14 AM","message":"operation not possible"}
+{"level":60,"time":1748843972041,"pid":14264,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 11:59:32 AM","message":"target not found."}
+{"level":60,"time":1748843976438,"pid":14264,"hostname":"DESKTOP-9421701","file":"services\\assignment_marking.ts:120:19)","time":"6/2/2025 11:59:36 AM","message":"operation not possible"}
+{"level":60,"time":1748843981973,"pid":14264,"hostname":"DESKTOP-9421701","file":"services\\assignment_marking.ts:120:19)","time":"6/2/2025 11:59:41 AM","message":"operation not possible"}
+{"level":60,"time":1748844709628,"pid":16984,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:11:49 PM","message":"target not found."}
+{"level":60,"time":1748844712499,"pid":16984,"hostname":"DESKTOP-9421701","file":"services\\assignment_marking.ts:120:19)","time":"6/2/2025 12:11:52 PM","message":"operation not possible"}
+{"level":60,"time":1748844903588,"pid":15500,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:15:03 PM","message":"target not found."}
+{"level":60,"time":1748845235559,"pid":15500,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:20:35 PM","message":"target not found."}
+{"level":60,"time":1748845236578,"pid":15500,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:20:36 PM","message":"target not found."}
+{"level":60,"time":1748845257595,"pid":15500,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:20:57 PM","message":"target not found."}
+{"level":60,"time":1748845258068,"pid":15500,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:20:58 PM","message":"target not found."}
+{"level":60,"time":1748845258494,"pid":15500,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:20:58 PM","message":"target not found."}
+{"level":60,"time":1748845878832,"pid":3312,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:31:18 PM","message":"target not found."}
+{"level":60,"time":1748846328265,"pid":4600,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:38:48 PM","message":"target not found."}
+{"level":60,"time":1748846341090,"pid":4600,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:39:01 PM","message":"target not found."}
+{"level":60,"time":1748846341900,"pid":4600,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:39:01 PM","message":"target not found."}
+{"level":60,"time":1748846541074,"pid":14044,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:42:21 PM","message":"target not found."}
+{"level":60,"time":1748846541974,"pid":14044,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:42:21 PM","message":"target not found."}
+{"level":60,"time":1748846542894,"pid":14044,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:42:22 PM","message":"target not found."}
+{"level":60,"time":1748846543520,"pid":14044,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:42:23 PM","message":"target not found."}
+{"level":60,"time":1748846543962,"pid":14044,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:42:23 PM","message":"target not found."}
+{"level":60,"time":1748846544551,"pid":14044,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:42:24 PM","message":"target not found."}
+{"level":60,"time":1748846545000,"pid":14044,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:42:25 PM","message":"target not found."}
+{"level":60,"time":1748846614672,"pid":14044,"hostname":"DESKTOP-9421701","file":"","time":"6/2/2025 12:43:34 PM","message":"target not found."}

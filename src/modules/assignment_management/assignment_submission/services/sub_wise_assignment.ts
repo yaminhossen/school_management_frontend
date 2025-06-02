@@ -13,11 +13,13 @@ async function sub_wise_assignment(
     let assignmentModel = models.AssignmentsModel;
     let studentModel = models.UserStudentsModel;
     let params = req.params as any;
+    let user = (req as any).user;
 
     try {
         let data = await models.AssignmentSubmissionsModel.findAll({
             where: {
                 subject_id: params.id,
+                teacher_id: user?.id,
             },
             include: [
                 {

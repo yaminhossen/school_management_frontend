@@ -26,7 +26,7 @@ const T1: React.FC<Props> = (props: Props) => {
     const formattedDate = `${month}-${year}`;
     const fetchData = async () => {
         try {
-            const response = await axios.get('/api/v1/notices/user/students');
+            const response = await axios.get('/api/v1/notices/all/students');
             setData(response.data.data);
             // setData(response.data);
         } catch (error) {

@@ -75,6 +75,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-server"
                     label="Academic Resources"
                 />
+                <MenuSingle
+                    to="/academic-resources"
+                    icon="icon-server"
+                    label="Assignments"
+                />
                 <MenuSingle to="/notices" icon="icon-bell" label="Notices" />
                 {/* <MenuSingle
                     to="/activities"

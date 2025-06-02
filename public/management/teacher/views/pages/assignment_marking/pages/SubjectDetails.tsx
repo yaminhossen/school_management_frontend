@@ -3,6 +3,7 @@ import { anyObject } from '../../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+import BackButton from './BackButton';
 export interface Props {}
 
 const SubjectDetails: React.FC<Props> = (props: Props) => {
@@ -49,6 +50,7 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
+            <BackButton></BackButton>
             <div className="result_details"></div>
             <div className="content_body">
                 <div className="data_list">
@@ -90,13 +92,84 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
                                                     <input
                                                         type="number"
                                                         name="mark"
-                                                        // max={60}
+                                                        min={0}
+                                                        max={i.assignment?.mark}
+                                                        placeholder="given marks"
+                                                        onBlur={(e) =>
+                                                            handleMarkBlur(e, i)
+                                                        }
+                                                        onChange={(
+                                                            e: React.ChangeEvent<HTMLInputElement>,
+                                                        ) => {
+                                                            const val =
+                                                                e.target.value;
+                                                            const max =
+                                                                i.assignment
+                                                                    ?.mark;
+
+                                                            // Only check if value is not empty
+                                                            if (val !== '') {
+                                                                const value =
+                                                                    parseFloat(
+                                                                        val,
+                                                                    );
+
+                                                                if (
+                                                                    isNaN(value)
+                                                                ) {
+                                                                    e.target.value =
+                                                                        '';
+                                                                    return;
+                                                                }
+
+                                                                if (
+                                                                    value > max
+                                                                ) {
+                                                                    e.target.value =
+                                                                        max;
+                                                                } else if (
+                                                                    value < 0
+                                                                ) {
+                                                                    e.target.value =
+                                                                        '0';
+                                                                }
+                                                            }
+                                                        }}
+                                                    />
+                                                </td>
+
+                                                {/* <td>
+                                                    <input
+                                                        type="number"
+                                                        name="mark"
+                                                        min={0}
+                                                        max={i?.mark}
+                                                        placeholder="given marks"
                                                         id=""
                                                         onBlur={(e) =>
                                                             handleMarkBlur(e, i)
                                                         }
+                                                        onInput={(
+                                                            e: React.ChangeEvent<HTMLInputElement>,
+                                                        ) => {
+                                                            const value =
+                                                                parseFloat(
+                                                                    e.target
+                                                                        .value,
+                                                                );
+                                                            if (
+                                                                value > i?.mark
+                                                            ) {
+                                                                e.target.value =
+                                                                    i?.mark;
+                                                            }
+                                                            if (value < 0) {
+                                                                e.target.value =
+                                                                    '0';
+                                                            }
+                                                        }}
                                                     />
-                                                </td>
+                                                </td> */}
                                             </tr>
                                         );
                                     },

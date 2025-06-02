@@ -61,7 +61,8 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
     const fetchSubjects = async (e) => {
         try {
             const response = await axios.get(
-                `/api/v1/branch-classes/class-wise-subject/${Number(e)}`,
+                // `/api/v1/branch-classes/class-wise-subject/${Number(e)}`,
+                `/api/v1/branch-classes/class-wise-subject/${e}`,
             );
             setSubjects(response.data.data);
         } catch (error) {
@@ -69,9 +70,14 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
         }
     };
 
+    // useEffect(() => {
+    //     fetchSubjects(data.class_id);
+    // }, [classes]);
     useEffect(() => {
-        fetchSubjects(data?.class_id);
-    }, [classes]);
+        if (data?.class_id && Number(data.class_id) > 0) {
+            fetchSubjects(Number(data.class_id));
+        }
+    }, [data?.class_id]);
 
     const handleChange = async (
         event: React.ChangeEvent<HTMLSelectElement>,
@@ -89,7 +95,7 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
-            <h3>Edit okkkkkk</h3>
+            <h3>Edit</h3>
             <BackButton></BackButton>
             <div className="content_body">
                 <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">

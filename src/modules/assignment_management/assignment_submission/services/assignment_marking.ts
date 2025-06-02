@@ -95,8 +95,19 @@ async function assignment_marking(
     let models = await db();
     let body = req.body as anyObject;
     let model = new models.AssignmentSubmissionsModel();
+    let user = (req as any).user;
+    // console.log('auth user', user);
 
-    console.log('body', body);
+    let auth_user = await models.BranchTeachersModel.findOne({
+        where: {
+            user_teacher_id: user?.id || null,
+        },
+    });
+
+    console.log(
+        'body--------------------------------------------------------------------------------------------------------',
+        body,
+    );
     /** print request data into console */
     // console.clear();
     // (fastify_instance as any).print(inputs);
@@ -105,7 +116,7 @@ async function assignment_marking(
     try {
         let data = await models.AssignmentSubmissionsModel.findOne({
             where: {
-                id: body.id,
+                student_id: body.id,
             },
         });
         if (data) {

@@ -49,6 +49,8 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
                 '/api/v1/assignments/store',
                 formData,
             );
+            e.target.reset();
+            (window as any).toaster('Assignment Created');
             // here use toastar
             // setData(response.data.data.data);
         } catch (error) {
@@ -62,7 +64,7 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
         let id = event.target.value;
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/class-wise-subject/${id}`,
+                `/api/v1/branch-classes/class-wise-subject/${id}`,
             );
             setSubjects(response.data.data);
         } catch (error) {

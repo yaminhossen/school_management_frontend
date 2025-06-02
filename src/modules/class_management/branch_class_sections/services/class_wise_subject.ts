@@ -18,7 +18,6 @@ async function class_wise_subject(
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
-    let user = (req as any).user;
     console.log(
         'oklk----------------------------------.----------------------------------------------------------',
     );
@@ -35,19 +34,11 @@ async function class_wise_subject(
                     ),
                     'count',
                 ],
-                [Sequelize.col('bb_sub.id'), 'id'],
-                [Sequelize.col('bb_sub.name'), 'name'],
             ],
             where: {
                 branch_class_id: params.id,
-                branch_teacher_id: user?.id,
+                branch_teacher_id: 1,
             },
-            include: [
-                {
-                    model: models.BranchClassSubjecsModel,
-                    as: 'bb_sub',
-                },
-            ],
             group: ['branch_class_subject_id'],
             order: [['branch_class_subject_id', 'ASC']],
             raw: true,

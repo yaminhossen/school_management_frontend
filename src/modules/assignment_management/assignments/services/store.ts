@@ -13,53 +13,38 @@ import error_trace from '../helpers/error_trace';
 import moment from 'moment/moment';
 
 async function validate(req: Request) {
-    // await body('branch_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the branch_id field is required')
-    //     .run(req);
+    await body('class')
+        .not()
+        .isEmpty()
+        .withMessage('the class field is required')
+        .run(req);
 
-    // await body('title')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the title field is required')
-    //     .run(req);
+    await body('subject')
+        .not()
+        .isEmpty()
+        .withMessage('the subject field is required')
+        .run(req);
 
-    // await body('description')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the description field is required')
-    //     .run(req);
-    // await body('assignment_categories_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the assignment_categories_id field is required')
-    //     .run(req);
-    // await body('attachment')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the attachment field is required')
-    //     .run(req);
-    // await body('image')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the image field is required')
-    //     .run(req);
-    // await body('mark')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the mark field is required')
-    //     .run(req);
-    // await body('class_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the class_id field is required')
-    //     .run(req);
-    // await body('deadline')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the deadline field is required')
-    //     .run(req);
+    await body('title')
+        .not()
+        .isEmpty()
+        .withMessage('the title field is required')
+        .run(req);
+    await body('attachment')
+        .not()
+        .isEmpty()
+        .withMessage('the attachment field is required')
+        .run(req);
+    await body('mark')
+        .not()
+        .isEmpty()
+        .withMessage('the mark field is required')
+        .run(req);
+    await body('deadline')
+        .not()
+        .isEmpty()
+        .withMessage('the deadline field is required')
+        .run(req);
 
     let result = await validationResult(req);
 
