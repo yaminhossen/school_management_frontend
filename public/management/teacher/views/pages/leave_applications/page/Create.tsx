@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { anyObject } from '../../../../common_types/object';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 import BackButton from '../../course_materials/pages/BackButton';
+import InputImage, { InputImageRef } from './InputImage';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState('');
     const [leaveTypes, setLeaveType] = useState<any>();
+    const inputImageRef = useRef<InputImageRef>(null);
 
     const fetchData = async () => {
         try {
@@ -176,10 +178,16 @@ const Create: React.FC<Props> = (props: Props) => {
                             Attchment <span className="valid_star">*</span>
                         </label>
                         <div className="form_elements">
-                            <input
+                            {/* <input
                                 type="file"
                                 accept="image/*"
                                 name="attachments"
+                            /> */}
+                            <InputImage
+                                ref={inputImageRef}
+                                label=""
+                                name="attachments"
+                                defalut_preview=""
                             />
                         </div>
                     </div>

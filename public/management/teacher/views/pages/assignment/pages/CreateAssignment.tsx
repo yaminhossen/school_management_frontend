@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 import BackButton from './BackButton';
+import InputImage, { InputImageRef } from './InputImage';
 export interface Props {}
 
 const CreateAssignment: React.FC<Props> = (props: Props) => {
@@ -13,6 +14,7 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
     const [subjects, setSubjects] = useState<any>([]);
     // const [categories, setCategories] = useState<any>([]);
     const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
+    const inputImageRef = useRef<InputImageRef>(null);
 
     const [errorMessage, setErrorMessage] = useState('');
     const { id } = useParams();
@@ -178,7 +180,13 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
                             Attachment <span className="valid_star">*</span>
                         </label>
                         <div className="form_elements">
-                            <input type="file" name="attachment" />
+                            {/* <input type="file" name="attachment" /> */}
+                            <InputImage
+                                ref={inputImageRef}
+                                label=""
+                                name="attachment"
+                                defalut_preview=""
+                            />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">

@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 import BackButton from './BackButton';
+import InputImage, { InputImageRef } from './InputImage';
 export interface Props {}
 
 const EditAssignment: React.FC<Props> = (props: Props) => {
@@ -15,6 +16,7 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
     const selectRef2 = useRef<HTMLSelectElement>(null);
     const [startDate, setStartDate] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const inputImageRef = useRef<InputImageRef>(null);
     const { id } = useParams();
 
     const fetchData = async () => {
@@ -111,6 +113,18 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
         setStartDate(e.target.value);
     };
 
+    // function get_value(key) {
+    //     try {
+    //         if (state.item[key]) return state.item[key];
+    //         if (state.item?.staff_infos[key])
+    //             return state.item?.staff_infos[key];
+    //     } catch (error) {
+    //         return '';
+    //     }
+    //     return '';
+    // }
+    console.log('data atachment', data.attachment);
+
     return (
         <div className="admin_dashboard">
             <h3>Edit</h3>
@@ -198,7 +212,15 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                             Attachment <span className="valid_star">*</span>
                         </label>
                         <div className="form_elements">
-                            <input type="file" name="attachment" />
+                            {/* {/* <input type="file" name="attachment" /> */}
+                            {data?.attachment && (
+                                <InputImage
+                                    ref={inputImageRef}
+                                    label=""
+                                    name="attachment"
+                                    defalut_preview={data.attachment}
+                                />
+                            )}
                         </div>
                     </div>
                     <div className="form-group form-horizontal">

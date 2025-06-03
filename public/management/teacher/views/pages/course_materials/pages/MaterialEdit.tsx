@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 import BackButton from './BackButton';
+import InputImage, { InputImageRef } from './InputImage';
 export interface Props {}
 
 const MaterialEdit: React.FC<Props> = (props: Props) => {
@@ -13,6 +14,7 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
     const [subjects, setSubjects] = useState<any>([]);
     const selectRef = useRef<HTMLSelectElement>(null);
     const selectRef2 = useRef<HTMLSelectElement>(null);
+    const inputImageRef = useRef<InputImageRef>(null);
     const { id } = useParams();
 
     const fetchData = async () => {
@@ -188,7 +190,15 @@ const MaterialEdit: React.FC<Props> = (props: Props) => {
                             Attachment <span className="valid_star">*</span>
                         </label>
                         <div className="form_elements">
-                            <input type="file" name="attachment" />
+                            {/* <input type="file" name="attachment" /> */}
+                            {data?.attachment && (
+                                <InputImage
+                                    ref={inputImageRef}
+                                    label=""
+                                    name="attachment"
+                                    defalut_preview={data.attachment}
+                                />
+                            )}
                         </div>
                     </div>
                     <div className="form-group form-horizontal">

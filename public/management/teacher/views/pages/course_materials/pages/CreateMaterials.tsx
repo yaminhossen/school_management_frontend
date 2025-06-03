@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 import BackButton from './BackButton';
+import InputImage, { InputImageRef } from './InputImage';
 export interface Props {}
 
 const CreateMaterials: React.FC<Props> = (props: Props) => {
@@ -12,6 +13,7 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
     const [classes, setClasses] = useState<any>([]);
     const [subjects, setSubjects] = useState<any>([]);
     const classIdRef = useRef<HTMLSelectElement>(null);
+    const inputImageRef = useRef<InputImageRef>(null);
     const { id } = useParams();
 
     // const fetchData = async () => {
@@ -159,7 +161,13 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
                             Attachment <span className="valid_star">*</span>
                         </label>
                         <div className="form_elements">
-                            <input type="file" name="attachment" />
+                            {/* <input type="file" name="attachment" /> */}
+                            <InputImage
+                                ref={inputImageRef}
+                                label=""
+                                name="attachment"
+                                defalut_preview=""
+                            />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
