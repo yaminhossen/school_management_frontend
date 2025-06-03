@@ -18,6 +18,12 @@ async function validate(req: Request) {
     //     .isEmpty()
     //     .withMessage('the image field is required')
     //     .run(req);
+    if (req?.body?.password) {
+        await body('password')
+            .isLength({ min: 6 })
+            .withMessage('Password must be at least 6 characters')
+            .run(req);
+    }
 
     let result = await validationResult(req);
 
