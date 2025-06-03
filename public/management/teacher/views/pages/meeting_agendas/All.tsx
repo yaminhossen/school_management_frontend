@@ -56,9 +56,9 @@ const All: React.FC<Props> = (props: Props) => {
                                 <thead>
                                     <tr>
                                         {/* <th /> */}
-                                        <th>
+                                        {/* <th>
                                             <SelectAll />
-                                        </th>
+                                        </th> */}
                                         <TableHeading
                                             label={`ID`}
                                             col_name={`id`}
@@ -121,9 +121,9 @@ const All: React.FC<Props> = (props: Props) => {
                                                             item={i}
                                                         />
                                                     </td> */}
-                                                    <td>
+                                                    {/* <td>
                                                         <SelectItem item={i} />
-                                                    </td>
+                                                    </td> */}
                                                     <td>
                                                         <span
                                                             className="quick_view_trigger"
