@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import BackButton from './BackButton';
 export interface Props {}
 
 const AssignResult: React.FC<Props> = (props: Props) => {
@@ -26,6 +27,7 @@ const AssignResult: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
+            <BackButton></BackButton>
             <div className="result_details">
                 <h3 className="table_heading mt-4"></h3>
                 <form action="" onSubmit={(e) => e.preventDefault()}>

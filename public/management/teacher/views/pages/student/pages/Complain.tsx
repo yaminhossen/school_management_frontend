@@ -109,7 +109,9 @@ const Complain: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Complain</label>
+                        <label>
+                            Complain <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <textarea
                                 name="complain"

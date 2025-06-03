@@ -3,6 +3,7 @@ import { anyObject } from '../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+import BackButton from './pages/BackButton';
 export interface Props {}
 
 const Result: React.FC<Props> = (props: Props) => {
@@ -94,6 +95,7 @@ const Result: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
+            <BackButton></BackButton>
             <div className="result_details">
                 <h3 className="table_heading mt-4"></h3>
                 <form action="" onSubmit={(e) => e.preventDefault()}>

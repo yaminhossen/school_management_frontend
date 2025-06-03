@@ -124,8 +124,14 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <option value="teachers">
                                                 Teachers
                                             </option>
-                                            <option value="staffs">
-                                                Staffs
+                                            <option value="admission-officer">
+                                                Admission-officer
+                                            </option>
+                                            <option value="accountant">
+                                                Accountant
+                                            </option>
+                                            <option value="parents">
+                                                Parents
                                             </option>
                                             <option value="all">All</option>
                                         </select>

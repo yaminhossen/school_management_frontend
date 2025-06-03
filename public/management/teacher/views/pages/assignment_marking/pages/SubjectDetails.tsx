@@ -68,77 +68,95 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
                                     <th>Marking</th>
                                 </tr>
                             </thead>
-                            <tbody id="all_list">
-                                {data?.map(
-                                    (i: { [key: string]: any }, index) => {
-                                        return (
-                                            <tr>
-                                                <td></td>
-                                                <td>{index + 1}</td>
-                                                <td>{i.student?.name}</td>
-                                                <td>{i.assignment?.title}</td>
-                                                <td>{i.assignment?.mark}</td>
-                                                <td>{i.marks}</td>
-                                                <td>
-                                                    <a
-                                                        href={i.attachment}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        Reed File
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <input
-                                                        type="number"
-                                                        name="mark"
-                                                        min={0}
-                                                        max={i.assignment?.mark}
-                                                        placeholder="given marks"
-                                                        onBlur={(e) =>
-                                                            handleMarkBlur(e, i)
-                                                        }
-                                                        onChange={(
-                                                            e: React.ChangeEvent<HTMLInputElement>,
-                                                        ) => {
-                                                            const val =
-                                                                e.target.value;
-                                                            const max =
+                            {data?.length ? (
+                                <tbody id="all_list">
+                                    {data?.map(
+                                        (i: { [key: string]: any }, index) => {
+                                            return (
+                                                <tr>
+                                                    <td></td>
+                                                    <td>{index + 1}</td>
+                                                    <td>{i.student?.name}</td>
+                                                    <td>
+                                                        {i.assignment?.title}
+                                                    </td>
+                                                    <td>
+                                                        {i.assignment?.mark}
+                                                    </td>
+                                                    <td>{i.marks}</td>
+                                                    <td>
+                                                        <a
+                                                            href={i.attachment}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                        >
+                                                            Reed File
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <input
+                                                            type="number"
+                                                            name="mark"
+                                                            min={0}
+                                                            max={
                                                                 i.assignment
-                                                                    ?.mark;
-
-                                                            // Only check if value is not empty
-                                                            if (val !== '') {
-                                                                const value =
-                                                                    parseFloat(
-                                                                        val,
-                                                                    );
-
-                                                                if (
-                                                                    isNaN(value)
-                                                                ) {
-                                                                    e.target.value =
-                                                                        '';
-                                                                    return;
-                                                                }
-
-                                                                if (
-                                                                    value > max
-                                                                ) {
-                                                                    e.target.value =
-                                                                        max;
-                                                                } else if (
-                                                                    value < 0
-                                                                ) {
-                                                                    e.target.value =
-                                                                        '0';
-                                                                }
+                                                                    ?.mark
                                                             }
-                                                        }}
-                                                    />
-                                                </td>
+                                                            placeholder="given marks"
+                                                            onBlur={(e) =>
+                                                                handleMarkBlur(
+                                                                    e,
+                                                                    i,
+                                                                )
+                                                            }
+                                                            onChange={(
+                                                                e: React.ChangeEvent<HTMLInputElement>,
+                                                            ) => {
+                                                                const val =
+                                                                    e.target
+                                                                        .value;
+                                                                const max =
+                                                                    i.assignment
+                                                                        ?.mark;
 
-                                                {/* <td>
+                                                                // Only check if value is not empty
+                                                                if (
+                                                                    val !== ''
+                                                                ) {
+                                                                    const value =
+                                                                        parseFloat(
+                                                                            val,
+                                                                        );
+
+                                                                    if (
+                                                                        isNaN(
+                                                                            value,
+                                                                        )
+                                                                    ) {
+                                                                        e.target.value =
+                                                                            '';
+                                                                        return;
+                                                                    }
+
+                                                                    if (
+                                                                        value >
+                                                                        max
+                                                                    ) {
+                                                                        e.target.value =
+                                                                            max;
+                                                                    } else if (
+                                                                        value <
+                                                                        0
+                                                                    ) {
+                                                                        e.target.value =
+                                                                            '0';
+                                                                    }
+                                                                }
+                                                            }}
+                                                        />
+                                                    </td>
+
+                                                    {/* <td>
                                                     <input
                                                         type="number"
                                                         name="mark"
@@ -170,11 +188,27 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                            </tr>
-                                        );
-                                    },
-                                )}
-                            </tbody>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
+                                </tbody>
+                            ) : (
+                                <tbody>
+                                    <tr>
+                                        <td colSpan={9}>
+                                            <div
+                                                style={{
+                                                    fontSize: '24px',
+                                                }}
+                                                className="not_found f-size-4 m-4"
+                                            >
+                                                No data found
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            )}
                         </table>
                     </div>
                 </div>

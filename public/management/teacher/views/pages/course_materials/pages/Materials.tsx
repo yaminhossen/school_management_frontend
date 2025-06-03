@@ -57,39 +57,40 @@ const Materials: React.FC<Props> = (props: Props) => {
                                     <th>Course Materials</th>
                                 </tr>
                             </thead>
-                            <tbody id="all_list">
-                                {data?.map(
-                                    (i: { [key: string]: any }, index) => {
-                                        return (
-                                            <tr>
-                                                <td></td>
-                                                <td>{index + 1}</td>
-                                                {/* <td>{i.class}</td> */}
-                                                <td>{i.subject?.name}</td>
-                                                <td>{i.title}</td>
-                                                <td className="materials_td">
-                                                    <a
-                                                        className="btn materials_btn btn-sm btn-outline-info mr-1"
-                                                        target="blank"
-                                                        href={i.attachment}
-                                                        // download={i.attachment
-                                                        //     .split('/')
-                                                        //     .pop()}
-                                                    >
-                                                        {/* <span className="download_title material-symbols-outlined">
+                            {data?.length ? (
+                                <tbody id="all_list">
+                                    {data?.map(
+                                        (i: { [key: string]: any }, index) => {
+                                            return (
+                                                <tr>
+                                                    <td></td>
+                                                    <td>{index + 1}</td>
+                                                    {/* <td>{i.class}</td> */}
+                                                    <td>{i.subject?.name}</td>
+                                                    <td>{i.title}</td>
+                                                    <td className="materials_td">
+                                                        <a
+                                                            className="btn materials_btn btn-sm btn-outline-info mr-1"
+                                                            target="blank"
+                                                            href={i.attachment}
+                                                            // download={i.attachment
+                                                            //     .split('/')
+                                                            //     .pop()}
+                                                        >
+                                                            {/* <span className="download_title material-symbols-outlined">
                                                             download
                                                         </span> */}
-                                                        <span className="">
-                                                            Show
-                                                        </span>
-                                                    </a>
-                                                    <Link
-                                                        className="btn btn-sm btn-outline-info mr-1"
-                                                        to={`/course-materials/edit/${i.id}`}
-                                                    >
-                                                        Edit
-                                                    </Link>
-                                                    {/* <Link
+                                                            <span className="">
+                                                                Show
+                                                            </span>
+                                                        </a>
+                                                        <Link
+                                                            className="btn btn-sm btn-outline-info mr-1"
+                                                            to={`/course-materials/edit/${i.id}`}
+                                                        >
+                                                            Edit
+                                                        </Link>
+                                                        {/* <Link
                                                     className="btn btn-sm btn-outline-info mr-1"
                                                     to="/course-materials/details"
                                                 >
@@ -102,14 +103,30 @@ const Materials: React.FC<Props> = (props: Props) => {
                                                         </span>
                                                     </div>
                                                 </Link> */}
-                                                </td>
-                                                {/* <td>
+                                                    </td>
+                                                    {/* <td>
                                                 </td> */}
-                                            </tr>
-                                        );
-                                    },
-                                )}
-                            </tbody>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
+                                </tbody>
+                            ) : (
+                                <tbody>
+                                    <tr>
+                                        <td colSpan={9}>
+                                            <div
+                                                style={{
+                                                    fontSize: '24px',
+                                                }}
+                                                className="not_found f-size-4 m-4"
+                                            >
+                                                No data found
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            )}
                         </table>
                     </div>
                 </div>

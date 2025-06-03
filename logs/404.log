@@ -389,3 +389,17 @@
 {"level":60,"time":1748924992745,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
 {"level":60,"time":1748925203694,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
 {"level":60,"time":1748925385111,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1748926911431,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1748928927142,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1748929028807,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1748929061262,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1748929083318,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1748929103716,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1748929167374,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1748929216956,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1748930367765,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-routine-day-times/teacher-wise-class-routine"}
+{"level":60,"time":1748930406074,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/meeting-agendas/teacher?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description%2C+date%2C+time%2C+meeting_link%2C+meeting_type%2C+status"}
+{"level":60,"time":1748930482817,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1748930488739,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/policies/all"}
+{"level":60,"time":1748931205627,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1748931206494,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}

@@ -180,6 +180,7 @@ const Approved: React.FC<Props> = (props: Props) => {
                                                                     i.attachments ||
                                                                     undefined
                                                                 }
+                                                                target="blank"
                                                             >
                                                                 show
                                                             </a>
