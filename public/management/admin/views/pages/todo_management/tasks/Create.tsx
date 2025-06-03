@@ -29,7 +29,6 @@ const Create: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
     const params = useParams();
     let id = params.id || 2;
-    console.log('assing page id', id);
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
@@ -65,33 +64,6 @@ const Create: React.FC<Props> = (props: Props) => {
         dispatch(all_teacher({}) as any);
     }, []);
 
-    // async function handle_submit(e) {
-    //     e.preventDefault();
-    //     let response = await dispatch(store(new FormData(e.target)) as any);
-    //     if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
-    //         e.target.reset();
-    //     }
-    // }
-
-    console.log('staffsss', staffs);
-
-    // async function handle_submit(e) {
-    //     e.preventDefault();
-    //     console.log('yamjin');
-    //     let formdata = new FormData(e.target) as any;
-    //     // let staffs = [1, 2];
-
-    //     // Append staffs array as a JSON string
-    //     formdata.append('staffs', JSON.stringify(staffs));
-    //     formdata.append('teachers', JSON.stringify(teachers));
-    //     formdata.append('id', id);
-
-    //     let response = await dispatch(
-    //         // assign_task({ staffs, teachers, id, formdata }) as any,
-    //         assign_task(formdata) as any,
-    //     );
-    //     console.log('response', response);
-    // }
     async function handle_submit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         try {
@@ -110,8 +82,6 @@ const Create: React.FC<Props> = (props: Props) => {
         }
     }
 
-    let formateddata = moment().format('YYYY-MM-DD');
-    // console.log('dateff', formateddata);
     useEffect(() => {
         const start = moment(startDate);
         const today = moment().startOf('day');

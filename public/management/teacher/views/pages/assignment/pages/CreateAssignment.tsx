@@ -12,6 +12,9 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
     const [classes, setClasses] = useState<any>([]);
     const [subjects, setSubjects] = useState<any>([]);
     // const [categories, setCategories] = useState<any>([]);
+    const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
+
+    const [errorMessage, setErrorMessage] = useState('');
     const { id } = useParams();
 
     const fetchClasses = async () => {
@@ -73,6 +76,21 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
         console.log('Selected value:', event.target.value);
     };
     console.log('Selected dataaa:', subjects);
+
+    useEffect(() => {
+        const start = moment(startDate);
+        const today = moment().startOf('day');
+
+        if (start.isBefore(today)) {
+            setErrorMessage('Date cannot be before today.');
+            return;
+        }
+
+        setErrorMessage('');
+    }, [startDate]);
+    const handleStartDateChange = (e) => {
+        setStartDate(e.target.value);
+    };
     return (
         <div className="admin_dashboard">
             <h3>Create</h3>
@@ -178,17 +196,39 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
                         <div className="form_elements">
                             <input
                                 type="date"
+                                value={startDate}
+                                onChange={handleStartDateChange}
+                                name="deadline"
+                            />
+                            {errorMessage && (
+                                <div
+                                    style={{
+                                        color: 'red',
+                                        marginTop: '5px',
+                                    }}
+                                >
+                                    {errorMessage}
+                                </div>
+                            )}
+                        </div>
+                        {/* <div className="form_elements">
+                            <input
+                                type="date"
                                 defaultValue={moment(data?.deadline).format(
                                     'YYYY-MM-DD',
                                 )}
                                 name="deadline"
                             />
-                        </div>
+                        </div> */}
                     </div>
-                    <div className="form-group form-horizontal">
+                    <div className="form-group student_submit form-horizontal">
                         <label></label>
                         <div className="form_elements">
-                            <button className="btn btn-sm btn-outline-info">
+                            <button
+                                type="submit"
+                                className={`btn btn-outline-info btn_1 ${errorMessage ? 'btn_error' : ''}`}
+                                disabled={!!errorMessage}
+                            >
                                 submit
                             </button>
                         </div>

@@ -13,6 +13,8 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
     const [subjects, setSubjects] = useState<any>([]);
     const selectRef = useRef<HTMLSelectElement>(null);
     const selectRef2 = useRef<HTMLSelectElement>(null);
+    const [startDate, setStartDate] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const { id } = useParams();
 
     const fetchData = async () => {
@@ -77,6 +79,8 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
         if (data?.class_id && Number(data.class_id) > 0) {
             fetchSubjects(Number(data.class_id));
         }
+
+        setStartDate(moment(data?.deadline).format('YYYY-MM-DD'));
     }, [data?.class_id]);
 
     const handleChange = async (
@@ -91,6 +95,20 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
         } catch (error) {
             setError(error);
         }
+    };
+    useEffect(() => {
+        const start = moment(startDate);
+        const today = moment().startOf('day');
+
+        if (start.isBefore(today)) {
+            setErrorMessage('Date cannot be before today.');
+            return;
+        }
+
+        setErrorMessage('');
+    }, [startDate]);
+    const handleStartDateChange = (e) => {
+        setStartDate(e.target.value);
     };
 
     return (
@@ -202,17 +220,38 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
                         <div className="form_elements">
                             <input
                                 type="date"
+                                value={startDate}
+                                onChange={handleStartDateChange}
+                                name="deadline"
+                            />
+                            {errorMessage && (
+                                <div
+                                    style={{
+                                        color: 'red',
+                                        marginTop: '5px',
+                                    }}
+                                >
+                                    {errorMessage}
+                                </div>
+                            )}
+                        </div>
+                        {/* <div className="form_elements">
+                            <input
+                                type="date"
                                 defaultValue={moment(data?.deadline).format(
                                     'YYYY-MM-DD',
                                 )}
                                 name="deadline"
                             />
-                        </div>
+                        </div> */}
                     </div>
-                    <div className="form-group form-horizontal">
+                    <div className="form-group student_submit form-horizontal">
                         <label></label>
                         <div className="form_elements">
-                            <button className="btn btn-sm btn-outline-info">
+                            <button
+                                className={`btn btn-outline-info btn_1 ${errorMessage ? 'btn_error' : ''}`}
+                                disabled={!!errorMessage}
+                            >
                                 submit
                             </button>
                         </div>
