@@ -386,3 +386,6 @@
 {"level":60,"time":1748923863727,"pid":12032,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-store"}
 {"level":60,"time":1748923869221,"pid":12032,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-store"}
 {"level":60,"time":1748923870631,"pid":12032,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-student-marks/mark-store"}
+{"level":60,"time":1748924992745,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1748925203694,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1748925385111,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}

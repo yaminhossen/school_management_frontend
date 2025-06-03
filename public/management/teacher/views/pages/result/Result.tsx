@@ -145,10 +145,11 @@ const Result: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Name</th>
+                                    <th>Max Mark</th>
                                     <th>Result</th>
-                                    <th>Other Mark</th>
-                                    <th>Mark</th>
-                                    <th>Other Mark</th>
+                                    {/* <th>Other Mark</th> */}
+                                    <th>Marking</th>
+                                    {/* <th>Other Mark</th> */}
                                 </tr>
                             </thead>
                             <tbody id="all_list">
@@ -164,24 +165,59 @@ const Result: React.FC<Props> = (props: Props) => {
                                                 <td>
                                                     {i.student?.name || 'N/A'}
                                                 </td>
+                                                <td>100</td>
                                                 <td>
                                                     {i.studentMarks
                                                         ?.obtained_mark ?? 'no'}
                                                 </td>
                                                 <td>
-                                                    {i.studentMarks
-                                                        ?.other_mark ?? 'no'}
-                                                </td>
-                                                <td>
                                                     <input
                                                         type="number"
                                                         name={`mark`}
+                                                        placeholder="give mark"
                                                         onBlur={(e) =>
                                                             handleMarkBlur(e, i)
                                                         }
+                                                        onChange={(
+                                                            e: React.ChangeEvent<HTMLInputElement>,
+                                                        ) => {
+                                                            const val =
+                                                                e.target.value;
+                                                            const max = 100;
+
+                                                            // Only check if value is not empty
+                                                            if (val !== '') {
+                                                                const value =
+                                                                    parseFloat(
+                                                                        val,
+                                                                    );
+
+                                                                if (
+                                                                    isNaN(value)
+                                                                ) {
+                                                                    e.target.value =
+                                                                        '';
+                                                                    return;
+                                                                }
+
+                                                                if (
+                                                                    value > max
+                                                                ) {
+                                                                    e.target.value =
+                                                                        String(
+                                                                            max,
+                                                                        ); // convert number to string
+                                                                } else if (
+                                                                    value < 0
+                                                                ) {
+                                                                    e.target.value =
+                                                                        '0';
+                                                                }
+                                                            }
+                                                        }}
                                                     />
                                                 </td>
-                                                <td>
+                                                {/* <td>
                                                     <input
                                                         type="number"
                                                         name={`other_mark`}
@@ -189,7 +225,7 @@ const Result: React.FC<Props> = (props: Props) => {
                                                             handleMarkBlur(e, i)
                                                         }
                                                     />
-                                                </td>
+                                                </td> */}
                                             </tr>
                                         ),
                                     )
