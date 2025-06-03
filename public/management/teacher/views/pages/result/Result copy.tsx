@@ -175,7 +175,7 @@ const Result: React.FC<Props> = (props: Props) => {
                                                 <td>
                                                     <input
                                                         type="number"
-                                                        name={`mark`}
+                                                        name={`mark_${index}`}
                                                         onBlur={(e) =>
                                                             handleMarkBlur(e, i)
                                                         }
@@ -184,7 +184,7 @@ const Result: React.FC<Props> = (props: Props) => {
                                                 <td>
                                                     <input
                                                         type="number"
-                                                        name={`other_mark`}
+                                                        name={`other_mark_${index}`}
                                                         onBlur={(e) =>
                                                             handleMarkBlur(e, i)
                                                         }

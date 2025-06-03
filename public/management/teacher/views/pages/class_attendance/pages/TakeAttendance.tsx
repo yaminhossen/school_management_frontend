@@ -42,6 +42,7 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
                 '/api/v1/student-attendances/store',
                 formData,
             );
+            (window as any).toaster('Attendance submitted');
             // setData(response.data.data.data);
             (window as any).toaster('Attendance submitted');
             // setTotalIncome(response.data.data.data2);
