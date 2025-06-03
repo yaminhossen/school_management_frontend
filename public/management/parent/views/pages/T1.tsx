@@ -9,6 +9,8 @@ const T1: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState();
     const [accdemicCalander, setAccademicCalander] = useState<any[]>([]);
+    const [noticeCount, setNoticeCount] = useState(0);
+    const [studentCount, setStudentCount] = useState(0);
     // console.log(accdemicCalander);
 
     const [selectedDate, setSelectedDate] = useState(
@@ -24,18 +26,33 @@ const T1: React.FC<Props> = (props: Props) => {
     const month = selectedMoment.format('MMM').toLowerCase(); // e.g., "jan"
     const year = selectedMoment.format('YYYY'); // e.g., "2025"
     const formattedDate = `${month}-${year}`;
-    const fetchData = async () => {
+
+    // Fetch notice count
+    const fetchNoticeCount = async () => {
         try {
-            const response = await axios.get('/api/v1/notices/user/students');
-            setData(response.data.data);
-            // setData(response.data);
+            const response = await axios.get('/api/v1/notices/all/students');
+            setNoticeCount(response.data.data.length);
         } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    // Fetch notice count
+    const fetchStudentCount = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/user-students/parent/childrens',
+            );
+            setStudentCount(response.data.data.length);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
             setError(error);
         }
     };
 
     useEffect(() => {
-        fetchData();
+        fetchNoticeCount();
+        fetchStudentCount();
     }, []);
     console.log(data);
     let days = [
@@ -127,15 +144,25 @@ const T1: React.FC<Props> = (props: Props) => {
                     gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr)',
                 }}
             >
-                {['নোটিশ', 'চিলড্রেন', 'ফিস বকেয়া'].map((i) => {
+                {[
+                    {
+                        title: 'নোটিশ',
+                        value: noticeCount,
+                    },
+                    {
+                        title: 'চিল্ড্রেন',
+                        value: studentCount,
+                    },
+                ].map((i) => {
                     return (
                         <div className="card w-100" data-intro="This is card">
                             <div className="business-top-widget card-body">
-                                <h5 className="mb-2">{i}</h5>
+                                <h5 className="mb-2">{i.title}</h5>
                                 <div className="media d-inline-flex">
                                     <div className="media-body">
                                         <h2 className="total-value m-0 counter">
-                                            {Math.round(Math.random() * 1000)}
+                                            {/* {Math.round(Math.random() * 1000)} */}
+                                            {i.value}
                                         </h2>
                                     </div>
                                     <i

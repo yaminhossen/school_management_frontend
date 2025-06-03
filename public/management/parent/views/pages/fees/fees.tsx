@@ -73,13 +73,15 @@ const Fees: React.FC<Props> = (props: Props) => {
                                         </tr>
                                     );
                                 })}
+                            </tbody>
+                            <tfoot>
                                 <tr>
                                     <td></td>
                                     <td></td>
                                     <td className="payment_total">Total:</td>
                                     <td>{totalAmountValue} tk</td>
                                 </tr>
-                            </tbody>
+                            </tfoot>
                         </table>
                     </div>
                 </div>

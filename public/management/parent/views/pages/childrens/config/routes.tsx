@@ -37,7 +37,7 @@ export default {
             element: <SingleStudent />,
             children: [
                 {
-                    path: '',
+                    path: 'basic-information',
                     element: <BasicInformation />,
                 },
                 {

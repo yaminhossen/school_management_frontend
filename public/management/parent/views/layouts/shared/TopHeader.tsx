@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavbarSwitch from './NavbarSwitch';
+import axios from 'axios';
+import { anyObject } from '../../../common_types/object';
 
 export interface Props {}
 
 const TopHeader: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+        try {
+            let confirm = await (window as anyObject).s_confirm('Logout');
+            if (confirm) {
+                await axios.post('/api/v1/auth/parent/logout');
+            }
+        } catch (error) {
+            setError(error);
+        }
+    };
     return (
         <>
             <div className="page-main-header">
@@ -73,7 +88,7 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                                         </a>
                                     </li> */}
                                     <li>
-                                        <a href="#">
+                                        <a onClick={handleSubmit} href="#">
                                             <i className="icon-power-off" />
                                             Logout
                                         </a>

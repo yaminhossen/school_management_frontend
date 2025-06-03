@@ -403,3 +403,11 @@
 {"level":60,"time":1748930488739,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/policies/all"}
 {"level":60,"time":1748931205627,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
 {"level":60,"time":1748931206494,"pid":10988,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1748941536598,"pid":10516,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1748942364309,"pid":10516,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1748942365682,"pid":10516,"hostname":"DESKTOP-9421701","error":"404","url":"/attachment"}
+{"level":60,"time":1748942385023,"pid":10516,"hostname":"DESKTOP-9421701","error":"404","url":"/attachment"}
+{"level":60,"time":1748943769445,"pid":10516,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1748943778408,"pid":10516,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1748943779410,"pid":10516,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1748947846007,"pid":10516,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/parent/parent.js"}

@@ -70,6 +70,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                 />
                 <MenuSingle to="/faq" icon="icon-help" label="FAQ" />
                 <MenuSingle
+                    to="/settings"
+                    icon="icon-receipt"
+                    label="Settings"
+                />
+                <MenuSingle
                     onClick={handleSubmit}
                     to=""
                     icon="icon-power-off"

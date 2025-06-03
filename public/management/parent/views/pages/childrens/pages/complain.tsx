@@ -43,23 +43,25 @@ const Complain: React.FC<Props> = (props: Props) => {
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>SI</th>
+                                    <th>Serial</th>
                                     {/* <th>Title</th> */}
                                     <th>Description</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
                                 {data.length &&
-                                    data.map((i: { [key: string]: any }) => {
-                                        return (
-                                            <tr>
-                                                <td></td>
-                                                <td>{i.id}</td>
-                                                {/* <td>{i.complain}</td> */}
-                                                <td>{i.complain}</td>
-                                            </tr>
-                                        );
-                                    })}
+                                    data.map(
+                                        (i: { [key: string]: any }, index) => {
+                                            return (
+                                                <tr>
+                                                    <td></td>
+                                                    <td>{index + 1}</td>
+                                                    {/* <td>{i.complain}</td> */}
+                                                    <td>{i.complain}</td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
                             </tbody>
                         </table>
                     </div>

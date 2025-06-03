@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { anyObject } from '../../../common_types/object';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
@@ -71,15 +71,40 @@ const Index: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <ul className="section_naviagation">
-                        <li>
-                            <Link to="/profile/major-information">
+                        {/* <li>
+                            <NavLink to="/profile/major-information">
                                 Major informations
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/profile/basic-information">
+                            <NavLink to="/profile/basic-information">
                                 Basic informations
-                            </Link>
+                            </NavLink>
+                        </li> */}
+                        <li className="active_Li">
+                            <NavLink
+                                to={`/profile/major-information`}
+                                // className="active_nav_link"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? 'active_nav_link'
+                                        : 'normal_nav_link'
+                                }
+                            >
+                                Major informations
+                            </NavLink>
+                        </li>
+                        <li className="active_Li">
+                            <NavLink
+                                to={`/profile/basic-information`}
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? 'active_nav_link'
+                                        : 'normal_nav_link'
+                                }
+                            >
+                                Basic informations
+                            </NavLink>
                         </li>
                     </ul>
                     <div></div>

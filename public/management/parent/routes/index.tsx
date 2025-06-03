@@ -12,6 +12,7 @@ import notices_routes from '../views/pages/notices/config/routes';
 import policies_routes from '../views/pages/policies/config/routes';
 import faq_routes from '../views/pages/faq/config/routes';
 import contact_support_routes from '../views/pages/contact_support/config/routes';
+import settings_routes from '../views/pages/settings/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
@@ -28,6 +29,7 @@ const router: RouteTypes[] = [
             policies_routes,
             faq_routes,
             contact_support_routes,
+            settings_routes,
             {
                 path: '',
                 element: <T1 />,
