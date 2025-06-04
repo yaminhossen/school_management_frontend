@@ -200,14 +200,15 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 Select group
                                             </option>
                                             <option value="admission-officer">
-                                                admission-officer
+                                                Admission-officer
                                             </option>
                                             <option value="accountant">
-                                                accountant
+                                                Accountant
                                             </option>
                                             <option value="teacher">
-                                                teacher
+                                                Teacher
                                             </option>
+                                            <option value="staff">Staff</option>
                                         </select>
                                     </div>
                                 </div>

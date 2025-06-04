@@ -56,6 +56,7 @@ async function teacher_all(
     /** initializations */
     let models = await db();
     let query_param = req.query as any;
+    let user = (req as any).user;
 
     const { Op } = require('sequelize');
     let search_key = query_param.search_key;
@@ -82,7 +83,7 @@ async function teacher_all(
 
     const whereClause: any = {
         status: show_active_data === 'true' ? 'active' : 'deactive',
-        role: 'teacher',
+        role: user?.user_type,
         is_complete: 'pending',
     };
     const today = moment().format('YYYY-MM-DD');

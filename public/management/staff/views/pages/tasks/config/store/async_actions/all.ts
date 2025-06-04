@@ -40,7 +40,7 @@ const fetch_api = async (param, thunkAPI) => {
     };
 
     let response: { [key: string]: any } = {};
-    let url = `${api_host}${end_point}/${api_prefix}/pending`;
+    let url = `${api_host}${end_point}/${api_prefix}/staff-pending`;
     let full_url: URL = new URL(url);
     let fetch_only_latest: boolean = state[`only_latest_data`];
 

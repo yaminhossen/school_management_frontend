@@ -16,6 +16,7 @@ import data_import from './services/import';
 import meeting_all from './services/meeting_all';
 import teacher_all from './services/teacher_all';
 import admission_officer_all from './services/admission_officer_all';
+import staff_all from '../../user_management/user_staffs/services/staff_all';
 
 export default function (fastify: FastifyInstance) {
     return {

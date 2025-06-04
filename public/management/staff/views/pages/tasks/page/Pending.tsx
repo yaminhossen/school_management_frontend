@@ -53,7 +53,7 @@ const Pending: React.FC<Props> = (props: Props) => {
             try {
                 console.log('it is confirmed');
                 const response = await axios.post(
-                    `/api/v1/tasks/teacher-update/${id}`,
+                    `/api/v1/tasks/staff-update/${id}`,
                 );
 
                 dispatch(all({}) as any);

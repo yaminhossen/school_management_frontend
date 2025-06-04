@@ -23,16 +23,25 @@ async function teachers_pending(
     let paginate = parseInt((req.query as any).paginate) || 10;
     let select_fields: string[] = [];
 
-    let user = (req as any).user;
-
     if (query_param.select_fields) {
         select_fields = query_param.select_fields.replace(/\s/g, '').split(',');
         select_fields = [...select_fields, 'id', 'status'];
     }
 
+    // let user = (req as any).user;
+    // const whereClause: any = {
+    //     status: show_active_data === 'true' ? 'active' : 'deactive',
+    //     branch_teacher_id: user?.id,
+    //     leave_status: 'pending',
+    // };
+    let user = (req as any).user;
+
     const whereClause: any = {
         status: show_active_data === 'true' ? 'active' : 'deactive',
-        branch_teacher_id: user?.id,
+        ...(user?.user_type === 'teacher' && { branch_teacher_id: user?.id }),
+        ...(user?.user_type === 'student' && { branch_student_id: user?.id }),
+        ...(user?.user_type !== 'teacher' &&
+            user?.user_type !== 'student' && { branch_staff_id: user?.id }),
         leave_status: 'pending',
     };
     const today = moment().format('YYYY-MM-DD');
