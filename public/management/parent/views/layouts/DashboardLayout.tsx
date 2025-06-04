@@ -1,11 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import TopHeader from './shared/TopHeader';
 import SideBar from './shared/menu/SideBar';
+import axios from 'axios';
 
 export interface Props {}
 
 const DashboardLayout: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+    const [data, setData] = useState<any>();
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/user-parents/basic-information',
+            );
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
     return (
         <div className="page-wrapper">
             {/*Page Header Start*/}
@@ -20,11 +39,11 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
                         <div>
                             <img
                                 className="img-50 rounded-circle"
-                                src="/assets/dashboard_uni/1.jpg"
-                                alt="#"
+                                src={data?.image}
+                                alt="Parents"
                             />
                         </div>
-                        <h6 className="mt-3 f-12">Doctor Jobayer Ahmed</h6>
+                        <h6 className="mt-3 f-12">{data?.name}</h6>
                     </div>
                     <SideBar />
                 </div>

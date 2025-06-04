@@ -9,6 +9,8 @@ const T1: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState();
     const [accdemicCalander, setAccademicCalander] = useState<any[]>([]);
+    const [noticeCount, setNoticeCount] = useState(0);
+    const [taskCount, setTaskCount] = useState(0);
     // console.log(accdemicCalander);
 
     const [selectedDate, setSelectedDate] = useState(
@@ -24,18 +26,31 @@ const T1: React.FC<Props> = (props: Props) => {
     const month = selectedMoment.format('MMM').toLowerCase(); // e.g., "jan"
     const year = selectedMoment.format('YYYY'); // e.g., "2025"
     const formattedDate = `${month}-${year}`;
-    const fetchData = async () => {
+
+    // Fetch notice count
+    const fetchNoticeCount = async () => {
         try {
-            const response = await axios.get('/api/v1/notices/user/students');
-            setData(response.data.data);
-            // setData(response.data);
+            const response = await axios.get('/api/v1/notices/all/staffs');
+            setNoticeCount(response.data.data.length);
         } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    // Fetch notice count
+    const fetchTaskCount = async () => {
+        try {
+            const response = await axios.get('/api/v1/tasks/teachers');
+            setTaskCount(response.data.data.length);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
             setError(error);
         }
     };
 
     useEffect(() => {
-        fetchData();
+        fetchNoticeCount();
+        fetchTaskCount();
     }, []);
 
     // useEffect(() => {
@@ -133,20 +148,20 @@ const T1: React.FC<Props> = (props: Props) => {
                 {[
                     {
                         title: 'নোটিশ',
-                        value: 7,
+                        value: noticeCount,
                     },
                     {
-                        title: 'বাড়ির কাজ',
-                        value: 2,
+                        title: 'টাস্ক',
+                        value: taskCount,
                     },
-                    {
-                        title: 'এই মাসের উপস্থিতি',
-                        value: '78 / 88',
-                    },
-                    {
-                        title: 'উপস্থিতি %',
-                        value: 89,
-                    },
+                    // {
+                    //     title: 'এই মাসের উপস্থিতি',
+                    //     value: '78 / 88',
+                    // },
+                    // {
+                    //     title: 'উপস্থিতি %',
+                    //     value: 89,
+                    // },
                 ].map((i) => {
                     return (
                         <div

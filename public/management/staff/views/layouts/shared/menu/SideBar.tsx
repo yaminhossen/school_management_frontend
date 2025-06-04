@@ -33,11 +33,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-user"
                     label="Profile"
                 />
-                <MenuSingle
+                {/* <MenuSingle
                     to="/attendance"
                     icon="icon-receipt"
                     label="Attendance"
-                />
+                /> */}
                 {/* <MenuSingle to="/reports" icon="icon-receipt" label="Reports" /> */}
 
                 {/* sdfds */}
@@ -46,10 +46,20 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-notepad"
                     label="Leave Application"
                 />
-                <MenuSingle
+                {/* <MenuSingle
                     to="/salary-report"
                     icon="icon-notepad"
                     label="Salary Report"
+                /> */}
+                <MenuSingle
+                    to="/tasks/pending"
+                    icon="icon-notepad"
+                    label="Tasks"
+                />
+                <MenuSingle
+                    to="/meeting-agendas"
+                    icon="icon-notepad"
+                    label="Meetings"
                 />
                 <MenuSingle to="/notices" icon="icon-bell" label="Notices" />
                 {/* <MenuSingle

@@ -3,6 +3,7 @@ import { anyObject } from '../../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+import BackButton from './BackButton';
 export interface Props {}
 const NoticeDetails: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
@@ -29,6 +30,7 @@ const NoticeDetails: React.FC<Props> = (props: Props) => {
     console.log(data);
     return (
         <div className="admin_dashboard user_notice">
+            <BackButton></BackButton>
             <div className="col-md-6">
                 <h3>{data?.title}</h3>
                 <p>{data?.description}</p>
