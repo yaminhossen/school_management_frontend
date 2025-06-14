@@ -110,7 +110,9 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                             </td>
                                             <td className="middle-cell">
                                                 <div>
-                                                    <p>Sayadpur, Rangpur</p>
+                                                    <p className="academi_name">
+                                                        Sayadpur, Rangpur
+                                                    </p>
                                                     <div className="logo_image">
                                                         <img
                                                             src="/assets/dashboard_uni/logo1.png"
@@ -122,6 +124,11 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                                         ACADEMIC TRANSCRIPT
                                                         {/* </u> */}
                                                     </h3>
+                                                    <p className="academi_name">
+                                                        {convertUnderscoreToSpace(
+                                                            title,
+                                                        ).toUpperCase()}
+                                                    </p>
                                                 </div>
                                             </td>
                                             <td className="side-cell">
@@ -252,6 +259,15 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                             <td className="bottom-right">
                                                 <table className="result_table2">
                                                     <tbody>
+                                                        {/* <tr>
+                                                            <td>Exam</td>
+                                                            <td>:</td>
+                                                            <td className="font-medium text-dark-medium">
+                                                                {convertUnderscoreToSpace(
+                                                                    title,
+                                                                ).toUpperCase()}
+                                                            </td>
+                                                        </tr> */}
                                                         <tr>
                                                             <td>Role No.</td>
                                                             <td>:</td>
@@ -337,8 +353,10 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                     <td>
                                         <strong>
                                             {getGrade(
-                                                totalObtainedMark /
-                                                    data?.length,
+                                                Math.ceil(
+                                                    totalObtainedMark /
+                                                        data?.length,
+                                                ),
                                             )}
                                         </strong>
                                     </td>

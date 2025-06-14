@@ -3079,6 +3079,10 @@ td.col_id {
   width: 50%;
 }
 
+.academi_name {
+  width: 100% !important;
+}
+
 @media only screen and (max-width: 1499px) {
   .single-info-details .item-content p {
     width: 80%;
