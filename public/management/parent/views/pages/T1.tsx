@@ -30,7 +30,7 @@ const T1: React.FC<Props> = (props: Props) => {
     // Fetch notice count
     const fetchNoticeCount = async () => {
         try {
-            const response = await axios.get('/api/v1/notices/all/students');
+            const response = await axios.get('/api/v1/notices/all/parents');
             setNoticeCount(response.data.data.length);
         } catch (error) {
             console.error('Error fetching notice count:', error);

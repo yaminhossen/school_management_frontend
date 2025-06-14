@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
 import axios from 'axios';
+import BackButton from './BackButton';
 export interface Props {}
 
 const SingleStudent: React.FC<Props> = (props: Props) => {
@@ -29,13 +30,18 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
+            <BackButton></BackButton>
             <div className="admin_dashboard">
                 <div className="single-info-details">
                     <div className="item-img">
                         <img
                             className="user_profile_img"
-                            src="/assets/dashboard/images/avatar.png"
-                            alt="teacher"
+                            // src="/assets/dashboard/images/avatar.png"
+                            src={
+                                data.image ||
+                                '/assets/dashboard/images/avatar.png'
+                            }
+                            alt="child"
                         />
                     </div>
                     <div className="item-content">
