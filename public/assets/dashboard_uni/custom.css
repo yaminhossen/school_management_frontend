@@ -694,6 +694,22 @@ th {
     .page-main-header{
         display: none !important;
     }
+    
+    .section_naviagation{
+        display: none !important;
+    }
+    
+    .item-img{
+        display: none !important;
+    }
+    
+    .btn-sm{
+        display: none !important;
+    }
+    
+    .header-inline{
+        display: none !important;
+    }
     .page-sidebar{
         width: 0 !important;
     }
