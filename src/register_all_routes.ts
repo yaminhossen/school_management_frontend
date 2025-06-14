@@ -59,11 +59,11 @@ export let active_routes: string[] = [
     // 'src/modules/class_management/branch_class_fee_discounts/routes.ts',
     // 'src/modules/class_management/branch_class_fee_types/routes.ts',
     // 'src/modules/class_management/branch_class_fee_waivers/routes.ts',
-    // 'src/modules/class_management/branch_class_resources/routes.ts',
+    'src/modules/class_management/branch_class_resources/routes.ts',
     // 'src/modules/class_management/branch_class_routin_day_times/routes.ts',
     // 'src/modules/class_management/branch_class_sections/routes.ts',
     // 'src/modules/class_management/branch_class_shifts/routes.ts',
-    // 'src/modules/class_management/branch_class_subjects/routes.ts',
+    'src/modules/class_management/branch_class_subjects/routes.ts',
     // 'src/modules/employee_salary_management/branch_employee_job_pay_grades/routes.ts',
     // 'src/modules/employee_salary_management/branch_employee_job_positions/routes.ts',
     // 'src/modules/employee_salary_management/branch_employee_payroll_transactions/routes.ts',
@@ -108,7 +108,7 @@ export let active_routes: string[] = [
     'src/modules/user_management/user_parents/routes.ts',
     // 'src/modules/user_management/user_staffs/routes.ts',
     'src/modules/user_management/user_students/routes.ts',
-    // 'src/modules/user_management/user_teachers/routes.ts',
+    'src/modules/user_management/user_teachers/routes.ts',
 ];
 
 function register_all_routes(fastify: FastifyInstance) {

@@ -9,6 +9,7 @@ const TermResult: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [title, setTitle] = useState('');
     const [data, setData] = useState<any>([]);
+    const [tscore, setTscore] = useState<any>(0);
     const [error2, setError2] = useState(null);
     const [data2, setData2] = useState<any>([]);
     const { id, termid, classid } = useParams();
@@ -72,6 +73,11 @@ const TermResult: React.FC<Props> = (props: Props) => {
     function printPage() {
         window.print();
     }
+    const totalObtainedMark = data?.reduce(
+        (sum: number, item: { obtained_mark: number }) =>
+            sum + (item.obtained_mark || 0),
+        0,
+    );
 
     return (
         <div className="admin_dashboard">
@@ -305,7 +311,11 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                     (i: { [key: string]: any }, index) => {
                                         return (
                                             <tr className="grade_table">
-                                                <td></td>
+                                                <td>
+                                                    {/* {totalNumber(
+                                                        i.obtained_mark,
+                                                    )} */}
+                                                </td>
                                                 {/* <td>{index + 1}</td> */}
                                                 <td>{i?.subject?.name}</td>
                                                 <td>{i?.obtained_mark}</td>
@@ -318,9 +328,20 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                 )}
                                 <tr className="grade_table2">
                                     <td></td>
-                                    <td>RESULT :</td>
-                                    <td>400</td>
-                                    <td>A</td>
+                                    <td>
+                                        <strong>RESULT:</strong>
+                                    </td>
+                                    <td>
+                                        <strong>{totalObtainedMark}</strong>
+                                    </td>
+                                    <td>
+                                        <strong>
+                                            {getGrade(
+                                                totalObtainedMark /
+                                                    data?.length,
+                                            )}
+                                        </strong>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
