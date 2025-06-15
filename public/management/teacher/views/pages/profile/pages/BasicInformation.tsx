@@ -48,44 +48,32 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                     </tr>
                     <tr>
                         <td>Country:</td>
-                        <td className="font-medium text-dark-medium">What</td>
+                        <td className="font-medium text-dark-medium">
+                            {data.teacher_infos?.country}
+                        </td>
                     </tr>
                     <tr>
                         <td>District:</td>
-                        <td className="font-medium text-dark-medium">What</td>
-                    </tr>
-                    <tr>
-                        <td>Thana:</td>
-                        <td className="font-medium text-dark-medium">What</td>
-                    </tr>
-                    <tr>
-                        <td>Graduation:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.graduation}
+                            {data.teacher_infos?.district}
                         </td>
                     </tr>
                     <tr>
                         <td>Qualification:</td>
-                        <td className="font-medium text-dark-medium">What</td>
-                    </tr>
-                    <tr>
-                        <td>Occupation:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.occupation}
+                            {data.teacher_infos?.qualification}
                         </td>
                     </tr>
                     <tr>
-                        <td>Department:</td>
-                        <td className="font-medium text-dark-medium">What</td>
-                    </tr>
-                    <tr>
-                        <td>Blood Groupe:</td>
-                        <td className="font-medium text-dark-medium">What</td>
+                        <td>Blood Group:</td>
+                        <td className="font-medium text-dark-medium">
+                            {data.teacher_infos?.blood_group}
+                        </td>
                     </tr>
                     <tr>
                         <td>IsMarried:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.ismarried == true
+                            {data.teacher_infos?.is_married == true
                                 ? 'Yes'
                                 : 'No'}
                         </td>
@@ -93,7 +81,7 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                     <tr>
                         <td>Guardian Contact Number:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.phone_number}
+                            {data.teacher_infos?.guardian_contact_number}
                         </td>
                     </tr>
                     <tr>
