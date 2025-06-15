@@ -73,9 +73,15 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.AccountLogsModel();
+    let user = (req as any).user;
+    let auth_user = await models.BranchStaffsModel.findOne({
+        where: {
+            user_staff_id: (req as any).user?.id || null,
+        },
+    });
 
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: body.branch_id,
+        branch_id: auth_user?.branch_id || 0,
         account_category_id: body.account_category_id,
         account_id: body.account_log_id,
         account_period_id: body.account_period_id,

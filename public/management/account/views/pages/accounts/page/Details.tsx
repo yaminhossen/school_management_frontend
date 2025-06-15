@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+import BackButton from '../../../components/BackButton';
 
 export interface AccountLog {
     account: { title: string };
@@ -49,13 +50,14 @@ const Index: React.FC<Props> = () => {
 
     return (
         <div className="admin_dashboard">
+            <BackButton></BackButton>
             <div className="content_body">
-                <Link
+                {/* <Link
                     to="/accounts/create"
                     className="btn btn-sm btn-outline-info mb-2"
                 >
                     Create
-                </Link>
+                </Link> */}
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
                         <table>

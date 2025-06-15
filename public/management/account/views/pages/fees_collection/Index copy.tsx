@@ -241,7 +241,7 @@ const Index: React.FC<Props> = (props: Props) => {
                     <div className="student_form">
                         <div className="full_width">
                             <div className="form_section_heading">
-                                <h2 className="">Fees Collection</h2>
+                                <h2 className="">Fees Collectionsss</h2>
                             </div>
                             <div className="d-flex">
                                 <div className="form-group form-vertical">
@@ -531,10 +531,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <td>{totalAmount?.['total']}</td>
                                         <td>{totalAmount?.['due_amount']}</td>
                                         {/* <td></td> */}
-                                        <td>{totalAmount3}</td>
                                         <td>
-                                            {totalAmount?.['due_amount'] +
-                                                totalAmount3}
+                                            {totalAmount3}
+                                            <input
+                                                type="hidden"
+                                                name="total_discount"
+                                                value={totalAmount3}
+                                            />
+                                        </td>
+                                        <td>
+                                            {totalAmount3
+                                                ? totalAmount?.['due_amount'] +
+                                                  totalAmount3
+                                                : totalAmount?.['due_amount'] -
+                                                  totalAmount3}
                                         </td>
                                         {/* <td>
                                             {totalAmount?.['due_amount'] +
@@ -559,6 +569,34 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </tr>
                                 </tfoot>
                             </table>
+                        </div>
+                    </div>
+                    <div className="student_form mt-4">
+                        <div className="full_width">
+                            <div className="form_section_heading">
+                                <h4 className="">Discount Document</h4>
+                            </div>
+                            <div className="d-flex">
+                                <div className="form-group form-vertical">
+                                    <label>Discount attachement</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="file"
+                                            name="discount_attachment"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group  form-vertical">
+                                    <label>Discount Note</label>
+                                    <div className="form_elements">
+                                        <textarea
+                                            style={{ resize: 'both' }}
+                                            placeholder="write your discont reason"
+                                            name="discount_note"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="form-group student_submit form-horizontal">

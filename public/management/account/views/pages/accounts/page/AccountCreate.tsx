@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment/moment';
+import BackButton from '../../../components/BackButton';
 export interface Props {}
 
 const Account: React.FC<Props> = (props: Props) => {
@@ -25,6 +26,7 @@ const Account: React.FC<Props> = (props: Props) => {
     let date = moment().format('YYYY-MM-DD');
     return (
         <div className="admin_dashboard">
+            <BackButton></BackButton>
             <div className="content_body">
                 <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">

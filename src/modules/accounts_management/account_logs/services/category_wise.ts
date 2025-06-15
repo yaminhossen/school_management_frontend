@@ -17,6 +17,12 @@ async function category_wise(
     let params = req.params as any;
     let user = (req as any).user;
     console.log('jsdlfj', user);
+    // let user = (req as any).user;
+    let auth_user = await models.BranchStaffsModel.findOne({
+        where: {
+            user_staff_id: (req as any).user?.id || null,
+        },
+    });
 
     let month1 = body.month1 || '2024-09-12'; // Start date
     let month2 = body.month2 || '2025-09-22'; // End date
@@ -34,6 +40,7 @@ async function category_wise(
                 },
                 account_category_id: params.id,
                 amount: { [Op.gte]: 1 },
+                branch_id: auth_user?.branch_id || 1,
                 // type: 'income',
             },
             include: [

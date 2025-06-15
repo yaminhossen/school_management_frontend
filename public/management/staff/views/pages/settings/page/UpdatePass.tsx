@@ -18,7 +18,7 @@ const UpdatePass: React.FC<Props> = (props: Props) => {
 
         try {
             const response = await axios.post(
-                '/api/v1/user-teachers/profile-update',
+                '/api/v1/user-staffs/profile-update',
                 formData,
             );
             (window as any).toaster('Password updated successfully');

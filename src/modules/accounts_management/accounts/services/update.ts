@@ -73,9 +73,14 @@ async function update(
             user_admin_id: (req as any).user?.id || null,
         },
     });
+    let auth_user2 = await models.BranchStaffsModel.findOne({
+        where: {
+            user_staff_id: (req as any).user?.id || null,
+        },
+    });
 
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: auth_user?.branch_id || 1,
+        branch_id: auth_user?.branch_id || auth_user2?.branch_id || 1,
         opening_balance: body.opening_balance,
         title: body.title,
         number: body.number,

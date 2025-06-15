@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment/moment';
 import { useParams } from 'react-router-dom';
+import BackButton from '../../../components/BackButton';
 
 export interface AccountLog {
     account: { title: string };
@@ -78,6 +79,7 @@ const Index: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
+            <BackButton></BackButton>
             <div className="content_body">
                 <form onSubmit={handleSubmit}>
                     <div className="teacher_result">
