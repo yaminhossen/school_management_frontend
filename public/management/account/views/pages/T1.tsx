@@ -10,6 +10,7 @@ const T1: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState();
     const [accdemicCalander, setAccademicCalander] = useState<any[]>([]);
     const [noticeCount, setNoticeCount] = useState(0);
+    const [todayIncome, setTodayIncome] = useState(0);
     // console.log(accdemicCalander);
 
     const [selectedDate, setSelectedDate] = useState(
@@ -36,9 +37,22 @@ const T1: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
+    // Fetch notice count
+    const fetchTodayIncome = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/account-logs/today-income',
+            );
+            setTodayIncome(response.data.data);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
 
     useEffect(() => {
         fetchNoticeCount();
+        fetchTodayIncome();
     }, []);
     console.log(data);
     let days = [
