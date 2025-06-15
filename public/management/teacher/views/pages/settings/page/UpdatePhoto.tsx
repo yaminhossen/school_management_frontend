@@ -63,7 +63,7 @@ const UpdatePhoto: React.FC = () => {
 
         try {
             await axios.post('/api/v1/user-teachers/profile-update', formData);
-            (window as any).toaster('Form submitted successfully!');
+            (window as any).toaster('Profile Updated successfully!');
             form.reset();
             inputImageRef.current?.reset(); // reset preview manually
             fetchData();

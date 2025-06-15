@@ -1474,3 +1474,18 @@
 {"level":60,"time":1749902006952,"pid":2868,"hostname":"DESKTOP-9421701","file":"","time":"6/14/2025 5:53:26 PM","message":"target not found."}
 {"level":60,"time":1749902007886,"pid":2868,"hostname":"DESKTOP-9421701","file":"","time":"6/14/2025 5:53:27 PM","message":"target not found."}
 {"level":60,"time":1749959261207,"pid":84,"hostname":"DESKTOP-9421701","file":"","time":"6/15/2025 9:47:41 AM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1749960008836,"pid":11492,"hostname":"DESKTOP-9421701","file":"","time":"6/15/2025 10:00:08 AM","message":"target not found."}
+{"level":60,"time":1749960009647,"pid":11492,"hostname":"DESKTOP-9421701","file":"","time":"6/15/2025 10:00:09 AM","message":"target not found."}
+{"level":60,"time":1749960360766,"pid":11492,"hostname":"DESKTOP-9421701","file":"","time":"6/15/2025 10:06:00 AM","message":"target not found."}
+{"level":60,"time":1749960363596,"pid":11492,"hostname":"DESKTOP-9421701","file":"","time":"6/15/2025 10:06:03 AM","message":"target not found."}
+{"level":60,"time":1749960392699,"pid":11492,"hostname":"DESKTOP-9421701","file":"","time":"6/15/2025 10:06:32 AM","message":"target not found."}
+{"level":60,"time":1749960515489,"pid":11492,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"6/15/2025 10:08:35 AM","message":"data not found"}
+{"level":60,"time":1749960515537,"pid":11492,"hostname":"DESKTOP-9421701","file":"","time":"6/15/2025 10:08:35 AM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1749960524000,"pid":11492,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"6/15/2025 10:08:44 AM","message":"data not found"}
+{"level":60,"time":1749960526011,"pid":11492,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"6/15/2025 10:08:46 AM","message":"data not found"}
+{"level":60,"time":1749960550210,"pid":11492,"hostname":"DESKTOP-9421701","file":"","time":"6/15/2025 10:09:10 AM","message":"target not found."}
+{"level":60,"time":1749960591778,"pid":11492,"hostname":"DESKTOP-9421701","file":"services\\details.ts:30:19)","time":"6/15/2025 10:09:51 AM","message":"data not found"}
+{"level":60,"time":1749960604997,"pid":11492,"hostname":"DESKTOP-9421701","file":"","time":"6/15/2025 10:10:04 AM","message":"target not found."}
+{"level":60,"time":1749960605925,"pid":11492,"hostname":"DESKTOP-9421701","file":"","time":"6/15/2025 10:10:05 AM","message":"target not found."}
+{"level":60,"time":1749960766562,"pid":11492,"hostname":"DESKTOP-9421701","file":"","time":"6/15/2025 10:12:46 AM","message":"target not found."}
+{"level":60,"time":1749961483081,"pid":11492,"hostname":"DESKTOP-9421701","file":"services\\get_academic_event_by_month_account.ts:106:19)","time":"6/15/2025 10:24:43 AM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}

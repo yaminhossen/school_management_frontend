@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavbarSwitch from './NavbarSwitch';
+import axios from 'axios';
+import { anyObject } from '../../../common_types/object';
 
 export interface Props {}
 
 const TopHeader: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+        try {
+            let confirm = await (window as anyObject).s_confirm('Logout');
+            if (confirm) {
+                await axios.post('/api/v1/auth/staff/logout');
+            }
+        } catch (error) {
+            setError(error);
+        }
+    };
     return (
         <>
             <div className="page-main-header">
@@ -42,7 +57,7 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                           </div>
                       </form>
                   </li> */}
-                            <li>
+                            {/* <li>
                                 <a href="#!" className="text-dark">
                                     <img
                                         className="align-self-center pull-right me-2"
@@ -50,14 +65,14 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                                         alt="header-browser"
                                     />
                                 </a>
-                            </li>
+                            </li> */}
                             <li className="onhover-dropdown">
                                 <div className="d-flex align-items-center">
-                                    <img
+                                    {/* <img
                                         className="align-self-center pull-right flex-shrink-0 me-2"
                                         src="/assets/dashboard_uni/user.png"
                                         alt="header-user"
-                                    />
+                                    /> */}
                                     <div>
                                         <h6 className="m-0 txt-dark f-16">
                                             My Account
@@ -67,13 +82,13 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                                 </div>
                                 <ul className="profile-dropdown onhover-show-div p-20">
                                     <li>
-                                        <a href="#">
+                                        <a href="/staff#/settings">
                                             <i className="icon-user" />
                                             Edit Profile
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a onClick={handleSubmit} href="#">
                                             <i className="icon-power-off" />
                                             Logout
                                         </a>
