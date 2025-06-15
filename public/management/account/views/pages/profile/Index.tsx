@@ -1,25 +1,51 @@
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../../common_types/object';
+import { Link, NavLink, Outlet } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+    const [data, setData] = useState<any>([]);
+
+    useEffect(() => {
+        // Function to fetch data
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/user-staffs/basic-information',
+            );
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+    console.log(data);
     return (
         <div className="admin_dashboard">
             <div className="single-info-details">
                 <div className="item-img">
                     <img
                         className="user_profile_img"
-                        src="/assets/dashboard/images/avatar.png"
+                        src={data?.image}
                         alt="teacher"
                     />
                 </div>
                 <div className="item-content">
                     <div className="header-inline item-header details_header">
                         <h3 className="text-dark-medium profile_name font-medium">
-                            Doctor Jobayer Ahmed
+                            {data.name}
                         </h3>
                         <div className="header-elements">
-                            <ul>
+                            {/* <ul>
                                 <li>
                                     <a href="">
                                         <span className="material-symbols-outlined fill">
@@ -41,19 +67,44 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </span>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                     <ul className="section_naviagation">
-                        <li>
-                            <Link to="/profile/major-information">
+                        {/* <li>
+                            <NavLink to="/profile/major-information">
                                 Major informations
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/profile/basic-information">
+                            <NavLink to="/profile/basic-information">
                                 Basic informations
-                            </Link>
+                            </NavLink>
+                        </li> */}
+                        <li className="active_Li">
+                            <NavLink
+                                to={`/profile/major-information`}
+                                // className="active_nav_link"
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? 'active_nav_link'
+                                        : 'normal_nav_link'
+                                }
+                            >
+                                Major informations
+                            </NavLink>
+                        </li>
+                        <li className="active_Li">
+                            <NavLink
+                                to={`/profile/basic-information`}
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? 'active_nav_link'
+                                        : 'normal_nav_link'
+                                }
+                            >
+                                Basic informations
+                            </NavLink>
                         </li>
                     </ul>
                     <div></div>

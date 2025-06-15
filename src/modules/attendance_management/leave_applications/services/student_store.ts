@@ -77,6 +77,12 @@ async function store(
                 user_teacher_id: user?.id || null,
             },
         });
+    } else if (user?.user_type == 'account') {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
     }
     // let auth_user = await models.BranchStaffsModel.findOne({
     //     where: {
@@ -114,6 +120,9 @@ async function store(
     }
     if (user.user_type == 'teacher') {
         inputs.branch_teacher_id = user?.id || null;
+    }
+    if (user.user_type == 'account') {
+        inputs.branch_staff_id = user?.id || null;
     }
 
     /** print request data into console */

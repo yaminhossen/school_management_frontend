@@ -158,7 +158,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </td>
                                     </tr>
                                 ))}
-                                <tr>
+                                <tr className="present_total">
                                     <td></td>
                                     <td>Present Data</td>
                                     <td></td>
@@ -167,7 +167,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <td>{totalExpenseQueryValue} tk</td>
                                     <td>{totalIncomeQueryValue} tk</td>
                                 </tr>
-                                <tr>
+                                <tr className="total_row">
                                     <td></td>
                                     <td>All Data</td>
                                     <td></td>

@@ -17,7 +17,11 @@ import profit_loss_routes from '../views/pages/profit_loss/config/routes';
 import due_list_routes from '../views/pages/due_list/config/routes';
 import fees_collection_routes from '../views/pages/fees_collection/config/routes';
 import month_wise_statement from '../views/pages/month_wise_statement/config/routes';
-
+import leave_applications_routes from '../views/pages/leave_applications/config/routes';
+import settings_routes from '../views/pages/settings/config/routes';
+import tasks_routes from '../views/pages/tasks/config/routes';
+import meeting_agendas_routes from '../views/pages/meeting_agendas/config/routes';
+import notices_routes from '../views/pages/notices/config/routes';
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
     {
@@ -38,6 +42,11 @@ const router: RouteTypes[] = [
             due_list_routes,
             fees_collection_routes,
             month_wise_statement,
+            settings_routes,
+            tasks_routes,
+            meeting_agendas_routes,
+            leave_applications_routes,
+            notices_routes,
             {
                 path: '',
                 element: <T1 />,

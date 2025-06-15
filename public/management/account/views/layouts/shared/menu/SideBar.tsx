@@ -30,6 +30,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
         <>
             <ul className="sidebar-menu">
                 <MenuSingle to="/" icon="icon-home" label="Dashboard" />
+                <MenuSingle
+                    to="/profile/major-information"
+                    icon="icon-user"
+                    label="Profile"
+                />
                 <MenuSingle to="/accounts" icon="icon-user" label="Accounts" />
                 <MenuSingle
                     to="/income-entry"
@@ -71,6 +76,37 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="Profit And Loss"
                 />
                 {/* <MenuSingle to="/due-list" icon="icon-user" label="Due list" /> */}
+                <MenuSingle
+                    to="/leave-application/approved"
+                    icon="icon-notepad"
+                    label="Leave Application"
+                />
+                {/* <MenuSingle
+                    to="/salary-report"
+                    icon="icon-notepad"
+                    label="Salary Report"
+                /> */}
+                <MenuSingle
+                    to="/tasks/pending"
+                    icon="icon-notepad"
+                    label="Tasks"
+                />
+                <MenuSingle
+                    to="/meeting-agendas"
+                    icon="icon-notepad"
+                    label="Meetings"
+                />
+                <MenuSingle to="/notices" icon="icon-bell" label="Notices" />
+                {/* <MenuSingle
+                    to="/reports"
+                    icon="icon-bookmark-alt"
+                    label="Reports"
+                /> */}
+                <MenuSingle
+                    to="/settings"
+                    icon="icon-bookmark-alt"
+                    label="Settings"
+                />
 
                 <MenuSingle
                     onClick={handleSubmit}

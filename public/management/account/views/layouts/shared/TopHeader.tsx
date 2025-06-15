@@ -80,12 +80,12 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <ul className="profile-dropdown onhover-show-div p-20">
-                                    {/* <li>
-                                        <a href="#">
+                                    <li>
+                                        <a href="/account#/settings">
                                             <i className="icon-user" />
                                             Edit Profile
                                         </a>
-                                    </li> */}
+                                    </li>
                                     <li>
                                         <a onClick={handleSubmit} href="#">
                                             <i className="icon-power-off" />

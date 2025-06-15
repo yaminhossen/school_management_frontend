@@ -49,31 +49,31 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                     <tr>
                         <td>Country:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.country}
+                            {data.staff_infos?.country}
                         </td>
                     </tr>
                     <tr>
                         <td>District:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.district}
+                            {data.staff_infos?.district}
                         </td>
                     </tr>
                     <tr>
                         <td>Qualification:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.qualification}
+                            {data.staff_infos?.qualification}
                         </td>
                     </tr>
                     <tr>
                         <td>Blood Group:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.blood_group}
+                            {data.staff_infos?.blood_group}
                         </td>
                     </tr>
                     <tr>
                         <td>IsMarried:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.is_married == true
+                            {data.staff_infos?.is_married == true
                                 ? 'Yes'
                                 : 'No'}
                         </td>
@@ -81,7 +81,7 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                     <tr>
                         <td>Guardian Contact Number:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.guardian_contact_number}
+                            {data.staff_infos?.guardian_contact_number}
                         </td>
                     </tr>
                     <tr>

@@ -88,12 +88,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                     },
                                 )}
                             </tbody>
-                            <tr>
+                            <tr className="total_row">
                                 <td></td>
                                 <td></td>
                                 <td>Total:</td>
                                 <td>{totalIncome.total_income} tk</td>
                                 <td>{totalIncome.total_expense} tk</td>
+                                <td></td>
                             </tr>
                         </table>
                     </div>

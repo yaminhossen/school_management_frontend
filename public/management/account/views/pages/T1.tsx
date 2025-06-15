@@ -9,6 +9,7 @@ const T1: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState();
     const [accdemicCalander, setAccademicCalander] = useState<any[]>([]);
+    const [noticeCount, setNoticeCount] = useState(0);
     // console.log(accdemicCalander);
 
     const [selectedDate, setSelectedDate] = useState(
@@ -24,18 +25,20 @@ const T1: React.FC<Props> = (props: Props) => {
     const month = selectedMoment.format('MMM').toLowerCase(); // e.g., "jan"
     const year = selectedMoment.format('YYYY'); // e.g., "2025"
     const formattedDate = `${month}-${year}`;
-    const fetchData = async () => {
+
+    // Fetch notice count
+    const fetchNoticeCount = async () => {
         try {
-            const response = await axios.get('/api/v1/notices/user/students');
-            setData(response.data.data);
-            // setData(response.data);
+            const response = await axios.get('/api/v1/notices/all/accountant');
+            setNoticeCount(response.data.data.length);
         } catch (error) {
+            console.error('Error fetching notice count:', error);
             setError(error);
         }
     };
 
     useEffect(() => {
-        fetchData();
+        fetchNoticeCount();
     }, []);
     console.log(data);
     let days = [
@@ -128,22 +131,51 @@ const T1: React.FC<Props> = (props: Props) => {
                 }}
             >
                 {[
-                    'কারেন্ট ব্যালেঞ্চ',
-                    'আজকের ইনকাম',
-                    'আজকের খরচ',
-                    'এই মাসের ইনকাম',
-                    'এই মাসের খরচ',
-                    'টোটাল খরচ',
-                    'বকেয়া',
+                    // 'কারেন্ট ব্যালেঞ্চ',
+                    // 'আজকের ইনকাম',
+                    // 'আজকের খরচ',
+                    // 'এই মাসের ইনকাম',
+                    // 'এই মাসের খরচ',
+                    // 'টোটাল খরচ',
+                    // 'বকেয়া',
+                    {
+                        title: 'কারেন্ট ব্যালেঞ্চ',
+                        value: noticeCount,
+                    },
+                    {
+                        title: 'আজকের ইনকাম',
+                        value: noticeCount,
+                    },
+                    {
+                        title: 'আজকের খরচ',
+                        value: noticeCount,
+                    },
+                    {
+                        title: 'এই মাসের ইনকাম',
+                        value: noticeCount,
+                    },
+                    {
+                        title: 'এই মাসের খরচ',
+                        value: noticeCount,
+                    },
+                    {
+                        title: 'নোটিশ',
+                        value: noticeCount,
+                    },
+                    {
+                        title: 'টাস্ক',
+                        // value: taskCount,
+                    },
                 ].map((i) => {
                     return (
                         <div className="card w-100" data-intro="This is card">
                             <div className="business-top-widget card-body">
-                                <h5 className="mb-2">{i}</h5>
+                                <h5 className="mb-2">{i.title}</h5>
                                 <div className="media d-inline-flex">
                                     <div className="media-body">
                                         <h2 className="total-value m-0 counter">
-                                            {Math.round(Math.random() * 1000)}
+                                            {/* {Math.round(Math.random() * 1000)} */}
+                                            {i.value}
                                         </h2>
                                     </div>
                                     <i

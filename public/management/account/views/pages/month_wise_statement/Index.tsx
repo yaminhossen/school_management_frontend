@@ -142,7 +142,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </td> */}
                                     </tr>
                                 ))}
-                                <tr>
+                                <tr className="total_row">
                                     <td></td>
                                     <td></td>
                                     <td>Total:</td>

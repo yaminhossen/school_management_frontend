@@ -202,7 +202,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <option value="admission-officer">
                                                 Admission-officer
                                             </option>
-                                            <option value="accountant">
+                                            <option value="account">
                                                 Accountant
                                             </option>
                                             <option value="teacher">
