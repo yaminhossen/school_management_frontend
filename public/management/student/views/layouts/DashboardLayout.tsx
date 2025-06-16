@@ -22,8 +22,15 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
         }
     };
 
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
+    async function initdependancy() {
+        await (fetchData() as any);
+    }
+
     useEffect(() => {
-        fetchData();
+        initdependancy();
     }, []);
     return (
         <div className="page-wrapper">

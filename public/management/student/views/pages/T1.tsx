@@ -34,8 +34,16 @@ const T1: React.FC<Props> = (props: Props) => {
         }
     };
 
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
+
+    async function initdependancy() {
+        await (fetchData() as any);
+    }
+
     useEffect(() => {
-        fetchData();
+        initdependancy();
     }, []);
     console.log(data);
     let days = [

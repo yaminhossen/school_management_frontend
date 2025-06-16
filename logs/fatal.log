@@ -2038,3 +2038,16 @@
 {"level":60,"time":1750072822135,"pid":15732,"hostname":"DESKTOP-9421701","file":"","time":"6/16/2025 5:20:22 PM","message":"target not found."}
 {"level":60,"time":1750072823361,"pid":15732,"hostname":"DESKTOP-9421701","file":"","time":"6/16/2025 5:20:23 PM","message":"target not found."}
 {"level":60,"time":1750072824762,"pid":15732,"hostname":"DESKTOP-9421701","file":"","time":"6/16/2025 5:20:24 PM","message":"target not found."}
+{"level":60,"time":1750073370881,"pid":7740,"hostname":"DESKTOP-9421701","file":"","time":"6/16/2025 5:29:30 PM","message":"target not found."}
+{"level":60,"time":1750073371406,"pid":7740,"hostname":"DESKTOP-9421701","file":"services\\academic_resource_pagination.ts:154:15)","time":"6/16/2025 5:29:31 PM","message":"Unknown column 'BranchClassResourcesModel.date' in 'field list'"}
+{"level":60,"time":1750073371882,"pid":7740,"hostname":"DESKTOP-9421701","file":"","time":"6/16/2025 5:29:31 PM","message":"target not found."}
+{"level":60,"time":1750073372154,"pid":7740,"hostname":"DESKTOP-9421701","file":"services\\academic_resource_pagination.ts:154:15)","time":"6/16/2025 5:29:32 PM","message":"Unknown column 'BranchClassResourcesModel.date' in 'field list'"}
+{"level":60,"time":1750073372847,"pid":7740,"hostname":"DESKTOP-9421701","file":"","time":"6/16/2025 5:29:32 PM","message":"target not found."}
+{"level":60,"time":1750073373132,"pid":7740,"hostname":"DESKTOP-9421701","file":"services\\academic_resource_pagination.ts:154:15)","time":"6/16/2025 5:29:33 PM","message":"Unknown column 'BranchClassResourcesModel.date' in 'field list'"}
+{"level":60,"time":1750073469104,"pid":7740,"hostname":"DESKTOP-9421701","file":"","time":"6/16/2025 5:31:09 PM","message":"target not found."}
+{"level":60,"time":1750073469369,"pid":7740,"hostname":"DESKTOP-9421701","file":"services\\academic_resource_pagination.ts:154:15)","time":"6/16/2025 5:31:09 PM","message":"Unknown column 'BranchClassResourcesModel.subject' in 'field list'"}
+{"level":60,"time":1750073470007,"pid":7740,"hostname":"DESKTOP-9421701","file":"","time":"6/16/2025 5:31:10 PM","message":"target not found."}
+{"level":60,"time":1750073470283,"pid":7740,"hostname":"DESKTOP-9421701","file":"services\\academic_resource_pagination.ts:154:15)","time":"6/16/2025 5:31:10 PM","message":"Unknown column 'BranchClassResourcesModel.subject' in 'field list'"}
+{"level":60,"time":1750073487118,"pid":7740,"hostname":"DESKTOP-9421701","file":"","time":"6/16/2025 5:31:27 PM","message":"target not found."}
+{"level":60,"time":1750073511948,"pid":7740,"hostname":"DESKTOP-9421701","file":"","time":"6/16/2025 5:31:51 PM","message":"target not found."}
+{"level":60,"time":1750073550650,"pid":7740,"hostname":"DESKTOP-9421701","file":"","time":"6/16/2025 5:32:30 PM","message":"target not found."}

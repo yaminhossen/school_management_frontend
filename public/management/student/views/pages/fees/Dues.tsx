@@ -26,8 +26,15 @@ const Dues: React.FC<Props> = (props: Props) => {
         }
     };
 
+    // useEffect(() => {
+    //     fetchTypes();
+    // }, []);
+    async function initdependancy() {
+        await (fetchTypes() as any);
+    }
+
     useEffect(() => {
-        fetchTypes();
+        initdependancy();
     }, []);
     return (
         <div className="admin_dashboard">
