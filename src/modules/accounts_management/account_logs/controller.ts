@@ -35,6 +35,7 @@ import today_income from './services/today_income';
 import expense_today from './services/expense_today';
 import running_month_income from './services/running_month_income';
 import running_month_expense from './services/running_month_expense';
+import current_balance from './services/current_balance';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -74,6 +75,14 @@ export default function (fastify: FastifyInstance) {
 
         today_income: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await today_income(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        current_balance: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await current_balance(fastify, req);
             res.code(data.status).send(data);
         },
 

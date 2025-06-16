@@ -76,7 +76,9 @@ const Index: React.FC<Props> = (props: Props) => {
             <div className="content_body">
                 <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
-                        <label>Category</label>
+                        <label>
+                            Category <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <select name="category" id="">
                                 {categories?.length &&
@@ -93,7 +95,9 @@ const Index: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Account</label>
+                        <label>
+                            Account <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <select name="account" id="">
                                 {accounts?.length &&
@@ -120,7 +124,9 @@ const Index: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Amount</label>
+                        <label>
+                            Amount <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 name={'amount'}
@@ -154,7 +160,9 @@ const Index: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Receipt No</label>
+                        <label>
+                            Reciept No <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 type="text"

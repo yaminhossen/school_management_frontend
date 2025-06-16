@@ -107,7 +107,9 @@ const UpdatePhoto: React.FC = () => {
                     </div>
 
                     <div className="form-group form-horizontal">
-                        <label>New Photo</label>
+                        <label>
+                            New Photo <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <InputImage
                                 ref={inputImageRef}

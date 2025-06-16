@@ -330,7 +330,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
-                                        <label>Receipt No</label>
+                                        <label>
+                                            Reciept No{' '}
+                                            <span className="valid_star">
+                                                *
+                                            </span>
+                                        </label>
                                         <div className="form_elements">
                                             <input
                                                 type="text"

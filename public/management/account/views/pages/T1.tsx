@@ -13,6 +13,7 @@ const T1: React.FC<Props> = (props: Props) => {
     const [todayIncome, setTodayIncome] = useState(0);
     const [runningMonthIncome, setRunningMonthIncome] = useState(0);
     const [runningMonthExpense, setRunningMonthExpense] = useState(0);
+    const [currentBalance, setCurrentBalance] = useState(0);
     const [todayExpense, setTodayExpense] = useState(0);
     // console.log(accdemicCalander);
 
@@ -47,6 +48,18 @@ const T1: React.FC<Props> = (props: Props) => {
                 '/api/v1/account-logs/today-income',
             );
             setTodayIncome(response.data?.data?.amount);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    // Fetch TODAY INCOME
+    const fetchCurrentBalance = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/account-logs/current-balance',
+            );
+            setCurrentBalance(response.data?.data?.balance);
         } catch (error) {
             console.error('Error fetching notice count:', error);
             setError(error);
@@ -93,6 +106,7 @@ const T1: React.FC<Props> = (props: Props) => {
         await (fetchTodayIncome() as any);
         await (fetchRunningMonthIncome() as any);
         await (fetchRunningMonthExpense() as any);
+        await (fetchCurrentBalance() as any);
         await (fetchTodayExpense() as any);
     }
 
@@ -205,7 +219,7 @@ const T1: React.FC<Props> = (props: Props) => {
                     // 'বকেয়া',
                     {
                         title: 'কারেন্ট ব্যালেঞ্চ',
-                        value: noticeCount,
+                        value: currentBalance,
                     },
                     {
                         title: 'আজকের ইনকাম',

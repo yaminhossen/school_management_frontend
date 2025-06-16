@@ -30,7 +30,9 @@ const Account: React.FC<Props> = (props: Props) => {
             <div className="content_body">
                 <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
-                        <label>Account Name</label>
+                        <label>
+                            Account Name <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 type="text"
@@ -40,7 +42,9 @@ const Account: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Account Number</label>
+                        <label>
+                            Account Number <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 type="text"
@@ -50,7 +54,10 @@ const Account: React.FC<Props> = (props: Props) => {
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
-                        <label>Opening Balance</label>
+                        <label>
+                            Oppening Balance{' '}
+                            <span className="valid_star">*</span>
+                        </label>
                         <div className="form_elements">
                             <input
                                 type="number"
