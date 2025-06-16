@@ -51,6 +51,7 @@ import fees_categories_second from './services/fees_categoies_second';
 import fees_categories_third from './services/fees_categoies_third';
 import fees_categories_one from './services/fees_categoies_one';
 import all_class_admin from './services/all_class_admin';
+import profile_update from './services/profile_update';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -74,6 +75,14 @@ export default function (fastify: FastifyInstance) {
 
         childrens: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await childrens(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        profile_update: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await profile_update(fastify, req);
             res.code(data.status).send(data);
         },
 

@@ -9,10 +9,11 @@ import attendance from '../views/pages/attendance/config/routes';
 import class_routine from '../views/pages/class_routine/config/routes';
 import exam_routine from '../views/pages/exam_routine/config/routes';
 import fees from '../views/pages/fees/config/routes';
-import leave_application from '../views/pages/leave_application/config/routes';
+import leave_application from '../views/pages/leave_applications/config/routes';
 import mark_sheet from '../views/pages/mark_sheet/config/routes';
 import notices from '../views/pages/notices/config/routes';
 import profile from '../views/pages/profile/config/routes';
+import settings from '../views/pages/settings/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
@@ -34,6 +35,7 @@ const router: RouteTypes[] = [
             leave_application,
             mark_sheet,
             notices,
+            settings,
             profile,
         ],
     },

@@ -87,7 +87,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="My Activities"
                 /> */}
                 {/* <MenuSingle to="/" icon="icon-bookmark-alt" label="Reports" /> */}
-
+                <MenuSingle
+                    to="/settings"
+                    icon="icon-receipt"
+                    label="Settings"
+                />
                 <MenuSingle
                     onClick={handleSubmit}
                     to=""

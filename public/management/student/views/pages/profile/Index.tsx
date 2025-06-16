@@ -13,7 +13,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/user-students/basic-information/${id}`,
+                `/api/v1/user-students/basic-information`,
             );
             setData(response.data.data);
             // setData(response.data);

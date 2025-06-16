@@ -21,6 +21,11 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.academic_resource,
         )
         .get(
+            `${prefix}/academic-resource-pagination`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.academic_resources_pagination,
+        )
+        .get(
             `${prefix}/teacher-resource/:id`,
             controllerInstance.teacher_resource,
         )
