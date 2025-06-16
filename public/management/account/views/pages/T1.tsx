@@ -11,6 +11,9 @@ const T1: React.FC<Props> = (props: Props) => {
     const [accdemicCalander, setAccademicCalander] = useState<any[]>([]);
     const [noticeCount, setNoticeCount] = useState(0);
     const [todayIncome, setTodayIncome] = useState(0);
+    const [runningMonthIncome, setRunningMonthIncome] = useState(0);
+    const [runningMonthExpense, setRunningMonthExpense] = useState(0);
+    const [todayExpense, setTodayExpense] = useState(0);
     // console.log(accdemicCalander);
 
     const [selectedDate, setSelectedDate] = useState(
@@ -37,24 +40,72 @@ const T1: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
-    // Fetch notice count
+    // Fetch TODAY INCOME
     const fetchTodayIncome = async () => {
         try {
             const response = await axios.get(
                 '/api/v1/account-logs/today-income',
             );
-            setTodayIncome(response.data.data);
+            setTodayIncome(response.data?.data?.amount);
         } catch (error) {
             console.error('Error fetching notice count:', error);
             setError(error);
         }
     };
+    // Fetch running month income
+    const fetchRunningMonthIncome = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/account-logs/running-month-income',
+            );
+            setRunningMonthIncome(response.data?.data?.amount);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    // Fetch running month income
+    const fetchRunningMonthExpense = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/account-logs/running-month-expense',
+            );
+            setRunningMonthExpense(response.data?.data?.amount);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    // Fetch Today Expense
+    const fetchTodayExpense = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/account-logs/expense-today',
+            );
+            setTodayExpense(response.data?.data?.eamount);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    async function initdependancy() {
+        await (fetchNoticeCount() as any);
+        await (fetchTodayIncome() as any);
+        await (fetchRunningMonthIncome() as any);
+        await (fetchRunningMonthExpense() as any);
+        await (fetchTodayExpense() as any);
+    }
 
     useEffect(() => {
-        fetchNoticeCount();
-        fetchTodayIncome();
+        initdependancy();
     }, []);
-    console.log(data);
+
+    // useEffect(() => {
+    //     fetchNoticeCount();
+    //     fetchTodayIncome();
+    //     fetchTodayExpense();
+    // }, []);
+    console.log(todayIncome);
     let days = [
         'saturday',
         'sunday',
@@ -158,28 +209,28 @@ const T1: React.FC<Props> = (props: Props) => {
                     },
                     {
                         title: 'আজকের ইনকাম',
-                        value: noticeCount,
+                        value: todayIncome,
                     },
                     {
                         title: 'আজকের খরচ',
-                        value: noticeCount,
+                        value: todayExpense,
                     },
                     {
                         title: 'এই মাসের ইনকাম',
-                        value: noticeCount,
+                        value: runningMonthIncome,
                     },
                     {
                         title: 'এই মাসের খরচ',
-                        value: noticeCount,
+                        value: runningMonthExpense,
                     },
                     {
                         title: 'নোটিশ',
                         value: noticeCount,
                     },
-                    {
-                        title: 'টাস্ক',
-                        // value: taskCount,
-                    },
+                    // {
+                    //     title: 'টাস্ক',
+                    //     // value: taskCount,
+                    // },
                 ].map((i) => {
                     return (
                         <div className="card w-100" data-intro="This is card">

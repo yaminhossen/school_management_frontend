@@ -32,6 +32,9 @@ import month_wise_statement from './services/month_wise_statement';
 import category_wise from './services/category_wise';
 import single_month_wise from './services/single_month_wise';
 import today_income from './services/today_income';
+import expense_today from './services/expense_today';
+import running_month_income from './services/running_month_income';
+import running_month_expense from './services/running_month_expense';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -71,6 +74,27 @@ export default function (fastify: FastifyInstance) {
 
         today_income: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await today_income(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        running_month_income: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await running_month_income(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        running_month_expense: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await running_month_expense(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        expense_today: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await expense_today(fastify, req);
             res.code(data.status).send(data);
         },
 

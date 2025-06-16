@@ -7,7 +7,7 @@ import custom_error from '../helpers/custom_error';
 import { Op } from 'sequelize';
 import moment from 'moment';
 
-async function today_income(
+async function today_expense(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -18,8 +18,8 @@ async function today_income(
     let params = req.params as any;
     let user = (req as any).user;
     console.log('jsdlfj', user);
-    const { Op } = require('sequelize'); // make sure this is imported
     let month3 = moment().format('YYYY-MM-DD');
+    const { Op } = require('sequelize'); // make sure this is imported
 
     const endDate = new Date(month3);
 
@@ -41,17 +41,17 @@ async function today_income(
     try {
         let data = await models.AccountLogsModel.sum('amount', {
             where: {
-                type: 'income',
+                type: 'expense',
                 date: {
                     [Op.between]: [startOfDay, endOfDay],
                 },
             },
         });
-        console.log('today income', data);
-        const amount = data ?? 0;
+        console.log('today expense', data);
+        const eamount = data ?? 0;
 
         if (data) {
-            return response(200, 'data founded', { amount });
+            return response(200, 'data founded', { eamount });
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }
@@ -66,4 +66,4 @@ async function today_income(
     }
 }
 
-export default today_income;
+export default today_expense;

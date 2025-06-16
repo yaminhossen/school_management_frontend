@@ -7,7 +7,7 @@ import custom_error from '../helpers/custom_error';
 import { Op } from 'sequelize';
 import moment from 'moment';
 
-async function today_income(
+async function running_month_expense(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -19,16 +19,12 @@ async function today_income(
     let user = (req as any).user;
     console.log('jsdlfj', user);
     const { Op } = require('sequelize'); // make sure this is imported
-    let month3 = moment().format('YYYY-MM-DD');
 
-    const endDate = new Date(month3);
+    const startOfMonth = moment().startOf('month').format('YYYY-MM-DD');
+    const endOfMonth = moment().endOf('month').format('YYYY-MM-DD');
 
-    // Create range: 00:00:00 to 23:59:59 of the same date
-    const startOfDay = new Date(endDate.setHours(0, 0, 0, 0));
-    const endOfDay = new Date(new Date(startOfDay).setHours(23, 59, 59, 999));
-
-    console.log('Start of Day:', startOfDay);
-    console.log('End of Day:', endOfDay);
+    console.log('Start of Month:', startOfMonth);
+    console.log('End of Month:', endOfMonth);
 
     // // Add one day to month2
     // const endDate = new Date(month3);
@@ -41,13 +37,13 @@ async function today_income(
     try {
         let data = await models.AccountLogsModel.sum('amount', {
             where: {
-                type: 'income',
+                type: 'expense',
                 date: {
-                    [Op.between]: [startOfDay, endOfDay],
+                    [Op.between]: [startOfMonth, endOfMonth],
                 },
             },
         });
-        console.log('today income', data);
+        console.log('today expense', data);
         const amount = data ?? 0;
 
         if (data) {
@@ -66,4 +62,4 @@ async function today_income(
     }
 }
 
-export default today_income;
+export default running_month_expense;
