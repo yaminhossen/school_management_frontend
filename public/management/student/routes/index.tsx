@@ -14,6 +14,7 @@ import mark_sheet from '../views/pages/mark_sheet/config/routes';
 import notices from '../views/pages/notices/config/routes';
 import profile from '../views/pages/profile/config/routes';
 import settings from '../views/pages/settings/config/routes';
+import assignments from '../views/pages/assignments/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
@@ -37,6 +38,7 @@ const router: RouteTypes[] = [
             notices,
             settings,
             profile,
+            assignments,
         ],
     },
 ];

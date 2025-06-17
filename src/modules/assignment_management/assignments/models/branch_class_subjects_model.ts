@@ -23,8 +23,9 @@ import {
     // ForeignKey,
 } from 'sequelize';
 
-const tableName = 'assignments';
-const modelName = 'AssignmentsModel';
+// import {DataModel as Project} from "./project_model"
+const tableName = 'branch_class_subjects';
+const modelName = 'BranchClassSubjectsModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
@@ -34,19 +35,18 @@ class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
     declare branch_id: number;
-    declare title: string;
+    declare branch_class_id: number;
+    declare branch_class_section_id: number;
+    declare name: string;
+    declare code: string;
+    declare level: string;
     declare description: string;
-    declare assignment_categories_id: number;
-    declare attachment: string;
-    declare image: string;
-    declare mark: number;
-    declare class_id?: number;
-    declare subject_id?: number;
-    declare teacher_id?: number;
-    declare deadline: string;
+    declare credit: number;
+    declare additional_info: string;
 
     declare status?: status;
     declare creator?: number;
+
     declare created_at?: CreationOptional<Date>;
     declare updated_at?: CreationOptional<Date>;
 }
@@ -60,57 +60,50 @@ function init(sequelize: Sequelize) {
                 primaryKey: true,
             },
             branch_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
-            title: {
-                type: new DataTypes.STRING(128),
+            branch_class_id: {
+                type: DataTypes.BIGINT.UNSIGNED,
+                allowNull: true,
+            },
+            branch_class_section_id: {
+                type: DataTypes.BIGINT.UNSIGNED,
+                allowNull: true,
+            },
+            name: {
+                type: new DataTypes.STRING(50),
+                allowNull: true,
+            },
+            code: {
+                type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            level: {
+                type: new DataTypes.STRING(10),
                 allowNull: true,
             },
             description: {
                 type: new DataTypes.TEXT(),
                 allowNull: true,
             },
-            assignment_categories_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+            credit: {
+                type: new DataTypes.INTEGER(),
                 allowNull: true,
             },
-            attachment: {
-                type: new DataTypes.STRING(128),
+            additional_info: {
+                type: new DataTypes.TEXT(),
                 allowNull: true,
             },
-            image: {
-                type: new DataTypes.STRING(128),
-                allowNull: true,
-            },
-            class_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            subject_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            teacher_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            mark: {
-                type: new DataTypes.FLOAT().UNSIGNED,
-                allowNull: true,
-            },
-            deadline: {
-                type: new DataTypes.DATE(),
-                allowNull: true,
+
+            status: {
+                type: new DataTypes.ENUM('active', 'deactive'),
+                defaultValue: 'active',
             },
             creator: {
                 type: new DataTypes.TINYINT(),
                 allowNull: true,
                 defaultValue: null,
-            },
-            status: {
-                type: new DataTypes.ENUM('active', 'deactive'),
-                defaultValue: 'active',
             },
             created_at: DataTypes.DATE,
             updated_at: DataTypes.DATE,

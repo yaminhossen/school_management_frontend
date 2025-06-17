@@ -14,6 +14,8 @@ import restore from './services/restore';
 import destroy from './services/destroy';
 import subject_assignment from './services/subject_assignment';
 import data_import from './services/import';
+import assignment_wise_sub from './services/assignment_wise_sub';
+import sub_wise_assignments from './services/sub_wise_assignments';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -37,6 +39,22 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data: responseObject = await subject_assignment(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        assignment_wise_sub: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await assignment_wise_sub(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        sub_wise_assignments: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await sub_wise_assignments(fastify, req);
             res.code(data.status).send(data);
         },
 

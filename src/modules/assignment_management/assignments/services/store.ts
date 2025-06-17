@@ -93,6 +93,7 @@ async function store(
         mark: body.mark,
         class_id: body.class,
         subject_id: body.subject,
+        teacher_id: user?.id || null,
         deadline: body.deadline,
         creator: user?.id || null,
     };

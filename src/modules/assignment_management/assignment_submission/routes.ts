@@ -15,7 +15,11 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.sub_wise_assignment,
         )
         .get(`${prefix}/:id`, controllerInstance.find)
-        .post(`${prefix}/store`, controllerInstance.store)
+        .post(
+            `${prefix}/store`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.store,
+        )
         .post(
             `${prefix}/assignment-marking`,
             // { preHandler: [auth_middleware] },
