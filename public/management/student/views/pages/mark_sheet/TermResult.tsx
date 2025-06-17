@@ -3,6 +3,7 @@ import { anyObject } from '../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+import BackButton from '../../components/BackButton';
 export interface Props {}
 
 const TermResult: React.FC<Props> = (props: Props) => {
@@ -72,9 +73,14 @@ const TermResult: React.FC<Props> = (props: Props) => {
     function printPage() {
         window.print();
     }
-
+    const totalObtainedMark = data?.reduce(
+        (sum: number, item: { obtained_mark: number }) =>
+            sum + (item.obtained_mark || 0),
+        0,
+    );
     return (
         <div className="admin_dashboard">
+            <BackButton></BackButton>
             <h3 className="table_heading">{convertUnderscoreToSpace(title)}</h3>
             {/* <h3 className="table_heading student_semister">Result History</h3> */}
             <button id="printButton" onClick={printPage}>
@@ -116,6 +122,11 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                                         ACADEMIC TRANSCRIPT
                                                         {/* </u> */}
                                                     </h3>
+                                                    <p className="academi_name">
+                                                        {convertUnderscoreToSpace(
+                                                            title,
+                                                        ).toUpperCase()}
+                                                    </p>
                                                 </div>
                                             </td>
                                             <td className="side-cell">
@@ -318,9 +329,22 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                 )}
                                 <tr className="grade_table2">
                                     <td></td>
-                                    <td>RESULT :</td>
-                                    <td>400</td>
-                                    <td>A</td>
+                                    <td>
+                                        <strong>RESULT:</strong>
+                                    </td>
+                                    <td>
+                                        <strong>{totalObtainedMark}</strong>
+                                    </td>
+                                    <td>
+                                        <strong>
+                                            {getGrade(
+                                                Math.ceil(
+                                                    totalObtainedMark /
+                                                        data?.length,
+                                                ),
+                                            )}
+                                        </strong>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

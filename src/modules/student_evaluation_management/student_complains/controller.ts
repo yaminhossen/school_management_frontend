@@ -14,6 +14,7 @@ import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
 import student_wise_complain from './services/student_wise_complain';
+import student_wise_complain_auth from './services/student_wise_complain_auth';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -32,6 +33,14 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data = await student_wise_complain(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        student_wise_complain_auth: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await student_wise_complain_auth(fastify, req);
             res.code(data.status).send(data);
         },
 

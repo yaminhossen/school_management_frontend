@@ -33,6 +33,11 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(`${prefix}/current-balance`, controllerInstance.current_balance)
         .get(`${prefix}/expense-today`, controllerInstance.expense_today)
         .post(
+            `${prefix}/payment-history-auth`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.payment_history_auth,
+        )
+        .post(
             `${prefix}/payment-history/:id`,
             controllerInstance.payment_history,
         )

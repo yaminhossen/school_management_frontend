@@ -30,7 +30,7 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, date, exam_id, class_id, subject_id, status',
+                'id, date, exam_id, class_id, subject_id,start_time, end_time, status',
             ),
         );
         dispatch(all({}) as any);
@@ -67,12 +67,22 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`class`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
+                                        <TableHeading
                                             label={`Subject`}
                                             col_name={`subject`}
                                             sort={false}
                                         />
                                         <TableHeading
+                                            label={`Start time`}
+                                            col_name={`start time`}
+                                            sort={false}
+                                        />
+                                        <TableHeading
+                                            label={`End Time`}
+                                            col_name={`end time`}
+                                            sort={false}
+                                        />
+                                        {/* <TableHeading
                                             label={`Exam`}
                                             col_name={`exam`}
                                             sort={false}
@@ -117,8 +127,21 @@ const All: React.FC<Props> = (props: Props) => {
                                                             </span>
                                                         </td>
                                                         <td>{i.class?.name}</td>
-                                                        {/* <td>{i.subject_id}</td>
-                                                    <td>{i.exam_id}</td> */}
+                                                        <td>
+                                                            {i.subjects?.name}
+                                                        </td>
+                                                        <td>
+                                                            {moment(
+                                                                i?.start_time,
+                                                                'HH:mm:ss',
+                                                            ).format('HH:mm')}
+                                                        </td>
+                                                        <td>
+                                                            {moment(
+                                                                i?.end_time,
+                                                                'HH:mm:ss',
+                                                            ).format('HH:mm')}
+                                                        </td>
                                                         <td>
                                                             {moment(
                                                                 i.date,

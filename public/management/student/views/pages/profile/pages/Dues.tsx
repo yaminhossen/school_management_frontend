@@ -44,7 +44,7 @@ const Dues: React.FC<Props> = (props: Props) => {
                                     <th>Fees</th>
                                     <th>Paying</th>
                                     <th>Due amount</th>
-                                    <th>Advanced</th>
+                                    {/* <th>Advanced</th> */}
                                     <th>Payable</th>
                                     {/* <th>Given Amount</th> */}
                                 </tr>
@@ -75,11 +75,11 @@ const Dues: React.FC<Props> = (props: Props) => {
                                                             ? i.due_amount
                                                             : '0'}
                                                     </td>
-                                                    <td>
+                                                    {/* <td>
                                                         {i.due_amount >= 0
                                                             ? i.due_amount
                                                             : '0'}
-                                                    </td>
+                                                    </td> */}
                                                     <td></td>
                                                     {/* <td>
                                                         <input
@@ -117,7 +117,7 @@ const Dues: React.FC<Props> = (props: Props) => {
                                     <td>{totalAmount?.['fee_amount']}</td>
                                     <td>{totalAmount?.['total']}</td>
                                     <td></td>
-                                    <td></td>
+                                    {/* <td></td> */}
                                     <td>
                                         {totalAmount?.['fee_amount'] -
                                             totalAmount?.['total']}

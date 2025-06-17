@@ -43,7 +43,7 @@ const Index: React.FC<Props> = (props: Props) => {
             formData.month2 = m2;
 
             const response = await axios.post(
-                `/api/v1/account-logs/payment-history/${id}`,
+                `/api/v1/account-logs/payment-history-auth`,
                 formData,
             );
             setData(response.data.data.data);
@@ -62,7 +62,7 @@ const Index: React.FC<Props> = (props: Props) => {
         let formData = new FormData(e.target);
         try {
             const response = await axios.post(
-                `/api/v1/account-logs/payment-history/${id}`,
+                `/api/v1/account-logs/payment-history-auth`,
                 formData,
             );
             setData(response.data.data.data);

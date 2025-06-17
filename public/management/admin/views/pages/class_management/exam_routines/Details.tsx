@@ -51,7 +51,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>{state.item.subjects?.name}</td>
                                     </tr>
                                     <tr>
-                                        <td>Start Date</td>
+                                        <td>Start Time</td>
                                         <td>:</td>
                                         <td>
                                             {moment(
@@ -61,7 +61,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>End Date</td>
+                                        <td>End Time</td>
                                         <td>:</td>
                                         <td>{state.item.end_time}</td>
                                     </tr>

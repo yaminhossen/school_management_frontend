@@ -53,6 +53,10 @@ async function all(
                 model: models.BranchClassesModel,
                 as: 'class',
             },
+            {
+                model: models.BrachClassSubjectsModel,
+                as: 'subjects',
+            },
         ],
     };
 

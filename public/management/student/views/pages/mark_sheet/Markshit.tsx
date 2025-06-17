@@ -3,6 +3,7 @@ import { anyObject } from '../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+import BackButton from '../../components/BackButton';
 export interface Props {}
 
 const Markshit: React.FC<Props> = (props: Props) => {
@@ -53,6 +54,7 @@ const Markshit: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
+            <BackButton></BackButton>
             <div>{/* <h3>Current CGPA : 4.50</h3> */}</div>
             <h3 className="table_heading student_semister">Result History</h3>
             <div className="content_body ">

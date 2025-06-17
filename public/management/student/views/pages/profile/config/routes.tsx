@@ -13,6 +13,7 @@ import Results from '../pages/Results';
 import Markshit from '../pages/Markshit';
 import Parents from '../pages/Parent';
 import Payments from '../pages/Payments';
+import Complain from '../pages/Complain';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -72,6 +73,10 @@ export default {
                 {
                     path: 'mark-sheet',
                     element: <Markshit />,
+                },
+                {
+                    path: 'complain',
+                    element: <Complain />,
                 },
             ],
         },

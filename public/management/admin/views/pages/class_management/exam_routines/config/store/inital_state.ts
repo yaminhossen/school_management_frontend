@@ -12,6 +12,7 @@ export const initialState = {
     /* data store */
     all: {},
     item: {} as anyObject,
+    rooms: {} as anyObject,
     classes: {} as anyObject,
     exams: {} as anyObject,
     url: '',
