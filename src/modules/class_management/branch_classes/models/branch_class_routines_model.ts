@@ -35,10 +35,10 @@ class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
     declare branch_id: number;
-    declare branch_class_id: number;
-    declare branch_teacher_id: number;
-    declare branch_class_subject_id: number;
-    declare branch_class_section_id: number;
+    declare branch_class_id?: number;
+    declare branch_teacher_id?: number;
+    declare branch_class_subject_id?: number;
+    declare branch_class_section_id?: number;
 
     declare status?: status;
     declare creator?: number;

@@ -14,6 +14,11 @@ module.exports = async function (fastify: FastifyInstance) {
             `${prefix}/branch-class-wise-student`,
             controllerInstance.branch_class_wise_student,
         )
+        .get(
+            `${prefix}/class-routine-auth`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.class_routine_auth,
+        )
         .post(`${prefix}/class-routine`, controllerInstance.class_routine)
         .get(`${prefix}/:id`, controllerInstance.find)
         .post(`${prefix}/store`, controllerInstance.store)

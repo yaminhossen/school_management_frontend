@@ -2559,6 +2559,27 @@ input.form_checkbox:checked::after {
 .table_area tbody .table_body .class_time_and_room_content .class_time_and_room .time_rooom {
   display: block;
 }
+.routine_table .table_head_area {
+  border: 0px solid rgba(255, 255, 255, 0.068);
+  background-color: rgb(0, 0, 0);
+}
+.routine_table .table_head_area th {
+  border: 0px solid rgba(255, 255, 255, 0.068);
+  font-family: sans-serif;
+  font-size: 15px;
+  color: white;
+  text-transform: capitalize;
+  text-align: center;
+  border-right: 1px solid white;
+  padding: 15px 10px;
+}
+.routine_table .table_head_area th:last-child {
+  border-right: 1px solid rgb(211, 211, 211);
+}
+.routine_table .table_head_area th:nth-child(2), .routine_table .table_head_area th:nth-child(3), .routine_table .table_head_area th:first-child {
+  width: 150px !important;
+}
+
 .hide {
   display: none;
 }
