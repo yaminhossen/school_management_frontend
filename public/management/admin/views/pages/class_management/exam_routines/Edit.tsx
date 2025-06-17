@@ -13,6 +13,7 @@ import { classes } from './config/store/async_actions/classes';
 import axios from 'axios';
 import moment from 'moment/moment';
 import { exams } from './config/store/async_actions/all_exams';
+import { rooms } from './config/store/async_actions/rooms';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -42,6 +43,7 @@ const Edit: React.FC<Props> = (props: Props) => {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(classes({}) as any);
         await dispatch(exams({}) as any);
+        await dispatch(rooms({}) as any);
         dispatch(details({ id: params.id }) as any);
     }
 
@@ -169,6 +171,35 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                                 value={i.id}
                                                             >
                                                                 {i.title}
+                                                            </option>
+                                                        );
+                                                    },
+                                                )}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>
+                                        Room{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
+                                    <div className="form_elements">
+                                        <select
+                                            name="room_id"
+                                            id=""
+                                            defaultValue={state.item.room_id}
+                                            // onChange={handleChange}
+                                        >
+                                            {state?.rooms?.length &&
+                                                state.rooms?.map(
+                                                    (i: {
+                                                        [key: string]: any;
+                                                    }) => {
+                                                        return (
+                                                            <option
+                                                                value={i.id}
+                                                            >
+                                                                {i.room_name}
                                                             </option>
                                                         );
                                                     },

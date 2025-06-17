@@ -27,6 +27,11 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the subject_id field is required')
         .run(req);
+    await body('room_id')
+        .not()
+        .isEmpty()
+        .withMessage('the room_id field is required')
+        .run(req);
     await body('date')
         .not()
         .isEmpty()
@@ -74,6 +79,7 @@ async function store(
         exam_id: body.exam_id,
         class_id: body.class_id,
         subject_id: body.subject_id,
+        room_id: body.room_id,
         date: body.date,
         start_time: body.start_time,
         end_time: body.end_time,
