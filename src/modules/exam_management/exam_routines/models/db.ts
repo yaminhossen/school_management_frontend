@@ -81,7 +81,7 @@ const db = async function (): Promise<models> {
         as: 'guard_plan',
     });
 
-    ExamGuardPlansModel.hasOne(BranchBuildingRoomsModel, {
+    ExamRoutinesModel.hasOne(BranchBuildingRoomsModel, {
         sourceKey: 'room_id',
         foreignKey: 'id',
         as: 'room',

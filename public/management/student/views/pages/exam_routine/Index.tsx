@@ -58,7 +58,8 @@ const Index: React.FC<Props> = (props: Props) => {
                         <div>{moment(i.date).format('MMMM Do YY')}</div>
                         <div className="time_rooom class_room">
                             <div className="room_title">
-                                room - {i.guard_plan?.room?.room_code}
+                                room - {i.room?.room_name}
+                                {/* room - {i.guard_plan?.room?.room_code} */}
                             </div>
                         </div>
                     </div>

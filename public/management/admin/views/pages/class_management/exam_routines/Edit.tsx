@@ -31,7 +31,7 @@ const Edit: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/class-wise-subject/${state.item.class_id}`,
+                `/api/v1/branch-class-subjects/class-wise-subject/${state.item?.class_id}`,
             );
             setSubjects(response.data.data);
         } catch (error) {
@@ -53,7 +53,7 @@ const Edit: React.FC<Props> = (props: Props) => {
 
     useEffect(() => {
         fetchData();
-    }, [state.item.class_id]);
+    }, [state.item?.class_id]);
 
     async function handle_submit(e) {
         e.preventDefault();

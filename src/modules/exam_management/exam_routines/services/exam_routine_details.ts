@@ -34,14 +34,18 @@ async function class_routine_details(
                     as: 'subjects',
                 },
                 {
+                    model: buildingRoomsModel,
+                    as: 'room',
+                },
+                {
                     model: hallGuardPlansModel,
                     as: 'guard_plan',
-                    include: [
-                        {
-                            model: buildingRoomsModel,
-                            as: 'room',
-                        },
-                    ],
+                    // include: [
+                    //     {
+                    //         model: buildingRoomsModel,
+                    //         as: 'room',
+                    //     },
+                    // ],
                 },
             ],
         });
