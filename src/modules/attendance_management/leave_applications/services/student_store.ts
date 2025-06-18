@@ -71,6 +71,12 @@ async function store(
                 user_staff_id: user?.id || null,
             },
         });
+    } else if (user?.user_type == 'admission-officer') {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
     } else if (user?.user_type == 'teacher') {
         auth_user = await models.BranchTeachersModel.findOne({
             where: {
@@ -113,6 +119,9 @@ async function store(
         creator: user?.id || null,
     };
     if (user.user_type == 'staff') {
+        inputs.branch_staff_id = user?.id || null;
+    }
+    if (user.user_type == 'admission-officer') {
         inputs.branch_staff_id = user?.id || null;
     }
     if (user.user_type == 'student') {

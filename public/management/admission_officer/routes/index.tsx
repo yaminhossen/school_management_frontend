@@ -10,6 +10,7 @@ import notices_routes from '../views/pages/notices/config/routes';
 import settings_routes from '../views/pages/settings/config/routes';
 import tasks_routes from '../views/pages/tasks/config/routes';
 import meeting_agendas_routes from '../views/pages/meeting_agendas/config/routes';
+import leave_applications from '../views/pages/leave_applications/config/routes';
 
 interface RouteTypes extends NonIndexRouteObject {}
 const router: RouteTypes[] = [
@@ -23,6 +24,7 @@ const router: RouteTypes[] = [
             notices_routes,
             settings_routes,
             tasks_routes,
+            leave_applications,
             meeting_agendas_routes,
             {
                 path: '',

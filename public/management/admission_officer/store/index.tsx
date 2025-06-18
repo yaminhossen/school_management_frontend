@@ -9,6 +9,7 @@ import student_payments from '../views/pages/payment/config/store';
 import meeting_agendas from '../views/pages/meeting_agendas/config/store';
 import tasks from '../views/pages/tasks/config/store';
 import notices from '../views/pages/notices/config/store';
+import leave_applications from '../views/pages/leave_applications/config/store';
 
 const store = configureStore({
     reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
         meeting_agendas: meeting_agendas.reducer,
         tasks: tasks.reducer,
         notices: notices.reducer,
+        leave_applications: leave_applications.reducer,
     },
     devTools: true,
 });

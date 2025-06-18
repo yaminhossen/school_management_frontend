@@ -43,6 +43,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="Payment"
                 />
                 <MenuSingle
+                    to="/leave-application/approved"
+                    icon="icon-calendar"
+                    label="Leave Application"
+                />
+                <MenuSingle
                     to="/tasks/pending"
                     icon="icon-notepad"
                     label="Tasks"
