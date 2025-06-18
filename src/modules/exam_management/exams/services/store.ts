@@ -53,9 +53,9 @@ async function store(
     let body = req.body as anyObject;
     let data = new models.ExamsModel();
     let user = (req as any).user;
-    let auth_user = await models.BranchAdminsModel.findOne({
+    let auth_user = await models.UserAdminsModel.findOne({
         where: {
-            user_admin_id: (req as any).user?.id || null,
+            id: (req as any).user?.id || null,
         },
     });
 

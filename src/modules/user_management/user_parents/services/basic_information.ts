@@ -14,7 +14,7 @@ async function basic_information(
     let parentInformationsModel = models.UserParentInformationsModel;
     let params = req.params as any;
     let user = (req as any).user;
-    // let auth_user = await models.BranchAdminsModel.findOne({
+    // let auth_user = await models.UserAdminsModel.findOne({
     //     where: {
     //         user_admin_id: (req as any).user?.id || null,
     //     },

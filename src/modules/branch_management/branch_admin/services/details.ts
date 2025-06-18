@@ -13,7 +13,7 @@ async function details(
     let params = req.params as any;
 
     try {
-        let data = await models.BranchAdminsModel.findOne({
+        let data = await models.UserAdminsModel.findOne({
             where: {
                 id: params.id,
             },

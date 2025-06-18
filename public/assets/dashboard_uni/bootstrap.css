@@ -9586,7 +9586,7 @@ textarea.form-control-lg {
       -webkit-transition: none;
       transition: none; } }
   .btn:hover {
-    color: #212529; }
+    color: #2c3136; }
   .btn-check:focus + .btn, .btn:focus {
     outline: 0;
     -webkit-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);

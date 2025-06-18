@@ -69,6 +69,7 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         <th>Designation</th>
+                                        <th>Branch</th>
                                         {/* <TableHeading
                                             label={`Designation`}
                                             col_name={`designation`}
@@ -86,78 +87,6 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                     </tr>
                                 </thead>
-                                {/* <tbody id="all_list">
-                                    {(state.all as any)?.data?.length ? (
-                                        (state.all as any)?.data?.map(
-                                            (
-                                                i: { [key: string]: any },
-                                                index,
-                                            ) => {
-                                                return (
-                                                    <tr
-                                                        key={i.id}
-                                                        className={`table_rows table_row_${i.id}`}
-                                                    >
-                                                        <td>
-                                                            <TableRowAction
-                                                                item={i}
-                                                            />
-                                                        </td>
-                                                        <td>
-                                                            <SelectItem
-                                                                item={i}
-                                                            />
-                                                        </td>
-                                                        <td>
-                                                            <span>
-                                                                {index + 1}
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            <span
-                                                                className="quick_view_trigger"
-                                                                onClick={() =>
-                                                                    quick_view(
-                                                                        i,
-                                                                    )
-                                                                }
-                                                            >
-                                                                {i.id}
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                            <img
-                                                                src={
-                                                                    i.image
-                                                                        ? i.image
-                                                                        : '/assets/dashboard/images/avatar.png'
-                                                                }
-                                                                alt=""
-                                                                style={{
-                                                                    height: 30,
-                                                                }}
-                                                            />
-                                                        </td>
-                                                        <td>{i.name}</td>
-                                                        <td>
-                                                            {i.role
-                                                                ? i.role
-                                                                : 'staff'}
-                                                        </td>
-                                                        <td>
-                                                            {i.phone_number}
-                                                        </td>
-                                                        <td>{i.email}</td>
-                                                    </tr>
-                                                );
-                                            },
-                                        )
-                                    ) : (
-                                        <div className="not_found">
-                                            No data found
-                                        </div>
-                                    )}
-                                </tbody> */}
                                 {(state.all as any)?.data?.length ? (
                                     <tbody id="all_list">
                                         {(state.all as any)?.data?.map(
@@ -205,6 +134,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                     </td>
                                                     <td>{i.name}</td>
                                                     <td>{i.type}</td>
+                                                    <td>{i.branch?.name}</td>
                                                     <td>{i.phone_number}</td>
                                                     <td>{i.email}</td>
                                                 </tr>

@@ -38,7 +38,7 @@ const InputImage = forwardRef<InputImageRef, InputImageProps>(
                     <img
                         src={preview}
                         alt="Preview"
-                        style={{ maxWidth: 100 }}
+                        style={{ width: 100, height: 80, marginTop: 5 }}
                     />
                 )}
             </div>

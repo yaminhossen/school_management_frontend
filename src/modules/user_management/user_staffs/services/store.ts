@@ -101,9 +101,9 @@ async function store(
     let password = await bcrypt.hash(body.password, saltRounds);
 
     let user = (req as any).user;
-    let auth_user = await models.BranchAdminsModel.findOne({
+    let auth_user = await models.UserAdminsModel.findOne({
         where: {
-            user_admin_id: (req as any).user?.id || null,
+            id: (req as any).user?.id || null,
         },
     });
 
@@ -166,7 +166,10 @@ async function store(
         creator: user?.id || null,
     };
 
-    console.log('staff from', body);
+    console.log(
+        'staff from------------------------------------------------------------------------------------------------------',
+        auth_user?.branch_id,
+    );
 
     /** print request data into console */
     // console.clear();
@@ -201,7 +204,7 @@ async function store(
                 possition: body.position,
                 joining_date: body.joining_date,
                 department: body.department,
-                branch_id: auth_user?.branch_id || 1,
+                branch_id: auth_user?.branch_id || 0,
                 creator: user?.id || null,
             };
             (await usi_model.update(usi_inputs)).save();

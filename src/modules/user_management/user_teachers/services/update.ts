@@ -120,9 +120,9 @@ async function update(
     }
 
     let user = (req as any).user;
-    let auth_user = await models.BranchAdminsModel.findOne({
+    let auth_user = await models.UserAdminsModel.findOne({
         where: {
-            user_admin_id: (req as any).user?.id || null,
+            id: (req as any).user?.id || null,
         },
     });
 

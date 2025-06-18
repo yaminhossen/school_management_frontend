@@ -53,7 +53,7 @@ async function all(
     try {
         let data = await (fastify_instance as anyObject).paginate(
             req,
-            models.BranchAdminsModel,
+            models.UserAdminsModel,
             paginate,
             query,
         );

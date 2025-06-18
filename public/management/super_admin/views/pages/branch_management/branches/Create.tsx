@@ -47,7 +47,10 @@ const Create: React.FC<Props> = (props: Props) => {
                         >
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Branch code</label>
+                                    <label>
+                                        Branch code{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -58,7 +61,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>
+                                        Name{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -78,7 +84,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Primary contact number</label>
+                                    <label>
+                                        Primary contact number{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -88,7 +97,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Logo</label>
+                                    <label>
+                                        Logo{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
                                         <InputImage
                                             label={''}
@@ -99,27 +111,34 @@ const Create: React.FC<Props> = (props: Props) => {
                                 </div>
 
                                 <div className="form-group form-horizontal">
-                                    <label>Address</label>
+                                    <label>
+                                        Address{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
+                                        <textarea
                                             placeholder="address"
                                             name="address"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Map</label>
+                                    <label>
+                                        Map{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
+                                        <textarea
                                             placeholder="map"
                                             name="map"
                                         />
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Lat</label>
+                                    <label>
+                                        Lat{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -129,7 +148,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Lng</label>
+                                    <label>
+                                        Lng{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"

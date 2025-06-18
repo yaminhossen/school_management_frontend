@@ -341,9 +341,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         <option value="principle">
                                                             Principle
                                                         </option>
-                                                        <option value="admin">
+                                                        {/* <option value="admin">
                                                             Admin
-                                                        </option>
+                                                        </option> */}
                                                         <option value="admission-officer">
                                                             Admission-officer
                                                         </option>

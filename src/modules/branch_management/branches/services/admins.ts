@@ -20,7 +20,7 @@ async function details(
         });
 
         if (data) {
-            let admins = await models.BranchAdminsModel.findAll({
+            let admins = await models.UserAdminsModel.findAll({
                 where: {
                     branch_id: data.id,
                 },

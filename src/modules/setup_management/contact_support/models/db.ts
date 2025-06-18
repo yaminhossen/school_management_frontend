@@ -4,6 +4,7 @@ import {
 } from 'sequelize';
 import * as contact_supports_model from './contact_supports_model';
 import * as branch_admin_model from './branch_admin_model';
+import * as user_admins_model from './user_admins_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -23,12 +24,14 @@ const sequelize = new Sequelize(
 interface models {
     ContactSupportsModel: typeof contact_supports_model.DataModel;
     BranchAdminsModel: typeof branch_admin_model.DataModel;
+    UserAdminsModel: typeof user_admins_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
 const db = async function (): Promise<models> {
     const ContactSupportsModel = contact_supports_model.init(sequelize);
     const BranchAdminsModel = branch_admin_model.init(sequelize);
+    const UserAdminsModel = user_admins_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -61,6 +64,7 @@ const db = async function (): Promise<models> {
     let models: models = {
         ContactSupportsModel,
         BranchAdminsModel,
+        UserAdminsModel,
         // Project,
 
         sequelize,

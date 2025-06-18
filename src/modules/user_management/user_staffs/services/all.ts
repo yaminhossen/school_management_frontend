@@ -63,6 +63,12 @@ async function all(
     let paginate = parseInt((req.query as any).paginate) || 10;
     let select_fields: string[] = [];
     let exclude_fields: string[] = ['password'];
+    let user = (req as any).user;
+    let auth_user = await models.UserAdminsModel.findOne({
+        where: {
+            id: (req as any).user?.id || null,
+        },
+    });
 
     if (query_param.select_fields) {
         select_fields = query_param.select_fields.replace(/\s/g, '').split(',');
@@ -87,7 +93,10 @@ async function all(
         role: { [Op.ne]: 'admin' }, // role not equal to 'admin'
     };
     const today = moment().format('YYYY-MM-DD');
-    console.log('todya', today);
+    console.log(
+        'todya---------------------------------------------',
+        auth_user?.branch_id,
+    );
 
     let month1 = query_param?.start_date || today; // Start date
     let month2 = query_param?.end_date || today;
@@ -95,7 +104,6 @@ async function all(
         const endDate = new Date(query_param.end_date);
         endDate.setDate(endDate.getDate() + 1); // Increment by one day
         const formattedEndDate = endDate.toISOString().split('T')[0];
-        console.log('month2', formattedEndDate);
 
         whereClause.created_at = {
             [Op.between]: [query_param.start_date, formattedEndDate],
@@ -115,6 +123,9 @@ async function all(
             {
                 model: models.BranchStaffsModel,
                 as: 'staffs',
+                where: {
+                    branch_id: auth_user?.branch_id,
+                },
                 include: [
                     {
                         model: models.BranchesModel,
@@ -132,9 +143,6 @@ async function all(
         include: select_fields,
         exclude: exclude_fields,
     };
-    console.log('params', query_param);
-    console.log('params2', query_param.start_date);
-    console.log('params3', query_param.end_date);
 
     if (search_key) {
         // query_param.paginate = 25;

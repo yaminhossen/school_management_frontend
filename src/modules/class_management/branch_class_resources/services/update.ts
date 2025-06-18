@@ -62,9 +62,9 @@ async function update(
     let data = await models.BranchClassResourcessModel.findByPk(body.id);
     let prevFile = data?.attachment;
     let user = (req as any).user;
-    let auth_user = await models.BranchAdminsModel.findOne({
+    let auth_user = await models.UserAdminsModel.findOne({
         where: {
-            user_admin_id: (req as any).user?.id || null,
+            id: (req as any).user?.id || null,
         },
     });
 

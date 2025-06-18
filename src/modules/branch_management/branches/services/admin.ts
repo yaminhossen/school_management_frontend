@@ -20,15 +20,15 @@ async function details(
         });
 
         if (data) {
-            let admin = await models.BranchAdminsModel.findOne({
+            let admin = await models.UserAdminsModel.findOne({
                 where: {
-                    user_admin_id: params.admin_id,
+                    id: params.admin_id,
                 },
             });
             if (admin) {
                 let user = await models.UserAdminsModel.findOne({
                     where: {
-                        id: admin.user_admin_id,
+                        id: admin.id,
                     },
                     attributes: [
                         'id',

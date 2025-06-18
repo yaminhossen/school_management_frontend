@@ -85,7 +85,7 @@ const All: React.FC<Props> = (props: Props) => {
                             <table>
                                 <thead>
                                     <tr>
-                                        <th />
+                                        {/* <th /> */}
                                         <th>
                                             <SelectAll />
                                         </th>
@@ -137,11 +137,11 @@ const All: React.FC<Props> = (props: Props) => {
                                                     key={i.id}
                                                     className={`table_rows table_row_${i.id}`}
                                                 >
-                                                    <td>
+                                                    {/* <td>
                                                         <TableRowAction
                                                             item={i}
                                                         />
-                                                    </td>
+                                                    </td> */}
                                                     <td>
                                                         <SelectItem item={i} />
                                                     </td>

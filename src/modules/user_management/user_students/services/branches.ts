@@ -17,7 +17,11 @@ async function branches(
     console.log('user', user_id);
 
     try {
-        let Branches = await branchesModel.findAll({});
+        let Branches = await branchesModel.findAll({
+            where: {
+                status: 'active',
+            },
+        });
 
         if (Branches) {
             return response(200, 'Branches founded', Branches);

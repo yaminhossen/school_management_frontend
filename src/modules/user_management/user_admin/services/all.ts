@@ -108,16 +108,16 @@ async function all(
         where: whereClause,
         // include: [models.Project],
 
-        // include: [
-        //     {
-        //         model: models.UserStaffInformationsModel,
-        //         as: 'staff_infos',
-        //     },
-        //     {
-        //         model: models.BranchStaffsModel,
-        //         as: 'staffs',
-        //     },
-        // ],
+        include: [
+            {
+                model: models.BranchesModel,
+                as: 'branch',
+            },
+            // {
+            //     model: models.BranchStaffsModel,
+            //     as: 'staffs',
+            // },
+        ],
         attributes: {
             exclude: ['password'],
         },

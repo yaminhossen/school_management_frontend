@@ -51,9 +51,9 @@ async function update(
     let model = new models.AccountCategoriesModel();
 
     let user = (req as any).user;
-    let auth_user = await models.BranchAdminsModel.findOne({
+    let auth_user = await models.UserAdminsModel.findOne({
         where: {
-            user_admin_id: (req as any).user?.id || null,
+            id: (req as any).user?.id || null,
         },
     });
     let inputs: InferCreationAttributes<typeof model> = {
