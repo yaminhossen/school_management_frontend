@@ -26,9 +26,6 @@ const Dues: React.FC<Props> = (props: Props) => {
         }
     };
 
-    // useEffect(() => {
-    //     fetchTypes();
-    // }, []);
     async function initdependancy() {
         await (fetchTypes() as any);
     }

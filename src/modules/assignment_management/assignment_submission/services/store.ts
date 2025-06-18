@@ -133,18 +133,25 @@ async function store(
 
     /** store data into database */
     try {
-        (await data.update(inputs)).save();
-        // let task_id = task.id;
-
-        // if (task) {
-        //     let inputs2 = {
-        //         branch_id: body.branch_id,
-        //         task_id: task_id,
-        //         variants_id: 2,
-        //     };
-        //     taskVariantTasks.update(inputs2);
-        //     let task_variant_task = await taskVariantTasks.save();
-        // }
+        let data2 = await models.AssignmentSubmissionsModel.findOne({
+            where: {
+                student_id: user?.id,
+                assignment_id: body.id,
+            },
+            attributes: {
+                exclude: ['password'],
+            },
+        });
+        if (data2) {
+            if (data2.marks > 0) {
+                return response(200, 'already marked', data2);
+            } else {
+                await data2.update(inputs);
+                return response(200, 'data updated', data2);
+            }
+        } else {
+            (await data.update(inputs)).save();
+        }
         return response(200, 'data created', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);

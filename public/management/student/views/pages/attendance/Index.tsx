@@ -19,7 +19,6 @@ const Index: React.FC<Props> = (props: Props) => {
     }
 
     const [attendence, setAttendence] = useState<Attendance[]>([]);
-    console.log(attendence);
 
     // const year = moment().format('YYYY'); // e.g., "2025"
     const fetchAttendenceData = async () => {

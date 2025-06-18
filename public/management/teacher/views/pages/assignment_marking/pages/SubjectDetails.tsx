@@ -28,7 +28,7 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
 
     const handleMarkBlur = async (e: any, i: any) => {
         const mark = e.target.name == 'mark' ? e.target.value : null;
-        const id = i.student_id;
+        const id = i.id;
         console.log('Student id:', id);
         console.log('Student mark:', mark);
         try {

@@ -1,268 +1,190 @@
-import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../common_types/object';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import moment from 'moment/moment';
-export interface Props {}
+import moment from 'moment';
+import { DashboardContext } from '../layouts/DashboardContext';
 
-const T1: React.FC<Props> = (props: Props) => {
+interface Props {}
+interface FeesInfo {
+    account: { title: string };
+    class: object;
+    type: 'income' | 'expense';
+    amount: number;
+}
+interface TotalAmount {
+    due_amount: number;
+    paid_amount: number;
+}
+interface AttendanceDay {
+    status: boolean;
+    day: number;
+    date: string;
+    attendance_status: string;
+}
+interface AttendanceMonth {
+    month: string;
+    days: AttendanceDay[];
+}
+interface Attendance {
+    student_id: number;
+    year: number;
+    months: AttendanceMonth[];
+}
+
+const T1: React.FC<Props> = () => {
     const [error, setError] = useState(null);
-    const [data, setData] = useState();
-    const [accdemicCalander, setAccademicCalander] = useState<any[]>([]);
-    // console.log(accdemicCalander);
+    const [presentCount, setPresentCount] = useState(0);
+    const [totalDays, setTotalDays] = useState(0);
+    const [data, setData] = useState<any[]>([]);
+    const [academicCalendar, setAcademicCalendar] = useState<any[]>([]);
+    const [feesTypes, setFeesTypes] = useState<FeesInfo[]>([]);
+    const [totalAmount, setTotalAmount] = useState<TotalAmount | null>(null);
+    const [attendance, setAttendance] = useState<Attendance[]>([]);
+    const { loading } = useContext(DashboardContext);
 
     const [selectedDate, setSelectedDate] = useState(
         moment().format('YYYY-MM-DD'),
-    ); // Default to today's date
-
-    const handleDateChange = (event) => {
-        setSelectedDate(event.target.value); // Update the selected date
-    };
-
-    // Dynamically format month and year based on the selected date
+    );
     const selectedMoment = moment(selectedDate);
-    const month = selectedMoment.format('MMM').toLowerCase(); // e.g., "jan"
-    const year = selectedMoment.format('YYYY'); // e.g., "2025"
-    const formattedDate = `${month}-${year}`;
+    const formattedMonthYear = `${selectedMoment.format('MMM').toLowerCase()}-${selectedMoment.format('YYYY')}`;
+
     const fetchData = async () => {
         try {
             const response = await axios.get('/api/v1/notices/all/students');
             setData(response.data.data);
-            // setData(response.data);
-        } catch (error) {
-            setError(error);
+        } catch (err) {
+            setError(err);
         }
     };
 
-    // useEffect(() => {
-    //     fetchData();
-    // }, []);
-
-    async function initdependancy() {
-        await (fetchData() as any);
-    }
-
-    useEffect(() => {
-        initdependancy();
-    }, []);
-    console.log(data);
-    let days = [
-        'saturday',
-        'sunday',
-        'monday',
-        'tuesday',
-        'wednesday',
-        'thursday',
-        'friday',
-    ];
-
-    function dateFormate(date: string) {
-        return moment(date).format('dddd').toLowerCase();
-    }
-    // console.log('date', dateFormate('2024-09-07T00:00:00.000Z'));
-
-    function get_day_data(i, day) {
-        if (dateFormate(i.date) === day) {
-            return (
-                <li className="absent">
-                    <time dateTime="2022-02-02">{i.id}</time>
-                    <div className="text-warning">
-                        <i className="icon-close"></i>
-                        <span className="event_title">Class Present</span>
-                    </div>
-                </li>
+    const fetchAttendanceData = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/student-attendances/get-full-year-attendence',
             );
-        } else {
-            return (
-                <li className="absent">
-                    <time dateTime="2022-02-02">{i.id}</time>
-                </li>
-            );
+            setAttendance(response.data.data);
+        } catch (err) {
+            console.error(err);
         }
-    }
+    };
 
-    const fetchAccedemicCalenderData = async () => {
+    const fetchFeesTypes = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/user-students/fees-categories-student',
+            );
+            setFeesTypes(response.data?.data?.idWiseTotals);
+            setTotalAmount(response.data?.data?.summeries);
+        } catch (err) {
+            setError(err);
+        }
+    };
+
+    const fetchAcademicCalendar = async () => {
         try {
             const response = await axios.post(
                 '/api/v1/academic-calendars/get-academic-event-by-month',
                 {
-                    month: formattedDate,
+                    month: formattedMonthYear,
                     branch_id: 1,
                 },
             );
-
-            // Assuming setAccademicCalander is a state setter function
-            setAccademicCalander(response.data.data);
-
-            // Clear any previous errors
-            setError(null);
-        } catch (error) {
-            console.error('Error fetching academic calendar data:', error);
-            setError(error); // Assuming setError is a state setter for errors
+            setAcademicCalendar(response.data.data);
+        } catch (err) {
+            setError(err);
         }
     };
+
     useEffect(() => {
-        fetchAccedemicCalenderData();
+        if (!loading) {
+            fetchData();
+            fetchFeesTypes();
+            fetchAttendanceData();
+        }
+    }, [loading]);
+
+    useEffect(() => {
+        fetchAcademicCalendar();
     }, [selectedDate]);
 
-    let array: any[][] = [];
-    let count = 0;
-
-    // Initialize the 2D array
-    for (let i = 0; i < 5; i++) {
-        array[i] = []; // Initialize each row
-
-        for (let j = 0; j < 7; j++) {
-            if (count < accdemicCalander.length) {
-                array[i][j] = accdemicCalander[count] || { date: '', day: '' };
-                count++;
-            } else {
-                continue;
-            }
+    useEffect(() => {
+        const currentMonth = moment().format('MMMM').toLowerCase();
+        const currentAttendance = attendance[0];
+        const monthInfo = currentAttendance?.months.find(
+            (m) => m.month.toLowerCase() === currentMonth,
+        );
+        if (monthInfo) {
+            setTotalDays(monthInfo.days.length);
+            setPresentCount(monthInfo.days.filter((day) => day.status).length);
         }
+    }, [attendance]);
+
+    const weeks: any[][] = [];
+    for (let i = 0; i < 5; i++) {
+        weeks[i] = academicCalendar.slice(i * 7, (i + 1) * 7);
     }
 
     return (
         <div className="custom_scroll">
-            {/* <div className="name my-3">
-                <h2>Shafiqur Rahman</h2>
-            </div> */}
-            {/* analytics */}
             <div
                 className="mt-4"
                 style={{
                     display: 'grid',
                     gap: '30px',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr)',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
                 }}
             >
-                {/* {[
-                    {
-                        title: 'নোটিশ',
-                        value: 7,
-                    },
-                    {
-                        title: 'বাড়ির কাজ',
-                        value: 2,
-                    },
-                    {
-                        title: 'এই মাসের উপস্থিতি',
-                        value: '78 / 88',
-                    },
-                    {
-                        title: 'উপস্থিতি %',
-                        value: 89,
-                    },
-                    {
-                        title: 'লাইব্রেরী বই ইস্যু',
-                        value: 3,
-                    },
-                    {
-                        title: 'ফিস বকেয়া',
-                        value: 1780,
-                    },
-                ].map((i) => {
-                    return (
-                        <div
-                            className="card w-100 mb-0"
-                            data-intro="This is card"
-                        >
-                            <div className="business-top-widget card-body">
-                                <h5 className="mb-2">{i.title}</h5>
-                                <div className="media d-inline-flex">
-                                    <div className="media-body">
-                                        <h2 className="total-value m-0 counter">
-                                            {i.value}
-                                        </h2>
-                                    </div>
-                                    <i
-                                        style={{ opacity: '.4' }}
-                                        className="icon-bar-chart font-info align-self-center"
-                                    ></i>
-                                </div>
-                            </div>
-                        </div>
-                    );
-                })} */}
-                <div className="card w-100 mb-0" data-intro="This is card">
+                <div className="card w-100 mb-0">
                     <div className="business-top-widget card-body">
                         <h5 className="mb-2">নোটিশ</h5>
                         <div className="media d-inline-flex">
                             <div className="media-body">
                                 <h2 className="total-value m-0 counter">
-                                    {data?.length}
+                                    {data.length}
                                 </h2>
                             </div>
                             <i
-                                style={{ opacity: '.4' }}
                                 className="icon-bar-chart font-info align-self-center"
+                                style={{ opacity: 0.4 }}
                             ></i>
                         </div>
                     </div>
                 </div>
-                <div className="card w-100 mb-0" data-intro="This is card">
+                <div className="card w-100 mb-0">
                     <div className="business-top-widget card-body">
-                        <h5 className="mb-2">বাড়ির কাজ</h5>
-                        <div className="media d-inline-flex">
-                            <div className="media-body">
-                                <h2 className="total-value m-0 counter">2</h2>
-                            </div>
-                            <i
-                                style={{ opacity: '.4' }}
-                                className="icon-bar-chart font-info align-self-center"
-                            ></i>
-                        </div>
-                    </div>
-                </div>
-                <div className="card w-100 mb-0" data-intro="This is card">
-                    <div className="business-top-widget card-body">
-                        <h5 className="mb-2">এই মাসের উপস্থিতি</h5>
+                        <h5 className="mb-2">মাসিক উপস্থিতি</h5>
                         <div className="media d-inline-flex">
                             <div className="media-body">
                                 <h2 className="total-value m-0 counter">
-                                    78/80
+                                    {presentCount} / {totalDays}
                                 </h2>
                             </div>
                             <i
-                                style={{ opacity: '.4' }}
                                 className="icon-bar-chart font-info align-self-center"
+                                style={{ opacity: 0.4 }}
                             ></i>
                         </div>
                     </div>
                 </div>
-                {/* <div className="card w-100 mb-0" data-intro="This is card">
-                    <div className="business-top-widget card-body">
-                        <h5 className="mb-2">লাইব্রেরী বই ইস্যু</h5>
-                        <div className="media d-inline-flex">
-                            <div className="media-body">
-                                <h2 className="total-value m-0 counter">5</h2>
-                            </div>
-                            <i
-                                style={{ opacity: '.4' }}
-                                className="icon-bar-chart font-info align-self-center"
-                            ></i>
-                        </div>
-                    </div>
-                </div> */}
-                <div className="card w-100 mb-0" data-intro="This is card">
+
+                <div className="card w-100 mb-0">
                     <div className="business-top-widget card-body">
                         <h5 className="mb-2">ফিস বকেয়া</h5>
                         <div className="media d-inline-flex">
                             <div className="media-body">
                                 <h2 className="total-value m-0 counter">
-                                    5000
+                                    {Math.abs(totalAmount?.due_amount || 0)}
                                 </h2>
                             </div>
                             <i
-                                style={{ opacity: '.4' }}
                                 className="icon-bar-chart font-info align-self-center"
+                                style={{ opacity: 0.4 }}
                             ></i>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* attendance calendar */}
             <div className="calendar_dashboard mt-4">
                 <div className="card mx-auto">
                     <div className="card-header d-flex justify-content-between flex-wrap">
@@ -271,63 +193,52 @@ const T1: React.FC<Props> = (props: Props) => {
                             Academic Calendar
                         </h5>
                         <h5>
-                            {formattedDate}
+                            {formattedMonthYear}
                             <span className="ml-2">
                                 <input
                                     type="date"
                                     value={selectedDate}
-                                    onChange={handleDateChange}
+                                    onChange={(e) =>
+                                        setSelectedDate(e.target.value)
+                                    }
                                 />
                             </span>
                         </h5>
                     </div>
                     <div className="card-body">
                         <ul>
-                            {array.map((value, vIndex) =>
-                                value.map((element, eIndex) => (
-                                    <>
-                                        {
-                                            <li
-                                                key={`${vIndex}- ${eIndex}`}
-                                                className={`${element.day === 5 ? 'absent' : ''} || ${moment(element.date).isSame(moment(), 'day') ? 'today' : ''}`}
-                                            >
-                                                <time dateTime={element.date}>
-                                                    {moment(
-                                                        element.date,
-                                                    ).format('D')}{' '}
-                                                </time>
-                                                {/* {element.day} */}
-                                                {moment(element.date).format(
-                                                    'dddd',
-                                                )}
+                            {weeks.map((week, i) =>
+                                week.map((day, j) => (
+                                    <li
+                                        key={`${i}-${j}`}
+                                        className={`
+                      ${day.day === 5 ? 'absent' : ''}
+                      ${moment(day.date).isSame(moment(), 'day') ? 'today' : ''}
+                    `}
+                                    >
+                                        <time dateTime={day.date}>
+                                            {moment(day.date).format('D')}
+                                        </time>
+                                        {moment(day.date).format('dddd')}
+                                        <div
+                                            className={`text-${day.events?.length ? 'warning' : 'info'} custom_scroll`}
+                                        >
+                                            {day.events?.map((event, idx) => (
                                                 <div
-                                                    className={`text-${element.events?.length ? 'warning' : 'info'}`}
+                                                    key={idx}
+                                                    className="event"
                                                 >
-                                                    {element.events?.map(
-                                                        (ev, i) => (
-                                                            <div
-                                                                key={i}
-                                                                className="event"
-                                                            >
-                                                                <i className="icon-check-box"></i>
-                                                                <span className="event_title">
-                                                                    {
-                                                                        ev.event_name
-                                                                    }
-                                                                </span>
-                                                            </div>
-                                                        ),
-                                                    )}
+                                                    <i className="icon-check-box"></i>
+                                                    <span className="event_title">
+                                                        {event.event_name}
+                                                    </span>
                                                 </div>
-                                            </li>
-                                        }
-                                    </>
+                                            ))}
+                                        </div>
+                                    </li>
                                 )),
                             )}
                         </ul>
-                        {/* <ul>
-                            {days.map((index, day) => get_day_data(index, day))}
-                        </ul> */}
                     </div>
                 </div>
             </div>

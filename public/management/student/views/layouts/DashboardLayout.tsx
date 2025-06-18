@@ -3,17 +3,19 @@ import { Outlet } from 'react-router-dom';
 import TopHeader from './shared/TopHeader';
 import SideBar from './shared/menu/SideBar';
 import axios from 'axios';
+import { DashboardContext } from './DashboardContext';
 
 export interface Props {}
 
 const DashboardLayout: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState<any>([]);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/user-students/basic-information',
+                '/api/v1/user-students/stu-information',
             );
             setData(response.data.data);
             // setData(response.data);
@@ -21,16 +23,35 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
+    // const fetchTypes = async () => {
+    //     try {
+    //         const response2 = await axios.get(
+    //             `/api/v1/user-students/fees-categories-student`,
+    //         );
+    //         setFeesTypes(response2.data?.data?.idWiseTotals);
+    //         setTotalAmount(response2.data?.data?.summeries);
+    //     } catch (error) {
+    //         setError2(error);
+    //     }
+    // };
 
     // useEffect(() => {
     //     fetchData();
     // }, []);
     async function initdependancy() {
         await (fetchData() as any);
+        // await (fetchTypes() as any);
     }
 
+    // useEffect(() => {
+    //     initdependancy();
+    // }, []);
     useEffect(() => {
-        initdependancy();
+        const init = async () => {
+            await fetchData(); // your function
+            setLoading(false); // allow children now
+        };
+        init();
     }, []);
     return (
         <div className="page-wrapper">
@@ -67,7 +88,9 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
                 >
                     <div className="row">
                         <div className="col-sm-12">
-                            <Outlet />
+                            <DashboardContext.Provider value={{ loading }}>
+                                <Outlet />
+                            </DashboardContext.Provider>
                         </div>
                     </div>
                 </div>

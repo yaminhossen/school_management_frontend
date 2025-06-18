@@ -116,7 +116,7 @@ async function assignment_marking(
     try {
         let data = await models.AssignmentSubmissionsModel.findOne({
             where: {
-                student_id: body.id,
+                id: body.id,
             },
         });
         if (data) {

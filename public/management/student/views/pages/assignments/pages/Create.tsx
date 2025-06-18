@@ -39,7 +39,8 @@ const Create: React.FC<Props> = (props: Props) => {
                 '/api/v1/assignment-submissions/store',
                 formData,
             );
-            (window as any).toaster('Assignment submitted');
+            (window as any).toaster(response.data.message);
+            console.log('respose data message', response.data.message);
         } catch (error) {
             // setError(error); // Set error state
             // setResponseMessage('Failed to submit form.');
