@@ -14,7 +14,7 @@ async function soft_delete(
     let body = req.body as { [key: string]: any };
 
     try {
-        let data = await models.UserAdminsModel.findOne({
+        let data = await models.BranchAdminsModel.findOne({
             where: {
                 id: body.id,
             },

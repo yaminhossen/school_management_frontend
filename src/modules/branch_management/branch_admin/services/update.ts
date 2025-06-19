@@ -53,7 +53,7 @@ async function update(
     /** initializations */
     let models = await db();
     let body = req.body as anyObject;
-    let model = new models.UserAdminsModel();
+    let model = new models.BranchAdminsModel();
 
     let inputs: InferCreationAttributes<typeof model> = {
         user_admin_id: body.user_admin_id,
@@ -67,7 +67,7 @@ async function update(
 
     /** store data into database */
     try {
-        let data = await models.UserAdminsModel.findByPk(body.id);
+        let data = await models.BranchAdminsModel.findByPk(body.id);
         if (data) {
             data.update(inputs);
             await data.save();

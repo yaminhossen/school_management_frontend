@@ -47,7 +47,7 @@ async function store(
     /** initializations */
     let models = await db();
     let body = req.body as anyObject;
-    let data = new models.UserAdminsModel();
+    let data = new models.BranchAdminsModel();
 
     let inputs: InferCreationAttributes<typeof data> = {
         user_admin_id: body.user_admin_id,

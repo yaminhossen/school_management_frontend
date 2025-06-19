@@ -160,7 +160,7 @@ async function store(
         name: body.name,
         email: body.email,
         phone_number: body.phone_number,
-        role: body.role,
+        role: body.role || 'staff',
         image: staff_image,
         password: password,
         creator: user?.id || null,
