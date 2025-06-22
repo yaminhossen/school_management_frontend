@@ -94,6 +94,7 @@ async function update(
         meeting_id: body.meeting_id,
         title: body.title,
         description: body.description,
+        meeting_summary: body.meeting_summary,
         role: body.role,
         date: body.date,
         time: body.time,

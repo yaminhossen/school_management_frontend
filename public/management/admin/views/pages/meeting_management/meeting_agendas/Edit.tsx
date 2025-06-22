@@ -26,6 +26,7 @@ const Edit: React.FC<Props> = (props: Props) => {
     const [errorMessage, setErrorMessage] = useState('');
 
     const [meetingType, setMeetingType] = useState('');
+    const [statusType, setStatusType] = useState('');
 
     // useEffect(() => {
     //     dispatch(storeSlice.actions.set_item({}));
@@ -58,6 +59,9 @@ const Edit: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         setMeetingType(state.item?.agenda?.meeting_type);
     }, [state.item?.agenda?.meeting_type]);
+    useEffect(() => {
+        setStatusType(state.item?.agenda?.is_complete);
+    }, [state.item?.agenda?.is_complete]);
 
     useEffect(() => {
         if (state.item) {
@@ -155,21 +159,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>
-                                        Date{' '}
-                                        <span className="valid_star">*</span>
-                                    </label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="date"
-                                            defaultValue={moment(
-                                                state.item.agenda?.date,
-                                            ).format('YYYY-MM-DD')}
-                                            name="date"
-                                        ></input>
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>
                                         Date{' '}
@@ -297,6 +286,9 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             defaultValue={
                                                 state.item?.agenda?.is_complete
                                             }
+                                            onChange={(e) =>
+                                                setStatusType(e.target.value)
+                                            }
                                             id=""
                                         >
                                             <option value="pending">
@@ -308,6 +300,26 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
+                                {statusType === 'completed' && (
+                                    <div className="form-group form-horizontal">
+                                        <label>
+                                            Meeting Summary{' '}
+                                            <span className="valid_star">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div className="form_elements">
+                                            <textarea
+                                                name="meeting_summary"
+                                                placeholder="Enter meeting summary"
+                                                defaultValue={
+                                                    state.item?.agenda
+                                                        ?.meeting_summary
+                                                }
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                )}
                                 <div className="form-group student_submit form-horizontal">
                                     {/* <label></label> */}
                                     <div className="form_elementss">

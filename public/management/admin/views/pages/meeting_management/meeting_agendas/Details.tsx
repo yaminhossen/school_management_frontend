@@ -40,10 +40,10 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td>{state.item.agenda?.title}</td>
                                     </tr>
-                                    <tr>
+                                    <tr className="details_descrtiption2">
                                         <td>Description</td>
                                         <td>:</td>
-                                        <td>
+                                        <td className="details_descrtiption2">
                                             {state.item.agenda?.description}
                                         </td>
                                     </tr>
@@ -98,8 +98,49 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 : 'Pending'}
                                         </td>
                                     </tr>
+                                    <tr>
+                                        {/* <td>Agenda summary</td> */}
+                                        {/* <td>:</td>
+                                        <td>
+                                            {state.item.agendas?.is_complete ===
+                                            'completed'
+                                                ? 'Complete'
+                                                : 'Pending'}
+                                        </td> */}
+                                    </tr>
+                                    {/* <h1 className="my-4">Agenda summary</h1> */}
+                                    {state.item.agenda?.meeting_summary ? (
+                                        <tr>
+                                            <td>Meeting summary</td>
+                                            <td>:</td>
+                                            <td className="details_descrtiption2">
+                                                {
+                                                    state.item.agenda
+                                                        ?.meeting_summary
+                                                }
+                                            </td>
+                                        </tr>
+                                    ) : (
+                                        <p className="my-4 text-gray-500">
+                                            This meeting not completed.
+                                        </p>
+                                    )}
                                 </tbody>
                             </table>
+                            {/* <h1 className="my-4">Meeting Agendas Part</h1>
+                            {state.item.agenda?.meeting_summary ? (
+                                <tr>
+                                    <td>Meeting summary</td>
+                                    <td>:</td>
+                                    <td className="details_descrtiption2">
+                                        {state.item.agenda?.meeting_summary}
+                                    </td>
+                                </tr>
+                            ) : (
+                                <p className="my-4 text-gray-500">
+                                    No agendas found till now.
+                                </p>
+                            )} */}
                         </div>
                     )}
 
