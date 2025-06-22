@@ -80,7 +80,7 @@ const UpdatePass: React.FC<Props> = (props: Props) => {
                                     top: '10px',
                                     right: '10px',
                                     cursor: 'pointer',
-                                    color: '#666',
+                                    color: '#eeeeee',
                                     fontSize: '24px',
                                     userSelect: 'none',
                                 }}

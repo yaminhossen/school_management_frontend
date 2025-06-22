@@ -323,14 +323,14 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 top: '10px',
                                                 right: '10px',
                                                 cursor: 'pointer',
-                                                color: '#666',
+                                                color: '#eeeeee',
                                                 fontSize: '24px',
                                                 userSelect: 'none',
                                             }}
                                         >
                                             {showPassword
-                                                ? 'visibility_off'
-                                                : 'visibility'}
+                                                ? 'visibility'
+                                                : 'visibility_off'}
                                         </span>
                                     </div>
                                 </div>
@@ -558,7 +558,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-vertical">
+                                {/* <div className="form-group form-vertical">
                                     <label>Religion</label>
                                     <div className="form_elements">
                                         <select name="religion" id="">
@@ -570,8 +570,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <option value="budda">budda</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div className="form-group form-vertical">
+                                </div> */}
+                                {/* <div className="form-group form-vertical">
                                     <label>Nationality</label>
                                     <div className="form_elements">
                                         <input
@@ -580,7 +580,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             name="nationality"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Division</label>
                                     <div className="form_elements">
@@ -740,8 +740,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Family information</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
+                                        <textarea
                                             placeholder="family information"
                                             name="family_information"
                                         />
@@ -750,8 +749,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Shibling information</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
+                                        <textarea
                                             placeholder="shibling information"
                                             name="shibling_information"
                                         />
@@ -1074,7 +1072,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 top: '10px',
                                                                 right: '10px',
                                                                 cursor: 'pointer',
-                                                                color: '#666',
+                                                                color: '#eeeeee',
                                                                 fontSize:
                                                                     '24px',
                                                                 userSelect:

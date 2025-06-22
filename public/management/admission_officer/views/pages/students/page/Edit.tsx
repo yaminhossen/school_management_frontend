@@ -348,7 +348,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     top: '10px',
                                                     right: '10px',
                                                     cursor: 'pointer',
-                                                    color: '#666',
+                                                    color: '#eeeeee',
                                                     fontSize: '24px',
                                                     userSelect: 'none',
                                                 }}
@@ -605,7 +605,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             />
                                         </div>
                                     </div>
-                                    <div className="form-group form-vertical">
+                                    {/* <div className="form-group form-vertical">
                                         <label>Religion</label>
                                         <div className="form_elements">
                                             <select
@@ -630,8 +630,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 </option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div className="form-group form-vertical">
+                                    </div> */}
+                                    {/* <div className="form-group form-vertical">
                                         <label>Nationality</label>
                                         <div className="form_elements">
                                             <input
@@ -644,7 +644,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 }
                                             />
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div className="form-group form-vertical">
                                         <label>Division</label>
                                         <div className="form_elements">
