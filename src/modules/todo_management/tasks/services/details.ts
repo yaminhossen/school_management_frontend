@@ -17,6 +17,12 @@ async function details(
             where: {
                 id: params.id,
             },
+            include: [
+                {
+                    model: models.UserAdminsModel,
+                    as: 'admin',
+                },
+            ],
             attributes: {
                 exclude: ['password'],
             },

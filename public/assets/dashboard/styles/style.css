@@ -2049,6 +2049,14 @@ input.form_checkbox:checked::after {
   left: 470px;
 }
 
+.task_details {
+  position: absolute;
+  height: calc(100vh - 480px) !important;
+  width: calc(60vw + 100px);
+  border: 2px solid rgb(57, 57, 57) !important;
+  border-radius: 5px;
+}
+
 .explore_window {
   position: absolute;
   height: calc(100vh - 280px);

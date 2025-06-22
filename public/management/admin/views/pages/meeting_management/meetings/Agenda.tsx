@@ -65,22 +65,26 @@ const Agenda: React.FC<Props> = (props: Props) => {
                                 </tbody>
                             </table>
                             <h1 className="my-4">Meeting Agendas Part</h1>
-                            {state?.agendas?.agendas?.length &&
-                                state?.agendas?.agendas?.map(
-                                    (i: { [key: string]: any }, index) => {
-                                        return (
-                                            <div className="my-4">
-                                                <p>No.{index + 1}</p>
-                                                <p className="mt-1">
-                                                    {i.title}
-                                                </p>
-                                                <p className="mt-2">
-                                                    {i.description}
-                                                </p>
-                                            </div>
-                                        );
-                                    },
-                                )}
+                            {state?.agendas?.agendas?.length ? (
+                                state.agendas.agendas.map(
+                                    (
+                                        i: { [key: string]: any },
+                                        index: number,
+                                    ) => (
+                                        <div className="my-4" key={index}>
+                                            <p>No.{index + 1}</p>
+                                            <p className="mt-1">{i.title}</p>
+                                            <p className="mt-2">
+                                                {i.description}
+                                            </p>
+                                        </div>
+                                    ),
+                                )
+                            ) : (
+                                <p className="my-4 text-gray-500">
+                                    No agendas found till now.
+                                </p>
+                            )}
                         </div>
                     )}
 

@@ -18,7 +18,36 @@
         }
     }
 }
+.task_details{
+    position: absolute;
+    height: calc(100vh - 480px) !important;
+    width: calc(60vw + 100px);
+    border: 2px solid rgb(57, 57, 57) !important;
+    // // border: var(--border);
+    // resize: both;
+    // overflow: hidden;
+    // transition-duration: unset;
+    // backdrop-filter: blur(9px);
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    // border: 1px solid red;
+    border-radius: 5px;
 
+    // &.fixed_size {
+    //     position: unset;
+    //     width: unset;
+    //     height: calc(100vh - 140px);
+    // }
+
+    // &.expand {
+    //     height: 100% !important;
+    //     width: 100% !important;
+    //     resize: none;
+    //     left: 0 !important;
+    //     top: 0 !important;
+    // }
+}
 .explore_window {
     position: absolute;
     height: calc(100vh - 280px);

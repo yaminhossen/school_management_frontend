@@ -230,6 +230,8 @@ const All: React.FC<Props> = (props: Props) => {
                                                             <Link
                                                                 // to="/students/single/student/"
                                                                 to={`/${setup.route_prefix}/details/${i.id}`}
+                                                                className="btn btn-sm  btn-outline-info ml-2"
+                                                                type="submit"
                                                             >
                                                                 Show
                                                             </Link>

@@ -41,11 +41,6 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>{state.item.title}</td>
                                     </tr>
                                     <tr>
-                                        <td>Description</td>
-                                        <td>:</td>
-                                        <td>{state.item.description}</td>
-                                    </tr>
-                                    <tr>
                                         <td>Date</td>
                                         <td>:</td>
                                         <td>
@@ -55,9 +50,19 @@ const Details: React.FC<Props> = (props: Props) => {
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td>Creator</td>
+                                        <td>:</td>
+                                        <td>{state.item.admin?.name || "Not found"}</td>
+                                    </tr>
+                                    <tr>
                                         <td>Is completed</td>
                                         <td>:</td>
                                         <td>{state.item.is_complete}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>:</td>
+                                        <td className="task_details details_descrtiption2">{state.item.description}</td>
                                     </tr>
                                 </tbody>
                             </table>

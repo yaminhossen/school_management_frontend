@@ -30,7 +30,9 @@ const fetch_api = async (param, thunkAPI) => {
         param,
     );
 
+    dispatch(storeSlice.actions.set_only_latest_data(true));
     dispatch(all({}));
+    dispatch(storeSlice.actions.set_only_latest_data(false));
     dispatch(storeSlice.actions.set_is_loading(true));
 
     (window as anyObject).toaster(
