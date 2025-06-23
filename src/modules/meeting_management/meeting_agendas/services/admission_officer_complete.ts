@@ -124,7 +124,7 @@ async function admission_officer_complete(
     }
 
     let query: FindAndCountOptions = {
-        // order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
+        // order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
         order: [
             // [orderByCol, orderByAsc === 'true' ? 'ASC' : 'DESC'],
             ['date', orderByAsc === 'true' ? 'ASC' : 'DESC'],

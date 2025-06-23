@@ -110,7 +110,7 @@ async function staff_pending(
         };
     }
     let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
+        order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
         where: whereClause,
         include: [
             {

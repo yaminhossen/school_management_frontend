@@ -49,7 +49,7 @@ async function all(
         // whereClause.where = 'pending';
     }
     let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
+        order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
         // where: {
         //     status: show_active_data == 'true' ? 'active ' : 'deactive',
         //     leave_status: 'pending',

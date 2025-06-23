@@ -18,7 +18,7 @@ async function all(
     let show_active_data = query_param.show_active_data;
 
     let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
+        order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
         where: {
             status: show_active_data == 'true' ? 1 : 0,
         },

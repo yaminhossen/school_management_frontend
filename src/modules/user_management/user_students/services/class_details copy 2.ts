@@ -79,7 +79,7 @@ async function all(
     console.log('Search key form frontend', search_key);
 
     let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
+        order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
         where: {
             status: show_active_data == 'true' ? 'active' : 'deactive',
             // branch_class_id: params.id,

@@ -102,7 +102,7 @@ async function all(
     }
 
     let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
+        order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
         where: whereClause,
         include: [
             {

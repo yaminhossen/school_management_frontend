@@ -105,7 +105,7 @@ async function academic_resources_pagination(
     }
 
     let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
+        order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
         where: whereClause,
         // include: [models.Project],
 

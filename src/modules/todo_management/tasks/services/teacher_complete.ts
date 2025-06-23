@@ -108,7 +108,7 @@ async function teacher_complete(
         };
     }
     let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
+        order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
         where: whereClause,
         // where: {
         //     status: show_active_data == 'true' ? 'active' : 'deactive',
