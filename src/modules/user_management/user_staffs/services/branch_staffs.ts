@@ -42,7 +42,7 @@ async function validate(req: Request) {
 
     return result;
 }
-async function all(
+async function branch_staffs(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -69,6 +69,7 @@ async function all(
             id: (req as any).user?.id || null,
         },
     });
+    let params = req.params as any;
 
     if (query_param.select_fields) {
         select_fields = query_param.select_fields.replace(/\s/g, '').split(',');
@@ -124,7 +125,7 @@ async function all(
                 model: models.BranchStaffsModel,
                 as: 'staffs',
                 where: {
-                    branch_id: auth_user?.branch_id || 1,
+                    branch_id: params.id,
                 },
                 include: [
                     {
@@ -176,4 +177,4 @@ async function all(
     }
 }
 
-export default all;
+export default branch_staffs;

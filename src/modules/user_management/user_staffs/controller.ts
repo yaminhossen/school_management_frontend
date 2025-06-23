@@ -23,11 +23,16 @@ import filter_all from './services/filter_all';
 import staff_all_task_user from './services/staff_all_task_user';
 import admin_details from './services/admin_details';
 import staff_details from './services/staff_details';
+import branch_staffs from './services/branch_staffs';
 
 export default function (fastify: FastifyInstance) {
     return {
         all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all(fastify, req);
+            res.code(data.status).send(data);
+        },
+        branch_staffs: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await branch_staffs(fastify, req);
             res.code(data.status).send(data);
         },
         filter_all: async function (req: FastifyRequest, res: FastifyReply) {

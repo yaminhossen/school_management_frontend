@@ -16,6 +16,9 @@ export const store_reducers = {
         state.loading_text = action.payload;
     },
 
+    set_id: (state: typeof initialState, action: PayloadAction<number>) => {
+        state.id = action.payload;
+    },
     set_url: (state: typeof initialState, action: PayloadAction<string>) => {
         state.url = action.payload;
     },

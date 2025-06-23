@@ -252,3 +252,12 @@
 {"level":60,"time":1750669188932,"pid":2660,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved?page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+status%2C+attachments%2C+start_date%2C+end_date%2C+leave_status%2C+total_days"}
 {"level":60,"time":1750669190051,"pid":2660,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-types/all-type"}
 {"level":60,"time":1750669192642,"pid":2660,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved?page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+status%2C+attachments%2C+start_date%2C+end_date%2C+leave_status%2C+total_days"}
+{"level":60,"time":1750670692891,"pid":16596,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branches?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+logo%2C+address%2C+primary_contact%2C+status"}
+{"level":60,"time":1750677544802,"pid":21256,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/super_admin/super_admin.js"}
+{"level":60,"time":1750677546959,"pid":21256,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/super_admin/super_admin.js"}
+{"level":60,"time":1750677552355,"pid":21256,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/super_admin/super_admin.js"}
+{"level":60,"time":1750677759617,"pid":21256,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1750677769857,"pid":21256,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1750677788414,"pid":21256,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1750677791018,"pid":21256,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1750678321971,"pid":21256,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/branch/1?id=1&page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+image%2C+phone_number%2C+role%2C+role_2%2C+status"}

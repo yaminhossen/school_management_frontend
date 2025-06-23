@@ -17,13 +17,10 @@ import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
 import axios from 'axios';
-import { branch_staff } from './config/store/async_actions/branch_staff';
-import Paginate2 from '../../../components/Paginate2';
 
 export interface Props {}
 
 const All: React.FC<Props> = (props: Props) => {
-    const [branchId, setBranchId] = useState(2);
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -51,8 +48,7 @@ const All: React.FC<Props> = (props: Props) => {
 
             await new Promise((resolve) => setTimeout(resolve, 300));
 
-            // dispatch(all({}) as any);
-            dispatch(branch_staff({ id: branchId }) as any);
+            dispatch(all({}) as any);
         };
 
         fetchData();
@@ -75,9 +71,7 @@ const All: React.FC<Props> = (props: Props) => {
                     `/api/v1/admin-users/make-admin/${i.id}`,
                 );
                 dispatch(storeSlice.actions.set_only_latest_data(true));
-                // dispatch(all({}) as any);
-
-                dispatch(branch_staff({ id: 1 }) as any);
+                dispatch(all({}) as any);
                 dispatch(storeSlice.actions.set_only_latest_data(false));
                 (window as any).toaster('Admin make successfully');
             }
@@ -245,7 +239,7 @@ const All: React.FC<Props> = (props: Props) => {
                                 ) : (
                                     <tbody>
                                         <tr>
-                                            <td colSpan={11}>
+                                            <td colSpan={9}>
                                                 <div
                                                     style={{
                                                         fontSize: '24px',
@@ -261,24 +255,14 @@ const All: React.FC<Props> = (props: Props) => {
                             </table>
                         </div>
 
-                        {/* <Paginate
+                        <Paginate
                             set_url={storeSlice.actions.set_url}
                             set_paginate={storeSlice.actions.set_paginate}
                             set_page={storeSlice.actions.set_page}
                             all={all}
                             data={state.all as any}
                             selected_paginate={state.paginate}
-                        ></Paginate> */}
-                        <Paginate2
-                            set_url={storeSlice.actions.set_url}
-                            set_id={branchId}
-                            set_paginate={storeSlice.actions.set_paginate}
-                            set_page={storeSlice.actions.set_page}
-                            // class_details1={class_details1({})}
-                            all={branch_staff}
-                            data={state.all as any}
-                            selected_paginate={state.paginate}
-                        ></Paginate2>
+                        ></Paginate>
                     </div>
                 </div>
                 <TableFooter></TableFooter>

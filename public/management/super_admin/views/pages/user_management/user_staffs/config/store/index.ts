@@ -11,6 +11,7 @@ import { restore } from './async_actions/restore';
 import { destroy } from './async_actions/destroy';
 import { import_data } from './async_actions/import_data';
 import { store_reducers } from './reducers';
+import { branch_staff } from './async_actions/branch_staff';
 
 const storeSlice = createSlice({
     name: setup.store_prefix,
@@ -38,6 +39,12 @@ const storeSlice = createSlice({
             })
             .addCase(
                 soft_delete.fulfilled,
+                (state, { type, payload, meta }) => {
+                    // console.log(type, payload, meta);
+                },
+            )
+            .addCase(
+                branch_staff.fulfilled,
                 (state, { type, payload, meta }) => {
                     // console.log(type, payload, meta);
                 },

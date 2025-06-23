@@ -483,3 +483,72 @@
 {"level":60,"time":1750669142408,"pid":2660,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 2:59:02 PM","message":"target not found."}
 {"level":60,"time":1750669146480,"pid":2660,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 2:59:06 PM","message":"target not found."}
 {"level":60,"time":1750669183472,"pid":2660,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 2:59:43 PM","message":"target not found."}
+{"level":60,"time":1750669890984,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 3:11:30 PM","message":"target not found."}
+{"level":60,"time":1750669894384,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 3:11:34 PM","message":"target not found."}
+{"level":60,"time":1750669902569,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 3:11:42 PM","message":"target not found."}
+{"level":60,"time":1750669903652,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 3:11:43 PM","message":"target not found."}
+{"level":60,"time":1750669908637,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 3:11:48 PM","message":"target not found."}
+{"level":60,"time":1750669909517,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 3:11:49 PM","message":"target not found."}
+{"level":60,"time":1750670568511,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 3:22:48 PM","message":"target not found."}
+{"level":60,"time":1750670698142,"pid":16596,"hostname":"DESKTOP-9421701","file":"services\\all.ts:175:15)","time":"6/23/2025 3:24:58 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1750674555775,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:29:15 PM","message":"target not found."}
+{"level":60,"time":1750674559242,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:29:19 PM","message":"target not found."}
+{"level":60,"time":1750674559756,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:29:19 PM","message":"You have used the alias staff_infos in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1750674799104,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:33:19 PM","message":"target not found."}
+{"level":60,"time":1750674799339,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:33:19 PM","message":"You have used the alias staff_infos in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1750674800354,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:33:20 PM","message":"target not found."}
+{"level":60,"time":1750674800542,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:33:20 PM","message":"You have used the alias staff_infos in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1750674801214,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:33:21 PM","message":"target not found."}
+{"level":60,"time":1750674801391,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:33:21 PM","message":"You have used the alias staff_infos in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1750674849636,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:34:09 PM","message":"target not found."}
+{"level":60,"time":1750674850169,"pid":16596,"hostname":"DESKTOP-9421701","file":"services\\all.ts:175:15)","time":"6/23/2025 4:34:10 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1750674853918,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:34:13 PM","message":"target not found."}
+{"level":60,"time":1750674854421,"pid":16596,"hostname":"DESKTOP-9421701","file":"services\\all.ts:175:15)","time":"6/23/2025 4:34:14 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1750674855526,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:34:15 PM","message":"target not found."}
+{"level":60,"time":1750674856003,"pid":16596,"hostname":"DESKTOP-9421701","file":"services\\all.ts:175:15)","time":"6/23/2025 4:34:16 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1750674889796,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:34:49 PM","message":"target not found."}
+{"level":60,"time":1750674891017,"pid":16596,"hostname":"DESKTOP-9421701","file":"services\\all.ts:175:15)","time":"6/23/2025 4:34:51 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1750674950661,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:35:50 PM","message":"target not found."}
+{"level":60,"time":1750674950970,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:35:50 PM","message":"You have used the alias staff_infos in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1750674950978,"pid":16596,"hostname":"DESKTOP-9421701","file":"services\\all.ts:175:15)","time":"6/23/2025 4:35:50 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1750674952992,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:35:52 PM","message":"target not found."}
+{"level":60,"time":1750674953220,"pid":16596,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:35:53 PM","message":"You have used the alias staff_infos in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1750675083645,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:38:03 PM","message":"target not found."}
+{"level":60,"time":1750675120243,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:38:40 PM","message":"target not found."}
+{"level":60,"time":1750675121312,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:38:41 PM","message":"target not found."}
+{"level":60,"time":1750675122287,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:38:42 PM","message":"target not found."}
+{"level":60,"time":1750675123276,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:38:43 PM","message":"target not found."}
+{"level":60,"time":1750675261488,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:41:01 PM","message":"target not found."}
+{"level":60,"time":1750675392606,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:43:12 PM","message":"target not found."}
+{"level":60,"time":1750675394708,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:43:14 PM","message":"target not found."}
+{"level":60,"time":1750675406161,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:43:26 PM","message":"target not found."}
+{"level":60,"time":1750675551786,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:45:51 PM","message":"target not found."}
+{"level":60,"time":1750675564174,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:46:04 PM","message":"target not found."}
+{"level":60,"time":1750675589605,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:46:29 PM","message":"target not found."}
+{"level":60,"time":1750676089506,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:54:49 PM","message":"target not found."}
+{"level":60,"time":1750676107152,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 4:55:07 PM","message":"target not found."}
+{"level":60,"time":1750676647242,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:04:07 PM","message":"target not found."}
+{"level":60,"time":1750676650355,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:04:10 PM","message":"target not found."}
+{"level":60,"time":1750677529390,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:18:49 PM","message":"target not found."}
+{"level":60,"time":1750677530908,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:18:50 PM","message":"target not found."}
+{"level":60,"time":1750677531757,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:18:51 PM","message":"target not found."}
+{"level":60,"time":1750677532381,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:18:52 PM","message":"target not found."}
+{"level":60,"time":1750677532989,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:18:52 PM","message":"target not found."}
+{"level":60,"time":1750677533636,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:18:53 PM","message":"target not found."}
+{"level":60,"time":1750677533873,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:18:53 PM","message":"target not found."}
+{"level":60,"time":1750677534522,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:18:54 PM","message":"target not found."}
+{"level":60,"time":1750677541536,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:19:01 PM","message":"target not found."}
+{"level":60,"time":1750677544197,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:19:04 PM","message":"target not found."}
+{"level":60,"time":1750677546943,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:19:06 PM","message":"target not found."}
+{"level":60,"time":1750677548596,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:19:08 PM","message":"target not found."}
+{"level":60,"time":1750677548618,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:19:08 PM","message":"target not found."}
+{"level":60,"time":1750677549240,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:19:09 PM","message":"target not found."}
+{"level":60,"time":1750677552336,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:19:12 PM","message":"target not found."}
+{"level":60,"time":1750677679530,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:21:19 PM","message":"target not found."}
+{"level":60,"time":1750677682663,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:21:22 PM","message":"target not found."}
+{"level":60,"time":1750677709300,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:21:49 PM","message":"target not found."}
+{"level":60,"time":1750677791013,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:23:11 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1750678189582,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:29:49 PM","message":"target not found."}
+{"level":60,"time":1750678192035,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:29:52 PM","message":"target not found."}
+{"level":60,"time":1750678211637,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:30:11 PM","message":"target not found."}
+{"level":60,"time":1750678321501,"pid":21256,"hostname":"DESKTOP-9421701","file":"","time":"6/23/2025 5:32:01 PM","message":"target not found."}

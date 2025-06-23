@@ -7,6 +7,7 @@ import { initialState } from '../../config/store/inital_state';
 import { useSelector } from 'react-redux';
 import setup from '../../config/setup';
 import { all } from '../../config/store/async_actions/all';
+import { branch_staff } from '../../config/store/async_actions/branch_staff';
 export interface Props {}
 
 const modalRoot = document.getElementById('filter-root');
@@ -41,7 +42,8 @@ const Filter: React.FC<Props> = (props: Props) => {
 
     function submit() {
         dispatch(storeSlice.actions.set_only_latest_data(true));
-        dispatch(all({}) as any);
+        // dispatch(all({}) as any);
+        dispatch(branch_staff({ id: state.id }) as any);
     }
     function submit2() {
         const start = new Date(state.filter_criteria.start_date || '');
