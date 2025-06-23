@@ -17,6 +17,7 @@ import meeting_all from './services/meeting_all';
 import teacher_all from './services/teacher_all';
 import admission_officer_all from './services/admission_officer_all';
 import staff_all from '../../user_management/user_staffs/services/staff_all';
+import admission_officer_complete from './services/admission_officer_complete';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -33,6 +34,16 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data: responseObject = await admission_officer_all(
+                fastify,
+                req,
+            );
+            res.code(data.status).send(data);
+        },
+        admission_officer_complete: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await admission_officer_complete(
                 fastify,
                 req,
             );

@@ -5,6 +5,7 @@ import All from '../All.jsx';
 import Create from '../Create.jsx';
 import Details from '../Details.jsx';
 import Edit from '../Edit.jsx';
+import Complete from '../Complete.tsx';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -12,9 +13,17 @@ export default {
     path: setup.route_prefix,
     element: <Layout />,
     children: [
+        // {
+        //     path: '',
+        //     element: <All />,
+        // },
         {
-            path: '',
+            path: 'pending',
             element: <All />,
+        },
+        {
+            path: 'completed',
+            element: <Complete />,
         },
         {
             path: 'create',

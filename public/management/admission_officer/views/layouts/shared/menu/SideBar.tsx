@@ -53,7 +53,7 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="Tasks"
                 />
                 <MenuSingle
-                    to="/meeting-agendas"
+                    to="/meeting-agendas/pending"
                     icon="icon-notepad"
                     label="Meetings"
                 />

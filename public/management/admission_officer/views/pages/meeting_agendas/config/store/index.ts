@@ -12,6 +12,7 @@ import { destroy } from './async_actions/destroy';
 import { import_data } from './async_actions/import_data';
 import { store_reducers } from './reducers';
 import { meeting_all } from './async_actions/meeting_all';
+import { complete } from './async_actions/complete';
 
 const storeSlice = createSlice({
     name: setup.store_prefix,
@@ -20,6 +21,9 @@ const storeSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(all.fulfilled, (state, { type, payload, meta }) => {
+                // console.log(type, payload, meta);
+            })
+            .addCase(complete.fulfilled, (state, { type, payload, meta }) => {
                 // console.log(type, payload, meta);
             })
             .addCase(details.fulfilled, (state, { type, payload, meta }) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -14,20 +14,20 @@ const Index: React.FC<Props> = (props: Props) => {
                 >
                     Create
                 </Link> */}
-                <Link
+                <NavLink
                     to="/tasks/pending"
                     className="btn btn-sm btn-outline-info mb-2 mr-2"
                     type="submit"
                 >
                     Pending
-                </Link>
-                <Link
+                </NavLink>
+                <NavLink
                     to="/tasks/completed"
                     className="btn btn-sm btn-outline-info mb-2 mr-2"
                     type="submit"
                 >
                     Completed
-                </Link>
+                </NavLink>
                 {/* <Link
                     to="/tasks/pending"
                     className="btn btn-sm btn-outline-info mb-2 mr-2"
