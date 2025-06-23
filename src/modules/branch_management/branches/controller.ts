@@ -29,6 +29,7 @@ import parent_information from './services/parent_information';
 import drivers from './services/drivers';
 import driver from './services/driver';
 import branches from './services/branches';
+import all_branches from './services/all_branches';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -38,6 +39,10 @@ export default function (fastify: FastifyInstance) {
         },
         branches: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await branches(fastify, req);
+            res.code(data.status).send(data);
+        },
+        all_branches: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await all_branches(fastify, req);
             res.code(data.status).send(data);
         },
 

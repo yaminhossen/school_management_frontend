@@ -261,3 +261,6 @@
 {"level":60,"time":1750677788414,"pid":21256,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
 {"level":60,"time":1750677791018,"pid":21256,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
 {"level":60,"time":1750678321971,"pid":21256,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/branch/1?id=1&page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+image%2C+phone_number%2C+role%2C+role_2%2C+status"}
+{"level":60,"time":1750682443684,"pid":20144,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/debit"}
+{"level":60,"time":1750683381899,"pid":20144,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/super_admin/super_admin.js"}
+{"level":60,"time":1750683493413,"pid":20144,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branches?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+logo%2C+address%2C+primary_contact%2C+status"}

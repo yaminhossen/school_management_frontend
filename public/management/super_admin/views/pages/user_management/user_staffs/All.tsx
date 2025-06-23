@@ -19,6 +19,8 @@ import TableHeading from './components/all_data_page/TableHeading';
 import axios from 'axios';
 import { branch_staff } from './config/store/async_actions/branch_staff';
 import Paginate2 from '../../../components/Paginate2';
+import moment from 'moment/moment';
+import { branches } from './config/store/async_actions/branches';
 
 export interface Props {}
 
@@ -51,8 +53,8 @@ const All: React.FC<Props> = (props: Props) => {
 
             await new Promise((resolve) => setTimeout(resolve, 300));
 
-            // dispatch(all({}) as any);
             dispatch(branch_staff({ id: branchId }) as any);
+            dispatch(branches({}) as any);
         };
 
         fetchData();
@@ -98,7 +100,57 @@ const All: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="page_content">
-            <div>lsdfjdklsfjkl</div>
+            <form>
+                <div className="account_results">
+                    {/* <div> */}
+                    {/* <div className="mb-1">Branches</div> */}
+                    <div>
+                        <div className="form-group form-vertical">
+                            <label>Branches</label>
+                            <div className="form_elements">
+                                <select
+                                    name="branch_id"
+                                    id=""
+                                    onChange={(e) => {
+                                        setBranchId(Number(e.target.value));
+                                        dispatch(
+                                            storeSlice.actions.set_id(
+                                                Number(e.target.value),
+                                            ),
+                                        );
+                                        dispatch(
+                                            storeSlice.actions.set_page(1),
+                                        );
+                                        dispatch(
+                                            branch_staff({
+                                                id: e.target.value,
+                                            }) as any,
+                                        );
+                                    }}
+                                >
+                                    <option value="">Select Branch</option>
+                                    {state?.item?.length &&
+                                        state.item?.map(
+                                            (i: { [key: string]: any }) => {
+                                                return (
+                                                    <option value={i.id}>
+                                                        {i.name}
+                                                    </option>
+                                                );
+                                            },
+                                        )}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    {/* <button
+                        className="btn account_filter_btn btn-sm btn-outline-info"
+                        type="submit"
+                    >
+                        Submit
+                    </button> */}
+                </div>
+            </form>
             <div className="explore_window fixed_size">
                 <Header></Header>
 
@@ -213,30 +265,30 @@ const All: React.FC<Props> = (props: Props) => {
                                                     <td>
                                                         {i.role_2 ===
                                                         'admin' ? (
-                                                            <button
-                                                                className="btn btn_submit"
-                                                                onClick={(e) =>
-                                                                    handleSubmit2(
-                                                                        e,
-                                                                        i,
-                                                                    )
-                                                                }
-                                                            >
+                                                                <button
+                                                                    className="btn btn_submit"
+                                                                    onClick={(e) =>
+                                                                        handleSubmit2(
+                                                                            e,
+                                                                            i,
+                                                                        )
+                                                                    }
+                                                                >
                                                                 Make Admin
-                                                            </button>
-                                                        ) : (
-                                                            <button
-                                                                className="btn btn_submit"
-                                                                onClick={(e) =>
-                                                                    handleSubmit(
-                                                                        e,
-                                                                        i,
-                                                                    )
-                                                                }
-                                                            >
+                                                                </button>
+                                                            ) : (
+                                                                <button
+                                                                    className="btn btn_submit"
+                                                                    onClick={(e) =>
+                                                                        handleSubmit(
+                                                                            e,
+                                                                            i,
+                                                                        )
+                                                                    }
+                                                                >
                                                                 Make Admin
-                                                            </button>
-                                                        )}
+                                                                </button>
+                                                            )}
                                                     </td>
                                                 </tr>
                                             ),

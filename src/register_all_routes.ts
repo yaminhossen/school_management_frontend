@@ -41,7 +41,7 @@ export let active_routes: string[] = [
     // 'src/modules/attendance_management/teacher_attendances/routes.ts',
     // 'src/modules/auth_management/authetication/routes.ts',
     // 'src/modules/auth_management/user_management/routes.ts',
-    // 'src/modules/branch_management/branches/routes.ts',
+    'src/modules/branch_management/branches/routes.ts',
     // 'src/modules/branch_management/branch_admin/routes.ts',
     // 'src/modules/branch_management/branch_buildings/routes.ts',
     // 'src/modules/branch_management/branch_building_rooms/routes.ts',
