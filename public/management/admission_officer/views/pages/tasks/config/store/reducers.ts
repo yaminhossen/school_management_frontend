@@ -22,6 +22,12 @@ export const store_reducers = {
     set_all: (state: typeof initialState, action: PayloadAction<string>) => {
         state.all = action.payload;
     },
+    set_all_complete: (
+        state: typeof initialState,
+        action: PayloadAction<string>,
+    ) => {
+        state.allComplete = action.payload;
+    },
     set_page: (state: typeof initialState, action: PayloadAction<number>) => {
         state.page = action.payload;
     },

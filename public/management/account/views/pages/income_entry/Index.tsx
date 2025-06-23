@@ -125,10 +125,11 @@ const Index: React.FC<Props> = (props: Props) => {
                     </div>
                     <div className="form-group form-horizontal">
                         <label>
-                            Account <span className="valid_star">*</span>
+                            Amount <span className="valid_star">*</span>
                         </label>
                         <div className="form_elements">
                             <input
+                                type="number"
                                 name={'amount'}
                                 onChange={(e) => {
                                     let el = document.querySelector(
@@ -154,6 +155,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 //     (window as any).convertAmount(totalAmount)
                                 //         .bn
                                 // }
+                                readOnly
                             />
                             {/* {(window as any).convertAmount(totalAmount).bn}{' '}
                             মাত্র */}

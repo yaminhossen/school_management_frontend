@@ -72,7 +72,7 @@ const fetch_api = async (param, thunkAPI) => {
 
     dispatch(commonStore.actions.set_cached(response.totalStorage));
 
-    dispatch(storeSlice.actions.set_all(response.data));
+    dispatch(storeSlice.actions.set_all_complete(response.data));
 
     dispatch(storeSlice.actions.set_is_loading(false));
 

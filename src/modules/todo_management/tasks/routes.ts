@@ -39,10 +39,20 @@ module.exports = async function (fastify: FastifyInstance) {
             { preHandler: [auth_middleware] },
             controllerInstance.staff_complete,
         )
+        .get(
+            `${prefix}/unseen-tasks`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.unseen_tasks,
+        )
         .post(
             `${prefix}/teacher-update/:id`,
             { preHandler: [auth_middleware] },
             controllerInstance.teacher_update,
+        )
+        .get(
+            `${prefix}/seen-user/:id`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.seen_user,
         )
         .post(
             `${prefix}/staff-update/:id`,

@@ -7,23 +7,37 @@ import setup from '.././config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { details } from '.././config/store/async_actions/details';
 import { initialState } from '.././config/store/inital_state';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import storeSlice from '.././config/store';
 import moment from 'moment/moment';
+import { seen_user } from '../config/store/async_actions/seen_user';
+import { unseen_tasks } from '../config/store/async_actions/unseen_tasks';
 export interface Props {}
 
 const Details: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
+    const params = useParams();
+    const location = useLocation();
 
     const dispatch = useAppDispatch();
-    const params = useParams();
+    async function initdependancy() {
+        await dispatch(details({ id: params.id }) as any);
+        await dispatch(seen_user({ id: params.id }) as any);
+        // Wait for 0.5 second (500ms)
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        await dispatch(unseen_tasks({}) as any);
+    }
 
     useEffect(() => {
-        dispatch(storeSlice.actions.set_item({}));
-        dispatch(details({ id: params.id }) as any);
+        initdependancy();
     }, []);
+    // useEffect(() => {
+    //     dispatch(storeSlice.actions.set_item({}));
+    // dispatch(details({ id: params.id }) as any);
+    // dispatch(seen_user({ id: params.id }) as any);
+    // }, []);
 
     return (
         <>
@@ -52,7 +66,10 @@ const Details: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <td>Creator</td>
                                         <td>:</td>
-                                        <td>{state.item.admin?.name || "Not found"}</td>
+                                        <td>
+                                            {state.item.admin?.name ||
+                                                'Not found'}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Is completed</td>
@@ -62,7 +79,9 @@ const Details: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <td>Description</td>
                                         <td>:</td>
-                                        <td className="task_details details_descrtiption2">{state.item.description}</td>
+                                        <td className="task_details details_descrtiption2">
+                                            {state.item.description}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

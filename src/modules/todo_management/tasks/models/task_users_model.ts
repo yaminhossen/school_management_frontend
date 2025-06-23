@@ -34,6 +34,7 @@ const modelName = 'TaskUsersModel';
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
 type status = 'active' | 'deactive';
+type seen = 'yes' | 'no';
 
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
@@ -44,6 +45,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare teacher_id?: number;
     declare admin_id?: number;
     declare is_complete?: is_complete;
+    declare is_seen?: seen;
 
     declare creator?: number;
     declare status?: status;
@@ -83,6 +85,11 @@ function init(sequelize: Sequelize) {
                 type: new DataTypes.ENUM('pending', 'completed', 'block'),
                 allowNull: true,
                 defaultValue: 'completed',
+            },
+            is_seen: {
+                type: new DataTypes.ENUM('yes', 'no'),
+                // allowNull: true,
+                defaultValue: 'no',
             },
 
             creator: {

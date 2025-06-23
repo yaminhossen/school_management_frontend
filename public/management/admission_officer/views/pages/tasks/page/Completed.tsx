@@ -35,10 +35,15 @@ const Pending: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
 
     const dispatch = useAppDispatch();
+    async function initdependancy() {
+        // await dispatch(unseen_tasks({}) as any);
+        // Wait for 0.5 second (500ms)
+        await new Promise((resolve) => setTimeout(resolve, 300));
+        dispatch(teacher_complete({}) as any);
+    }
 
     useEffect(() => {
-        dispatch(storeSlice.actions.set_select_fields('id, status'));
-        dispatch(teacher_complete({}) as any);
+        initdependancy();
     }, []);
 
     function quick_view(data: anyObject = {}) {
@@ -130,33 +135,39 @@ const Pending: React.FC<Props> = (props: Props) => {
                                         />
                                     </tr>
                                 </thead>
-                                <tbody id="all_list">
-                                    {(state.all as any)?.data?.map(
-                                        (i: { [key: string]: any }, index) => {
-                                            return (
-                                                <tr
-                                                    key={i.id}
-                                                    className={`table_rows table_row_${i.id}`}
-                                                >
-                                                    {/* <td>
+                                {(state.allComplete as any)?.data?.length ? (
+                                    <tbody id="all_list">
+                                        {(state.allComplete as any)?.data?.map(
+                                            (
+                                                i: { [key: string]: any },
+                                                index,
+                                            ) => {
+                                                return (
+                                                    <tr
+                                                        key={i.id}
+                                                        className={`table_rows table_row_${i.id}`}
+                                                    >
+                                                        {/* <td>
                                                         <TableRowAction
                                                             item={i}
                                                         />
                                                     </td> */}
-                                                    {/* <td>
+                                                        {/* <td>
                                                         <SelectItem item={i} />
                                                     </td> */}
-                                                    <td>
-                                                        <span
-                                                            className="quick_view_trigger"
-                                                            onClick={() =>
-                                                                quick_view(i)
-                                                            }
-                                                        >
-                                                            {index + 1}
-                                                        </span>
-                                                    </td>
-                                                    {/* <td>
+                                                        <td>
+                                                            <span
+                                                                className="quick_view_trigger"
+                                                                onClick={() =>
+                                                                    quick_view(
+                                                                        i,
+                                                                    )
+                                                                }
+                                                            >
+                                                                {index + 1}
+                                                            </span>
+                                                        </td>
+                                                        {/* <td>
                                                         <Link
                                                             to={`/${setup.route_prefix}/assign/${i.id}`}
                                                         >
@@ -165,30 +176,53 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                             </span>
                                                         </Link>
                                                     </td> */}
-                                                    <td>{i.tasks?.title}</td>
-                                                    <td>
-                                                        {i.tasks?.description}
-                                                    </td>
-                                                    <td>
-                                                        {moment(
-                                                            i.tasks?.date,
-                                                        ).format('YYYY-MM-DD')}
-                                                    </td>
-                                                    <td>
-                                                        <Link
-                                                            // to="/students/single/student/"
-                                                            to={`/${setup.route_prefix}/details/complete/${i.tasks?.id}`}
-                                                            className="btn btn-sm  btn-outline-info ml-2"
-                                                            type="submit"
-                                                        >
-                                                            Show
-                                                        </Link>
-                                                    </td>
-                                                </tr>
-                                            );
-                                        },
-                                    )}
-                                </tbody>
+                                                        <td>
+                                                            {i.tasks?.title}
+                                                        </td>
+                                                        <td>
+                                                            {
+                                                                i.tasks
+                                                                    ?.description
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            {moment(
+                                                                i.tasks?.date,
+                                                            ).format(
+                                                                'YYYY-MM-DD',
+                                                            )}
+                                                        </td>
+                                                        <td>
+                                                            <Link
+                                                                // to="/students/single/student/"
+                                                                to={`/${setup.route_prefix}/details/complete/${i.tasks?.id}`}
+                                                                className="btn btn-sm  btn-outline-info ml-2"
+                                                                type="submit"
+                                                            >
+                                                                Show
+                                                            </Link>
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            },
+                                        )}
+                                    </tbody>
+                                ) : (
+                                    <tbody>
+                                        <tr>
+                                            <td colSpan={10}>
+                                                <div
+                                                    style={{
+                                                        fontSize: '24px',
+                                                    }}
+                                                    className="not_found f-size-4 m-4"
+                                                >
+                                                    No data found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
 
@@ -197,7 +231,7 @@ const Pending: React.FC<Props> = (props: Props) => {
                             set_paginate={storeSlice.actions.set_paginate}
                             set_page={storeSlice.actions.set_page}
                             all={teacher_complete}
-                            data={state.all as any}
+                            data={state.allComplete as any}
                             selected_paginate={state.paginate}
                         ></Paginate>
                     </div>

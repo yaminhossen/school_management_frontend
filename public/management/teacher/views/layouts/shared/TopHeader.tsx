@@ -57,14 +57,14 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                           </div>
                       </form>
                   </li> */}
-                            {/* <li className="notification-bell">
+                            <li className="notification-bell">
                                 <a href="#!" className="text-dark">
                                     <i className="icon-bell" />
                                     <span className="notification-badge">
                                         3
                                     </span>
                                 </a>
-                            </li> */}
+                            </li>
                             {/* <li>
                                 <a href="#!" className="text-dark">
                                     <img

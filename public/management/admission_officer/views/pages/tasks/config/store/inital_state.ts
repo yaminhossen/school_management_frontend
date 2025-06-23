@@ -11,6 +11,7 @@ export const initialState = {
 
     /* data store */
     all: {},
+    allComplete: {},
     item: {} as anyObject,
     staffs: {} as anyObject,
     teachers: {} as anyObject,
