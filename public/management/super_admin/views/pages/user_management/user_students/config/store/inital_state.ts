@@ -11,8 +11,10 @@ export const initialState = {
 
     /* data store */
     id: 1,
+    brid: 1,
     all: {},
     item: {} as anyObject,
+    bitem: {} as anyObject,
     document: {} as anyObject,
     payments: {} as anyObject,
     url: '',

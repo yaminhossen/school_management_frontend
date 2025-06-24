@@ -120,14 +120,14 @@ const All: React.FC<Props> = (props: Props) => {
                             </table>
                         </div>
 
-                        <Paginate
+                        {/* <Paginate
                             set_url={storeSlice.actions.set_url}
                             set_paginate={storeSlice.actions.set_paginate}
                             set_page={storeSlice.actions.set_page}
                             all={all}
                             data={state.all as any}
                             selected_paginate={state.paginate}
-                        ></Paginate>
+                        ></Paginate> */}
                     </div>
                 </div>
                 {/* <TableFooter></TableFooter> */}

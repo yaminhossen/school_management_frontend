@@ -14,6 +14,7 @@ import { import_data } from './async_actions/import_data';
 import { store_reducers } from './reducers';
 import { document } from './async_actions/document';
 import { payment_history } from './async_actions/payments_history';
+import { branches } from './async_actions/branches';
 
 const storeSlice = createSlice({
     name: setup.store_prefix,
@@ -25,6 +26,9 @@ const storeSlice = createSlice({
                 // console.log(type, payload, meta);
             })
             .addCase(details.fulfilled, (state, { type, payload, meta }) => {
+                // console.log(type, payload, meta);
+            })
+            .addCase(branches.fulfilled, (state, { type, payload, meta }) => {
                 // console.log(type, payload, meta);
             })
             .addCase(

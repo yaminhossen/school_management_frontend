@@ -24,23 +24,17 @@ const fetch_api = async (param: anyObject, thunkAPI) => {
     dispatch(storeSlice.actions.set_is_loading(true));
     dispatch(storeSlice.actions.set_loading_text('fething data..'));
 
-    dispatch(storeSlice.actions.set_brid(param.id));
-    // const response = await axios.get(
-    //     `${end_point}/${api_prefix}/students/${param.id}`,
-    // );
-    const response = await axios.get(
-        `${end_point}/${api_prefix}/all-class-admin/${param.id}`,
-    );
+    const response = await axios.get(`${end_point}/branches/branch-all`);
 
     dispatch(storeSlice.actions.set_is_loading(false));
-    dispatch(storeSlice.actions.set_item(response.data));
+    dispatch(storeSlice.actions.set_bitem(response.data.data));
 
     return response.data;
     // thunkAPI.dispatch(storeSlice.actions.my_action())
 };
 
-export const all_class = createAsyncThunk<
+export const branches = createAsyncThunk<
     ReturnType,
     PayloadType,
     ThunkArgument
->(`${store_prefix}/all-class`, fetch_api);
+>(`${store_prefix}/branches`, fetch_api);

@@ -285,3 +285,13 @@
 {"level":60,"time":1750745303508,"pid":21060,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/branch/5?id=5&page=1&paginate=50&search_key=gfdhdh&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+role_2%2C+status&start_date=2025-06-02&end_date=2025-07-10"}
 {"level":60,"time":1750745307566,"pid":21060,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/branch/5?id=5&page=1&paginate=50&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+role_2%2C+status&start_date=2025-06-02&end_date=2025-07-10"}
 {"level":60,"time":1750745314572,"pid":21060,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/branch/5?id=5&page=1&paginate=25&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+role_2%2C+status&start_date=2025-06-02&end_date=2025-07-10"}
+{"level":60,"time":1750748144320,"pid":21340,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/super_admin/super_admin.js"}
+{"level":60,"time":1750748611421,"pid":13400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
+{"level":60,"time":1750749187837,"pid":13400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class-admin/1"}
+{"level":60,"time":1750749198799,"pid":13400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class-admin/2"}
+{"level":60,"time":1750749207010,"pid":13400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class-admin/1"}
+{"level":60,"time":1750749210530,"pid":13400,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/all-class-admin/5"}
+{"level":60,"time":1750756200719,"pid":19592,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1750756203327,"pid":19592,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1750756207073,"pid":19592,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1750756220297,"pid":19592,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}

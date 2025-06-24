@@ -30,7 +30,7 @@ async function all_class_admin(
         console.log('admin id', admin?.branch_id);
         let Dbresponse = await classesModel.findAndCountAll({
             where: {
-                branch_id: admin?.branch_id,
+                branch_id: params?.id || admin?.branch_id,
                 // branch_id: 1,
             },
         });

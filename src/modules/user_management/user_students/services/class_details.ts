@@ -32,6 +32,13 @@ async function all(
     let classesModel = models.BranchClassesModel;
     let query_param = req.query as any;
     let params = req.params as any;
+    let user = (req as any).user;
+    let auth_user = await models.UserAdminsModel.findOne({
+        where: {
+            id: (req as any).user?.id || null,
+        },
+    });
+    console.log('params', query_param);
 
     const { Op } = require('sequelize');
     let search_key = query_param.search_key;
@@ -52,9 +59,10 @@ async function all(
     const whereClause: any = {
         status: show_active_data === 'true' ? 'active' : 'deactive',
         branch_class_id: params.id,
+        branch_id: query_param?.brid || auth_user?.branch_id,
     };
     const today = moment().format('YYYY-MM-DD');
-    console.log('todya', today);
+    console.log('todya', auth_user);
 
     let month1 = query_param?.start_date || today; // Start date
     let month2 = query_param?.end_date || today;

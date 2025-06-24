@@ -5,6 +5,7 @@ import commonStore from './slices/common_slice';
 import user_admins_slice from '../views/pages/user_management/user_admins/config/store';
 import user_staffs_slice from '../views/pages/user_management/user_staffs/config/store';
 import user_teachers_slice from '../views/pages/user_management/user_teachers/config/store';
+import user_students_slice from '../views/pages/user_management/user_students/config/store';
 import branches_slice from '../views/pages/branch_management/branches/config/store';
 
 const store = configureStore({
@@ -13,6 +14,7 @@ const store = configureStore({
         user_admins: user_admins_slice.reducer,
         user_staffs: user_staffs_slice.reducer,
         user_teachers: user_teachers_slice.reducer,
+        user_students: user_students_slice.reducer,
         branches: branches_slice.reducer,
     },
     devTools: true,

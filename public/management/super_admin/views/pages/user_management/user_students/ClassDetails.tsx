@@ -35,14 +35,14 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_select_fields('id'));
-        dispatch(class_details1({ id: params.id }) as any);
+        dispatch(class_details1({ id: params.id, brid: state.brid }) as any);
     }, []);
 
     function quick_view(data: anyObject = {}) {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
-    // console.log('state date', (state.class_details1 as any)?.data?.length);
+    console.log('state branch id', state.brid);
 
     return (
         <div className="page_content">
@@ -55,7 +55,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                             <table>
                                 <thead>
                                     <tr>
-                                        <th />
+                                        {/* <th /> */}
                                         <th>
                                             <SelectAll />
                                         </th>
@@ -101,11 +101,11 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                     key={i.id}
                                                     className={`table_rows table_row_${i.id}`}
                                                 >
-                                                    <td>
+                                                    {/* <td>
                                                         <TableRowAction
                                                             item={i}
                                                         />
-                                                    </td>
+                                                    </td> */}
                                                     <td>
                                                         <SelectItem item={i} />
                                                     </td>

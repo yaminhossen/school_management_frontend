@@ -84,6 +84,8 @@ const All: React.FC<Props> = (props: Props) => {
         (window as any).toaster('This user allready admin');
     };
 
+    console.log('state branch item', state.item);
+
     return (
         <div className="page_content">
             <form>

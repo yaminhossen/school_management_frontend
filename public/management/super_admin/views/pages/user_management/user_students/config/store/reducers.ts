@@ -23,6 +23,9 @@ export const store_reducers = {
     set_id: (state: typeof initialState, action: PayloadAction<number>) => {
         state.id = action.payload;
     },
+    set_brid: (state: typeof initialState, action: PayloadAction<number>) => {
+        state.brid = action.payload;
+    },
     set_all: (state: typeof initialState, action: PayloadAction<string>) => {
         state.all = action.payload;
     },
@@ -81,6 +84,10 @@ export const store_reducers = {
 
     set_item: (state: typeof initialState, action: PayloadAction<object>) => {
         state.item = action.payload;
+    },
+
+    set_bitem: (state: typeof initialState, action: PayloadAction<object>) => {
+        state.bitem = action.payload;
     },
 
     set_payment: (

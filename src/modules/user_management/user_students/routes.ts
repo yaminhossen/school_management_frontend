@@ -77,6 +77,11 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.all_class_admin,
         )
         .get(
+            `${prefix}/all-class-admin/:id`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all_class_admin,
+        )
+        .get(
             `${prefix}/class-routine/:id`,
             controllerInstance.class_routine_details,
         )
@@ -90,7 +95,11 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.childrens,
         )
         .get(`${prefix}/:id`, controllerInstance.find)
-        .get(`${prefix}/class-details/:id`, controllerInstance.class_details)
+        .get(
+            `${prefix}/class-details/:id`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.class_details,
+        )
         .get(`${prefix}/students/:id`, controllerInstance.find_student)
         .get(
             `${prefix}/academic-information/:id`,
