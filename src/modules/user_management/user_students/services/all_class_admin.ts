@@ -11,10 +11,6 @@ async function all_class_admin(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
-    let educationalBackgroundsModel =
-        models.UserStudentEducationalBackgroundsModel;
-    let informationsModel = models.UserStudentInformationsModel;
-    let studentsModel = models.UserStudentsModel;
     let adminsModel = models.UserAdminsModel;
     let classesModel = models.BranchClassesModel;
     let classStudentsModel = models.BranchClassStudentsModel;

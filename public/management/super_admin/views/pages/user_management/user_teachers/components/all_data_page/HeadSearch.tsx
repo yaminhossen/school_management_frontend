@@ -6,6 +6,7 @@ import setup from '../../config/setup';
 import storeSlice from '../../config/store';
 import { all } from '../../config/store/async_actions/all';
 import { useDebouncedCallback } from 'use-debounce';
+import { branch_teacher } from '../../config/store/async_actions/branch_teacher';
 
 export interface Props {}
 
@@ -23,7 +24,8 @@ const HeadSearch: React.FC<Props> = (props: Props) => {
             search_key = search_input.current.value;
             dispatch(storeSlice.actions.set_search_key(search_key) as any);
             dispatch(storeSlice.actions.set_page(1) as any);
-            dispatch(all({}) as any);
+            // dispatch(all({}) as any);
+            dispatch(branch_teacher({ id: state.id }) as any);
         }
     }, 1000);
 

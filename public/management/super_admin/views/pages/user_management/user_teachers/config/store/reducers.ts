@@ -82,6 +82,10 @@ export const store_reducers = {
         state.show_filter_canvas = action.payload;
     },
 
+    set_id: (state: typeof initialState, action: PayloadAction<number>) => {
+        state.id = action.payload;
+    },
+
     set_item: (state: typeof initialState, action: PayloadAction<object>) => {
         state.item = action.payload;
     },

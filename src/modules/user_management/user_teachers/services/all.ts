@@ -65,6 +65,13 @@ async function all(
     let paginate = parseInt((req.query as any).paginate) || 10;
     let select_fields: string[] = [];
     let exclude_fields: string[] = ['password'];
+    let user = (req as any).user;
+    let auth_user = await models.BranchTeachersModel.findOne({
+        where: {
+            user_teacher_id: (req as any).user?.id || null,
+        },
+    });
+    let params = req.params as any;
 
     if (query_param.select_fields) {
         select_fields = query_param.select_fields.replace(/\s/g, '').split(',');
@@ -108,6 +115,9 @@ async function all(
             {
                 model: models.BranchTeachersModel,
                 as: 'teachers',
+                where: {
+                    branch_id: params.id || auth_user?.branch_id || 1,
+                },
                 include: [
                     {
                         model: models.BranchesModel,

@@ -25,7 +25,7 @@ import { branches } from './config/store/async_actions/branches';
 export interface Props {}
 
 const All: React.FC<Props> = (props: Props) => {
-    const [branchId, setBranchId] = useState(2);
+    const [branchId, setBranchId] = useState(1);
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -79,7 +79,7 @@ const All: React.FC<Props> = (props: Props) => {
                 dispatch(storeSlice.actions.set_only_latest_data(true));
                 // dispatch(all({}) as any);
 
-                dispatch(branch_staff({ id: 1 }) as any);
+                dispatch(branch_staff({ id: branchId }) as any);
                 dispatch(storeSlice.actions.set_only_latest_data(false));
                 (window as any).toaster('Admin make successfully');
             }
@@ -102,8 +102,6 @@ const All: React.FC<Props> = (props: Props) => {
         <div className="page_content">
             <form>
                 <div className="account_results">
-                    {/* <div> */}
-                    {/* <div className="mb-1">Branches</div> */}
                     <div>
                         <div className="form-group form-vertical">
                             <label>Branches</label>

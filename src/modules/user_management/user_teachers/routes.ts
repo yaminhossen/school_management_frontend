@@ -8,7 +8,16 @@ module.exports = async function (fastify: FastifyInstance) {
     const controllerInstance = controller(fastify);
 
     fastify
-        .get(`${prefix}`, controllerInstance.all)
+        .get(
+            `${prefix}`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all,
+        )
+        .get(
+            `${prefix}/branch/:id`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all,
+        )
         .get(`${prefix}/teacher-all`, controllerInstance.teacher_all)
         .get(
             `${prefix}/teacher-all-task/:id`,
