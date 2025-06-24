@@ -27,6 +27,7 @@ const fetch_api = async (param, thunkAPI) => {
 
     const response = await axios.post(`${end_point}/${api_prefix}/restore`, {
         id: param.id,
+        password: param.password,
     });
 
     let row = document.querySelector(`.table_row_${param.id}`);

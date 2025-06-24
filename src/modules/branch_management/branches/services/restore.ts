@@ -18,7 +18,7 @@ async function validate(req: Request) {
 
     return result;
 }
-async function restore(
+async function soft_delete(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -31,24 +31,52 @@ async function restore(
     /** initializations */
     let models = await db();
     let body = req.body as { [key: string]: any };
+    let user = (req as any).user;
+    const bcrypt = require('bcrypt');
+    const saltRounds = 10;
+    let password = await bcrypt.hash(body.password, saltRounds);
+    // let auth_user = await models.BranchTeachersModel.findOne({
+    //     where: {
+    //         user_teacher_id: (req as any).user?.id || null,
+    //     },
+    // });
+    console.log('user', user);
 
     try {
-        let data = await models.BranchesModel.findOne({
-            where: {
-                id: body.id,
-            },
+        const super_user = await models.UserStaffsModel.findOne({
+            where: { id: user?.id },
         });
 
-        if (data) {
-            // await data.update({
-            //     status: 1,
-            // });
-            data.status = 'active';
-            await data.save();
-            return response(205, 'data restored', data);
-        } else {
+        if (!super_user) {
             throw new custom_error('Forbidden', 403, 'operation not possible');
         }
+        console.log(
+            'super user password',
+            super_user.password,
+            'password',
+            body.password,
+        );
+        let check_pass = await bcrypt.compare(
+            body.password,
+            super_user.password,
+        );
+
+        if (!check_pass) {
+            throw new custom_error('Forbidden', 403, 'password not matched');
+        }
+
+        const branch = await models.BranchesModel.findOne({
+            where: { id: body.id },
+        });
+
+        if (!branch) {
+            throw new custom_error('Forbidden', 403, 'operation not possible');
+        }
+
+        branch.status = 'active';
+        await branch.save();
+
+        return response(200, 'data deactivated', branch);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
         if (error instanceof custom_error) {
@@ -60,4 +88,4 @@ async function restore(
     }
 }
 
-export default restore;
+export default soft_delete;

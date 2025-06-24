@@ -39,8 +39,16 @@ async function validate(req: Request) {
     await body('password')
         .not()
         .isEmpty()
-        .withMessage('the password field is required')
+        .withMessage('Password field is required')
+        // .withMessage('the password field is required')
         .run(req);
+
+    if (req?.body?.password) {
+        await body('password')
+            .isLength({ min: 6 })
+            .withMessage('Password must be at least 6 characters')
+            .run(req);
+    }
 
     let result = await validationResult(req);
 

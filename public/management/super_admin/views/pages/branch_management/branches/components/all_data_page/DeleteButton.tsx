@@ -18,9 +18,25 @@ const DeleteButton: React.FC<Props> = (props: Props) => {
     async function handle_delete(e: React.MouseEvent<HTMLElement, MouseEvent>) {
         e.preventDefault();
 
-        let confirm = await (window as anyObject).s_confirm('delete data');
+        let confirm = await (window as anyObject).s_confirm(
+            'The BRANCH will be deleted along with all its associated data, including students, parents, class,  fee records, routines, and other related information. Please proceed with caution.',
+        );
         if (confirm) {
-            dispatch(soft_delete({ id: props.item.id }) as any);
+            const password = await (window as anyObject).s_confirm2(
+                `To delete this branch, type your password below.`,
+                'Delete Branch',
+                true, // Enable input
+            );
+
+            if (password) {
+                console.log('Password entered:', password);
+                dispatch(
+                    soft_delete({
+                        id: props.item.id,
+                        password: password,
+                    }) as any,
+                );
+            }
         }
     }
     if (!state.show_active_data) {

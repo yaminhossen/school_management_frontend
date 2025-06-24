@@ -140,10 +140,16 @@ async function validate(req: Request, models: any) {
     await body('password')
         .not()
         .isEmpty()
-        .isLength({ min: 6 })
-        .withMessage('Password must be at least 6 characters')
+        .withMessage('Password field is required')
         // .withMessage('the password field is required')
         .run(req);
+
+    if (req?.body?.password) {
+        await body('password')
+            .isLength({ min: 6 })
+            .withMessage('Password must be at least 6 characters')
+            .run(req);
+    }
 
     await body('permanent_address')
         .not()

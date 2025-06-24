@@ -18,25 +18,9 @@ const RestoreButton: React.FC<Props> = (props: Props) => {
     async function handle_delete(e: React.MouseEvent<HTMLElement, MouseEvent>) {
         e.preventDefault();
 
-        let confirm = await (window as anyObject).s_confirm(
-            'Are you sure you want to restore this BRANCH?',
-        );
+        let confirm = await (window as anyObject).s_confirm('restore data');
         if (confirm) {
-            const password = await (window as anyObject).s_confirm2(
-                `To restore this branch, type your password below.`,
-                'Restore Branch',
-                true, // Enable input
-            );
-
-            if (password) {
-                console.log('Password entered:', password);
-                dispatch(
-                    restore({
-                        id: props.item.id,
-                        password: password,
-                    }) as any,
-                );
-            }
+            dispatch(restore({ id: props.item.id }) as any);
         }
     }
     if (state.show_active_data) {

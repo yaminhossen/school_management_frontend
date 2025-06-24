@@ -1,6 +1,7 @@
 'use strict';
 import { FastifyInstance } from 'fastify';
 import controller from './controller';
+import auth_middleware from '../../auth_management/authetication/services/auth_middleware';
 
 module.exports = async function (fastify: FastifyInstance) {
     let prefix: string = '/branches';
@@ -13,8 +14,16 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(`${prefix}/:id`, controllerInstance.find)
         .post(`${prefix}/store`, controllerInstance.store)
         .post(`${prefix}/update`, controllerInstance.update)
-        .post(`${prefix}/soft-delete`, controllerInstance.soft_delete)
-        .post(`${prefix}/restore`, controllerInstance.restore)
+        .post(
+            `${prefix}/soft-delete`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.soft_delete,
+        )
+        .post(
+            `${prefix}/restore`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.restore,
+        )
         .post(`${prefix}/destroy`, controllerInstance.destroy)
         .post(`${prefix}/import`, controllerInstance.import)
 

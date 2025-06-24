@@ -27,8 +27,9 @@ const fetch_api = async (param, thunkAPI) => {
 
     const response = await axios.post(
         `${end_point}/${api_prefix}/soft-delete`,
-        { id: param.id },
+        { id: param.id, password: param.password },
     );
+    console.log('param response', response);
 
     dispatch(storeSlice.actions.set_is_loading(false));
     let row = document.querySelector(`.table_row_${param.id}`);
