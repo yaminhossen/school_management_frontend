@@ -371,3 +371,10 @@
 {"level":60,"time":1750836694923,"pid":9556,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.06412479257290404"}
 {"level":60,"time":1750836696064,"pid":9556,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.5275689644452903"}
 {"level":60,"time":1750836698491,"pid":9556,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.9528153410924911"}
+{"level":60,"time":1750840285743,"pid":11300,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.280644044224984"}
+{"level":60,"time":1750840287905,"pid":11300,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.8151143531356595"}
+{"level":60,"time":1750840288717,"pid":11300,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.8190239997799804"}
+{"level":60,"time":1750841492831,"pid":11300,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.6898432510127266"}
+{"level":60,"time":1750841494481,"pid":11300,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.6958547144609311"}
+{"level":60,"time":1750841495357,"pid":11300,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.7335918813309226"}
+{"level":60,"time":1750841771550,"pid":11300,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import { useSelector } from 'react-redux';
@@ -11,6 +11,7 @@ import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
 import moment from 'moment/moment';
 import { task_user_details } from './config/store/async_actions/task_user_details';
+import { task_user_update } from './config/store/async_actions/task_user_update';
 export interface Props {}
 
 const TaskUserEdit: React.FC<Props> = (props: Props) => {
@@ -20,6 +21,8 @@ const TaskUserEdit: React.FC<Props> = (props: Props) => {
 
     const dispatch = useAppDispatch();
     const params = useParams();
+    const [startDate, setStartDate] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
@@ -28,8 +31,30 @@ const TaskUserEdit: React.FC<Props> = (props: Props) => {
 
     async function handle_submit(e) {
         e.preventDefault();
-        let response = await dispatch(update(new FormData(e.target)) as any);
+        let response = await dispatch(
+            task_user_update(new FormData(e.target)) as any,
+        );
     }
+
+    useEffect(() => {
+        if (state.item) {
+            setStartDate(moment(state.item.date).format('YYYY-MM-DD'));
+        }
+    }, [state.item]);
+    useEffect(() => {
+        const start = moment(startDate);
+        const today = moment().startOf('day');
+
+        if (start.isBefore(today)) {
+            setErrorMessage('Date cannot be before today.');
+            return;
+        }
+
+        setErrorMessage('');
+    }, [startDate]);
+    const handleStartDateChange = (e) => {
+        setStartDate(e.target.value);
+    };
 
     return (
         <>
@@ -48,7 +73,7 @@ const TaskUserEdit: React.FC<Props> = (props: Props) => {
                                     name="id"
                                     defaultValue={state.item.id}
                                 />
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>
                                         Title{' '}
                                         <span className="valid_star">*</span>
@@ -73,8 +98,8 @@ const TaskUserEdit: React.FC<Props> = (props: Props) => {
                                             placeholder="description"
                                         ></textarea>
                                     </div>
-                                </div>
-                                <div className="form-group form-horizontal">
+                                </div> */}
+                                {/* <div className="form-group form-horizontal">
                                     <label>Date</label>
                                     <div className="form_elements">
                                         <input
@@ -86,12 +111,38 @@ const TaskUserEdit: React.FC<Props> = (props: Props) => {
                                             ).format('YYYY-MM-DD')}
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-horizontal">
-                                    <label></label>
+                                    <label>
+                                        Date{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
-                                        <button className="btn btn_1">
-                                            submit
+                                        <input
+                                            type="date"
+                                            value={startDate}
+                                            onChange={handleStartDateChange}
+                                            name="date"
+                                        />
+                                        {errorMessage && (
+                                            <div
+                                                style={{
+                                                    color: 'red',
+                                                    marginTop: '5px',
+                                                }}
+                                            >
+                                                {errorMessage}
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="form-group student_submit form-horizonta">
+                                    <div className="task_assign_submit_btn">
+                                        <button
+                                            className={`btn btn_1 ${errorMessage ? 'btn_error' : ''}`}
+                                            disabled={!!errorMessage}
+                                        >
+                                            update
                                         </button>
                                     </div>
                                 </div>

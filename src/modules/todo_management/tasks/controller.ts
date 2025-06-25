@@ -28,6 +28,7 @@ import seen_user from './services/seen_user';
 import unseen_tasks from './services/unseen_tasks';
 import staff_expired from './services/staff_expired';
 import task_user_details from './services/task_user_details';
+import task_user_update from './services/task_user_updated';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -120,6 +121,14 @@ export default function (fastify: FastifyInstance) {
 
         update: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await update(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        task_user_update: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await task_user_update(fastify, req);
             res.code(data.status).send(data);
         },
 

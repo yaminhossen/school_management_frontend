@@ -13,6 +13,8 @@ import { import_data } from './async_actions/import_data';
 import { store_reducers } from './reducers';
 import { all_staff } from './async_actions/all_staff';
 import { assign_task } from './async_actions/assign_task';
+import { task_user_update } from './async_actions/task_user_update';
+import { task_user_details } from './async_actions/task_user_details';
 
 const storeSlice = createSlice({
     name: setup.store_prefix,
@@ -32,6 +34,18 @@ const storeSlice = createSlice({
             .addCase(details.fulfilled, (state, { type, payload, meta }) => {
                 // console.log(type, payload, meta);
             })
+            .addCase(
+                task_user_details.fulfilled,
+                (state, { type, payload, meta }) => {
+                    // console.log(type, payload, meta);
+                },
+            )
+            .addCase(
+                task_user_update.fulfilled,
+                (state, { type, payload, meta }) => {
+                    // console.log(type, payload, meta);
+                },
+            )
             .addCase(all_staff.fulfilled, (state, { type, payload, meta }) => {
                 // console.log(type, payload, meta);
             })

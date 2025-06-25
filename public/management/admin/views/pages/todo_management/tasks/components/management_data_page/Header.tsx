@@ -1,6 +1,7 @@
 import React from 'react';
 import setup from '../../config/setup';
 import { Link } from 'react-router-dom';
+import BackButton from '../../../../../components/BackButton';
 export interface Props {
     page_title: string;
 }
@@ -19,13 +20,14 @@ const Header: React.FC<Props> = (props: Props) => {
                 </div>
                 <div className="control">
                     <ul>
-                        <li>
+                        {/* <li>
                             <Link to={`/${setup.route_prefix}`}>
                                 <span className="material-symbols-outlined fill">
                                     arrow_back
                                 </span>
                             </Link>
-                        </li>
+                        </li> */}
+                        <BackButton></BackButton>
                     </ul>
                 </div>
             </div>
