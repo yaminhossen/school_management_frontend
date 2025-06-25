@@ -17,18 +17,18 @@ async function class_wise_info(
     let params = req.params as any;
 
     try {
-        // let bclass = await models.BranchClassesModel.findOne({
-        //     where: {
-        //         id: params.sec_id,
-        //     },
-        // });
+        let bclass = await models.BranchClassesModel.findOne({
+            where: {
+                id: params.class_id,
+            },
+        });
 
         let data = await informationsModel.findOne({
             where: {
-                section: params.sec_id,
+                s_class: params.class_id,
             },
             order: [['id', 'DESC']],
-            attributes: ['student_id', 'role_no'], // spelling retained if DB uses it
+            attributes: ['student_id', 'role_no', 'addmission_no'], // spelling retained if DB uses it
         });
 
         // Function to extract numeric part and increment
@@ -43,14 +43,20 @@ async function class_wise_info(
         let transformedData;
 
         if (!data) {
+            const base1 = `${bclass?.name?.toLowerCase() || 'class'}01`;
+            const base2 = '01';
+            const base3 = `A${bclass?.name?.toLowerCase() || 'class'}01`;
+
             transformedData = {
-                student_id: 101,
-                role_no: 1,
+                student_id: base1,
+                role_no: base2,
+                admission_no: base3,
             };
         } else {
             transformedData = {
-                student_id: Number(data?.student_id || 0) + 1,
-                role_no: Number(data?.role_no || 0) + 1,
+                student_id: increment(data.student_id || ''),
+                role_no: increment(data.role_no || ''),
+                admission_no: increment(data.addmission_no || ''),
             };
         }
 

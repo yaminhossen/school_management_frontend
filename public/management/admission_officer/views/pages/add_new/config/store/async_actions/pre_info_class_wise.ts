@@ -25,7 +25,7 @@ const fetch_api = async (param: anyObject, thunkAPI) => {
     dispatch(storeSlice.actions.set_loading_text('fething data..'));
 
     const response = await axios.get(
-        `${end_point}/${api_prefix}/class-wise-info/${param.class_id}`,
+        `${end_point}/${api_prefix}/class-wise-info/${param.sec_id}`,
     );
 
     dispatch(storeSlice.actions.set_is_loading(false));

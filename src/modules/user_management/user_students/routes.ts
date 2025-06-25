@@ -27,7 +27,7 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.pre_info,
         )
         .get(
-            `${prefix}/class-wise-info/:class_id`,
+            `${prefix}/class-wise-info/:sec_id`,
             { preHandler: [auth_middleware] },
             controllerInstance.class_wise_info,
         )

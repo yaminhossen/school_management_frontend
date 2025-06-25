@@ -60,7 +60,13 @@ const Index: React.FC<Props> = (props: Props) => {
         e: React.ChangeEvent<HTMLSelectElement>,
     ) => {
         setSelectedClass(e.target.value);
-        await dispatch(preInfoClassWise({ class_id: e.target.value }) as any);
+        // await dispatch(preInfoClassWise({ class_id: e.target.value }) as any);
+    };
+    // Handle section selection
+    const handleSectionChange = async (
+        e: React.ChangeEvent<HTMLSelectElement>,
+    ) => {
+        await dispatch(preInfoClassWise({ sec_id: e.target.value }) as any);
     };
 
     // Filter sections based on selected class
@@ -363,7 +369,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <h2 className="">Admission Information</h2>
                             </div>
                             <div className="d-flex">
-                                <div className="form-group form-vertical">
+                                {/* <div className="form-group form-vertical">
                                     <label>Addmission No</label>
                                     <div className="form_elements">
                                         <input
@@ -373,39 +379,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             value={state.preInfo?.admission_no}
                                         />
                                     </div>
-                                </div>
-                                <div className="form-group form-vertical">
-                                    <label>Roll No</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="roll no"
-                                            name="role_no"
-                                            value={state.preInfo?.role_no}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
-                                    <label>Student Id</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="student id"
-                                            name="student_id"
-                                            value={state.preInfo?.student_id}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-vertical">
-                                    <label>Addmission date</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="date"
-                                            defaultValue={date}
-                                            name="admission_date"
-                                        />
-                                    </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Class</label>
                                     <div className="form_elements">
@@ -439,6 +413,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <select
                                             name="section"
                                             disabled={!selectedClass}
+                                            onChange={handleSectionChange}
                                         >
                                             <option value="">
                                                 Select a section
@@ -481,6 +456,38 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 </option>
                                             ))}
                                         </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Roll No</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="number"
+                                            placeholder="roll no"
+                                            name="role_no"
+                                            value={state.preInfo?.role_no}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Cadet Id</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="number"
+                                            placeholder="Cadet id"
+                                            name="student_id"
+                                            value={state.preInfo?.student_id}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-vertical">
+                                    <label>Addmission date</label>
+                                    <div className="form_elements">
+                                        <input
+                                            type="date"
+                                            defaultValue={date}
+                                            name="admission_date"
+                                        />
                                     </div>
                                 </div>
                             </div>

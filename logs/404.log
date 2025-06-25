@@ -384,3 +384,16 @@
 {"level":60,"time":1750842530259,"pid":8064,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
 {"level":60,"time":1750849022804,"pid":12908,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/class-wise-info/2"}
 {"level":60,"time":1750849036614,"pid":12908,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/class-wise-info/1"}
+{"level":60,"time":1750855621922,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/class-wise-info/5"}
+{"level":60,"time":1750855696579,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/classes"}
+{"level":60,"time":1750855696723,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/branches"}
+{"level":60,"time":1750855696739,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/sections"}
+{"level":60,"time":1750855696753,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/shifts"}
+{"level":60,"time":1750855709584,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/classes"}
+{"level":60,"time":1750855709596,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/branches"}
+{"level":60,"time":1750855709610,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/sections"}
+{"level":60,"time":1750855709619,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/shifts"}
+{"level":60,"time":1750855725664,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/classes"}
+{"level":60,"time":1750855725682,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/branches"}
+{"level":60,"time":1750855725697,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/sections"}
+{"level":60,"time":1750855725718,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/shifts"}
