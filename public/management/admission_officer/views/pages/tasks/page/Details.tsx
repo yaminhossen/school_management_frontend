@@ -45,20 +45,20 @@ const Details: React.FC<Props> = (props: Props) => {
                 <div className="explore_window fixed_size">
                     <Header page_title={setup.details_page_title}></Header>
 
-                    {Object.keys(state.item).length && (
+                    {Object.keys(state.item2).length && (
                         <div className="content_body">
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
                                     <tr>
                                         <td>Title</td>
                                         <td>:</td>
-                                        <td>{state.item.title}</td>
+                                        <td>{state.item2.title}</td>
                                     </tr>
                                     <tr>
                                         <td>Date</td>
                                         <td>:</td>
                                         <td>
-                                            {moment(state.item.date).format(
+                                            {moment(state.item2.date).format(
                                                 'YYYY-MM-DD',
                                             )}
                                         </td>
@@ -67,20 +67,20 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Creator</td>
                                         <td>:</td>
                                         <td>
-                                            {state.item.admin?.name ||
+                                            {state.item2.admin?.name ||
                                                 'Not found'}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Is completed</td>
                                         <td>:</td>
-                                        <td>{state.item.is_complete}</td>
+                                        <td>{state.item2.is_complete}</td>
                                     </tr>
                                     <tr>
                                         <td>Description</td>
                                         <td>:</td>
                                         <td className="task_details details_descrtiption2">
-                                            {state.item.description}
+                                            {state.item2.description}
                                         </td>
                                     </tr>
                                 </tbody>

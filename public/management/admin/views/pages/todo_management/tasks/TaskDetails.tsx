@@ -7,10 +7,11 @@ import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { details } from './config/store/async_actions/details';
 import { initialState } from './config/store/inital_state';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import moment from 'moment/moment';
 import { anyObject } from '../../../../common_types/object';
+import TableRowAction from './components/all_data_page/TableRowAction';
 export interface Props {}
 
 const TaskDetails: React.FC<Props> = (props: Props) => {
@@ -66,7 +67,9 @@ const TaskDetails: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <td>Description</td>
                                     <td>:</td>
-                                    <td>{data2.description}</td>
+                                    <td className="details_descrtiption2">
+                                        {data2.description}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Date</td>
@@ -96,6 +99,7 @@ const TaskDetails: React.FC<Props> = (props: Props) => {
                                             <th>Image</th>
                                             <th>Number</th>
                                             <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody id="all_list">
@@ -108,6 +112,11 @@ const TaskDetails: React.FC<Props> = (props: Props) => {
                                                     return (
                                                         <tr>
                                                             <td></td>
+                                                            {/* <td>
+                                                                <TableRowAction
+                                                                    item={i}
+                                                                />
+                                                            </td> */}
                                                             <td>{index + 1}</td>
                                                             <td>
                                                                 {i.teacher
@@ -146,7 +155,28 @@ const TaskDetails: React.FC<Props> = (props: Props) => {
                                                                         ?.phone_number}
                                                             </td>
                                                             <td>
-                                                                {i.is_complete}
+                                                                {i.is_complete ===
+                                                                'pending'
+                                                                    ? moment(
+                                                                        i.date,
+                                                                    ).format(
+                                                                        'YYYY-MM-DD',
+                                                                    ) <
+                                                                      moment().format(
+                                                                          'YYYY-MM-DD',
+                                                                      )
+                                                                        ? 'expired'
+                                                                        : i.is_complete
+                                                                    : i.is_complete}
+                                                            </td>
+                                                            <td>
+                                                                <Link
+                                                                    to={`/${setup.route_prefix}/task-user-edit/${i.id}`}
+                                                                    className="btn btn-sm  btn-outline-info"
+                                                                    type="submit"
+                                                                >
+                                                                    Edit
+                                                                </Link>
                                                             </td>
                                                         </tr>
                                                     );

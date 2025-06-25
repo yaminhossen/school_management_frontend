@@ -112,6 +112,7 @@ async function task_assign(
                             teacher_id: ss.teacher_id || null,
                             admin_id: ss.admin_id || null,
                             task_id: data.id,
+                            date: body.date,
                             creator: user?.id || null,
                         };
                     usl_inputs.branch_id = auth_user?.branch_id || 1;
@@ -119,6 +120,7 @@ async function task_assign(
                     usl_inputs.teacher_id = ss.teacher_id || null;
                     usl_inputs.admin_id = ss.admin_id || null;
                     usl_inputs.task_id = data.id;
+                    usl_inputs.date = body.date;
                     (await usl_model.update(usl_inputs)).save();
                 });
             }
@@ -132,6 +134,7 @@ async function task_assign(
                             teacher_id: ss.teacher_id || null,
                             admin_id: ss.admin_id || null,
                             task_id: data.id,
+                            date: body.date,
                             creator: user?.id || null,
                         };
                     usl_inputs.branch_id = auth_user?.branch_id || 1;
@@ -139,6 +142,7 @@ async function task_assign(
                     usl_inputs.teacher_id = ss.teacher_id || null;
                     usl_inputs.admin_id = ss.admin_id || null;
                     usl_inputs.task_id = data.id;
+                    usl_inputs.date = body.date;
                     (await usl_model.update(usl_inputs)).save();
                 });
             }

@@ -41,6 +41,7 @@ class DataModel extends Model<Infer, InferCreation> {
 
     declare branch_id?: number;
     declare task_id?: number;
+    declare date?: string;
     declare staff_id?: number;
     declare teacher_id?: number;
     declare admin_id?: number;
@@ -79,6 +80,11 @@ function init(sequelize: Sequelize) {
             },
             task_id: {
                 type: new DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
+
+            date: {
+                type: new DataTypes.DATE(),
                 allowNull: true,
             },
             is_complete: {

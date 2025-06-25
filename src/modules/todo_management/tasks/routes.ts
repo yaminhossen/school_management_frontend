@@ -35,6 +35,11 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.staff_pending,
         )
         .get(
+            `${prefix}/staff-expired`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.staff_expired,
+        )
+        .get(
             `${prefix}/staff-complete`,
             { preHandler: [auth_middleware] },
             controllerInstance.staff_complete,
@@ -59,6 +64,7 @@ module.exports = async function (fastify: FastifyInstance) {
             { preHandler: [auth_middleware] },
             controllerInstance.staff_update,
         )
+        .get(`${prefix}/task-user/:id`, controllerInstance.task_user_details)
         .get(`${prefix}/:id`, controllerInstance.find)
         .get(`${prefix}/task-details/:id`, controllerInstance.task_details)
         .post(`${prefix}/store`, controllerInstance.store)

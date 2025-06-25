@@ -112,11 +112,6 @@ async function admission_officer_all(
         const latestDate = new Date(lastRecord?.date || today);
         latestDate.setDate(latestDate.getDate() + 1); // Increment by one day
         const formattedlatestDate = latestDate.toISOString().split('T')[0];
-
-        // const latestDate = lastRecord?.date
-        //     ? new Date(lastRecord.date).toISOString().split('T')[0]
-        //     : today; // fallback if no record
-
         // Set where clause: from latest record to today
         whereClause.date = {
             [Op.between]: [today, formattedlatestDate],

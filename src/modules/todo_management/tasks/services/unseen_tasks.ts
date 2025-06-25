@@ -79,6 +79,7 @@ async function unseen_tasks(
                 staff_id: user?.id,
                 is_seen: 'no',
                 is_complete: 'pending',
+                status: 'active',
             },
         });
         if (!data) {

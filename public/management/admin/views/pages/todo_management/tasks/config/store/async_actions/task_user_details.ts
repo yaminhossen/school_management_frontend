@@ -1,13 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AppDispatch, RootState } from '../../../../../../store';
+import { AppDispatch, RootState } from '../../../../../../../store';
 import { initialState } from '../inital_state';
 import axios from 'axios';
 import setup from '../../setup';
-import { end_point } from '../../../../../../config/api';
+import { end_point } from '../../../../../../../config/api';
 import storeSlice from '..';
-import { anyObject } from '../../../../../../common_types/object';
-import { all } from './all';
-import { expired } from './expired';
+import { anyObject } from '../../../../../../../common_types/object';
 
 type ReturnType = void;
 type PayloadType = { [key: string]: any };
@@ -27,15 +25,9 @@ const fetch_api = async (param: anyObject, thunkAPI) => {
     dispatch(storeSlice.actions.set_loading_text('fething data..'));
 
     const response = await axios.get(
-        `${end_point}/${api_prefix}/seen-user/${param.id}`,
+        `${end_point}/${api_prefix}/task-user/${param.id}`,
     );
 
-    dispatch(storeSlice.actions.set_only_latest_data(true));
-    dispatch(all({}));
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    dispatch(expired({}));
-    dispatch(storeSlice.actions.set_only_latest_data(false));
-    dispatch(storeSlice.actions.set_is_loading(true));
     dispatch(storeSlice.actions.set_is_loading(false));
     dispatch(storeSlice.actions.set_item(response.data.data));
 
@@ -43,8 +35,8 @@ const fetch_api = async (param: anyObject, thunkAPI) => {
     // thunkAPI.dispatch(storeSlice.actions.my_action())
 };
 
-export const seen_user = createAsyncThunk<
+export const task_user_details = createAsyncThunk<
     ReturnType,
     PayloadType,
     ThunkArgument
->(`${store_prefix}/seen-user`, fetch_api);
+>(`${store_prefix}/task-user-details`, fetch_api);

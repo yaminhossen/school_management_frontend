@@ -13,6 +13,7 @@ export const initialState = {
     all: {},
     allComplete: {},
     item: {} as anyObject,
+    item2: {} as anyObject,
     staffs: {} as anyObject,
     teachers: {} as anyObject,
     url: '',

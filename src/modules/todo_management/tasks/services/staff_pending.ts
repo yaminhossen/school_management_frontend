@@ -105,10 +105,28 @@ async function staff_pending(
         const formattedEndDate = endDate.toISOString().split('T')[0];
         console.log('month2', formattedEndDate);
 
-        whereClause.created_at = {
+        whereClause.date = {
             [Op.between]: [query_param.start_date, formattedEndDate],
         };
+    } else {
+        // Get the latest available date from the DB
+        const lastRecord = await models.TaskUsersModel.findOne({
+            attributes: ['date'],
+            order: [['date', 'DESC']],
+        });
+        console.log(
+            'lastRecord',
+            new Date(lastRecord?.date || today).toISOString().split('T')[0],
+        );
+        const latestDate = new Date(lastRecord?.date || today);
+        latestDate.setDate(latestDate.getDate() + 1); // Increment by one day
+        const formattedlatestDate = latestDate.toISOString().split('T')[0];
+        // Set where clause: from latest record to today
+        whereClause.date = {
+            [Op.between]: [today, formattedlatestDate],
+        };
     }
+
     let query: FindAndCountOptions = {
         order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
         where: whereClause,

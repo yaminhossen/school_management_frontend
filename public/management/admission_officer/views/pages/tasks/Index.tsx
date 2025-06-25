@@ -28,6 +28,13 @@ const Index: React.FC<Props> = (props: Props) => {
                 >
                     Completed
                 </NavLink>
+                <NavLink
+                    to="/tasks/expired"
+                    className="btn btn-sm btn-outline-info mb-2 mr-2"
+                    type="submit"
+                >
+                    Expired
+                </NavLink>
                 {/* <Link
                     to="/tasks/pending"
                     className="btn btn-sm btn-outline-info mb-2 mr-2"

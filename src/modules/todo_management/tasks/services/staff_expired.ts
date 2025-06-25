@@ -44,7 +44,7 @@ async function validate(req: Request) {
 
     return result;
 }
-async function staff_complete(
+async function staff_expired(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -63,6 +63,8 @@ async function staff_complete(
             user_teacher_id: (req as any).user?.id || null,
         },
     });
+
+    console.log('teacher pending user', user);
 
     const { Op } = require('sequelize');
     let search_key = query_param.search_key;
@@ -89,40 +91,71 @@ async function staff_complete(
 
     const whereClause: any = {
         status: show_active_data == 'true' ? 'active' : 'deactive',
-        is_complete: 'completed',
+        is_complete: 'pending',
         staff_id: user?.id,
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);
+    // Get the fallback date: 6 months ago from today
+    const thatday = new Date();
+    thatday.setMonth(thatday.getMonth() - 6);
 
-    let month1 = query_param?.start_date || today; // Start date
-    let month2 = query_param?.end_date || today;
     if (query_param?.start_date && query_param?.end_date) {
         const endDate = new Date(query_param.end_date);
         endDate.setDate(endDate.getDate() + 1); // Increment by one day
         const formattedEndDate = endDate.toISOString().split('T')[0];
         console.log('month2', formattedEndDate);
+        const firstDate = new Date(query_param.start_date);
+        const formattedFirstDate = firstDate.toISOString().split('T')[0];
+        console.log(
+            'month2 formate fisrt date and today',
+            formattedFirstDate,
+            formattedEndDate,
+            today,
+        );
 
+        if (formattedEndDate < today) {
+            whereClause.date = {
+                [Op.between]: [formattedFirstDate, formattedEndDate],
+            };
+        } else {
+            whereClause.date = {
+                [Op.between]: [formattedFirstDate, today],
+            };
+        }
+    } else {
+        // Get the latest available date from the DB
+        const Fastrecord = await models.TaskUsersModel.findOne({
+            attributes: ['date'],
+            order: [['date', 'ASC']],
+        });
+        console.log(
+            'Fastrecord',
+            new Date(Fastrecord?.date || thatday).toISOString().split('T')[0],
+        );
+        const latestDate = new Date(Fastrecord?.date || thatday);
+        const formattedFastDate = latestDate.toISOString().split('T')[0];
+        // Set where clause: from latest record to today
         whereClause.date = {
-            [Op.between]: [query_param.start_date, formattedEndDate],
+            [Op.between]: [formattedFastDate, today],
         };
     }
+
     let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
+        // order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
+        order: [
+            // [orderByCol, orderByAsc === 'true' ? 'ASC' : 'DESC'],
+            ['date', orderByAsc === 'true' ? 'ASC' : 'DESC'],
+            // ['time', orderByAsc === 'true' ? 'ASC' : 'DESC'],
+        ],
         where: whereClause,
-        // where: {
-        //     status: show_active_data == 'true' ? 'active' : 'deactive',
-        //     is_complete: 'completed',
-        //     teacher_id: user?.id,
-        // },
-        // include: [models.Project],
         include: [
             {
                 model: models.TasksModel,
                 as: 'tasks',
                 where: {
                     status: 'active',
-                    // is_complete: 'completed',
+                    is_complete: 'pending',
                 },
             },
         ],
@@ -146,9 +179,6 @@ async function staff_complete(
             ],
         };
     }
-    console.log('teacher pending ok');
-    console.log('teacher pending auth', auth_user);
-    console.log('teacher pending user', user);
 
     try {
         let data = await (fastify_instance as anyObject).paginate(
@@ -164,4 +194,4 @@ async function staff_complete(
     }
 }
 
-export default staff_complete;
+export default staff_expired;

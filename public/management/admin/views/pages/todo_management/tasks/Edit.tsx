@@ -173,24 +173,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         ></textarea>
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Date</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="date"
-                                            name="date"
-                                            value={date}
-                                            onChange={(e) =>
-                                                setDate(
-                                                    moment(
-                                                        e.target.value,
-                                                    ).format('YYYY-MM-DD'),
-                                                )
-                                            }
-                                            id=""
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>
                                         Date{' '}

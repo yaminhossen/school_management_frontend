@@ -26,6 +26,8 @@ import teacher_tasks from './services/teacher_tasks';
 import staff_task from './services/staff_task';
 import seen_user from './services/seen_user';
 import unseen_tasks from './services/unseen_tasks';
+import staff_expired from './services/staff_expired';
+import task_user_details from './services/task_user_details';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -42,6 +44,10 @@ export default function (fastify: FastifyInstance) {
         },
         staff_pending: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await staff_pending(fastify, req);
+            res.code(data.status).send(data);
+        },
+        staff_expired: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await staff_expired(fastify, req);
             res.code(data.status).send(data);
         },
         teacher_tasks: async function (req: FastifyRequest, res: FastifyReply) {
@@ -78,6 +84,14 @@ export default function (fastify: FastifyInstance) {
 
         task_details: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await task_details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        task_user_details: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await task_user_details(fastify, req);
             res.code(data.status).send(data);
         },
 
