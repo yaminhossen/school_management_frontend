@@ -14,6 +14,7 @@ import { sections } from './config/store/async_actions/sections';
 import { shifts } from './config/store/async_actions/shifts';
 import { preInfo } from './config/store/async_actions/pre_info';
 import ImageUpload from './components/ImageUpload';
+import { preInfoClassWise } from './config/store/async_actions/pre_info_class_wise';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -55,8 +56,11 @@ const Index: React.FC<Props> = (props: Props) => {
     // let date22 = moment().format('YYYY-DD-MM');
 
     // Handle class selection
-    const handleClassChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const handleClassChange = async (
+        e: React.ChangeEvent<HTMLSelectElement>,
+    ) => {
         setSelectedClass(e.target.value);
+        await dispatch(preInfoClassWise({ class_id: e.target.value }) as any);
     };
 
     // Filter sections based on selected class
@@ -87,7 +91,7 @@ const Index: React.FC<Props> = (props: Props) => {
         await dispatch(branches({}) as any);
         await dispatch(sections({}) as any);
         await dispatch(shifts({}) as any);
-        await dispatch(preInfo({}) as any);
+        // await dispatch(preInfo({}) as any);
     }
 
     useEffect(() => {
@@ -359,27 +363,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <h2 className="">Admission Information</h2>
                             </div>
                             <div className="d-flex">
-                                {/* <div className="form-group form-vertical">
-                                    <label>Branch</label>
-                                    <div className="form_elements">
-                                        <select name="branch_id" id="">
-                                            {state.branches?.length &&
-                                                state.branches?.map(
-                                                    (i: {
-                                                        [key: string]: any;
-                                                    }) => {
-                                                        return (
-                                                            <option
-                                                                value={i.id}
-                                                            >
-                                                                {i.name}
-                                                            </option>
-                                                        );
-                                                    },
-                                                )}
-                                        </select>
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Addmission No</label>
                                     <div className="form_elements">
@@ -450,27 +433,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-vertical">
-                                    <label>Shift</label>
-                                    <div className="form_elements">
-                                        <select name="shift" id="">
-                                            {state.shifts?.length &&
-                                                state.shifts?.map(
-                                                    (i: {
-                                                        [key: string]: any;
-                                                    }) => {
-                                                        return (
-                                                            <option
-                                                                value={i.id}
-                                                            >
-                                                                {i.title}
-                                                            </option>
-                                                        );
-                                                    },
-                                                )}
-                                        </select>
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-vertical">
                                     <label>Section</label>
                                     <div className="form_elements">

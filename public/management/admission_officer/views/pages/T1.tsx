@@ -78,6 +78,9 @@ const T1: React.FC<Props> = (props: Props) => {
 
     let array: any[][] = [];
     let count = 0;
+    if (accdemicCalander) {
+        console.log('accdemicCalander', accdemicCalander);
+    }
 
     // Initialize the 2D array for calendar
     for (let i = 0; i < 5; i++) {

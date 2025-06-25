@@ -53,6 +53,7 @@ import fees_categories_one from './services/fees_categoies_one';
 import all_class_admin from './services/all_class_admin';
 import profile_update from './services/profile_update';
 import stu_information from './services/stu_information';
+import class_wise_info from './services/class_wise_info';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -97,6 +98,14 @@ export default function (fastify: FastifyInstance) {
 
         pre_info: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await pre_info(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        class_wise_info: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await class_wise_info(fastify, req);
             res.code(data.status).send(data);
         },
 
