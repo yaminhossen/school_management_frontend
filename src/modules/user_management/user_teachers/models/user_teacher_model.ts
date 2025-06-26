@@ -36,6 +36,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare name?: string;
     declare email?: string | null;
     declare phone_number?: string | null;
+    declare nid_number?: string | null;
     declare image?: string | null;
     declare password?: string;
     declare status?: status;
@@ -67,6 +68,10 @@ function init(sequelize: Sequelize) {
             },
             phone_number: {
                 type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            nid_number: {
+                type: new DataTypes.STRING(30),
                 allowNull: true,
             },
             image: {

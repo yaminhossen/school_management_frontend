@@ -41,13 +41,13 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>
                                             {state.item?.image ? (
                                                 <a
-                                                    href={state.item.image}
+                                                    href={state.item?.image}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                 >
                                                     <img
                                                         src={
-                                                            state.item.image
+                                                            state.item?.image
                                                                 ? state.item
                                                                     .image
                                                                 : '/assets/dashboard/images/avatar.png'
@@ -74,24 +74,29 @@ const Details: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <td>Name</td>
                                         <td>:</td>
-                                        <td>{state.item.name}</td>
+                                        <td>{state.item?.name}</td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
                                         <td>:</td>
-                                        <td>{state.item.email}</td>
+                                        <td>{state.item?.email}</td>
                                     </tr>
                                     <tr>
                                         <td>Phone Number</td>
                                         <td>:</td>
-                                        <td>{state.item.phone_number}</td>
+                                        <td>{state.item?.phone_number}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NID Number</td>
+                                        <td>:</td>
+                                        <td>{state.item?.nid_number}</td>
                                     </tr>
                                     <tr>
                                         <td>Parmenent Address</td>
                                         <td>:</td>
                                         <td>
                                             {
-                                                state.item.teacher_infos
+                                                state.item?.teacher_infos
                                                     ?.parmenent_address
                                             }
                                         </td>
@@ -101,7 +106,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td>
                                             {
-                                                state.item.teacher_infos
+                                                state.item?.teacher_infos
                                                     ?.present_address
                                             }
                                         </td>
@@ -111,7 +116,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td>
                                             {
-                                                state.item.teacher_infos
+                                                state.item?.teacher_infos
                                                     ?.guardian_contact_number
                                             }
                                         </td>
@@ -120,7 +125,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>District</td>
                                         <td>:</td>
                                         <td>
-                                            {state.item.teacher_infos?.district}
+                                            {state.item?.teacher_infos?.district}
                                         </td>
                                     </tr>
                                     <tr>
@@ -128,7 +133,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td>
                                             {
-                                                state.item.teacher_infos
+                                                state.item?.teacher_infos
                                                     ?.post_code
                                             }
                                         </td>
@@ -137,18 +142,18 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Gender</td>
                                         <td>:</td>
                                         <td>
-                                            {state.item.teacher_infos?.gender}
+                                            {state.item?.teacher_infos?.gender}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>national Id</td>
                                         <td>:</td>
                                         <td>
-                                            {state.item.teacher_infos
+                                            {state.item?.teacher_infos
                                                 ?.national_id ? (
                                                 <a
                                                         href={
-                                                            state.item.teacher_infos
+                                                            state.item?.teacher_infos
                                                             ?.national_id
                                                     }
                                                         target="_blank"
@@ -175,11 +180,11 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Certificate No. 1</td>
                                         <td>:</td>
                                         <td>
-                                            {state.item.teacher_infos
+                                            {state.item?.teacher_infos
                                                 ?.certificate_no_1 ? (
                                                 <a
                                                         href={
-                                                            state.item.teacher_infos
+                                                            state.item?.teacher_infos
                                                             ?.certificate_no_1
                                                     }
                                                         target="_blank"
@@ -206,11 +211,11 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Certificate No. 2</td>
                                         <td>:</td>
                                         <td>
-                                            {state.item.teacher_infos
+                                            {state.item?.teacher_infos
                                                 ?.certificate_no_2 ? (
                                                 <a
                                                         href={
-                                                            state.item.teacher_infos
+                                                            state.item?.teacher_infos
                                                             ?.certificate_no_2
                                                     }
                                                         target="_blank"
@@ -238,7 +243,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td>
                                             {
-                                                state.item.teacher_infos
+                                                state.item?.teacher_infos
                                                     ?.blood_group
                                             }
                                         </td>
@@ -247,7 +252,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Is Married</td>
                                         <td>:</td>
                                         <td>
-                                            {state.item.teacher_infos
+                                            {state.item?.teacher_infos
                                                 ?.is_married === true
                                                 ? 'Married'
                                                 : 'Un married'}
@@ -258,7 +263,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td>
                                             {moment(
-                                                state.item.teachers
+                                                state.item?.teachers
                                                     ?.joining_date,
                                             ).format('YYYY-MM-DD')}
                                         </td>
@@ -267,7 +272,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Department</td>
                                         <td>:</td>
                                         <td>
-                                            {state.item.teachers?.department}
+                                            {state.item?.teachers?.department}
                                         </td>
                                     </tr> */}
                                 </tbody>

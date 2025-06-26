@@ -71,10 +71,16 @@ async function validate(req: Request, models: any) {
             .run(req);
     }
 
+    await body('nid_number')
+        .not()
+        .isEmpty()
+        .withMessage('the Nid number field is required')
+        .run(req);
+
     await body('parmenent_address')
         .not()
         .isEmpty()
-        .withMessage('the parmenent ddress field is required')
+        .withMessage('the parmenent address field is required')
         .run(req);
 
     await body('present_address')
@@ -179,6 +185,7 @@ async function update(
         name: body.name,
         email: body.email,
         phone_number: body.phone_number,
+        nid_number: body.nid_number,
         image: teacher_image || find_teacher?.image,
         password: password || find_teacher?.password,
         creator: user?.id || null,

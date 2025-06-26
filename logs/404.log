@@ -397,3 +397,7 @@
 {"level":60,"time":1750855725682,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/branches"}
 {"level":60,"time":1750855725697,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/sections"}
 {"level":60,"time":1750855725718,"pid":11340,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/shifts"}
+{"level":60,"time":1750915192639,"pid":8148,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
+{"level":60,"time":1750915342561,"pid":8148,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
+{"level":60,"time":1750917636215,"pid":8148,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.5558407396111327"}
+{"level":60,"time":1750918753207,"pid":8148,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.7399530453004424"}

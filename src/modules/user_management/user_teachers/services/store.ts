@@ -46,6 +46,12 @@ async function validate(req: Request, models: any) {
         .withMessage('Phone number must be a valid Bangladeshi number')
         .run(req);
 
+    await body('nid_number')
+        .not()
+        .isEmpty()
+        .withMessage('the nid number field is required')
+        .run(req);
+
     await body('guardian_contact_number')
         .not()
         .isEmpty()
@@ -166,6 +172,7 @@ async function store(
         name: body.name,
         email: body.email,
         phone_number: body.phone_number,
+        nid_number: body.nid_number,
         image: teacher_image,
         password: password,
         creator: user?.id || null,

@@ -70,6 +70,12 @@ async function validate(req: Request, models: any) {
             .run(req);
     }
 
+    await body('nid_number')
+        .not()
+        .isEmpty()
+        .withMessage('the nid number field is required')
+        .run(req);
+
     await body('parmenent_address')
         .not()
         .isEmpty()
@@ -166,6 +172,7 @@ async function store(
         name: body.name,
         email: body.email,
         phone_number: body.phone_number,
+        nid_number: body.nid_number,
         role: body.role || 'staff',
         image: staff_image,
         password: password,

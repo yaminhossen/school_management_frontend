@@ -148,6 +148,21 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
+                                    <label>
+                                        NID number{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
+                                    <div className="form_elements">
+                                        <textarea
+                                            placeholder="your NID number"
+                                            name="nid_number"
+                                            defaultValue={
+                                                state.item?.nid_number
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
                                     <InputImage
                                         label={'image'}
                                         name={'teacher_image'}
@@ -160,8 +175,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         <span className="valid_star">*</span>
                                     </label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
+                                        <textarea
                                             placeholder="Parmenent address"
                                             name="parmenent_address"
                                             defaultValue={
@@ -216,8 +230,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>Present Address</label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
+                                        <textarea
                                             placeholder="present address"
                                             name="present_address"
                                             defaultValue={

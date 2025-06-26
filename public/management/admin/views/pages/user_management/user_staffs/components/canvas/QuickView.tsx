@@ -44,13 +44,15 @@ const QuickView: React.FC<Props> = (props: Props) => {
                                     <td>:</td>
                                     <td>
                                         <a
-                                            href={state.item.image || undefined}
+                                            href={
+                                                state.item?.image || undefined
+                                            }
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
                                             <img
                                                 src={
-                                                    state.item.image ||
+                                                    state.item?.image ||
                                                     '/assets/dashboard/images/avatar.png'
                                                 }
                                                 alt="profile image"
@@ -62,24 +64,34 @@ const QuickView: React.FC<Props> = (props: Props) => {
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>Branch</td>
+                                    <td>:</td>
+                                    <td>{state.item?.staffs?.branch?.name}</td>
+                                </tr>
+                                <tr>
                                     <td>Name</td>
                                     <td>:</td>
-                                    <td>{state.item.name}</td>
+                                    <td>{state.item?.name}</td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
                                     <td>:</td>
-                                    <td>{state.item.email}</td>
+                                    <td>{state.item?.email}</td>
                                 </tr>
                                 <tr>
                                     <td>Phone Number</td>
                                     <td>:</td>
-                                    <td>{state.item.phone_number}</td>
+                                    <td>{state.item?.phone_number}</td>
+                                </tr>
+                                <tr>
+                                    <td>NID Number</td>
+                                    <td>:</td>
+                                    <td>{state.item?.nid_number}</td>
                                 </tr>
                                 <tr>
                                     <td>Role</td>
                                     <td>:</td>
-                                    <td>{state.item.role}</td>
+                                    <td>{state.item?.role}</td>
                                 </tr>
                             </tbody>
                         </table>

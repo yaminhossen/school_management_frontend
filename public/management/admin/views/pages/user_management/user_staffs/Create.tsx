@@ -154,6 +154,20 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 </span>
                                             </div>
                                         </div>
+                                        <div className="form-group form-horizontal">
+                                            <label>
+                                                NID number{' '}
+                                                <span className="valid_star">
+                                                    *
+                                                </span>
+                                            </label>
+                                            <div className="form_elements">
+                                                <textarea
+                                                    placeholder="Your NID number"
+                                                    name="nid_number"
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className="full_width">
                                         <div className="form_section_heading">
@@ -170,8 +184,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     </span>
                                                 </label>
                                                 <div className="form_elements">
-                                                    <input
-                                                        type="text"
+                                                    <textarea
                                                         placeholder="Parmenent address"
                                                         name="parmenent_address"
                                                     />
@@ -215,8 +228,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     </span>
                                                 </label>
                                                 <div className="form_elements">
-                                                    <input
-                                                        type="text"
+                                                    <textarea
                                                         placeholder="present address"
                                                         name="present_address"
                                                     />
@@ -338,18 +350,18 @@ const Create: React.FC<Props> = (props: Props) => {
                                                         <option value="">
                                                             Select role
                                                         </option>
-                                                        <option value="principle">
+                                                        {/* <option value="principle">
                                                             Principle
-                                                        </option>
+                                                        </option> */}
                                                         {/* <option value="admin">
                                                             Admin
                                                         </option> */}
                                                         <option value="admission-officer">
                                                             Admission-officer
                                                         </option>
-                                                        <option value="librarian">
+                                                        {/* <option value="librarian">
                                                             Librarian
-                                                        </option>
+                                                        </option> */}
                                                         <option value="accountant">
                                                             Accountant
                                                         </option>
