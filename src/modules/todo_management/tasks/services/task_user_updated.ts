@@ -55,8 +55,15 @@ async function task_user_update(
     let models = await db();
     let body = req.body as anyObject;
     let model = new models.TasksModel();
+    let user = (req as any).user;
+    let auth_user = await models.UserAdminsModel.findOne({
+        where: {
+            id: user?.id || null,
+        },
+    });
 
     let inputs: InferCreationAttributes<typeof model> = {
+        branch_id: auth_user?.branch_id || 1,
         title: body.title,
         description: body.description,
         is_complete: body.is_complete,

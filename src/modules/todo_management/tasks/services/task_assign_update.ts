@@ -48,10 +48,9 @@ async function task_assign_updated(
     let body = req.body as anyObject;
     let data = new models.TasksModel();
     let user = (req as any).user;
-
-    let auth_user = await models.BranchStaffsModel.findOne({
+    let auth_user = await models.UserAdminsModel.findOne({
         where: {
-            user_staff_id: user?.id || null,
+            id: user?.id || null,
         },
     });
     const fstaffs = JSON.parse(body.staffs);

@@ -65,6 +65,11 @@ async function all(
     let paginate = parseInt((req.query as any).paginate) || 10;
     let select_fields: string[] = [];
     let exclude_fields: string[] = ['password'];
+    let auth_user = await models.UserAdminsModel.findOne({
+        where: {
+            id: (req as any).user?.id || null,
+        },
+    });
 
     if (query_param.select_fields) {
         select_fields = query_param.select_fields.replace(/\s/g, '').split(',');
@@ -82,6 +87,7 @@ async function all(
 
     const whereClause: any = {
         status: show_active_data === 'true' ? 'active' : 'deactive',
+        branch_id: auth_user?.branch_id || null,
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);

@@ -13,6 +13,26 @@ async function all(
 ): Promise<responseObject> {
     let models = await db();
     let query_param = req.query as any;
+    let user = (req as any).user;
+    console.log('user tyeplsdjfl lsdjflds', user);
+    let auth_user = await models.UserAdminsModel.findOne({
+        where: {
+            id: user?.id || null,
+        },
+    });
+    // if(user.user_type === 'admin') {
+    //     let auth_user = await models.UserAdminsModel.findOne({
+    //     where: {
+    //         id: user?.id || null,
+    //     },
+    // });
+    // } else {
+    //     let auth_user = await models.BranchS.findOne({
+    //         where: {
+    //             id: user?.id || null,
+    //         },
+    //     });
+    // }
 
     const { Op } = require('sequelize');
     let search_key = query_param.search_key;
@@ -29,6 +49,7 @@ async function all(
 
     const whereClause: any = {
         status: show_active_data === 'true' ? 'active' : 'deactive',
+        branch_id: auth_user?.branch_id || null,
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);

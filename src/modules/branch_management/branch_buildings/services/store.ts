@@ -57,6 +57,7 @@ async function store(
             id: (req as any).user?.id || null,
         },
     });
+    console.log('user id and branch id', user?.id, auth_user?.branch_id);
 
     let attachment = '';
     let photo = '';

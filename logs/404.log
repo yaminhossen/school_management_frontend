@@ -410,3 +410,6 @@
 {"level":60,"time":1750922860307,"pid":10060,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.5579931000623286"}
 {"level":60,"time":1750922860996,"pid":10060,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.08686067885403803"}
 {"level":60,"time":1750927306321,"pid":8448,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.37410993835167616"}
+{"level":60,"time":1750934966248,"pid":11200,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-buildings?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+building_name%2C+building_code%2C+photo%2C+description%2C+attachment%2C+status"}
+{"level":60,"time":1750934987395,"pid":11200,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-buildings?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+building_name%2C+building_code%2C+photo%2C+description%2C+attachment%2C+status"}
+{"level":60,"time":1750934991295,"pid":11200,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-buildings?page=1&paginate=13&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+building_name%2C+building_code%2C+photo%2C+description%2C+attachment%2C+status"}
