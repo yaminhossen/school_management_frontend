@@ -28,7 +28,12 @@ async function class_wise_info(
                 section: params.sec_id,
             },
             order: [['id', 'DESC']],
-            attributes: ['student_id', 'role_no'], // spelling retained if DB uses it
+            attributes: ['role_no'], // spelling retained if DB uses it
+        });
+
+        let data2 = await informationsModel.findOne({
+            order: [['id', 'DESC']],
+            attributes: ['student_id'], // spelling retained if DB uses it
         });
 
         // Function to extract numeric part and increment
@@ -44,12 +49,12 @@ async function class_wise_info(
 
         if (!data) {
             transformedData = {
-                student_id: 101,
+                student_id: Number(data2?.student_id || 100) + 1,
                 role_no: 1,
             };
         } else {
             transformedData = {
-                student_id: Number(data?.student_id || 0) + 1,
+                student_id: Number(data2?.student_id || 100) + 1,
                 role_no: Number(data?.role_no || 0) + 1,
             };
         }
