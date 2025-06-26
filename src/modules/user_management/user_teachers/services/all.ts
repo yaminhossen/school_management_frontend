@@ -66,9 +66,9 @@ async function all(
     let select_fields: string[] = [];
     let exclude_fields: string[] = ['password'];
     let user = (req as any).user;
-    let auth_user = await models.BranchTeachersModel.findOne({
+    let auth_user = await models.UserAdminsModel.findOne({
         where: {
-            user_teacher_id: (req as any).user?.id || null,
+            id: (req as any).user?.id || null,
         },
     });
     let params = req.params as any;

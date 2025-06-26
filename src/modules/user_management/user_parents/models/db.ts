@@ -3,7 +3,8 @@ import {
     Sequelize,
 } from 'sequelize';
 import * as user_parents_model from './user_parents_model';
-// import * as user_students_model from './user_students_model';
+import * as user_admins_model from './user_admins_model';
+import * as branch_parents_model from './branch_parents_model';
 import * as user_parent_informations_model from './user_parent_informations_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
@@ -23,6 +24,8 @@ const sequelize = new Sequelize(
 
 interface models {
     UserParentsModel: typeof user_parents_model.DataModel;
+    UserAdminsModel: typeof user_admins_model.DataModel;
+    BranchParentsModel: typeof branch_parents_model.DataModel;
     // UserStudentsModel: typeof user_students_model.DataModel;
     UserParentInformationsModel: typeof user_parent_informations_model.DataModel;
     // Project: typeof project_model.DataModel;
@@ -30,6 +33,8 @@ interface models {
 }
 const db = async function (): Promise<models> {
     const UserParentsModel = user_parents_model.init(sequelize);
+    const UserAdminsModel = user_admins_model.init(sequelize);
+    const BranchParentsModel = branch_parents_model.init(sequelize);
     // const UserStudentsModel = user_students_model.init(sequelize);
     const UserParentInformationsModel =
         user_parent_informations_model.init(sequelize);
@@ -43,9 +48,17 @@ const db = async function (): Promise<models> {
         as: 'parent_infos',
     });
 
+    UserParentsModel.hasOne(BranchParentsModel, {
+        sourceKey: 'id',
+        foreignKey: 'user_parent_id',
+        as: 'branch_parents',
+    });
+
     let models: models = {
         UserParentsModel,
         UserParentInformationsModel,
+        BranchParentsModel,
+        UserAdminsModel,
         // UserStudentsModel,
         // Project,
 

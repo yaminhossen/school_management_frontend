@@ -88,7 +88,7 @@ const UpdatePhoto: React.FC = () => {
                         <div className="form_elements">
                             <img
                                 width={150}
-                                height={120}
+                                height={150}
                                 src={data?.image}
                                 alt=""
                             />

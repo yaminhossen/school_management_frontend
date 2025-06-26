@@ -86,7 +86,12 @@ const UpdatePhoto: React.FC = () => {
                     <div className="form-group form-horizontal">
                         <label>Previous Photo</label>
                         <div className="form_elements">
-                            <img src={data?.image} alt="" />
+                            <img
+                                width={150}
+                                height={150}
+                                src={data?.image}
+                                alt=""
+                            />
                         </div>
                     </div>
 

@@ -55,6 +55,7 @@ const All: React.FC<Props> = (props: Props) => {
                                         <th>
                                             <SelectAll />
                                         </th>
+                                        <th>Serial</th>
                                         <TableHeading
                                             label={`ID`}
                                             col_name={`id`}
@@ -86,7 +87,10 @@ const All: React.FC<Props> = (props: Props) => {
                                 {(state.all as any)?.data?.length ? (
                                     <tbody id="all_list">
                                         {(state.all as any)?.data?.map(
-                                            (i: { [key: string]: any }) => {
+                                            (
+                                                i: { [key: string]: any },
+                                                index,
+                                            ) => {
                                                 return (
                                                     <tr
                                                         key={i.id}
@@ -102,6 +106,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 item={i}
                                                             />
                                                         </td>
+                                                        <td>{index + 1}</td>
                                                         <td>
                                                             <span
                                                                 className="quick_view_trigger"

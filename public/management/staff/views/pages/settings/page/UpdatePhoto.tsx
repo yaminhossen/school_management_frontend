@@ -10,21 +10,6 @@ const UpdatePhoto: React.FC = () => {
     const formRef = useRef<HTMLFormElement>(null);
     const inputImageRef = useRef<InputImageRef>(null); // ref for InputImage
 
-    // const fetchData = async () => {
-    //     try {
-    //         const response = await axios.get(
-    //             '/api/v1/user-staffs/admin-details',
-    //         );
-    //         setData(response.data.data);
-    //     } catch (error) {
-    //         setError(error);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     fetchData();
-    // }, []);
-
     const fetchData = async () => {
         try {
             const response = await axios.get(
@@ -86,14 +71,6 @@ const UpdatePhoto: React.FC = () => {
                 </button>
             </div>
             <div className="content_body">
-                {/* <div className="settings_back">
-                    <Link
-                        className="btn btn-sm btn-outline-info mb-1"
-                        to="/settings"
-                    >
-                        Back
-                    </Link>
-                </div> */}
                 <form
                     onSubmit={handleSubmit}
                     className="form_600 mx-auto pt-3"
@@ -102,7 +79,12 @@ const UpdatePhoto: React.FC = () => {
                     <div className="form-group form-horizontal">
                         <label>Previous Photo</label>
                         <div className="form_elements">
-                            <img src={data?.image} alt="" />
+                            <img
+                                width={150}
+                                height={150}
+                                src={data?.image}
+                                alt=""
+                            />
                         </div>
                     </div>
 

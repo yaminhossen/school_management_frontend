@@ -78,6 +78,11 @@ async function all(
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);
+    let auth_user = await models.UserAdminsModel.findOne({
+        where: {
+            id: (req as any).user?.id || null,
+        },
+    });
 
     let month1 = query_param?.start_date || today; // Start date
     let month2 = query_param?.end_date || today;
@@ -104,6 +109,13 @@ async function all(
             {
                 model: models.UserParentInformationsModel,
                 as: 'parent_infos',
+            },
+            {
+                model: models.BranchParentsModel,
+                as: 'branch_parents',
+                where: {
+                    branch_id: auth_user?.branch_id || 1,
+                },
             },
         ],
         attributes: {

@@ -569,6 +569,7 @@ async function store(
                     },
                 });
                 student_guardians.forEach(async (ss, index) => {
+                    let bp_model = new models.BranchParentsModel();
                     let usp_model = new models.UserStudentParentsModel();
                     let up_model = new models.UserParentsModel();
                     let up_inputs: InferCreationAttributes<typeof up_model> = {
@@ -598,6 +599,15 @@ async function store(
                         usp_inputs.is_parent = ss.is_parent;
                         usp_inputs.user_parent_id = up_model.id || 1;
                         (await usp_model.update(usp_inputs)).save();
+                        let bp_inputs: InferCreationAttributes<
+                            typeof bp_model
+                        > = {
+                            user_parent_id: up_model.id || 1,
+                            branch_id: auth_user?.branch_id || 1,
+                        };
+                        bp_inputs.user_parent_id = up_model.id || 1;
+                        bp_inputs.branch_id = auth_user?.branch_id || 1;
+                        (await bp_model.update(bp_inputs)).save();
                     }
                 });
             }
