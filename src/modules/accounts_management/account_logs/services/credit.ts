@@ -16,6 +16,20 @@ async function credit(
     let accountsModel = models.AccountsModel;
     let params = req.params as any;
     let user = (req as any).user;
+    let auth_user;
+    if (user?.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
     console.log('jsdlfj', user);
 
     let month1 = body.month1 || '2024-09-12'; // Start date
@@ -38,6 +52,7 @@ async function credit(
                 },
                 type: 'income',
                 amount: { [Op.gte]: 1 },
+                branch_id: auth_user?.branch_id,
             },
             include: [
                 {
@@ -66,12 +81,14 @@ async function credit(
         data2.total_income = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'income',
+                branch_id: auth_user?.branch_id,
             },
         });
 
         data2.total_expense = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'expense',
+                branch_id: auth_user?.branch_id,
             },
         });
 
@@ -90,6 +107,7 @@ async function credit(
             await models.AccountLogsModel.sum('amount', {
                 where: {
                     type: 'income',
+                    branch_id: auth_user?.branch_id,
                     date: {
                         [Op.lt]: month1,
                     },
@@ -100,6 +118,7 @@ async function credit(
             await models.AccountLogsModel.sum('amount', {
                 where: {
                     type: 'expense',
+                    branch_id: auth_user?.branch_id,
                     date: {
                         [Op.lt]: month1,
                     },

@@ -73,7 +73,7 @@ const Index: React.FC<Props> = (props: Props) => {
                 <form onSubmit={handleSubmit}>
                     <div className="account_results">
                         <div>
-                            <div className="mb-1">Start Date</div>
+                            <div className="mb-1">Start Month</div>
                             <div>
                                 <input
                                     type="month"
@@ -85,7 +85,7 @@ const Index: React.FC<Props> = (props: Props) => {
                             </div>
                         </div>
                         <div>
-                            <div className="mb-1">End Date</div>
+                            <div className="mb-1">End Month</div>
                             <div>
                                 <input
                                     type="month"

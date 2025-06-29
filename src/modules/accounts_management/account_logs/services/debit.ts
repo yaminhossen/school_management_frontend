@@ -15,6 +15,21 @@ async function debit(
     let accountCategoriesModel = models.AccountCategoriesModel;
     let accountsModel = models.AccountsModel;
     let params = req.params as any;
+    let user = (req as any).user;
+    let auth_user;
+    if (user?.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
 
     // Use the values from the request body or set default values
     let month1 = body.month1 || '2024-09-12'; // Start date
@@ -33,6 +48,7 @@ async function debit(
                 },
                 type: 'expense',
                 amount: { [Op.gte]: 1 },
+                branch_id: auth_user?.branch_id,
             },
             include: [
                 {
@@ -62,12 +78,14 @@ async function debit(
         data2.total_income = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'income',
+                branch_id: auth_user?.branch_id,
             },
         });
 
         data2.total_expense = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'expense',
+                branch_id: auth_user?.branch_id,
             },
         });
 
@@ -86,6 +104,7 @@ async function debit(
             await models.AccountLogsModel.sum('amount', {
                 where: {
                     type: 'income',
+                    branch_id: auth_user?.branch_id,
                     date: {
                         [Op.lt]: month1,
                     },
@@ -96,6 +115,7 @@ async function debit(
             await models.AccountLogsModel.sum('amount', {
                 where: {
                     type: 'expense',
+                    branch_id: auth_user?.branch_id,
                     date: {
                         [Op.lt]: month1,
                     },

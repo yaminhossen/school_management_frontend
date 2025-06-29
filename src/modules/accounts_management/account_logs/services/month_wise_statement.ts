@@ -22,6 +22,21 @@ async function month_wise_statement(
     let models = await db();
     let body = req.body as anyObject;
     let params = req.params as any;
+    let user = (req as any).user;
+    let auth_user;
+    if (user?.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
 
     // Use the values from the request body or default values
     let month1 =
@@ -62,6 +77,7 @@ async function month_wise_statement(
                     // [Op.between]: [month1, month2],
                     [Op.between]: [startOfMonth1, endOfMonth2],
                 },
+                branch_id: auth_user?.branch_id,
                 status: 'active',
             },
             group: ['month'],
@@ -87,6 +103,7 @@ async function month_wise_statement(
                 date: {
                     [Op.between]: [startOfMonth1, endOfMonth2], // Inclusive range
                 },
+                branch_id: auth_user?.branch_id,
                 status: 'active',
             },
         });

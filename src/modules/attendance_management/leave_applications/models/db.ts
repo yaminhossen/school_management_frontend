@@ -9,6 +9,7 @@ import * as branch_teachers_model from './branch_teachers_model';
 import * as leave_types_model from './leave_types_model';
 import * as user_students_model from './user_students_model';
 import * as user_staffs_model from './user_staffs_model';
+import * as user_admins_model from './user_admins_model';
 import * as user_teacher_model from './user_teacher_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
@@ -34,6 +35,7 @@ interface models {
     LeaveTypesModel: typeof leave_types_model.DataModel;
     UserStudentsModel: typeof user_students_model.DataModel;
     UserStaffsModel: typeof user_staffs_model.DataModel;
+    UserAdminsModel: typeof user_admins_model.DataModel;
     UserTeachersModel: typeof user_teacher_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
@@ -47,6 +49,7 @@ const db = async function (): Promise<models> {
     const LeaveTypesModel = leave_types_model.init(sequelize);
     const UserStudentsModel = user_students_model.init(sequelize);
     const UserStaffsModel = user_staffs_model.init(sequelize);
+    const UserAdminsModel = user_admins_model.init(sequelize);
     const UserTeachersModel = user_teacher_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
@@ -104,6 +107,7 @@ const db = async function (): Promise<models> {
         UserStudentsModel,
         UserStaffsModel,
         UserTeachersModel,
+        UserAdminsModel,
         // Project,
 
         sequelize,

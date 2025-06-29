@@ -8,7 +8,11 @@ module.exports = async function (fastify: FastifyInstance) {
     const controllerInstance = controller(fastify);
 
     fastify
-        .get(`${prefix}`, controllerInstance.all)
+        .get(
+            `${prefix}`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all,
+        )
         .get(`${prefix}/:id`, controllerInstance.find)
         .get(
             `${prefix}/approved`,
@@ -45,7 +49,11 @@ module.exports = async function (fastify: FastifyInstance) {
             { preHandler: [auth_middleware] },
             controllerInstance.staff_leave,
         )
-        .post(`${prefix}/store`, controllerInstance.store)
+        .post(
+            `${prefix}/store`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.store,
+        )
         .post(
             `${prefix}/student-store`,
             { preHandler: [auth_middleware] },

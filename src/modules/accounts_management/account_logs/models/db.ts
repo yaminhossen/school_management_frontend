@@ -6,6 +6,7 @@ import * as account_logs_model from './account_logs_model';
 import * as account_categories_model from './account_categories_model';
 import * as account_periods_model from './account_periods_model';
 import * as accounts_model from './accounts_model';
+import * as user_admins_model from './user_admins_model';
 import * as money_receipt_books_model from './money_receipt_books_model';
 import * as account_fees_collections_model from './account_fees_collections_model';
 import * as user_student_informations_model from './user_student_informations_model';
@@ -38,6 +39,7 @@ interface models {
     UserStudentInformationsModel: typeof user_student_informations_model.DataModel;
     AccountLogAttachmentsModel: typeof account_log_attachments_model.DataModel;
     AccountFeesCollectionDetailsModel: typeof account_fees_collection_details_model.DataModel;
+    UserAdminsModel: typeof user_admins_model.DataModel;
     BranchStaffsModel: typeof branch_staffs_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
@@ -56,6 +58,7 @@ const db = async function (): Promise<models> {
         account_log_attachments_model.init(sequelize);
     const AccountFeesCollectionDetailsModel =
         account_fees_collection_details_model.init(sequelize);
+    const UserAdminsModel = user_admins_model.init(sequelize);
     const BranchStaffsModel = branch_staffs_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
@@ -93,6 +96,7 @@ const db = async function (): Promise<models> {
         AccountLogAttachmentsModel,
         AccountFeesCollectionDetailsModel,
         BranchStaffsModel,
+        UserAdminsModel,
         // Project,
 
         sequelize,

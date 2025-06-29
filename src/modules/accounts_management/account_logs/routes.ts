@@ -10,28 +10,56 @@ module.exports = async function (fastify: FastifyInstance) {
 
     fastify
         // .addHook('onRequest', check_auth)
-        .get(`${prefix}`, controllerInstance.all)
-        .post(`${prefix}/credit`, controllerInstance.credit)
-        .post(`${prefix}/category-wise/:id`, controllerInstance.category_wise)
+        .get(
+            `${prefix}`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all,
+        )
+        .post(
+            `${prefix}/credit`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.credit,
+        )
+        .post(
+            `${prefix}/category-wise/:id`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.category_wise,
+        )
         .post(
             `${prefix}/month-wise-statement`,
+            { preHandler: [auth_middleware] },
             controllerInstance.month_wise_statement,
         )
         .get(
             `${prefix}/month-wise-statement/:month`,
+            { preHandler: [auth_middleware] },
             controllerInstance.single_month_wise,
         )
-        .get(`${prefix}/today-income`, controllerInstance.today_income)
+        .get(
+            `${prefix}/today-income`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.today_income,
+        )
         .get(
             `${prefix}/running-month-income`,
+            { preHandler: [auth_middleware] },
             controllerInstance.running_month_income,
         )
         .get(
             `${prefix}/running-month-expense`,
+            { preHandler: [auth_middleware] },
             controllerInstance.running_month_expense,
         )
-        .get(`${prefix}/current-balance`, controllerInstance.current_balance)
-        .get(`${prefix}/expense-today`, controllerInstance.expense_today)
+        .get(
+            `${prefix}/current-balance`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.current_balance,
+        )
+        .get(
+            `${prefix}/expense-today`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.expense_today,
+        )
         .post(
             `${prefix}/payment-history-auth`,
             { preHandler: [auth_middleware] },
@@ -39,13 +67,34 @@ module.exports = async function (fastify: FastifyInstance) {
         )
         .post(
             `${prefix}/payment-history/:id`,
+            { preHandler: [auth_middleware] },
             controllerInstance.payment_history,
         )
-        .get(`${prefix}/income-statement`, controllerInstance.income_statement)
-        .post(`${prefix}/journal`, controllerInstance.journal)
-        .post(`${prefix}/profit-loss`, controllerInstance.profit_loss)
-        .post(`${prefix}/debit`, controllerInstance.debit)
-        .post(`${prefix}/store`, controllerInstance.store)
+        .get(
+            `${prefix}/income-statement`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.income_statement,
+        )
+        .post(
+            `${prefix}/journal`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.journal,
+        )
+        .post(
+            `${prefix}/profit-loss`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.profit_loss,
+        )
+        .post(
+            `${prefix}/debit`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.debit,
+        )
+        .post(
+            `${prefix}/store`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.store,
+        )
         .post(
             `${prefix}/fees-store`,
             { preHandler: [auth_middleware] },
@@ -61,13 +110,41 @@ module.exports = async function (fastify: FastifyInstance) {
             { preHandler: [auth_middleware] },
             controllerInstance.expense_store,
         )
-        .get(`${prefix}/account/:id`, controllerInstance.account_details)
-        .get(`${prefix}/categories`, controllerInstance.categories)
-        .get(`${prefix}/periods`, controllerInstance.account_periods)
-        .get(`${prefix}/receipt-book`, controllerInstance.receipt_books)
-        .get(`${prefix}/accounts`, controllerInstance.accounts)
-        .post(`${prefix}/fees-payment`, controllerInstance.fees_payment)
-        .post(`${prefix}/update`, controllerInstance.update)
+        .get(
+            `${prefix}/account/:id`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.account_details,
+        )
+        .get(
+            `${prefix}/categories`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.categories,
+        )
+        .get(
+            `${prefix}/periods`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.account_periods,
+        )
+        .get(
+            `${prefix}/receipt-book`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.receipt_books,
+        )
+        .get(
+            `${prefix}/accounts`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.accounts,
+        )
+        .post(
+            `${prefix}/fees-payment`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.fees_payment,
+        )
+        .post(
+            `${prefix}/update`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.update,
+        )
         .post(`${prefix}/soft-delete`, controllerInstance.soft_delete)
         .post(`${prefix}/restore`, controllerInstance.restore)
         .post(`${prefix}/destroy`, controllerInstance.destroy)

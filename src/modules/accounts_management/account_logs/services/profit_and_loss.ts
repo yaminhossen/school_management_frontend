@@ -50,6 +50,21 @@ async function journal(
     let models = await db();
     let body = req.body as anyObject;
     let accountCategoriesModel = models.AccountCategoriesModel;
+    let user = (req as any).user;
+    let auth_user;
+    if (user?.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
 
     let month1 = body.month1 || '2024-09-12'; // Start date
     let month2 = body.month2 || '2024-09-22'; // End date
@@ -65,6 +80,7 @@ async function journal(
                 date: {
                     [Op.between]: [month1, formattedEndDate],
                 },
+                branch_id: auth_user?.branch_id,
             },
             include: [
                 {
@@ -141,6 +157,7 @@ async function journal(
             await models.AccountLogsModel.sum('amount', {
                 where: {
                     type: 'income',
+                    branch_id: auth_user?.branch_id,
                     date: {
                         [Op.lt]: month1, // Less than month1
                     },
@@ -151,6 +168,7 @@ async function journal(
             await models.AccountLogsModel.sum('amount', {
                 where: {
                     type: 'expense',
+                    branch_id: auth_user?.branch_id,
                     date: {
                         [Op.lt]: month1, // Less than month1
                     },
