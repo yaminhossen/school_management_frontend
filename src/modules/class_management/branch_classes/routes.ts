@@ -8,7 +8,11 @@ module.exports = async function (fastify: FastifyInstance) {
     const controllerInstance = controller(fastify);
 
     fastify
-        .get(`${prefix}`, controllerInstance.all)
+        .get(
+            `${prefix}`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all,
+        )
         .get(`${prefix}/all-class`, controllerInstance.all_class)
         .post(
             `${prefix}/branch-class-wise-student`,
@@ -19,10 +23,22 @@ module.exports = async function (fastify: FastifyInstance) {
             { preHandler: [auth_middleware] },
             controllerInstance.class_routine_auth,
         )
-        .post(`${prefix}/class-routine`, controllerInstance.class_routine)
+        .post(
+            `${prefix}/class-routine`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.class_routine,
+        )
         .get(`${prefix}/:id`, controllerInstance.find)
-        .post(`${prefix}/store`, controllerInstance.store)
-        .post(`${prefix}/update`, controllerInstance.update)
+        .post(
+            `${prefix}/store`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.store,
+        )
+        .post(
+            `${prefix}/update`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.update,
+        )
         .post(`${prefix}/soft-delete`, controllerInstance.soft_delete)
         .post(`${prefix}/restore`, controllerInstance.restore)
         .post(`${prefix}/destroy`, controllerInstance.destroy)

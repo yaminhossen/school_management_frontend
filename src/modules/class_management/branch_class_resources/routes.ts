@@ -8,10 +8,19 @@ module.exports = async function (fastify: FastifyInstance) {
     const controllerInstance = controller(fastify);
 
     fastify
-        .get(`${prefix}`, controllerInstance.all)
-        .get(`${prefix}/classes`, controllerInstance.classes)
+        .get(
+            `${prefix}`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all,
+        )
+        .get(
+            `${prefix}/classes`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.classes,
+        )
         .get(
             `${prefix}/class-wise-subject/:id`,
+            { preHandler: [auth_middleware] },
             controllerInstance.class_wise_subject,
         )
         .get(`${prefix}/:id`, controllerInstance.find)
@@ -29,9 +38,21 @@ module.exports = async function (fastify: FastifyInstance) {
             `${prefix}/teacher-resource/:id`,
             controllerInstance.teacher_resource,
         )
-        .get(`${prefix}/subject-wise/:id`, controllerInstance.sub_wise_resource)
-        .post(`${prefix}/store`, controllerInstance.store)
-        .post(`${prefix}/update`, controllerInstance.update)
+        .get(
+            `${prefix}/subject-wise/:id`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.sub_wise_resource,
+        )
+        .post(
+            `${prefix}/store`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.store,
+        )
+        .post(
+            `${prefix}/update`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.update,
+        )
         .post(`${prefix}/soft-delete`, controllerInstance.soft_delete)
         .post(`${prefix}/restore`, controllerInstance.restore)
         .post(`${prefix}/destroy`, controllerInstance.destroy)

@@ -14,7 +14,6 @@ async function all(
     let models = await db();
     let query_param = req.query as any;
     let user = (req as any).user;
-    console.log('user tyeplsdjfl lsdjflds', user);
     let auth_user = await models.UserAdminsModel.findOne({
         where: {
             id: user?.id || null,

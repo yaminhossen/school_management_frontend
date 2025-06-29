@@ -4,6 +4,7 @@ import {
 } from 'sequelize';
 import * as academic_calendar_event_types_model from './academic_calendar_event_types_model';
 import * as academic_calendars_model from './academic_calendars_model';
+import * as user_admins_model from './user_admins_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -23,6 +24,7 @@ const sequelize = new Sequelize(
 interface models {
     AcademicCalendarEventTypesModel: typeof academic_calendar_event_types_model.DataModel;
     AcademicCalendarsModel: typeof academic_calendars_model.DataModel;
+    UserAdminsModel: typeof user_admins_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -30,6 +32,7 @@ const db = async function (): Promise<models> {
     const AcademicCalendarEventTypesModel =
         academic_calendar_event_types_model.init(sequelize);
     const AcademicCalendarsModel = academic_calendars_model.init(sequelize);
+    const UserAdminsModel = user_admins_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -62,6 +65,7 @@ const db = async function (): Promise<models> {
     let models: models = {
         AcademicCalendarEventTypesModel,
         AcademicCalendarsModel,
+        UserAdminsModel,
         // Project,
 
         sequelize,

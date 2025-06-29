@@ -20,13 +20,19 @@ async function classes(
     let classStudentsModel = models.BranchClassStudentsModel;
     let params = req.params as any;
     let user_id = (req as any).user?.id;
+    let user = (req as any).user;
+    let auth_user = await models.UserAdminsModel.findOne({
+        where: {
+            id: user?.id || null,
+        },
+    });
     console.log('user', user_id);
 
     try {
         let data = await classesModel.findAll({
-            // where: {
-            //     user_staff_id: user_id,
-            // },
+            where: {
+                branch_id: auth_user?.branch_id,
+            },
         });
 
         if (data) {

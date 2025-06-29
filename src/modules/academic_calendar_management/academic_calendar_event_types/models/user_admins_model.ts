@@ -23,20 +23,29 @@ import {
     // ForeignKey,
 } from 'sequelize';
 
-const tableName = 'academic_calendar_event_types';
-const modelName = 'AcademicCalendarEventTypesModel';
+const tableName = 'user_admins';
+const modelName = 'UserAdminModels';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
-// type type = 'income' | 'expense';
-type status = 'active' | 'deactive';
+type status = 'active' | 'deactive' | 'block';
 
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
+    declare name?: string;
     declare branch_id?: number;
-    declare title: string;
-    declare description: string;
+    declare staff_id?: number;
+    declare teacher_id?: number;
+    declare email?: string | null;
+    declare phone_number?: string | null;
+    declare image?: string;
+    declare password?: string;
+    declare role?: string;
+    declare type?: string;
+    declare token?: string | null;
+    declare forget_code?: string | null;
+    declare user_agent?: string | null;
 
     declare status?: status;
     declare creator?: number;
@@ -54,20 +63,60 @@ function init(sequelize: Sequelize) {
                 primaryKey: true,
             },
             branch_id: {
-                type: DataTypes.BIGINT().UNSIGNED,
+                type: DataTypes.INTEGER.UNSIGNED,
                 allowNull: true,
             },
-            title: {
-                type: DataTypes.STRING(40),
+            staff_id: {
+                type: DataTypes.INTEGER.UNSIGNED,
                 allowNull: true,
             },
-            description: {
-                type: DataTypes.TEXT,
+            teacher_id: {
+                type: DataTypes.INTEGER.UNSIGNED,
+                allowNull: true,
+            },
+            name: {
+                type: new DataTypes.STRING(120),
+                allowNull: true,
+            },
+            email: {
+                type: new DataTypes.STRING(120),
+                allowNull: true,
+            },
+            phone_number: {
+                type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            image: {
+                type: new DataTypes.STRING(120),
+                allowNull: true,
+            },
+            password: {
+                type: new DataTypes.STRING(100),
+                allowNull: true,
+            },
+            role: {
+                type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            type: {
+                type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            token: {
+                type: new DataTypes.STRING(100),
+                allowNull: true,
+            },
+            forget_code: {
+                type: new DataTypes.STRING(10),
+                allowNull: true,
+            },
+            user_agent: {
+                type: new DataTypes.STRING(150),
                 allowNull: true,
             },
 
             status: {
-                type: new DataTypes.ENUM('active', 'deactive'),
+                type: new DataTypes.ENUM('active', 'deactive', 'block'),
                 defaultValue: 'active',
             },
             creator: {
@@ -75,6 +124,7 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
                 defaultValue: null,
             },
+
             created_at: DataTypes.DATE,
             updated_at: DataTypes.DATE,
         },

@@ -70,6 +70,7 @@ async function update(
     });
 
     let inputs: InferCreationAttributes<typeof model> = {
+        branch_id: auth_user?.branch_id || 1,
         branch_transport_driver_id: body.branch_transport_driver_id,
         title: body.title,
         vehicle_no: body.vehicle_no,
@@ -103,7 +104,3 @@ async function update(
 }
 
 export default update;
-function save() {
-    throw new Error('Function not implemented.');
-}
-

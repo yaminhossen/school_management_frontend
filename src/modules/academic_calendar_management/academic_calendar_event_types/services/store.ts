@@ -42,8 +42,15 @@ async function store(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.AcademicCalendarEventTypesModel();
+    let user = (req as any).user;
+    let auth_user = await models.UserAdminsModel.findOne({
+        where: {
+            id: user?.id || null,
+        },
+    });
 
     let inputs: InferCreationAttributes<typeof data> = {
+        branch_id: auth_user?.branch_id || 1,
         title: body.title,
         description: body.description,
     };

@@ -8,11 +8,31 @@ module.exports = async function (fastify: FastifyInstance) {
     const controllerInstance = controller(fastify);
 
     fastify
-        .get(`${prefix}`, controllerInstance.all)
-        .get(`${prefix}/classes`, controllerInstance.all_class)
-        .get(`${prefix}/sections`, controllerInstance.class_sections)
-        .get(`${prefix}/rooms`, controllerInstance.class_rooms)
-        .get(`${prefix}/teachers`, controllerInstance.all_teacher)
+        .get(
+            `${prefix}`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all,
+        )
+        .get(
+            `${prefix}/classes`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all_class,
+        )
+        .get(
+            `${prefix}/sections`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.class_sections,
+        )
+        .get(
+            `${prefix}/rooms`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.class_rooms,
+        )
+        .get(
+            `${prefix}/teachers`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all_teacher,
+        )
         .get(`${prefix}/:id`, controllerInstance.find)
         .get(
             `${prefix}/class-routine`,
@@ -47,8 +67,16 @@ module.exports = async function (fastify: FastifyInstance) {
             `${prefix}/class-wise-subject/:id`,
             controllerInstance.class_wise_subject,
         )
-        .post(`${prefix}/store`, controllerInstance.store)
-        .post(`${prefix}/update`, controllerInstance.update)
+        .post(
+            `${prefix}/store`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.store,
+        )
+        .post(
+            `${prefix}/update`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.update,
+        )
         .post(`${prefix}/soft-delete`, controllerInstance.soft_delete)
         .post(`${prefix}/restore`, controllerInstance.restore)
         .post(`${prefix}/destroy`, controllerInstance.destroy)

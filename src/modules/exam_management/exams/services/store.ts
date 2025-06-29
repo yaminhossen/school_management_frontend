@@ -12,11 +12,6 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
 async function validate(req: Request) {
-    // await body('branch_id')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the branch_id field is required')
-    //     .run(req);
     await body('title')
         .not()
         .isEmpty()
@@ -27,11 +22,6 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the month field is required')
         .run(req);
-    // await body('description')
-    //     .not()
-    //     .isEmpty()
-    //     .withMessage('the description field is required')
-    //     .run(req);
 
     let result = await validationResult(req);
 
