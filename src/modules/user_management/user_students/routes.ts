@@ -19,6 +19,7 @@ module.exports = async function (fastify: FastifyInstance) {
         .get(`${prefix}/just-check/:id`, controllerInstance.just_check)
         .get(
             `${prefix}/children-details/:id`,
+            { preHandler: [auth_middleware] },
             controllerInstance.children_details,
         )
         .get(

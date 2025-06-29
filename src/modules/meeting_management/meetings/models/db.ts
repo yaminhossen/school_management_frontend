@@ -5,6 +5,7 @@ import {
 import * as meetings_model from './meetings_model';
 import * as branch_staffs_model from './branch_staffs_model';
 import * as meeting_agendas_model from './meeting_agendas_model';
+import * as user_admins_model from './user_admins_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -25,6 +26,7 @@ interface models {
     MeetingsModel: typeof meetings_model.DataModel;
     BranchStaffsModel: typeof branch_staffs_model.DataModel;
     MeetignAgendasModel: typeof meeting_agendas_model.DataModel;
+    UserAdminsModel: typeof user_admins_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -32,6 +34,7 @@ const db = async function (): Promise<models> {
     const MeetingsModel = meetings_model.init(sequelize);
     const BranchStaffsModel = branch_staffs_model.init(sequelize);
     const MeetignAgendasModel = meeting_agendas_model.init(sequelize);
+    const UserAdminsModel = user_admins_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -65,6 +68,7 @@ const db = async function (): Promise<models> {
         MeetingsModel,
         BranchStaffsModel,
         MeetignAgendasModel,
+        UserAdminsModel,
         // Project,
 
         sequelize,
