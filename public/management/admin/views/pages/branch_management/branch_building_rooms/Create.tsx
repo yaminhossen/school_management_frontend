@@ -69,6 +69,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                     </label>
                                     <div className="form_elements">
                                         <select name="building_id" id="">
+                                            <option value="">
+                                                Select Building
+                                            </option>
                                             {state?.building?.length &&
                                                 state.building?.map(
                                                     (i: {

@@ -34,6 +34,7 @@ type status = 'active' | 'deactive';
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
+    declare branch_id?: number;
     declare name: string;
     declare max_score: number;
 
@@ -51,6 +52,10 @@ function init(sequelize: Sequelize) {
                 type: DataTypes.INTEGER.UNSIGNED,
                 autoIncrement: true,
                 primaryKey: true,
+            },
+            branch_id: {
+                type: DataTypes.BIGINT.UNSIGNED,
+                allowNull: true,
             },
             name: {
                 type: DataTypes.STRING(100),

@@ -18,9 +18,19 @@ async function class_rooms(
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
+    let user = (req as any).user;
+    let auth_user = await models.UserAdminsModel.findOne({
+        where: {
+            id: user?.id || null,
+        },
+    });
 
     try {
-        let data = await models.BranchBuildingRoomsModel.findAll({});
+        let data = await models.BranchBuildingRoomsModel.findAll({
+            where: {
+                branch_id: auth_user?.branch_id,
+            },
+        });
 
         if (data) {
             return response(200, 'rooms found', data);

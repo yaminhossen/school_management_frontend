@@ -65,6 +65,7 @@ async function update(
     });
 
     let inputs: InferCreationAttributes<typeof model> = {
+        branch_id: auth_user?.branch_id || 1,
         name: body.name,
         max_score: body.max_score,
         creator: user?.id || null,

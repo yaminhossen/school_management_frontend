@@ -8,15 +8,27 @@ module.exports = async function (fastify: FastifyInstance) {
     const controllerInstance = controller(fastify);
 
     fastify
-        .get(`${prefix}`, controllerInstance.all)
-        .get(`${prefix}/criterias`, controllerInstance.criterias)
+        .get(
+            `${prefix}`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all,
+        )
+        .get(
+            `${prefix}/criterias`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.criterias,
+        )
         .get(`${prefix}/:id`, controllerInstance.find)
         .post(
             `${prefix}/store`,
             { preHandler: [auth_middleware] },
             controllerInstance.store,
         )
-        .post(`${prefix}/update`, controllerInstance.update)
+        .post(
+            `${prefix}/update`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.update,
+        )
         .post(`${prefix}/soft-delete`, controllerInstance.soft_delete)
         .post(`${prefix}/restore`, controllerInstance.restore)
         .post(`${prefix}/destroy`, controllerInstance.destroy)
