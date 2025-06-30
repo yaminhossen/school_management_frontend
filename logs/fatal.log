@@ -301,3 +301,16 @@
 {"level":60,"time":1751283243064,"pid":6100,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:34:03 PM","message":"target not found."}
 {"level":60,"time":1751283244687,"pid":6100,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:34:04 PM","message":"Data not found"}
 {"level":60,"time":1751283244835,"pid":6100,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:34:04 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751283300793,"pid":16588,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:35:00 PM","message":"target not found."}
+{"level":60,"time":1751283304057,"pid":16588,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:35:04 PM","message":"Data not found, please check the Cadet ID."}
+{"level":60,"time":1751283304208,"pid":16588,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:35:04 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751283338607,"pid":16588,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:35:38 PM","message":"Data not found, please check the Cadet ID."}
+{"level":60,"time":1751283338740,"pid":16588,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:35:38 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751283354767,"pid":16588,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:35:54 PM","message":"Data not found, please check the Cadet ID."}
+{"level":60,"time":1751283354869,"pid":16588,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:35:54 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751283356355,"pid":16588,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:35:56 PM","message":"Data not found, please check the Cadet ID."}
+{"level":60,"time":1751283356467,"pid":16588,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:35:56 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751283377139,"pid":16588,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:36:17 PM","message":"target not found."}
+{"level":60,"time":1751283384441,"pid":16588,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:36:24 PM","message":"Data not found, please check the Cadet ID."}
+{"level":60,"time":1751283384545,"pid":16588,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:36:24 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751283798083,"pid":16588,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:43:18 PM","message":"target not found."}
