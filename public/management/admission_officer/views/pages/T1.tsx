@@ -59,7 +59,7 @@ const T1: React.FC<Props> = (props: Props) => {
                 '/api/v1/academic-calendars/get-academic-event-by-month',
                 {
                     month: formattedDate,
-                    branch_id: 1,
+                    // branch_id: 1,
                 },
             );
             setAccademicCalander(response.data.data);

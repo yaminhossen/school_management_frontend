@@ -23,6 +23,7 @@ import * as branch_class_shifts_model from './branch_class_shifts_model';
 import * as branches_model from './branches_model';
 import * as user_parents_model from './user_parents_model';
 import * as branch_parents_mdoel from './branch_parents_model';
+import * as branch_teachers_model from './branch_teachers_model';
 import * as user_parent_informations_model from './user_parent_informations_model';
 import * as branch_class_subjects_model from './branch_class_subjects_model';
 import * as branch_class_fees_model from './branch_class_fees_model';
@@ -67,6 +68,7 @@ interface models {
     BranchClassShiftsModel: typeof branch_class_shifts_model.DataModel;
     BranchesModel: typeof branches_model.DataModel;
     UserParentsModel: typeof user_parents_model.DataModel;
+    BranchTeachersModel: typeof branch_teachers_model.DataModel;
     BranchParentsModel: typeof branch_parents_mdoel.DataModel;
     BranchClassSubjectsModel: typeof branch_class_subjects_model.DataModel;
     BranchClassFeesModel: typeof branch_class_fees_model.DataModel;
@@ -109,6 +111,7 @@ const db = async function (): Promise<models> {
     const BranchClassShiftsModel = branch_class_shifts_model.init(sequelize);
     const BranchesModel = branches_model.init(sequelize);
     const UserParentsModel = user_parents_model.init(sequelize);
+    const BranchTeachersModel = branch_teachers_model.init(sequelize);
     const BranchParentsModel = branch_parents_mdoel.init(sequelize);
     const BranchClassSubjectsModel =
         branch_class_subjects_model.init(sequelize);
@@ -291,6 +294,7 @@ const db = async function (): Promise<models> {
         AccountFeesCollectionDetailsModel,
         UserStudentParentInformationsModel,
         BranchParentsModel,
+        BranchTeachersModel,
         // Project,
 
         sequelize,

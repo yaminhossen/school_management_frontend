@@ -18,11 +18,18 @@ async function class_wise_fee_types(
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
+    let user = (req as any).user;
+    let auth_user = await models.UserAdminsModel.findOne({
+        where: {
+            id: user?.id || null,
+        },
+    });
 
     try {
         let data = await models.BranchClassFeeTypesModel.findAll({
             where: {
                 branch_class_id: params.id,
+                branch_id: auth_user?.branch_id,
             },
             // attributes: {
             //     exclude: ['password'],

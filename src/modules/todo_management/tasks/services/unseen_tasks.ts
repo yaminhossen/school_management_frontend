@@ -77,6 +77,7 @@ async function unseen_tasks(
         let data = await models.TaskUsersModel.findAll({
             where: {
                 staff_id: user?.id,
+                branch_id: auth_user?.branch_id,
                 is_seen: 'no',
                 is_complete: 'pending',
                 status: 'active',

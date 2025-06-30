@@ -11,9 +11,19 @@ async function meeting_all(
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
+    let user = (req as any).user;
+    let auth_user = await models.UserAdminsModel.findOne({
+        where: {
+            id: user?.id || null,
+        },
+    });
 
     try {
-        let agenda = await models.MeetingsModel.findAll({});
+        let agenda = await models.MeetingsModel.findAll({
+            where: {
+                branch_id: auth_user?.branch_id,
+            },
+        });
 
         if (agenda) {
             return response(200, 'meeting founded', agenda);
