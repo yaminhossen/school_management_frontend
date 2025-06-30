@@ -11,9 +11,19 @@ async function all_notice_categorys(
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
+    let user = (req as any).user;
+    let auth_user = await models.UserAdminsModel.findOne({
+        where: {
+            id: user?.id || null,
+        },
+    });
 
     try {
-        let data = await models.NoticeCategoysModel.findAll({});
+        let data = await models.NoticeCategoysModel.findAll({
+            where: {
+                branch_id: auth_user?.branch_id,
+            },
+        });
 
         if (data) {
             return response(200, 'data founded', data);

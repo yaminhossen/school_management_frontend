@@ -48,7 +48,7 @@ async function all(
 
     const whereClause: any = {
         status: show_active_data === 'true' ? 'active' : 'deactive',
-        branch_id: auth_user?.branch_id || null,
+        branch_id: auth_user?.branch_id,
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);

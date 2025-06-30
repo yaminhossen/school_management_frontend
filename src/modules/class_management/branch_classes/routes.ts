@@ -13,7 +13,11 @@ module.exports = async function (fastify: FastifyInstance) {
             { preHandler: [auth_middleware] },
             controllerInstance.all,
         )
-        .get(`${prefix}/all-class`, controllerInstance.all_class)
+        .get(
+            `${prefix}/all-class`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all_class,
+        )
         .post(
             `${prefix}/branch-class-wise-student`,
             controllerInstance.branch_class_wise_student,
