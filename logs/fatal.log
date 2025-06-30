@@ -178,3 +178,126 @@
 {"level":60,"time":1751276444565,"pid":9528,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 3:40:44 PM","message":"target not found."}
 {"level":60,"time":1751276446783,"pid":9528,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 3:40:46 PM","message":"target not found."}
 {"level":60,"time":1751276449973,"pid":9528,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 3:40:49 PM","message":"target not found."}
+{"level":60,"time":1751276669870,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 3:44:29 PM","message":"target not found."}
+{"level":60,"time":1751277987083,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:06:27 PM","message":"target not found."}
+{"level":60,"time":1751279202958,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:26:42 PM","message":"target not found."}
+{"level":60,"time":1751279207769,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:26:47 PM","message":"target not found."}
+{"level":60,"time":1751279208930,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:26:48 PM","message":"target not found."}
+{"level":60,"time":1751279219677,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:26:59 PM","message":"target not found."}
+{"level":60,"time":1751279220074,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:27:00 PM","message":"target not found."}
+{"level":60,"time":1751279225340,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:27:05 PM","message":"target not found."}
+{"level":60,"time":1751279226264,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:27:06 PM","message":"target not found."}
+{"level":60,"time":1751279227219,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:27:07 PM","message":"target not found."}
+{"level":60,"time":1751279228020,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:27:08 PM","message":"target not found."}
+{"level":60,"time":1751279236386,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:27:16 PM","message":"target not found."}
+{"level":60,"time":1751279250989,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:27:30 PM","message":"target not found."}
+{"level":60,"time":1751279283839,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:28:03 PM","message":"target not found."}
+{"level":60,"time":1751279284398,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:28:04 PM","message":"target not found."}
+{"level":60,"time":1751279303586,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:28:23 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1751279304187,"pid":11968,"hostname":"DESKTOP-9421701","file":"services\\classes.ts:48:19)","time":"6/30/2025 4:28:24 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751279320259,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:28:40 PM","message":"target not found."}
+{"level":60,"time":1751279321222,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:28:41 PM","message":"target not found."}
+{"level":60,"time":1751279333632,"pid":11968,"hostname":"DESKTOP-9421701","file":"services\\classes.ts:48:19)","time":"6/30/2025 4:28:53 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751279338027,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:28:58 PM","message":"target not found."}
+{"level":60,"time":1751279338430,"pid":11968,"hostname":"DESKTOP-9421701","file":"services\\classes.ts:48:19)","time":"6/30/2025 4:28:58 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751279419071,"pid":11968,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:30:19 PM","message":"target not found."}
+{"level":60,"time":1751279419575,"pid":11968,"hostname":"DESKTOP-9421701","file":"services\\classes.ts:48:19)","time":"6/30/2025 4:30:19 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751279522308,"pid":16936,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:32:02 PM","message":"target not found."}
+{"level":60,"time":1751279651865,"pid":16936,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:34:11 PM","message":"target not found."}
+{"level":60,"time":1751279654489,"pid":16936,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:34:14 PM","message":"target not found."}
+{"level":60,"time":1751279695275,"pid":16936,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:34:55 PM","message":"target not found."}
+{"level":60,"time":1751279820341,"pid":16936,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:37:00 PM","message":"target not found."}
+{"level":60,"time":1751279833353,"pid":16936,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:37:13 PM","message":"target not found."}
+{"level":60,"time":1751280053262,"pid":2648,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:40:53 PM","message":"target not found."}
+{"level":60,"time":1751280053951,"pid":2648,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:40:53 PM","message":"target not found."}
+{"level":60,"time":1751280100459,"pid":2648,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:41:40 PM","message":"target not found."}
+{"level":60,"time":1751280101411,"pid":2648,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:41:41 PM","message":"target not found."}
+{"level":60,"time":1751280189097,"pid":2648,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:43:09 PM","message":"target not found."}
+{"level":60,"time":1751280205123,"pid":2648,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:43:25 PM","message":"target not found."}
+{"level":60,"time":1751280206209,"pid":2648,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:43:26 PM","message":"target not found."}
+{"level":60,"time":1751280688419,"pid":16800,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:51:28 PM","message":"target not found."}
+{"level":60,"time":1751280702612,"pid":16800,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:51:42 PM","message":"target not found."}
+{"level":60,"time":1751280811936,"pid":17284,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:53:31 PM","message":"target not found."}
+{"level":60,"time":1751280825922,"pid":17284,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 4:53:45 PM","message":"target not found."}
+{"level":60,"time":1751280850111,"pid":17284,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"6/30/2025 4:54:10 PM","message":"data not found"}
+{"level":60,"time":1751280850243,"pid":17284,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:145:19)","time":"6/30/2025 4:54:10 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751280853165,"pid":17284,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:49:19)","time":"6/30/2025 4:54:13 PM","message":"data not found"}
+{"level":60,"time":1751280853274,"pid":17284,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:145:19)","time":"6/30/2025 4:54:13 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751281261348,"pid":18152,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:01:01 PM","message":"target not found."}
+{"level":60,"time":1751281593871,"pid":18152,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:06:33 PM","message":"target not found."}
+{"level":60,"time":1751281594615,"pid":18152,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:06:34 PM","message":"target not found."}
+{"level":60,"time":1751281597387,"pid":18152,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:06:37 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751281654376,"pid":18152,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:07:34 PM","message":"target not found."}
+{"level":60,"time":1751281654932,"pid":18152,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:07:34 PM","message":"target not found."}
+{"level":60,"time":1751281655661,"pid":18152,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:07:35 PM","message":"target not found."}
+{"level":60,"time":1751281656351,"pid":18152,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:07:36 PM","message":"target not found."}
+{"level":60,"time":1751281668156,"pid":18152,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:07:48 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751281777037,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:09:37 PM","message":"target not found."}
+{"level":60,"time":1751281783298,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:09:43 PM","message":"data not found"}
+{"level":60,"time":1751281783437,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:09:43 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751281788481,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:09:48 PM","message":"target not found."}
+{"level":60,"time":1751281791340,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:09:51 PM","message":"data not found"}
+{"level":60,"time":1751281791463,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:09:51 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751281963875,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:12:43 PM","message":"target not found."}
+{"level":60,"time":1751281967407,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:12:47 PM","message":"data not found"}
+{"level":60,"time":1751281967566,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:12:47 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751281995512,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:13:15 PM","message":"target not found."}
+{"level":60,"time":1751282273982,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:17:53 PM","message":"target not found."}
+{"level":60,"time":1751282275000,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:17:55 PM","message":"target not found."}
+{"level":60,"time":1751282278304,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:17:58 PM","message":"data not found"}
+{"level":60,"time":1751282278408,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:17:58 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751282289756,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:18:09 PM","message":"data not found"}
+{"level":60,"time":1751282289855,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:18:09 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751282306265,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:18:26 PM","message":"target not found."}
+{"level":60,"time":1751282314307,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:18:34 PM","message":"data not found"}
+{"level":60,"time":1751282314412,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:18:34 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751282381900,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:19:41 PM","message":"target not found."}
+{"level":60,"time":1751282383214,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:19:43 PM","message":"target not found."}
+{"level":60,"time":1751282384075,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:19:44 PM","message":"target not found."}
+{"level":60,"time":1751282394817,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:19:54 PM","message":"data not found"}
+{"level":60,"time":1751282394928,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:19:54 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751282405095,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:20:05 PM","message":"data not found"}
+{"level":60,"time":1751282405233,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:20:05 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751282430569,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:20:30 PM","message":"target not found."}
+{"level":60,"time":1751282433691,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:20:33 PM","message":"data not found"}
+{"level":60,"time":1751282433789,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:20:33 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751282438910,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:20:38 PM","message":"data not found"}
+{"level":60,"time":1751282439034,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:20:39 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751282546854,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:22:26 PM","message":"target not found."}
+{"level":60,"time":1751282551008,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:22:31 PM","message":"data not found"}
+{"level":60,"time":1751282551117,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:22:31 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751282656424,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:24:16 PM","message":"target not found."}
+{"level":60,"time":1751282659714,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:24:19 PM","message":"target not found."}
+{"level":60,"time":1751282663310,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:24:23 PM","message":"data not found"}
+{"level":60,"time":1751282663404,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:24:23 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751282871577,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:27:51 PM","message":"target not found."}
+{"level":60,"time":1751282872378,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:27:52 PM","message":"target not found."}
+{"level":60,"time":1751282873048,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:27:53 PM","message":"target not found."}
+{"level":60,"time":1751282876636,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:27:56 PM","message":"data not found"}
+{"level":60,"time":1751282876730,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:27:56 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751282895180,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:28:15 PM","message":"target not found."}
+{"level":60,"time":1751282902621,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:28:22 PM","message":"data not found"}
+{"level":60,"time":1751282902717,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:28:22 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751282911762,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:28:31 PM","message":"data not found"}
+{"level":60,"time":1751282911852,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:28:31 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751282912960,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:28:32 PM","message":"data not found"}
+{"level":60,"time":1751282913051,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:28:33 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751282913443,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:28:33 PM","message":"data not found"}
+{"level":60,"time":1751282913534,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:28:33 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751282913891,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:28:33 PM","message":"data not found"}
+{"level":60,"time":1751282913983,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:28:33 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751282934328,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:28:54 PM","message":"target not found."}
+{"level":60,"time":1751283070235,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:31:10 PM","message":"target not found."}
+{"level":60,"time":1751283086906,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:31:26 PM","message":"target not found."}
+{"level":60,"time":1751283092150,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:31:32 PM","message":"data not found"}
+{"level":60,"time":1751283092245,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:31:32 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751283108372,"pid":7720,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:31:48 PM","message":"target not found."}
+{"level":60,"time":1751283110395,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:31:50 PM","message":"data not found"}
+{"level":60,"time":1751283110525,"pid":7720,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:31:50 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751283180563,"pid":15032,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:33:00 PM","message":"target not found."}
+{"level":60,"time":1751283181898,"pid":15032,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:33:01 PM","message":"target not found."}
+{"level":60,"time":1751283185368,"pid":15032,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:33:05 PM","message":"data not found"}
+{"level":60,"time":1751283185487,"pid":15032,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:33:05 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1751283243064,"pid":6100,"hostname":"DESKTOP-9421701","file":"","time":"6/30/2025 5:34:03 PM","message":"target not found."}
+{"level":60,"time":1751283244687,"pid":6100,"hostname":"DESKTOP-9421701","file":"services\\student_class.ts:55:19)","time":"6/30/2025 5:34:04 PM","message":"Data not found"}
+{"level":60,"time":1751283244835,"pid":6100,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_second.ts:146:19)","time":"6/30/2025 5:34:04 PM","message":"WHERE parameter \"branch_class_id\" has invalid \"undefined\" value"}

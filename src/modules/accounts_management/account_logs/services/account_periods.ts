@@ -15,9 +15,18 @@ async function account_periods(
     let params = req.params as any;
     let user_id = (req as any).user?.id;
     console.log('period user', user_id);
+    let user = (req as any).user;
+    let auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
 
     try {
-        let data = await accountPeriodsModel.findAll({});
+        let data = await accountPeriodsModel.findAll({ where: {
+            branch_id: auth_user?.branch_id,
+            status: 'active',
+        }});
 
         if (data) {
             return response(200, 'data founded', data);

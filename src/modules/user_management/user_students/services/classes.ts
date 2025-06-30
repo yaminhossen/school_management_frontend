@@ -20,12 +20,22 @@ async function classes(
     let classStudentsModel = models.BranchClassStudentsModel;
     let params = req.params as any;
     let user_id = (req as any).user?.id;
+    
     let user = (req as any).user;
-    let auth_user = await models.UserAdminsModel.findOne({
-        where: {
-            id: user?.id || null,
-        },
-    });
+    let auth_user;
+    if(user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });            
+    } else{
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
     console.log('user', user_id);
 
     try {

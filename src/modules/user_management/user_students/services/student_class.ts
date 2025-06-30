@@ -20,13 +20,19 @@ async function student_class(
     let classFeessModel = models.BranchClassFeesModel;
     let params = req.params as any;
     let user_id = (req as any).user?.id;
-    console.log('user1', user_id);
-    console.log('user2', params);
+    let user = (req as any).user;
+    let auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
 
     try {
         let data = await informationsModel.findOne({
             where: {
                 student_id: params.id,
+                branch_id: auth_user?.branch_id,
+                status: 'active',
             },
             include: [
                 {
@@ -46,7 +52,7 @@ async function student_class(
         if (data) {
             return response(200, 'data created', data);
         } else {
-            throw new custom_error('not found', 404, 'data not found');
+            throw new custom_error('not found', 404, 'Data not found, please check the Cadet ID.');
         }
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.params);

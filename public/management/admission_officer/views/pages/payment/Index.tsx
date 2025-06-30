@@ -49,7 +49,7 @@ export interface Props {}
 let convertamount = (window as any).convertAmount;
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    const [error2, setError2] = useState(null);
+    const [error2, setError2] = useState('');
     const [data, setData] = useState('');
     const [accounts, setAccounts] = useState<Accountinfo[]>([]);
     const [categories, setCategories] = useState<Categoryinfo[]>([]);
@@ -137,6 +137,7 @@ const Index: React.FC<Props> = (props: Props) => {
                 `/api/v1/user-students/student-class/${id}`,
             );
             setClass(response.data.data);
+            setError2('found');
         } catch (error) {
             setError2(error.response?.data?.message);
             setClass([]);
@@ -144,6 +145,8 @@ const Index: React.FC<Props> = (props: Props) => {
             setFeesTypes2([]);
         }
     };
+    console.log('lksdjfldsjfldsjfkldsjfldsjlkjdsklfj', error2);
+    
     const fetchTypes = async (id: string) => {
         try {
             const response2 = await axios.get(
@@ -299,7 +302,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </div>
                                 <div className="d-flex">
                                     <div className="form-group form-vertical">
-                                        <label>Student Id</label>
+                                        <label>Cadet Id</label>
                                         <div className="form_elements">
                                             <input
                                                 type="text"
@@ -347,6 +350,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 name="account_category_id"
                                                 id=""
                                             >
+                                                <option>Select Category</option>
+                                                {/* Map through categories and create options */}
                                                 {categories?.length &&
                                                     categories?.map(
                                                         (i: {
@@ -368,6 +373,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                         <label>Account</label>
                                         <div className="form_elements">
                                             <select name="account_id" id="">
+                                                <option>Select Account</option>
+                                                {/* Map through accounts and create options */}
                                                 {accounts?.length &&
                                                     accounts?.map(
                                                         (i: {
@@ -392,6 +399,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 name="account_period_id"
                                                 id=""
                                             >
+                                                <option>
+                                                    Select Period
+                                                </option>
+                                                {/* Map through periods and create options */}
                                                 {periods?.length &&
                                                     periods?.map(
                                                         (i: {
@@ -416,7 +427,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="data_list">
+                        {
+    error2 === 'found' ? (
+        
+        <div className="data_list">
                             <div className="table_responsive  custom_scroll">
                                 <table className="mb-4">
                                     <thead>
@@ -619,7 +633,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                             </td>
                                             <td>
                                                 {totalPayable}{' '}
-                                                {/* Use totalPayable for the Payable column */}
                                                 <input
                                                     type="hidden"
                                                     name="total_payable"
@@ -646,6 +659,13 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </table>
                             </div>
                         </div>
+    ) : (
+        <div className="alert alert-generic">
+            {error2}
+        </div>
+    )
+}
+                        
                         {totalAmount3 !== 0 && (
                             <div className="student_form mt-4">
                                 <div className="full_width">
