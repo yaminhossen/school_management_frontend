@@ -58,11 +58,18 @@ async function staff_pending(
     let query_param = req.query as any;
 
     let user = (req as any).user;
-    let auth_user = await models.BranchTeachersModel.findOne({
+    let auth_user = await models.BranchStaffsModel.findOne({
         where: {
-            user_teacher_id: (req as any).user?.id || null,
+            user_staff_id: user?.id || null,
         },
     });
+
+    // let user = (req as any).user;
+    // let auth_user = await models.BranchTeachersModel.findOne({
+    //     where: {
+    //         user_teacher_id: (req as any).user?.id || null,
+    //     },
+    // });
 
     console.log('teacher pending user', user);
 
@@ -93,6 +100,7 @@ async function staff_pending(
         status: show_active_data == 'true' ? 'active' : 'deactive',
         is_complete: 'pending',
         staff_id: user?.id,
+        branch_id: auth_user?.branch_id,
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);

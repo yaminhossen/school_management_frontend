@@ -65,6 +65,12 @@ async function admission_officer_complete(
     let paginate = parseInt((req.query as any).paginate) || 10;
     let select_fields: string[] = [];
     let exclude_fields: string[] = ['password'];
+    let user = (req as any).user;
+    let auth_user = await models.BranchStaffsModel.findOne({
+        where: {
+            user_staff_id: user?.id || null,
+        },
+    });
 
     if (query_param.select_fields) {
         select_fields = query_param.select_fields.replace(/\s/g, '').split(',');
@@ -84,6 +90,7 @@ async function admission_officer_complete(
         status: show_active_data === 'true' ? 'active' : 'deactive',
         role: 'admission-officer',
         is_complete: 'completed',
+        branch_id: auth_user?.branch_id,
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);
@@ -99,29 +106,20 @@ async function admission_officer_complete(
         whereClause.date = {
             [Op.between]: [query_param.start_date, formattedEndDate],
         };
-    } else {
-        // Get the latest available date from the DB
-        const lastRecord = await models.MeetingAgendasModel.findOne({
-            attributes: ['date'],
-            order: [['date', 'DESC']],
-        });
-        console.log(
-            'lastRecord',
-            new Date(lastRecord?.date || today).toISOString().split('T')[0],
-        );
-        const latestDate = new Date(lastRecord?.date || today);
-        latestDate.setDate(latestDate.getDate() + 1); // Increment by one day
-        const formattedlatestDate = latestDate.toISOString().split('T')[0];
-
-        // const latestDate = lastRecord?.date
-        //     ? new Date(lastRecord.date).toISOString().split('T')[0]
-        //     : today; // fallback if no record
-
-        // Set where clause: from latest record to today
-        whereClause.date = {
-            [Op.between]: [today, formattedlatestDate],
-        };
     }
+    // } else {
+    //     // Get the latest available date from the DB
+    //     const lastRecord = await models.MeetingAgendasModel.findOne({
+    //         attributes: ['date'],
+    //         order: [['date', 'DESC']],
+    //     });
+    //     const latestDate = new Date(lastRecord?.date || today);
+    //     latestDate.setDate(latestDate.getDate() + 1);
+    //     const formattedlatestDate = latestDate.toISOString().split('T')[0];
+    //     whereClause.date = {
+    //         [Op.between]: [today, formattedlatestDate],
+    //     };
+    // }
 
     let query: FindAndCountOptions = {
         // order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],

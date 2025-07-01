@@ -71,11 +71,11 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 'Not found'}
                                         </td>
                                     </tr>
-                                    <tr>
+                                    {/* <tr>
                                         <td>Is completed</td>
                                         <td>:</td>
                                         <td>{state.item2.is_complete}</td>
-                                    </tr>
+                                    </tr> */}
                                     <tr>
                                         <td>Description</td>
                                         <td>:</td>

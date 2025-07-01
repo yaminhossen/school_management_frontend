@@ -35,6 +35,32 @@ async function teachers_pending(
     //     leave_status: 'pending',
     // };
     let user = (req as any).user;
+    let auth_user;
+    if (user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else if (user.user_type === 'teacher') {
+        auth_user = await models.BranchTeachersModel.findOne({
+            where: {
+                user_teacher_id: user?.id || null,
+            },
+        });
+    } else if (user.user_type === 'student') {
+        auth_user = await models.UserStudentInformationsModel.findOne({
+            where: {
+                user_student_id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
 
     const whereClause: any = {
         status: show_active_data === 'true' ? 'active' : 'deactive',
@@ -43,6 +69,7 @@ async function teachers_pending(
         ...(user?.user_type !== 'teacher' &&
             user?.user_type !== 'student' && { branch_staff_id: user?.id }),
         leave_status: 'pending',
+        branch_id: auth_user?.branch_id,
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);

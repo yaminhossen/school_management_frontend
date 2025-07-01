@@ -84,12 +84,46 @@ async function notices(
             'notice_for',
         ];
     }
+    let user = (req as any).user;
+    let auth_user;
+    if (user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else if (user.user_type === 'teacher') {
+        auth_user = await models.BranchTeachersModel.findOne({
+            where: {
+                user_teacher_id: user?.id || null,
+            },
+        });
+    } else if (user.user_type === 'student') {
+        auth_user = await models.UserStudentInfomationsModel.findOne({
+            where: {
+                user_student_id: user?.id || null,
+            },
+        });
+    } else if (user.user_type === 'parent') {
+        auth_user = await models.BranchParentsModel.findOne({
+            where: {
+                user_parent_id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
 
     const whereClause: any = {
         status: show_active_data === 'true' ? 'active' : 'deactive',
         notice_for: {
             [Sequelize.Op.in]: [params.user, 'all'],
         },
+        branch_id: auth_user?.branch_id,
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);

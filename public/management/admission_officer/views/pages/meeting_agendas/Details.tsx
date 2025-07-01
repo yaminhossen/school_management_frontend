@@ -71,22 +71,30 @@ const Details: React.FC<Props> = (props: Props) => {
                                             {state.item.agenda?.description}
                                         </td>
                                     </tr>
-                                    {state.item.agenda?.meeting_summary ? (
-                                        <tr>
-                                            <td>Meeting summary</td>
-                                            <td>:</td>
-                                            <td className="details_descrtiption2">
-                                                {
-                                                    state.item.agenda
-                                                        ?.meeting_summary
-                                                }
-                                            </td>
-                                        </tr>
-                                    ) : (
-                                        <p className="my-4 text-gray-500">
-                                            This meeting not completed.
-                                        </p>
-                                    )}
+                                    {state.item.agenda?.meeting_summary !==
+                                    null ? (
+                                            state.item.agenda.meeting_summary.trim() !==
+                                        '' ? (
+                                            <tr>
+                                                        <td>Meeting summary</td>
+                                                        <td>:</td>
+                                                <td className="details_descrtiption2">
+                                                            {
+                                                        state.item.agenda
+                                                            .meeting_summary
+                                                    }
+                                                        </td>
+                                                    </tr>
+                                        ) : (
+                                                    <p className="my-4 text-gray-500">
+                                                This meeting has no summary.
+                                            </p>
+                                                )
+                                        ) : (
+                                            <p className="my-4 text-gray-500">
+                                            This meeting is not completed.
+                                            </p>
+                                        )}
                                 </tbody>
                             </table>
                         </div>

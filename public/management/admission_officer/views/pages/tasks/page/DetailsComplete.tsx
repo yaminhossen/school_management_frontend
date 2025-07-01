@@ -72,11 +72,11 @@ const DetailsComplete: React.FC<Props> = (props: Props) => {
                                             )}
                                         </td>
                                     </tr>
-                                    <tr>
+                                    {/* <tr>
                                         <td>Is completed</td>
                                         <td>:</td>
                                         <td>{state.item2.is_complete}</td>
-                                    </tr>
+                                    </tr> */}
                                 </tbody>
                             </table>
                         </div>

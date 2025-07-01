@@ -58,9 +58,9 @@ async function staff_complete(
     let query_param = req.query as any;
 
     let user = (req as any).user;
-    let auth_user = await models.BranchTeachersModel.findOne({
+    let auth_user = await models.BranchStaffsModel.findOne({
         where: {
-            user_teacher_id: (req as any).user?.id || null,
+            user_staff_id: user?.id || null,
         },
     });
 
@@ -91,17 +91,12 @@ async function staff_complete(
         status: show_active_data == 'true' ? 'active' : 'deactive',
         is_complete: 'completed',
         staff_id: user?.id,
+        branch_id: auth_user?.branch_id,
     };
-    const today = moment().format('YYYY-MM-DD');
-    console.log('todya', today);
-
-    let month1 = query_param?.start_date || today; // Start date
-    let month2 = query_param?.end_date || today;
     if (query_param?.start_date && query_param?.end_date) {
         const endDate = new Date(query_param.end_date);
         endDate.setDate(endDate.getDate() + 1); // Increment by one day
         const formattedEndDate = endDate.toISOString().split('T')[0];
-        console.log('month2', formattedEndDate);
 
         whereClause.date = {
             [Op.between]: [query_param.start_date, formattedEndDate],
@@ -110,19 +105,12 @@ async function staff_complete(
     let query: FindAndCountOptions = {
         order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
         where: whereClause,
-        // where: {
-        //     status: show_active_data == 'true' ? 'active' : 'deactive',
-        //     is_complete: 'completed',
-        //     teacher_id: user?.id,
-        // },
-        // include: [models.Project],
         include: [
             {
                 model: models.TasksModel,
                 as: 'tasks',
                 where: {
                     status: 'active',
-                    // is_complete: 'completed',
                 },
             },
         ],
@@ -137,18 +125,11 @@ async function staff_complete(
         query.where = {
             ...query.where,
             [Op.or]: [
-                // { name: { [Op.like]: `%${search_key}%` } },
-                // { preferred_name: { [Op.like]: `%${search_key}%` } },
-                // { status: { [Op.like]: `%${search_key}%` } },
-                // { id: { [Op.like]: `%${search_key}%` } },
                 { '$tasks.title$': { [Op.like]: `%${search_key}%` } },
                 { '$tasks.description$': { [Op.like]: `%${search_key}%` } },
             ],
         };
     }
-    console.log('teacher pending ok');
-    console.log('teacher pending auth', auth_user);
-    console.log('teacher pending user', user);
 
     try {
         let data = await (fastify_instance as anyObject).paginate(

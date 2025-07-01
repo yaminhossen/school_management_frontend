@@ -93,11 +93,11 @@ const Complete: React.FC<Props> = (props: Props) => {
                                             col_name={`meeting_type`}
                                             sort={false}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Meeting Link`}
                                             col_name={`meeting link`}
                                             sort={false}
-                                        />
+                                        /> */}
                                         {/* <TableHeading
                                             label={`Is Complete`}
                                             col_name={`is_complete`}
@@ -167,7 +167,7 @@ const Complete: React.FC<Props> = (props: Props) => {
                                                         <td>
                                                             {i.meeting_type}
                                                         </td>
-                                                        <td>
+                                                        {/* <td>
                                                             {i.meeting_link ? (
                                                                 moment(
                                                                     i.date,
@@ -206,29 +206,7 @@ const Complete: React.FC<Props> = (props: Props) => {
                                                             ) : (
                                                                 'Offline meeting'
                                                             )}
-                                                        </td>
-
-                                                        {/* <td>
-                                                        {i.meeting_link ? (
-                                                            <a
-                                                                href={
-                                                                    i.meeting_link
-                                                                }
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                            >
-                                                                {moment(
-                                                                    i.date,
-                                                                ).format(
-                                                                    'YYYY-MM-DD',
-                                                                ) == today
-                                                                    ? i.meeting_link
-                                                                    : 'have more days'}
-                                                            </a>
-                                                        ) : (
-                                                            'Offline meeting'
-                                                        )}
-                                                    </td> */}
+                                                        </td> */}
                                                         <td>
                                                             <Link
                                                                 // to="/students/single/student/"

@@ -65,6 +65,12 @@ async function admission_officer_all(
     let paginate = parseInt((req.query as any).paginate) || 10;
     let select_fields: string[] = [];
     let exclude_fields: string[] = ['password'];
+    let user = (req as any).user;
+    let auth_user = await models.BranchStaffsModel.findOne({
+        where: {
+            user_staff_id: user?.id || null,
+        },
+    });
 
     if (query_param.select_fields) {
         select_fields = query_param.select_fields.replace(/\s/g, '').split(',');
@@ -84,6 +90,7 @@ async function admission_officer_all(
         status: show_active_data === 'true' ? 'active' : 'deactive',
         role: 'admission-officer',
         is_complete: 'pending',
+        branch_id: auth_user?.branch_id,
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);
@@ -105,10 +112,7 @@ async function admission_officer_all(
             attributes: ['date'],
             order: [['date', 'DESC']],
         });
-        console.log(
-            'lastRecord',
-            new Date(lastRecord?.date || today).toISOString().split('T')[0],
-        );
+
         const latestDate = new Date(lastRecord?.date || today);
         latestDate.setDate(latestDate.getDate() + 1); // Increment by one day
         const formattedlatestDate = latestDate.toISOString().split('T')[0];
