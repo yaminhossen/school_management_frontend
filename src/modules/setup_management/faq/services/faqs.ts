@@ -11,12 +11,27 @@ async function faqs(
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
+    let user = (req as any).user;
+    let auth_user;
+    if (user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else if (user.user_type === 'parent') {
+        auth_user = await models.BranchParentsModel.findOne({
+            where: {
+                user_parent_id: user?.id || null,
+            },
+        });
+    }
 
     try {
         let data = await models.FaqsModel.findAll({
-            // where: {
-            //     id: params.id,
-            // },
+            where: {
+                branch_id: auth_user?.branch_id,
+            },
             attributes: {
                 exclude: ['password'],
             },

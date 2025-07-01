@@ -73,3 +73,6 @@
 {"level":60,"time":1751371361636,"pid":6324,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/policies/all"}
 {"level":60,"time":1751371550949,"pid":2912,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/contact-supports/all"}
 {"level":60,"time":1751371552784,"pid":2912,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/contact-supports/all"}
+{"level":60,"time":1751373570154,"pid":15500,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/faqs/all"}
+{"level":60,"time":1751373571085,"pid":15500,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/faqs/all"}
+{"level":60,"time":1751373577414,"pid":15500,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/faqs/all"}
