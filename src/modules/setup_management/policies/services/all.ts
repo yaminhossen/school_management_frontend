@@ -65,12 +65,29 @@ async function all(
     let paginate = parseInt((req.query as any).paginate) || 10;
     let select_fields: string[] = [];
     let exclude_fields: string[] = ['password'];
+
     let user = (req as any).user;
-    let auth_user = await models.UserAdminsModel.findOne({
-        where: {
-            id: user?.id || null,
-        },
-    });
+    let auth_user;
+    if (user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else if (user.user_type === 'parent') {
+        auth_user = await models.BranchParentsModel.findOne({
+            where: {
+                user_parent_id: user?.id || null,
+            },
+        });
+    }
+    //  else {
+    //     auth_user = await models.BranchStaffsModel.findOne({
+    //         where: {
+    //             user_staff_id: user?.id || null,
+    //         },
+    //     });
+    // }
 
     if (query_param.select_fields) {
         select_fields = query_param.select_fields.replace(/\s/g, '').split(',');

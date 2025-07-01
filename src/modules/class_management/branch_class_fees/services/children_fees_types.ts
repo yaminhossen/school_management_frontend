@@ -18,6 +18,7 @@ async function details(
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
+    let user = (req as any).user;
 
     try {
         let data = await models.BranchClassFeesModel.findAll({
