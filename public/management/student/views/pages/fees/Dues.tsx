@@ -27,6 +27,7 @@ const Dues: React.FC<Props> = (props: Props) => {
     };
 
     async function initdependancy() {
+        await new Promise((resolve) => setTimeout(resolve, 200));
         await (fetchTypes() as any);
     }
 
