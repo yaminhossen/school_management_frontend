@@ -24,11 +24,14 @@ const Details: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
+    async function initdependancy() {
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        await (fetchData() as any);
+    }
 
     useEffect(() => {
-        fetchData();
+        initdependancy();
     }, []);
-    console.log(data);
 
     return (
         <div className="admin_dashboard">

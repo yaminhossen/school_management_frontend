@@ -16,29 +16,20 @@ async function fees_categories_one(
     let accountFeesCollectionDetailsModel =
         models.AccountFeesCollectionDetailsModel;
     let informationsModel = models.UserStudentInformationsModel;
-    let studentsModel = models.UserStudentsModel;
     let classFeesTypesModel = models.BranchClassFeeTypesModel;
-    let classesModel = models.BranchClassesModel;
     let classFeessModel = models.BranchClassFeesModel;
     let params = req.params as any;
     let user = (req as any).user;
-    console.log('user params', params);
-    console.log('user params', user);
-    console.log('today month', moment().format('MMMM'));
 
     try {
         let student_data = await informationsModel.findOne({
             where: {
-                [Op.or]: [
-                    // { user_student_id: user?.id },
-                    { user_student_id: params?.id || 0 },
-                ],
+                [Op.or]: [{ user_student_id: params?.id || 0 }],
             },
         });
         console.log('studnet dta', student_data);
         let data = await classFeessModel.findAll({
             where: {
-                // branch_class_id: params.class,
                 branch_class_id: student_data?.s_class,
             },
             include: [

@@ -16,15 +16,10 @@ async function fees_categories_third(
     let accountFeesCollectionDetailsModel =
         models.AccountFeesCollectionDetailsModel;
     let informationsModel = models.UserStudentInformationsModel;
-    let studentsModel = models.UserStudentsModel;
     let classFeesTypesModel = models.BranchClassFeeTypesModel;
-    let classesModel = models.BranchClassesModel;
     let classFeessModel = models.BranchClassFeesModel;
     let params = req.params as any;
     let user = (req as any).user;
-    console.log('user params', params);
-    console.log('user params', user);
-    console.log('today month', moment().format('MMMM'));
 
     try {
         let student_data = await informationsModel.findOne({

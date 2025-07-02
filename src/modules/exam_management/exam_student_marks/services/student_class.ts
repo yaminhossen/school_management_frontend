@@ -10,13 +10,6 @@ async function student_class(
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
-    let branchClassSubjectsModel = models.BranchClassSubjectsModel;
-    // let branchClassRoutinesModel = models.BranchClassRoutinesModel;
-    // let branchClassRoutineDayTimesModel =
-    //     models.BranchClassRoutineDayTimesModel;
-    // let buildingRoomsModel = models.BranchBuildingRoomsModel;
-    // let hallGuardPlansModel = models.ExamGuardPlansModel;
-    let examsModel = models.ExamsModel;
     let examMarksModel = models.ExamStudentMarksModel;
     let branchClassesModel = models.BranchClassesModel;
     let params = req.params as any;

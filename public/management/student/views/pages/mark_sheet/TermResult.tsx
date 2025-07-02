@@ -214,9 +214,7 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td>
-                                                                Student's ID
-                                                            </td>
+                                                            <td>Cadet ID</td>
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
                                                                 {

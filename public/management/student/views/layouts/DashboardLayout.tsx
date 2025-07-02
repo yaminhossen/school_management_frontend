@@ -39,6 +39,7 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
     //     fetchData();
     // }, []);
     async function initdependancy() {
+        // await new Promise((resolve) => setTimeout(resolve, 200));
         await (fetchData() as any);
         // await (fetchTypes() as any);
     }

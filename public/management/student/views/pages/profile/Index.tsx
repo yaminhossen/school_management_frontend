@@ -21,10 +21,18 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
+    async function initdependancy() {
+        await new Promise((resolve) => setTimeout(resolve, 200));
+        await (fetchData() as any);
+    }
 
     useEffect(() => {
-        fetchData();
+        initdependancy();
     }, []);
+    // useEffect(() => {
+    //     await new Promise((resolve) => setTimeout(resolve, 500));
+    //     fetchData();
+    // }, []);
 
     // console.log('newdata from single', data);
 
