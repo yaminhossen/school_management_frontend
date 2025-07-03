@@ -78,7 +78,7 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Date`}
                                             col_name={`date`}
-                                            sort={true}
+                                            sort={false}
                                         />
                                         <TableHeading
                                             label={`Time`}
@@ -107,37 +107,34 @@ const All: React.FC<Props> = (props: Props) => {
                                         />
                                     </tr>
                                 </thead>
-                                {(state.all as any)?.data?.length ? (
-                                    <tbody id="all_list">
-                                        {/* {(state.all as any)?.data?.map( */}
-                                        {(state.all as any)?.data?.map(
-                                            (i: { [key: string]: any }) => {
-                                                return (
-                                                    <tr
-                                                        key={i.id}
-                                                        className={`table_rows table_row_${i.id}`}
-                                                    >
-                                                        {/* <td>
+                                <tbody id="all_list">
+                                    {/* {(state.all as any)?.data?.map( */}
+                                    {(state.all as any)?.data?.map(
+                                        (i: { [key: string]: any }) => {
+                                            return (
+                                                <tr
+                                                    key={i.id}
+                                                    className={`table_rows table_row_${i.id}`}
+                                                >
+                                                    {/* <td>
                                                         <TableRowAction
                                                             item={i}
                                                         />
                                                     </td> */}
-                                                        <td>
-                                                            <SelectItem
-                                                                item={i}
-                                                            />
-                                                        </td>
-                                                        <td>
-                                                            <span
-                                                            // className="quick_view_trigger"
+                                                    <td>
+                                                        <SelectItem item={i} />
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            className="quick_view_trigger"
                                                             // onClick={() =>
                                                             //     quick_view(i)
                                                             // }
-                                                            >
-                                                                {i.id}
-                                                            </span>
-                                                        </td>
-                                                        {/* <td>
+                                                        >
+                                                            {i.id}
+                                                        </span>
+                                                    </td>
+                                                    {/* <td>
                                                     <img
                                                         src="/assets/dashboard/images/avatar.png"
                                                         alt=""
@@ -146,66 +143,61 @@ const All: React.FC<Props> = (props: Props) => {
                                                         }}
                                                     />
                                                 </td> */}
-                                                        <td>{i.title}</td>
-                                                        <td>{i.description}</td>
-                                                        <td>
-                                                            {moment(
+                                                    <td>{i.title}</td>
+                                                    <td>{i.description}</td>
+                                                    <td>
+                                                        {moment(i.date).format(
+                                                            'YYYY-MM-DD',
+                                                        )}
+                                                    </td>
+                                                    <td>
+                                                        {moment(
+                                                            i.time,
+                                                            'HH:mm:ss',
+                                                        ).format('hh:mm A')}
+                                                    </td>
+                                                    <td>{i.meeting_type}</td>
+                                                    <td>
+                                                        {i.meeting_link ? (
+                                                            moment(
                                                                 i.date,
                                                             ).format(
                                                                 'YYYY-MM-DD',
-                                                            )}
-                                                        </td>
-                                                        <td>
-                                                            {moment(
-                                                                i.time,
-                                                                'HH:mm:ss',
-                                                            ).format('hh:mm A')}
-                                                        </td>
-                                                        <td>
-                                                            {i.meeting_type}
-                                                        </td>
-                                                        <td>
-                                                            {i.meeting_link ? (
+                                                            ) === today &&
+                                                            moment().isBetween(
                                                                 moment(
-                                                                    i.date,
-                                                                ).format(
-                                                                    'YYYY-MM-DD',
-                                                                ) === today &&
-                                                                moment().isBetween(
-                                                                    moment(
-                                                                        `${i.date} ${i.time}`,
-                                                                        'YYYY-MM-DD HH:mm:ss',
-                                                                    ).subtract(
-                                                                        10,
-                                                                        'minutes',
-                                                                    ),
-                                                                    moment(
-                                                                        `${i.date} ${i.time}`,
-                                                                        'YYYY-MM-DD HH:mm:ss',
-                                                                    ).add(
-                                                                        4,
-                                                                        'hour',
-                                                                    ),
-                                                                ) ? (
-                                                                    <a
-                                                                            href={
-                                                                                i.meeting_link
-                                                                        }
-                                                                            target="_blank"
-                                                                            rel="noopener noreferrer"
-                                                                    >
-                                                                        Click
-                                                                        Here
+                                                                    `${i.date} ${i.time}`,
+                                                                    'YYYY-MM-DD HH:mm:ss',
+                                                                ).subtract(
+                                                                    10,
+                                                                    'minutes',
+                                                                ),
+                                                                moment(
+                                                                    `${i.date} ${i.time}`,
+                                                                    'YYYY-MM-DD HH:mm:ss',
+                                                                ).add(
+                                                                    4,
+                                                                    'hour',
+                                                                ),
+                                                            ) ? (
+                                                                <a
+                                                                    href={
+                                                                        i.meeting_link
+                                                                    }
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                >
+                                                                    Click Here
                                                                     </a>
-                                                                    ) : (
-                                                                    'Link active 10 mins before on meeting times'
-                                                                )
                                                             ) : (
-                                                                'Offline meeting'
-                                                            )}
-                                                        </td>
+                                                                'Link active 10 mins before on meeting times'
+                                                            )
+                                                        ) : (
+                                                            'Offline meeting'
+                                                        )}
+                                                    </td>
 
-                                                        {/* <td>
+                                                    {/* <td>
                                                         {i.meeting_link ? (
                                                             <a
                                                                 href={
@@ -226,37 +218,19 @@ const All: React.FC<Props> = (props: Props) => {
                                                             'Offline meeting'
                                                         )}
                                                     </td> */}
-                                                        <td>
-                                                            <Link
-                                                                // to="/students/single/student/"
-                                                                to={`/${setup.route_prefix}/details/${i.id}`}
-                                                                className="btn btn-sm  btn-outline-info ml-2"
-                                                                type="submit"
-                                                            >
-                                                                Show
-                                                            </Link>
-                                                        </td>
-                                                    </tr>
-                                                );
-                                            },
-                                        )}
-                                    </tbody>
-                                ) : (
-                                    <tbody>
-                                        <tr>
-                                            <td colSpan={10}>
-                                                <div
-                                                    style={{
-                                                        fontSize: '24px',
-                                                    }}
-                                                    className="not_found f-size-4 m-4"
-                                                >
-                                                    No data found
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                )}
+                                                    <td>
+                                                        <Link
+                                                            // to="/students/single/student/"
+                                                            to={`/${setup.route_prefix}/details/${i.id}`}
+                                                        >
+                                                            Show
+                                                        </Link>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
+                                </tbody>
                             </table>
                         </div>
 

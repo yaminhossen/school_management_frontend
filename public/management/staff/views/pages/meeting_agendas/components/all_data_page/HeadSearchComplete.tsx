@@ -6,7 +6,7 @@ import setup from '../../config/setup';
 import storeSlice from '../../config/store';
 import { all } from '../../config/store/async_actions/all';
 import { useDebouncedCallback } from 'use-debounce';
-import { teacher_complete } from '../../config/store/async_actions/teacher_complete';
+import { complete } from '../../config/store/async_actions/complete';
 
 export interface Props {}
 
@@ -23,7 +23,7 @@ const HeadSearchComplete: React.FC<Props> = (props: Props) => {
         if (search_input.current) {
             search_key = search_input.current.value;
             dispatch(storeSlice.actions.set_search_key(search_key) as any);
-            dispatch(teacher_complete({}) as any);
+            dispatch(complete({}) as any);
         }
     }, 1000);
 

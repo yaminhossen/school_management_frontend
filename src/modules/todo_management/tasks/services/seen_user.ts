@@ -67,6 +67,10 @@ async function seen_user(
         is_seen: 'yes',
         creator: user?.id || null,
     };
+    console.log(
+        'params------------------------------sdfds-f-----------------------sdfds--------------sdfsd',
+        params.id,
+    );
 
     /** print request data into console */
     // console.clear();
@@ -76,10 +80,17 @@ async function seen_user(
     try {
         let data = await models.TaskUsersModel.findOne({
             where: {
-                task_id: params.id,
+                // id: params.id,
+                id: params.id,
                 staff_id: user?.id || null,
                 branch_id: auth_user?.branch_id || 1,
             },
+            // include: [
+            //     {
+            //         model: models.TaskUsersModel,
+            //         as: 'tasks',
+            //     },
+            // ],
         });
         if (!data) {
             throw new custom_error('not found', 404, 'task not found');

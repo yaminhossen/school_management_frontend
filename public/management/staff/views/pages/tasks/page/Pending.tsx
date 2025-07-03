@@ -21,6 +21,8 @@ import { Link } from 'react-router-dom';
 import HeadSearch from '../components/all_data_page/HeadSearch';
 import HeadRightButtons from '../components/all_data_page/HeadRightButtons';
 import axios from 'axios';
+import { teacher_complete } from '../config/store/async_actions/teacher_complete';
+import { unseen_tasks } from '../config/store/async_actions/unseen_tasks';
 
 export interface Props {}
 
@@ -32,11 +34,22 @@ const Pending: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
 
     const dispatch = useAppDispatch();
+    async function initdependancy() {
+        // await dispatch(unseen_tasks({}) as any);
+        // Wait for 0.5 second (500ms)
+        await new Promise((resolve) => setTimeout(resolve, 300));
+        await dispatch(all({}) as any);
+    }
 
     useEffect(() => {
-        dispatch(storeSlice.actions.set_select_fields('id, status'));
-        dispatch(all({}) as any);
+        initdependancy();
     }, []);
+    // useEffect(() => {
+    //     dispatch(storeSlice.actions.set_select_fields('id, status'));
+    //     // Wait for 0.5 second (500ms)
+    //     await new Promise((resolve) => setTimeout(resolve, 1000));
+    //     dispatch(all({}) as any);
+    // }, []);
 
     function quick_view(data: anyObject = {}) {
         dispatch(storeSlice.actions.set_item(data));
@@ -56,7 +69,13 @@ const Pending: React.FC<Props> = (props: Props) => {
                     `/api/v1/tasks/staff-update/${id}`,
                 );
 
+                dispatch(storeSlice.actions.set_only_latest_data(true));
                 dispatch(all({}) as any);
+                await new Promise((resolve) => setTimeout(resolve, 300));
+                dispatch(teacher_complete({}) as any);
+                await new Promise((resolve) => setTimeout(resolve, 200));
+                dispatch(unseen_tasks({}) as any);
+                dispatch(storeSlice.actions.set_only_latest_data(false));
             } catch (error) {
                 setError(error);
             }
@@ -141,14 +160,6 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                         key={i.id}
                                                         className={`table_rows table_row_${i.id}`}
                                                     >
-                                                        {/* <td>
-                                                        <TableRowAction
-                                                            item={i}
-                                                        />
-                                                    </td>
-                                                    <td>
-                                                        <SelectItem item={i} />
-                                                    </td> */}
                                                         <td>
                                                             <span
                                                                 className="quick_view_trigger"
@@ -159,27 +170,24 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                                 {index + 1}
                                                             </span>
                                                         </td>
-                                                        {/* <td>
-                                                        <Link
-                                                            to={`/${setup.route_prefix}/assign/${i.id}`}
-                                                        >
-                                                            <span className="agenda_btn">
-                                                                assign
-                                                            </span>
-                                                        </Link>
-                                                    </td> */}
                                                         <td>
                                                             {i.tasks?.title}
                                                         </td>
                                                         <td>
-                                                            {
-                                                                i.tasks
-                                                                    ?.description
-                                                            }
+                                                            {i.tasks
+                                                                    ?.description?.length >
+                                                            25
+                                                                ? i.tasks
+                                                                    ?.description?.slice(
+                                                                      0,
+                                                                    35,
+                                                                ) + ' ...'
+                                                                : i.tasks
+                                                                    ?.description}
                                                         </td>
                                                         <td>
                                                             {moment(
-                                                                i.created_at,
+                                                                i.date,
                                                             ).format(
                                                                 'YYYY-MM-DD',
                                                             )}
@@ -196,15 +204,26 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                             >
                                                                 Done
                                                             </button>
-
-                                                            <Link
-                                                                // to="/students/single/student/"
-                                                                to={`/${setup.route_prefix}/details/${i.tasks?.id}`}
-                                                                className="btn btn-sm  btn-outline-info ml-2"
-                                                                type="submit"
-                                                            >
-                                                                Show
-                                                            </Link>
+                                                            {i.is_seen ===
+                                                            'no' ? (
+                                                                <Link
+                                                                    // to="/students/single/student/"
+                                                                    to={`/${setup.route_prefix}/details/${i.id}?tuser=${i.id}`}
+                                                                    className="btn btn-sm bg-secondary  btn-outline-info ml-2"
+                                                                    type="submit"
+                                                                >
+                                                                    Show
+                                                                </Link>
+                                                            ) : (
+                                                                <Link
+                                                                    // to="/students/single/student/"
+                                                                    to={`/${setup.route_prefix}/details/${i.id}?tuser=${i.id}`}
+                                                                    className="btn btn-sm  btn-outline-info ml-2"
+                                                                    type="submit"
+                                                                >
+                                                                    Show
+                                                                </Link>
+                                                            )}
                                                         </td>
                                                     </tr>
                                                 );
@@ -214,7 +233,7 @@ const Pending: React.FC<Props> = (props: Props) => {
                                 ) : (
                                     <tbody>
                                         <tr>
-                                            <td colSpan={9}>
+                                            <td colSpan={10}>
                                                 <div
                                                     style={{
                                                         fontSize: '24px',

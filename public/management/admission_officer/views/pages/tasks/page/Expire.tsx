@@ -166,10 +166,16 @@ const Expire: React.FC<Props> = (props: Props) => {
                                                             {i.tasks?.title}
                                                         </td>
                                                         <td>
-                                                            {
-                                                                i.tasks
-                                                                    ?.description
-                                                            }
+                                                            {i.tasks
+                                                                    ?.description?.length >
+                                                            25
+                                                                ? i.tasks
+                                                                    ?.description?.slice(
+                                                                      0,
+                                                                    35,
+                                                                ) + ' ...'
+                                                                : i.tasks
+                                                                    ?.description}
                                                         </td>
                                                         <td>
                                                             {moment(

@@ -24,16 +24,17 @@ const fetch_api = async (param: anyObject, thunkAPI) => {
     dispatch(storeSlice.actions.set_is_loading(true));
     dispatch(storeSlice.actions.set_loading_text('fething data..'));
 
-    const response = await axios.get(`${end_point}/${api_prefix}/${param.id}`);
+    const response = await axios.get(`${end_point}/${api_prefix}/unseen-tasks`);
 
     dispatch(storeSlice.actions.set_is_loading(false));
-    dispatch(storeSlice.actions.set_item2(response.data.data));
+    dispatch(storeSlice.actions.set_item(response.data.data));
 
     return response.data;
     // thunkAPI.dispatch(storeSlice.actions.my_action())
 };
 
-export const details = createAsyncThunk<ReturnType, PayloadType, ThunkArgument>(
-    `${store_prefix}/details`,
-    fetch_api,
-);
+export const unseen_tasks = createAsyncThunk<
+    ReturnType,
+    PayloadType,
+    ThunkArgument
+>(`${store_prefix}/unseen-tasks`, fetch_api);

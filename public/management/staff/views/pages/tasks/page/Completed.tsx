@@ -35,10 +35,15 @@ const Pending: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
 
     const dispatch = useAppDispatch();
+    async function initdependancy() {
+        // await dispatch(unseen_tasks({}) as any);
+        // Wait for 0.5 second (500ms)
+        await new Promise((resolve) => setTimeout(resolve, 300));
+        dispatch(teacher_complete({}) as any);
+    }
 
     useEffect(() => {
-        dispatch(storeSlice.actions.set_select_fields('id, status'));
-        dispatch(teacher_complete({}) as any);
+        initdependancy();
     }, []);
 
     function quick_view(data: anyObject = {}) {
@@ -130,9 +135,9 @@ const Pending: React.FC<Props> = (props: Props) => {
                                         />
                                     </tr>
                                 </thead>
-                                {(state.all as any)?.data?.length ? (
+                                {(state.allComplete as any)?.data?.length ? (
                                     <tbody id="all_list">
-                                        {(state.all as any)?.data?.map(
+                                        {(state.allComplete as any)?.data?.map(
                                             (
                                                 i: { [key: string]: any },
                                                 index,
@@ -175,14 +180,24 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                             {i.tasks?.title}
                                                         </td>
                                                         <td>
-                                                            {
+                                                            {/* {
                                                                 i.tasks
                                                                     ?.description
-                                                            }
+                                                            } */}
+                                                            {i.tasks
+                                                                    ?.description?.length >
+                                                            25
+                                                                ? i.tasks
+                                                                    ?.description?.slice(
+                                                                      0,
+                                                                    35,
+                                                                ) + ' ...'
+                                                                : i.tasks
+                                                                    ?.description}
                                                         </td>
                                                         <td>
                                                             {moment(
-                                                                i.created_at,
+                                                                i.date,
                                                             ).format(
                                                                 'YYYY-MM-DD',
                                                             )}
@@ -190,7 +205,7 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                         <td>
                                                             <Link
                                                                 // to="/students/single/student/"
-                                                                to={`/${setup.route_prefix}/details/complete/${i.tasks?.id}`}
+                                                                to={`/${setup.route_prefix}/details/complete/${i.id}`}
                                                                 className="btn btn-sm  btn-outline-info ml-2"
                                                                 type="submit"
                                                             >
@@ -205,7 +220,7 @@ const Pending: React.FC<Props> = (props: Props) => {
                                 ) : (
                                     <tbody>
                                         <tr>
-                                            <td colSpan={9}>
+                                            <td colSpan={10}>
                                                 <div
                                                     style={{
                                                         fontSize: '24px',
@@ -226,7 +241,7 @@ const Pending: React.FC<Props> = (props: Props) => {
                             set_paginate={storeSlice.actions.set_paginate}
                             set_page={storeSlice.actions.set_page}
                             all={teacher_complete}
-                            data={state.all as any}
+                            data={state.allComplete as any}
                             selected_paginate={state.paginate}
                         ></Paginate>
                     </div>

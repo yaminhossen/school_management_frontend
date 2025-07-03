@@ -66,11 +66,25 @@ async function admission_officer_complete(
     let select_fields: string[] = [];
     let exclude_fields: string[] = ['password'];
     let user = (req as any).user;
-    let auth_user = await models.BranchStaffsModel.findOne({
-        where: {
-            user_staff_id: user?.id || null,
-        },
-    });
+    let auth_user;
+    if (user.user_type === 'teacher') {
+        auth_user = await models.BranchTeachersModel.findOne({
+            where: {
+                user_teacher_id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
+    // let auth_user = await models.BranchStaffsModel.findOne({
+    //     where: {
+    //         user_staff_id: user?.id || null,
+    //     },
+    // });
 
     if (query_param.select_fields) {
         select_fields = query_param.select_fields.replace(/\s/g, '').split(',');
@@ -88,7 +102,7 @@ async function admission_officer_complete(
 
     const whereClause: any = {
         status: show_active_data === 'true' ? 'active' : 'deactive',
-        role: 'admission-officer',
+        role: user?.user_type,
         is_complete: 'completed',
         branch_id: auth_user?.branch_id,
     };

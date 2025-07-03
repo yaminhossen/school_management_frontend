@@ -54,7 +54,7 @@ const db = async function (): Promise<models> {
 
     await sequelize.sync();
 
-    TasksModel.hasOne(UserAdminsModel, {
+    TaskUsersModel.hasOne(UserAdminsModel, {
         sourceKey: 'creator',
         foreignKey: 'id',
         as: 'admin',

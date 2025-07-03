@@ -272,6 +272,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             <option value="teacher">
                                                 teacher
                                             </option>
+                                            <option value="staff">Staff</option>
                                         </select>
                                     </div>
                                 </div>
@@ -325,7 +326,8 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     <div className="form_elementss">
                                         <button
                                             className={`btn btn_1 ${errorMessage ? 'btn_error' : ''}`}
-                                            disabled={!!errorMessage}>
+                                            disabled={!!errorMessage}
+                                        >
                                             update
                                         </button>
                                     </div>

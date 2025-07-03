@@ -5,6 +5,7 @@ import Completed from '../page/Completed';
 import Pending from '../page/Pending';
 import Details from '../page/Details';
 import DetailsComplete from '../page/DetailsComplete';
+import Expire from '../page/Expire';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -24,6 +25,10 @@ export default {
                 {
                     path: 'completed',
                     element: <Completed />,
+                },
+                {
+                    path: 'expired',
+                    element: <Expire />,
                 },
             ],
         },

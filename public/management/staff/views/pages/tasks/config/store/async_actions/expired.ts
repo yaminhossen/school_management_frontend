@@ -40,7 +40,7 @@ const fetch_api = async (param, thunkAPI) => {
     };
 
     let response: { [key: string]: any } = {};
-    let url = `${api_host}${end_point}/${api_prefix}/staff-complete`;
+    let url = `${api_host}${end_point}/${api_prefix}/staff-expired`;
     let full_url: URL = new URL(url);
     let fetch_only_latest: boolean = state[`only_latest_data`];
 
@@ -72,15 +72,14 @@ const fetch_api = async (param, thunkAPI) => {
 
     dispatch(commonStore.actions.set_cached(response.totalStorage));
 
-    dispatch(storeSlice.actions.set_all_complete(response.data));
+    dispatch(storeSlice.actions.set_all(response.data));
 
     dispatch(storeSlice.actions.set_is_loading(false));
 
     return response.data;
 };
 
-export const teacher_complete = createAsyncThunk<
-    ReturnType,
-    PayloadType,
-    ThunkArgument
->(`${store_prefix}/teacher-complete`, fetch_api);
+export const expired = createAsyncThunk<ReturnType, PayloadType, ThunkArgument>(
+    `${store_prefix}/expired`,
+    fetch_api,
+);

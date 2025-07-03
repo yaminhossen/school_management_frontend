@@ -13,7 +13,7 @@ async function details(
     let params = req.params as any;
 
     try {
-        let data = await models.TasksModel.findOne({
+        let data = await models.TaskUsersModel.findOne({
             where: {
                 id: params.id,
             },
@@ -21,6 +21,10 @@ async function details(
                 {
                     model: models.UserAdminsModel,
                     as: 'admin',
+                },
+                {
+                    model: models.TasksModel,
+                    as: 'tasks',
                 },
             ],
             attributes: {
