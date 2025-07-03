@@ -30,11 +30,21 @@ async function staff_update(
                 id: params.id,
             },
         });
-        let data2 = await models.TaskUsersModel.findOne({
-            where: {
+        let whereClause = {};
+
+        if (user?.user_type === 'teacher') {
+            whereClause = {
+                task_id: params.id,
+                teacher_id: user?.id,
+            };
+        } else {
+            whereClause = {
                 task_id: params.id,
                 staff_id: user?.id,
-            },
+            };
+        }
+        let data2 = await models.TaskUsersModel.findOne({
+            where: whereClause,
         });
 
         if (data && data2) {

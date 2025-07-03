@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavbarSwitch from './NavbarSwitch';
 import { anyObject } from '../../../../admin/common_types/object';
 import axios from 'axios';
+import { unseen_tasks } from '../../pages/tasks/config/store/async_actions/unseen_tasks';
+import storeSlice from '../../pages/tasks/config/store';
+import { initialState } from '../../pages/tasks/config/store/inital_state';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../../../store';
+import setup from '../../pages/tasks/config/setup';
 
 export interface Props {}
 
 const TopHeader: React.FC<Props> = (props: Props) => {
+    const state: typeof initialState = useSelector(
+        (state: RootState) => state[setup.module_name],
+    );
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(storeSlice.actions.set_select_fields('id, status'));
+        dispatch(unseen_tasks({}) as any);
+    }, []);
     const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
@@ -47,33 +63,17 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                     <NavbarSwitch />
                     <div className="nav-right col">
                         <ul className="nav-menus">
-                            {/* <li>
-                      <form className="form-inline search-form">
-                          <div className="form-group">
-                              <label className="sr-only">Email</label>
-                              <input type="search" className="form-control-plaintext" placeholder="Search..">
-                              <span className="d-sm-none mobile-search">
-                              </span>
-                          </div>
-                      </form>
-                  </li> */}
                             <li className="notification-bell">
-                                <a href="#!" className="text-dark">
+                                <a
+                                    href="/staff#/tasks/pending"
+                                    className="text-dark"
+                                >
                                     <i className="icon-bell" />
                                     <span className="notification-badge">
-                                        3
+                                        {state.item.length > 0 ? state.item.length : '0'}
                                     </span>
                                 </a>
                             </li>
-                            {/* <li>
-                                <a href="#!" className="text-dark">
-                                    <img
-                                        className="align-self-center pull-right me-2"
-                                        src="/assets/dashboard_uni/browser.png"
-                                        alt="header-browser"
-                                    />
-                                </a>
-                            </li> */}
                             <li className="onhover-dropdown">
                                 <div className="d-flex align-items-center">
                                     {/* <img

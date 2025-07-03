@@ -11,7 +11,7 @@ import { useParams } from 'react-router-dom';
 import storeSlice from '.././config/store';
 import moment from 'moment/moment';
 import HeaderComplete from '../components/management_data_page/HeaderComplete';
-import BackButton from './BackButton';
+import { unseen_tasks } from '../config/store/async_actions/unseen_tasks';
 export interface Props {}
 
 const DetailsComplete: React.FC<Props> = (props: Props) => {
@@ -22,10 +22,24 @@ const DetailsComplete: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
     const params = useParams();
 
-    useEffect(() => {
+    async function initdependancy() {
         dispatch(storeSlice.actions.set_item({}));
-        dispatch(details({ id: params.id }) as any);
+        await dispatch(details({ id: params.id }) as any);
+        // Wait for 0.5 second (500ms)
+        await new Promise((resolve) => setTimeout(resolve, 300));
+        await dispatch(unseen_tasks({}) as any);
+    }
+
+    useEffect(() => {
+        initdependancy();
     }, []);
+
+    // useEffect(() => {
+    //     dispatch(storeSlice.actions.set_item({}));
+    //     dispatch(details({ id: params.id }) as any);
+    //     await new Promise((resolve) => setTimeout(resolve, 500));
+    //     await dispatch(unseen_tasks({}) as any);
+    // }, []);
 
     return (
         <>
@@ -35,34 +49,36 @@ const DetailsComplete: React.FC<Props> = (props: Props) => {
                         page_title={setup.details_page_title}
                     ></HeaderComplete>
 
-                    {Object.keys(state.item).length && (
+                    {Object.keys(state.item2).length && (
                         <div className="content_body">
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
                                     <tr>
                                         <td>Title</td>
                                         <td>:</td>
-                                        <td>{state.item.title}</td>
+                                        <td>{state.item2?.tasks.title}</td>
                                     </tr>
                                     <tr>
                                         <td>Description</td>
                                         <td>:</td>
-                                        <td>{state.item.description}</td>
+                                        <td>
+                                            {state.item2?.tasks.description}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Date</td>
                                         <td>:</td>
                                         <td>
-                                            {moment(state.item.date).format(
-                                                'YYYY-MM-DD',
-                                            )}
+                                            {moment(
+                                                state.item2?.tasks.date,
+                                            ).format('YYYY-MM-DD')}
                                         </td>
                                     </tr>
-                                    <tr>
+                                    {/* <tr>
                                         <td>Is completed</td>
                                         <td>:</td>
-                                        <td>{state.item.is_complete}</td>
-                                    </tr>
+                                        <td>{state.item2.is_complete}</td>
+                                    </tr> */}
                                 </tbody>
                             </table>
                         </div>

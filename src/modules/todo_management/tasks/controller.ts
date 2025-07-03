@@ -29,6 +29,7 @@ import unseen_tasks from './services/unseen_tasks';
 import staff_expired from './services/staff_expired';
 import task_user_details from './services/task_user_details';
 import task_user_update from './services/task_user_updated';
+import teacher_expired from './services/teacher_expired';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -49,6 +50,13 @@ export default function (fastify: FastifyInstance) {
         },
         staff_expired: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await staff_expired(fastify, req);
+            res.code(data.status).send(data);
+        },
+        teacher_expired: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await teacher_expired(fastify, req);
             res.code(data.status).send(data);
         },
         teacher_tasks: async function (req: FastifyRequest, res: FastifyReply) {

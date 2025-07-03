@@ -11,13 +11,15 @@ export const initialState = {
 
     /* data store */
     all: {},
+    allComplete: {},
     item: {} as anyObject,
+    item2: {} as anyObject,
     staffs: {} as anyObject,
     teachers: {} as anyObject,
     url: '',
 
     /* data filters */
-    select_fields: 'title',
+    select_fields: '',
     filter_criteria: {} as anyObject,
     all_data_count: 0, // total data in database
     page: 1,

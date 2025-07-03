@@ -52,15 +52,15 @@ const Details: React.FC<Props> = (props: Props) => {
                                     <tr>
                                         <td>Title</td>
                                         <td>:</td>
-                                        <td>{state.item2.title}</td>
+                                        <td>{state.item2?.tasks.title}</td>
                                     </tr>
                                     <tr>
                                         <td>Date</td>
                                         <td>:</td>
                                         <td>
-                                            {moment(state.item2.date).format(
-                                                'YYYY-MM-DD',
-                                            )}
+                                            {moment(
+                                                state.item2?.tasks.date,
+                                            ).format('YYYY-MM-DD')}
                                         </td>
                                     </tr>
                                     <tr>
@@ -80,7 +80,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Description</td>
                                         <td>:</td>
                                         <td className="task_details details_descrtiption2">
-                                            {state.item2.description}
+                                            {state.item2?.tasks.description}
                                         </td>
                                     </tr>
                                 </tbody>

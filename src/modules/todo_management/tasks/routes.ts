@@ -44,6 +44,11 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.staff_expired,
         )
         .get(
+            `${prefix}/expired`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.teacher_expired,
+        )
+        .get(
             `${prefix}/staff-complete`,
             { preHandler: [auth_middleware] },
             controllerInstance.staff_complete,

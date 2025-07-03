@@ -49,28 +49,28 @@ async function seen_user(
     let models = await db();
     let body = req.body as anyObject;
     let data = new models.TaskUsersModel();
-    let user = (req as any).user;
     let params = req.params as any;
-    console.log(
-        'this route is hit by the admission oficer --------------------------------------------------------',
-        params,
-    );
-
-    let auth_user = await models.BranchStaffsModel.findOne({
-        where: {
-            user_staff_id: user?.id || null,
-        },
-    });
+    let user = (req as any).user;
+    let auth_user;
+    if (user.user_type === 'teacher') {
+        auth_user = await models.BranchTeachersModel.findOne({
+            where: {
+                user_teacher_id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: auth_user?.branch_id || 1,
         is_seen: 'yes',
         creator: user?.id || null,
     };
-    console.log(
-        'params------------------------------sdfds-f-----------------------sdfds--------------sdfsd',
-        params.id,
-    );
 
     /** print request data into console */
     // console.clear();
@@ -78,19 +78,24 @@ async function seen_user(
 
     /** seen_user data into database */
     try {
-        let data = await models.TaskUsersModel.findOne({
-            where: {
-                // id: params.id,
+        let whereClause = {};
+
+        if (user?.user_type === 'teacher') {
+            whereClause = {
+                id: params.id,
+                teacher_id: user?.id || null,
+                branch_id: auth_user?.branch_id || 1,
+            };
+        } else {
+            whereClause = {
                 id: params.id,
                 staff_id: user?.id || null,
                 branch_id: auth_user?.branch_id || 1,
-            },
-            // include: [
-            //     {
-            //         model: models.TaskUsersModel,
-            //         as: 'tasks',
-            //     },
-            // ],
+            };
+        }
+
+        let data = await models.TaskUsersModel.findOne({
+            where: whereClause,
         });
         if (!data) {
             throw new custom_error('not found', 404, 'task not found');

@@ -50,17 +50,20 @@ async function unseen_tasks(
     let body = req.body as anyObject;
     let data = new models.TaskUsersModel();
     let user = (req as any).user;
-    let params = req.params as any;
-    console.log(
-        'this route is hit by the admission oficer --------------------------------------------------------',
-        params,
-    );
-
-    let auth_user = await models.BranchStaffsModel.findOne({
-        where: {
-            user_staff_id: user?.id || null,
-        },
-    });
+    let auth_user;
+    if (user.user_type === 'teacher') {
+        auth_user = await models.BranchTeachersModel.findOne({
+            where: {
+                user_teacher_id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: auth_user?.branch_id || 1,
@@ -74,19 +77,35 @@ async function unseen_tasks(
 
     /** unseen_tasks data into database */
     try {
-        let data = await models.TaskUsersModel.findAll({
-            where: {
+        let whereClause = {};
+
+        if (user?.user_type === 'teacher') {
+            whereClause = {
+                teacher_id: auth_user?.id || null,
+                branch_id: auth_user?.branch_id,
+                is_seen: 'no',
+                is_complete: 'pending',
+                status: 'active',
+            };
+        } else {
+            whereClause = {
                 staff_id: user?.id,
                 branch_id: auth_user?.branch_id,
                 is_seen: 'no',
                 is_complete: 'pending',
                 status: 'active',
-            },
+            };
+        }
+
+        let data = await models.TaskUsersModel.findAll({
+            where: whereClause,
         });
-        if (!data) {
+
+        if (!data || data.length === 0) {
             throw new custom_error('not found', 404, 'task not found');
         }
-        return response(200, 'data created', data);
+
+        return response(200, 'data fetched', data);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
         throw new custom_error('server error', 500, error.message, uid);

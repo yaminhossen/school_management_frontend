@@ -91,6 +91,7 @@ async function teacher_complete(
         status: show_active_data == 'true' ? 'active' : 'deactive',
         is_complete: 'completed',
         teacher_id: user?.id,
+        branch_id: auth_user?.branch_id,
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);

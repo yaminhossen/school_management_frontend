@@ -6,6 +6,8 @@ import setup from '../../setup';
 import { end_point } from '../../../../../../config/api';
 import storeSlice from '..';
 import { anyObject } from '../../../../../../common_types/object';
+import { all } from './all';
+import { expired } from './expired';
 
 type ReturnType = void;
 type PayloadType = { [key: string]: any };
@@ -24,16 +26,25 @@ const fetch_api = async (param: anyObject, thunkAPI) => {
     dispatch(storeSlice.actions.set_is_loading(true));
     dispatch(storeSlice.actions.set_loading_text('fething data..'));
 
-    const response = await axios.get(`${end_point}/${api_prefix}/${param.id}`);
+    const response = await axios.get(
+        `${end_point}/${api_prefix}/seen-user/${param.id}`,
+    );
 
+    dispatch(storeSlice.actions.set_only_latest_data(true));
+    dispatch(all({}));
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    dispatch(expired({}));
+    dispatch(storeSlice.actions.set_only_latest_data(false));
+    dispatch(storeSlice.actions.set_is_loading(true));
     dispatch(storeSlice.actions.set_is_loading(false));
-    dispatch(storeSlice.actions.set_item2(response.data.data));
+    dispatch(storeSlice.actions.set_item(response.data.data));
 
     return response.data;
     // thunkAPI.dispatch(storeSlice.actions.my_action())
 };
 
-export const details = createAsyncThunk<ReturnType, PayloadType, ThunkArgument>(
-    `${store_prefix}/details`,
-    fetch_api,
-);
+export const seen_user = createAsyncThunk<
+    ReturnType,
+    PayloadType,
+    ThunkArgument
+>(`${store_prefix}/seen-user`, fetch_api);

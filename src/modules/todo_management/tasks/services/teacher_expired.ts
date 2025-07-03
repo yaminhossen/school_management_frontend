@@ -44,7 +44,7 @@ async function validate(req: Request) {
 
     return result;
 }
-async function teacher_pending(
+async function teacher_expired(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -97,21 +97,58 @@ async function teacher_pending(
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);
+    // Get the fallback date: 6 months ago from today
+    const thatday = new Date();
+    thatday.setMonth(thatday.getMonth() - 6);
 
-    let month1 = query_param?.start_date || today; // Start date
-    let month2 = query_param?.end_date || today;
     if (query_param?.start_date && query_param?.end_date) {
         const endDate = new Date(query_param.end_date);
         endDate.setDate(endDate.getDate() + 1); // Increment by one day
         const formattedEndDate = endDate.toISOString().split('T')[0];
         console.log('month2', formattedEndDate);
+        const firstDate = new Date(query_param.start_date);
+        const formattedFirstDate = firstDate.toISOString().split('T')[0];
+        console.log(
+            'month2 formate fisrt date and today',
+            formattedFirstDate,
+            formattedEndDate,
+            today,
+        );
 
-        whereClause.created_at = {
-            [Op.between]: [query_param.start_date, formattedEndDate],
+        if (formattedEndDate < today) {
+            whereClause.date = {
+                [Op.between]: [formattedFirstDate, formattedEndDate],
+            };
+        } else {
+            whereClause.date = {
+                [Op.between]: [formattedFirstDate, today],
+            };
+        }
+    } else {
+        // Get the latest available date from the DB
+        const Fastrecord = await models.TaskUsersModel.findOne({
+            attributes: ['date'],
+            order: [['date', 'ASC']],
+        });
+        console.log(
+            'Fastrecord',
+            new Date(Fastrecord?.date || thatday).toISOString().split('T')[0],
+        );
+        const latestDate = new Date(Fastrecord?.date || thatday);
+        const formattedFastDate = latestDate.toISOString().split('T')[0];
+        // Set where clause: from latest record to today
+        whereClause.date = {
+            [Op.between]: [formattedFastDate, today],
         };
     }
+
     let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
+        // order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
+        order: [
+            // [orderByCol, orderByAsc === 'true' ? 'ASC' : 'DESC'],
+            ['date', orderByAsc === 'true' ? 'ASC' : 'DESC'],
+            // ['time', orderByAsc === 'true' ? 'ASC' : 'DESC'],
+        ],
         where: whereClause,
         include: [
             {
@@ -158,4 +195,4 @@ async function teacher_pending(
     }
 }
 
-export default teacher_pending;
+export default teacher_expired;
