@@ -42,33 +42,46 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody id="all_list">
-                                {data?.map(
-                                    (i: { [key: string]: any }, index) => {
-                                        return (
-                                            <tr>
-                                                <td></td>
-                                                <td>{index + 1}</td>
-                                                <td>{i.title}</td>
-                                                <td>
-                                                    <Link
-                                                        className="btn btn-sm btn-outline-info mr-1"
-                                                        to={`/assignment/subject-details/${i.id}`}
-                                                    >
-                                                        details
-                                                    </Link>
-                                                    <Link
-                                                        className="btn btn-sm btn-outline-info mr-1"
-                                                        to={`/assignment/subject-edit/${i.id}`}
-                                                    >
-                                                        Edit
-                                                    </Link>
-                                                </td>
-                                            </tr>
-                                        );
-                                    },
-                                )}
-                            </tbody>
+                            {data.length ? (
+                                <tbody id="all_list">
+                                    {data?.map(
+                                        (i: { [key: string]: any }, index) => {
+                                            return (
+                                                <tr>
+                                                    <td></td>
+                                                    <td>{index + 1}</td>
+                                                    <td>{i.title}</td>
+                                                    <td>
+                                                        <Link
+                                                            className="btn btn-sm btn-outline-info mr-1"
+                                                            to={`/assignment/subject-details/${i.id}`}
+                                                        >
+                                                            details
+                                                        </Link>
+                                                        <Link
+                                                            className="btn btn-sm btn-outline-info mr-1"
+                                                            to={`/assignment/subject-edit/${i.id}`}
+                                                        >
+                                                            Edit
+                                                        </Link>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
+                                </tbody>
+                            ) : (
+                                <tr>
+                                    <td colSpan={9}>
+                                        <div
+                                            style={{ fontSize: '24px' }}
+                                            className="not_found f-size-4 m-4"
+                                        >
+                                            No data found
+                                        </div>
+                                    </td>
+                                </tr>
+                            )}
                         </table>
                     </div>
                 </div>

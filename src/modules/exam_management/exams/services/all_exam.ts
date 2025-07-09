@@ -12,11 +12,20 @@ async function all_exam(
     let models = await db();
     let params = req.params as any;
     let user = (req as any).user;
-    let auth_user = await models.UserAdminsModel.findOne({
-        where: {
-            id: user?.id || null,
-        },
-    });
+    let auth_user;
+    if (user?.user_type === 'teacher') {
+        auth_user = await models.BranchTeachersModel.findOne({
+            where: {
+                user_teacher_id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    }
 
     try {
         let data = await models.ExamsModel.findAll({

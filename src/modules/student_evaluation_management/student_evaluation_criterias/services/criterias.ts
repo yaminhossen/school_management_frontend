@@ -18,12 +18,18 @@ async function details(
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
+    let user = (req as any).user;
+    let auth_user = await models.BranchTeachersModel.findOne({
+        where: {
+            id: user?.id || null,
+        },
+    });
 
     try {
         let data = await models.StudentEvaluationCriteriasModel.findAll({
-            // where: {
-            //     id: params.id,
-            // },
+            where: {
+                branch_id: auth_user?.branch_id,
+            },
             attributes: {
                 exclude: ['password'],
             },

@@ -32,22 +32,22 @@ async function all(
     let classesModel = models.BranchClassesModel;
     let query_param = req.query as any;
     let params = req.params as any;
-    
+
     let user = (req as any).user;
     let auth_user;
-    if(user.user_type === 'admin') {
+    if (user.user_type === 'admin') {
         auth_user = await models.UserAdminsModel.findOne({
             where: {
                 id: user?.id || null,
             },
         });
-    } else if(user.user_type === 'teacher') {
+    } else if (user.user_type === 'teacher') {
         auth_user = await models.BranchTeachersModel.findOne({
             where: {
                 user_teacher_id: user?.id || null,
             },
-        });               
-    } else{
+        });
+    } else {
         auth_user = await models.BranchStaffsModel.findOne({
             where: {
                 user_staff_id: user?.id || null,

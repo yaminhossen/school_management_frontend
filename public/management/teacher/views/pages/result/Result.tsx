@@ -56,12 +56,16 @@ const Result: React.FC<Props> = (props: Props) => {
         fetchClasses();
         fetchExames();
     }, []);
-
     useEffect(() => {
-        const id1 = subjRefId.current?.value;
-        const id2 = examRefId.current?.value;
-        fetchStudent(id1, id2);
-    }, [subjects, exames]);
+        const fetchData = async () => {
+            const id1 = subjRefId.current?.value;
+            const id2 = examRefId.current?.value;
+            await new Promise((resolve) => setTimeout(resolve, 300));
+            fetchStudent(id1, id2);
+        };
+
+        fetchData();
+    }, [subjects, exames]); // Assuming "exames" is not a typo; otherwise use "exams"
 
     const handleSubmit = () => {
         const id1 = subjRefId.current?.value;

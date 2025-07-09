@@ -110,7 +110,7 @@ const SideBar: React.FC<Props> = (props: Props) => {
 
                 <MenuSingle
                     onClick={handleSubmit}
-                    to=""
+                    to="no-where"
                     icon="icon-power-off"
                     label="Logout"
                 />
