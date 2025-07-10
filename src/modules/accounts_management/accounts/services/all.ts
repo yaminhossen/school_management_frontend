@@ -14,8 +14,6 @@ async function all(
     let models = await db();
     let query_param = req.query as any;
     let user = (req as any).user;
-    console.log('accountant user', req);
-    console.log('accountant user1213', (req as any).user);
 
     const { Op } = require('sequelize');
     let search_key = query_param.search_key;
@@ -24,11 +22,21 @@ async function all(
     let show_active_data = query_param.show_active_data || 'true';
     let paginate = parseInt((req.query as any).paginate) || 10;
     let select_fields: string[] = [];
-    let auth_user = await models.UserAdminsModel.findOne({
-        where: {
-            id: user?.id || null,
-        },
-    });
+
+    let auth_user;
+    if (user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
 
     if (query_param.select_fields) {
         select_fields = query_param.select_fields.replace(/\s/g, '').split(',');
@@ -73,6 +81,7 @@ async function all(
                             logs.account_id = AccountsModel.id
                             AND
                             logs.type = "income"
+                            AND logs.branch_id = ${auth_user?.branch_id || 0}
                     )`),
             'total_income',
         ],
@@ -84,6 +93,7 @@ async function all(
                             logs.account_id = AccountsModel.id
                             AND
                             logs.type = "expense"
+                            AND logs.branch_id = ${auth_user?.branch_id || 0}
                     )`),
             'total_expense',
         ],
@@ -111,12 +121,14 @@ async function all(
         data.total_income = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'income',
+                branch_id: auth_user?.branch_id,
             },
         });
 
         data.total_expense = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'expense',
+                branch_id: auth_user?.branch_id,
             },
         });
         return response(200, 'data fetched', data);

@@ -125,11 +125,7 @@ async function notices(
         },
         branch_id: auth_user?.branch_id,
     };
-    const today = moment().format('YYYY-MM-DD');
-    console.log('todya', today);
 
-    let month1 = query_param?.start_date || today; // Start date
-    let month2 = query_param?.end_date || today;
     if (query_param?.start_date && query_param?.end_date) {
         const endDate = new Date(query_param.end_date);
         endDate.setDate(endDate.getDate() + 1); // Increment by one day

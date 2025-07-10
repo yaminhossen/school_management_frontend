@@ -17,7 +17,21 @@ async function today_expense(
     let accountsModel = models.AccountsModel;
     let params = req.params as any;
     let user = (req as any).user;
-    console.log('jsdlfj', user);
+
+    let auth_user;
+    if (user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
     let month3 = moment().format('YYYY-MM-DD');
     const { Op } = require('sequelize'); // make sure this is imported
 
@@ -45,6 +59,7 @@ async function today_expense(
                 date: {
                     [Op.between]: [startOfDay, endOfDay],
                 },
+                branch_id: auth_user?.branch_id,
             },
         });
         console.log('today expense', data);

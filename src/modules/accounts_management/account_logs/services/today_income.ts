@@ -17,7 +17,21 @@ async function today_income(
     let accountsModel = models.AccountsModel;
     let params = req.params as any;
     let user = (req as any).user;
-    console.log('jsdlfj', user);
+
+    let auth_user;
+    if (user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
     const { Op } = require('sequelize'); // make sure this is imported
     let month3 = moment().format('YYYY-MM-DD');
 
@@ -26,9 +40,6 @@ async function today_income(
     // Create range: 00:00:00 to 23:59:59 of the same date
     const startOfDay = new Date(endDate.setHours(0, 0, 0, 0));
     const endOfDay = new Date(new Date(startOfDay).setHours(23, 59, 59, 999));
-
-    console.log('Start of Day:', startOfDay);
-    console.log('End of Day:', endOfDay);
 
     // // Add one day to month2
     // const endDate = new Date(month3);
@@ -45,9 +56,9 @@ async function today_income(
                 date: {
                     [Op.between]: [startOfDay, endOfDay],
                 },
+                branch_id: auth_user?.branch_id,
             },
         });
-        console.log('today income', data);
         const amount = data ?? 0;
 
         if (data) {

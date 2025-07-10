@@ -17,7 +17,21 @@ async function current_balance(
     let accountsModel = models.AccountsModel;
     let params = req.params as any;
     let user = (req as any).user;
-    console.log('jsdlfj', user);
+
+    let auth_user;
+    if (user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
     const { Op } = require('sequelize'); // make sure this is imported
     let month3 = moment().format('YYYY-MM-DD');
 
@@ -42,11 +56,13 @@ async function current_balance(
         let Income = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'income',
+                branch_id: auth_user?.branch_id,
             },
         });
         let Expense = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'expense',
+                branch_id: auth_user?.branch_id,
             },
         });
         const amount = Income - Expense;

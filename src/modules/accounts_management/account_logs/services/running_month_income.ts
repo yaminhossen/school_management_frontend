@@ -17,14 +17,25 @@ async function running_month_income(
     let accountsModel = models.AccountsModel;
     let params = req.params as any;
     let user = (req as any).user;
-    console.log('jsdlfj', user);
+
+    let auth_user;
+    if (user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
     const { Op } = require('sequelize'); // make sure this is imported
 
     const startOfMonth = moment().startOf('month').format('YYYY-MM-DD');
     const endOfMonth = moment().endOf('month').format('YYYY-MM-DD');
-
-    console.log('Start of Month:', startOfMonth);
-    console.log('End of Month:', endOfMonth);
 
     // // Add one day to month2
     // const endDate = new Date(month3);
@@ -41,6 +52,7 @@ async function running_month_income(
                 date: {
                     [Op.between]: [startOfMonth, endOfMonth],
                 },
+                branch_id: auth_user?.branch_id,
             },
         });
         console.log('today income', data);

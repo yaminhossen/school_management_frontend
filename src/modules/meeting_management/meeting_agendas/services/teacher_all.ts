@@ -57,6 +57,20 @@ async function teacher_all(
     let models = await db();
     let query_param = req.query as any;
     let user = (req as any).user;
+    let auth_user;
+    if (user.user_type === 'teacher') {
+        auth_user = await models.BranchTeachersModel.findOne({
+            where: {
+                user_teacher_id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
 
     const { Op } = require('sequelize');
     let search_key = query_param.search_key;
@@ -85,6 +99,7 @@ async function teacher_all(
         status: show_active_data === 'true' ? 'active' : 'deactive',
         role: user?.user_type,
         is_complete: 'pending',
+        branch_id: auth_user?.branch_id,
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);
