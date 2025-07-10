@@ -20,18 +20,27 @@ async function fees_categories_second(
     let classFeessModel = models.BranchClassFeesModel;
     let params = req.params as any;
     let user = (req as any).user;
-    let auth_user = await models.BranchStaffsModel.findOne({
+    const currentYear = moment().year();
+
+    let auth_user;
+    if (user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
             where: {
                 user_staff_id: user?.id || null,
             },
         });
+    }
 
     try {
         let student_data = await informationsModel.findOne({
             where: {
-                [Op.or]: [
-                    { student_id: params?.id || 0 },
-                ],
+                [Op.or]: [{ student_id: params?.id || 0 }],
                 branch_id: auth_user?.branch_id,
                 status: 'active',
             },
@@ -40,6 +49,7 @@ async function fees_categories_second(
             where: {
                 branch_class_id: student_data?.s_class,
                 branch_id: auth_user?.branch_id,
+                session: currentYear, // Use the current year for the session
                 status: 'active',
             },
             include: [
@@ -61,6 +71,7 @@ async function fees_categories_second(
                 where: {
                     branch_student_id: student_data?.user_student_id, // Hardcoded for demonstration
                     branch_class_fees_id: item.id, // Compare with each ID
+                    branch_id: auth_user?.branch_id,
                 },
             });
 
@@ -83,13 +94,12 @@ async function fees_categories_second(
                 let thisMonth = moment().month() + 2; // Get current month index (1-12)
                 const dateString = student_data?.admission_date;
                 const monthNumber = moment(dateString).month() + 1;
-                console.log('this month', thisMonth);
-                console.log('admit month', student_data?.admission_date);
                 const feeRecord =
                     await accountFeesCollectionDetailsModel.findOne({
                         where: {
                             branch_student_id: student_data?.user_student_id,
                             branch_class_fees_id: item.id,
+                            branch_id: auth_user?.branch_id,
                         },
                         attributes: ['fee_amount'], // Fetch only `fee_amount` field
                     });
@@ -102,6 +112,7 @@ async function fees_categories_second(
                         where: {
                             branch_student_id: student_data?.user_student_id, // Hardcoded for demonstration
                             branch_class_fees_id: item.id, // Compare with each ID
+                            branch_id: auth_user?.branch_id,
                         },
                         attributes: ['fee_amount'], // Fetch only `fee_amount` field
                     });

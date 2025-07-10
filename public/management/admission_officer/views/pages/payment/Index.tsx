@@ -347,13 +347,20 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
 
                                     <div className="form-group form-vertical">
-                                        <label>Account Category</label>
+                                        <label>
+                                            Account Category{' '}
+                                            <span className="valid_star">
+                                                *
+                                            </span>
+                                        </label>
                                         <div className="form_elements">
                                             <select
                                                 name="account_category_id"
                                                 id=""
                                             >
-                                                <option>Select Category</option>
+                                                <option value="">
+                                                    Select Category
+                                                </option>
                                                 {/* Map through categories and create options */}
                                                 {categories?.length &&
                                                     categories?.map(
@@ -373,10 +380,17 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
-                                        <label>Account</label>
+                                        <label>
+                                            Account{' '}
+                                            <span className="valid_star">
+                                                *
+                                            </span>
+                                        </label>
                                         <div className="form_elements">
                                             <select name="account_id" id="">
-                                                <option>Select Account</option>
+                                                <option value="">
+                                                    Select Account
+                                                </option>
                                                 {/* Map through accounts and create options */}
                                                 {accounts?.length &&
                                                     accounts?.map(

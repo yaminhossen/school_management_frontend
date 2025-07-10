@@ -60,14 +60,18 @@ async function month_wise_statement(
                     'month',
                 ], // Extract month and year
                 [
-                    Sequelize.literal(
-                        "SUM(CASE WHEN type = 'income' THEN amount ELSE 0 END)",
-                    ),
+                    Sequelize.literal(`
+                       SUM(CASE 
+                         WHEN type = 'income' AND branch_id = ${auth_user?.branch_id || 0}
+                         THEN amount 
+                         ELSE 0 
+                       END)
+                     `),
                     'total_income',
                 ],
                 [
                     Sequelize.literal(
-                        "SUM(CASE WHEN type = 'expense' THEN amount ELSE 0 END)",
+                        `SUM(CASE WHEN type = 'expense' AND branch_id = ${auth_user?.branch_id || 0} THEN amount ELSE 0 END)`,
                     ),
                     'total_expense',
                 ],
@@ -88,13 +92,13 @@ async function month_wise_statement(
             attributes: [
                 [
                     Sequelize.literal(
-                        "SUM(CASE WHEN type = 'income' THEN amount ELSE 0 END)",
+                        `SUM(CASE WHEN type = 'income' AND branch_id = ${auth_user?.branch_id || 0} THEN amount ELSE 0 END)`,
                     ),
                     'grand_total_income',
                 ],
                 [
                     Sequelize.literal(
-                        "SUM(CASE WHEN type = 'expense' THEN amount ELSE 0 END)",
+                        `SUM(CASE WHEN type = 'expense' AND branch_id = ${auth_user?.branch_id || 0} THEN amount ELSE 0 END)`,
                     ),
                     'grand_total_expense',
                 ],

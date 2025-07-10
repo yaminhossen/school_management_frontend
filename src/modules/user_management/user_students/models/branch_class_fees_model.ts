@@ -39,6 +39,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare name: string;
     declare description: string;
     declare amount: number;
+    declare session: number;
     declare fee_type_id: number;
 
     declare status?: status;
@@ -74,6 +75,10 @@ function init(sequelize: Sequelize) {
             },
             amount: {
                 type: DataTypes.FLOAT.UNSIGNED,
+                allowNull: true,
+            },
+            session: {
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
             fee_type_id: {

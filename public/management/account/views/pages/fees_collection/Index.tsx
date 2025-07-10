@@ -49,7 +49,7 @@ export interface Props {}
 let convertamount = (window as any).convertAmount;
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    const [error2, setError2] = useState(null);
+    const [error2, setError2] = useState('');
     const [data, setData] = useState('');
     const [accounts, setAccounts] = useState<Accountinfo[]>([]);
     const [categories, setCategories] = useState<Categoryinfo[]>([]);
@@ -137,6 +137,7 @@ const Index: React.FC<Props> = (props: Props) => {
                 `/api/v1/user-students/student-class/${id}`,
             );
             setClass(response.data.data);
+            setError2('found');
         } catch (error) {
             setError2(error.response?.data?.message);
             setClass([]);
@@ -144,6 +145,8 @@ const Index: React.FC<Props> = (props: Props) => {
             setFeesTypes2([]);
         }
     };
+    console.log('lksdjfldsjfldsjfkldsjfldsjlkjdsklfj', error2);
+
     const fetchTypes = async (id: string) => {
         try {
             const response2 = await axios.get(
@@ -299,7 +302,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </div>
                                 <div className="d-flex">
                                     <div className="form-group form-vertical">
-                                        <label>Student Id</label>
+                                        <label>Cadet Id</label>
                                         <div className="form_elements">
                                             <input
                                                 type="text"
@@ -331,7 +334,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
                                     <div className="form-group form-vertical">
                                         <label>
-                                            Reciept No{' '}
+                                            Receipt No{' '}
                                             <span className="valid_star">
                                                 *
                                             </span>
@@ -346,12 +349,21 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
 
                                     <div className="form-group form-vertical">
-                                        <label>Account Category</label>
+                                        <label>
+                                            Account Category{' '}
+                                            <span className="valid_star">
+                                                *
+                                            </span>
+                                        </label>
                                         <div className="form_elements">
                                             <select
                                                 name="account_category_id"
                                                 id=""
                                             >
+                                                <option value="">
+                                                    Select Category
+                                                </option>
+                                                {/* Map through categories and create options */}
                                                 {categories?.length &&
                                                     categories?.map(
                                                         (i: {
@@ -370,9 +382,18 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
-                                        <label>Account</label>
+                                        <label>
+                                            Account{' '}
+                                            <span className="valid_star">
+                                                *
+                                            </span>
+                                        </label>
                                         <div className="form_elements">
                                             <select name="account_id" id="">
+                                                <option value="">
+                                                    Select Account
+                                                </option>
+                                                {/* Map through accounts and create options */}
                                                 {accounts?.length &&
                                                     accounts?.map(
                                                         (i: {
@@ -397,6 +418,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 name="account_period_id"
                                                 id=""
                                             >
+                                                <option>Select Period</option>
+                                                {/* Map through periods and create options */}
                                                 {periods?.length &&
                                                     periods?.map(
                                                         (i: {
@@ -421,236 +444,261 @@ const Index: React.FC<Props> = (props: Props) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="data_list">
-                            <div className="table_responsive  custom_scroll">
-                                <table className="mb-4">
-                                    <thead>
-                                        <tr>
-                                            <th>Title</th>
-                                            <th>Value</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="all_list">
-                                        <tr>
-                                            <td>Name</td>
-                                            <td>{classes.student?.name}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ID</td>
-                                            <td>{classes.student_id}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Class</td>
-                                            <td>{classes.class?.name}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Addmission No</td>
-                                            <td>{classes.addmission_no}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Photo</td>
-                                            <td>
-                                                <img
-                                                    height="40px"
-                                                    src={classes.student?.image}
-                                                    alt=""
-                                                />
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table className="">
-                                    <thead>
-                                        <tr>
-                                            <th>Title</th>
-                                            <th>Fees</th>
-                                            <th>Paid</th>
-                                            <th>Due amount</th>
-                                            <th>Discount</th>
-                                            <th>Payable</th>
-                                            <th>Given Amount</th>
-                                            <th>Paying</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="all_list">
-                                        <input
-                                            type="hidden"
-                                            name="total_fees_count"
-                                            value={feesTypes.length}
-                                        />
-                                        {feesTypes?.length &&
-                                            feesTypes?.map(
-                                                (
-                                                    i: { [key: string]: any },
-                                                    index,
-                                                ) => {
-                                                    const maxAmount =
-                                                        i.due_amount !== 0
-                                                            ? Math.abs(
-                                                                i.due_amount ||
-                                                                      0,
-                                                            )
-                                                            : i.fee_amount; // Use fee_amount if due_amount is 0
-                                                    const discount =
-                                                        parseFloat(
-                                                            feesTypes2[index]
-                                                                ?.input_amount2 ??
-                                                                '0',
-                                                        ) || 0;
-                                                    const payable =
-                                                        maxAmount - discount;
-                                                    return (
-                                                        <tr>
-                                                            <td>{i.name}</td>
-                                                            <td>
-                                                                <input
-                                                                    type="hidden"
-                                                                    name={`fees_amount_${index}`}
-                                                                    value={
+                        {error2 === 'found' ? (
+                            <div className="data_list">
+                                <div className="table_responsive  custom_scroll">
+                                    <table className="mb-4">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Value</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="all_list">
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>{classes.student?.name}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>ID</td>
+                                                <td>{classes.student_id}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Class</td>
+                                                <td>{classes.class?.name}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Addmission No</td>
+                                                <td>{classes.addmission_no}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Photo</td>
+                                                <td>
+                                                    <img
+                                                        height="40px"
+                                                        src={
+                                                            classes.student
+                                                                ?.image
+                                                        }
+                                                        alt=""
+                                                    />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table className="">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Fees</th>
+                                                <th>Paid</th>
+                                                <th>Due amount</th>
+                                                <th>Discount</th>
+                                                <th>Payable</th>
+                                                <th>Given Amount</th>
+                                                <th>Paying</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="all_list">
+                                            <input
+                                                type="hidden"
+                                                name="total_fees_count"
+                                                value={feesTypes.length}
+                                            />
+                                            {feesTypes?.length &&
+                                                feesTypes?.map(
+                                                    (
+                                                        i: {
+                                                            [key: string]: any;
+                                                        },
+                                                        index,
+                                                    ) => {
+                                                        const maxAmount =
+                                                            i.due_amount !== 0
+                                                                ? Math.abs(
+                                                                      i.due_amount ||
+                                                                          0,
+                                                                  )
+                                                                : i.fee_amount; // Use fee_amount if due_amount is 0
+                                                        const discount =
+                                                            parseFloat(
+                                                                feesTypes2[
+                                                                    index
+                                                                ]
+                                                                    ?.input_amount2 ??
+                                                                    '0',
+                                                            ) || 0;
+                                                        const payable =
+                                                            maxAmount -
+                                                            discount;
+                                                        return (
+                                                            <tr>
+                                                                <td>
+                                                                    {i.name}
+                                                                </td>
+                                                                <td>
+                                                                    <input
+                                                                        type="hidden"
+                                                                        name={`fees_amount_${index}`}
+                                                                        value={
+                                                                            i.fee_amount
+                                                                        }
+                                                                    />
+                                                                    {
                                                                         i.fee_amount
                                                                     }
-                                                                />
-                                                                {i.fee_amount}
-                                                            </td>
-                                                            <td>{i.total}</td>
-                                                            <td>
-                                                                {i.due_amount <
-                                                                0
-                                                                    ? Math.abs(
-                                                                        i.due_amount,
-                                                                    )
-                                                                    : i.due_amount ||
-                                                                      '0'}
-                                                            </td>
-                                                            <td>
-                                                                <input
-                                                                    type="number"
-                                                                    max={
-                                                                        maxAmount
-                                                                    }
-                                                                    name={`fees_discount_${index}`}
-                                                                    value={
-                                                                        feesTypes2[
-                                                                            index
-                                                                        ]
-                                                                            ?.input_amount2 ??
-                                                                        ''
-                                                                    }
-                                                                    onChange={(
-                                                                        event,
-                                                                    ) =>
-                                                                        handleFeeChange(
+                                                                </td>
+                                                                <td>
+                                                                    {i.total}
+                                                                </td>
+                                                                <td>
+                                                                    {i.due_amount <
+                                                                    0
+                                                                        ? Math.abs(
+                                                                              i.due_amount,
+                                                                          )
+                                                                        : i.due_amount ||
+                                                                          '0'}
+                                                                </td>
+                                                                <td>
+                                                                    <input
+                                                                        type="number"
+                                                                        max={
+                                                                            maxAmount
+                                                                        }
+                                                                        name={`fees_discount_${index}`}
+                                                                        value={
+                                                                            feesTypes2[
+                                                                                index
+                                                                            ]
+                                                                                ?.input_amount2 ??
+                                                                            ''
+                                                                        }
+                                                                        onChange={(
                                                                             event,
-                                                                            i,
-                                                                            'discount',
-                                                                            index,
-                                                                        )
-                                                                    }
-                                                                />
-                                                            </td>
-                                                            <td>
-                                                                <input
-                                                                    type="text"
-                                                                    name={`payable[${index}]`}
-                                                                    value={
-                                                                        remainingDue[
+                                                                        ) =>
+                                                                            handleFeeChange(
+                                                                                event,
+                                                                                i,
+                                                                                'discount',
+                                                                                index,
+                                                                            )
+                                                                        }
+                                                                    />
+                                                                </td>
+                                                                <td>
+                                                                    <input
+                                                                        type="text"
+                                                                        name={`payable[${index}]`}
+                                                                        value={
+                                                                            remainingDue[
+                                                                                i
+                                                                                    .id
+                                                                            ] ??
+                                                                            (payable <=
+                                                                            0
+                                                                                ? 0
+                                                                                : payable)
+                                                                        }
+                                                                        readOnly
+                                                                    />
+                                                                </td>
+                                                                <td>
+                                                                    <input
+                                                                        type="hidden"
+                                                                        name={`fees_type_${index}`}
+                                                                        value={
                                                                             i.id
-                                                                        ] ??
-                                                                        (payable <=
-                                                                        0
-                                                                            ? 0
-                                                                            : payable)
-                                                                    }
-                                                                    readOnly
-                                                                />
-                                                            </td>
-                                                            <td>
-                                                                <input
-                                                                    type="hidden"
-                                                                    name={`fees_type_${index}`}
-                                                                    value={i.id}
-                                                                />
-                                                                <input
-                                                                    name={`fees_${index}`}
-                                                                    type="number"
-                                                                    min="0"
-                                                                    max={
-                                                                        payable >=
-                                                                        0
-                                                                            ? payable
-                                                                            : 0
-                                                                    }
-                                                                    value={
-                                                                        feesTypes[
-                                                                            index
-                                                                        ]
-                                                                            ?.input_amount ??
-                                                                        ''
-                                                                    }
-                                                                    onChange={(
-                                                                        event,
-                                                                    ) =>
-                                                                        handleFeeChange(
+                                                                        }
+                                                                    />
+                                                                    <input
+                                                                        name={`fees_${index}`}
+                                                                        type="number"
+                                                                        min="0"
+                                                                        max={
+                                                                            payable >=
+                                                                            0
+                                                                                ? payable
+                                                                                : 0
+                                                                        }
+                                                                        value={
+                                                                            feesTypes[
+                                                                                index
+                                                                            ]
+                                                                                ?.input_amount ??
+                                                                            ''
+                                                                        }
+                                                                        onChange={(
                                                                             event,
-                                                                            i,
-                                                                            'given',
-                                                                            index,
-                                                                        )
-                                                                    }
-                                                                />
-                                                            </td>
-                                                        </tr>
-                                                    );
-                                                },
-                                            )}
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td>Total</td>
-                                            <td>
-                                                {totalAmount?.fee_amount ?? 0}
-                                            </td>
-                                            <td>{totalAmount?.total ?? 0}</td>
-                                            <td>
-                                                {totalAmount?.due_amount ?? 0}
-                                            </td>
-                                            <td>
-                                                {totalAmount3}
-                                                <input
-                                                    type="hidden"
-                                                    name="total_discount"
-                                                    value={totalAmount3}
-                                                />
-                                            </td>
-                                            <td>
-                                                {totalPayable}{' '}
-                                                {/* Use totalPayable for the Payable column */}
-                                                <input
-                                                    type="hidden"
-                                                    name="total_payable"
-                                                    value={totalPayable}
-                                                />
-                                            </td>
-                                            <td>
-                                                {totalAmount2} tk
-                                                <input
-                                                    type="hidden"
-                                                    value={totalAmount2}
-                                                />
-                                            </td>
-                                            <td>
-                                                {totalAmount2} tk
-                                                <input
-                                                    type="hidden"
-                                                    name="total_amount"
-                                                    value={totalAmount2}
-                                                />
-                                            </td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+                                                                        ) =>
+                                                                            handleFeeChange(
+                                                                                event,
+                                                                                i,
+                                                                                'given',
+                                                                                index,
+                                                                            )
+                                                                        }
+                                                                    />
+                                                                </td>
+                                                            </tr>
+                                                        );
+                                                    },
+                                                )}
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td>Total</td>
+                                                <td>
+                                                    {totalAmount?.fee_amount ??
+                                                        0}
+                                                </td>
+                                                <td>
+                                                    {totalAmount?.total ?? 0}
+                                                </td>
+                                                <td>
+                                                    {totalAmount?.due_amount ??
+                                                        0}
+                                                </td>
+                                                <td>
+                                                    {totalAmount3}
+                                                    <input
+                                                        type="hidden"
+                                                        name="total_discount"
+                                                        value={totalAmount3}
+                                                    />
+                                                </td>
+                                                <td>
+                                                    {totalPayable}{' '}
+                                                    <input
+                                                        type="hidden"
+                                                        name="total_payable"
+                                                        value={totalPayable}
+                                                    />
+                                                </td>
+                                                <td>
+                                                    {totalAmount2} tk
+                                                    <input
+                                                        type="hidden"
+                                                        value={totalAmount2}
+                                                    />
+                                                </td>
+                                                <td>
+                                                    {totalAmount2} tk
+                                                    <input
+                                                        type="hidden"
+                                                        name="total_amount"
+                                                        value={totalAmount2}
+                                                    />
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
+                        ) : (
+                            <div className="alert alert-generic">{error2}</div>
+                        )}
+
                         {totalAmount3 !== 0 && (
                             <div className="student_form mt-4">
                                 <div className="full_width">

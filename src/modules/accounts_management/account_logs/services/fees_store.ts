@@ -13,6 +13,16 @@ import error_trace from '../helpers/error_trace';
 import moment from 'moment/moment';
 
 async function validate(req: Request, models: any) {
+    await body('account_id')
+        .not()
+        .isEmpty()
+        .withMessage('the account_id field is required')
+        .run(req);
+    await body('account_category_id')
+        .not()
+        .isEmpty()
+        .withMessage('the account_category_id field is required')
+        .run(req);
     await body('receipt_no')
         .not()
         .isEmpty()

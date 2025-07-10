@@ -23,11 +23,21 @@ async function all(
     let paginate = parseInt((req.query as any).paginate) || 20;
     let select_fields: string[] = [];
     let user = (req as any).user;
-    let auth_user = await models.UserAdminsModel.findOne({
-        where: {
-            id: user?.id || null,
-        },
-    });
+
+    let auth_user;
+    if (user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
 
     if (query_param.select_fields) {
         select_fields = query_param.select_fields.replace(/\s/g, '').split(',');
@@ -38,16 +48,10 @@ async function all(
         status: show_active_data === 'true' ? 'active' : 'deactive',
         branch_id: auth_user?.branch_id,
     };
-    const today = moment().format('YYYY-MM-DD');
-    console.log('todya', today);
-
-    let month1 = query_param?.start_date || today; // Start date
-    let month2 = query_param?.end_date || today;
     if (query_param?.start_date && query_param?.end_date) {
         const endDate = new Date(query_param.end_date);
         endDate.setDate(endDate.getDate() + 1); // Increment by one day
         const formattedEndDate = endDate.toISOString().split('T')[0];
-        console.log('month2', formattedEndDate);
 
         whereClause.created_at = {
             [Op.between]: [query_param.start_date, formattedEndDate],
@@ -78,6 +82,7 @@ async function all(
                             logs.account_category_id = AccountCategoriesModel.id
                             AND
                             logs.type = "income"
+                            AND logs.branch_id = ${auth_user?.branch_id || 0}
                     )`),
             'total_income',
         ],
@@ -89,6 +94,7 @@ async function all(
                             logs.account_category_id = AccountCategoriesModel.id
                             AND
                             logs.type = "expense"
+                            AND logs.branch_id = ${auth_user?.branch_id || 0}
                     )`),
             'total_expense',
         ],
@@ -116,12 +122,14 @@ async function all(
         data.total_income = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'income',
+                branch_id: auth_user?.branch_id,
             },
         });
 
         data.total_expense = await models.AccountLogsModel.sum('amount', {
             where: {
                 type: 'expense',
+                branch_id: auth_user?.branch_id,
             },
         });
         return response(200, 'data fetched', data);

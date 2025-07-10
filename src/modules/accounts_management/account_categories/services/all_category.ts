@@ -11,19 +11,31 @@ async function all_category(
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
-    
+
     let user = (req as any).user;
-    let auth_user = await models.BranchStaffsModel.findOne({
+
+    let auth_user;
+    if (user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
             where: {
                 user_staff_id: user?.id || null,
             },
         });
+    }
 
     try {
-        let data = await models.AccountCategoriesModel.findAll({where: {
-            branch_id: auth_user?.branch_id,
-            status: 'active',
-        }});
+        let data = await models.AccountCategoriesModel.findAll({
+            where: {
+                branch_id: auth_user?.branch_id,
+                status: 'active',
+            },
+        });
 
         if (data) {
             return response(200, 'data created', data);

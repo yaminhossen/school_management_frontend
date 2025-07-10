@@ -16,13 +16,21 @@ async function category_wise(
     let accountsModel = models.AccountsModel;
     let params = req.params as any;
     let user = (req as any).user;
-    console.log('jsdlfj', user);
-    // let user = (req as any).user;
-    let auth_user = await models.BranchStaffsModel.findOne({
-        where: {
-            user_staff_id: (req as any).user?.id || null,
-        },
-    });
+
+    let auth_user;
+    if (user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
 
     let month1 = body.month1 || '2024-09-12'; // Start date
     let month2 = body.month2 || '2025-09-22'; // End date
@@ -40,7 +48,7 @@ async function category_wise(
                 },
                 account_category_id: params.id,
                 amount: { [Op.gte]: 1 },
-                branch_id: auth_user?.branch_id || 1,
+                branch_id: auth_user?.branch_id,
                 // type: 'income',
             },
             include: [
@@ -71,6 +79,7 @@ async function category_wise(
             where: {
                 type: 'income',
                 account_category_id: params.id,
+                branch_id: auth_user?.branch_id,
             },
         });
 
@@ -78,6 +87,7 @@ async function category_wise(
             where: {
                 type: 'expense',
                 account_category_id: params.id,
+                branch_id: auth_user?.branch_id,
             },
         });
 
@@ -97,6 +107,7 @@ async function category_wise(
                 where: {
                     type: 'income',
                     account_category_id: params.id,
+                    branch_id: auth_user?.branch_id,
                     date: {
                         [Op.lt]: month1,
                     },
@@ -108,6 +119,7 @@ async function category_wise(
                 where: {
                     type: 'expense',
                     account_category_id: params.id,
+                    branch_id: auth_user?.branch_id,
                     date: {
                         [Op.lt]: month1,
                     },
