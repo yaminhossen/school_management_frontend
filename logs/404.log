@@ -222,3 +222,9 @@
 {"level":60,"time":1752388687150,"pid":10896,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
 {"level":60,"time":1752388688599,"pid":10896,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/meeting-agendas/admission-officer?page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description%2C+date%2C+time%2C+meeting_link%2C+meeting_type%2C+status"}
 {"level":60,"time":1752388694894,"pid":10896,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/meeting-agendas/admission-officer?page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+description%2C+date%2C+time%2C+meeting_link%2C+meeting_type%2C+status"}
+{"level":60,"time":1752388741991,"pid":1224,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1752388742016,"pid":1224,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers/basic-information"}
+{"level":60,"time":1752388752231,"pid":1224,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1752388776874,"pid":1224,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month-account"}
+{"level":60,"time":1752389050834,"pid":1224,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1752390839526,"pid":1224,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month-account"}

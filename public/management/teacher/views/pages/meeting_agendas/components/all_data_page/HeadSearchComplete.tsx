@@ -6,10 +6,11 @@ import setup from '../../config/setup';
 import storeSlice from '../../config/store';
 import { all } from '../../config/store/async_actions/all';
 import { useDebouncedCallback } from 'use-debounce';
+import { complete } from '../../config/store/async_actions/complete';
 
 export interface Props {}
 
-const HeadSearch: React.FC<Props> = (props: Props) => {
+const HeadSearchComplete: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -22,7 +23,7 @@ const HeadSearch: React.FC<Props> = (props: Props) => {
         if (search_input.current) {
             search_key = search_input.current.value;
             dispatch(storeSlice.actions.set_search_key(search_key) as any);
-            dispatch(all({}) as any);
+            dispatch(complete({}) as any);
         }
     }, 1000);
 
@@ -43,4 +44,4 @@ const HeadSearch: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default HeadSearch;
+export default HeadSearchComplete;

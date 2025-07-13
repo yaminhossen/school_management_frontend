@@ -18,10 +18,13 @@ import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
 import moment from 'moment/moment';
 import { Link } from 'react-router-dom';
+import { complete } from './config/store/async_actions/complete';
+import HeaderComplete from './components/all_data_page/HeaderComplete';
+import FilterComplete from './components/canvas/FilterComplete';
 
 export interface Props {}
 
-const All: React.FC<Props> = (props: Props) => {
+const Complete: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -34,7 +37,7 @@ const All: React.FC<Props> = (props: Props) => {
                 'id, title, description, date, time, meeting_link, meeting_type, status',
             ),
         );
-        dispatch(all({}) as any);
+        dispatch(complete({}) as any);
     }, []);
 
     function quick_view(data: anyObject = {}) {
@@ -47,7 +50,7 @@ const All: React.FC<Props> = (props: Props) => {
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">
-                <Header></Header>
+                <HeaderComplete></HeaderComplete>
 
                 <div className="content_body">
                     <div className="data_list">
@@ -90,11 +93,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`meeting_type`}
                                             sort={false}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Meeting Link`}
                                             col_name={`meeting link`}
                                             sort={false}
-                                        />
+                                        /> */}
                                         {/* <TableHeading
                                             label={`Is Complete`}
                                             col_name={`is_complete`}
@@ -164,7 +167,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                         <td>
                                                             {i.meeting_type}
                                                         </td>
-                                                        <td>
+                                                        {/* <td>
                                                             {i.meeting_link ? (
                                                                 moment(
                                                                     i.date,
@@ -203,29 +206,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                             ) : (
                                                                 'Offline meeting'
                                                             )}
-                                                        </td>
-
-                                                        {/* <td>
-                                                        {i.meeting_link ? (
-                                                            <a
-                                                                href={
-                                                                    i.meeting_link
-                                                                }
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                            >
-                                                                {moment(
-                                                                    i.date,
-                                                                ).format(
-                                                                    'YYYY-MM-DD',
-                                                                ) == today
-                                                                    ? i.meeting_link
-                                                                    : 'have more days'}
-                                                            </a>
-                                                        ) : (
-                                                            'Offline meeting'
-                                                        )}
-                                                    </td> */}
+                                                        </td> */}
                                                         <td>
                                                             <Link
                                                                 // to="/students/single/student/"
@@ -273,10 +254,10 @@ const All: React.FC<Props> = (props: Props) => {
                 <TableFooter></TableFooter>
             </div>
 
-            <Filter></Filter>
+            <FilterComplete></FilterComplete>
             <QuickView></QuickView>
         </div>
     );
 };
 
-export default All;
+export default Complete;
