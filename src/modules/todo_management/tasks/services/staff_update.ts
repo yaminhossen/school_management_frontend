@@ -23,6 +23,10 @@ async function staff_update(
             user_teacher_id: (req as any).user?.id || null,
         },
     });
+    console.log(
+        'params---------------------------------------------------------',
+        params,
+    );
 
     try {
         let data = await models.TasksModel.findOne({

@@ -56,9 +56,9 @@ const All: React.FC<Props> = (props: Props) => {
                                 <thead>
                                     <tr>
                                         {/* <th /> */}
-                                        {/* <th>
+                                        <th>
                                             <SelectAll />
-                                        </th> */}
+                                        </th>
                                         <TableHeading
                                             label={`ID`}
                                             col_name={`id`}
@@ -78,7 +78,7 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Date`}
                                             col_name={`date`}
-                                            sort={false}
+                                            sort={true}
                                         />
                                         <TableHeading
                                             label={`Time`}
@@ -122,19 +122,30 @@ const All: React.FC<Props> = (props: Props) => {
                                                             item={i}
                                                         />
                                                     </td> */}
-                                                        {/* <td>
-                                                        <SelectItem item={i} />
-                                                    </td> */}
+                                                        <td>
+                                                            <SelectItem
+                                                                item={i}
+                                                            />
+                                                        </td>
                                                         <td>
                                                             <span
-                                                                className="quick_view_trigger"
-                                                                // onClick={() =>
-                                                                //     quick_view(i)
-                                                                // }
+                                                            // className="quick_view_trigger"
+                                                            // onClick={() =>
+                                                            //     quick_view(i)
+                                                            // }
                                                             >
                                                                 {i.id}
                                                             </span>
                                                         </td>
+                                                        {/* <td>
+                                                    <img
+                                                        src="/assets/dashboard/images/avatar.png"
+                                                        alt=""
+                                                        style={{
+                                                            height: 30,
+                                                        }}
+                                                    />
+                                                </td> */}
                                                         <td>{i.title}</td>
                                                         <td>{i.description}</td>
                                                         <td>
@@ -159,56 +170,68 @@ const All: React.FC<Props> = (props: Props) => {
                                                                     i.date,
                                                                 ).format(
                                                                     'YYYY-MM-DD',
-                                                                ) === today ? (
-                                                                    moment().isBetween(
-                                                                            moment(
-                                                                                `${i.date} ${i.time}`,
-                                                                                'YYYY-MM-DD HH:mm:ss',
-                                                                        ).subtract(
-                                                                            10,
-                                                                                'minutes',
-                                                                            ),
-                                                                        moment(
-                                                                                `${i.date} ${i.time}`,
-                                                                                'YYYY-MM-DD HH:mm:ss',
-                                                                            ).add(
-                                                                                1,
-                                                                            'day',
-                                                                            ),
-                                                                        ) ? (
-                                                                                <a
+                                                                ) === today &&
+                                                                moment().isBetween(
+                                                                    moment(
+                                                                        `${i.date} ${i.time}`,
+                                                                        'YYYY-MM-DD HH:mm:ss',
+                                                                    ).subtract(
+                                                                        10,
+                                                                        'minutes',
+                                                                    ),
+                                                                    moment(
+                                                                        `${i.date} ${i.time}`,
+                                                                        'YYYY-MM-DD HH:mm:ss',
+                                                                    ).add(
+                                                                        4,
+                                                                        'hour',
+                                                                    ),
+                                                                ) ? (
+                                                                    <a
                                                                             href={
-                                                                                        i.meeting_link
-                                                                            }
+                                                                                i.meeting_link
+                                                                        }
                                                                             target="_blank"
-                                                                                    rel="noopener noreferrer"
-                                                                        >
-                                                                            Click
-                                                                            Here
-                                                                                </a>
-                                                                            ) : (
-                                                                                'Link active 10 mins before on meeting times'
-                                                                    )
-                                                                ) : moment().isAfter(
-                                                                      moment(
-                                                                            `${i.date} ${i.time}`,
-                                                                          'YYYY-MM-DD HH:mm:ss',
-                                                                      ).add(
-                                                                            1,
-                                                                            'day',
-                                                                      ),
-                                                                    ) ? (
-                                                                            'Meeting is expired'
-                                                                        ) : (
-                                                                    'Meeting is scheduled for another day'
+                                                                            rel="noopener noreferrer"
+                                                                    >
+                                                                        Click
+                                                                        Here
+                                                                    </a>
+                                                                    ) : (
+                                                                    'Link active 10 mins before on meeting times'
                                                                 )
                                                             ) : (
                                                                 'Offline meeting'
                                                             )}
                                                         </td>
+
+                                                        {/* <td>
+                                                        {i.meeting_link ? (
+                                                            <a
+                                                                href={
+                                                                    i.meeting_link
+                                                                }
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                            >
+                                                                {moment(
+                                                                    i.date,
+                                                                ).format(
+                                                                    'YYYY-MM-DD',
+                                                                ) == today
+                                                                    ? i.meeting_link
+                                                                    : 'have more days'}
+                                                            </a>
+                                                        ) : (
+                                                            'Offline meeting'
+                                                        )}
+                                                    </td> */}
                                                         <td>
                                                             <Link
+                                                                // to="/students/single/student/"
                                                                 to={`/${setup.route_prefix}/details/${i.id}`}
+                                                                className="btn btn-sm  btn-outline-info ml-2"
+                                                                type="submit"
                                                             >
                                                                 Show
                                                             </Link>
@@ -221,7 +244,7 @@ const All: React.FC<Props> = (props: Props) => {
                                 ) : (
                                     <tbody>
                                         <tr>
-                                            <td colSpan={9}>
+                                            <td colSpan={10}>
                                                 <div
                                                     style={{
                                                         fontSize: '24px',
@@ -247,7 +270,7 @@ const All: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                {/* <TableFooter></TableFooter> */}
+                <TableFooter></TableFooter>
             </div>
 
             <Filter></Filter>

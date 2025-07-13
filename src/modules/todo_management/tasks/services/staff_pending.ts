@@ -136,7 +136,7 @@ async function staff_pending(
     }
 
     let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
+        order: [[orderByCol, orderByAsc == 'true' ? 'ASC' : 'DESC']],
         where: whereClause,
         include: [
             {
