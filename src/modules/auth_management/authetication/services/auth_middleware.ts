@@ -28,8 +28,6 @@ const auth_middleware = async (
     // const user_agent = request.headers['user-agent'];
     const fullUrl = request.url;
     const needUrl = fullUrl.split('/')[1];
-    console.log('request token', token);
-    console.log('request fullurl', fullUrl);
 
     if (!token || !token.startsWith('Bearer')) {
         return reply.redirect(`${fullUrl}/login`);
@@ -43,7 +41,7 @@ const auth_middleware = async (
         console.log('request decode', decoded);
         let models = await db();
         let user: any = {};
-        console.log('req url', decoded);
+        console.log('req url -----', decoded);
 
         if (needUrl == 'api') {
             (request as anyObject).user = decoded;

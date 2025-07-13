@@ -1,11 +1,22 @@
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MenuDropDown from './MenuDropDown';
 import MenuDropDownItem from './MenuDropDownItem';
 import MenuSingle from './MenuSingle';
 import axios from 'axios';
+import Cookies from 'js-cookie';
+import { jwtDecode } from 'jwt-decode';
 import { anyObject } from '../../../../../admin/common_types/object';
 export interface Props {}
+
+type StudentTokenPayload = {
+    id: number;
+    s_class: number;
+    token: string;
+    user_agent: string;
+    user_type: string;
+    iat: number;
+};
 
 const SideBar: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
@@ -25,6 +36,28 @@ const SideBar: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
+    const [sClass, setSClass] = useState<number | null>(null); // ✅ Fixes the error
+
+    useEffect(() => {
+        // Step 1: Get the token cookie
+        const rawToken = Cookies.get('token'); // You called it 'token' in Fastify
+
+        if (rawToken) {
+            try {
+                // Step 2: Remove 'Bearer ' prefix
+                const token = rawToken.replace('Bearer ', '');
+
+                // Step 3: Decode the JWT
+                const decoded = jwtDecode<StudentTokenPayload>(token);
+                setSClass(decoded.s_class);
+                // Step 4: Extract s_class
+                // setSClass(decoded?.s_class);
+            } catch (err) {
+                console.error('Error decoding token:', err);
+            }
+        }
+    }, []);
+    console.log('sClass', sClass);
     return (
         <>
             <ul className="sidebar-menu">
@@ -74,11 +107,19 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-notepad"
                     label="Due List"
                 />
-                <MenuSingle
+                {sClass !== null && sClass > 5 && (
+                    <MenuSingle
+                        to="/leave-application/approved"
+                        icon="icon-notepad"
+                        label="Leave Application"
+                    />
+                )}
+                {/* <MenuSingle
                     to="/leave-application/approved"
                     icon="icon-notepad"
                     label="Leave Application"
-                />
+                /> */}
+
                 <MenuSingle
                     to="/academic-resources"
                     icon="icon-server"

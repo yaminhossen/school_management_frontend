@@ -48,11 +48,17 @@ async function student_login(
 
     try {
         let data: anyObject | null = {};
+        let data2: anyObject | null = {};
         let token: anyObject = {};
         if (body) {
             data = await models.UserStudentsModel.findOne({
                 where: {
                     email: body.email,
+                },
+            });
+            data2 = await models.UserStudentInformationsModel.findOne({
+                where: {
+                    user_student_id: data?.id,
                 },
             });
 
@@ -70,6 +76,8 @@ async function student_login(
                     token = await jwt.sign(
                         {
                             id: data.id,
+                            // s_class: 6,
+                            s_class: data2?.s_class,
                             token: secret,
                             user_agent,
                             user_type: 'student',

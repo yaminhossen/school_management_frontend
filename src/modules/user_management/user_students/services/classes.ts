@@ -20,7 +20,7 @@ async function classes(
     let classStudentsModel = models.BranchClassStudentsModel;
     let params = req.params as any;
     let user_id = (req as any).user?.id;
-    
+
     let user = (req as any).user;
     let auth_user;
     if(user.user_type === 'admin') {

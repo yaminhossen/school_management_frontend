@@ -221,7 +221,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                     Result Part
                                 </NavLink>
                             </li> */}
-                            <li className="active_Li">
+                            {/* <li className="active_Li">
                                 <NavLink
                                     to={`/profile/complain`}
                                     className={({ isActive }) =>
@@ -232,7 +232,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                 >
                                     Complain
                                 </NavLink>
-                            </li>
+                            </li> */}
                             {/* <li className="active_Li">
                                 <Link to={`/profile/review`} className={({ isActive }) =>
                                                 isActive

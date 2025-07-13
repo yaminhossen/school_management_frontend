@@ -4,8 +4,18 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 import BackButton from './BackButton';
+import Cookies from 'js-cookie';
+import { jwtDecode } from 'jwt-decode';
 import InputImage, { InputImageRef } from './InputImage';
 export interface Props {}
+type StudentTokenPayload = {
+    id: number;
+    s_class: number;
+    token: string;
+    user_agent: string;
+    user_type: string;
+    iat: number;
+};
 
 const Create: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
@@ -81,131 +91,169 @@ const Create: React.FC<Props> = (props: Props) => {
             console.log('data', error.msg);
         }
     };
+    const [sClass, setSClass] = useState<number | null>(null); // ✅ Fixes the error
+
+    useEffect(() => {
+        // Step 1: Get the token cookie
+        const rawToken = Cookies.get('token'); // You called it 'token' in Fastify
+
+        if (rawToken) {
+            try {
+                // Step 2: Remove 'Bearer ' prefix
+                const token = rawToken.replace('Bearer ', '');
+
+                // Step 3: Decode the JWT
+                const decoded = jwtDecode<StudentTokenPayload>(token);
+                setSClass(decoded.s_class);
+                // Step 4: Extract s_class
+                // setSClass(decoded?.s_class);
+            } catch (err) {
+                console.error('Error decoding token:', err);
+            }
+        }
+    }, []);
+    console.log('sClass', sClass);
 
     return (
-        <div className="admin_dashboard">
-            <BackButton></BackButton>
-            <div className="content_body">
-                <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
-                    <div className="form-group form-horizontal">
-                        <label>
-                            Leave Type <span className="valid_star">*</span>
-                        </label>
-                        <div className="form_elements">
-                            <select name="leave_type" id="">
-                                <option value="">Select leave type</option>
-                                {leaveTypes?.length &&
-                                    leaveTypes?.map(
-                                        (i: { [key: string]: any }) => {
-                                            return (
-                                                <option value={i.id}>
-                                                    {i.title}
-                                                </option>
-                                            );
-                                        },
+        <>
+            {sClass !== null && sClass > 5 && (
+                <div className="admin_dashboard">
+                    <BackButton />
+                    <div className="content_body">
+                        <form
+                            onSubmit={handleSubmit}
+                            className="form_600 mx-auto pt-3"
+                        >
+                            {/* Leave Type */}
+                            <div className="form-group form-horizontal">
+                                <label>
+                                    Leave Type{' '}
+                                    <span className="valid_star">*</span>
+                                </label>
+                                <div className="form_elements">
+                                    <select name="leave_type">
+                                        <option value="">
+                                            Select leave type
+                                        </option>
+                                        {leaveTypes?.length &&
+                                            leaveTypes.map(
+                                                (i: { [key: string]: any }) => (
+                                                    <option
+                                                        key={i.id}
+                                                        value={i.id}
+                                                    >
+                                                        {i.title}
+                                                    </option>
+                                                ),
+                                            )}
+                                    </select>
+                                </div>
+                            </div>
+
+                            {/* Start Date */}
+                            <div className="form-group form-horizontal">
+                                <label>
+                                    Start Date{' '}
+                                    <span className="valid_star">*</span>
+                                </label>
+                                <div className="form_elements">
+                                    <input
+                                        type="date"
+                                        value={startDate}
+                                        onChange={handleStartDateChange}
+                                        name="start_date"
+                                    />
+                                    {errorMessage && (
+                                        <div
+                                            style={{
+                                                color: 'red',
+                                                marginTop: '5px',
+                                            }}
+                                        >
+                                            {errorMessage}
+                                        </div>
                                     )}
-                            </select>
-                        </div>
-                    </div>
-                    {/* Start Date */}
-                    <div className="form-group form-horizontal">
-                        <label>
-                            Start Date <span className="valid_star">*</span>
-                        </label>
-                        <div className="form_elements">
-                            <input
-                                type="date"
-                                value={startDate}
-                                onChange={handleStartDateChange}
-                                name="start_date"
-                            />
-                            {errorMessage && (
-                                <div
-                                    style={{
-                                        color: 'red',
-                                        marginTop: '5px',
-                                    }}
-                                >
-                                    {errorMessage}
                                 </div>
-                            )}
-                        </div>
-                    </div>
+                            </div>
 
-                    {/* End Date */}
-                    <div className="form-group form-horizontal">
-                        <label>
-                            End Date <span className="valid_star">*</span>
-                        </label>
-                        <div className="form_elements">
-                            <input
-                                type="date"
-                                value={endDate}
-                                onChange={handleEndDateChange}
-                                name="end_date"
-                            />
-                            {errorMessage2 && (
-                                <div
-                                    style={{
-                                        color: 'red',
-                                        marginTop: '5px',
-                                    }}
-                                >
-                                    {errorMessage2}
+                            {/* End Date */}
+                            <div className="form-group form-horizontal">
+                                <label>
+                                    End Date{' '}
+                                    <span className="valid_star">*</span>
+                                </label>
+                                <div className="form_elements">
+                                    <input
+                                        type="date"
+                                        value={endDate}
+                                        onChange={handleEndDateChange}
+                                        name="end_date"
+                                    />
+                                    {errorMessage2 && (
+                                        <div
+                                            style={{
+                                                color: 'red',
+                                                marginTop: '5px',
+                                            }}
+                                        >
+                                            {errorMessage2}
+                                        </div>
+                                    )}
                                 </div>
-                            )}
-                        </div>
-                    </div>
+                            </div>
 
-                    {/* Total Days */}
-                    <div className="form-group form-horizontal">
-                        <label>
-                            Total Days <span className="valid_star">*</span>
-                        </label>
-                        <div className="form_elements">
-                            <input
-                                type="number"
-                                value={days}
-                                readOnly
-                                onChange={handleDaysChange}
-                                name="days"
-                                min="1"
-                            />
-                        </div>
+                            {/* Total Days */}
+                            <div className="form-group form-horizontal">
+                                <label>
+                                    Total Days{' '}
+                                    <span className="valid_star">*</span>
+                                </label>
+                                <div className="form_elements">
+                                    <input
+                                        type="number"
+                                        value={days}
+                                        readOnly
+                                        onChange={handleDaysChange}
+                                        name="days"
+                                        min="1"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Attachment */}
+                            <div className="form-group form-horizontal">
+                                <label>
+                                    Attachment{' '}
+                                    <span className="valid_star">*</span>
+                                </label>
+                                <div className="form_elements">
+                                    <InputImage
+                                        ref={inputImageRef}
+                                        label=""
+                                        name="attachments"
+                                        defalut_preview=""
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Submit */}
+                            <div className="form-group student_submit form-horizontal">
+                                <label></label>
+                                <div className="form_elements">
+                                    <button
+                                        type="submit"
+                                        className={`btn btn-outline-info btn_1 ${errorMessage || errorMessage2 ? 'btn_error' : ''}`}
+                                        disabled={!!errorMessage}
+                                    >
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div className="form-group form-horizontal">
-                        <label>
-                            Attchment <span className="valid_star">*</span>
-                        </label>
-                        <div className="form_elements">
-                            {/* <input
-                                type="file"
-                                accept="image/*"
-                                name="attachments"
-                            /> */}
-                            <InputImage
-                                ref={inputImageRef}
-                                label=""
-                                name="attachments"
-                                defalut_preview=""
-                            />
-                        </div>
-                    </div>
-                    <div className="form-group student_submit form-horizontal">
-                        <label></label>
-                        <div className="form_elements">
-                            <button
-                                type="submit"
-                                className={`btn btn-outline-info btn_1 ${errorMessage || errorMessage2 ? 'btn_error' : ''}`}
-                                disabled={!!errorMessage}
-                            >
-                                submit
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+                </div>
+            )}
+        </>
     );
 };
 

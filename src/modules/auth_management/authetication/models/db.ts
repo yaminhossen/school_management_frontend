@@ -8,6 +8,7 @@ import * as user_students_model from './user_students_model';
 import * as user_teacher_model from './user_teacher_model';
 import * as user_parents_model from './user_parents_model';
 import * as user_admins_model from './user_admins_model';
+import * as user_student_informations_model from './user_student_informations_model';
 require('dotenv').config();
 
 let host = process?.env.DB_HOST || '';
@@ -26,6 +27,7 @@ interface models {
     UserTeachersModel: typeof user_teacher_model.DataModel;
     UserParentsModel: typeof user_parents_model.DataModel;
     UserAdminsModel: typeof user_admins_model.DataModel;
+    UserStudentInformationsModel: typeof user_student_informations_model.DataModel;
     sequelize: Sequelize;
 }
 const db = async function (): Promise<models> {
@@ -35,6 +37,7 @@ const db = async function (): Promise<models> {
     const UserTeachersModel = user_teacher_model.init(sequelize);
     const UserParentsModel = user_parents_model.init(sequelize);
     const UserAdminsModel = user_admins_model.init(sequelize);
+    const UserStudentInformationsModel = user_student_informations_model.init(sequelize);
     console.log(db_con);
     await sequelize.sync();
 
@@ -45,6 +48,7 @@ const db = async function (): Promise<models> {
         UserTeachersModel,
         UserParentsModel,
         UserAdminsModel,
+        UserStudentInformationsModel,
         sequelize,
     };
     return models;
