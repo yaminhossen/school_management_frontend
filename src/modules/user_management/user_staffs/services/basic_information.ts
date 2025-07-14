@@ -29,6 +29,16 @@ async function basic_information(
                     model: staffInformationsModel,
                     as: 'staff_infos',
                 },
+                {
+                    model: models.BranchStaffsModel,
+                    as: 'staffs',
+                    include: [
+                        {
+                            model: models.BranchesModel,
+                            as: 'branch',
+                        },
+                    ],
+                },
             ],
         });
 

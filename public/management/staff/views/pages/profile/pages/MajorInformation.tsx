@@ -49,9 +49,15 @@ const MajorInformation: React.FC<Props> = (props: Props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>Status:</td>
+                        <td>Roll:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.status}
+                            {data.role}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Branch:</td>
+                        <td className="font-medium text-dark-medium">
+                            {data.staffs?.branch?.name || 'No data found'}
                         </td>
                     </tr>
                 </tbody>

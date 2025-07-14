@@ -21,6 +21,19 @@ async function fees_categories_second(
     let params = req.params as any;
     let user = (req as any).user;
     const currentYear = moment().year();
+    interface FeesTypes {
+        id: number;
+        name: string;
+        description?: string;
+        // add any other fields you need
+    }
+
+    interface DataModel {
+        id: number;
+        amount: number;
+        fee_type_id: number;
+        fees_types?: FeesTypes; // 👈 this is what’s missing
+    }
 
     let auth_user;
     if (user.user_type === 'admin') {
@@ -61,6 +74,7 @@ async function fees_categories_second(
         });
         // Convert `data` to JSON if it's not already
         data = data.map((item) => item.toJSON());
+        console.log('data', data);
 
         // Initialize an empty array to hold totals for each ID
         let idWiseTotals = [];

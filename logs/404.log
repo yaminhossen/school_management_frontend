@@ -306,3 +306,7 @@
 {"level":60,"time":1752465297535,"pid":13456,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
 {"level":60,"time":1752465327516,"pid":13456,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
 {"level":60,"time":1752465339162,"pid":13456,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1752469134954,"pid":15916,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1752469626473,"pid":15916,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1752476448556,"pid":9084,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/student-class/111"}
+{"level":60,"time":1752476448568,"pid":9084,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/fees-categories-student/111"}

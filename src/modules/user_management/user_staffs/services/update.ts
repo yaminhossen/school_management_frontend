@@ -189,7 +189,7 @@ async function update(
         creator: user?.id || null,
     };
 
-    console.log('staff from', body);
+    console.log('staff from-------------------------------', body.id);
     /** print request data into console */
     // console.clear();
     // (fastify_instance as any).print(inputs);
