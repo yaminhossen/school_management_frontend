@@ -1152,7 +1152,7 @@ body {
   cursor: pointer;
 }
 .btn:hover {
-  border: 1px solid rgb(23, 23, 23) !important;
+  border: 1px solid var(--brand_white);
   color: rgb(0, 0, 0);
 }
 

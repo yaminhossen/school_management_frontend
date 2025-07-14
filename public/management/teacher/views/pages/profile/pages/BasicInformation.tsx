@@ -71,18 +71,6 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>Blood Group:</td>
-                        <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.blood_group}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Blood Group:</td>
-                        <td className="font-medium text-dark-medium">
-                            {data.teacher_infos?.blood_group}
-                        </td>
-                    </tr>
-                    <tr>
                         <td>IsMarried:</td>
                         <td className="font-medium text-dark-medium">
                             {data.teacher_infos?.is_married == true
