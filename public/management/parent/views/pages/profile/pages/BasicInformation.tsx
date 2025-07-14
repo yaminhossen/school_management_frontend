@@ -37,13 +37,15 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                     <tr>
                         <td>Permanent Address:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.parent_infos?.parmenent_address || 'No data found'}
+                            {data.parent_infos?.parmenent_address ||
+                                'No data found'}
                         </td>
                     </tr>
                     <tr>
                         <td>Present Address:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.parent_infos?.present_address || 'No data found'}
+                            {data.parent_infos?.present_address ||
+                                'No data found'}
                         </td>
                     </tr>
                     <tr>
@@ -59,9 +61,9 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>Status:</td>
+                        <td>Branch:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.status}
+                            {data.branch_parents?.branches?.name || 'N/A'}
                         </td>
                     </tr>
                 </tbody>

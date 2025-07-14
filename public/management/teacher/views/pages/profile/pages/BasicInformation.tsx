@@ -71,6 +71,18 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                         </td>
                     </tr>
                     <tr>
+                        <td>Blood Group:</td>
+                        <td className="font-medium text-dark-medium">
+                            {data.teacher_infos?.blood_group}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Blood Group:</td>
+                        <td className="font-medium text-dark-medium">
+                            {data.teacher_infos?.blood_group}
+                        </td>
+                    </tr>
+                    <tr>
                         <td>IsMarried:</td>
                         <td className="font-medium text-dark-medium">
                             {data.teacher_infos?.is_married == true
@@ -85,9 +97,75 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>Status:</td>
+                        <td>Joining Date:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.status}
+                            {moment(data.joining_date).format('YYYY-MM-DD')}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Branch:</td>
+                        <td className="font-medium text-dark-medium">
+                            {data.teachers?.branch?.name || 'N/A'}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>NID:</td>
+                        <td className="font-medium text-dark-medium">
+                            <a
+                                href={
+                                    data.teacher_infos?.national_id || undefined
+                                }
+                                target='_blank'
+                            >
+                                <img
+                                    src={
+                                        data.teacher_infos?.national_id ||
+                                        undefined
+                                    }
+                                    width={40}
+                                    alt="yjurty"
+                                />
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Certificate No. 1 :</td>
+                        <td className="font-medium text-dark-medium">
+                            <a
+                                href={
+                                    data.teacher_infos?.certificate_1 || undefined
+                                }
+                                target='_blank'
+                            >
+                                <img
+                                    src={
+                                        data.teacher_infos?.certificate_1 ||
+                                        undefined
+                                    }
+                                    width={40}
+                                    alt="yjurty"
+                                />
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Certificate No. 2 :</td>
+                        <td className="font-medium text-dark-medium">
+                            <a
+                                href={
+                                    data.teacher_infos?.certificate_2 || undefined
+                                }
+                                target='_blank'
+                            >
+                                <img
+                                    src={
+                                        data.teacher_infos?.certificate_2 ||
+                                        undefined
+                                    }
+                                    width={40}
+                                    alt="yjurty"
+                                />
+                            </a>
                         </td>
                     </tr>
                 </tbody>

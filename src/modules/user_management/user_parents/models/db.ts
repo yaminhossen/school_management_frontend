@@ -6,6 +6,7 @@ import * as user_parents_model from './user_parents_model';
 import * as user_admins_model from './user_admins_model';
 import * as branch_parents_model from './branch_parents_model';
 import * as user_parent_informations_model from './user_parent_informations_model';
+import * as branches_model from './branches_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -28,6 +29,7 @@ interface models {
     BranchParentsModel: typeof branch_parents_model.DataModel;
     // UserStudentsModel: typeof user_students_model.DataModel;
     UserParentInformationsModel: typeof user_parent_informations_model.DataModel;
+    BranchesModel: typeof branches_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -38,6 +40,7 @@ const db = async function (): Promise<models> {
     // const UserStudentsModel = user_students_model.init(sequelize);
     const UserParentInformationsModel =
         user_parent_informations_model.init(sequelize);
+    const BranchesModel = branches_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -54,11 +57,18 @@ const db = async function (): Promise<models> {
         as: 'branch_parents',
     });
 
+    BranchParentsModel.hasOne(BranchesModel, {
+        sourceKey: 'branch_id',
+        foreignKey: 'id',
+        as: 'branches',
+    });
+
     let models: models = {
         UserParentsModel,
         UserParentInformationsModel,
         BranchParentsModel,
         UserAdminsModel,
+        BranchesModel,
         // UserStudentsModel,
         // Project,
 

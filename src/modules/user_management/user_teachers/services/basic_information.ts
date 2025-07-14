@@ -28,6 +28,16 @@ async function basic_information(
                     model: teacherInformationsModel,
                     as: 'teacher_infos',
                 },
+                {
+                    model: models.BranchTeachersModel,
+                    as: 'teachers',
+                    include: [
+                        {
+                            model: models.BranchesModel,
+                            as: 'branch',
+                        },
+                    ],
+                },
             ],
         });
 

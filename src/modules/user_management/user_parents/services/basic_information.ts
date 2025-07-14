@@ -34,6 +34,16 @@ async function basic_information(
                     model: parentInformationsModel,
                     as: 'parent_infos',
                 },
+                {
+                    model: models.BranchParentsModel,
+                    as: 'branch_parents',
+                    include: [
+                        {
+                            model: models.BranchesModel,
+                            as: 'branches',
+                        },
+                    ],
+                },
             ],
         });
 
