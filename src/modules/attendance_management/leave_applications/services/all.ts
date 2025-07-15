@@ -33,22 +33,20 @@ async function all(
         select_fields = query_param.select_fields.replace(/\s/g, '').split(',');
         select_fields = [...select_fields, 'id', 'status'];
     }
-
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Normalize to start of the day
     const whereClause: any = {
         status: show_active_data === 'true' ? 'active' : 'deactive',
         leave_status: 'pending',
         branch_id: auth_user?.branch_id,
+        // start_date: {
+        //     [Op.lte]: today,
+        // },
     };
-    const today = moment().format('YYYY-MM-DD');
-    console.log('todya', today);
-
-    let month1 = query_param?.start_date || today; // Start date
-    let month2 = query_param?.end_date || today;
     if (query_param?.start_date && query_param?.end_date) {
         const endDate = new Date(query_param.end_date);
         endDate.setDate(endDate.getDate() + 1); // Increment by one day
         const formattedEndDate = endDate.toISOString().split('T')[0];
-        console.log('month2', formattedEndDate);
 
         whereClause.created_at = {
             [Op.between]: [query_param.start_date, formattedEndDate],
@@ -56,11 +54,11 @@ async function all(
         // whereClause.where = 'pending';
     }
     let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
-        // where: {
-        //     status: show_active_data == 'true' ? 'active ' : 'deactive',
-        //     leave_status: 'pending',
-        // },
+        order: [
+            // [orderByCol, orderByAsc === 'true' ? 'ASC' : 'DESC'],
+            ['start_date', orderByAsc === 'true' ? 'DESC' : 'ASC'],
+            ['id', orderByAsc === 'true' ? 'ASC' : 'DESC'],
+        ],
         where: whereClause,
         include: [
             {

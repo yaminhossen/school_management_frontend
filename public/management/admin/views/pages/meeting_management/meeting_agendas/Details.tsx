@@ -32,7 +32,7 @@ const Details: React.FC<Props> = (props: Props) => {
                     <Header page_title={setup.details_page_title}></Header>
 
                     {Object.keys(state.item).length && (
-                        <div className="content_body">
+                        <div className="content_body custom_scroll">
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
                                     <tr>

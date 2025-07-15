@@ -56,7 +56,11 @@ async function admin_rejected(
         // whereClause.where = 'pending';
     }
     let query: FindAndCountOptions = {
-        order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
+        order: [
+            // [orderByCol, orderByAsc === 'true' ? 'ASC' : 'DESC'],
+            ['start_date', orderByAsc === 'true' ? 'DESC' : 'ASC'],
+            ['id', orderByAsc === 'true' ? 'ASC' : 'DESC'],
+        ],
         // where: {
         //     status: show_active_data == 'true' ? 'active ' : 'deactive',
         //     leave_status: 'pending',
