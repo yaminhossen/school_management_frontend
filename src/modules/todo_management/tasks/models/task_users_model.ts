@@ -47,6 +47,8 @@ class DataModel extends Model<Infer, InferCreation> {
     declare admin_id?: number;
     declare is_complete?: is_complete;
     declare is_seen?: seen;
+    declare description?: string;
+    declare attachment?: string;
 
     declare creator?: number;
     declare status?: status;
@@ -80,6 +82,14 @@ function init(sequelize: Sequelize) {
             },
             task_id: {
                 type: new DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
+            description: {
+                type: new DataTypes.TEXT(),
+                allowNull: true,
+            },
+            attachment: {
+                type: new DataTypes.STRING(120),
                 allowNull: true,
             },
 

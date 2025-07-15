@@ -15,6 +15,7 @@ import moment from 'moment/moment';
 import { all_staff } from './config/store/async_actions/all_staff';
 import { all_teacher } from './config/store/async_actions/all_teacher';
 import { assign_task } from './config/store/async_actions/assign_task';
+import InputImage from './components/management_data_page/InputImage';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -97,6 +98,17 @@ const Create: React.FC<Props> = (props: Props) => {
         setStartDate(e.target.value);
     };
 
+    function get_value(key) {
+        try {
+            if (state.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
+
     return (
         <>
             <div className="page_content">
@@ -156,6 +168,16 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 {errorMessage}
                                             </div>
                                         )}
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>Attachment</label>
+                                    <div className="form_elements">
+                                        <InputImage
+                                            label={''}
+                                            name={'attachment'}
+                                            defalut_preview={get_value('')}
+                                        />
                                     </div>
                                 </div>
                             </div>

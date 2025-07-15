@@ -12,6 +12,9 @@ import moment from 'moment/moment';
 import { all_staff_task } from './config/store/async_actions/all_staff_task';
 import { all_teacher_task } from './config/store/async_actions/all_teacher_task';
 import { assign_task_update } from './config/store/async_actions/assign_task_update';
+import InputImage from './components/management_data_page/InputImage';
+import { get } from 'http';
+import { stat } from 'fs';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -128,6 +131,17 @@ const Edit: React.FC<Props> = (props: Props) => {
         setStartDate(e.target.value);
     };
 
+    function get_value(key) {
+        try {
+            if (state?.item[key]) return state.item[key];
+            if (state.item?.staff_infos[key])
+                return state.item?.staff_infos[key];
+        } catch (error) {
+            return '';
+        }
+        return '';
+    }
+
     return (
         <>
             <div className="page_content">
@@ -197,6 +211,20 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         )}
                                     </div>
                                 </div>
+                                {state.item.attachment && (
+                                    <div className="form-group form-horizontal">
+                                        <label>Attachment</label>
+                                        <div className="form_elements">
+                                            <InputImage
+                                                label={''}
+                                                name={'attachment'}
+                                                defalut_preview={get_value(
+                                                    'attachment',
+                                                )}
+                                            />
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                             <div>
                                 <div>

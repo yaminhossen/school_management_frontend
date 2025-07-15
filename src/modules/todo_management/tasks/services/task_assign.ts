@@ -10,6 +10,7 @@ import response from '../helpers/response';
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
+import moment from 'moment/moment';
 
 async function validate(req: Request) {
     await body('title')
@@ -48,6 +49,7 @@ async function task_assign(
     let body = req.body as anyObject;
     let data = new models.TasksModel();
     let user = (req as any).user;
+    let t_attachment = '';
 
     let auth_user = await models.BranchStaffsModel.findOne({
         where: {
@@ -71,17 +73,26 @@ async function task_assign(
         });
     }
 
+    if (body['attachment']?.ext) {
+        t_attachment =
+            'uploads/tasks/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['attachment'].name;
+        await (fastify_instance as any).upload(
+            body['attachment'],
+            t_attachment,
+        );
+    }
+
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: auth_user?.branch_id || 1,
         title: body.title,
         description: body.description,
+        attachment: t_attachment,
         is_complete: body.is_complete,
         date: body.date,
         creator: user?.id || null,
     };
-    console.log('form body form task assign page', body.title);
-    console.log('form body form task assign page', body);
-
     /** print request data into console */
     // console.clear();
     // (fastify_instance as any).print(inputs);
@@ -89,18 +100,6 @@ async function task_assign(
     /** store data into database */
     try {
         (await data.update(inputs)).save();
-        // let record = await models.TaskUsersModel.findOne({
-        //     where: {
-        //         task_id: body.id,
-        //     },
-        // });
-
-        // if (record) {
-        //     // Delete the record
-        //     await record.destroy();
-        // } else {
-        //     // console.log(`Record with ID ${id} not found.`)
-        // }
         if (data) {
             if (staffs) {
                 staffs.forEach(async (ss) => {

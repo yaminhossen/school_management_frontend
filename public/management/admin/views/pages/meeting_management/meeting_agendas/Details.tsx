@@ -53,6 +53,11 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>{state.item.agendas?.title}</td>
                                     </tr>
                                     <tr>
+                                        <td>Meeting With</td>
+                                        <td>:</td>
+                                        <td>{state.item.agenda?.role}</td>
+                                    </tr>
+                                    <tr>
                                         <td>Meeting Type</td>
                                         <td>:</td>
                                         <td>

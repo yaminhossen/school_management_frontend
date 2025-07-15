@@ -40,7 +40,8 @@ class DataModel extends Model<Infer, InferCreation> {
 
     declare branch_id?: number;
     declare title: string;
-    declare description: string;
+    declare description?: string;
+    declare attachment?: string;
     declare is_complete?: is_complete;
     declare date: string;
 
@@ -68,6 +69,10 @@ function init(sequelize: Sequelize) {
             },
             description: {
                 type: new DataTypes.TEXT(),
+                allowNull: true,
+            },
+            attachment: {
+                type: new DataTypes.STRING(120),
                 allowNull: true,
             },
             is_complete: {
