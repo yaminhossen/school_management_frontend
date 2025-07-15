@@ -362,7 +362,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                         </div>
                     )}
 
-                    <Footer></Footer>
+                    {/* <Footer></Footer> */}
                 </div>
             </div>
         </>

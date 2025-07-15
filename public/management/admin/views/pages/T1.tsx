@@ -760,7 +760,7 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li> */}
                     <li>
-                        <Link to="/leave-applications">
+                        <Link to="/leave-applications/pending">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>

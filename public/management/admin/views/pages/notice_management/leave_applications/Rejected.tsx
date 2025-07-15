@@ -17,15 +17,14 @@ import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
 import { Link } from 'react-router-dom';
-import Pending from './Pending';
-import { approved } from './config/store/async_actions/approved';
-import Header2 from './components/all_data_page/Header2';
-import Filter2 from './components/canvas/Filter2';
+import { rejected } from './config/store/async_actions/rejected';
+import Header3 from './components/all_data_page/Header3';
+import Filter3 from './components/canvas/Filter3';
 import moment from 'moment/moment';
 
 export interface Props {}
 
-const All: React.FC<Props> = (props: Props) => {
+const Rejected: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -35,11 +34,11 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, branch_teacher_id, branch_staff_id, branch_student_id, leave_type_id, start_date, end_date, reason, status',
+                'id, branch_teacher_id, branch_staff_id, start_date, end_date, branch_student_id, leave_type_id, reason, status',
             ),
         );
-        dispatch(approved({}) as any);
         dispatch(storeSlice.actions.set_page(1) as any);
+        dispatch(rejected({}) as any);
     }, []);
 
     function quick_view(data: anyObject = {}) {
@@ -50,7 +49,7 @@ const All: React.FC<Props> = (props: Props) => {
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">
-                <Header2></Header2>
+                <Header3></Header3>
 
                 <div className="content_body">
                     <div className="data_list">
@@ -200,7 +199,7 @@ const All: React.FC<Props> = (props: Props) => {
                             set_url={storeSlice.actions.set_url}
                             set_paginate={storeSlice.actions.set_paginate}
                             set_page={storeSlice.actions.set_page}
-                            all={approved}
+                            all={rejected}
                             data={state.all as any}
                             selected_paginate={state.paginate}
                         ></Paginate>
@@ -209,10 +208,10 @@ const All: React.FC<Props> = (props: Props) => {
                 <TableFooter></TableFooter>
             </div>
 
-            <Filter2></Filter2>
+            <Filter3></Filter3>
             <QuickView></QuickView>
         </div>
     );
 };
 
-export default All;
+export default Rejected;

@@ -5,7 +5,7 @@ import { RootState } from '../../../../../../store';
 import { initialState } from '../../config/store/inital_state';
 export interface Props {}
 
-const HeadTitle: React.FC<Props> = (props: Props) => {
+const HeadTitle2: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -13,7 +13,7 @@ const HeadTitle: React.FC<Props> = (props: Props) => {
     return (
         <div className="title no_move" id="users_drag">
             <h2>
-                Pending leave applications
+                Approved leave applications
                 {/* {setup.all_page_title} */}
                 {/* {state.is_loading && <span> loading..</span>} */}
             </h2>
@@ -21,4 +21,4 @@ const HeadTitle: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default HeadTitle;
+export default HeadTitle2;

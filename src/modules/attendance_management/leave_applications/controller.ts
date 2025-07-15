@@ -24,11 +24,27 @@ import staff_leave from './services/staff_leave';
 import teachers_approved from './services/teachers_approved';
 import teachers_rejected from './services/teachers_rejected';
 import teachers_pending from './services/teachers_pending';
+import admin_approved from './services/admin_approved';
+import admin_rejected from './services/admin_rejected';
 
 export default function (fastify: FastifyInstance) {
     return {
         all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all(fastify, req);
+            res.code(data.status).send(data);
+        },
+        admin_approved: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await admin_approved(fastify, req);
+            res.code(data.status).send(data);
+        },
+        admin_rejected: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await admin_rejected(fastify, req);
             res.code(data.status).send(data);
         },
         staff_leave: async function (req: FastifyRequest, res: FastifyReply) {

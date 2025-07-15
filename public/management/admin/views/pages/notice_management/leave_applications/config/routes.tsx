@@ -5,6 +5,8 @@ import All from '../All.jsx';
 import Create from '../Create.jsx';
 import Details from '../Details.jsx';
 import Edit from '../Edit.jsx';
+import Rejected from '../Rejected.tsx';
+import Pending from '../Pending.tsx';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -13,8 +15,16 @@ export default {
     element: <Layout />,
     children: [
         {
-            path: '',
+            path: 'approved',
             element: <All />,
+        },
+        {
+            path: 'pending',
+            element: <Pending />,
+        },
+        {
+            path: 'rejected',
+            element: <Rejected />,
         },
         {
             path: 'create',
