@@ -10,6 +10,7 @@ import response from '../helpers/response';
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
+import moment from 'moment/moment';
 
 async function validate(req: Request) {
     await body('title')
@@ -48,6 +49,7 @@ async function task_assign_updated(
     let body = req.body as anyObject;
     let data = new models.TasksModel();
     let user = (req as any).user;
+    let t_attachment = '';
     let auth_user = await models.UserAdminsModel.findOne({
         where: {
             id: user?.id || null,
@@ -69,11 +71,22 @@ async function task_assign_updated(
             teacher_id: fteachers[i],
         });
     }
+    if (body['attachment']?.ext) {
+        t_attachment =
+            'uploads/tasks/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['attachment'].name;
+        await (fastify_instance as any).upload(
+            body['attachment'],
+            t_attachment,
+        );
+    }
 
     let inputs: InferCreationAttributes<typeof data> = {
         branch_id: auth_user?.branch_id || 1,
         title: body.title,
         description: body.description,
+        attachment: t_attachment,
         is_complete: body.is_complete,
         date: body.date,
         creator: user?.id || null,

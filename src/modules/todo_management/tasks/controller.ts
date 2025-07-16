@@ -30,6 +30,7 @@ import staff_expired from './services/staff_expired';
 import task_user_details from './services/task_user_details';
 import task_user_update from './services/task_user_updated';
 import teacher_expired from './services/teacher_expired';
+import admin_task from './services/admin_task_details';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -88,6 +89,11 @@ export default function (fastify: FastifyInstance) {
 
         find: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        admin_task: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await admin_task(fastify, req);
             res.code(data.status).send(data);
         },
 

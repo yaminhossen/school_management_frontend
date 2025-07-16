@@ -5,7 +5,7 @@ import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 
-async function details(
+async function admin_task(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -13,19 +13,19 @@ async function details(
     let params = req.params as any;
 
     try {
-        let data = await models.TaskUsersModel.findOne({
+        let data = await models.TasksModel.findOne({
             where: {
                 id: params.id,
             },
             include: [
-                {
-                    model: models.UserAdminsModel,
-                    as: 'admin',
-                },
-                {
-                    model: models.TasksModel,
-                    as: 'tasks',
-                },
+                // {
+                //     model: models.UserAdminsModel,
+                //     as: 'admin',
+                // },
+                // {
+                //     model: models.TasksModel,
+                //     as: 'tasks',
+                // },
             ],
             // attributes: {
             //     exclude: ['password'],
@@ -48,4 +48,4 @@ async function details(
     }
 }
 
-export default details;
+export default admin_task;
