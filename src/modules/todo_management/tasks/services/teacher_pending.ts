@@ -97,6 +97,9 @@ async function teacher_pending(
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);
+    // Get the fallback date: 6 months ago from today
+    const thatday = new Date();
+    thatday.setMonth(thatday.getMonth() + 2);
 
     let month1 = query_param?.start_date || today; // Start date
     let month2 = query_param?.end_date || today;
@@ -108,6 +111,18 @@ async function teacher_pending(
 
         whereClause.created_at = {
             [Op.between]: [query_param.start_date, formattedEndDate],
+        };
+    } else {
+        // Get the latest available date from the DB
+        const lastRecord = await models.TaskUsersModel.findOne({
+            attributes: ['date'],
+            order: [['date', 'DESC']],
+        });
+        const latestDate = new Date(lastRecord?.date || thatday);
+        const formattedFastDate = latestDate.toISOString().split('T')[0];
+        // Set where clause: from latest record to today
+        whereClause.date = {
+            [Op.between]: [today, formattedFastDate],
         };
     }
     let query: FindAndCountOptions = {

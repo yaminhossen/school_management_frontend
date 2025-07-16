@@ -1,11 +1,10 @@
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
-import { anyObject, responseObject } from '../../../common_types/object';
+import { responseObject } from '../../../common_types/object';
 import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 import { InferCreationAttributes } from 'sequelize';
-import moment from 'moment/moment';
 
 async function staff_update(
     fastify_instance: FastifyInstance,
@@ -17,8 +16,6 @@ async function staff_update(
     let params = req.params as any;
     console.log('staff founded');
     let ssss = 'completed';
-    let body = req.body as anyObject;
-    let t_attachment = '';
 
     let user = (req as any).user;
     let auth_user = await models.BranchTeachersModel.findOne({
@@ -26,33 +23,48 @@ async function staff_update(
             user_teacher_id: (req as any).user?.id || null,
         },
     });
-    if (body['attachment']?.ext) {
-        t_attachment =
-            'uploads/tasks/' +
-            moment().format('YYYYMMDDHHmmss') +
-            body['attachment'].name;
-        await (fastify_instance as any).upload(
-            body['attachment'],
-            t_attachment,
-        );
-    }
     console.log(
-        'body----------------------------------------------------------',
-        body,
+        'params---------------------------------------------------------',
+        params,
     );
 
     try {
-        let data2 = await models.TaskUsersModel.findByPk(body.id);
-        console.log('data2', data2);
+        let data = await models.TasksModel.findOne({
+            where: {
+                id: params.id,
+            },
+        });
+        let whereClause = {};
 
-        if (data2) {
-            let inputs2: InferCreationAttributes<typeof taskUserModel> = {
-                is_complete: ssss || body?.is_complete,
-                attachment: t_attachment,
-                description: body.description,
+        if (user?.user_type === 'teacher') {
+            whereClause = {
+                task_id: params.id,
+                teacher_id: user?.id,
             };
+        } else {
+            whereClause = {
+                task_id: params.id,
+                staff_id: user?.id,
+            };
+        }
+        let data2 = await models.TaskUsersModel.findOne({
+            where: whereClause,
+        });
+
+        if (data && data2) {
+            let inputs: InferCreationAttributes<typeof taskModel> = {
+                title: data.title,
+                description: data.description,
+                // is_complete: ssss || params?.is_complete,
+                date: data.date,
+            };
+            (await data.update(inputs)).save();
+            let inputs2: InferCreationAttributes<typeof taskUserModel> = {
+                is_complete: ssss || params?.is_complete,
+            };
+            (await data.update(inputs)).save();
             (await data2.update(inputs2)).save();
-            return response(200, 'data updated', data2);
+            return response(200, 'data updated', data);
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }

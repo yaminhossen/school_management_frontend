@@ -69,7 +69,7 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.seen_user,
         )
         .post(
-            `${prefix}/staff-update/:id`,
+            `${prefix}/staff-update`,
             { preHandler: [auth_middleware] },
             controllerInstance.staff_update,
         )

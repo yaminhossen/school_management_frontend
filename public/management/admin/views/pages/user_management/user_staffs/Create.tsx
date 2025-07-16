@@ -104,8 +104,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 name={'staff_image'}
                                                 defalut_preview={get_value('')}
                                             />
-                                            {/* <div className="form_elements">
-                                            </div> */}
                                         </div>
                                         <div className="form-group form-horizontal">
                                             <label>

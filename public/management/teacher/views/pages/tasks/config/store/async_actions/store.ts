@@ -7,6 +7,8 @@ import { end_point } from '../../../../../../config/api';
 import storeSlice from '..';
 import { anyObject } from '../../../../../../common_types/object';
 import { all } from './all';
+import { teacher_complete } from './teacher_complete';
+import { unseen_tasks } from './unseen_tasks';
 
 type ReturnType = void;
 type PayloadType = { [key: string]: any };
@@ -26,7 +28,7 @@ const fetch_api = async (param, thunkAPI) => {
     dispatch(storeSlice.actions.set_loading_text('storing..'));
 
     const response = await axios.post(
-        `${end_point}/${api_prefix}/store`,
+        `${end_point}/${api_prefix}/staff-update`,
         param,
     );
 
