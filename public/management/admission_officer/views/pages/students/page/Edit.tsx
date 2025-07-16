@@ -54,9 +54,10 @@ const Index: React.FC<Props> = (props: Props) => {
     async function initdependancy() {
         // await dispatch(storeSlice.actions.set_item({}));
         await dispatch(shifts({}) as any);
-        await dispatch(shifts({}) as any);
-        await dispatch(branches({}) as any);
+        // await dispatch(branches({}) as any);
+        await new Promise((resolve) => setTimeout(resolve, 300));
         await dispatch(classes({}) as any);
+        await new Promise((resolve) => setTimeout(resolve, 500));
         await dispatch(sections({}) as any);
     }
     useEffect(() => {
@@ -126,10 +127,21 @@ const Index: React.FC<Props> = (props: Props) => {
     const params = useParams();
     // console.log('id', params.id);
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     dispatch(storeSlice.actions.set_item({}));
+    //     dispatch(full_details({ id: params.id }) as any);
+    //     // console.log('state', state);
+    // }, []);
+
+    async function initdependancy2() {
         dispatch(storeSlice.actions.set_item({}));
+        // Wait for 0.5 second (500ms)
+        await new Promise((resolve) => setTimeout(resolve, 800));
         dispatch(full_details({ id: params.id }) as any);
-        // console.log('state', state);
+    }
+
+    useEffect(() => {
+        initdependancy2();
     }, []);
 
     // console.log('moment', moment().format('YYYY-DD-MM'));
@@ -297,23 +309,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                             </select>
                                         </div>
                                     </div>
-                                    {/* <div className="form-group form-vertical">
-                                        <label>Password</label>
-                                        <div className="form_elements">
-                                            <input
-                                                type="password"
-                                                placeholder="password"
-                                                name="password"
-                                                defaultValue={password}
-                                                onChange={(e) => {
-                                                    setPassword(e.target.value);
-                                                    // Clear error when user starts typing
-                                                    if (passwordError)
-                                                        setPasswordError('');
-                                                }}
-                                            />
-                                        </div>
-                                    </div> */}
                                     <div className="form-group form-vertical">
                                         <label>Password</label>
                                         <div
@@ -359,38 +354,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                             </span>
                                         </div>
                                     </div>
-                                    {/* <div className="form-group form-vertical">
-                                        <label>Confirm Password</label>
-                                        <div className="form_elements">
-                                            <input
-                                                type="password"
-                                                placeholder="confirm password"
-                                                name="confirm_password"
-                                                defaultValue={confirmPassword}
-                                                onChange={(e) => {
-                                                    setConfirmPassword(
-                                                        e.target.value,
-                                                    );
-                                                    // Validate on change
-                                                    if (
-                                                        password !==
-                                                        e.target.value
-                                                    ) {
-                                                        setPasswordError(
-                                                            'Passwords do not match',
-                                                        );
-                                                    } else {
-                                                        setPasswordError('');
-                                                    }
-                                                }}
-                                            />
-                                            {passwordError && (
-                                                <p className="text-danger small mt-1">
-                                                    {passwordError}
-                                                </p>
-                                            )}
-                                        </div>
-                                    </div> */}
                                 </div>
                             </div>
                             <div className="full_width">
@@ -605,46 +568,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                             />
                                         </div>
                                     </div>
-                                    {/* <div className="form-group form-vertical">
-                                        <label>Religion</label>
-                                        <div className="form_elements">
-                                            <select
-                                                name="religion"
-                                                defaultValue={
-                                                    state.item.student_info
-                                                        ?.religion
-                                                }
-                                                id=""
-                                            >
-                                                <option value="islam">
-                                                    islam
-                                                </option>
-                                                <option value="hindu">
-                                                    hindu
-                                                </option>
-                                                <option value="kristian">
-                                                    kristian
-                                                </option>
-                                                <option value="budda">
-                                                    budda
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div> */}
-                                    {/* <div className="form-group form-vertical">
-                                        <label>Nationality</label>
-                                        <div className="form_elements">
-                                            <input
-                                                type="text"
-                                                placeholder="nationality"
-                                                name="nationality"
-                                                defaultValue={
-                                                    state.item.student_info
-                                                        ?.nationality
-                                                }
-                                            />
-                                        </div>
-                                    </div> */}
                                     <div className="form-group form-vertical">
                                         <label>Division</label>
                                         <div className="form_elements">
@@ -892,19 +815,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form-group form-vertical">
                                         <label>Birth certificate</label>
                                         <div className="form_elements">
-                                            {/* <input
-                                                type="file"
-                                                accept="image/*"
-                                                name="birth_certificate"
-                                            />
-                                            <img
-                                                src={
-                                                    state.item.student_info
-                                                        ?.birth_certificate
-                                                }
-                                                style={{ width: '100px' }}
-                                                alt=""
-                                            /> */}
                                             <ImageUpload
                                                 name="birth_certificate"
                                                 defaultImage={
@@ -917,19 +827,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form-group form-vertical">
                                         <label>NID</label>
                                         <div className="form_elements">
-                                            {/* <input
-                                                type="file"
-                                                accept="image/*"
-                                                name="national_id"
-                                            />
-                                            <img
-                                                src={
-                                                    state.item.student_info
-                                                        ?.national_id
-                                                }
-                                                style={{ width: '100px' }}
-                                                alt=""
-                                            /> */}
 
                                             <ImageUpload
                                                 name="national_id"

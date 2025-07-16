@@ -333,3 +333,10 @@
 {"level":60,"time":1752577972602,"pid":5648,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.4123110649176289"}
 {"level":60,"time":1752638883255,"pid":5812,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
 {"level":60,"time":1752638883281,"pid":5812,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/all/teachers"}
+{"level":60,"time":1752639726001,"pid":7272,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/user/46"}
+{"level":60,"time":1752639727372,"pid":7272,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/user/46"}
+{"level":60,"time":1752639729476,"pid":7272,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/user/46"}
+{"level":60,"time":1752639730044,"pid":7272,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/user/46"}
+{"level":60,"time":1752639730535,"pid":7272,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/user/46"}
+{"level":60,"time":1752639731332,"pid":7272,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/user/46"}
+{"level":60,"time":1752639731898,"pid":7272,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/user/46"}

@@ -34,13 +34,6 @@ const DetailsComplete: React.FC<Props> = (props: Props) => {
         initdependancy();
     }, []);
 
-    // useEffect(() => {
-    //     dispatch(storeSlice.actions.set_item({}));
-    //     dispatch(details({ id: params.id }) as any);
-    //     await new Promise((resolve) => setTimeout(resolve, 500));
-    //     await dispatch(unseen_tasks({}) as any);
-    // }, []);
-
     return (
         <>
             <div className="page_content">
@@ -59,13 +52,6 @@ const DetailsComplete: React.FC<Props> = (props: Props) => {
                                         <td>{state.item2?.tasks.title}</td>
                                     </tr>
                                     <tr>
-                                        <td>Description</td>
-                                        <td>:</td>
-                                        <td>
-                                            {state.item2?.tasks.description}
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <td>Date</td>
                                         <td>:</td>
                                         <td>
@@ -74,11 +60,21 @@ const DetailsComplete: React.FC<Props> = (props: Props) => {
                                             ).format('YYYY-MM-DD')}
                                         </td>
                                     </tr>
-                                    {/* <tr>
-                                        <td>Is completed</td>
+                                    <tr>
+                                        <td>Creator</td>
                                         <td>:</td>
-                                        <td>{state.item2.is_complete}</td>
-                                    </tr> */}
+                                        <td>
+                                            {state.item2.admin?.name ||
+                                                'Not found'}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>:</td>
+                                        <td className="task_details details_descrtiption2">
+                                            {state.item2?.tasks.description}
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
