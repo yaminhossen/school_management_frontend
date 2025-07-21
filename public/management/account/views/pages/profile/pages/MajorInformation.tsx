@@ -49,9 +49,9 @@ const MajorInformation: React.FC<Props> = (props: Props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td>Status:</td>
+                        <td>Branch:</td>
                         <td className="font-medium text-dark-medium">
-                            {data.status}
+                            {data.staffs?.branch?.name || 'No data found'}
                         </td>
                     </tr>
                 </tbody>

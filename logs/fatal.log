@@ -2696,3 +2696,45 @@
 {"level":60,"time":1753091343823,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"7/21/2025 3:49:03 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
 {"level":60,"time":1753091346241,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\staff_complete.ts:144:15)","time":"7/21/2025 3:49:06 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
 {"level":60,"time":1753091346529,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"7/21/2025 3:49:06 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1753092206526,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 4:03:26 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1753092220350,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"7/21/2025 4:03:40 PM","message":"data not found"}
+{"level":60,"time":1753092220416,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 4:03:40 PM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1753092220421,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"7/21/2025 4:03:40 PM","message":"data not found"}
+{"level":60,"time":1753092972893,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"7/21/2025 4:16:12 PM","message":"data not found"}
+{"level":60,"time":1753092972948,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 4:16:12 PM","message":"You have used the alias student in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1753092972953,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"7/21/2025 4:16:12 PM","message":"data not found"}
+{"level":60,"time":1753092974114,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"7/21/2025 4:16:14 PM","message":"data not found"}
+{"level":60,"time":1753092975857,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\attend_all.ts:71:19)","time":"7/21/2025 4:16:15 PM","message":"data not found"}
+{"level":60,"time":1753094514571,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\basic_informations.ts:55:19)","time":"7/21/2025 4:41:54 PM","message":"data not found"}
+{"level":60,"time":1753094514852,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\basic_informations.ts:55:19)","time":"7/21/2025 4:41:54 PM","message":"data not found"}
+{"level":60,"time":1753096840589,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:20:40 PM","message":"target not found."}
+{"level":60,"time":1753097237966,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:27:17 PM","message":"target not found."}
+{"level":60,"time":1753097288287,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:28:08 PM","message":"target not found."}
+{"level":60,"time":1753097291320,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:28:11 PM","message":"target not found."}
+{"level":60,"time":1753097305359,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:28:25 PM","message":"target not found."}
+{"level":60,"time":1753097315850,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\student_payment_history.ts:47:19)","time":"7/21/2025 5:28:35 PM","message":"No payment history found"}
+{"level":60,"time":1753097356385,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\classes.ts:58:19)","time":"7/21/2025 5:29:16 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1753097359470,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\accounts.ts:50:19)","time":"7/21/2025 5:29:19 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1753097359478,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\all_category.ts:50:19)","time":"7/21/2025 5:29:19 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1753097359493,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\account_periods.ts:53:19)","time":"7/21/2025 5:29:19 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1753097361839,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\teachers_approved.ts:137:15)","time":"7/21/2025 5:29:21 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1753097362999,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\staff_pending.ts:182:15)","time":"7/21/2025 5:29:22 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1753097363194,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\admission_officer_all.ts:172:15)","time":"7/21/2025 5:29:23 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1753097363559,"pid":2148,"hostname":"DESKTOP-9421701","file":"services\\notices.ts:178:15)","time":"7/21/2025 5:29:23 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1753097414363,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:30:14 PM","message":"target not found."}
+{"level":60,"time":1753097417126,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:30:17 PM","message":"target not found."}
+{"level":60,"time":1753097417489,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:30:17 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1753097426234,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:30:26 PM","message":"target not found."}
+{"level":60,"time":1753097426597,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:30:26 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1753097444866,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:30:44 PM","message":"target not found."}
+{"level":60,"time":1753097519320,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:31:59 PM","message":"target not found."}
+{"level":60,"time":1753097519742,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:31:59 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1753097591935,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:33:11 PM","message":"target not found."}
+{"level":60,"time":1753097647084,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:34:07 PM","message":"target not found."}
+{"level":60,"time":1753097651531,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:34:11 PM","message":"target not found."}
+{"level":60,"time":1753097655055,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:34:15 PM","message":"target not found."}
+{"level":60,"time":1753097660975,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:34:20 PM","message":"target not found."}
+{"level":60,"time":1753097690372,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:34:50 PM","message":"target not found."}
+{"level":60,"time":1753097885723,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:38:05 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1753098533092,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:48:53 PM","message":"target not found."}
+{"level":60,"time":1753098568374,"pid":2148,"hostname":"DESKTOP-9421701","file":"","time":"7/21/2025 5:49:28 PM","message":"target not found."}

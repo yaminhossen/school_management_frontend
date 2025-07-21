@@ -90,6 +90,72 @@ const BasicInformation: React.FC<Props> = (props: Props) => {
                             {data.status}
                         </td>
                     </tr>
+                    <tr>
+                        <td>Branch:</td>
+                        <td className="font-medium text-dark-medium">
+                            {data.staffs?.branch?.name || 'N/A'}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>NID:</td>
+                        <td className="font-medium text-dark-medium">
+                            <a
+                                href={
+                                    data.staff_infos?.national_id || undefined
+                                }
+                                target='_blank'
+                            >
+                                <img
+                                    src={
+                                        data.staff_infos?.national_id ||
+                                        undefined
+                                    }
+                                    width={40}
+                                    alt="yjurty"
+                                />
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Certificate No. 1 :</td>
+                        <td className="font-medium text-dark-medium">
+                            <a
+                                href={
+                                    data.staff_infos?.certificate_1 || undefined
+                                }
+                                target='_blank'
+                            >
+                                <img
+                                    src={
+                                        data.staff_infos?.certificate_1 ||
+                                        undefined
+                                    }
+                                    width={40}
+                                    alt="yjurty"
+                                />
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Certificate No. 2 :</td>
+                        <td className="font-medium text-dark-medium">
+                            <a
+                                href={
+                                    data.staff_infos?.certificate_2 || undefined
+                                }
+                                target='_blank'
+                            >
+                                <img
+                                    src={
+                                        data.staff_infos?.certificate_2 ||
+                                        undefined
+                                    }
+                                    width={40}
+                                    alt="yjurty"
+                                />
+                            </a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
