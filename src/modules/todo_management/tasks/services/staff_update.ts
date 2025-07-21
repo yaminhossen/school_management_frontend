@@ -48,7 +48,7 @@ async function staff_update(
         if (data2) {
             let inputs2: InferCreationAttributes<typeof taskUserModel> = {
                 is_complete: ssss || body?.is_complete,
-                attachment: t_attachment,
+                attachment: t_attachment || data2.attachment,
                 description: body.description,
             };
             (await data2.update(inputs2)).save();

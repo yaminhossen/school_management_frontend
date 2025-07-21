@@ -14,6 +14,8 @@ import { store_reducers } from './reducers';
 import { all_staff } from './async_actions/all_staff';
 import { assign_task } from './async_actions/assign_task';
 import { teacher_complete } from './async_actions/teacher_complete';
+import { seen_user } from './async_actions/seen_user';
+import { unseen_tasks } from './async_actions/unseen_tasks';
 
 const storeSlice = createSlice({
     name: setup.store_prefix,
@@ -32,6 +34,15 @@ const storeSlice = createSlice({
             )
             .addCase(
                 assign_task.fulfilled,
+                (state, { type, payload, meta }) => {
+                    // console.log(type, payload, meta);
+                },
+            )
+            .addCase(seen_user.fulfilled, (state, { type, payload, meta }) => {
+                // console.log(type, payload, meta);
+            })
+            .addCase(
+                unseen_tasks.fulfilled,
                 (state, { type, payload, meta }) => {
                     // console.log(type, payload, meta);
                 },
