@@ -23,12 +23,13 @@ const fetch_api = async (param, thunkAPI) => {
     const dispatch = thunkAPI.dispatch;
 
     dispatch(storeSlice.actions.set_is_loading(true));
-    dispatch(storeSlice.actions.set_loading_text('storing..'));
+    dispatch(storeSlice.actions.set_loading_text('updating..'));
 
     const response = await axios.post(
-        `${end_point}/${api_prefix}/staff-update`,
+        `${end_point}/${api_prefix}/update`,
         param,
     );
+    console.log('params', param);
 
     dispatch(all({}));
     dispatch(storeSlice.actions.set_is_loading(true));
@@ -40,7 +41,7 @@ const fetch_api = async (param, thunkAPI) => {
     // thunkAPI.dispatch(storeSlice.actions.my_action())
 };
 
-export const store = createAsyncThunk<ReturnType, PayloadType, ThunkArgument>(
-    `${store_prefix}/store`,
+export const update = createAsyncThunk<ReturnType, PayloadType, ThunkArgument>(
+    `${store_prefix}/update`,
     fetch_api,
 );

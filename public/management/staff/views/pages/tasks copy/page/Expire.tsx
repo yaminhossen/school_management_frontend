@@ -23,10 +23,13 @@ import HeadRightButtons from '../components/all_data_page/HeadRightButtons';
 import axios from 'axios';
 import { teacher_complete } from '../config/store/async_actions/teacher_complete';
 import { unseen_tasks } from '../config/store/async_actions/unseen_tasks';
+import { expired } from '../config/store/async_actions/expired';
+import HeadSearchExpired from '../components/all_data_page/HeadSearchExpire';
+import FilterExpired from '../components/canvas/FilterExpired';
 
 export interface Props {}
 
-const Pending: React.FC<Props> = (props: Props) => {
+const Expire: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -38,26 +41,15 @@ const Pending: React.FC<Props> = (props: Props) => {
         // await dispatch(unseen_tasks({}) as any);
         // Wait for 0.5 second (500ms)
         await new Promise((resolve) => setTimeout(resolve, 300));
-        await dispatch(all({}) as any);
+        await dispatch(expired({}) as any);
     }
 
     useEffect(() => {
         initdependancy();
     }, []);
-    // useEffect(() => {
-    //     dispatch(storeSlice.actions.set_select_fields('id, status'));
-    //     // Wait for 0.5 second (500ms)
-    //     await new Promise((resolve) => setTimeout(resolve, 1000));
-    //     dispatch(all({}) as any);
-    // }, []);
-
-    function quick_view(data: anyObject = {}) {
-        dispatch(storeSlice.actions.set_item(data));
-        dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
-    }
     // let date = moment().format('YYYY-MM-DD');
 
-    const handleConfirmSubmit = async (id) => {
+    /* const handleConfirmSubmit = async (id) => {
         // const confirmed = (window as any).s_confirm('Are you sure you want to submit?');
         let confirm = await (window as anyObject).s_confirm('Are you sure');
         console.log('thsis is the id', id);
@@ -80,7 +72,7 @@ const Pending: React.FC<Props> = (props: Props) => {
                 setError(error);
             }
         }
-    };
+    }; */
 
     return (
         <div className="page_content">
@@ -89,13 +81,13 @@ const Pending: React.FC<Props> = (props: Props) => {
                     <div className="navigation">
                         <ul>
                             <li className="search_li">
-                                <HeadSearch></HeadSearch>
+                                <HeadSearchExpired></HeadSearchExpired>
                             </li>
                         </ul>
                     </div>
                     <div className="title no_move" id="users_drag">
                         <h2>
-                            All Pending Task
+                            All Expire Task
                             {/* {state.is_loading && <span> loading..</span>} */}
                         </h2>
                     </div>
@@ -224,14 +216,6 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                                     Show
                                                                 </Link>
                                                             )}
-                                                            <Link
-                                                                                                                            // to="/students/single/student/"
-                                                                                                                            to={`/${setup.route_prefix}/create/${i.id}`}
-                                                                                                                            className="btn btn-sm  btn-outline-info ml-2"
-                                                                                                                            type="submit"
-                                                                                                                        >
-                                                                                                                            Send
-                                                                                                                        </Link>
                                                         </td>
                                                     </tr>
                                                 );
@@ -261,7 +245,7 @@ const Pending: React.FC<Props> = (props: Props) => {
                             set_url={storeSlice.actions.set_url}
                             set_paginate={storeSlice.actions.set_paginate}
                             set_page={storeSlice.actions.set_page}
-                            all={all}
+                            all={expired}
                             data={state.all as any}
                             selected_paginate={state.paginate}
                         ></Paginate>
@@ -270,10 +254,10 @@ const Pending: React.FC<Props> = (props: Props) => {
                 {/* <TableFooter></TableFooter> */}
             </div>
 
-            <Filter></Filter>
+            <FilterExpired></FilterExpired>
             <QuickView></QuickView>
         </div>
     );
 };
 
-export default Pending;
+export default Expire;

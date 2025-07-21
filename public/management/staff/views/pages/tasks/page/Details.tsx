@@ -58,9 +58,9 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>Date</td>
                                         <td>:</td>
                                         <td>
-                                            {moment(state.item2?.tasks.date).format(
-                                                'YYYY-MM-DD',
-                                            )}
+                                            {moment(
+                                                state.item2?.tasks.date,
+                                            ).format('YYYY-MM-DD')}
                                         </td>
                                     </tr>
                                     <tr>

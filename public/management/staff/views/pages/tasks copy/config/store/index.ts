@@ -16,7 +16,6 @@ import { assign_task } from './async_actions/assign_task';
 import { teacher_complete } from './async_actions/teacher_complete';
 import { seen_user } from './async_actions/seen_user';
 import { unseen_tasks } from './async_actions/unseen_tasks';
-import { details2 } from './async_actions/details2';
 
 const storeSlice = createSlice({
     name: setup.store_prefix,
@@ -49,9 +48,6 @@ const storeSlice = createSlice({
                 },
             )
             .addCase(details.fulfilled, (state, { type, payload, meta }) => {
-                // console.log(type, payload, meta);
-            })
-            .addCase(details2.fulfilled, (state, { type, payload, meta }) => {
                 // console.log(type, payload, meta);
             })
             .addCase(all_staff.fulfilled, (state, { type, payload, meta }) => {

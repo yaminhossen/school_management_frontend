@@ -5,8 +5,6 @@ import axios from 'axios';
 import setup from '../../setup';
 import { end_point } from '../../../../../../config/api';
 import storeSlice from '..';
-import { anyObject } from '../../../../../../common_types/object';
-import { all } from './all';
 
 type ReturnType = void;
 type PayloadType = { [key: string]: any };
@@ -23,24 +21,20 @@ const fetch_api = async (param, thunkAPI) => {
     const dispatch = thunkAPI.dispatch;
 
     dispatch(storeSlice.actions.set_is_loading(true));
-    dispatch(storeSlice.actions.set_loading_text('storing..'));
+    dispatch(storeSlice.actions.set_loading_text('importing..'));
 
     const response = await axios.post(
-        `${end_point}/${api_prefix}/staff-update`,
-        param,
+        `${end_point}/${api_prefix}/imoprt`,
+        param.data,
     );
 
-    dispatch(all({}));
-    dispatch(storeSlice.actions.set_is_loading(true));
-
-    (window as anyObject).toaster(
-        `${response.status} - ${response.data.message}`,
-    );
+    dispatch(storeSlice.actions.set_is_loading(false));
     return response.data;
     // thunkAPI.dispatch(storeSlice.actions.my_action())
 };
 
-export const store = createAsyncThunk<ReturnType, PayloadType, ThunkArgument>(
-    `${store_prefix}/store`,
-    fetch_api,
-);
+export const import_data = createAsyncThunk<
+    ReturnType,
+    PayloadType,
+    ThunkArgument
+>(`${store_prefix}/imoprt`, fetch_api);

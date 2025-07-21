@@ -5,8 +5,8 @@ import axios from 'axios';
 import setup from '../../setup';
 import { end_point } from '../../../../../../config/api';
 import storeSlice from '..';
-import { anyObject } from '../../../../../../common_types/object';
 import { all } from './all';
+import { anyObject } from '../../../../../../common_types/object';
 
 type ReturnType = void;
 type PayloadType = { [key: string]: any };
@@ -23,24 +23,28 @@ const fetch_api = async (param, thunkAPI) => {
     const dispatch = thunkAPI.dispatch;
 
     dispatch(storeSlice.actions.set_is_loading(true));
-    dispatch(storeSlice.actions.set_loading_text('storing..'));
+    dispatch(storeSlice.actions.set_loading_text('deleting..'));
 
     const response = await axios.post(
-        `${end_point}/${api_prefix}/staff-update`,
-        param,
+        `${end_point}/${api_prefix}/soft-delete`,
+        { id: param.id },
     );
 
-    dispatch(all({}));
-    dispatch(storeSlice.actions.set_is_loading(true));
+    dispatch(storeSlice.actions.set_is_loading(false));
+    let row = document.querySelector(`.table_row_${param.id}`);
+    if (row) {
+        row.classList.add('hide');
+    }
+    await dispatch(all({}));
 
-    (window as anyObject).toaster(
-        `${response.status} - ${response.data.message}`,
-    );
+    (window as anyObject).toaster('data deleted.');
+
     return response.data;
     // thunkAPI.dispatch(storeSlice.actions.my_action())
 };
 
-export const store = createAsyncThunk<ReturnType, PayloadType, ThunkArgument>(
-    `${store_prefix}/store`,
-    fetch_api,
-);
+export const soft_delete = createAsyncThunk<
+    ReturnType,
+    PayloadType,
+    ThunkArgument
+>(`${store_prefix}/soft_delete`, fetch_api);

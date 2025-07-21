@@ -59,49 +59,32 @@ const DetailsComplete: React.FC<Props> = (props: Props) => {
                                         <td>{state.item2?.tasks.title}</td>
                                     </tr>
                                     <tr>
+                                        <td>Description</td>
+                                        <td>:</td>
+                                        <td>{state.item2?.tasks.description}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Creator</td>
+                                        <td>:</td>
+                                        <td>
+                                            {state.item2.admin?.name ||
+                                                'Not found'}
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td>Date</td>
                                         <td>:</td>
                                         <td>
-                                            {moment(
-                                                state.item2?.tasks.date,
-                                            ).format('YYYY-MM-DD')}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Self Description</td>
-                                        <td>:</td>
-                                        <td className="task_detailsd details_descrtiption2">
-                                            {state.item2?.description}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Attachment</td>
-                                        <td>:</td>
-                                        <td className="task_detailsd details_descrtiption2">
-                                            {state.item2?.attachment ? (
-                                                <a
-                                                    href={
-                                                        state.item2
-                                                            ?.attachment ||
-                                                        undefined
-                                                    }
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                >
-                                                    View Attachment
-                                                </a>
-                                            ) : (
-                                                'No Attachment'
+                                            {moment(state.item2?.tasks.date).format(
+                                                'YYYY-MM-DD',
                                             )}
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>Description</td>
+                                    {/* <tr>
+                                        <td>Is completed</td>
                                         <td>:</td>
-                                        <td>
-                                            {state.item2?.tasks.description}
-                                        </td>
-                                    </tr>
+                                        <td>{state.item2.is_complete}</td>
+                                    </tr> */}
                                 </tbody>
                             </table>
                         </div>

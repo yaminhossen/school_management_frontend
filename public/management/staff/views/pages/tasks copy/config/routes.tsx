@@ -6,8 +6,6 @@ import Pending from '../page/Pending';
 import Details from '../page/Details';
 import DetailsComplete from '../page/DetailsComplete';
 import Expire from '../page/Expire';
-import Create from '../page/Create';
-import Edit from '../page/Edit';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -41,14 +39,6 @@ export default {
         {
             path: 'details/:id',
             element: <Details />,
-        },
-        {
-            path: 'create/:id',
-            element: <Create />,
-        },
-        {
-            path: 'edit/:id',
-            element: <Edit />,
         },
     ],
 };

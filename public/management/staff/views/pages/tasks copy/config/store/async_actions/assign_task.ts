@@ -26,21 +26,23 @@ const fetch_api = async (param, thunkAPI) => {
     dispatch(storeSlice.actions.set_loading_text('storing..'));
 
     const response = await axios.post(
-        `${end_point}/${api_prefix}/staff-update`,
+        `${end_point}/${api_prefix}/task-assign`,
         param,
     );
+    console.log('params assign task', param);
 
     dispatch(all({}));
     dispatch(storeSlice.actions.set_is_loading(true));
 
-    (window as anyObject).toaster(
-        `${response.status} - ${response.data.message}`,
-    );
-    return response.data;
+    // (window as anyObject).toaster(
+    //     `${response.status} - ${response.data.message}`,
+    // );
+    // return response.data;
     // thunkAPI.dispatch(storeSlice.actions.my_action())
 };
 
-export const store = createAsyncThunk<ReturnType, PayloadType, ThunkArgument>(
-    `${store_prefix}/store`,
-    fetch_api,
-);
+export const assign_task = createAsyncThunk<
+    ReturnType,
+    PayloadType,
+    ThunkArgument
+>(`${store_prefix}/assign-task`, fetch_api);

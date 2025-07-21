@@ -24,6 +24,7 @@ import HeadRightButtons from '../components/all_data_page/HeadRightButtons';
 import axios from 'axios';
 import HeadSearchComplete from '../components/all_data_page/HeadSearchComplete';
 import FilterComplete from '../components/canvas/FilterComplete';
+import { unseen_tasks } from '../config/store/async_actions/unseen_tasks';
 
 export interface Props {}
 
@@ -40,6 +41,8 @@ const Pending: React.FC<Props> = (props: Props) => {
         // Wait for 0.5 second (500ms)
         await new Promise((resolve) => setTimeout(resolve, 300));
         dispatch(teacher_complete({}) as any);
+        await new Promise((resolve) => setTimeout(resolve, 300));
+        await dispatch(unseen_tasks({}) as any);
     }
 
     useEffect(() => {
@@ -180,10 +183,6 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                             {i.tasks?.title}
                                                         </td>
                                                         <td>
-                                                            {/* {
-                                                                i.tasks
-                                                                    ?.description
-                                                            } */}
                                                             {i.tasks
                                                                     ?.description?.length >
                                                             25
@@ -210,6 +209,14 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                                 type="submit"
                                                             >
                                                                 Show
+                                                            </Link>
+                                                            <Link
+                                                                // to="/students/single/student/"
+                                                                to={`/${setup.route_prefix}/edit/${i.id}`}
+                                                                className="btn btn-sm  btn-outline-info ml-2"
+                                                                type="submit"
+                                                            >
+                                                                Edit
                                                             </Link>
                                                         </td>
                                                     </tr>
