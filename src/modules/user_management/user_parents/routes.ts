@@ -13,6 +13,11 @@ module.exports = async function (fastify: FastifyInstance) {
             { preHandler: [auth_middleware] },
             controllerInstance.all,
         )
+        .get(
+            `${prefix}/parents`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all_parents,
+        )
         .get(`${prefix}/:id`, controllerInstance.find)
         .get(`${prefix}/childrens/:id`, controllerInstance.childrens)
         .get(

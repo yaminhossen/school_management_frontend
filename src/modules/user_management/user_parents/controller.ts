@@ -19,11 +19,16 @@ import forget from './services/forget';
 import childrens from './services/childrens';
 import basic_information from './services/basic_information';
 import profile_update from './services/profile_update';
+import all_parents from './services/all_parents';
 
 export default function (fastify: FastifyInstance) {
     return {
         all: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all(fastify, req);
+            res.code(data.status).send(data);
+        },
+        all_parents: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await all_parents(fastify, req);
             res.code(data.status).send(data);
         },
 

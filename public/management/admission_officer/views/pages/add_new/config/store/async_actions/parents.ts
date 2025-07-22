@@ -45,7 +45,7 @@ const fetch_api = async (param, thunkAPI) => {
     };
 
     let response: { [key: string]: any } = {};
-    let url = `${api_host}${end_point}/user-parents/parents`;
+    let url = `${api_host}${end_point}/user-parents`;
     let full_url: URL = new URL(url);
     let fetch_only_latest: boolean = state[`only_latest_data`];
 
@@ -84,4 +84,4 @@ const fetch_api = async (param, thunkAPI) => {
     return response.data;
 };
 
-export const all = createAsyncThunk(`${store_prefix}/all`, fetch_api);
+export const parents = createAsyncThunk(`${store_prefix}/parents`, fetch_api);
