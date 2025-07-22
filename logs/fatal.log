@@ -43,3 +43,5 @@
 {"level":60,"time":1753184641965,"pid":20888,"hostname":"DESKTOP-9421701","file":"","time":"7/22/2025 5:44:01 PM","message":"target not found."}
 {"level":60,"time":1753184644407,"pid":20888,"hostname":"DESKTOP-9421701","file":"","time":"7/22/2025 5:44:04 PM","message":"target not found."}
 {"level":60,"time":1753184664018,"pid":20888,"hostname":"DESKTOP-9421701","file":"services\\details.ts:34:19)","time":"7/22/2025 5:44:24 PM","message":"data not found"}
+{"level":60,"time":1753186401914,"pid":20888,"hostname":"DESKTOP-9421701","file":"services\\details.ts:34:19)","time":"7/22/2025 6:13:21 PM","message":"data not found"}
+{"level":60,"time":1753187146421,"pid":18736,"hostname":"DESKTOP-9421701","file":"","time":"7/22/2025 6:25:46 PM","message":"target not found."}

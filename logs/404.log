@@ -9,3 +9,5 @@
 {"level":60,"time":1753176181655,"pid":25532,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
 {"level":60,"time":1753176185615,"pid":25532,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
 {"level":60,"time":1753176185729,"pid":25532,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1753187147306,"pid":18736,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/unseen-tasks"}
+{"level":60,"time":1753187147323,"pid":18736,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/basic-information"}

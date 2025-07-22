@@ -957,8 +957,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <span
                                                             onClick={() =>
                                                                 setShowParentPassword(
-                                                            !showParentPassword,
-                                                        )
+                                                                    !showParentPassword,
+                                                                )
                                                             }
                                                             className="material-symbols-outlined visible_icon"
                                                             style={{
