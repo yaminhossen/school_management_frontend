@@ -45,3 +45,13 @@
 {"level":60,"time":1753184664018,"pid":20888,"hostname":"DESKTOP-9421701","file":"services\\details.ts:34:19)","time":"7/22/2025 5:44:24 PM","message":"data not found"}
 {"level":60,"time":1753186401914,"pid":20888,"hostname":"DESKTOP-9421701","file":"services\\details.ts:34:19)","time":"7/22/2025 6:13:21 PM","message":"data not found"}
 {"level":60,"time":1753187146421,"pid":18736,"hostname":"DESKTOP-9421701","file":"","time":"7/22/2025 6:25:46 PM","message":"target not found."}
+{"level":60,"time":1753265645679,"pid":14672,"hostname":"YaminsComputer","file":"services\\details.ts:34:19)","time":"7/23/2025 4:14:05 PM","message":"data not found"}
+{"level":60,"time":1753265806031,"pid":14672,"hostname":"YaminsComputer","file":"","time":"7/23/2025 4:16:46 PM","message":"target not found."}
+{"level":60,"time":1753266969406,"pid":14672,"hostname":"YaminsComputer","file":"","time":"7/23/2025 4:36:09 PM","message":"target not found."}
+{"level":60,"time":1753266975495,"pid":14672,"hostname":"YaminsComputer","file":"services\\details.ts:34:19)","time":"7/23/2025 4:36:15 PM","message":"data not found"}
+{"level":60,"time":1753268514867,"pid":14672,"hostname":"YaminsComputer","file":"services\\details.ts:34:19)","time":"7/23/2025 5:01:54 PM","message":"data not found"}
+{"level":60,"time":1753268571133,"pid":14672,"hostname":"YaminsComputer","file":"services\\admit_student_store.ts:599:15)","time":"7/23/2025 5:02:51 PM","message":"data and salt arguments required"}
+{"level":60,"time":1753268996165,"pid":2188,"hostname":"YaminsComputer","file":"","time":"7/23/2025 5:09:56 PM","message":"target not found."}
+{"level":60,"time":1753268999419,"pid":2188,"hostname":"YaminsComputer","file":"services\\details.ts:34:19)","time":"7/23/2025 5:09:59 PM","message":"data not found"}
+{"level":60,"time":1753272198546,"pid":7984,"hostname":"YaminsComputer","file":"","time":"7/23/2025 6:03:18 PM","message":"target not found."}
+{"level":60,"time":1753272268610,"pid":7984,"hostname":"YaminsComputer","file":"services\\details.ts:34:19)","time":"7/23/2025 6:04:28 PM","message":"data not found"}

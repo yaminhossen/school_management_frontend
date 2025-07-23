@@ -11,3 +11,13 @@
 {"level":60,"time":1753176185729,"pid":25532,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
 {"level":60,"time":1753187147306,"pid":18736,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/unseen-tasks"}
 {"level":60,"time":1753187147323,"pid":18736,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/basic-information"}
+{"level":60,"time":1753265621199,"pid":14672,"hostname":"YaminsComputer","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1753265621231,"pid":14672,"hostname":"YaminsComputer","error":"404","url":"/api/v1/tasks/unseen-tasks"}
+{"level":60,"time":1753265621242,"pid":14672,"hostname":"YaminsComputer","error":"404","url":"/api/v1/notices/all/admission-officer"}
+{"level":60,"time":1753265621246,"pid":14672,"hostname":"YaminsComputer","error":"404","url":"/api/v1/user-staffs/basic-information"}
+{"level":60,"time":1753266969830,"pid":14672,"hostname":"YaminsComputer","error":"404","url":"/api/v1/tasks/unseen-tasks"}
+{"level":60,"time":1753266969843,"pid":14672,"hostname":"YaminsComputer","error":"404","url":"/api/v1/user-staffs/basic-information"}
+{"level":60,"time":1753268996676,"pid":2188,"hostname":"YaminsComputer","error":"404","url":"/api/v1/tasks/unseen-tasks"}
+{"level":60,"time":1753268996713,"pid":2188,"hostname":"YaminsComputer","error":"404","url":"/api/v1/user-staffs/basic-information"}
+{"level":60,"time":1753272199121,"pid":7984,"hostname":"YaminsComputer","error":"404","url":"/api/v1/tasks/unseen-tasks"}
+{"level":60,"time":1753272199132,"pid":7984,"hostname":"YaminsComputer","error":"404","url":"/api/v1/user-staffs/basic-information"}
