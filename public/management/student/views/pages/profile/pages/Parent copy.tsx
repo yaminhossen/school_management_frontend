@@ -56,6 +56,10 @@ const Details: React.FC<Props> = (props: Props) => {
                     <div className="single_student_details">
                         <div>
                             <h4>Guardians</h4>
+                            {data.parents?.length &&
+                                data?.parents.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
                                             <div className="basic_info mb-4 ">
                                                 <table className="table text-nowrap student_table">
                                                     <tbody>
@@ -64,7 +68,8 @@ const Details: React.FC<Props> = (props: Props) => {
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
                                                                 {
-                                                                    data.parents?.parent_details
+                                                                    i
+                                                                        .parent_details
                                                                         ?.name
                                                                 }
                                                             </td>
@@ -74,7 +79,8 @@ const Details: React.FC<Props> = (props: Props) => {
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
                                                                 {
-                                                                    data.parents?.parent_details
+                                                                    i
+                                                                        .parent_details
                                                                         ?.email
                                                                 }
                                                             </td>
@@ -83,8 +89,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                                             <td>Relation</td>
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
-                                                                {data.parents?.parent_details
-                                                                        ?.relation}
+                                                                {i.relation}
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -98,7 +103,8 @@ const Details: React.FC<Props> = (props: Props) => {
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
                                                                 {
-                                                                    data.parents?.parent_details
+                                                                    i
+                                                                        .parent_details
                                                                         ?.phone_number
                                                                 }
                                                             </td>
@@ -108,7 +114,8 @@ const Details: React.FC<Props> = (props: Props) => {
                                                             <td>:</td>
                                                             <td className="font-medium text-dark-medium">
                                                                 {
-                                                                    data.parents?.parent_details
+                                                                    i
+                                                                        .parent_details
                                                                         ?.status
                                                                 }
                                                             </td>
@@ -119,8 +126,9 @@ const Details: React.FC<Props> = (props: Props) => {
                                                             <td className="font-medium text-dark-medium">
                                                                 <a
                                                                     href={
-                                                                        data.parents?.parent_details
-                                                                            ?.image || undefined
+                                                                        i
+                                                                            .parent_details
+                                                                            ?.image
                                                                     }
                                                                     target="_blank"
                                                                     rel="noopener noreferrer"
@@ -132,6 +140,9 @@ const Details: React.FC<Props> = (props: Props) => {
                                                     </tbody>
                                                 </table>
                                             </div>
+                                        );
+                                    },
+                                )}
                         </div>
                     </div>
                 )}

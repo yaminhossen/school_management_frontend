@@ -112,7 +112,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                     Documents
                                 </NavLink>
                             </li>
-                            <li className="active_Li">
+                            {/* <li className="active_Li">
                                 <NavLink
                                     to={`/childrens/details/${id}/parent`}
                                     className={({ isActive }) =>
@@ -123,7 +123,7 @@ const SingleStudent: React.FC<Props> = (props: Props) => {
                                 >
                                     Parents
                                 </NavLink>
-                            </li>
+                            </li> */}
                             <li className="active_Li">
                                 <NavLink
                                     to={`/childrens/details/${id}/skill`}
