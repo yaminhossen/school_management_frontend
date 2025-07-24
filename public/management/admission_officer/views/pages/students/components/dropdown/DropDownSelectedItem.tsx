@@ -1,41 +1,38 @@
 import React from 'react';
 import { anyObject } from '../../../../../common_types/object';
-export interface Props {
-    selectedList: anyObject[];
-    setSelectedList: React.Dispatch<React.SetStateAction<anyObject[]>>;
+
+interface Props {
+    selectedList: anyObject[]; // Now should be array with 0 or 1 item
+    setSelectedList: (list: anyObject[]) => void;
 }
 
 const DropDownSelectedItem: React.FC<Props> = ({
     selectedList,
     setSelectedList,
 }) => {
-    function remove_item(index: number) {
-        const temp = [...selectedList];
-        temp.splice(index, 1);
-        setSelectedList(temp);
-    }
+    const selected = selectedList[0];
+
     return (
-        <>
-            {selectedList.length ? (
-                selectedList.map((i, index) => {
-                    return (
-                        <div id={i.id} key={index} className="selected_item">
-                            <div className="label">{i.name}</div>
-                            <div
-                                onClick={() => remove_item(index)}
-                                className="remove"
-                            >
-                                <span className="material-symbols-outlined fill">
-                                    close
-                                </span>
-                            </div>
-                        </div>
-                    );
-                })
+        <div className="selected_item">
+            {selected ? (
+                <span>
+                    {selected.name}
+                    <button
+                        type="button"
+                        className="remove_btn"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedList([]);
+                        }}
+                        style={{ marginLeft: '8px' }}
+                    >
+                        ×
+                    </button>
+                </span>
             ) : (
-                <span className="no_item_selected_text">select item</span>
+                <span className="placeholder">Select parent</span>
             )}
-        </>
+        </div>
     );
 };
 

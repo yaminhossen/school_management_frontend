@@ -8,7 +8,7 @@ import { RootState, useAppDispatch } from '../../../../../store';
 import setup from '../../config/setup';
 import HeadSearch from '../all_data_page/HeadSearch';
 import { anyObject } from '../../../../../common_types/object';
-// import DropDownCheckbox from './DropDownCheckbox'; // Not needed for single select
+import DropDownCheckbox from './DropDownCheckbox';
 import DropDownSelectedItem from './DropDownSelectedItem';
 import { parent_details } from '../../config/store/async_actions/parent_details';
 
@@ -26,31 +26,32 @@ const DropDown: React.FC<Props> = ({ name, get_selected_data }) => {
     useEffect(() => {
         dispatch(storeSlice.actions.set_only_latest_data(true));
         dispatch(all({}) as any);
+        // dispatch(storeSlice.actions.set_item({}));
+        // dispatch(parent_details({ id: parent_id }) as any);
     }, []);
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
-
-        if (parent_id !== undefined && parent_id > 0) {
-            dispatch(parent_details({ id: parent_id }) as any);
-        }
+        dispatch(parent_details({ id: parent_id }) as any);
     }, [parent_id]);
 
     /** local states */
     const [showDropDownList, setShowDropDownList] = useState(false);
-    const [selectedItem, setSelectedItem] = useState<anyObject | null>(null);
+    const [selectedList, setSelectedList] = useState<anyObject[]>([]);
     const selected_items_input = useRef<HTMLInputElement>(null);
 
-    /** update selected item */
+    /** update selected items */
     useEffect(() => {
-        let id = selectedItem ? selectedItem.id : '';
+        // console.log(selectedList);
+        let ids = selectedList.map((i) => i.id).join(',');
         if (selected_items_input && selected_items_input.current) {
-            selected_items_input.current.value = id ? `[${id}]` : '';
+            selected_items_input.current.value = `[${ids}]`;
         }
 
         if (typeof get_selected_data === 'function') {
-            get_selected_data({ selectedItem, id });
+            get_selected_data({ selectedList, ids });
         }
-    }, [selectedItem]);
+    }, [selectedList]);
+    console.log('parent_id', parent_id);
 
     return (
         <>
@@ -60,12 +61,9 @@ const DropDown: React.FC<Props> = ({ name, get_selected_data }) => {
                     className="selected_list"
                     onClick={() => setShowDropDownList(true)}
                 >
-                    {/* Show selected item name or placeholder */}
                     <DropDownSelectedItem
-                        selectedList={selectedItem ? [selectedItem] : []}
-                        setSelectedList={(list: any[]) =>
-                            setSelectedItem(list[0] || null)
-                        }
+                        selectedList={selectedList}
+                        setSelectedList={setSelectedList}
                     />
                 </div>
                 {showDropDownList && (
@@ -86,33 +84,40 @@ const DropDown: React.FC<Props> = ({ name, get_selected_data }) => {
                         <ul className="option_list custom_scroll">
                             {(state.all as any)?.data?.map((i: anyObject) => {
                                 return (
-                                    <li
-                                        className={`option_item${
-                                            selectedItem &&
-                                            selectedItem.id === i.id
-                                                ? ' selected'
-                                                : ''
-                                        }`}
-                                        key={i.id}
-                                        onClick={() => {
-                                            setSelectedItem(i);
-                                            setParentId(i.id);
-                                            setShowDropDownList(false);
-                                        }}
-                                    >
-                                        <div
-                                            style={{ paddingTop: 8 }}
-                                            className="label"
-                                        >
-                                            {i.name}
-                                        </div>
+                                    <li className="option_item" key={i.id}>
+                                        <label htmlFor={`drop_item_${i.id}`}>
+                                            <div className="check_box">
+                                                <DropDownCheckbox
+                                                    item={i}
+                                                    selectedList={selectedList}
+                                                    setSelectedList={
+                                                        setSelectedList
+                                                    }
+                                                />
+                                            </div>
+                                            <div
+                                                onClick={() =>
+                                                    setParentId(i.id)
+                                                }
+                                                className="label"
+                                            >
+                                                {i.name}
+                                            </div>
+                                        </label>
                                     </li>
                                 );
                             })}
                         </ul>
 
                         <div className="drop_down_footer data_list">
-                            {/* Paginate if needed */}
+                            {/* <Paginate
+                                set_url={storeSlice.actions.set_url}
+                                set_paginate={storeSlice.actions.set_paginate}
+                                set_page={storeSlice.actions.set_page}
+                                all={all}
+                                data={state.all as any}
+                                selected_paginate={state.paginate}
+                            ></Paginate> */}
                         </div>
                     </div>
                 )}

@@ -1003,7 +1003,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div className="form-group form-vertical">
+                                                    {/* <div className="form-group form-vertical">
                                                         <label>Is parent</label>
                                                         <div className="form_elements">
                                                             <select
@@ -1021,7 +1021,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 </option>
                                                             </select>
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                     <div className="form-group form-vertical">
                                                         <label>
                                                             User parent id

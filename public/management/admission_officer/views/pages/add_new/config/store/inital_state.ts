@@ -12,6 +12,7 @@ export const initialState = {
     /* data store */
     all: {} as anyObject,
     item: {} as anyObject,
+    item2: {} as anyObject,
     preInfo: {} as anyObject,
     classes: [] as Array<anyObject>,
     branches: [] as anyObject[],

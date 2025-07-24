@@ -224,7 +224,7 @@ const db = async function (): Promise<models> {
         as: 'languages',
     });
 
-    UserStudentsModel.hasMany(UserStudentParentsModel, {
+    UserStudentsModel.hasOne(UserStudentParentsModel, {
         sourceKey: 'id',
         foreignKey: 'user_student_id',
         as: 'parents',

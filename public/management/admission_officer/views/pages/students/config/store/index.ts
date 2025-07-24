@@ -14,6 +14,7 @@ import { restore } from './async_actions/restore';
 import { destroy } from './async_actions/destroy';
 import { import_data } from './async_actions/import_data';
 import { store_reducers } from './reducers';
+import { parent_details } from './async_actions/parent_details.ts';
 
 const storeSlice = createSlice({
     name: setup.store_prefix,
@@ -38,6 +39,12 @@ const storeSlice = createSlice({
             })
             .addCase(
                 class_details.fulfilled,
+                (state, { type, payload, meta }) => {
+                    // console.log(type, payload, meta);
+                },
+            )
+            .addCase(
+                parent_details.fulfilled,
                 (state, { type, payload, meta }) => {
                     // console.log(type, payload, meta);
                 },

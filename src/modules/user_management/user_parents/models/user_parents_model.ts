@@ -29,6 +29,13 @@ const modelName = 'UserParentsModel';
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
 type status = 'active' | 'deactive';
+type relation =
+    | 'father'
+    | 'mother'
+    | 'husband'
+    | 'brother'
+    | 'sister'
+    | 'uncle';
 
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
@@ -36,6 +43,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare name?: string;
     declare email?: string | null;
     declare phone_number?: string | null;
+    declare relation?: relation;
     declare image?: string | null;
     declare password?: string;
     declare status?: status;
@@ -67,6 +75,17 @@ function init(sequelize: Sequelize) {
             },
             phone_number: {
                 type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            relation: {
+                type: new DataTypes.ENUM(
+                    'father',
+                    'mother',
+                    'husband',
+                    'brother',
+                    'sister',
+                    'uncle',
+                ),
                 allowNull: true,
             },
             image: {

@@ -183,6 +183,7 @@ async function store(
     let password = await bcrypt.hash(body.password, saltRounds);
 
     let image_path = '';
+    let parent_image_path = '';
     let birth_certi_image = '';
     let national_id_image = '';
     let aheight;
@@ -224,14 +225,6 @@ async function store(
             national_id_image,
         );
     }
-    // console.log('id image1', body);
-
-    // console.log('id image2', body['national_id']);
-    // console.log('id image3', body['national_id']?.ext);
-    // console.log('id image22', body['birth_certificate']);
-    // console.log('id image33', body['birth_certificate']?.ext);
-    // console.log('id image222', national_id_image);
-    // console.log('id image333', birth_certi_image);
 
     if (body['birth_certificate']?.ext) {
         birth_certi_image =
@@ -244,11 +237,6 @@ async function store(
         );
     }
 
-    if (birth_certi_image) {
-        console.log('got thid image');
-    } else {
-        console.log('nothing');
-    }
     let inputs: InferCreationAttributes<typeof data> = {
         // parent_id: body.parent_id,
         name: body.name,
@@ -315,31 +303,16 @@ async function store(
         });
     });
 
-    let student_guardians: anyObject[] = [];
-    let updated_guardian_data = JSON.parse(body.updated_guardian_data);
-    for (let i = 0; i < parseInt(body.totalParent_count); i++) {
-        let image_path = updated_guardian_data[i]?.parent_image;
-        let image_file = body[`parent_image${i}`];
-        if (image_file?.ext) {
-            image_path =
-                '/uploads/users/parents/' +
-                moment().format('YYYYMMDDHHmmss') +
-                image_file.name;
-            await (fastify_instance as any).upload(image_file, image_path);
-        }
-        student_guardians.push({
-            relation: body[`relation${i}`],
-            is_parent: body[`is_parent${i}`],
-            name: body[`parent_name${i}`],
-            email: body[`parent_email${i}`],
-            phone_number: body[`parent_phone_number${i}`],
-            image: image_path,
-        });
+    if (body['parent_image']?.ext) {
+        parent_image_path =
+            'uploads/parents/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['parent_image'].name;
+        await (fastify_instance as any).upload(
+            body['parent_image'],
+            parent_image_path,
+        );
     }
-    // console.log(updated_background_data);
-    // console.log('updated date g', updated_guardian_data);
-    // console.log('student guardinas', student_guardians);
-    // console.log('educational bd', eductional_bc);
 
     let document_file: anyObject[] = [];
     let all_file = await models.UserStudentDocumentValuesModel.findAll({
@@ -348,11 +321,6 @@ async function store(
         },
     });
     all_file.forEach(async (ss) => {
-        // let pp_model = await models.UserStudentDocumentTitlesModel.findOne({
-        //     where: {
-        //         id: ss.dataValues.id,
-        //     },
-        // });
         document_file.push({
             file: ss?.file,
         });
@@ -378,15 +346,6 @@ async function store(
             expire_date: body[`expire_date${i}`],
         });
     }
-    console.log('student documents', student_document);
-    // console.log('student updated_document_data', updated_document_data);
-    console.log('document file', document_file);
-    // let student_document_file: anyObject[] = [];
-    // for (let i = 0; i < parseInt(body.total_docement_count_file); i++) {
-    //     student_document_file.push({
-    //         title: body[`document_title${i}`],
-    //     });
-    // }
 
     let student_skills: anyObject[] = [];
     for (let i = 0; i < parseInt(body.student_skills_count); i++) {
@@ -395,9 +354,6 @@ async function store(
             level: body[`skills_level${i}`],
         });
     }
-
-    // console.log(body.file);
-    // console.log(updated_background_data);
 
     let usi_inputs: InferCreationAttributes<typeof usi_model> = {
         user_student_id: body.id,
@@ -550,66 +506,45 @@ async function store(
                     }
                 });
             }
-            if (student_guardians) {
-                let all_parents = await models.UserStudentParentsModel.findAll({
-                    where: {
-                        user_student_id: body.id,
-                    },
-                });
-                all_parents.forEach(async (ss) => {
-                    await models.UserParentsModel.destroy({
-                        where: {
-                            id: ss.dataValues.user_parent_id,
-                        },
-                    });
-                });
-                await models.UserStudentParentsModel.destroy({
-                    where: {
-                        user_student_id: body.id,
-                    },
-                });
-                student_guardians.forEach(async (ss, index) => {
-                    let bp_model = new models.BranchParentsModel();
-                    let usp_model = new models.UserStudentParentsModel();
-                    let up_model = new models.UserParentsModel();
-                    let up_inputs: InferCreationAttributes<typeof up_model> = {
-                        name: body.parent_name,
-                        email: body.parent_email,
-                        phone_number: body.parent_phone_number,
-                        image: '',
-                        password: body.parent_password,
-                    };
-                    up_inputs.name = ss.name;
-                    up_inputs.email = ss.email;
-                    up_inputs.phone_number = ss.phone_number;
-                    up_inputs.image = ss.image || parent_pass[index]?.image;
-                    up_inputs.password = parent_pass[index]?.password;
-                    (await up_model.update(up_inputs)).save();
-                    if (up_model) {
-                        let usp_inputs: InferCreationAttributes<
-                            typeof usp_model
-                        > = {
-                            user_student_id: 1,
-                            relation: body.relation,
-                            is_parent: body.is_parent,
-                            user_parent_id: body.user_parent_id,
-                        };
-                        usp_inputs.user_student_id = body.id;
-                        usp_inputs.relation = ss.relation;
-                        usp_inputs.is_parent = ss.is_parent;
-                        usp_inputs.user_parent_id = up_model.id || 1;
-                        (await usp_model.update(usp_inputs)).save();
-                        let bp_inputs: InferCreationAttributes<
-                            typeof bp_model
-                        > = {
-                            user_parent_id: up_model.id || 1,
-                            branch_id: auth_user?.branch_id || 1,
-                        };
-                        bp_inputs.user_parent_id = up_model.id || 1;
-                        bp_inputs.branch_id = auth_user?.branch_id || 1;
-                        (await bp_model.update(bp_inputs)).save();
-                    }
-                });
+            console.log('body.parent_id', body.parent_id);
+            if (!body.parent_id) {
+                // let pre_parent_id = new models.UserParentsModel();
+                let pre_parent = await models.UserParentsModel.findByPk(
+                    body.pre_parent_id,
+                );
+                if (!pre_parent) {
+                    return response(422, 'parent not found', []);
+                }
+                let up_model = new models.UserParentsModel();
+                let up_inputs: InferCreationAttributes<typeof up_model> = {
+                    name: body.parent_name,
+                    email: body.parent_email,
+                    relation: body.relation,
+                    phone_number: body.parent_phone_number,
+                    image: '',
+                    password: body.parent_password,
+                };
+                up_inputs.name = body.parent_name;
+                up_inputs.email = body.parent_email;
+                up_inputs.phone_number = body.parent_phone_number;
+                up_inputs.relation = body.relation;
+                up_inputs.image = parent_image_path;
+                // up_inputs.password = await bcrypt.hash(
+                //     body.parent_password,
+                //     saltRounds,
+                // );
+                (await pre_parent.update(up_inputs)).save();
+            }
+            if (body.parent_id) {
+                let usp_model = new models.UserStudentParentsModel();
+                let usp_inputs: InferCreationAttributes<typeof usp_model> = {
+                    user_student_id: 1,
+                    user_parent_id: body.parent_id,
+                };
+                usp_inputs.user_student_id = data.id || 1;
+                usp_inputs.user_parent_id = body.parent_id;
+
+                (await usp_model.update(usp_inputs)).save();
             }
             if (student_number) {
                 await models.UserStudentContactNumbersModel.destroy({

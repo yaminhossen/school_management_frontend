@@ -767,13 +767,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Parent List</label>
                                     <div className="form_elements">
-                                        {/* <select
-                                            name="exist"
-                                            id=""
-                                        >
-                                            <option value="no">No</option>
-                                            <option value="yes">Yes</option>
-                                        </select> */}
                                         <DropDown name="exits"></DropDown>
                                     </div>
                                 </div>
@@ -792,10 +785,19 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <label>Name</label>
                                                     <div className="form_elements">
                                                         <input
+                                                            hidden
+                                                            type="number"
+                                                            placeholder="parents name"
+                                                            name={`parent_id`}
+                                                            defaultValue={
+                                                                state.item?.id
+                                                            }
+                                                        />
+                                                        <input
                                                             readOnly
                                                             type="text"
                                                             placeholder="parents name"
-                                                            name={`parent_name`}
+                                                            // name={`parent_name`}
                                                             defaultValue={
                                                                 state.item?.name
                                                             }
@@ -819,7 +821,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             readOnly
                                                             type="email"
                                                             placeholder="parent email"
-                                                            name={`parent_email`}
+                                                            // name={`parent_email`}
                                                             defaultValue={
                                                                 state.item
                                                                     ?.email
@@ -834,7 +836,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             readOnly
                                                             type="text"
                                                             placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
-                                                            name={`parent_phone_number`}
+                                                            // name={`parent_phone_number`}
                                                             defaultValue={
                                                                 state.item
                                                                     ?.phone_number

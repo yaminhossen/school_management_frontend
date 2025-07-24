@@ -134,7 +134,7 @@ const Guardians: React.FC<Props> = (props: Props) => {
                                                 placeholder="parent email"
                                                 name={`parent_email${1}`}
                                                 defaultValue={
-                                                    state.item.parents?.email
+                                                    state.item?.parents?.parent_details?.email
                                                 }
                                                 onChange={(e) =>
                                                     setData(
@@ -154,8 +154,7 @@ const Guardians: React.FC<Props> = (props: Props) => {
                                                 placeholder="parent phone number"
                                                 name={`parent_phone_number${1}`}
                                                 defaultValue={
-                                                    state.item.parents
-                                                        ?.phone_number
+                                                    state.item?.parents?.parent_details?.phone_number
                                                 }
                                                 onChange={(e) =>
                                                     setData(
@@ -170,7 +169,7 @@ const Guardians: React.FC<Props> = (props: Props) => {
                                     <div className="form-group form-vertical">
                                         <label>Image</label>
                                         <div className="form_elements">
-                                            <ImageUpload name ={`parent_image${1}`} defaultImage={state.item?.parents?.image} />
+                                            <ImageUpload name ={`parent_image${1}`} defaultImage={state.item?.parents?.parent_details?.image} />
                                         </div>
                                     </div>
                                 </div>

@@ -13,6 +13,7 @@ export const initialState = {
     id: 1,
     all: {} as anyObject,
     item: {} as anyObject,
+    item2: {} as anyObject,
     url: '',
 
     /* data filters */

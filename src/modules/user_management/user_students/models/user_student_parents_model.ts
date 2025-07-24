@@ -42,7 +42,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
     declare user_student_id: number;
-    declare relation: relation;
+    declare relation?: relation;
     declare is_parent?: is_parent;
     declare user_parent_id: number;
 

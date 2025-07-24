@@ -79,6 +79,10 @@ export const store_reducers = {
         state.item = action.payload;
     },
 
+    set_item2: (state: typeof initialState, action: PayloadAction<object>) => {
+        state.item2 = action.payload;
+    },
+
     set_class: (
         state: typeof initialState,
         action: PayloadAction<anyObject[]>,

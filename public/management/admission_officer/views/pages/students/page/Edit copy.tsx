@@ -23,7 +23,7 @@ import { sections } from '../../add_new/config/store/async_actions/sections';
 import { shifts } from '../../add_new/config/store/async_actions/shifts';
 import ImageUpload from '../../add_new/components/ImageUpload';
 import BackButton from './components/BackButton';
-import DropDown from '../../students/components/dropdown/DropDown';
+import DropDown from '../../add_new/components/dropdown/DropDown';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -191,7 +191,6 @@ const Index: React.FC<Props> = (props: Props) => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [isParent, setIsParent] = useState('no');
-    console.log('state.item2', state);
 
     return (
         <div className="admin_dashboard">
@@ -302,6 +301,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 defaultValue={state.item.status}
                                                 id=""
                                             >
+                                                {/* <option value=""></option> */}
                                                 <option value="active">
                                                     active
                                                 </option>
@@ -895,8 +895,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             <img
                                                                 width={100}
                                                                 src={
-                                                                    state.item2
-                                                                        .image
+                                                                    state.item2?.image
                                                                 }
                                                                 alt="Img"
                                                             />
@@ -955,9 +954,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         <select
                                                             name={`relation`}
                                                             id=""
-                                                            defaultValue={
-                                                                state.item?.parents?.parent_details?.relation
-                                                            }
                                                         >
                                                             <option value="father">
                                                                 father
@@ -987,16 +983,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             type="text"
                                                             placeholder="parents name"
                                                             name={`parent_name`}
-                                                            defaultValue={
-                                                                state.item?.parents?.parent_details?.name
-                                                            }
-                                                        /><input
-                                                            hidden
-                                                            type="number"
-                                                            name={`pre_parent_id`}
-                                                            defaultValue={
-                                                                state.item?.parents?.parent_details?.id
-                                                            }
                                                         />
                                                     </div>
                                                 </div>
@@ -1007,9 +993,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             type="email"
                                                             placeholder="parent email"
                                                             name={`parent_email`}
-                                                            defaultValue={
-                                                                state.item?.parents?.parent_details?.email
-                                                            }
                                                         />
                                                     </div>
                                                 </div>
@@ -1020,9 +1003,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                             type="text"
                                                             placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
                                                             name={`parent_phone_number`}
-                                                            defaultValue={
-                                                                state.item?.parents?.parent_details?.phone_number
-                                                            }
                                                         />
                                                         {/* {errors.parents[1] && (
                                                             <p
@@ -1043,9 +1023,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     <div className="form_elements">
                                                         <ImageUpload
                                                             name={`parent_image`}
-                                                            defaultImage={
-                                                                state.item?.parents?.parent_details?.image
-                                                            }
                                                         />
                                                     </div>
                                                 </div>

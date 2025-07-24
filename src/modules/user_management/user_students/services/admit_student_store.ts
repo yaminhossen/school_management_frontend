@@ -11,6 +11,7 @@ import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 import moment from 'moment';
+import { log } from 'console';
 
 async function validate(req: Request, models: any) {
     await body('name')
@@ -501,61 +502,78 @@ async function store(
                     (await uscn_model.update(uscn_inputs)).save();
                 });
             }
-            let bp_model = new models.BranchParentsModel();
-            let usp_model = new models.UserStudentParentsModel();
-            let uspi_model = new models.UserStudentParentInformationsModel();
-            let up_model = new models.UserParentsModel();
-            let up_inputs: InferCreationAttributes<typeof up_model> = {
-                name: body.parent_name,
-                email: body.parent_email,
-                phone_number: body.parent_phone_number,
-                image: '',
-                password: body.parent_password,
-            };
-            up_inputs.name = body.parent_name;
-            up_inputs.email = body.parent_email;
-            up_inputs.phone_number = body.phone_number;
-            up_inputs.image = parent_image_path;
-            up_inputs.password = await bcrypt.hash(
-                body.parent_password,
-                saltRounds,
-            );
-            (await up_model.update(up_inputs)).save();
-            if (up_model) {
+            if (!body.parent_id) {
+                log('parent_id', body.parent_id);
+                let bp_model = new models.BranchParentsModel();
+                let usp_model = new models.UserStudentParentsModel();
+                let uspi_model =
+                    new models.UserStudentParentInformationsModel();
+                let up_model = new models.UserParentsModel();
+                let up_inputs: InferCreationAttributes<typeof up_model> = {
+                    name: body.parent_name,
+                    email: body.parent_email,
+                    relation: body.relation,
+                    phone_number: body.parent_phone_number,
+                    image: '',
+                    password: body.parent_password,
+                };
+                up_inputs.name = body.parent_name;
+                up_inputs.email = body.parent_email;
+                up_inputs.phone_number = body.parent_phone_number;
+                up_inputs.relation = body.relation;
+                up_inputs.image = parent_image_path;
+                up_inputs.password = await bcrypt.hash(
+                    body.parent_password,
+                    saltRounds,
+                );
+                (await up_model.update(up_inputs)).save();
+                if (up_model) {
+                    let usp_inputs: InferCreationAttributes<typeof usp_model> =
+                        {
+                            user_student_id: 1,
+                            user_parent_id: body.user_parent_id,
+                        };
+                    usp_inputs.user_student_id = data.id || 1;
+                    usp_inputs.user_parent_id = up_model.id || 1;
+
+                    (await usp_model.update(usp_inputs)).save();
+                    let uspi_inputs: InferCreationAttributes<
+                        typeof uspi_model
+                    > = {
+                        user_parent_id: up_model.id,
+                        guardian_contact_number: body.relation,
+                    };
+                    uspi_inputs.user_parent_id = up_model.id;
+                    uspi_inputs.guardian_contact_number = up_model.phone_number;
+
+                    (await uspi_model.update(uspi_inputs)).save();
+                    let bp_inputs: InferCreationAttributes<typeof bp_model> = {
+                        user_parent_id: up_model.id || 1,
+                        branch_id: auth_user?.branch_id || 1,
+                    };
+                    bp_inputs.user_parent_id = up_model.id || 1;
+                    bp_inputs.branch_id = auth_user?.branch_id || 1;
+                    (await bp_model.update(bp_inputs)).save();
+                }
+            }
+            if (body.parent_id) {
+                let parent = await models.UserStudentParentsModel.findOne({
+                    where: { user_parent_id: body.parent_id },
+                });
+                if (!parent) {
+                    return response(404, 'parent not found', []);
+                }
+                let usp_model = new models.UserStudentParentsModel();
                 let usp_inputs: InferCreationAttributes<typeof usp_model> = {
                     user_student_id: 1,
-                    relation: body.relation,
-                    // is_parent: body.is_parent,
-                    user_parent_id: body.user_parent_id,
+                    relation: parent.relation,
+                    user_parent_id: body.parent_id,
                 };
-                // eslint-disable-next-line no-redeclare
-                // let id = up_model.id;
                 usp_inputs.user_student_id = data.id || 1;
-                usp_inputs.relation = body.relation;
-                // usp_inputs.is_parent = body.is_parent;
-                usp_inputs.user_parent_id = up_model.id || 1;
-                // console.log('parent id', up_model.id);
+                usp_inputs.relation = parent.relation;
+                usp_inputs.user_parent_id = body.parent_id;
 
                 (await usp_model.update(usp_inputs)).save();
-                let uspi_inputs: InferCreationAttributes<typeof uspi_model> = {
-                    user_parent_id: up_model.id,
-                    guardian_contact_number: body.relation,
-                };
-                // eslint-disable-next-line no-redeclare
-                // let id = up_model.id;
-                uspi_inputs.user_parent_id = up_model.id;
-                uspi_inputs.guardian_contact_number = up_model.phone_number;
-                // uspi_inputs.is_parent = body.is_parent;
-                // console.log('parent id', up_model.id);
-
-                (await uspi_model.update(uspi_inputs)).save();
-                let bp_inputs: InferCreationAttributes<typeof bp_model> = {
-                    user_parent_id: up_model.id || 1,
-                    branch_id: auth_user?.branch_id || 1,
-                };
-                bp_inputs.user_parent_id = up_model.id || 1;
-                bp_inputs.branch_id = auth_user?.branch_id || 1;
-                (await bp_model.update(bp_inputs)).save();
             }
             if (student_document) {
                 student_document.forEach(async (ss) => {
