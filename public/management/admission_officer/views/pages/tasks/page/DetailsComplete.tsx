@@ -75,6 +75,27 @@ const DetailsComplete: React.FC<Props> = (props: Props) => {
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td>Admin Attachment</td>
+                                        <td>:</td>
+                                        <td className="task_detailsd details_descrtiption2">
+                                            {state.item2?.tasks?.attachment ? (
+                                                <a
+                                                    href={
+                                                        state.item2
+                                                            ?.tasks?.attachment ||
+                                                        undefined
+                                                    }
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    View Attachment
+                                                </a>
+                                            ) : (
+                                                'No Attachment'
+                                            )}
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td>Attachment</td>
                                         <td>:</td>
                                         <td className="task_detailsd details_descrtiption2">
@@ -93,6 +114,13 @@ const DetailsComplete: React.FC<Props> = (props: Props) => {
                                             ) : (
                                                 'No Attachment'
                                             )}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Self Description</td>
+                                        <td>:</td>
+                                        <td className="task_detailsd details_descrtiption2">
+                                            {state.item2?.description}
                                         </td>
                                     </tr>
                                     <tr>

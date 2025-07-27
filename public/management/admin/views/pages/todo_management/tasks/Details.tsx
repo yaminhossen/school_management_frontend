@@ -59,6 +59,27 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td>{state.item.is_complete}</td>
                                     </tr>
+                                    <tr>
+                                        <td>Attachment</td>
+                                        <td>:</td>
+                                        <td>
+                                            <a
+                                                href={
+                                                    state.item.attachment ||
+                                                    undefined
+                                                }
+                                            >
+                                                <img
+                                                    width={100}
+                                                    src={
+                                                        state.item.attachment ||
+                                                        undefined
+                                                    }
+                                                    alt=""
+                                                />
+                                            </a>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

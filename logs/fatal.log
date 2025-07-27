@@ -1,0 +1,32 @@
+{"level":60,"time":1753356876738,"pid":4340,"hostname":"DESKTOP-9421701","file":"","time":"7/24/2025 5:34:36 PM","message":"target not found."}
+{"level":60,"time":1753356877141,"pid":4340,"hostname":"DESKTOP-9421701","file":"","time":"7/24/2025 5:34:37 PM","message":"You have used the alias branch_classes in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1753605484832,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:38:04 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1753605484859,"pid":14128,"hostname":"DESKTOP-9421701","file":"services\\admin_task_details.ts:38:19)","time":"7/27/2025 2:38:04 PM","message":"data not found"}
+{"level":60,"time":1753605542253,"pid":14128,"hostname":"DESKTOP-9421701","file":"services\\seen_user.ts:107:15)","time":"7/27/2025 2:39:02 PM","message":"task not found"}
+{"level":60,"time":1753605592689,"pid":14128,"hostname":"DESKTOP-9421701","file":"services\\admin_task_details.ts:38:19)","time":"7/27/2025 2:39:52 PM","message":"data not found"}
+{"level":60,"time":1753605652531,"pid":14128,"hostname":"DESKTOP-9421701","file":"services\\staff_pending.ts:182:15)","time":"7/27/2025 2:40:52 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1753605765709,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:42:45 PM","message":"target not found."}
+{"level":60,"time":1753605769584,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:42:49 PM","message":"target not found."}
+{"level":60,"time":1753605769898,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:42:49 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1753605834729,"pid":14128,"hostname":"DESKTOP-9421701","file":"services\\all.ts:149:15)","time":"7/27/2025 2:43:54 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1753605892773,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:44:52 PM","message":"target not found."}
+{"level":60,"time":1753605895478,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:44:55 PM","message":"target not found."}
+{"level":60,"time":1753606058361,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:47:38 PM","message":"target not found."}
+{"level":60,"time":1753606070073,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:47:50 PM","message":"target not found."}
+{"level":60,"time":1753606073014,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:47:53 PM","message":"target not found."}
+{"level":60,"time":1753606073838,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:47:53 PM","message":"target not found."}
+{"level":60,"time":1753606074516,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:47:54 PM","message":"target not found."}
+{"level":60,"time":1753606075467,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:47:55 PM","message":"target not found."}
+{"level":60,"time":1753606132536,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:48:52 PM","message":"target not found."}
+{"level":60,"time":1753606133734,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:48:53 PM","message":"target not found."}
+{"level":60,"time":1753606216925,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:50:16 PM","message":"target not found."}
+{"level":60,"time":1753606219468,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:50:19 PM","message":"target not found."}
+{"level":60,"time":1753606219811,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:50:19 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1753606311853,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:51:51 PM","message":"target not found."}
+{"level":60,"time":1753606312180,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:51:52 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1753606330184,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:52:10 PM","message":"target not found."}
+{"level":60,"time":1753606330494,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:52:10 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1753606358635,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:52:38 PM","message":"target not found."}
+{"level":60,"time":1753606358936,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:52:38 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1753606397926,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:53:17 PM","message":"target not found."}
+{"level":60,"time":1753606398242,"pid":14128,"hostname":"DESKTOP-9421701","file":"","time":"7/27/2025 2:53:18 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}

@@ -1,0 +1,16 @@
+{"level":60,"time":1753592054189,"pid":3872,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1753592054205,"pid":3872,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/notices/all/admission-officer"}
+{"level":60,"time":1753592054207,"pid":3872,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/tasks/unseen-tasks"}
+{"level":60,"time":1753592054209,"pid":3872,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/basic-information"}
+{"level":60,"time":1753592104626,"pid":3872,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/accounts/accounts"}
+{"level":60,"time":1753592104630,"pid":3872,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-categories/all"}
+{"level":60,"time":1753592104638,"pid":3872,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/account-logs/periods"}
+{"level":60,"time":1753598111974,"pid":3872,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved?page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+status%2C+attachments%2C+start_date%2C+end_date%2C+leave_status%2C+total_days"}
+{"level":60,"time":1753598113527,"pid":3872,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-rejected?page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+status%2C+attachments%2C+start_date%2C+end_date%2C+leave_status%2C+total_days"}
+{"level":60,"time":1753598115106,"pid":3872,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-pending?page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+status%2C+attachments%2C+start_date%2C+end_date%2C+leave_status%2C+total_days"}
+{"level":60,"time":1753598116426,"pid":3872,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/leave-applications/teacher-approved?page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+status%2C+attachments%2C+start_date%2C+end_date%2C+leave_status%2C+total_days"}
+{"level":60,"time":1753601221786,"pid":3872,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-teachers?page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+name%2C+email%2C+phone_number%2C+status"}
+{"level":60,"time":1753606070997,"pid":14128,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.86268561320427"}
+{"level":60,"time":1753606073032,"pid":14128,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.36262419138491486"}
+{"level":60,"time":1753606073858,"pid":14128,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.41668974357966326"}
+{"level":60,"time":1753606074555,"pid":14128,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admin/admin.js?v=0.38218347340807823"}
