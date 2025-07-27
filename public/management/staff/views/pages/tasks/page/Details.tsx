@@ -71,11 +71,27 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 'Not found'}
                                         </td>
                                     </tr>
-                                    {/* <tr>
-                                        <td>Is completed</td>
+                                    <tr>
+                                        <td>Admin Attachment</td>
                                         <td>:</td>
-                                        <td>{state.item2.is_complete}</td>
-                                    </tr> */}
+                                        <td className="task_detailsd details_descrtiption2">
+                                            {state.item2?.tasks?.attachment ? (
+                                                <a
+                                                    href={
+                                                        state.item2
+                                                            ?.tasks?.attachment ||
+                                                        undefined
+                                                    }
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    View Attachment
+                                                </a>
+                                            ) : (
+                                                'No Attachment'
+                                            )}
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <td>Description</td>
                                         <td>:</td>

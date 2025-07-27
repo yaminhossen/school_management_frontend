@@ -65,7 +65,7 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                         <ul className="nav-menus">
                             <li className="notification-bell">
                                 <a
-                                    href="/staff#/tasks/pending"
+                                    href="/teacher#/tasks/pending"
                                     className="text-dark"
                                 >
                                     <i className="icon-bell" />
