@@ -83,9 +83,9 @@ async function update(
     let user = (req as any).user;
     // console.log('auth user', user);
 
-    let auth_user = await models.BranchStaffsModel.findOne({
+    let auth_user = await models.UserAdminsModel.findOne({
         where: {
-            user_staff_id: user?.id || null,
+            id: user?.id || null,
         },
     });
 
