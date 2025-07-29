@@ -51,9 +51,9 @@ async function task_assign(
     let user = (req as any).user;
     let t_attachment = '';
 
-    let auth_user = await models.BranchStaffsModel.findOne({
+    let auth_user = await models.UserAdminsModel.findOne({
         where: {
-            user_staff_id: user?.id || null,
+            id: user?.id || null,
         },
     });
     const fstaffs = JSON.parse(body.staffs);
