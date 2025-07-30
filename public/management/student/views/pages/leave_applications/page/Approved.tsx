@@ -37,7 +37,7 @@ const Approved: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, status, attachments, start_date, end_date, leave_status, total_days',
+                'id, status, attachments, start_date, approved_start_date, approved_end_date, approved_days, end_date, leave_status, total_days',
             ),
         );
         dispatch(approved({}) as any);
@@ -119,6 +119,21 @@ const Approved: React.FC<Props> = (props: Props) => {
                                             sort={false}
                                         />
                                         <TableHeading
+                                            label={`Approved Start date`}
+                                            col_name={`start date`}
+                                            sort={false}
+                                        />
+                                        <TableHeading
+                                            label={`Approved End date`}
+                                            col_name={`end date`}
+                                            sort={false}
+                                        />
+                                        <TableHeading
+                                            label={`Approved days`}
+                                            col_name={`total days`}
+                                            sort={false}
+                                        />
+                                        <TableHeading
                                             label={`Action`}
                                             col_name={`action`}
                                             sort={false}
@@ -175,6 +190,23 @@ const Approved: React.FC<Props> = (props: Props) => {
                                                         </td>
                                                         <td>{i.total_days}</td>
                                                         <td>
+                                                            {moment(
+                                                                i.approved_start_date,
+                                                            ).format(
+                                                                'YYYY-MM-DD',
+                                                            )}
+                                                        </td>
+                                                        <td>
+                                                            {moment(
+                                                                i.approved_end_date,
+                                                            ).format(
+                                                                'YYYY-MM-DD',
+                                                            )}
+                                                        </td>
+                                                        <td>
+                                                            {i.approved_days}
+                                                        </td>
+                                                        <td>
                                                             <a
                                                                 href={
                                                                     i.attachments ||
@@ -193,7 +225,7 @@ const Approved: React.FC<Props> = (props: Props) => {
                                 ) : (
                                     <tbody>
                                         <tr>
-                                            <td colSpan={9}>
+                                            <td colSpan={10}>
                                                 <div
                                                     style={{
                                                         fontSize: '24px',

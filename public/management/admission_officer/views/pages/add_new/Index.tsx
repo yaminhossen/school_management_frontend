@@ -96,10 +96,8 @@ const Index: React.FC<Props> = (props: Props) => {
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(classes({}) as any);
-        // await dispatch(branches({}) as any);
         await dispatch(sections({}) as any);
         await dispatch(shifts({}) as any);
-        // await dispatch(preInfo({}) as any);
     }
 
     useEffect(() => {
