@@ -137,7 +137,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 'YYYY-MM-DD',
                                             )}
                                         </td>
-                                        <td>{i.account?.title}</td>
+                                        <td>
+                                            {i.account
+                                                ? `${i.account.title}-${i.account.number?.slice(-5)}`
+                                                : ''}
+                                        </td>
                                         <td>
                                             {i.type === 'income'
                                                 ? i.amount

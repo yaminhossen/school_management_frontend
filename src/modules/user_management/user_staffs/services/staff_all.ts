@@ -4,6 +4,7 @@ import { responseObject } from '../../../common_types/object';
 import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
+import { Op } from 'sequelize';
 
 async function staff_all(
     fastify_instance: FastifyInstance,
@@ -14,21 +15,14 @@ async function staff_all(
 
     try {
         let data = await models.UserStaffsModel.findAll({
+            where: {
+                role: {
+                    [Op.ne]: 'super-admin', // Not equal to 'super-admin'
+                },
+            },
             attributes: {
                 exclude: ['password'],
             },
-            // include: [
-            //     {
-            //         model: models.TaskUsersModel,
-            //         as: 'taskstaffs',
-            //         required: false,
-            //         where: [
-            //             {
-            //                 task_id: 3,
-            //             },
-            //         ],
-            //     },
-            // ],
         });
 
         if (data) {

@@ -111,14 +111,34 @@ async function store(
                 branch_student_id: body.student_id,
             },
         });
+        /** ✅ Calculate total score */
+        const all_criterias =
+            await models.StudentEvaluationCriteriasModel.findAll({});
+        /** ✅ Calculate total score */
+        const all_teachers = await models.StudentEvaluationsModel.findAll({
+            where: {
+                branch_student_id: body.student_id,
+            },
+            attributes: ['branch_teacher_id'],
+            group: ['branch_teacher_id'],
+        });
 
         let total_score = all_evaluations.reduce(
             (acc, curr) => acc + (curr.score || 0),
             0,
         );
+        let total_criteria_number = all_criterias.reduce(
+            (acc, curr) => acc + (curr.max_score || 0),
+            0,
+        );
+        console.log('total score all_evaluations', all_evaluations);
+        console.log('total score studetn id', body.student_id);
+        console.log('total score', total_score);
+        console.log('total total_criteria_number', total_criteria_number);
+        console.log('all evaluations', all_teachers);
 
         /** ✅ Divide by 5 */
-        let final_score = total_score / 5;
+        let teacher_score = all_teachers.length * total_criteria_number;
 
         /** ✅ Insert or update overall evaluation */
         await models.StudentOverallEvaluationsModel.destroy({
@@ -130,7 +150,8 @@ async function store(
         await models.StudentOverallEvaluationsModel.create({
             branch_id: auth_user?.branch_id || 1,
             branch_student_id: body.student_id,
-            score: final_score,
+            score: total_score,
+            out_of: teacher_score,
             evaluation_date: today,
             creator: user?.id || null,
         });

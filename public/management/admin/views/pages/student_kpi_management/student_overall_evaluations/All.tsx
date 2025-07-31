@@ -30,7 +30,7 @@ const All: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(
             storeSlice.actions.set_select_fields(
-                'id, score, evaluation_date, status',
+                'id, score, evaluation_date,out_of, status',
             ),
         );
         dispatch(all({}) as any);
@@ -70,6 +70,11 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Score`}
                                             col_name={`score`}
+                                            sort={true}
+                                        />
+                                        <TableHeading
+                                            label={`Out Of`}
+                                            col_name={`out_of`}
                                             sort={true}
                                         />
                                         <TableHeading
@@ -134,6 +139,11 @@ const All: React.FC<Props> = (props: Props) => {
                                                             {i.student?.name}
                                                         </td>
                                                         <td>{i.score}</td>
+                                                        <td>
+                                                            {i.out_of
+                                                                ? i.out_of
+                                                                : 'Teacher did not evaluate'}
+                                                        </td>
                                                         <td>
                                                             {
                                                                 i.student

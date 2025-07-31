@@ -4,7 +4,9 @@ import {
 } from 'sequelize';
 import * as student_overall_evaluations_model from './student_overall_evaluations_model';
 import * as user_students_model from './user_students_model';
+import * as user_student_informations_model from './user_student_informations_model';
 import * as user_admins_model from './user_admins_model';
+import * as branch_classes_model from './branch_classes_model';
 // import * as project_model from '../../user_admin copy/models/project_model';
 require('dotenv').config();
 
@@ -25,6 +27,8 @@ interface models {
     StudentOverallEvaluationsModel: typeof student_overall_evaluations_model.DataModel;
     UserStudentsModel: typeof user_students_model.DataModel;
     UserAdminsModel: typeof user_admins_model.DataModel;
+    UserStudentInformationsModel: typeof user_student_informations_model.DataModel;
+    BranchClassesModel: typeof branch_classes_model.DataModel;
     // Project: typeof project_model.DataModel;
     sequelize: Sequelize;
 }
@@ -33,6 +37,9 @@ const db = async function (): Promise<models> {
         student_overall_evaluations_model.init(sequelize);
     const UserStudentsModel = user_students_model.init(sequelize);
     const UserAdminsModel = user_admins_model.init(sequelize);
+    const UserStudentInformationsModel =
+        user_student_informations_model.init(sequelize);
+    const BranchClassesModel = branch_classes_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
     await sequelize.sync();
@@ -41,6 +48,16 @@ const db = async function (): Promise<models> {
         sourceKey: 'branch_student_id',
         foreignKey: 'id',
         as: 'student',
+    });
+    StudentOverallEvaluationsModel.hasOne(UserStudentInformationsModel, {
+        sourceKey: 'branch_student_id',
+        foreignKey: 'user_student_id',
+        as: 'student_info',
+    });
+    UserStudentInformationsModel.hasOne(BranchClassesModel, {
+        sourceKey: 's_class',
+        foreignKey: 'id',
+        as: 'branch_class',
     });
 
     // User.hasMany(Project, {
@@ -66,6 +83,8 @@ const db = async function (): Promise<models> {
         StudentOverallEvaluationsModel,
         UserStudentsModel,
         UserAdminsModel,
+        UserStudentInformationsModel,
+        BranchClassesModel,
         // Project,
 
         sequelize,

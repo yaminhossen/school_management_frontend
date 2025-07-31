@@ -24,8 +24,8 @@ import {
 } from 'sequelize';
 
 // import {DataModel as Project} from "./project_model"
-const tableName = 'student_overall_evaluations';
-const modelName = 'StudentOverallEvaluationsModel';
+const tableName = 'student_evaluation_criterias';
+const modelName = 'StudentEvaluationCriteriasModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
@@ -35,10 +35,8 @@ class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
     declare branch_id?: number;
-    declare branch_student_id?: number;
-    declare score?: number;
-    declare evaluation_date?: string;
-    declare out_of?: number;
+    declare name: string;
+    declare max_score: number;
 
     declare status?: status;
     declare creator?: number;
@@ -59,20 +57,12 @@ function init(sequelize: Sequelize) {
                 type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
-            branch_student_id: {
-                type: DataTypes.BIGINT.UNSIGNED,
+            name: {
+                type: DataTypes.STRING(100),
                 allowNull: true,
             },
-            score: {
+            max_score: {
                 type: DataTypes.FLOAT.UNSIGNED,
-                allowNull: true,
-            },
-            out_of: {
-                type: DataTypes.BIGINT.UNSIGNED,
-                allowNull: true,
-            },
-            evaluation_date: {
-                type: DataTypes.DATE,
                 allowNull: true,
             },
 

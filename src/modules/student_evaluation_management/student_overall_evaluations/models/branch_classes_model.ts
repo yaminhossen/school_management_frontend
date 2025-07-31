@@ -24,8 +24,8 @@ import {
 } from 'sequelize';
 
 // import {DataModel as Project} from "./project_model"
-const tableName = 'student_overall_evaluations';
-const modelName = 'StudentOverallEvaluationsModel';
+const tableName = 'branch_classes';
+const modelName = 'BranchClassesModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
@@ -34,11 +34,18 @@ type status = 'active' | 'deactive';
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
-    declare branch_id?: number;
-    declare branch_student_id?: number;
-    declare score?: number;
-    declare evaluation_date?: string;
-    declare out_of?: number;
+    declare branch_id: number;
+    declare name: string;
+    declare code: string;
+    declare capacity: number;
+    declare fee: number;
+    declare prerequisities: string;
+    declare student_instructions: string;
+    declare parent_instructions: string;
+    declare policies: string;
+    declare rules: string;
+    declare waiver_rules: string;
+    declare discount_rules: string;
 
     declare status?: status;
     declare creator?: number;
@@ -59,20 +66,48 @@ function init(sequelize: Sequelize) {
                 type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
-            branch_student_id: {
-                type: DataTypes.BIGINT.UNSIGNED,
+            name: {
+                type: new DataTypes.STRING(40),
                 allowNull: true,
             },
-            score: {
+            code: {
+                type: new DataTypes.STRING(20),
+                allowNull: true,
+            },
+            capacity: {
+                type: DataTypes.INTEGER.UNSIGNED,
+                allowNull: true,
+            },
+            fee: {
                 type: DataTypes.FLOAT.UNSIGNED,
                 allowNull: true,
             },
-            out_of: {
-                type: DataTypes.BIGINT.UNSIGNED,
+            prerequisities: {
+                type: new DataTypes.STRING(120),
                 allowNull: true,
             },
-            evaluation_date: {
-                type: DataTypes.DATE,
+            student_instructions: {
+                type: new DataTypes.TEXT(),
+                allowNull: true,
+            },
+            parent_instructions: {
+                type: new DataTypes.TEXT(),
+                allowNull: true,
+            },
+            policies: {
+                type: new DataTypes.TEXT(),
+                allowNull: true,
+            },
+            rules: {
+                type: new DataTypes.TEXT(),
+                allowNull: true,
+            },
+            waiver_rules: {
+                type: new DataTypes.TEXT(),
+                allowNull: true,
+            },
+            discount_rules: {
+                type: new DataTypes.TEXT(),
                 allowNull: true,
             },
 

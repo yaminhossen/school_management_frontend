@@ -35,7 +35,9 @@ const Index: React.FC<Props> = (props: Props) => {
                 <div className="item-img">
                     <img
                         className="user_profile_img"
-                        src={data?.image}
+                        src={
+                            data?.image || '/assets/dashboard/images/avatar.png'
+                        }
                         alt="teacher"
                     />
                 </div>

@@ -110,6 +110,19 @@ async function all(
             {
                 model: models.UserStudentsModel,
                 as: 'student',
+                attributes: ['name', 'phone_number'],
+            },
+            {
+                model: models.UserStudentInformationsModel,
+                as: 'student_info',
+                attributes: [],
+                include: [
+                    {
+                        model: models.BranchClassesModel,
+                        as: 'branch_class',
+                        attributes: ['name'],
+                    },
+                ],
             },
         ],
     };

@@ -88,6 +88,9 @@ async function teacher_pending(
             'is_complete',
         ];
     }
+// console.log('body', req.body);
+// console.log('body no tusre', user);
+// console.log('body2----------------------------', auth_user);
 
     const whereClause: any = {
         status: show_active_data == 'true' ? 'active' : 'deactive',
@@ -96,13 +99,10 @@ async function teacher_pending(
         branch_id: auth_user?.branch_id,
     };
     const today = moment().format('YYYY-MM-DD');
-    console.log('todya', today);
     // Get the fallback date: 6 months ago from today
     const thatday = new Date();
     thatday.setMonth(thatday.getMonth() + 2);
 
-    let month1 = query_param?.start_date || today; // Start date
-    let month2 = query_param?.end_date || today;
     if (query_param?.start_date && query_param?.end_date) {
         const endDate = new Date(query_param.end_date);
         endDate.setDate(endDate.getDate() + 1); // Increment by one day
@@ -118,13 +118,37 @@ async function teacher_pending(
             attributes: ['date'],
             order: [['date', 'DESC']],
         });
-        const latestDate = new Date(lastRecord?.date || thatday);
-        const formattedFastDate = latestDate.toISOString().split('T')[0];
+        console.log(
+            'lastRecord',
+            new Date(lastRecord?.date || today).toISOString().split('T')[0],
+        );
+        const latestDate = new Date(lastRecord?.date || today);
+        latestDate.setDate(latestDate.getDate() + 1); // Increment by one day
+        const formattedlatestDate = latestDate.toISOString().split('T')[0];
         // Set where clause: from latest record to today
         whereClause.date = {
-            [Op.between]: [today, formattedFastDate],
+            [Op.between]: [today, formattedlatestDate],
         };
     }
+    // } else {
+    //     // Get the latest available date from the DB
+    //     const lastRecord = await models.TaskUsersModel.findOne({
+    //         attributes: ['date'],
+    //         order: [['date', 'DESC']],
+    //     });
+    //     const latestDate = new Date(lastRecord?.date || thatday);
+    //     const formattedFastDate = latestDate.toISOString().split('T')[0];
+    //     // Set where clause: from latest record to today
+    //     whereClause.date = {
+    //         [Op.between]: [today, formattedFastDate],
+    //     };
+    //     console.log('body-------------', thatday);
+    //     console.log('body-------------', lastRecord);
+    //     console.log('body-------------', latestDate);
+    //     console.log('body-------------', formattedFastDate);
+    //     console.log('body-------------', today);
+    // }
+
     let query: FindAndCountOptions = {
         order: [[orderByCol, orderByAsc == 'true' ? 'DESC' : 'ASC']],
         where: whereClause,
@@ -150,9 +174,6 @@ async function teacher_pending(
             ...query.where,
             [Op.or]: [
                 // { name: { [Op.like]: `%${search_key}%` } },
-                // { preferred_name: { [Op.like]: `%${search_key}%` } },
-                // { status: { [Op.like]: `%${search_key}%` } },
-                // { id: { [Op.like]: `%${search_key}%` } },
                 { '$tasks.title$': { [Op.like]: `%${search_key}%` } },
                 { '$tasks.description$': { [Op.like]: `%${search_key}%` } },
             ],
