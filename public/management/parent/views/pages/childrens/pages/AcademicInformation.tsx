@@ -68,7 +68,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 Uttora
                                             </td>
                                         </tr>
-                                        <tr>
+                                        {/* <tr>
                                             <td>Admission no</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
@@ -77,7 +77,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                                         ?.addmission_no
                                                 }
                                             </td>
-                                        </tr>
+                                        </tr> */}
                                         <tr>
                                             <td>Roll no</td>
                                             <td>:</td>
@@ -104,10 +104,19 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td>Class</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
-                                                {data?.student_info?.s_class}
+                                                {data?.student_info
+                                                    ?.branch_class?.name ||
+                                                    data?.student_info?.s_class}
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td>Cadet Id</td>
+                                            <td>:</td>
+                                            <td className="font-medium text-dark-medium">
+                                                {data?.student_info?.student_id}
+                                            </td>
+                                        </tr>
+                                        {/* <tr>
                                             <td>Shift</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
@@ -123,7 +132,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                                         ?.student_category
                                                 }
                                             </td>
-                                        </tr>
+                                        </tr> */}
                                         <tr>
                                             <td>Section</td>
                                             <td>:</td>
@@ -278,13 +287,6 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
                                                 {data?.student_info?.division}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>ID No</td>
-                                            <td>:</td>
-                                            <td className="font-medium text-dark-medium">
-                                                {data?.student_info?.student_id}
                                             </td>
                                         </tr>
                                         <tr>

@@ -49,19 +49,26 @@ const Complain: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {data.length &&
+                                {data.length > 0 ? (
                                     data.map(
-                                        (i: { [key: string]: any }, index) => {
-                                            return (
-                                                <tr>
-                                                    <td></td>
-                                                    <td>{index + 1}</td>
-                                                    {/* <td>{i.complain}</td> */}
-                                                    <td>{i.complain}</td>
-                                                </tr>
-                                            );
-                                        },
-                                    )}
+                                        (i: { [key: string]: any }, index) => (
+                                            <tr key={index}>
+                                                <td></td>
+                                                <td>{index + 1}</td>
+                                                <td>{i.complain}</td>
+                                            </tr>
+                                        ),
+                                    )
+                                ) : (
+                                    <tr>
+                                        <td
+                                            colSpan={3}
+                                            className="text-center"
+                                        >
+                                            No complaints found.
+                                        </td>
+                                    </tr>
+                                )}
                             </tbody>
                         </table>
                     </div>

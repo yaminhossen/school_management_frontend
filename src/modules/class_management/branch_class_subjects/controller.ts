@@ -23,6 +23,7 @@ import all_class from './services/all_class';
 import class_sections from './services/class_section';
 import all_teacher from './services/all_teacher';
 import class_rooms from './services/class_rooms';
+import teacher_class_details from './services/teacher_class_details';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -79,6 +80,14 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data = await teacher_classes(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        teacher_class_details: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await teacher_class_details(fastify, req);
             res.code(data.status).send(data);
         },
 

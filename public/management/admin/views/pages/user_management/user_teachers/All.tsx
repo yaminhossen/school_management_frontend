@@ -16,6 +16,7 @@ import TableRowAction from './components/all_data_page/TableRowAction';
 import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
+import { Link } from 'react-router-dom';
 
 export interface Props {}
 
@@ -82,6 +83,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`email`}
                                             sort={true}
                                         />
+                                        <TableHeading
+                                            label={`Action`}
+                                            col_name={`action`}
+                                            sort={true}
+                                        />
                                     </tr>
                                 </thead>
                                 {(state.all as any)?.data?.length ? (
@@ -143,6 +149,16 @@ const All: React.FC<Props> = (props: Props) => {
                                                             {i.phone_number}
                                                         </td>
                                                         <td>{i.email}</td>
+
+                                                        <td>
+                                                            <Link
+                                                                to={`/user-teachers/class-details/${i.id}`}
+                                                                className="btn btn-sm  btn-outline-info"
+                                                                type="submit"
+                                                            >
+                                                                Class Details
+                                                            </Link>
+                                                        </td>
                                                         {/* <td>{i.address}</td> */}
                                                     </tr>
                                                 );

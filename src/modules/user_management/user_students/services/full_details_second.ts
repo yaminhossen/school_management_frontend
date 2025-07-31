@@ -40,6 +40,13 @@ async function full_details_second(
                 {
                     model: informationsModel,
                     as: 'student_info',
+                    include: [
+                        {
+                            model: models.BranchClassesModel,
+                            as: 'branch_class',
+                            attributes: ['name'],
+                        },
+                    ],
                 },
                 // {
                 //     model: informationsModel,

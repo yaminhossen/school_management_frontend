@@ -52,6 +52,7 @@ const Complain: React.FC<Props> = (props: Props) => {
                 '/api/v1/student-complains/store',
                 formData,
             );
+            (window as any).toaster('Complain done');
             // setData(response.data.data.data);
             // setTotalIncome(response.data.data.data2);
         } catch (error) {

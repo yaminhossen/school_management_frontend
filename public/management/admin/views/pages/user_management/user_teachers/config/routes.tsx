@@ -12,6 +12,7 @@ import Payments from '../pages/Payments.tsx';
 import Loan from '../pages/Loan.tsx';
 import Attendance from '../pages/Attendance.tsx';
 import Kpi from '../Kpi.tsx';
+import Class_Details from '../Class_Details.tsx';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -64,6 +65,10 @@ export default {
                     element: <Attendance />,
                 },
             ],
+        },
+        {
+            path: 'class-details/:id',
+            element: <Class_Details />,
         },
     ],
 };
