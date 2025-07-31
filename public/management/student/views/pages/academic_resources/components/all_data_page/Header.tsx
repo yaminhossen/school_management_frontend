@@ -15,7 +15,14 @@ const Header: React.FC<Props> = (props: Props) => {
                         </li>
                     </ul>
                 </div>
-                <HeadTitle></HeadTitle>
+                {/* <HeadTitle></HeadTitle> */}
+
+                <div className="title no_move" id="users_drag">
+                    <h2 style={{ fontSize: '18px' }}>
+                        All Approved Task
+                        {/* {state.is_loading && <span> loading..</span>} */}
+                    </h2>
+                </div>
                 <div className="control">
                     <HeadRightButtons></HeadRightButtons>
                 </div>

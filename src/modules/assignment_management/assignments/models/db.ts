@@ -3,6 +3,7 @@ import {
     Sequelize,
 } from 'sequelize';
 import * as assignments_model from './assignments_model';
+import * as assignment_submissions_model from './assignment_submissions_model';
 import * as branch_class_subjects_model from './branch_class_subjects_model';
 import * as branch_teachers_model from './branch_teachers_model';
 import * as user_student_informations_model from './user_student_informations_model';
@@ -24,6 +25,7 @@ const sequelize = new Sequelize(
 
 interface models {
     AssignmentsModel: typeof assignments_model.DataModel;
+    AssignmentSubmissionsModel: typeof assignment_submissions_model.DataModel;
     BranchClassSubjecsModel: typeof branch_class_subjects_model.DataModel;
     BranchTeachersModel: typeof branch_teachers_model.DataModel;
     UserStudentInformationsModel: typeof user_student_informations_model.DataModel;
@@ -32,6 +34,8 @@ interface models {
 }
 const db = async function (): Promise<models> {
     const AssignmentsModel = assignments_model.init(sequelize);
+    const AssignmentSubmissionsModel =
+        assignment_submissions_model.init(sequelize);
     const BranchClassSubjecsModel = branch_class_subjects_model.init(sequelize);
     const BranchTeachersModel = branch_teachers_model.init(sequelize);
     const UserStudentInformationsModel =
@@ -44,6 +48,12 @@ const db = async function (): Promise<models> {
         sourceKey: 'subject_id',
         foreignKey: 'id',
         as: 'subject',
+    });
+
+    AssignmentsModel.hasOne(AssignmentSubmissionsModel, {
+        sourceKey: 'id',
+        foreignKey: 'assignment_id',
+        as: 'submission',
     });
 
     // User.hasMany(Project, {
@@ -70,6 +80,7 @@ const db = async function (): Promise<models> {
         BranchTeachersModel,
         UserStudentInformationsModel,
         BranchClassSubjecsModel,
+        AssignmentSubmissionsModel,
         // Project,
 
         sequelize,

@@ -63,7 +63,7 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
                                     <th>Title</th>
                                     <th>Mark</th>
                                     <th>Show</th>
-                                    {/* <th>Input</th> */}
+                                    <th>Given Mark</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -88,6 +88,12 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
                                                         >
                                                             download
                                                         </a>
+                                                    </td>
+                                                    <td>
+                                                        {i.submission?.marks
+                                                            ? i.submission
+                                                                  ?.marks
+                                                            : 'Still not evaluated'}
                                                     </td>
                                                     {/* <td><input type="file" name="" id="" /></td> */}
                                                     <td>

@@ -17,6 +17,16 @@ async function sub_wise_assignments(
             where: {
                 subject_id: params.id,
             },
+            include: [
+                {
+                    model: models.AssignmentSubmissionsModel,
+                    as: 'submission',
+                    where: {
+                        student_id: (req as any).user.id,
+                    },
+                    required: false,
+                },
+            ],
         });
 
         if (data) {

@@ -138,10 +138,13 @@ const Class_Details: React.FC<Props> = (props: Props) => {
                                 <tbody>
                                     {state.item?.classes?.length ? (
                                         state.item?.classes.map((i, index) => (
-                                            <tr 
+                                            <tr
                                                 key={index}
                                                 style={{
-                                                    backgroundColor: index % 2 === 0 ? '#3a3a3a' : '#2c2c2c',
+                                                    backgroundColor:
+                                                        index % 2 === 0
+                                                            ? '#3a3a3a'
+                                                            : '#2c2c2c',
                                                 }}
                                             >
                                                 <td
