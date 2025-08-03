@@ -87,6 +87,26 @@ async function validate(req: Request, models: any) {
         .isEmpty()
         .withMessage('the present_address field is required')
         .run(req);
+    await body('is_married')
+        .not()
+        .isEmpty()
+        .withMessage('the is_married field is required')
+        .run(req);
+    await body('blood_group')
+        .not()
+        .isEmpty()
+        .withMessage('the blood_group field is required')
+        .run(req);
+    await body('gender')
+        .not()
+        .isEmpty()
+        .withMessage('the gender field is required')
+        .run(req);
+    await body('role')
+        .not()
+        .isEmpty()
+        .withMessage('the role field is required')
+        .run(req);
 
     let result = await validationResult(req);
 

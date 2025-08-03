@@ -144,7 +144,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                         {/* <td></td> */}
                                         <td>{index + 1}</td>
                                         {/* <td></td> */}
-                                        <td>{i.category?.title}</td>
+                                        <td>
+                                            {i.category
+                                                ? i.category.title
+                                                : 'Opening Balance'}
+                                        </td>
                                         <td>
                                             {moment(i.created_at).format(
                                                 'YYYY-MM-DD',

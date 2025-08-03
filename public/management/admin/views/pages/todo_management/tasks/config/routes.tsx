@@ -8,6 +8,7 @@ import Edit from '../Edit.jsx';
 import TaskAssign from '../TaskAssign.tsx';
 import TaskDetails from '../TaskDetails.tsx';
 import TaskUserEdit from '../TaskUserEdit.tsx';
+import UserDetails from '../UserDetails.tsx';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -42,6 +43,10 @@ export default {
         {
             path: 'task-user-edit/:id',
             element: <TaskUserEdit />,
+        },
+        {
+            path: 'task-user-details/:id',
+            element: <UserDetails />,
         },
     ],
 };

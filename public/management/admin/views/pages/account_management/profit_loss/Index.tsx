@@ -163,7 +163,11 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 {/* <td></td> */}
                                                 <td>{index + 1}</td>
                                                 <td></td>
-                                                <td>{i.category}</td>
+                                                <td>
+                                                    {i.category
+                                                        ? i.category
+                                                        : 'Opening Balance'}
+                                                </td>
                                                 <td>
                                                     {new Intl.NumberFormat().format(
                                                         i.total_expense,

@@ -42,8 +42,9 @@ const Edit: React.FC<Props> = (props: Props) => {
         const start = moment(startDate);
         const end = moment(endDate);
         const today = moment().startOf('day');
+        const givenstart = moment(state.item?.start_date).subtract(1, 'days');
 
-        if (start.isBefore(today)) {
+        if (start.isBefore(givenstart)) {
             setErrorMessage('Start date cannot be before today.');
             setErrorMessage2('');
             setDays(0);

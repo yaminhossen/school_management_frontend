@@ -78,19 +78,6 @@ const TermResult: React.FC<Props> = (props: Props) => {
             sum + (item.obtained_mark || 0),
         0,
     );
-
-    // Check if any subject has failed (less than 33)
-    const hasFail = data?.some(
-        (item: { obtained_mark: number }) => (item.obtained_mark || 0) < 33,
-    );
-
-    // Calculate final result
-    const getFinalResult = () => {
-        if (hasFail) {
-            return 'FAIL';
-        }
-        return getGrade(Math.ceil(totalObtainedMark / data?.length));
-    };
     return (
         <div className="admin_dashboard">
             <BackButton></BackButton>
@@ -347,7 +334,14 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                         <strong>{totalObtainedMark}</strong>
                                     </td>
                                     <td>
-                                        <strong>{getFinalResult()}</strong>
+                                        <strong>
+                                            {getGrade(
+                                                Math.ceil(
+                                                    totalObtainedMark /
+                                                        data?.length,
+                                                ),
+                                            )}
+                                        </strong>
                                     </td>
                                 </tr>
                             </tbody>

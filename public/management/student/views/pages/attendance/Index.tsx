@@ -39,6 +39,16 @@ const Index: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchAttendenceData();
     }, []);
+    console.log('attendence', attendence);
+    if (!attendence || attendence.length === 0) {
+        return (
+            <div className="admin_dashboard">
+                <h3 className="table_heading">
+                    You Have No Attendance Data Till Now
+                </h3>
+            </div>
+        );
+    }
 
     return (
         <div className="admin_dashboard">

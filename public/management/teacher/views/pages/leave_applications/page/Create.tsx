@@ -39,11 +39,11 @@ const Create: React.FC<Props> = (props: Props) => {
         const end = moment(endDate);
         const today = moment().startOf('day');
 
-        if (start.isBefore(today)) {
-            setErrorMessage('Start date cannot be before today.');
-            setDays(0);
-            return;
-        }
+        // if (start.isBefore(today)) {
+        //     setErrorMessage('Start date cannot be before today.');
+        //     setDays(0);
+        //     return;
+        // }
         if (end.isBefore(start)) {
             setErrorMessage2('End date cannot be before start date.');
             setDays(0);

@@ -80,11 +80,22 @@ const TaskDetails: React.FC<Props> = (props: Props) => {
                                         )}
                                     </td>
                                 </tr>
-                                {/* <tr>
-                                    <td>Is completed</td>
+                                <tr>
+                                    <td>Attachment</td>
                                     <td>:</td>
-                                    <td>{data2.is_complete}</td>
-                                </tr> */}
+                                    <td>
+                                        <a href={data2.attachment || undefined}>
+                                            <img
+                                                width={100}
+                                                src={
+                                                    data2.attachment ||
+                                                    'Not found'
+                                                }
+                                                alt=""
+                                            />
+                                        </a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <div className="data_list">
@@ -172,10 +183,17 @@ const TaskDetails: React.FC<Props> = (props: Props) => {
                                                             <td>
                                                                 <Link
                                                                     to={`/${setup.route_prefix}/task-user-edit/${i.id}`}
-                                                                    className="btn btn-sm  btn-outline-info"
+                                                                    className="btn btn-sm mr-1  btn-outline-info"
                                                                     type="submit"
                                                                 >
                                                                     Edit
+                                                                </Link>
+                                                                <Link
+                                                                    to={`/${setup.route_prefix}/task-user-details/${i.id}`}
+                                                                    className="btn btn-sm  btn-outline-info"
+                                                                    type="submit"
+                                                                >
+                                                                    Details
                                                                 </Link>
                                                             </td>
                                                         </tr>

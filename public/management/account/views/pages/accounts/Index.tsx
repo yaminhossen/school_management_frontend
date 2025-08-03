@@ -38,13 +38,13 @@ const Index: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
             <div className="content_body">
-                <Link
+                {/* <Link
                     to="/accounts/create"
                     className="btn btn-sm btn-outline-info mb-2"
                     type="submit"
                 >
                     Create
-                </Link>
+                </Link> */}
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
                         <table>
