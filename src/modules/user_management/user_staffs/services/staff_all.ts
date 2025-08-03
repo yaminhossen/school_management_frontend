@@ -12,6 +12,12 @@ async function staff_all(
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
+    let user = (req as any).user;
+    let auth_user = await models.UserAdminsModel.findOne({
+        where: {
+            id: user?.id || null,
+        },
+    });
 
     try {
         let data = await models.UserStaffsModel.findAll({
@@ -20,6 +26,15 @@ async function staff_all(
                     [Op.ne]: 'super-admin', // Not equal to 'super-admin'
                 },
             },
+            include: [
+                {
+                    model: models.BranchStaffsModel,
+                    as: 'staffs',
+                    where: {
+                        branch_id: auth_user?.branch_id,
+                    },
+                },
+            ],
             attributes: {
                 exclude: ['password'],
             },

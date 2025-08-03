@@ -18,7 +18,11 @@ module.exports = async function (fastify: FastifyInstance) {
             { preHandler: [auth_middleware] },
             controllerInstance.all,
         )
-        .get(`${prefix}/teacher-all`, controllerInstance.teacher_all)
+        .get(
+            `${prefix}/teacher-all`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.teacher_all,
+        )
         .get(
             `${prefix}/teacher-all-task/:id`,
             controllerInstance.teacher_all_task_user,

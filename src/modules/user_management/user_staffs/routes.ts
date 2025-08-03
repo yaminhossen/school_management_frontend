@@ -19,7 +19,11 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.branch_staffs,
         )
         .get(`${prefix}/filter-all`, controllerInstance.filter_all)
-        .get(`${prefix}/staff-all`, controllerInstance.staff_all)
+        .get(
+            `${prefix}/staff-all`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.staff_all,
+        )
         .get(
             `${prefix}/staff-all-task/:id`,
             controllerInstance.staff_all_task_user,
