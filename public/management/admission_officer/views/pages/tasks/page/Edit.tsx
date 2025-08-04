@@ -72,10 +72,13 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 />
 
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>
+                                        Description{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <textarea
-                                            name="description"
+                                            name="description2"
                                             id=""
                                             placeholder="description"
                                             defaultValue={

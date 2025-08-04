@@ -70,7 +70,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                         state.item?.image ||
                                         '/assets/dashboard/images/avatar.png'
                                     }
-                                    alt="student"
+                                    alt="Student Profile"
                                 />
                             </div>
                             <div className="item-content">

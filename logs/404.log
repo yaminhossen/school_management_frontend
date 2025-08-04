@@ -353,3 +353,14 @@
 {"level":60,"time":1754291624646,"pid":20120,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-transports/drivers"}
 {"level":60,"time":1754292438621,"pid":2244,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
 {"level":60,"time":1754292651348,"pid":2244,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
+{"level":60,"time":1754293606314,"pid":2244,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1754293657553,"pid":2244,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
+{"level":60,"time":1754297594591,"pid":2244,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1754299231258,"pid":2244,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1754300455663,"pid":7164,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1754302991021,"pid":8520,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
+{"level":60,"time":1754304180848,"pid":1228,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1754304247415,"pid":1228,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1754304253895,"pid":1228,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1754304257498,"pid":1228,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1754304266684,"pid":1228,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-parents/parents?page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id"}

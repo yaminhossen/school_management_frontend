@@ -70,6 +70,8 @@ axios.interceptors.response.use(
         }
         if (error.response.data.status === 422) {
             let errors = error.response?.data?.data;
+            console.log('validation errors', errors);
+
             errors.forEach((error) => {
                 let el = document.querySelector(`[name="${error.path}"]`);
                 if (el) {
@@ -85,7 +87,9 @@ axios.interceptors.response.use(
                 }
             });
             (window as anyObject).toaster(
-                `${error.response.status} - ${error.response.statusText}`,
+                // `${error.response.status} - ${error.response.statusText}`,
+                `${error.response.status} - validation error`,
+                'error',
             );
             let error_el = document.querySelector('.has_error');
             if (error_el) {

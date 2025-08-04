@@ -43,48 +43,43 @@ const Parents: React.FC<Props> = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {(state.item as any)?.parents?.map(
-                                    (i: { [key: string]: any }, index) => {
-                                        return (
-                                            <tr>
-                                                <td></td>
-                                                <td>{index + 1}</td>
-                                                <td>
-                                                    <a
-                                                        href={
-                                                            i.parent_details?.image ||
-                                                            undefined
-                                                        }
-                                                        target="blank"
-                                                    >
-                                                        <img
-                                                            src={
-                                                                i.parent_details?.image ||
-                                                                '/assets/dashboard/images/avatar.png'
-                                                            }
-                                                            alt=""
-                                                            style={{
-                                                                height: 30,
-                                                            }}
-                                                        />
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    {i.parent_details?.name}
-                                                </td>
-                                                <td>{i.relation}</td>
-                                                <td>
-                                                    {
-                                                        i.parent_details
-                                                            ?.phone_number
+                                {(state.item as any)?.parents && (
+                                    <tr>
+                                        <td></td>
+                                        <td>{1}</td>
+                                        <td>
+                                            <a
+                                                href={
+                                                    state.item?.parents?.parent_details?.image || undefined
+                                                }
+                                                target="blank"
+                                            >
+                                                <img
+                                                    src={
+                                                        state.item?.parents?.parent_details?.image ||
+                                                        '/assets/dashboard/images/avatar.png'
                                                     }
-                                                </td>
-                                                <td>
-                                                    {i.parent_details?.email}
-                                                </td>
-                                            </tr>
-                                        );
-                                    },
+                                                    alt=""
+                                                    style={{
+                                                        height: 30,
+                                                    }}
+                                                />
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {state.item?.parents?.parent_details?.name}
+                                        </td>
+                                        <td>{state.item?.parents?.parent_details?.relation}</td>
+                                        <td>
+                                            {
+                                                state.item?.parents?.parent_details
+                                                    ?.phone_number
+                                            }
+                                        </td>
+                                        <td>
+                                            {state.item?.parents?.parent_details?.email}
+                                        </td>
+                                    </tr>
                                 )}
                             </tbody>
                         </table>

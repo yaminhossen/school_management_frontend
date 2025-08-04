@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import React, { useEffect } from 'react';
 // import Header from './components/management_data_page/Header';
 // import Footer from './components/management_data_page/Footer';
@@ -780,96 +779,103 @@ const Details: React.FC<Props> = (props: Props) => {
                         <div>
                             <h4>Guardians</h4>
                             {Object.keys(state.item)?.length &&
-                                state.item?.parents && (
-                                    <div className="basic_info mb-4 ">
-                                        <table className="table text-nowrap student_table">
-                                            <tbody>
-                                                <tr>
-                                                    <td>Name</td>
-                                                    <td>:</td>
-                                                    <td className="font-medium text-dark-medium">
-                                                        {
-                                                            state.item?.parents
-                                                                ?.parent_details
-                                                                ?.name
-                                                        }
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Email</td>
-                                                    <td>:</td>
-                                                    <td className="font-medium text-dark-medium">
-                                                        {
-                                                            state.item?.parents
-                                                                ?.parent_details
-                                                                ?.email
-                                                        }
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Relation</td>
-                                                    <td>:</td>
-                                                    <td className="font-medium text-dark-medium">
-                                                        {
-                                                            state.item?.parents
-                                                                ?.parent_details
-                                                                ?.relation
-                                                        }
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <table className="table text-nowrap student_table ml-2">
-                                            <tbody>
-                                                <tr>
-                                                    <td>Phone Number</td>
-                                                    <td>:</td>
-                                                    <td className="font-medium text-dark-medium">
-                                                        {
-                                                            state.item?.parents
-                                                                ?.parent_details
-                                                                ?.phone_number
-                                                        }
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Status</td>
-                                                    <td>:</td>
-                                                    <td className="font-medium text-dark-medium">
-                                                        {
-                                                            state.item?.parents
-                                                                ?.parent_details
-                                                                ?.status
-                                                        }
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Picture</td>
-                                                    <td>:</td>
-                                                    <td className="font-medium text-dark-medium">
-                                                        {state.item?.parents
-                                                            ?.parent_details
-                                                            ?.image ? (
-                                                            <a
-                                                                href={
-                                                                    state.item
-                                                                        ?.parents
-                                                                        ?.parent_details
-                                                                        ?.image
-                                                                }
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                            >
-                                                                Show Image
-                                                            </a>
-                                                        ) : (
-                                                            'No Image'
-                                                        )}
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                state.item?.parents &&
+                                state.item?.parents.map(
+                                    (i: { [key: string]: any }) => {
+                                        return (
+                                            <>
+                                                <div className="basic_info mb-4 ">
+                                                    <table className="table text-nowrap student_table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td>:</td>
+                                                                <td className="font-medium text-dark-medium">
+                                                                    {
+                                                                        i
+                                                                            .parent_details
+                                                                            ?.name
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Email</td>
+                                                                <td>:</td>
+                                                                <td className="font-medium text-dark-medium">
+                                                                    {
+                                                                        i
+                                                                            .parent_details
+                                                                            ?.email
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Relation
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td className="font-medium text-dark-medium">
+                                                                    {i.relation}
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <table className="table text-nowrap student_table ml-2">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    Phone Number
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td className="font-medium text-dark-medium">
+                                                                    {
+                                                                        i
+                                                                            .parent_details
+                                                                            ?.phone_number
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Status</td>
+                                                                <td>:</td>
+                                                                <td className="font-medium text-dark-medium">
+                                                                    {
+                                                                        i
+                                                                            .parent_details
+                                                                            ?.status
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Picture</td>
+                                                                <td>:</td>
+                                                                <td className="font-medium text-dark-medium">
+                                                                    {i
+                                                                        .parent_details
+                                                                        ?.image ? (
+                                                                        <a
+                                                                                href={
+                                                                                    i
+                                                                                        .parent_details
+                                                                                        ?.image
+                                                                                }
+                                                                                target="_blank"
+                                                                                rel="noopener noreferrer"
+                                                                            >
+                                                                            Show
+                                                                            Image
+                                                                        </a>
+                                                                        ) : (
+                                                                            'No Image'
+                                                                        )}
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </>
+                                        );
+                                    },
                                 )}
                         </div>
                     </div>

@@ -30,10 +30,10 @@ const Create: React.FC<Props> = (props: Props) => {
         }
         dispatch(storeSlice.actions.set_only_latest_data(true));
         // dispatch(all({}) as any);
-        await new Promise((resolve) => setTimeout(resolve, 300));
-        dispatch(teacher_complete({}) as any);
-        await new Promise((resolve) => setTimeout(resolve, 200));
-        dispatch(unseen_tasks({}) as any);
+        // await new Promise((resolve) => setTimeout(resolve, 300));
+        // dispatch(teacher_complete({}) as any);
+        // await new Promise((resolve) => setTimeout(resolve, 200));
+        // dispatch(unseen_tasks({}) as any);
         dispatch(storeSlice.actions.set_only_latest_data(false));
     }
 
@@ -63,10 +63,13 @@ const Create: React.FC<Props> = (props: Props) => {
                             </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
-                                    <label>Description</label>
+                                    <label>
+                                        Description{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
                                     <div className="form_elements">
                                         <textarea
-                                            name="description"
+                                            name="description2"
                                             id=""
                                             placeholder="description"
                                         ></textarea>

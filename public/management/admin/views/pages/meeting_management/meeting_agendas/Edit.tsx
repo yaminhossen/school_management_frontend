@@ -271,7 +271,9 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             <option value="teacher">
                                                 teacher
                                             </option>
-                                            <option value="staff">Staff</option>
+                                            <option value="staff">
+                                                Others
+                                            </option>
                                         </select>
                                     </div>
                                 </div>

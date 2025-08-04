@@ -1,21 +1,54 @@
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
-import { responseObject } from '../../../common_types/object';
+import { anyObject, responseObject } from '../../../common_types/object';
 import response from '../helpers/response';
 import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 import { InferCreationAttributes } from 'sequelize';
+import moment from 'moment/moment';
+import { body, validationResult } from 'express-validator';
 
+async function validate(req: Request) {
+    await body('title')
+        .not()
+        .isEmpty()
+        .withMessage('the title field is required')
+        .run(req);
+
+    await body('description')
+        .not()
+        .isEmpty()
+        .withMessage('the description field is required')
+        .run(req);
+
+    await body('date')
+        .not()
+        .isEmpty()
+        .withMessage('the date field is required')
+        .run(req);
+
+    let result = await validationResult(req);
+
+    return result;
+}
 async function staff_update(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
+    /** validation */
+    let validate_result = await validate(req as Request);
+    if (!validate_result.isEmpty()) {
+        return response(422, 'validation error', validate_result.array());
+    }
+
     let models = await db();
     let taskModel = new models.TasksModel();
     let taskUserModel = new models.TaskUsersModel();
     let params = req.params as any;
     console.log('staff founded');
     let ssss = 'completed';
+    let body = req.body as anyObject;
+    let t_attachment = '';
 
     let user = (req as any).user;
     let auth_user = await models.BranchTeachersModel.findOne({
@@ -23,48 +56,33 @@ async function staff_update(
             user_teacher_id: (req as any).user?.id || null,
         },
     });
+    if (body['attachment']?.ext) {
+        t_attachment =
+            'uploads/tasks/' +
+            moment().format('YYYYMMDDHHmmss') +
+            body['attachment'].name;
+        await (fastify_instance as any).upload(
+            body['attachment'],
+            t_attachment,
+        );
+    }
     console.log(
-        'params---------------------------------------------------------',
-        params,
+        'body----------------------------------------------------------',
+        body,
     );
 
     try {
-        let data = await models.TasksModel.findOne({
-            where: {
-                id: params.id,
-            },
-        });
-        let whereClause = {};
+        let data2 = await models.TaskUsersModel.findByPk(body.id);
+        console.log('data2', data2);
 
-        if (user?.user_type === 'teacher') {
-            whereClause = {
-                task_id: params.id,
-                teacher_id: user?.id,
-            };
-        } else {
-            whereClause = {
-                task_id: params.id,
-                staff_id: user?.id,
-            };
-        }
-        let data2 = await models.TaskUsersModel.findOne({
-            where: whereClause,
-        });
-
-        if (data && data2) {
-            let inputs: InferCreationAttributes<typeof taskModel> = {
-                title: data.title,
-                description: data.description,
-                // is_complete: ssss || params?.is_complete,
-                date: data.date,
-            };
-            (await data.update(inputs)).save();
+        if (data2) {
             let inputs2: InferCreationAttributes<typeof taskUserModel> = {
-                is_complete: ssss || params?.is_complete,
+                is_complete: ssss || body?.is_complete,
+                attachment: t_attachment || data2.attachment,
+                description: body.description,
             };
-            (await data.update(inputs)).save();
             (await data2.update(inputs2)).save();
-            return response(200, 'data updated', data);
+            return response(200, 'data updated', data2);
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }

@@ -1,16 +1,44 @@
 import db from '../models/db';
 import { FastifyInstance, FastifyRequest } from 'fastify';
-import { anyObject, responseObject } from '../../../common_types/object';
+import { body, validationResult } from 'express-validator';
+import {
+    anyObject,
+    responseObject,
+    Request,
+} from '../../../common_types/object';
 import response from '../helpers/response';
-import error_trace from '../helpers/error_trace';
-import custom_error from '../helpers/custom_error';
 import { InferCreationAttributes } from 'sequelize';
+import custom_error from '../helpers/custom_error';
+import error_trace from '../helpers/error_trace';
 import moment from 'moment/moment';
+
+async function validate(req: Request) {
+    // await body('name')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the name field is required')
+    //     .run(req);
+    await body('description2')
+        .not()
+        .isEmpty()
+        .withMessage('the description_field is required')
+        .run(req);
+
+    let result = await validationResult(req);
+
+    return result;
+}
 
 async function staff_update(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
+    /** validation */
+    let validate_result = await validate(req as Request);
+    if (!validate_result.isEmpty()) {
+        return response(422, 'validation error', validate_result.array());
+    }
+
     let models = await db();
     let taskModel = new models.TasksModel();
     let taskUserModel = new models.TaskUsersModel();
@@ -36,10 +64,6 @@ async function staff_update(
             t_attachment,
         );
     }
-    console.log(
-        'body----------------------------------------------------------',
-        body,
-    );
 
     try {
         let data2 = await models.TaskUsersModel.findByPk(body.id);
@@ -49,7 +73,7 @@ async function staff_update(
             let inputs2: InferCreationAttributes<typeof taskUserModel> = {
                 is_complete: ssss || body?.is_complete,
                 attachment: t_attachment || data2.attachment,
-                description: body.description,
+                description: body.description2,
             };
             (await data2.update(inputs2)).save();
             return response(200, 'data updated', data2);
