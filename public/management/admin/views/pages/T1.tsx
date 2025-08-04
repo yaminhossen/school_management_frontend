@@ -780,19 +780,19 @@ const T1: React.FC<Props> = (props: Props) => {
                 <h3 className="mt-4 ms-0">Notice management</h3>
                 <ul className="dashboard_links ">
                     <li>
-                        <Link to="/notices">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Notice Management
-                        </Link>
-                    </li>
-                    <li>
                         <Link to="/notice-categorys">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             Notice Category Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/notices">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Notice Management
                         </Link>
                     </li>
                     <li>

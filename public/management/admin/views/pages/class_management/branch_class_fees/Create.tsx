@@ -69,7 +69,27 @@ const Create: React.FC<Props> = (props: Props) => {
         }
         console.log('Selected value:', event.target.value);
     };
-    console.log('Selected dataaa:', feeTypes);
+    
+        // console.log('moment', moment().format('YYYY-DD-MM'));
+        let date = moment().format('YYYY-MM-DD');
+    
+        const startYear = '2025';
+        const years = Array.from({ length: 31 }, (_, i) => Number(startYear) + i);
+    
+        // State for selected year
+        const [selectedYear, setSelectedYear] = useState(
+            sessionStorage.getItem('selectedYear') || startYear,
+        );
+    
+        // Update session storage when year changes
+        useEffect(() => {
+            sessionStorage.setItem('selectedYear', selectedYear);
+        }, [selectedYear]);
+    
+        // Handle year selection
+        const handleYearChange = (event) => {
+            setSelectedYear(event.target.value);
+        };
     return (
         <>
             <div className="page_content">
@@ -176,31 +196,43 @@ const Create: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>Session{' '}
                                                 <span className="valid_star">
                                                     *
                                                 </span></label>
                                     <div className="form_elements">
                                         <input
-                                            type="date"
+                                            type="number"
                                             name="session"
                                             defaultValue={moment().format(
                                                 'YYYY-MM-DD',
                                             )}
                                         />
                                     </div>
-                                </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Description</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            name="description"
-                                            id=""
-                                            placeholder="description"
-                                        ></textarea>
-                                    </div>
                                 </div> */}
+                                <div className="form-group form-horizontal custom_scroll">
+                                    <label htmlFor="session">Session</label>
+                                    <div className="form_elements custom_scroll">
+                                        <select
+                                            id="session"
+                                            name="session"
+                                            value={selectedYear}
+                                            onChange={handleYearChange}
+                                            className="form-control custom_scroll"
+                                            style={{ paddingRight: '30px' }} // Ensures space for the native arrow
+                                        >
+                                            <option value="" disabled>
+                                                Select a year
+                                            </option>{' '}
+                                            {years.map((year) => (
+                                                <option key={year} value={year}>
+                                                    {year}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div className="form-group student_submit form-horizontal">
                                 {/* <label></label> */}

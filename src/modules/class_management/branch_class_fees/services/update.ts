@@ -95,7 +95,7 @@ async function update(
         name: body.name,
         description: body.description,
         amount: body.amount,
-        session: year,
+        session: body.session,
         fee_type_id: body.fee_type_id,
         creator: user?.id || null,
     };
