@@ -85,6 +85,14 @@ th {
     padding: 15px;
     border-radius: 3px;
 }
+.notice_read_more {
+    .notice_read_more_link {
+        margin-top: 30px;
+        &:hover {
+            color: rgb(1, 1, 224) !important;
+        }
+    }
+}
 
 @media screen and (max-width: 575.9px) {
     .notice_area_content ul li .notice {

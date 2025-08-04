@@ -36,10 +36,10 @@ const Create: React.FC<Props> = (props: Props) => {
     }
     const fetchData = async () => {
         try {
-            const response = await axios.get(
-                `/api/v1/branch-class-subjects/class-wise-subject/1`,
-            );
-            setSubjects(response.data.data);
+            // const response = await axios.get(
+            //     `/api/v1/branch-class-subjects/class-wise-subject/1`,
+            // );
+            // setSubjects(response.data.data);
             // setData(response.data);
         } catch (error) {
             setError(error);
@@ -135,6 +135,7 @@ const Create: React.FC<Props> = (props: Props) => {
 
     const hasError =
         errorMessageStartTime || errorMessageEndTime || errorMessageDate;
+    console.log('subjects', subjects);
 
     return (
         <>
@@ -161,6 +162,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                             id=""
                                             onChange={handleChange}
                                         >
+                                            <option value="">
+                                                At first select class
+                                            </option>
                                             {state?.classes?.length &&
                                                 state.classes?.map(
                                                     (i: {
@@ -184,9 +188,8 @@ const Create: React.FC<Props> = (props: Props) => {
                                         <span className="valid_star">*</span>
                                     </label>
                                     <div className="form_elements">
-                                        {subjects.length && (
+                                        {/* {subjects.length && (
                                             <select name="subject_id" id="">
-                                                {/* <option value={data.class_id}></option> */}
                                                 {subjects.map((i, index) => {
                                                     return (
                                                         <option value={i.id}>
@@ -195,6 +198,26 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     );
                                                 })}
                                             </select>
+                                        )} */}
+                                        {subjects.length > 0 ? (
+                                            <select name="subject_id" id="">
+                                                {subjects.map((i, index) => (
+                                                    <option
+                                                        key={i.id}
+                                                        value={i.id}
+                                                    >
+                                                        {i.name}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        ) : (
+                                            <p
+                                                name="subject_id"
+                                                style={{ color: 'gray' }}
+                                            >
+                                                No subjects available for this
+                                                class.
+                                            </p>
                                         )}
                                     </div>
                                 </div>

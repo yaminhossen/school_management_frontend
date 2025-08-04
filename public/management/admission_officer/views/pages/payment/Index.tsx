@@ -79,8 +79,13 @@ const Index: React.FC<Props> = (props: Props) => {
                 fee.due_amount !== 0
                     ? Math.abs(fee.due_amount || 0)
                     : fee.fee_amount; // Use fee_amount if due_amount is 0
+            // const maxAmount2 =
+            //     fee.due_amount !== 0
+            //         ? Math.abs(fee.due_amount || 0)
+            //         : fee.due_amount;
             const discount =
                 parseFloat(feesTypes2[index].input_amount2 ?? '0') || 0;
+            // const payable = maxAmount2 - discount;
             const payable = maxAmount - discount;
             const given = parseFloat(fee.input_amount ?? '0') || 0;
             if (given > payable) {
@@ -215,7 +220,7 @@ const Index: React.FC<Props> = (props: Props) => {
         if (type === 'discount') {
             const absoluteValue = Math.abs(i.due_amount || 0);
             const maxDiscount =
-                i.due_amount !== 0 ? absoluteValue : i.fee_amount; // Use fee_amount if due_amount is 0
+                i.due_amount !== 0 ? absoluteValue : i.due_amount; // Use fee_amount if due_amount is 0
             const newValue = Math.min(enteredValue, maxDiscount);
             const remaining = maxDiscount - newValue;
             setRemainingDue((prev) => ({
@@ -228,7 +233,7 @@ const Index: React.FC<Props> = (props: Props) => {
         } else if (type === 'given') {
             if (!feesTypes2[index]) return; // Skip if feesTypes2[index] is undefined
             const absoluteValue =
-                i.due_amount !== 0 ? Math.abs(i.due_amount) : i.fee_amount; // Use fee_amount if due_amount is 0
+                i.due_amount !== 0 ? Math.abs(i.due_amount) : i.due_amount; // Use fee_amount if due_amount is 0
             const discount =
                 parseFloat(feesTypes2[index].input_amount2 ?? '0') || 0;
             const payable = absoluteValue - discount;
@@ -276,11 +281,14 @@ const Index: React.FC<Props> = (props: Props) => {
 
     useEffect(() => {
         const initialRemainingDue = feesTypes.reduce((acc, i, index) => {
-            const maxAmount =
-                i.due_amount !== 0 ? Math.abs(i.due_amount || 0) : i.fee_amount;
+            // const maxAmount =
+            //     i.due_amount !== 0 ? Math.abs(i.due_amount || 0) : i.fee_amount;
+            const maxAmount3 =
+                i.due_amount !== 0 ? Math.abs(i.due_amount || 0) : i.due_amount;
             const discount =
                 parseFloat(feesTypes2[index]?.input_amount2 ?? '0') || 0;
-            const payable = maxAmount - discount;
+            // const payable = maxAmount - discount;
+            const payable = maxAmount3 - discount;
             return { ...acc, [i.id]: payable };
         }, {});
         setRemainingDue(initialRemainingDue);
@@ -401,7 +409,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 <option
                                                                     value={i.id}
                                                                 >
-                                                                    {i.title}
+                                                                    {i.title} -{' '}
+                                                                    {i.number.slice(
+                                                                        -5,
+                                                                    )}
                                                                 </option>
                                                             );
                                                         },
@@ -465,10 +476,10 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 <td>Class</td>
                                                 <td>{classes.class?.name}</td>
                                             </tr>
-                                            <tr>
+                                            {/* <tr>
                                                 <td>Addmission No</td>
                                                 <td>{classes.addmission_no}</td>
-                                            </tr>
+                                            </tr> */}
                                             <tr>
                                                 <td>Photo</td>
                                                 <td>
@@ -517,7 +528,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                       i.due_amount ||
                                                                           0,
                                                                   )
-                                                                : i.fee_amount; // Use fee_amount if due_amount is 0
+                                                                : i.due_amount; // Use fee_amount if due_amount is 0
                                                         const discount =
                                                             parseFloat(
                                                                 feesTypes2[
@@ -654,8 +665,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     {totalAmount?.total ?? 0}
                                                 </td>
                                                 <td>
-                                                    {totalAmount?.due_amount ??
-                                                        0}
+                                                    {Math.abs(totalAmount?.due_amount) ?? 0}
                                                 </td>
                                                 <td>
                                                     {totalAmount3}

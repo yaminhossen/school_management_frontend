@@ -99,15 +99,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     </div>
                                                     <div className="notice_title_and_description_area">
                                                         <div className="notice_title">
-                                                            {/* <a
-                                                            href="notice_details.html"
-                                                            className="title_text"
-                                                        >
-                                                            9, 10, 11 তারিখ
-                                                            মাদরাসা 9, 10, 11
-                                                            তারিখ মাদরাসা বন্ধ
-                                                            থাকবে
-                                                        </a> */}
                                                             <Link
                                                                 className="title_text"
                                                                 to={`/notices/details/${i.id}`}
@@ -120,15 +111,16 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 {truncateWords(
                                                                     i.description,
                                                                     15,
-                                                                )}
-                                                                <Link
-                                                                    className="read_more_area"
-                                                                    to={`/notices/details/${i.id}`}
-                                                                >
-                                                                    Read more
-                                                                    ...
-                                                                </Link>
+                                                                )} ...
                                                             </span>
+                                                        </div>
+                                                        <div className="notice_read_more">
+                                                            <Link
+                                                                className="read_more_areaa notice_read_more_link"
+                                                                to={`/notices/details/${i.id}`}
+                                                            >
+                                                                Read more ...
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </div>

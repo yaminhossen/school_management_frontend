@@ -104,10 +104,16 @@ async function fees_categories_second(
             //         },
             //     );
             // Check if the `item.name` is "monthly fee"
+            console.log('item.name', item.name);
             if (item.name === 'Monthly fee') {
-                let thisMonth = moment().month() + 2; // Get current month index (1-12)
+                let thisMonth = moment().month() + 1; // Get current month index (1-12)
                 const dateString = student_data?.admission_date;
                 const monthNumber = moment(dateString).month() + 1;
+                console.log('thisMonth', thisMonth);
+                console.log('monthNumber', monthNumber);
+                console.log('thisMonth - monthNumber', thisMonth - monthNumber);
+                console.log('dateString', dateString);
+
                 const feeRecord =
                     await accountFeesCollectionDetailsModel.findOne({
                         where: {
@@ -119,6 +125,8 @@ async function fees_categories_second(
                     });
                 let fee = feeRecord ? feeRecord.fee_amount : 0;
                 fee_amount = fee * (thisMonth - monthNumber);
+                console.log('fee_amount', fee_amount);
+                
             } else {
                 // For other cases, retrieve the fee amount only once
                 const feeRecord =

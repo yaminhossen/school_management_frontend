@@ -120,15 +120,17 @@ const Index: React.FC<Props> = (props: Props) => {
                                                                 {truncateWords(
                                                                     i.description,
                                                                     15,
-                                                                )}
-                                                                <Link
-                                                                    className="read_more_area"
-                                                                    to={`/notices/details/${i.id}`}
-                                                                >
-                                                                    Read more
-                                                                    ...
-                                                                </Link>
+                                                                )}{' '}
+                                                                ...
                                                             </span>
+                                                        </div>
+                                                        <div className="notice_read_more">
+                                                            <Link
+                                                                className="read_more_areaa notice_read_more_link"
+                                                                to={`/notices/details/${i.id}`}
+                                                            >
+                                                                Read more ...
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </div>

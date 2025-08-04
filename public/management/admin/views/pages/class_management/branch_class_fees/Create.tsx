@@ -34,10 +34,10 @@ const Create: React.FC<Props> = (props: Props) => {
     }
     const fetchData = async () => {
         try {
-            const response = await axios.get(
-                `/api/v1/branch-class-fee-types/class-wise-fee-types/1`,
-            );
-            setFeeTypes(response.data.data);
+            // const response = await axios.get(
+            //     `/api/v1/branch-class-fee-types/class-wise-fee-types/1`,
+            // );
+            // setFeeTypes(response.data.data);
             // setData(response.data);
         } catch (error) {
             setError(error);
@@ -93,6 +93,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                             id=""
                                             onChange={handleChange}
                                         >
+                                            <option value="">At first select class</option>
                                             {state?.classes?.length &&
                                                 state.classes?.map(
                                                     (i: {
@@ -116,9 +117,8 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     *
                                                 </span></label>
                                     <div className="form_elements">
-                                        {feeTypes.length && (
+                                        {/* {feeTypes.length && (
                                             <select name="fee_type_id" id="">
-                                                {/* <option value={data.class_id}></option> */}
                                                 {feeTypes.map((i, index) => {
                                                     return (
                                                         <option value={i.id}>
@@ -127,6 +127,26 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     );
                                                 })}
                                             </select>
+                                        )} */}
+                                        {feeTypes.length > 0 ? (
+                                            <select name="fee_type_id" id="">
+                                                {feeTypes.map((i, index) => (
+                                                    <option
+                                                        key={i.id}
+                                                        value={i.id}
+                                                    >
+                                                        {i.name}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        ) : (
+                                            <p
+                                                name="fee_type_id"
+                                                style={{ color: 'gray' }}
+                                            >
+                                                No fee type available for this
+                                                class.
+                                            </p>
                                         )}
                                     </div>
                                 </div>
