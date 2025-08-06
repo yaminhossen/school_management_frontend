@@ -101,7 +101,7 @@ async function update(
     
 
     let inputs: InferCreationAttributes<typeof model> = {
-        branch_id: auth_user?.branch_id || 1,
+        branch_id: auth_user?.branch_id,
         branch_teacher_id: body.teacher_id,
         branch_student_id: body.student_id,
         branch_staff_id: body.staff_id,

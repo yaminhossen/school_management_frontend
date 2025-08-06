@@ -41,7 +41,7 @@ async function details(
     }
 
     try {
-        let rawData = await models.BranchClassSubjectTeachersModel.findAll({
+        let data = await models.BranchClassSubjectTeachersModel.findAll({
             where: {
                 branch_class_id: params.id,
                 branch_id: auth_user?.branch_id,
@@ -57,16 +57,6 @@ async function details(
             // attributes: {
             //     exclude: ['password'],
             // },
-        });
-
-        // Filter unique records based on branch_class_subject_id
-        let uniqueSubjectIds = new Set();
-        let data = rawData.filter((item: any) => {
-            if (!uniqueSubjectIds.has(item.branch_class_subject_id)) {
-                uniqueSubjectIds.add(item.branch_class_subject_id);
-                return true;
-            }
-            return false;
         });
 
         if (data) {

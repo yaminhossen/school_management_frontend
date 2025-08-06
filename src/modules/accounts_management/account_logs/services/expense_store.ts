@@ -12,12 +12,26 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 import moment from 'moment';
 
-async function validate(req: Request) {
+async function validate(req: Request, models: any) {
     await body('receipt_no')
         .not()
         .isEmpty()
         .withMessage('the receipt_no field is required')
         .run(req);
+
+    if (req.body?.receipt_no) {
+        await body('receipt_no')
+            .custom(async (receipt_no) => {
+                const existing = await models.AccountLogsModel.findOne({
+                    where: { receipt_no },
+                });
+                if (existing) {
+                    throw new Error('receipt_no already exists');
+                }
+                return true;
+            })
+            .run(req);
+    }
 
     await body('amount')
         .not()
@@ -53,13 +67,13 @@ async function expense_store(
     req: FastifyRequest,
 ): Promise<responseObject> {
     /** validation */
-    let validate_result = await validate(req as Request);
+    let models = await db();
+    let validate_result = await validate(req as Request, models);
     if (!validate_result.isEmpty()) {
         return response(422, 'validation error', validate_result.array());
     }
 
     /** initializations */
-    let models = await db();
     let body = req.body as anyObject;
     let data = new models.AccountLogsModel();
     let image_path1 = '';

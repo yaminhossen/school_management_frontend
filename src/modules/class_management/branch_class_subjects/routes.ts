@@ -70,6 +70,7 @@ module.exports = async function (fastify: FastifyInstance) {
         )
         .get(
             `${prefix}/class-wise-subject/:id`,
+            { preHandler: [auth_middleware] },
             controllerInstance.class_wise_subject,
         )
         .post(

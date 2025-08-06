@@ -110,8 +110,8 @@ const Result: React.FC<Props> = (props: Props) => {
                                 <select name="subject" id="" ref={subjRefId}>
                                     {subjects.map((i, index) => {
                                         return (
-                                            <option value={i.id}>
-                                                {i.name}
+                                            <option value={i.subject.id}>
+                                                {i.subject?.name}
                                             </option>
                                         );
                                     })}

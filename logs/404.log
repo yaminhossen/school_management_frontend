@@ -596,3 +596,14 @@
 {"level":60,"time":1754478032232,"pid":8892,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
 {"level":60,"time":1754478099971,"pid":8892,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
 {"level":60,"time":1754478161593,"pid":8892,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1754478480147,"pid":4320,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1754478485234,"pid":4320,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1754478495466,"pid":4320,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1754478780240,"pid":4320,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month-account"}
+{"level":60,"time":1754479105554,"pid":12320,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1754479251006,"pid":12968,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month-account"}
+{"level":60,"time":1754480481884,"pid":20204,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
+{"level":60,"time":1754480484748,"pid":20204,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
+{"level":60,"time":1754480485245,"pid":20204,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
+{"level":60,"time":1754480507511,"pid":20204,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1754480895933,"pid":20204,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
