@@ -101,6 +101,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         <InputImage
                                             label={''}
                                             name={'attachment'}
+                                            accept="image/*,application/pdf"
                                             defalut_preview={get_value(
                                                 'attachment',
                                             )}
@@ -113,6 +114,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         <InputImage
                                             label={''}
                                             name={'photo'}
+                                            accept="image/*,application/pdf"
                                             defalut_preview={get_value('photo')}
                                         />
                                     </div>

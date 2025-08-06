@@ -22,11 +22,11 @@ const Create: React.FC<Props> = (props: Props) => {
 
     async function handle_submit(e) {
         e.preventDefault();
-        setClearPreview(false)
+        setClearPreview(false);
         let response = await dispatch(store(new FormData(e.target)) as any);
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
             e.target.reset();
-            setClearPreview(true)
+            setClearPreview(true);
         }
     }
 
@@ -94,6 +94,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                             label={''}
                                             name={'attachment'}
                                             // defalut_preview={get_value('')}
+                                            accept="image/*,application/pdf"
                                             clearPreview={clearPreview}
                                         />
                                     </div>
@@ -105,6 +106,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                             label={''}
                                             name={'photo'}
                                             // defalut_preview={get_value('')}
+                                            accept="image/*,application/pdf"
                                             clearPreview={clearPreview}
                                         />
                                     </div>

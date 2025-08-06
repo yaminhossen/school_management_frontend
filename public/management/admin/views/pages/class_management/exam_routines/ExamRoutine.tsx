@@ -99,6 +99,10 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
     function dateFormate(date: string) {
         return moment(date).format('dddd').toLowerCase();
     }
+    // Handle the print functionality
+    function printPage() {
+        window.print();
+    }
 
     function get_day_data(i, day, key = 0) {
         if (dateFormate(i.date) === day) {
@@ -128,6 +132,186 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
+            <style>
+                {`
+                    /* Print Button Styling */
+                    #printButtonRoutine {
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        border: none;
+                        padding: 12px 24px;
+                        border-radius: 8px;
+                        font-size: 16px;
+                        font-weight: 600;
+                        cursor: pointer;
+                        margin-bottom: 20px;
+                        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+                        transition: all 0.3s ease;
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                    }
+                    
+                    #printButtonRoutine:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+                        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+                    }
+                    
+                    #printButtonRoutine:active {
+                        transform: translateY(0);
+                    }
+                    
+                    #printButtonRoutine::before {
+                        content: "🖨️";
+                        font-size: 18px;
+                    }
+
+                    /* Print Styles */
+                    @media print {
+                        /* Hide everything except the table and headers */
+                        body * {
+                            visibility: hidden;
+                        }
+                        
+                        .class_schedule_content,
+                        .class_schedule_content *,
+                        .class_schedule_title h2,
+                        .schedule_info,
+                        .schedule_info * {
+                            visibility: visible;
+                        }
+                        
+                        /* Hide print button when printing */
+                        #printButtonRoutine {
+                            display: none !important;
+                        }
+                        
+                        /* Set print page styles */
+                        body {
+                            background: white !important;
+                            color: black !important;
+                            font-family: Arial, sans-serif;
+                            margin: 0;
+                            padding: 20px;
+                        }
+                        
+                        /* Position the content for printing */
+                        .class_schedule_content {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            background: white !important;
+                            color: black !important;
+                        }
+                        
+                        /* Table print styles */
+                        .table_area {
+                            background: white !important;
+                            color: black !important;
+                            border-collapse: collapse;
+                            width: 100%;
+                            margin-top: 20px;
+                        }
+                        
+                        .table_area th,
+                        .table_area td {
+                            background: white !important;
+                            color: black !important;
+                            border: 2px solid black !important;
+                            padding: 12px 8px;
+                            text-align: center;
+                            font-size: 12px;
+                            vertical-align: middle;
+                        }
+                        
+                        .table_head_area th {
+                            background: #f5f5f5 !important;
+                            font-weight: bold;
+                            font-size: 13px;
+                            text-transform: uppercase;
+                        }
+                        
+                        .class_name,
+                        .exam_name {
+                            background: #f0f0f0 !important;
+                            font-weight: bold;
+                            font-size: 14px;
+                            vertical-align: middle;
+                        }
+                        
+                        .subject {
+                            background: #fafafa !important;
+                            font-weight: 600;
+                        }
+                        
+                        .class_time_and_room_content {
+                            background: white !important;
+                            min-height: 60px;
+                        }
+                        
+                        .time_rooom {
+                            color: black !important;
+                            font-size: 11px;
+                            line-height: 1.4;
+                            margin: 2px 0;
+                        }
+                        
+                        .class_time {
+                            font-weight: bold;
+                            color: #333 !important;
+                        }
+                        
+                        .room_title {
+                            color: #666 !important;
+                            font-size: 10px;
+                        }
+                        
+                        /* Title styling for print */
+                        .class_schedule_title h2 {
+                            position: absolute;
+                            top: -40px;
+                            left: 0;
+                            right: 0;
+                            text-align: center;
+                            font-size: 24px;
+                            font-weight: bold;
+                            color: black !important;
+                            margin: 0 0 20px 0;
+                            background: white !important;
+                        }
+                        
+                        /* Schedule info for print */
+                        .schedule_info {
+                            background: white !important;
+                            color: black !important;
+                            border: 1px solid #ccc !important;
+                            padding: 10px !important;
+                            margin-bottom: 15px !important;
+                            text-align: center;
+                        }
+                        
+                        .schedule_info div {
+                            color: black !important;
+                            font-weight: bold;
+                            display: inline-block;
+                            margin: 0 20px;
+                        }
+                        
+                        /* Ensure proper page breaks */
+                        .table_area {
+                            page-break-inside: avoid;
+                        }
+                        
+                        /* Remove any dark backgrounds */
+                        * {
+                            background-color: white !important;
+                            color: black !important;
+                        }
+                    }
+                `}
+            </style>
             {/* <h2>Class routine information</h2> */}
             <div className="admin_sideba custom_scroll">
                 <section className="class_schedule_area">
@@ -246,6 +430,9 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                         {/* eslint-disable */}
                         <div className="class_schedule_content">
                             {/* table_area start */}
+                            <button id="printButtonRoutine" onClick={printPage}>
+                                 Print
+                            </button>
                             <table className="table_area">
                                 <thead>
                                     <tr className="table_head_area">

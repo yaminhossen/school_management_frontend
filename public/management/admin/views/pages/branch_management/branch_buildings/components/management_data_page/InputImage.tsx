@@ -4,6 +4,7 @@ export interface Props {
     label: string;
     defalut_preview?: string | null;
     clearPreview?: boolean;
+    accept: string;
 }
 
 const InputImage: React.FC<Props> = ({
@@ -11,6 +12,7 @@ const InputImage: React.FC<Props> = ({
     label,
     defalut_preview,
     clearPreview,
+    accept,
     ...props
 }: Props) => {
     const fileInputRef = useRef<HTMLInputElement>(null);
@@ -49,13 +51,15 @@ const InputImage: React.FC<Props> = ({
                     name={name}
                     ref={fileInputRef}
                     onChange={handleFileChange}
-                    accept="image/*"
+                    // accept="image/*"
+                    accept={accept}
                 />
                 {preview && (
                     <div>
                         <img
                             src={preview}
-                            alt="Image Preview"
+                            // alt="Image Preview"
+                            alt="Image or PDF file"
                             style={{ marginTop: '10px', maxHeight: '80px' }}
                         />
                     </div>

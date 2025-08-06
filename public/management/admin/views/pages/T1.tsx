@@ -444,14 +444,6 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/branch-transports">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Branch Transports Management
-                        </Link>
-                    </li>
-                    <li>
                         <Link to="/branch-transport-drivers">
                             <span className="material-symbols-outlined fill">
                                 groups
@@ -460,11 +452,11 @@ const T1: React.FC<Props> = (props: Props) => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/academic-calendars">
+                        <Link to="/branch-transports">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Academic Calendars Management
+                            Branch Transports Management
                         </Link>
                     </li>
                     <li>
@@ -473,6 +465,14 @@ const T1: React.FC<Props> = (props: Props) => {
                                 groups
                             </span>
                             Academic Calendar Event Type Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/academic-calendars">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Academic Calendars Management
                         </Link>
                     </li>
                 </ul>

@@ -20,21 +20,56 @@ async function fees_categories_third(
     let classFeessModel = models.BranchClassFeesModel;
     let params = req.params as any;
     let user = (req as any).user;
+    const currentYear = moment().year();
+    interface FeesTypes {
+        id: number;
+        name: string;
+        description?: string;
+        // add any other fields you need
+    }
+
+    interface DataModel {
+        id: number;
+        amount: number;
+        fee_type_id: number;
+        fees_types?: FeesTypes; // 👈 this is what’s missing
+    }
+
+    let auth_user;
+    if (user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else if (user?.user_type === 'student') {
+        auth_user = await models.UserStudentInformationsModel.findOne({
+            where: {
+                user_student_id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
 
     try {
         let student_data = await informationsModel.findOne({
             where: {
-                [Op.or]: [
-                    { user_student_id: user?.id },
-                    // { student_id: params?.id || 0 },
-                ],
+                [Op.or]: [{ user_student_id: user?.id || 0 }],
+                branch_id: auth_user?.branch_id,
+                status: 'active',
             },
         });
-        console.log('studnet dta', student_data);
         let data = await classFeessModel.findAll({
             where: {
-                // branch_class_id: params.class,
                 branch_class_id: student_data?.s_class,
+                branch_id: auth_user?.branch_id,
+                session: currentYear, // Use the current year for the session
+                status: 'active',
             },
             include: [
                 {
@@ -45,6 +80,7 @@ async function fees_categories_third(
         });
         // Convert `data` to JSON if it's not already
         data = data.map((item) => item.toJSON());
+        console.log('data', data);
 
         // Initialize an empty array to hold totals for each ID
         let idWiseTotals = [];
@@ -55,36 +91,27 @@ async function fees_categories_third(
                 where: {
                     branch_student_id: student_data?.user_student_id, // Hardcoded for demonstration
                     branch_class_fees_id: item.id, // Compare with each ID
+                    branch_id: auth_user?.branch_id,
                 },
             });
 
             let fee_amount = 0;
-
-            // Check if the `item.name` is "monthly fee"
-            // if (item.name === 'monthly fee') {
-            //     // Sum all fee amounts for "monthly fee"
-            //     fee_amount = await accountFeesCollectionDetailsModel.sum(
-            //         'fee_amount',
-            //         {
-            //             where: {
-            //                 branch_student_id: student_data?.user_student_id, // Hardcoded for demonstration
-            //                 branch_class_fees_id: item.id, // Compare with each ID
-            //             },
-            //         },
-            //     );
-            // Check if the `item.name` is "monthly fee"
             if (item.name === 'Monthly fee') {
                 let thisMonth = moment().month() + 1; // Get current month index (1-12)
+                const dateString = student_data?.admission_date;
+                const monthNumber = moment(dateString).month() + 1;
+
                 const feeRecord =
                     await accountFeesCollectionDetailsModel.findOne({
                         where: {
                             branch_student_id: student_data?.user_student_id,
                             branch_class_fees_id: item.id,
+                            branch_id: auth_user?.branch_id,
                         },
                         attributes: ['fee_amount'], // Fetch only `fee_amount` field
                     });
                 let fee = feeRecord ? feeRecord.fee_amount : 0;
-                fee_amount = fee * thisMonth;
+                fee_amount = fee * (thisMonth - monthNumber);
             } else {
                 // For other cases, retrieve the fee amount only once
                 const feeRecord =
@@ -92,6 +119,7 @@ async function fees_categories_third(
                         where: {
                             branch_student_id: student_data?.user_student_id, // Hardcoded for demonstration
                             branch_class_fees_id: item.id, // Compare with each ID
+                            branch_id: auth_user?.branch_id,
                         },
                         attributes: ['fee_amount'], // Fetch only `fee_amount` field
                     });
@@ -126,7 +154,7 @@ async function fees_categories_third(
                 summeries,
             });
         } else {
-            throw new custom_error('not found', 404, 'data not found');
+            throw new custom_error('not found', 404, 'Data not found');
         }
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.params);
