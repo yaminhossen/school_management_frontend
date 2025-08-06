@@ -495,3 +495,4 @@
 {"level":60,"time":1754457126391,"pid":8488,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/stu-information"}
 {"level":60,"time":1754457127203,"pid":8488,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/exam-routines/plan"}
 {"level":60,"time":1754457127209,"pid":8488,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-students/stu-information"}
+{"level":60,"time":1754458066308,"pid":21632,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}

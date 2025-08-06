@@ -25,6 +25,11 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.store,
         )
         .post(
+            `${prefix}/admin-exam-routines`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.admin_exam_routines,
+        )
+        .post(
             `${prefix}/update`,
             { preHandler: [auth_middleware] },
             controllerInstance.update,

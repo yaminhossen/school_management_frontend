@@ -508,7 +508,7 @@ const T1: React.FC<Props> = (props: Props) => {
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
-                            Class Routine At A Glanc
+                            Class Routine At A Glance
                         </Link>
                     </li>
                     <li>
@@ -525,6 +525,14 @@ const T1: React.FC<Props> = (props: Props) => {
                                 groups
                             </span>
                             Exam Management
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/exam-routines/at-a-glance">
+                            <span className="material-symbols-outlined fill">
+                                groups
+                            </span>
+                            Exam Routine At a glance
                         </Link>
                     </li>
                     <li>

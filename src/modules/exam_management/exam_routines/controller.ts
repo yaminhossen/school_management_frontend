@@ -14,6 +14,7 @@ import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
 import exam_details from './services/exam_routine_details';
+import admin_exam_routines from './services/admin_exam_routines';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -37,6 +38,14 @@ export default function (fastify: FastifyInstance) {
 
         store: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await store(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        admin_exam_routines: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await admin_exam_routines(fastify, req);
             res.code(data.status).send(data);
         },
 

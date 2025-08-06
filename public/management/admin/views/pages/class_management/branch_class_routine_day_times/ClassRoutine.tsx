@@ -43,6 +43,7 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
         }
     };
 
+            console.log('ksdfjlsdjfldsjok');
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(classes({}) as any);
