@@ -92,6 +92,14 @@ async function store(
 
     /** store data into database */
     try {
+        await models.ExamRoutinesModel.destroy({
+            where: {
+                branch_id: auth_user?.branch_id,
+                exam_id: body.exam_id,
+                class_id: body.class_id,
+                subject_id: body.subject_id,
+            },
+        });
         (await data.update(inputs)).save();
         return response(200, 'data created', data);
     } catch (error: any) {

@@ -19,6 +19,12 @@ async function all_exam(
                 user_teacher_id: user?.id || null,
             },
         });
+    } else if (user?.user_type === 'student') {
+        auth_user = await models.UserStudentInformationsModel.findOne({
+            where: {
+                user_student_id: user?.id || null,
+            },
+        });
     } else {
         auth_user = await models.UserAdminsModel.findOne({
             where: {

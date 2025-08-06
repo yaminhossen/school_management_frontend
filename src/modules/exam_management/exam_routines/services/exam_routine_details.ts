@@ -27,6 +27,7 @@ async function class_routine_details(
         let data = await examRoutinesModel.findAll({
             where: {
                 class_id: data1?.s_class,
+                exam_id: params.exam_id,
             },
             include: [
                 {
