@@ -32,6 +32,7 @@ async function all(
     let classesModel = models.BranchClassesModel;
     let query_param = req.query as any;
     let params = req.params as any;
+    // let queryParams = req.query as any;
 
     let user = (req as any).user;
     let auth_user;
@@ -75,6 +76,7 @@ async function all(
     const whereClause: any = {
         status: show_active_data === 'true' ? 'active' : 'deactive',
         branch_class_id: params.id,
+        branch_class_section_id: query_param?.secId,
         branch_id: query_param?.brid || auth_user?.branch_id,
     };
     const today = moment().format('YYYY-MM-DD');

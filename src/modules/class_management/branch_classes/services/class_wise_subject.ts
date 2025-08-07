@@ -18,6 +18,7 @@ async function class_wise_subject(
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
+    let queryParams = req.query as any;
     let user = (req as any).user;
     console.log(
         'oklk----------------------------------.----------------------------------------------------------',
@@ -41,6 +42,7 @@ async function class_wise_subject(
             where: {
                 branch_class_id: params.id,
                 branch_teacher_id: user?.id,
+                branch_class_section_id: queryParams?.section_id,
             },
             include: [
                 {
