@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { anyObject } from '../../../../common_types/object';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+import BackButton from '../../../components/BackButton';
 export interface Props {}
 
 const Details: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
     const { id } = useParams();
+    const [searchParams] = useSearchParams();
+
+    const classId = searchParams.get('c_id');
+    console.log('class id', classId);
 
     useEffect(() => {
         // Function to fetch data
@@ -17,7 +22,7 @@ const Details: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/teacher-assignment/${id}`,
+                `/api/v1/branch-class-subjects/teacher-assignment/${id}?c_id=${classId}`,
             );
             setData(response.data.data);
             // setData(response.data);
@@ -36,12 +41,13 @@ const Details: React.FC<Props> = (props: Props) => {
             <div className="dues_back_btn">
                 <h3 className="table_heading"></h3>
                 <button className="back_btn settings_bacsk">
-                    <Link to={`/class-attendance`}>
+                    {/* <Link to={`/class-attendance`}>
                         <span className="material-symbols-outlined fill">
                             arrow_back
                         </span>
                         <div className="text">Back</div>
-                    </Link>
+                    </Link> */}
+                    <BackButton></BackButton>
                 </button>
             </div>
             <div className="content_body">
@@ -58,29 +64,46 @@ const Details: React.FC<Props> = (props: Props) => {
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody id="all_list">
-                                {data?.map(
-                                    (i: { [key: string]: any }, index) => {
-                                        return (
-                                            <tr>
-                                                <td></td>
-                                                <td>{index + 1}</td>
-                                                <td>{i.subject_name}</td>
-                                                {/* <td>{i.subject}</td> */}
-                                                {/* <td>{i.count}</td> */}
-                                                <td>
-                                                    <Link
-                                                        className="btn btn-sm btn-outline-info mr-1"
-                                                        to={`/class-attendance/take-attendance/${id}?sub=${i.subject_id}`}
-                                                    >
-                                                        Take attendance
-                                                    </Link>
-                                                </td>
-                                            </tr>
-                                        );
-                                    },
-                                )}
-                            </tbody>
+                            {data?.length ? (
+                                <tbody id="all_list">
+                                    {data?.map(
+                                        (i: { [key: string]: any }, index) => {
+                                            return (
+                                                <tr>
+                                                    <td></td>
+                                                    <td>{index + 1}</td>
+                                                    <td>{i.subject_name}</td>
+                                                    {/* <td>{i.subject}</td> */}
+                                                    {/* <td>{i.count}</td> */}
+                                                    <td>
+                                                        <Link
+                                                            className="btn btn-sm btn-outline-info mr-1"
+                                                            to={`/class-attendance/take-attendance/${id}?sub=${i.subject_id}&class_id=${classId}`}
+                                                        >
+                                                            Take attendance
+                                                        </Link>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        },
+                                    )}
+                                </tbody>
+                            ) : (
+                                <tbody>
+                                    <tr>
+                                        <td colSpan={5}>
+                                            <div
+                                                style={{
+                                                    fontSize: '24px',
+                                                }}
+                                                className="not_found f-size-4 m-4"
+                                            >
+                                                No data found
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            )}
                         </table>
                     </div>
                 </div>

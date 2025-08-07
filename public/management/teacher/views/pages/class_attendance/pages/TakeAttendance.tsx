@@ -3,6 +3,7 @@ import { anyObject } from '../../../../common_types/object';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+import BackButton from '../../../components/BackButton';
 export interface Props {}
 
 const TakeAttendance: React.FC<Props> = (props: Props) => {
@@ -12,12 +13,14 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
     const [searchParams] = useSearchParams();
 
     const subjectId = searchParams.get('sub');
+    const classId = searchParams.get('class_id');
     console.log('subject id', subjectId);
+    console.log('class id', classId);
 
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/user-students/class-wise-student/${id}`,
+                `/api/v1/user-students/class-wise-student/${classId}?section_id=${id}`,
             );
             setData(response.data.data);
             // setData(response.data);
@@ -56,12 +59,13 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
             <div className="dues_back_btn">
                 <h3 className="table_heading"></h3>
                 <button className="back_btn settings_bacsk">
-                    <Link to={`/class-attendance/details/${id}`}>
+                    {/* <Link to={`/class-attendance/details/${id}`}>
                         <span className="material-symbols-outlined fill">
                             arrow_back
                         </span>
                         <div className="text">Back</div>
-                    </Link>
+                    </Link> */}
+                    <BackButton></BackButton>
                 </button>
             </div>
             <div className="content_body">

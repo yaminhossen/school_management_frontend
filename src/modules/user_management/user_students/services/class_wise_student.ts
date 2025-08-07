@@ -19,6 +19,7 @@ async function student_class(
     let classesModel = models.BranchClassesModel;
     let classFeessModel = models.BranchClassFeesModel;
     let params = req.params as any;
+    let query_params = req.query as any;
     let user_id = (req as any).user?.id;
     console.log('user', user_id);
 
@@ -26,6 +27,7 @@ async function student_class(
         let data = await informationsModel.findAll({
             where: {
                 s_class: params.id,
+                section: query_params.section_id,
             },
             include: [
                 {

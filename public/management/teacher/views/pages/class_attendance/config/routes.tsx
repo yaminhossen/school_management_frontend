@@ -4,6 +4,7 @@ import Index from '../Index';
 import Result from '../Result';
 import TakeAttendace from '../pages/TakeAttendance';
 import Details from '../pages/Details';
+import Section from '../pages/Section';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -18,6 +19,10 @@ export default {
         },
         {
             path: 'details/:id',
+            element: <Section />,
+        },
+        {
+            path: 'section/:id',
             element: <Details />,
         },
         {

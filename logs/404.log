@@ -607,3 +607,9 @@
 {"level":60,"time":1754480485245,"pid":20204,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}
 {"level":60,"time":1754480507511,"pid":20204,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
 {"level":60,"time":1754480895933,"pid":20204,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/academic-calendars/get-academic-event-by-month"}
+{"level":60,"time":1754539363521,"pid":11356,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1754539505551,"pid":11356,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1754539510960,"pid":11356,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1754539657527,"pid":11356,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1754541537587,"pid":11356,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1754548496147,"pid":16960,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/teacher/teacher.js"}
