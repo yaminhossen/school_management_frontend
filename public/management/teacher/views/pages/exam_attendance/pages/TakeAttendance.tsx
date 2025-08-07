@@ -15,12 +15,14 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
     const [searchParams] = useSearchParams();
 
     const subjectId = searchParams.get('sub');
+    const classId = searchParams.get('class_id');
     console.log('subject id', subjectId);
+    console.log('class id', classId);
 
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/user-students/class-wise-student/${id}`,
+                `/api/v1/user-students/class-wise-student/${classId}?section_id=${id}`,
             );
             setData(response.data.data);
             // setData(response.data);

@@ -5,6 +5,7 @@ import Materials from '../pages/Materials';
 import CreateMaterials from '../pages/CreateMaterials';
 import Details from '../pages/Details';
 import MaterialDetails from '../pages/MaterialEdit';
+import Section from '../pages/Section';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -24,6 +25,10 @@ export default {
         {
             path: 'details/:id',
             element: <Materials />,
+        },
+        {
+            path: 'section/:id',
+            element: <Section />,
         },
         {
             path: 'edit/:id',

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { anyObject } from '../../../common_types/object';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 import BackButton from './pages/BackButton';
@@ -19,10 +19,14 @@ const Result: React.FC<Props> = (props: Props) => {
     const otherMarkRef = useRef<HTMLInputElement>(null);
     const { id } = useParams();
 
+    const [searchParams] = useSearchParams();
+
+    const classId = searchParams.get('c_id');
+    console.log('class id', classId);
     const fetchClasses = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/class-wise-subject/${id}`,
+                `/api/v1/branch-class-subjects/class-wise-subject/${classId}?section_id=${id}`,
             );
             setSubjects(response.data.data);
             // setData(response.data);
@@ -42,7 +46,7 @@ const Result: React.FC<Props> = (props: Props) => {
     const fetchStudent = async (id1, id2) => {
         try {
             const response = await axios.get(
-                `/api/v1/exam-attendent-students/attend-all?sub=${id1}&exam=${id2}&class=${id}`,
+                `/api/v1/exam-attendent-students/attend-all?sub=${id1}&exam=${id2}&class=${classId}`,
             );
             setStudents(response.data.data);
             // setData(response.data);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { anyObject } from '../../../../common_types/object';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 import BackButton from './BackButton';
@@ -10,6 +10,10 @@ const Details: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
     const { id } = useParams();
+    const [searchParams] = useSearchParams();
+
+    const classId = searchParams.get('c_id');
+    console.log('class id', classId);
 
     useEffect(() => {
         // Function to fetch data
@@ -18,7 +22,7 @@ const Details: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/teacher-assignment/${id}`,
+                `/api/v1/branch-class-subjects/teacher-assignment/${id}?c_id=${classId}`,
             );
             setData(response.data.data);
             // setData(response.data);

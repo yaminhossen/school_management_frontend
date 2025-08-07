@@ -18,6 +18,7 @@ async function details(
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
+    let queryParams = req.query as any;
     let user = (req as any).user;
     let auth_user: any;
     if (user?.user_type === 'teacher') {
@@ -46,6 +47,7 @@ async function details(
                 branch_class_id: params.id,
                 branch_id: auth_user?.branch_id,
                 branch_teacher_id: auth_user?.id,
+                branch_class_section_id: queryParams?.section_id,
             },
             include: [
                 {
