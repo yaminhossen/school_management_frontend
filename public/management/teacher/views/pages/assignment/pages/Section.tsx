@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../common_types/object';
-import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { anyObject } from '../../../../common_types/object';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
-import BackButton from './pages/BackButton';
+import BackButton from '../../../components/BackButton';
 export interface Props {}
 
-const Details: React.FC<Props> = (props: Props) => {
+const Section: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
     const { id } = useParams();
-    const [searchParams] = useSearchParams();
-
-    const classId = searchParams.get('c_id');
-    console.log('class id', classId);
 
     useEffect(() => {
         // Function to fetch data
@@ -22,7 +18,7 @@ const Details: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/teacher-assignment/${id}?c_id=${classId}`,
+                `/api/v1/branch-class-sections/class-wise/${id}`,
             );
             setData(response.data.data);
             // setData(response.data);
@@ -38,8 +34,18 @@ const Details: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
-            <BackButton></BackButton>
-            <div className="result_details"></div>
+            <div className="dues_back_btn">
+                <h3 className="table_heading"></h3>
+                <button className="back_btn settings_bacsk">
+                    {/* <Link to={`/class-attendance`}>
+                        <span className="material-symbols-outlined fill">
+                            arrow_back
+                        </span>
+                        <div className="text">Back</div>
+                    </Link> */}
+                    <BackButton></BackButton>
+                </button>
+            </div>
             <div className="content_body">
                 <div className="data_list">
                     <div className="table_responsive custom_scroll">
@@ -48,7 +54,9 @@ const Details: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>Serial</th>
-                                    <th>Subject</th>
+                                    <th>Section</th>
+                                    {/* <th>Subject</th> */}
+                                    {/* <th>Total Student</th> */}
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -59,13 +67,21 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <tr>
                                                 <td></td>
                                                 <td>{index + 1}</td>
-                                                <td>{i.subject_name}</td>
+                                                <td>{i.title}</td>
+                                                {/* <td>{i.subject}</td> */}
+                                                {/* <td>{i.count}</td> */}
                                                 <td>
+                                                    {/* <Link
+                                                        className="btn btn-sm btn-outline-info mr-1"
+                                                        to={`/class-attendance/section/${i.id}?c_id=${id}`}
+                                                    >
+                                                        Details
+                                                    </Link> */}
                                                     <Link
                                                         className="btn btn-sm btn-outline-info mr-1"
-                                                        to={`/assignment/single-subject/${i.subject_id}`}
+                                                        to={`/assignment/class-details/${i.id}?c_id=${id}`}
                                                     >
-                                                        details
+                                                        Details
                                                     </Link>
                                                 </td>
                                             </tr>
@@ -81,4 +97,4 @@ const Details: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default Details;
+export default Section;

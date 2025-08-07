@@ -61,10 +61,16 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 <td>
                                                     <Link
                                                         className="btn btn-sm btn-outline-info mr-1"
-                                                        to={`/assignment/class-details/${i.id}`}
+                                                        to={`/assignment/section/${i.id}`}
                                                     >
                                                         details
                                                     </Link>
+                                                    {/* <Link
+                                                        className="btn btn-sm btn-outline-info mr-1"
+                                                        to={`/assignment/class-details/${i.id}`}
+                                                    >
+                                                        details
+                                                    </Link> */}
                                                 </td>
                                             </tr>
                                         );
