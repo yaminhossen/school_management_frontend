@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import setup from '../../config/setup';
 import { all } from '../../config/store/async_actions/all';
 import { class_details1 } from '../../config/store/async_actions/class_details1';
+import { useParams, useSearchParams } from 'react-router-dom';
 export interface Props {}
 
 const modalRoot = document.getElementById('filter-root');
@@ -18,6 +19,11 @@ const Filter: React.FC<Props> = (props: Props) => {
     );
 
     const dispatch = useAppDispatch();
+        const { id } = useParams();
+        const [searchParams] = useSearchParams();
+    
+        const secId = searchParams.get('sec_id');
+        console.log('class id', secId);
 
     function get_data(data: { [key: string]: any }): void {
         console.log(data);
@@ -39,11 +45,10 @@ const Filter: React.FC<Props> = (props: Props) => {
             }),
         );
     }
-console.log('state datea', state?.id);
 
     function submit() {
         dispatch(storeSlice.actions.set_only_latest_data(true));
-        dispatch(class_details1({id: state?.id}) as any);
+        dispatch(class_details1({ id: id, secId: secId }) as any);
     }
 
     if (modalRoot && state.show_filter_canvas) {

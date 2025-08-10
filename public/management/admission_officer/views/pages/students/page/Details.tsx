@@ -54,7 +54,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
             <BackButton />
             <div className="page_content">
                 <div className="explore_window fixed_size">
-                    <Header2></Header2>
+                    <Header2 id={params.id} sec_id={secId}></Header2>
                     <div className="content_body">
                         <div className="data_list">
                             <div className="table_responsive custom_scroll">

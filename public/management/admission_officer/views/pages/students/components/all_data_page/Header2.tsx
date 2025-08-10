@@ -4,7 +4,10 @@ import HeadTitle from './HeadTitle';
 import HeadRightButtons from './HeadRightButtons';
 import HeadSearch2 from './HeadSearch2';
 
-export interface Props {}
+interface Props {
+    id: string | undefined;
+    sec_id: string | null;
+}
 
 const Header2: React.FC<Props> = (props: Props) => {
     return (
@@ -13,7 +16,9 @@ const Header2: React.FC<Props> = (props: Props) => {
                 <div className="navigation">
                     <ul>
                         <li className="search_li">
-                            <HeadSearch2></HeadSearch2>
+                            <HeadSearch2
+                                id={props.id}
+                                sec_id={props.sec_id}></HeadSearch2>
                         </li>
                     </ul>
                 </div>
