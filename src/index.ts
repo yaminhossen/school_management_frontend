@@ -212,3 +212,4 @@ sequelize().then((res: any = {}) => {
     sequelize_instance = res.sequelize;
     boot();
 });
+

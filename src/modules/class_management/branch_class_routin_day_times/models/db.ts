@@ -3,6 +3,7 @@ import * as branch_class_routine_day_times_model from './branch_class_routine_da
 import * as branch_class_subject_teachers_model from './branch_class_subject_teachers_model';
 import * as branch_building_rooms_model from './branche_building_rooms_model';
 import * as branch_class_subjects_model from './branch_class_subjects_model';
+import * as branch_class_sections_model from './branch_class_sections_model';
 import * as branch_class_teachers_model from './user_teacher_model';
 import * as branch_classes_model from './branch_classes_model';
 require('dotenv').config();
@@ -27,6 +28,7 @@ interface models {
     BranchClassSubjectsModel: typeof branch_class_subjects_model.DataModel;
     BranchClassTeachersModel: typeof branch_class_teachers_model.DataModel;
     BranchClassesModel: typeof branch_classes_model.DataModel;
+    BranchClassSectionsModel: typeof branch_class_sections_model.DataModel;
     sequelize: Sequelize;
 }
 
@@ -42,6 +44,8 @@ const db = async function (): Promise<models> {
     const BranchClassTeachersModel =
         branch_class_teachers_model.init(sequelize);
     const BranchClassesModel = branch_classes_model.init(sequelize);
+    const BranchClassSectionsModel =
+        branch_class_sections_model.init(sequelize);
 
     await sequelize.sync();
 
@@ -49,6 +53,13 @@ const db = async function (): Promise<models> {
     BranchClassRoutineDayTimesModel.belongsTo(BranchClassTeachersModel, {
         foreignKey: 'branch_teacher_id',
         as: 'teacher',
+    });
+
+    // Define associations
+    BranchClassSubjectTeachersModel.hasOne(BranchClassSectionsModel, {
+        sourceKey: 'branch_class_section_id',
+        foreignKey: 'id',
+        as: 'section',
     });
 
     // Each routine slot belongs to a subject
@@ -64,10 +75,10 @@ const db = async function (): Promise<models> {
     });
 
     // Each routine slot belongs to a class (via branch_class_id, assuming branch_class_routine_id relates to BranchClassesModel)
-    BranchClassRoutineDayTimesModel.belongsTo(BranchClassesModel, {
-        foreignKey: 'branch_class_id',
-        as: 'class',
-    });
+    // BranchClassRoutineDayTimesModel.belongsTo(BranchClassesModel, {
+    //     foreignKey: 'branch_class_id',
+    //     as: 'class',
+    // });
 
     // BranchClassTeachersModel relationships
     // Each teacher belongs to a class
@@ -109,6 +120,7 @@ const db = async function (): Promise<models> {
         BranchClassSubjectsModel,
         BranchClassTeachersModel,
         BranchClassesModel,
+        BranchClassSectionsModel,
         sequelize,
     };
     return models;

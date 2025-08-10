@@ -32,6 +32,12 @@ async function validate(req: Request) {
         .withMessage('the subject field is required')
         .run(req);
 
+    await body('section')
+        .not()
+        .isEmpty()
+        .withMessage('the section field is required')
+        .run(req);
+
     await body('title')
         .not()
         .isEmpty()
@@ -101,6 +107,7 @@ async function store(
         description: body.description,
         attachment: image_path,
         branch_class_subject_id: body.subject,
+        branch_class_section_id: body.section,
         creator: user?.id || null,
     };
 

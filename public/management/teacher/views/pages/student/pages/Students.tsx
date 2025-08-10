@@ -51,7 +51,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">
-                <Header2 id={params.id}></Header2>
+                <Header2 id={params.id} sec_id={secId}></Header2>
 
                 <div className="content_body">
                     <div className="data_list">
@@ -64,12 +64,6 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                             <SelectAll />
                                         </th>
                                         <th>No.</th>
-                                        {/* <TableHeading
-                                            label={`ID`}
-                                            col_name={`id`}
-                                            sort={false}
-                                        /> */}
-                                        {/* <th>Serial</th> */}
                                         <th>Image</th>
                                         <TableHeading
                                             label={`Name`}
@@ -82,11 +76,6 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                             col_name={`role`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Class`}
-                                            col_name={`class`}
-                                            sort={false}
-                                        /> */}
                                         <TableHeading
                                             label={`Report`}
                                             col_name={`report`}
@@ -214,6 +203,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                         <Paginate2
                             set_url={storeSlice.actions.set_url}
                             set_id={idd}
+                            sec_id={secId}
                             set_paginate={storeSlice.actions.set_paginate}
                             set_page={storeSlice.actions.set_page}
                             // class_details1={class_details1({})}

@@ -99,8 +99,7 @@ async function teacher_wise_class_routine(
             const classId = teacherSubject.branch_class_id;
             const className = teacherSubject.class?.name || `Class ${classId}`;
             const sectionId = teacherSubject.branch_class_section_id;
-            const sectionTtile1 = teacherSubject.section?.title;
-            const sectionTitle = `${sectionTtile1}`;
+            const sectionTitle = `Section ${sectionId}`;
             const subjectId = teacherSubject.branch_class_subject_id;
             const subjectName =
                 teacherSubject.subject?.name || 'Unknown Subject';

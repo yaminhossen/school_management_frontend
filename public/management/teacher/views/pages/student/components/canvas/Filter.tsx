@@ -7,7 +7,7 @@ import { initialState } from '../../config/store/inital_state';
 import { useSelector } from 'react-redux';
 import setup from '../../config/setup';
 import { all } from '../../config/store/async_actions/all';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { class_details1 } from '../../config/store/async_actions/class_details1';
 export interface Props {}
 
@@ -20,6 +20,10 @@ const Filter: React.FC<Props> = (props: Props) => {
 
     const dispatch = useAppDispatch();
     const { id } = useParams();
+    const [searchParams] = useSearchParams();
+
+    const secId = searchParams.get('sec_id');
+    console.log('class id', secId);
 
     function get_data(data: { [key: string]: any }): void {
         console.log(data);
@@ -46,7 +50,7 @@ const Filter: React.FC<Props> = (props: Props) => {
     function submit() {
         dispatch(storeSlice.actions.set_only_latest_data(true));
         // dispatch(all({}) as any);
-        dispatch(class_details1({ id: id }) as any);
+        dispatch(class_details1({ id: id, secId: secId }) as any);
     }
 
     if (modalRoot && state.show_filter_canvas) {

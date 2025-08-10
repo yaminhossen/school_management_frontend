@@ -10,6 +10,7 @@ import { class_details1 } from '../../config/store/async_actions/class_details1'
 
 interface Props {
     id: string | undefined;
+    sec_id: string | null;
 }
 
 const HeadSearch2: React.FC<Props> = (props: Props) => {
@@ -26,7 +27,9 @@ const HeadSearch2: React.FC<Props> = (props: Props) => {
             search_key = search_input.current.value;
             dispatch(storeSlice.actions.set_search_key(search_key) as any);
             dispatch(storeSlice.actions.set_page(1) as any);
-            dispatch(class_details1({ id: props.id }) as any);
+            dispatch(
+                class_details1({ id: props.id, secId: props.sec_id }) as any,
+            );
         }
     }, 1000);
 

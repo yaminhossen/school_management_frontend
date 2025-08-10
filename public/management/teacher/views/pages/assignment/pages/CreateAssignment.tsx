@@ -21,22 +21,6 @@ const CreateAssignment: React.FC<Props> = (props: Props) => {
     const [classID, setClassID] = useState('');
     const { id } = useParams();
 
-    // const fetchData = async () => {
-    //     try {
-    //         const response = await axios.get(
-    //             `/api/v1/branch-class-sections/class-wise/${id}`,
-    //         );
-    //         setSections(response.data.data);
-    //         // setData(response.data);
-    //     } catch (error) {
-    //         setError(error);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     fetchData();
-    // }, []);
-
     const fetchClasses = async () => {
         try {
             const response = await axios.get(

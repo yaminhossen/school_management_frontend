@@ -40,6 +40,7 @@ class DataModel extends Model<Infer, InferCreation> {
     declare description: string;
     declare attachment: string;
     declare branch_class_subject_id: number;
+    declare branch_class_section_id?: number;
 
     declare status?: status;
     declare creator?: number;
@@ -77,6 +78,10 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             branch_class_subject_id: {
+                type: DataTypes.BIGINT.UNSIGNED,
+                allowNull: true,
+            },
+            branch_class_section_id: {
                 type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },

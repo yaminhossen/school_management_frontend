@@ -26,6 +26,12 @@ async function validate(req: Request) {
         .withMessage('the subject field is required')
         .run(req);
 
+    await body('section')
+        .not()
+        .isEmpty()
+        .withMessage('the section field is required')
+        .run(req);
+
     await body('title')
         .not()
         .isEmpty()
@@ -79,11 +85,12 @@ async function update(
     }
     let inputs: InferCreationAttributes<typeof model> = {
         branch_id: body.branch_id,
-        branch_class_id: body.branch_class_id,
+        branch_class_id: body.class,
         title: body.title,
         description: body.description,
         attachment: image_path || prevFile || 'avatar.png',
         branch_class_subject_id: body.subject,
+        branch_class_section_id: body.section,
         creator: 1,
     };
     console.log('update body', body);

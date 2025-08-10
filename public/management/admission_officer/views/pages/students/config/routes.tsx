@@ -4,6 +4,7 @@ import Index from '../Index';
 import Details from '../page/Details';
 import Student from '../page/studentDetails';
 import Edit from '../page/Edit';
+import Section from '../page/Section';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -19,6 +20,10 @@ export default {
         {
             path: 'details/:id',
             element: <Details />,
+        },
+        {
+            path: 'section/:id',
+            element: <Section />,
         },
         {
             path: 'edit/:id',

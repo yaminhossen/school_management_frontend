@@ -17,7 +17,7 @@ import SelectItem from '../components/all_data_page/SelectItem';
 import SelectAll from '../components/all_data_page/SelectIAll';
 import TableHeading from '../components/all_data_page/TableHeading';
 import { class_details1 } from '../config/store/async_actions/class_details1';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import Paginate2 from '../../../components/Paginate2';
 import Header2 from '../components/all_data_page/Header2';
 import BackButton from './components/BackButton';
@@ -31,11 +31,16 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
 
     const dispatch = useAppDispatch();
     const params = useParams();
-    console.log('param id', params.id);
+    const idd = Number(params.id);
+    console.log('param id', idd);
+    const [searchParams] = useSearchParams();
+
+    const secId = searchParams.get('sec_id');
+    console.log('class id', secId);
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_select_fields('id'));
-        dispatch(class_details1({ id: params.id }) as any);
+        dispatch(class_details1({ id: params.id, secId: secId }) as any);
     }, []);
 
     function quick_view(data: anyObject = {}) {
@@ -215,7 +220,9 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
 
                             <Paginate2
                                 set_url={storeSlice.actions.set_url}
-                                set_id={Number(params.id)}
+                                // set_id={Number(params.id)}
+                                set_id={idd}
+                                sec_id={secId}
                                 set_paginate={storeSlice.actions.set_paginate}
                                 set_page={storeSlice.actions.set_page}
                                 all={class_details1}

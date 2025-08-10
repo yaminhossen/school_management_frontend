@@ -24,8 +24,8 @@ import {
 } from 'sequelize';
 
 // import {DataModel as Project} from "./project_model"
-const tableName = 'branch_class_routine_day_times';
-const modelName = 'BranchClassRoutineDayTimesModel';
+const tableName = 'branch_class_sections';
+const modelName = 'BranchClassSectionsModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
@@ -35,15 +35,8 @@ class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
     declare branch_id: number;
-    declare branch_class_routine_id: number;
-    declare branch_class_subject_id: number;
-    declare branch_teacher_id: number;
-    declare day: string;
-    declare day_no?: number;
-    declare day_name?: string;
-    declare start_time?: string;
-    declare end_time?: string;
-    declare branch_class_room_id: number;
+    declare branch_class_id: number;
+    declare title: string;
 
     declare status?: status;
     declare creator?: number;
@@ -64,40 +57,12 @@ function init(sequelize: Sequelize) {
                 type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
-            branch_class_routine_id: {
+            branch_class_id: {
                 type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
-            branch_class_subject_id: {
-                type: DataTypes.BIGINT.UNSIGNED,
-                allowNull: true,
-            },
-            branch_teacher_id: {
-                type: DataTypes.BIGINT.UNSIGNED,
-                allowNull: true,
-            },
-            day: {
-                type: new DataTypes.DATE(),
-                allowNull: true,
-            },
-            day_no: {
-                type: DataTypes.INTEGER,
-                allowNull: true,
-            },
-            day_name: {
-                type: new DataTypes.STRING(50),
-                allowNull: true,
-            },
-            start_time: {
-                type: new DataTypes.TIME(),
-                allowNull: true,
-            },
-            end_time: {
-                type: new DataTypes.TIME(),
-                allowNull: true,
-            },
-            branch_class_room_id: {
-                type: DataTypes.BIGINT.UNSIGNED,
+            title: {
+                type: new DataTypes.STRING(10),
                 allowNull: true,
             },
 

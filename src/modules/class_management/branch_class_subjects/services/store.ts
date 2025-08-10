@@ -127,10 +127,6 @@ async function store(
             branch_class_room_id: body.room[i],
         });
     }
-    console.log('subject routing', body);
-    console.log('subject routing', body.day_name);
-    console.log('subject routinsdfdsfdsfsdg', body.day_name[1]);
-    console.log('subject routing', class_routine);
 
     /** print request data into console */
     // console.clear();

@@ -2548,6 +2548,10 @@ input.form_checkbox:checked::after {
 .table_area tbody tr {
   border: 0px solid rgba(255, 255, 255, 0.068);
 }
+.table_area tbody .subject {
+  color: rgba(255, 255, 255, 0.849) !important;
+  font-weight: 600;
+}
 .table_area tbody .table_body td {
   border: 0px solid rgba(255, 255, 255, 0.068);
   text-align: center;
@@ -2560,6 +2564,10 @@ input.form_checkbox:checked::after {
 }
 .table_area tbody .table_body td span {
   border: 0px solid rgba(255, 255, 255, 0.068);
+}
+.table_area tbody .table_body .class_time_and_room_content {
+  color: rgba(250, 250, 250, 0.788) !important;
+  font-weight: 600;
 }
 .table_area tbody .table_body .class_time_and_room_content {
   text-align: center;

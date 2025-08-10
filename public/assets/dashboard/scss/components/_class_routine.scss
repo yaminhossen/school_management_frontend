@@ -139,6 +139,10 @@ $navy: rgb(211, 211, 211);
         tr {
             border: $border;
         }
+        .subject{
+            color: rgba(255, 255, 255, 0.849) !important;
+            font-weight: 600;
+        }
 
         .table_body {
             td {
@@ -157,6 +161,10 @@ $navy: rgb(211, 211, 211);
                 span {
                     border: $border;
                 }
+            }
+            .class_time_and_room_content{
+                color: rgba(250, 250, 250, 0.788) !important;
+                font-weight: 600;
             }
 
             .class {}

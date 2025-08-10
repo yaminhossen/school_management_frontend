@@ -7,20 +7,31 @@ import BackButton from './BackButton';
 import InputImage, { InputImageRef } from './InputImage';
 export interface Props {}
 
-const CreateMaterials: React.FC<Props> = (props: Props) => {
+const MaterialEdit: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    // const [data, setData] = useState<any>([]);
+    const [data, setData] = useState<any>([]);
     const [classes, setClasses] = useState<any>([]);
     const [subjects, setSubjects] = useState<any>([]);
-    const classIdRef = useRef<HTMLSelectElement>(null);
+    const selectRef = useRef<HTMLSelectElement>(null);
+    const selectRef2 = useRef<HTMLSelectElement>(null);
     const inputImageRef = useRef<InputImageRef>(null);
-    const [classID, setClassID] = useState('');
-    const [sections, setSections] = useState<any>([]);
     const { id } = useParams();
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-class-resources/${id}`,
+            );
+            setData(response.data.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
     const fetchClasses = async () => {
         try {
             const response = await axios.get(
                 `/api/v1/branch-class-subjects/class-wise-teacher`,
+                // `/api/v1/branch-classes/all-class`,
             );
             setClasses(response.data.data);
         } catch (error) {
@@ -28,8 +39,13 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
         }
     };
 
+    async function init_data() {
+        await fetchData();
+        await fetchClasses();
+    }
+
     useEffect(() => {
-        fetchClasses();
+        init_data();
     }, []);
 
     const handleSubmit = async (e) => {
@@ -38,49 +54,56 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
         console.log('formData', formData);
         try {
             const response = await axios.post(
-                '/api/v1/branch-class-resources/store',
+                '/api/v1/branch-class-resources/update',
                 formData,
             );
-            e.target.reset();
-            (window as any).toaster('Materials Created');
+            (window as any).toaster('Materials Updated');
+            // here use toastar
+            // setData(response.data.data.data);
+            // setTotalIncome(response.data.data.data2);
         } catch (error) {
             setError(error);
         }
     };
-    const handleChange2 = async (
-        event: React.ChangeEvent<HTMLSelectElement>,
-    ) => {
-        let id = event.target.value;
-        setClassID(id);
+
+    const fetchSubjects = async (e) => {
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-sections/class-wise/${id}`,
+                // `/api/v1/branch-classes/class-wise-subject/${Number(e)}`,
+                `/api/v1/branch-classes/class-wise-subject/${e}`,
             );
-            setSections(response.data.data);
+            setSubjects(response.data.data);
         } catch (error) {
             setError(error);
         }
-        console.log('Selected value:', event.target.value);
     };
+
+    // useEffect(() => {
+    //     fetchSubjects(data.class_id);
+    // }, [classes]);
+    useEffect(() => {
+        if (data?.branch_class_id && Number(data.branch_class_id) > 0) {
+            fetchSubjects(Number(data.branch_class_id));
+        }
+    }, [data?.branch_class_id]);
+
     const handleChange = async (
         event: React.ChangeEvent<HTMLSelectElement>,
     ) => {
         let id = event.target.value;
         try {
             const response = await axios.get(
-                `/api/v1/branch-classes/class-wise-subject/${classID}?section_id=${id}`,
+                `/api/v1/branch-classes/class-wise-subject/${id}`,
             );
             setSubjects(response.data.data);
         } catch (error) {
             setError(error);
         }
-        console.log('Selected value:', event.target.value);
     };
-    console.log('Selected dataaa:', classIdRef.current?.value);
     return (
         <div className="admin_dashboard">
             <BackButton></BackButton>
-            <h3>Create</h3>
+            <h3>Edit</h3>
             <div className="content_body">
                 <form onSubmit={handleSubmit} className="form_600 mx-auto pt-3">
                     <div className="form-group form-horizontal">
@@ -88,44 +111,29 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
                             Class <span className="valid_star">*</span>
                         </label>
                         <div className="form_elements">
-                            <select
-                                name="class"
-                                // defaultValue={data.branch_class_id}
-                                id=""
-                                // ref={classIdRef}
-                                onChange={handleChange2}
-                            >
-                                <option value="">Select class</option>
-                                {classes.map((i, index) => {
-                                    return (
-                                        <option value={i.id}>{i.name}</option>
-                                    );
-                                })}
-                            </select>
-                            {/* <input
+                            {classes.length && (
+                                <select
+                                    name="class"
+                                    // defaultValue={data.class_id}
+                                    id=""
+                                    defaultValue={data?.branch_class_id}
+                                    onChange={handleChange}
+                                >
+                                    {/* <option value={data.class_id}></option> */}
+                                    {classes.map((i, index) => {
+                                        return (
+                                            <option value={i.id}>
+                                                {i.name}
+                                            </option>
+                                        );
+                                    })}
+                                </select>
+                            )}
+                            <input
                                 type="hidden"
                                 defaultValue={data.id}
                                 name="id"
-                            /> */}
-                        </div>
-                    </div>
-                    <div className="form-group form-horizontal">
-                        <label>
-                            Section <span className="valid_star">*</span>
-                        </label>
-                        <div className="form_elements">
-                            <select
-                                name="section"
-                                onChange={handleChange}
-                                id=""
-                            >
-                                <option value="">Select Section</option>
-                                {sections.map((i, index) => {
-                                    return (
-                                        <option value={i.id}>{i.title}</option>
-                                    );
-                                })}
-                            </select>
+                            />
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
@@ -133,20 +141,22 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
                             Subject <span className="valid_star">*</span>
                         </label>
                         <div className="form_elements">
-                            <select
-                                name="subject"
-                                // defaultValue={data.branch_class_subject_id}
-                                id=""
-                                // ref={inputRef}
-                                // onChange={handleChange}
-                            >
-                                <option value="">Select subject</option>
-                                {subjects.map((i, index) => {
-                                    return (
-                                        <option value={i.id}>{i.name}</option>
-                                    );
-                                })}
-                            </select>
+                            {subjects.length && (
+                                <select
+                                    name="subject"
+                                    defaultValue={data?.branch_class_subject_id}
+                                    id=""
+                                >
+                                    {/* <option value={data.class_id}></option> */}
+                                    {subjects.map((i, index) => {
+                                        return (
+                                            <option value={i.id}>
+                                                {i.name}
+                                            </option>
+                                        );
+                                    })}
+                                </select>
+                            )}
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
@@ -158,7 +168,7 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
                                 type="text"
                                 placeholder="title"
                                 name="title"
-                                // defaultValue={data.title}
+                                defaultValue={data.title}
                             />
                         </div>
                     </div>
@@ -168,7 +178,7 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
                             <textarea
                                 placeholder="description"
                                 name="description"
-                                // defaultValue={data.description}
+                                defaultValue={data.description}
                             />
                         </div>
                     </div>
@@ -178,12 +188,14 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
                         </label>
                         <div className="form_elements">
                             {/* <input type="file" name="attachment" /> */}
-                            <InputImage
-                                ref={inputImageRef}
-                                label=""
-                                name="attachment"
-                                defalut_preview=""
-                            />
+                            {data?.attachment && (
+                                <InputImage
+                                    ref={inputImageRef}
+                                    label=""
+                                    name="attachment"
+                                    defalut_preview={data.attachment}
+                                />
+                            )}
                         </div>
                     </div>
                     <div className="form-group form-horizontal">
@@ -200,4 +212,4 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
     );
 };
 
-export default CreateMaterials;
+export default MaterialEdit;
