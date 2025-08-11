@@ -7,7 +7,13 @@ import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { details } from './config/store/async_actions/details';
 import { initialState } from './config/store/inital_state';
-import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
+import {
+    Link,
+    NavLink,
+    Outlet,
+    useNavigate,
+    useParams,
+} from 'react-router-dom';
 import storeSlice from './config/store';
 import Header3 from './components/all_data_page/Header3';
 import HeadSearch from './components/all_data_page/HeadSearch';
@@ -28,6 +34,11 @@ const Details: React.FC<Props> = (props: Props) => {
     if (state) {
         console.log('state in', state);
     }
+    const navigate = useNavigate();
+
+    const handleBack = () => {
+        navigate(-1); // Go back one step in browser history
+    };
 
     return (
         <>
@@ -50,9 +61,7 @@ const Details: React.FC<Props> = (props: Props) => {
                         <div className="control">
                             <ul>
                                 <li>
-                                    <Link
-                                        to={`/${setup.route_prefix}/class-details/${state.item?.student_info?.s_class}`}
-                                    >
+                                    <Link to="#" onClick={handleBack}>
                                         <span className="material-symbols-outlined fill">
                                             arrow_back
                                         </span>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import setup from './config/setup';
 export interface Props {}
 export interface FeesInfo {
@@ -36,12 +36,17 @@ const Dues: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchTypes();
     }, []);
+    const navigate = useNavigate();
+
+    const handleBack = () => {
+        navigate(-1); // Go back one step in browser history
+    };
     return (
         <div className="admin_dashboard">
             <div className="dues_back_btn">
                 <h3 className="table_heading">Dues</h3>
                 <button className="back_btn">
-                    <Link to={`/${setup.route_prefix}/class-details/${idd}`}>
+                    <Link to="#" onClick={handleBack}>
                         <span className="material-symbols-outlined fill">
                             arrow_back
                         </span>

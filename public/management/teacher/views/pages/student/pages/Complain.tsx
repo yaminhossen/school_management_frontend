@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { anyObject } from '../../../../common_types/object';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
@@ -41,7 +41,6 @@ const Complain: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-    console.log(data);
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
@@ -59,13 +58,18 @@ const Complain: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
+    const navigate = useNavigate();
+
+    const handleBack = () => {
+        navigate(-1); // Go back one step in browser history
+    };
     return (
         <div className="admin_dashboard">
             {/* <h3>Create New Complain</h3> */}
             <div className="dues_back_btn">
                 <h3 className="table_heading"></h3>
                 <button className="back_btn settings_bacsk">
-                    <Link to={`/student/details/${classValue}`}>
+                    <Link to="#" onClick={handleBack}>
                         <span className="material-symbols-outlined fill">
                             arrow_back
                         </span>

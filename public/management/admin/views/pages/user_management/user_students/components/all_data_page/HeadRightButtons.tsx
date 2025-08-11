@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { initialState } from '../../config/store/inital_state';
 import setup from '../../config/setup';
 import storeSlice from '../../config/store';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 export interface Props {}
 
 const HeadRightButtons: React.FC<Props> = (props: Props) => {
@@ -17,6 +17,11 @@ const HeadRightButtons: React.FC<Props> = (props: Props) => {
         event?.preventDefault();
         dispatch(storeSlice.actions.set_show_filter_canvas(action));
     }
+    const navigate = useNavigate();
+
+    const handleBack = () => {
+        navigate(-1); // Go back one step in browser history
+    };
 
     return (
         <ul>
@@ -42,7 +47,7 @@ const HeadRightButtons: React.FC<Props> = (props: Props) => {
                 </a>
             </li> */}
             <li>
-                <Link to={`/${setup.route_prefix}`}>
+                <Link to="#" onClick={handleBack}>
                     <span className="material-symbols-outlined fill">
                         arrow_back
                     </span>

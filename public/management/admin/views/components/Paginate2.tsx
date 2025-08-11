@@ -19,6 +19,7 @@ export interface Props {
     };
     set_url: Function;
     set_id: number;
+    sec_id: string | null;
     all: Function;
     set_paginate: Function;
     set_page: Function;
@@ -29,6 +30,7 @@ const Paginate2: React.FC<Props> = ({
     data,
     set_url,
     set_id,
+    sec_id,
     set_page,
     all,
     set_paginate,
@@ -52,7 +54,7 @@ const Paginate2: React.FC<Props> = ({
             final_url.searchParams.set('page', page_no);
         }
         dispatch(set_url(final_url.href));
-        dispatch(all({ id: set_id }));
+        dispatch(all({ id: set_id, secId: sec_id }));
         // dispatch(all({}));
         // dispatch(set_id(set_id));
     }
@@ -61,7 +63,7 @@ const Paginate2: React.FC<Props> = ({
         dispatch(set_url(''));
         dispatch(set_page(1));
         dispatch(set_paginate(value));
-        dispatch(all({ id: set_id }));
+        dispatch(all({ id: set_id, secId: sec_id }));
         // dispatch(all({}));
         // dispatch(set_id(set_id));
     }

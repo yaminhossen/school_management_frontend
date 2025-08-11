@@ -7,6 +7,7 @@ import { initialState } from '../../config/store/inital_state';
 import { all } from '../../config/store/async_actions/all';
 import { class_details1 } from '../../config/store/async_actions/class_details1';
 import { anyObject } from '../../../../../../common_types/object';
+import { useSearchParams } from 'react-router-dom';
 export interface Props {
     item: anyObject;
 }
@@ -17,6 +18,10 @@ const AllDeactivatedData: React.FC<Props> = (props: Props) => {
     );
     const dispatch = useAppDispatch();
     console.log('delign props', state?.id);
+    const [searchParams] = useSearchParams();
+
+    const secId = searchParams.get('sec_id');
+    console.log('class id', secId);
 
     async function handle_recycle_data(
         type: boolean,
@@ -27,7 +32,7 @@ const AllDeactivatedData: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_only_latest_data(true));
         dispatch(storeSlice.actions.set_page(1));
         // dispatch(all({}) as any);
-        dispatch(class_details1({ id: state?.id }) as any);
+        dispatch(class_details1({ id: state?.id, secId: secId }) as any);
         dispatch(storeSlice.actions.set_only_latest_data(true));
     }
 

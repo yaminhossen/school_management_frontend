@@ -41,7 +41,7 @@ const fetch_api = async (param: anyObject, thunkAPI) => {
     };
 
     let response: { [key: string]: any } = {};
-    let url = `${api_host}${end_point}/${api_prefix}/class-details/${param.id}`;
+    let url = `${api_host}${end_point}/${api_prefix}/class-details/${param.id}?secId=${param.secId}`;
     // if (param.id) {
     //     url += `/${param.id}`;
     // }
