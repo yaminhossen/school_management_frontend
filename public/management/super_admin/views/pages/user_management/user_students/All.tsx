@@ -156,12 +156,19 @@ const All: React.FC<Props> = (props: Props) => {
                                                         <td>{i.count}</td>
                                                         <td>
                                                             <Link
-                                                                to={`/user-students/class-details/${i.id}`}
+                                                                to={`/user-students/section/${i.id}`}
                                                                 className="btn btn-sm  btn-outline-info"
                                                                 type="submit"
                                                             >
                                                                 Details
                                                             </Link>
+                                                            {/* <Link
+                                                                to={`/user-students/class-details/${i.id}`}
+                                                                className="btn btn-sm  btn-outline-info"
+                                                                type="submit"
+                                                            >
+                                                                Details
+                                                            </Link> */}
                                                         </td>
                                                     </tr>
                                                 );

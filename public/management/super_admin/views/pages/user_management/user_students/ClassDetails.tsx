@@ -17,9 +17,10 @@ import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
 import { class_details1 } from './config/store/async_actions/class_details1';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import Paginate2 from '../../../components/Paginate2';
 import Header2 from './components/all_data_page/Header2';
+import BackButton from '../../../components/BackButton';
 
 export interface Props {}
 
@@ -31,11 +32,20 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
     const params = useParams();
     const idd = Number(params.id);
-    console.log('param id', typeof idd);
+    const [searchParams] = useSearchParams();
+
+    const secId = searchParams.get('sec_id');
+    console.log('class id', secId);
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_select_fields('id'));
-        dispatch(class_details1({ id: params.id, brid: state.brid }) as any);
+        dispatch(
+            class_details1({
+                id: params.id,
+                brid: state.brid,
+                secId: secId,
+            }) as any,
+        );
     }, []);
 
     function quick_view(data: anyObject = {}) {
@@ -47,7 +57,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">
-                <Header2 id={params.id}></Header2>
+                <Header2 id={params.id} sec_id={secId}></Header2>
 
                 <div className="content_body">
                     <div className="data_list">
@@ -201,6 +211,7 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                         <Paginate2
                             set_url={storeSlice.actions.set_url}
                             set_id={idd}
+                            sec_id={secId}
                             set_paginate={storeSlice.actions.set_paginate}
                             set_page={storeSlice.actions.set_page}
                             // class_details1={class_details1({})}

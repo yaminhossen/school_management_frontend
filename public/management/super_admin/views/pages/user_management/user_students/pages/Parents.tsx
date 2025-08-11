@@ -34,32 +34,27 @@ const Parents: React.FC<Props> = (props: Props) => {
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Serial</th>
                                     <th>Image</th>
                                     <th>Name</th>
-                                    <th>Relation</th>
                                     <th>Phone Number</th>
                                     <th>Email</th>
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {(state.item as any)?.parents?.map(
-                                    (i: { [key: string]: any }, index) => {
-                                        return (
+                                {(state.item as any)?.parents && (
                                             <tr>
                                                 <td></td>
-                                                <td>{index + 1}</td>
                                                 <td>
                                                     <a
                                                         href={
-                                                            i.parent_details?.image ||
+                                                            state.item?.parents?.parent_details?.image ||
                                                             undefined
                                                         }
                                                         target="blank"
                                                     >
                                                         <img
                                                             src={
-                                                                i.parent_details?.image ||
+                                                                state.item?.parents?.parent_details?.image ||
                                                                 '/assets/dashboard/images/avatar.png'
                                                             }
                                                             alt=""
@@ -70,22 +65,18 @@ const Parents: React.FC<Props> = (props: Props) => {
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    {i.parent_details?.name}
+                                                    {state.item?.parents?.parent_details?.name}
                                                 </td>
-                                                <td>{i.relation}</td>
                                                 <td>
                                                     {
-                                                        i.parent_details
+                                                        state.item?.parents?.parent_details
                                                             ?.phone_number
                                                     }
                                                 </td>
                                                 <td>
-                                                    {i.parent_details?.email}
+                                                    {state.item?.parents?.parent_details?.email}
                                                 </td>
-                                            </tr>
-                                        );
-                                    },
-                                )}
+                                            </tr> )}
                             </tbody>
                         </table>
                     </div>

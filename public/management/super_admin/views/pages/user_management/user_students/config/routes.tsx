@@ -23,6 +23,7 @@ import Markshit from '../pages/Markshit.tsx';
 import TakeAttendance from '../TakeAttendance.tsx';
 import ClassDetails from '../ClassDetails.tsx';
 import Parents from '../pages/Parents.tsx';
+import Section from '../Section.tsx';
 
 // export { default as DashboardCounterAll} from "./All.jsx";
 
@@ -119,6 +120,10 @@ export default {
         {
             path: 'class-details/:id',
             element: <ClassDetails />,
+        },
+        {
+            path: 'section/:id',
+            element: <Section />,
         },
         {
             path: 'student-dues/:id',
