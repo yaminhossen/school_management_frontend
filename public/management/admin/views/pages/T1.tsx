@@ -511,14 +511,14 @@ const T1: React.FC<Props> = (props: Props) => {
                             Class Routine At A Glance
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/branch-class-resources">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             Class Resources
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/exams">
                             <span className="material-symbols-outlined fill">

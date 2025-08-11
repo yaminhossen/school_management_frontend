@@ -216,3 +216,14 @@
 {"level":60,"time":1754893494531,"pid":15148,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2025 12:24:54 PM","message":"target not found."}
 {"level":60,"time":1754893646974,"pid":15148,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2025 12:27:26 PM","message":"target not found."}
 {"level":60,"time":1754893653128,"pid":15148,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2025 12:27:33 PM","message":"target not found."}
+{"level":60,"time":1754893848345,"pid":2784,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2025 12:30:48 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1754893859460,"pid":2784,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2025 12:30:59 PM","message":"target not found."}
+{"level":60,"time":1754893862268,"pid":2784,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2025 12:31:02 PM","message":"target not found."}
+{"level":60,"time":1754894140130,"pid":2784,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2025 12:35:40 PM","message":"target not found."}
+{"level":60,"time":1754894395412,"pid":2784,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2025 12:39:55 PM","message":"target not found."}
+{"level":60,"time":1754894412827,"pid":2784,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2025 12:40:12 PM","message":"target not found."}
+{"level":60,"time":1754894441769,"pid":2784,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2025 12:40:41 PM","message":"target not found."}
+{"level":60,"time":1754894840940,"pid":2784,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2025 12:47:20 PM","message":"target not found."}
+{"level":60,"time":1754894843269,"pid":2784,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2025 12:47:23 PM","message":"target not found."}
+{"level":60,"time":1754894857466,"pid":2784,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2025 12:47:37 PM","message":"target not found."}
+{"level":60,"time":1754894956504,"pid":2784,"hostname":"DESKTOP-9421701","file":"","time":"8/11/2025 12:49:16 PM","message":"target not found."}
