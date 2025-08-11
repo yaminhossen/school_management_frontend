@@ -128,12 +128,8 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
                                                     <td>
                                                         <img
                                                             src={
-                                                                i.branchstudent
-                                                                    ?.image
-                                                                    ? i
-                                                                          .branchstudent
-                                                                        ?.image
-                                                                    : '/assets/dashboard/images/avatar.png'
+                                                                // eslint-disable-next-line
+                                                                i.branchstudent?.image && i.branchstudent.image.trim() !== '' ? i.branchstudent.image : '/assets/dashboard/images/avatar.png'
                                                             }
                                                             alt=""
                                                             style={{
