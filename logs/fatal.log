@@ -1,0 +1,25 @@
+{"level":60,"time":1754983022559,"pid":21280,"hostname":"DESKTOP-9421701","file":"services\\classes.ts:58:19)","time":"8/12/2025 1:17:02 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1754983573917,"pid":21280,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 1:26:13 PM","message":"target not found."}
+{"level":60,"time":1754983576362,"pid":21280,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 1:26:16 PM","message":"target not found."}
+{"level":60,"time":1754983681976,"pid":21280,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 1:28:01 PM","message":"target not found."}
+{"level":60,"time":1754983789549,"pid":21280,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 1:29:49 PM","message":"target not found."}
+{"level":60,"time":1754983813032,"pid":21280,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 1:30:13 PM","message":"target not found."}
+{"level":60,"time":1754983852206,"pid":21280,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 1:30:52 PM","message":"target not found."}
+{"level":60,"time":1754983875668,"pid":21280,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 1:31:15 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1754983891685,"pid":21280,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 1:31:31 PM","message":"target not found."}
+{"level":60,"time":1754984483634,"pid":18296,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 1:41:23 PM","message":"target not found."}
+{"level":60,"time":1754984490181,"pid":18296,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 1:41:30 PM","message":"target not found."}
+{"level":60,"time":1754988365975,"pid":18808,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 2:46:05 PM","message":"target not found."}
+{"level":60,"time":1754988372238,"pid":18808,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 2:46:12 PM","message":"target not found."}
+{"level":60,"time":1754988374795,"pid":18808,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 2:46:14 PM","message":"target not found."}
+{"level":60,"time":1754993420368,"pid":18808,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:84:19)","time":"8/12/2025 4:10:20 PM","message":"WHERE parameter \"branch_class_section_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1754993425047,"pid":18808,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 4:10:25 PM","message":"target not found."}
+{"level":60,"time":1754993428425,"pid":18808,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:84:19)","time":"8/12/2025 4:10:28 PM","message":"WHERE parameter \"branch_class_section_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1754993544759,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 4:12:24 PM","message":"target not found."}
+{"level":60,"time":1754994453332,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 4:27:33 PM","message":"target not found."}
+{"level":60,"time":1754994524426,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 4:28:44 PM","message":"target not found."}
+{"level":60,"time":1754994760297,"pid":4932,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:84:19)","time":"8/12/2025 4:32:40 PM","message":"WHERE parameter \"branch_class_section_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1754994763186,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 4:32:43 PM","message":"target not found."}
+{"level":60,"time":1754994765703,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 4:32:45 PM","message":"target not found."}
+{"level":60,"time":1754994781716,"pid":4932,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:84:19)","time":"8/12/2025 4:33:01 PM","message":"WHERE parameter \"branch_class_section_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1754995038723,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 4:37:18 PM","message":"target not found."}

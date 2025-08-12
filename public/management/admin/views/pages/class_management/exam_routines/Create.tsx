@@ -64,7 +64,7 @@ const Create: React.FC<Props> = (props: Props) => {
         let id = event.target.value;
         try {
             const response = await axios.get(
-                `/api/v1/branch-class-subjects/class-wise-subject/${id}`,
+                `/api/v1/branch-class-subjects/class-section-wise-subject/${id}`,
             );
             setSubjects(response.data.data);
         } catch (error) {

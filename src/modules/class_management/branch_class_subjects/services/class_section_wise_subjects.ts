@@ -12,12 +12,13 @@ import custom_error from '../helpers/custom_error';
 //     throw new Error('500 test');
 // }
 
-async function details(
+async function class_section_wise_subjects(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
     let models = await db();
     let params = req.params as any;
+    let queryParams = req.query as any;
     let user = (req as any).user;
     let auth_user: any;
     if (user?.user_type === 'teacher') {
@@ -41,23 +42,33 @@ async function details(
     }
 
     try {
-        let data = await models.BranchClassSubjectTeachersModel.findAll({
+        let data = await models.BranchClassSubjectsModel.findAll({
             where: {
                 branch_class_id: params.id,
                 branch_id: auth_user?.branch_id,
-                branch_teacher_id: auth_user?.id,
+                // branch_class_section_id: queryParams?.section_id,
             },
-            include: [
-                {
-                    model: models.BranchClassSubjectsModel,
-                    as: 'subject',
-                    attributes: ['id', 'name'],
-                },
-            ],
+            // include: [
+            //     {
+            //         model: models.BranchClassSubjectsModel,
+            //         as: 'subject',
+            //         attributes: ['id', 'name'],
+            //     },
+            // ],
             // attributes: {
             //     exclude: ['password'],
             // },
         });
+
+        // Filter unique records based on branch_class_subject_id
+        // let uniqueSubjectIds = new Set();
+        // let data = rawData.filter((item: any) => {
+        //     if (!uniqueSubjectIds.has(item.branch_class_subject_id)) {
+        //         uniqueSubjectIds.add(item.branch_class_subject_id);
+        //         return true;
+        //     }
+        //     return false;
+        // });
 
         if (data) {
             return response(200, 'data found', data);
@@ -75,4 +86,4 @@ async function details(
     }
 }
 
-export default details;
+export default class_section_wise_subjects;

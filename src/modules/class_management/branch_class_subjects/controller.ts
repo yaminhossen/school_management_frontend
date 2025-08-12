@@ -24,6 +24,7 @@ import class_sections from './services/class_section';
 import all_teacher from './services/all_teacher';
 import class_rooms from './services/class_rooms';
 import teacher_class_details from './services/teacher_class_details';
+import class_section_wise_subjects from './services/class_section_wise_subjects';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -36,6 +37,16 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data: responseObject = await class_wise_subject(fastify, req);
+            res.code(data.status).send(data);
+        },
+        class_section_wise_subjects: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await class_section_wise_subjects(
+                fastify,
+                req,
+            );
             res.code(data.status).send(data);
         },
         class_wise_teacher: async function (
