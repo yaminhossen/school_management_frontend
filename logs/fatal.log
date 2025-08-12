@@ -23,3 +23,26 @@
 {"level":60,"time":1754994765703,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 4:32:45 PM","message":"target not found."}
 {"level":60,"time":1754994781716,"pid":4932,"hostname":"DESKTOP-9421701","file":"services\\class_wise_subject.ts:84:19)","time":"8/12/2025 4:33:01 PM","message":"WHERE parameter \"branch_class_section_id\" has invalid \"undefined\" value"}
 {"level":60,"time":1754995038723,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 4:37:18 PM","message":"target not found."}
+{"level":60,"time":1755000762065,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:12:42 PM","message":"target not found."}
+{"level":60,"time":1755000868653,"pid":4932,"hostname":"DESKTOP-9421701","file":"services\\classes.ts:58:19)","time":"8/12/2025 6:14:28 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1755001024553,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:17:04 PM","message":"target not found."}
+{"level":60,"time":1755001027108,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:17:07 PM","message":"target not found."}
+{"level":60,"time":1755001032831,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:17:12 PM","message":"target not found."}
+{"level":60,"time":1755001057097,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:17:37 PM","message":"target not found."}
+{"level":60,"time":1755001064651,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:17:44 PM","message":"target not found."}
+{"level":60,"time":1755001198937,"pid":4932,"hostname":"DESKTOP-9421701","file":"services\\exam_routine_details.ts:65:19)","time":"8/12/2025 6:19:58 PM","message":"WHERE parameter \"class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1755001200085,"pid":4932,"hostname":"DESKTOP-9421701","file":"services\\exam_routine_details.ts:65:19)","time":"8/12/2025 6:20:00 PM","message":"WHERE parameter \"class_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1755001201434,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:20:01 PM","message":"target not found."}
+{"level":60,"time":1755001204445,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:20:04 PM","message":"target not found."}
+{"level":60,"time":1755001216328,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:20:16 PM","message":"target not found."}
+{"level":60,"time":1755001217297,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:20:17 PM","message":"target not found."}
+{"level":60,"time":1755001218098,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:20:18 PM","message":"target not found."}
+{"level":60,"time":1755001358431,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:22:38 PM","message":"target not found."}
+{"level":60,"time":1755001448729,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:24:08 PM","message":"target not found."}
+{"level":60,"time":1755001449184,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:24:09 PM","message":"target not found."}
+{"level":60,"time":1755001449653,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:24:09 PM","message":"target not found."}
+{"level":60,"time":1755001470778,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:24:30 PM","message":"target not found."}
+{"level":60,"time":1755001473503,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:24:33 PM","message":"target not found."}
+{"level":60,"time":1755001569667,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:26:09 PM","message":"target not found."}
+{"level":60,"time":1755001572119,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:26:12 PM","message":"target not found."}
+{"level":60,"time":1755001604140,"pid":4932,"hostname":"DESKTOP-9421701","file":"services\\classes.ts:58:19)","time":"8/12/2025 6:26:44 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}

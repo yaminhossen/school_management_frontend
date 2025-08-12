@@ -11002,7 +11002,9 @@ textarea.form-control-lg {
   border-width: 0 1px; }
 
 .accordion-body {
-  padding: 1rem 1.25rem; }
+  padding: 1rem 1.25rem;
+  background-color: #2b2b2b;
+  color: #e5e5e5; }
 
 .accordion-flush .accordion-button {
   border-right: 0;

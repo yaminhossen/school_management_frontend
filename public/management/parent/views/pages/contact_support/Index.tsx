@@ -51,7 +51,8 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 <td>{index + 1}</td>
                                                 <td>{i.name}</td>
                                                 <td>{i.title}</td>
-                                                <td>{i.number}</td>
+                                                {/* <td>{i.number}</td> */}
+                                                <td><a href={`tel:+88${i.number}`}>📞 +88 {i.number}</a></td>
                                             </tr>
                                         );
                                     },
