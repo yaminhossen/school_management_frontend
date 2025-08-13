@@ -184,6 +184,8 @@ async function store(
     let body = req.body as anyObject;
     let data = new models.UserStudentsModel();
     let usi_model = new models.UserStudentInformationsModel();
+    let class_fees_model = new models.BranchClassFeesModel();
+    let fee_collection_details = new models.AccountFeesCollectionDetailsModel();
     let bcs_model = new models.BranchClassStudentsModel();
 
     const bcrypt = require('bcrypt');
@@ -412,6 +414,8 @@ async function store(
         weight: aweight,
         as_on_date: body.as_on_date,
     };
+    const currentYear = moment().year();
+    const today = moment().format('YYYY-MM-DD');
 
     /** print request data into console */
     // console.clear();
@@ -423,6 +427,36 @@ async function store(
         if (data) {
             usi_inputs.user_student_id = data.id || 1;
             (await usi_model.update(usi_inputs)).save();
+            let fees = await models.BranchClassFeesModel.findAll({
+                where: {
+                    branch_class_id: body.class,
+                    branch_id: auth_user?.branch_id,
+                    session: currentYear, // Use the current year for the session
+                    status: 'active',
+                },
+            });
+            if (fees) {
+                fees.forEach(async (ss) => {
+                    let afcd_model =
+                        new models.AccountFeesCollectionDetailsModel();
+                    let afcd_inputs: InferCreationAttributes<
+                        typeof afcd_model
+                    > = {
+                        branch_id: auth_user?.branch_id || 0,
+                        branch_student_id: data?.id || 0,
+                        branch_student_class_id: body.class || 0,
+                        account_fees_collection_id: 0,
+                        fee_amount: ss.amount || 0,
+                        branch_class_fees_id: ss.id,
+                        total: 0,
+                        // discount: ss.discount || 0,
+                        date: today,
+                        creator: user?.id || null,
+                    };
+
+                    (await afcd_model.update(afcd_inputs)).save();
+                });
+            }
             bcs_inputs.branch_student_id = data.id || 1;
             (await bcs_model.update(bcs_inputs)).save();
             if (eductional_bc) {

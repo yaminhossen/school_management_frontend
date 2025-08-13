@@ -36,12 +36,13 @@ class DataModel extends Model<Infer, InferCreation> {
 
     declare branch_id: number;
     declare branch_student_id: number;
-    declare branch_student_class_id: number;
-    declare account_fees_collection_id: number;
-    declare branch_class_fees_id: number;
+    declare branch_student_class_id?: number;
+    declare account_fees_collection_id?: number;
+    declare branch_class_fees_id?: number;
     declare fee_amount: number;
     declare date: string;
-    declare deduction: number;
+    declare deduction?: number;
+    declare discount?: number;
     declare total: number;
 
     declare status?: status;
@@ -88,6 +89,10 @@ function init(sequelize: Sequelize) {
                 allowNull: true,
             },
             total: {
+                type: DataTypes.BIGINT().UNSIGNED,
+                allowNull: true,
+            },
+            discount: {
                 type: DataTypes.BIGINT().UNSIGNED,
                 allowNull: true,
             },

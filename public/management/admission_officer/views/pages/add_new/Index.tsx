@@ -651,7 +651,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-vertical">
-                                    <label>Student house type</label>
+                                    <label>Student type</label>
                                     <div className="form_elements">
                                         <select name="student_house_type" id="">
                                             <option value="Residential">

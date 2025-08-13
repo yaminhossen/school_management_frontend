@@ -94,7 +94,12 @@ async function fees_categories_second(
                 let thisMonth = moment().month() + 1; // Get current month index (1-12)
                 const dateString = student_data?.admission_date;
                 const monthNumber = moment(dateString).month() + 1;
-
+                let month_fee = await classFeessModel.findOne({
+                    where: {
+                        branch_class_id: user?.id || null,
+                        name: 'Monthly fee',
+                    },
+                });
                 const feeRecord =
                     await accountFeesCollectionDetailsModel.findOne({
                         where: {
@@ -104,7 +109,7 @@ async function fees_categories_second(
                         },
                         attributes: ['fee_amount'], // Fetch only `fee_amount` field
                     });
-                let fee = feeRecord ? feeRecord.fee_amount : 0;
+                let fee = feeRecord ? feeRecord.fee_amount : month_fee?.amount || 0;
                 fee_amount = fee * (thisMonth - monthNumber);
             } else {
                 // For other cases, retrieve the fee amount only once
