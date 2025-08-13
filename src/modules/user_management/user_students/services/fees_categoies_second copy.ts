@@ -82,52 +82,6 @@ async function fees_categories_second(
         let idWiseTotals = [];
         // Loop through each item in `data` to calculate totals
         for (let item of data) {
-            // Check student house type and filter fees accordingly
-            let shouldIncludeFee = true;
-
-            if (student_data?.student_house === 'Residential') {
-                // Residential students: exclude Day-Care fees
-                if (
-                    item.name === 'Day-Care' ||
-                    item.name === 'day-care' ||
-                    item.name === 'DayCare' ||
-                    item.name === 'Daycare' ||
-                    item.name === 'daycare'
-                ) {
-                    shouldIncludeFee = false;
-                }
-            } else if (student_data?.student_house === 'Non-residential') {
-                // Non-residential students: exclude Hostel fee and Day-Care fees
-                if (
-                    item.name === 'Hostel fee' ||
-                    item.name === 'hostel fee' ||
-                    item.name === 'HostelFee' ||
-                    item.name === 'hostelfee' ||
-                    item.name === 'Day-Care' ||
-                    item.name === 'day-care' ||
-                    item.name === 'DayCare' ||
-                    item.name === 'Daycare' ||
-                    item.name === 'daycare'
-                ) {
-                    shouldIncludeFee = false;
-                }
-            } else if (student_data?.student_house === 'Day-care') {
-                // Day-care students: exclude Hostel fee only
-                if (
-                    item.name === 'Hostel fee' ||
-                    item.name === 'hostel fee' ||
-                    item.name === 'HostelFee' ||
-                    item.name === 'hostelfee'
-                ) {
-                    shouldIncludeFee = false;
-                }
-            }
-
-            // Skip this fee if it should not be included for this student house type
-            if (!shouldIncludeFee) {
-                continue;
-            }
-
             // Calculate `total` for each ID
             const total = await accountFeesCollectionDetailsModel.sum('total', {
                 where: {
@@ -212,8 +166,7 @@ async function fees_categories_second(
                     });
                 fee_amount = feeRecord ? feeRecord.fee_amount : 0;
             }
-            // Filter fees based on student house type:
-            // Residential: exclude Day-Care | Non-residential: exclude Hostel fee & Day-Care | Day-care: exclude Hostel fee
+            //  our Residential Non-residential Day-care
             // Push the total along with the associated ID to the result array
             idWiseTotals.push({
                 id: item.id,
