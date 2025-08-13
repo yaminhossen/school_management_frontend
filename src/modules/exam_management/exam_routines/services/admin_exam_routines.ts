@@ -24,6 +24,7 @@ async function admin_exam_routines(
             where: {
                 class_id: body.branch_class_id,
                 exam_id: body.branch_exam_id,
+                section_id: body.branch_class_section_id,
             },
             include: [
                 {
@@ -53,6 +54,12 @@ async function admin_exam_routines(
                 id: body.branch_class_id,
             },
         });
+
+        let section = await models.BranchClassSectionsModel.findOne({
+            where: {
+                id: body.branch_class_section_id,
+            },
+        });
         let exams = await models.ExamsModel.findOne({
             where: {
                 id: body.branch_exam_id,
@@ -60,7 +67,12 @@ async function admin_exam_routines(
         });
 
         if (data) {
-            return response(200, 'data foundeds', { data, s_class, exams });
+            return response(200, 'data foundeds', {
+                data,
+                s_class,
+                exams,
+                section,
+            });
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }

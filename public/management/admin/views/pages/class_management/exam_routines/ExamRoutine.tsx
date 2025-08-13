@@ -18,6 +18,7 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
     const [sections, setSections] = useState<any>([]);
     const [section, setSection] = useState<any>({});
     const [exam, setExam] = useState<any>({});
+    const [section2, setSection2] = useState<any>({});
     const [selectedClassId, setSelectedClassId] = useState('');
 
     const state: typeof initialState = useSelector(
@@ -39,12 +40,14 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
             setData(response.data.data?.data || []);
             setSclass(response.data.data?.s_class || null);
             setExam(response.data.data?.exams || null);
+            setSection2(response.data.data?.section || null);
         } catch (error) {
             console.error('Error fetching exam routine:', error);
             setError(error);
             setData([]);
             setSclass(undefined);
             setExam({});
+            setSection2({});
         }
     };
     async function initdependancy() {
@@ -330,6 +333,7 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                                             <select
                                                 name="branch_class_id"
                                                 id=""
+                                                onChange={handleChange2}
                                             >
                                                 <option value="">
                                                     Select Class
@@ -350,6 +354,44 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                                                         },
                                                     )}
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label>Section</label>
+                                        <div className="form_elements">
+                                            {sections.length > 0 ? (
+                                                <select
+                                                    name="branch_class_section_id"
+                                                    disabled={
+                                                        !selectedClassId ||
+                                                        sections.length === 0
+                                                    }
+                                                >
+                                                    <option value="">
+                                                        Select section
+                                                    </option>
+                                                    {sections.map(
+                                                        (i, index) => (
+                                                            <option
+                                                                key={i.id}
+                                                                value={i.id}
+                                                            >
+                                                                {i.title}
+                                                            </option>
+                                                        ),
+                                                    )}
+                                                </select>
+                                            ) : (
+                                                <div
+                                                    style={{
+                                                        fontSize: '14px',
+                                                        color: 'black',
+                                                    }}
+                                                    className="not_found_text"
+                                                >
+                                                    At First Select Class
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                     <div className="form-group form-vertical">
@@ -437,6 +479,7 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                                 <thead>
                                     <tr className="table_head_area">
                                         <th className="head_class_title">class name</th>
+                                        <th className="head_batch_title">Section</th>
                                         <th className="head_batch_title">exam</th>
                                         <th className="head_subject_title">subjects</th>
                                         <th
@@ -526,6 +569,11 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                                                         {index === 0 && (
                                                             <td rowSpan={data.length} className="class_name">
                                                                 {s_class?.name || 'N/A'}
+                                                            </td>
+                                                        )}
+                                                        {index === 0 && (
+                                                            <td rowSpan={data.length} className="exam_name">
+                                                                {section2?.title || 'N/A'}
                                                             </td>
                                                         )}
                                                         {index === 0 && (

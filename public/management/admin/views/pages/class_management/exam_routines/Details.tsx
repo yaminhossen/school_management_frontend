@@ -51,6 +51,11 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>{state.item.subjects?.name}</td>
                                     </tr>
                                     <tr>
+                                        <td>Section</td>
+                                        <td>:</td>
+                                        <td>{state.item.section?.title}</td>
+                                    </tr>
+                                    <tr>
                                         <td>Start Time</td>
                                         <td>:</td>
                                         <td>

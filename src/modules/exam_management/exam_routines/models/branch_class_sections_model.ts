@@ -23,26 +23,20 @@ import {
     // ForeignKey,
 } from 'sequelize';
 
-const tableName = 'exam_routines';
-const modelName = 'ExamRoutinesModel';
+// import {DataModel as Project} from "./project_model"
+const tableName = 'branch_class_sections';
+const modelName = 'BranchClassSectionsModel';
 
 type Infer = InferAttributes<DataModel>;
 type InferCreation = InferCreationAttributes<DataModel>;
-// type isApproved = 'yes' | 'no';
 type status = 'active' | 'deactive';
 
 class DataModel extends Model<Infer, InferCreation> {
     declare id?: CreationOptional<number>;
 
     declare branch_id: number;
-    declare exam_id: number;
-    declare class_id: number;
-    declare subject_id: number;
-    declare section_id?: number;
-    declare room_id?: number;
-    declare date: string;
-    declare start_time: string;
-    declare end_time: string;
+    declare branch_class_id: number;
+    declare title: string;
 
     declare status?: status;
     declare creator?: number;
@@ -60,39 +54,15 @@ function init(sequelize: Sequelize) {
                 primaryKey: true,
             },
             branch_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
-            exam_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
+            branch_class_id: {
+                type: DataTypes.BIGINT.UNSIGNED,
                 allowNull: true,
             },
-            class_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            subject_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            section_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            room_id: {
-                type: new DataTypes.BIGINT().UNSIGNED,
-                allowNull: true,
-            },
-            date: {
-                type: DataTypes.DATE,
-                allowNull: true,
-            },
-            start_time: {
-                type: DataTypes.TIME,
-                allowNull: true,
-            },
-            end_time: {
-                type: DataTypes.TIME,
+            title: {
+                type: new DataTypes.STRING(10),
                 allowNull: true,
             },
 

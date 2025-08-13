@@ -24,10 +24,14 @@ async function class_routine_details(
                 user_student_id: user?.id,
             },
         });
+        if (!data1) {
+            throw new custom_error('not found', 404, 'data not found');
+        }
         let data = await examRoutinesModel.findAll({
             where: {
                 class_id: data1?.s_class,
                 exam_id: params.exam_id,
+                section_id: data1?.section || 0,
             },
             include: [
                 {

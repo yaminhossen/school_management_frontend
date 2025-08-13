@@ -61,6 +61,10 @@ async function all(
                 as: 'class',
             },
             {
+                model: models.BranchClassSectionsModel,
+                as: 'section',
+            },
+            {
                 model: models.BrachClassSubjectsModel,
                 as: 'subjects',
             },

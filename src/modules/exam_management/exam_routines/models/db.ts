@@ -7,6 +7,7 @@ import * as exams_model from './exams_model';
 import * as exam_hall_guard_plans_model from './exam_hall_guard_plans_model';
 import * as branch_building_rooms_model from './branche_building_rooms_model';
 import * as branch_class_subjects_model from './branch_class_subjects_model';
+import * as branch_class_sections_model from './branch_class_sections_model';
 import * as branch_admin_model from './branch_admin_model';
 import * as branch_classes_model from './branch_classes_model';
 import * as user_student_informations_model from './user_student_informations_model';
@@ -33,6 +34,7 @@ interface models {
     ExamGuardPlansModel: typeof exam_hall_guard_plans_model.DataModel;
     BranchBuildingRoomsModel: typeof branch_building_rooms_model.DataModel;
     BrachClassSubjectsModel: typeof branch_class_subjects_model.DataModel;
+    BranchClassSectionsModel: typeof branch_class_sections_model.DataModel;
     BranchAdminsModel: typeof branch_admin_model.DataModel;
     BranchClassesModel: typeof branch_classes_model.DataModel;
     UserStudentInformationsModel: typeof user_student_informations_model.DataModel;
@@ -47,9 +49,12 @@ const db = async function (): Promise<models> {
     const BranchBuildingRoomsModel =
         branch_building_rooms_model.init(sequelize);
     const BrachClassSubjectsModel = branch_class_subjects_model.init(sequelize);
+    const BranchClassSectionsModel =
+        branch_class_sections_model.init(sequelize);
     const BranchAdminsModel = branch_admin_model.init(sequelize);
     const BranchClassesModel = branch_classes_model.init(sequelize);
-    const UserStudentInformationsModel = user_student_informations_model.init(sequelize);
+    const UserStudentInformationsModel =
+        user_student_informations_model.init(sequelize);
     const UserAdminsModel = user_admins_model.init(sequelize);
     // const Project = project_model.init(sequelize);
 
@@ -76,6 +81,12 @@ const db = async function (): Promise<models> {
         sourceKey: 'class_id',
         foreignKey: 'id',
         as: 'class',
+    });
+
+    ExamRoutinesModel.hasOne(BranchClassSectionsModel, {
+        sourceKey: 'section_id',
+        foreignKey: 'id',
+        as: 'section',
     });
 
     ExamRoutinesModel.hasOne(ExamGuardPlansModel, {
@@ -114,6 +125,7 @@ const db = async function (): Promise<models> {
         ExamsModel,
         ExamGuardPlansModel,
         BrachClassSubjectsModel,
+        BranchClassSectionsModel,
         BranchBuildingRoomsModel,
         BranchAdminsModel,
         BranchClassesModel,

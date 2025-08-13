@@ -46,7 +46,7 @@ async function class_section_wise_subjects(
             where: {
                 branch_class_id: params.id,
                 branch_id: auth_user?.branch_id,
-                // branch_class_section_id: queryParams?.section_id,
+                branch_class_section_id: queryParams?.section_id,
             },
             // include: [
             //     {

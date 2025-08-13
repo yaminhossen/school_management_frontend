@@ -3,6 +3,7 @@ import { anyObject } from '../../../../common_types/object';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+import BackButton from '../../../components/BackButton';
 export interface Props {}
 
 const TakeAttendance: React.FC<Props> = (props: Props) => {
@@ -41,7 +42,7 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
         e.preventDefault(); // Prevent the default form submission behavior
         let formData = new FormData(e.target);
         const exam_id = examRefId.current?.value;
-        formData.append('class_id', `${id}`);
+        formData.append('class_id', `${classId}`);
         formData.append('subject_id', `${subjectId}`);
         formData.append('exam_id', `${exam_id}`);
         try {
@@ -73,6 +74,7 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
+            <BackButton></BackButton>
             <div className="teacher_result">
                 <div>Exam</div>
                 <div>

@@ -133,13 +133,7 @@ const CreateMaterials: React.FC<Props> = (props: Props) => {
                             Subject <span className="valid_star">*</span>
                         </label>
                         <div className="form_elements">
-                            <select
-                                name="subject"
-                                // defaultValue={data.branch_class_subject_id}
-                                id=""
-                                // ref={inputRef}
-                                // onChange={handleChange}
-                            >
+                            <select name="subject" id="">
                                 <option value="">Select subject</option>
                                 {subjects.map((i, index) => {
                                     return (

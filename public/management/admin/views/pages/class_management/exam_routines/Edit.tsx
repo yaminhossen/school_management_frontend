@@ -23,6 +23,10 @@ const Edit: React.FC<Props> = (props: Props) => {
     const search_input = useRef<HTMLSelectElement>(null);
     const [startDate, setStartDate] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [classID, setClassID] = useState('');
+    const [sections, setSections] = useState<any>([]);
+    const [sectionID, setSectionID] = useState('');
+    const [subjectID, setSubjectID] = useState('');
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
@@ -37,6 +41,33 @@ const Edit: React.FC<Props> = (props: Props) => {
             );
             setSubjects(response.data.data);
         } catch (error) {
+            setError(error);
+        }
+    };
+
+    const fetchSectionsForClass = async (classId: string) => {
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-class-sections/class-wise/${classId}`,
+            );
+            setSections(response.data.data);
+        } catch (error) {
+            console.error('Error fetching sections:', error);
+            setError(error);
+        }
+    };
+
+    const fetchSubjectsForSection = async (
+        sectionId: string,
+        classId: string,
+    ) => {
+        try {
+            const response = await axios.get(
+                `/api/v1/branch-class-subjects/class-section-wise-subject/${classId}?section_id=${sectionId}`,
+            );
+            setSubjects(response.data.data);
+        } catch (error) {
+            console.error('Error fetching subjects:', error);
             setError(error);
         }
     };
@@ -60,6 +91,28 @@ const Edit: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         if (state.item) {
             setStartDate(moment(state.item.date).format('YYYY-MM-DD'));
+            
+            // Set initial values for cascading dropdowns
+            if (state.item.class_id) {
+                setClassID(state.item.class_id.toString());
+                // Fetch sections for the selected class
+                fetchSectionsForClass(state.item.class_id.toString()).then(() => {
+                    // After sections are loaded, set the section ID if it exists
+                    if (state.item.section_id) {
+                        setSectionID(state.item.section_id.toString());
+                        // Fetch subjects for the selected section and class
+                        fetchSubjectsForSection(
+                            state.item.section_id.toString(),
+                            state.item.class_id.toString()
+                        ).then(() => {
+                            // After subjects are loaded, set the subject ID if it exists
+                            if (state.item.subject_id) {
+                                setSubjectID(state.item.subject_id.toString());
+                            }
+                        });
+                    }
+                });
+            }
         }
     }, [state.item]);
 
@@ -67,18 +120,42 @@ const Edit: React.FC<Props> = (props: Props) => {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
+    const handleChange3 = async (
+        event: React.ChangeEvent<HTMLSelectElement>,
+    ) => {
+        let classId = event.target.value;
+        setClassID(classId);
+
+        // Clear sections and subjects when class changes
+        setSections([]);
+        setSubjects([]);
+        setSectionID('');
+        setSubjectID('');
+
+        if (classId) {
+            await fetchSectionsForClass(classId);
+        }
+        console.log('Selected class value:', classId);
+    };
     const handleChange = async (
         event: React.ChangeEvent<HTMLSelectElement>,
     ) => {
-        let id = event.target.value;
-        try {
-            const response = await axios.get(
-                `/api/v1/branch-class-subjects/class-wise-subject/${id}`,
-            );
-            setSubjects(response.data.data);
-        } catch (error) {
-            setError(error);
+        let sectionId = event.target.value;
+        setSectionID(sectionId);
+
+        // Clear subjects when section changes
+        setSubjects([]);
+        setSubjectID('');
+
+        if (sectionId && classID) {
+            await fetchSubjectsForSection(sectionId, classID);
         }
+    };
+
+    const handleSubjectChange = (
+        event: React.ChangeEvent<HTMLSelectElement>,
+    ) => {
+        setSubjectID(event.target.value);
     };
     useEffect(() => {
         const start = moment(startDate);
@@ -122,18 +199,26 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             <select
                                                 name="class_id"
                                                 id=""
-                                                onChange={handleChange}
-                                                defaultValue={
+                                                value={
+                                                    classID ||
                                                     state.item.class_id
                                                 }
+                                                onChange={handleChange3}
                                             >
+                                                <option value="">
+                                                    Select Class
+                                                </option>
                                                 {state?.classes?.length &&
                                                     state.classes?.map(
-                                                        (i: {
-                                                            [key: string]: any;
-                                                        }) => {
+                                                        (
+                                                            i: {
+                                                                [key: string]: any;
+                                                            },
+                                                            index: number,
+                                                        ) => {
                                                             return (
                                                                 <option
+                                                                    key={index}
                                                                     value={i.id}
                                                                 >
                                                                     {i.name}
@@ -147,28 +232,66 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 </div>
                                 <div className="form-group form-horizontal">
                                     <label>
+                                        Section{' '}
+                                        <span className="valid_star">*</span>
+                                    </label>
+                                    <div className="form_elements">
+                                        <select
+                                            name="section_id"
+                                            value={
+                                                sectionID ||
+                                                state.item.section_id
+                                            }
+                                            onChange={handleChange}
+                                            id=""
+                                        >
+                                            <option value="">
+                                                Select Section
+                                            </option>
+                                            {sections.map((i, index) => {
+                                                return (
+                                                    <option
+                                                        key={index}
+                                                        value={i.id}
+                                                    >
+                                                        {i.title}
+                                                    </option>
+                                                );
+                                            })}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group form-horizontal">
+                                    <label>
                                         Branch Class subject{' '}
                                         <span className="valid_star">*</span>
                                     </label>
                                     <div className="form_elements">
-                                        {subjects.length && (
-                                            <select
-                                                name="subject_id"
-                                                defaultValue={
-                                                    state.item.subject_id
-                                                }
-                                                id=""
-                                            >
-                                                {/* <option value={data.class_id}></option> */}
-                                                {subjects.map((i, index) => {
-                                                    return (
-                                                        <option value={i.id}>
-                                                            {i.name}
-                                                        </option>
-                                                    );
-                                                })}
-                                            </select>
-                                        )}
+                                        <select
+                                            name="subject_id"
+                                            value={
+                                                subjectID ||
+                                                state.item.subject_id
+                                            }
+                                            onChange={handleSubjectChange}
+                                            id=""
+                                        >
+                                            {/* <option value={data.class_id}></option> */}
+
+                                            <option value="">
+                                                Select Subject
+                                            </option>
+                                            {subjects.map((i, index) => {
+                                                return (
+                                                    <option
+                                                        key={index}
+                                                        value={i.id}
+                                                    >
+                                                        {i.name}
+                                                    </option>
+                                                );
+                                            })}
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
