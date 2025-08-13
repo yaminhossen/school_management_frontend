@@ -360,14 +360,14 @@ const T1: React.FC<Props> = (props: Props) => {
                             Account Management
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/account-periods">
                             <span className="material-symbols-outlined fill">
                                 groups
                             </span>
                             Account period Management
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/account-categories">
                             <span className="material-symbols-outlined fill">

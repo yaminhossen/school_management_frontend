@@ -46,3 +46,13 @@
 {"level":60,"time":1755001569667,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:26:09 PM","message":"target not found."}
 {"level":60,"time":1755001572119,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:26:12 PM","message":"target not found."}
 {"level":60,"time":1755001604140,"pid":4932,"hostname":"DESKTOP-9421701","file":"services\\classes.ts:58:19)","time":"8/12/2025 6:26:44 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1755002701829,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:45:01 PM","message":"target not found."}
+{"level":60,"time":1755002869500,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:47:49 PM","message":"target not found."}
+{"level":60,"time":1755002904415,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:48:24 PM","message":"target not found."}
+{"level":60,"time":1755002914997,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:48:34 PM","message":"target not found."}
+{"level":60,"time":1755003045973,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:50:45 PM","message":"target not found."}
+{"level":60,"time":1755003065800,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:51:05 PM","message":"target not found."}
+{"level":60,"time":1755003322395,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:55:22 PM","message":"target not found."}
+{"level":60,"time":1755003356550,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:55:56 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1755003364505,"pid":4932,"hostname":"DESKTOP-9421701","file":"","time":"8/12/2025 6:56:04 PM","message":"target not found."}
+{"level":60,"time":1755055509275,"pid":2460,"hostname":"DESKTOP-9421701","file":"","time":"8/13/2025 9:25:09 AM","message":"target not found."}

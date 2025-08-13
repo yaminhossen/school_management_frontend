@@ -208,7 +208,7 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                                 <Link
                                                                     // to="/students/single/student/"
                                                                    to={`/${setup.route_prefix}/details/${i.id}?tuser=${i.id}`}
-                                                                    className="btn btn-sm bg-secondary  btn-outline-info ml-2"
+                                                                    className="btn btn-sm unseen_bg  btn-outline-info ml-2"
                                                                     type="submit"
                                                                 >
                                                                     Show

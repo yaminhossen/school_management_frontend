@@ -53,7 +53,7 @@ const Index: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState('');
     const [accounts, setAccounts] = useState<Accountinfo[]>([]);
     const [categories, setCategories] = useState<Categoryinfo[]>([]);
-    const [periods, setPeriods] = useState<Periodinfo[]>([]);
+    // const [periods, setPeriods] = useState<Periodinfo[]>([]);
     const [classes, setClass] = useState<any>([]);
     const [feesTypes, setFeesTypes] = useState<FeesInfo[]>([]);
     const [feesTypes2, setFeesTypes2] = useState<FeesInfo[]>([]);
@@ -122,14 +122,14 @@ const Index: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
-    const fetchPeriods = async () => {
-        try {
-            const response = await axios.get('/api/v1/account-logs/periods');
-            setPeriods(response.data.data);
-        } catch (error) {
-            setError(error);
-        }
-    };
+    // const fetchPeriods = async () => {
+    //     try {
+    //         const response = await axios.get('/api/v1/account-logs/periods');
+    //         setPeriods(response.data.data);
+    //     } catch (error) {
+    //         setError(error);
+    //     }
+    // };
     const studentIdRef = useRef<HTMLInputElement>(null);
     const fetchClass = async (id: string) => {
         try {
@@ -163,7 +163,7 @@ const Index: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchAccounts();
         fetchAccountCategorys();
-        fetchPeriods();
+        // fetchPeriods();
     }, []);
     const handleStudentIdBlur = () => {
         const id = studentIdRef.current?.value;
@@ -411,7 +411,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="form-group form-vertical">
+                                    {/* <div className="form-group form-vertical">
                                         <label>Account Period</label>
                                         <div className="form_elements">
                                             <select
@@ -419,7 +419,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                 id=""
                                             >
                                                 <option>Select Period</option>
-                                                {/* Map through periods and create options */}
                                                 {periods?.length &&
                                                     periods?.map(
                                                         (i: {
@@ -440,7 +439,7 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     )}
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>

@@ -43,11 +43,11 @@ async function validate(req: Request) {
         .withMessage('the building_id field is required')
         .run(req);
 
-    await body('total_student')
-        .not()
-        .isEmpty()
-        .withMessage('the total_student field is required')
-        .run(req);
+    // await body('total_student')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the total_student field is required')
+    //     .run(req);
 
     let result = await validationResult(req);
 

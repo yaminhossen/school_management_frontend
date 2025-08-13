@@ -133,7 +133,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-horizontal">
                                     <label>
                                         Total student{' '}
-                                        <span className="valid_star">*</span>
+                                        <span className="valid_star"></span>
                                     </label>
                                     <div className="form_elements">
                                         <input
