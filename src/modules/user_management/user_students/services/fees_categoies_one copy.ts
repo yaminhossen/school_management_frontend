@@ -70,10 +70,6 @@ async function fees_categories_one(
                 status: 'active',
             },
         });
-        console.log('student_data user--------------------', user, auth_user);
-        console.log('student_data', student_data);
-        console.log('student_data', student_data?.student_house);
-
         let data = await classFeessModel.findAll({
             where: {
                 branch_class_id: student_data?.s_class,
@@ -96,52 +92,6 @@ async function fees_categories_one(
         let idWiseTotals = [];
         // Loop through each item in `data` to calculate totals
         for (let item of data) {
-            // Check student house type and filter fees accordingly
-            let shouldIncludeFee = true;
-
-            if (student_data?.student_house === 'Residential') {
-                // Residential students: exclude Day-Care fees
-                if (
-                    item.name === 'Day-Care' ||
-                    item.name === 'day-care' ||
-                    item.name === 'DayCare' ||
-                    item.name === 'Daycare' ||
-                    item.name === 'daycare'
-                ) {
-                    shouldIncludeFee = false;
-                }
-            } else if (student_data?.student_house === 'Non-residential') {
-                // Non-residential students: exclude Hostel fee and Day-Care fees
-                if (
-                    item.name === 'Hostel fee' ||
-                    item.name === 'hostel fee' ||
-                    item.name === 'HostelFee' ||
-                    item.name === 'hostelfee' ||
-                    item.name === 'Day-Care' ||
-                    item.name === 'day-care' ||
-                    item.name === 'DayCare' ||
-                    item.name === 'Daycare' ||
-                    item.name === 'daycare'
-                ) {
-                    shouldIncludeFee = false;
-                }
-            } else if (student_data?.student_house === 'Day-care') {
-                // Day-care students: exclude Hostel fee only
-                if (
-                    item.name === 'Hostel fee' ||
-                    item.name === 'hostel fee' ||
-                    item.name === 'HostelFee' ||
-                    item.name === 'hostelfee'
-                ) {
-                    shouldIncludeFee = false;
-                }
-            }
-
-            // Skip this fee if it should not be included for this student house type
-            if (!shouldIncludeFee) {
-                continue;
-            }
-
             // Calculate `total` for each ID
             const total = await accountFeesCollectionDetailsModel.sum('total', {
                 where: {
@@ -152,56 +102,11 @@ async function fees_categories_one(
             });
 
             let fee_amount = 0;
-            if (
-                item.name === 'Monthly fee' ||
-                item.name === 'monthly fee' ||
-                item.name === 'MonthlyFee' ||
-                item.name === 'Mmonthlyfee'
-            ) {
+            if (item.name === 'Monthly fee') {
                 let thisMonth = moment().month() + 1; // Get current month index (1-12)
                 const dateString = student_data?.admission_date;
                 const monthNumber = moment(dateString).month() + 1;
-                const feeRecord =
-                    await accountFeesCollectionDetailsModel.findOne({
-                        where: {
-                            branch_student_id: student_data?.user_student_id,
-                            branch_class_fees_id: item.id,
-                            branch_id: auth_user?.branch_id,
-                        },
-                        attributes: ['fee_amount'], // Fetch only `fee_amount` field
-                    });
-                let fee = feeRecord ? feeRecord.fee_amount : 0;
-                fee_amount = fee * (thisMonth - monthNumber);
-            } else if (
-                item.name === 'Hostel fee' ||
-                item.name === 'hostel fee' ||
-                item.name === 'HostelFee' ||
-                item.name === 'hostelfee'
-            ) {
-                let thisMonth = moment().month() + 1; // Get current month index (1-12)
-                const dateString = student_data?.admission_date;
-                const monthNumber = moment(dateString).month() + 1;
-                const feeRecord =
-                    await accountFeesCollectionDetailsModel.findOne({
-                        where: {
-                            branch_student_id: student_data?.user_student_id,
-                            branch_class_fees_id: item.id,
-                            branch_id: auth_user?.branch_id,
-                        },
-                        attributes: ['fee_amount'], // Fetch only `fee_amount` field
-                    });
-                let fee = feeRecord ? feeRecord.fee_amount : 0;
-                fee_amount = fee * (thisMonth - monthNumber);
-            } else if (
-                item.name === 'Day-Care' ||
-                item.name === 'day-care' ||
-                item.name === 'DayCare' ||
-                item.name === 'Daycare' ||
-                item.name === 'daycare'
-            ) {
-                let thisMonth = moment().month() + 1; // Get current month index (1-12)
-                const dateString = student_data?.admission_date;
-                const monthNumber = moment(dateString).month() + 1;
+
                 const feeRecord =
                     await accountFeesCollectionDetailsModel.findOne({
                         where: {
@@ -226,8 +131,7 @@ async function fees_categories_one(
                     });
                 fee_amount = feeRecord ? feeRecord.fee_amount : 0;
             }
-            // Filter fees based on student house type:
-            // Residential: exclude Day-Care | Non-residential: exclude Hostel fee & Day-Care | Day-care: exclude Hostel fee
+
             // Push the total along with the associated ID to the result array
             idWiseTotals.push({
                 id: item.id,
