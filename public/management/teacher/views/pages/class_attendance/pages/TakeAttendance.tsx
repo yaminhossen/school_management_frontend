@@ -38,7 +38,7 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
         let formData = new FormData(e.target);
-        formData.append('class_id', `${id}`);
+        formData.append('class_id', `${classId}`);
         formData.append('subject_id', `${subjectId}`);
         try {
             const response = await axios.post(

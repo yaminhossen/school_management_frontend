@@ -87,6 +87,7 @@ async function academic_resources_pagination(
     const whereClause: any = {
         status: show_active_data === 'true' ? 'active' : 'deactive',
         branch_class_id: data1?.s_class,
+        branch_class_section_id: data1?.section,
     };
     const today = moment().format('YYYY-MM-DD');
     console.log('todya', today);
