@@ -58,7 +58,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     defaultValue={state.item.id}
                                 />
                                 <div className="form-group form-horizontal">
-                                    <label>Branch code</label>
+                                    <label>
+                                        Branch Code{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -71,7 +74,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Name</label>
+                                    <label>
+                                        Name{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -93,7 +99,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Primary contact</label>
+                                    <label>
+                                        Primary contact{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -106,7 +115,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Logo</label>
+                                    <label>
+                                        Logo{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
                                         <InputImage
                                             label={''}
@@ -116,7 +128,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Address</label>
+                                    <label>
+                                        Address{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -127,7 +142,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Lat</label>
+                                    <label>
+                                        Lat{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -138,7 +156,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Lang</label>
+                                    <label>
+                                        Lang{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
                                         <input
                                             type="text"
@@ -149,7 +170,10 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
-                                    <label>Map</label>
+                                    <label>
+                                        Map{' '}
+                                        <span className="valid_star"> * </span>
+                                    </label>
                                     <div className="form_elements">
                                         <textarea
                                             placeholder="address"

@@ -55,6 +55,10 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <option value="">
                                                 Select Class
                                             </option>
+                                            <option value="Play">Play</option>
+                                            <option value="Nursery">
+                                                Nursery
+                                            </option>
                                             <option value="One">One</option>
                                             <option value="Two">Two</option>
                                             <option value="Three">Three</option>
@@ -65,6 +69,13 @@ const Create: React.FC<Props> = (props: Props) => {
                                             <option value="Eight">Eight</option>
                                             <option value="Nine">Nine</option>
                                             <option value="Ten">Ten</option>
+                                            <option value="Nurani">
+                                                Nurani
+                                            </option>
+                                            <option value="Nazera">
+                                                Nazera
+                                            </option>
+                                            <option value="Hifz">Hifz</option>
                                         </select>
                                     </div>
                                 </div>

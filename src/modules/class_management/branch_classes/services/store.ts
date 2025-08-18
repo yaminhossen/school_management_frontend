@@ -12,7 +12,7 @@ import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
 /** validation rules */
-async function validate(req: Request, models: any) {
+async function validate(req: Request, models: any, auth_user: any) {
     await body('name')
         .not()
         .isEmpty()
@@ -23,7 +23,10 @@ async function validate(req: Request, models: any) {
         await body('name')
             .custom(async (name) => {
                 const existing = await models.BranchClassesModel.findOne({
-                    where: { name },
+                    where: {
+                        name: name,
+                        branch_id: auth_user?.branch_id,
+                    },
                 });
                 if (existing) {
                     throw new Error(`${req.body?.name} class already exists`);
@@ -73,7 +76,15 @@ async function store(
 ): Promise<responseObject> {
     /** validation */
     let models = await db();
-    let validate_result = await validate(req as Request, models);
+    let user = (req as any).user;
+    let auth_user = await models.UserAdminsModel.findOne({
+        where: {
+            id: (req as any).user?.id || null,
+        },
+    });
+    console.log('auth_User', auth_user?.branch_id);
+
+    let validate_result = await validate(req as Request, models, auth_user);
     if (!validate_result.isEmpty()) {
         return response(422, 'validation error', validate_result.array());
     }
@@ -82,15 +93,8 @@ async function store(
 
     let body = req.body as anyObject;
     let data = new models.BranchClassesModel();
-
-    let user = (req as any).user;
-    let auth_user = await models.UserAdminsModel.findOne({
-        where: {
-            id: (req as any).user?.id || null,
-        },
-    });
     let inputs: InferCreationAttributes<typeof data> = {
-        branch_id: auth_user?.branch_id || 1,
+        branch_id: auth_user?.branch_id || 0,
         name: body.name,
         code: body.code,
         capacity: body.capacity,

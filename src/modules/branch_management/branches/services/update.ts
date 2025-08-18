@@ -7,7 +7,7 @@ import {
     Request,
 } from '../../../common_types/object';
 import response from '../helpers/response';
-import { InferCreationAttributes } from 'sequelize';
+import { InferCreationAttributes, Op } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 import moment from 'moment/moment';
@@ -43,16 +43,11 @@ async function validate(req: Request, models: any) {
         .withMessage('the address field is required')
         .run(req);
 
-    await body('email')
-        .not()
-        .isEmpty()
-        .withMessage('the email field is required')
-        .run(req);
     if (req.body?.email) {
         await body('email')
             .custom(async (email) => {
-                const existing = await models.UserStaffsModel.findOne({
-                    where: { email },
+                const existing = await models.BranchesModel.findOne({
+                    where: { email, id: { [Op.ne]: req.body?.id } },
                 });
                 if (existing) {
                     throw new Error('Email already exists');

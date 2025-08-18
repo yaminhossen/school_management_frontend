@@ -48,16 +48,40 @@ const Edit: React.FC<Props> = (props: Props) => {
                                 />
                                 <div className="form-group form-horizontal">
                                     <label>
-                                        Name{' '}
+                                        Class Name{' '}
                                         <span className="valid_star">*</span>
                                     </label>
                                     <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="name"
+                                        <select
                                             name="name"
                                             defaultValue={state.item.name}
-                                        />
+                                            id=""
+                                        >
+                                            <option value="">
+                                                Select Class
+                                            </option>
+                                            <option value="Play">Play</option>
+                                            <option value="Nursery">
+                                                Nursery
+                                            </option>
+                                            <option value="One">One</option>
+                                            <option value="Two">Two</option>
+                                            <option value="Three">Three</option>
+                                            <option value="Four">Four</option>
+                                            <option value="Five">Five</option>
+                                            <option value="Six">Six</option>
+                                            <option value="Seven">Seven</option>
+                                            <option value="Eight">Eight</option>
+                                            <option value="Nine">Nine</option>
+                                            <option value="Ten">Ten</option>
+                                            <option value="Nurani">
+                                                Nurani
+                                            </option>
+                                            <option value="Nazera">
+                                                Nazera
+                                            </option>
+                                            <option value="Hifz">Hifz</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">

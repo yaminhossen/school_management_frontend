@@ -39,7 +39,7 @@ async function validate(req: Request, models: any) {
     if (req.body?.email) {
         await body('email')
             .custom(async (email) => {
-                const existing = await models.UserStaffsModel.findOne({
+                const existing = await models.BranchesModel.findOne({
                     where: { email },
                 });
                 if (existing) {
@@ -87,7 +87,7 @@ async function store(
 ): Promise<responseObject> {
     /** validation */
     let models = await db();
-    let validate_result = await validate(req as Request,  models);
+    let validate_result = await validate(req as Request, models);
     if (!validate_result.isEmpty()) {
         return response(422, 'validation error', validate_result.array());
     }

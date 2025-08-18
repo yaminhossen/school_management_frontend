@@ -7,12 +7,12 @@ import {
     Request,
 } from '../../../common_types/object';
 import response from '../helpers/response';
-import { InferCreationAttributes } from 'sequelize';
+import { InferCreationAttributes, Op } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 
 /** validation rules */
-async function validate(req: Request) {
+async function validate(req: Request, models: any, auth_user: any) {
     await body('id')
         .not()
         .isEmpty()
@@ -25,6 +25,23 @@ async function validate(req: Request) {
         .withMessage('the name field is required')
         .run(req);
 
+    if (req.body?.name) {
+        await body('name')
+            .custom(async (name) => {
+                const existing = await models.BranchClassesModel.findOne({
+                    where: {
+                        name: name,
+                        branch_id: auth_user?.branch_id,
+                        id: { [Op.ne]: req.body?.id },
+                    },
+                });
+                if (existing) {
+                    throw new Error(`${req.body?.name} class already exists`);
+                }
+                return true;
+            })
+            .run(req);
+    }
     await body('code')
         .not()
         .isEmpty()
@@ -102,22 +119,22 @@ async function update(
     req: FastifyRequest,
 ): Promise<responseObject> {
     /** validation */
-    let validate_result = await validate(req as Request);
-    if (!validate_result.isEmpty()) {
-        return response(422, 'validation error', validate_result.array());
-    }
-
-    /** initializations */
     let models = await db();
-    let body = req.body as anyObject;
-    let model = new models.BranchClassesModel();
-
     let user = (req as any).user;
     let auth_user = await models.UserAdminsModel.findOne({
         where: {
             id: (req as any).user?.id || null,
         },
     });
+    let validate_result = await validate(req as Request, models, auth_user);
+    if (!validate_result.isEmpty()) {
+        return response(422, 'validation error', validate_result.array());
+    }
+
+    /** initializations */
+    let body = req.body as anyObject;
+    let model = new models.BranchClassesModel();
+
     let inputs: InferCreationAttributes<typeof model> = {
         branch_id: auth_user?.branch_id || 1,
         name: body.name,
@@ -142,8 +159,7 @@ async function update(
     try {
         let data = await models.BranchClassesModel.findByPk(body.id);
         if (data) {
-            data.update(inputs);
-            await data.save();
+            (await data.update(inputs)).save();
             return response(201, 'data updated', data);
         } else {
             throw new custom_error(
