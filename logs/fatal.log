@@ -517,3 +517,7 @@
 {"level":60,"time":1755496795894,"pid":3012,"hostname":"DESKTOP-9421701","file":"","time":"8/18/2025 11:59:55 AM","message":"target not found."}
 {"level":60,"time":1755496931442,"pid":3012,"hostname":"DESKTOP-9421701","file":"","time":"8/18/2025 12:02:11 PM","message":"target not found."}
 {"level":60,"time":1755510479294,"pid":20104,"hostname":"DESKTOP-9421701","file":"","time":"8/18/2025 3:47:59 PM","message":"target not found."}
+{"level":60,"time":1755583718712,"pid":8008,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2025 12:08:38 PM","message":"target not found."}
+{"level":60,"time":1755583729938,"pid":8008,"hostname":"DESKTOP-9421701","file":"","time":"8/19/2025 12:08:49 PM","message":"target not found."}
+{"level":60,"time":1755594044048,"pid":8008,"hostname":"DESKTOP-9421701","file":"services\\fees_categoies_one.ts:266:19)","time":"8/19/2025 3:00:44 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1755599588556,"pid":8008,"hostname":"DESKTOP-9421701","file":"services\\admin_task_details.ts:38:19)","time":"8/19/2025 4:33:08 PM","message":"data not found"}

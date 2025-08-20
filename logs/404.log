@@ -18,3 +18,10 @@
 {"level":60,"time":1755493298326,"pid":12348,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-sections?page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+status"}
 {"level":60,"time":1755493298893,"pid":12348,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-sections?page=1&paginate=10&search_key=&orderByCol=id&orderByAsc=true&show_active_data=true&select_fields=id%2C+title%2C+status"}
 {"level":60,"time":1755493310421,"pid":12348,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/branch-class-sections/store"}
+{"level":60,"time":1755593711797,"pid":8008,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1755593916351,"pid":8008,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1755594042692,"pid":8008,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1755599378274,"pid":8008,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
+{"level":60,"time":1755599739294,"pid":8008,"hostname":"DESKTOP-9421701","error":"404","url":"/Not%20found"}
+{"level":60,"time":1755599871697,"pid":8008,"hostname":"DESKTOP-9421701","error":"404","url":"/Not%20found"}
+{"level":60,"time":1755599888368,"pid":8008,"hostname":"DESKTOP-9421701","error":"404","url":"/Not%20found"}
