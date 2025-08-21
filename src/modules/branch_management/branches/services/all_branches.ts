@@ -13,7 +13,11 @@ async function all_branches(
     let params = req.params as any;
 
     try {
-        let data = await models.BranchesModel.findAll({});
+        let data = await models.BranchesModel.findAll({
+            where: {
+                status: 'active',
+            },
+        });
 
         if (data) {
             return response(200, 'data created', data);
