@@ -71,6 +71,18 @@ async function admin_approved(
                 model: leave_type_model,
                 as: 'leave_type',
             },
+            {
+                model: models.UserTeachersModel,
+                as: 'teacher',
+            },
+            {
+                model: models.UserStaffsModel,
+                as: 'staff',
+            },
+            {
+                model: models.UserStudentsModel,
+                as: 'student',
+            },
         ],
     };
 

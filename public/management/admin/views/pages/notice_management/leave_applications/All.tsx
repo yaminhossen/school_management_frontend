@@ -73,11 +73,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`staff/student`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Reason`}
-                                            col_name={`reason`}
+                                        <TableHeading
+                                            label={`Name`}
+                                            col_name={`name`}
                                             sort={false}
-                                        /> */}
+                                        />
                                         <TableHeading
                                             label={`Leave Type`}
                                             col_name={`leave type`}
@@ -149,6 +149,15 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 ? 'Staff'
                                                                 : i.branch_student_id
                                                                     ? 'Student'
+                                                                    : 0}
+                                                    </td>
+                                                    <td>
+                                                        {i.teacher
+                                                            ? i.teacher?.name
+                                                            : i.staff
+                                                                ? i.staff?.name
+                                                                : i.student
+                                                                    ? i.student?.name
                                                                     : 0}
                                                     </td>
                                                     {/* <td>{i.reason}</td> */}
