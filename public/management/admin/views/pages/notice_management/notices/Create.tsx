@@ -137,26 +137,20 @@ const Create: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>
                                         Image{' '}
                                         <span className="valid_star">*</span>
                                     </label>
                                     <div className="form_elements">
-                                        {/* <input
-                                            type="file"
-                                            accept="image/*"
-                                            name="image"
-                                        /> */}
                                         <InputImage
                                             label={''}
                                             name={'image'}
-                                            // accept="image/*, ./*"
                                             accept="image/*,application/pdf"
                                             defalut_preview={get_value('')}
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>
                                         Attachment{' '}

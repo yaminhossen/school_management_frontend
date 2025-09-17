@@ -76,11 +76,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`attachment`}
                                             sort={false}
                                         />
-                                        <TableHeading
+                                        {/* <TableHeading
                                             label={`Image`}
                                             col_name={`image`}
                                             sort={false}
-                                        />
+                                        /> */}
                                         <TableHeading
                                             label={`Notice For`}
                                             col_name={`notice for`}
@@ -153,7 +153,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                             }}
                                                         />
                                                     </td>
-                                                    <td>
+                                                    {/* <td>
                                                         <img
                                                             src={
                                                                 i.image
@@ -165,7 +165,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 height: 30,
                                                             }}
                                                         />
-                                                    </td>
+                                                    </td> */}
                                                     <td>{i.notice_for}</td>
                                                 </tr>
                                             );

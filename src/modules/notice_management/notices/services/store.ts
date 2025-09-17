@@ -37,11 +37,11 @@ async function validate(req: Request) {
         .withMessage('the attachment field is required')
         .run(req);
 
-    await body('image')
-        .not()
-        .isEmpty()
-        .withMessage('the image field is required')
-        .run(req);
+    // await body('image')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the image field is required')
+    //     .run(req);
 
     await body('notice_for')
         .not()
