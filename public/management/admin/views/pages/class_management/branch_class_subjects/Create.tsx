@@ -96,6 +96,9 @@ const Create: React.FC<Props> = (props: Props) => {
 
         setSchedule(newSchedule);
     };
+if(state){
+    console.log('selected teacher', state.teachers);
+}
 
     // defaultValue={moment(
     //     state.item
@@ -293,7 +296,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                         return (
                                                                             <option
                                                                                 value={
-                                                                                    i.id
+                                                                                    i.user_teacher?.id
                                                                                 }
                                                                             >
                                                                                 {
@@ -430,35 +433,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                 />
                                                             </div>
                                                         </div>
-                                                        {/* <div className="form-group form-vertical">
-                                                            <label>
-                                                                Start Time
-                                                            </label>
-                                                            <div className="form_elements">
-                                                                <input
-                                                                    type="time"
-                                                                    placeholder="start time"
-                                                                    name="start_time"
-                                                                    value={
-                                                                        schedule[
-                                                                            index
-                                                                        ]
-                                                                            .start_time
-                                                                    }
-                                                                    onChange={(
-                                                                        e,
-                                                                    ) =>
-                                                                        handleTimeChange(
-                                                                            index,
-                                                                            'start_time',
-                                                                            e
-                                                                                .target
-                                                                                .value,
-                                                                        )
-                                                                    }
-                                                                />
-                                                            </div>
-                                                        </div> */}
                                                         <div className="form-group form-vertical">
                                                             <label>
                                                                 Start Time
@@ -581,48 +555,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                             <label>
                                                                 Teacher
                                                             </label>
-                                                            {/* <div className="form_elements">
-                                                                {
-                                                                    i !== 'friday' ? 
-                                                                    (<select
-                                                                    name="branch_teacher_id"
-                                                                    id=""
-                                                                    className="teacher"
-                                                                >
-                                                                    <option value="0">
-                                                                        Select
-                                                                        Teacher
-                                                                    </option>
-                                                                    {state
-                                                                        ?.teachers
-                                                                        ?.length &&
-                                                                        state.teachers?.map(
-                                                                            (i: {
-                                                                                [
-                                                                                    key: string
-                                                                                ]: any;
-                                                                            }) => {
-                                                                                return (
-                                                                                    <option
-                                                                                        value={
-                                                                                            i.id
-                                                                                        }
-                                                                                    >
-                                                                                        {
-                                                                                            i
-                                                                                                .user_teacher
-                                                                                                ?.name
-                                                                                        }
-                                                                                    </option>
-                                                                                );
-                                                                            },
-                                                                        )}
-                                                                </select>)
-                                                                 : ( <div>
-                                                                    <input name="branch_teacher_id" type="text" placeholder='This is Friday' readOnly /> 
-                                                                 </div> )
-                                                                }
-                                                            </div> */}
                                                             <div className="form_elements">
                                                                 {i !==
                                                                 'friday' ? (
@@ -652,7 +584,7 @@ const Create: React.FC<Props> = (props: Props) => {
                                                                                             teacher.id
                                                                                         }
                                                                                         value={
-                                                                                            teacher.id
+                                                                                            teacher.user_teacher?.id
                                                                                         }
                                                                                     >
                                                                                         {teacher

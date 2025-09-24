@@ -61,11 +61,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             sort={true}
                                         />
                                         {/* <th>Logo</th> */}
-                                        {/* <TableHeading
-                                            label={`Name`}
-                                            col_name={`name`}
-                                            sort={false}
-                                        /> */}
                                         <TableHeading
                                             label={`Class`}
                                             col_name={`class`}
@@ -74,6 +69,11 @@ const All: React.FC<Props> = (props: Props) => {
                                         <TableHeading
                                             label={`Fee Type`}
                                             col_name={`fee_type`}
+                                            sort={false}
+                                        />
+                                        <TableHeading
+                                            label={`Name`}
+                                            col_name={`name`}
                                             sort={false}
                                         />
                                         <TableHeading
@@ -125,11 +125,11 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 {i.id}
                                                             </span>
                                                         </td>
-                                                        {/* <td>{i.name}</td> */}
                                                         <td>{i.class?.name}</td>
                                                         <td>
                                                             {i.fee_types?.name}
                                                         </td>
+                                                        <td>{i.name}</td>
                                                         <td>{i.session}</td>
                                                         {/* <td>
                                                         {i.description?.length >
