@@ -70,6 +70,33 @@ const Edit: React.FC<Props> = (props: Props) => {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
+       
+    const startYear = '2025';
+    const years = Array.from({ length: 31 }, (_, i) => Number(startYear) + i);
+
+    // State for selected year - Initialize with state.item.session if available
+    const [selectedYear, setSelectedYear] = useState(
+        state.item?.session ||
+            sessionStorage.getItem('selectedYear') ||
+            startYear,
+    );
+
+    // Update selectedYear when state.item changes (when data loads)
+    useEffect(() => {
+        if (state.item?.session) {
+            setSelectedYear(state.item.session);
+        }
+    }, [state.item?.session]);
+
+    // Update session storage when year changes
+    useEffect(() => {
+        sessionStorage.setItem('selectedYear', selectedYear);
+    }, [selectedYear]);
+
+    // Handle year selection
+    const handleYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedYear(event.target.value);
+    };
 
     return (
         <>
@@ -180,7 +207,7 @@ const Edit: React.FC<Props> = (props: Props) => {
                                     </div>
                                 </div>
 
-                                <div className="form-group form-horizontal">
+                                {/* <div className="form-group form-horizontal">
                                     <label>
                                         Session{' '}
                                                 <span className="valid_star">
@@ -194,6 +221,28 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                 `${state.item?.session}-01-01`,
                                             ).format('YYYY-MM-DD')}
                                         />
+                                    </div>
+                                </div> */}
+                                <div className="form-group form-horizontal custom_scroll">
+                                    <label htmlFor="session">Session</label>
+                                    <div className="form_elements custom_scroll">
+                                        <select
+                                            id="session"
+                                            name="session"
+                                            value={selectedYear}
+                                            onChange={handleYearChange}
+                                            className="form-control custom_scroll"
+                                            style={{ paddingRight: '30px' }} // Ensures space for the native arrow
+                                        >
+                                            <option value="" disabled>
+                                                Select a year
+                                            </option>
+                                            {years.map((year) => (
+                                                <option key={year} value={year}>
+                                                    {year}
+                                                </option>
+                                            ))}
+                                        </select>
                                     </div>
                                 </div>
                                 {/* <div className="form-group form-horizontal">
