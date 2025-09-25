@@ -18,6 +18,7 @@ async function teacher_wise_class_routine(
             await models.BranchClassSubjectTeachersModel.findAll({
                 where: {
                     branch_teacher_id: user?.id,
+                    status: 'active',
                 },
                 include: [
                     {
@@ -37,6 +38,7 @@ async function teacher_wise_class_routine(
                         as: 'subject',
                         attributes: ['id', 'name', 'code'],
                         required: false,
+                        where: { status: 'active' },
                     },
                 ],
             });
@@ -60,6 +62,7 @@ async function teacher_wise_class_routine(
                 where: {
                     branch_teacher_id: user?.id,
                     branch_class_subject_id: subjectIds,
+                    status: 'active',
                 },
                 include: [
                     {
@@ -79,6 +82,7 @@ async function teacher_wise_class_routine(
                         as: 'subject',
                         attributes: ['id', 'name', 'code'],
                         required: false,
+                        where: { status: 'active' },
                     },
                 ],
                 order: [

@@ -159,7 +159,7 @@ const db = async function (): Promise<models> {
 
     BranchClassRoutineDayTimesModel.hasOne(BranchTeachersModel, {
         sourceKey: 'branch_teacher_id',
-        foreignKey: 'id',
+        foreignKey: 'user_teacher_id',
         as: 'b_teacher',
     });
 

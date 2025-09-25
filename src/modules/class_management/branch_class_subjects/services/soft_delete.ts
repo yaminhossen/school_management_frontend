@@ -47,6 +47,11 @@ async function soft_delete(
             where: { branch_class_subject_id: body.id },
         });
 
+        const subjectTeachers =
+            await models.BranchClassSubjectTeachersModel.findAll({
+                where: { branch_class_subject_id: body.id },
+            });
+
         const examRoutines = await models.ExamRoutinesModel.findAll({
             where: { subject_id: body.id },
         });
@@ -83,6 +88,13 @@ async function soft_delete(
             for (const routine of examRoutines) {
                 routine.status = 'deactive';
                 await routine.save();
+            }
+        }
+        // Deactivate all subject-teacher assignments
+        if (subjectTeachers && subjectTeachers.length > 0) {
+            for (const assignment of subjectTeachers) {
+                assignment.status = 'deactive';
+                await assignment.save();
             }
         }
 

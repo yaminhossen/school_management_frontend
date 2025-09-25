@@ -51,6 +51,11 @@ async function restore(
             where: { subject_id: body.id },
         });
 
+        const subjectTeachers =
+            await models.BranchClassSubjectTeachersModel.findAll({
+                where: { branch_class_subject_id: body.id },
+            });
+
         // Check if the main subject exists
         if (!subject) {
             throw new custom_error(
@@ -85,8 +90,15 @@ async function restore(
                 await routine.save();
             }
         }
+        // Deactivate all subject-teacher assignments
+        if (subjectTeachers && subjectTeachers.length > 0) {
+            for (const assignment of subjectTeachers) {
+                assignment.status = 'active';
+                await assignment.save();
+            }
+        }
 
-        return response(205, 'All related data deactivated', subject);
+        return response(205, 'All related data activated', subject);
     } catch (error: any) {
         let uid = await error_trace(models, error, req.url, req.body);
         if (error instanceof custom_error) {

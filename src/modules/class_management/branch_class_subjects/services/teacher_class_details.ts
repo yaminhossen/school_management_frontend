@@ -30,6 +30,7 @@ async function teacher_class_details(
         let data = await models.BranchClassSubjectTeachersModel.findAll({
             where: {
                 branch_teacher_id: params.id,
+                status: 'active',
             },
             include: [
                 {
