@@ -30,11 +30,11 @@ async function validate(req: Request) {
         .isEmpty()
         .withMessage('the title field is required')
         .run(req);
-    await body('attachment')
-        .not()
-        .isEmpty()
-        .withMessage('the attachment field is required')
-        .run(req);
+    // await body('attachment')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('the attachment field is required')
+    //     .run(req);
     await body('mark')
         .not()
         .isEmpty()

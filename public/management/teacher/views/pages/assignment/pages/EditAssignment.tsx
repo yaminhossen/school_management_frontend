@@ -141,7 +141,8 @@ const EditAssignment: React.FC<Props> = (props: Props) => {
 
         try {
             const response = await axios.post(
-                `/api/v1/assignments/update/${id}`,
+                `/api/v1/assignments/update`,
+                // `/api/v1/assignments/update/${id}`,
                 formData,
             );
             (window as any).toaster('Assignment Updated Successfully');

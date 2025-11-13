@@ -135,7 +135,9 @@ const T1: React.FC<Props> = (props: Props) => {
     }
     return (
         <div className="custom_scroll">
-            <div className="name my-3">{/* <h2>Shafiqur Rahman</h2> */}</div>
+            <div className="name my-3">
+                <h2>Welcome to the Staff Panel</h2>
+            </div>
             {/* analytics */}
             <div
                 className="mt-4"
