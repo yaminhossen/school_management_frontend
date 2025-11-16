@@ -301,93 +301,91 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                     <tr className="table_body">
                                         <td rowSpan={9}>{section?.title}</td>
                                     </tr>
-                                    {data.length ? (
-                                        data.map((i, index) => (
-                                            <tr
-                                                className="table_body"
-                                                key={index}
-                                            >
-                                                <td className="subject">
-                                                    {i.subject?.name}
-                                                </td>
-                                                {i.routines?.map(
-                                                    (r, rIndex) => (
-                                                        <td
-                                                            className="class_time_and_room_content"
-                                                            key={rIndex}
-                                                        >
-                                                            {rIndex ===
-                                                            i.routines.length -
-                                                                1 ? (
-                                                                <span className="class_time_and_room">
-                                                                    <span className="holiday_text">
-                                                                        FRIDAY
-                                                                    </span>
-                                                                </span>
+                                                            {data.length ? (
+                                                                data.map((i, index) => (
+                                                                    <tr className="table_body" key={index}>
+                                                                        <td className="subject">
+                                                                            {i.subject?.name}
+                                                                        </td>
+                                    
+                                                                        {i.routines?.map((r, rIndex) => (
+                                                                            <td
+                                                                                className="class_time_and_room_content"
+                                                                                key={rIndex}
+                                                                            >
+                                                                                {rIndex ===
+                                                                                i.routines.length - 1 ? (
+                                                                                    // FRIDAY HOLIDAY
+                                                                                    <span className="class_time_and_room">
+                                                                                        <span className="holiday_text">
+                                                                                            FRIDAY
+                                                                                        </span>
+                                                                                    </span>
+                                                                                ) : r.b_teacher ? (
+                                                                                    // CLASS EXISTS
+                                                                                    <span className="class_time_and_room">
+                                                                                        {/* Time */}
+                                                                                        <span className="time_rooom class_time">
+                                                                                            {moment(
+                                                                                                r.start_time,
+                                                                                                'HH:mm:ss',
+                                                                                            ).format('hh:mm A')}
+                                                                                            {' - '}
+                                                                                            {moment(
+                                                                                                r.end_time,
+                                                                                                'HH:mm:ss',
+                                                                                            ).format('hh:mm A')}
+                                                                                        </span>
+                                    
+                                                                                        {/* Room */}
+                                                                                        <span className="time_rooom class_room">
+                                                                                            <span className="room_title">
+                                                                                                {r.room?.room_name}
+                                                                                            </span>
+                                                                                        </span>
+                                    
+                                                                                        {/* Teacher */}
+                                                                                        <span className="time_rooom class_room">
+                                                                                            <span className="room_title">
+                                                                                                {
+                                                                                                    r.b_teacher
+                                                                                                        ?.teacher
+                                                                                                        ?.name
+                                                                                                }
+                                                                                            </span>
+                                                                                            <span className="dash_title">
+                                                                                                -
+                                                                                            </span>
+                                                                                            <span className="room_number">
+                                                                                                sir
+                                                                                            </span>
+                                                                                        </span>
+                                                                                    </span>
+                                                                                ) : (
+                                                                                    // NO CLASS
+                                                                                    <span className="no_class_message">
+                                                                                        No class
+                                                                                    </span>
+                                                                                )}
+                                                                            </td>
+                                                                        ))}
+                                                                    </tr>
+                                                                ))
                                                             ) : (
-                                                                <span className="class_time_and_room">
-                                                                        <span className="time_rooom class_time">
-                                                                        {moment(
-                                                                            r.start_time,
-                                                                            'HH:mm:ss',
-                                                                        ).format(
-                                                                            'hh:mm A',
-                                                                        )}{' '}
-                                                                        -{' '}
-                                                                        {moment(
-                                                                            r.end_time,
-                                                                            'HH:mm:ss',
-                                                                        ).format(
-                                                                            'hh:mm A',
-                                                                        )}
-                                                                    </span>
-                                                                    <span className="time_rooom class_room">
-                                                                            <span className="room_title">
-                                                                            {
-                                                                                r
-                                                                                    .room
-                                                                                    ?.room_name
-                                                                            }
-                                                                        </span>
-                                                                        </span>
-                                                                    <span className="time_rooom class_room">
-                                                                            <span className="room_title">
-                                                                            {
-                                                                                r
-                                                                                    .b_teacher
-                                                                                    ?.teacher
-                                                                                    ?.name
-                                                                            }
-                                                                            </span>
-                                                                        <span className="dash_title">
-                                                                            -
-                                                                        </span>
-                                                                        <span className="room_number">
-                                                                            sir
-                                                                        </span>
-                                                                    </span>
-                                                                </span>
+                                                                <tr>
+                                                                    <td colSpan={9}>
+                                                                        <div
+                                                                            style={{
+                                                                                fontSize: '24px',
+                                                                                color: 'white',
+                                                                            }}
+                                                                            className="not_found routine_not_found f-size-4 m-4"
+                                                                        >
+                                                                            No data found
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
                                                             )}
-                                                        </td>
-                                                    ),
-                                                )}
-                                            </tr>
-                                        ))
-                                    ) : (
-                                        <tr>
-                                            <td colSpan={9}>
-                                                <div
-                                                    style={{
-                                                        fontSize: '24px',
-                                                        color: 'white',
-                                                    }}
-                                                    className="not_found routine_not_found f-size-4 m-4"
-                                                >
-                                                    No data found
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    )}
                                 </tbody>
                             </table>
                             {/* table_area end */}
