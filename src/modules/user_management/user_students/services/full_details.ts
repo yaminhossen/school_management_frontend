@@ -14,6 +14,7 @@ async function details(
         models.UserStudentEducationalBackgroundsModel;
     let informationsModel = models.UserStudentInformationsModel;
     let contactNumbersModel = models.UserStudentContactNumbersModel;
+    let branchClassModel = models.BranchClassesModel;
     let skillsModel = models.UserStudentSkillsModel;
     let studentParentsModel = models.UserStudentParentsModel;
     let languagesModel = models.UserStudentLanguagesModel;
@@ -40,6 +41,12 @@ async function details(
                 {
                     model: informationsModel,
                     as: 'student_info',
+                    include: [
+                        {
+                            model: branchClassModel,
+                            as: 'branch_class',
+                        },
+                    ],
                 },
                 // {
                 //     model: informationsModel,

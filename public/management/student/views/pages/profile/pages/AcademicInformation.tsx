@@ -110,7 +110,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td>Class</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
-                                                {data?.student_info?.s_class}
+                                                {data?.student_info?.branch_class.name}
                                             </td>
                                         </tr>
                                         {/* <tr>

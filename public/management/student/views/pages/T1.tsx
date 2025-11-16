@@ -126,6 +126,9 @@ const T1: React.FC<Props> = () => {
 
     return (
         <div className="custom_scroll">
+            <div className="name my-3">
+                <h2>Welcome to the Student Panel</h2>
+            </div>
             <div
                 className="mt-4"
                 style={{
