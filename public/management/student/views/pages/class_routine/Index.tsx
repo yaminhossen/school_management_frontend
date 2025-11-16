@@ -122,6 +122,7 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                     <td className="subject">
                                         {i.subject?.name}
                                     </td>
+
                                     {i.routines?.map((r, rIndex) => (
                                         <td
                                             className="class_time_and_room_content"
@@ -129,46 +130,56 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                         >
                                             {rIndex ===
                                             i.routines.length - 1 ? (
-                                                    <span className="class_time_and_room">
+                                                // FRIDAY HOLIDAY
+                                                <span className="class_time_and_room">
                                                     <span className="holiday_text">
                                                         FRIDAY
-                                                        </span>
                                                     </span>
-                                                ) : (
+                                                </span>
+                                            ) : r.b_teacher ? (
+                                                // CLASS EXISTS
                                                 <span className="class_time_and_room">
-                                                        <span className="time_rooom class_time">
+                                                    {/* Time */}
+                                                    <span className="time_rooom class_time">
                                                         {moment(
                                                             r.start_time,
-                                                                'HH:mm:ss',
-                                                        ).format(
-                                                                'hh:mm A',
-                                                        )}{' '}
-                                                        -{' '}
+                                                            'HH:mm:ss',
+                                                        ).format('hh:mm A')}
+                                                        {' - '}
                                                         {moment(
                                                             r.end_time,
-                                                                'HH:mm:ss',
+                                                            'HH:mm:ss',
                                                         ).format('hh:mm A')}
-                                                        </span>
+                                                    </span>
+
+                                                    {/* Room */}
                                                     <span className="time_rooom class_room">
                                                         <span className="room_title">
                                                             {r.room?.room_name}
-                                                            </span>
+                                                        </span>
                                                     </span>
-                                                        <span className="time_rooom class_room">
+
+                                                    {/* Teacher */}
+                                                    <span className="time_rooom class_room">
                                                         <span className="room_title">
-                                                                {
+                                                            {
                                                                 r.b_teacher
-                                                                        ?.teacher
-                                                                        ?.name
+                                                                    ?.teacher
+                                                                    ?.name
                                                             }
-                                                            </span>
-                                                            <span className="dash_title">
+                                                        </span>
+                                                        <span className="dash_title">
                                                             -
-                                                            </span>
+                                                        </span>
                                                         <span className="room_number">
                                                             sir
-                                                            </span>
                                                         </span>
+                                                    </span>
+                                                </span>
+                                            ) : (
+                                                // NO CLASS
+                                                <span className="no_class_message">
+                                                    No class
                                                 </span>
                                             )}
                                         </td>
