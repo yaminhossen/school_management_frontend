@@ -114,11 +114,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                         label="Leave Application"
                     />
                 )} */}
-                {/* <MenuSingle
+                <MenuSingle
                     to="/leave-application/approved"
                     icon="icon-notepad"
                     label="Leave Application"
-                /> */}
+                />
 
                 <MenuSingle
                     to="/academic-resources"
