@@ -88,5 +88,5 @@ return r.version="2.30.1",s(Oe),r.fn=Y,r.min=m0,r.max=p0,r.now=y0,r.utc=_,r.unix
                         <div class="form_error">
                             ${r.msg}
                         </div>
-                        `))}),window.toaster(`${e.response.status} - ${e.response.statusText}`);let n=document.querySelector(".has_error");n&&setTimeout(()=>{n.scrollIntoView({behavior:"smooth",block:"center"})},300),console.log(e.response)}return Promise.reject(e)});
+                        `))}),window.toaster(`${e.response.statusText}`);let n=document.querySelector(".has_error");n&&setTimeout(()=>{n.scrollIntoView({behavior:"smooth",block:"center"})},300),console.log(e.response)}return Promise.reject(e)});
 //# sourceMappingURL=parent.js.map

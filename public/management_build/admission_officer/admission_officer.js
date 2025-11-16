@@ -88,5 +88,5 @@ return r.version="2.30.1",a(ot),r.fn=X,r.min=Gw,r.max=Qw,r.now=Kw,r.utc=y,r.unix
                         <div class="form_error">
                             ${i.msg}
                         </div>
-                        `))}),window.toaster(`${e.response.status} - validation error`,"error");let a=document.querySelector(".has_error");a&&setTimeout(()=>{a.scrollIntoView({behavior:"smooth",block:"center"})},300)}return console.log(e.response),Promise.reject(e)});
+                        `))}),window.toaster("validation error","error");let a=document.querySelector(".has_error");a&&setTimeout(()=>{a.scrollIntoView({behavior:"smooth",block:"center"})},300)}return console.log(e.response),Promise.reject(e)});
 //# sourceMappingURL=admission_officer.js.map

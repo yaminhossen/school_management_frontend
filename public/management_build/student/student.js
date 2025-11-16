@@ -99,5 +99,5 @@ return r.version="2.30.1",s(qe),r.fn=W,r.min=E1,r.max=D1,r.now=M1,r.utc=g,r.unix
                         <div className="form_error">
                             ${r.msg}
                         </div>
-                        `))}),window.toaster(`${e.response.status} - ${e.response.statusText}`);let n=document.querySelector(".has_error");n&&setTimeout(()=>{n.scrollIntoView({behavior:"smooth",block:"center"})},300),console.log(e.response)}return Promise.reject(e)})});export default II();
+                        `))}),window.toaster(`${e.response.statusText}`);let n=document.querySelector(".has_error");n&&setTimeout(()=>{n.scrollIntoView({behavior:"smooth",block:"center"})},300),console.log(e.response)}return Promise.reject(e)})});export default II();
 //# sourceMappingURL=student.js.map

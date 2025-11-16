@@ -265,5 +265,5 @@ return n.version="2.30.1",i(As),n.fn=le,n.min=h2,n.max=_2,n.now=u2,n.utc=g,n.uni
                         <div class="form_error">
                             ${a.msg}
                         </div>
-                        `))}),window.toaster(`${s.response.status} - validation error`,"error")),Promise.reject(s)});
+                        `))}),window.toaster("validation error","error")),Promise.reject(s)});
 //# sourceMappingURL=admin.js.map

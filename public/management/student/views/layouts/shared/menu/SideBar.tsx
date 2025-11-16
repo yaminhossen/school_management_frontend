@@ -107,13 +107,13 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     icon="icon-notepad"
                     label="Due List"
                 />
-                {sClass !== null && sClass > 5 && (
+                {/* {sClass !== null && sClass > 5 && (
                     <MenuSingle
                         to="/leave-application/approved"
                         icon="icon-notepad"
                         label="Leave Application"
                     />
-                )}
+                )} */}
                 {/* <MenuSingle
                     to="/leave-application/approved"
                     icon="icon-notepad"

@@ -2532,9 +2532,14 @@ const Toast = Swal.mixin({
     },
 });
 window.toaster = function toaster(message, icon = 'success') {
+
+    const cleanMessage = message.includes(' - ')
+        ? message.split(' - ')[1]
+        : message;
+
     Toast.fire({
         icon: icon,
-        title: message,
+        title: cleanMessage,
     });
 };
 

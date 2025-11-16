@@ -88,5 +88,5 @@ return s.version="2.30.1",a(Ye),s.fn=B,s.min=A0,s.max=L0,s.now=F0,s.utc=g,s.unix
                         <div class="form_error">
                             ${r.msg}
                         </div>
-                        `))}),window.toaster(`${e.response.status} - validation error`,"error"),console.log(e.response)),e.response.data.status==403&&window.toaster(`${e.response.data.message}`,"error"),Promise.reject(e)});
+                        `))}),window.toaster("validation error","error"),console.log(e.response)),e.response.data.status==403&&window.toaster(`${e.response.data.message}`,"error"),Promise.reject(e)});
 //# sourceMappingURL=super_admin.js.map
