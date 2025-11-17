@@ -96,9 +96,26 @@ async function update(
     /** store data into database */
     try {
         let data = await models.AccountsModel.findByPk(body.id);
+        let data2 = await models.AccountLogsModel.findOne({
+            where: {
+                account_id: body.id,
+            },
+        });
         if (data) {
             data.update(inputs);
             await data.save();
+            if (data2) {
+                data2.update({
+                    branch_id:
+                        auth_user?.branch_id || auth_user2?.branch_id || 1,
+                    account_id: body.id,
+                    amount: body.opening_balance,
+                    date: body.date,
+                    type: 'income',
+                    creator: user?.id || null,
+                });
+                await data2.save();
+            }
             return response(200, 'data updated', data);
         } else {
             throw new custom_error('Forbidden', 403, 'operation not possible');

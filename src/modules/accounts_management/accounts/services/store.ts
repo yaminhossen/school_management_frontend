@@ -93,12 +93,12 @@ async function store(
         if (data) {
             let al_model = new models.AccountLogsModel();
             let al_input: InferCreationAttributes<typeof al_model> = {
-                branch_id: 1,
+                branch_id: auth_user?.branch_id || auth_user2?.branch_id || 1,
                 account_id: data.id,
                 amount: body.opening_balance,
                 date: body.date,
                 type: 'income',
-                creator: 1,
+                creator: user?.id || null,
             };
             (await al_model.update(al_input)).save();
         }
