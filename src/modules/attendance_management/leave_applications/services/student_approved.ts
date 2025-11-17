@@ -7,7 +7,7 @@ import error_trace from '../helpers/error_trace';
 import custom_error from '../helpers/custom_error';
 import moment from 'moment/moment';
 
-async function teachers_approved(
+async function student_approved(
     fastify_instance: FastifyInstance,
     req: FastifyRequest,
 ): Promise<responseObject> {
@@ -64,17 +64,14 @@ async function teachers_approved(
 
     const whereClause: any = {
         status: show_active_data === 'true' ? 'active' : 'deactive',
-        ...(user?.user_type === 'teacher' && { branch_teacher_id: user?.id }),
-        ...(user?.user_type === 'student' && { branch_student_id: user?.id }),
-        ...(user?.user_type !== 'teacher' &&
-            user?.user_type !== 'student' && { branch_staff_id: user?.id }),
+        branch_student_id: { [Op.ne]: null, [Op.ne]: 0 },
         leave_status: 'approved',
         branch_id: auth_user?.branch_id,
     };
 
     const today = moment().format('YYYY-MM-DD');
     console.log(
-        'todyy---------------------------------------------------------',
+        'threeday---------------------------------------------------------',
         today,
     );
 
@@ -102,6 +99,10 @@ async function teachers_approved(
             {
                 model: leave_type_model,
                 as: 'leave_type',
+            },
+            {
+                model: models.UserStudentsModel,
+                as: 'student',
             },
         ],
     };
@@ -141,4 +142,4 @@ async function teachers_approved(
     }
 }
 
-export default teachers_approved;
+export default student_approved;

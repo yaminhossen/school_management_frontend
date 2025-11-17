@@ -106,6 +106,11 @@ const SideBar: React.FC<Props> = (props: Props) => {
                     label="Leave Application"
                 />
                 <MenuSingle
+                    to="/student-leave/approved"
+                    icon="icon-notepad"
+                    label="Student Leave"
+                />
+                <MenuSingle
                     to="/tasks/pending"
                     icon="icon-notepad"
                     label="Tasks"
