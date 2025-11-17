@@ -96,6 +96,16 @@ const Approved: React.FC<Props> = (props: Props) => {
                                         /> */}
                                         <th>Serial</th>
                                         <TableHeading
+                                            label={`Name`}
+                                            col_name={`name`}
+                                            sort={false}
+                                        />
+                                        <TableHeading
+                                            label={`Image`}
+                                            col_name={`image`}
+                                            sort={false}
+                                        />
+                                        <TableHeading
                                             label={`Type`}
                                             col_name={`type`}
                                             sort={false}
@@ -148,6 +158,20 @@ const Approved: React.FC<Props> = (props: Props) => {
                                                             >
                                                                 {index + 1}
                                                             </span>
+                                                        </td>
+                                                        <td>
+                                                            {i.student?.name}
+                                                        </td>
+                                                        <td>
+                                                            <img
+                                                                src={
+                                                                    i.student
+                                                                        .image ||
+                                                                    undefined
+                                                                }
+                                                                width={40}
+                                                                alt=""
+                                                            />
                                                         </td>
                                                         <td>
                                                             {
