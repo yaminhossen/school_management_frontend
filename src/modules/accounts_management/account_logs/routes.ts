@@ -41,6 +41,16 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.today_income,
         )
         .get(
+            `${prefix}/bank-total`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.bank_total,
+        )
+        .get(
+            `${prefix}/hand-cash`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.hand_cash,
+        )
+        .get(
             `${prefix}/running-month-income`,
             { preHandler: [auth_middleware] },
             controllerInstance.running_month_income,

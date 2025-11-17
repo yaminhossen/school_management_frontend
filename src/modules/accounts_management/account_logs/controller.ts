@@ -37,6 +37,8 @@ import running_month_income from './services/running_month_income';
 import running_month_expense from './services/running_month_expense';
 import current_balance from './services/current_balance';
 import payment_history_auth from './services/payment_history_auth';
+import bank_total from './services/bank_total';
+import hand_cash from './services/hand_cash';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -76,6 +78,16 @@ export default function (fastify: FastifyInstance) {
 
         today_income: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await today_income(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        bank_total: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await bank_total(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        hand_cash: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await hand_cash(fastify, req);
             res.code(data.status).send(data);
         },
 

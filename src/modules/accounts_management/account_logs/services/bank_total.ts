@@ -1,0 +1,92 @@
+import db from '../models/db';
+import { FastifyInstance, FastifyRequest } from 'fastify';
+import { responseObject, anyObject } from '../../../common_types/object';
+import response from '../helpers/response';
+import error_trace from '../helpers/error_trace';
+import custom_error from '../helpers/custom_error';
+import { Op } from 'sequelize';
+import moment from 'moment';
+
+async function bank_total(
+    fastify_instance: FastifyInstance,
+    req: FastifyRequest,
+): Promise<responseObject> {
+    let models = await db();
+    let body = req.body as anyObject;
+    let accountCategoriesModel = models.AccountCategoriesModel;
+    let accountsModel = models.AccountsModel;
+    let params = req.params as any;
+    let user = (req as any).user;
+
+    let auth_user;
+    if (user.user_type === 'admin') {
+        auth_user = await models.UserAdminsModel.findOne({
+            where: {
+                id: user?.id || null,
+            },
+        });
+    } else {
+        auth_user = await models.BranchStaffsModel.findOne({
+            where: {
+                user_staff_id: user?.id || null,
+            },
+        });
+    }
+    const { Op } = require('sequelize'); // make sure this is imported
+    let month3 = moment().format('YYYY-MM-DD');
+
+    const endDate = new Date(month3);
+
+    // Create range: 00:00:00 to 23:59:59 of the same date
+    const startOfDay = new Date(endDate.setHours(0, 0, 0, 0));
+    const endOfDay = new Date(new Date(startOfDay).setHours(23, 59, 59, 999));
+
+    // // Add one day to month2
+    // const endDate = new Date(month3);
+    // endDate.setDate(endDate.getDate());
+    // // const formattedEndDate = endDate.toISOString().split('T')[0]; // Format to YYYY-MM-DD
+    // const formattedEndDate = `${endDate.getFullYear()}-${String(endDate.getMonth() + 1).padStart(2, '0')}-${String(endDate.getDate()).padStart(2, '0')} 00:00:00`;
+
+    // console.log('month 3', formattedEndDate);
+
+    try {
+        let bank_data = await models.AccountsModel.findOne({
+            where: {
+                title: 'Bank',
+                branch_id: auth_user?.branch_id,
+            },
+        });
+        let income = await models.AccountLogsModel.sum('amount', {
+            where: {
+                type: 'income',
+                account_id: bank_data?.id,
+                branch_id: auth_user?.branch_id,
+            },
+        });
+        let expense = await models.AccountLogsModel.sum('amount', {
+            where: {
+                type: 'expense',
+                account_id: bank_data?.id,
+                branch_id: auth_user?.branch_id,
+            },
+        });
+        const amount = income - expense;
+        let balance = amount ?? 0;
+
+        if (balance) {
+            return response(200, 'data founded', { balance });
+        } else {
+            throw new custom_error('not found', 404, 'data not found');
+        }
+    } catch (error: any) {
+        let uid = await error_trace(models, error, req.url, req.params);
+        if (error instanceof custom_error) {
+            error.uid = uid;
+        } else {
+            throw new custom_error('server error', 500, error.message, uid);
+        }
+        throw error;
+    }
+}
+
+export default bank_total;

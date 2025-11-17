@@ -11,6 +11,8 @@ const T1: React.FC<Props> = (props: Props) => {
     const [accdemicCalander, setAccademicCalander] = useState<any[]>([]);
     const [noticeCount, setNoticeCount] = useState(0);
     const [todayIncome, setTodayIncome] = useState(0);
+    const [bankTotal, setBankTotal] = useState(0);
+    const [handCash, setHandCash] = useState(0);
     const [runningMonthIncome, setRunningMonthIncome] = useState(0);
     const [runningMonthExpense, setRunningMonthExpense] = useState(0);
     const [currentBalance, setCurrentBalance] = useState(0);
@@ -48,6 +50,26 @@ const T1: React.FC<Props> = (props: Props) => {
                 '/api/v1/account-logs/today-income',
             );
             setTodayIncome(response.data?.data?.amount);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    // Fetch Bank total INCOME
+    const fetchBankTotal = async () => {
+        try {
+            const response = await axios.get('/api/v1/account-logs/bank-total');
+            setBankTotal(response.data?.data?.balance);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    // Fetch TODAY INCOME
+    const fetchHandCash = async () => {
+        try {
+            const response = await axios.get('/api/v1/account-logs/hand-cash');
+            setHandCash(response.data?.data?.balance);
         } catch (error) {
             console.error('Error fetching notice count:', error);
             setError(error);
@@ -107,6 +129,8 @@ const T1: React.FC<Props> = (props: Props) => {
         await (fetchRunningMonthIncome() as any);
         await (fetchRunningMonthExpense() as any);
         await (fetchCurrentBalance() as any);
+        await (fetchBankTotal() as any);
+        await (fetchHandCash() as any);
         await (fetchTodayExpense() as any);
     }
 
@@ -236,6 +260,14 @@ const T1: React.FC<Props> = (props: Props) => {
                     {
                         title: 'এই মাসের খরচ',
                         value: runningMonthExpense,
+                    },
+                    {
+                        title: 'ব্যাঙ্ক ব্যালেন্স',
+                        value: bankTotal,
+                    },
+                    {
+                        title: 'হ্যান্ড ক্যাশ',
+                        value: handCash,
                     },
                     {
                         title: 'নোটিশ',
