@@ -1,0 +1,10 @@
+{"level":60,"time":1763444537467,"pid":7500,"hostname":"DESKTOP-9421701","file":"","time":"11/18/2025 11:42:17 AM","message":"target not found."}
+{"level":60,"time":1763444543569,"pid":7500,"hostname":"DESKTOP-9421701","file":"","time":"11/18/2025 11:42:23 AM","message":"target not found."}
+{"level":60,"time":1763444544235,"pid":7500,"hostname":"DESKTOP-9421701","file":"services\\today_income.ts:67:19)","time":"11/18/2025 11:42:24 AM","message":"data not found"}
+{"level":60,"time":1763444544661,"pid":7500,"hostname":"DESKTOP-9421701","file":"services\\expense_today.ts:71:19)","time":"11/18/2025 11:42:24 AM","message":"data not found"}
+{"level":60,"time":1763445332040,"pid":7500,"hostname":"DESKTOP-9421701","file":"","time":"11/18/2025 11:55:32 AM","message":"target not found."}
+{"level":60,"time":1763445333024,"pid":7500,"hostname":"DESKTOP-9421701","file":"","time":"11/18/2025 11:55:33 AM","message":"target not found."}
+{"level":60,"time":1763445334297,"pid":7500,"hostname":"DESKTOP-9421701","file":"services\\today_income.ts:67:19)","time":"11/18/2025 11:55:34 AM","message":"data not found"}
+{"level":60,"time":1763445334755,"pid":7500,"hostname":"DESKTOP-9421701","file":"services\\expense_today.ts:71:19)","time":"11/18/2025 11:55:34 AM","message":"data not found"}
+{"level":60,"time":1763445338716,"pid":7500,"hostname":"DESKTOP-9421701","file":"","time":"11/18/2025 11:55:38 AM","message":"target not found."}
+{"level":60,"time":1763445341021,"pid":7500,"hostname":"DESKTOP-9421701","file":"","time":"11/18/2025 11:55:41 AM","message":"target not found."}
