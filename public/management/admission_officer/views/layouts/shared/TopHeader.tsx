@@ -65,7 +65,7 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                     semilight-bg-color="bg-default-light-colo"
                 >
                     <div className="logo-wrapper">
-                        <a href="#/">Nurul Hikma Model Madrasah</a>
+                        <a href="#/">Tech Park School</a>
                     </div>
                 </div>
                 <div

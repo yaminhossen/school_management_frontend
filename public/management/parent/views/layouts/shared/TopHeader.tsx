@@ -28,7 +28,7 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                 >
                     <div className="logo-wrapper">
                         <a href="#/">
-                            Nurul Hikma Model Madrasah
+                            Tech Park School
                             {/* <img
                                 src="https://uniflexlimited.com/wp-content/uploads/2024/05/Untitled-1.png"
                                 className="image-dark"

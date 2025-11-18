@@ -5,7 +5,7 @@ export interface Props {}
 const T1: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
-            <h1>Nurul Hiqamah Model Madrasa</h1>
+            <h1>Tech Park School</h1>
             <h2>Admin Dashboard</h2>
             <div className="menu_list custom_scroll">
                 {/* {menuArray?.map((i: { [key: string]: any }) => {

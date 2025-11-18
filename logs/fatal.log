@@ -1,0 +1,6 @@
+{"level":60,"time":1763445587277,"pid":7500,"hostname":"DESKTOP-9421701","file":"","time":"11/18/2025 11:59:47 AM","message":"target not found."}
+{"level":60,"time":1763445632038,"pid":7500,"hostname":"DESKTOP-9421701","file":"","time":"11/18/2025 12:00:32 PM","message":"target not found."}
+{"level":60,"time":1763445834282,"pid":7500,"hostname":"DESKTOP-9421701","file":"","time":"11/18/2025 12:03:54 PM","message":"target not found."}
+{"level":60,"time":1763445915329,"pid":7500,"hostname":"DESKTOP-9421701","file":"services\\all.ts:142:15)","time":"11/18/2025 12:05:15 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1763445984582,"pid":7500,"hostname":"DESKTOP-9421701","file":"services\\all.ts:109:15)","time":"11/18/2025 12:06:24 PM","message":"WHERE parameter \"branch_id\" has invalid \"undefined\" value"}
+{"level":60,"time":1763447882160,"pid":9812,"hostname":"DESKTOP-9421701","file":"","time":"11/18/2025 12:38:02 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}
