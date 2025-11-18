@@ -10,14 +10,10 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState<any>([]);
     const [error, setError] = useState(null);
 
-    // useEffect(() => {
-    //     // Function to fetch data
-    // }, []);
-
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/admin-users/admin-details',
+                '/api/v1/user-teachers/basic-information',
             );
             setData(response.data.data);
             // setData(response.data);
@@ -43,17 +39,13 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
                     <div className="sidebar-user text-center">
                         <div>
                             <img
-                                className="rounded-circle img-fluid"
-                                style={{
-                                    width: '50px',
-                                    height: '50px',
-                                    objectFit: 'cover',
-                                }}
+                                className="img-50 rounded-circle"
                                 src={
-                                    data?.image ||
-                                    '/assets/dashboard/images/avatar.png'
+                                    data.image
+                                        ? data.image
+                                        : '/assets/dashboard/images/avatar.png'
                                 }
-                                alt="Admission Officer"
+                                alt="Teacher"
                             />
                         </div>
                         <h6 className="mt-3 f-12">{data.name}</h6>

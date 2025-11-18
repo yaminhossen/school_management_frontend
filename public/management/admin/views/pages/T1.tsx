@@ -8,44 +8,6 @@ const T1: React.FC<Props> = (props: Props) => {
             <h1>Tech Park School</h1>
             <h2>Admin Dashboard</h2>
             <div className="menu_list custom_scroll">
-                {/* {menuArray?.map((i: { [key: string]: any }) => {
-                    return (
-                        <div className="menu_apart">
-                            <h4>{i.group}</h4>
-                            <ul>
-                                {i.links?.map(
-                                    (
-                                        link: {
-                                            [key: string]: any;
-                                        },
-                                        index,
-                                    ) => {
-                                        return (
-                                            <li>
-                                                <a
-                                                    aria-current="page"
-                                                    href={link.link}
-                                                    className="router-link-active router-link-exact-active"
-                                                >
-                                                    <div
-                                                        className={`icon bg_color_${index + 1}`}
-                                                    >
-                                                        <span className="material-symbols-outlined fill">
-                                                            {link.icon}
-                                                        </span>
-                                                    </div>
-                                                    <div className="text">
-                                                        {link.label}
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        );
-                                    },
-                                )}
-                            </ul>
-                        </div>
-                    );
-                })} */}
                 <h3 className="mt-4 ms-0">User management</h3>
                 <ul className="dashboard_links ">
                     <li>
@@ -92,34 +54,10 @@ const T1: React.FC<Props> = (props: Props) => {
                             Tasks Management
                         </Link>
                     </li>
-                    {/* <li>
-                        <Link to="/task-variants">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Task Variants Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/task-groups">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Task Groups Management
-                        </Link>
-                    </li> */}
                 </ul>
 
                 <h3 className="mt-4 ms-0">Branch management</h3>
                 <ul className="dashboard_links ">
-                    {/* <li>
-                        <Link to="/branches">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            branches Management
-                        </Link>
-                    </li> */}
                     <li>
                         <Link to="/branch-buildings">
                             <span className="material-symbols-outlined fill">
@@ -204,14 +142,6 @@ const T1: React.FC<Props> = (props: Props) => {
                             Class Routine At A Glance
                         </Link>
                     </li>
-                    {/* <li>
-                        <Link to="/branch-class-resources">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Class Resources
-                        </Link>
-                    </li> */}
                     <li>
                         <Link to="/exams">
                             <span className="material-symbols-outlined fill">
@@ -252,22 +182,6 @@ const T1: React.FC<Props> = (props: Props) => {
                             Student Evaluation Criteria
                         </Link>
                     </li>
-                    {/* <li>
-                        <Link to="/teacher-overall-evaluations">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Teacher Overall Evaluation
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/teacher-evaluation-criterias">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Teacher Evaluation Criteria
-                        </Link>
-                    </li> */}
                 </ul>
 
                 <h3 className="mt-4 ms-0">Fees management</h3>
@@ -288,30 +202,6 @@ const T1: React.FC<Props> = (props: Props) => {
                             Class Fees
                         </Link>
                     </li>
-                    {/* <li>
-                        <Link to="/branch-class-fee-discounts">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Class Fee Discounts
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/branch-class-fee-waivers">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Class Fee Waivers
-                        </Link>
-                    </li> */}
-                    {/* <li>
-                        <Link to="/fees-collection">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Fees Collections
-                        </Link>
-                    </li> */}
                     <li>
                         <Link to="/user-students">
                             <span className="material-symbols-outlined fill">
@@ -320,14 +210,6 @@ const T1: React.FC<Props> = (props: Props) => {
                             Due List
                         </Link>
                     </li>
-                    {/* <li>
-                        <Link to="/branch-class-fee-types">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Payment History
-                        </Link>
-                    </li> */}
                 </ul>
 
                 <h3 className="mt-4 ms-0">Meeting management</h3>
@@ -360,14 +242,6 @@ const T1: React.FC<Props> = (props: Props) => {
                             Account Management
                         </Link>
                     </li>
-                    {/* <li>
-                        <Link to="/account-periods">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Account period Management
-                        </Link>
-                    </li> */}
                     <li>
                         <Link to="/account-categories">
                             <span className="material-symbols-outlined fill">
@@ -376,14 +250,6 @@ const T1: React.FC<Props> = (props: Props) => {
                             Account category Management
                         </Link>
                     </li>
-                    {/* <li>
-                        <Link to="/leadger">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Leadger
-                        </Link>
-                    </li> */}
                     <li>
                         <Link to="/journal">
                             <span className="material-symbols-outlined fill">
@@ -428,38 +294,6 @@ const T1: React.FC<Props> = (props: Props) => {
 
                 <h3 className="mt-4 ms-0">HRM management</h3>
                 <ul className="dashboard_links ">
-                    {/* <li>
-                        <Link to="/user-staffs">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Employee Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/user-teachers">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Teachers Management
-                        </Link>
-                    </li> */}
-                    {/* <li>
-                        <Link to="/fees-collections">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Attendances Management
-                        </Link>
-                    </li> */}
-                    {/* <li>
-                        <Link to="/journals">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Payroll Management
-                        </Link>
-                    </li> */}
                     <li>
                         <Link to="/leave-applications/pending">
                             <span className="material-symbols-outlined fill">
@@ -528,14 +362,6 @@ const T1: React.FC<Props> = (props: Props) => {
                             Settings Management
                         </Link>
                     </li>
-                    {/* <li>
-                        <Link to="/app-settings">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            App Management
-                        </Link>
-                    </li> */}
                 </ul>
             </div>
         </div>

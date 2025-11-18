@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavbarSwitch from './NavbarSwitch';
+import { anyObject } from '../../../../admin/common_types/object';
 import axios from 'axios';
-import { anyObject } from '../../../common_types/object';
+// import { unseen_tasks } from '../../pages/tasks/config/store/async_actions/unseen_tasks';
+// import storeSlice from '../../pages/tasks/config/store';
 // import { initialState } from '../../pages/tasks/config/store/inital_state';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../../store';
 // import setup from '../../pages/tasks/config/setup';
-// import storeSlice from '../../pages/tasks/config/store';
-// import { unseen_tasks } from '../../pages/tasks/config/store/async_actions/unseen_tasks';
 
 export interface Props {}
 
@@ -22,7 +22,6 @@ const TopHeader: React.FC<Props> = (props: Props) => {
     //     dispatch(storeSlice.actions.set_select_fields('id, status'));
     //     dispatch(unseen_tasks({}) as any);
     // }, []);
-
     const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
@@ -30,33 +29,12 @@ const TopHeader: React.FC<Props> = (props: Props) => {
         try {
             let confirm = await (window as anyObject).s_confirm('Logout');
             if (confirm) {
-                await axios.post('/api/v1/auth/logout');
+                await axios.post('/api/v1/auth/teacher/logout');
             }
-            // const response = await axios.post('/api/v1/auth/teacher/logout');
-            // console.log('response123', response);
-            // if(response.status)
         } catch (error) {
             setError(error);
         }
     };
-    const [error2, setError2] = useState(null);
-    const [data, setData] = useState([]);
-
-    // const fetchData = async () => {
-    //     try {
-    //         const response = await axios.get('/api/v1/tasks/unseen-tasks');
-    //         setData(response.data.data);
-    //         // setData(response.data);
-    //     } catch (error) {
-    //         setError2(error);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     fetchData();
-    // }, []);
-    // console.log('unseen tasks', state.item);
-
     return (
         <>
             <div className="page-main-header">
@@ -65,7 +43,17 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                     semilight-bg-color="bg-default-light-colo"
                 >
                     <div className="logo-wrapper">
-                        <a href="#/">Tech Park School</a>
+                        <a href="#/">
+                            Tech Park School
+                            {/* <img
+                                src="https://uniflexlimited.com/wp-content/uploads/2024/05/Untitled-1.png"
+                                className="image-dark"
+                            />
+                            <img
+                                src="https://uniflexlimited.com/wp-content/uploads/2024/05/Untitled-1.png"
+                                className="image-light"
+                            /> */}
+                        </a>
                     </div>
                 </div>
                 <div
@@ -77,7 +65,7 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                         <ul className="nav-menus">
                             {/* <li className="notification-bell">
                                 <a
-                                    href="/admission-officer#/tasks/pending"
+                                    href="/teacher#/tasks/pending"
                                     className="text-dark"
                                 >
                                     <i className="icon-bell" />
@@ -88,6 +76,11 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                             </li> */}
                             <li className="onhover-dropdown">
                                 <div className="d-flex align-items-center">
+                                    {/* <img
+                                        className="align-self-center pull-right flex-shrink-0 me-2"
+                                        src="/assets/dashboard_uni/user.png"
+                                        alt="header-user"
+                                    /> */}
                                     <div>
                                         <h6 className="m-0 txt-dark f-16">
                                             My Account
@@ -97,7 +90,7 @@ const TopHeader: React.FC<Props> = (props: Props) => {
                                 </div>
                                 <ul className="profile-dropdown onhover-show-div p-20">
                                     <li>
-                                        <a href="/admission-officer#/settings">
+                                        <a href="/teacher#/settings">
                                             <i className="icon-user" />
                                             Edit Profile
                                         </a>
