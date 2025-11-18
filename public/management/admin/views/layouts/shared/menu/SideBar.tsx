@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MenuDropDown from './MenuDropDown';
 import MenuDropDownItem from './MenuDropDownItem';
 import MenuSingle from './MenuSingle';
@@ -9,10 +9,20 @@ export interface Props {}
 
 const SideBar: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    setTimeout(() => {
-        init_nav_action();
-        active_link(window.location.href);
-    }, 1000);
+    
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            // Check if jQuery is available
+            if (typeof (window as any).$ !== 'undefined' || typeof (window as any).jQuery !== 'undefined') {
+                init_nav_action();
+                active_link(window.location.href);
+            }
+        }, 1000);
+        
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
@@ -88,7 +98,7 @@ const SideBar: React.FC<Props> = (props: Props) => {
 
                 {/* Academic Management */}
                 <MenuDropDown
-                    icon="icon-book-open"
+                    icon="icon-briefcase"
                     group_title="Academic Management"
                 >
                     <MenuDropDownItem to="/branch-classes" label="Classes" />
@@ -175,7 +185,7 @@ const SideBar: React.FC<Props> = (props: Props) => {
                 </MenuDropDown>
 
                 {/* HRM Management */}
-                <MenuDropDown icon="icon-people" group_title="HRM Management">
+                <MenuDropDown icon="icon-user" group_title="HRM Management">
                     <MenuDropDownItem
                         to="/leave-applications/pending"
                         label="Leave Management"
@@ -219,27 +229,59 @@ const SideBar: React.FC<Props> = (props: Props) => {
 };
 
 function active_link(hash) {
-    let url = new URL(hash);
-    (window as any).$(`.sidebar-submenu a`).removeClass('active');
-    (window as any)
-        .$(`.sidebar-submenu a[href="${url.hash}"]`)
-        .addClass('active');
+    try {
+        let url = new URL(hash);
+        const $ = (window as any).$ || (window as any).jQuery;
+        if ($) {
+            $(`.sidebar-submenu a`).removeClass('active');
+            $(`.sidebar-submenu a[href="${url.hash}"]`).addClass('active');
+        }
+    } catch (error) {
+        console.error('Error in active_link:', error);
+    }
 }
+
 function init_nav_action() {
-    var animationSpeed = 300,
-        subMenuSelector = '.sidebar-submenu';
-    (window as any).$('.sidebar-menu').on('click', 'li a', function (e) {
-        var $this = (window as any).$(this);
+    const $ = (window as any).$ || (window as any).jQuery;
+    
+    if (!$) {
+        console.error('jQuery is not available');
+        return;
+    }
+    
+    var animationSpeed = 300;
+    var subMenuSelector = '.sidebar-submenu';
+    
+    // Remove any existing event handlers first to prevent duplicates
+    $('.sidebar-menu').off('click.sidebarMenu');
+    
+    // Use namespaced event to prevent conflicts
+    $('.sidebar-menu').on('click.sidebarMenu', 'li a', function (e) {
+        var $this = $(this);
         var checkElement = $this.next();
-        if (checkElement.is(subMenuSelector) && checkElement.is(':visible')) {
+        
+        // Check if this link has a submenu next to it
+        var hasSubmenu = checkElement.length > 0 && checkElement.is(subMenuSelector);
+        
+        // If it doesn't have a submenu, it's a regular link - let it navigate
+        if (!hasSubmenu) {
+            // This is a regular menu item, let it navigate
+            if (e.target && e.target.href && e.target.href.includes('http')) {
+                active_link(e.target.href);
+            }
+            return true; // Allow default navigation
+        }
+
+        // This has a submenu - prevent default and toggle dropdown
+        e.preventDefault();
+
+        // Toggle the dropdown
+        if (checkElement.is(':visible')) {
             checkElement.slideUp(animationSpeed, function () {
                 checkElement.removeClass('menu-open');
             });
             checkElement.parent('li').removeClass('active');
-        } else if (
-            checkElement.is(subMenuSelector) &&
-            !checkElement.is(':visible')
-        ) {
+        } else {
             var parent = $this.parents('ul').first();
             var ul = parent.find('ul:visible').slideUp(animationSpeed);
             ul.removeClass('menu-open');
@@ -250,10 +292,8 @@ function init_nav_action() {
                 parent_li.addClass('active');
             });
         }
-
-        if (e.target && e.target.href && e.target.href.includes('http')) {
-            active_link(e.target.href);
-        }
+        
+        return false; // Prevent default for dropdown headers
     });
 }
 
