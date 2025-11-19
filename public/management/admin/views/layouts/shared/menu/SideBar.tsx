@@ -29,7 +29,7 @@ const SideBar: React.FC<Props> = (props: Props) => {
         try {
             let confirm = await (window as anyObject).s_confirm('Logout');
             if (confirm) {
-                await axios.post('/api/v1/auth/teacher/logout');
+                await axios.post('/api/v1/auth/logout');
             }
         } catch (error) {
             setError(error);

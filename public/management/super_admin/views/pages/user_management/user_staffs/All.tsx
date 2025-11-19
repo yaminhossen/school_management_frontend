@@ -263,7 +263,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                     <td>
                                                         {i.role_2 ===
                                                         'admin' ? (
-                                                                <button
+                                                                <button style={{color: 'white'}}
                                                                     className="btn btn_submit"
                                                                     onClick={(e) =>
                                                                         handleSubmit2(
@@ -276,6 +276,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 </button>
                                                             ) : (
                                                                 <button
+                                                                 style={{color: 'white'}}
                                                                     className="btn btn_submit"
                                                                     onClick={(e) =>
                                                                         handleSubmit(

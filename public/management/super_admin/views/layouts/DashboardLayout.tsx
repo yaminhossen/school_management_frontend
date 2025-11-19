@@ -1,41 +1,99 @@
-import React, { useState } from 'react';
-import CommonAppWindow from '../components/CommonAppWindow';
-import AppNav from './shared/AppNav';
+import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import TopHeader from './shared/TopHeader';
+import SideBar from './shared/menu/SideBar';
+import axios from 'axios';
 
 export interface Props {}
 
 const DashboardLayout: React.FC<Props> = (props: Props) => {
+    const [data, setData] = useState<any>([]);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/user-staffs/admin-details',
+            );
+            setData(response.data.data);
+            // setData(response.data);
+        } catch (error) {
+            setError(error);
+        }
+    };
+    // const fetchTypes = async () => {
+    //     try {
+    //         const response2 = await axios.get(
+    //             `/api/v1/user-students/fees-categories-student`,
+    //         );
+    //         setFeesTypes(response2.data?.data?.idWiseTotals);
+    //         setTotalAmount(response2.data?.data?.summeries);
+    //     } catch (error) {
+    //         setError2(error);
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
+    async function initdependancy() {
+        // await new Promise((resolve) => setTimeout(resolve, 200));
+        await (fetchData() as any);
+        // await (fetchTypes() as any);
+    }
+
+    // useEffect(() => {
+    //     initdependancy();
+    // }, []);
+    useEffect(() => {
+        const init = async () => {
+            await fetchData(); // your function
+            setLoading(false); // allow children now
+        };
+        init();
+    }, []);
     return (
-        <div>
-            <div className="app_body">
-                <div className="app_window custom_scroll">
-                    {/* <CommonAppWindow></CommonAppWindow> */}
-                    <Outlet></Outlet>
+        <div className="page-wrapper">
+            {/*Page Header Start*/}
+            <TopHeader></TopHeader>
+            {/*Page Header Ends*/}
+
+            {/*Page Body Start*/}
+            <div className="page-body-wrapper">
+                {/*Page Sidebar Start*/}
+                <div className="page-sidebar custom-scrollbar">
+                    <div className="sidebar-user text-center">
+                        <div>
+                            <img
+                                className="img-50 rounded-circle"
+                                src={
+                                    data?.image || '/assets/dashboard_uni/1.jpg'
+                                }
+                                alt="Teacher"
+                            />
+                        </div>
+                        <h6 className="mt-3 f-12">{data?.name}</h6>
+                    </div>
+                    <SideBar />
                 </div>
-                <div>
-                    <div className="home_time_and_date d-none">
-                        <div className="home_time_and_date_body">
-                            <div className="date">
-                                <div className="day">Monday</div>
-                                <div className="month">
-                                    <div className="month_name">April</div>
-                                    <div className="">22</div>
-                                </div>
-                            </div>
-                            <div className="time">
-                                <div className="amt hour">01</div>
-                                <div className="divider">:</div>
-                                <div className="amt min">18</div>
-                                <div className="divider">:</div>
-                                <div className="amt sec">56</div>
-                                <div className="med">am</div>
-                            </div>
+                {/*Page Sidebar Ends*/}
+                <div
+                    className="page-body custom_scroll"
+                    style={{
+                        height: 'calc(100vh - 80px)',
+                        overflow: 'hidden',
+                        overflowY: 'scroll',
+                    }}
+                >
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <Outlet />
                         </div>
                     </div>
                 </div>
             </div>
-            <AppNav />
+            {/*Page Body Ends*/}
         </div>
     );
 };

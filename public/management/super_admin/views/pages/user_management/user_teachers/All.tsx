@@ -257,6 +257,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                             {i.role_2 ===
                                                             'admin' ? (
                                                                 <button
+                                                                 style={{color: 'white'}}
                                                                         className="btn btn_submit"
                                                                     onClick={(
                                                                         e,
@@ -271,6 +272,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 </button>
                                                                 ) : (
                                                                     <button
+                                                                     style={{color: 'white'}}
                                                                         className="btn btn_submit"
                                                                     onClick={(
                                                                         e,

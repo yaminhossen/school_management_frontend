@@ -13,7 +13,7 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                '/api/v1/user-teachers/basic-information',
+                '/api/v1/admin-users/admin-details',
             );
             setData(response.data.data);
             // setData(response.data);
@@ -48,7 +48,7 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
                                 alt="Teacher"
                             />
                         </div>
-                        <h6 className="mt-3 f-12">{data.name}</h6>
+                        <h6 className="mt-3 f-12">{data?.name}</h6>
                     </div>
                     <SideBar />
                 </div>
