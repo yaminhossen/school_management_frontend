@@ -24,6 +24,7 @@ import staff_all_task_user from './services/staff_all_task_user';
 import admin_details from './services/admin_details';
 import staff_details from './services/staff_details';
 import branch_staffs from './services/branch_staffs';
+import total_staffs from './services/total_staffs';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -45,6 +46,10 @@ export default function (fastify: FastifyInstance) {
         },
         staff_details: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await staff_details(fastify, req);
+            res.code(data.status).send(data);
+        },
+        total_staffs: async function (req: FastifyRequest, res: FastifyReply) {
+            let data: responseObject = await total_staffs(fastify, req);
             res.code(data.status).send(data);
         },
         basic_information: async function (

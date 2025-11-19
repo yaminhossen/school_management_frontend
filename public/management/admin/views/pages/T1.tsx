@@ -9,7 +9,9 @@ const T1: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState();
     const [accdemicCalander, setAccademicCalander] = useState<any[]>([]);
-    const [noticeCount, setNoticeCount] = useState(0);
+    const [totalStudents, setTotalStudents] = useState(0);
+    const [totalTeachers, setTotalTeachers] = useState(0);
+    const [totalStaffs, setTotalStaffs] = useState(0);
     const [todayIncome, setTodayIncome] = useState(0);
     const [bankTotal, setBankTotal] = useState(0);
     const [handCash, setHandCash] = useState(0);
@@ -34,15 +36,43 @@ const T1: React.FC<Props> = (props: Props) => {
     const formattedDate = `${month}-${year}`;
 
     // Fetch notice count
-    // const fetchNoticeCount = async () => {
-    //     try {
-    //         const response = await axios.get('/api/v1/notices/all/accountant');
-    //         setNoticeCount(response.data.data.length);
-    //     } catch (error) {
-    //         console.error('Error fetching notice count:', error);
-    //         setError(error);
-    //     }
-    // };
+    const fetchTotalStudents = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/user-students/total-students',
+            );
+            setTotalStudents(response.data?.data?.total_students);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+
+    // Fetch notice count
+    const fetchTotalTeachers = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/user-teachers/total-teachers',
+            );
+            setTotalTeachers(response.data?.data?.total_teachers);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+
+    // Fetch notice count
+    const fetchTotalStaffs = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/user-staffs/total-staffs',
+            );
+            setTotalStaffs(response.data?.data?.total_staffs);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
     // Fetch TODAY INCOME
     const fetchTodayIncome = async () => {
         try {
@@ -124,7 +154,9 @@ const T1: React.FC<Props> = (props: Props) => {
         }
     };
     async function initdependancy() {
-        // await (fetchNoticeCount() as any);
+        await (fetchTotalStudents() as any);
+        await (fetchTotalTeachers() as any);
+        await (fetchTotalStaffs() as any);
         await (fetchTodayIncome() as any);
         await (fetchRunningMonthIncome() as any);
         await (fetchRunningMonthExpense() as any);
@@ -269,10 +301,18 @@ const T1: React.FC<Props> = (props: Props) => {
                         title: 'হ্যান্ড ক্যাশ',
                         value: handCash,
                     },
-                    // {
-                    //     title: 'নোটিশ',
-                    //     value: noticeCount,
-                    // },
+                    {
+                        title: 'মোট ছাত্রছাত্রী',
+                        value: totalStudents,
+                    },
+                    {
+                        title: 'মোট শিক্ষক',
+                        value: totalTeachers,
+                    },
+                    {
+                        title: 'অন্যান্য স্টাফ',
+                        value: totalStaffs,
+                    },
                     // {
                     //     title: 'টাস্ক',
                     //     // value: taskCount,
