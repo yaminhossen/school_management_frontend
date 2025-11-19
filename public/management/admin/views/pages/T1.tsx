@@ -1,368 +1,372 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../common_types/object';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const T1: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+    const [data, setData] = useState();
+    const [accdemicCalander, setAccademicCalander] = useState<any[]>([]);
+    const [noticeCount, setNoticeCount] = useState(0);
+    const [todayIncome, setTodayIncome] = useState(0);
+    const [bankTotal, setBankTotal] = useState(0);
+    const [handCash, setHandCash] = useState(0);
+    const [runningMonthIncome, setRunningMonthIncome] = useState(0);
+    const [runningMonthExpense, setRunningMonthExpense] = useState(0);
+    const [currentBalance, setCurrentBalance] = useState(0);
+    const [todayExpense, setTodayExpense] = useState(0);
+    // console.log(accdemicCalander);
+
+    const [selectedDate, setSelectedDate] = useState(
+        moment().format('YYYY-MM-DD'),
+    ); // Default to today's date
+
+    const handleDateChange = (event) => {
+        setSelectedDate(event.target.value); // Update the selected date
+    };
+
+    // Dynamically format month and year based on the selected date
+    const selectedMoment = moment(selectedDate);
+    const month = selectedMoment.format('MMM').toLowerCase(); // e.g., "jan"
+    const year = selectedMoment.format('YYYY'); // e.g., "2025"
+    const formattedDate = `${month}-${year}`;
+
+    // Fetch notice count
+    // const fetchNoticeCount = async () => {
+    //     try {
+    //         const response = await axios.get('/api/v1/notices/all/accountant');
+    //         setNoticeCount(response.data.data.length);
+    //     } catch (error) {
+    //         console.error('Error fetching notice count:', error);
+    //         setError(error);
+    //     }
+    // };
+    // Fetch TODAY INCOME
+    const fetchTodayIncome = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/account-logs/today-income',
+            );
+            setTodayIncome(response.data?.data?.amount);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    // Fetch Bank total INCOME
+    const fetchBankTotal = async () => {
+        try {
+            const response = await axios.get('/api/v1/account-logs/bank-total');
+            setBankTotal(response.data?.data?.balance);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    // Fetch TODAY INCOME
+    const fetchHandCash = async () => {
+        try {
+            const response = await axios.get('/api/v1/account-logs/hand-cash');
+            setHandCash(response.data?.data?.balance);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    // Fetch TODAY INCOME
+    const fetchCurrentBalance = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/account-logs/current-balance',
+            );
+            setCurrentBalance(response.data?.data?.balance);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    // Fetch running month income
+    const fetchRunningMonthIncome = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/account-logs/running-month-income',
+            );
+            setRunningMonthIncome(response.data?.data?.amount);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    // Fetch running month income
+    const fetchRunningMonthExpense = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/account-logs/running-month-expense',
+            );
+            setRunningMonthExpense(response.data?.data?.amount);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    // Fetch Today Expense
+    const fetchTodayExpense = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/account-logs/expense-today',
+            );
+            setTodayExpense(response.data?.data?.eamount);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    async function initdependancy() {
+        // await (fetchNoticeCount() as any);
+        await (fetchTodayIncome() as any);
+        await (fetchRunningMonthIncome() as any);
+        await (fetchRunningMonthExpense() as any);
+        await (fetchCurrentBalance() as any);
+        await (fetchBankTotal() as any);
+        await (fetchHandCash() as any);
+        await (fetchTodayExpense() as any);
+    }
+
+    useEffect(() => {
+        initdependancy();
+    }, []);
+
+    // useEffect(() => {
+    //     fetchNoticeCount();
+    //     fetchTodayIncome();
+    //     fetchTodayExpense();
+    // }, []);
+    console.log(todayIncome);
+    let days = [
+        'saturday',
+        'sunday',
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+    ];
+
+    function dateFormate(date: string) {
+        return moment(date).format('dddd').toLowerCase();
+    }
+    // console.log('date', dateFormate('2024-09-07T00:00:00.000Z'));
+
+    function get_day_data(i, day) {
+        if (dateFormate(i.date) === day) {
+            return (
+                <li className="absent">
+                    <time dateTime="2022-02-02">{i.id}</time>
+                    <div className="text-warning">
+                        <i className="icon-close"></i>
+                        <span className="event_title">Class Present</span>
+                    </div>
+                </li>
+            );
+        } else {
+            return (
+                <li className="absent">
+                    <time dateTime="2022-02-02">{i.id}</time>
+                </li>
+            );
+        }
+    }
+
+    const fetchAccedemicCalenderData = async () => {
+        try {
+            const response = await axios.post(
+                '/api/v1/academic-calendars/get-academic-event-by-month',
+                {
+                    month: formattedDate,
+                    branch_id: 1,
+                },
+            );
+
+            // Assuming setAccademicCalander is a state setter function
+            setAccademicCalander(response.data.data);
+
+            // Clear any previous errors
+            setError(null);
+        } catch (error) {
+            console.error('Error fetching academic calendar data:', error);
+            setError(error); // Assuming setError is a state setter for errors
+        }
+    };
+    useEffect(() => {
+        fetchAccedemicCalenderData();
+    }, [selectedDate]);
+
+    let array: any[][] = [];
+    let count = 0;
+
+    // Initialize the 2D array
+    for (let i = 0; i < 5; i++) {
+        array[i] = []; // Initialize each row
+
+        for (let j = 0; j < 7; j++) {
+            if (count < accdemicCalander.length) {
+                array[i][j] = accdemicCalander[count] || { date: '', day: '' };
+                count++;
+            } else {
+                continue;
+            }
+        }
+    }
     return (
-        <div className="admin_dashboard">
-            <h1>Tech Park School</h1>
-            <h2>Admin Dashboard</h2>
-            <div className="menu_list custom_scroll">
-                <h3 className="mt-4 ms-0">User management</h3>
-                <ul className="dashboard_links ">
-                    <li>
-                        <Link to="/user-staffs">
-                            <span className="material-symbols-outlined fill">
-                                groups
+        <div className="custom_scroll">
+            <div className="name my-3">
+                <h2>Welcome to the Admin Panel</h2>
+            </div>
+            {/* analytics */}
+            <div
+                className="mt-4"
+                style={{
+                    display: 'grid',
+                    gap: '30px',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr)',
+                }}
+            >
+                {[
+                    // 'কারেন্ট ব্যালেঞ্চ',
+                    // 'আজকের ইনকাম',
+                    // 'আজকের খরচ',
+                    // 'এই মাসের ইনকাম',
+                    // 'এই মাসের খরচ',
+                    // 'টোটাল খরচ',
+                    // 'বকেয়া',
+                    {
+                        title: 'কারেন্ট ব্যালেঞ্চ',
+                        value: currentBalance,
+                    },
+                    {
+                        title: 'আজকের ইনকাম',
+                        value: todayIncome,
+                    },
+                    {
+                        title: 'আজকের খরচ',
+                        value: todayExpense,
+                    },
+                    {
+                        title: 'এই মাসের ইনকাম',
+                        value: runningMonthIncome,
+                    },
+                    {
+                        title: 'এই মাসের খরচ',
+                        value: runningMonthExpense,
+                    },
+                    {
+                        title: 'ব্যাঙ্ক ব্যালেন্স',
+                        value: bankTotal,
+                    },
+                    {
+                        title: 'হ্যান্ড ক্যাশ',
+                        value: handCash,
+                    },
+                    // {
+                    //     title: 'নোটিশ',
+                    //     value: noticeCount,
+                    // },
+                    // {
+                    //     title: 'টাস্ক',
+                    //     // value: taskCount,
+                    // },
+                ].map((i) => {
+                    return (
+                        <div className="card w-100" data-intro="This is card">
+                            <div className="business-top-widget card-body">
+                                <h5 className="mb-2">{i.title}</h5>
+                                <div className="media d-inline-flex">
+                                    <div className="media-body">
+                                        <h2 className="total-value m-0 counter">
+                                            {/* {Math.round(Math.random() * 1000)} */}
+                                            {i.value}
+                                        </h2>
+                                    </div>
+                                    <i
+                                        style={{ opacity: '.4' }}
+                                        className="icon-bar-chart font-info align-self-center"
+                                    ></i>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+            {/* attendance calendar */}
+            <div className="calendar_dashboard mt-4">
+                <div className="card mx-auto">
+                    <div className="card-header d-flex justify-content-between flex-wrap">
+                        <h5>
+                            <i className="icon-calendar me-2"></i>
+                            Academic Calendar
+                        </h5>
+                        <h5>
+                            {formattedDate}
+                            <span className="ml-2">
+                                <input
+                                    type="date"
+                                    value={selectedDate}
+                                    onChange={handleDateChange}
+                                />
                             </span>
-                            Employee Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/user-teachers">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Teachers Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/user-parents">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Parents Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/user-students">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Students Management
-                        </Link>
-                    </li>
-                </ul>
-
-                <h3 className="mt-4 ms-0">Todo management</h3>
-                <ul className="dashboard_links ">
-                    <li>
-                        <Link to="/tasks">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Tasks Management
-                        </Link>
-                    </li>
-                </ul>
-
-                <h3 className="mt-4 ms-0">Branch management</h3>
-                <ul className="dashboard_links ">
-                    <li>
-                        <Link to="/branch-buildings">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            branch Buildings Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/branch-building-rooms">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Branch Building Rooms Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/branch-transport-drivers">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Branch Transport Drivers Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/branch-transports">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Branch Transports Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/academic-calendar-event-types">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Academic Calendar Event Type Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/academic-calendars">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Academic Calendars Management
-                        </Link>
-                    </li>
-                </ul>
-
-                <h3 className="mt-4 ms-0">Academic management</h3>
-                <ul className="dashboard_links ">
-                    <li>
-                        <Link to="/branch-classes">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Classes
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/branch-class-sections">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Class Section
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/branch-class-subjects">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Class Subjects
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/branch-class-routine-day-times/class-routine">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Class Routine At A Glance
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/exams">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Exam Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/exam-routines/at-a-glance">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Exam Routine At a glance
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/exam-routines">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Exam Routine Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/student-overall-evaluations">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Student Overall Evaluation
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/student-evaluation-criterias">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Student Evaluation Criteria
-                        </Link>
-                    </li>
-                </ul>
-
-                <h3 className="mt-4 ms-0">Fees management</h3>
-                <ul className="dashboard_links ">
-                    <li>
-                        <Link to="/branch-class-fee-types">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Class Fee types
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/branch-class-fees">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Class Fees
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/user-students">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Due List
-                        </Link>
-                    </li>
-                </ul>
-
-                <h3 className="mt-4 ms-0">Meeting management</h3>
-                <ul className="dashboard_links ">
-                    <li>
-                        <Link to="/meeting">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Meetings Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/meeting-agendas">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Meeting Agendas Management
-                        </Link>
-                    </li>
-                </ul>
-
-                <h3 className="mt-4 ms-0">Account management</h3>
-                <ul className="dashboard_links ">
-                    <li>
-                        <Link to="/accounts">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Account Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/account-categories">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Account category Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/journal">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Journal
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/debit">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Debit
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/credit">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Credit
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/profit-loss">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Profit And Loss
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/month-wise-statement">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Month Wise Statement
-                        </Link>
-                    </li>
-                </ul>
-
-                <h3 className="mt-4 ms-0">HRM management</h3>
-                <ul className="dashboard_links ">
-                    <li>
-                        <Link to="/leave-applications/pending">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Leave Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/leave-types">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Leave Type Management
-                        </Link>
-                    </li>
-                </ul>
-
-                <h3 className="mt-4 ms-0">Notice management</h3>
-                <ul className="dashboard_links ">
-                    <li>
-                        <Link to="/notice-categorys">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Notice Category Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/notices">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Notice Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/faqs">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            FAQ Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/policies">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Policy Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/contact-supports">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Contact Support
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/settings">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Settings Management
-                        </Link>
-                    </li>
-                </ul>
+                        </h5>
+                    </div>
+                    <div className="card-body">
+                        <ul>
+                            {array.map((value, vIndex) =>
+                                value.map((element, eIndex) => (
+                                    <>
+                                        {
+                                            <li
+                                                key={`${vIndex}- ${eIndex}`}
+                                                className={`${element.day === 5 ? 'absent' : ''} || ${moment(element.date).isSame(moment(), 'day') ? 'today' : ''}`}
+                                            >
+                                                <time dateTime={element.date}>
+                                                    {moment(
+                                                        element.date,
+                                                    ).format('D')}{' '}
+                                                </time>
+                                                {/* {element.day} */}
+                                                {moment(element.date).format(
+                                                    'dddd',
+                                                )}
+                                                <div
+                                                    className={`text-${element.events?.length ? 'warning' : 'info'}`}
+                                                >
+                                                    {element.events?.map(
+                                                        (ev, i) => (
+                                                            <div
+                                                                key={i}
+                                                                className="event"
+                                                            >
+                                                                <i className="icon-check-box"></i>
+                                                                <span className="event_title">
+                                                                    {
+                                                                        ev.event_name
+                                                                    }
+                                                                </span>
+                                                            </div>
+                                                        ),
+                                                    )}
+                                                </div>
+                                            </li>
+                                        }
+                                    </>
+                                )),
+                            )}
+                        </ul>
+                        {/* <ul>
+                            {days.map((index, day) => get_day_data(index, day))}
+                        </ul> */}
+                    </div>
+                </div>
             </div>
         </div>
     );

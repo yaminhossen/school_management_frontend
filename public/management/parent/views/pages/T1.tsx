@@ -129,7 +129,9 @@ const T1: React.FC<Props> = (props: Props) => {
                 continue;
             }
         }
+        console.log('array calendar', array);
     }
+    
     return (
         <div className="custom_scroll">
             <div className="name my-3">
