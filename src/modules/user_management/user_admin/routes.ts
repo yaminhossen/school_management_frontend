@@ -15,6 +15,11 @@ module.exports = async function (fastify: FastifyInstance) {
             { preHandler: [auth_middleware] },
             controllerInstance.admin_details,
         )
+        .get(
+            `${prefix}/all-branch-admins`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all_branch_admins,
+        )
         .post(`${prefix}/make-admin/:id`, controllerInstance.make_admin)
         .post(
             `${prefix}/make-admin-teacher/:id`,

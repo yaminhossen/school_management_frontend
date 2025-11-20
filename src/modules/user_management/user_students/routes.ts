@@ -28,6 +28,11 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.total_students,
         )
         .get(
+            `${prefix}/all-branch-students`,
+            { preHandler: [auth_middleware] },
+            controllerInstance.all_branch_students,
+        )
+        .get(
             `${prefix}/pre-info`,
             { preHandler: [auth_middleware] },
             controllerInstance.pre_info,

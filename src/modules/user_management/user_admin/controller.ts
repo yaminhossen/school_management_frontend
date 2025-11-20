@@ -21,6 +21,7 @@ import profile_update from './services/profile_update';
 import make_admin from './services/make_admin';
 import make_admin_teacher from './services/make_admin_teacher';
 import admin_details from './services/admin_details';
+import all_branch_admins from './services/all_banch_admins';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -41,6 +42,14 @@ export default function (fastify: FastifyInstance) {
 
         admin_details: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await admin_details(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        all_branch_admins: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await all_branch_admins(fastify, req);
             res.code(data.status).send(data);
         },
 

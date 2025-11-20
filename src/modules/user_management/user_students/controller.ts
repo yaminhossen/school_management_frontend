@@ -55,6 +55,7 @@ import profile_update from './services/profile_update';
 import stu_information from './services/stu_information';
 import class_wise_info from './services/class_wise_info';
 import total_students from './services/total_students';
+import all_branch_students from './services/all_banch_students';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -94,6 +95,14 @@ export default function (fastify: FastifyInstance) {
             res: FastifyReply,
         ) {
             let data = await total_students(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        all_branch_students: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data = await all_branch_students(fastify, req);
             res.code(data.status).send(data);
         },
 

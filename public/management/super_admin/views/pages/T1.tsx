@@ -1,81 +1,136 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { anyObject } from '../../common_types/object';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment/moment';
 export interface Props {}
 
 const T1: React.FC<Props> = (props: Props) => {
+    const [error, setError] = useState(null);
+    const [data, setData] = useState();
+    const [accdemicCalander, setAccademicCalander] = useState<any[]>([]);
+    const [totalStudents, setTotalStudents] = useState(0);
+    const [totalBranch, setTotalBranch] = useState(0);
+    const [totalAdmins, setTotalAdmins] = useState(0);
+    // console.log(accdemicCalander);
+
+    const [selectedDate, setSelectedDate] = useState(
+        moment().format('YYYY-MM-DD'),
+    ); // Default to today's date
+
+    const handleDateChange = (event) => {
+        setSelectedDate(event.target.value); // Update the selected date
+    };
+
+    // Dynamically format month and year based on the selected date
+    const selectedMoment = moment(selectedDate);
+    const month = selectedMoment.format('MMM').toLowerCase(); // e.g., "jan"
+    const year = selectedMoment.format('YYYY'); // e.g., "2025"
+    const formattedDate = `${month}-${year}`;
+
+    // Fetch notice count
+    const fetchTotalStudents = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/user-students/all-branch-students',
+            );
+            setTotalStudents(response.data?.data?.all_branch_students);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+
+    // Fetch notice count
+    const fetchTotalBranch = async () => {
+        try {
+            const response = await axios.get('/api/v1/branches/branch-all');
+            setTotalBranch(response.data?.data?.length);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+
+    // Fetch notice count
+    const fetchTotalAdmins = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/admin-users/all-branch-admins',
+            );
+            setTotalAdmins(response.data?.data?.all_branch_admins);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error);
+        }
+    };
+    async function initdependancy() {
+        await (fetchTotalStudents() as any);
+        await (fetchTotalAdmins() as any);
+        await (fetchTotalBranch() as any);
+    }
+
+    useEffect(() => {
+        initdependancy();
+    }, []);
+
     return (
-        <div className="admin_dashboard">
-            <h1>Tech Park School</h1>
-            <h2>Super Admin Dashboard</h2>
-            <div className="admin_sideba custom_scroll">
-                <h3 className="mt-4 ms-0">Admin management</h3>
-                <ul className="dashboard_links ">
-                    <li>
-                        <Link to="/user-admins">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Admin Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/user-staffs">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Staff Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/user-teachers">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Teacher Management
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/user-students">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Student Management
-                        </Link>
-                    </li>
-                </ul>
-
-                <h3 className="mt-4 ms-0">Branch management</h3>
-                <ul className="dashboard_links ">
-                    <li>
-                        <Link to="/branches">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            branches Management
-                        </Link>
-                    </li>
-                    {/* <li>
-                        <Link to="/user-branch-admins">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            user branch admins Management
-                        </Link>
-                    </li> */}
-                </ul>
-
-                <h3 className="mt-4 ms-0">Profile management</h3>
-                <ul className="dashboard_links ">
-                    <li>
-                        <Link to="/settings">
-                            <span className="material-symbols-outlined fill">
-                                groups
-                            </span>
-                            Settings Management
-                        </Link>
-                    </li>
-                </ul>
+        <div className="custom_scroll">
+            <div className="name my-3">
+                <h2>Welcome to the Super Admin Panel</h2>
             </div>
+            {/* analytics */}
+            <div
+                className="mt-4"
+                style={{
+                    display: 'grid',
+                    gap: '30px',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr)',
+                }}
+            >
+                {[
+                    // 'কারেন্ট ব্যালেঞ্চ',
+                    // 'আজকের ইনকাম',
+                    // 'আজকের খরচ',
+                    // 'এই মাসের ইনকাম',
+                    // 'এই মাসের খরচ',
+                    // 'টোটাল খরচ',
+                    // 'বকেয়া',
+                    {
+                        title: 'টোটাল ব্রাঞ্চ',
+                        value: totalBranch,
+                    },
+                    {
+                        title: 'মোট ছাত্রছাত্রী',
+                        value: totalStudents,
+                    },
+                    {
+                        title: 'টোটাল এডমিন',
+                        value: totalAdmins,
+                    },
+                ].map((i) => {
+                    return (
+                        <div className="card w-100" data-intro="This is card">
+                            <div className="business-top-widget card-body">
+                                <h5 className="mb-2">{i.title}</h5>
+                                <div className="media d-inline-flex">
+                                    <div className="media-body">
+                                        <h2 className="total-value m-0 counter">
+                                            {/* {Math.round(Math.random() * 1000)} */}
+                                            {i.value}
+                                        </h2>
+                                    </div>
+                                    <i
+                                        style={{ opacity: '.4' }}
+                                        className="icon-bar-chart font-info align-self-center"
+                                    ></i>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+            {/* attendance calendar */}
         </div>
     );
 };
