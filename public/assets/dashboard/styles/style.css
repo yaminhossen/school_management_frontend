@@ -1279,6 +1279,10 @@ body {
   z-index: 9;
 }
 
+.bar_chart {
+  background-color: white;
+}
+
 input.form_checkbox {
   position: relative;
   cursor: pointer;

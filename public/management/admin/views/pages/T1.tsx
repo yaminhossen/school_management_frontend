@@ -3,13 +3,41 @@ import { anyObject } from '../../common_types/object';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    ArcElement,
+} from 'chart.js';
+import { Bar, Pie } from 'react-chartjs-2';
+
+// Register Chart.js components
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    ArcElement,
+    Legend,
+);
+
 export interface Props {}
 
 const T1: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState();
     const [accdemicCalander, setAccademicCalander] = useState<any[]>([]);
+    const [totalClassWiseStudents, setTotalClassWiseStudents] = useState<any[]>(
+        [],
+    );
+    const [studentGender, setStudentGender] = useState<any[]>([]);
     const [totalStudents, setTotalStudents] = useState(0);
+    const [bloodGroup, setBloodGroup] = useState(0);
     const [totalTeachers, setTotalTeachers] = useState(0);
     const [totalStaffs, setTotalStaffs] = useState(0);
     const [todayIncome, setTodayIncome] = useState(0);
@@ -36,15 +64,30 @@ const T1: React.FC<Props> = (props: Props) => {
     const formattedDate = `${month}-${year}`;
 
     // Fetch notice count
+    const fetchClassWiseStudents = async () => {
+        try {
+            const response = await axios.get(
+                '/api/v1/user-students/all-class-admin',
+            );
+            setTotalClassWiseStudents(response.data?.data);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error as any);
+        }
+    };
+
+    // Fetch notice count
     const fetchTotalStudents = async () => {
         try {
             const response = await axios.get(
                 '/api/v1/user-students/total-students',
             );
             setTotalStudents(response.data?.data?.total_students);
+            setBloodGroup(response.data?.data?.blood_group);
+            setStudentGender(response.data?.data?.gender);
         } catch (error) {
             console.error('Error fetching notice count:', error);
-            setError(error);
+            setError(error as any);
         }
     };
 
@@ -57,7 +100,7 @@ const T1: React.FC<Props> = (props: Props) => {
             setTotalTeachers(response.data?.data?.total_teachers);
         } catch (error) {
             console.error('Error fetching notice count:', error);
-            setError(error);
+            setError(error as any);
         }
     };
 
@@ -70,7 +113,7 @@ const T1: React.FC<Props> = (props: Props) => {
             setTotalStaffs(response.data?.data?.total_staffs);
         } catch (error) {
             console.error('Error fetching notice count:', error);
-            setError(error);
+            setError(error as any);
         }
     };
     // Fetch TODAY INCOME
@@ -82,7 +125,7 @@ const T1: React.FC<Props> = (props: Props) => {
             setTodayIncome(response.data?.data?.amount);
         } catch (error) {
             console.error('Error fetching notice count:', error);
-            setError(error);
+            setError(error as any);
         }
     };
     // Fetch Bank total INCOME
@@ -92,7 +135,7 @@ const T1: React.FC<Props> = (props: Props) => {
             setBankTotal(response.data?.data?.balance);
         } catch (error) {
             console.error('Error fetching notice count:', error);
-            setError(error);
+            setError(error as any);
         }
     };
     // Fetch TODAY INCOME
@@ -102,7 +145,7 @@ const T1: React.FC<Props> = (props: Props) => {
             setHandCash(response.data?.data?.balance);
         } catch (error) {
             console.error('Error fetching notice count:', error);
-            setError(error);
+            setError(error as any);
         }
     };
     // Fetch TODAY INCOME
@@ -114,7 +157,7 @@ const T1: React.FC<Props> = (props: Props) => {
             setCurrentBalance(response.data?.data?.balance);
         } catch (error) {
             console.error('Error fetching notice count:', error);
-            setError(error);
+            setError(error as any);
         }
     };
     // Fetch running month income
@@ -126,7 +169,7 @@ const T1: React.FC<Props> = (props: Props) => {
             setRunningMonthIncome(response.data?.data?.amount);
         } catch (error) {
             console.error('Error fetching notice count:', error);
-            setError(error);
+            setError(error as any);
         }
     };
     // Fetch running month income
@@ -138,7 +181,7 @@ const T1: React.FC<Props> = (props: Props) => {
             setRunningMonthExpense(response.data?.data?.amount);
         } catch (error) {
             console.error('Error fetching notice count:', error);
-            setError(error);
+            setError(error as any);
         }
     };
     // Fetch Today Expense
@@ -150,11 +193,12 @@ const T1: React.FC<Props> = (props: Props) => {
             setTodayExpense(response.data?.data?.eamount);
         } catch (error) {
             console.error('Error fetching notice count:', error);
-            setError(error);
+            setError(error as any);
         }
     };
     async function initdependancy() {
         await (fetchTotalStudents() as any);
+        await (fetchClassWiseStudents() as any);
         await (fetchTotalTeachers() as any);
         await (fetchTotalStaffs() as any);
         await (fetchTodayIncome() as any);
@@ -175,7 +219,7 @@ const T1: React.FC<Props> = (props: Props) => {
     //     fetchTodayIncome();
     //     fetchTodayExpense();
     // }, []);
-    console.log(todayIncome);
+    console.log('class wise data', totalClassWiseStudents);
     let days = [
         'saturday',
         'sunday',
@@ -339,6 +383,193 @@ const T1: React.FC<Props> = (props: Props) => {
                     );
                 })}
             </div>
+            {/*  */}
+            {/* <div className="d-flex" style={{ gap: '20px', flexWrap: 'wrap' }}>
+                <div className="card" style={{ flex: '1 1 48%', minWidth: '320px' }}>
+                    <div className="card-header"></div> */}
+            {/* Chart area start */}
+            <div className="d-flex" style={{ gap: '20px', flexWrap: 'wrap' }}>
+                <div className="card" style={{ flex: '1 1 1 20%', minWidth: '220px' }}>
+                    {/* <div className="card-header">
+                        <h5>
+                            <i className="icon-bar-chart me-2"></i>
+                            Class Wise Student Distribution
+                        </h5>
+                    </div> */}
+                    <div className="card-body bar_chart">
+                        <Bar
+                            data={{
+                                labels: totalClassWiseStudents.map(
+                                    (item) => item.name,
+                                ),
+                                datasets: [
+                                    {
+                                        label: 'Number of Students',
+                                        data: totalClassWiseStudents.map(
+                                            (item) => item.count,
+                                        ),
+                                        backgroundColor:
+                                            'rgba(75, 192, 192, 0.6)',
+                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                        borderWidth: 1,
+                                    },
+                                ],
+                            }}
+                            options={{
+                                responsive: true,
+                                maintainAspectRatio: true,
+                                plugins: {
+                                    legend: {
+                                        position: 'top' as const,
+                                    },
+                                    title: {
+                                        display: true,
+                                        text: 'Total Students per Class',
+                                    },
+                                },
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        ticks: {
+                                            stepSize: 1,
+                                        },
+                                    },
+                                },
+                            }}
+                            // height={250}
+                            />
+                    </div>
+                </div>
+                {/* </div> */}
+                {/* <div className="card mt-4"> */}
+                <div className="card" style={{ flex: '1 1 1 20%', minWidth: '220px' }}>
+                    {/* <div className="card-header">
+                        <h5>
+                            <i className="icon-bar-chart me-2"></i>
+                            Gender
+                        </h5>
+                    </div> */}
+                    <div className="card-body bar_chart">
+                        <Pie
+                            data={{
+                                labels:
+                                    studentGender && studentGender.length
+                                        ? studentGender.map((g) => g.gender)
+                                        : ['male', 'female', 'others'],
+                                datasets: [
+                                    {
+                                        label: 'Students by Gender',
+                                        data:
+                                            studentGender &&
+                                            studentGender.length
+                                                ? studentGender.map(
+                                                    (g) => g.count,
+                                                )
+                                                : [12, 9, 10],
+                                        backgroundColor: [
+                                            'rgba(253, 67, 126, 1)',
+                                            'rgba(161, 161, 75, 1)',
+                                            'rgba(10, 150, 157, 1)',
+                                        ],
+                                        borderColor: [
+                                            'rgba(123, 235, 54, 1)',
+                                            'rgba(127, 137, 128, 1)',
+                                            'rgba(167, 247, 151, 1)',
+                                        ],
+                                        borderWidth: 1,
+                                    },
+                                ],
+                            }}
+                            // height={150}
+                        />
+                    </div>
+                </div>
+                <div className="card" style={{ flex: '1 1 1 20%', minWidth: '220px' }}>
+                    {/* <div className="card-header">
+                        <h5>
+                            <i className="icon-bar-chart me-2"></i>
+                            Gender
+                        </h5>
+                    </div> */}
+                    <div className="card-body bar_chart">
+                        <Pie
+                            data={{
+                                labels:
+                                    studentGender && studentGender.length
+                                        ? studentGender.map((g) => g.gender)
+                                        : ['male', 'female', 'others'],
+                                datasets: [
+                                    {
+                                        label: 'Students by Gender',
+                                        data:
+                                            studentGender &&
+                                            studentGender.length
+                                                ? studentGender.map(
+                                                    (g) => g.count,
+                                                )
+                                                : [12, 9, 10],
+                                        backgroundColor: [
+                                            'rgba(248, 160, 72, 1)',
+                                            'rgba(122, 111, 249, 1)',
+                                            'rgba(10, 150, 157, 1)',
+                                        ],
+                                        borderColor: [
+                                            'rgba(123, 235, 54, 1)',
+                                            'rgba(127, 137, 128, 1)',
+                                            'rgba(167, 247, 151, 1)',
+                                        ],
+                                        borderWidth: 1,
+                                    },
+                                ],
+                            }}
+                            // height={150}
+                        />
+                    </div>
+                </div>
+                <div className="card" style={{ flex: '1 1 20%', minWidth: '220px' }}>
+                    {/* <div className="card-header">
+                        <h5>
+                            <i className="icon-bar-chart me-2"></i>
+                            Gender
+                        </h5>
+                    </div> */}
+                    <div className="card-body bar_chart">
+                        <Pie
+                            data={{
+                                labels:
+                                    studentGender && studentGender.length
+                                        ? studentGender.map((g) => g.gender)
+                                        : ['male', 'female', 'others'],
+                                datasets: [
+                                    {
+                                        label: 'Students by Gender',
+                                        data:
+                                            studentGender &&
+                                            studentGender.length
+                                                ? studentGender.map(
+                                                    (g) => g.count,
+                                                )
+                                                : [12, 9, 10],
+                                        backgroundColor: [
+                                            'rgba(253, 67, 126, 1)',
+                                            'rgba(161, 161, 75, 1)',
+                                            'rgba(10, 150, 157, 1)',
+                                        ],
+                                        borderColor: [
+                                            'rgba(123, 235, 54, 1)',
+                                            'rgba(127, 137, 128, 1)',
+                                            'rgba(167, 247, 151, 1)',
+                                        ],
+                                        borderWidth: 1,
+                                    },
+                                ],
+                            }}
+                            // height={150}
+                        />
+                    </div>
+                </div>
+            </div>
+            {/* Chart area end */}
             {/* attendance calendar */}
             <div className="calendar_dashboard mt-4">
                 <div className="card mx-auto">

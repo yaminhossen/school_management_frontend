@@ -27,9 +27,54 @@ async function total_students(
                 status: 'active',
             },
         });
+        let data2 = await informationsModel.findAll({
+            where: {
+                branch_id: auth_user?.branch_id,
+                status: 'active',
+            },
+            attributes: ['blood_group', 'gender'],
+        });
+        // const bloodGroupCount = {};
+        // Convert Sequelize models to plain objects
+        const plainData = data2.map((item: any) => item.dataValues);
 
+        // ------------------------------
+        // BLOOD GROUP COUNT
+        // ------------------------------
+        const bloodGroupCount: Record<string, number> = {};
+
+        plainData.forEach((item) => {
+            const group = item.blood_group;
+            bloodGroupCount[group] = (bloodGroupCount[group] || 0) + 1;
+        });
+
+        const student_bloodGroup = Object.keys(bloodGroupCount).map(
+            (group) => ({
+                group,
+                count: bloodGroupCount[group],
+            }),
+        );
+
+        // ------------------------------
+        // GENDER COUNT
+        // ------------------------------
+        const genderCount: Record<string, number> = {};
+
+        plainData.forEach((item) => {
+            const gender = item.gender;
+            genderCount[gender] = (genderCount[gender] || 0) + 1;
+        });
+
+        const student_gender = Object.keys(genderCount).map((gender) => ({
+            gender,
+            count: genderCount[gender],
+        }));
         if (data) {
-            return response(200, 'data created', { total_students: data });
+            return response(200, 'data created', {
+                total_students: data,
+                blood_group: student_bloodGroup,
+                gender: student_gender,
+            });
         } else {
             throw new custom_error('not found', 404, 'data not found');
         }
