@@ -37,7 +37,7 @@ const T1: React.FC<Props> = (props: Props) => {
     );
     const [studentGender, setStudentGender] = useState<any[]>([]);
     const [totalStudents, setTotalStudents] = useState(0);
-    const [bloodGroup, setBloodGroup] = useState(0);
+    const [bloodGroup, setBloodGroup] = useState<any[]>([]);
     const [totalTeachers, setTotalTeachers] = useState(0);
     const [totalStaffs, setTotalStaffs] = useState(0);
     const [todayIncome, setTodayIncome] = useState(0);
@@ -310,13 +310,6 @@ const T1: React.FC<Props> = (props: Props) => {
                 }}
             >
                 {[
-                    // 'কারেন্ট ব্যালেঞ্চ',
-                    // 'আজকের ইনকাম',
-                    // 'আজকের খরচ',
-                    // 'এই মাসের ইনকাম',
-                    // 'এই মাসের খরচ',
-                    // 'টোটাল খরচ',
-                    // 'বকেয়া',
                     {
                         title: 'কারেন্ট ব্যালেঞ্চ',
                         value: currentBalance,
@@ -389,13 +382,10 @@ const T1: React.FC<Props> = (props: Props) => {
                     <div className="card-header"></div> */}
             {/* Chart area start */}
             <div className="d-flex" style={{ gap: '20px', flexWrap: 'wrap' }}>
-                <div className="card" style={{ flex: '1 1 1 20%', minWidth: '220px' }}>
-                    {/* <div className="card-header">
-                        <h5>
-                            <i className="icon-bar-chart me-2"></i>
-                            Class Wise Student Distribution
-                        </h5>
-                    </div> */}
+                <div
+                    className="card"
+                    style={{ flex: '1 1 30%', minWidth: '220px' }}
+                >
                     <div className="card-body bar_chart">
                         <Bar
                             data={{
@@ -436,19 +426,15 @@ const T1: React.FC<Props> = (props: Props) => {
                                     },
                                 },
                             }}
-                            // height={250}
-                            />
+                        />
                     </div>
                 </div>
                 {/* </div> */}
                 {/* <div className="card mt-4"> */}
-                <div className="card" style={{ flex: '1 1 1 20%', minWidth: '220px' }}>
-                    {/* <div className="card-header">
-                        <h5>
-                            <i className="icon-bar-chart me-2"></i>
-                            Gender
-                        </h5>
-                    </div> */}
+                <div
+                    className="card"
+                    style={{ flex: '1 1 30%', minWidth: '220px' }}
+                >
                     <div className="card-body bar_chart">
                         <Pie
                             data={{
@@ -467,14 +453,14 @@ const T1: React.FC<Props> = (props: Props) => {
                                                 )
                                                 : [12, 9, 10],
                                         backgroundColor: [
-                                            'rgba(253, 67, 126, 1)',
-                                            'rgba(161, 161, 75, 1)',
-                                            'rgba(10, 150, 157, 1)',
+                                            'rgba(241, 152, 180, 1)',
+                                            'rgba(236, 236, 179, 1)',
+                                            'rgba(44, 195, 203, 1)',
                                         ],
                                         borderColor: [
                                             'rgba(123, 235, 54, 1)',
-                                            'rgba(127, 137, 128, 1)',
-                                            'rgba(167, 247, 151, 1)',
+                                            'rgba(182, 216, 185, 1)',
+                                            'rgba(157, 255, 137, 1)',
                                         ],
                                         borderWidth: 1,
                                     },
@@ -484,87 +470,48 @@ const T1: React.FC<Props> = (props: Props) => {
                         />
                     </div>
                 </div>
-                <div className="card" style={{ flex: '1 1 1 20%', minWidth: '220px' }}>
-                    {/* <div className="card-header">
-                        <h5>
-                            <i className="icon-bar-chart me-2"></i>
-                            Gender
-                        </h5>
-                    </div> */}
+                <div
+                    className="card"
+                    style={{ flex: '1 1 30%', minWidth: '220px' }}
+                >
                     <div className="card-body bar_chart">
-                        <Pie
+                        <Bar
                             data={{
-                                labels:
-                                    studentGender && studentGender.length
-                                        ? studentGender.map((g) => g.gender)
-                                        : ['male', 'female', 'others'],
+                                labels: bloodGroup.map((item) => item.group),
                                 datasets: [
                                     {
-                                        label: 'Students by Gender',
-                                        data:
-                                            studentGender &&
-                                            studentGender.length
-                                                ? studentGender.map(
-                                                    (g) => g.count,
-                                                )
-                                                : [12, 9, 10],
-                                        backgroundColor: [
-                                            'rgba(248, 160, 72, 1)',
-                                            'rgba(122, 111, 249, 1)',
-                                            'rgba(10, 150, 157, 1)',
-                                        ],
-                                        borderColor: [
-                                            'rgba(123, 235, 54, 1)',
-                                            'rgba(127, 137, 128, 1)',
-                                            'rgba(167, 247, 151, 1)',
-                                        ],
+                                        label: 'Number of Students',
+                                        data: bloodGroup.map(
+                                            (item) => item.count,
+                                        ),
+                                        backgroundColor:
+                                            'rgba(77, 75, 192, 0.6)',
+                                        borderColor: 'rgba(63, 74, 169, 1)',
                                         borderWidth: 1,
                                     },
                                 ],
                             }}
-                            // height={150}
-                        />
-                    </div>
-                </div>
-                <div className="card" style={{ flex: '1 1 20%', minWidth: '220px' }}>
-                    {/* <div className="card-header">
-                        <h5>
-                            <i className="icon-bar-chart me-2"></i>
-                            Gender
-                        </h5>
-                    </div> */}
-                    <div className="card-body bar_chart">
-                        <Pie
-                            data={{
-                                labels:
-                                    studentGender && studentGender.length
-                                        ? studentGender.map((g) => g.gender)
-                                        : ['male', 'female', 'others'],
-                                datasets: [
-                                    {
-                                        label: 'Students by Gender',
-                                        data:
-                                            studentGender &&
-                                            studentGender.length
-                                                ? studentGender.map(
-                                                    (g) => g.count,
-                                                )
-                                                : [12, 9, 10],
-                                        backgroundColor: [
-                                            'rgba(253, 67, 126, 1)',
-                                            'rgba(161, 161, 75, 1)',
-                                            'rgba(10, 150, 157, 1)',
-                                        ],
-                                        borderColor: [
-                                            'rgba(123, 235, 54, 1)',
-                                            'rgba(127, 137, 128, 1)',
-                                            'rgba(167, 247, 151, 1)',
-                                        ],
-                                        borderWidth: 1,
+                            options={{
+                                responsive: true,
+                                maintainAspectRatio: true,
+                                plugins: {
+                                    legend: {
+                                        position: 'top' as const,
                                     },
-                                ],
+                                    title: {
+                                        display: true,
+                                        text: 'Blood Group Distribution',
+                                    },
+                                },
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        ticks: {
+                                            stepSize: 1,
+                                        },
+                                    },
+                                },
                             }}
-                            // height={150}
                         />
                     </div>
                 </div>

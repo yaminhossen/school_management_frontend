@@ -1281,6 +1281,11 @@ body {
 
 .bar_chart {
   background-color: white;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
 }
 
 input.form_checkbox {
