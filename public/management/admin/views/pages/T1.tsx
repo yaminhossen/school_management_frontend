@@ -311,44 +311,64 @@ const T1: React.FC<Props> = (props: Props) => {
             >
                 {[
                     {
-                        title: 'কারেন্ট ব্যালেঞ্চ',
+                        title: 'কারেন্ট ব্যালেন্স',
                         value: currentBalance,
+                        icon: 'icon-wallet',
+                        color: 'info',
                     },
                     {
                         title: 'আজকের ইনকাম',
                         value: todayIncome,
+                        icon: 'icon-wallet',
+                        color: 'success',
                     },
                     {
                         title: 'আজকের খরচ',
                         value: todayExpense,
+                        icon: 'icon-bag',
+                        color: 'danger',
                     },
                     {
                         title: 'এই মাসের ইনকাম',
                         value: runningMonthIncome,
+                        icon: 'icon-briefcase',
+                        color: 'success',
                     },
                     {
                         title: 'এই মাসের খরচ',
                         value: runningMonthExpense,
+                        icon: 'icon-bag',
+                        color: 'warning',
                     },
                     {
                         title: 'ব্যাঙ্ক ব্যালেন্স',
                         value: bankTotal,
+                        icon: 'icon-credit-card',
+                        color: 'primary',
                     },
                     {
                         title: 'হ্যান্ড ক্যাশ',
                         value: handCash,
+                        icon: 'icon-wallet',
+                        color: 'info',
                     },
                     {
                         title: 'মোট ছাত্রছাত্রী',
                         value: totalStudents,
+                        icon: 'icon-user',
+                        color: 'primary',
                     },
                     {
                         title: 'মোট শিক্ষক',
                         value: totalTeachers,
+                        icon: 'icon-book',
+                        color: 'success',
                     },
                     {
                         title: 'অন্যান্য স্টাফ',
                         value: totalStaffs,
+                        icon: 'icon-user',
+                        color: 'warning',
                     },
                     // {
                     //     title: 'টাস্ক',
@@ -368,7 +388,7 @@ const T1: React.FC<Props> = (props: Props) => {
                                     </div>
                                     <i
                                         style={{ opacity: '.4' }}
-                                        className="icon-bar-chart font-info align-self-center"
+                                        className={`${i.icon} font-${i.color} align-self-center`}
                                     ></i>
                                 </div>
                             </div>

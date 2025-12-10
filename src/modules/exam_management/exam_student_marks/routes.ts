@@ -32,6 +32,11 @@ module.exports = async function (fastify: FastifyInstance) {
             controllerInstance.class_wise_exam_second,
         )
         .get(
+            `${prefix}/session-wise-result`,
+            // { preHandler: [auth_middleware] },
+            controllerInstance.result,
+        )
+        .get(
             `${prefix}/exam-wise/:termid/:classid`,
             { preHandler: [auth_middleware] },
             controllerInstance.exam_wise,

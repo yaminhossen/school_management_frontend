@@ -21,6 +21,7 @@ import exam_wise from './services/exam_wise';
 import student_class_second from './services/student_class_second';
 import class_wise_exam_second from './services/class_wise_exam_second';
 import exam_wise_second from './services/exam_wise_second';
+import result from './services/result';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -70,6 +71,11 @@ export default function (fastify: FastifyInstance) {
 
         exam_wise: async function (req: FastifyRequest, res: FastifyReply) {
             let data = await exam_wise(fastify, req);
+            res.code(data.status).send(data);
+        },
+
+        result: async function (req: FastifyRequest, res: FastifyReply) {
+            let data = await result(fastify, req);
             res.code(data.status).send(data);
         },
 
