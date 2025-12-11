@@ -39,6 +39,7 @@ const T1: React.FC<Props> = (props: Props) => {
     const [studentGender, setStudentGender] = useState<any[]>([]);
     const [totalStudents, setTotalStudents] = useState(0);
     const [bloodGroup, setBloodGroup] = useState<any[]>([]);
+    const [examWiseResult, setExamWiseResult] = useState<any[]>([]);
     const [totalTeachers, setTotalTeachers] = useState(0);
     const [totalStaffs, setTotalStaffs] = useState(0);
     const [todayIncome, setTodayIncome] = useState(0);
@@ -48,6 +49,8 @@ const T1: React.FC<Props> = (props: Props) => {
     const [runningMonthExpense, setRunningMonthExpense] = useState(0);
     const [currentBalance, setCurrentBalance] = useState(0);
     const [todayExpense, setTodayExpense] = useState(0);
+    const [selectedSession, setSelectedSession] = useState('2025');
+    const [selectedExam, setSelectedExam] = useState('');
     // console.log(accdemicCalander);
 
     const [selectedDate, setSelectedDate] = useState(
@@ -56,6 +59,24 @@ const T1: React.FC<Props> = (props: Props) => {
 
     const handleDateChange = (event) => {
         setSelectedDate(event.target.value); // Update the selected date
+    };
+
+    const handleSessionChange = (event) => {
+        const session = event.target.value;
+        setSelectedSession(session);
+        setSelectedExam(''); // Reset exam selection when session changes
+        setExamWiseResult([]); // Clear previous results
+        if (session) {
+            fetchSessionWiseExam(session);
+        }
+    };
+
+    const handleExamChange = (event) => {
+        const examId = event.target.value;
+        setSelectedExam(examId);
+        if (examId) {
+            fetchExamWiseResult(examId);
+        }
     };
 
     // Dynamically format month and year based on the selected date
@@ -68,9 +89,30 @@ const T1: React.FC<Props> = (props: Props) => {
     const fetchSessionWiseExam = async (session) => {
         try {
             const response = await axios.get(
-                `/api/v1/exams/session?session=${session}`,
+                `/api/v1/exams/session/${session}`,
             );
-            setTotalExam(response.data?.data);
+            const exams = response.data?.data;
+            setTotalExam(exams);
+
+            // If exams are found, automatically select the first one and fetch its results
+            if (exams && exams.length > 0) {
+                const firstExamId = exams[0].id;
+                setSelectedExam(firstExamId);
+                fetchExamWiseResult(firstExamId);
+            }
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error as any);
+        }
+    };
+
+    // Fetch notice count
+    const fetchExamWiseResult = async (exam) => {
+        try {
+            const response = await axios.get(
+                `/api/v1/exam-student-marks/session-wise-result/${exam}/${selectedSession}`,
+            );
+            setExamWiseResult(response.data?.data);
         } catch (error) {
             console.error('Error fetching notice count:', error);
             setError(error as any);
@@ -226,6 +268,7 @@ const T1: React.FC<Props> = (props: Props) => {
 
     useEffect(() => {
         initdependancy();
+        fetchSessionWiseExam('2025'); // Fetch exams for default session
     }, []);
 
     // useEffect(() => {
@@ -233,7 +276,10 @@ const T1: React.FC<Props> = (props: Props) => {
     //     fetchTodayIncome();
     //     fetchTodayExpense();
     // }, []);
-    console.log('class wise data', totalClassWiseStudents);
+    console.log(
+        'exam wise data',
+        examWiseResult?.overall_statistics?.grade_count,
+    );
     let days = [
         'saturday',
         'sunday',
@@ -532,7 +578,11 @@ const T1: React.FC<Props> = (props: Props) => {
                 <div className="form-group form-vertical">
                     <label>Session</label>
                     <div className="form_elements">
-                        <select name="session" defaultValue={2025} id="">
+                        <select
+                            name="session"
+                            value={selectedSession}
+                            onChange={handleSessionChange}
+                        >
                             <option value="">Select Session</option>
                             <option value="2025">2025</option>
                             <option value="2026">2026</option>
@@ -549,22 +599,22 @@ const T1: React.FC<Props> = (props: Props) => {
                 <div className="form-group form-vertical">
                     <label>Exam</label>
                     <div className="form_elements">
-                        <select name="exam" id="">
+                        <select
+                            name="exam"
+                            value={selectedExam}
+                            onChange={handleExamChange}
+                        >
                             <option value="">Select exam</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
-                            <option value="2028">2028</option>
-                            <option value="2029">2029</option>
-                            <option value="2030">2030</option>
-                            <option value="2031">2031</option>
-                            <option value="2032">2032</option>
-                            <option value="2033">2033</option>
+                            {totalExam?.map((exam) => (
+                                <option key={exam.id} value={exam.id}>
+                                    {exam.title || exam.name}
+                                </option>
+                            ))}
                         </select>
                     </div>
                 </div>
             </div>
-            {/* chart implement start */}
+            {/* chart second implement start */}
             <div className="d-flex" style={{ gap: '20px', flexWrap: 'wrap' }}>
                 <div
                     className="card"
@@ -573,18 +623,35 @@ const T1: React.FC<Props> = (props: Props) => {
                     <div className="card-body bar_chart">
                         <Bar
                             data={{
-                                labels: totalClassWiseStudents.map(
-                                    (item) => item.name,
+                                labels: Object.keys(
+                                    examWiseResult?.overall_statistics
+                                        ?.grade_count || {},
                                 ),
                                 datasets: [
                                     {
                                         label: 'Number of Students',
-                                        data: totalClassWiseStudents.map(
-                                            (item) => item.count,
+                                        data: Object.values(
+                                            examWiseResult?.overall_statistics
+                                                ?.grade_count || {},
                                         ),
-                                        backgroundColor:
+                                        backgroundColor: [
                                             'rgba(75, 192, 192, 0.6)',
-                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                            'rgba(54, 162, 235, 0.6)',
+                                            'rgba(255, 206, 86, 0.6)',
+                                            'rgba(153, 102, 255, 0.6)',
+                                            'rgba(255, 159, 64, 0.6)',
+                                            'rgba(255, 99, 132, 0.6)',
+                                            'rgba(201, 203, 207, 0.6)',
+                                        ],
+                                        borderColor: [
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)',
+                                            'rgba(255, 99, 132, 1)',
+                                            'rgba(201, 203, 207, 1)',
+                                        ],
                                         borderWidth: 1,
                                     },
                                 ],
@@ -598,7 +665,7 @@ const T1: React.FC<Props> = (props: Props) => {
                                     },
                                     title: {
                                         display: true,
-                                        text: 'Total Students per Class',
+                                        text: 'Grade Wise Passed',
                                     },
                                 },
                                 scales: {
@@ -622,35 +689,61 @@ const T1: React.FC<Props> = (props: Props) => {
                     <div className="card-body bar_chart">
                         <Pie
                             data={{
-                                labels:
-                                    studentGender && studentGender.length
-                                        ? studentGender.map((g) => g.gender)
-                                        : ['male', 'female', 'others'],
+                                labels: examWiseResult?.overall_statistics?.grade_percentages
+                                    ? Object.keys(
+                                          examWiseResult.overall_statistics.grade_percentages,
+                                      )
+                                    : ['A+', 'A', 'A-', 'B', 'C', 'D', 'F'],
                                 datasets: [
                                     {
-                                        label: 'Students by Gender',
-                                        data:
-                                            studentGender &&
-                                            studentGender.length
-                                                ? studentGender.map(
-                                                    (g) => g.count,
-                                                )
-                                                : [12, 9, 10],
+                                        label: 'Grade Percentage',
+                                        data: examWiseResult?.overall_statistics?.grade_percentages
+                                            ? Object.values(
+                                                  examWiseResult.overall_statistics.grade_percentages,
+                                              )
+                                            : [0, 0, 0, 0, 0, 0, 0],
                                         backgroundColor: [
-                                            'rgba(241, 152, 180, 1)',
-                                            'rgba(236, 236, 179, 1)',
-                                            'rgba(44, 195, 203, 1)',
+                                            'rgba(75, 192, 192, 0.8)',
+                                            'rgba(54, 162, 235, 0.8)',
+                                            'rgba(255, 206, 86, 0.8)',
+                                            'rgba(153, 102, 255, 0.8)',
+                                            'rgba(255, 159, 64, 0.8)',
+                                            'rgba(255, 99, 132, 0.8)',
+                                            'rgba(201, 203, 207, 0.8)',
                                         ],
                                         borderColor: [
-                                            'rgba(123, 235, 54, 1)',
-                                            'rgba(182, 216, 185, 1)',
-                                            'rgba(157, 255, 137, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)',
+                                            'rgba(255, 99, 132, 1)',
+                                            'rgba(201, 203, 207, 1)',
                                         ],
                                         borderWidth: 1,
                                     },
                                 ],
                             }}
-                            // height={150}
+                            options={{
+                                responsive: true,
+                                maintainAspectRatio: true,
+                                plugins: {
+                                    legend: {
+                                        position: 'top' as const,
+                                    },
+                                    title: {
+                                        display: true,
+                                        text: 'Grade Distribution (%)',
+                                    },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(context) {
+                                                return context.label + ': ' + context.parsed.toFixed(2) + '%';
+                                            }
+                                        }
+                                    }
+                                },
+                            }}
                         />
                     </div>
                 </div>
@@ -661,35 +754,46 @@ const T1: React.FC<Props> = (props: Props) => {
                     <div className="card-body bar_chart">
                         <Pie
                             data={{
-                                labels:
-                                    studentGender && studentGender.length
-                                        ? studentGender.map((g) => g.gender)
-                                        : ['male', 'female', 'others'],
+                                labels: ['Pass', 'Fail'],
                                 datasets: [
                                     {
-                                        label: 'Students by Gender',
-                                        data:
-                                            studentGender &&
-                                            studentGender.length
-                                                ? studentGender.map(
-                                                    (g) => g.count,
-                                                )
-                                                : [12, 9, 10],
+                                        label: 'Pass/Fail Percentage',
+                                        data: [
+                                            examWiseResult?.overall_statistics?.pass_percentage || 0,
+                                            examWiseResult?.overall_statistics?.fail_percentage || 0,
+                                        ],
                                         backgroundColor: [
-                                            'rgba(241, 152, 180, 1)',
-                                            'rgba(236, 236, 179, 1)',
-                                            'rgba(44, 195, 203, 1)',
+                                            'rgba(75, 192, 192, 0.8)',
+                                            'rgba(255, 99, 132, 0.8)',
                                         ],
                                         borderColor: [
-                                            'rgba(123, 235, 54, 1)',
-                                            'rgba(182, 216, 185, 1)',
-                                            'rgba(157, 255, 137, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(255, 99, 132, 1)',
                                         ],
                                         borderWidth: 1,
                                     },
                                 ],
                             }}
-                            // height={150}
+                            options={{
+                                responsive: true,
+                                maintainAspectRatio: true,
+                                plugins: {
+                                    legend: {
+                                        position: 'top' as const,
+                                    },
+                                    title: {
+                                        display: true,
+                                        text: 'Pass/Fail Distribution',
+                                    },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(context) {
+                                                return context.label + ': ' + context.parsed.toFixed(2) + '%';
+                                            }
+                                        }
+                                    }
+                                },
+                            }}
                         />
                     </div>
                 </div>

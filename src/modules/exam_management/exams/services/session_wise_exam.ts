@@ -19,7 +19,7 @@ async function session_wise_exam(
             id: user?.id || null,
         },
     });
-    let session = params?.session || '2025';
+    let session = params?.session;
     try {
         // Create date range for the session year
         let startDate = new Date(`${session}-01-01T00:00:00.000Z`);
@@ -28,10 +28,10 @@ async function session_wise_exam(
         let data = await models.ExamsModel.findAll({
             where: {
                 is_active: 'active',
-                branch_id: 1,
+                branch_id: auth_user?.branch_id,
                 month: {
-                    [Op.between]: [startDate, endDate]
-                }
+                    [Op.between]: [startDate, endDate],
+                },
             },
         });
 

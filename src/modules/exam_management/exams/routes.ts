@@ -20,7 +20,7 @@ module.exports = async function (fastify: FastifyInstance) {
         )
         .get(
             `${prefix}/session/:session`,
-            // { preHandler: [auth_middleware] },
+            { preHandler: [auth_middleware] },
             controllerInstance.session_wise_exam,
         )
         .get(`${prefix}/:id`, controllerInstance.find)
