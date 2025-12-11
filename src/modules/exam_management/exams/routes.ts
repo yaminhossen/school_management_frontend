@@ -18,6 +18,11 @@ module.exports = async function (fastify: FastifyInstance) {
             { preHandler: [auth_middleware] },
             controllerInstance.all_exam,
         )
+        .get(
+            `${prefix}/session/:session`,
+            // { preHandler: [auth_middleware] },
+            controllerInstance.session_wise_exam,
+        )
         .get(`${prefix}/:id`, controllerInstance.find)
         .post(
             `${prefix}/store`,

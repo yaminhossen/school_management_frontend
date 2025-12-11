@@ -35,6 +35,7 @@ const T1: React.FC<Props> = (props: Props) => {
     const [totalClassWiseStudents, setTotalClassWiseStudents] = useState<any[]>(
         [],
     );
+    const [totalExam, setTotalExam] = useState<any[]>([]);
     const [studentGender, setStudentGender] = useState<any[]>([]);
     const [totalStudents, setTotalStudents] = useState(0);
     const [bloodGroup, setBloodGroup] = useState<any[]>([]);
@@ -62,6 +63,19 @@ const T1: React.FC<Props> = (props: Props) => {
     const month = selectedMoment.format('MMM').toLowerCase(); // e.g., "jan"
     const year = selectedMoment.format('YYYY'); // e.g., "2025"
     const formattedDate = `${month}-${year}`;
+
+    // Fetch notice count
+    const fetchSessionWiseExam = async (session) => {
+        try {
+            const response = await axios.get(
+                `/api/v1/exams/session?session=${session}`,
+            );
+            setTotalExam(response.data?.data);
+        } catch (error) {
+            console.error('Error fetching notice count:', error);
+            setError(error as any);
+        }
+    };
 
     // Fetch notice count
     const fetchClassWiseStudents = async () => {
@@ -235,26 +249,6 @@ const T1: React.FC<Props> = (props: Props) => {
     }
     // console.log('date', dateFormate('2024-09-07T00:00:00.000Z'));
 
-    function get_day_data(i, day) {
-        if (dateFormate(i.date) === day) {
-            return (
-                <li className="absent">
-                    <time dateTime="2022-02-02">{i.id}</time>
-                    <div className="text-warning">
-                        <i className="icon-close"></i>
-                        <span className="event_title">Class Present</span>
-                    </div>
-                </li>
-            );
-        } else {
-            return (
-                <li className="absent">
-                    <time dateTime="2022-02-02">{i.id}</time>
-                </li>
-            );
-        }
-    }
-
     const fetchAccedemicCalenderData = async () => {
         try {
             const response = await axios.post(
@@ -384,6 +378,7 @@ const T1: React.FC<Props> = (props: Props) => {
                                         <h2 className="total-value m-0 counter">
                                             {/* {Math.round(Math.random() * 1000)} */}
                                             {i.value}
+                                            {/* <span className={`text-${i.color}`}>৳</span> */}
                                         </h2>
                                     </div>
                                     <i
@@ -396,11 +391,7 @@ const T1: React.FC<Props> = (props: Props) => {
                     );
                 })}
             </div>
-            {/*  */}
-            {/* <div className="d-flex" style={{ gap: '20px', flexWrap: 'wrap' }}>
-                <div className="card" style={{ flex: '1 1 48%', minWidth: '320px' }}>
-                    <div className="card-header"></div> */}
-            {/* Chart area start */}
+            {/* chart implement start */}
             <div className="d-flex" style={{ gap: '20px', flexWrap: 'wrap' }}>
                 <div
                     className="card"
@@ -532,6 +523,173 @@ const T1: React.FC<Props> = (props: Props) => {
                                     },
                                 },
                             }}
+                        />
+                    </div>
+                </div>
+            </div>
+            {/* Chart area end */}
+            <div className="d-flex" style={{ gap: '20px', flexWrap: 'wrap' }}>
+                <div className="form-group form-vertical">
+                    <label>Session</label>
+                    <div className="form_elements">
+                        <select name="session" defaultValue={2025} id="">
+                            <option value="">Select Session</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                            <option value="2031">2031</option>
+                            <option value="2032">2032</option>
+                            <option value="2033">2033</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="form-group form-vertical">
+                    <label>Exam</label>
+                    <div className="form_elements">
+                        <select name="exam" id="">
+                            <option value="">Select exam</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                            <option value="2031">2031</option>
+                            <option value="2032">2032</option>
+                            <option value="2033">2033</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            {/* chart implement start */}
+            <div className="d-flex" style={{ gap: '20px', flexWrap: 'wrap' }}>
+                <div
+                    className="card"
+                    style={{ flex: '1 1 30%', minWidth: '220px' }}
+                >
+                    <div className="card-body bar_chart">
+                        <Bar
+                            data={{
+                                labels: totalClassWiseStudents.map(
+                                    (item) => item.name,
+                                ),
+                                datasets: [
+                                    {
+                                        label: 'Number of Students',
+                                        data: totalClassWiseStudents.map(
+                                            (item) => item.count,
+                                        ),
+                                        backgroundColor:
+                                            'rgba(75, 192, 192, 0.6)',
+                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                        borderWidth: 1,
+                                    },
+                                ],
+                            }}
+                            options={{
+                                responsive: true,
+                                maintainAspectRatio: true,
+                                plugins: {
+                                    legend: {
+                                        position: 'top' as const,
+                                    },
+                                    title: {
+                                        display: true,
+                                        text: 'Total Students per Class',
+                                    },
+                                },
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        ticks: {
+                                            stepSize: 1,
+                                        },
+                                    },
+                                },
+                            }}
+                        />
+                    </div>
+                </div>
+                {/* </div> */}
+                {/* <div className="card mt-4"> */}
+                <div
+                    className="card"
+                    style={{ flex: '1 1 30%', minWidth: '220px' }}
+                >
+                    <div className="card-body bar_chart">
+                        <Pie
+                            data={{
+                                labels:
+                                    studentGender && studentGender.length
+                                        ? studentGender.map((g) => g.gender)
+                                        : ['male', 'female', 'others'],
+                                datasets: [
+                                    {
+                                        label: 'Students by Gender',
+                                        data:
+                                            studentGender &&
+                                            studentGender.length
+                                                ? studentGender.map(
+                                                    (g) => g.count,
+                                                )
+                                                : [12, 9, 10],
+                                        backgroundColor: [
+                                            'rgba(241, 152, 180, 1)',
+                                            'rgba(236, 236, 179, 1)',
+                                            'rgba(44, 195, 203, 1)',
+                                        ],
+                                        borderColor: [
+                                            'rgba(123, 235, 54, 1)',
+                                            'rgba(182, 216, 185, 1)',
+                                            'rgba(157, 255, 137, 1)',
+                                        ],
+                                        borderWidth: 1,
+                                    },
+                                ],
+                            }}
+                            // height={150}
+                        />
+                    </div>
+                </div>
+                <div
+                    className="card"
+                    style={{ flex: '1 1 30%', minWidth: '220px' }}
+                >
+                    <div className="card-body bar_chart">
+                        <Pie
+                            data={{
+                                labels:
+                                    studentGender && studentGender.length
+                                        ? studentGender.map((g) => g.gender)
+                                        : ['male', 'female', 'others'],
+                                datasets: [
+                                    {
+                                        label: 'Students by Gender',
+                                        data:
+                                            studentGender &&
+                                            studentGender.length
+                                                ? studentGender.map(
+                                                    (g) => g.count,
+                                                )
+                                                : [12, 9, 10],
+                                        backgroundColor: [
+                                            'rgba(241, 152, 180, 1)',
+                                            'rgba(236, 236, 179, 1)',
+                                            'rgba(44, 195, 203, 1)',
+                                        ],
+                                        borderColor: [
+                                            'rgba(123, 235, 54, 1)',
+                                            'rgba(182, 216, 185, 1)',
+                                            'rgba(157, 255, 137, 1)',
+                                        ],
+                                        borderWidth: 1,
+                                    },
+                                ],
+                            }}
+                            // height={150}
                         />
                     </div>
                 </div>

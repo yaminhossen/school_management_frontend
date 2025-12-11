@@ -11,6 +11,10 @@ GET {{hostname}}/all-exam HTTP/1.1
 
 # get
 ###
+GET {{hostname}}/session/2025 HTTP/1.1
+
+# get
+###
 GET {{hostname}}/1 HTTP/1.1
 
 # store

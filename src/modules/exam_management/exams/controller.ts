@@ -14,6 +14,7 @@ import restore from './services/restore';
 import destroy from './services/destroy';
 import data_import from './services/import';
 import all_exam from './services/all_exam';
+import session_wise_exam from './services/session_wise_exam';
 
 export default function (fastify: FastifyInstance) {
     return {
@@ -23,6 +24,13 @@ export default function (fastify: FastifyInstance) {
         },
         all_exam: async function (req: FastifyRequest, res: FastifyReply) {
             let data: responseObject = await all_exam(fastify, req);
+            res.code(data.status).send(data);
+        },
+        session_wise_exam: async function (
+            req: FastifyRequest,
+            res: FastifyReply,
+        ) {
+            let data: responseObject = await session_wise_exam(fastify, req);
             res.code(data.status).send(data);
         },
 
