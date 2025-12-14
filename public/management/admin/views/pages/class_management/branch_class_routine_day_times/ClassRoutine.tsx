@@ -81,7 +81,7 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                             <h2>class Routine</h2>
                             <form
                                 onSubmit={(e) => handleSubmit(e)}
-                                className="form_600 mx-auto pt-3"
+                                className="form_600tt mx-auto pt-3"
                             >
                                 <div className="mt-4 d-flex text-left">
                                     <div className="form-group form-vertical">
@@ -139,22 +139,16 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                                                     )}
                                                 </select>
                                             ) : (
-                                                <div
-                                                    style={{
-                                                        fontSize: '14px',
-                                                        color: 'black',
-                                                    }}
-                                                    className="not_found_text"
-                                                >
-                                                    At First Select Class
+                                                <div className="form_elements">
+                                                    <select name="" id=""><option value="">At First Select Class</option></select>
                                                 </div>
                                             )}
                                         </div>
                                     </div>
-                                    <div className="form-group student_submit form-horizontal">
+                                    <div className="form-group  form-vertical">
                                         <label></label>
                                         <div className="form_elements">
-                                            <button className="btn btn_1">
+                                            <button className="btn btn_routine">
                                                 submit
                                             </button>
                                         </div>

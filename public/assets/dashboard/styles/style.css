@@ -1163,9 +1163,18 @@ body {
 
 .btn_1 {
   border: 1px solid rgba(15, 113, 170, 0.534);
-  color: var(--brand_white);
+  color: rgb(225, 214, 214) !important;
 }
 .btn_1:hover {
+  background-color: rgba(15, 113, 170, 0.534);
+}
+
+.btn_routine {
+  border: 1px solid rgba(15, 113, 170, 0.534);
+  color: rgb(225, 214, 214) !important;
+  margin-top: 45px;
+}
+.btn_routine:hover {
   background-color: rgba(15, 113, 170, 0.534);
 }
 
