@@ -3016,6 +3016,10 @@ td.col_id {
   margin-bottom: 15px;
 }
 
+.data_filter {
+  margin-top: 0px;
+}
+
 .single-info-details {
   display: -webkit-box;
   display: -ms-flexbox;

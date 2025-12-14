@@ -49,7 +49,7 @@ const Filter3: React.FC<Props> = (props: Props) => {
         return createPortal(
             <div className="off_canvas data_filter">
                 <div className="off_canvas_body">
-                    <div className="header">
+                    <div className="header pending_header">
                         <h3 className="heading_text">Filter3</h3>
                         <button
                             className="close_button"
