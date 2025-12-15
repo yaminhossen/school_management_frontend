@@ -172,21 +172,52 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
 
                     /* Print Styles */
                     @media print {
-                        /* Hide everything except the table and headers */
+                        /* Reset page margins */
+                        @page {
+                            margin: 0.5cm;
+                            size: landscape;
+                        }
+                        
+                        /* Hide everything except the table */
                         body * {
                             visibility: hidden;
+                        }
+                        
+                        html, body {
+                            width: 100%;
+                            height: 100%;
+                            margin: 0 !important;
+                            padding: 0 !important;
+                            overflow: hidden !important;
+                        }
+                        
+                        .admin_dashboard,
+                        .admin_sideba,
+                        .class_schedule_area,
+                        .container {
+                            display: block !important;
+                            position: static !important;
+                            margin: 0 !important;
+                            padding: 0 !important;
+                            width: 100% !important;
+                            max-width: 100% !important;
+                            overflow: visible !important;
                         }
                         
                         .class_schedule_content,
                         .class_schedule_content *,
                         .class_schedule_title h2,
-                        .schedule_info,
-                        .schedule_info * {
+                        .class_schedule_title h2 * {
                             visibility: visible;
                         }
                         
-                        /* Hide print button when printing */
-                        #printButtonRoutine {
+                        /* Hide all form elements and print button */
+                        .class_schedule_title form,
+                        #printButtonRoutine,
+                        .form-group,
+                        .form_elements,
+                        .btn_routine,
+                        .print_btn {
                             display: none !important;
                         }
                         
@@ -195,18 +226,41 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                             background: white !important;
                             color: black !important;
                             font-family: Arial, sans-serif;
-                            margin: 0;
-                            padding: 20px;
                         }
                         
                         /* Position the content for printing */
                         .class_schedule_content {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            right: 0;
+                            position: static !important;
+                            display: block !important;
+                            margin: 0 !important;
+                            padding: 0 !important;
+                            width: 100% !important;
                             background: white !important;
                             color: black !important;
+                            page-break-after: avoid;
+                            overflow: visible !important;
+                        }
+                        
+                        /* Title styling for print */
+                        .class_schedule_title {
+                            display: block !important;
+                            position: static !important;
+                            margin: 0 !important;
+                            padding: 10px 0 5px 0 !important;
+                            page-break-after: avoid;
+                        }
+                        
+                        .class_schedule_title h2 {
+                            position: static !important;
+                            display: block !important;
+                            text-align: center;
+                            font-size: 26px;
+                            font-weight: bold;
+                            color: black !important;
+                            margin: 0 0 15px 0 !important;
+                            padding: 0 !important;
+                            background: white !important;
+                            visibility: visible !important;
                         }
                         
                         /* Table print styles */
@@ -214,97 +268,92 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                             background: white !important;
                             color: black !important;
                             border-collapse: collapse;
-                            width: 100%;
-                            margin-top: 20px;
+                            width: 100% !important;
+                            margin: 0 !important;
+                            table-layout: fixed !important;
+                            page-break-inside: avoid;
+                            page-break-after: avoid;
                         }
                         
                         .table_area th,
                         .table_area td {
                             background: white !important;
                             color: black !important;
-                            border: 2px solid black !important;
-                            padding: 12px 8px;
+                            border: 2px solid #333 !important;
+                            padding: 10px 6px !important;
                             text-align: center;
-                            font-size: 12px;
+                            font-size: 11px !important;
                             vertical-align: middle;
+                            word-wrap: break-word;
                         }
                         
                         .table_head_area th {
-                            background: #f5f5f5 !important;
+                            background: #e8e8e8 !important;
                             font-weight: bold;
-                            font-size: 13px;
+                            font-size: 12px !important;
                             text-transform: uppercase;
+                            padding: 12px 6px !important;
                         }
                         
                         .class_name,
                         .exam_name {
-                            background: #f0f0f0 !important;
+                            background: #f5f5f5 !important;
                             font-weight: bold;
-                            font-size: 14px;
+                            font-size: 13px !important;
                             vertical-align: middle;
                         }
                         
                         .subject {
                             background: #fafafa !important;
                             font-weight: 600;
+                            font-size: 11px !important;
                         }
                         
                         .class_time_and_room_content {
                             background: white !important;
-                            min-height: 60px;
+                            min-height: 50px;
+                            padding: 8px 4px !important;
+                        }
+                        
+                        .class_time_and_room {
+                            display: block;
+                            width: 100%;
                         }
                         
                         .time_rooom {
                             color: black !important;
-                            font-size: 11px;
-                            line-height: 1.4;
+                            font-size: 10px !important;
+                            line-height: 1.5;
                             margin: 2px 0;
+                            display: block;
                         }
                         
                         .class_time {
                             font-weight: bold;
-                            color: #333 !important;
+                            color: #000 !important;
+                            font-size: 11px !important;
                         }
                         
                         .room_title {
-                            color: #666 !important;
-                            font-size: 10px;
+                            color: #444 !important;
+                            font-size: 9px !important;
                         }
                         
-                        /* Title styling for print */
-                        .class_schedule_title h2 {
-                            position: absolute;
-                            top: -40px;
-                            left: 0;
-                            right: 0;
-                            text-align: center;
-                            font-size: 24px;
-                            font-weight: bold;
-                            color: black !important;
-                            margin: 0 0 20px 0;
-                            background: white !important;
+                        /* Column widths for better layout */
+                        .head_class_title {
+                            width: 8% !important;
                         }
                         
-                        /* Schedule info for print */
-                        .schedule_info {
-                            background: white !important;
-                            color: black !important;
-                            border: 1px solid #ccc !important;
-                            padding: 10px !important;
-                            margin-bottom: 15px !important;
-                            text-align: center;
+                        .head_batch_title {
+                            width: 8% !important;
                         }
                         
-                        .schedule_info div {
-                            color: black !important;
-                            font-weight: bold;
-                            display: inline-block;
-                            margin: 0 20px;
+                        .head_subject_title {
+                            width: 10% !important;
                         }
                         
-                        /* Ensure proper page breaks */
-                        .table_area {
-                            page-break-inside: avoid;
+                        .head_day_time_room_title {
+                            width: 9.5% !important;
                         }
                         
                         /* Remove any dark backgrounds */
