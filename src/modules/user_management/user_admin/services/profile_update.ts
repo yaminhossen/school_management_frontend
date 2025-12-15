@@ -32,24 +32,26 @@ async function validate(req: Request, models: any, user: any) {
             .withMessage('Password must be at least 6 characters')
             .run(req);
     }
-    await body('previous_password')
-        .custom(async (previous_password) => {
-            let data = await models.UserAdminsModel.findOne({
-                where: {
-                    id: user.id,
-                    role: 'admin',
-                },
-            });
-            let check_pass = await bcrypt.compare(
-                previous_password,
-                data.password,
-            );
-            if (!check_pass) {
-                throw new Error('previous password is incorrect');
-            }
-            return true;
-        })
-        .run(req);
+    if (req?.body?.password) {
+        await body('previous_password')
+            .custom(async (previous_password) => {
+                let data = await models.UserAdminsModel.findOne({
+                    where: {
+                        id: user.id,
+                        role: 'admin',
+                    },
+                });
+                let check_pass = await bcrypt.compare(
+                    previous_password,
+                    data.password,
+                );
+                if (!check_pass) {
+                    throw new Error('previous password is incorrect');
+                }
+                return true;
+            })
+            .run(req);
+    }
 
     let result = await validationResult(req);
 
