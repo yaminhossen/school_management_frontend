@@ -7,7 +7,7 @@ const Index: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <h3 className="table_heading"></h3>
             <div className="content_body">
-                <Link
+                {/* <Link
                     to="/settings/update-photo"
                     className="btn btn-sm btn-outline-info mb-2 mr-2"
                     type="submit"
@@ -20,7 +20,7 @@ const Index: React.FC<Props> = (props: Props) => {
                     type="submit"
                 >
                     Update Password
-                </Link>
+                </Link> */}
                 {/* <Link
                     to="/leave-application/approved"
                     className="btn btn-sm btn-outline-info mb-2 mr-2"

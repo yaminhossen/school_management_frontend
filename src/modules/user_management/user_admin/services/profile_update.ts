@@ -7,12 +7,13 @@ import {
     Request,
 } from '../../../common_types/object';
 import response from '../helpers/response';
+var bcrypt = require('bcrypt');
 import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 import moment from 'moment/moment';
 
-async function validate(req: Request) {
+async function validate(req: Request, models: any, user: any) {
     // await body('image')
     //     .not()
     //     .isEmpty()
@@ -31,6 +32,24 @@ async function validate(req: Request) {
             .withMessage('Password must be at least 6 characters')
             .run(req);
     }
+    await body('previous_password')
+        .custom(async (previous_password) => {
+            let data = await models.UserAdminsModel.findOne({
+                where: {
+                    id: user.id,
+                    role: 'admin',
+                },
+            });
+            let check_pass = await bcrypt.compare(
+                previous_password,
+                data.password,
+            );
+            if (!check_pass) {
+                throw new Error('previous password is incorrect');
+            }
+            return true;
+        })
+        .run(req);
 
     let result = await validationResult(req);
 
@@ -42,13 +61,19 @@ async function profile_update(
     req: FastifyRequest,
 ): Promise<responseObject> {
     /** validation */
-    let validate_result = await validate(req as Request);
+    let models = await db();
+    let user = (req as any).user;
+    let auth_user = await models.BranchStaffsModel.findOne({
+        where: {
+            user_staff_id: (req as any).user?.id || null,
+        },
+    });
+    let validate_result = await validate(req as Request, models, user);
     if (!validate_result.isEmpty()) {
         return response(422, 'validation error', validate_result.array());
     }
 
     /** initializations */
-    let models = await db();
     let body = req.body as anyObject;
     // let model = new models.UserAdminsModel();
     let model = new models.UserAdminsModel();
@@ -71,15 +96,6 @@ async function profile_update(
     // if (password) {
     //     inputs.password = password;
     // }
-
-    let user = (req as any).user;
-    let auth_user = await models.BranchStaffsModel.findOne({
-        where: {
-            user_staff_id: (req as any).user?.id || null,
-        },
-    });
-    console.log('body', body);
-    console.log('image_path', user);
 
     /** print request data into console */
     // console.clear();

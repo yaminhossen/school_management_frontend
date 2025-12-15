@@ -12,11 +12,11 @@ const HeadTitle: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="title no_move" id="users_drag">
-            <h2>
+            <h6>
                 Pending leave applications
                 {/* {setup.all_page_title} */}
                 {/* {state.is_loading && <span> loading..</span>} */}
-            </h2>
+            </h6>
         </div>
     );
 };
