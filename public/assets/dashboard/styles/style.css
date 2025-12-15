@@ -1178,6 +1178,10 @@ body {
   background-color: rgba(15, 113, 170, 0.534);
 }
 
+.print_btn {
+  margin-top: 37px;
+}
+
 .account_filter_btn {
   border: 1px solid rgb(227, 223, 223);
   border-radius: 5px;
@@ -2207,7 +2211,8 @@ input.form_checkbox:checked::after {
 }
 .explore_window .action_bar .title {
   cursor: move;
-  text-align: center;
+  text-align: left;
+  margin-left: 15px;
 }
 .explore_window .action_bar .title.no_move {
   cursor: unset;
@@ -2481,7 +2486,7 @@ input.form_checkbox:checked::after {
 }
 .class_schedule_area .class_schedule_title {
   border: 0px solid rgba(255, 255, 255, 0.068);
-  padding: 50px 0px;
+  padding: 50px 0px 0px 0px;
   text-align: center;
 }
 .class_schedule_area .class_schedule_title h2 {

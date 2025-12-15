@@ -113,7 +113,8 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                 <td key={key} className="class_time_and_room_content">
                     <div className="class_time_and_room">
                         <div className="time_rooom class_time">
-                            {moment(i.start_time, 'HH:mm:ss').format('hh:mm A')} - {moment(i.end_time, 'HH:mm:ss').format('hh:mm A')}
+                            {moment(i.start_time, 'HH:mm:ss').format('hh:mm A')}{' '}
+                            - {moment(i.end_time, 'HH:mm:ss').format('hh:mm A')}
                         </div>
                         <div>{moment(i.date).format('MMMM Do YY')}</div>
                         <div className="time_rooom class_room">
@@ -142,12 +143,11 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
                         color: white;
                         border: none;
-                        padding: 12px 24px;
+                        padding: 8px 22px;
                         border-radius: 8px;
                         font-size: 16px;
                         font-weight: 600;
                         cursor: pointer;
-                        margin-bottom: 20px;
                         box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
                         transition: all 0.3s ease;
                         display: flex;
@@ -324,7 +324,7 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                             <h2>Exam Routine</h2>
                             <form
                                 onSubmit={(e) => handleSubmit(e)}
-                                className="form_600 mx-auto pt-3"
+                                className="form_600tt mx-auto"
                             >
                                 <div className="mt-4 d-flex text-left">
                                     <div className="form-group form-vertical">
@@ -340,9 +340,14 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                                                 </option>
                                                 {state?.classes?.length &&
                                                     state.classes?.map(
-                                                        (i: {
-                                                            [key: string]: any;
-                                                        }, index: number) => {
+                                                        (
+                                                            i: {
+                                                                [
+                                                                    key: string
+                                                                ]: any;
+                                                            },
+                                                            index: number,
+                                                        ) => {
                                                             return (
                                                                 <option
                                                                     key={index}
@@ -382,14 +387,13 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                                                     )}
                                                 </select>
                                             ) : (
-                                                <div
-                                                    style={{
-                                                        fontSize: '14px',
-                                                        color: 'black',
-                                                    }}
-                                                    className="not_found_text"
-                                                >
-                                                    At First Select Class
+                                                <div className="form_elements">
+                                                    <select name="" id="">
+                                                        <option value="">
+                                                            At First Select
+                                                            Class
+                                                        </option>
+                                                    </select>
                                                 </div>
                                             )}
                                         </div>
@@ -403,9 +407,14 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                                                 </option>
                                                 {exames?.length &&
                                                     exames?.map(
-                                                        (i: {
-                                                            [key: string]: any;
-                                                        }, index: number) => {
+                                                        (
+                                                            i: {
+                                                                [
+                                                                    key: string
+                                                                ]: any;
+                                                            },
+                                                            index: number,
+                                                        ) => {
                                                             return (
                                                                 <option
                                                                     key={index}
@@ -419,50 +428,21 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                                             </select>
                                         </div>
                                     </div>
-                                    {/* <div className="form-group form-vertical">
-                                        <label>Section</label>
-                                        <div className="form_elements">
-                                            {sections.length > 0 ? (
-                                                <select
-                                                    name="branch_class_section_id"
-                                                    disabled={
-                                                        !selectedClassId ||
-                                                        sections.length === 0
-                                                    }
-                                                >
-                                                    <option value="">
-                                                        Select section
-                                                    </option>
-                                                    {sections.map(
-                                                        (i, index) => (
-                                                            <option
-                                                                key={i.id}
-                                                                value={i.id}
-                                                            >
-                                                                {i.title}
-                                                            </option>
-                                                        ),
-                                                    )}
-                                                </select>
-                                            ) : (
-                                                <div
-                                                    style={{
-                                                        fontSize: '14px',
-                                                        color: 'black',
-                                                    }}
-                                                    className="not_found_text"
-                                                >
-                                                    At First Select Class
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div> */}
-                                    <div className="form-group student_submit form-horizontal">
+                                    <div className="form-group form-vertical">
                                         <label></label>
                                         <div className="form_elements">
-                                            <button className="btn btn_1">
+                                            <button className="btn btn_routine">
                                                 submit
                                             </button>
+                                        </div>
+                                    </div>
+                                    <div className="form-group form-vertical">
+                                        <label></label>
+                                        <div className="form_elements print_btn">
+                                            <button
+                                                id="printButtonRoutine"
+                                                onClick={printPage}
+                                            >Print</button>
                                         </div>
                                     </div>
                                 </div>
@@ -472,9 +452,9 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                         {/* eslint-disable */}
                         <div className="class_schedule_content">
                             {/* table_area start */}
-                            <button id="printButtonRoutine" onClick={printPage}>
+                            {/* <button id="printButtonRoutine" onClick={printPage}>
                                  Print
-                            </button>
+                            </button> */}
                             <table className="table_area">
                                 <thead>
                                     <tr className="table_head_area">

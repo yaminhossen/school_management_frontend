@@ -78,10 +78,10 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                     <div className="container">
                         {/* class_schedule_title start */}
                         <div className="class_schedule_title">
-                            <h2>class Routine</h2>
+                            <h2>Class Routine</h2>
                             <form
                                 onSubmit={(e) => handleSubmit(e)}
-                                className="form_600tt mx-auto pt-3"
+                                className="form_600tt mx-auto"
                             >
                                 <div className="mt-4 d-flex text-left">
                                     <div className="form-group form-vertical">

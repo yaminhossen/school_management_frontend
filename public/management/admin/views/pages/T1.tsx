@@ -523,6 +523,26 @@ const T1: React.FC<Props> = (props: Props) => {
                                     },
                                 ],
                             }}
+                            options={{
+                                responsive: true,
+                                maintainAspectRatio: true,
+                                plugins: {
+                                    legend: {
+                                        position: 'top' as const,
+                                    },
+                                    title: {
+                                        display: true,
+                                        text: 'Gender Distribution (%)',
+                                    },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(context) {
+                                                return context.label + ': ' + context.parsed.toFixed(2) + '%';
+                                            }
+                                        }
+                                    }
+                                },
+                            }}
                             // height={150}
                         />
                     </div>
