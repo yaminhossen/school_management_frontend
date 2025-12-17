@@ -14,11 +14,11 @@ const HeadTitle: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="title no_move" id="users_drag">
-            <h5>
+            <h6>
                 {props.title ? props.title : setup.all_page_title}
 
                 {/* {state.is_loading && <span> loading..</span>} */}
-            </h5>
+            </h6>
         </div>
     );
 };

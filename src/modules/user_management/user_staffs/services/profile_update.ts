@@ -38,7 +38,7 @@ async function validate(req: Request, models: any, user: any) {
                 let data = await models.UserStaffsModel.findOne({
                     where: {
                         id: user.id,
-                        role: 'super-admin',
+                        // role: 'super-admin',
                     },
                 });
                 let check_pass = await bcrypt.compare(
@@ -65,6 +65,7 @@ async function profile_update(
     /** validation */
     let models = await db();
     let user = (req as any).user;
+    console.log('user id---', user.id);
     let validate_result = await validate(req as Request, models, user);
     if (!validate_result.isEmpty()) {
         return response(422, 'validation error', validate_result.array());

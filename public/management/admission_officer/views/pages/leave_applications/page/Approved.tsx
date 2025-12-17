@@ -53,18 +53,15 @@ const Approved: React.FC<Props> = (props: Props) => {
         <div className="page_content">
             <div className="explore_window pending_explore_window fixed_size">
                 <div className="action_bar">
+                    <div className="title no_move" id="users_drag">
+                        <h6>All Approved Task</h6>
+                    </div>
                     <div className="navigation">
                         <ul>
                             <li className="search_li">
                                 <HeadSearch></HeadSearch>
                             </li>
                         </ul>
-                    </div>
-                    <div className="title no_move" id="users_drag">
-                        <h2>
-                            All Approved Task
-                            {/* {state.is_loading && <span> loading..</span>} */}
-                        </h2>
                     </div>
                     <div className="control">
                         <HeadRightButtons></HeadRightButtons>

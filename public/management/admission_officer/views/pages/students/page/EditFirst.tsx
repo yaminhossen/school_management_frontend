@@ -54,7 +54,6 @@ const Index: React.FC<Props> = (props: Props) => {
         t.splice(index, 1);
         setState(t);
     }
-    // console.log('moment', moment().format('YYYY-MM-DD'));
 
     // for admission date
     const admissionDate = state.item?.student_info?.admission_date;

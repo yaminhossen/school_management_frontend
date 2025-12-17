@@ -439,3 +439,8 @@
 {"level":60,"time":1765961081111,"pid":15076,"hostname":"DESKTOP-9421701","file":"services\\profile_update.ts:128:19)","time":"12/17/2025 2:44:41 PM","message":"operation not possible"}
 {"level":60,"time":1765961128190,"pid":15076,"hostname":"DESKTOP-9421701","file":"","time":"12/17/2025 2:45:28 PM","message":"target not found."}
 {"level":60,"time":1765961151958,"pid":15076,"hostname":"DESKTOP-9421701","file":"","time":"12/17/2025 2:45:51 PM","message":"target not found."}
+{"level":60,"time":1765964528021,"pid":15940,"hostname":"DESKTOP-9421701","file":"","time":"12/17/2025 3:42:08 PM","message":"target not found."}
+{"level":60,"time":1765964581745,"pid":15940,"hostname":"DESKTOP-9421701","file":"","time":"12/17/2025 3:43:01 PM","message":"target not found."}
+{"level":60,"time":1765964583063,"pid":15940,"hostname":"DESKTOP-9421701","file":"","time":"12/17/2025 3:43:03 PM","message":"target not found."}
+{"level":60,"time":1765964673691,"pid":15940,"hostname":"DESKTOP-9421701","file":"","time":"12/17/2025 3:44:33 PM","message":"target not found."}
+{"level":60,"time":1765964777357,"pid":15940,"hostname":"DESKTOP-9421701","file":"","time":"12/17/2025 3:46:17 PM","message":"target not found."}
