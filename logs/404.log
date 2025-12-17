@@ -39,3 +39,4 @@
 {"level":60,"time":1765961991886,"pid":15940,"hostname":"DESKTOP-9421701","error":"404","url":"/avatar.png"}
 {"level":60,"time":1765962531550,"pid":15940,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/admission_officer/admission_officer.js"}
 {"level":60,"time":1765964932951,"pid":6524,"hostname":"DESKTOP-9421701","error":"404","url":"/api/v1/user-staffs/profile-update"}
+{"level":60,"time":1765968083595,"pid":2744,"hostname":"DESKTOP-9421701","error":"404","url":"/management_build/student/student.js"}

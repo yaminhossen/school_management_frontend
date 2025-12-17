@@ -8,6 +8,12 @@ const Header: React.FC<Props> = (props: Props) => {
     return (
         <>
             <div className="action_bar">
+                <div className="title no_move" id="users_drag">
+                    <h6 style={{ fontSize: '18px' }}>
+                        All Approved Task
+                        {/* {state.is_loading && <span> loading..</span>} */}
+                    </h6>
+                </div>
                 <div className="navigation">
                     <ul>
                         <li className="search_li">
@@ -17,12 +23,6 @@ const Header: React.FC<Props> = (props: Props) => {
                 </div>
                 {/* <HeadTitle></HeadTitle> */}
 
-                <div className="title no_move" id="users_drag">
-                    <h2 style={{ fontSize: '18px' }}>
-                        All Approved Task
-                        {/* {state.is_loading && <span> loading..</span>} */}
-                    </h2>
-                </div>
                 <div className="control">
                     <HeadRightButtons></HeadRightButtons>
                 </div>
