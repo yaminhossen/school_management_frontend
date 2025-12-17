@@ -8,11 +8,11 @@ import UpdatePass from '../page/UpdatePass';
 
 export default {
     path: 'settings',
-    element: <Layout />,
+    element: <UpdatePass />,
     children: [
         {
-            path: '',
-            element: <Index />,
+            // path: '',
+            // element: <Index />,
             // children: [
             //     {
             //         index: true,
