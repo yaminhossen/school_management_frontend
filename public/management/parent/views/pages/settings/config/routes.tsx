@@ -8,7 +8,7 @@ import UpdatePass from '../page/UpdatePass';
 
 export default {
     path: 'settings',
-    element: <Layout />,
+    element: <UpdatePass />,
     children: [
         {
             path: '',

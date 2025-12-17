@@ -11,8 +11,9 @@ import { InferCreationAttributes } from 'sequelize';
 import custom_error from '../helpers/custom_error';
 import error_trace from '../helpers/error_trace';
 import moment from 'moment/moment';
+var bcrypt = require('bcrypt');
 
-async function validate(req: Request) {
+async function validate(req: Request, models: any, user: any) {
     // await body('image')
     //     .not()
     //     .isEmpty()
@@ -22,6 +23,26 @@ async function validate(req: Request) {
         await body('password')
             .isLength({ min: 6 })
             .withMessage('Password must be at least 6 characters')
+            .run(req);
+    }
+    if (req?.body?.password) {
+        await body('previous_password')
+            .custom(async (previous_password) => {
+                let data = await models.UserParentsModel.findOne({
+                    where: {
+                        id: user.id,
+                        // role: 'super-admin',
+                    },
+                });
+                let check_pass = await bcrypt.compare(
+                    previous_password,
+                    data.password,
+                );
+                if (!check_pass) {
+                    throw new Error('previous password is incorrect');
+                }
+                return true;
+            })
             .run(req);
     }
 
@@ -35,17 +56,17 @@ async function profile_update(
     req: FastifyRequest,
 ): Promise<responseObject> {
     /** validation */
-    let validate_result = await validate(req as Request);
+    let models = await db();
+    let user = (req as any).user;
+    let validate_result = await validate(req as Request, models, user);
     if (!validate_result.isEmpty()) {
         return response(422, 'validation error', validate_result.array());
     }
 
     /** initializations */
-    let models = await db();
     let body = req.body as anyObject;
     let model = new models.UserParentsModel();
     let image_path = '';
-    let user = (req as any).user;
     // let auth_user = await models.BranchTeachersModel.findOne({
     //     where: {
     //         user_teacher_id: (req as any).user?.id || null,
