@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../common_types/object';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import axios from 'axios';
-import moment from 'moment/moment';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<any>([]);
 
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
 
     const fetchData = async () => {
         try {
@@ -19,7 +14,6 @@ const Index: React.FC<Props> = (props: Props) => {
                 '/api/v1/user-staffs/basic-information',
             );
             setData(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -28,7 +22,6 @@ const Index: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-    console.log(data);
     return (
         <div className="admin_dashboard">
             <div className="single-info-details">
@@ -44,47 +37,12 @@ const Index: React.FC<Props> = (props: Props) => {
                         <h3 className="text-dark-medium profile_name font-medium">
                             {data.name}
                         </h3>
-                        <div className="header-elements">
-                            {/* <ul>
-                                <li>
-                                    <a href="">
-                                        <span className="material-symbols-outlined fill">
-                                            edit_square
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="material-symbols-outlined fill">
-                                            print
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span className="material-symbols-outlined fill">
-                                            system_update_alt
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul> */}
-                        </div>
+                        <div className="header-elements"></div>
                     </div>
                     <ul className="section_naviagation">
-                        {/* <li>
-                            <NavLink to="/profile/major-information">
-                                Major informations
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/profile/basic-information">
-                                Basic informations
-                            </NavLink>
-                        </li> */}
                         <li className="active_Li">
                             <NavLink
                                 to={`/profile/major-information`}
-                                // className="active_nav_link"
                                 className={({ isActive }) =>
                                     isActive
                                         ? 'active_nav_link'

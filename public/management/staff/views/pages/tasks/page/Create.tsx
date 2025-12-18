@@ -4,13 +4,11 @@ import Footer from '../components/management_data_page/Footer';
 import setup from '../config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { store } from '../config/store/async_actions/store';
-import DropDown from '../components/dropdown/DropDown';
 import InputImage from '../components/management_data_page/InputImage';
 import { useSelector } from 'react-redux';
 import { initialState } from '../config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from '../config/store';
-import { all } from 'axios';
 import { teacher_complete } from '../config/store/async_actions/teacher_complete';
 import { unseen_tasks } from '../config/store/async_actions/unseen_tasks';
 export interface Props {}
@@ -29,7 +27,6 @@ const Create: React.FC<Props> = (props: Props) => {
             e.target.reset();
         }
         dispatch(storeSlice.actions.set_only_latest_data(true));
-        // dispatch(all({}) as any);
         await new Promise((resolve) => setTimeout(resolve, 300));
         dispatch(teacher_complete({}) as any);
         await new Promise((resolve) => setTimeout(resolve, 200));
@@ -58,9 +55,6 @@ const Create: React.FC<Props> = (props: Props) => {
                             onSubmit={(e) => handle_submit(e)}
                             className="form_600 mx-auto pt-3"
                         >
-                            {/* <div className="form_section_heading">
-                                <h2 className=""> Major Information</h2>
-                            </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
                                     <label>

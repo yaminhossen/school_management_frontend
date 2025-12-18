@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import moment from 'moment/moment';
 import { all } from './config/store/async_actions/all';
 import storeSlice from './config/store';
@@ -16,7 +15,6 @@ const Index: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
-    const [error, setError] = useState(null);
     const [data, setData] = useState([]);
     const dispatch = useAppDispatch();
 
@@ -25,17 +23,6 @@ const Index: React.FC<Props> = (props: Props) => {
         dispatch(all({}) as any);
     }, []);
 
-    function quick_view(data: anyObject = {}) {
-        dispatch(storeSlice.actions.set_item(data));
-        dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
-    }
-
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
-    console.log('notice all from state', state?.all);
-
-    console.log(data);
     function yearFormate(date: string) {
         return moment(date).year();
     }
@@ -99,15 +86,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     </div>
                                                     <div className="notice_title_and_description_area">
                                                         <div className="notice_title">
-                                                            {/* <a
-                                                            href="notice_details.html"
-                                                            className="title_text"
-                                                        >
-                                                            9, 10, 11 তারিখ
-                                                            মাদরাসা 9, 10, 11
-                                                            তারিখ মাদরাসা বন্ধ
-                                                            থাকবে
-                                                        </a> */}
                                                             <Link
                                                                 className="title_text"
                                                                 to={`/notices/details/${i.id}`}

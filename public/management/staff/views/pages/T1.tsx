@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../common_types/object';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
@@ -11,7 +9,6 @@ const T1: React.FC<Props> = (props: Props) => {
     const [accdemicCalander, setAccademicCalander] = useState<any[]>([]);
     const [noticeCount, setNoticeCount] = useState(0);
     const [taskCount, setTaskCount] = useState(0);
-    // console.log(accdemicCalander);
 
     const [selectedDate, setSelectedDate] = useState(
         moment().format('YYYY-MM-DD'),
@@ -53,44 +50,8 @@ const T1: React.FC<Props> = (props: Props) => {
         fetchTaskCount();
     }, []);
 
-    // useEffect(() => {
-    //     // Function to fetch data
-    // }, []);
-
-    console.log(data);
-    let days = [
-        'saturday',
-        'sunday',
-        'monday',
-        'tuesday',
-        'wednesday',
-        'thursday',
-        'friday',
-    ];
-
     function dateFormate(date: string) {
         return moment(date).format('dddd').toLowerCase();
-    }
-    // console.log('date', dateFormate('2024-09-07T00:00:00.000Z'));
-
-    function get_day_data(i, day) {
-        if (dateFormate(i.date) === day) {
-            return (
-                <li className="absent">
-                    <time dateTime="2022-02-02">{i.id}</time>
-                    <div className="text-warning">
-                        <i className="icon-close"></i>
-                        <span className="event_title">Class Present</span>
-                    </div>
-                </li>
-            );
-        } else {
-            return (
-                <li className="absent">
-                    <time dateTime="2022-02-02">{i.id}</time>
-                </li>
-            );
-        }
     }
 
     const fetchAccedemicCalenderData = async () => {
@@ -102,8 +63,6 @@ const T1: React.FC<Props> = (props: Props) => {
                     branch_id: 1,
                 },
             );
-
-            // Assuming setAccademicCalander is a state setter function
             setAccademicCalander(response.data.data);
 
             // Clear any previous errors
@@ -156,14 +115,6 @@ const T1: React.FC<Props> = (props: Props) => {
                         title: 'টাস্ক',
                         value: taskCount,
                     },
-                    // {
-                    //     title: 'এই মাসের উপস্থিতি',
-                    //     value: '78 / 88',
-                    // },
-                    // {
-                    //     title: 'উপস্থিতি %',
-                    //     value: 89,
-                    // },
                 ].map((i) => {
                     return (
                         <div

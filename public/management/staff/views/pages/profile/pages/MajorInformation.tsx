@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../../common_types/object';
-import { Link, Outlet } from 'react-router-dom';
 import axios from 'axios';
-import moment from 'moment/moment';
 export interface Props {}
 
 const MajorInformation: React.FC<Props> = (props: Props) => {
@@ -15,7 +12,6 @@ const MajorInformation: React.FC<Props> = (props: Props) => {
                 '/api/v1/user-staffs/basic-information',
             );
             setData(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -24,7 +20,6 @@ const MajorInformation: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-    console.log(data);
     return (
         <div className="admin_dashboard">
             <h3 className="table_heading">Major information</h3>

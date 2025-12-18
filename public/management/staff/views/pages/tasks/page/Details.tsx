@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react';
 import Header from '.././components/management_data_page/Header';
 import Footer from '.././components/management_data_page/Footer';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import setup from '.././config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { details } from '.././config/store/async_actions/details';
 import { initialState } from '.././config/store/inital_state';
 import { useLocation, useParams } from 'react-router-dom';
-import storeSlice from '.././config/store';
 import moment from 'moment/moment';
 import { seen_user } from '../config/store/async_actions/seen_user';
 import { unseen_tasks } from '../config/store/async_actions/unseen_tasks';
@@ -25,7 +23,6 @@ const Details: React.FC<Props> = (props: Props) => {
     async function initdependancy() {
         await dispatch(details({ id: params.id }) as any);
         await dispatch(seen_user({ id: params.id }) as any);
-        // Wait for 0.5 second (500ms)
         await new Promise((resolve) => setTimeout(resolve, 500));
         await dispatch(unseen_tasks({}) as any);
     }
@@ -33,11 +30,6 @@ const Details: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         initdependancy();
     }, []);
-    // useEffect(() => {
-    //     dispatch(storeSlice.actions.set_item({}));
-    // dispatch(details({ id: params.id }) as any);
-    // dispatch(seen_user({ id: params.id }) as any);
-    // }, []);
 
     return (
         <>

@@ -6,7 +6,6 @@ import { initialState } from '../config/store/inital_state';
 import Paginate from '../../../components/Paginate';
 import QuickView from '../components/canvas/QuickView';
 import storeSlice from '../config/store';
-import { anyObject } from '../../../../common_types/object';
 import TableHeading from '../components/all_data_page/TableHeading';
 import moment from 'moment/moment';
 import HeadSearch2 from '../components/all_data_page/HeadSearch2';
@@ -20,8 +19,6 @@ const Approved: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
-
-    const [error, setError] = useState(null);
 
     const dispatch = useAppDispatch();
 
@@ -59,21 +56,6 @@ const Approved: React.FC<Props> = (props: Props) => {
                             <table>
                                 <thead>
                                     <tr>
-                                        {/* <th />
-                                        <th></th> */}
-                                        {/* <th>
-                                            <SelectAll />
-                                        </th>
-                                        <TableHeading
-                                            label={`ID`}
-                                            col_name={`id`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Assign Task`}
-                                            col_name={`assign task`}
-                                            sort={false}
-                                        /> */}
                                         <th>Serial</th>
                                         <TableHeading
                                             label={`Type`}
@@ -120,12 +102,7 @@ const Approved: React.FC<Props> = (props: Props) => {
                                                         className={`table_rows table_row_${i.id}`}
                                                     >
                                                         <td>
-                                                            <span
-                                                                className="quick_view_trigger"
-                                                                // onClick={() =>
-                                                                //     quick_view(i)
-                                                                // }
-                                                            >
+                                                            <span className="quick_view_trigger">
                                                                 {index + 1}
                                                             </span>
                                                         </td>
@@ -201,7 +178,6 @@ const Approved: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                {/* <TableFooter></TableFooter> */}
             </div>
 
             <Filter2></Filter2>

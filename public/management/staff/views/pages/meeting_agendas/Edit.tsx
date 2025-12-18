@@ -37,7 +37,6 @@ const Edit: React.FC<Props> = (props: Props) => {
         if (meetingId.current) {
             meetingId.current.value = state.item?.agenda?.meeting_id || ''; // Safely set the value
         }
-        // console.log('Updated meetingId:', meetingId.current?.value);
     }, [state.meeting]);
     return (
         <>

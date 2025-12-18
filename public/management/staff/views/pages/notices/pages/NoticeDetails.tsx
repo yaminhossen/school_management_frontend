@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../../common_types/object';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import moment from 'moment/moment';
 import BackButton from './BackButton';
 export interface Props {}
 const NoticeDetails: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<any>({});
     const { id } = useParams();
-
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
 
     const fetchData = async () => {
         try {

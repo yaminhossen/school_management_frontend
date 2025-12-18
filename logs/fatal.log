@@ -504,3 +504,12 @@
 {"level":60,"time":1766040606099,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 12:50:06 PM","message":"task not found"}
 {"level":60,"time":1766040621751,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 12:50:21 PM","message":"task not found"}
 {"level":60,"time":1766040636047,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 12:50:36 PM","message":"task not found"}
+{"level":60,"time":1766046920654,"pid":11784,"hostname":"DESKTOP-9421701","file":"","time":"12/18/2025 2:35:20 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1766047303189,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 2:41:43 PM","message":"task not found"}
+{"level":60,"time":1766047476332,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 2:44:36 PM","message":"task not found"}
+{"level":60,"time":1766047478050,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 2:44:38 PM","message":"task not found"}
+{"level":60,"time":1766047576152,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 2:46:16 PM","message":"task not found"}
+{"level":60,"time":1766047634932,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 2:47:14 PM","message":"task not found"}
+{"level":60,"time":1766047653717,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 2:47:33 PM","message":"task not found"}
+{"level":60,"time":1766047661376,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 2:47:41 PM","message":"task not found"}
+{"level":60,"time":1766047774313,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 2:49:34 PM","message":"task not found"}

@@ -7,11 +7,7 @@ import { RootState, useAppDispatch } from '../../../../store';
 import { initialState } from '../config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from '../config/store';
-import { update } from '../config/store/async_actions/update';
-import moment from 'moment/moment';
 import InputImage from '../components/management_data_page/InputImage';
-import Input from '../components/management_data_page/Input';
-import { details } from '../config/store/async_actions/details';
 import { details2 } from '../config/store/async_actions/details2';
 import { store } from '../config/store/async_actions/store';
 export interface Props {}
@@ -20,8 +16,6 @@ const Edit: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
-
-    const [showPassword, setShowPassword] = useState(false);
     const dispatch = useAppDispatch();
     const { id } = useParams();
 
