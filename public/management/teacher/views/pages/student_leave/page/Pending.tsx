@@ -1,28 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
-import { all } from '../config/store/async_actions/all';
 import setup from '../config/setup';
 import { initialState } from '../config/store/inital_state';
-import Header from '../components/all_data_page/Header';
-import TableFooter from '../components/all_data_page/TableFooter';
 import Paginate from '../../../components/Paginate';
-import Filter from '../components/canvas/Filter';
 import QuickView from '../components/canvas/QuickView';
 import storeSlice from '../config/store';
 import { anyObject } from '../../../../common_types/object';
-import TableRowAction from '../components/all_data_page/TableRowAction';
-import SelectItem from '../components/all_data_page/SelectItem';
-import SelectAll from '../components/all_data_page/SelectIAll';
 import TableHeading from '../components/all_data_page/TableHeading';
 import moment from 'moment/moment';
-import { Link } from 'react-router-dom';
 import HeadSearch3 from '../components/all_data_page/HeadSearch3';
 import HeadRightButtons from '../components/all_data_page/HeadRightButtons';
-import axios from 'axios';
-import { approved } from '../config/store/async_actions/approved';
-import { rejected } from '../config/store/async_actions/rejected';
 import { pending } from '../config/store/async_actions/pending';
 import Filter3 from '../components/canvas/Filter3';
 
@@ -56,18 +44,15 @@ const Approved: React.FC<Props> = (props: Props) => {
         <div className="page_content">
             <div className="explore_window pending_explore_window fixed_size">
                 <div className="action_bar">
+                    <div className="title no_move" id="users_drag">
+                        <h6>All Pending leave</h6>
+                    </div>
                     <div className="navigation">
                         <ul>
                             <li className="search_li">
                                 <HeadSearch3></HeadSearch3>
                             </li>
                         </ul>
-                    </div>
-                    <div className="title no_move" id="users_drag">
-                        <h2>
-                            All Approved Task
-                            {/* {state.is_loading && <span> loading..</span>} */}
-                        </h2>
                     </div>
                     <div className="control">
                         <HeadRightButtons></HeadRightButtons>
@@ -80,21 +65,6 @@ const Approved: React.FC<Props> = (props: Props) => {
                             <table>
                                 <thead>
                                     <tr>
-                                        {/* <th />
-                                        <th></th> */}
-                                        {/* <th>
-                                            <SelectAll />
-                                        </th>
-                                        <TableHeading
-                                            label={`ID`}
-                                            col_name={`id`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Assign Task`}
-                                            col_name={`assign task`}
-                                            sort={false}
-                                        /> */}
                                         <th>Serial</th>
                                         <TableHeading
                                             label={`Name`}
@@ -167,7 +137,7 @@ const Approved: React.FC<Props> = (props: Props) => {
                                                             <img
                                                                 src={
                                                                     i.student
-                                                                        .image ||
+                                                                        ?.image ||
                                                                     undefined
                                                                 }
                                                                 width={40}
@@ -246,7 +216,6 @@ const Approved: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                {/* <TableFooter></TableFooter> */}
             </div>
 
             <Filter3></Filter3>

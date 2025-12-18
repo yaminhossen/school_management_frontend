@@ -1,7 +1,5 @@
-import React, { Children } from 'react';
 import Layout from './Layout';
 import Index from '../Index';
-import Create from '../page/Create';
 import Approved from '../page/Approved';
 import Pending from '../page/Pending';
 import Rejected from '../page/Rejected';
@@ -31,9 +29,9 @@ export default {
                 },
             ],
         },
-        {
-            path: 'create',
-            element: <Create />,
-        },
+        // {
+        //     path: 'create',
+        //     element: <Create />,
+        // },
     ],
 };

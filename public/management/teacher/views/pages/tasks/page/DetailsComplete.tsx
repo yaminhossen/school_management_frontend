@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
-import Header from '.././components/management_data_page/Header';
 import Footer from '.././components/management_data_page/Footer';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import setup from '.././config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
@@ -25,7 +23,6 @@ const DetailsComplete: React.FC<Props> = (props: Props) => {
     async function initdependancy() {
         dispatch(storeSlice.actions.set_item({}));
         await dispatch(details({ id: params.id }) as any);
-        // Wait for 0.5 second (500ms)
         await new Promise((resolve) => setTimeout(resolve, 300));
         await dispatch(unseen_tasks({}) as any);
     }

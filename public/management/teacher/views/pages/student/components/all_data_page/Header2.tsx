@@ -15,6 +15,7 @@ const Header2: React.FC<Props> = (props: Props) => {
     return (
         <>
             <div className="action_bar">
+                <HeadTitle></HeadTitle>
                 <div className="navigation">
                     <ul>
                         <li className="search_li">
@@ -25,7 +26,6 @@ const Header2: React.FC<Props> = (props: Props) => {
                         </li>
                     </ul>
                 </div>
-                <HeadTitle></HeadTitle>
                 <div className="control">
                     <HeadRightButtons></HeadRightButtons>
                 </div>
