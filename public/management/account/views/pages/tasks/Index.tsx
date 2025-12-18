@@ -7,13 +7,6 @@ const Index: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <h3 className="table_heading"></h3>
             <div className="content_body">
-                {/* <Link
-                    to="/tasks/create"
-                    className="btn btn-sm btn-outline-info mb-2 mr-2"
-                    type="submit"
-                >
-                    Create
-                </Link> */}
                 <NavLink
                     to="/tasks/pending"
                     className="btn btn-sm btn-outline-info mb-2 mr-2"
@@ -35,13 +28,6 @@ const Index: React.FC<Props> = (props: Props) => {
                 >
                     Expired
                 </NavLink>
-                {/* <Link
-                    to="/tasks/pending"
-                    className="btn btn-sm btn-outline-info mb-2 mr-2"
-                    type="submit"
-                >
-                    Pending
-                </Link> */}
                 <div className="info-table table-responsive">
                     <Outlet></Outlet>
                 </div>

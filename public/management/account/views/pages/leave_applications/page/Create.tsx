@@ -17,7 +17,6 @@ const Create: React.FC<Props> = (props: Props) => {
         try {
             const response = await axios.get('/api/v1/leave-types/all-type');
             setLeaveType(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -37,13 +36,6 @@ const Create: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         const start = moment(startDate);
         const end = moment(endDate);
-        const today = moment().startOf('day');
-
-        // if (start.isBefore(today)) {
-        //     setErrorMessage('Start date cannot be before today.');
-        //     setDays(0);
-        //     return;
-        // }
         if (end.isBefore(start)) {
             setErrorMessage2('End date cannot be before start date.');
             setDays(0);
