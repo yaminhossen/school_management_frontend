@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../common_types/object';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
 
 const T1: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    const [data, setData] = useState();
-    const [accdemicCalander, setAccademicCalander] = useState<any[]>([]);
     const [totalStudents, setTotalStudents] = useState(0);
     const [totalBranch, setTotalBranch] = useState(0);
     const [totalAdmins, setTotalAdmins] = useState(0);
@@ -18,15 +14,10 @@ const T1: React.FC<Props> = (props: Props) => {
         moment().format('YYYY-MM-DD'),
     ); // Default to today's date
 
-    const handleDateChange = (event) => {
-        setSelectedDate(event.target.value); // Update the selected date
-    };
-
     // Dynamically format month and year based on the selected date
     const selectedMoment = moment(selectedDate);
     const month = selectedMoment.format('MMM').toLowerCase(); // e.g., "jan"
     const year = selectedMoment.format('YYYY'); // e.g., "2025"
-    const formattedDate = `${month}-${year}`;
 
     // Fetch notice count
     const fetchTotalStudents = async () => {
@@ -89,13 +80,6 @@ const T1: React.FC<Props> = (props: Props) => {
                 }}
             >
                 {[
-                    // 'কারেন্ট ব্যালেঞ্চ',
-                    // 'আজকের ইনকাম',
-                    // 'আজকের খরচ',
-                    // 'এই মাসের ইনকাম',
-                    // 'এই মাসের খরচ',
-                    // 'টোটাল খরচ',
-                    // 'বকেয়া',
                     {
                         title: 'টোটাল ব্রাঞ্চ',
                         value: totalBranch,
@@ -116,7 +100,6 @@ const T1: React.FC<Props> = (props: Props) => {
                                 <div className="media d-inline-flex">
                                     <div className="media-body">
                                         <h2 className="total-value m-0 counter">
-                                            {/* {Math.round(Math.random() * 1000)} */}
                                             {i.value}
                                         </h2>
                                     </div>

@@ -513,3 +513,7 @@
 {"level":60,"time":1766047653717,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 2:47:33 PM","message":"task not found"}
 {"level":60,"time":1766047661376,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 2:47:41 PM","message":"task not found"}
 {"level":60,"time":1766047774313,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 2:49:34 PM","message":"task not found"}
+{"level":60,"time":1766048190380,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 2:56:30 PM","message":"task not found"}
+{"level":60,"time":1766048484404,"pid":11784,"hostname":"DESKTOP-9421701","file":"","time":"12/18/2025 3:01:24 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}
+{"level":60,"time":1766048484415,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 3:01:24 PM","message":"task not found"}
+{"level":60,"time":1766048928101,"pid":11784,"hostname":"DESKTOP-9421701","file":"","time":"12/18/2025 3:08:48 PM","message":"You have used the alias admin in two separate associations. Aliased associations must have unique aliases."}

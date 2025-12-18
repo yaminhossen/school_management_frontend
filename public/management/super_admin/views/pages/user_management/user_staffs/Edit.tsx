@@ -11,7 +11,6 @@ import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
 import moment from 'moment/moment';
 import InputImage from './components/management_data_page/InputImage';
-import Input from './components/management_data_page/Input';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {

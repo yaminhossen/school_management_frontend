@@ -22,30 +22,6 @@ const DashboardLayout: React.FC<Props> = (props: Props) => {
             setError(error);
         }
     };
-    // const fetchTypes = async () => {
-    //     try {
-    //         const response2 = await axios.get(
-    //             `/api/v1/user-students/fees-categories-student`,
-    //         );
-    //         setFeesTypes(response2.data?.data?.idWiseTotals);
-    //         setTotalAmount(response2.data?.data?.summeries);
-    //     } catch (error) {
-    //         setError2(error);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     fetchData();
-    // }, []);
-    async function initdependancy() {
-        // await new Promise((resolve) => setTimeout(resolve, 200));
-        await (fetchData() as any);
-        // await (fetchTypes() as any);
-    }
-
-    // useEffect(() => {
-    //     initdependancy();
-    // }, []);
     useEffect(() => {
         const init = async () => {
             await fetchData(); // your function

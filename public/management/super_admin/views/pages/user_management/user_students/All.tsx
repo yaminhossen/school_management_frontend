@@ -1,20 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
-import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
 import { initialState } from './config/store/inital_state';
-import Header from './components/all_data_page/Header';
-import TableFooter from './components/all_data_page/TableFooter';
-import Paginate from '../../../components/Paginate';
-import Filter from './components/canvas/Filter';
-import QuickView from './components/canvas/QuickView';
 import storeSlice from './config/store';
 import { anyObject } from '../../../../common_types/object';
-import TableRowAction from './components/all_data_page/TableRowAction';
-import SelectItem from './components/all_data_page/SelectItem';
-import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
 import { all_class } from './config/store/async_actions/all_class';
 import { Link } from 'react-router-dom';
@@ -81,12 +71,6 @@ const All: React.FC<Props> = (props: Props) => {
                             </div>
                         </div>
                     </div>
-                    {/* <button
-                        className="btn account_filter_btn btn-sm btn-outline-info"
-                        type="submit"
-                    >
-                        Submit
-                    </button> */}
                 </div>
             </form>
             <div className="explore_window fixed_size">
@@ -162,13 +146,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                             >
                                                                 Details
                                                             </Link>
-                                                            {/* <Link
-                                                                to={`/user-students/class-details/${i.id}`}
-                                                                className="btn btn-sm  btn-outline-info"
-                                                                type="submit"
-                                                            >
-                                                                Details
-                                                            </Link> */}
                                                         </td>
                                                     </tr>
                                                 );
@@ -193,22 +170,9 @@ const All: React.FC<Props> = (props: Props) => {
                                 )}
                             </table>
                         </div>
-
-                        {/* <Paginate
-                            set_url={storeSlice.actions.set_url}
-                            set_paginate={storeSlice.actions.set_paginate}
-                            set_page={storeSlice.actions.set_page}
-                            all={all}
-                            data={state.all as any}
-                            selected_paginate={state.paginate}
-                        ></Paginate> */}
                     </div>
                 </div>
-                {/* <TableFooter></TableFooter> */}
             </div>
-
-            {/* <Filter></Filter>
-            <QuickView></QuickView> */}
         </div>
     );
 };

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
@@ -155,16 +154,6 @@ const Details: React.FC<Props> = (props: Props) => {
                                             {state.item.staff_infos?.gender}
                                         </td>
                                     </tr>
-                                    {/* <tr>
-                                        <td>Responsibility</td>
-                                        <td>:</td>
-                                        <td>
-                                            {
-                                                state.item.staff_infos
-                                                    ?.responsibility
-                                            }
-                                        </td>
-                                    </tr> */}
                                     <tr>
                                         <td>national Id</td>
                                         <td>:</td>
@@ -278,11 +267,6 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 : 'Un married'}
                                         </td>
                                     </tr>
-                                    {/* <tr>
-                                        <td>Position</td>
-                                        <td>:</td>
-                                        <td>{state.item.staffs?.possition}</td>
-                                    </tr> */}
                                     <tr>
                                         <td>Joining Date</td>
                                         <td>:</td>
@@ -292,11 +276,6 @@ const Details: React.FC<Props> = (props: Props) => {
                                             ).format('YYYY-MM-DD')}
                                         </td>
                                     </tr>
-                                    {/* <tr>
-                                        <td>Department</td>
-                                        <td>:</td>
-                                        <td>{state.item.staffs?.department}</td>
-                                    </tr> */}
                                 </tbody>
                             </table>
                         </div>

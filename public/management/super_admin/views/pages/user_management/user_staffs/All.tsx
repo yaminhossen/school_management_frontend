@@ -1,25 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
-import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
 import { initialState } from './config/store/inital_state';
 import Header from './components/all_data_page/Header';
 import TableFooter from './components/all_data_page/TableFooter';
-import Paginate from '../../../components/Paginate';
 import Filter from './components/canvas/Filter';
 import QuickView from './components/canvas/QuickView';
 import storeSlice from './config/store';
 import { anyObject } from '../../../../common_types/object';
-import TableRowAction from './components/all_data_page/TableRowAction';
 import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
 import axios from 'axios';
 import { branch_staff } from './config/store/async_actions/branch_staff';
 import Paginate2 from '../../../components/Paginate2';
-import moment from 'moment/moment';
 import { branches } from './config/store/async_actions/branches';
 
 export interface Props {}
@@ -33,16 +28,6 @@ const All: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
 
     const [error, setError] = useState(null);
-
-    // useEffect(() => {
-    //     dispatch(
-    //         storeSlice.actions.set_select_fields(
-    //             'id, name, email, image, phone_number, role, role_2, status',
-    //         ),
-    //     );
-
-    //     dispatch(all({}) as any);
-    // }, []);
     useEffect(() => {
         const fetchData = async () => {
             dispatch(
@@ -141,12 +126,6 @@ const All: React.FC<Props> = (props: Props) => {
                             </div>
                         </div>
                     </div>
-                    {/* <button
-                        className="btn account_filter_btn btn-sm btn-outline-info"
-                        type="submit"
-                    >
-                        Submit
-                    </button> */}
                 </div>
             </form>
             <div className="explore_window fixed_size">
@@ -177,11 +156,6 @@ const All: React.FC<Props> = (props: Props) => {
                                         <th>Designation</th>
                                         <th>Role</th>
                                         <th>Branch</th>
-                                        {/* <TableHeading
-                                            label={`Designation`}
-                                            col_name={`designation`}
-                                            sort={false}
-                                        /> */}
                                         <TableHeading
                                             label={`Phone number`}
                                             col_name={`phone_number`}
@@ -210,11 +184,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                     key={i.id}
                                                     className={`table_rows table_row_${i.id}`}
                                                 >
-                                                    {/* <td>
-                                                        <TableRowAction
-                                                            item={i}
-                                                        />
-                                                    </td> */}
                                                     <td>
                                                         <SelectItem item={i} />
                                                     </td>
@@ -311,21 +280,11 @@ const All: React.FC<Props> = (props: Props) => {
                                 )}
                             </table>
                         </div>
-
-                        {/* <Paginate
-                            set_url={storeSlice.actions.set_url}
-                            set_paginate={storeSlice.actions.set_paginate}
-                            set_page={storeSlice.actions.set_page}
-                            all={all}
-                            data={state.all as any}
-                            selected_paginate={state.paginate}
-                        ></Paginate> */}
                         <Paginate2
                             set_url={storeSlice.actions.set_url}
                             set_id={branchId}
                             set_paginate={storeSlice.actions.set_paginate}
                             set_page={storeSlice.actions.set_page}
-                            // class_details1={class_details1({})}
                             all={branch_staff}
                             data={state.all as any}
                             selected_paginate={state.paginate}

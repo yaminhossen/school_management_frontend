@@ -1,14 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { anyObject } from '../../../../common_types/object';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
-import moment from 'moment/moment';
 import InputImage, { InputImageRef } from './InputImage';
 export interface Props {}
 
 const UpdatePass: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
-    const [data, setData] = useState('');
     const formRef = useRef<HTMLFormElement>(null);
     const [showPreviousPassword, setShowPreviousPassword] = useState(false);
     const [showNewPassword, setShowNewPassword] = useState(false);

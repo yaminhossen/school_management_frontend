@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
@@ -38,9 +37,6 @@ const All: React.FC<Props> = (props: Props) => {
     function quick_view(data: anyObject = {}) {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
-    }
-    if (state) {
-        console.log('all branches', state);
     }
 
     return (
