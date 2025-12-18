@@ -40,13 +40,6 @@ const Complete: React.FC<Props> = (props: Props) => {
         dispatch(complete({}) as any);
     }, []);
 
-    function quick_view(data: anyObject = {}) {
-        dispatch(storeSlice.actions.set_item(data));
-        dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
-    }
-    let today = moment().format('YYYY-MM-DD');
-    let nowTime = moment().format('hh:mm A');
-
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">

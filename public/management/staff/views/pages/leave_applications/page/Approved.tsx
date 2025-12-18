@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
-import { all } from '../config/store/async_actions/all';
 import setup from '../config/setup';
 import { initialState } from '../config/store/inital_state';
-import Header from '../components/all_data_page/Header';
-import TableFooter from '../components/all_data_page/TableFooter';
 import Paginate from '../../../components/Paginate';
 import Filter from '../components/canvas/Filter';
 import QuickView from '../components/canvas/QuickView';
 import storeSlice from '../config/store';
 import { anyObject } from '../../../../common_types/object';
-import TableRowAction from '../components/all_data_page/TableRowAction';
-import SelectItem from '../components/all_data_page/SelectItem';
-import SelectAll from '../components/all_data_page/SelectIAll';
 import TableHeading from '../components/all_data_page/TableHeading';
 import moment from 'moment/moment';
-import { Link } from 'react-router-dom';
 import HeadSearch from '../components/all_data_page/HeadSearch';
 import HeadRightButtons from '../components/all_data_page/HeadRightButtons';
-import axios from 'axios';
 import { approved } from '../config/store/async_actions/approved';
 
 export interface Props {}
@@ -43,28 +34,19 @@ const Approved: React.FC<Props> = (props: Props) => {
         dispatch(approved({}) as any);
     }, []);
 
-    function quick_view(data: anyObject = {}) {
-        dispatch(storeSlice.actions.set_item(data));
-        dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
-    }
-    console.log('state all form leave approved', state?.all);
-
     return (
         <div className="page_content">
             <div className="explore_window pending_explore_window fixed_size">
                 <div className="action_bar">
+                    <div className="title no_move" id="users_drag">
+                        <h6>All Approved Leave</h6>
+                    </div>
                     <div className="navigation">
                         <ul>
                             <li className="search_li">
                                 <HeadSearch></HeadSearch>
                             </li>
                         </ul>
-                    </div>
-                    <div className="title no_move" id="users_drag">
-                        <h2>
-                            All Approved Task
-                            {/* {state.is_loading && <span> loading..</span>} */}
-                        </h2>
                     </div>
                     <div className="control">
                         <HeadRightButtons></HeadRightButtons>

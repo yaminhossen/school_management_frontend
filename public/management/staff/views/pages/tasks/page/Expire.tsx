@@ -38,8 +38,6 @@ const Expire: React.FC<Props> = (props: Props) => {
 
     const dispatch = useAppDispatch();
     async function initdependancy() {
-        // await dispatch(unseen_tasks({}) as any);
-        // Wait for 0.5 second (500ms)
         await new Promise((resolve) => setTimeout(resolve, 300));
         await dispatch(expired({}) as any);
     }
@@ -47,49 +45,20 @@ const Expire: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         initdependancy();
     }, []);
-    // let date = moment().format('YYYY-MM-DD');
-
-    /* const handleConfirmSubmit = async (id) => {
-        // const confirmed = (window as any).s_confirm('Are you sure you want to submit?');
-        let confirm = await (window as anyObject).s_confirm('Are you sure');
-        console.log('thsis is the id', id);
-        // if (!confirmed) return;
-        if (confirm) {
-            try {
-                console.log('it is confirmed');
-                const response = await axios.post(
-                    `/api/v1/tasks/staff-update/${id}`,
-                );
-
-                dispatch(storeSlice.actions.set_only_latest_data(true));
-                dispatch(all({}) as any);
-                await new Promise((resolve) => setTimeout(resolve, 300));
-                dispatch(teacher_complete({}) as any);
-                await new Promise((resolve) => setTimeout(resolve, 200));
-                dispatch(unseen_tasks({}) as any);
-                dispatch(storeSlice.actions.set_only_latest_data(false));
-            } catch (error) {
-                setError(error);
-            }
-        }
-    }; */
 
     return (
         <div className="page_content">
             <div className="explore_window pending_explore_window fixed_size">
                 <div className="action_bar">
+                    <div className="title no_move" id="users_drag">
+                        <h6>All Expire Task</h6>
+                    </div>
                     <div className="navigation">
                         <ul>
                             <li className="search_li">
                                 <HeadSearchExpired></HeadSearchExpired>
                             </li>
                         </ul>
-                    </div>
-                    <div className="title no_move" id="users_drag">
-                        <h2>
-                            All Expire Task
-                            {/* {state.is_loading && <span> loading..</span>} */}
-                        </h2>
                     </div>
                     <div className="control">
                         <HeadRightButtons></HeadRightButtons>

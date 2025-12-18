@@ -86,18 +86,15 @@ const Pending: React.FC<Props> = (props: Props) => {
         <div className="page_content">
             <div className="explore_window pending_explore_window fixed_size">
                 <div className="action_bar">
+                    <div className="title no_move" id="users_drag">
+                        <h6>All Pending Task</h6>
+                    </div>
                     <div className="navigation">
                         <ul>
                             <li className="search_li">
                                 <HeadSearch></HeadSearch>
                             </li>
                         </ul>
-                    </div>
-                    <div className="title no_move" id="users_drag">
-                        <h2>
-                            All Pending Task
-                            {/* {state.is_loading && <span> loading..</span>} */}
-                        </h2>
                     </div>
                     <div className="control">
                         <HeadRightButtons></HeadRightButtons>
@@ -110,21 +107,6 @@ const Pending: React.FC<Props> = (props: Props) => {
                             <table>
                                 <thead>
                                     <tr>
-                                        {/* <th />
-                                        <th></th> */}
-                                        {/* <th>
-                                            <SelectAll />
-                                        </th>
-                                        <TableHeading
-                                            label={`ID`}
-                                            col_name={`id`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Assign Task`}
-                                            col_name={`assign task`}
-                                            sort={false}
-                                        /> */}
                                         <th>Serial</th>
                                         <TableHeading
                                             label={`Title`}
@@ -193,17 +175,6 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                             )}
                                                         </td>
                                                         <td>
-                                                            {/* <button
-                                                                onClick={() =>
-                                                                    handleConfirmSubmit(
-                                                                        i.tasks
-                                                                            ?.id,
-                                                                    )
-                                                                }
-                                                                className="btn btn-sm btn-outline-info"
-                                                            >
-                                                                Done
-                                                            </button> */}
                                                             {i.is_seen ===
                                                             'no' ? (
                                                                 <Link
@@ -267,7 +238,6 @@ const Pending: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                {/* <TableFooter></TableFooter> */}
             </div>
 
             <Filter></Filter>

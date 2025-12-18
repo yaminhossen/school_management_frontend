@@ -495,3 +495,12 @@
 {"level":60,"time":1766038093447,"pid":5220,"hostname":"DESKTOP-9421701","file":"services\\running_month_income.ts:64:19)","time":"12/18/2025 12:08:13 PM","message":"data not found"}
 {"level":60,"time":1766038093529,"pid":5220,"hostname":"DESKTOP-9421701","file":"services\\running_month_expense.ts:64:19)","time":"12/18/2025 12:08:13 PM","message":"data not found"}
 {"level":60,"time":1766038093816,"pid":5220,"hostname":"DESKTOP-9421701","file":"services\\expense_today.ts:71:19)","time":"12/18/2025 12:08:13 PM","message":"data not found"}
+{"level":60,"time":1766038963551,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 12:22:43 PM","message":"task not found"}
+{"level":60,"time":1766040344357,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 12:45:44 PM","message":"task not found"}
+{"level":60,"time":1766040397363,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 12:46:37 PM","message":"task not found"}
+{"level":60,"time":1766040544367,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 12:49:04 PM","message":"task not found"}
+{"level":60,"time":1766040545649,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 12:49:05 PM","message":"task not found"}
+{"level":60,"time":1766040550781,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 12:49:10 PM","message":"task not found"}
+{"level":60,"time":1766040606099,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 12:50:06 PM","message":"task not found"}
+{"level":60,"time":1766040621751,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 12:50:21 PM","message":"task not found"}
+{"level":60,"time":1766040636047,"pid":11784,"hostname":"DESKTOP-9421701","file":"services\\unseen_tasks.ts:111:15)","time":"12/18/2025 12:50:36 PM","message":"task not found"}
