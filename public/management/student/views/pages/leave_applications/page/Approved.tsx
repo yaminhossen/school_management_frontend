@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
-import { all } from '../config/store/async_actions/all';
 import setup from '../config/setup';
 import { initialState } from '../config/store/inital_state';
-import Header from '../components/all_data_page/Header';
-import TableFooter from '../components/all_data_page/TableFooter';
 import Paginate from '../../../components/Paginate';
 import Filter from '../components/canvas/Filter';
 import QuickView from '../components/canvas/QuickView';
 import storeSlice from '../config/store';
 import { anyObject } from '../../../../common_types/object';
-import TableRowAction from '../components/all_data_page/TableRowAction';
-import SelectItem from '../components/all_data_page/SelectItem';
-import SelectAll from '../components/all_data_page/SelectIAll';
 import TableHeading from '../components/all_data_page/TableHeading';
 import moment from 'moment/moment';
-import { Link } from 'react-router-dom';
 import HeadSearch from '../components/all_data_page/HeadSearch';
 import HeadRightButtons from '../components/all_data_page/HeadRightButtons';
-import axios from 'axios';
 import { approved } from '../config/store/async_actions/approved';
 
 export interface Props {}
@@ -77,21 +68,6 @@ const Approved: React.FC<Props> = (props: Props) => {
                             <table>
                                 <thead>
                                     <tr>
-                                        {/* <th />
-                                        <th></th> */}
-                                        {/* <th>
-                                            <SelectAll />
-                                        </th>
-                                        <TableHeading
-                                            label={`ID`}
-                                            col_name={`id`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Assign Task`}
-                                            col_name={`assign task`}
-                                            sort={false}
-                                        /> */}
                                         <th>Serial</th>
                                         <TableHeading
                                             label={`Type`}
@@ -153,12 +129,7 @@ const Approved: React.FC<Props> = (props: Props) => {
                                                         className={`table_rows table_row_${i.id}`}
                                                     >
                                                         <td>
-                                                            <span
-                                                                className="quick_view_trigger"
-                                                                // onClick={() =>
-                                                                //     quick_view(i)
-                                                                // }
-                                                            >
+                                                            <span className="quick_view_trigger">
                                                                 {index + 1}
                                                             </span>
                                                         </td>
@@ -251,7 +222,6 @@ const Approved: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                {/* <TableFooter></TableFooter> */}
             </div>
 
             <Filter></Filter>

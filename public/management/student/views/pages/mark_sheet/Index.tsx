@@ -2,16 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import moment from 'moment/moment';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<anyObject[]>([]);
-
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
 
     const fetchData = async () => {
         try {
@@ -19,7 +14,6 @@ const Index: React.FC<Props> = (props: Props) => {
                 '/api/v1/exam-student-marks/student-class',
             );
             setData(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -28,9 +22,6 @@ const Index: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-    if (data) {
-        console.log(data);
-    }
 
     return (
         <div className="admin_dashboard">
@@ -54,9 +45,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <td></td>
                                             <td>{i.id}</td>
                                             <td>{i.name}</td>
-                                            {/* <td>{i.marks}</td>
-                                            <td>{i.session}</td>
-                                            <td>{i.grade}</td> */}
                                             <td>
                                                 <Link
                                                     className="btn btn-sm btn-outline-info"

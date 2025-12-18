@@ -4,8 +4,7 @@ import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../store';
 import { store } from './config/store/async_actions/store';
-import DropDown from './components/dropdown/DropDown';
-import { json, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { meeting_all } from './config/store/async_actions/meeting_all';
 import { initialState } from './config/store/inital_state';
@@ -25,14 +24,11 @@ const Create: React.FC<Props> = (props: Props) => {
             e.target.reset();
         }
     }
-    const params = useParams();
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(meeting_all({}) as any);
     }, []);
-    console.log('state meeting', state.meeting);
-    // if (state.meeting.length < 1) return <></>;
     return (
         <>
             <div className="page_content">

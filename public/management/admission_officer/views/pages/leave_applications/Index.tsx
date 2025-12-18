@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {

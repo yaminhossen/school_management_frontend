@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import moment from 'moment/moment';
 import BackButton from './BackButton';
 export interface Props {}
 
@@ -25,28 +23,6 @@ const SubjectDetails: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-
-    const handleMarkBlur = async (e: any, i: any) => {
-        const mark = e.target.name == 'mark' ? e.target.value : null;
-        const id = i.student_id;
-        console.log('Student id:', id);
-        console.log('Student mark:', mark);
-        try {
-            const payload = {
-                mark,
-                id,
-            };
-            const response = await axios.post(
-                '/api/v1/assignment-submissions/assignment-marking',
-                payload,
-            );
-            fetchData();
-            e.target.value = '';
-            console.log('response', 'response');
-        } catch (error) {
-            // setError(error); // Set error state
-        }
-    };
 
     return (
         <div className="admin_dashboard">

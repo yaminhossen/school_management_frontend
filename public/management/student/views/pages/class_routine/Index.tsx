@@ -35,12 +35,6 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
                     {/* table_head area start */}
                     <thead>
                         <tr className="table_head_area">
-                            {/* <th className="head_class_title">
-                                            class name
-                                        </th>
-                                        <th className="head_batch_title">
-                                            batch
-                                        </th> */}
                             <th className="head_subject_title">subject</th>
                             <th className="head_day_time_room_title">
                                 <span className="head_day_time_room head_day">

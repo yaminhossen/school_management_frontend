@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../../common_types/object';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
-    const [error, setError] = useState(null);
     const [data, setData] = useState('');
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
@@ -23,10 +20,7 @@ const Index: React.FC<Props> = (props: Props) => {
             console.log('response', response);
         } catch (error) {
             // setError(error); // Set error state
-            // setResponseMessage('Failed to submit form.');
-            console.log('data', error.msg);
         }
-        // console.log('data', error);
     };
     let date = moment().format('YYYY-DD-MM');
     console.log('date', date);

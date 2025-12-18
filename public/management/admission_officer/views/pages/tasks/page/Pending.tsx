@@ -55,21 +55,6 @@ const Pending: React.FC<Props> = (props: Props) => {
                             <table>
                                 <thead>
                                     <tr>
-                                        {/* <th />
-                                        <th></th> */}
-                                        {/* <th>
-                                            <SelectAll />
-                                        </th>
-                                        <TableHeading
-                                            label={`ID`}
-                                            col_name={`id`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Assign Task`}
-                                            col_name={`assign task`}
-                                            sort={false}
-                                        /> */}
                                         <th>Serial</th>
                                         <TableHeading
                                             label={`Title`}
@@ -138,17 +123,6 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                             )}
                                                         </td>
                                                         <td>
-                                                            {/* <button
-                                                                onClick={() =>
-                                                                    handleConfirmSubmit(
-                                                                        i.tasks
-                                                                            ?.id,
-                                                                    )
-                                                                }
-                                                                className="btn btn-sm btn-outline-info"
-                                                            >
-                                                                Done
-                                                            </button> */}
                                                             {i.is_seen ===
                                                             'no' ? (
                                                                 <Link
@@ -212,7 +186,6 @@ const Pending: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                {/* <TableFooter></TableFooter> */}
             </div>
 
             <Filter></Filter>

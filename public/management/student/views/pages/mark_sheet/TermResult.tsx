@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../common_types/object';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import moment from 'moment/moment';
 import BackButton from '../../components/BackButton';
 export interface Props {}
 
@@ -95,7 +93,6 @@ const TermResult: React.FC<Props> = (props: Props) => {
         <div className="admin_dashboard">
             <BackButton></BackButton>
             <h3 className="table_heading">{convertUnderscoreToSpace(title)}</h3>
-            {/* <h3 className="table_heading student_semister">Result History</h3> */}
             <button id="printButton" onClick={printPage}>
                 Print
             </button>
@@ -208,24 +205,6 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                                                 {data2?.name}
                                                             </td>
                                                         </tr>
-                                                        {/* <tr>
-                                                            <td>Father</td>
-                                                            <td>:</td>
-                                                            <td className="font-medium text-dark-medium">
-                                                                {
-                                                                    data2?.father_name
-                                                                }
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Mother</td>
-                                                            <td>:</td>
-                                                            <td className="font-medium text-dark-medium">
-                                                                {
-                                                                    data2?.mother_name
-                                                                }
-                                                            </td>
-                                                        </tr> */}
                                                         <tr>
                                                             <td>Cadet ID</td>
                                                             <td>:</td>
@@ -249,19 +228,6 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                                                 }
                                                             </td>
                                                         </tr>
-                                                        {/* <tr>
-                                                            <td>Date</td>
-                                                            <td>:</td>
-                                                            <td className="font-medium text-dark-medium">
-                                                                {moment(
-                                                                    data
-                                                                        ?.student_info
-                                                                        ?.admission_date,
-                                                                ).format(
-                                                                    'YYYY-MM-DD',
-                                                                )}
-                                                            </td>
-                                                        </tr> */}
                                                     </tbody>
                                                 </table>
                                             </td>
@@ -279,19 +245,6 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                                                 }
                                                             </td>
                                                         </tr>
-                                                        {/* <tr>
-                                                            <td>
-                                                                Admission No
-                                                            </td>
-                                                            <td>:</td>
-                                                            <td className="font-medium text-dark-medium">
-                                                                {
-                                                                    data2
-                                                                        ?.student_info
-                                                                        ?.addmission_no
-                                                                }
-                                                            </td>
-                                                        </tr> */}
                                                         <tr>
                                                             <td>Section</td>
                                                             <td>:</td>
@@ -316,7 +269,6 @@ const TermResult: React.FC<Props> = (props: Props) => {
                             <thead>
                                 <tr>
                                     <th></th>
-                                    {/* <th>id</th> */}
                                     <th>Subject</th>
                                     <th>Marks</th>
                                     <th>Grade</th>
@@ -328,7 +280,6 @@ const TermResult: React.FC<Props> = (props: Props) => {
                                         return (
                                             <tr className="grade_table">
                                                 <td></td>
-                                                {/* <td>{index + 1}</td> */}
                                                 <td>{i?.subject?.name}</td>
                                                 <td>{i?.obtained_mark}</td>
                                                 <td>

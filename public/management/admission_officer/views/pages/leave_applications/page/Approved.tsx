@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
-import { all } from '../config/store/async_actions/all';
 import setup from '../config/setup';
 import { initialState } from '../config/store/inital_state';
-import Header from '../components/all_data_page/Header';
-import TableFooter from '../components/all_data_page/TableFooter';
 import Paginate from '../../../components/Paginate';
 import Filter from '../components/canvas/Filter';
 import QuickView from '../components/canvas/QuickView';
 import storeSlice from '../config/store';
 import { anyObject } from '../../../../common_types/object';
-import TableRowAction from '../components/all_data_page/TableRowAction';
-import SelectItem from '../components/all_data_page/SelectItem';
-import SelectAll from '../components/all_data_page/SelectIAll';
 import TableHeading from '../components/all_data_page/TableHeading';
 import moment from 'moment/moment';
-import { Link } from 'react-router-dom';
 import HeadSearch from '../components/all_data_page/HeadSearch';
 import HeadRightButtons from '../components/all_data_page/HeadRightButtons';
-import axios from 'axios';
 import { approved } from '../config/store/async_actions/approved';
 
 export interface Props {}
@@ -29,8 +20,6 @@ const Approved: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
-
-    const [error, setError] = useState(null);
 
     const dispatch = useAppDispatch();
 
@@ -42,12 +31,6 @@ const Approved: React.FC<Props> = (props: Props) => {
         );
         dispatch(approved({}) as any);
     }, []);
-
-    function quick_view(data: anyObject = {}) {
-        dispatch(storeSlice.actions.set_item(data));
-        dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
-    }
-    console.log('state all form leave approved', state?.all);
 
     return (
         <div className="page_content">
@@ -74,21 +57,6 @@ const Approved: React.FC<Props> = (props: Props) => {
                             <table>
                                 <thead>
                                     <tr>
-                                        {/* <th />
-                                        <th></th> */}
-                                        {/* <th>
-                                            <SelectAll />
-                                        </th>
-                                        <TableHeading
-                                            label={`ID`}
-                                            col_name={`id`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Assign Task`}
-                                            col_name={`assign task`}
-                                            sort={false}
-                                        /> */}
                                         <th>Serial</th>
                                         <TableHeading
                                             label={`Type`}
@@ -248,7 +216,6 @@ const Approved: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                {/* <TableFooter></TableFooter> */}
             </div>
 
             <Filter></Filter>

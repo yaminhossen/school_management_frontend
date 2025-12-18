@@ -67,21 +67,6 @@ const Pending: React.FC<Props> = (props: Props) => {
                             <table>
                                 <thead>
                                     <tr>
-                                        {/* <th /> */}
-                                        {/* <th></th> */}
-                                        {/* <th>
-                                            <SelectAll />
-                                        </th>
-                                        <TableHeading
-                                            label={`ID`}
-                                            col_name={`id`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Assign Task`}
-                                            col_name={`assign task`}
-                                            sort={false}
-                                        /> */}
                                         <th>Serial</th>
                                         <TableHeading
                                             label={`Title`}
@@ -117,14 +102,6 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                         key={i.id}
                                                         className={`table_rows table_row_${i.id}`}
                                                     >
-                                                        {/* <td>
-                                                        <TableRowAction
-                                                            item={i}
-                                                        />
-                                                    </td> */}
-                                                        {/* <td>
-                                                        <SelectItem item={i} />
-                                                    </td> */}
                                                         <td>
                                                             <span
                                                                 className="quick_view_trigger"
@@ -137,15 +114,6 @@ const Pending: React.FC<Props> = (props: Props) => {
                                                                 {index + 1}
                                                             </span>
                                                         </td>
-                                                        {/* <td>
-                                                        <Link
-                                                            to={`/${setup.route_prefix}/assign/${i.id}`}
-                                                        >
-                                                            <span className="agenda_btn">
-                                                                assign
-                                                            </span>
-                                                        </Link>
-                                                    </td> */}
                                                         <td>
                                                             {i.tasks?.title}
                                                         </td>
@@ -220,7 +188,6 @@ const Pending: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                {/* <TableFooter></TableFooter> */}
             </div>
 
             <FilterComplete></FilterComplete>

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
@@ -20,17 +19,12 @@ const Index: React.FC<Props> = (props: Props) => {
 
     const [attendence, setAttendence] = useState<Attendance[]>([]);
 
-    // const year = moment().format('YYYY'); // e.g., "2025"
     const fetchAttendenceData = async () => {
         try {
             const response = await axios.get(
                 '/api/v1/student-attendances/get-full-year-attendence',
             );
             setAttendence(response.data.data);
-
-            // console.log(response);
-
-            // setAttendence(response.data);
         } catch (error) {
             console.log(error);
         }
@@ -39,7 +33,6 @@ const Index: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchAttendenceData();
     }, []);
-    console.log('attendence', attendence);
     if (!attendence || attendence.length === 0) {
         return (
             <div className="admin_dashboard">

@@ -1,13 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
-// import { all } from './config/store/async_actions/all';
 import setup from '../config/setup';
 import { initialState } from '../config/store/inital_state';
-import Header from '../components/all_data_page/Header';
-import TableFooter from '../components/all_data_page/TableFooter';
-import Paginate from '../../../components/Paginate';
 import Filter from '../components/canvas/Filter';
 import QuickView from '../components/canvas/QuickView';
 import storeSlice from '../config/store';
@@ -41,7 +36,6 @@ const ClassDetails: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
-    // console.log('state date', (state.class_details1 as any)?.data?.length);
 
     return (
         <div className="page_content">

@@ -1,23 +1,17 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../store';
 import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
 import { initialState } from './config/store/inital_state';
 import Header from './components/all_data_page/Header';
-import TableFooter from './components/all_data_page/TableFooter';
 import Paginate from '../../components/Paginate';
 import Filter from './components/canvas/Filter';
 import QuickView from './components/canvas/QuickView';
 import storeSlice from './config/store';
 import { anyObject } from '../../../common_types/object';
-import TableRowAction from './components/all_data_page/TableRowAction';
-import SelectItem from './components/all_data_page/SelectItem';
-import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
 import moment from 'moment/moment';
-import { Link } from 'react-router-dom';
 
 export interface Props {}
 
@@ -36,13 +30,6 @@ const All: React.FC<Props> = (props: Props) => {
         );
         dispatch(all({}) as any);
     }, []);
-
-    function quick_view(data: anyObject = {}) {
-        dispatch(storeSlice.actions.set_item(data));
-        dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
-    }
-    let today = moment().format('YYYY-MM-DD');
-    let nowTime = moment().format('hh:mm A');
     function dateFormate(date: string) {
         return moment(date).format('MM-D-YYYY');
     }
@@ -57,16 +44,11 @@ const All: React.FC<Props> = (props: Props) => {
                             <table>
                                 <thead>
                                     <tr>
-                                        {/* <th /> */}
-                                        {/* <th>
-                                            <SelectAll />
-                                        </th> */}
                                         <TableHeading
                                             label={`Serial`}
                                             col_name={`serial`}
                                             sort={true}
                                         />
-                                        {/* <th>Logo</th> */}
                                         <TableHeading
                                             label={`Title`}
                                             col_name={`title`}
@@ -91,7 +73,6 @@ const All: React.FC<Props> = (props: Props) => {
                                 </thead>
                                 {(state.all as any)?.data?.length ? (
                                     <tbody id="all_list">
-                                        {/* {(state.all as any)?.data?.map( */}
                                         {(state.all as any)?.data?.map(
                                             (
                                                 i: { [key: string]: any },
@@ -159,7 +140,6 @@ const All: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                {/* <TableFooter></TableFooter> */}
             </div>
 
             <Filter></Filter>

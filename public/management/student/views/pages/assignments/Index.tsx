@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../common_types/object';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import moment from 'moment/moment';
 export interface Props {}
 
 const Index: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
-
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
 
     const fetchData = async () => {
         try {

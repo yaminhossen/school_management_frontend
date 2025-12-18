@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { anyObject } from '../../../../common_types/object';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 import BackButton from './BackButton';
@@ -43,13 +42,9 @@ const Create: React.FC<Props> = (props: Props) => {
             console.log('respose data message', response.data.message);
         } catch (error) {
             // setError(error); // Set error state
-            // setResponseMessage('Failed to submit form.');
-            console.log('data', error.msg);
         }
-        // console.log('data', error);
     };
     let date = moment().format('YYYY-DD-MM');
-    console.log('date', date);
 
     return (
         <div className="admin_dashboard">
@@ -79,7 +74,6 @@ const Create: React.FC<Props> = (props: Props) => {
                         <label>Comment</label>
                         <div className="form_elements">
                             <textarea
-                                // defaultValue={data?.description}
                                 placeholder="write your comments here"
                                 name="comments"
                             />

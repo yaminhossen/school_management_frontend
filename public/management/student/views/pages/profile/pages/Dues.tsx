@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
 export interface Props {}
 export interface FeesInfo {
     account: { title: string };
@@ -13,8 +12,6 @@ const Dues: React.FC<Props> = (props: Props) => {
     const [feesTypes, setFeesTypes] = useState<FeesInfo[]>([]);
     const [totalAmount, setTotalAmount] = useState();
     const [error, setError] = useState(null);
-    // const { id } = useParams();
-    // console.log('user stundeent id', id);
 
     const fetchTypes = async () => {
         try {
@@ -44,17 +41,10 @@ const Dues: React.FC<Props> = (props: Props) => {
                                     <th>Fees</th>
                                     <th>Paying</th>
                                     <th>Due amount</th>
-                                    {/* <th>Advanced</th> */}
                                     <th>Payable</th>
-                                    {/* <th>Given Amount</th> */}
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {/* <input
-                                    type="hidden"
-                                    name="total_fees_count"
-                                    value={feesTypes.length}
-                                /> */}
                                 {feesTypes?.length &&
                                     feesTypes?.map(
                                         (i: { [key: string]: any }, index) => {
@@ -75,37 +65,7 @@ const Dues: React.FC<Props> = (props: Props) => {
                                                             ? i.due_amount
                                                             : '0'}
                                                     </td>
-                                                    {/* <td>
-                                                        {i.due_amount >= 0
-                                                            ? i.due_amount
-                                                            : '0'}
-                                                    </td> */}
                                                     <td></td>
-                                                    {/* <td>
-                                                        <input
-                                                            type="hidden"
-                                                            name={`fees_type_${index}`}
-                                                            value={i.id}
-                                                        />
-                                                        <input
-                                                            name={`fees_${index}`}
-                                                            type="number"
-                                                            onChange={(
-                                                                event,
-                                                            ) => {
-                                                                let temp = [
-                                                                    ...feesTypes,
-                                                                ];
-                                                                temp[index][
-                                                                    'input_amount'
-                                                                ] =
-                                                                    event?.target.value;
-                                                                setFeesTypes(
-                                                                    temp,
-                                                                );
-                                                            }}
-                                                        />
-                                                    </td> */}
                                                 </tr>
                                             );
                                         },
@@ -117,7 +77,6 @@ const Dues: React.FC<Props> = (props: Props) => {
                                     <td>{totalAmount?.['fee_amount']}</td>
                                     <td>{totalAmount?.['total']}</td>
                                     <td></td>
-                                    {/* <td></td> */}
                                     <td>
                                         {totalAmount?.['fee_amount'] -
                                             totalAmount?.['total']}

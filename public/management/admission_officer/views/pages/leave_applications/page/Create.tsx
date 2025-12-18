@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { anyObject } from '../../../../common_types/object';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 import BackButton from './BackButton';
@@ -39,11 +37,6 @@ const Create: React.FC<Props> = (props: Props) => {
         const end = moment(endDate);
         const today = moment().startOf('day');
 
-        // if (start.isBefore(today)) {
-        //     setErrorMessage('Start date cannot be before today.');
-        //     setDays(0);
-        //     return;
-        // }
         if (end.isBefore(start)) {
             setErrorMessage2('End date cannot be before start date.');
             setDays(0);
@@ -178,11 +171,6 @@ const Create: React.FC<Props> = (props: Props) => {
                             Attchment <span className="valid_star">*</span>
                         </label>
                         <div className="form_elements">
-                            {/* <input
-                                type="file"
-                                accept="image/*"
-                                name="attachments"
-                            /> */}
                             <InputImage
                                 ref={inputImageRef}
                                 label=""

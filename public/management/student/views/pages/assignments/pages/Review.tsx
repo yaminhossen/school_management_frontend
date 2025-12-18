@@ -1,35 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 export interface Props {}
 
 const Review: React.FC<Props> = (props: Props) => {
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            name: 'Shahin',
-            subject: 'Bangla',
-            assignment: '/assets/dashboard/images/bg.png',
-            grade: 'A',
-        },
-        {
-            id: 2,
-            name: 'Tamim',
-            subject: 'Agriculture',
-            assignment: '/assets/dashboard/images/bg.png',
-            grade: 'A+',
-        },
-        {
-            id: 3,
-            name: 'Ramim',
-            subject: 'Social Science',
-            assignment: '/assets/dashboard/images/bg.png',
-            grade: 'A+',
-        },
-    ];
-
     return (
         <div className="admin_dashboard">
             <form action="" onSubmit={(e) => e.preventDefault()}>
@@ -86,57 +58,6 @@ const Review: React.FC<Props> = (props: Props) => {
                 </button>
             </div>
             <div className="content_body">
-                {/* <div className="data_list">
-                    <div className="table_responsive custom_scroll">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Serial</th>
-                                    <th>Name</th>
-                                    <th>Subject</th>
-                                    <th>Assignment</th>
-                                    <th>Mark</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="all_list">
-                                {datas?.map((i: { [key: string]: any }) => {
-                                    return (
-                                        <tr>
-                                            <td></td>
-                                            <td>{i.id}</td>
-                                            <td>{i.name}</td>
-                                            <td>{i.subject}</td>
-                                            <td>
-                                                <img
-                                                    className="assignment_image"
-                                                    src="/assets/dashboard/images/bg.jpg"
-                                                    alt="assignment"
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="number"
-                                                    name=""
-                                                    id=""
-                                                />
-                                            </td>
-                                            <td>
-                                                <Link
-                                                    className="btn btn-sm btn-outline-info mr-1"
-                                                    to="/assignment/review"
-                                                >
-                                                    submit
-                                                </Link>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
-                    </div>
-                </div> */}
                 <div>
                     <h3>Assignment no 1</h3>
                     <p>

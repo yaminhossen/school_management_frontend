@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 export interface Props {}
 export interface FeesInfo {
     account: { title: string };
@@ -49,15 +48,9 @@ const Dues: React.FC<Props> = (props: Props) => {
                                     <th>Due amount</th>
                                     <th>Advanced</th>
                                     <th>Payable</th>
-                                    {/* <th>Given Amount</th> */}
                                 </tr>
                             </thead>
                             <tbody id="all_list">
-                                {/* <input
-                                    type="hidden"
-                                    name="total_fees_count"
-                                    value={feesTypes.length}
-                                /> */}
                                 {feesTypes?.length &&
                                     feesTypes?.map(
                                         (i: { [key: string]: any }, index) => {
@@ -84,31 +77,6 @@ const Dues: React.FC<Props> = (props: Props) => {
                                                             : '0'}
                                                     </td>
                                                     <td></td>
-                                                    {/* <td>
-                                                        <input
-                                                            type="hidden"
-                                                            name={`fees_type_${index}`}
-                                                            value={i.id}
-                                                        />
-                                                        <input
-                                                            name={`fees_${index}`}
-                                                            type="number"
-                                                            onChange={(
-                                                                event,
-                                                            ) => {
-                                                                let temp = [
-                                                                    ...feesTypes,
-                                                                ];
-                                                                temp[index][
-                                                                    'input_amount'
-                                                                ] =
-                                                                    event?.target.value;
-                                                                setFeesTypes(
-                                                                    temp,
-                                                                );
-                                                            }}
-                                                        />
-                                                    </td> */}
                                                 </tr>
                                             );
                                         },
@@ -125,14 +93,6 @@ const Dues: React.FC<Props> = (props: Props) => {
                                         {totalAmount?.['fee_amount'] -
                                             totalAmount?.['total']}
                                     </td>
-                                    {/* <td>
-                                        {totalAmount2}
-                                        <input
-                                            type="hidden"
-                                            name="total_amount"
-                                            value={totalAmount2}
-                                        />
-                                    </td> */}
                                 </tr>
                             </tfoot>
                         </table>

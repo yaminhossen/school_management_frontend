@@ -1,18 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../store';
 import { store } from './config/store/async_actions/store';
 import moment from 'moment/moment';
-// import storeSlice from '../config/store';
 import storeSlice from './config/store';
 import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
 import { classes } from '../add_new/config/store/async_actions/classes';
-import { branches } from './config/store/async_actions/branches';
 import { sections } from './config/store/async_actions/sections';
 import { shifts } from './config/store/async_actions/shifts';
-import { preInfo } from './config/store/async_actions/pre_info';
 import ImageUpload from './components/ImageUpload';
 import { preInfoClassWise } from './config/store/async_actions/pre_info_class_wise';
 import DropDown from './components/dropdown/DropDown';
@@ -22,7 +18,6 @@ const Index: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
     const [selectedClass, setSelectedClass] = useState('');
     const [totalDocument, setTotalDocument] = useState([1, 1, 1]);
-    const [totalParent, setTotalParent] = useState([1, 1, 1]);
     const [totalContactNumber, setTotalContactNumber] = useState([1, 1, 1]);
     const [totalLanguage, setTotalLanguage] = useState([1, 1]);
     const [totalSkill, setTotalSkill] = useState([1, 1]);
@@ -51,18 +46,14 @@ const Index: React.FC<Props> = (props: Props) => {
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
-
-    // const formRef = useRef<HTMLFormElement>(null);
     const [totalEducationalBackground, setTotalEducationalBackground] =
         useState([1, 1]);
-    // let date22 = moment().format('YYYY-DD-MM');
 
     // Handle class selection
     const handleClassChange = async (
         e: React.ChangeEvent<HTMLSelectElement>,
     ) => {
         setSelectedClass(e.target.value);
-        // await dispatch(preInfoClassWise({ class_id: e.target.value }) as any);
     };
     // Handle section selection
     const handleSectionChange = async (
@@ -80,16 +71,12 @@ const Index: React.FC<Props> = (props: Props) => {
 
     async function handle_submit(e) {
         e.preventDefault();
-        console.log('this is clikck');
         let form = document.getElementById('main_form') as HTMLFormElement;
         if (!form) {
             return;
         }
         let response = await dispatch(store(new FormData(form)) as any);
         if (!Object.prototype.hasOwnProperty.call(response, 'error')) {
-            // if (formRef.current) {
-            //     formRef.current.reset(); // Reset the form fields
-            // }
             form.reset();
         }
     }
@@ -103,10 +90,6 @@ const Index: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         initdependancy();
     }, []);
-
-    if (state.classes) {
-        console.log('form frontend', state);
-    }
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
@@ -114,8 +97,6 @@ const Index: React.FC<Props> = (props: Props) => {
             ...prevState,
             [name]: value,
         }));
-
-        // Validate the passwords when user types
         if (name === 'confirm_password' && value !== formData.password) {
             setError('Passwords do not match');
         } else {
@@ -123,7 +104,6 @@ const Index: React.FC<Props> = (props: Props) => {
         }
     };
 
-    // console.log('moment', moment().format('YYYY-DD-MM'));
     let date = moment().format('YYYY-MM-DD');
 
     const startYear = '2025';
@@ -146,9 +126,6 @@ const Index: React.FC<Props> = (props: Props) => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [showParentPassword, setShowParentPassword] = useState(false);
-
-    console.log('state item', state.item);
-    console.log('state item id', state.item.id);
 
     return (
         <div className="admin_dashboard">
@@ -204,14 +181,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         <input
                                             type="text"
-                                            // defaultValue={phoneNumbers.son}
-                                            // onChange={(e) =>
-                                            //     handleChange(
-                                            //         'son',
-                                            //         null,
-                                            //         e.target.value,
-                                            //     )
-                                            // }
                                             placeholder="01XXXXXXXXX or +8801XXXXXXXXX"
                                             name="phone_number"
                                         />
@@ -235,12 +204,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <div className="form-group form-vertical">
                                     <label>Image</label>
                                     <div className="form_elements">
-                                        {/* <input
-                                            type="file"
-                                            accept="image/*"
-                                            placeholder="image"
-                                            name="image"
-                                        /> */}
                                         <ImageUpload name={'image'} />
                                     </div>
                                 </div>
@@ -294,24 +257,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                         </span>
                                     </div>
                                 </div>
-
-                                {/* <div className="form-group form-vertical">
-                                    <label>Confirm Password</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="confirm password"
-                                            name="confirm_password"
-                                            // value={formData.confirm_Password}
-                                            onChange={handlePasswordChange}
-                                        />
-                                        {error && (
-                                            <p style={{ color: 'red' }}>
-                                                {error}
-                                            </p>
-                                        )}
-                                    </div>
-                                </div> */}
                             </div>
                         </div>
                         <div className="full_width">
@@ -388,7 +333,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                             <option value="" disabled>
                                                 Select a year
                                             </option>{' '}
-                                            {/* Optional placeholder */}
                                             {years.map((year) => (
                                                 <option key={year} value={year}>
                                                     {year}
@@ -1059,22 +1003,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {/* {totalContactNumber.length > 1 && (
-                                                <div>
-                                                    <span
-                                                        onClick={() =>
-                                                            remove_from_state(
-                                                                index,
-                                                                totalContactNumber,
-                                                                setTotalContactNumber,
-                                                            )
-                                                        }
-                                                        className="btn btn-danger"
-                                                    >
-                                                        remove
-                                                    </span>
-                                                </div>
-                                            )} */}
                                         </div>
                                     );
                                 })}
@@ -1085,19 +1013,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <h4>Language</h4>
                             </div>
                             <div className="multi_inputs">
-                                {/* <div className="pb-4 px-0">
-                                    <span
-                                        className="btn btn-sm  btn-outline-info"
-                                        onClick={() =>
-                                            setTotalLanguage([
-                                                ...totalLanguage,
-                                                1,
-                                            ])
-                                        }
-                                    >
-                                        Add new
-                                    </span>
-                                </div> */}
                                 <input
                                     type="hidden"
                                     name="student_language_count"
@@ -1152,22 +1067,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {/* {totalLanguage.length > 1 && (
-                                                <div>
-                                                    <span
-                                                        onClick={() =>
-                                                            remove_from_state(
-                                                                index,
-                                                                totalLanguage,
-                                                                setTotalLanguage,
-                                                            )
-                                                        }
-                                                        className="btn btn-danger"
-                                                    >
-                                                        remove
-                                                    </span>
-                                                </div>
-                                            )} */}
                                         </div>
                                     );
                                 })}
@@ -1178,16 +1077,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <h4>Skill</h4>
                             </div>
                             <div className="multi_inputs">
-                                {/* <div className="pb-4 px-0">
-                                    <span
-                                        className="btn btn-sm  btn-outline-info"
-                                        onClick={() =>
-                                            setTotalSkill([...totalSkill, 1])
-                                        }
-                                    >
-                                        Add new
-                                    </span>
-                                </div> */}
                                 <input
                                     type="hidden"
                                     name="student_skills_count"
@@ -1232,22 +1121,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {/* {totalSkill.length > 1 && (
-                                                <div>
-                                                    <span
-                                                        onClick={() =>
-                                                            remove_from_state(
-                                                                index,
-                                                                totalSkill,
-                                                                setTotalSkill,
-                                                            )
-                                                        }
-                                                        className="btn btn-danger"
-                                                    >
-                                                        remove
-                                                    </span>
-                                                </div>
-                                            )} */}
                                         </div>
                                     );
                                 })}
@@ -1258,19 +1131,6 @@ const Index: React.FC<Props> = (props: Props) => {
                                 <h4>Educational Background</h4>
                             </div>
                             <div className="multi_inputs">
-                                {/* <div className="pb-4 px-0">
-                                    <span
-                                        className="btn btn-sm  btn-outline-info"
-                                        onClick={() =>
-                                            setTotalEducationalBackground([
-                                                ...totalEducationalBackground,
-                                                1,
-                                            ])
-                                        }
-                                    >
-                                        Add new
-                                    </span>
-                                </div> */}
 
                                 <input
                                     type="hidden"
@@ -1324,35 +1184,12 @@ const Index: React.FC<Props> = (props: Props) => {
                                                         Transfer certificate
                                                     </label>
                                                     <div className="form_elements">
-                                                        {/* <input
-                                                            type="file"
-                                                            accept="image/*"
-                                                            placeholder="transfer cirtificate"
-                                                            name={`educational_background_transfer_cirtificate_${index}`}
-                                                        /> */}
                                                         <ImageUpload
                                                             name={`educational_background_transfer_cirtificate_${index}`}
                                                         />
                                                     </div>
                                                 </div>
                                             </div>
-                                            {/* {totalEducationalBackground.length >
-                                                1 && (
-                                                <div>
-                                                    <span
-                                                        onClick={() =>
-                                                            remove_from_state(
-                                                                index,
-                                                                totalEducationalBackground,
-                                                                setTotalEducationalBackground,
-                                                            )
-                                                        }
-                                                        className="btn btn-danger"
-                                                    >
-                                                        remove
-                                                    </span>
-                                                </div>
-                                            )} */}
                                         </div>
                                     );
                                 })}

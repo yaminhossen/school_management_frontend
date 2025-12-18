@@ -21,8 +21,6 @@ const Approved: React.FC<Props> = (props: Props) => {
         (state: RootState) => state[setup.module_name],
     );
 
-    const [error, setError] = useState(null);
-
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -33,12 +31,6 @@ const Approved: React.FC<Props> = (props: Props) => {
         );
         dispatch(rejected({}) as any);
     }, []);
-
-    function quick_view(data: anyObject = {}) {
-        dispatch(storeSlice.actions.set_item(data));
-        dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
-    }
-    console.log('state all form leave rejected', state?.all);
 
     return (
         <div className="page_content">
@@ -65,21 +57,6 @@ const Approved: React.FC<Props> = (props: Props) => {
                             <table>
                                 <thead>
                                     <tr>
-                                        {/* <th />
-                                        <th></th> */}
-                                        {/* <th>
-                                            <SelectAll />
-                                        </th>
-                                        <TableHeading
-                                            label={`ID`}
-                                            col_name={`id`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Assign Task`}
-                                            col_name={`assign task`}
-                                            sort={false}
-                                        /> */}
                                         <th>Serial</th>
                                         <TableHeading
                                             label={`Type`}
@@ -207,7 +184,6 @@ const Approved: React.FC<Props> = (props: Props) => {
                         ></Paginate>
                     </div>
                 </div>
-                {/* <TableFooter></TableFooter> */}
             </div>
 
             <Filter2></Filter2>

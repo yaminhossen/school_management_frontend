@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { anyObject } from '../../../common_types/object';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
@@ -26,18 +25,11 @@ const Index: React.FC<Props> = (props: Props) => {
                 `/api/v1/exam-routines/plan/${exam_id}`,
             );
             setData(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
             setData([]);
         }
     };
-    console.log('data', data);
-
-    // useEffect(() => {
-    //     fetchData();
-    // }, []);
-    console.log(data);
     let days = [
         'saturday',
         'sunday',
@@ -51,7 +43,6 @@ const Index: React.FC<Props> = (props: Props) => {
     function dateFormate(date: string) {
         return moment(date).format('dddd').toLowerCase();
     }
-    // console.log('date', dateFormate('2024-09-07T00:00:00.000Z'));
 
     function get_day_data(i, day, key = 0) {
         if (dateFormate(i.date) === day) {
@@ -91,7 +82,6 @@ const Index: React.FC<Props> = (props: Props) => {
         try {
             const response = await axios.get(`/api/v1/exams/all-exam`);
             setExames(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }

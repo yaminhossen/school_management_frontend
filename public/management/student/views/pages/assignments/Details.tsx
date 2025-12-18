@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../common_types/object';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import moment from 'moment/moment';
 import BackButton from './pages/BackButton';
 export interface Props {}
 

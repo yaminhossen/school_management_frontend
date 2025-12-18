@@ -5,7 +5,6 @@ import { RootState, useAppDispatch } from '../../../../store';
 import { initialState } from '../config/store/inital_state';
 import { update } from '../config/store/async_actions/update';
 import { Link, useParams } from 'react-router-dom';
-// import { details } from '../config/store/async_actions/details';
 import storeSlice from '../config/store';
 import moment from 'moment/moment';
 import { full_details } from '../config/store/async_actions/full_details';

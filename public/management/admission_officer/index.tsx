@@ -1,4 +1,3 @@
-import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider, createHashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -30,7 +29,6 @@ axios.interceptors.request.use(
         let has_errors = document.querySelectorAll('.has_error');
         [...has_errors].forEach((e) => e.classList.remove('has_error'));
 
-        // eslint-disable-next-line no-undef
         (window as any)
             .jQuery('.loader-wrapper')
             .fadeIn('slow', function () {});

@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
-import Header from '.././components/management_data_page/Header';
 import Footer from '.././components/management_data_page/Footer';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import setup from '.././config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
@@ -33,13 +31,6 @@ const DetailsComplete: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         initdependancy();
     }, []);
-
-    // useEffect(() => {
-    //     dispatch(storeSlice.actions.set_item({}));
-    //     dispatch(details({ id: params.id }) as any);
-    //     await new Promise((resolve) => setTimeout(resolve, 500));
-    //     await dispatch(unseen_tasks({}) as any);
-    // }, []);
 
     return (
         <>

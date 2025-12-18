@@ -1,13 +1,8 @@
-/* eslint-disable indent */
 import React, { useEffect } from 'react';
-// import Header from './components/management_data_page/Header';
-// import Footer from './components/management_data_page/Footer';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import setup from '../config/setup.ts';
 import { RootState, useAppDispatch } from '../../../../store';
 import { details } from '../config/store/async_actions/details';
-import { class_details } from '../config/store/async_actions/class_details.ts';
 import { initialState } from '../config/store/inital_state';
 import { Link, useParams } from 'react-router-dom';
 import storeSlice from '../config/store';
@@ -31,12 +26,7 @@ const Details: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(details({ id: params.id }) as any);
-        // dispatch(class_details({ id: params.id }) as any);
     }, []);
-
-    if (state.item) {
-        console.log('state item result', state.item);
-    }
 
     return (
         <div className="admin_dashboard">
@@ -179,26 +169,6 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 }
                                             </td>
                                         </tr>
-                                        {/* <tr>
-                                            <td>Shift</td>
-                                            <td>:</td>
-                                            <td className="font-medium text-dark-medium">
-                                                {
-                                                    state.item?.student_info
-                                                        ?.student_shift?.title
-                                                }
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Student Category</td>
-                                            <td>:</td>
-                                            <td className="font-medium text-dark-medium">
-                                                {
-                                                    state.item?.student_info
-                                                        ?.student_category
-                                                }
-                                            </td>
-                                        </tr> */}
                                         <tr>
                                             <td>Section</td>
                                             <td>:</td>

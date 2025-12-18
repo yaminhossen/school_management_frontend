@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../store';
 import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
@@ -12,7 +11,6 @@ import Filter from './components/canvas/Filter';
 import QuickView from './components/canvas/QuickView';
 import storeSlice from './config/store';
 import { anyObject } from '../../../common_types/object';
-import TableRowAction from './components/all_data_page/TableRowAction';
 import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
@@ -36,13 +34,7 @@ const All: React.FC<Props> = (props: Props) => {
         );
         dispatch(all({}) as any);
     }, []);
-
-    function quick_view(data: anyObject = {}) {
-        dispatch(storeSlice.actions.set_item(data));
-        dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
-    }
     let today = moment().format('YYYY-MM-DD');
-    let nowTime = moment().format('hh:mm A');
 
     return (
         <div className="page_content">
@@ -95,11 +87,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`meeting link`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Is Complete`}
-                                            col_name={`is_complete`}
-                                            sort={false}
-                                        /> */}
                                         <TableHeading
                                             label={`Action`}
                                             col_name={`action`}
@@ -117,35 +104,14 @@ const All: React.FC<Props> = (props: Props) => {
                                                         key={i.id}
                                                         className={`table_rows table_row_${i.id}`}
                                                     >
-                                                        {/* <td>
-                                                        <TableRowAction
-                                                            item={i}
-                                                        />
-                                                    </td> */}
                                                         <td>
                                                             <SelectItem
                                                                 item={i}
                                                             />
                                                         </td>
                                                         <td>
-                                                            <span
-                                                            // className="quick_view_trigger"
-                                                            // onClick={() =>
-                                                            //     quick_view(i)
-                                                            // }
-                                                            >
-                                                                {i.id}
-                                                            </span>
+                                                            <span>{i.id}</span>
                                                         </td>
-                                                        {/* <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td> */}
                                                         <td>{i.title}</td>
                                                         <td>{i.description}</td>
                                                         <td>
@@ -204,28 +170,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 'Offline meeting'
                                                             )}
                                                         </td>
-
-                                                        {/* <td>
-                                                        {i.meeting_link ? (
-                                                            <a
-                                                                href={
-                                                                    i.meeting_link
-                                                                }
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                            >
-                                                                {moment(
-                                                                    i.date,
-                                                                ).format(
-                                                                    'YYYY-MM-DD',
-                                                                ) == today
-                                                                    ? i.meeting_link
-                                                                    : 'have more days'}
-                                                            </a>
-                                                        ) : (
-                                                            'Offline meeting'
-                                                        )}
-                                                    </td> */}
                                                         <td>
                                                             <Link
                                                                 // to="/students/single/student/"

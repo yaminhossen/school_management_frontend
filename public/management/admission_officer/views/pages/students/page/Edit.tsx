@@ -126,13 +126,6 @@ const Index: React.FC<Props> = (props: Props) => {
     }
 
     const params = useParams();
-    // console.log('id', params.id);
-
-    // useEffect(() => {
-    //     dispatch(storeSlice.actions.set_item({}));
-    //     dispatch(full_details({ id: params.id }) as any);
-    //     // console.log('state', state);
-    // }, []);
 
     async function initdependancy2() {
         dispatch(storeSlice.actions.set_item({}));
@@ -144,8 +137,6 @@ const Index: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         initdependancy2();
     }, []);
-
-    // console.log('moment', moment().format('YYYY-DD-MM'));
 
     // for admission date
     const admissionDate = state.item?.student_info?.admission_date;

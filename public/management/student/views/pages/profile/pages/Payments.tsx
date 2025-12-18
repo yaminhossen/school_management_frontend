@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { anyObject } from '../../../../common_types/object';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
@@ -9,17 +8,12 @@ const Payments: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<anyObject[]>([]);
 
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
-
     const fetchData = async () => {
         try {
             const response = await axios.get(
                 '/api/v1/account-fees-collections/payment-history',
             );
             setData(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -28,7 +22,6 @@ const Payments: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-    console.log(data);
     function dateFormate(date: string) {
         return moment(date).format('MM-D-YYYY').toLowerCase();
     }
@@ -44,7 +37,6 @@ const Payments: React.FC<Props> = (props: Props) => {
                                 <tr>
                                     <th></th>
                                     <th>id</th>
-                                    {/* <th>Perpous</th> */}
                                     <th>Date</th>
                                     <th>Amount</th>
                                     <th>TRX Id</th>
@@ -56,7 +48,6 @@ const Payments: React.FC<Props> = (props: Props) => {
                                         <tr>
                                             <td></td>
                                             <td>{i.id}</td>
-                                            {/* <td>{i.class_fees?.name}</td> */}
                                             <td>{dateFormate(i.date)}</td>
                                             <td>{i.payment?.amount}</td>
                                             <td>{i.payment?.receipt_no}</td>

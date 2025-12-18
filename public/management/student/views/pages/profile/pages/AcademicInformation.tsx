@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { anyObject } from '../../../../common_types/object';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
@@ -9,17 +7,12 @@ const Details: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [data, setData] = useState<any>([]);
 
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
-
     const fetchData = async () => {
         try {
             const response = await axios.get(
                 '/api/v1/user-students/full-details',
             );
             setData(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -29,29 +22,12 @@ const Details: React.FC<Props> = (props: Props) => {
         fetchData();
     }, []);
 
-    console.log(data);
-
     return (
         <div className="admin_dashboard">
-            {/* <h3 className="table_heading">Basic information</h3> */}
             <div className="content_body ">
                 <div className="student_details">
-                    <div>
-                        {/* <Link
-                            to="/add-new"
-                            className="btn btn-sm btn-outline-info mb-2"
-                            type="submit"
-                        >
-                            Add New
-                        </Link> */}
-                    </div>
-                    <div>
-                        {/* <img
-                            src={data?.image}
-                            style={{ width: '100px' }}
-                            alt=""
-                        /> */}
-                    </div>
+                    <div></div>
+                    <div></div>
                 </div>
                 {data && (
                     <div className="single_student_details">
@@ -60,23 +36,6 @@ const Details: React.FC<Props> = (props: Props) => {
                             <div className="basic_info mb-4 ">
                                 <table className="table text-nowrap student_table">
                                     <tbody>
-                                        {/* <tr>
-                                            <td>Branch</td>
-                                            <td>:</td>
-                                            <td className="font-medium text-dark-medium">
-                                                Uttora
-                                            </td>
-                                        </tr> */}
-                                        {/* <tr>
-                                            <td>Admission no</td>
-                                            <td>:</td>
-                                            <td className="font-medium text-dark-medium">
-                                                {
-                                                    data?.student_info
-                                                        ?.addmission_no
-                                                }
-                                            </td>
-                                        </tr> */}
                                         <tr>
                                             <td>Cadet ID</td>
                                             <td>:</td>
@@ -113,23 +72,6 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 {data?.student_info?.branch_class.name}
                                             </td>
                                         </tr>
-                                        {/* <tr>
-                                            <td>Shift</td>
-                                            <td>:</td>
-                                            <td className="font-medium text-dark-medium">
-                                                {data?.student_info?.shift}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Student Category</td>
-                                            <td>:</td>
-                                            <td className="font-medium text-dark-medium">
-                                                {
-                                                    data?.student_info
-                                                        ?.student_category
-                                                }
-                                            </td>
-                                        </tr> */}
                                         <tr>
                                             <td>Section</td>
                                             <td>:</td>
@@ -361,10 +303,6 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td>Birth Cirtificate</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
-                                                {/* {
-                                                    data?.student_info
-                                                        ?.birth_certificate
-                                                } */}
                                                 <a
                                                     href={
                                                         data?.student_info
@@ -381,10 +319,6 @@ const Details: React.FC<Props> = (props: Props) => {
                                             <td>National ID</td>
                                             <td>:</td>
                                             <td className="font-medium text-dark-medium">
-                                                {/* {
-                                                    data?.student_info
-                                                        ?.birth_certificate
-                                                } */}
                                                 <a
                                                     href={
                                                         data?.student_info
@@ -397,13 +331,6 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 </a>
                                             </td>
                                         </tr>
-                                        {/* <tr>
-                                            <td>Cast</td>
-                                            <td>:</td>
-                                            <td className="font-medium text-dark-medium">
-                                                {data?.student_info?.cast}
-                                            </td>
-                                        </tr> */}
                                     </tbody>
                                 </table>
                             </div>

@@ -11,9 +11,6 @@ const Section: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState([]);
     const { id } = useParams();
 
-    useEffect(() => {
-        // Function to fetch data
-    }, []);
 
     const fetchData = async () => {
         try {
@@ -21,7 +18,6 @@ const Section: React.FC<Props> = (props: Props) => {
                 `/api/v1/branch-class-sections/class-wise/${id}`,
             );
             setData(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -37,12 +33,6 @@ const Section: React.FC<Props> = (props: Props) => {
             <div className="dues_back_btn">
                 <h3 className="table_heading"></h3>
                 <button className="back_btn settings_bacsk">
-                    {/* <Link to={`/class-attendance`}>
-                        <span className="material-symbols-outlined fill">
-                            arrow_back
-                        </span>
-                        <div className="text">Back</div>
-                    </Link> */}
                     <BackButton></BackButton>
                 </button>
             </div>
@@ -55,8 +45,6 @@ const Section: React.FC<Props> = (props: Props) => {
                                     <th></th>
                                     <th>Serial</th>
                                     <th>Section</th>
-                                    {/* <th>Subject</th> */}
-                                    {/* <th>Total Student</th> */}
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -68,15 +56,7 @@ const Section: React.FC<Props> = (props: Props) => {
                                                 <td></td>
                                                 <td>{index + 1}</td>
                                                 <td>{i.title}</td>
-                                                {/* <td>{i.subject}</td> */}
-                                                {/* <td>{i.count}</td> */}
                                                 <td>
-                                                    {/* <Link
-                                                        className="btn btn-sm btn-outline-info mr-1"
-                                                        to={`/class-attendance/section/${i.id}?c_id=${id}`}
-                                                    >
-                                                        Details
-                                                    </Link> */}
                                                     <Link
                                                         className="btn btn-sm btn-outline-info mr-1"
                                                         to={`/students/details/${id}?sec_id=${i.id}`}
