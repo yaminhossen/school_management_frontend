@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { anyObject } from '../../../../common_types/object';
-import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 export interface Props {}
@@ -15,14 +14,10 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
     const { id } = useParams();
     const [searchParams] = useSearchParams();
 
-    const subjectId = searchParams.get('sub');
-    console.log('subject id', subjectId);
-
     const fetchBranches = async () => {
         try {
             const response = await axios.get(`/api/v1/user-students/branches`);
             setBranch(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -32,7 +27,6 @@ const TakeAttendance: React.FC<Props> = (props: Props) => {
         try {
             const response = await axios.get(`/api/v1/user-students/classes`);
             setClasses(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }

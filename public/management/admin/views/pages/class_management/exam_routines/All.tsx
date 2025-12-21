@@ -87,11 +87,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`end time`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Exam`}
-                                            col_name={`exam`}
-                                            sort={false}
-                                        /> */}
                                         <TableHeading
                                             label={`Date`}
                                             col_name={`date`}
@@ -101,7 +96,6 @@ const All: React.FC<Props> = (props: Props) => {
                                 </thead>
                                 {(state.all as any)?.data?.length ? (
                                     <tbody id="all_list">
-                                        {/* {(state.all as any)?.data?.map( */}
                                         {(state.all as any)?.data?.map(
                                             (i: { [key: string]: any }) => {
                                                 return (

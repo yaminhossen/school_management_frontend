@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
@@ -69,16 +68,10 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`max_score`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Text`}
-                                            col_name={`text`}
-                                            sort={false}
-                                        /> */}
                                     </tr>
                                 </thead>
                                 {(state.all as any)?.data?.length ? (
                                     <tbody id="all_list">
-                                        {/* {(state.all as any)?.data?.map( */}
                                         {(state.all as any)?.data?.map(
                                             (i: { [key: string]: any }) => {
                                                 return (
@@ -108,15 +101,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 {i.id}
                                                             </span>
                                                         </td>
-                                                        {/* <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td> */}
                                                         <td>{i.name}</td>
                                                         <td>{i.max_score}</td>
                                                     </tr>

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';

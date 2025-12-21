@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
@@ -80,7 +79,6 @@ const All: React.FC<Props> = (props: Props) => {
                                 </thead>
                                 {(state.all as any)?.data?.length ? (
                                     <tbody id="all_list">
-                                        {/* {(state.all as any)?.data?.map( */}
                                         {(state.all as any)?.data?.map(
                                             (i: { [key: string]: any }) => {
                                                 return (
@@ -130,17 +128,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 </span>{' '}
                                                             </a>
                                                         </td>
-                                                        {/* <td>
-                                                        <a
-                                                            target="blank"
-                                                            href={i.attachment}
-                                                            download={i.attachment
-                                                                .split('/')
-                                                                .pop()}
-                                                        >
-                                                            download
-                                                        </a>
-                                                    </td> */}
                                                     </tr>
                                                 );
                                             },

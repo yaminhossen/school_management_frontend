@@ -4,11 +4,9 @@ import Footer from './components/management_data_page/Footer';
 import { useSelector } from 'react-redux';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
-import { details } from './config/store/async_actions/details';
 import { initialState } from './config/store/inital_state';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
-import { update } from './config/store/async_actions/update';
 import moment from 'moment/moment';
 import { task_user_details } from './config/store/async_actions/task_user_details';
 import { task_user_update } from './config/store/async_actions/task_user_update';
@@ -73,45 +71,6 @@ const TaskUserEdit: React.FC<Props> = (props: Props) => {
                                     name="id"
                                     defaultValue={state.item.id}
                                 />
-                                {/* <div className="form-group form-horizontal">
-                                    <label>
-                                        Title{' '}
-                                        <span className="valid_star">*</span>
-                                    </label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="title"
-                                            name="title"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>
-                                        Description{' '}
-                                        <span className="valid_star">*</span>
-                                    </label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            name="description"
-                                            id=""
-                                            placeholder="description"
-                                        ></textarea>
-                                    </div>
-                                </div> */}
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Date</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="date"
-                                            placeholder="date"
-                                            name="date"
-                                            defaultValue={moment(
-                                                state.item.date,
-                                            ).format('YYYY-MM-DD')}
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>
                                         Date{' '}

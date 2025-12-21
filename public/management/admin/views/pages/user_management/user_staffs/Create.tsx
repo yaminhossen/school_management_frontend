@@ -1,10 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
-import DropDown from './components/dropdown/DropDown';
 export interface Props {}
 import moment from 'moment/moment';
 import InputImage from './components/management_data_page/InputImage';

@@ -70,14 +70,6 @@ const UpdatePhoto: React.FC = () => {
                 </button>
             </div>
             <div className="content_body">
-                {/* <div className="settings_back">
-                    <Link
-                        className="btn btn-sm btn-outline-info mb-1"
-                        to="/settings"
-                    >
-                        Back
-                    </Link>
-                </div> */}
                 <form
                     onSubmit={handleSubmit}
                     className="form_600 mx-auto pt-3"

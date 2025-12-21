@@ -185,15 +185,9 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                     *
                                                 </span></label>
                                     <div className="form_elements">
-                                        {/* <input
-                                            type="file"
-                                            name="attachment"
-                                            accept="image/*, ./*"
-                                        /> */}
                                         <InputImage
                                             label={'attachment'}
                                             name={'attachment'}
-                                            // accept="image/*, ./*"
                                             accept="image/*,application/pdf"
                                             defalut_preview={get_value(
                                                 'attachment',

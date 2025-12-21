@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
@@ -81,16 +80,10 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`email`}
                                             sort={true}
                                         />
-                                        {/* <TableHeading
-                                            label={`Address`}
-                                            col_name={`address`}
-                                            sort={true}
-                                        /> */}
                                     </tr>
                                 </thead>
                                 {(state.all as any)?.data?.length ? (
                                     <tbody id="all_list">
-                                        {/* {(state.all as any)?.data?.map( */}
                                         {(state.all as any)?.data?.map(
                                             (i: { [key: string]: any }) => {
                                                 return (
@@ -133,14 +126,11 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 }}
                                                             />
                                                         </td>
-                                                        {/* <td>{i.branch}</td> */}
                                                         <td>{i.name}</td>
-                                                        {/* <td>{i.designation}</td> */}
                                                         <td>
                                                             {i.phone_number}
                                                         </td>
                                                         <td>{i.email}</td>
-                                                        {/* <td>{i.address}</td> */}
                                                     </tr>
                                                 );
                                             },

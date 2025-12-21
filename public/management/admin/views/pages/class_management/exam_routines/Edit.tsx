@@ -386,21 +386,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>
-                                        Date{' '}
-                                        <span className="valid_star">*</span>
-                                    </label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="date"
-                                            name="date"
-                                            defaultValue={moment(
-                                                state.item?.date,
-                                            ).format('YYYY-MM-DD')}
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>
                                         Date{' '}

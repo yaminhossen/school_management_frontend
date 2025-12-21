@@ -31,11 +31,6 @@ const Edit: React.FC<Props> = (props: Props) => {
         initdependancy();
     }, []);
 
-    // useEffect(() => {
-    //     dispatch(storeSlice.actions.set_item({}));
-    //     dispatch(details({ id: params.id }) as any);
-    // }, []);
-
     async function handle_submit(e) {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
@@ -152,35 +147,15 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>
-                                        Image{' '}
-                                        <span className="valid_star">*</span>
-                                    </label>
-                                    <div className="form_elements">
-                                        <InputImage
-                                            label={''}
-                                            name={'image'}
-                                            accept="image/*,application/pdf"
-                                            defalut_preview={get_value('image')}
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>
                                         Attachment{' '}
                                         <span className="valid_star">*</span>
                                     </label>
                                     <div className="form_elements">
-                                        {/* <input
-                                            type="file"
-                                            accept="image/*"
-                                            name="attachment"
-                                        /> */}
                                         <InputImage
                                             label={''}
                                             name={'attachment'}
-                                            // accept="image/*, ./*"
                                             accept="image/*,application/pdf"
                                             defalut_preview={get_value(
                                                 'attachment',

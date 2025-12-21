@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
-import { store } from './config/store/async_actions/store';
 import axios from 'axios';
 import moment from 'moment/moment';
 import { initialState } from './config/store/inital_state';
@@ -16,7 +15,6 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
     const [data, setData] = useState<any[]>([]);
     const [s_class, setSclass] = useState<any>();
     const [sections, setSections] = useState<any>([]);
-    const [section, setSection] = useState<any>({});
     const [exam, setExam] = useState<any>({});
     const [section2, setSection2] = useState<any>({});
     const [selectedClassId, setSelectedClassId] = useState('');
@@ -53,7 +51,6 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(classes({}) as any);
-        // await dispatch(sections({}) as any);
     }
 
     useEffect(() => {
@@ -501,9 +498,6 @@ const ExamRoutine: React.FC<Props> = (props: Props) => {
                         {/* eslint-disable */}
                         <div className="class_schedule_content">
                             {/* table_area start */}
-                            {/* <button id="printButtonRoutine" onClick={printPage}>
-                                 Print
-                            </button> */}
                             <table className="table_area">
                                 <thead>
                                     <tr className="table_head_area">

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
@@ -103,17 +102,7 @@ const Details: React.FC<Props> = (props: Props) => {
                                                 : 'Pending'}
                                         </td>
                                     </tr>
-                                    <tr>
-                                        {/* <td>Agenda summary</td> */}
-                                        {/* <td>:</td>
-                                        <td>
-                                            {state.item.agendas?.is_complete ===
-                                            'completed'
-                                                ? 'Complete'
-                                                : 'Pending'}
-                                        </td> */}
-                                    </tr>
-                                    {/* <h1 className="my-4">Agenda summary</h1> */}
+                                    <tr>{/* <td>Created At</td> */}</tr>
                                     {state.item.agenda?.meeting_summary ? (
                                         <tr>
                                             <td>Meeting summary</td>
@@ -132,20 +121,6 @@ const Details: React.FC<Props> = (props: Props) => {
                                     )}
                                 </tbody>
                             </table>
-                            {/* <h1 className="my-4">Meeting Agendas Part</h1>
-                            {state.item.agenda?.meeting_summary ? (
-                                <tr>
-                                    <td>Meeting summary</td>
-                                    <td>:</td>
-                                    <td className="details_descrtiption2">
-                                        {state.item.agenda?.meeting_summary}
-                                    </td>
-                                </tr>
-                            ) : (
-                                <p className="my-4 text-gray-500">
-                                    No agendas found till now.
-                                </p>
-                            )} */}
                         </div>
                     )}
 

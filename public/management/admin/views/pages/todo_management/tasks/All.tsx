@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
@@ -41,8 +40,6 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
-    // let date = moment().format('YYYY-MM-DD');
-    console.log('all data length', (state.all as any)?.data?.length);
 
     return (
         <div className="page_content">
@@ -64,11 +61,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`id`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Assign Task`}
-                                            col_name={`assign task`}
-                                            sort={false}
-                                        /> */}
                                         <TableHeading
                                             label={`Title`}
                                             col_name={`title`}
@@ -92,7 +84,6 @@ const All: React.FC<Props> = (props: Props) => {
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
                                     {(state.all as any)?.data?.length ? (
                                         (state.all as any)?.data?.map(
                                             (i: { [key: string]: any }) => {
@@ -124,7 +115,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                             </span>
                                                         </td>
                                                         <td>{i.title}</td>
-                                                        {/* <td>{i.description}</td> */}
                                                     <td>
                                                         {i.description?.length >
                                                         60

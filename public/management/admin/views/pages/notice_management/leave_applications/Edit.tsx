@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Header from './components/management_data_page/Header';
-import Footer from './components/management_data_page/Footer';
 import { useSelector } from 'react-redux';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
@@ -326,32 +325,13 @@ const Edit: React.FC<Props> = (props: Props) => {
                                             onChange={handleDaysChange}
                                             min="1"
                                             readOnly
-                                            // value={
-                                            //     aptotalDays
-                                            //         ? aptotalDays
-                                            //         : state.item?.total_days
-                                            // }
                                         />
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Pre Approved Days</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="number"
-                                            name="approved_days"
-                                            placeholder="Approved days"
-                                            defaultValue={
-                                                state.item.approved_days
-                                            }
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group student_submit form-horizontal">
                                     {/* <label></label> */}
                                     <div className="form_elementss">
                                         <button
-                                            // className="d_btn d_btn_1"
                                             className={`btn btn_1 ${errorMessage || errorMessage2 ? 'btn_error' : ''}`}
                                             disabled={!!errorMessage}
                                         >

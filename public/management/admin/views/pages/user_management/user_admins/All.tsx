@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
@@ -39,9 +38,6 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_item(data));
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
-    console.log('sotelsdjfdsjfldsjlf');
-    
-
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">

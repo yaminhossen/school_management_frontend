@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
@@ -116,15 +115,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                             {i.id}
                                                         </span>
                                                     </td>
-                                                    {/* <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td> */}
                                                     <td>{i.name}</td>
                                                     <td>
                                                         {i.subject_class?.name}

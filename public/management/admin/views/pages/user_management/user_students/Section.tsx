@@ -62,15 +62,7 @@ const Section: React.FC<Props> = (props: Props) => {
                                                 <td></td>
                                                 <td>{index + 1}</td>
                                                 <td>{i.title}</td>
-                                                {/* <td>{i.subject}</td> */}
-                                                {/* <td>{i.count}</td> */}
                                                 <td>
-                                                    {/* <Link
-                                                        className="btn btn-sm btn-outline-info mr-1"
-                                                        to={`/class-attendance/section/${i.id}?c_id=${id}`}
-                                                    >
-                                                        Details
-                                                    </Link> */}
                                                     <Link
                                                         className="btn btn-sm btn-outline-info mr-1"
                                                         to={`/user-students/class-details/${id}?sec_id=${i.id}`}

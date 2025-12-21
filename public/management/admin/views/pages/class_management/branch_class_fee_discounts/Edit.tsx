@@ -60,9 +60,7 @@ const Edit: React.FC<Props> = (props: Props) => {
         } catch (error) {
             setError(error);
         }
-        console.log('Selected value:', event.target.value);
     };
-    console.log('Selected dataaa:', feeTypes);
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -128,7 +126,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                 }
                                                 id=""
                                             >
-                                                {/* <option value={data.class_id}></option> */}
                                                 {feeTypes.map((i, index) => {
                                                     return (
                                                         <option value={i.id}>

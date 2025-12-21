@@ -3,14 +3,11 @@ import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
-import { store } from './config/store/async_actions/store';
-import DropDown from './components/dropdown/DropDown';
 import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { classes } from './config/store/async_actions/classes';
-import { sections } from './config/store/async_actions/sections';
 import { teachers } from './config/store/async_actions/teachers';
 import { rooms } from './config/store/async_actions/rooms';
 import { details } from './config/store/async_actions/details';
@@ -27,10 +24,7 @@ const Edit: React.FC<Props> = (props: Props) => {
     const [selectedSection, setSelectedSection] = useState<any>(Number);
     const [selectedTeacher, setSelectedTeacher] = useState<any>(Number);
     const [selectedRoom, setSelectedRoom] = useState<any>(Number);
-    const [selectedRTeacher, setSelectedRTeacher] = useState<any>(Number);
-    const [selectedRRoom, setSelectedRRoom] = useState<any>(Number);
     const roomref = useRef<HTMLSelectElement>(null);
-    const [room, setRooms] = useState<any>(Number);
     const [sections, setSections] = useState<any>([]);
     const [error, setError] = useState(null);
     const state: typeof initialState = useSelector(
@@ -44,8 +38,6 @@ const Edit: React.FC<Props> = (props: Props) => {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(details({ id: params.id }) as any);
         await dispatch(classes({}) as any);
-        // await dispatch(sections({}) as any);
-        // await fetchData();
         await dispatch(teachers({}) as any);
         await dispatch(rooms({}) as any);
     }
@@ -57,7 +49,6 @@ const Edit: React.FC<Props> = (props: Props) => {
         e.preventDefault();
         let response = await dispatch(update(new FormData(e.target)) as any);
     }
-    console.log('class section', selectedClass);
 
     let days = [
         'saturday',
@@ -98,11 +89,7 @@ const Edit: React.FC<Props> = (props: Props) => {
         event: React.ChangeEvent<HTMLSelectElement>,
         index,
     ) => {
-        // let temp = [...sevenDayRoutines];
-        // let temp: any[] = Array.from(sevenDayRoutines);
         const temp: any[] = JSON.parse(JSON.stringify(sevenDayRoutines));
-        console.log('tempindex1', temp[index]);
-        console.log('tempindex2', temp);
         temp[index].branch_teacher_id = event.target.value;
         console.log('tempindex3', event.target.value);
         setsevenDayRoutines(temp);
@@ -112,13 +99,8 @@ const Edit: React.FC<Props> = (props: Props) => {
         event: React.ChangeEvent<HTMLSelectElement>,
         index,
     ) => {
-        // let temp = [...sevenDayRoutines];
-        // let temp: any[] = Array.from(sevenDayRoutines);
         const temp: any[] = JSON.parse(JSON.stringify(sevenDayRoutines));
-        console.log('tempindex1', temp[index]);
-        console.log('tempindex2', temp);
         temp[index].branch_class_room_id = event.target.value;
-        console.log('tempindex3', event.target.value);
         setsevenDayRoutines(temp);
     };
     const fetchData = async (classId: string) => {
@@ -127,7 +109,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                 `/api/v1/branch-class-sections/class-wise/${classId}`,
             );
             setSections(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -158,7 +139,6 @@ const Edit: React.FC<Props> = (props: Props) => {
         setsevenDayRoutines(state.item.routine_days);
         setSchedule(initializeSchedule(state.item.routine_days));
     }, [state.item]);
-    // console.log('sevenDayRoutines', sevenDayRoutines);
 
     const handleTimeChange = (index, field, value) => {
         const newSchedule = [...schedule];

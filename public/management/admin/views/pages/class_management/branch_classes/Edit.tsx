@@ -112,17 +112,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Fee</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="number"
-                                            placeholder="fee"
-                                            name="fee"
-                                            defaultValue={state.item.fee}
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>
                                         Prerequisities{' '}
@@ -138,43 +127,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Student instructions</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            name="student_instructions"
-                                            id=""
-                                            placeholder="student instructions"
-                                            defaultValue={
-                                                state.item.student_instructions
-                                            }
-                                        ></textarea>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Parent instructions</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            name="parent_instructions"
-                                            id=""
-                                            placeholder="parent instructions"
-                                            defaultValue={
-                                                state.item.parent_instructions
-                                            }
-                                        ></textarea>
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Policies</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="policies"
-                                            name="policies"
-                                            defaultValue={state.item.policies}
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>Rules</label>
                                     <div className="form_elements">
@@ -185,30 +137,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Waiver rules</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            placeholder="waiver rules"
-                                            name="waiver_rules"
-                                            defaultValue={
-                                                state.item.waiver_rules
-                                            }
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group form-horizontal">
-                                    <label>Discount rules</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            placeholder="discount rules"
-                                            name="discount_rules"
-                                            defaultValue={
-                                                state.item.discount_rules
-                                            }
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group student_submit form-horizontal">
                                     {/* <label></label> */}
                                     <div className="form_elementss">

@@ -37,7 +37,6 @@ const Create: React.FC<Props> = (props: Props) => {
         dispatch(meeting_all({}) as any);
     }, []);
     console.log('state meeting', state.meeting);
-    // if (state.meeting.length < 1) return <></>;
     useEffect(() => {
         const start = moment(startDate);
         const today = moment().startOf('day');
@@ -90,7 +89,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                                {/* <div> thsi si five {state.meeting.length}</div> */}
                                 <div className="form-group form-horizontal">
                                     <label>
                                         Title{' '}

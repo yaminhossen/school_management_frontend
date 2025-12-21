@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
@@ -34,18 +33,6 @@ const Details: React.FC<Props> = (props: Props) => {
                         <div className="content_body">
                             <table className="table quick_modal_table table-hover">
                                 <tbody>
-                                    {/* <tr>
-                                        <td>Name</td>
-                                        <td>:</td>
-                                        <td>{state.item.name}</td>
-                                    </tr> */}
-                                    {/* <tr className="">
-                                        <td>Description</td>
-                                        <td>:</td>
-                                        <td className="details_descrtiption2">
-                                            {state.item?.description}
-                                        </td>
-                                    </tr> */}
                                     <tr>
                                         <td>Session</td>
                                         <td>:</td>

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
@@ -60,7 +59,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`id`}
                                             sort={true}
                                         />
-                                        {/* <th>Logo</th> */}
                                         <TableHeading
                                             label={`Class`}
                                             col_name={`class`}
@@ -81,11 +79,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`session`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Description`}
-                                            col_name={`description`}
-                                            sort={false}
-                                        /> */}
                                         <TableHeading
                                             label={`Amount`}
                                             col_name={`amount`}
@@ -95,7 +88,6 @@ const All: React.FC<Props> = (props: Props) => {
                                 </thead>
                                 {(state.all as any)?.data?.length ? (
                                     <tbody id="all_list">
-                                        {/* {(state.all as any)?.data?.map( */}
                                         {(state.all as any)?.data?.map(
                                             (i: { [key: string]: any }) => {
                                                 return (
@@ -131,15 +123,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                         </td>
                                                         <td>{i.name}</td>
                                                         <td>{i.session}</td>
-                                                        {/* <td>
-                                                        {i.description?.length >
-                                                        60
-                                                            ? i.description.slice(
-                                                                0,
-                                                                40,
-                                                            ) + '...'
-                                                            : i.description}
-                                                    </td> */}
                                                         <td>{i.amount}</td>
                                                     </tr>
                                                 );

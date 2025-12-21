@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
@@ -44,10 +43,6 @@ const Details: React.FC<Props> = (props: Props) => {
                                         <td>:</td>
                                         <td style={{ whiteSpace: 'wrap' }}>
                                             {state.item.description}
-                                            {/* {state.item.description?.length > 25
-                                                ? state.item.description?.slice(0, 35) +
-                                                  ' ...'
-                                                : state.item.description} */}{' '}
                                         </td>
                                     </tr>
                                     <tr>

@@ -5,13 +5,11 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
-import { details } from './config/store/async_actions/details';
 import { initialState } from './config/store/inital_state';
 import { Link, useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import moment from 'moment/moment';
 import { anyObject } from '../../../../common_types/object';
-import TableRowAction from './components/all_data_page/TableRowAction';
 export interface Props {}
 
 const TaskDetails: React.FC<Props> = (props: Props) => {
@@ -28,7 +26,6 @@ const TaskDetails: React.FC<Props> = (props: Props) => {
 
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
-        // dispatch(details({ id: params.id }) as any);
     }, []);
     const fetchData = async () => {
         try {
@@ -37,7 +34,6 @@ const TaskDetails: React.FC<Props> = (props: Props) => {
             );
             setData(response.data?.data?.data);
             setData2(response.data?.data?.data2);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -46,8 +42,6 @@ const TaskDetails: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         fetchData();
     }, []);
-    console.log('the task data', data);
-    console.log('the task data2', data2);
 
     return (
         <>
@@ -123,11 +117,6 @@ const TaskDetails: React.FC<Props> = (props: Props) => {
                                                     return (
                                                         <tr>
                                                             <td></td>
-                                                            {/* <td>
-                                                                <TableRowAction
-                                                                    item={i}
-                                                                />
-                                                            </td> */}
                                                             <td>{index + 1}</td>
                                                             <td>
                                                                 {i.teacher
@@ -154,10 +143,6 @@ const TaskDetails: React.FC<Props> = (props: Props) => {
                                                                     height={30}
                                                                     width={30}
                                                                 />
-                                                                {/* {i.staff
-                                                                    ?.name ||
-                                                                    i.teacher
-                                                                        ?.name} */}
                                                             </td>
                                                             <td>
                                                                 {i.staff

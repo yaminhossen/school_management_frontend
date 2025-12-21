@@ -4,7 +4,6 @@ import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
-import DropDown from './components/dropdown/DropDown';
 import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -54,9 +53,6 @@ const Create: React.FC<Props> = (props: Props) => {
                             onSubmit={(e) => handle_submit(e)}
                             className="form_600 mx-auto pt-3"
                         >
-                            {/* <div className="form_section_heading">
-                                <h2 className=""> Major Information</h2>
-                            </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
                                     <label>
@@ -137,35 +133,15 @@ const Create: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>
-                                        Image{' '}
-                                        <span className="valid_star">*</span>
-                                    </label>
-                                    <div className="form_elements">
-                                        <InputImage
-                                            label={''}
-                                            name={'image'}
-                                            accept="image/*,application/pdf"
-                                            defalut_preview={get_value('')}
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>
                                         Attachment{' '}
                                         <span className="valid_star">*</span>
                                     </label>
                                     <div className="form_elements">
-                                        {/* <input
-                                            type="file"
-                                            accept="image/*"
-                                            name="attachment"
-                                        /> */}
                                         <InputImage
                                             label={''}
                                             name={'attachment'}
-                                            // accept="image/*, ./*"
                                             accept="image/*,application/pdf"
                                             defalut_preview={get_value('')}
                                         />

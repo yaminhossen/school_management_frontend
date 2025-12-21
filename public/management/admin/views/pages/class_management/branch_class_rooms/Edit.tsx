@@ -40,7 +40,6 @@ const Edit: React.FC<Props> = (props: Props) => {
         if (buildingId.current) {
             buildingId.current.value = state.item?.building_id || '';
         }
-        // console.log('Updated buildingId:', buildingId.current?.value);
     }, [state.building]);
 
     function get_value(key) {

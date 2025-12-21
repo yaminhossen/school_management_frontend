@@ -4,7 +4,6 @@ import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
-import DropDown from './components/dropdown/DropDown';
 import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
 import storeSlice from './config/store';

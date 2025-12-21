@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import Header from './components/management_data_page/Header';
 import Footer from './components/management_data_page/Footer';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { details } from './config/store/async_actions/details';
 import { initialState } from './config/store/inital_state';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 export interface Props {}
 

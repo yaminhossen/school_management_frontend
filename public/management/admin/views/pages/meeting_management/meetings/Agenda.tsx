@@ -24,7 +24,6 @@ const Agenda: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         dispatch(storeSlice.actions.set_item({}));
         dispatch(agendas({ id: params.id }) as any);
-        // console.log('state agenda', state.agendas);
     }, []);
     useEffect(() => {
         console.log('state agenda', state.agendas);

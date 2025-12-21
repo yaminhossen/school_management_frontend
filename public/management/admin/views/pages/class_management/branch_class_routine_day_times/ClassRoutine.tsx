@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
-import { store } from './config/store/async_actions/store';
 import axios from 'axios';
 import moment from 'moment/moment';
 import { initialState } from './config/store/inital_state';
@@ -43,11 +42,9 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
         }
     };
 
-            console.log('ksdfjlsdjfldsjok');
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(classes({}) as any);
-        // await dispatch(sections({}) as any);
     }
 
     useEffect(() => {
@@ -72,11 +69,9 @@ const ClassRoutine: React.FC<Props> = (props: Props) => {
 
     return (
         <div className="admin_dashboard">
-            {/* <h2>Class routine information</h2> */}
             <div className="admin_sideba custom_scroll">
                 <section className="class_schedule_area">
                     <div className="container">
-                        {/* class_schedule_title start */}
                         <div className="class_schedule_title">
                             <h2>Class Routine</h2>
                             <form

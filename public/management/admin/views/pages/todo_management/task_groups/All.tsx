@@ -40,29 +40,6 @@ const All: React.FC<Props> = (props: Props) => {
         dispatch(storeSlice.actions.set_show_quick_view_canvas(true));
     }
 
-    interface data {
-        [key: string]: any;
-    }
-    const datas: data[] = [
-        {
-            id: 1,
-            branch: 'gulshan',
-            meeting: 'Monthly',
-            title: 'Task variant1',
-            description: 'First monthe mc meeting',
-            is_complete: 'YES',
-        },
-        {
-            id: 2,
-            branch: 'Mirpur',
-            meeting: 'Yearly',
-            title: 'Task variant2',
-            description: 'First monthe ec meeting',
-            is_complete: 'NO',
-        },
-    ];
-    console.log('state', (state.all as any)?.data);
-
     return (
         <div className="page_content">
             <div className="explore_window fixed_size">
@@ -83,7 +60,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`id`}
                                             sort={true}
                                         />
-                                        {/* <th>Logo</th> */}
                                         <TableHeading
                                             label={`Title`}
                                             col_name={`title`}
@@ -94,25 +70,14 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`color`}
                                             sort={true}
                                         />
-                                        {/* <TableHeading
-                                            label={`Meeting`}
-                                            col_name={`meeting`}
-                                            sort={true}
-                                        /> */}
                                         <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
                                             sort={true}
                                         />
-                                        {/* <TableHeading
-                                            label={`Is Complete`}
-                                            col_name={`is_complete`}
-                                            sort={true}
-                                        /> */}
                                     </tr>
                                 </thead>
                                 <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
                                     {(state.all as any)?.data?.map(
                                         (i: { [key: string]: any }, index) => {
                                             return (
@@ -138,20 +103,9 @@ const All: React.FC<Props> = (props: Props) => {
                                                             {index + 1}
                                                         </span>
                                                     </td>
-                                                    {/* <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td> */}
                                                     <td>{i.title}</td>
                                                     <td>{i.color}</td>
-                                                    {/* <td>{i.meeting}</td> */}
                                                     <td>{i.description}</td>
-                                                    {/* <td>{i.is_complete}</td> */}
                                                 </tr>
                                             );
                                         },

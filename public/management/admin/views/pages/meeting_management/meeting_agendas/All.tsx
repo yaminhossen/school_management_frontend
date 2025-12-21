@@ -67,26 +67,11 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`title`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Branch`}
-                                            col_name={`branch`}
-                                            sort={false}
-                                        /> */}
-                                        {/* <TableHeading
-                                            label={`Meeting`}
-                                            col_name={`meeting`}
-                                            sort={false}
-                                        /> */}
                                         <TableHeading
                                             label={`Description`}
                                             col_name={`description`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Date`}
-                                            col_name={`date`}
-                                            sort={false}
-                                        /> */}
                                         <TableHeading
                                             label={`Is Complete`}
                                             col_name={`is_complete`}
@@ -96,7 +81,6 @@ const All: React.FC<Props> = (props: Props) => {
                                 </thead>
                                 {(state.all as any)?.data?.length ? (
                                     <tbody id="all_list">
-                                        {/* {(state.all as any)?.data?.map( */}
                                         {(state.all as any)?.data?.map(
                                             (i: { [key: string]: any }) => {
                                                 return (
@@ -126,15 +110,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 {i.id}
                                                             </span>
                                                         </td>
-                                                        {/* <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td> */}
                                                         <td>{i.title}</td>
                                                         <td>{i.description}</td>
                                                         <td>{i.is_complete}</td>

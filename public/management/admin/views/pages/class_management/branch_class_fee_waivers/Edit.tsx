@@ -129,7 +129,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                                 }
                                                 id=""
                                             >
-                                                {/* <option value={data.class_id}></option> */}
                                                 {feeTypes.map((i, index) => {
                                                     return (
                                                         <option value={i.id}>

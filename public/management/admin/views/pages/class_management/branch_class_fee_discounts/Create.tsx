@@ -4,7 +4,6 @@ import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
-import DropDown from './components/dropdown/DropDown';
 import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -37,7 +36,6 @@ const Create: React.FC<Props> = (props: Props) => {
                 `/api/v1/branch-class-fee-types/class-wise-fee-types/1`,
             );
             setFeeTypes(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -52,7 +50,6 @@ const Create: React.FC<Props> = (props: Props) => {
     useEffect(() => {
         initdependancy();
     }, []);
-    console.log('state', state);
 
     const handleChange = async (
         event: React.ChangeEvent<HTMLSelectElement>,
@@ -66,9 +63,7 @@ const Create: React.FC<Props> = (props: Props) => {
         } catch (error) {
             setError(error);
         }
-        console.log('Selected value:', event.target.value);
     };
-    console.log('Selected dataaa:', feeTypes);
     return (
         <>
             <div className="page_content">
@@ -113,7 +108,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 name="branch_class_fee_id"
                                                 id=""
                                             >
-                                                {/* <option value={data.class_id}></option> */}
                                                 {feeTypes.map((i, index) => {
                                                     return (
                                                         <option value={i.id}>

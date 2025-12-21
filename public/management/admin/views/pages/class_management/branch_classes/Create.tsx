@@ -4,7 +4,6 @@ import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
 import { useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
-import DropDown from './components/dropdown/DropDown';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -28,23 +27,7 @@ const Create: React.FC<Props> = (props: Props) => {
                             onSubmit={(e) => handle_submit(e)}
                             className="form_600 mx-auto pt-3"
                         >
-                            {/* <div className="form_section_heading">
-                                <h2 className=""> Major Information</h2>
-                            </div> */}
                             <div className="">
-                                {/* <div className="form-group form-horizontal">
-                                    <label>
-                                        Name{' '}
-                                        <span className="valid_star">*</span>
-                                    </label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="text"
-                                            placeholder="name"
-                                            name="name"
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>
                                         Class Name{' '}
@@ -105,16 +88,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Fee</label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="number"
-                                            placeholder="fee"
-                                            name="fee"
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal">
                                     <label>
                                         Prerequisities{' '}

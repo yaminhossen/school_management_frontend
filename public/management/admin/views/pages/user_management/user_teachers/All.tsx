@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
@@ -68,11 +67,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`name`}
                                             sort={true}
                                         />
-                                        {/* <TableHeading
-                                            label={`Designation`}
-                                            col_name={`designation`}
-                                            sort={true}
-                                        /> */}
                                         <TableHeading
                                             label={`Phone number`}
                                             col_name={`phone_number`}
@@ -138,13 +132,7 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 }}
                                                             />
                                                         </td>
-                                                        {/* <td>{i.branch}</td> */}
                                                         <td>{i.name}</td>
-                                                        {/* <td>
-                                                        {i.role
-                                                            ? i.role
-                                                            : 'Te'}
-                                                    </td> */}
                                                         <td>
                                                             {i.phone_number}
                                                         </td>
@@ -159,7 +147,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 Class Details
                                                             </Link>
                                                         </td>
-                                                        {/* <td>{i.address}</td> */}
                                                     </tr>
                                                 );
                                             },

@@ -4,11 +4,9 @@ import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
-import DropDown from './components/dropdown/DropDown';
 import moment from 'moment/moment';
 import { useSelector } from 'react-redux';
 import { initialState } from './config/store/inital_state';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import storeSlice from './config/store';
 import { classes } from './config/store/async_actions/classes';
@@ -19,13 +17,11 @@ export interface Props {}
 const Create: React.FC<Props> = (props: Props) => {
     const [error, setError] = useState(null);
     const [subjects, setSubjects] = useState<any>([]);
-    const search_input = useRef<HTMLSelectElement>(null);
     const state: typeof initialState = useSelector(
         (state: RootState) => state[setup.module_name],
     );
 
     const dispatch = useAppDispatch();
-    const params = useParams();
 
     async function handle_submit(e) {
         e.preventDefault();
@@ -72,7 +68,6 @@ const Create: React.FC<Props> = (props: Props) => {
         } catch (error) {
             setError(error);
         }
-        console.log('Selected value:', event.target.value);
     };
     const handleChange = async (
         event: React.ChangeEvent<HTMLSelectElement>,
@@ -86,7 +81,6 @@ const Create: React.FC<Props> = (props: Props) => {
         } catch (error) {
             setError(error);
         }
-        console.log('Selected value:', event.target.value);
     };
     const now = moment();
     const oneHourLater = moment().add(1, 'hour');
@@ -151,7 +145,6 @@ const Create: React.FC<Props> = (props: Props) => {
 
     const hasError =
         errorMessageStartTime || errorMessageEndTime || errorMessageDate;
-    console.log('subjects', subjects);
 
     return (
         <>
@@ -163,9 +156,6 @@ const Create: React.FC<Props> = (props: Props) => {
                             onSubmit={(e) => handle_submit(e)}
                             className="form_600 mx-auto pt-3"
                         >
-                            {/* <div className="form_section_heading">
-                                <h2 className=""> Major Information</h2>
-                            </div> */}
                             <div className="">
                                 <div className="form-group form-horizontal">
                                     <label>
@@ -352,14 +342,6 @@ const Create: React.FC<Props> = (props: Props) => {
                             <div className="form-group student_submit form-horizontal">
                                 {/* <label></label> */}
                                 <div className="form_elementss">
-                                    {/* <button className="btn btn_1">
-                                        submit
-                                    </button> */}
-                                    {/* {!hasError && (
-                                        <button className="btn btn_1">
-                                            Update
-                                        </button>
-                                    )} */}
                                     <button
                                         // className="d_btn d_btn_1"
                                         className={`btn btn_1 ${hasError ? 'btn_error' : ''}`}

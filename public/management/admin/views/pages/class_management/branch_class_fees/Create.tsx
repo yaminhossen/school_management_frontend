@@ -4,7 +4,6 @@ import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
-import DropDown from './components/dropdown/DropDown';
 import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -70,7 +69,6 @@ const Create: React.FC<Props> = (props: Props) => {
         console.log('Selected value:', event.target.value);
     };
     
-        // console.log('moment', moment().format('YYYY-DD-MM'));
         let date = moment().format('YYYY-MM-DD');
     
         const startYear = '2025';
@@ -137,17 +135,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                     *
                                                 </span></label>
                                     <div className="form_elements">
-                                        {/* {feeTypes.length && (
-                                            <select name="fee_type_id" id="">
-                                                {feeTypes.map((i, index) => {
-                                                    return (
-                                                        <option value={i.id}>
-                                                            {i.name}
-                                                        </option>
-                                                    );
-                                                })}
-                                            </select>
-                                        )} */}
                                         {feeTypes.length > 0 ? (
                                             <select name="fee_type_id" id="">
                                                 {feeTypes.map((i, index) => (
@@ -196,21 +183,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Session{' '}
-                                                <span className="valid_star">
-                                                    *
-                                                </span></label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="number"
-                                            name="session"
-                                            defaultValue={moment().format(
-                                                'YYYY-MM-DD',
-                                            )}
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal custom_scroll">
                                     <label htmlFor="session">Session</label>
                                     <div className="form_elements custom_scroll">

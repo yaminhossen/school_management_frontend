@@ -13,8 +13,6 @@ import { all_staff_task } from './config/store/async_actions/all_staff_task';
 import { all_teacher_task } from './config/store/async_actions/all_teacher_task';
 import { assign_task_update } from './config/store/async_actions/assign_task_update';
 import InputImage from './components/management_data_page/InputImage';
-import { get } from 'http';
-import { stat } from 'fs';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -32,7 +30,6 @@ const Edit: React.FC<Props> = (props: Props) => {
     const dispatch = useAppDispatch();
     const params = useParams();
     let id = params.id;
-    console.log('assing page id', id);
 
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));

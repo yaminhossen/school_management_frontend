@@ -4,13 +4,11 @@ import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
-import DropDown from './components/dropdown/DropDown';
 import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { classes } from './config/store/async_actions/classes';
-import { sections } from './config/store/async_actions/sections';
 import { teachers } from './config/store/async_actions/teachers';
 import { rooms } from './config/store/async_actions/rooms';
 import axios from 'axios';
@@ -38,7 +36,6 @@ const Create: React.FC<Props> = (props: Props) => {
                 `/api/v1/branch-class-sections/class-wise/1`,
             );
             setSections(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -47,7 +44,6 @@ const Create: React.FC<Props> = (props: Props) => {
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(classes({}) as any);
-        // await dispatch(sections({}) as any);
         await fetchData();
         await dispatch(teachers({}) as any);
         await dispatch(rooms({}) as any);
@@ -96,18 +92,6 @@ const Create: React.FC<Props> = (props: Props) => {
 
         setSchedule(newSchedule);
     };
-if(state){
-    console.log('selected teacher', state.teachers);
-}
-
-    // defaultValue={moment(
-    //     state.item
-    //         .routine_day
-    //         ?.start_time,
-    //     'HH:mm:ss',
-    // ).format(
-    //     'HH:mm',
-    // )}
 
     const handleChange = async (
         event: React.ChangeEvent<HTMLSelectElement>,
@@ -116,7 +100,6 @@ if(state){
         setTeachers(id);
         let all_teacher =
             document.querySelectorAll<HTMLSelectElement>('.teacher');
-        console.log('all teacher', all_teacher);
         all_teacher.forEach((select) => {
             select.value = id;
             console.log(select.value);
@@ -129,7 +112,6 @@ if(state){
         let id = event.target.value;
         setRooms(id);
         let all_rooms = document.querySelectorAll<HTMLSelectElement>('.room');
-        console.log('all room', all_rooms);
         all_rooms.forEach((select) => {
             select.value = id;
             console.log(select.value);
@@ -673,85 +655,17 @@ if(state){
                                                                 )}
                                                             </div>
                                                         </div>
-
-                                                        {/* <div className="form-group form-vertical">
-                                                            <label>Room</label>
-                                                            <div className="form_elements">
-                                                                <select
-                                                                    name="room"
-                                                                    id=""
-                                                                    className="room"
-                                                                >
-                                                                    <option value="0">
-                                                                        Select
-                                                                        Room
-                                                                    </option>
-                                                                    {state
-                                                                        ?.rooms
-                                                                        ?.length &&
-                                                                        state.rooms?.map(
-                                                                            (i: {
-                                                                                [
-                                                                                    key: string
-                                                                                ]: any;
-                                                                            }) => {
-                                                                                return (
-                                                                                    <option
-                                                                                        value={
-                                                                                            i.id
-                                                                                        }
-                                                                                    >
-                                                                                        {
-                                                                                            i.room_name
-                                                                                        }
-                                                                                    </option>
-                                                                                );
-                                                                            },
-                                                                        )}
-                                                                </select>
-                                                            </div>
-                                                        </div> */}
                                                     </div>
                                                 </div>
                                             ))}
                                         </div>
                                     </div>
                                 </div>
-                                <div className="full_width">
-                                    {/* <div className="form_section_heading">
-                                        <h4>Teacher Part</h4>
-                                    </div>
-                                    <div className="multi_inputs">
-                                        <div
-                                            // key={i}
-                                            className="multi_input_group"
-                                        >
-                                            <div className="d-flex">
-                                                <div className="form-group form-vertical">
-                                                    <label>Description</label>
-                                                    <div className="form_elements">
-                                                        <input
-                                                            type="text"
-                                                            placeholder="teacher description"
-                                                            name="teacher_description"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> */}
-                                </div>
+                                <div className="full_width"></div>
                             </div>
                             <div className="form-group student_submit form-horizontal">
                                 {/* <label></label> */}
                                 <div className="form_elementss">
-                                    {/* <button
-                                        // onClick={handle_submit}
-                                        className="btn btn_1"
-                                        // disabled={hasErrors}
-                                    >
-                                        submit
-                                    </button> */}
                                     <button
                                         // className="d_btn d_btn_1"
                                         className={`btn btn_1 ${hasErrors ? 'btn_error' : ''}`}

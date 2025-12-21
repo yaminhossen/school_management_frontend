@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
@@ -76,26 +75,15 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`attachment`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Image`}
-                                            col_name={`image`}
-                                            sort={false}
-                                        /> */}
                                         <TableHeading
                                             label={`Notice For`}
                                             col_name={`notice for`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Text`}
-                                            col_name={`text`}
-                                            sort={false}
-                                        /> */}
                                     </tr>
                                 </thead>
                                 {(state.all as any)?.data?.length ? (
                                 <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
                                     {(state.all as any)?.data?.map(
                                         (i: { [key: string]: any }) => {
                                             return (
@@ -121,15 +109,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                             {i.id}
                                                         </span>
                                                     </td>
-                                                    {/* <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td> */}
                                                     <td>{i.title}</td>
                                                     <td>
                                                         {i.description?.length >
@@ -153,19 +132,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                             }}
                                                         />
                                                     </td>
-                                                    {/* <td>
-                                                        <img
-                                                            src={
-                                                                i.image
-                                                                    ? i.image
-                                                                    : '/assets/dashboard/images/avatar.png'
-                                                            }
-                                                            alt=""
-                                                            style={{
-                                                                height: 30,
-                                                            }}
-                                                        />
-                                                    </td> */}
                                                     <td>{i.notice_for}</td>
                                                 </tr>
                                             );

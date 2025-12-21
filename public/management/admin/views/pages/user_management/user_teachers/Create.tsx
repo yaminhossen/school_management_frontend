@@ -4,7 +4,6 @@ import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
-import DropDown from './components/dropdown/DropDown';
 import moment from 'moment/moment';
 import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
@@ -13,8 +12,6 @@ import storeSlice from './config/store';
 import { classes } from './config/store/async_actions/classes';
 import InputImage from './components/management_data_page/InputImage';
 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 export interface Props {}
 
 const Create: React.FC<Props> = (props: Props) => {
@@ -123,21 +120,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                                 defalut_preview={get_value('')}
                                             />
                                         </div>
-                                        {/* <div className="form-group form-horizontal">
-                                            <label>
-                                                Password{' '}
-                                                <span className="valid_star">
-                                                    *
-                                                </span>
-                                            </label>
-                                            <div className="form_elements">
-                                                <input
-                                                    type="text"
-                                                    placeholder="password"
-                                                    name="password"
-                                                />
-                                            </div>
-                                        </div> */}
                                         <div className="form-group form-horizontal">
                                             <label>
                                                 Password{' '}

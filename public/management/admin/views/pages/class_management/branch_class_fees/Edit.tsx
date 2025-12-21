@@ -11,7 +11,6 @@ import storeSlice from './config/store';
 import { update } from './config/store/async_actions/update';
 import { classes } from './config/store/async_actions/classes';
 import axios from 'axios';
-import moment from 'moment/moment';
 export interface Props {}
 
 const Edit: React.FC<Props> = (props: Props) => {
@@ -206,23 +205,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         />
                                     </div>
                                 </div>
-
-                                {/* <div className="form-group form-horizontal">
-                                    <label>
-                                        Session{' '}
-                                                <span className="valid_star">
-                                                    *
-                                                </span></label>
-                                    <div className="form_elements">
-                                        <input
-                                            type="date"
-                                            name="session"
-                                            defaultValue={moment(
-                                                `${state.item?.session}-01-01`,
-                                            ).format('YYYY-MM-DD')}
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className="form-group form-horizontal custom_scroll">
                                     <label htmlFor="session">Session</label>
                                     <div className="form_elements custom_scroll">
@@ -245,19 +227,6 @@ const Edit: React.FC<Props> = (props: Props) => {
                                         </select>
                                     </div>
                                 </div>
-                                {/* <div className="form-group form-horizontal">
-                                    <label>Description</label>
-                                    <div className="form_elements">
-                                        <textarea
-                                            name="description"
-                                            id=""
-                                            placeholder="description"
-                                            defaultValue={
-                                                state.item.description
-                                            }
-                                        ></textarea>
-                                    </div>
-                                </div> */}
                                 <div className="form-group student_submit form-horizontal">
                                     {/* <label></label> */}
                                     <div className="form_elementss">

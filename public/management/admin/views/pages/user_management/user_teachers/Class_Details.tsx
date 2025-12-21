@@ -1,15 +1,10 @@
 import React, { useEffect } from 'react';
-import Header from './components/management_data_page/Header';
-import Footer from './components/management_data_page/Footer';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
-import { details } from './config/store/async_actions/details';
 import { initialState } from './config/store/inital_state';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
-import moment from 'moment/moment';
 import { class_details } from './config/store/async_actions/class_details';
 import BackButton from './components/management_data_page/BackButton';
 export interface Props {}
@@ -31,7 +26,6 @@ const Class_Details: React.FC<Props> = (props: Props) => {
     return (
         <div className="admin_dashboard">
             <BackButton></BackButton>
-            {/* <h2>Class routine information</h2> */}
             <div className="admin_sideba custom_scroll">
                 <section className="class_schedule_area">
                     <div className="container">

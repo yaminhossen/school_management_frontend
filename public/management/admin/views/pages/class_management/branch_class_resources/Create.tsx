@@ -4,14 +4,12 @@ import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
-import DropDown from './components/dropdown/DropDown';
 import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
 import { classes } from './config/store/async_actions/classes';
 import axios from 'axios';
-import { subjects } from './config/store/async_actions/class_wise_subjects';
 import InputImage from './components/management_data_page/InputImage';
 export interface Props {}
 
@@ -38,7 +36,6 @@ const Create: React.FC<Props> = (props: Props) => {
                 `/api/v1/branch-class-subjects/class-wise-subject/1`,
             );
             setSubjects(response.data.data);
-            // setData(response.data);
         } catch (error) {
             setError(error);
         }
@@ -47,14 +44,12 @@ const Create: React.FC<Props> = (props: Props) => {
     async function initdependancy() {
         await dispatch(storeSlice.actions.set_item({}));
         await dispatch(classes({}) as any);
-        // await dispatch(subjects({ id: 1 }) as any);
         await fetchData();
     }
 
     useEffect(() => {
         initdependancy();
     }, []);
-    // console.log('state', state);
     function get_value(key) {
         try {
             if (state.item[key]) return state.item[key];
@@ -129,7 +124,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                     <div className="form_elements">
                                         {subjects.length && (
                                             <select name="subject" id="">
-                                                {/* <option value={data.class_id}></option> */}
                                                 {subjects.map((i, index) => {
                                                     return (
                                                         <option value={i.id}>
@@ -169,16 +163,9 @@ const Create: React.FC<Props> = (props: Props) => {
                                         <span className="valid_star">*</span>
                                     </label>
                                     <div className="form_elements">
-                                        {/* <input
-                                            type="file"
-                                            name="attachment"
-                                            // accept="image/*, ./*"
-                                            accept="image/*,application/pdf"
-                                        /> */}
                                         <InputImage
                                             label={'attachment'}
                                             name={'attachment'}
-                                            // accept="image/*, ./*"
                                             accept="image/*,application/pdf"
                                             defalut_preview={get_value('')}
                                         />

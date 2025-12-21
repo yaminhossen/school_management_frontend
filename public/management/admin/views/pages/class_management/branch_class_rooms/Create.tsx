@@ -4,12 +4,10 @@ import Footer from './components/management_data_page/Footer';
 import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { store } from './config/store/async_actions/store';
-import DropDown from './components/dropdown/DropDown';
 import { initialState } from './config/store/inital_state';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import storeSlice from './config/store';
-import { details } from './config/store/async_actions/details';
 import { building } from './config/store/async_actions/building';
 import InputImage from './components/management_data_page/InputImage';
 export interface Props {}
@@ -148,12 +146,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                             name={'attachment'}
                                             defalut_preview={get_value('')}
                                         />
-                                        {/* <input
-                                            type="file"
-                                            accept="image/*"
-                                            placeholder="attachment"
-                                            name="attachment"
-                                        /> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">
@@ -164,12 +156,6 @@ const Create: React.FC<Props> = (props: Props) => {
                                             name={'photo'}
                                             defalut_preview={get_value('')}
                                         />
-                                        {/* <input
-                                            type="file"
-                                            accept="image/*"
-                                            placeholder="photo"
-                                            name="photo"
-                                        /> */}
                                     </div>
                                 </div>
                                 <div className="form-group form-horizontal">

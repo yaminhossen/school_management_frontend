@@ -1,14 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
-import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
 import { initialState } from './config/store/inital_state';
-import Header from './components/all_data_page/Header';
 import TableFooter from './components/all_data_page/TableFooter';
 import Paginate from '../../../components/Paginate';
-import Filter from './components/canvas/Filter';
 import QuickView from './components/canvas/QuickView';
 import storeSlice from './config/store';
 import { anyObject } from '../../../../common_types/object';
@@ -17,7 +13,6 @@ import SelectItem from './components/all_data_page/SelectItem';
 import SelectAll from './components/all_data_page/SelectIAll';
 import TableHeading from './components/all_data_page/TableHeading';
 import { Link } from 'react-router-dom';
-import Pending from './Pending';
 import { approved } from './config/store/async_actions/approved';
 import Header2 from './components/all_data_page/Header2';
 import Filter2 from './components/canvas/Filter2';
@@ -67,7 +62,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`id`}
                                             sort={true}
                                         />
-                                        {/* <th>Logo</th> */}
                                         <TableHeading
                                             label={`Staff/Student`}
                                             col_name={`staff/student`}
@@ -98,16 +92,10 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`action`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Text`}
-                                            col_name={`text`}
-                                            sort={false}
-                                        /> */}
                                     </tr>
                                 </thead>
                                 {(state.all as any)?.data?.length ? (
                                 <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
                                     {(state.all as any)?.data?.map(
                                         (i: { [key: string]: any }) => {
                                             return (
@@ -125,23 +113,10 @@ const All: React.FC<Props> = (props: Props) => {
                                                     </td>
                                                     <td>
                                                         <span
-                                                            // className="quick_view_trigger"
-                                                            // onClick={() =>
-                                                            //     quick_view(i)
-                                                            // }
                                                         >
                                                             {i.id}
                                                         </span>
                                                     </td>
-                                                    {/* <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td> */}
                                                     <td>
                                                         {i.branch_teacher_id
                                                             ? 'Teacher'
@@ -160,7 +135,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                                     ? i.student?.name
                                                                     : 0}
                                                     </td>
-                                                    {/* <td>{i.reason}</td> */}
                                                     <td>
                                                         {i.leave_type?.title}
                                                     </td>

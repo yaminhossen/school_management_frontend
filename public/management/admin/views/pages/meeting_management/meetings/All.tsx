@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
@@ -62,7 +61,6 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`id`}
                                             sort={true}
                                         />
-                                        {/* <th>Logo</th> */}
                                         <TableHeading
                                             label={`Agenda`}
                                             col_name={`agenda`}
@@ -83,21 +81,10 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`date`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Attachment`}
-                                            col_name={`attachment`}
-                                            sort={false}
-                                        />
-                                        <TableHeading
-                                            label={`Text`}
-                                            col_name={`text`}
-                                            sort={false}
-                                        /> */}
                                     </tr>
                                 </thead>
                                 {(state.all as any)?.data?.length ? (
                                 <tbody id="all_list">
-                                    {/* {(state.all as any)?.data?.map( */}
                                     {(state.all as any)?.data?.map(
                                         (i: { [key: string]: any }) => {
                                             return (

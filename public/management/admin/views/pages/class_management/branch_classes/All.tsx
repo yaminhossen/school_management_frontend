@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import setup from './config/setup';
 import { RootState, useAppDispatch } from '../../../../store';
 import { all } from './config/store/async_actions/all';
 import setup from './config/setup';
@@ -72,31 +71,15 @@ const All: React.FC<Props> = (props: Props) => {
                                             col_name={`capacity`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Fee`}
-                                            col_name={`fee`}
-                                            sort={false}
-                                        /> */}
                                         <TableHeading
                                             label={`Prerequisites`}
                                             col_name={`prerequisities`}
                                             sort={false}
                                         />
-                                        {/* <TableHeading
-                                            label={`Policies`}
-                                            col_name={`policies`}
-                                            sort={true}
-                                        />
-                                        <TableHeading
-                                            label={`Rules`}
-                                            col_name={`rules`}
-                                            sort={true}
-                                        /> */}
                                     </tr>
                                 </thead>
                                 {(state.all as any)?.data?.length ? (
                                     <tbody id="all_list">
-                                        {/* {(state.all as any)?.data?.map( */}
                                         {(state.all as any)?.data?.map(
                                             (i: { [key: string]: any }) => {
                                                 return (
@@ -126,23 +109,9 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 {i.id}
                                                             </span>
                                                         </td>
-                                                        {/* <td>
-                                                    <img
-                                                        src="/assets/dashboard/images/avatar.png"
-                                                        alt=""
-                                                        style={{
-                                                            height: 30,
-                                                        }}
-                                                    />
-                                                </td> */}
                                                         <td>{i.name}</td>
                                                         <td>{i.code}</td>
                                                         <td>{i.capacity}</td>
-                                                        {/* <td>{i.fee}</td> */}
-                                                        {/* <td>
-                                                            {i.prerequisities}
-                                                        </td> */}
-                                                        
                                                         <td>
                                                             {i.prerequisities
                                                                 ?.length > 60
@@ -152,8 +121,6 @@ const All: React.FC<Props> = (props: Props) => {
                                                                 ) + '...'
                                                                 : i.prerequisities}
                                                         </td>
-                                                        {/* <td>{i.policies}</td>
-                                                    <td>{i.rules}</td> */}
                                                     </tr>
                                                 );
                                             },
